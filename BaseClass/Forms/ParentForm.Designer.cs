@@ -1,4 +1,4 @@
-﻿namespace Mbc5.Classes
+﻿namespace BaseClass
 {
     partial class ParentForm
     {
@@ -34,9 +34,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 644);
+            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.ClientSize = new System.Drawing.Size(648, 433);
+            this.IsMdiContainer = true;
             this.Name = "ParentForm";
             this.Text = "ParentForm";
+           
             this.Load += new System.EventHandler(this.ParentForm_Load);
             this.ResumeLayout(false);
 

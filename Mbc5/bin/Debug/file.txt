@@ -1,0 +1,2 @@
+2016/04/28 18:41:42.209 test CHOME  WDFM\rwoodall   System.DivideByZeroException: Attempted to divide by zero.
+   at Mbc5.Forms.frmUser.frmUser_Load(Object sender, EventArgs e) in F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\frmUser.cs:line 29 
