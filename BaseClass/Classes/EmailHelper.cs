@@ -5,10 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using BaseClass.Classes;
-namespace Mbc5.Classes
+namespace BaseClass.Classes
 {
     public class EmailHelper
     {
+        public EmailHelper()
+        {
+
+        }
         public string BuildEmailSystem(string Body)
         {
             var template = @"
@@ -34,15 +38,15 @@ namespace Mbc5.Classes
 			    .right{text-align:right;}
 			    .center{text-align:center;}
 		    </style>
-			<table border='0' cellspacing='0' cellpadding='0' width='600' align='center' style='max-width: 600px;border:1px solid #333'>
+			<table border='0' cellspacing='0' cellpadding='0' width='900' align='center' style='max-width: 600px;border:1px solid #333'>
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
-						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='https://spinlifeserv1.com' alt='Lifeline Services' title='Lifeline Services'><img src='https://spinlifeserv1.com/Content/img/SpinSolutions.png' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
+						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='http://www.memorybook.com' alt='Lifeline Services' title='Lifeline Services'><img src='http://www.memorybook.com/images/logos/mem_jost_logo280x70.jpg' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
 						<td style='padding:10px;text-align:right;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;' width='230'>&nbsp;</td>
 						<td style='background:#fff;width:10px;' width='10'>&nbsp;</td>
 					</tr>
-                    <tr><td colspan='4' style='height:20px;background:#cf6733'></td></tr>
+                    <tr><td colspan='4' style='height:20px;background:#5D7B9D'></td></tr>
 					<tr>
 						<td style='background:#fff;'>&nbsp;</td>
 						<td colspan='2' style='padding: 20px;background-color:#FFFFFF;color:#333333'>
@@ -87,11 +91,11 @@ namespace Mbc5.Classes
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
-						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='https://spinlifeserv1.com' alt='Lifeline Services' title='Lifeline Services'><img src='https://spinlifeserv1.com/Content/img/SpinSolutions.png' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
+						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='http://www.memorybook.com' alt='Lifeline Services' title='Lifeline Services'><img src='http://www.memorybook.com/images/logos/mem_jost_logo280x70.jpg' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
 						<td style='padding:10px;text-align:right;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;' width='230'>&nbsp;</td>
 						<td style='background:#fff;width:10px;' width='10'>&nbsp;</td>
 					</tr>
-                    <tr><td colspan='4' style='height:20px;background:#cf6733'></td></tr>
+                    <tr><td colspan='4' style='height:20px;background:#5D7B9D'></td></tr>
 					<tr>
 						<td style='background:#fff;'>&nbsp;</td>
 						<td colspan='2' style='padding: 20px;background-color:#FFFFFF;color:#333333'>
@@ -136,11 +140,11 @@ namespace Mbc5.Classes
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
-						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='https://spinlifeserv1.com' alt='Lifeline Services' title='Lifeline Services'><img src='https://spinlifeserv1.com/Content/img/SpinSolutions.png' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
+						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='http://www.memorybook.com' alt='Lifeline Services' title='Lifeline Services'><img src='http://www.memorybook.com/images/logos/mem_jost_logo280x70.jpg' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
 						<td style='padding:10px;text-align:right;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;' width='230'>&nbsp;</td>
 						<td style='background:#fff;width:10px;' width='10'>&nbsp;</td>
 					</tr>
-                    <tr><td colspan='4' style='height:20px;background:#cf6733'></td></tr>
+                    <tr><td colspan='4' style='height:20px;background:#5D7B9D'></td></tr>
 					<tr>
 						<td style='background:#fff;'>&nbsp;</td>
 						<td colspan='2' style='padding: 20px;background-color:#FFFFFF;color:#333333'>
@@ -156,7 +160,7 @@ namespace Mbc5.Classes
 
             return template;
         }
-        public async Task SendEmail(string Subject, string ToAddresses, string CCAddresses, string Body,EmailType TypeEmail)
+        public void SendEmail(string Subject, string ToAddresses, string CCAddresses, string Body,EmailType TypeEmail)
 
         {
             var brandedHtml = "";
@@ -183,11 +187,7 @@ namespace Mbc5.Classes
                 Body = brandedHtml,
                 IsBodyHtml = true
             };
-            //string isDev = ConfigurationManager.AppSettings["IsDev"];
-            //if (isDev == "1" && CCAddresses != null || CCAddresses != "")
-            //{
-            //    mailMessage.CC.Add(CCAddresses);
-            //}
+          
             mailMessage.To.Add(ToAddresses);
             smtpClient.Send(mailMessage);
         }

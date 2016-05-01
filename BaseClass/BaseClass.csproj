@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\EmailHelper.cs" />
     <Compile Include="Classes\RandomPasswordGenerator.cs" />
     <Compile Include="Classes\UserIdentity.cs" />
     <Compile Include="Classes\UserPrincipal.cs" />

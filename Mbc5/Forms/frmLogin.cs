@@ -38,7 +38,7 @@ namespace Mbc5.Forms
 
         {
             this.pbLoading.Visible = true;
-            string a = ConfigurationManager.ConnectionStrings["Mbc"].ToString();
+           
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
             string cPassword = this.txtpassword.Text;
@@ -127,6 +127,18 @@ private void btnCancel_Click(object sender, EventArgs e)
 {
     this.DialogResult = DialogResult.Cancel;
     this.Close();
+}
+
+private void btnForgotPassword_Click(object sender, EventArgs e)
+{
+            
+                frmFogotPassword form = new frmFogotPassword();
+                this.Hide();
+                this.Close();
+                form.ShowDialog();
+               
+          
+            
 }
     }
 }

@@ -10,4 +10,3 @@ F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\BaseClass\obj\Debug\BaseC
 F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.pdb
 F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.dll
 F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.xml
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache

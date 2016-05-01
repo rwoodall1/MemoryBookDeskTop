@@ -19,7 +19,7 @@ namespace BaseClass
 
        
         public ParentForm() {
-            Log = LogManager.GetLogger(GetType().FullName);
+           //Logger Log = LogManager.GetCurrentClassLogger();
             InitializeComponent();
             }
        
@@ -27,7 +27,7 @@ namespace BaseClass
             {
             this.OpenForms = new List<FormInstance>();
             }
-          protected Logger Log { get; private set; }
+        
            public List<FormInstance> OpenForms { get; set; }
             public string CurUser { get; set; }
             public string CurServer { get; set; }

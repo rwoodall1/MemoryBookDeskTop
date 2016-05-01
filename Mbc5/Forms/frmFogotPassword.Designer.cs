@@ -33,6 +33,7 @@
             this.lblInfo = new System.Windows.Forms.Label();
             this.btnSendPassword = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.connection = new System.Data.SqlClient.SqlConnection();
             this.SuspendLayout();
             // 
             // lblEmail
@@ -82,6 +83,10 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // connection
+            // 
+            this.connection.FireInfoMessageEventOnUserErrors = false;
+            // 
             // frmFogotPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,5 +115,6 @@
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Button btnSendPassword;
         private System.Windows.Forms.Button btnCancel;
+        private System.Data.SqlClient.SqlConnection connection;
     }
 }

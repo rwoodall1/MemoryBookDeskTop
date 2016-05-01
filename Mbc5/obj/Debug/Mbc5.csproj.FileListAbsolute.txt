@@ -17,3 +17,4 @@ F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb
 F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.dll
 F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.xml
 F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.config
+F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmFogotPassword.resources

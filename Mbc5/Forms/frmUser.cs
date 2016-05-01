@@ -129,12 +129,7 @@ namespace Mbc5.Forms
    
     #endregion
 
-      private void btnPassWord_Click(object sender, EventArgs e)
-        {
-            string pwd = RandomPasswordGenerator.Generate();//tmp password
-            daUser.InsertCommand.Parameters.RemoveAt("@id");
-            daUser.InsertCommand.Parameters.AddWithValue("@id", viD);
-        }
+    
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
