@@ -6,6 +6,7 @@ using System.Text;
 
 namespace BaseClass.FormHandler
 {
+    [Serializable]
    public class FormInstance
     {
       

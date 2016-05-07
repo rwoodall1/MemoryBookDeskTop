@@ -47,7 +47,7 @@ namespace Mbc5.Forms
 
 
 
-            SqlCommand cmd = new SqlCommand("Select *,roles.name as RoleName from roles INNER JOIN user_role ON roles.id=user_role.roleid Left Outer Join mbcUsers on user_role.userid=mbcUsers.id where username=@username and password=@password", conn);
+            SqlCommand cmd = new SqlCommand("SELECT dbo.roles.name as RoleName, dbo.roles.rank, dbo.mbcUsers.id, dbo.mbcUsers.UserName,dbo.mbcUsers.PassWord, dbo.mbcUsers.roldid, dbo.mbcUsers.EmailAddress, dbo.mbcUsers.FirstName, dbo.mbcUsers.LastName, dbo.mbcUsers.ChangePassword FROM dbo.mbcUsers INNER JOIN dbo.user_role ON dbo.mbcUsers.id = dbo.user_role.userid INNER JOIN dbo.roles ON dbo.user_role.roleid = dbo.roles.id WHERE(dbo.mbcUsers.PassWord = @password) AND(dbo.mbcUsers.UserName = @username)", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@username", cUser);
@@ -66,9 +66,10 @@ namespace Mbc5.Forms
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
+                    
                     vPassword = rdr["password"].ToString();
                     vId = rdr["id"].ToString();
-                    vChangePassword = (bool)rdr["changepassword"];
+                    vChangePassword = rdr.IsDBNull(rdr.GetOrdinal("changepassword")) ? false: (bool)rdr["changepassword"];
                     string vUsername = rdr["username"].ToString();
                     vroles.Add(rdr["RoleName"].ToString().Trim());
 
@@ -132,9 +133,9 @@ private void btnCancel_Click(object sender, EventArgs e)
 private void btnForgotPassword_Click(object sender, EventArgs e)
 {
             
-                frmFogotPassword form = new frmFogotPassword();
+                frmFogotPassword form = new frmFogotPassword(this);
                 this.Hide();
-                this.Close();
+               
                 form.ShowDialog();
                
           

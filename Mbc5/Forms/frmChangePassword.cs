@@ -57,9 +57,9 @@ namespace Mbc5.Forms
 
         private void frmChangePassword_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dsChangePassword.mbcUsers' table. You can move, or remove it, as needed.
+            
             daPassWord.SelectCommand.Parameters.Clear();
-            daPassWord.SelectCommand.Parameters.AddWithValue("@id", "d5656ff2-1805-49a6-9ff2-411b1f488272");//this.userId
+            daPassWord.SelectCommand.Parameters.AddWithValue("@id",frmMain.ApplicationUser.id);//this.userId
             daPassWord.Fill(dsChangePassword);
             string a = lblId.Text;
 

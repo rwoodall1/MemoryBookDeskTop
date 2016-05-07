@@ -5,12 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
 using BaseClass.Classes;
-namespace BaseClass.Forms
+namespace Mbc5.Forms
 {
-    public partial class bTopBottom : BaseClass.Base
+    public partial class frmMbcCust : BaseClass.Forms.bTopBottom
     {
-        public bTopBottom(string[] roles, UserPrincipal user) : base(roles, user)
+        public frmMbcCust(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS"}, userPrincipal)
         {
             InitializeComponent();
         }

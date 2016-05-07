@@ -68,6 +68,7 @@ namespace Mbc5.Forms
                 }
                 ValidateUserRoles();
                 SetMenu();
+                mnuMain.Enabled = true;
             }
 
 
@@ -111,6 +112,16 @@ namespace Mbc5.Forms
             frmPassword.ShowDialog();
             this.Cursor = Cursors.Default;
 
+        }
+
+        private void customerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+
+           frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser);
+
+            frmCust.Show();
+            this.Cursor = Cursors.Default;
         }
     }
 }
