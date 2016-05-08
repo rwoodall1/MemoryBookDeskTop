@@ -21,13 +21,7 @@ namespace Mbc5.Forms
             InitializeComponent();
         }
 
-        private void frmUser_Load(object sender, EventArgs e)
-        {
-           
-            
-            dsUser.Clear();
-            daUser.Fill(dsUser);
-        }
+    
 
 
         #region "Properties"
@@ -129,7 +123,16 @@ namespace Mbc5.Forms
    
     #endregion
 
-    
+        private void frmUser_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dsRoles.roles' table. You can move, or remove it, as needed.
+            this.rolesTableAdapter.Fill(this.dsRoles.roles);
+
+            rolesTableAdapter.Fill(dsRoles.roles);//table adapter calls clear first
+            dsUser.Clear();
+            daUser.Fill(dsUser);
+          
+        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {

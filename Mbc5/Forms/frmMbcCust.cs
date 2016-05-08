@@ -15,5 +15,12 @@ namespace Mbc5.Forms
         {
             InitializeComponent();
         }
+
+        private void frmMbcCust_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
+            this.custTableAdapter.Fill(this.dsCust.cust,"038752");
+
+        }
     }
 }

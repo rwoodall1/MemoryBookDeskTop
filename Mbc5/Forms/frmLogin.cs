@@ -106,7 +106,7 @@ namespace Mbc5.Forms
 
             }
             finally { cmd.Connection.Close(); }
-
+            frmMain.WindowState = FormWindowState.Maximized;
             this.DialogResult = DialogResult.OK;
 
         }
@@ -115,6 +115,7 @@ private void timer1_Tick(object sender, EventArgs e)
 {
 
     this.Close();
+            frmMain.WindowState = FormWindowState.Maximized;
     frmMain.Show();
 }
 

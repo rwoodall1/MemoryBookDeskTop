@@ -14,5 +14,9 @@ namespace BaseClass.Forms
         {
             InitializeComponent();
         }
+        public bTopBottom()
+        {
+            InitializeComponent();
+        }
     }
 }

@@ -32,11 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUser));
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.bsUser = new System.Windows.Forms.BindingSource(this.components);
-            this.dsUser = new Mbc5.DataSets.dsUser();
             this.cmbRole = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
+            this.bsUser = new System.Windows.Forms.BindingSource(this.components);
+            this.dsUser = new Mbc5.DataSets.dsUser();
             this.label5 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,12 +65,15 @@
             this.sqlDeleteCommand1 = new System.Data.SqlClient.SqlCommand();
             this.daUser = new System.Data.SqlClient.SqlDataAdapter();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dsRoles = new Mbc5.DataSets.dsRoles();
+            this.rolesTableAdapter = new Mbc5.DataSets.dsRolesTableAdapters.rolesTableAdapter();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnUser)).BeginInit();
             this.bnUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -109,28 +112,19 @@
             this.txtSearch.TabIndex = 0;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
-            // bsUser
-            // 
-            this.bsUser.DataMember = "MbcUsers";
-            this.bsUser.DataSource = this.dsUser;
-            // 
-            // dsUser
-            // 
-            this.dsUser.DataSetName = "dsUser";
-            this.dsUser.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // cmbRole
             // 
+            this.cmbRole.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsUser, "roldid", true));
+            this.cmbRole.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dsRoles, "roles.name", true));
+            this.cmbRole.DataSource = this.dsRoles;
+            this.cmbRole.DisplayMember = "roles.name";
             this.cmbRole.Enabled = false;
             this.cmbRole.FormattingEnabled = true;
-            this.cmbRole.Items.AddRange(new object[] {
-            "TEST",
-            "TEST!",
-            "TEST2"});
             this.cmbRole.Location = new System.Drawing.Point(132, 164);
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(240, 21);
             this.cmbRole.TabIndex = 6;
+            this.cmbRole.ValueMember = "roles.id";
             // 
             // label6
             // 
@@ -149,6 +143,16 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(240, 20);
             this.txtUserName.TabIndex = 2;
+            // 
+            // bsUser
+            // 
+            this.bsUser.DataMember = "MbcUsers";
+            this.bsUser.DataSource = this.dsUser;
+            // 
+            // dsUser
+            // 
+            this.dsUser.DataSetName = "dsUser";
+            this.dsUser.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label5
             // 
@@ -427,6 +431,15 @@
             this.errorProvider.BlinkRate = 500;
             this.errorProvider.ContainerControl = this;
             // 
+            // dsRoles
+            // 
+            this.dsRoles.DataSetName = "dsRoles";
+            this.dsRoles.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // rolesTableAdapter
+            // 
+            this.rolesTableAdapter.ClearBeforeFill = true;
+            // 
             // frmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -447,8 +460,6 @@
             this.Name = "frmUser";
             this.Text = "User";
             this.Load += new System.EventHandler(this.frmUser_Load);
-            this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtFirstName, 0);
             this.Controls.SetChildIndex(this.label3, 0);
@@ -461,6 +472,8 @@
             this.Controls.SetChildIndex(this.cmbRole, 0);
             this.Controls.SetChildIndex(this.txtSearch, 0);
             this.Controls.SetChildIndex(this.btnSearch, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.panel2, 0);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsUser)).EndInit();
@@ -469,6 +482,7 @@
             this.bnUser.ResumeLayout(false);
             this.bnUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,5 +525,7 @@
         private System.Data.SqlClient.SqlCommand sqlDeleteCommand1;
         private System.Data.SqlClient.SqlDataAdapter daUser;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private DataSets.dsRoles dsRoles;
+        private DataSets.dsRolesTableAdapters.rolesTableAdapter rolesTableAdapter;
     }
 }

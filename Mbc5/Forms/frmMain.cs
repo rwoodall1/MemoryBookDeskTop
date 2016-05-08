@@ -11,7 +11,7 @@ namespace Mbc5.Forms
 {
     public partial class frmMain : BaseClass.ParentForm
     {
-       
+
         public frmMain()
         {
 
@@ -20,7 +20,7 @@ namespace Mbc5.Forms
         #region "Properties"
 
         public bool ForcePasswordChange { get; set; }
-    
+
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
 
@@ -28,8 +28,9 @@ namespace Mbc5.Forms
         {
             List<string> a = new List<string>();
             this.ValidatedUserRoles = a;
+            this.WindowState = FormWindowState.Maximized;
             this.Hide();
-            
+
             frmLogin Login = new frmLogin(this);
             var _result = Login.ShowDialog();
             if (_result == DialogResult.Cancel)
@@ -69,6 +70,7 @@ namespace Mbc5.Forms
                 ValidateUserRoles();
                 SetMenu();
                 mnuMain.Enabled = true;
+                this.WindowState = FormWindowState.Maximized;
             }
 
 
@@ -104,9 +106,9 @@ namespace Mbc5.Forms
 
         private void resetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             this.Cursor = Cursors.AppStarting;
-            
+
             frmChangePassword frmPassword = new frmChangePassword(this.ApplicationUser.id, this);
 
             frmPassword.ShowDialog();
@@ -118,11 +120,10 @@ namespace Mbc5.Forms
         {
             this.Cursor = Cursors.AppStarting;
 
-           frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser);
-
+            frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser);
+            frmCust.MdiParent = this;
             frmCust.Show();
             this.Cursor = Cursors.Default;
         }
     }
 }
-
