@@ -190,6 +190,25 @@ namespace BaseClass
             this.Dispose();
            
         }
+        [Browsable(true)]
+        public virtual void Save()
+        {
+
+        }
+        [Browsable(true)]
+        public virtual void Delete()
+        {
+
+        }
+        [Browsable(true)]
+        public virtual void Add()
+        {
+
+        }
+        public virtual void Cancel()
+        {
+
+        }
 
       
     }

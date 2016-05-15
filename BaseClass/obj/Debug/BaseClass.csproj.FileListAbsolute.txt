@@ -28,7 +28,6 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\bin\Debug\BaseClass.dll
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\bin\Debug\BaseClass.pdb
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.dll
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.xml
-F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Base.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopBottom.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopSide.resources
