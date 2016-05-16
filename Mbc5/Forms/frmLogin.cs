@@ -62,12 +62,14 @@ namespace Mbc5.Forms
                 bool vChangePassword = false;
                 string vPassword = null;
                 string vId = null;
+                string vEmail = null;
                 cmd.Connection.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
                     
                     vPassword = rdr["password"].ToString();
+                    vEmail = rdr["EmailAddress"].ToString();
                     vId = rdr["id"].ToString();
                     vChangePassword = rdr.IsDBNull(rdr.GetOrdinal("changepassword")) ? false: (bool)rdr["changepassword"];
                     string vUsername = rdr["username"].ToString();
@@ -94,6 +96,7 @@ namespace Mbc5.Forms
                 UserPrincipal userPrincipal = new UserPrincipal(vApplicationUser, arrayrole);
                 userPrincipal.id = vId;
                 userPrincipal.UserName = cUser;
+                userPrincipal.Email = vEmail;
                 userPrincipal.Roles = arrayrole.ToList();
                 frmMain.ApplicationUser = userPrincipal;
 

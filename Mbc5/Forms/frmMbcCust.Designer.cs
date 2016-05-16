@@ -51,8 +51,6 @@
             System.Windows.Forms.Label spcinstLabel;
             System.Windows.Forms.Label junsnoLabel;
             System.Windows.Forms.Label schoutLabel;
-            System.Windows.Forms.Label leadsourceLabel;
-            System.Windows.Forms.Label leadnameLabel;
             System.Windows.Forms.Label yb_sthLabel;
             System.Windows.Forms.Label shiptocontLabel;
             System.Windows.Forms.Label lblBookType;
@@ -60,7 +58,8 @@
             System.Windows.Forms.Label dedayoutLabel;
             System.Windows.Forms.Label lblFax;
             System.Windows.Forms.Label clrpg_intLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label lblEmail;
             this.tab2 = new System.Windows.Forms.TabControl();
             this.tab1 = new System.Windows.Forms.TabPage();
             this.pnlHead = new System.Windows.Forms.Panel();
@@ -75,18 +74,17 @@
             this.btnSchoolCode = new System.Windows.Forms.Button();
             this.txtSchCodesrch = new System.Windows.Forms.TextBox();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.txtSchColors = new System.Windows.Forms.TextBox();
             this.txtFax = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblSchName = new System.Windows.Forms.Label();
             this.txtSchname = new System.Windows.Forms.TextBox();
             this.txtSchCode = new System.Windows.Forms.TextBox();
-            this.btnEmail = new System.Windows.Forms.Button();
             this.schoutDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.spcinstTextBox = new System.Windows.Forms.TextBox();
             this.extrchgTextBox = new System.Windows.Forms.TextBox();
             this.btnInterOffice = new System.Windows.Forms.Button();
             this.inofficeTextBox = new System.Windows.Forms.TextBox();
-            this.schcolorsComboBox = new System.Windows.Forms.ComboBox();
             this.cmbSchCategory = new System.Windows.Forms.ComboBox();
             this.cmbNoRebook = new System.Windows.Forms.ComboBox();
             this.cmbPrevPublisher = new System.Windows.Forms.ComboBox();
@@ -108,13 +106,13 @@
             this.btnWebsite = new System.Windows.Forms.Button();
             this.txtSchEmail = new System.Windows.Forms.TextBox();
             this.cmbState = new System.Windows.Forms.ComboBox();
+            this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lookUp = new Mbc5.DataSets.LookUp();
             this.txtaddress = new System.Windows.Forms.TextBox();
             this.txtSchPhone = new System.Windows.Forms.TextBox();
             this.txtZip = new System.Windows.Forms.TextBox();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
-            this.dedayoutDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.dedayinDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.custDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,17 +120,20 @@
             this.dataGridViewTextBoxColumn107 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn108 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn111 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dedayoutDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.dedayinDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.txtBookType = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.shiptocontTextBox = new System.Windows.Forms.TextBox();
             this.yb_sthTextBox = new System.Windows.Forms.TextBox();
-            this.cmbLeadName = new System.Windows.Forms.ComboBox();
-            this.leadsourceTextBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
             this.button1 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.button2 = new System.Windows.Forms.Button();
+            this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
+            this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             schphoneLabel = new System.Windows.Forms.Label();
             schzipLabel = new System.Windows.Forms.Label();
             schstateLabel = new System.Windows.Forms.Label();
@@ -155,8 +156,6 @@
             spcinstLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
             schoutLabel = new System.Windows.Forms.Label();
-            leadsourceLabel = new System.Windows.Forms.Label();
-            leadnameLabel = new System.Windows.Forms.Label();
             yb_sthLabel = new System.Windows.Forms.Label();
             shiptocontLabel = new System.Windows.Forms.Label();
             lblBookType = new System.Windows.Forms.Label();
@@ -164,6 +163,7 @@
             dedayoutLabel = new System.Windows.Forms.Label();
             lblFax = new System.Windows.Forms.Label();
             clrpg_intLabel = new System.Windows.Forms.Label();
+            lblEmail = new System.Windows.Forms.Label();
             this.BottomPanel.SuspendLayout();
             this.tab2.SuspendLayout();
             this.tab1.SuspendLayout();
@@ -174,6 +174,8 @@
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -184,6 +186,7 @@
             // 
             // BottomPanel
             // 
+            this.BottomPanel.Controls.Add(this.button2);
             this.BottomPanel.Controls.Add(this.button1);
             this.BottomPanel.Location = new System.Drawing.Point(0, 678);
             this.BottomPanel.Size = new System.Drawing.Size(1264, 51);
@@ -386,28 +389,10 @@
             schoutLabel.TabIndex = 2;
             schoutLabel.Text = "Last Day:";
             // 
-            // leadsourceLabel
-            // 
-            leadsourceLabel.AutoSize = true;
-            leadsourceLabel.Location = new System.Drawing.Point(11, 11);
-            leadsourceLabel.Name = "leadsourceLabel";
-            leadsourceLabel.Size = new System.Drawing.Size(71, 13);
-            leadsourceLabel.TabIndex = 0;
-            leadsourceLabel.Text = "Lead Source:";
-            // 
-            // leadnameLabel
-            // 
-            leadnameLabel.AutoSize = true;
-            leadnameLabel.Location = new System.Drawing.Point(248, 11);
-            leadnameLabel.Name = "leadnameLabel";
-            leadnameLabel.Size = new System.Drawing.Size(65, 13);
-            leadnameLabel.TabIndex = 2;
-            leadnameLabel.Text = "Lead Name:";
-            // 
             // yb_sthLabel
             // 
             yb_sthLabel.AutoSize = true;
-            yb_sthLabel.Location = new System.Drawing.Point(20, 59);
+            yb_sthLabel.Location = new System.Drawing.Point(20, 30);
             yb_sthLabel.Name = "yb_sthLabel";
             yb_sthLabel.Size = new System.Drawing.Size(29, 13);
             yb_sthLabel.TabIndex = 4;
@@ -416,7 +401,7 @@
             // shiptocontLabel
             // 
             shiptocontLabel.AutoSize = true;
-            shiptocontLabel.Location = new System.Drawing.Point(13, 84);
+            shiptocontLabel.Location = new System.Drawing.Point(13, 55);
             shiptocontLabel.Name = "shiptocontLabel";
             shiptocontLabel.Size = new System.Drawing.Size(36, 13);
             shiptocontLabel.TabIndex = 6;
@@ -434,7 +419,7 @@
             // dedayinLabel
             // 
             dedayinLabel.AutoSize = true;
-            dedayinLabel.Location = new System.Drawing.Point(109, 38);
+            dedayinLabel.Location = new System.Drawing.Point(109, 9);
             dedayinLabel.Name = "dedayinLabel";
             dedayinLabel.Size = new System.Drawing.Size(71, 13);
             dedayinLabel.TabIndex = 12;
@@ -443,7 +428,7 @@
             // dedayoutLabel
             // 
             dedayoutLabel.AutoSize = true;
-            dedayoutLabel.Location = new System.Drawing.Point(101, 61);
+            dedayoutLabel.Location = new System.Drawing.Point(101, 32);
             dedayoutLabel.Name = "dedayoutLabel";
             dedayoutLabel.Size = new System.Drawing.Size(79, 13);
             dedayoutLabel.TabIndex = 14;
@@ -554,6 +539,7 @@
             // 
             // txtCsRep
             // 
+            this.txtCsRep.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCsRep.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "csrep", true));
             this.txtCsRep.Location = new System.Drawing.Point(603, 8);
             this.txtCsRep.MaxLength = 3;
@@ -561,6 +547,7 @@
             this.txtCsRep.Size = new System.Drawing.Size(54, 20);
             this.txtCsRep.TabIndex = 70;
             this.txtCsRep.Validating += new System.ComponentModel.CancelEventHandler(this.txtCsRep_Validating);
+            this.txtCsRep.Validated += new System.EventHandler(this.txtCsRep_Validated);
             // 
             // btnSchoolSearch
             // 
@@ -570,6 +557,7 @@
             this.btnSchoolSearch.TabIndex = 68;
             this.btnSchoolSearch.Text = "School";
             this.btnSchoolSearch.UseVisualStyleBackColor = true;
+            this.btnSchoolSearch.Click += new System.EventHandler(this.btnSchoolSearch_Click);
             // 
             // txtSchNamesrch
             // 
@@ -592,7 +580,7 @@
             // txtSchCodesrch
             // 
             this.txtSchCodesrch.Location = new System.Drawing.Point(414, 8);
-            this.txtSchCodesrch.MaxLength = 5;
+            this.txtSchCodesrch.MaxLength = 6;
             this.txtSchCodesrch.Name = "txtSchCodesrch";
             this.txtSchCodesrch.Size = new System.Drawing.Size(69, 20);
             this.txtSchCodesrch.TabIndex = 65;
@@ -609,13 +597,14 @@
             // 
             this.splitContainer.Panel1.AutoScroll = true;
             this.splitContainer.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel1.Controls.Add(lblEmail);
+            this.splitContainer.Panel1.Controls.Add(this.txtSchColors);
             this.splitContainer.Panel1.Controls.Add(this.txtFax);
             this.splitContainer.Panel1.Controls.Add(lblFax);
             this.splitContainer.Panel1.Controls.Add(this.label2);
             this.splitContainer.Panel1.Controls.Add(this.lblSchName);
             this.splitContainer.Panel1.Controls.Add(this.txtSchname);
             this.splitContainer.Panel1.Controls.Add(this.txtSchCode);
-            this.splitContainer.Panel1.Controls.Add(this.btnEmail);
             this.splitContainer.Panel1.Controls.Add(schoutLabel);
             this.splitContainer.Panel1.Controls.Add(spcinstLabel);
             this.splitContainer.Panel1.Controls.Add(this.schoutDateTimePicker);
@@ -624,7 +613,6 @@
             this.splitContainer.Panel1.Controls.Add(this.extrchgTextBox);
             this.splitContainer.Panel1.Controls.Add(this.btnInterOffice);
             this.splitContainer.Panel1.Controls.Add(this.inofficeTextBox);
-            this.splitContainer.Panel1.Controls.Add(this.schcolorsComboBox);
             this.splitContainer.Panel1.Controls.Add(schcolorsLabel);
             this.splitContainer.Panel1.Controls.Add(this.cmbSchCategory);
             this.splitContainer.Panel1.Controls.Add(this.cmbNoRebook);
@@ -671,11 +659,11 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel2.Controls.Add(this.custDataGridView);
             this.splitContainer.Panel2.Controls.Add(dedayoutLabel);
             this.splitContainer.Panel2.Controls.Add(this.dedayoutDateTimePicker);
             this.splitContainer.Panel2.Controls.Add(dedayinLabel);
             this.splitContainer.Panel2.Controls.Add(this.dedayinDateTimePicker);
-            this.splitContainer.Panel2.Controls.Add(this.custDataGridView);
             this.splitContainer.Panel2.Controls.Add(lblBookType);
             this.splitContainer.Panel2.Controls.Add(this.txtBookType);
             this.splitContainer.Panel2.Controls.Add(this.label1);
@@ -683,13 +671,17 @@
             this.splitContainer.Panel2.Controls.Add(this.shiptocontTextBox);
             this.splitContainer.Panel2.Controls.Add(yb_sthLabel);
             this.splitContainer.Panel2.Controls.Add(this.yb_sthTextBox);
-            this.splitContainer.Panel2.Controls.Add(this.cmbLeadName);
-            this.splitContainer.Panel2.Controls.Add(leadnameLabel);
-            this.splitContainer.Panel2.Controls.Add(leadsourceLabel);
-            this.splitContainer.Panel2.Controls.Add(this.leadsourceTextBox);
             this.splitContainer.Size = new System.Drawing.Size(1253, 576);
             this.splitContainer.SplitterDistance = 634;
             this.splitContainer.TabIndex = 18;
+            // 
+            // txtSchColors
+            // 
+            this.txtSchColors.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcolors", true));
+            this.txtSchColors.Location = new System.Drawing.Point(337, 323);
+            this.txtSchColors.Name = "txtSchColors";
+            this.txtSchColors.Size = new System.Drawing.Size(182, 20);
+            this.txtSchColors.TabIndex = 92;
             // 
             // txtFax
             // 
@@ -740,22 +732,12 @@
             this.txtSchCode.Size = new System.Drawing.Size(100, 20);
             this.txtSchCode.TabIndex = 84;
             // 
-            // btnEmail
-            // 
-            this.btnEmail.AutoSize = true;
-            this.btnEmail.Location = new System.Drawing.Point(13, 107);
-            this.btnEmail.Name = "btnEmail";
-            this.btnEmail.Size = new System.Drawing.Size(80, 23);
-            this.btnEmail.TabIndex = 82;
-            this.btnEmail.Text = "Email";
-            this.btnEmail.UseVisualStyleBackColor = true;
-            // 
             // schoutDateTimePicker
             // 
             this.schoutDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "schout", true));
-            this.schoutDateTimePicker.Location = new System.Drawing.Point(415, 235);
+            this.schoutDateTimePicker.Location = new System.Drawing.Point(419, 235);
             this.schoutDateTimePicker.Name = "schoutDateTimePicker";
-            this.schoutDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.schoutDateTimePicker.Size = new System.Drawing.Size(184, 20);
             this.schoutDateTimePicker.TabIndex = 3;
             // 
             // spcinstTextBox
@@ -785,6 +767,7 @@
             this.btnInterOffice.TabIndex = 79;
             this.btnInterOffice.Text = "Inter Office";
             this.btnInterOffice.UseVisualStyleBackColor = true;
+            this.btnInterOffice.Click += new System.EventHandler(this.btnInterOffice_Click);
             // 
             // inofficeTextBox
             // 
@@ -794,15 +777,6 @@
             this.inofficeTextBox.Name = "inofficeTextBox";
             this.inofficeTextBox.Size = new System.Drawing.Size(338, 62);
             this.inofficeTextBox.TabIndex = 78;
-            // 
-            // schcolorsComboBox
-            // 
-            this.schcolorsComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcolors", true));
-            this.schcolorsComboBox.FormattingEnabled = true;
-            this.schcolorsComboBox.Location = new System.Drawing.Point(337, 323);
-            this.schcolorsComboBox.Name = "schcolorsComboBox";
-            this.schcolorsComboBox.Size = new System.Drawing.Size(182, 21);
-            this.schcolorsComboBox.TabIndex = 8;
             // 
             // cmbSchCategory
             // 
@@ -973,9 +947,9 @@
             // 
             // txtWebsite
             // 
-            this.txtWebsite.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schemail", true));
+            this.txtWebsite.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "website", true));
             this.txtWebsite.Location = new System.Drawing.Point(369, 109);
-            this.txtWebsite.MaxLength = 45;
+            this.txtWebsite.MaxLength = 60;
             this.txtWebsite.Name = "txtWebsite";
             this.txtWebsite.Size = new System.Drawing.Size(188, 20);
             this.txtWebsite.TabIndex = 59;
@@ -989,25 +963,41 @@
             this.btnWebsite.TabIndex = 58;
             this.btnWebsite.Text = "Website";
             this.btnWebsite.UseVisualStyleBackColor = true;
+            this.btnWebsite.Click += new System.EventHandler(this.btnWebsite_Click);
             // 
             // txtSchEmail
             // 
             this.txtSchEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schemail", true));
             this.txtSchEmail.Location = new System.Drawing.Point(94, 108);
-            this.txtSchEmail.MaxLength = 45;
+            this.txtSchEmail.MaxLength = 80;
             this.txtSchEmail.Name = "txtSchEmail";
             this.txtSchEmail.Size = new System.Drawing.Size(188, 20);
             this.txtSchEmail.TabIndex = 48;
             // 
             // cmbState
             // 
+            this.cmbState.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.statesBindingSource, "Name", true));
+            this.cmbState.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "schstate", true));
+            this.cmbState.DataSource = this.statesBindingSource;
+            this.cmbState.DisplayMember = "Name";
             this.cmbState.FormattingEnabled = true;
             this.cmbState.Location = new System.Drawing.Point(312, 54);
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(206, 21);
             this.cmbState.TabIndex = 57;
+            this.cmbState.ValueMember = "Abrev";
             this.cmbState.Validating += new System.ComponentModel.CancelEventHandler(this.cmbState_Validating);
             this.cmbState.Validated += new System.EventHandler(this.cmbState_Validated);
+            // 
+            // statesBindingSource
+            // 
+            this.statesBindingSource.DataMember = "states";
+            this.statesBindingSource.DataSource = this.lookUp;
+            // 
+            // lookUp
+            // 
+            this.lookUp.DataSetName = "LookUp";
+            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtaddress
             // 
@@ -1062,33 +1052,17 @@
             this.txtCity.Validating += new System.ComponentModel.CancelEventHandler(this.txtCity_Validating);
             this.txtCity.Validated += new System.EventHandler(this.txtCity_Validated);
             // 
-            // dedayoutDateTimePicker
-            // 
-            this.dedayoutDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "dedayout", true));
-            this.dedayoutDateTimePicker.Location = new System.Drawing.Point(186, 61);
-            this.dedayoutDateTimePicker.Name = "dedayoutDateTimePicker";
-            this.dedayoutDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dedayoutDateTimePicker.TabIndex = 15;
-            // 
-            // dedayinDateTimePicker
-            // 
-            this.dedayinDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "dedayin", true));
-            this.dedayinDateTimePicker.Location = new System.Drawing.Point(186, 38);
-            this.dedayinDateTimePicker.Name = "dedayinDateTimePicker";
-            this.dedayinDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dedayinDateTimePicker.TabIndex = 13;
-            // 
             // custDataGridView
             // 
             this.custDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn12,
@@ -1099,11 +1073,11 @@
             this.dataGridViewTextBoxColumn111});
             this.custDataGridView.DataSource = this.custBindingSource;
             this.custDataGridView.EnableHeadersVisualStyles = false;
-            this.custDataGridView.Location = new System.Drawing.Point(14, 331);
+            this.custDataGridView.Location = new System.Drawing.Point(14, 353);
             this.custDataGridView.Name = "custDataGridView";
             this.custDataGridView.ReadOnly = true;
             this.custDataGridView.Size = new System.Drawing.Size(596, 220);
-            this.custDataGridView.TabIndex = 11;
+            this.custDataGridView.TabIndex = 16;
             // 
             // dataGridViewTextBoxColumn12
             // 
@@ -1147,6 +1121,22 @@
             this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
             this.dataGridViewTextBoxColumn111.ReadOnly = true;
             // 
+            // dedayoutDateTimePicker
+            // 
+            this.dedayoutDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "dedayout", true));
+            this.dedayoutDateTimePicker.Location = new System.Drawing.Point(186, 32);
+            this.dedayoutDateTimePicker.Name = "dedayoutDateTimePicker";
+            this.dedayoutDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.dedayoutDateTimePicker.TabIndex = 15;
+            // 
+            // dedayinDateTimePicker
+            // 
+            this.dedayinDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "dedayin", true));
+            this.dedayinDateTimePicker.Location = new System.Drawing.Point(186, 9);
+            this.dedayinDateTimePicker.Name = "dedayinDateTimePicker";
+            this.dedayinDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.dedayinDateTimePicker.TabIndex = 13;
+            // 
             // txtBookType
             // 
             this.txtBookType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "booktype", true));
@@ -1162,7 +1152,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 36);
+            this.label1.Location = new System.Drawing.Point(11, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 8;
@@ -1170,8 +1160,9 @@
             // 
             // shiptocontTextBox
             // 
+            this.shiptocontTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.shiptocontTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "shiptocont", true));
-            this.shiptocontTextBox.Location = new System.Drawing.Point(51, 84);
+            this.shiptocontTextBox.Location = new System.Drawing.Point(51, 55);
             this.shiptocontTextBox.MaxLength = 1;
             this.shiptocontTextBox.Name = "shiptocontTextBox";
             this.shiptocontTextBox.Size = new System.Drawing.Size(31, 20);
@@ -1181,33 +1172,15 @@
             // 
             // yb_sthTextBox
             // 
+            this.yb_sthTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.yb_sthTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "yb_sth", true));
-            this.yb_sthTextBox.Location = new System.Drawing.Point(51, 59);
+            this.yb_sthTextBox.Location = new System.Drawing.Point(51, 30);
             this.yb_sthTextBox.MaxLength = 1;
             this.yb_sthTextBox.Name = "yb_sthTextBox";
             this.yb_sthTextBox.Size = new System.Drawing.Size(31, 20);
             this.yb_sthTextBox.TabIndex = 5;
             this.yb_sthTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.yb_sthTextBox_Validating);
             this.yb_sthTextBox.Validated += new System.EventHandler(this.yb_sthTextBox_Validated);
-            // 
-            // cmbLeadName
-            // 
-            this.cmbLeadName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "leadname", true));
-            this.cmbLeadName.FormattingEnabled = true;
-            this.cmbLeadName.Location = new System.Drawing.Point(319, 11);
-            this.cmbLeadName.MaxLength = 25;
-            this.cmbLeadName.Name = "cmbLeadName";
-            this.cmbLeadName.Size = new System.Drawing.Size(136, 21);
-            this.cmbLeadName.TabIndex = 4;
-            // 
-            // leadsourceTextBox
-            // 
-            this.leadsourceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "leadsource", true));
-            this.leadsourceTextBox.Location = new System.Drawing.Point(84, 8);
-            this.leadsourceTextBox.MaxLength = 25;
-            this.leadsourceTextBox.Name = "leadsourceTextBox";
-            this.leadsourceTextBox.Size = new System.Drawing.Size(139, 20);
-            this.leadsourceTextBox.TabIndex = 1;
             // 
             // tabPage2
             // 
@@ -1245,6 +1218,35 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(595, 14);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // statesTableAdapter
+            // 
+            this.statesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.statesTableAdapter = this.statesTableAdapter;
+            this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // lblEmail
+            // 
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new System.Drawing.Point(57, 108);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new System.Drawing.Size(35, 13);
+            lblEmail.TabIndex = 93;
+            lblEmail.Text = "Email:";
+            // 
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1270,6 +1272,8 @@
             this.splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -1313,7 +1317,6 @@
         private DataSets.dsCustTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.CheckBox multiyearCheckBox;
         private System.Windows.Forms.TextBox txtPhotographer;
-        private System.Windows.Forms.ComboBox schcolorsComboBox;
         private System.Windows.Forms.TextBox gradesTextBox;
         private System.Windows.Forms.TextBox enrollmentTextBox;
         private System.Windows.Forms.ComboBox cmbNoRebook;
@@ -1325,30 +1328,33 @@
         private System.Windows.Forms.TextBox inofficeTextBox;
         private System.Windows.Forms.ComboBox cmbSchCategory;
         private System.Windows.Forms.TextBox junsnoTextBox;
-        private System.Windows.Forms.Button btnEmail;
         private System.Windows.Forms.DateTimePicker schoutDateTimePicker;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox shiptocontTextBox;
         private System.Windows.Forms.TextBox yb_sthTextBox;
-        private System.Windows.Forms.ComboBox cmbLeadName;
-        private System.Windows.Forms.TextBox leadsourceTextBox;
         private System.Windows.Forms.TextBox txtBookType;
-        private System.Windows.Forms.DataGridView custDataGridView;
         private System.Windows.Forms.DateTimePicker dedayoutDateTimePicker;
         private System.Windows.Forms.DateTimePicker dedayinDateTimePicker;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblSchName;
         private System.Windows.Forms.TextBox txtSchname;
         private System.Windows.Forms.TextBox txtSchCode;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtFax;
+        private System.Windows.Forms.TextBox clrpg_intTextBox;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button button2;
+        private DataSets.LookUp lookUp;
+        private System.Windows.Forms.BindingSource statesBindingSource;
+        private DataSets.LookUpTableAdapters.statesTableAdapter statesTableAdapter;
+        private DataSets.LookUpTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.TextBox txtSchColors;
+        private System.Windows.Forms.DataGridView custDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn106;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn107;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn108;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn111;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtFax;
-        private System.Windows.Forms.TextBox clrpg_intTextBox;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

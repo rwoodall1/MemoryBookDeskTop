@@ -83,11 +83,22 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="DataSets\LookUp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LookUp.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmChangePassword.Designer.cs">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEmail.Designer.cs">
+      <DependentUpon>frmEmail.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmFogotPassword.cs">
       <SubType>Form</SubType>
@@ -124,6 +135,9 @@
     <Content Include="NOTES TODO.txt" />
     <EmbeddedResource Include="Forms\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEmail.resx">
+      <DependentUpon>frmEmail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmFogotPassword.resx">
       <DependentUpon>frmFogotPassword.cs</DependentUpon>
@@ -192,6 +206,17 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="DataSets\LookUp.xsc">
+      <DependentUpon>LookUp.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\LookUp.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LookUp.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\LookUp.xss">
+      <DependentUpon>LookUp.xsd</DependentUpon>
+    </None>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
