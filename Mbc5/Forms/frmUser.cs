@@ -91,7 +91,7 @@ namespace Mbc5.Forms
         {
             NewUser = true;
             DataRowView newrow = (DataRowView) bsUser.AddNew();
-            //bsUser.Position = bsUser.Count;
+           
         }
         private void SendPassword(string passWord)
         {

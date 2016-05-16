@@ -101,7 +101,7 @@ namespace Mbc5.Forms
 
                 if (this.ApplicationUser.IsInRole(role))
                     this.ValidatedUserRoles.Add(role);
-
+           
         }
 
         private void resetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
