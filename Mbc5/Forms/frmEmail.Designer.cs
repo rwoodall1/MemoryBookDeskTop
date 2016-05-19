@@ -40,8 +40,8 @@
             this.txtMsg = new System.Windows.Forms.TextBox();
             this.txtSubject = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtAttachement = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txtAttachment = new System.Windows.Forms.TextBox();
+            this.lblAttchment = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSend = new System.Windows.Forms.Button();
             this.TopPanel.SuspendLayout();
@@ -168,23 +168,23 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Subject:";
             // 
-            // txtAttachement
+            // txtAttachment
             // 
-            this.txtAttachement.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtAttachment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAttachement.Location = new System.Drawing.Point(89, 186);
-            this.txtAttachement.Name = "txtAttachement";
-            this.txtAttachement.Size = new System.Drawing.Size(863, 20);
-            this.txtAttachement.TabIndex = 15;
+            this.txtAttachment.Location = new System.Drawing.Point(89, 186);
+            this.txtAttachment.Name = "txtAttachment";
+            this.txtAttachment.Size = new System.Drawing.Size(863, 20);
+            this.txtAttachment.TabIndex = 15;
             // 
-            // label2
+            // lblAttchment
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 186);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Attachement:";
+            this.lblAttchment.AutoSize = true;
+            this.lblAttchment.Location = new System.Drawing.Point(8, 186);
+            this.lblAttchment.Name = "lblAttchment";
+            this.lblAttchment.Size = new System.Drawing.Size(64, 13);
+            this.lblAttchment.TabIndex = 14;
+            this.lblAttchment.Text = "Attachment:";
             // 
             // label3
             // 
@@ -206,13 +206,14 @@
             this.btnSend.TabIndex = 0;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // frmEmail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1005, 648);
-            this.Controls.Add(this.txtAttachement);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtAttachment);
+            this.Controls.Add(this.lblAttchment);
             this.Controls.Add(this.txtSubject);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtMsg);
@@ -244,8 +245,8 @@
             this.Controls.SetChildIndex(this.txtMsg, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtSubject, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.txtAttachement, 0);
+            this.Controls.SetChildIndex(this.lblAttchment, 0);
+            this.Controls.SetChildIndex(this.txtAttachment, 0);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.BottomPanel.ResumeLayout(false);
@@ -268,8 +269,8 @@
         private System.Windows.Forms.TextBox txtMsg;
         private System.Windows.Forms.TextBox txtSubject;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtAttachement;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtAttachment;
+        private System.Windows.Forms.Label lblAttchment;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSend;
     }
