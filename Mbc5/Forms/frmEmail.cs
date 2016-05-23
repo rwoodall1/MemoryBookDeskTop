@@ -11,6 +11,7 @@ using System.Net.Mime;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Configuration;
+using Mbc5.Dialogs;
 namespace Mbc5.Forms
 {
     public partial class frmEmail : BaseClass.Forms.bTopBottom
@@ -20,7 +21,7 @@ namespace Mbc5.Forms
             InitializeComponent();
             ApplicationUser = userPrincipal;
         }
-        public frmEmail(UserPrincipal userPrincipal,string ToAddress,string Subject,string Msg) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
+        public frmEmail(UserPrincipal userPrincipal, string ToAddress, string Subject, string Msg) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
         {
             InitializeComponent();
             ApplicationUser = userPrincipal;
@@ -29,11 +30,11 @@ namespace Mbc5.Forms
             txtMsg.Text = Msg;
         }
         private UserPrincipal ApplicationUser { get; set; }
-        
+
         private void frmEmail_Load(object sender, EventArgs e)
         {
             txtFrom.Text = this.ApplicationUser.Email;
-            
+
 
         }
         private void SendEmail()
@@ -42,7 +43,7 @@ namespace Mbc5.Forms
             var mailMessage = new MailMessage
             {
                 Subject = txtSubject.Text,
-                Body =txtMsg.Text,
+                Body = txtMsg.Text,
                 IsBodyHtml = true
             };
             if (!string.IsNullOrEmpty(txtCc.Text))
@@ -55,58 +56,132 @@ namespace Mbc5.Forms
             }
             if (!string.IsNullOrEmpty(txtAttachment.Text))
             {
-                try { 
-                Attachment attachment = new Attachment(txtAttachment.Text);
-                mailMessage.Attachments.Add(attachment);}catch(Exception ex)
+                try
+                {
+                    Attachment attachment = new Attachment(txtAttachment.Text);
+                    mailMessage.Attachments.Add(attachment);
+                }
+                catch (Exception ex)
                 {
                     Log.Error("Failed to attach file to email:" + ex.Message);
-                    MessageBox.Show("Failed to attach file to email.","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to attach file to email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
 
-                mailMessage.From = new MailAddress(txtFrom.Text);
+            mailMessage.From = new MailAddress(txtFrom.Text);
             mailMessage.To.Add(txtTo.Text);
             try
             {
-             smtpClient.Send(mailMessage);
+                smtpClient.Send(mailMessage);
                 LogEmail();
                 this.Close();
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Log.Error("Failed to send email:" + ex.Message);
-                  MessageBox.Show("Failed to send email.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Failed to send email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-          
+
 
         }
 
         private void LogEmail()
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
-            string sql = "Update EmailLogs set Id=@Id,To=@To,FromId=@FromId,Subject=@Subject,Msg=@Msg";
+            string sql = "INSERT INTO EmailLogs (Id,ToEmail,FromId,FromEmail,Subject,Msg) VALUES(@Id,@ToEmail,@FromId,@FromEmail,@Subject,@Msg);";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@Id", Guid.NewGuid().ToString());
-            cmd.Parameters.AddWithValue("@To",txtTo.Text);
-            cmd.Parameters.AddWithValue("@FromId",txtFrom.Text);
-            cmd.Parameters.AddWithValue("@Subject",txtSubject.Text);
-            cmd.Parameters.AddWithValue("@Msg",txtMsg.Text);
-            try {
+            cmd.Parameters.AddWithValue("@ToEmail", txtTo.Text);
+            cmd.Parameters.AddWithValue("@FromEmail", txtFrom.Text);
+            cmd.Parameters.AddWithValue("@FromId", this.ApplicationUser.id);
+            cmd.Parameters.AddWithValue("@Subject", txtSubject.Text);
+            cmd.Parameters.AddWithValue("@Msg", txtMsg.Text);
+            try
+            {
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Log.Error("Failed to log email:" + ex.Message);
                 //go on we are not stopping the program for this
             }
+            finally { cmd.Connection.Close(); }
 
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
             SendEmail();
+        }
+
+        private void txtAttachment_MouseClick(object sender, MouseEventArgs e)
+        {
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK) // Test result.
+            {
+                txtAttachment.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void btnAddressTo_Click(object sender, EventArgs e)
+        {
+            frmAddressList AddrList = new frmAddressList();
+           var result=AddrList.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string vEmail = AddrList.RetEmail; //values preserved after close
+                if (string.IsNullOrEmpty(txtTo.Text))
+                {
+                    txtTo.Text = vEmail;
+                }
+                else
+                {
+                   txtTo.Text = txtTo.Text+";"+ vEmail;
+                }
+                
+            }
+        }
+
+        private void btnAddressCc_Click(object sender, EventArgs e)
+        {
+            frmAddressList AddrList = new frmAddressList();
+            var result = AddrList.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string vEmail = AddrList.RetEmail; //values preserved after close
+                if (string.IsNullOrEmpty(txtCc.Text))
+                {
+                    txtCc.Text = vEmail;
+                }
+                else
+                {
+                    txtCc.Text = txtCc.Text + ";" + vEmail;
+                }
+
+            }
+        }
+
+        private void btnAddressBcc_Click(object sender, EventArgs e)
+        {
+            frmAddressList AddrList = new frmAddressList();
+            var result = AddrList.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string vEmail = AddrList.RetEmail; //values preserved after close
+                if (string.IsNullOrEmpty(txtBcc.Text))
+                {
+                    txtBcc.Text = vEmail;
+                }
+                else
+                {
+                    txtBcc.Text = txtBcc.Text + ";" + vEmail;
+                }
+
+            }
         }
     }
 }

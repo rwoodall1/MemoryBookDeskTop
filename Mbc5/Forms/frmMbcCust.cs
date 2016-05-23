@@ -24,11 +24,25 @@ namespace Mbc5.Forms
         private UserPrincipal ApplicationUser { get; set; }
         private void frmMbcCust_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
+            this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
+            // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
+            this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
+            // TODO: This line of code loads data into the 'lookUp.lkpComments' table. You can move, or remove it, as needed.
+            this.lkpCommentsTableAdapter.Fill(this.lookUp.lkpComments);
+            // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
+            this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
+            // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
+            this.datecontTableAdapter.Fill(this.dsCust.datecont,"038752");
+  // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
+            this.custTableAdapter.Fill(this.dsCust.cust,"038752");
+            // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
+            this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
             this.statesTableAdapter.Fill(this.lookUp.states);
-            // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
-            this.custTableAdapter.Fill(this.dsCust.cust,"165422");
-          
+      
+
+
 
         }
 
@@ -39,6 +53,10 @@ namespace Mbc5.Forms
             {
                 MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+            {
+                this.datecontTableAdapter.Fill(this.dsCust.datecont, txtSchCode.Text.Trim());
+            }
         }
         private void btnSchoolSearch_Click(object sender, EventArgs e)
         {
@@ -46,6 +64,10 @@ namespace Mbc5.Forms
             if (records < 1)
             {
                 MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                this.datecontTableAdapter.Fill(this.dsCust.datecont, txtSchCode.Text.Trim());
             }
         }
         #region CrudOperations
@@ -370,14 +392,87 @@ namespace Mbc5.Forms
             
         }
 
+       
         private void btnInterOffice_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.AppStarting;
-
-            frmEmail frmEmail = new frmEmail(this.ApplicationUser,"randy@woodalldevelopment.com","Test","msgtest");
+            frmEmail frmEmail = new frmEmail(this.ApplicationUser,"","Inter Office Memo", inofficeTextBox.Text);
             frmEmail.MdiParent =this.MdiParent;
             frmEmail.Show();
             this.Cursor = Cursors.Default;
+        }
+
+        private void btnSchoolEmail_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+            frmEmail frmEmail = new frmEmail(this.ApplicationUser,txtSchEmail.Text, "", "");
+            frmEmail.MdiParent = this.MdiParent;
+            frmEmail.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnEmailContact_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+            frmEmail frmEmail = new frmEmail(this.ApplicationUser, txtContactEmail.Text, "", "");
+            frmEmail.MdiParent = this.MdiParent;
+            frmEmail.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnEmailCont2_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+            frmEmail frmEmail = new frmEmail(this.ApplicationUser, txtContact2Email.Text, "", "");
+            frmEmail.MdiParent = this.MdiParent;
+            frmEmail.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnEmailContac3_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+            frmEmail frmEmail = new frmEmail(this.ApplicationUser, txtContact3Email.Text, "", "");
+            frmEmail.MdiParent = this.MdiParent;
+            frmEmail.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void datecontDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            //string a = "";
+           
+        }
+
+        private void commentListBox_DoubleClick(object sender, EventArgs e)
+        {
+            string val = commentListBox.GetItemText(commentListBox.SelectedItem);
+            txtReason.Text = val;
+            
+            txtReason.Select(); 
+          
+           
+        }
+
+        private void txtReason_Leave(object sender, EventArgs e)
+        {
+           datecontDataGridView.Select();
+         this.BindingContext[this.datecontDataGridView.DataSource].EndCurrentEdit();
+           datecontDataGridView.Refresh();
+            datecontDataGridView.Parent.Refresh();
+        }
+
+        private void fillToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, schcodeToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

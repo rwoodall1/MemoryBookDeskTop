@@ -73,6 +73,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCust.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsMktInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMktInfo.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsRoles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,6 +92,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LookUp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmAddressList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmAddressList.Designer.cs">
+      <DependentUpon>frmAddressList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmChangePassword.cs">
       <SubType>Form</SubType>
@@ -132,7 +143,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Content\MAIL.png" />
     <Content Include="NOTES TODO.txt" />
+    <EmbeddedResource Include="Dialogs\frmAddressList.resx">
+      <DependentUpon>frmAddressList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +195,17 @@
     </None>
     <None Include="DataSets\dsCust.xss">
       <DependentUpon>dsCust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMktInfo.xsc">
+      <DependentUpon>dsMktInfo.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMktInfo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMktInfo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsMktInfo.xss">
+      <DependentUpon>dsMktInfo.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsRoles.xsc">
       <DependentUpon>dsRoles.xsd</DependentUpon>

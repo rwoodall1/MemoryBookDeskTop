@@ -60,3 +60,4 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmUser.re
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Properties.Resources.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.GenerateResource.Cache
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmEmail.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmAddressList.resources

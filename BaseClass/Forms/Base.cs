@@ -66,12 +66,21 @@ namespace BaseClass
         }
         private void ValidateUserRoles()
         {
-            foreach (string role in _formRoles)
+            if (_formRoles.Count < 1)//if no roles then form is open to everyone
+            {
+                this.UserCanOpenForm = true;
+            }
+            else
+            {
+                   foreach (string role in _formRoles)
                
                 if (_formPrincipal.IsInRole(role))
                     this.ValidatedUserRoles.Add(role);
 
-            this.UserCanOpenForm = this.ValidatedUserRoles.Count > 0;
+                this.UserCanOpenForm = this.ValidatedUserRoles.Count > 0;
+
+            }
+            
           
         }
 
