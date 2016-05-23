@@ -125,5 +125,14 @@ namespace Mbc5.Forms
             frmCust.Show();
             this.Cursor = Cursors.Default;
         }
-    }
+
+        private void MerToolStrip_Click(object sender,EventArgs e) {
+            this.Cursor = Cursors.AppStarting;
+
+            frmMbcCust frmMer = new frmMbcCust(this.ApplicationUser);
+            frmMer.MdiParent = this;
+            frmMer.Show();
+            this.Cursor = Cursors.Default;
+            }
+        }
 }

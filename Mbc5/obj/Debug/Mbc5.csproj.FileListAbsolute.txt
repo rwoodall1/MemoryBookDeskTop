@@ -60,3 +60,6 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmUser.re
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Properties.Resources.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.GenerateResource.Cache
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmEmail.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe.config
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.exe
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb
