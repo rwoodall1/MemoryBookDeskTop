@@ -46,7 +46,7 @@ namespace Mbc5.Forms {
 
 
 
-            SqlCommand cmd = new SqlCommand("SELECT dbo.roles.name as RoleName, dbo.roles.rank, dbo.mbcUsers.id, dbo.mbcUsers.UserName,dbo.mbcUsers.PassWord, dbo.mbcUsers.roldid, dbo.mbcUsers.EmailAddress, dbo.mbcUsers.FirstName, dbo.mbcUsers.LastName, dbo.mbcUsers.ChangePassword FROM dbo.mbcUsers INNER JOIN dbo.user_role ON dbo.mbcUsers.id = dbo.user_role.userid INNER JOIN dbo.roles ON dbo.user_role.roleid = dbo.roles.id WHERE(dbo.mbcUsers.PassWord = @password) AND(dbo.mbcUsers.UserName = @username)", conn);
+            SqlCommand cmd = new SqlCommand("SELECT dbo.roles.name as RoleName,dbo.mbcUsers.FirstName,dbo.mbcUsers.LastName, dbo.roles.rank, dbo.mbcUsers.id, dbo.mbcUsers.UserName,dbo.mbcUsers.PassWord, dbo.mbcUsers.roldid, dbo.mbcUsers.EmailAddress, dbo.mbcUsers.FirstName, dbo.mbcUsers.LastName, dbo.mbcUsers.ChangePassword FROM dbo.mbcUsers INNER JOIN dbo.user_role ON dbo.mbcUsers.id = dbo.user_role.userid INNER JOIN dbo.roles ON dbo.user_role.roleid = dbo.roles.id WHERE(dbo.mbcUsers.PassWord = @password) AND(dbo.mbcUsers.UserName = @username)", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@username", cUser);
@@ -62,6 +62,8 @@ namespace Mbc5.Forms {
                 string vPassword = null;
                 string vId = null;
                 string vEmail = null;
+                string vLastName = null;
+                string vFirstName = null;
                 cmd.Connection.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
@@ -72,6 +74,8 @@ namespace Mbc5.Forms {
                     vId = rdr["id"].ToString();
                     vChangePassword = rdr.IsDBNull(rdr.GetOrdinal("changepassword")) ? false: (bool)rdr["changepassword"];
                     string vUsername = rdr["username"].ToString();
+                    vLastName = rdr["LastName"].ToString();
+                    vFirstName = rdr["FirstName"].ToString();
                     vroles.Add(rdr["RoleName"].ToString().Trim());
 
                 }
@@ -95,6 +99,8 @@ namespace Mbc5.Forms {
                 UserPrincipal userPrincipal = new UserPrincipal(vApplicationUser, arrayrole);
                 userPrincipal.id = vId;
                 userPrincipal.UserName = cUser;
+                userPrincipal.FirstName = vFirstName;
+                userPrincipal.LastName = vLastName;
                 userPrincipal.Email = vEmail;
                 userPrincipal.Roles = arrayrole.ToList();
                 frmMain.ApplicationUser = userPrincipal;

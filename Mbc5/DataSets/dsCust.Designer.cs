@@ -3198,7 +3198,7 @@ namespace Mbc5.DataSets {
                         bool highliterow, 
                         bool techcall, 
                         int prospectid, 
-                        int id) {
+                        string id) {
                 datecontRow rowdatecontRow = ((datecontRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -3224,7 +3224,7 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public datecontRow FindByid(int id) {
+            public datecontRow FindByid(string id) {
                 return ((datecontRow)(this.Rows.Find(new object[] {
                             id})));
             }
@@ -3297,31 +3297,20 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columntechcall);
                 this.columnprospectid = new global::System.Data.DataColumn("prospectid", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprospectid);
-                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnid = new global::System.Data.DataColumn("id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
-                this.columndatecont.AllowDBNull = false;
                 this.columnreason.MaxLength = 2147483647;
-                this.columninitial.AllowDBNull = false;
                 this.columninitial.MaxLength = 4;
-                this.columncontact.AllowDBNull = false;
                 this.columncontact.MaxLength = 20;
-                this.columntypecont.MaxLength = 10;
-                this.columnnxtdays.AllowDBNull = false;
-                this.columnnxtdate.AllowDBNull = false;
-                this.columncallcont.AllowDBNull = false;
-                this.columncalltime.AllowDBNull = false;
-                this.columnpriority.AllowDBNull = false;
-                this.columncompany.AllowDBNull = false;
+                this.columntypecont.MaxLength = 45;
                 this.columncompany.MaxLength = 3;
-                this.columnhighliterow.AllowDBNull = false;
-                this.columntechcall.AllowDBNull = false;
-                this.columnprospectid.AllowDBNull = false;
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
+                this.columnid.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7072,7 +7061,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime datecont {
                 get {
-                    return ((global::System.DateTime)(this[this.tabledatecont.datecontColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tabledatecont.datecontColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'datecont\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.datecontColumn] = value;
@@ -7099,7 +7093,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string initial {
                 get {
-                    return ((string)(this[this.tabledatecont.initialColumn]));
+                    try {
+                        return ((string)(this[this.tabledatecont.initialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'initial\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.initialColumn] = value;
@@ -7110,7 +7109,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string contact {
                 get {
-                    return ((string)(this[this.tabledatecont.contactColumn]));
+                    try {
+                        return ((string)(this[this.tabledatecont.contactColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contact\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.contactColumn] = value;
@@ -7137,7 +7141,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal nxtdays {
                 get {
-                    return ((decimal)(this[this.tabledatecont.nxtdaysColumn]));
+                    try {
+                        return ((decimal)(this[this.tabledatecont.nxtdaysColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nxtdays\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.nxtdaysColumn] = value;
@@ -7148,7 +7157,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime nxtdate {
                 get {
-                    return ((global::System.DateTime)(this[this.tabledatecont.nxtdateColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tabledatecont.nxtdateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nxtdate\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.nxtdateColumn] = value;
@@ -7159,7 +7173,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool callcont {
                 get {
-                    return ((bool)(this[this.tabledatecont.callcontColumn]));
+                    try {
+                        return ((bool)(this[this.tabledatecont.callcontColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'callcont\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.callcontColumn] = value;
@@ -7170,7 +7189,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal calltime {
                 get {
-                    return ((decimal)(this[this.tabledatecont.calltimeColumn]));
+                    try {
+                        return ((decimal)(this[this.tabledatecont.calltimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'calltime\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.calltimeColumn] = value;
@@ -7181,7 +7205,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal priority {
                 get {
-                    return ((decimal)(this[this.tabledatecont.priorityColumn]));
+                    try {
+                        return ((decimal)(this[this.tabledatecont.priorityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'priority\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.priorityColumn] = value;
@@ -7192,7 +7221,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string company {
                 get {
-                    return ((string)(this[this.tabledatecont.companyColumn]));
+                    try {
+                        return ((string)(this[this.tabledatecont.companyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'company\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.companyColumn] = value;
@@ -7203,7 +7237,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool highliterow {
                 get {
-                    return ((bool)(this[this.tabledatecont.highliterowColumn]));
+                    try {
+                        return ((bool)(this[this.tabledatecont.highliterowColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'highliterow\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.highliterowColumn] = value;
@@ -7214,7 +7253,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool techcall {
                 get {
-                    return ((bool)(this[this.tabledatecont.techcallColumn]));
+                    try {
+                        return ((bool)(this[this.tabledatecont.techcallColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'techcall\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.techcallColumn] = value;
@@ -7225,7 +7269,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int prospectid {
                 get {
-                    return ((int)(this[this.tabledatecont.prospectidColumn]));
+                    try {
+                        return ((int)(this[this.tabledatecont.prospectidColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'prospectid\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.prospectidColumn] = value;
@@ -7234,13 +7283,25 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int id {
+            public string id {
                 get {
-                    return ((int)(this[this.tabledatecont.idColumn]));
+                    return ((string)(this[this.tabledatecont.idColumn]));
                 }
                 set {
                     this[this.tabledatecont.idColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdatecontNull() {
+                return this.IsNull(this.tabledatecont.datecontColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdatecontNull() {
+                this[this.tabledatecont.datecontColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7257,6 +7318,30 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsinitialNull() {
+                return this.IsNull(this.tabledatecont.initialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetinitialNull() {
+                this[this.tabledatecont.initialColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscontactNull() {
+                return this.IsNull(this.tabledatecont.contactColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcontactNull() {
+                this[this.tabledatecont.contactColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IstypecontNull() {
                 return this.IsNull(this.tabledatecont.typecontColumn);
             }
@@ -7265,6 +7350,114 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SettypecontNull() {
                 this[this.tabledatecont.typecontColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnxtdaysNull() {
+                return this.IsNull(this.tabledatecont.nxtdaysColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnxtdaysNull() {
+                this[this.tabledatecont.nxtdaysColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnxtdateNull() {
+                return this.IsNull(this.tabledatecont.nxtdateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnxtdateNull() {
+                this[this.tabledatecont.nxtdateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscallcontNull() {
+                return this.IsNull(this.tabledatecont.callcontColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcallcontNull() {
+                this[this.tabledatecont.callcontColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscalltimeNull() {
+                return this.IsNull(this.tabledatecont.calltimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcalltimeNull() {
+                this[this.tabledatecont.calltimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IspriorityNull() {
+                return this.IsNull(this.tabledatecont.priorityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetpriorityNull() {
+                this[this.tabledatecont.priorityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscompanyNull() {
+                return this.IsNull(this.tabledatecont.companyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcompanyNull() {
+                this[this.tabledatecont.companyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IshighliterowNull() {
+                return this.IsNull(this.tabledatecont.highliterowColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SethighliterowNull() {
+                this[this.tabledatecont.highliterowColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstechcallNull() {
+                return this.IsNull(this.tabledatecont.techcallColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettechcallNull() {
+                this[this.tabledatecont.techcallColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsprospectidNull() {
+                return this.IsNull(this.tabledatecont.prospectidColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetprospectidNull() {
+                this[this.tabledatecont.prospectidColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -14928,7 +15121,7 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
             this._commandCollection[0].CommandText = "SELECT        schcode, datecont, reason, initial, contact, typecont, nxtdays, nxt" +
                 "date, callcont, calltime, priority, company, highliterow, techcall, prospectid, " +
                 "id\r\nFROM            datecont\r\nWHERE        (schcode = @schcode)\r\nORDER BY dateco" +
-                "nt";
+                "nt DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -15002,7 +15195,7 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_schcode, System.DateTime Original_datecont, string Original_initial, string Original_contact, string Original_typecont, decimal Original_nxtdays, System.DateTime Original_nxtdate, bool Original_callcont, decimal Original_calltime, decimal Original_priority, string Original_company, bool Original_highliterow, bool Original_techcall, int Original_prospectid, int Original_id) {
+        public virtual int Delete(string Original_schcode, System.DateTime Original_datecont, string Original_initial, string Original_contact, string Original_typecont, decimal Original_nxtdays, System.DateTime Original_nxtdate, global::System.Nullable<bool> Original_callcont, global::System.Nullable<decimal> Original_calltime, global::System.Nullable<decimal> Original_priority, string Original_company, global::System.Nullable<bool> Original_highliterow, global::System.Nullable<bool> Original_techcall, global::System.Nullable<int> Original_prospectid, int Original_id) {
             if ((Original_schcode == null)) {
                 throw new global::System.ArgumentNullException("Original_schcode");
             }
@@ -15011,13 +15204,13 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
             }
             this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_datecont));
             if ((Original_initial == null)) {
-                throw new global::System.ArgumentNullException("Original_initial");
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_initial));
             }
             if ((Original_contact == null)) {
-                throw new global::System.ArgumentNullException("Original_contact");
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_contact));
@@ -15032,18 +15225,48 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
             }
             this.Adapter.DeleteCommand.Parameters[6].Value = ((decimal)(Original_nxtdays));
             this.Adapter.DeleteCommand.Parameters[7].Value = ((System.DateTime)(Original_nxtdate));
-            this.Adapter.DeleteCommand.Parameters[8].Value = ((bool)(Original_callcont));
-            this.Adapter.DeleteCommand.Parameters[9].Value = ((decimal)(Original_calltime));
-            this.Adapter.DeleteCommand.Parameters[10].Value = ((decimal)(Original_priority));
+            if ((Original_callcont.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((bool)(Original_callcont.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((Original_calltime.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((decimal)(Original_calltime.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((Original_priority.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((decimal)(Original_priority.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
             if ((Original_company == null)) {
-                throw new global::System.ArgumentNullException("Original_company");
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_company));
             }
-            this.Adapter.DeleteCommand.Parameters[12].Value = ((bool)(Original_highliterow));
-            this.Adapter.DeleteCommand.Parameters[13].Value = ((bool)(Original_techcall));
-            this.Adapter.DeleteCommand.Parameters[14].Value = ((int)(Original_prospectid));
+            if ((Original_highliterow.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((bool)(Original_highliterow.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_techcall.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((bool)(Original_techcall.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((Original_prospectid.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((int)(Original_prospectid.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
             this.Adapter.DeleteCommand.Parameters[15].Value = ((int)(Original_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -15074,13 +15297,13 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
                     string typecont, 
                     decimal nxtdays, 
                     System.DateTime nxtdate, 
-                    bool callcont, 
-                    decimal calltime, 
-                    decimal priority, 
+                    global::System.Nullable<bool> callcont, 
+                    global::System.Nullable<decimal> calltime, 
+                    global::System.Nullable<decimal> priority, 
                     string company, 
-                    bool highliterow, 
-                    bool techcall, 
-                    int prospectid, 
+                    global::System.Nullable<bool> highliterow, 
+                    global::System.Nullable<bool> techcall, 
+                    global::System.Nullable<int> prospectid, 
                     int id) {
             if ((schcode == null)) {
                 throw new global::System.ArgumentNullException("schcode");
@@ -15096,13 +15319,13 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(reason));
             }
             if ((initial == null)) {
-                throw new global::System.ArgumentNullException("initial");
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(initial));
             }
             if ((contact == null)) {
-                throw new global::System.ArgumentNullException("contact");
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(contact));
@@ -15115,18 +15338,48 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
             }
             this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(nxtdays));
             this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(nxtdate));
-            this.Adapter.InsertCommand.Parameters[8].Value = ((bool)(callcont));
-            this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(calltime));
-            this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(priority));
+            if ((callcont.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((bool)(callcont.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((calltime.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(calltime.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((priority.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(priority.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
             if ((company == null)) {
-                throw new global::System.ArgumentNullException("company");
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[11].Value = ((string)(company));
             }
-            this.Adapter.InsertCommand.Parameters[12].Value = ((bool)(highliterow));
-            this.Adapter.InsertCommand.Parameters[13].Value = ((bool)(techcall));
-            this.Adapter.InsertCommand.Parameters[14].Value = ((int)(prospectid));
+            if ((highliterow.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((bool)(highliterow.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((techcall.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((bool)(techcall.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((prospectid.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((int)(prospectid.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
             this.Adapter.InsertCommand.Parameters[15].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -15157,13 +15410,13 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
                     string typecont, 
                     decimal nxtdays, 
                     System.DateTime nxtdate, 
-                    bool callcont, 
-                    decimal calltime, 
-                    decimal priority, 
+                    global::System.Nullable<bool> callcont, 
+                    global::System.Nullable<decimal> calltime, 
+                    global::System.Nullable<decimal> priority, 
                     string company, 
-                    bool highliterow, 
-                    bool techcall, 
-                    int prospectid, 
+                    global::System.Nullable<bool> highliterow, 
+                    global::System.Nullable<bool> techcall, 
+                    global::System.Nullable<int> prospectid, 
                     int id, 
                     string Original_schcode, 
                     System.DateTime Original_datecont, 
@@ -15172,13 +15425,13 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
                     string Original_typecont, 
                     decimal Original_nxtdays, 
                     System.DateTime Original_nxtdate, 
-                    bool Original_callcont, 
-                    decimal Original_calltime, 
-                    decimal Original_priority, 
+                    global::System.Nullable<bool> Original_callcont, 
+                    global::System.Nullable<decimal> Original_calltime, 
+                    global::System.Nullable<decimal> Original_priority, 
                     string Original_company, 
-                    bool Original_highliterow, 
-                    bool Original_techcall, 
-                    int Original_prospectid, 
+                    global::System.Nullable<bool> Original_highliterow, 
+                    global::System.Nullable<bool> Original_techcall, 
+                    global::System.Nullable<int> Original_prospectid, 
                     int Original_id) {
             if ((schcode == null)) {
                 throw new global::System.ArgumentNullException("schcode");
@@ -15194,13 +15447,13 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(reason));
             }
             if ((initial == null)) {
-                throw new global::System.ArgumentNullException("initial");
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(initial));
             }
             if ((contact == null)) {
-                throw new global::System.ArgumentNullException("contact");
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(contact));
@@ -15213,18 +15466,48 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
             }
             this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(nxtdays));
             this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(nxtdate));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(callcont));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(calltime));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(priority));
+            if ((callcont.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(callcont.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((calltime.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(calltime.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((priority.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(priority.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
             if ((company == null)) {
-                throw new global::System.ArgumentNullException("company");
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(company));
             }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(highliterow));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(techcall));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(prospectid));
+            if ((highliterow.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(highliterow.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((techcall.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(techcall.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((prospectid.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(prospectid.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
             this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(id));
             if ((Original_schcode == null)) {
                 throw new global::System.ArgumentNullException("Original_schcode");
@@ -15234,13 +15517,13 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
             }
             this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_datecont));
             if ((Original_initial == null)) {
-                throw new global::System.ArgumentNullException("Original_initial");
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_initial));
             }
             if ((Original_contact == null)) {
-                throw new global::System.ArgumentNullException("Original_contact");
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_contact));
@@ -15255,18 +15538,48 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
             }
             this.Adapter.UpdateCommand.Parameters[22].Value = ((decimal)(Original_nxtdays));
             this.Adapter.UpdateCommand.Parameters[23].Value = ((System.DateTime)(Original_nxtdate));
-            this.Adapter.UpdateCommand.Parameters[24].Value = ((bool)(Original_callcont));
-            this.Adapter.UpdateCommand.Parameters[25].Value = ((decimal)(Original_calltime));
-            this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(Original_priority));
+            if ((Original_callcont.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((bool)(Original_callcont.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            if ((Original_calltime.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((decimal)(Original_calltime.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((Original_priority.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(Original_priority.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
             if ((Original_company == null)) {
-                throw new global::System.ArgumentNullException("Original_company");
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_company));
             }
-            this.Adapter.UpdateCommand.Parameters[28].Value = ((bool)(Original_highliterow));
-            this.Adapter.UpdateCommand.Parameters[29].Value = ((bool)(Original_techcall));
-            this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Original_prospectid));
+            if ((Original_highliterow.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((bool)(Original_highliterow.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            if ((Original_techcall.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((bool)(Original_techcall.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            if ((Original_prospectid.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Original_prospectid.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
             this.Adapter.UpdateCommand.Parameters[31].Value = ((int)(Original_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -15297,13 +15610,13 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
                     string typecont, 
                     decimal nxtdays, 
                     System.DateTime nxtdate, 
-                    bool callcont, 
-                    decimal calltime, 
-                    decimal priority, 
+                    global::System.Nullable<bool> callcont, 
+                    global::System.Nullable<decimal> calltime, 
+                    global::System.Nullable<decimal> priority, 
                     string company, 
-                    bool highliterow, 
-                    bool techcall, 
-                    int prospectid, 
+                    global::System.Nullable<bool> highliterow, 
+                    global::System.Nullable<bool> techcall, 
+                    global::System.Nullable<int> prospectid, 
                     string Original_schcode, 
                     System.DateTime Original_datecont, 
                     string Original_initial, 
@@ -15311,13 +15624,13 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
                     string Original_typecont, 
                     decimal Original_nxtdays, 
                     System.DateTime Original_nxtdate, 
-                    bool Original_callcont, 
-                    decimal Original_calltime, 
-                    decimal Original_priority, 
+                    global::System.Nullable<bool> Original_callcont, 
+                    global::System.Nullable<decimal> Original_calltime, 
+                    global::System.Nullable<decimal> Original_priority, 
                     string Original_company, 
-                    bool Original_highliterow, 
-                    bool Original_techcall, 
-                    int Original_prospectid, 
+                    global::System.Nullable<bool> Original_highliterow, 
+                    global::System.Nullable<bool> Original_techcall, 
+                    global::System.Nullable<int> Original_prospectid, 
                     int Original_id) {
             return this.Update(schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, callcont, calltime, priority, company, highliterow, techcall, prospectid, Original_id, Original_schcode, Original_datecont, Original_initial, Original_contact, Original_typecont, Original_nxtdays, Original_nxtdate, Original_callcont, Original_calltime, Original_priority, Original_company, Original_highliterow, Original_techcall, Original_prospectid, Original_id);
         }

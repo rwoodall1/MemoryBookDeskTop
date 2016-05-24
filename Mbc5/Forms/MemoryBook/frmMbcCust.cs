@@ -19,10 +19,19 @@ namespace Mbc5.Forms.MemoryBook {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ApplicationUser = userPrincipal;
+            
         }
         private UserPrincipal ApplicationUser { get; set; }
+
+        private bool MktGo { get; set; } = false;
+        private bool TeleGo { get; set; } = false;
         private void frmMbcCust_Load(object sender, EventArgs e)
         {
+            if (!ApplicationUser.Roles.Contains("MbcCS"))
+                {
+                TeleGo = true;
+                MktGo = true;
+                }
             // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
             this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
             // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
@@ -33,7 +42,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
             // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
             this.datecontTableAdapter.Fill(this.dsCust.datecont,"038752");
-  // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
             this.custTableAdapter.Fill(this.dsCust.cust,"038752");
             // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
             this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
@@ -439,7 +448,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void datecontDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            //string a = "";
+            //Leave Here;
            
         }
 
@@ -461,6 +470,71 @@ namespace Mbc5.Forms.MemoryBook {
             datecontDataGridView.Parent.Refresh();
         }
 
-       
-    }
+        private void btnAddLog_Click(object sender,EventArgs e) {
+         
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            string sql = "INSERT INTO DateCont (Id,schcode,datecont,initial) VALUES(@Id,@schcode,@datecont,@initial);";
+            SqlCommand cmd = new SqlCommand(sql,conn);
+            cmd.Parameters.AddWithValue("@Id",Guid.NewGuid().ToString());
+            cmd.Parameters.AddWithValue("@initial",ApplicationUser.FirstName.Substring(0,1) + ApplicationUser.LastName.Substring(0,1));
+            cmd.Parameters.AddWithValue("@datecont",DateTime.Now.ToString());
+            cmd.Parameters.AddWithValue("@schcode",lblSchcode.Text);
+            try
+                {
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+
+                }
+            catch (Exception ex)
+                {
+                MessageBox.Show("Failed to insert telephone log record.");
+                Log.Error("Failed to Insert telephone log:" + ex.Message);
+                //go on we are not stopping the program for this
+                }
+            finally { cmd.Connection.Close(); }
+            this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text);
+
+            }
+
+        private void btnAddMarketLog_Click(object sender,EventArgs e) {
+            DataRowView newrow = (DataRowView) mktinfoBindingSource.AddNew();
+            }
+
+        private void btnSaveTeleLog_Click(object sender,EventArgs e) {
+
+            DataTable EditedRecs = dsCust.datecont.GetChanges();
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            string sql = "INSERT INTO DateCont (Id,reason,contact,typecont,nxtdate,callcont,calltime,priority,techcall,) VALUES(@Id,@datecont,@datecont,@reason,@contact,@typecont,@nxtdate,@calcont,@calltime,@priority,@techcall);";
+            SqlCommand cmd = new SqlCommand(sql,conn);
+            foreach (DataRow row in EditedRecs.Rows)
+                {
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@Id",row["id"]);
+                cmd.Parameters.AddWithValue("@reason",row["reason"]);
+                cmd.Parameters.AddWithValue("@contact",row["contact"]);
+                cmd.Parameters.AddWithValue("@typecont",row["typecont"]);
+                cmd.Parameters.AddWithValue("@nxtdate",row["nxtdate"]);
+                cmd.Parameters.AddWithValue("@callcont",row["callcont"]);
+                cmd.Parameters.AddWithValue("@calltime",row["calltime"]);
+                cmd.Parameters.AddWithValue("@priority",row["priority"]);
+                cmd.Parameters.AddWithValue("@techcall",row["techcall"]);
+
+                try
+                    {
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+
+                    }
+                catch (Exception ex)
+                    {
+                    MessageBox.Show("Failed to update telephone log record.");
+                    Log.Error("Failed to update telephone log:" + ex.Message);
+                    //go on we are not stopping the program for this
+                    }
+                finally { cmd.Connection.Close(); }
+                }
+            this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text);
+            }
+        }
 }

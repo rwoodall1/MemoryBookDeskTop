@@ -1,0 +1,6 @@
+2016/05/24 15:26:37.160 Failed to Insert telephone log:Conversion failed when converting the nvarchar value '973cf70b-26cc-41a1-a11a-1a3851949874' to data type int. RWCOMPUTER  RWCOMPUTER\randy    
+2016/05/24 15:28:45.943 Failed to Insert telephone log:Conversion failed when converting the nvarchar value '5be1a302-c4df-4ce0-832e-c3619f88c054' to data type int. RWCOMPUTER  RWCOMPUTER\randy    
+2016/05/24 15:29:24.682 Failed to Insert telephone log:Conversion failed when converting the nvarchar value '722c1689-3fc5-4475-b7ea-da12a39d1953' to data type int. RWCOMPUTER  RWCOMPUTER\randy    
+2016/05/24 15:38:52.619 Failed to Insert telephone log:Cannot insert the value NULL into column 'contact', table 'Mbc5.dbo.datecont'; column does not allow nulls. INSERT fails.
+The statement has been terminated. RWCOMPUTER  RWCOMPUTER\randy    
+2016/05/24 17:06:59.936 Failed to update telephone log:Incorrect syntax near ')'. RWCOMPUTER  RWCOMPUTER\randy    
