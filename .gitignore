@@ -51,3 +51,5 @@ BaseClass/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 *.cache
 Mbc5/obj/Debug/DesignTimeResolveAssemblyReferences.cache
 .vs/MemoryBook/v14/.suo
+BaseClass/bin/Debug/BaseClass.dll
+*.dll

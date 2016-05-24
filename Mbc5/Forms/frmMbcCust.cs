@@ -462,17 +462,6 @@ namespace Mbc5.Forms
             datecontDataGridView.Parent.Refresh();
         }
 
-        private void fillToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, schcodeToolStripTextBox.Text);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
+       
     }
 }

@@ -73,6 +73,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCust.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsDateCont.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDateCont.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsMktInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -205,6 +210,17 @@
     <None Include="DataSets\dsCust.xss">
       <DependentUpon>dsCust.xsd</DependentUpon>
     </None>
+    <None Include="DataSets\dsDateCont.xsc">
+      <DependentUpon>dsDateCont.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsDateCont.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDateCont.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsDateCont.xss">
+      <DependentUpon>dsDateCont.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\dsMktInfo.xsc">
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
     </None>
@@ -255,7 +271,9 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -272,7 +290,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
