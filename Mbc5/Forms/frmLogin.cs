@@ -13,8 +13,7 @@ using System.Configuration;
 using System.Security.Principal;
 using BaseClass.Classes;
 using BaseClass;
-namespace Mbc5.Forms
-{
+namespace Mbc5.Forms {
     public partial class frmLogin : Form
     {
         public int NumTry { get; set; } = 0;

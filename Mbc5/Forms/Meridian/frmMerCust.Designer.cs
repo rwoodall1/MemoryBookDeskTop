@@ -1,4 +1,4 @@
-﻿namespace Mbc5.Forms {
+﻿namespace Mbc5.Forms.Meridian {
     partial class frmMerCust {
         /// <summary>
         /// Required designer variable.

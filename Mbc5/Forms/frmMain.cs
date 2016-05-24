@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Mbc5.Forms.MemoryBook;
+using Mbc5.Forms.Meridian;
 using BaseClass.Classes;
 using NLog;
 namespace Mbc5.Forms
@@ -132,6 +134,40 @@ namespace Mbc5.Forms
             frmMbcCust frmMer = new frmMbcCust(this.ApplicationUser);
             frmMer.MdiParent = this;
             frmMer.Show();
+            this.Cursor = Cursors.Default;
+            }
+
+        private void bidsToolStripMenuItem_Click(object sender,EventArgs e) {
+            this.Cursor = Cursors.AppStarting;
+
+            frmBids frmBids = new frmBids(this.ApplicationUser);
+            frmBids.MdiParent = this;
+            frmBids.Show();
+            this.Cursor = Cursors.Default;
+            }
+
+        private void mbidsToolStripMenuItem_Click(object sender,EventArgs e) {
+            this.Cursor = Cursors.AppStarting;
+
+            frmMBids frmMBids = new frmMBids(this.ApplicationUser);
+            frmMBids.MdiParent = this;
+            frmMBids.Show();
+            this.Cursor = Cursors.Default;
+            }
+
+        private void msalesToolStripMenuItem_Click(object sender,EventArgs e) {
+            this.Cursor = Cursors.AppStarting;
+            frmMSales frmMSales = new frmMSales(this.ApplicationUser);
+            frmMSales.MdiParent = this;
+            frmMSales.Show();
+            this.Cursor = Cursors.Default;
+            }
+
+        private void salesToolStripMenuItem_Click(object sender,EventArgs e) {
+            this.Cursor = Cursors.AppStarting;
+            frmSales frmSales = new frmSales(this.ApplicationUser);
+            frmSales.MdiParent = this;
+            frmSales.Show();
             this.Cursor = Cursors.Default;
             }
         }

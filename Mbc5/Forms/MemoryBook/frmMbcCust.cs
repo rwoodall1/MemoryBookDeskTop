@@ -11,8 +11,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Diagnostics;
 
-namespace Mbc5.Forms
-{
+namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom
     {
         public frmMbcCust(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS"}, userPrincipal)
