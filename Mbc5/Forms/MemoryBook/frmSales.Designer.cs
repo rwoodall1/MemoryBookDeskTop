@@ -1,5 +1,5 @@
 ﻿namespace Mbc5.Forms.MemoryBook {
-    partial class frmMSales {
+    partial class frmSales {
         /// <summary>
         /// Required designer variable.
         /// </summary>

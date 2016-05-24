@@ -104,11 +104,11 @@
     <Compile Include="Dialogs\frmAddressList.Designer.cs">
       <DependentUpon>frmAddressList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MemoryBook\frmMSales.cs">
+    <Compile Include="Forms\MemoryBook\frmSales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MemoryBook\frmMSales.Designer.cs">
-      <DependentUpon>frmMSales.cs</DependentUpon>
+    <Compile Include="Forms\MemoryBook\frmSales.Designer.cs">
+      <DependentUpon>frmSales.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Meridian\frmMSales.cs">
       <SubType>Form</SubType>
@@ -183,8 +183,8 @@
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">
       <DependentUpon>frmAddressList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MemoryBook\frmMSales.resx">
-      <DependentUpon>frmMSales.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MemoryBook\frmSales.resx">
+      <DependentUpon>frmSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meridian\frmMSales.resx">
       <DependentUpon>frmMSales.cs</DependentUpon>
@@ -224,6 +224,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Report1.rdlc" />
     <None Include="DataSets\dsChangePassword.xsc">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </None>
