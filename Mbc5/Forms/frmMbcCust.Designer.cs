@@ -213,8 +213,15 @@
             this.contaddr2TextBox = new System.Windows.Forms.TextBox();
             this.contaddrTextBox = new System.Windows.Forms.TextBox();
             this.pg3 = new System.Windows.Forms.TabPage();
+            this.lblMarketing = new System.Windows.Forms.Label();
             this.mktinfoDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.lkpMktReferenceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.lkpPromotionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mktinfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMktInfo = new Mbc5.DataSets.dsMktInfo();
             this.txtReason = new System.Windows.Forms.TextBox();
@@ -242,26 +249,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
-            this.contpstnTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.contpstnTableAdapter();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.datecontTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.datecontTableAdapter();
-            this.lkpTypeContTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpTypeContTableAdapter();
-            this.lkpCommentsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpCommentsTableAdapter();
             this.mktinfoTableAdapter = new Mbc5.DataSets.dsMktInfoTableAdapters.mktinfoTableAdapter();
             this.tableAdapterManager2 = new Mbc5.DataSets.dsMktInfoTableAdapters.TableAdapterManager();
             this.fillToolStrip = new System.Windows.Forms.ToolStrip();
             this.schcodeToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.schcodeToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.fillToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.lkpMktReferenceTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpMktReferenceTableAdapter();
-            this.lkpPromotionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lkpPromotionsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpPromotionsTableAdapter();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblMarketing = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             contdateLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
@@ -345,6 +339,7 @@
             this.pg3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mktinfoDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpMktReferenceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpPromotionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mktinfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMktInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource)).BeginInit();
@@ -353,7 +348,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lkpTypeContBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.fillToolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpPromotionsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -2228,6 +2222,17 @@
             this.pg3.TabIndex = 2;
             this.pg3.Text = "Telephone";
             // 
+            // lblMarketing
+            // 
+            this.lblMarketing.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblMarketing.AutoSize = true;
+            this.lblMarketing.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarketing.Location = new System.Drawing.Point(453, 393);
+            this.lblMarketing.Name = "lblMarketing";
+            this.lblMarketing.Size = new System.Drawing.Size(189, 24);
+            this.lblMarketing.TabIndex = 5;
+            this.lblMarketing.Text = "Marketing Information";
+            // 
             // mktinfoDataGridView
             // 
             this.mktinfoDataGridView.AutoGenerateColumns = false;
@@ -2254,10 +2259,55 @@
             this.mktinfoDataGridView.Size = new System.Drawing.Size(1117, 156);
             this.mktinfoDataGridView.TabIndex = 4;
             // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "refered";
+            this.dataGridViewTextBoxColumn15.DataSource = this.lkpMktReferenceBindingSource;
+            this.dataGridViewTextBoxColumn15.DisplayMember = "Name";
+            this.dataGridViewTextBoxColumn15.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.dataGridViewTextBoxColumn15.HeaderText = "Reference";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // lkpMktReferenceBindingSource
             // 
             this.lkpMktReferenceBindingSource.DataMember = "lkpMktReference";
             this.lkpMktReferenceBindingSource.DataSource = this.lookUp;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "promo";
+            this.dataGridViewTextBoxColumn14.DataSource = this.lkpPromotionsBindingSource;
+            this.dataGridViewTextBoxColumn14.DisplayMember = "Promo";
+            this.dataGridViewTextBoxColumn14.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.dataGridViewTextBoxColumn14.HeaderText = "Promotion Code";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // lkpPromotionsBindingSource
+            // 
+            this.lkpPromotionsBindingSource.DataMember = "lkpPromotions";
+            this.lkpPromotionsBindingSource.DataSource = this.lookUp;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ddate";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "initial";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Intials";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "note";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Notes";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             // 
             // mktinfoBindingSource
             // 
@@ -2451,7 +2501,6 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.custSearchTableAdapter = null;
             this.tableAdapterManager.custTableAdapter = null;
-            this.tableAdapterManager.datecontTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // button1
@@ -2485,29 +2534,8 @@
             // tableAdapterManager1
             // 
             this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.contpstnTableAdapter = null;
-            this.tableAdapterManager1.lkpCommentsTableAdapter = null;
-            this.tableAdapterManager1.lkpMktReferenceTableAdapter = null;
-            this.tableAdapterManager1.lkpPromotionsTableAdapter = null;
-            this.tableAdapterManager1.lkpTypeContTableAdapter = null;
             this.tableAdapterManager1.statesTableAdapter = this.statesTableAdapter;
             this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // contpstnTableAdapter
-            // 
-            this.contpstnTableAdapter.ClearBeforeFill = true;
-            // 
-            // datecontTableAdapter
-            // 
-            this.datecontTableAdapter.ClearBeforeFill = true;
-            // 
-            // lkpTypeContTableAdapter
-            // 
-            this.lkpTypeContTableAdapter.ClearBeforeFill = true;
-            // 
-            // lkpCommentsTableAdapter
-            // 
-            this.lkpCommentsTableAdapter.ClearBeforeFill = true;
             // 
             // mktinfoTableAdapter
             // 
@@ -2550,70 +2578,6 @@
             this.fillToolStripButton.Text = "Fill";
             this.fillToolStripButton.Click += new System.EventHandler(this.fillToolStripButton_Click);
             // 
-            // lkpMktReferenceTableAdapter
-            // 
-            this.lkpMktReferenceTableAdapter.ClearBeforeFill = true;
-            // 
-            // lkpPromotionsBindingSource
-            // 
-            this.lkpPromotionsBindingSource.DataMember = "lkpPromotions";
-            this.lkpPromotionsBindingSource.DataSource = this.lookUp;
-            // 
-            // lkpPromotionsTableAdapter
-            // 
-            this.lkpPromotionsTableAdapter.ClearBeforeFill = true;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "refered";
-            this.dataGridViewTextBoxColumn15.DataSource = this.lkpMktReferenceBindingSource;
-            this.dataGridViewTextBoxColumn15.DisplayMember = "Name";
-            this.dataGridViewTextBoxColumn15.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.dataGridViewTextBoxColumn15.HeaderText = "Reference";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "promo";
-            this.dataGridViewTextBoxColumn14.DataSource = this.lkpPromotionsBindingSource;
-            this.dataGridViewTextBoxColumn14.DisplayMember = "Promo";
-            this.dataGridViewTextBoxColumn14.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.dataGridViewTextBoxColumn14.HeaderText = "Promotion Code";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ddate";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "initial";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Intials";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "note";
-            this.dataGridViewTextBoxColumn13.HeaderText = "Notes";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // lblMarketing
-            // 
-            this.lblMarketing.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblMarketing.AutoSize = true;
-            this.lblMarketing.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarketing.Location = new System.Drawing.Point(453, 393);
-            this.lblMarketing.Name = "lblMarketing";
-            this.lblMarketing.Size = new System.Drawing.Size(189, 24);
-            this.lblMarketing.TabIndex = 5;
-            this.lblMarketing.Text = "Marketing Information";
-            // 
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2652,6 +2616,7 @@
             this.pg3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mktinfoDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpMktReferenceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpPromotionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mktinfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMktInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource)).EndInit();
@@ -2661,7 +2626,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.fillToolStrip.ResumeLayout(false);
             this.fillToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpPromotionsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2730,7 +2694,6 @@
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.BindingSource contpstnBindingSource;
-        private DataSets.LookUpTableAdapters.contpstnTableAdapter contpstnTableAdapter;
         private System.Windows.Forms.BindingSource contpstnBindingSource1;
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.TextBox txtSchColors;
@@ -2795,10 +2758,8 @@
         private System.Windows.Forms.TabPage pg3;
         private System.Windows.Forms.Label lblTeleSchname;
         private System.Windows.Forms.BindingSource datecontBindingSource;
-        private DataSets.dsCustTableAdapters.datecontTableAdapter datecontTableAdapter;
         private System.Windows.Forms.DataGridView datecontDataGridView;
         private System.Windows.Forms.BindingSource lkpTypeContBindingSource;
-        private DataSets.LookUpTableAdapters.lkpTypeContTableAdapter lkpTypeContTableAdapter;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn10;
@@ -2811,7 +2772,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.BindingSource lkpCommentsBindingSource;
-        private DataSets.LookUpTableAdapters.lkpCommentsTableAdapter lkpCommentsTableAdapter;
         private System.Windows.Forms.TextBox txtReason;
         private System.Windows.Forms.ListBox commentListBox;
         private System.Windows.Forms.ToolStrip fillToolStrip;
@@ -2824,9 +2784,7 @@
         private DataSets.dsMktInfoTableAdapters.TableAdapterManager tableAdapterManager2;
         private System.Windows.Forms.DataGridView mktinfoDataGridView;
         private System.Windows.Forms.BindingSource lkpMktReferenceBindingSource;
-        private DataSets.LookUpTableAdapters.lkpMktReferenceTableAdapter lkpMktReferenceTableAdapter;
         private System.Windows.Forms.BindingSource lkpPromotionsBindingSource;
-        private DataSets.LookUpTableAdapters.lkpPromotionsTableAdapter lkpPromotionsTableAdapter;
         private System.Windows.Forms.Label lblMarketing;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn14;

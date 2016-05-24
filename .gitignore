@@ -45,3 +45,9 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+.vs/MemoryBook/v14/.suo
+BaseClass/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.cache
+Mbc5/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+.vs/MemoryBook/v14/.suo

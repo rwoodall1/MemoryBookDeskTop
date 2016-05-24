@@ -135,6 +135,12 @@
     <Compile Include="Forms\frmMbcCust.Designer.cs">
       <DependentUpon>frmMbcCust.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmMerCust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMerCust.Designer.cs">
+      <DependentUpon>frmMerCust.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMbcCust.resx">
       <DependentUpon>frmMbcCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMerCust.resx">
+      <DependentUpon>frmMerCust.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>

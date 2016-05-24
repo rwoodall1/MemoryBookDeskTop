@@ -37,7 +37,7 @@
             this.bidsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onlineFormsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.meridianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MerToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bidsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.onlineFormsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -110,32 +110,32 @@
             // customerToolStripMenuItem
             // 
             this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
-            this.customerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.customerToolStripMenuItem.Text = "&Customer";
             this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
             // 
             // salesToolStripMenuItem
             // 
             this.salesToolStripMenuItem.Name = "salesToolStripMenuItem";
-            this.salesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.salesToolStripMenuItem.Text = "&Sales";
             // 
             // bidsToolStripMenuItem
             // 
             this.bidsToolStripMenuItem.Name = "bidsToolStripMenuItem";
-            this.bidsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bidsToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.bidsToolStripMenuItem.Text = "&Bids";
             // 
             // onlineFormsToolStripMenuItem
             // 
             this.onlineFormsToolStripMenuItem.Name = "onlineFormsToolStripMenuItem";
-            this.onlineFormsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.onlineFormsToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.onlineFormsToolStripMenuItem.Text = "Online Forms";
             // 
             // meridianToolStripMenuItem
             // 
             this.meridianToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customerToolStripMenuItem1,
+            this.MerToolStrip,
             this.salesToolStripMenuItem1,
             this.bidsToolStripMenuItem1,
             this.onlineFormsToolStripMenuItem1});
@@ -143,28 +143,29 @@
             this.meridianToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
             // 
-            // customerToolStripMenuItem1
+            // MerToolStrip
             // 
-            this.customerToolStripMenuItem1.Name = "customerToolStripMenuItem1";
-            this.customerToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
-            this.customerToolStripMenuItem1.Text = "&Customer";
+            this.MerToolStrip.Name = "MerToolStrip";
+            this.MerToolStrip.Size = new System.Drawing.Size(152, 22);
+            this.MerToolStrip.Text = "&Customer";
+            this.MerToolStrip.Click += new System.EventHandler(this.MerToolStrip_Click);
             // 
             // salesToolStripMenuItem1
             // 
             this.salesToolStripMenuItem1.Name = "salesToolStripMenuItem1";
-            this.salesToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
+            this.salesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.salesToolStripMenuItem1.Text = "&Sales";
             // 
             // bidsToolStripMenuItem1
             // 
             this.bidsToolStripMenuItem1.Name = "bidsToolStripMenuItem1";
-            this.bidsToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
+            this.bidsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.bidsToolStripMenuItem1.Text = "&Bids";
             // 
             // onlineFormsToolStripMenuItem1
             // 
             this.onlineFormsToolStripMenuItem1.Name = "onlineFormsToolStripMenuItem1";
-            this.onlineFormsToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
+            this.onlineFormsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.onlineFormsToolStripMenuItem1.Text = "Online Forms";
             // 
             // productionToolStripMenuItem
@@ -370,7 +371,7 @@
         private System.Windows.Forms.ToolStripMenuItem bidsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem onlineFormsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem meridianToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem customerToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem MerToolStrip;
         private System.Windows.Forms.ToolStripMenuItem salesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bidsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem onlineFormsToolStripMenuItem1;
