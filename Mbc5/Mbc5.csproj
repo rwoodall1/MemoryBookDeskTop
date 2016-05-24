@@ -73,6 +73,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCust.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsDateCont.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDateCont.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsMktInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMktInfo.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsRoles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,6 +97,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LookUp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmAddressList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmAddressList.Designer.cs">
+      <DependentUpon>frmAddressList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmChangePassword.cs">
       <SubType>Form</SubType>
@@ -124,6 +140,12 @@
     <Compile Include="Forms\frmMbcCust.Designer.cs">
       <DependentUpon>frmMbcCust.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmMerCust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMerCust.Designer.cs">
+      <DependentUpon>frmMerCust.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,7 +154,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Content\MAIL.png" />
     <Content Include="NOTES TODO.txt" />
+    <EmbeddedResource Include="Dialogs\frmAddressList.resx">
+      <DependentUpon>frmAddressList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMbcCust.resx">
       <DependentUpon>frmMbcCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMerCust.resx">
+      <DependentUpon>frmMerCust.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
@@ -180,6 +209,28 @@
     </None>
     <None Include="DataSets\dsCust.xss">
       <DependentUpon>dsCust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsDateCont.xsc">
+      <DependentUpon>dsDateCont.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsDateCont.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDateCont.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsDateCont.xss">
+      <DependentUpon>dsDateCont.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMktInfo.xsc">
+      <DependentUpon>dsMktInfo.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMktInfo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMktInfo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsMktInfo.xss">
+      <DependentUpon>dsMktInfo.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsRoles.xsc">
       <DependentUpon>dsRoles.xsd</DependentUpon>
@@ -220,7 +271,9 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -237,7 +290,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

@@ -1,48 +1,5 @@
-F:\InetPub\wwwroot\GitHub\MemoryBook\Mbc5\bin\Debug\Mbc5.exe.config
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\bin\Debug\Mbc5.exe.config
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\obj\Debug\Mbc5.exe
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\obj\Debug\Mbc5.pdb
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\bin\Debug\NLog.config
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\bin\Debug\Mbc5.exe
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\bin\Debug\Mbc5.pdb
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\bin\Debug\BaseClass.dll
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\bin\Debug\MySql.Data.dll
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\bin\Debug\NLog.dll
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\bin\Debug\BaseClass.pdb
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\bin\Debug\NLog.xml
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\obj\Debug\Mbc5.csprojResolveAssemblyReference.cache
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\obj\Debug\Mbc5.Forms.frmChangePassword.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\obj\Debug\Mbc5.Forms.frmFogotPassword.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\obj\Debug\Mbc5.Forms.frmLogin.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\obj\Debug\Mbc5.Forms.frmMain.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\obj\Debug\Mbc5.Forms.frmMbcCust.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\obj\Debug\Mbc5.Forms.frmUser.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\obj\Debug\Mbc5.Properties.Resources.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\New folder\MemoryBookDeskTop-master\MemoryBookDeskTop-master\Mbc5\obj\Debug\Mbc5.csproj.GenerateResource.Cache
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.config
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe.config
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.pdb
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\BaseClass.dll
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\MySql.Data.dll
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.dll
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\BaseClass.pdb
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.xml
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csprojResolveAssemblyReference.cache
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmChangePassword.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmFogotPassword.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmLogin.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmMain.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmUser.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Properties.Resources.resources
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.GenerateResource.Cache
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.exe
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb
-F:\InetPub\wwwroot\GitHub\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmMbcCust.resources
-F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe.config
-F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.exe
-F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.config
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe.config
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.pdb
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\BaseClass.dll
@@ -51,12 +8,16 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.dll
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\BaseClass.pdb
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.xml
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csprojResolveAssemblyReference.cache
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmAddressList.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmChangePassword.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmEmail.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmFogotPassword.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmLogin.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmMain.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmMbcCust.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmMerCust.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmUser.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Properties.Resources.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.GenerateResource.Cache
-F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmEmail.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.exe
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb

@@ -985,7 +985,7 @@ namespace Mbc5.DataSets.dsUserTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [mbcUsers] ([id], [UserName], [PassWord], [roldid], [EmailAddress], [FirstName], [LastName], [ChangePassword]) VALUES (@id, @UserName, @PassWord, @roldid, @EmailAddress, @FirstName, @LastName, @ChangePassword);
-SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, ChangePassword FROM mbcUsers WHERE (id = @id)";
+SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, ChangePassword FROM mbcUsers WHERE (id = @id) ORDER BY LastName";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -998,7 +998,7 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [mbcUsers] SET [id] = @id, [UserName] = @UserName, [PassWord] = @PassWord, [roldid] = @roldid, [EmailAddress] = @EmailAddress, [FirstName] = @FirstName, [LastName] = @LastName, [ChangePassword] = @ChangePassword WHERE (([id] = @Original_id) AND ([UserName] = @Original_UserName) AND ([PassWord] = @Original_PassWord) AND ((@IsNull_roldid = 1 AND [roldid] IS NULL) OR ([roldid] = @Original_roldid)) AND ((@IsNull_EmailAddress = 1 AND [EmailAddress] IS NULL) OR ([EmailAddress] = @Original_EmailAddress)) AND ((@IsNull_FirstName = 1 AND [FirstName] IS NULL) OR ([FirstName] = @Original_FirstName)) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_ChangePassword = 1 AND [ChangePassword] IS NULL) OR ([ChangePassword] = @Original_ChangePassword)));
-SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, ChangePassword FROM mbcUsers WHERE (id = @id)";
+SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, ChangePassword FROM mbcUsers WHERE (id = @id) ORDER BY LastName";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1036,7 +1036,8 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        mbcUsers.*\r\nFROM            mbcUsers";
+            this._commandCollection[0].CommandText = "SELECT        id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, " +
+                "ChangePassword\r\nFROM            mbcUsers\r\nORDER BY LastName";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
