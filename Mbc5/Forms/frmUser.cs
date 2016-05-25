@@ -125,12 +125,14 @@ namespace Mbc5.Forms
 
         private void frmUser_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dsUser.mbcUsers' table. You can move, or remove it, as needed.
+            this.mbcUsersTableAdapter.Fill(this.dsUser.mbcUsers);
             // TODO: This line of code loads data into the 'dsRoles.roles' table. You can move, or remove it, as needed.
             this.rolesTableAdapter.Fill(this.dsRoles.roles);
-
-            rolesTableAdapter.Fill(dsRoles.roles);//table adapter calls clear first
-            dsUser.Clear();
-            daUser.Fill(dsUser);
+        
+         
+           
+          
           
         }
 
@@ -157,17 +159,18 @@ namespace Mbc5.Forms
                 {
                     string viD = Guid.NewGuid().ToString();
                     string pwd =RandomPasswordGenerator.Generate();//tmp password
-                    daUser.InsertCommand.Parameters.RemoveAt("@id");
-                    daUser.InsertCommand.Parameters.AddWithValue("@id", viD);
-                    daUser.InsertCommand.Parameters.RemoveAt("@PassWord");
-                    daUser.InsertCommand.Parameters.AddWithValue("@PassWord", pwd);
-                    daUser.InsertCommand.Parameters.RemoveAt("@ChangePasword");
-                    daUser.InsertCommand.Parameters.AddWithValue("@ChangePassword", true);
-                    daUser.Update(dsUser);
+                 
+                    //daUser.InsertCommand.Parameters.RemoveAt("@id");
+                    //daUser.InsertCommand.Parameters.AddWithValue("@id", viD);
+                    //daUser.InsertCommand.Parameters.RemoveAt("@PassWord");
+                    //daUser.InsertCommand.Parameters.AddWithValue("@PassWord", pwd);
+                    //daUser.InsertCommand.Parameters.RemoveAt("@ChangePasword");
+                    //daUser.InsertCommand.Parameters.AddWithValue("@ChangePassword", true);
+                    mbcUsersTableAdapter.Insert(viD,txtUserName.Text,pwd,cmbRole.SelectedValue.ToString(),txtEmail.Text,txtFirstName.Text,txtLastName.Text,true);
                     SendPassword(pwd);
                     NewUser =false;
                 }
-                else { daUser.Update(dsUser); }
+                else { mbcUsersTableAdapter.Update(dsUser); }
                 NewUser = false;
             }
             catch (DBConcurrencyException ex1)

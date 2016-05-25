@@ -33,10 +33,11 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.cmbRole = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.dsRoles = new Mbc5.DataSets.dsRoles();
             this.bsUser = new System.Windows.Forms.BindingSource(this.components);
             this.dsUser = new Mbc5.DataSets.dsUser();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtUserName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.sqlTS1 = new System.Data.SqlClient.SqlConnection();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -59,27 +59,22 @@
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.sqlSelectCommand1 = new System.Data.SqlClient.SqlCommand();
-            this.sqlInsertCommand1 = new System.Data.SqlClient.SqlCommand();
-            this.sqlUpdateCommand1 = new System.Data.SqlClient.SqlCommand();
-            this.sqlDeleteCommand1 = new System.Data.SqlClient.SqlCommand();
-            this.daUser = new System.Data.SqlClient.SqlDataAdapter();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dsRoles = new Mbc5.DataSets.dsRoles();
             this.rolesTableAdapter = new Mbc5.DataSets.dsRolesTableAdapters.rolesTableAdapter();
+            this.mbcUsersTableAdapter = new Mbc5.DataSets.dsUserTableAdapters.mbcUsersTableAdapter();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnUser)).BeginInit();
             this.bnUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Size = new System.Drawing.Size(591, 10);
+            this.panel1.Size = new System.Drawing.Size(665, 10);
             this.panel1.Visible = false;
             // 
             // panel2
@@ -91,8 +86,8 @@
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.btnEdit);
             this.panel2.Controls.Add(this.btnAdd);
-            this.panel2.Location = new System.Drawing.Point(378, 10);
-            this.panel2.Size = new System.Drawing.Size(213, 225);
+            this.panel2.Location = new System.Drawing.Point(452, 10);
+            this.panel2.Size = new System.Drawing.Size(213, 284);
             // 
             // btnSearch
             // 
@@ -114,8 +109,8 @@
             // 
             // cmbRole
             // 
-            this.cmbRole.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsUser, "roldid", true));
             this.cmbRole.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dsRoles, "roles.name", true));
+            this.cmbRole.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsUser, "roleid", true));
             this.cmbRole.DataSource = this.dsRoles;
             this.cmbRole.DisplayMember = "roles.name";
             this.cmbRole.Enabled = false;
@@ -125,6 +120,21 @@
             this.cmbRole.Size = new System.Drawing.Size(240, 21);
             this.cmbRole.TabIndex = 6;
             this.cmbRole.ValueMember = "roles.id";
+            // 
+            // dsRoles
+            // 
+            this.dsRoles.DataSetName = "dsRoles";
+            this.dsRoles.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bsUser
+            // 
+            this.bsUser.DataMember = "mbcUsers";
+            this.bsUser.DataSource = this.dsUser;
+            // 
+            // dsUser
+            // 
+            this.dsUser.DataSetName = "dsUser";
+            this.dsUser.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label6
             // 
@@ -143,16 +153,6 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(240, 20);
             this.txtUserName.TabIndex = 2;
-            // 
-            // bsUser
-            // 
-            this.bsUser.DataMember = "MbcUsers";
-            this.bsUser.DataSource = this.dsUser;
-            // 
-            // dsUser
-            // 
-            this.dsUser.DataSetName = "dsUser";
-            this.dsUser.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label5
             // 
@@ -227,12 +227,6 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // sqlTS1
-            // 
-            this.sqlTS1.ConnectionString = "Data Source=192.168.1.101;Initial Catalog=Mbc5;Persist Security Info=True;User ID" +
-    "=sa;Password=Briggitte1";
-            this.sqlTS1.FireInfoMessageEventOnUserErrors = false;
-            // 
             // btnEdit
             // 
             this.btnEdit.Location = new System.Drawing.Point(47, 42);
@@ -280,7 +274,7 @@
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2});
-            this.bnUser.Location = new System.Drawing.Point(0, 196);
+            this.bnUser.Location = new System.Drawing.Point(0, 255);
             this.bnUser.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bnUser.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bnUser.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -358,92 +352,23 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // sqlSelectCommand1
-            // 
-            this.sqlSelectCommand1.CommandText = "SELECT        id, UserName, roldid, EmailAddress, FirstName, LastName, PassWord\r\n" +
-    "FROM            MbcUsers";
-            this.sqlSelectCommand1.Connection = this.sqlTS1;
-            // 
-            // sqlInsertCommand1
-            // 
-            this.sqlInsertCommand1.CommandText = resources.GetString("sqlInsertCommand1.CommandText");
-            this.sqlInsertCommand1.Connection = this.sqlTS1;
-            this.sqlInsertCommand1.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
-            new System.Data.SqlClient.SqlParameter("@id", System.Data.SqlDbType.NVarChar, 128, "id"),
-            new System.Data.SqlClient.SqlParameter("@UserName", System.Data.SqlDbType.NVarChar, 50, "UserName"),
-            new System.Data.SqlClient.SqlParameter("@PassWord", System.Data.SqlDbType.NVarChar, 50, "PassWord"),
-            new System.Data.SqlClient.SqlParameter("@roldid", System.Data.SqlDbType.NVarChar, 128, "roldid"),
-            new System.Data.SqlClient.SqlParameter("@EmailAddress", System.Data.SqlDbType.NChar, 45, "EmailAddress"),
-            new System.Data.SqlClient.SqlParameter("@FirstName", System.Data.SqlDbType.NChar, 45, "FirstName"),
-            new System.Data.SqlClient.SqlParameter("@LastName", System.Data.SqlDbType.NChar, 45, "LastName")});
-            // 
-            // sqlUpdateCommand1
-            // 
-            this.sqlUpdateCommand1.CommandText = resources.GetString("sqlUpdateCommand1.CommandText");
-            this.sqlUpdateCommand1.Connection = this.sqlTS1;
-            this.sqlUpdateCommand1.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
-            new System.Data.SqlClient.SqlParameter("@id", System.Data.SqlDbType.NVarChar, 0, "id"),
-            new System.Data.SqlClient.SqlParameter("@UserName", System.Data.SqlDbType.NVarChar, 0, "UserName"),
-            new System.Data.SqlClient.SqlParameter("@PassWord", System.Data.SqlDbType.NVarChar, 0, "PassWord"),
-            new System.Data.SqlClient.SqlParameter("@roldid", System.Data.SqlDbType.NVarChar, 0, "roldid"),
-            new System.Data.SqlClient.SqlParameter("@EmailAddress", System.Data.SqlDbType.NChar, 0, "EmailAddress"),
-            new System.Data.SqlClient.SqlParameter("@FirstName", System.Data.SqlDbType.NChar, 0, "FirstName"),
-            new System.Data.SqlClient.SqlParameter("@LastName", System.Data.SqlDbType.NChar, 0, "LastName"),
-            new System.Data.SqlClient.SqlParameter("@Original_id", System.Data.SqlDbType.NVarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "id", System.Data.DataRowVersion.Original, null),
-            new System.Data.SqlClient.SqlParameter("@IsNull_EmailAddress", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EmailAddress", System.Data.DataRowVersion.Original, true, null, "", "", ""),
-            new System.Data.SqlClient.SqlParameter("@Original_EmailAddress", System.Data.SqlDbType.NChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "EmailAddress", System.Data.DataRowVersion.Original, null),
-            new System.Data.SqlClient.SqlParameter("@IsNull_FirstName", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", System.Data.DataRowVersion.Original, true, null, "", "", ""),
-            new System.Data.SqlClient.SqlParameter("@Original_FirstName", System.Data.SqlDbType.NChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "FirstName", System.Data.DataRowVersion.Original, null),
-            new System.Data.SqlClient.SqlParameter("@IsNull_LastName", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", System.Data.DataRowVersion.Original, true, null, "", "", ""),
-            new System.Data.SqlClient.SqlParameter("@Original_LastName", System.Data.SqlDbType.NChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "LastName", System.Data.DataRowVersion.Original, null)});
-            // 
-            // sqlDeleteCommand1
-            // 
-            this.sqlDeleteCommand1.CommandText = resources.GetString("sqlDeleteCommand1.CommandText");
-            this.sqlDeleteCommand1.Connection = this.sqlTS1;
-            this.sqlDeleteCommand1.Parameters.AddRange(new System.Data.SqlClient.SqlParameter[] {
-            new System.Data.SqlClient.SqlParameter("@Original_id", System.Data.SqlDbType.NVarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "id", System.Data.DataRowVersion.Original, null),
-            new System.Data.SqlClient.SqlParameter("@IsNull_EmailAddress", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EmailAddress", System.Data.DataRowVersion.Original, true, null, "", "", ""),
-            new System.Data.SqlClient.SqlParameter("@Original_EmailAddress", System.Data.SqlDbType.NChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "EmailAddress", System.Data.DataRowVersion.Original, null),
-            new System.Data.SqlClient.SqlParameter("@IsNull_FirstName", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", System.Data.DataRowVersion.Original, true, null, "", "", ""),
-            new System.Data.SqlClient.SqlParameter("@Original_FirstName", System.Data.SqlDbType.NChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "FirstName", System.Data.DataRowVersion.Original, null),
-            new System.Data.SqlClient.SqlParameter("@IsNull_LastName", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", System.Data.DataRowVersion.Original, true, null, "", "", ""),
-            new System.Data.SqlClient.SqlParameter("@Original_LastName", System.Data.SqlDbType.NChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "LastName", System.Data.DataRowVersion.Original, null)});
-            // 
-            // daUser
-            // 
-            this.daUser.DeleteCommand = this.sqlDeleteCommand1;
-            this.daUser.InsertCommand = this.sqlInsertCommand1;
-            this.daUser.SelectCommand = this.sqlSelectCommand1;
-            this.daUser.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
-            new System.Data.Common.DataTableMapping("Table", "MbcUsers", new System.Data.Common.DataColumnMapping[] {
-                        new System.Data.Common.DataColumnMapping("id", "id"),
-                        new System.Data.Common.DataColumnMapping("UserName", "UserName"),
-                        new System.Data.Common.DataColumnMapping("PassWord", "PassWord"),
-                        new System.Data.Common.DataColumnMapping("roldid", "roldid"),
-                        new System.Data.Common.DataColumnMapping("EmailAddress", "EmailAddress"),
-                        new System.Data.Common.DataColumnMapping("FirstName", "FirstName"),
-                        new System.Data.Common.DataColumnMapping("LastName", "LastName")})});
-            this.daUser.UpdateCommand = this.sqlUpdateCommand1;
-            // 
             // errorProvider
             // 
             this.errorProvider.BlinkRate = 500;
             this.errorProvider.ContainerControl = this;
             // 
-            // dsRoles
-            // 
-            this.dsRoles.DataSetName = "dsRoles";
-            this.dsRoles.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // rolesTableAdapter
             // 
             this.rolesTableAdapter.ClearBeforeFill = true;
             // 
+            // mbcUsersTableAdapter
+            // 
+            this.mbcUsersTableAdapter.ClearBeforeFill = true;
+            // 
             // frmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(591, 235);
+            this.ClientSize = new System.Drawing.Size(665, 294);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.cmbRole);
@@ -476,13 +401,13 @@
             this.Controls.SetChildIndex(this.panel2, 0);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnUser)).EndInit();
             this.bnUser.ResumeLayout(false);
             this.bnUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -503,8 +428,6 @@
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAdd;
-        private System.Data.SqlClient.SqlConnection sqlTS1;
-        private System.Windows.Forms.BindingSource bsUser;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnEdit;
@@ -518,14 +441,11 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private DataSets.dsUser dsUser;
-        private System.Data.SqlClient.SqlCommand sqlSelectCommand1;
-        private System.Data.SqlClient.SqlCommand sqlInsertCommand1;
-        private System.Data.SqlClient.SqlCommand sqlUpdateCommand1;
-        private System.Data.SqlClient.SqlCommand sqlDeleteCommand1;
-        private System.Data.SqlClient.SqlDataAdapter daUser;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private DataSets.dsRoles dsRoles;
         private DataSets.dsRolesTableAdapters.rolesTableAdapter rolesTableAdapter;
-    }
+        private DataSets.dsUser dsUser;
+        private System.Windows.Forms.BindingSource bsUser;
+        private DataSets.dsUserTableAdapters.mbcUsersTableAdapter mbcUsersTableAdapter;
+        }
 }
