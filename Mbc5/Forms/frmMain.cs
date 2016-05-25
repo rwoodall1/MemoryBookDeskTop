@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Mbc5.Dialogs;
 using Mbc5.Forms.MemoryBook;
 using Mbc5.Forms.Meridian;
 using BaseClass.Classes;

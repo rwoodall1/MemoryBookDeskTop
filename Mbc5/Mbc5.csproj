@@ -146,10 +146,10 @@
     <Compile Include="Forms\frmFogotPassword.Designer.cs">
       <DependentUpon>frmFogotPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLogin.cs">
+    <Compile Include="Dialogs\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLogin.Designer.cs">
+    <Compile Include="Dialogs\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmMain.cs">
@@ -204,7 +204,7 @@
     <EmbeddedResource Include="Forms\frmFogotPassword.resx">
       <DependentUpon>frmFogotPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.resx">
+    <EmbeddedResource Include="Dialogs\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">

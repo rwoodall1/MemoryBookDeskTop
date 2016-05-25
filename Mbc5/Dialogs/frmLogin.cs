@@ -12,8 +12,9 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Security.Principal;
 using BaseClass.Classes;
+using Mbc5.Forms;
 using BaseClass;
-namespace Mbc5.Forms {
+namespace Mbc5.Dialogs {
     public partial class frmLogin : Form
     {
         public int NumTry { get; set; } = 0;

@@ -4,3 +4,4 @@
 2016/05/24 15:38:52.619 Failed to Insert telephone log:Cannot insert the value NULL into column 'contact', table 'Mbc5.dbo.datecont'; column does not allow nulls. INSERT fails.
 The statement has been terminated. RWCOMPUTER  RWCOMPUTER\randy    
 2016/05/24 17:06:59.936 Failed to update telephone log:Incorrect syntax near ')'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/05/24 21:59:32.604 Failed to update telephone log:Must declare the scalar variable "@typecontact". CHOME  WDFM\rwoodall    

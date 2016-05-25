@@ -48,8 +48,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
             this.statesTableAdapter.Fill(this.lookUp.states);
-      
 
+         
 
 
         }
@@ -505,7 +505,7 @@ namespace Mbc5.Forms.MemoryBook {
             DataTable EditedRecs = dsCust.datecont.GetChanges();
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
-            string sql = "INSERT INTO DateCont (Id,reason,contact,typecont,nxtdate,callcont,calltime,priority,techcall,) VALUES(@Id,@datecont,@datecont,@reason,@contact,@typecont,@nxtdate,@calcont,@calltime,@priority,@techcall);";
+            string sql = "UPDATE DateCont Set Id=@Id,reason=@reason,contact=@contact,typecont=@typecont, nxtdate=@nxtdate,callcont=@callcont, calltime=@calltime,priority=@priority,techcall=@techcall where id=@id ;";
             SqlCommand cmd = new SqlCommand(sql,conn);
             foreach (DataRow row in EditedRecs.Rows)
                 {

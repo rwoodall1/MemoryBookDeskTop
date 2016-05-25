@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Mbc5.Dialogs;
 using BaseClass.Classes;
 using NLog;
 using System.Data.SqlClient;

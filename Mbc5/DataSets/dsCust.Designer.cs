@@ -371,8 +371,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnschcode;
             
-            private global::System.Data.DataColumn columnschname;
-            
             private global::System.Data.DataColumn columncontryear;
             
             private global::System.Data.DataColumn columnenrollment;
@@ -607,6 +605,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnTimeStamp;
             
+            private global::System.Data.DataColumn columnschname;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public custDataTable() {
@@ -725,14 +725,6 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn schcodeColumn {
                 get {
                     return this.columnschcode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn schnameColumn {
-                get {
-                    return this.columnschname;
                 }
             }
             
@@ -1674,6 +1666,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn schnameColumn {
+                get {
+                    return this.columnschname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1721,7 +1721,6 @@ namespace Mbc5.DataSets {
                         System.DateTime rebookdte, 
                         string refby, 
                         string schcode, 
-                        string schname, 
                         string contryear, 
                         decimal enrollment, 
                         string grades, 
@@ -1838,7 +1837,8 @@ namespace Mbc5.DataSets {
                         System.DateTime dedayin, 
                         System.DateTime dedayout, 
                         System.DateTime kitrecvd, 
-                        byte[] TimeStamp) {
+                        byte[] TimeStamp, 
+                        string schname) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cstatus,
@@ -1852,7 +1852,6 @@ namespace Mbc5.DataSets {
                         rebookdte,
                         refby,
                         schcode,
-                        schname,
                         contryear,
                         enrollment,
                         grades,
@@ -1969,7 +1968,8 @@ namespace Mbc5.DataSets {
                         dedayin,
                         dedayout,
                         kitrecvd,
-                        TimeStamp};
+                        TimeStamp,
+                        schname};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -2010,7 +2010,6 @@ namespace Mbc5.DataSets {
                 this.columnrebookdte = base.Columns["rebookdte"];
                 this.columnrefby = base.Columns["refby"];
                 this.columnschcode = base.Columns["schcode"];
-                this.columnschname = base.Columns["schname"];
                 this.columncontryear = base.Columns["contryear"];
                 this.columnenrollment = base.Columns["enrollment"];
                 this.columngrades = base.Columns["grades"];
@@ -2128,6 +2127,7 @@ namespace Mbc5.DataSets {
                 this.columndedayout = base.Columns["dedayout"];
                 this.columnkitrecvd = base.Columns["kitrecvd"];
                 this.columnTimeStamp = base.Columns["TimeStamp"];
+                this.columnschname = base.Columns["schname"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2155,8 +2155,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnrefby);
                 this.columnschcode = new global::System.Data.DataColumn("schcode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschcode);
-                this.columnschname = new global::System.Data.DataColumn("schname", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnschname);
                 this.columncontryear = new global::System.Data.DataColumn("contryear", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncontryear);
                 this.columnenrollment = new global::System.Data.DataColumn("enrollment", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -2391,6 +2389,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnkitrecvd);
                 this.columnTimeStamp = new global::System.Data.DataColumn("TimeStamp", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTimeStamp);
+                this.columnschname = new global::System.Data.DataColumn("schname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschname);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columncstatus.MaxLength = 40;
@@ -2403,8 +2403,6 @@ namespace Mbc5.DataSets {
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.Unique = true;
                 this.columnschcode.MaxLength = 6;
-                this.columnschname.AllowDBNull = false;
-                this.columnschname.MaxLength = 34;
                 this.columngrades.MaxLength = 16;
                 this.columnsal.MaxLength = 25;
                 this.columnschaddr.AllowDBNull = false;
@@ -2496,6 +2494,8 @@ namespace Mbc5.DataSets {
                 this.columnQyear.MaxLength = 2;
                 this.columnprodno.MaxLength = 12;
                 this.columnTimeStamp.ReadOnly = true;
+                this.columnschname.ReadOnly = true;
+                this.columnschname.MaxLength = 34;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3619,17 +3619,6 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tablecust.schcodeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string schname {
-                get {
-                    return ((string)(this[this.tablecust.schnameColumn]));
-                }
-                set {
-                    this[this.tablecust.schnameColumn] = value;
                 }
             }
             
@@ -5487,6 +5476,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string schname {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.schnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schname\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.schnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IscstatusNull() {
                 return this.IsNull(this.tablecust.cstatusColumn);
             }
@@ -6960,6 +6965,18 @@ namespace Mbc5.DataSets {
             public void SetTimeStampNull() {
                 this[this.tablecust.TimeStampColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsschnameNull() {
+                return this.IsNull(this.tablecust.schnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetschnameNull() {
+                this[this.tablecust.schnameColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -7699,7 +7716,6 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             tableMapping.ColumnMappings.Add("rebookdte", "rebookdte");
             tableMapping.ColumnMappings.Add("refby", "refby");
             tableMapping.ColumnMappings.Add("schcode", "schcode");
-            tableMapping.ColumnMappings.Add("schname", "schname");
             tableMapping.ColumnMappings.Add("contryear", "contryear");
             tableMapping.ColumnMappings.Add("enrollment", "enrollment");
             tableMapping.ColumnMappings.Add("grades", "grades");
@@ -7817,6 +7833,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             tableMapping.ColumnMappings.Add("dedayout", "dedayout");
             tableMapping.ColumnMappings.Add("kitrecvd", "kitrecvd");
             tableMapping.ColumnMappings.Add("TimeStamp", "TimeStamp");
+            tableMapping.ColumnMappings.Add("schname", "schname");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -8368,36 +8385,36 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +
                 "ecsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookd" +
-                "te, cust.refby, cust.schcode, cust.schname, cust.contryear, \r\n                  " +
-                "       cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust" +
-                ".schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail," +
-                " cust.sprngbrk, cust.schout, cust.contmemo, cust.position, \r\n                   " +
-                "      cust.gender, cust.contfname, cust.contlname, cust.newfname, cust.newlname," +
-                " cust.yb_sth, cust.shiptocont, cust.contaddr, cust.contaddr2, cust.contcity, cus" +
-                "t.contstate, cust.contzip, cust.contphnhom, \r\n                         cust.cont" +
-                "phnwrk, cust.contfax, cust.contemail, cust.vcrsent, cust.sigfopf, cust.envflyer," +
-                " cust.marketing, cust.yearrnd, cust.clrpg_int, cust.shipmemo, cust.schclosed, cu" +
-                "st.inoffice, cust.digintrst, cust.svcode1, \r\n                         cust.svdes" +
-                "c1, cust.svcode2, cust.svdesc2, cust.spcinst, cust.lastcont, cust.nextcont, cust" +
-                ".csrep, cust.cstat, cust.xeldate, cust.allcolor, cust.rbinit, cust.rbdate, cust." +
-                "clspic, cust.magic, cust.extrchg, cust.sprinfo, \r\n                         cust." +
-                "fallinfo, cust.initcont, cust.highsp, cust.slownone, cust.pcmac, cust.junsno, cu" +
-                "st.jobno, cust.advpw, cust.stfpw, cust.bcontfname, cust.bcontlname, cust.bcontad" +
-                "dr, cust.bcontaddr2, cust.bcontcity, \r\n                         cust.bcontstate," +
-                " cust.bcontzip, cust.bcontphnhom, cust.bcontphnwrk, cust.bcontfax, cust.bcontema" +
-                "il, cust.multiyroptions, cust.multiyear, cust.schuploading, cust.website, cust.n" +
-                "omktemail, cust.nodirectmail, \r\n                         cust.bposition, cust.bl" +
-                "kwhite, cust.mbconlinepassword, cust.ccontfname, cust.ccontlname, cust.ccontaddr" +
-                ", cust.ccontaddr2, cust.ccontcity, cust.ccontstate, cust.ccontzip, cust.ccontphn" +
-                "hom, cust.ccontphnwork, \r\n                         cust.ccontfax, cust.ccontemai" +
-                "l, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.schcolors, cust.kee" +
-                "ppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust.leadname, quote" +
-                "s.booktype, \r\n                         quotes.contryear AS Qyear, quotes.invno, " +
-                "produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, cust.TimeSt" +
-                "amp\r\nFROM            cust LEFT OUTER JOIN\r\n                         quotes ON cu" +
-                "st.schcode = quotes.schcode LEFT OUTER JOIN\r\n                         produtn ON" +
-                " quotes.invno = produtn.invno\r\nWHERE        (cust.schcode = @schcode)\r\nORDER BY " +
-                "Qyear DESC";
+                "te, cust.refby, cust.schcode, RTRIM(cust.schname) AS schname, \r\n                " +
+                "         cust.contryear, cust.enrollment, cust.grades, cust.sal, cust.schaddr, c" +
+                "ust.schaddr2, cust.schcity, cust.schstate, cust.schzip, cust.schphone, cust.schf" +
+                "ax, cust.schemail, cust.sprngbrk, cust.schout, cust.contmemo, \r\n                " +
+                "         cust.position, cust.gender, cust.contfname, cust.contlname, cust.newfna" +
+                "me, cust.newlname, cust.yb_sth, cust.shiptocont, cust.contaddr, cust.contaddr2, " +
+                "cust.contcity, cust.contstate, cust.contzip, cust.contphnhom, \r\n                " +
+                "         cust.contphnwrk, cust.contfax, cust.contemail, cust.vcrsent, cust.sigfo" +
+                "pf, cust.envflyer, cust.marketing, cust.yearrnd, cust.clrpg_int, cust.shipmemo, " +
+                "cust.schclosed, cust.inoffice, cust.digintrst, cust.svcode1, \r\n                 " +
+                "        cust.svdesc1, cust.svcode2, cust.svdesc2, cust.spcinst, cust.lastcont, c" +
+                "ust.nextcont, cust.csrep, cust.cstat, cust.xeldate, cust.allcolor, cust.rbinit, " +
+                "cust.rbdate, cust.clspic, cust.magic, cust.extrchg, cust.sprinfo, \r\n            " +
+                "             cust.fallinfo, cust.initcont, cust.highsp, cust.slownone, cust.pcma" +
+                "c, cust.junsno, cust.jobno, cust.advpw, cust.stfpw, cust.bcontfname, cust.bcontl" +
+                "name, cust.bcontaddr, cust.bcontaddr2, cust.bcontcity, \r\n                       " +
+                "  cust.bcontstate, cust.bcontzip, cust.bcontphnhom, cust.bcontphnwrk, cust.bcont" +
+                "fax, cust.bcontemail, cust.multiyroptions, cust.multiyear, cust.schuploading, cu" +
+                "st.website, cust.nomktemail, cust.nodirectmail, \r\n                         cust." +
+                "bposition, cust.blkwhite, cust.mbconlinepassword, cust.ccontfname, cust.ccontlna" +
+                "me, cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, cust.ccontstate, cust.ccont" +
+                "zip, cust.ccontphnhom, cust.ccontphnwork, \r\n                         cust.ccontf" +
+                "ax, cust.ccontemail, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.s" +
+                "chcolors, cust.keeppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cu" +
+                "st.leadname, quotes.booktype, \r\n                         quotes.contryear AS Qye" +
+                "ar, quotes.invno, produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kit" +
+                "recvd, cust.TimeStamp\r\nFROM            cust LEFT OUTER JOIN\r\n                   " +
+                "      quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN\r\n                 " +
+                "        produtn ON quotes.invno = produtn.invno\r\nWHERE        (cust.schcode = @s" +
+                "chcode)\r\nORDER BY Qyear DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
