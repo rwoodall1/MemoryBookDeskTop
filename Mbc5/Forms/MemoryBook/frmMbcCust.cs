@@ -12,26 +12,48 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 
 namespace Mbc5.Forms.MemoryBook {
-    public partial class frmMbcCust : BaseClass.Forms.bTopBottom {
+    public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
+           private bool vMktGo = false;
+         
+          
         public frmMbcCust(UserPrincipal userPrincipal) : base(new string[] { "SA","Administrator","MbcCS" },userPrincipal) {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ApplicationUser = userPrincipal;
 
             }
+        public void InvokePropertyChanged(PropertyChangedEventArgs e) {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+                handler(this,e);
+            }
         private UserPrincipal ApplicationUser { get; set; }
+      public event PropertyChangedEventHandler PropertyChanged;
 
-        private bool MktGo { get; set; } = true;
+        public bool MktGo {
+            get { return vMktGo; }
+            set {                
+                    vMktGo = value;
+                    InvokePropertyChanged(new PropertyChangedEventArgs("MktGo"));
+                 }
+            }
         private bool MktLogAdded { get; set; } = false;
         private bool TeleGo { get; set; } = false;
         private bool TeleLogAdded { get; set; } = false;
+        
 
+      
         private void frmMbcCust_Load(object sender,EventArgs e) {
+
+             this.chkMktComplete.DataBindings.Add("Checked",this,"MktGo",false,DataSourceUpdateMode.OnPropertyChanged);//bind check box to property of form
             if (!ApplicationUser.Roles.Contains("MbcCS"))
                 {
                 TeleGo = true;
                 MktGo = true;
                 }
+           
+
+            
             // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
             this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
             // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
@@ -302,7 +324,6 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
-
         public override void Add() {
             dsCust.Clear();
             DataRowView newrow = (DataRowView)custBindingSource.AddNew();
@@ -367,55 +388,47 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
         private void SaveMktLog() {
-            if (!MktLogAdded)
-                {
-                MessageBox.Show("You have not added a marketing log to be saved.","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
-                return;
-                }
+            
             this.ValidateChildren();
             DataTable EditedRecs = dsMktInfo.mktinfo.GetChanges();
             if (EditedRecs != null)
                 {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
-                string sql = "UPDATE MktInfo Set Id=@Id,reason=@reason,contact=@contact,typecont=@typecont, nxtdate=@nxtdate,callcont=@callcont, calltime=@calltime,priority=@priority,techcall=@techcall where id=@id ;";
+                string sql = "UPDATE MktInfo Set note=@note,promo=@promo,refered=@refered where Id=@Id ;";
                 SqlCommand cmd = new SqlCommand(sql,conn);
                 foreach (DataRow row in EditedRecs.Rows)
                     {
                     cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@Id",row["id"]);
-                    cmd.Parameters.AddWithValue("@reason",row["reason"]);
-                    cmd.Parameters.AddWithValue("@contact",row["contact"]);
-                    cmd.Parameters.AddWithValue("@typecont",row["typecont"]);
-                    cmd.Parameters.AddWithValue("@nxtdate",row["nxtdate"]);
-                    cmd.Parameters.AddWithValue("@callcont",row["callcont"]);
-                    cmd.Parameters.AddWithValue("@calltime",row["calltime"]);
-                    cmd.Parameters.AddWithValue("@priority",row["priority"]);
-                    cmd.Parameters.AddWithValue("@techcall",row["techcall"]);
+                    cmd.Parameters.AddWithValue("@Id",row["Id"]);
+                    cmd.Parameters.AddWithValue("@note",row["note"]);
+                    cmd.Parameters.AddWithValue("@promo",row["promo"]);
+                    cmd.Parameters.AddWithValue("@refered",row["refered"]);
+                   
 
                     try
                         {
                         cmd.Connection.Open();
                         cmd.ExecuteNonQuery();
                         TeleLogAdded = false;
-                        TeleGo = true;
+                        MktGo = true;
+                        MktLogAdded = false;
                         }
                     catch (Exception ex)
                         {
                         MessageBox.Show("Failed to update marketing log record.");
                         Log.Error("Failed to update marketing log:" + ex.Message);
+                        }
                     finally { cmd.Connection.Close(); }
 
                     this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,txtSchCode.Text.Trim());
                     }
                 }
+            else
+                { MessageBox.Show("You do not have any records to be saved.","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop); }
             }
         private void SaveTeleLog() {
-            if (!TeleLogAdded)
-                {
-                MessageBox.Show("You have not added a telephone log to be saved.","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
-                return;
-                }
-                this.ValidateChildren();
+
+            this.ValidateChildren();
             DataTable EditedRecs = dsCust.datecont.GetChanges();
             if (EditedRecs != null)
                 {
@@ -453,7 +466,20 @@ namespace Mbc5.Forms.MemoryBook {
                     this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text);
                     }
                 }
+            else
+                {
+                
+                    MessageBox.Show("You do not have any records to be saved.","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                    
+                  
+                }
             }
+        private void DataRefresh() {
+            
+                this.custTableAdapter.Fill(this.dsCust.cust,txtSchCode.Text);
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,txtSchCode.Text.Trim());
+                this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text.Trim());
+                }
 
         #endregion
         private void button1_Click(object sender,EventArgs e) {
@@ -515,10 +541,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.Cursor = Cursors.Default;
             }
 
-        private void datecontDataGridView_DataError(object sender,DataGridViewDataErrorEventArgs e) {
-            //Leave Here;
-
-            }
+      
 
         private void commentListBox_DoubleClick(object sender,EventArgs e) {
             string val = commentListBox.GetItemText(commentListBox.SelectedItem);
@@ -563,7 +586,27 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void btnAddMarketLog_Click(object sender,EventArgs e) {
-            DataRowView newrow = (DataRowView)mktinfoBindingSource.AddNew();
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            string sql = "INSERT INTO MktInfo (ddate,initial,schcode) VALUES(@ddate,@initial,@schcode);";
+            SqlCommand cmd = new SqlCommand(sql,conn);
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@initial",ApplicationUser.FirstName.Substring(0,1) + ApplicationUser.LastName.Substring(0,1));
+            cmd.Parameters.AddWithValue("@ddate",DateTime.Now.ToString());
+            cmd.Parameters.AddWithValue("@schcode",lblSchcode.Text);
+            try
+                {
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                MktLogAdded = true;
+                }
+            catch (Exception ex)
+                {
+                MessageBox.Show("Failed to insert Marketing log record.");
+                Log.Error("Failed to Marketing log:" + ex.Message);
+                //go on we are not stopping the program for this
+                }
+            finally { cmd.Connection.Close(); }
+            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,txtSchCode.Text.Trim());
             }
 
         private void btnSaveTeleLog_Click(object sender,EventArgs e) {
@@ -592,6 +635,31 @@ namespace Mbc5.Forms.MemoryBook {
         private void btnSaveMktLog_Click(object sender,EventArgs e) {
             SaveMktLog();
             }
+
+        private void mktinfoDataGridView_DataError(object sender,DataGridViewDataErrorEventArgs e) {
+            //leave
+            }
+
+        private void datecontDataGridView_DataError(object sender,DataGridViewDataErrorEventArgs e) {
+            //Leave Here;
+
+            }
+
+        private void pg3_Leave(object sender,EventArgs e) {
+            //save if user leaves to another tab or form will not affect log check.
+            DataTable EditedRecs = dsMktInfo.mktinfo.GetChanges();
+            if (EditedRecs != null)
+                {
+                SaveMktLog();
+                }
+            DataTable EditedRecs1 = dsCust.datecont.GetChanges();
+            if (EditedRecs1 != null)
+                {
+                SaveTeleLog();
+                }
+                }
+
+
 
 
 

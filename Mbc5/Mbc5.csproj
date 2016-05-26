@@ -83,10 +83,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsProdutn.cs">
+      <DependentUpon>dsProdutn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsProdutn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsProdutn.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsRoles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsRoles.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsSales.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSales.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsUser.Designer.cs">
       <DependentUpon>dsUser.xsd</DependentUpon>
@@ -103,6 +116,12 @@
     </Compile>
     <Compile Include="Dialogs\frmAddressList.Designer.cs">
       <DependentUpon>frmAddressList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmProdutn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmProdutn.Designer.cs">
+      <DependentUpon>frmProdutn.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MemoryBook\frmSales.cs">
       <SubType>Form</SubType>
@@ -182,6 +201,9 @@
     <Content Include="NOTES TODO.txt" />
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">
       <DependentUpon>frmAddressList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmProdutn.resx">
+      <DependentUpon>frmProdutn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryBook\frmSales.resx">
       <DependentUpon>frmSales.cs</DependentUpon>
@@ -269,6 +291,17 @@
     <None Include="DataSets\dsMktInfo.xss">
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
     </None>
+    <None Include="DataSets\dsProdutn.xsc">
+      <DependentUpon>dsProdutn.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsProdutn.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsProdutn.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsProdutn.xss">
+      <DependentUpon>dsProdutn.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\dsRoles.xsc">
       <DependentUpon>dsRoles.xsd</DependentUpon>
     </None>
@@ -279,6 +312,17 @@
     </None>
     <None Include="DataSets\dsRoles.xss">
       <DependentUpon>dsRoles.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsSales.xsc">
+      <DependentUpon>dsSales.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsSales.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSales.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsSales.xss">
+      <DependentUpon>dsSales.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsUser.xsc">
       <DependentUpon>dsUser.xsd</DependentUpon>

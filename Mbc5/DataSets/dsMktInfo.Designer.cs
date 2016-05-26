@@ -297,6 +297,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columntimestamp_column;
             
+            private global::System.Data.DataColumn columnId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public mktinfoDataTable() {
@@ -404,6 +406,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -439,7 +449,7 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public mktinfoRow AddmktinfoRow(System.DateTime ddate, string initial, string note, string promo, string refered, string schcode, string company, int prospectid, byte[] timestamp_column) {
+            public mktinfoRow AddmktinfoRow(System.DateTime ddate, string initial, string note, string promo, string refered, string schcode, string company, int prospectid, byte[] timestamp_column, string Id) {
                 mktinfoRow rowmktinfoRow = ((mktinfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ddate,
@@ -450,10 +460,18 @@ namespace Mbc5.DataSets {
                         schcode,
                         company,
                         prospectid,
-                        timestamp_column};
+                        timestamp_column,
+                        Id};
                 rowmktinfoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmktinfoRow);
                 return rowmktinfoRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public mktinfoRow FindById(string Id) {
+                return ((mktinfoRow)(this.Rows.Find(new object[] {
+                            Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -482,6 +500,7 @@ namespace Mbc5.DataSets {
                 this.columncompany = base.Columns["company"];
                 this.columnprospectid = base.Columns["prospectid"];
                 this.columntimestamp_column = base.Columns["timestamp_column"];
+                this.columnId = base.Columns["Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -505,6 +524,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnprospectid);
                 this.columntimestamp_column = new global::System.Data.DataColumn("timestamp_column", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntimestamp_column);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
                 this.columninitial.MaxLength = 3;
                 this.columnnote.MaxLength = 2147483647;
                 this.columnpromo.MaxLength = 25;
@@ -512,6 +535,8 @@ namespace Mbc5.DataSets {
                 this.columnschcode.MaxLength = 6;
                 this.columncompany.MaxLength = 3;
                 this.columntimestamp_column.ReadOnly = true;
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -798,6 +823,17 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Id {
+                get {
+                    return ((string)(this[this.tablemktinfo.IdColumn]));
+                }
+                set {
+                    this[this.tablemktinfo.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsddateNull() {
                 return this.IsNull(this.tablemktinfo.ddateColumn);
             }
@@ -1073,12 +1109,13 @@ namespace Mbc5.DataSets.dsMktInfoTableAdapters {
             tableMapping.ColumnMappings.Add("company", "company");
             tableMapping.ColumnMappings.Add("prospectid", "prospectid");
             tableMapping.ColumnMappings.Add("timestamp_column", "timestamp_column");
+            tableMapping.ColumnMappings.Add("Id", "Id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[mktinfo] ([ddate], [initial], [note], [promo], [refered], [sch" +
-                "code], [company], [prospectid]) VALUES (@ddate, @initial, @note, @promo, @refere" +
-                "d, @schcode, @company, @prospectid)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [mktinfo] ([ddate], [initial], [note], [promo], [refered], [schcode]," +
+                " [company], [prospectid], [Id]) VALUES (@ddate, @initial, @note, @promo, @refere" +
+                "d, @schcode, @company, @prospectid, @Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ddate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ddate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@initial", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "initial", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1088,6 +1125,7 @@ namespace Mbc5.DataSets.dsMktInfoTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@company", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "company", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prospectid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prospectid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1104,8 +1142,8 @@ namespace Mbc5.DataSets.dsMktInfoTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        ddate, initial, note, promo, refered, schcode, company, prospectid," +
-                " timestamp_column\r\nFROM            mktinfo\r\nWHERE        (schcode = @Schcode)\r\nO" +
-                "RDER BY ddate";
+                " timestamp_column, Id\r\nFROM            mktinfo\r\nWHERE        (schcode = @Schcode" +
+                ")\r\nORDER BY ddate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -1179,7 +1217,7 @@ namespace Mbc5.DataSets.dsMktInfoTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<global::System.DateTime> ddate, string initial, string note, string promo, string refered, string schcode, string company, global::System.Nullable<int> prospectid) {
+        public virtual int Insert(global::System.Nullable<global::System.DateTime> ddate, string initial, string note, string promo, string refered, string schcode, string company, global::System.Nullable<int> prospectid, string Id) {
             if ((ddate.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(ddate.Value));
             }
@@ -1227,6 +1265,12 @@ namespace Mbc5.DataSets.dsMktInfoTableAdapters {
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((Id == null)) {
+                throw new global::System.ArgumentNullException("Id");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(Id));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 

@@ -18,7 +18,24 @@ namespace Mbc5.Forms.MemoryBook {
             this.ApplicationUser = userPrincipal;
             }
            private UserPrincipal ApplicationUser { get; set; }
-        
 
+        private void quotesBindingNavigatorSaveItem_Click(object sender,EventArgs e) {
+            this.Validate();
+            this.quotesBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dsSales);
+
+            }
+
+        private void fillToolStripButton_Click(object sender,EventArgs e) {
+            try
+                {
+                this.quotesTableAdapter.Fill(this.dsSales.quotes,schcodeToolStripTextBox.Text);
+                }
+            catch (System.Exception ex)
+                {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+
+            }
         }
     }
