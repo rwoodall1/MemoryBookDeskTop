@@ -25,49 +25,170 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
+            System.Windows.Forms.Label nopagesLabel;
+            System.Windows.Forms.Label contryearLabel;
+            System.Windows.Forms.Label bpyearLabel;
+            System.Windows.Forms.Label ponumLabel;
+            System.Windows.Forms.Label qtedateLabel;
+            System.Windows.Forms.Label nocopiesLabel;
+            System.Windows.Forms.Label booktypeLabel;
+            System.Windows.Forms.Label sourceLabel;
+            System.Windows.Forms.Label book_eaLabel;
+            System.Windows.Forms.Label book_priceLabel;
+            System.Windows.Forms.Label prcorLabel;
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
-            this.pg2 = new System.Windows.Forms.TabPage();
-            this.dsSales = new Mbc5.DataSets.dsSales();
+            this.lblPCEach = new System.Windows.Forms.Label();
+            this.lblPCTotal = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.prcorTextBox = new System.Windows.Forms.TextBox();
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsSales = new Mbc5.DataSets.dsSales();
+            this.txtBookTotal = new System.Windows.Forms.TextBox();
+            this.book_eaTextBox = new System.Windows.Forms.TextBox();
+            this.txtSource = new System.Windows.Forms.TextBox();
+            this.booktypeTextBox = new System.Windows.Forms.TextBox();
+            this.txtNocopies = new System.Windows.Forms.TextBox();
+            this.dteQuote = new System.Windows.Forms.DateTimePicker();
+            this.txtPoNum = new System.Windows.Forms.TextBox();
+            this.txtBYear = new System.Windows.Forms.TextBox();
+            this.txtYear = new System.Windows.Forms.TextBox();
+            this.txtNoPages = new System.Windows.Forms.TextBox();
+            this.txtYir = new System.Windows.Forms.TextBox();
+            this.chkYir = new System.Windows.Forms.CheckBox();
+            this.txtConvAmt = new System.Windows.Forms.TextBox();
+            this.chkConv = new System.Windows.Forms.CheckBox();
+            this.txtProfAmt = new System.Windows.Forms.TextBox();
+            this.chkProfessional = new System.Windows.Forms.CheckBox();
+            this.txtSaddleAmt = new System.Windows.Forms.TextBox();
+            this.chkSaddlStich = new System.Windows.Forms.CheckBox();
+            this.txtSpiralAmt = new System.Windows.Forms.TextBox();
+            this.chkSpiral = new System.Windows.Forms.CheckBox();
+            this.txtPerfbindAmt = new System.Windows.Forms.TextBox();
+            this.chkPerfBind = new System.Windows.Forms.CheckBox();
+            this.txtCaseamt = new System.Windows.Forms.TextBox();
+            this.chkCaseBind = new System.Windows.Forms.CheckBox();
+            this.txtHardbackAmt = new System.Windows.Forms.TextBox();
+            this.chkHardBack = new System.Windows.Forms.CheckBox();
+            this.pg2 = new System.Windows.Forms.TabPage();
             this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
-            this.quotesBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.quotesBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.fillToolStrip = new System.Windows.Forms.ToolStrip();
-            this.schcodeToolStripLabel = new System.Windows.Forms.ToolStripLabel();
-            this.schcodeToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.fillToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.chkHardBack = new System.Windows.Forms.CheckBox();
-            this.txtHardbackAmt = new System.Windows.Forms.TextBox();
-            this.chkCaseBind = new System.Windows.Forms.CheckBox();
-            this.txtCaseamt = new System.Windows.Forms.TextBox();
-            this.chkPerfBind = new System.Windows.Forms.CheckBox();
-            this.txtPerfbindAmt = new System.Windows.Forms.TextBox();
-            this.chkSpiral = new System.Windows.Forms.CheckBox();
-            this.txtSpiralAmt = new System.Windows.Forms.TextBox();
-            this.chkSaddlStich = new System.Windows.Forms.CheckBox();
-            this.sdlstichamtTextBox = new System.Windows.Forms.TextBox();
+            nopagesLabel = new System.Windows.Forms.Label();
+            contryearLabel = new System.Windows.Forms.Label();
+            bpyearLabel = new System.Windows.Forms.Label();
+            ponumLabel = new System.Windows.Forms.Label();
+            qtedateLabel = new System.Windows.Forms.Label();
+            nocopiesLabel = new System.Windows.Forms.Label();
+            booktypeLabel = new System.Windows.Forms.Label();
+            sourceLabel = new System.Windows.Forms.Label();
+            book_eaLabel = new System.Windows.Forms.Label();
+            book_priceLabel = new System.Windows.Forms.Label();
+            prcorLabel = new System.Windows.Forms.Label();
             this.tabSales.SuspendLayout();
             this.pg1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingNavigator)).BeginInit();
-            this.quotesBindingNavigator.SuspendLayout();
-            this.fillToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
             this.SuspendLayout();
+            // 
+            // nopagesLabel
+            // 
+            nopagesLabel.AutoSize = true;
+            nopagesLabel.Location = new System.Drawing.Point(152, 74);
+            nopagesLabel.Name = "nopagesLabel";
+            nopagesLabel.Size = new System.Drawing.Size(30, 13);
+            nopagesLabel.TabIndex = 17;
+            nopagesLabel.Text = "#Pg";
+            // 
+            // contryearLabel
+            // 
+            contryearLabel.AutoSize = true;
+            contryearLabel.Location = new System.Drawing.Point(134, 44);
+            contryearLabel.Name = "contryearLabel";
+            contryearLabel.Size = new System.Drawing.Size(37, 13);
+            contryearLabel.TabIndex = 18;
+            contryearLabel.Text = "Year:";
+            // 
+            // bpyearLabel
+            // 
+            bpyearLabel.AutoSize = true;
+            bpyearLabel.Location = new System.Drawing.Point(219, 44);
+            bpyearLabel.Name = "bpyearLabel";
+            bpyearLabel.Size = new System.Drawing.Size(102, 13);
+            bpyearLabel.TabIndex = 20;
+            bpyearLabel.Text = "Base Price Year:";
+            // 
+            // ponumLabel
+            // 
+            ponumLabel.AutoSize = true;
+            ponumLabel.Location = new System.Drawing.Point(371, 44);
+            ponumLabel.Name = "ponumLabel";
+            ponumLabel.Size = new System.Drawing.Size(36, 13);
+            ponumLabel.TabIndex = 22;
+            ponumLabel.Text = "PO#:";
+            // 
+            // qtedateLabel
+            // 
+            qtedateLabel.AutoSize = true;
+            qtedateLabel.Location = new System.Drawing.Point(530, 44);
+            qtedateLabel.Name = "qtedateLabel";
+            qtedateLabel.Size = new System.Drawing.Size(76, 13);
+            qtedateLabel.TabIndex = 24;
+            qtedateLabel.Text = "Quote Date:";
+            // 
+            // nocopiesLabel
+            // 
+            nocopiesLabel.AutoSize = true;
+            nocopiesLabel.Location = new System.Drawing.Point(23, 74);
+            nocopiesLabel.Name = "nocopiesLabel";
+            nocopiesLabel.Size = new System.Drawing.Size(57, 13);
+            nocopiesLabel.TabIndex = 26;
+            nocopiesLabel.Text = "#Copies:";
+            // 
+            // booktypeLabel
+            // 
+            booktypeLabel.AutoSize = true;
+            booktypeLabel.Location = new System.Drawing.Point(14, 44);
+            booktypeLabel.Name = "booktypeLabel";
+            booktypeLabel.Size = new System.Drawing.Size(72, 13);
+            booktypeLabel.TabIndex = 28;
+            booktypeLabel.Text = "Book Type:";
+            // 
+            // sourceLabel
+            // 
+            sourceLabel.AutoSize = true;
+            sourceLabel.Location = new System.Drawing.Point(829, 44);
+            sourceLabel.Name = "sourceLabel";
+            sourceLabel.Size = new System.Drawing.Size(51, 13);
+            sourceLabel.TabIndex = 30;
+            sourceLabel.Text = "Source:";
+            // 
+            // book_eaLabel
+            // 
+            book_eaLabel.AutoSize = true;
+            book_eaLabel.Location = new System.Drawing.Point(239, 74);
+            book_eaLabel.Name = "book_eaLabel";
+            book_eaLabel.Size = new System.Drawing.Size(73, 13);
+            book_eaLabel.TabIndex = 32;
+            book_eaLabel.Text = "Price Each:";
+            // 
+            // book_priceLabel
+            // 
+            book_priceLabel.AutoSize = true;
+            book_priceLabel.Location = new System.Drawing.Point(397, 74);
+            book_priceLabel.Name = "book_priceLabel";
+            book_priceLabel.Size = new System.Drawing.Size(77, 13);
+            book_priceLabel.TabIndex = 34;
+            book_priceLabel.Text = "Book (total):";
+            // 
+            // prcorLabel
+            // 
+            prcorLabel.AutoSize = true;
+            prcorLabel.Location = new System.Drawing.Point(209, 99);
+            prcorLabel.Name = "prcorLabel";
+            prcorLabel.Size = new System.Drawing.Size(101, 13);
+            prcorLabel.TabIndex = 36;
+            prcorLabel.Text = "Price Over Ride:";
             // 
             // tabSales
             // 
@@ -82,7 +203,39 @@
             // pg1
             // 
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
-            this.pg1.Controls.Add(this.sdlstichamtTextBox);
+            this.pg1.Controls.Add(this.lblPCEach);
+            this.pg1.Controls.Add(this.lblPCTotal);
+            this.pg1.Controls.Add(this.label2);
+            this.pg1.Controls.Add(this.label1);
+            this.pg1.Controls.Add(prcorLabel);
+            this.pg1.Controls.Add(this.prcorTextBox);
+            this.pg1.Controls.Add(book_priceLabel);
+            this.pg1.Controls.Add(this.txtBookTotal);
+            this.pg1.Controls.Add(book_eaLabel);
+            this.pg1.Controls.Add(this.book_eaTextBox);
+            this.pg1.Controls.Add(sourceLabel);
+            this.pg1.Controls.Add(this.txtSource);
+            this.pg1.Controls.Add(booktypeLabel);
+            this.pg1.Controls.Add(this.booktypeTextBox);
+            this.pg1.Controls.Add(nocopiesLabel);
+            this.pg1.Controls.Add(this.txtNocopies);
+            this.pg1.Controls.Add(qtedateLabel);
+            this.pg1.Controls.Add(this.dteQuote);
+            this.pg1.Controls.Add(ponumLabel);
+            this.pg1.Controls.Add(this.txtPoNum);
+            this.pg1.Controls.Add(bpyearLabel);
+            this.pg1.Controls.Add(this.txtBYear);
+            this.pg1.Controls.Add(contryearLabel);
+            this.pg1.Controls.Add(this.txtYear);
+            this.pg1.Controls.Add(nopagesLabel);
+            this.pg1.Controls.Add(this.txtNoPages);
+            this.pg1.Controls.Add(this.txtYir);
+            this.pg1.Controls.Add(this.chkYir);
+            this.pg1.Controls.Add(this.txtConvAmt);
+            this.pg1.Controls.Add(this.chkConv);
+            this.pg1.Controls.Add(this.txtProfAmt);
+            this.pg1.Controls.Add(this.chkProfessional);
+            this.pg1.Controls.Add(this.txtSaddleAmt);
             this.pg1.Controls.Add(this.chkSaddlStich);
             this.pg1.Controls.Add(this.txtSpiralAmt);
             this.pg1.Controls.Add(this.chkSpiral);
@@ -99,25 +252,306 @@
             this.pg1.TabIndex = 0;
             this.pg1.Text = "Sales";
             // 
-            // pg2
+            // lblPCEach
             // 
-            this.pg2.BackColor = System.Drawing.SystemColors.Control;
-            this.pg2.Location = new System.Drawing.Point(4, 22);
-            this.pg2.Name = "pg2";
-            this.pg2.Padding = new System.Windows.Forms.Padding(3);
-            this.pg2.Size = new System.Drawing.Size(192, 74);
-            this.pg2.TabIndex = 1;
-            this.pg2.Text = "Invoices";
+            this.lblPCEach.AutoSize = true;
+            this.lblPCEach.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblPCEach.Location = new System.Drawing.Point(692, 74);
+            this.lblPCEach.Name = "lblPCEach";
+            this.lblPCEach.Size = new System.Drawing.Size(41, 13);
+            this.lblPCEach.TabIndex = 41;
+            this.lblPCEach.Text = "label3";
+            // 
+            // lblPCTotal
+            // 
+            this.lblPCTotal.AutoSize = true;
+            this.lblPCTotal.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblPCTotal.Location = new System.Drawing.Point(850, 74);
+            this.lblPCTotal.Name = "lblPCTotal";
+            this.lblPCTotal.Size = new System.Drawing.Size(41, 13);
+            this.lblPCTotal.TabIndex = 40;
+            this.lblPCTotal.Text = "label4";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label2.Location = new System.Drawing.Point(749, 74);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.TabIndex = 39;
+            this.label2.Text = "Total Prof/Conv:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.Location = new System.Drawing.Point(591, 74);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 13);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Porf/Conv Each:";
+            // 
+            // prcorTextBox
+            // 
+            this.prcorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "prcor", true));
+            this.prcorTextBox.Location = new System.Drawing.Point(316, 99);
+            this.prcorTextBox.Name = "prcorTextBox";
+            this.prcorTextBox.Size = new System.Drawing.Size(69, 20);
+            this.prcorTextBox.TabIndex = 37;
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsSales;
             // 
             // dsSales
             // 
             this.dsSales.DataSetName = "dsSales";
             this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // quotesBindingSource
+            // txtBookTotal
             // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsSales;
+            this.txtBookTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "book_price", true));
+            this.txtBookTotal.Location = new System.Drawing.Point(474, 74);
+            this.txtBookTotal.Name = "txtBookTotal";
+            this.txtBookTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtBookTotal.TabIndex = 35;
+            // 
+            // book_eaTextBox
+            // 
+            this.book_eaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "book_ea", true));
+            this.book_eaTextBox.Location = new System.Drawing.Point(316, 74);
+            this.book_eaTextBox.Name = "book_eaTextBox";
+            this.book_eaTextBox.Size = new System.Drawing.Size(69, 20);
+            this.book_eaTextBox.TabIndex = 33;
+            // 
+            // txtSource
+            // 
+            this.txtSource.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "source", true));
+            this.txtSource.Location = new System.Drawing.Point(886, 44);
+            this.txtSource.Name = "txtSource";
+            this.txtSource.Size = new System.Drawing.Size(100, 20);
+            this.txtSource.TabIndex = 31;
+            // 
+            // booktypeTextBox
+            // 
+            this.booktypeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "booktype", true));
+            this.booktypeTextBox.Location = new System.Drawing.Point(92, 44);
+            this.booktypeTextBox.MaxLength = 4;
+            this.booktypeTextBox.Name = "booktypeTextBox";
+            this.booktypeTextBox.Size = new System.Drawing.Size(44, 20);
+            this.booktypeTextBox.TabIndex = 29;
+            // 
+            // txtNocopies
+            // 
+            this.txtNocopies.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "nocopies", true));
+            this.txtNocopies.Location = new System.Drawing.Point(86, 74);
+            this.txtNocopies.MaxLength = 5;
+            this.txtNocopies.Name = "txtNocopies";
+            this.txtNocopies.Size = new System.Drawing.Size(50, 20);
+            this.txtNocopies.TabIndex = 27;
+            // 
+            // dteQuote
+            // 
+            this.dteQuote.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.quotesBindingSource, "qtedate", true));
+            this.dteQuote.Location = new System.Drawing.Point(612, 44);
+            this.dteQuote.Name = "dteQuote";
+            this.dteQuote.Size = new System.Drawing.Size(200, 20);
+            this.dteQuote.TabIndex = 25;
+            // 
+            // txtPoNum
+            // 
+            this.txtPoNum.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "ponum", true));
+            this.txtPoNum.Location = new System.Drawing.Point(413, 44);
+            this.txtPoNum.Name = "txtPoNum";
+            this.txtPoNum.Size = new System.Drawing.Size(100, 20);
+            this.txtPoNum.TabIndex = 23;
+            // 
+            // txtBYear
+            // 
+            this.txtBYear.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "bpyear", true));
+            this.txtBYear.Location = new System.Drawing.Point(327, 44);
+            this.txtBYear.MaxLength = 2;
+            this.txtBYear.Name = "txtBYear";
+            this.txtBYear.Size = new System.Drawing.Size(31, 20);
+            this.txtBYear.TabIndex = 21;
+            // 
+            // txtYear
+            // 
+            this.txtYear.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "contryear", true));
+            this.txtYear.Location = new System.Drawing.Point(177, 44);
+            this.txtYear.MaxLength = 2;
+            this.txtYear.Name = "txtYear";
+            this.txtYear.Size = new System.Drawing.Size(39, 20);
+            this.txtYear.TabIndex = 19;
+            this.txtYear.TextChanged += new System.EventHandler(this.contryearTextBox_TextChanged);
+            // 
+            // txtNoPages
+            // 
+            this.txtNoPages.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "nopages", true));
+            this.txtNoPages.Location = new System.Drawing.Point(186, 74);
+            this.txtNoPages.MaxLength = 4;
+            this.txtNoPages.Name = "txtNoPages";
+            this.txtNoPages.Size = new System.Drawing.Size(37, 20);
+            this.txtNoPages.TabIndex = 18;
+            // 
+            // txtYir
+            // 
+            this.txtYir.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "insamt", true));
+            this.txtYir.Location = new System.Drawing.Point(158, 569);
+            this.txtYir.Name = "txtYir";
+            this.txtYir.Size = new System.Drawing.Size(100, 20);
+            this.txtYir.TabIndex = 17;
+            // 
+            // chkYir
+            // 
+            this.chkYir.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "insck", true));
+            this.chkYir.Location = new System.Drawing.Point(48, 569);
+            this.chkYir.Name = "chkYir";
+            this.chkYir.Size = new System.Drawing.Size(104, 24);
+            this.chkYir.TabIndex = 16;
+            this.chkYir.Text = "YIR Standard";
+            this.chkYir.UseVisualStyleBackColor = true;
+            // 
+            // txtConvAmt
+            // 
+            this.txtConvAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "conven", true));
+            this.txtConvAmt.Location = new System.Drawing.Point(177, 539);
+            this.txtConvAmt.Name = "txtConvAmt";
+            this.txtConvAmt.Size = new System.Drawing.Size(100, 20);
+            this.txtConvAmt.TabIndex = 15;
+            // 
+            // chkConv
+            // 
+            this.chkConv.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "coyn", true));
+            this.chkConv.Location = new System.Drawing.Point(48, 539);
+            this.chkConv.Name = "chkConv";
+            this.chkConv.Size = new System.Drawing.Size(104, 24);
+            this.chkConv.TabIndex = 14;
+            this.chkConv.Text = "Convenient";
+            this.chkConv.UseVisualStyleBackColor = true;
+            // 
+            // txtProfAmt
+            // 
+            this.txtProfAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "prof", true));
+            this.txtProfAmt.Location = new System.Drawing.Point(167, 510);
+            this.txtProfAmt.Name = "txtProfAmt";
+            this.txtProfAmt.Size = new System.Drawing.Size(100, 20);
+            this.txtProfAmt.TabIndex = 13;
+            // 
+            // chkProfessional
+            // 
+            this.chkProfessional.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "pryn", true));
+            this.chkProfessional.Location = new System.Drawing.Point(48, 508);
+            this.chkProfessional.Name = "chkProfessional";
+            this.chkProfessional.Size = new System.Drawing.Size(104, 24);
+            this.chkProfessional.TabIndex = 12;
+            this.chkProfessional.Text = "Professional";
+            this.chkProfessional.UseVisualStyleBackColor = true;
+            // 
+            // txtSaddleAmt
+            // 
+            this.txtSaddleAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "sdlstichamt", true));
+            this.txtSaddleAmt.Location = new System.Drawing.Point(167, 478);
+            this.txtSaddleAmt.Name = "txtSaddleAmt";
+            this.txtSaddleAmt.Size = new System.Drawing.Size(100, 20);
+            this.txtSaddleAmt.TabIndex = 11;
+            // 
+            // chkSaddlStich
+            // 
+            this.chkSaddlStich.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "sdlstich", true));
+            this.chkSaddlStich.Location = new System.Drawing.Point(48, 478);
+            this.chkSaddlStich.Name = "chkSaddlStich";
+            this.chkSaddlStich.Size = new System.Drawing.Size(104, 24);
+            this.chkSaddlStich.TabIndex = 10;
+            this.chkSaddlStich.Text = "Saddle Stitch";
+            this.chkSaddlStich.UseVisualStyleBackColor = true;
+            // 
+            // txtSpiralAmt
+            // 
+            this.txtSpiralAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "spiramt", true));
+            this.txtSpiralAmt.Location = new System.Drawing.Point(196, 446);
+            this.txtSpiralAmt.Name = "txtSpiralAmt";
+            this.txtSpiralAmt.Size = new System.Drawing.Size(100, 20);
+            this.txtSpiralAmt.TabIndex = 9;
+            // 
+            // chkSpiral
+            // 
+            this.chkSpiral.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "spirck", true));
+            this.chkSpiral.Location = new System.Drawing.Point(48, 444);
+            this.chkSpiral.Name = "chkSpiral";
+            this.chkSpiral.Size = new System.Drawing.Size(104, 24);
+            this.chkSpiral.TabIndex = 8;
+            this.chkSpiral.Text = "Spiral";
+            this.chkSpiral.UseVisualStyleBackColor = true;
+            // 
+            // txtPerfbindAmt
+            // 
+            this.txtPerfbindAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "perfbind", true));
+            this.txtPerfbindAmt.Location = new System.Drawing.Point(197, 420);
+            this.txtPerfbindAmt.Name = "txtPerfbindAmt";
+            this.txtPerfbindAmt.Size = new System.Drawing.Size(100, 20);
+            this.txtPerfbindAmt.TabIndex = 7;
+            // 
+            // chkPerfBind
+            // 
+            this.chkPerfBind.AutoSize = true;
+            this.chkPerfBind.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "peyn", true));
+            this.chkPerfBind.Location = new System.Drawing.Point(48, 418);
+            this.chkPerfBind.Name = "chkPerfBind";
+            this.chkPerfBind.Size = new System.Drawing.Size(122, 17);
+            this.chkPerfBind.TabIndex = 6;
+            this.chkPerfBind.Text = "Perfect Bind (40)";
+            this.chkPerfBind.UseVisualStyleBackColor = true;
+            // 
+            // txtCaseamt
+            // 
+            this.txtCaseamt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "caseamt", true));
+            this.txtCaseamt.Location = new System.Drawing.Point(196, 395);
+            this.txtCaseamt.Name = "txtCaseamt";
+            this.txtCaseamt.Size = new System.Drawing.Size(100, 20);
+            this.txtCaseamt.TabIndex = 5;
+            // 
+            // chkCaseBind
+            // 
+            this.chkCaseBind.AutoSize = true;
+            this.chkCaseBind.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "casey_n", true));
+            this.chkCaseBind.Location = new System.Drawing.Point(48, 395);
+            this.chkCaseBind.Name = "chkCaseBind";
+            this.chkCaseBind.Size = new System.Drawing.Size(144, 17);
+            this.chkCaseBind.TabIndex = 4;
+            this.chkCaseBind.Text = "Case Bind (glued 32)";
+            this.chkCaseBind.UseVisualStyleBackColor = true;
+            // 
+            // txtHardbackAmt
+            // 
+            this.txtHardbackAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "hardback", true));
+            this.txtHardbackAmt.Location = new System.Drawing.Point(196, 369);
+            this.txtHardbackAmt.Name = "txtHardbackAmt";
+            this.txtHardbackAmt.Size = new System.Drawing.Size(100, 20);
+            this.txtHardbackAmt.TabIndex = 3;
+            // 
+            // chkHardBack
+            // 
+            this.chkHardBack.AutoSize = true;
+            this.chkHardBack.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "hdbky_n", true));
+            this.chkHardBack.Location = new System.Drawing.Point(48, 369);
+            this.chkHardBack.Name = "chkHardBack";
+            this.chkHardBack.Size = new System.Drawing.Size(145, 17);
+            this.chkHardBack.TabIndex = 1;
+            this.chkHardBack.Text = "Hard Back (sewn 40)";
+            this.chkHardBack.UseVisualStyleBackColor = true;
+            // 
+            // pg2
+            // 
+            this.pg2.BackColor = System.Drawing.SystemColors.Control;
+            this.pg2.Location = new System.Drawing.Point(4, 22);
+            this.pg2.Name = "pg2";
+            this.pg2.Padding = new System.Windows.Forms.Padding(3);
+            this.pg2.Size = new System.Drawing.Size(1255, 736);
+            this.pg2.TabIndex = 1;
+            this.pg2.Text = "Invoices";
             // 
             // quotesTableAdapter
             // 
@@ -130,276 +564,21 @@
             this.tableAdapterManager.quotesTableAdapter = this.quotesTableAdapter;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // quotesBindingNavigator
-            // 
-            this.quotesBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.quotesBindingNavigator.BindingSource = this.quotesBindingSource;
-            this.quotesBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.quotesBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.quotesBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.quotesBindingNavigatorSaveItem});
-            this.quotesBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.quotesBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.quotesBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.quotesBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.quotesBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.quotesBindingNavigator.Name = "quotesBindingNavigator";
-            this.quotesBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.quotesBindingNavigator.Size = new System.Drawing.Size(1264, 25);
-            this.quotesBindingNavigator.TabIndex = 1;
-            this.quotesBindingNavigator.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // quotesBindingNavigatorSaveItem
-            // 
-            this.quotesBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.quotesBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("quotesBindingNavigatorSaveItem.Image")));
-            this.quotesBindingNavigatorSaveItem.Name = "quotesBindingNavigatorSaveItem";
-            this.quotesBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.quotesBindingNavigatorSaveItem.Text = "Save Data";
-            this.quotesBindingNavigatorSaveItem.Click += new System.EventHandler(this.quotesBindingNavigatorSaveItem_Click);
-            // 
-            // fillToolStrip
-            // 
-            this.fillToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.schcodeToolStripLabel,
-            this.schcodeToolStripTextBox,
-            this.fillToolStripButton});
-            this.fillToolStrip.Location = new System.Drawing.Point(0, 25);
-            this.fillToolStrip.Name = "fillToolStrip";
-            this.fillToolStrip.Size = new System.Drawing.Size(1264, 25);
-            this.fillToolStrip.TabIndex = 2;
-            this.fillToolStrip.Text = "fillToolStrip";
-            // 
-            // schcodeToolStripLabel
-            // 
-            this.schcodeToolStripLabel.Name = "schcodeToolStripLabel";
-            this.schcodeToolStripLabel.Size = new System.Drawing.Size(54, 22);
-            this.schcodeToolStripLabel.Text = "schcode:";
-            // 
-            // schcodeToolStripTextBox
-            // 
-            this.schcodeToolStripTextBox.Name = "schcodeToolStripTextBox";
-            this.schcodeToolStripTextBox.Size = new System.Drawing.Size(100, 25);
-            // 
-            // fillToolStripButton
-            // 
-            this.fillToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fillToolStripButton.Name = "fillToolStripButton";
-            this.fillToolStripButton.Size = new System.Drawing.Size(26, 22);
-            this.fillToolStripButton.Text = "Fill";
-            this.fillToolStripButton.Click += new System.EventHandler(this.fillToolStripButton_Click);
-            // 
-            // chkHardBack
-            // 
-            this.chkHardBack.AutoSize = true;
-            this.chkHardBack.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "hdbky_n", true));
-            this.chkHardBack.Location = new System.Drawing.Point(54, 46);
-            this.chkHardBack.Name = "chkHardBack";
-            this.chkHardBack.Size = new System.Drawing.Size(145, 17);
-            this.chkHardBack.TabIndex = 1;
-            this.chkHardBack.Text = "Hard Back (sewn 40)";
-            this.chkHardBack.UseVisualStyleBackColor = true;
-            // 
-            // txtHardbackAmt
-            // 
-            this.txtHardbackAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "hardback", true));
-            this.txtHardbackAmt.Location = new System.Drawing.Point(202, 46);
-            this.txtHardbackAmt.Name = "txtHardbackAmt";
-            this.txtHardbackAmt.Size = new System.Drawing.Size(100, 20);
-            this.txtHardbackAmt.TabIndex = 3;
-            // 
-            // chkCaseBind
-            // 
-            this.chkCaseBind.AutoSize = true;
-            this.chkCaseBind.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "casey_n", true));
-            this.chkCaseBind.Location = new System.Drawing.Point(54, 72);
-            this.chkCaseBind.Name = "chkCaseBind";
-            this.chkCaseBind.Size = new System.Drawing.Size(144, 17);
-            this.chkCaseBind.TabIndex = 4;
-            this.chkCaseBind.Text = "Case Bind (glued 32)";
-            this.chkCaseBind.UseVisualStyleBackColor = true;
-            // 
-            // txtCaseamt
-            // 
-            this.txtCaseamt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "caseamt", true));
-            this.txtCaseamt.Location = new System.Drawing.Point(202, 72);
-            this.txtCaseamt.Name = "txtCaseamt";
-            this.txtCaseamt.Size = new System.Drawing.Size(100, 20);
-            this.txtCaseamt.TabIndex = 5;
-            // 
-            // chkPerfBind
-            // 
-            this.chkPerfBind.AutoSize = true;
-            this.chkPerfBind.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "peyn", true));
-            this.chkPerfBind.Location = new System.Drawing.Point(54, 95);
-            this.chkPerfBind.Name = "chkPerfBind";
-            this.chkPerfBind.Size = new System.Drawing.Size(122, 17);
-            this.chkPerfBind.TabIndex = 6;
-            this.chkPerfBind.Text = "Perfect Bind (40)";
-            this.chkPerfBind.UseVisualStyleBackColor = true;
-            // 
-            // txtPerfbindAmt
-            // 
-            this.txtPerfbindAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "perfbind", true));
-            this.txtPerfbindAmt.Location = new System.Drawing.Point(203, 97);
-            this.txtPerfbindAmt.Name = "txtPerfbindAmt";
-            this.txtPerfbindAmt.Size = new System.Drawing.Size(100, 20);
-            this.txtPerfbindAmt.TabIndex = 7;
-            // 
-            // chkSpiral
-            // 
-            this.chkSpiral.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "spirck", true));
-            this.chkSpiral.Location = new System.Drawing.Point(54, 121);
-            this.chkSpiral.Name = "chkSpiral";
-            this.chkSpiral.Size = new System.Drawing.Size(104, 24);
-            this.chkSpiral.TabIndex = 8;
-            this.chkSpiral.Text = "Spiral";
-            this.chkSpiral.UseVisualStyleBackColor = true;
-            // 
-            // txtSpiralAmt
-            // 
-            this.txtSpiralAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "spiramt", true));
-            this.txtSpiralAmt.Location = new System.Drawing.Point(202, 123);
-            this.txtSpiralAmt.Name = "txtSpiralAmt";
-            this.txtSpiralAmt.Size = new System.Drawing.Size(100, 20);
-            this.txtSpiralAmt.TabIndex = 9;
-            // 
-            // chkSaddlStich
-            // 
-            this.chkSaddlStich.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "sdlstich", true));
-            this.chkSaddlStich.Location = new System.Drawing.Point(54, 155);
-            this.chkSaddlStich.Name = "chkSaddlStich";
-            this.chkSaddlStich.Size = new System.Drawing.Size(104, 24);
-            this.chkSaddlStich.TabIndex = 10;
-            this.chkSaddlStich.Text = "Saddle Stitch";
-            this.chkSaddlStich.UseVisualStyleBackColor = true;
-            // 
-            // sdlstichamtTextBox
-            // 
-            this.sdlstichamtTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "sdlstichamt", true));
-            this.sdlstichamtTextBox.Location = new System.Drawing.Point(202, 155);
-            this.sdlstichamtTextBox.Name = "sdlstichamtTextBox";
-            this.sdlstichamtTextBox.Size = new System.Drawing.Size(100, 20);
-            this.sdlstichamtTextBox.TabIndex = 11;
-            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.ClientSize = new System.Drawing.Size(1264, 762);
-            this.Controls.Add(this.fillToolStrip);
-            this.Controls.Add(this.quotesBindingNavigator);
             this.Controls.Add(this.tabSales);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmSales";
             this.Text = "Sales";
+            this.Load += new System.EventHandler(this.frmSales_Load);
             this.tabSales.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingNavigator)).EndInit();
-            this.quotesBindingNavigator.ResumeLayout(false);
-            this.quotesBindingNavigator.PerformLayout();
-            this.fillToolStrip.ResumeLayout(false);
-            this.fillToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
             }
 
@@ -411,24 +590,7 @@
         private System.Windows.Forms.BindingSource quotesBindingSource;
         private DataSets.dsSalesTableAdapters.quotesTableAdapter quotesTableAdapter;
         private DataSets.dsSalesTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingNavigator quotesBindingNavigator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton quotesBindingNavigatorSaveItem;
-        private System.Windows.Forms.ToolStrip fillToolStrip;
-        private System.Windows.Forms.ToolStripLabel schcodeToolStripLabel;
-        private System.Windows.Forms.ToolStripTextBox schcodeToolStripTextBox;
-        private System.Windows.Forms.ToolStripButton fillToolStripButton;
-        private System.Windows.Forms.TextBox sdlstichamtTextBox;
+        private System.Windows.Forms.TextBox txtSaddleAmt;
         private System.Windows.Forms.CheckBox chkSaddlStich;
         private System.Windows.Forms.TextBox txtSpiralAmt;
         private System.Windows.Forms.CheckBox chkSpiral;
@@ -438,5 +600,26 @@
         private System.Windows.Forms.CheckBox chkCaseBind;
         private System.Windows.Forms.TextBox txtHardbackAmt;
         private System.Windows.Forms.CheckBox chkHardBack;
+        private System.Windows.Forms.TextBox txtProfAmt;
+        private System.Windows.Forms.CheckBox chkProfessional;
+        private System.Windows.Forms.TextBox txtYear;
+        private System.Windows.Forms.TextBox txtNoPages;
+        private System.Windows.Forms.TextBox txtYir;
+        private System.Windows.Forms.CheckBox chkYir;
+        private System.Windows.Forms.TextBox txtConvAmt;
+        private System.Windows.Forms.CheckBox chkConv;
+        private System.Windows.Forms.TextBox booktypeTextBox;
+        private System.Windows.Forms.TextBox txtNocopies;
+        private System.Windows.Forms.DateTimePicker dteQuote;
+        private System.Windows.Forms.TextBox txtPoNum;
+        private System.Windows.Forms.TextBox txtBYear;
+        private System.Windows.Forms.TextBox txtBookTotal;
+        private System.Windows.Forms.TextBox book_eaTextBox;
+        private System.Windows.Forms.TextBox txtSource;
+        private System.Windows.Forms.Label lblPCEach;
+        private System.Windows.Forms.Label lblPCTotal;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox prcorTextBox;
         }
     }
