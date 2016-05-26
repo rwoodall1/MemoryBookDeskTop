@@ -47,17 +47,7 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
 
-        private void fillToolStripButton_Click(object sender,EventArgs e) {
-            try
-                {
-                this.quotesTableAdapter.Fill(this.dsSales.quotes,schcodeToolStripTextBox.Text);
-                }
-            catch (System.Exception ex)
-                {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-                }
-
-            }
+        
 
         private void contryearTextBox_TextChanged(object sender,EventArgs e) {
 
@@ -65,6 +55,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void frmSales_Load(object sender,EventArgs e) {
             lblPCEach.DataBindings.Add("Text",this,"PrcEa",false,DataSourceUpdateMode.OnPropertyChanged);//bind 
+            lblPCTotal.DataBindings.Add("Text",this,"PrcTot",false,DataSourceUpdateMode.OnPropertyChanged);//bind
             }
         }
     }
