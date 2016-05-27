@@ -48,3 +48,4 @@ F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.ParentForm.resourc
 F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csproj.GenerateResource.Cache
 F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.dll
 F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.pdb
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache

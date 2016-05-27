@@ -93,11 +93,11 @@
             System.Windows.Forms.Label lblInterOffice;
             System.Windows.Forms.Label contmemoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMbcCust));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
@@ -362,14 +362,14 @@
             // 
             // TopPanel
             // 
-            this.TopPanel.Size = new System.Drawing.Size(1264, 10);
+            this.TopPanel.Size = new System.Drawing.Size(1234, 10);
             // 
             // BottomPanel
             // 
             this.BottomPanel.Controls.Add(this.button2);
             this.BottomPanel.Controls.Add(this.button1);
-            this.BottomPanel.Location = new System.Drawing.Point(0, 710);
-            this.BottomPanel.Size = new System.Drawing.Size(1264, 51);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 680);
+            this.BottomPanel.Size = new System.Drawing.Size(1234, 51);
             // 
             // contryearLabel
             // 
@@ -420,7 +420,7 @@
             // 
             contaddr2Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contaddr2Label.AutoSize = true;
-            contaddr2Label.Location = new System.Drawing.Point(357, 55);
+            contaddr2Label.Location = new System.Drawing.Point(327, 55);
             contaddr2Label.Name = "contaddr2Label";
             contaddr2Label.Size = new System.Drawing.Size(54, 13);
             contaddr2Label.TabIndex = 2;
@@ -439,7 +439,7 @@
             // 
             contzipLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contzipLabel.AutoSize = true;
-            contzipLabel.Location = new System.Drawing.Point(386, 81);
+            contzipLabel.Location = new System.Drawing.Point(356, 81);
             contzipLabel.Name = "contzipLabel";
             contzipLabel.Size = new System.Drawing.Size(25, 13);
             contzipLabel.TabIndex = 6;
@@ -485,7 +485,7 @@
             // 
             contlnameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contlnameLabel.AutoSize = true;
-            contlnameLabel.Location = new System.Drawing.Point(350, 29);
+            contlnameLabel.Location = new System.Drawing.Point(320, 29);
             contlnameLabel.Name = "contlnameLabel";
             contlnameLabel.Size = new System.Drawing.Size(61, 13);
             contlnameLabel.TabIndex = 16;
@@ -495,7 +495,7 @@
             // 
             contphnhomLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contphnhomLabel.AutoSize = true;
-            contphnhomLabel.Location = new System.Drawing.Point(339, 108);
+            contphnhomLabel.Location = new System.Drawing.Point(309, 108);
             contphnhomLabel.Name = "contphnhomLabel";
             contphnhomLabel.Size = new System.Drawing.Size(72, 13);
             contphnhomLabel.TabIndex = 18;
@@ -505,7 +505,7 @@
             // 
             positionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             positionLabel.AutoSize = true;
-            positionLabel.Location = new System.Drawing.Point(364, 134);
+            positionLabel.Location = new System.Drawing.Point(334, 134);
             positionLabel.Name = "positionLabel";
             positionLabel.Size = new System.Drawing.Size(47, 13);
             positionLabel.TabIndex = 20;
@@ -515,7 +515,7 @@
             // 
             label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(364, 335);
+            label3.Location = new System.Drawing.Point(334, 335);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(47, 13);
             label3.TabIndex = 44;
@@ -525,7 +525,7 @@
             // 
             label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(339, 309);
+            label4.Location = new System.Drawing.Point(309, 309);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(72, 13);
             label4.TabIndex = 42;
@@ -535,7 +535,7 @@
             // 
             label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(350, 230);
+            label5.Location = new System.Drawing.Point(320, 230);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(61, 13);
             label5.TabIndex = 40;
@@ -581,7 +581,7 @@
             // 
             label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(386, 282);
+            label10.Location = new System.Drawing.Point(356, 282);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(25, 13);
             label10.TabIndex = 30;
@@ -600,7 +600,7 @@
             // 
             label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(357, 256);
+            label12.Location = new System.Drawing.Point(327, 256);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(54, 13);
             label12.TabIndex = 27;
@@ -619,7 +619,7 @@
             // 
             label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label18.AutoSize = true;
-            label18.Location = new System.Drawing.Point(339, 515);
+            label18.Location = new System.Drawing.Point(309, 515);
             label18.Name = "label18";
             label18.Size = new System.Drawing.Size(72, 13);
             label18.TabIndex = 67;
@@ -629,7 +629,7 @@
             // 
             label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label19.AutoSize = true;
-            label19.Location = new System.Drawing.Point(350, 436);
+            label19.Location = new System.Drawing.Point(320, 436);
             label19.Name = "label19";
             label19.Size = new System.Drawing.Size(61, 13);
             label19.TabIndex = 65;
@@ -675,7 +675,7 @@
             // 
             label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label24.AutoSize = true;
-            label24.Location = new System.Drawing.Point(386, 488);
+            label24.Location = new System.Drawing.Point(356, 488);
             label24.Name = "label24";
             label24.Size = new System.Drawing.Size(25, 13);
             label24.TabIndex = 55;
@@ -694,7 +694,7 @@
             // 
             label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label26.AutoSize = true;
-            label26.Location = new System.Drawing.Point(357, 462);
+            label26.Location = new System.Drawing.Point(327, 462);
             label26.Name = "label26";
             label26.Size = new System.Drawing.Size(54, 13);
             label26.TabIndex = 52;
@@ -730,7 +730,7 @@
             // schoutLabel
             // 
             schoutLabel.AutoSize = true;
-            schoutLabel.Location = new System.Drawing.Point(367, 276);
+            schoutLabel.Location = new System.Drawing.Point(346, 276);
             schoutLabel.Name = "schoutLabel";
             schoutLabel.Size = new System.Drawing.Size(52, 13);
             schoutLabel.TabIndex = 23;
@@ -829,7 +829,7 @@
             // clrpg_intLabel
             // 
             clrpg_intLabel.AutoSize = true;
-            clrpg_intLabel.Location = new System.Drawing.Point(280, 275);
+            clrpg_intLabel.Location = new System.Drawing.Point(259, 275);
             clrpg_intLabel.Name = "clrpg_intLabel";
             clrpg_intLabel.Size = new System.Drawing.Size(36, 13);
             clrpg_intLabel.TabIndex = 22;
@@ -956,7 +956,7 @@
             // 
             contmemoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             contmemoLabel.AutoSize = true;
-            contmemoLabel.Location = new System.Drawing.Point(46, 610);
+            contmemoLabel.Location = new System.Drawing.Point(46, 580);
             contmemoLabel.Name = "contmemoLabel";
             contmemoLabel.Size = new System.Drawing.Size(39, 13);
             contmemoLabel.TabIndex = 76;
@@ -973,7 +973,7 @@
             this.CustTab.Location = new System.Drawing.Point(0, 20);
             this.CustTab.Name = "CustTab";
             this.CustTab.SelectedIndex = 0;
-            this.CustTab.Size = new System.Drawing.Size(1264, 684);
+            this.CustTab.Size = new System.Drawing.Size(1234, 654);
             this.CustTab.TabIndex = 0;
             // 
             // pg1
@@ -986,7 +986,7 @@
             this.pg1.Margin = new System.Windows.Forms.Padding(2);
             this.pg1.Name = "pg1";
             this.pg1.Padding = new System.Windows.Forms.Padding(3);
-            this.pg1.Size = new System.Drawing.Size(1256, 658);
+            this.pg1.Size = new System.Drawing.Size(1226, 628);
             this.pg1.TabIndex = 0;
             this.pg1.Text = "School";
             // 
@@ -1063,7 +1063,6 @@
             // 
             // splitContainer.Panel2
             // 
-            this.splitContainer.Panel2.AutoScroll = true;
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.splitContainer.Panel2.Controls.Add(this.btnSchoolEmail);
             this.splitContainer.Panel2.Controls.Add(this.nodirectmailCheckBox);
@@ -1080,8 +1079,8 @@
             this.splitContainer.Panel2.Controls.Add(this.shiptocontTextBox);
             this.splitContainer.Panel2.Controls.Add(yb_sthLabel);
             this.splitContainer.Panel2.Controls.Add(this.yb_sthTextBox);
-            this.splitContainer.Size = new System.Drawing.Size(1253, 607);
-            this.splitContainer.SplitterDistance = 615;
+            this.splitContainer.Size = new System.Drawing.Size(1223, 577);
+            this.splitContainer.SplitterDistance = 600;
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
             // 
@@ -1154,7 +1153,7 @@
             // schoutDateTimePicker
             // 
             this.schoutDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "schout", true));
-            this.schoutDateTimePicker.Location = new System.Drawing.Point(419, 272);
+            this.schoutDateTimePicker.Location = new System.Drawing.Point(398, 272);
             this.schoutDateTimePicker.Name = "schoutDateTimePicker";
             this.schoutDateTimePicker.Size = new System.Drawing.Size(184, 20);
             this.schoutDateTimePicker.TabIndex = 25;
@@ -1285,7 +1284,7 @@
             // clrpg_intTextBox
             // 
             this.clrpg_intTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "clrpg_int", true));
-            this.clrpg_intTextBox.Location = new System.Drawing.Point(324, 272);
+            this.clrpg_intTextBox.Location = new System.Drawing.Point(303, 272);
             this.clrpg_intTextBox.MaxLength = 1;
             this.clrpg_intTextBox.Name = "clrpg_intTextBox";
             this.clrpg_intTextBox.Size = new System.Drawing.Size(29, 20);
@@ -1501,14 +1500,14 @@
             // custDataGridView
             // 
             this.custDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn105,
@@ -1518,7 +1517,7 @@
             this.dataGridViewTextBoxColumn111});
             this.custDataGridView.DataSource = this.custBindingSource;
             this.custDataGridView.EnableHeadersVisualStyles = false;
-            this.custDataGridView.Location = new System.Drawing.Point(14, 368);
+            this.custDataGridView.Location = new System.Drawing.Point(14, 345);
             this.custDataGridView.Name = "custDataGridView";
             this.custDataGridView.ReadOnly = true;
             this.custDataGridView.Size = new System.Drawing.Size(596, 220);
@@ -1635,7 +1634,7 @@
             this.pnlHead.Controls.Add(this.txtSchCodesrch);
             this.pnlHead.Location = new System.Drawing.Point(0, 0);
             this.pnlHead.Name = "pnlHead";
-            this.pnlHead.Size = new System.Drawing.Size(1256, 38);
+            this.pnlHead.Size = new System.Drawing.Size(1226, 38);
             this.pnlHead.TabIndex = 64;
             // 
             // junsnoTextBox
@@ -1793,7 +1792,7 @@
             this.pg2.Location = new System.Drawing.Point(4, 22);
             this.pg2.Name = "pg2";
             this.pg2.Padding = new System.Windows.Forms.Padding(3);
-            this.pg2.Size = new System.Drawing.Size(1256, 658);
+            this.pg2.Size = new System.Drawing.Size(1226, 628);
             this.pg2.TabIndex = 1;
             this.pg2.Text = "Contacts";
             // 
@@ -1801,7 +1800,7 @@
             // 
             this.contmemoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.contmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contmemo", true));
-            this.contmemoTextBox.Location = new System.Drawing.Point(91, 610);
+            this.contmemoTextBox.Location = new System.Drawing.Point(91, 580);
             this.contmemoTextBox.Multiline = true;
             this.contmemoTextBox.Name = "contmemoTextBox";
             this.contmemoTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -1815,7 +1814,7 @@
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label17.Location = new System.Drawing.Point(-23, 601);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(1212, 3);
+            this.label17.Size = new System.Drawing.Size(1182, 3);
             this.label17.TabIndex = 76;
             // 
             // btnEmailContac3
@@ -1881,7 +1880,7 @@
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontphnhom", true));
-            this.textBox3.Location = new System.Drawing.Point(415, 515);
+            this.textBox3.Location = new System.Drawing.Point(385, 515);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(232, 20);
             this.textBox3.TabIndex = 29;
@@ -1890,7 +1889,7 @@
             // 
             this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontlname", true));
-            this.textBox10.Location = new System.Drawing.Point(415, 436);
+            this.textBox10.Location = new System.Drawing.Point(385, 436);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(232, 20);
             this.textBox10.TabIndex = 23;
@@ -1931,7 +1930,7 @@
             // 
             this.textBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontzip", true));
-            this.textBox15.Location = new System.Drawing.Point(415, 488);
+            this.textBox15.Location = new System.Drawing.Point(385, 488);
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(232, 20);
             this.textBox15.TabIndex = 27;
@@ -1940,7 +1939,7 @@
             // 
             this.textBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontaddr2", true));
-            this.textBox16.Location = new System.Drawing.Point(415, 462);
+            this.textBox16.Location = new System.Drawing.Point(385, 462);
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(232, 20);
             this.textBox16.TabIndex = 25;
@@ -1960,7 +1959,7 @@
             this.label28.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label28.Location = new System.Drawing.Point(24, 399);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(1212, 3);
+            this.label28.Size = new System.Drawing.Size(1182, 3);
             this.label28.TabIndex = 49;
             // 
             // label15
@@ -1989,7 +1988,7 @@
             this.comboBox3.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "bposition", true));
             this.comboBox3.DisplayMember = "Position";
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(415, 335);
+            this.comboBox3.Location = new System.Drawing.Point(385, 335);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(232, 21);
             this.comboBox3.TabIndex = 20;
@@ -2012,7 +2011,7 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontphnhom", true));
-            this.textBox1.Location = new System.Drawing.Point(415, 309);
+            this.textBox1.Location = new System.Drawing.Point(385, 309);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(232, 20);
             this.textBox1.TabIndex = 18;
@@ -2021,7 +2020,7 @@
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontlname", true));
-            this.textBox2.Location = new System.Drawing.Point(415, 230);
+            this.textBox2.Location = new System.Drawing.Point(385, 230);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(232, 20);
             this.textBox2.TabIndex = 12;
@@ -2062,7 +2061,7 @@
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontzip", true));
-            this.textBox7.Location = new System.Drawing.Point(415, 282);
+            this.textBox7.Location = new System.Drawing.Point(385, 282);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(232, 20);
             this.textBox7.TabIndex = 16;
@@ -2071,7 +2070,7 @@
             // 
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontaddr2", true));
-            this.textBox8.Location = new System.Drawing.Point(415, 256);
+            this.textBox8.Location = new System.Drawing.Point(385, 256);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(232, 20);
             this.textBox8.TabIndex = 14;
@@ -2091,7 +2090,7 @@
             this.lblSeperator1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblSeperator1.Location = new System.Drawing.Point(24, 198);
             this.lblSeperator1.Name = "lblSeperator1";
-            this.lblSeperator1.Size = new System.Drawing.Size(1212, 3);
+            this.lblSeperator1.Size = new System.Drawing.Size(1182, 3);
             this.lblSeperator1.TabIndex = 24;
             // 
             // comboBox2
@@ -2101,7 +2100,7 @@
             this.comboBox2.DataSource = this.contpstnBindingSource;
             this.comboBox2.DisplayMember = "Position";
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(415, 134);
+            this.comboBox2.Location = new System.Drawing.Point(385, 134);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(232, 21);
             this.comboBox2.TabIndex = 9;
@@ -2129,7 +2128,7 @@
             // 
             this.contphnhomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contphnhomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contphnhom", true));
-            this.contphnhomTextBox.Location = new System.Drawing.Point(415, 108);
+            this.contphnhomTextBox.Location = new System.Drawing.Point(385, 108);
             this.contphnhomTextBox.Name = "contphnhomTextBox";
             this.contphnhomTextBox.Size = new System.Drawing.Size(232, 20);
             this.contphnhomTextBox.TabIndex = 7;
@@ -2138,7 +2137,7 @@
             // 
             this.contlnameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contlnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contlname", true));
-            this.contlnameTextBox.Location = new System.Drawing.Point(415, 29);
+            this.contlnameTextBox.Location = new System.Drawing.Point(385, 29);
             this.contlnameTextBox.Name = "contlnameTextBox";
             this.contlnameTextBox.Size = new System.Drawing.Size(232, 20);
             this.contlnameTextBox.TabIndex = 1;
@@ -2179,7 +2178,7 @@
             // 
             this.contzipTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contzipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contzip", true));
-            this.contzipTextBox.Location = new System.Drawing.Point(415, 81);
+            this.contzipTextBox.Location = new System.Drawing.Point(385, 81);
             this.contzipTextBox.Name = "contzipTextBox";
             this.contzipTextBox.Size = new System.Drawing.Size(232, 20);
             this.contzipTextBox.TabIndex = 5;
@@ -2188,7 +2187,7 @@
             // 
             this.contaddr2TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contaddr2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contaddr2", true));
-            this.contaddr2TextBox.Location = new System.Drawing.Point(415, 55);
+            this.contaddr2TextBox.Location = new System.Drawing.Point(385, 55);
             this.contaddr2TextBox.Name = "contaddr2TextBox";
             this.contaddr2TextBox.Size = new System.Drawing.Size(232, 20);
             this.contaddr2TextBox.TabIndex = 3;
@@ -2220,7 +2219,7 @@
             this.pg3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pg3.Location = new System.Drawing.Point(4, 22);
             this.pg3.Name = "pg3";
-            this.pg3.Size = new System.Drawing.Size(1256, 658);
+            this.pg3.Size = new System.Drawing.Size(1226, 628);
             this.pg3.TabIndex = 2;
             this.pg3.Text = "Telephone";
             this.pg3.Leave += new System.EventHandler(this.pg3_Leave);
@@ -2228,7 +2227,7 @@
             // chkMktComplete
             // 
             this.chkMktComplete.AutoSize = true;
-            this.chkMktComplete.Location = new System.Drawing.Point(982, 405);
+            this.chkMktComplete.Location = new System.Drawing.Point(952, 381);
             this.chkMktComplete.Name = "chkMktComplete";
             this.chkMktComplete.Size = new System.Drawing.Size(181, 17);
             this.chkMktComplete.TabIndex = 8;
@@ -2238,7 +2237,7 @@
             // btnSaveMktLog
             // 
             this.btnSaveMktLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSaveMktLog.Location = new System.Drawing.Point(179, 405);
+            this.btnSaveMktLog.Location = new System.Drawing.Point(179, 375);
             this.btnSaveMktLog.Name = "btnSaveMktLog";
             this.btnSaveMktLog.Size = new System.Drawing.Size(75, 23);
             this.btnSaveMktLog.TabIndex = 7;
@@ -2270,7 +2269,7 @@
             // btnAddMarketLog
             // 
             this.btnAddMarketLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAddMarketLog.Location = new System.Drawing.Point(46, 405);
+            this.btnAddMarketLog.Location = new System.Drawing.Point(46, 375);
             this.btnAddMarketLog.Name = "btnAddMarketLog";
             this.btnAddMarketLog.Size = new System.Drawing.Size(127, 23);
             this.btnAddMarketLog.TabIndex = 5;
@@ -2293,7 +2292,7 @@
             this.lblMarketing.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblMarketing.AutoSize = true;
             this.lblMarketing.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarketing.Location = new System.Drawing.Point(453, 393);
+            this.lblMarketing.Location = new System.Drawing.Point(438, 363);
             this.lblMarketing.Name = "lblMarketing";
             this.lblMarketing.Size = new System.Drawing.Size(189, 24);
             this.lblMarketing.TabIndex = 5;
@@ -2307,14 +2306,14 @@
             this.mktinfoDataGridView.AutoGenerateColumns = false;
             this.mktinfoDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.mktinfoDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.mktinfoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mktinfoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -2324,9 +2323,9 @@
             this.dataGridViewTextBoxColumn13});
             this.mktinfoDataGridView.DataSource = this.mktinfoBindingSource;
             this.mktinfoDataGridView.EnableHeadersVisualStyles = false;
-            this.mktinfoDataGridView.Location = new System.Drawing.Point(46, 434);
+            this.mktinfoDataGridView.Location = new System.Drawing.Point(46, 404);
             this.mktinfoDataGridView.Name = "mktinfoDataGridView";
-            this.mktinfoDataGridView.Size = new System.Drawing.Size(1117, 156);
+            this.mktinfoDataGridView.Size = new System.Drawing.Size(1087, 156);
             this.mktinfoDataGridView.TabIndex = 6;
             this.mktinfoDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.mktinfoDataGridView_DataError);
             // 
@@ -2435,14 +2434,14 @@
             this.datecontDataGridView.AutoGenerateColumns = false;
             this.datecontDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datecontDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.datecontDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datecontDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn3,
@@ -2461,7 +2460,7 @@
             this.datecontDataGridView.EnableHeadersVisualStyles = false;
             this.datecontDataGridView.Location = new System.Drawing.Point(46, 167);
             this.datecontDataGridView.Name = "datecontDataGridView";
-            this.datecontDataGridView.Size = new System.Drawing.Size(1117, 220);
+            this.datecontDataGridView.Size = new System.Drawing.Size(1087, 190);
             this.datecontDataGridView.TabIndex = 3;
             this.datecontDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datecontDataGridView_CellDoubleClick);
             this.datecontDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.datecontDataGridView_DataError);
@@ -2521,8 +2520,8 @@
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "reason";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewTextBoxColumn3.HeaderText = "Reason";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -2542,7 +2541,7 @@
             this.dataGridViewTextBoxColumn9.DataPropertyName = "calltime";
             this.dataGridViewTextBoxColumn9.HeaderText = "Call Time";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Width = 75;
+            this.dataGridViewTextBoxColumn9.Width = 69;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -2556,11 +2555,11 @@
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn8.DataPropertyName = "nxtdate";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.NullValue = " / / ";
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.NullValue = " / / ";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewTextBoxColumn8.HeaderText = "Next Date";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.Width = 74;
@@ -2594,7 +2593,7 @@
             this.lblTeleSchname.AutoSize = true;
             this.lblTeleSchname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schname", true));
             this.lblTeleSchname.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTeleSchname.Location = new System.Drawing.Point(584, 14);
+            this.lblTeleSchname.Location = new System.Drawing.Point(569, 14);
             this.lblTeleSchname.Name = "lblTeleSchname";
             this.lblTeleSchname.Size = new System.Drawing.Size(88, 24);
             this.lblTeleSchname.TabIndex = 0;
@@ -2706,9 +2705,9 @@
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1264, 761);
+            this.ClientSize = new System.Drawing.Size(1234, 731);
             this.Controls.Add(this.CustTab);
-            this.MinimumSize = new System.Drawing.Size(1280, 800);
+            this.MinimumSize = new System.Drawing.Size(1250, 770);
             this.Name = "frmMbcCust";
             this.Text = "MBC Customers";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMbcCust_FormClosing);
