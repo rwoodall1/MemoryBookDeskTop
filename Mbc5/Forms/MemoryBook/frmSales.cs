@@ -11,12 +11,16 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 
 namespace Mbc5.Forms.MemoryBook {
-    public partial class frmSales : BaseClass.Base,INotifyPropertyChanged {
-        public frmSales(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS"}, userPrincipal) {
+    public partial class frmSales : BaseClass.frmBase,INotifyPropertyChanged {
+        public frmSales(UserPrincipal userPrincipal,int invno,string schcode) : base(new string[] { "SA", "Administrator", "MbcCS"}, userPrincipal) {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ApplicationUser = userPrincipal;
+            this.Invno = invno;
+            this.Schcode = schcode;
+
             }
+        #region "Properties"
         public void InvokePropertyChanged(PropertyChangedEventArgs e) {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
@@ -40,69 +44,33 @@ namespace Mbc5.Forms.MemoryBook {
                 InvokePropertyChanged(new PropertyChangedEventArgs("PrcEach"));
                 }
             }
-       
-        
-
-        private void contryearTextBox_TextChanged(object sender,EventArgs e) {
-
-            }
-
+        #endregion
         private void frmSales_Load(object sender,EventArgs e) {
             lblPCEach.DataBindings.Add("Text",this,"PrcEa",false,DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text",this,"PrcTot",false,DataSourceUpdateMode.OnPropertyChanged);//bind
-
-
-
+            Fill();
             }
-
- 
-
-        private void label1_Click(object sender, EventArgs e)
+        private void Fill()
         {
-
-        }
-
-        private void lblPCEach_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prcorLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prcorTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtAllClrAmt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void msstanqtyLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pg1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fillToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
+            if (Schcode != null)
             {
-                this.invHstTableAdapter.Fill(this.dsSales.InvHst, ((decimal)(System.Convert.ChangeType(invnoToolStripTextBox.Text, typeof(decimal)))));
+             custTableAdapter.Fill(dsSales.cust, Schcode);
+            quotesTableAdapter.Fill(dsSales.quotes,Schcode);
             }
-            catch (System.Exception ex)
+            if (Invno != 0)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                var pos=quotesBindingSource.Find("invno", 814533);
+                if (pos > -1)
+                {
+                    quotesBindingSource.Position = pos;
+                }
+                else {
+                    MessageBox.Show("Invoice number was not found.","Invoice#",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                        }
             }
+           
 
         }
-    }
+        
+      }
     }

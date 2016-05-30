@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace Mbc5.Forms {
-    public partial class frmProdutn : BaseClass.Base {
+    public partial class frmProdutn : BaseClass.frmBase {
         public frmProdutn() {
             InitializeComponent();
             }

@@ -29,7 +29,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private UserPrincipal ApplicationUser { get; set; }
       public event PropertyChangedEventHandler PropertyChanged;
-
+        #region "Properties"
         public bool MktGo {
             get { return vMktGo; }
             set {                
@@ -40,9 +40,9 @@ namespace Mbc5.Forms.MemoryBook {
         private bool MktLogAdded { get; set; } = false;
         private bool TeleGo { get; set; } = false;
         private bool TeleLogAdded { get; set; } = false;
-        
-
       
+        #endregion
+
         private void frmMbcCust_Load(object sender,EventArgs e) {
 
              this.chkMktComplete.DataBindings.Add("Checked",this,"MktGo",false,DataSourceUpdateMode.OnPropertyChanged);//bind check box to property of form

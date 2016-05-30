@@ -11,7 +11,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 
 namespace Mbc5.Forms.MemoryBook {
-    public partial class frmBids : BaseClass.Base {
+    public partial class frmBids : BaseClass.frmBase {
         public frmBids(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS"}, userPrincipal) {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;

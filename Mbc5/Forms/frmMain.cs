@@ -9,6 +9,7 @@ using Mbc5.Dialogs;
 using Mbc5.Forms.MemoryBook;
 using Mbc5.Forms.Meridian;
 using BaseClass.Classes;
+using BaseClass.Forms;
 using NLog;
 namespace Mbc5.Forms
 {
@@ -26,7 +27,69 @@ namespace Mbc5.Forms
 
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
+        #region "Methods"
+        private int GetInvno()
+        {
+            int vInvno = 0;
+            switch (this.ActiveMdiChild.Name)
+            {
 
+                case "frmMbcCust":
+                    {
+
+                        var tmpForm = (frmMbcCust)this.ActiveMdiChild;
+
+                        vInvno = tmpForm.Invno;
+                        break;
+                    }
+                case "frmBids":
+                    {
+                        var tmpForm = (frmBids)this.ActiveMdiChild;
+                        vInvno = tmpForm.Invno;
+                        break;
+                    }
+                case "frmProdutn":
+                    {
+                        var tmpForm = (frmProdutn)this.ActiveMdiChild;
+                        vInvno = tmpForm.Invno;
+                        break;
+                    }
+                
+            }
+            return vInvno;
+        }
+        private string GetSchcode()
+        {
+            string vSchcode =null;
+            switch (this.ActiveMdiChild.Name)
+            {
+
+                case "frmMbcCust":
+                    {
+
+                        var tmpForm = (frmMbcCust)this.ActiveMdiChild;
+
+                        vSchcode = tmpForm.Schcode;
+                        break;
+                    }
+                case "frmBids":
+                    {
+                        var tmpForm = (frmBids)this.ActiveMdiChild;
+                        vSchcode = tmpForm.Schcode;
+                        break;
+                    }
+                case "frmProdutn":
+                    {
+                        var tmpForm = (frmProdutn)this.ActiveMdiChild;
+                        vSchcode = tmpForm.Schcode;
+                        break;
+                    }
+
+            }
+            return vSchcode;
+
+        }
+        #endregion
         private void frmMain_Load(object sender, EventArgs e)
         {
             List<string> a = new List<string>();
@@ -166,10 +229,18 @@ namespace Mbc5.Forms
 
         private void salesToolStripMenuItem_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
-            frmSales frmSales = new frmSales(this.ApplicationUser);
+            int vInvno = 81455; //GetInvno();
+            string vSchcode = "038752"; // GetSchcode();
+        
+          frmSales frmSales = new frmSales(this.ApplicationUser,vInvno,vSchcode);
             frmSales.MdiParent = this;
             frmSales.Show();
             this.Cursor = Cursors.Default;
+
+                
+              }
+           
+          
             }
         }
-}
+

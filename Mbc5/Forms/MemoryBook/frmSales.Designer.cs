@@ -63,13 +63,35 @@
             System.Windows.Forms.Label label17;
             System.Windows.Forms.Label saletaxLabel;
             System.Windows.Forms.Label freebooksLabel;
+            System.Windows.Forms.Label label16;
+            System.Windows.Forms.Label label18;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnInvoice = new System.Windows.Forms.Button();
+            this.btnCreateWIP = new System.Windows.Forms.Button();
+            this.btnPrntInvoice = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnNoPayPo = new System.Windows.Forms.Button();
+            this.btnPaymentNotRec = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.txtPOAmt = new System.Windows.Forms.TextBox();
+            this.txtPayments = new System.Windows.Forms.TextBox();
+            this.txtInvoSrch = new System.Windows.Forms.TextBox();
+            this.txtPoSrch = new System.Windows.Forms.TextBox();
+            this.btnInvSrch = new System.Windows.Forms.Button();
+            this.btnPoSrch = new System.Windows.Forms.Button();
+            this.invHstDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invHstBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsSales = new Mbc5.DataSets.dsSales();
             this.freebooksTextBox = new System.Windows.Forms.TextBox();
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsSales = new Mbc5.DataSets.dsSales();
             this.saletaxTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtOtherChrg = new System.Windows.Forms.TextBox();
@@ -182,17 +204,19 @@
             this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
-            this.invHstBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
-            this.invHstDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnPoSrch = new System.Windows.Forms.Button();
-            this.btnInvSrch = new System.Windows.Forms.Button();
-            this.txtPoSrch = new System.Windows.Forms.TextBox();
-            this.txtInvoSrch = new System.Windows.Forms.TextBox();
+            this.bnSales = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -231,10 +255,16 @@
             label17 = new System.Windows.Forms.Label();
             saletaxLabel = new System.Windows.Forms.Label();
             freebooksLabel = new System.Windows.Forms.Label();
+            label16 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
             this.tabSales.SuspendLayout();
             this.pg1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlTot.SuspendLayout();
             this.pnlMiscDiscCred.SuspendLayout();
@@ -243,8 +273,8 @@
             this.panel1.SuspendLayout();
             this.pnlHard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bnSales)).BeginInit();
+            this.bnSales.SuspendLayout();
             this.SuspendLayout();
             // 
             // nopagesLabel
@@ -345,7 +375,6 @@
             prcorLabel.Size = new System.Drawing.Size(101, 13);
             prcorLabel.TabIndex = 36;
             prcorLabel.Text = "Price Over Ride:";
-            prcorLabel.Click += new System.EventHandler(this.prcorLabel_Click);
             // 
             // inkclrLabel
             // 
@@ -472,7 +501,6 @@
             msstanqtyLabel.Size = new System.Drawing.Size(30, 13);
             msstanqtyLabel.TabIndex = 113;
             msstanqtyLabel.Text = "Qty:";
-            msstanqtyLabel.Click += new System.EventHandler(this.msstanqtyLabel_Click);
             // 
             // persamountLabel
             // 
@@ -591,6 +619,24 @@
             freebooksLabel.TabIndex = 138;
             freebooksLabel.Text = "Free Additional Books:";
             // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new System.Drawing.Point(655, 582);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(65, 13);
+            label16.TabIndex = 144;
+            label16.Text = "Payments:";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(646, 605);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(74, 13);
+            label18.TabIndex = 146;
+            label18.Text = "PO Amount:";
+            // 
             // tabSales
             // 
             this.tabSales.Controls.Add(this.pg1);
@@ -605,6 +651,13 @@
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.bnSales);
+            this.pg1.Controls.Add(this.panel6);
+            this.pg1.Controls.Add(this.panel5);
+            this.pg1.Controls.Add(label18);
+            this.pg1.Controls.Add(this.txtPOAmt);
+            this.pg1.Controls.Add(label16);
+            this.pg1.Controls.Add(this.txtPayments);
             this.pg1.Controls.Add(this.txtInvoSrch);
             this.pg1.Controls.Add(this.txtPoSrch);
             this.pg1.Controls.Add(this.btnInvSrch);
@@ -664,7 +717,199 @@
             this.pg1.Size = new System.Drawing.Size(1255, 736);
             this.pg1.TabIndex = 0;
             this.pg1.Text = "Sales";
-            this.pg1.Click += new System.EventHandler(this.pg1_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.btnInvoice);
+            this.panel6.Controls.Add(this.btnCreateWIP);
+            this.panel6.Controls.Add(this.btnPrntInvoice);
+            this.panel6.Location = new System.Drawing.Point(933, 526);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(274, 96);
+            this.panel6.TabIndex = 155;
+            // 
+            // btnInvoice
+            // 
+            this.btnInvoice.Location = new System.Drawing.Point(3, 6);
+            this.btnInvoice.Name = "btnInvoice";
+            this.btnInvoice.Size = new System.Drawing.Size(156, 39);
+            this.btnInvoice.TabIndex = 148;
+            this.btnInvoice.Text = "Create/OverRide Invoice";
+            this.btnInvoice.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateWIP
+            // 
+            this.btnCreateWIP.Location = new System.Drawing.Point(105, 51);
+            this.btnCreateWIP.Name = "btnCreateWIP";
+            this.btnCreateWIP.Size = new System.Drawing.Size(101, 36);
+            this.btnCreateWIP.TabIndex = 149;
+            this.btnCreateWIP.Text = "Create/Update WIP";
+            this.btnCreateWIP.UseVisualStyleBackColor = true;
+            // 
+            // btnPrntInvoice
+            // 
+            this.btnPrntInvoice.Location = new System.Drawing.Point(165, 6);
+            this.btnPrntInvoice.Name = "btnPrntInvoice";
+            this.btnPrntInvoice.Size = new System.Drawing.Size(101, 23);
+            this.btnPrntInvoice.TabIndex = 150;
+            this.btnPrntInvoice.Text = "Print Invoice";
+            this.btnPrntInvoice.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.btnNoPayPo);
+            this.panel5.Controls.Add(this.btnPaymentNotRec);
+            this.panel5.Controls.Add(this.btnRemove);
+            this.panel5.Location = new System.Drawing.Point(886, 209);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(321, 85);
+            this.panel5.TabIndex = 154;
+            // 
+            // btnNoPayPo
+            // 
+            this.btnNoPayPo.Location = new System.Drawing.Point(16, 16);
+            this.btnNoPayPo.Name = "btnNoPayPo";
+            this.btnNoPayPo.Size = new System.Drawing.Size(143, 23);
+            this.btnNoPayPo.TabIndex = 151;
+            this.btnNoPayPo.Text = "No Payment PO/Half";
+            this.btnNoPayPo.UseVisualStyleBackColor = true;
+            // 
+            // btnPaymentNotRec
+            // 
+            this.btnPaymentNotRec.Location = new System.Drawing.Point(165, 16);
+            this.btnPaymentNotRec.Name = "btnPaymentNotRec";
+            this.btnPaymentNotRec.Size = new System.Drawing.Size(137, 23);
+            this.btnPaymentNotRec.TabIndex = 152;
+            this.btnPaymentNotRec.Text = "Payment Not Rec 5%";
+            this.btnPaymentNotRec.UseVisualStyleBackColor = true;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(96, 45);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(137, 23);
+            this.btnRemove.TabIndex = 153;
+            this.btnRemove.Text = "Removing 5%";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            // 
+            // txtPOAmt
+            // 
+            this.txtPOAmt.BackColor = System.Drawing.Color.Aqua;
+            this.txtPOAmt.Location = new System.Drawing.Point(727, 602);
+            this.txtPOAmt.Name = "txtPOAmt";
+            this.txtPOAmt.ReadOnly = true;
+            this.txtPOAmt.Size = new System.Drawing.Size(73, 20);
+            this.txtPOAmt.TabIndex = 147;
+            // 
+            // txtPayments
+            // 
+            this.txtPayments.BackColor = System.Drawing.Color.Aqua;
+            this.txtPayments.Location = new System.Drawing.Point(727, 579);
+            this.txtPayments.Name = "txtPayments";
+            this.txtPayments.ReadOnly = true;
+            this.txtPayments.Size = new System.Drawing.Size(73, 20);
+            this.txtPayments.TabIndex = 145;
+            // 
+            // txtInvoSrch
+            // 
+            this.txtInvoSrch.Location = new System.Drawing.Point(1091, 36);
+            this.txtInvoSrch.MaxLength = 5;
+            this.txtInvoSrch.Name = "txtInvoSrch";
+            this.txtInvoSrch.Size = new System.Drawing.Size(106, 20);
+            this.txtInvoSrch.TabIndex = 143;
+            // 
+            // txtPoSrch
+            // 
+            this.txtPoSrch.Location = new System.Drawing.Point(1091, 59);
+            this.txtPoSrch.Name = "txtPoSrch";
+            this.txtPoSrch.Size = new System.Drawing.Size(106, 20);
+            this.txtPoSrch.TabIndex = 142;
+            // 
+            // btnInvSrch
+            // 
+            this.btnInvSrch.AutoSize = true;
+            this.btnInvSrch.Location = new System.Drawing.Point(975, 36);
+            this.btnInvSrch.Name = "btnInvSrch";
+            this.btnInvSrch.Size = new System.Drawing.Size(111, 23);
+            this.btnInvSrch.TabIndex = 141;
+            this.btnInvSrch.Text = "Invoice# Search";
+            this.btnInvSrch.UseVisualStyleBackColor = true;
+            // 
+            // btnPoSrch
+            // 
+            this.btnPoSrch.AutoSize = true;
+            this.btnPoSrch.Location = new System.Drawing.Point(1000, 59);
+            this.btnPoSrch.Name = "btnPoSrch";
+            this.btnPoSrch.Size = new System.Drawing.Size(86, 23);
+            this.btnPoSrch.TabIndex = 140;
+            this.btnPoSrch.Text = "PO# Search";
+            this.btnPoSrch.UseVisualStyleBackColor = true;
+            // 
+            // invHstDataGridView
+            // 
+            this.invHstDataGridView.AllowUserToDeleteRows = false;
+            this.invHstDataGridView.AutoGenerateColumns = false;
+            this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn3});
+            this.invHstDataGridView.DataSource = this.invHstBindingSource;
+            this.invHstDataGridView.EnableHeadersVisualStyles = false;
+            this.invHstDataGridView.Location = new System.Drawing.Point(886, 90);
+            this.invHstDataGridView.Name = "invHstDataGridView";
+            this.invHstDataGridView.Size = new System.Drawing.Size(321, 113);
+            this.invHstDataGridView.TabIndex = 139;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "contryear";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Year";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 58;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "qtedate";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Sales Date";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 87;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "invno";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Invoice#";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 82;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "baldue";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Balance Due";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 96;
+            // 
+            // invHstBindingSource
+            // 
+            this.invHstBindingSource.DataMember = "InvHst";
+            this.invHstBindingSource.DataSource = this.dsSales;
+            // 
+            // dsSales
+            // 
+            this.dsSales.DataSetName = "dsSales";
+            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // freebooksTextBox
             // 
@@ -678,11 +923,6 @@
             // 
             this.quotesBindingSource.DataMember = "quotes";
             this.quotesBindingSource.DataSource = this.dsSales;
-            // 
-            // dsSales
-            // 
-            this.dsSales.DataSetName = "dsSales";
-            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // saletaxTextBox
             // 
@@ -1154,7 +1394,6 @@
             this.txtAllClrAmt.Name = "txtAllClrAmt";
             this.txtAllClrAmt.Size = new System.Drawing.Size(53, 20);
             this.txtAllClrAmt.TabIndex = 44;
-            this.txtAllClrAmt.TextChanged += new System.EventHandler(this.txtAllClrAmt_TextChanged);
             // 
             // chkAllClr
             // 
@@ -1614,7 +1853,6 @@
             this.lblPCEach.Size = new System.Drawing.Size(41, 13);
             this.lblPCEach.TabIndex = 41;
             this.lblPCEach.Text = "label3";
-            this.lblPCEach.Click += new System.EventHandler(this.lblPCEach_Click);
             // 
             // lblPCTotal
             // 
@@ -1645,7 +1883,6 @@
             this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 38;
             this.label1.Text = "Porf/Conv Each:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // prcorTextBox
             // 
@@ -1654,7 +1891,6 @@
             this.prcorTextBox.Name = "prcorTextBox";
             this.prcorTextBox.Size = new System.Drawing.Size(69, 20);
             this.prcorTextBox.TabIndex = 37;
-            this.prcorTextBox.TextChanged += new System.EventHandler(this.prcorTextBox_TextChanged);
             // 
             // txtBookTotal
             // 
@@ -1731,7 +1967,6 @@
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(39, 20);
             this.txtYear.TabIndex = 19;
-            this.txtYear.TextChanged += new System.EventHandler(this.contryearTextBox_TextChanged);
             // 
             // txtNoPages
             // 
@@ -1768,111 +2003,124 @@
             // 
             this.custTableAdapter.ClearBeforeFill = true;
             // 
-            // invHstBindingSource
-            // 
-            this.invHstBindingSource.DataMember = "InvHst";
-            this.invHstBindingSource.DataSource = this.dsSales;
-            // 
             // invHstTableAdapter
             // 
             this.invHstTableAdapter.ClearBeforeFill = true;
             // 
-            // invHstDataGridView
+            // bnSales
             // 
-            this.invHstDataGridView.AllowUserToDeleteRows = false;
-            this.invHstDataGridView.AutoGenerateColumns = false;
-            this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn3});
-            this.invHstDataGridView.DataSource = this.invHstBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.invHstDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.invHstDataGridView.EnableHeadersVisualStyles = false;
-            this.invHstDataGridView.Location = new System.Drawing.Point(886, 90);
-            this.invHstDataGridView.Name = "invHstDataGridView";
-            this.invHstDataGridView.Size = new System.Drawing.Size(321, 113);
-            this.invHstDataGridView.TabIndex = 139;
+            this.bnSales.AddNewItem = null;
+            this.bnSales.BindingSource = this.quotesBindingSource;
+            this.bnSales.CountItem = this.bindingNavigatorCountItem;
+            this.bnSales.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.bnSales.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bnSales.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem});
+            this.bnSales.Location = new System.Drawing.Point(3, 708);
+            this.bnSales.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bnSales.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bnSales.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bnSales.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bnSales.Name = "bnSales";
+            this.bnSales.PositionItem = this.bindingNavigatorPositionItem;
+            this.bnSales.Size = new System.Drawing.Size(1249, 25);
+            this.bnSales.TabIndex = 156;
+            this.bnSales.Text = "SaleNav";
             // 
-            // dataGridViewTextBoxColumn4
+            // bindingNavigatorMoveFirstItem
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "contryear";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Year";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 50;
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
             // 
-            // dataGridViewTextBoxColumn2
+            // bindingNavigatorMovePreviousItem
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "qtedate";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Sales Date";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 77;
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
             // 
-            // dataGridViewTextBoxColumn1
+            // bindingNavigatorSeparator
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "invno";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Invoice#";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 66;
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
             // 
-            // dataGridViewTextBoxColumn3
+            // bindingNavigatorPositionItem
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "baldue";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Balance Due";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 84;
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // btnPoSrch
+            // bindingNavigatorCountItem
             // 
-            this.btnPoSrch.AutoSize = true;
-            this.btnPoSrch.Location = new System.Drawing.Point(1000, 59);
-            this.btnPoSrch.Name = "btnPoSrch";
-            this.btnPoSrch.Size = new System.Drawing.Size(86, 23);
-            this.btnPoSrch.TabIndex = 140;
-            this.btnPoSrch.Text = "PO# Search";
-            this.btnPoSrch.UseVisualStyleBackColor = true;
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
-            // btnInvSrch
+            // bindingNavigatorSeparator1
             // 
-            this.btnInvSrch.AutoSize = true;
-            this.btnInvSrch.Location = new System.Drawing.Point(975, 36);
-            this.btnInvSrch.Name = "btnInvSrch";
-            this.btnInvSrch.Size = new System.Drawing.Size(111, 23);
-            this.btnInvSrch.TabIndex = 141;
-            this.btnInvSrch.Text = "Invoice# Search";
-            this.btnInvSrch.UseVisualStyleBackColor = true;
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // txtPoSrch
+            // bindingNavigatorMoveNextItem
             // 
-            this.txtPoSrch.Location = new System.Drawing.Point(1091, 59);
-            this.txtPoSrch.Name = "txtPoSrch";
-            this.txtPoSrch.Size = new System.Drawing.Size(106, 20);
-            this.txtPoSrch.TabIndex = 142;
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
             // 
-            // txtInvoSrch
+            // bindingNavigatorMoveLastItem
             // 
-            this.txtInvoSrch.Location = new System.Drawing.Point(1091, 36);
-            this.txtInvoSrch.MaxLength = 5;
-            this.txtInvoSrch.Name = "txtInvoSrch";
-            this.txtInvoSrch.Size = new System.Drawing.Size(106, 20);
-            this.txtInvoSrch.TabIndex = 143;
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // frmSales
             // 
@@ -1886,8 +2134,12 @@
             this.tabSales.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.pnlTot.ResumeLayout(false);
@@ -1903,8 +2155,9 @@
             this.pnlHard.ResumeLayout(false);
             this.pnlHard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bnSales)).EndInit();
+            this.bnSales.ResumeLayout(false);
+            this.bnSales.PerformLayout();
             this.ResumeLayout(false);
 
             }
@@ -2038,5 +2291,27 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnInvoice;
+        private System.Windows.Forms.Button btnCreateWIP;
+        private System.Windows.Forms.Button btnPrntInvoice;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btnNoPayPo;
+        private System.Windows.Forms.Button btnPaymentNotRec;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.TextBox txtPOAmt;
+        private System.Windows.Forms.TextBox txtPayments;
+        private System.Windows.Forms.BindingNavigator bnSales;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
     }
     }

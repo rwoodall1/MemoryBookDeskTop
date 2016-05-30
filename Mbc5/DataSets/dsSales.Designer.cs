@@ -30,6 +30,8 @@ namespace Mbc5.DataSets {
         
         private InvHstDataTable tableInvHst;
         
+        private global::System.Data.DataRelation relationcust_quotes;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -242,6 +244,7 @@ namespace Mbc5.DataSets {
                     this.tableInvHst.InitVars();
                 }
             }
+            this.relationcust_quotes = this.Relations["cust_quotes"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -258,6 +261,10 @@ namespace Mbc5.DataSets {
             base.Tables.Add(this.tablecust);
             this.tableInvHst = new InvHstDataTable();
             base.Tables.Add(this.tableInvHst);
+            this.relationcust_quotes = new global::System.Data.DataRelation("cust_quotes", new global::System.Data.DataColumn[] {
+                        this.tablecust.schcodeColumn}, new global::System.Data.DataColumn[] {
+                        this.tablequotes.schcodeColumn}, false);
+            this.Relations.Add(this.relationcust_quotes);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2192,7 +2199,7 @@ namespace Mbc5.DataSets {
             public quotesRow AddquotesRow(
                         decimal invno, 
                         string schname, 
-                        string schcode, 
+                        custRow parentcustRowBycust_quotes, 
                         string prodno, 
                         string booktype, 
                         System.DateTime qtedate, 
@@ -2371,7 +2378,7 @@ namespace Mbc5.DataSets {
                 object[] columnValuesArray = new object[] {
                         invno,
                         schname,
-                        schcode,
+                        null,
                         prodno,
                         booktype,
                         qtedate,
@@ -2546,6 +2553,9 @@ namespace Mbc5.DataSets {
                         freebooks,
                         totalads,
                         totallovelines};
+                if ((parentcustRowBycust_quotes != null)) {
+                    columnValuesArray[2] = parentcustRowBycust_quotes[0];
+                }
                 rowquotesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowquotesRow);
                 return rowquotesRow;
@@ -7929,6 +7939,17 @@ namespace Mbc5.DataSets {
                     this[this.tablequotes.totallovelinesColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public custRow custRow {
+                get {
+                    return ((custRow)(this.GetParentRow(this.Table.ParentRelations["cust_quotes"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["cust_quotes"]);
+                }
+            }
         }
         
         /// <summary>
@@ -11335,6 +11356,17 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTimeStampNull() {
                 this[this.tablecust.TimeStampColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public quotesRow[] GetquotesRows() {
+                if ((this.Table.ChildRelations["cust_quotes"] == null)) {
+                    return new quotesRow[0];
+                }
+                else {
+                    return ((quotesRow[])(base.GetChildRows(this.Table.ChildRelations["cust_quotes"])));
+                }
             }
         }
         
@@ -15875,22 +15907,22 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "rebookreason, newpublisher, csrep2, schcolors, keeppswd, leadsource, leadsname, " +
                 "prevpublisher, leadname, \r\n                         isDeleted, photographer, Dat" +
                 "eCreated, DateModified, TimeStamp\r\nFROM            cust\r\nWHERE        (schcode =" +
-                " @Schcode)";
+                " @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsSales.custDataTable dataTable, string Schcode) {
+        public virtual int Fill(dsSales.custDataTable dataTable, string schcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Schcode == null)) {
-                throw new global::System.ArgumentNullException("Schcode");
+            if ((schcode == null)) {
+                throw new global::System.ArgumentNullException("schcode");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schcode));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -15903,13 +15935,13 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsSales.custDataTable GetData(string Schcode) {
+        public virtual dsSales.custDataTable GetData(string schcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Schcode == null)) {
-                throw new global::System.ArgumentNullException("Schcode");
+            if ((schcode == null)) {
+                throw new global::System.ArgumentNullException("schcode");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schcode));
             }
             dsSales.custDataTable dataTable = new dsSales.custDataTable();
             this.Adapter.Fill(dataTable);
@@ -18409,21 +18441,21 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(dsSales dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._quotesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.quotes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._quotesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._custTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.cust.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._custTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._quotesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.quotes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._quotesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -18446,19 +18478,19 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(dsSales dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._quotesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.quotes.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._quotesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._custTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.cust.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._custTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._quotesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.quotes.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._quotesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -18488,19 +18520,19 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._custTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.cust.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._custTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._quotesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.quotes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._quotesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._custTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.cust.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._custTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

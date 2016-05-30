@@ -11,7 +11,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 
 namespace Mbc5.Forms.Meridian {
-    public partial class frmMSales : BaseClass.Base {
+    public partial class frmMSales : BaseClass.frmBase {
         public frmMSales(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS"}, userPrincipal) {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
