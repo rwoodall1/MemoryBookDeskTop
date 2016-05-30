@@ -40,13 +40,7 @@ namespace Mbc5.Forms.MemoryBook {
                 InvokePropertyChanged(new PropertyChangedEventArgs("PrcEach"));
                 }
             }
-        private void quotesBindingNavigatorSaveItem_Click(object sender,EventArgs e) {
-            this.Validate();
-            this.quotesBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dsSales);
-
-            }
-
+       
         
 
         private void contryearTextBox_TextChanged(object sender,EventArgs e) {
@@ -56,6 +50,59 @@ namespace Mbc5.Forms.MemoryBook {
         private void frmSales_Load(object sender,EventArgs e) {
             lblPCEach.DataBindings.Add("Text",this,"PrcEa",false,DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text",this,"PrcTot",false,DataSourceUpdateMode.OnPropertyChanged);//bind
+
+
+
             }
+
+ 
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
+
+        private void lblPCEach_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void prcorLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void prcorTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAllClrAmt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void msstanqtyLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pg1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fillToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.invHstTableAdapter.Fill(this.dsSales.InvHst, ((decimal)(System.Convert.ChangeType(invnoToolStripTextBox.Text, typeof(decimal)))));
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+    }
     }
