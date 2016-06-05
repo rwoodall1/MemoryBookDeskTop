@@ -229,8 +229,8 @@ namespace Mbc5.Forms
 
         private void salesToolStripMenuItem_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
-            int vInvno = 81455; //GetInvno();
-            string vSchcode = "038752"; // GetSchcode();
+            int vInvno = GetInvno();
+            string vSchcode = GetSchcode();
         
           frmSales frmSales = new frmSales(this.ApplicationUser,vInvno,vSchcode);
             frmSales.MdiParent = this;

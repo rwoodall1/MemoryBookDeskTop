@@ -14,7 +14,8 @@ using System.Diagnostics;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
            private bool vMktGo = false;
-         
+        private string vSchcode = null;
+        private int vInvno = 0;
           
         public frmMbcCust(UserPrincipal userPrincipal) : base(new string[] { "SA","Administrator","MbcCS" },userPrincipal) {
             InitializeComponent();
@@ -40,12 +41,15 @@ namespace Mbc5.Forms.MemoryBook {
         private bool MktLogAdded { get; set; } = false;
         private bool TeleGo { get; set; } = false;
         private bool TeleLogAdded { get; set; } = false;
-      
+        
+     
+
         #endregion
 
         private void frmMbcCust_Load(object sender,EventArgs e) {
 
              this.chkMktComplete.DataBindings.Add("Checked",this,"MktGo",false,DataSourceUpdateMode.OnPropertyChanged);//bind check box to property of form
+
             if (!ApplicationUser.Roles.Contains("MbcCS"))
                 {
                 TeleGo = true;
@@ -71,6 +75,7 @@ namespace Mbc5.Forms.MemoryBook {
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
             this.statesTableAdapter.Fill(this.lookUp.states);
             this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,"038752");
+            SetInvnoSchCode();
 
             }
 
@@ -90,7 +95,7 @@ namespace Mbc5.Forms.MemoryBook {
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,txtSchCode.Text.Trim());
                 this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text.Trim());
                 TeleGo = false;
-                
+              
                 }
             }
         private void btnSchoolSearch_Click(object sender,EventArgs e) {
@@ -108,6 +113,7 @@ namespace Mbc5.Forms.MemoryBook {
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,txtSchCode.Text.Trim());
                 this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text.Trim());
                 TeleGo = false;
+               
                 }
             }
         #region CrudOperations
@@ -304,6 +310,16 @@ namespace Mbc5.Forms.MemoryBook {
             }
         #endregion
         #region Methods
+        private void SetInvnoSchCode()
+        {
+            this.Schcode = txtSchCode.Text;
+            int val = 0;
+            bool parsed = Int32.TryParse(lblInvno.Text, out val);
+            if (parsed)
+            {
+                this.Invno = val;
+            }
+        }
         public override void Save() {
             txtSchname.ReadOnly = true;
             this.ValidateChildren(ValidationConstraints.Enabled);
@@ -659,11 +675,29 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 }
 
+        private void txtSchCode_TextChanged(object sender, EventArgs e)
+        {
+            SetInvnoSchCode();
+        }
+
+        private void custDataGridView_Leave(object sender, EventArgs e)
+        {
+           
+           
+            lblSchcode.Refresh();
+            custDataGridView.Parent.Refresh();
+        }
+
+        private void lblInvno_TextChanged(object sender, EventArgs e)
+        {
+            SetInvnoSchCode();
+        }
+
 
 
 
 
         //Nothing below here
-        }
+    }
     }
 

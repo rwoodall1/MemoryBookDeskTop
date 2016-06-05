@@ -45,6 +45,14 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
         #endregion
+        #region "Methods"
+        private void CalculateEach()
+        {
+            
+
+
+        }
+        #endregion
         private void frmSales_Load(object sender,EventArgs e) {
             lblPCEach.DataBindings.Add("Text",this,"PrcEa",false,DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text",this,"PrcTot",false,DataSourceUpdateMode.OnPropertyChanged);//bind
@@ -59,7 +67,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
             if (Invno != 0)
             {
-                var pos=quotesBindingSource.Find("invno", 814533);
+                var pos=quotesBindingSource.Find("invno", this.Invno);
                 if (pos > -1)
                 {
                     quotesBindingSource.Position = pos;
@@ -71,6 +79,7 @@ namespace Mbc5.Forms.MemoryBook {
            
 
         }
+
         
-      }
+    }
     }
