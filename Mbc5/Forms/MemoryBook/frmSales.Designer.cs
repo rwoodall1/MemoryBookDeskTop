@@ -69,9 +69,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
-            this.bnSales = new System.Windows.Forms.BindingNavigator(this.components);
+            this.lblBookTotal = new System.Windows.Forms.Label();
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsSales = new Mbc5.DataSets.dsSales();
+            this.lbladjbef = new System.Windows.Forms.Label();
+            this.bnSales = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -115,7 +117,13 @@
             this.cred_etcTextBox1 = new System.Windows.Forms.TextBox();
             this.txtCredits = new System.Windows.Forms.TextBox();
             this.pnlTot = new System.Windows.Forms.Panel();
+            this.lblperstotal = new System.Windows.Forms.Label();
+            this.lblDisc3 = new System.Windows.Forms.Label();
+            this.lblMsTot = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.lbldisc2 = new System.Windows.Forms.Label();
+            this.lbldisc1 = new System.Windows.Forms.Label();
+            this.lblsubtot = new System.Windows.Forms.Label();
             this.txtFinalTotPrc = new System.Windows.Forms.TextBox();
             this.txtDisc = new System.Windows.Forms.TextBox();
             this.txtFinalbookprc = new System.Windows.Forms.TextBox();
@@ -144,9 +152,12 @@
             this.txtDesc4 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.chkAllClr = new System.Windows.Forms.CheckBox();
+            this.lblLaminate = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblLaminateAmt = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.chkGlossLam = new System.Windows.Forms.CheckBox();
+            this.lblAllClrAmt = new System.Windows.Forms.Label();
             this.chkMLaminate = new System.Windows.Forms.CheckBox();
             this.inkclrComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -205,17 +216,7 @@
             this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
             this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
-            this.lblLaminate = new System.Windows.Forms.Label();
-            this.lblLaminateAmt = new System.Windows.Forms.Label();
-            this.lblAllClrAmt = new System.Windows.Forms.Label();
-            this.lblsubtot = new System.Windows.Forms.Label();
-            this.lbldisc1 = new System.Windows.Forms.Label();
-            this.lblDisc3 = new System.Windows.Forms.Label();
-            this.lbldisc2 = new System.Windows.Forms.Label();
-            this.lblMsTot = new System.Windows.Forms.Label();
-            this.lblperstotal = new System.Windows.Forms.Label();
-            this.lbladjbef = new System.Windows.Forms.Label();
-            this.lblBookTotal = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -258,10 +259,10 @@
             label18 = new System.Windows.Forms.Label();
             this.tabSales.SuspendLayout();
             this.pg1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bnSales)).BeginInit();
-            this.bnSales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bnSales)).BeginInit();
+            this.bnSales.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).BeginInit();
@@ -449,7 +450,7 @@
             invnoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             invnoLabel.Location = new System.Drawing.Point(998, 8);
             invnoLabel.Name = "invnoLabel";
-            invnoLabel.Size = new System.Drawing.Size(95, 16);
+            invnoLabel.Size = new System.Drawing.Size(90, 16);
             invnoLabel.TabIndex = 89;
             invnoLabel.Text = "Invoice No.:";
             // 
@@ -673,6 +674,7 @@
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.button1);
             this.pg1.Controls.Add(this.lblBookTotal);
             this.pg1.Controls.Add(this.lbladjbef);
             this.pg1.Controls.Add(this.bnSales);
@@ -741,6 +743,38 @@
             this.pg1.TabIndex = 0;
             this.pg1.Text = "Sales";
             // 
+            // lblBookTotal
+            // 
+            this.lblBookTotal.AutoSize = true;
+            this.lblBookTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "book_price", true));
+            this.lblBookTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookTotal.Location = new System.Drawing.Point(665, 37);
+            this.lblBookTotal.Name = "lblBookTotal";
+            this.lblBookTotal.Size = new System.Drawing.Size(41, 13);
+            this.lblBookTotal.TabIndex = 170;
+            this.lblBookTotal.Text = "label21";
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsSales;
+            // 
+            // dsSales
+            // 
+            this.dsSales.DataSetName = "dsSales";
+            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lbladjbef
+            // 
+            this.lbladjbef.AutoSize = true;
+            this.lbladjbef.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "adjbef", true));
+            this.lbladjbef.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbladjbef.Location = new System.Drawing.Point(806, 491);
+            this.lbladjbef.Name = "lbladjbef";
+            this.lbladjbef.Size = new System.Drawing.Size(41, 13);
+            this.lbladjbef.TabIndex = 169;
+            this.lbladjbef.Text = "label21";
+            // 
             // bnSales
             // 
             this.bnSales.AddNewItem = null;
@@ -770,16 +804,6 @@
             this.bnSales.Size = new System.Drawing.Size(1219, 25);
             this.bnSales.TabIndex = 156;
             this.bnSales.Text = "SaleNav";
-            // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsSales;
-            // 
-            // dsSales
-            // 
-            this.dsSales.DataSetName = "dsSales";
-            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -1247,6 +1271,39 @@
             this.pnlTot.Size = new System.Drawing.Size(520, 210);
             this.pnlTot.TabIndex = 125;
             // 
+            // lblperstotal
+            // 
+            this.lblperstotal.AutoSize = true;
+            this.lblperstotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "perstotal", true));
+            this.lblperstotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblperstotal.Location = new System.Drawing.Point(449, 131);
+            this.lblperstotal.Name = "lblperstotal";
+            this.lblperstotal.Size = new System.Drawing.Size(41, 13);
+            this.lblperstotal.TabIndex = 168;
+            this.lblperstotal.Text = "label21";
+            // 
+            // lblDisc3
+            // 
+            this.lblDisc3.AutoSize = true;
+            this.lblDisc3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "disc3", true));
+            this.lblDisc3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDisc3.Location = new System.Drawing.Point(449, 87);
+            this.lblDisc3.Name = "lblDisc3";
+            this.lblDisc3.Size = new System.Drawing.Size(41, 13);
+            this.lblDisc3.TabIndex = 167;
+            this.lblDisc3.Text = "label21";
+            // 
+            // lblMsTot
+            // 
+            this.lblMsTot.AutoSize = true;
+            this.lblMsTot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "msstandtot", true));
+            this.lblMsTot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMsTot.Location = new System.Drawing.Point(449, 110);
+            this.lblMsTot.Name = "lblMsTot";
+            this.lblMsTot.Size = new System.Drawing.Size(41, 13);
+            this.lblMsTot.TabIndex = 167;
+            this.lblMsTot.Text = "label21";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -1256,6 +1313,39 @@
             this.label14.Size = new System.Drawing.Size(347, 13);
             this.label14.TabIndex = 117;
             this.label14.Text = "State is Hawaii, Alaska or Armed Forces ADD Shipping Chg.";
+            // 
+            // lbldisc2
+            // 
+            this.lbldisc2.AutoSize = true;
+            this.lbldisc2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "disc2", true));
+            this.lbldisc2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldisc2.Location = new System.Drawing.Point(449, 64);
+            this.lbldisc2.Name = "lbldisc2";
+            this.lbldisc2.Size = new System.Drawing.Size(41, 13);
+            this.lbldisc2.TabIndex = 166;
+            this.lbldisc2.Text = "label21";
+            // 
+            // lbldisc1
+            // 
+            this.lbldisc1.AutoSize = true;
+            this.lbldisc1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "disc1", true));
+            this.lbldisc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldisc1.Location = new System.Drawing.Point(449, 41);
+            this.lbldisc1.Name = "lbldisc1";
+            this.lbldisc1.Size = new System.Drawing.Size(41, 13);
+            this.lbldisc1.TabIndex = 165;
+            this.lbldisc1.Text = "label21";
+            // 
+            // lblsubtot
+            // 
+            this.lblsubtot.AutoSize = true;
+            this.lblsubtot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "sbtot", true));
+            this.lblsubtot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsubtot.Location = new System.Drawing.Point(446, 15);
+            this.lblsubtot.Name = "lblsubtot";
+            this.lblsubtot.Size = new System.Drawing.Size(41, 13);
+            this.lblsubtot.TabIndex = 164;
+            this.lblsubtot.Text = "label21";
             // 
             // txtFinalTotPrc
             // 
@@ -1573,6 +1663,17 @@
             this.chkAllClr.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkAllClr.UseVisualStyleBackColor = true;
             // 
+            // lblLaminate
+            // 
+            this.lblLaminate.AutoSize = true;
+            this.lblLaminate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "mlaminationamt", true));
+            this.lblLaminate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLaminate.Location = new System.Drawing.Point(119, 84);
+            this.lblLaminate.Name = "lblLaminate";
+            this.lblLaminate.Size = new System.Drawing.Size(41, 13);
+            this.lblLaminate.TabIndex = 164;
+            this.lblLaminate.Text = "label20";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -1582,6 +1683,17 @@
             this.label3.TabIndex = 45;
             this.label3.Text = "# of Color Pages";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblLaminateAmt
+            // 
+            this.lblLaminateAmt.AutoSize = true;
+            this.lblLaminateAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "laminate", true));
+            this.lblLaminateAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLaminateAmt.Location = new System.Drawing.Point(121, 66);
+            this.lblLaminateAmt.Name = "lblLaminateAmt";
+            this.lblLaminateAmt.Size = new System.Drawing.Size(41, 13);
+            this.lblLaminateAmt.TabIndex = 162;
+            this.lblLaminateAmt.Text = "label20";
             // 
             // textBox1
             // 
@@ -1602,6 +1714,17 @@
             this.chkGlossLam.Text = "Gloss Laminate";
             this.chkGlossLam.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkGlossLam.UseVisualStyleBackColor = true;
+            // 
+            // lblAllClrAmt
+            // 
+            this.lblAllClrAmt.AutoSize = true;
+            this.lblAllClrAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "allclramt", true));
+            this.lblAllClrAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAllClrAmt.Location = new System.Drawing.Point(121, 17);
+            this.lblAllClrAmt.Name = "lblAllClrAmt";
+            this.lblAllClrAmt.Size = new System.Drawing.Size(41, 13);
+            this.lblAllClrAmt.TabIndex = 163;
+            this.lblAllClrAmt.Text = "label21";
             // 
             // chkMLaminate
             // 
@@ -2195,126 +2318,15 @@
             // 
             this.invHstTableAdapter.ClearBeforeFill = true;
             // 
-            // lblLaminate
+            // button1
             // 
-            this.lblLaminate.AutoSize = true;
-            this.lblLaminate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "mlaminationamt", true));
-            this.lblLaminate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLaminate.Location = new System.Drawing.Point(119, 84);
-            this.lblLaminate.Name = "lblLaminate";
-            this.lblLaminate.Size = new System.Drawing.Size(41, 13);
-            this.lblLaminate.TabIndex = 164;
-            this.lblLaminate.Text = "label20";
-            // 
-            // lblLaminateAmt
-            // 
-            this.lblLaminateAmt.AutoSize = true;
-            this.lblLaminateAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "laminate", true));
-            this.lblLaminateAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLaminateAmt.Location = new System.Drawing.Point(121, 66);
-            this.lblLaminateAmt.Name = "lblLaminateAmt";
-            this.lblLaminateAmt.Size = new System.Drawing.Size(41, 13);
-            this.lblLaminateAmt.TabIndex = 162;
-            this.lblLaminateAmt.Text = "label20";
-            // 
-            // lblAllClrAmt
-            // 
-            this.lblAllClrAmt.AutoSize = true;
-            this.lblAllClrAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "allclramt", true));
-            this.lblAllClrAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAllClrAmt.Location = new System.Drawing.Point(121, 17);
-            this.lblAllClrAmt.Name = "lblAllClrAmt";
-            this.lblAllClrAmt.Size = new System.Drawing.Size(41, 13);
-            this.lblAllClrAmt.TabIndex = 163;
-            this.lblAllClrAmt.Text = "label21";
-            // 
-            // lblsubtot
-            // 
-            this.lblsubtot.AutoSize = true;
-            this.lblsubtot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "sbtot", true));
-            this.lblsubtot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblsubtot.Location = new System.Drawing.Point(446, 15);
-            this.lblsubtot.Name = "lblsubtot";
-            this.lblsubtot.Size = new System.Drawing.Size(41, 13);
-            this.lblsubtot.TabIndex = 164;
-            this.lblsubtot.Text = "label21";
-            // 
-            // lbldisc1
-            // 
-            this.lbldisc1.AutoSize = true;
-            this.lbldisc1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "disc1", true));
-            this.lbldisc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldisc1.Location = new System.Drawing.Point(449, 41);
-            this.lbldisc1.Name = "lbldisc1";
-            this.lbldisc1.Size = new System.Drawing.Size(41, 13);
-            this.lbldisc1.TabIndex = 165;
-            this.lbldisc1.Text = "label21";
-            // 
-            // lblDisc3
-            // 
-            this.lblDisc3.AutoSize = true;
-            this.lblDisc3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "disc3", true));
-            this.lblDisc3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDisc3.Location = new System.Drawing.Point(449, 87);
-            this.lblDisc3.Name = "lblDisc3";
-            this.lblDisc3.Size = new System.Drawing.Size(41, 13);
-            this.lblDisc3.TabIndex = 167;
-            this.lblDisc3.Text = "label21";
-            // 
-            // lbldisc2
-            // 
-            this.lbldisc2.AutoSize = true;
-            this.lbldisc2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "disc2", true));
-            this.lbldisc2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldisc2.Location = new System.Drawing.Point(449, 64);
-            this.lbldisc2.Name = "lbldisc2";
-            this.lbldisc2.Size = new System.Drawing.Size(41, 13);
-            this.lbldisc2.TabIndex = 166;
-            this.lbldisc2.Text = "label21";
-            // 
-            // lblMsTot
-            // 
-            this.lblMsTot.AutoSize = true;
-            this.lblMsTot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "msstandtot", true));
-            this.lblMsTot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMsTot.Location = new System.Drawing.Point(449, 110);
-            this.lblMsTot.Name = "lblMsTot";
-            this.lblMsTot.Size = new System.Drawing.Size(41, 13);
-            this.lblMsTot.TabIndex = 167;
-            this.lblMsTot.Text = "label21";
-            // 
-            // lblperstotal
-            // 
-            this.lblperstotal.AutoSize = true;
-            this.lblperstotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "perstotal", true));
-            this.lblperstotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblperstotal.Location = new System.Drawing.Point(449, 131);
-            this.lblperstotal.Name = "lblperstotal";
-            this.lblperstotal.Size = new System.Drawing.Size(41, 13);
-            this.lblperstotal.TabIndex = 168;
-            this.lblperstotal.Text = "label21";
-            // 
-            // lbladjbef
-            // 
-            this.lbladjbef.AutoSize = true;
-            this.lbladjbef.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "adjbef", true));
-            this.lbladjbef.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbladjbef.Location = new System.Drawing.Point(806, 491);
-            this.lbladjbef.Name = "lbladjbef";
-            this.lbladjbef.Size = new System.Drawing.Size(41, 13);
-            this.lbladjbef.TabIndex = 169;
-            this.lbladjbef.Text = "label21";
-            // 
-            // lblBookTotal
-            // 
-            this.lblBookTotal.AutoSize = true;
-            this.lblBookTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "book_price", true));
-            this.lblBookTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBookTotal.Location = new System.Drawing.Point(665, 37);
-            this.lblBookTotal.Name = "lblBookTotal";
-            this.lblBookTotal.Size = new System.Drawing.Size(41, 13);
-            this.lblBookTotal.TabIndex = 170;
-            this.lblBookTotal.Text = "label21";
+            this.button1.Location = new System.Drawing.Point(940, 364);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 171;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmSales
             // 
@@ -2329,11 +2341,11 @@
             this.tabSales.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnSales)).EndInit();
             this.bnSales.ResumeLayout(false);
             this.bnSales.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).EndInit();
@@ -2507,5 +2519,6 @@
         private System.Windows.Forms.Label lblLaminate;
         private System.Windows.Forms.Label lblLaminateAmt;
         private System.Windows.Forms.Label lblAllClrAmt;
+        private System.Windows.Forms.Button button1;
     }
     }

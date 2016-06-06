@@ -58,8 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\UserIdentity.cs" />
-    <Compile Include="Classes\UserPrincipal.cs" />
+    <Compile Include="Classes\Price.cs" />
     <Compile Include="DataSets\dsChangePassword.cs">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </Compile>
