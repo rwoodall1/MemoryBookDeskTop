@@ -80,7 +80,24 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void btnSchoolCode_Click(object sender,EventArgs e) {
-            if (this.txtSchCode.Text != "038752" && (!this.TeleGo || !this.MktGo))
+            if (dsCust.HasChanges())
+                {
+                var result = MessageBox.Show("Do you want to save this record?","Save",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Question);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                    {
+                    this.Save();
+                    }
+                else if (result == System.Windows.Forms.DialogResult.Cancel)
+                    {
+                    return;
+                    }
+                else
+                    {
+                    dsCust.RejectChanges();
+                    }
+                }
+
+                if (this.txtSchCode.Text != "038752" && (!this.TeleGo || !this.MktGo))
                 {
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                 return;
@@ -99,11 +116,28 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
         private void btnSchoolSearch_Click(object sender,EventArgs e) {
-            if(this.txtSchCode.Text!="038752" && (!this.TeleGo || !this.MktGo)){
-                MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
-                return;
+            if (dsCust.HasChanges())
+                {
+                var result = MessageBox.Show("Do you want to save this record?","Save",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Question);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                    {
+                    this.Save();
+                    }
+                else if (result == System.Windows.Forms.DialogResult.Cancel)
+                    {
+                    return;
+                    }
+                else
+                    {
+                    dsCust.RejectChanges();
+                    }
+                if (this.txtSchCode.Text != "038752" && (!this.TeleGo || !this.MktGo))
+                    {
+                    MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                    return;
+                    }
                 }
-            var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
+                var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
             if (records < 1)
                 {
                 MessageBox.Show("Record was not found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -113,8 +147,8 @@ namespace Mbc5.Forms.MemoryBook {
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,txtSchCode.Text.Trim());
                 this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text.Trim());
                 TeleGo = false;
-               
                 }
+          
             }
         #region CrudOperations
       
@@ -320,6 +354,7 @@ namespace Mbc5.Forms.MemoryBook {
                 this.Invno = val;
             }
         }
+       
         public override void Save() {
             txtSchname.ReadOnly = true;
             this.ValidateChildren(ValidationConstraints.Enabled);
@@ -637,6 +672,22 @@ namespace Mbc5.Forms.MemoryBook {
                 e.Cancel = true;
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                 }
+            if (dsCust.HasChanges())
+                {
+               var result= MessageBox.Show("Do you want to save this record?","Save",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Question);
+                if(result== System.Windows.Forms.DialogResult.Yes)
+                    {
+                    this.Save();
+                    }else if (result == System.Windows.Forms.DialogResult.Cancel)
+                    {
+                    e.Cancel = true;
+                    }
+                else
+                    {
+                      dsCust.RejectChanges();
+                    }
+
+                };
             }
 
         private void datecontDataGridView_CellDoubleClick(object sender,DataGridViewCellEventArgs e) {
