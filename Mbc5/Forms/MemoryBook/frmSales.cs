@@ -12,29 +12,47 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using Mbc5.Classes;
 namespace Mbc5.Forms.MemoryBook {
-    public partial class frmSales : BaseClass.frmBase,INotifyPropertyChanged {
-        public frmSales(UserPrincipal userPrincipal,int invno,string schcode) : base(new string[] { "SA", "Administrator", "MbcCS"}, userPrincipal) {
+    public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
+        public frmSales(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal) {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ApplicationUser = userPrincipal;
             this.Invno = invno;
             this.Schcode = schcode;
 
-            }
+        }
+        public frmSales(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
+        {
+            InitializeComponent();
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.ApplicationUser = userPrincipal;
+            this.Invno = 0;
+            this.Schcode = null;
+
+        }
         private void frmSales_Load(object sender, EventArgs e)
         {
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CalculateEach();
+        }
+
+        private void btnInvSrch_Click(object sender, EventArgs e)
+        {
+
+        }
         #region "Properties"
         public void InvokePropertyChanged(PropertyChangedEventArgs e) {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
-                handler(this,e);
-            }
+                handler(this, e);
+        }
         public event PropertyChangedEventHandler PropertyChanged;
-        private Decimal nPrcTot =0;
+        private Decimal nPrcTot = 0;
         private Decimal nPrcEach = 0;
         private UserPrincipal ApplicationUser { get; set; }
         public Decimal PrcTot {
@@ -42,8 +60,8 @@ namespace Mbc5.Forms.MemoryBook {
             set {
                 nPrcTot = value;
                 InvokePropertyChanged(new PropertyChangedEventArgs("PrcTot"));
-                }
             }
+        }
         public Decimal PrcEa {
             get { return nPrcEach; }
             set {
@@ -51,7 +69,8 @@ namespace Mbc5.Forms.MemoryBook {
                 InvokePropertyChanged(new PropertyChangedEventArgs("PrcEach"));
             }
         }
-        public IEnumerable<Price> Pricing { get; set; }
+        public List<Price> Pricing { get; set; }
+        public BookOptionPrice BookOptionPricing{get;set;}
         public string CurPriceYr { get; set; } = null;
         #endregion
         #region "Methods"
@@ -79,25 +98,143 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void CalculateEach()
         {
-            var copies = Int32.Parse(txtNocopies.Text);
+            string vPage = "Pg" + txtNoPages.Text;
+            int copies;
+            var result = int.TryParse(txtNocopies.Text, out copies);
+            if (!result)
+            {
+                 MessageBox.Show("Copies is not a numeral.");
+                return;
+            }
+            
             var lowCopies = 0;
             if (copies > 125)
             {
-                 lowCopies =copies-25;
+                lowCopies = copies - 25;
             }
-            
-            
-            if (CurPriceYr != txtBYear.Text)
+
+
+            if (this.Pricing == null|| CurPriceYr != txtBYear.Text)
             {
-                SetPricing();
+                
+                GetBookPricing();
+                //var vPricingRow = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).ToList();
+                //var aprice = vPricingRow.Select(x => x.GetType().GetProperty("Pg12").GetValue(x));
+                var vBookPrice = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).Select(x => x.GetType().GetProperty(vPage).GetValue(x)).ToList();
+               decimal vFoundPrice  =(decimal) vBookPrice[0];
+                decimal vdiscountamount = 1;
+                if (chkPromo.Checked)
+                {
+                    vdiscountamount =1-((decimal)cmbYrDiscountAmt.SelectedItem);
+                }
+                vFoundPrice = vFoundPrice * vdiscountamount;
+                lblPriceEach.Text = vFoundPrice.ToString("c");
             }
             else
             {
-                var vPricingRow = Pricing.Where(a => a.Copies >=lowCopies && a.Copies <= copies ).ToList();
+                //var vPricingRow = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).ToList();
+                //var aprice = vPricingRow.Select(x => x.GetType().GetProperty("Pg12").GetValue(x));
+                //do it in one statement
+                var vBookPrice = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).Select(x => x.GetType().GetProperty(vPage).GetValue(x)).ToList();
+                 decimal vFoundPrice =(decimal) vBookPrice[0];
+                decimal vdiscountamount = 1;
+                if (chkPromo.Checked)
+                {
+                    var discamt = System.Convert.ToDecimal(cmbYrDiscountAmt.SelectedItem);
+                    vdiscountamount = (1 - discamt);
+                }
+                vFoundPrice = vFoundPrice * vdiscountamount;
+                lblPriceEach.Text = vFoundPrice.ToString("c");
+             
+            }
+
+            if (String.IsNullOrEmpty(txtPriceOverRide.Text)|| txtPriceOverRide.Text=="$0.00"|| txtPriceOverRide.Text=="$0")
+            {
+                try
+                {
+                    string price = lblPriceEach.Text.Replace("$", "");//must strip dollar sign
+                    var vBookPrice=System.Convert.ToDecimal(price);
+                    
+                      lblBookTotal.Text = (vBookPrice * copies).ToString("c");
+                                                        
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Book price is not in a decimal value.");
+                }
+              }
+            else
+            {
+                var vBookPrice = System.Convert.ToDecimal(txtPriceOverRide.Text);
+             
+                    lblBookTotal.Text = (vBookPrice * copies).ToString();             
+            }
+          }
+        private void BookCalc()
+        {
+            if (this.BookOptionPricing == null || CurPriceYr != txtBYear.Text)
+            {
+                //Hardback
+                if (chkHardBack.Checked)
+                {
+
+                }
+                //Casebind
+                if (chkCaseBind.Checked)
+                {
+
+                }
+                //Perfect Bind
+                if (chkPerfBind.Checked)
+                {
+
+                }
+                //Spiral
+                if (chkSpiral.Checked)
+                {
+
+                }
+                //SaddleStitch
+                if (chkSaddlStich.Checked)
+                {
+
+                }
+                //Professional
+                if (chkProfessional.Checked)
+                {
+
+                }
+                //Convenient
+                if (chkConv.Checked)
+                {
+
+                }
+                //Yir
+                if (chkYir.Checked)
+                {
+
+                }
+
+                //Story
+                if (chkStory.Checked)
+                {
+
+                }
+                //AllClr
+                if (chkAllClr.Checked)
+                {
+
+                }
+                //Gloss
+                if (chkGlossLam.Checked)
+                {
+
+                }
 
             }
-            }
-        private void SetPricing()
+
+        }
+        private void GetBookPricing()
         {
             this.CurPriceYr = txtBYear.Text;
             
@@ -109,11 +246,11 @@ namespace Mbc5.Forms.MemoryBook {
             cmd.Parameters.AddWithValue("@Yr", txtBYear.Text);//base price yr
             if (chkAllClr.Checked)
             {
-                cmd.Parameters.AddWithValue("@Type", "Basic");
+                cmd.Parameters.AddWithValue("@Type", "Color");
             }
             else
             {
-                cmd.Parameters.AddWithValue("@Type", "Color");
+                cmd.Parameters.AddWithValue("@Type", "Base");
             }
            
 
@@ -129,6 +266,7 @@ namespace Mbc5.Forms.MemoryBook {
                     Price vprice = new Price()
                     {
                         Copies = rdr.GetInt32(rdr.GetOrdinal("Copies")),
+                       
                         Pg12 = rdr.GetDecimal(rdr.GetOrdinal("Pg12")),
                         Pg16 = rdr.GetDecimal(rdr.GetOrdinal("Pg16")),
                         Pg20 = rdr.GetDecimal(rdr.GetOrdinal("Pg20")),
@@ -210,8 +348,8 @@ namespace Mbc5.Forms.MemoryBook {
                         Pg324 = rdr.GetDecimal(rdr.GetOrdinal("Pg324")),
                         Pg328 = rdr.GetDecimal(rdr.GetOrdinal("Pg328")),
                         Pg332 = rdr.GetDecimal(rdr.GetOrdinal("Pg332")),
-                        Pg336 = rdr.GetDecimal(rdr.GetOrdinal("Pg336")),
-                        Pg340 = rdr.GetDecimal(rdr.GetOrdinal("Pg340")),
+                        //Pg336 = rdr.GetDecimal(rdr.GetOrdinal("Pg336")),
+                        //Pg340 = rdr.GetDecimal(rdr.GetOrdinal("Pg340")),
                         //Pg344 = rdr.GetDecimal(rdr.GetOrdinal("Pg344")),
                         //Pg348 = rdr.GetDecimal(rdr.GetOrdinal("Pg348")),
                         //Pg352 = rdr.GetDecimal(rdr.GetOrdinal("Pg352")),
@@ -230,13 +368,72 @@ namespace Mbc5.Forms.MemoryBook {
                 MessageBox.Show("There was an error retrieving pricing.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void GetBookOptionPricing()
+        {
+            this.CurPriceYr = txtBYear.Text;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlCommand cmd = new SqlCommand("SELECT * From BookOptionPricing where yr=@Yr", conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@Yr", txtBYear.Text);//base price yr
+            
+            try
+            {
 
+                cmd.Connection.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    BookOptionPrice vOptionPrice = new BookOptionPrice()
+                    {
+                       Yr = rdr.GetOrdinal("Yr").ToString(),
+                       Professional= rdr.GetDecimal(rdr.GetOrdinal("Professional")),
+                       Convenient= rdr.GetDecimal(rdr.GetOrdinal("Convenient")),
+                       Specialcvr= rdr.GetDecimal(rdr.GetOrdinal("Specialcvr")),
+                       Lamination= rdr.GetDecimal(rdr.GetOrdinal("Lamination")),
+                       Perfectbind= rdr.GetDecimal(rdr.GetOrdinal("Perfectbind")),
+                       Customized= rdr.GetDecimal(rdr.GetOrdinal("Customized")),
+                       Hardbk= rdr.GetDecimal(rdr.GetOrdinal("Hardbk")),
+                       Foil= rdr.GetDecimal(rdr.GetOrdinal("Foil")),
+                       Ink= rdr.GetDecimal(rdr.GetOrdinal("Ink")),
+                       Spiral= rdr.GetDecimal(rdr.GetOrdinal("Spiral")),
+                       Allclr= rdr.GetDecimal(rdr.GetOrdinal("Allclr")),
+                       Theme= rdr.GetDecimal(rdr.GetOrdinal("Theme")),
+                       Story= rdr.GetDecimal(rdr.GetOrdinal("Story")),
+                       Yir= rdr.GetDecimal(rdr.GetOrdinal("Yir")),
+                       Supplement= rdr.GetDecimal(rdr.GetOrdinal("Supplement")),
+                       Laminationhrd= rdr.GetDecimal(rdr.GetOrdinal("Laminationhrd")),
+                       Laminationsft= rdr.GetDecimal(rdr.GetOrdinal("Laminationsft"))
 
+                    };
+                    this.BookOptionPricing = vOptionPrice;
 
+                }
+            }catch(Exception ex)
+            {
+                Log.Fatal("Error retrieving Book Option Pricing" + ex.Message);
+                MessageBox.Show("There was an error retrieving Book Option Pricing.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+           } 
+        
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
+        private void chkAllClr_CheckedChanged(object sender, EventArgs e)
         {
+            GetBookPricing();
+            CalculateEach();
+        }
+
+        private void chkPromo_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculateEach();
+        }
+
+        private void txtBYear_TextChanged(object sender, EventArgs e)
+        {
+            GetBookPricing();
+            GetBookOptionPricing();
             CalculateEach();
         }
     }

@@ -9,6 +9,8 @@ namespace Mbc5.Classes
     public class Price
     {
         public int Copies { get; set; }
+        public string Yr { get; set; }
+        public string Type { get; set; }
         public Decimal Pg12 { get; set; }
         public Decimal Pg16 { get; set; }
         public Decimal Pg20 { get; set; }

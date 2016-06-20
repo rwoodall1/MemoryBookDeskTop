@@ -5,3 +5,10 @@
 The statement has been terminated. RWCOMPUTER  RWCOMPUTER\randy    
 2016/05/24 17:06:59.936 Failed to update telephone log:Incorrect syntax near ')'. RWCOMPUTER  RWCOMPUTER\randy    
 2016/05/24 21:59:32.604 Failed to update telephone log:Must declare the scalar variable "@typecontact". CHOME  WDFM\rwoodall    
+2016/06/07 07:22:25.206 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:22:30.904 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:23:05.586 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:24:03.721 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:24:09.508 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:24:42.080 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:25:22.064 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    

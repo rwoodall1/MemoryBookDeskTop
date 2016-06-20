@@ -30,6 +30,8 @@ namespace Mbc5.Forms
         #region "Methods"
         private int GetInvno()
         {
+          
+
             int vInvno = 0;
             switch (this.ActiveMdiChild.Name)
             {
@@ -227,20 +229,35 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
             }
 
-        private void salesToolStripMenuItem_Click(object sender,EventArgs e) {
-            this.Cursor = Cursors.AppStarting;
-            int vInvno = GetInvno();
-            string vSchcode = GetSchcode();
-        
-          frmSales frmSales = new frmSales(this.ApplicationUser,vInvno,vSchcode);
-            frmSales.MdiParent = this;
-            frmSales.Show();
-            this.Cursor = Cursors.Default;
+        private void salesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild == null)
+            {
+                frmSales frmSales = new frmSales(this.ApplicationUser);
+                frmSales.MdiParent = this;
+                frmSales.Show();
+                this.Cursor = Cursors.Default;
 
-                
-              }
-           
-          
+
             }
+            else
+            {
+                this.Cursor = Cursors.AppStarting;
+                int vInvno = GetInvno();
+                string vSchcode = GetSchcode();
+
+                frmSales frmSales = new frmSales(this.ApplicationUser, vInvno, vSchcode);
+                frmSales.MdiParent = this;
+                frmSales.Show();
+                this.Cursor = Cursors.Default;
+
+            }
+
+
+
+        }
+
+
+    }
         }
 

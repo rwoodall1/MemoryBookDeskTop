@@ -66,12 +66,14 @@
             System.Windows.Forms.Label label16;
             System.Windows.Forms.Label label18;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
-            this.lblBookTotal = new System.Windows.Forms.Label();
+            this.lblPriceEach = new System.Windows.Forms.Label();
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsSales = new Mbc5.DataSets.dsSales();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblBookTotal = new System.Windows.Forms.Label();
             this.lbladjbef = new System.Windows.Forms.Label();
             this.bnSales = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -175,7 +177,7 @@
             this.chkProfessional = new System.Windows.Forms.CheckBox();
             this.chkConv = new System.Windows.Forms.CheckBox();
             this.chkYir = new System.Windows.Forms.CheckBox();
-            this.storyCheckBox = new System.Windows.Forms.CheckBox();
+            this.chkStory = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSaddleAmt = new System.Windows.Forms.Label();
             this.lblSpiralAmt = new System.Windows.Forms.Label();
@@ -195,14 +197,13 @@
             this.lblInvoice = new System.Windows.Forms.Label();
             this.txtExtChrg = new System.Windows.Forms.TextBox();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.yrdiscountamtComboBox = new System.Windows.Forms.ComboBox();
+            this.cmbYrDiscountAmt = new System.Windows.Forms.ComboBox();
             this.chkPromo = new System.Windows.Forms.CheckBox();
             this.lblPCEach = new System.Windows.Forms.Label();
             this.lblPCTotal = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.prcorTextBox = new System.Windows.Forms.TextBox();
-            this.book_eaTextBox = new System.Windows.Forms.TextBox();
+            this.txtPriceOverRide = new System.Windows.Forms.TextBox();
             this.txtSource = new System.Windows.Forms.TextBox();
             this.booktypeTextBox = new System.Windows.Forms.TextBox();
             this.txtNocopies = new System.Windows.Forms.TextBox();
@@ -216,7 +217,6 @@
             this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
             this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -284,7 +284,7 @@
             nopagesLabel.Location = new System.Drawing.Point(143, 37);
             nopagesLabel.Name = "nopagesLabel";
             nopagesLabel.Size = new System.Drawing.Size(30, 13);
-            nopagesLabel.TabIndex = 17;
+            nopagesLabel.TabIndex = 15;
             nopagesLabel.Text = "#Pg";
             // 
             // contryearLabel
@@ -294,7 +294,7 @@
             contryearLabel.Location = new System.Drawing.Point(136, 8);
             contryearLabel.Name = "contryearLabel";
             contryearLabel.Size = new System.Drawing.Size(37, 13);
-            contryearLabel.TabIndex = 18;
+            contryearLabel.TabIndex = 1;
             contryearLabel.Text = "Year:";
             // 
             // bpyearLabel
@@ -304,7 +304,7 @@
             bpyearLabel.Location = new System.Drawing.Point(219, 8);
             bpyearLabel.Name = "bpyearLabel";
             bpyearLabel.Size = new System.Drawing.Size(102, 13);
-            bpyearLabel.TabIndex = 20;
+            bpyearLabel.TabIndex = 3;
             bpyearLabel.Text = "Base Price Year:";
             // 
             // ponumLabel
@@ -314,7 +314,7 @@
             ponumLabel.Location = new System.Drawing.Point(371, 8);
             ponumLabel.Name = "ponumLabel";
             ponumLabel.Size = new System.Drawing.Size(36, 13);
-            ponumLabel.TabIndex = 22;
+            ponumLabel.TabIndex = 5;
             ponumLabel.Text = "PO#:";
             // 
             // qtedateLabel
@@ -334,7 +334,7 @@
             nocopiesLabel.Location = new System.Drawing.Point(23, 37);
             nocopiesLabel.Name = "nocopiesLabel";
             nocopiesLabel.Size = new System.Drawing.Size(57, 13);
-            nocopiesLabel.TabIndex = 26;
+            nocopiesLabel.TabIndex = 13;
             nocopiesLabel.Text = "#Copies:";
             // 
             // booktypeLabel
@@ -354,7 +354,7 @@
             sourceLabel.Location = new System.Drawing.Point(829, 8);
             sourceLabel.Name = "sourceLabel";
             sourceLabel.Size = new System.Drawing.Size(51, 13);
-            sourceLabel.TabIndex = 30;
+            sourceLabel.TabIndex = 9;
             sourceLabel.Text = "Source:";
             // 
             // book_eaLabel
@@ -364,7 +364,7 @@
             book_eaLabel.Location = new System.Drawing.Point(240, 37);
             book_eaLabel.Name = "book_eaLabel";
             book_eaLabel.Size = new System.Drawing.Size(73, 13);
-            book_eaLabel.TabIndex = 32;
+            book_eaLabel.TabIndex = 17;
             book_eaLabel.Text = "Price Each:";
             // 
             // book_priceLabel
@@ -374,7 +374,7 @@
             book_priceLabel.Location = new System.Drawing.Point(588, 37);
             book_priceLabel.Name = "book_priceLabel";
             book_priceLabel.Size = new System.Drawing.Size(77, 13);
-            book_priceLabel.TabIndex = 34;
+            book_priceLabel.TabIndex = 21;
             book_priceLabel.Text = "Book (total):";
             // 
             // prcorLabel
@@ -384,7 +384,7 @@
             prcorLabel.Location = new System.Drawing.Point(392, 37);
             prcorLabel.Name = "prcorLabel";
             prcorLabel.Size = new System.Drawing.Size(101, 13);
-            prcorLabel.TabIndex = 36;
+            prcorLabel.TabIndex = 19;
             prcorLabel.Text = "Price Over Ride:";
             // 
             // inkclrLabel
@@ -430,7 +430,7 @@
             yrdiscountamtLabel.Location = new System.Drawing.Point(791, 37);
             yrdiscountamtLabel.Name = "yrdiscountamtLabel";
             yrdiscountamtLabel.Size = new System.Drawing.Size(16, 13);
-            yrdiscountamtLabel.TabIndex = 65;
+            yrdiscountamtLabel.TabIndex = 24;
             yrdiscountamtLabel.Text = "%";
             // 
             // extrchgLabel
@@ -451,7 +451,7 @@
             invnoLabel.Location = new System.Drawing.Point(998, 8);
             invnoLabel.Name = "invnoLabel";
             invnoLabel.Size = new System.Drawing.Size(90, 16);
-            invnoLabel.TabIndex = 89;
+            invnoLabel.TabIndex = 11;
             invnoLabel.Text = "Invoice No.:";
             // 
             // dp1Label
@@ -674,6 +674,7 @@
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.lblPriceEach);
             this.pg1.Controls.Add(this.button1);
             this.pg1.Controls.Add(this.lblBookTotal);
             this.pg1.Controls.Add(this.lbladjbef);
@@ -708,17 +709,16 @@
             this.pg1.Controls.Add(extrchgLabel);
             this.pg1.Controls.Add(this.txtExtChrg);
             this.pg1.Controls.Add(yrdiscountamtLabel);
-            this.pg1.Controls.Add(this.yrdiscountamtComboBox);
+            this.pg1.Controls.Add(this.cmbYrDiscountAmt);
             this.pg1.Controls.Add(this.chkPromo);
             this.pg1.Controls.Add(this.lblPCEach);
             this.pg1.Controls.Add(this.lblPCTotal);
             this.pg1.Controls.Add(this.label2);
             this.pg1.Controls.Add(this.label1);
             this.pg1.Controls.Add(prcorLabel);
-            this.pg1.Controls.Add(this.prcorTextBox);
+            this.pg1.Controls.Add(this.txtPriceOverRide);
             this.pg1.Controls.Add(book_priceLabel);
             this.pg1.Controls.Add(book_eaLabel);
-            this.pg1.Controls.Add(this.book_eaTextBox);
             this.pg1.Controls.Add(sourceLabel);
             this.pg1.Controls.Add(this.txtSource);
             this.pg1.Controls.Add(booktypeLabel);
@@ -743,16 +743,15 @@
             this.pg1.TabIndex = 0;
             this.pg1.Text = "Sales";
             // 
-            // lblBookTotal
+            // lblPriceEach
             // 
-            this.lblBookTotal.AutoSize = true;
-            this.lblBookTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "book_price", true));
-            this.lblBookTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBookTotal.Location = new System.Drawing.Point(665, 37);
-            this.lblBookTotal.Name = "lblBookTotal";
-            this.lblBookTotal.Size = new System.Drawing.Size(41, 13);
-            this.lblBookTotal.TabIndex = 170;
-            this.lblBookTotal.Text = "label21";
+            this.lblPriceEach.AutoSize = true;
+            this.lblPriceEach.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "book_ea", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.lblPriceEach.Location = new System.Drawing.Point(310, 37);
+            this.lblPriceEach.Name = "lblPriceEach";
+            this.lblPriceEach.Size = new System.Drawing.Size(41, 13);
+            this.lblPriceEach.TabIndex = 18;
+            this.lblPriceEach.Text = "label10";
             // 
             // quotesBindingSource
             // 
@@ -763,6 +762,27 @@
             // 
             this.dsSales.DataSetName = "dsSales";
             this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(940, 364);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 171;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblBookTotal
+            // 
+            this.lblBookTotal.AutoSize = true;
+            this.lblBookTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "book_price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.lblBookTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookTotal.Location = new System.Drawing.Point(661, 37);
+            this.lblBookTotal.Name = "lblBookTotal";
+            this.lblBookTotal.Size = new System.Drawing.Size(41, 13);
+            this.lblBookTotal.TabIndex = 22;
+            this.lblBookTotal.Text = "label21";
             // 
             // lbladjbef
             // 
@@ -1001,7 +1021,7 @@
             this.txtInvoSrch.MaxLength = 5;
             this.txtInvoSrch.Name = "txtInvoSrch";
             this.txtInvoSrch.Size = new System.Drawing.Size(106, 20);
-            this.txtInvoSrch.TabIndex = 143;
+            this.txtInvoSrch.TabIndex = 27;
             // 
             // txtPoSrch
             // 
@@ -1010,7 +1030,7 @@
             this.txtPoSrch.Location = new System.Drawing.Point(1061, 59);
             this.txtPoSrch.Name = "txtPoSrch";
             this.txtPoSrch.Size = new System.Drawing.Size(106, 20);
-            this.txtPoSrch.TabIndex = 142;
+            this.txtPoSrch.TabIndex = 29;
             // 
             // btnInvSrch
             // 
@@ -1020,9 +1040,10 @@
             this.btnInvSrch.Location = new System.Drawing.Point(945, 36);
             this.btnInvSrch.Name = "btnInvSrch";
             this.btnInvSrch.Size = new System.Drawing.Size(111, 23);
-            this.btnInvSrch.TabIndex = 141;
+            this.btnInvSrch.TabIndex = 26;
             this.btnInvSrch.Text = "Invoice# Search";
             this.btnInvSrch.UseVisualStyleBackColor = true;
+            this.btnInvSrch.Click += new System.EventHandler(this.btnInvSrch_Click);
             // 
             // btnPoSrch
             // 
@@ -1032,7 +1053,7 @@
             this.btnPoSrch.Location = new System.Drawing.Point(970, 59);
             this.btnPoSrch.Name = "btnPoSrch";
             this.btnPoSrch.Size = new System.Drawing.Size(86, 23);
-            this.btnPoSrch.TabIndex = 140;
+            this.btnPoSrch.TabIndex = 28;
             this.btnPoSrch.Text = "PO# Search";
             this.btnPoSrch.UseVisualStyleBackColor = true;
             // 
@@ -1042,14 +1063,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1662,6 +1683,7 @@
             this.chkAllClr.Text = "All Color";
             this.chkAllClr.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkAllClr.UseVisualStyleBackColor = true;
+            this.chkAllClr.CheckedChanged += new System.EventHandler(this.chkAllClr_CheckedChanged);
             // 
             // lblLaminate
             // 
@@ -1820,7 +1842,7 @@
             this.panel2.Controls.Add(this.chkProfessional);
             this.panel2.Controls.Add(this.chkConv);
             this.panel2.Controls.Add(this.chkYir);
-            this.panel2.Controls.Add(this.storyCheckBox);
+            this.panel2.Controls.Add(this.chkStory);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(11, 253);
             this.panel2.Name = "panel2";
@@ -1899,22 +1921,22 @@
             this.chkYir.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "insck", true));
             this.chkYir.Location = new System.Drawing.Point(44, 52);
             this.chkYir.Name = "chkYir";
-            this.chkYir.Size = new System.Drawing.Size(104, 13);
+            this.chkYir.Size = new System.Drawing.Size(104, 18);
             this.chkYir.TabIndex = 16;
             this.chkYir.Text = "YIR Standard";
             this.chkYir.UseVisualStyleBackColor = true;
             // 
-            // storyCheckBox
+            // chkStory
             // 
-            this.storyCheckBox.AutoSize = true;
-            this.storyCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.storyCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "story", true));
-            this.storyCheckBox.Location = new System.Drawing.Point(18, 70);
-            this.storyCheckBox.Name = "storyCheckBox";
-            this.storyCheckBox.Size = new System.Drawing.Size(130, 17);
-            this.storyCheckBox.TabIndex = 63;
-            this.storyCheckBox.Text = "Our Story/MyStory";
-            this.storyCheckBox.UseVisualStyleBackColor = true;
+            this.chkStory.AutoSize = true;
+            this.chkStory.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkStory.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "story", true));
+            this.chkStory.Location = new System.Drawing.Point(18, 70);
+            this.chkStory.Name = "chkStory";
+            this.chkStory.Size = new System.Drawing.Size(130, 17);
+            this.chkStory.TabIndex = 63;
+            this.chkStory.Text = "Our Story/MyStory";
+            this.chkStory.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -2085,7 +2107,7 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(147, 64);
+            this.textBox3.Location = new System.Drawing.Point(126, 62);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(40, 20);
             this.textBox3.TabIndex = 94;
@@ -2109,7 +2131,7 @@
             this.lblInvoice.Location = new System.Drawing.Point(1091, 8);
             this.lblInvoice.Name = "lblInvoice";
             this.lblInvoice.Size = new System.Drawing.Size(45, 16);
-            this.lblInvoice.TabIndex = 91;
+            this.lblInvoice.TabIndex = 12;
             this.lblInvoice.Text = "label6";
             // 
             // txtExtChrg
@@ -2129,15 +2151,18 @@
             this.custBindingSource.DataMember = "cust";
             this.custBindingSource.DataSource = this.dsSales;
             // 
-            // yrdiscountamtComboBox
+            // cmbYrDiscountAmt
             // 
-            this.yrdiscountamtComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "yrdiscountamt", true));
-            this.yrdiscountamtComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yrdiscountamtComboBox.FormattingEnabled = true;
-            this.yrdiscountamtComboBox.Location = new System.Drawing.Point(813, 37);
-            this.yrdiscountamtComboBox.Name = "yrdiscountamtComboBox";
-            this.yrdiscountamtComboBox.Size = new System.Drawing.Size(79, 21);
-            this.yrdiscountamtComboBox.TabIndex = 66;
+            this.cmbYrDiscountAmt.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.quotesBindingSource, "yrdiscountamt", true));
+            this.cmbYrDiscountAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbYrDiscountAmt.FormattingEnabled = true;
+            this.cmbYrDiscountAmt.Items.AddRange(new object[] {
+            ".4025",
+            ".3920"});
+            this.cmbYrDiscountAmt.Location = new System.Drawing.Point(813, 37);
+            this.cmbYrDiscountAmt.Name = "cmbYrDiscountAmt";
+            this.cmbYrDiscountAmt.Size = new System.Drawing.Size(79, 21);
+            this.cmbYrDiscountAmt.TabIndex = 25;
             // 
             // chkPromo
             // 
@@ -2147,9 +2172,10 @@
             this.chkPromo.Location = new System.Drawing.Point(732, 37);
             this.chkPromo.Name = "chkPromo";
             this.chkPromo.Size = new System.Drawing.Size(61, 17);
-            this.chkPromo.TabIndex = 65;
+            this.chkPromo.TabIndex = 23;
             this.chkPromo.Text = "Promo";
             this.chkPromo.UseVisualStyleBackColor = true;
+            this.chkPromo.CheckedChanged += new System.EventHandler(this.chkPromo_CheckedChanged);
             // 
             // lblPCEach
             // 
@@ -2193,23 +2219,14 @@
             this.label1.TabIndex = 38;
             this.label1.Text = "Porf/Conv Each:";
             // 
-            // prcorTextBox
+            // txtPriceOverRide
             // 
-            this.prcorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "prcor", true));
-            this.prcorTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prcorTextBox.Location = new System.Drawing.Point(495, 37);
-            this.prcorTextBox.Name = "prcorTextBox";
-            this.prcorTextBox.Size = new System.Drawing.Size(69, 20);
-            this.prcorTextBox.TabIndex = 37;
-            // 
-            // book_eaTextBox
-            // 
-            this.book_eaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "book_ea", true));
-            this.book_eaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.book_eaTextBox.Location = new System.Drawing.Point(316, 37);
-            this.book_eaTextBox.Name = "book_eaTextBox";
-            this.book_eaTextBox.Size = new System.Drawing.Size(69, 20);
-            this.book_eaTextBox.TabIndex = 33;
+            this.txtPriceOverRide.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "prcor", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.txtPriceOverRide.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPriceOverRide.Location = new System.Drawing.Point(493, 37);
+            this.txtPriceOverRide.Name = "txtPriceOverRide";
+            this.txtPriceOverRide.Size = new System.Drawing.Size(57, 20);
+            this.txtPriceOverRide.TabIndex = 20;
             // 
             // txtSource
             // 
@@ -2218,7 +2235,7 @@
             this.txtSource.Location = new System.Drawing.Point(886, 8);
             this.txtSource.Name = "txtSource";
             this.txtSource.Size = new System.Drawing.Size(100, 20);
-            this.txtSource.TabIndex = 31;
+            this.txtSource.TabIndex = 10;
             // 
             // booktypeTextBox
             // 
@@ -2228,7 +2245,7 @@
             this.booktypeTextBox.MaxLength = 4;
             this.booktypeTextBox.Name = "booktypeTextBox";
             this.booktypeTextBox.Size = new System.Drawing.Size(44, 20);
-            this.booktypeTextBox.TabIndex = 29;
+            this.booktypeTextBox.TabIndex = 0;
             // 
             // txtNocopies
             // 
@@ -2238,7 +2255,7 @@
             this.txtNocopies.MaxLength = 5;
             this.txtNocopies.Name = "txtNocopies";
             this.txtNocopies.Size = new System.Drawing.Size(39, 20);
-            this.txtNocopies.TabIndex = 27;
+            this.txtNocopies.TabIndex = 14;
             // 
             // dteQuote
             // 
@@ -2247,7 +2264,7 @@
             this.dteQuote.Location = new System.Drawing.Point(612, 8);
             this.dteQuote.Name = "dteQuote";
             this.dteQuote.Size = new System.Drawing.Size(200, 20);
-            this.dteQuote.TabIndex = 25;
+            this.dteQuote.TabIndex = 8;
             // 
             // txtPoNum
             // 
@@ -2256,7 +2273,7 @@
             this.txtPoNum.Location = new System.Drawing.Point(413, 8);
             this.txtPoNum.Name = "txtPoNum";
             this.txtPoNum.Size = new System.Drawing.Size(100, 20);
-            this.txtPoNum.TabIndex = 23;
+            this.txtPoNum.TabIndex = 7;
             // 
             // txtBYear
             // 
@@ -2266,7 +2283,8 @@
             this.txtBYear.MaxLength = 2;
             this.txtBYear.Name = "txtBYear";
             this.txtBYear.Size = new System.Drawing.Size(31, 20);
-            this.txtBYear.TabIndex = 21;
+            this.txtBYear.TabIndex = 4;
+            this.txtBYear.TextChanged += new System.EventHandler(this.txtBYear_TextChanged);
             // 
             // txtYear
             // 
@@ -2276,7 +2294,7 @@
             this.txtYear.MaxLength = 2;
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(39, 20);
-            this.txtYear.TabIndex = 19;
+            this.txtYear.TabIndex = 2;
             // 
             // txtNoPages
             // 
@@ -2286,7 +2304,7 @@
             this.txtNoPages.MaxLength = 4;
             this.txtNoPages.Name = "txtNoPages";
             this.txtNoPages.Size = new System.Drawing.Size(37, 20);
-            this.txtNoPages.TabIndex = 18;
+            this.txtNoPages.TabIndex = 16;
             // 
             // pg2
             // 
@@ -2317,16 +2335,6 @@
             // invHstTableAdapter
             // 
             this.invHstTableAdapter.ClearBeforeFill = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(940, 364);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 171;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmSales
             // 
@@ -2392,13 +2400,12 @@
         private System.Windows.Forms.DateTimePicker dteQuote;
         private System.Windows.Forms.TextBox txtPoNum;
         private System.Windows.Forms.TextBox txtBYear;
-        private System.Windows.Forms.TextBox book_eaTextBox;
         private System.Windows.Forms.TextBox txtSource;
         private System.Windows.Forms.Label lblPCEach;
         private System.Windows.Forms.Label lblPCTotal;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox prcorTextBox;
+        private System.Windows.Forms.TextBox txtPriceOverRide;
         private System.Windows.Forms.ComboBox inkclrComboBox;
         private System.Windows.Forms.CheckBox chkMLaminate;
         private System.Windows.Forms.CheckBox chkGlossLam;
@@ -2417,9 +2424,9 @@
         private System.Windows.Forms.TextBox txtMdesc;
         private System.Windows.Forms.TextBox txtClrTot;
         private System.Windows.Forms.TextBox txtClrDesc;
-        private System.Windows.Forms.ComboBox yrdiscountamtComboBox;
+        private System.Windows.Forms.ComboBox cmbYrDiscountAmt;
         private System.Windows.Forms.CheckBox chkPromo;
-        private System.Windows.Forms.CheckBox storyCheckBox;
+        private System.Windows.Forms.CheckBox chkStory;
         private System.Windows.Forms.TextBox txtFoilAd;
         private System.Windows.Forms.TextBox txtSpecCvrEa;
         private System.Windows.Forms.TextBox txtSpeccvr;
@@ -2520,5 +2527,6 @@
         private System.Windows.Forms.Label lblLaminateAmt;
         private System.Windows.Forms.Label lblAllClrAmt;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblPriceEach;
     }
     }
