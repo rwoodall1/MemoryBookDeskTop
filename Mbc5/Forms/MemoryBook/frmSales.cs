@@ -194,7 +194,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
 
                 }
-                //SaddleStitch
+                //SaddleStitchsa
                 if (chkSaddlStich.Checked)
                 {
 
