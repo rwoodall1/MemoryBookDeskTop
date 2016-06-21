@@ -66,7 +66,7 @@
             System.Windows.Forms.Label label16;
             System.Windows.Forms.Label label18;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblPriceEach = new System.Windows.Forms.Label();
@@ -154,16 +154,15 @@
             this.txtDesc4 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.chkAllClr = new System.Windows.Forms.CheckBox();
-            this.lblLaminate = new System.Windows.Forms.Label();
+            this.lblMLaminateAmt = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblLaminateAmt = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.chkGlossLam = new System.Windows.Forms.CheckBox();
-            this.lblAllClrAmt = new System.Windows.Forms.Label();
             this.chkMLaminate = new System.Windows.Forms.CheckBox();
             this.inkclrComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtClrNumber = new System.Windows.Forms.TextBox();
             this.txtCoverDesc = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSpeccvr = new System.Windows.Forms.TextBox();
@@ -185,7 +184,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.chkPerfBind = new System.Windows.Forms.CheckBox();
             this.chkSpiral = new System.Windows.Forms.CheckBox();
-            this.chkSaddlStich = new System.Windows.Forms.CheckBox();
+            this.chkSaddlStitch = new System.Windows.Forms.CheckBox();
             this.pnlHard = new System.Windows.Forms.Panel();
             this.lblCaseamt = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -1063,14 +1062,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1557,6 +1556,7 @@
             this.txtClrTot.Name = "txtClrTot";
             this.txtClrTot.Size = new System.Drawing.Size(53, 20);
             this.txtClrTot.TabIndex = 70;
+            this.txtClrTot.TextChanged += new System.EventHandler(this.txtClrTot_TextChanged);
             // 
             // txtMisc
             // 
@@ -1567,6 +1567,7 @@
             this.txtMisc.Name = "txtMisc";
             this.txtMisc.Size = new System.Drawing.Size(53, 20);
             this.txtMisc.TabIndex = 74;
+            this.txtMisc.TextChanged += new System.EventHandler(this.txtMisc_TextChanged);
             // 
             // txtMdesc
             // 
@@ -1588,6 +1589,7 @@
             this.txtDesc1amt.Name = "txtDesc1amt";
             this.txtDesc1amt.Size = new System.Drawing.Size(53, 20);
             this.txtDesc1amt.TabIndex = 78;
+            this.txtDesc1amt.TextChanged += new System.EventHandler(this.txtDesc1amt_TextChanged);
             // 
             // txtDesc1
             // 
@@ -1609,6 +1611,7 @@
             this.txtDesc3tot.Name = "txtDesc3tot";
             this.txtDesc3tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc3tot.TabIndex = 82;
+            this.txtDesc3tot.TextChanged += new System.EventHandler(this.txtDesc3tot_TextChanged);
             // 
             // txtDesc3
             // 
@@ -1630,6 +1633,7 @@
             this.txtDesc4tot.Name = "txtDesc4tot";
             this.txtDesc4tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc4tot.TabIndex = 86;
+            this.txtDesc4tot.TextChanged += new System.EventHandler(this.txtDesc4tot_TextChanged);
             // 
             // txtDesc4
             // 
@@ -1646,17 +1650,16 @@
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.chkAllClr);
-            this.panel3.Controls.Add(this.lblLaminate);
+            this.panel3.Controls.Add(this.lblMLaminateAmt);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.lblLaminateAmt);
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.chkGlossLam);
-            this.panel3.Controls.Add(this.lblAllClrAmt);
             this.panel3.Controls.Add(this.chkMLaminate);
             this.panel3.Controls.Add(this.inkclrComboBox);
             this.panel3.Controls.Add(inkclrLabel);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.txtClrNumber);
             this.panel3.Controls.Add(this.txtCoverDesc);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.txtSpeccvr);
@@ -1685,16 +1688,16 @@
             this.chkAllClr.UseVisualStyleBackColor = true;
             this.chkAllClr.CheckedChanged += new System.EventHandler(this.chkAllClr_CheckedChanged);
             // 
-            // lblLaminate
+            // lblMLaminateAmt
             // 
-            this.lblLaminate.AutoSize = true;
-            this.lblLaminate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "mlaminationamt", true));
-            this.lblLaminate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLaminate.Location = new System.Drawing.Point(119, 84);
-            this.lblLaminate.Name = "lblLaminate";
-            this.lblLaminate.Size = new System.Drawing.Size(41, 13);
-            this.lblLaminate.TabIndex = 164;
-            this.lblLaminate.Text = "label20";
+            this.lblMLaminateAmt.AutoSize = true;
+            this.lblMLaminateAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "mlaminationamt", true));
+            this.lblMLaminateAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMLaminateAmt.Location = new System.Drawing.Point(119, 84);
+            this.lblMLaminateAmt.Name = "lblMLaminateAmt";
+            this.lblMLaminateAmt.Size = new System.Drawing.Size(41, 13);
+            this.lblMLaminateAmt.TabIndex = 164;
+            this.lblMLaminateAmt.Text = "label20";
             // 
             // label3
             // 
@@ -1736,17 +1739,7 @@
             this.chkGlossLam.Text = "Gloss Laminate";
             this.chkGlossLam.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkGlossLam.UseVisualStyleBackColor = true;
-            // 
-            // lblAllClrAmt
-            // 
-            this.lblAllClrAmt.AutoSize = true;
-            this.lblAllClrAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "allclramt", true));
-            this.lblAllClrAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAllClrAmt.Location = new System.Drawing.Point(121, 17);
-            this.lblAllClrAmt.Name = "lblAllClrAmt";
-            this.lblAllClrAmt.Size = new System.Drawing.Size(41, 13);
-            this.lblAllClrAmt.TabIndex = 163;
-            this.lblAllClrAmt.Text = "label21";
+            this.chkGlossLam.CheckedChanged += new System.EventHandler(this.chkGlossLam_CheckedChanged);
             // 
             // chkMLaminate
             // 
@@ -1760,6 +1753,7 @@
             this.chkMLaminate.Text = "Matte Laminate";
             this.chkMLaminate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkMLaminate.UseVisualStyleBackColor = true;
+            this.chkMLaminate.CheckedChanged += new System.EventHandler(this.chkMLaminate_CheckedChanged);
             // 
             // inkclrComboBox
             // 
@@ -1770,6 +1764,7 @@
             this.inkclrComboBox.Name = "inkclrComboBox";
             this.inkclrComboBox.Size = new System.Drawing.Size(53, 21);
             this.inkclrComboBox.TabIndex = 52;
+            this.inkclrComboBox.SelectedIndexChanged += new System.EventHandler(this.inkclrComboBox_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -1780,13 +1775,13 @@
             this.label4.TabIndex = 53;
             this.label4.Text = "# of Color";
             // 
-            // textBox2
+            // txtClrNumber
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(122, 131);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(53, 20);
-            this.textBox2.TabIndex = 54;
+            this.txtClrNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClrNumber.Location = new System.Drawing.Point(122, 131);
+            this.txtClrNumber.Name = "txtClrNumber";
+            this.txtClrNumber.Size = new System.Drawing.Size(53, 20);
+            this.txtClrNumber.TabIndex = 54;
             // 
             // txtCoverDesc
             // 
@@ -1822,6 +1817,7 @@
             this.txtSpecCvrEa.Name = "txtSpecCvrEa";
             this.txtSpecCvrEa.Size = new System.Drawing.Size(53, 20);
             this.txtSpecCvrEa.TabIndex = 59;
+            this.txtSpecCvrEa.TextChanged += new System.EventHandler(this.txtSpecCvrEa_TextChanged);
             // 
             // txtFoilAd
             // 
@@ -1831,6 +1827,7 @@
             this.txtFoilAd.Name = "txtFoilAd";
             this.txtFoilAd.Size = new System.Drawing.Size(53, 20);
             this.txtFoilAd.TabIndex = 61;
+            this.txtFoilAd.TextChanged += new System.EventHandler(this.txtFoilAd_TextChanged);
             // 
             // panel2
             // 
@@ -1903,6 +1900,7 @@
             this.chkProfessional.TabIndex = 12;
             this.chkProfessional.Text = "Professional";
             this.chkProfessional.UseVisualStyleBackColor = true;
+            this.chkProfessional.CheckedChanged += new System.EventHandler(this.chkProfessional_CheckedChanged);
             // 
             // chkConv
             // 
@@ -1914,6 +1912,7 @@
             this.chkConv.TabIndex = 14;
             this.chkConv.Text = "Convenient";
             this.chkConv.UseVisualStyleBackColor = true;
+            this.chkConv.CheckedChanged += new System.EventHandler(this.chkConv_CheckedChanged);
             // 
             // chkYir
             // 
@@ -1925,6 +1924,7 @@
             this.chkYir.TabIndex = 16;
             this.chkYir.Text = "YIR Standard";
             this.chkYir.UseVisualStyleBackColor = true;
+            this.chkYir.CheckedChanged += new System.EventHandler(this.chkYir_CheckedChanged);
             // 
             // chkStory
             // 
@@ -1937,6 +1937,7 @@
             this.chkStory.TabIndex = 63;
             this.chkStory.Text = "Our Story/MyStory";
             this.chkStory.UseVisualStyleBackColor = true;
+            this.chkStory.CheckedChanged += new System.EventHandler(this.chkStory_CheckedChanged);
             // 
             // panel1
             // 
@@ -1947,7 +1948,7 @@
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.chkPerfBind);
             this.panel1.Controls.Add(this.chkSpiral);
-            this.panel1.Controls.Add(this.chkSaddlStich);
+            this.panel1.Controls.Add(this.chkSaddlStitch);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(8, 167);
             this.panel1.Name = "panel1";
@@ -2009,6 +2010,7 @@
             this.chkPerfBind.Text = "Perfect Bind (40)";
             this.chkPerfBind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkPerfBind.UseVisualStyleBackColor = true;
+            this.chkPerfBind.CheckedChanged += new System.EventHandler(this.chkPerfBind_CheckedChanged);
             // 
             // chkSpiral
             // 
@@ -2021,18 +2023,20 @@
             this.chkSpiral.Text = "Spiral";
             this.chkSpiral.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkSpiral.UseVisualStyleBackColor = true;
+            this.chkSpiral.CheckedChanged += new System.EventHandler(this.chkSpiral_CheckedChanged);
             // 
-            // chkSaddlStich
+            // chkSaddlStitch
             // 
-            this.chkSaddlStich.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkSaddlStich.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "sdlstich", true));
-            this.chkSaddlStich.Location = new System.Drawing.Point(44, 56);
-            this.chkSaddlStich.Name = "chkSaddlStich";
-            this.chkSaddlStich.Size = new System.Drawing.Size(104, 17);
-            this.chkSaddlStich.TabIndex = 10;
-            this.chkSaddlStich.Text = "Saddle Stitch";
-            this.chkSaddlStich.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkSaddlStich.UseVisualStyleBackColor = true;
+            this.chkSaddlStitch.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkSaddlStitch.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "sdlstich", true));
+            this.chkSaddlStitch.Location = new System.Drawing.Point(44, 56);
+            this.chkSaddlStitch.Name = "chkSaddlStitch";
+            this.chkSaddlStitch.Size = new System.Drawing.Size(104, 17);
+            this.chkSaddlStitch.TabIndex = 10;
+            this.chkSaddlStitch.Text = "Saddle Stitch";
+            this.chkSaddlStitch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkSaddlStitch.UseVisualStyleBackColor = true;
+            this.chkSaddlStitch.CheckedChanged += new System.EventHandler(this.chkSaddlStitch_CheckedChanged);
             // 
             // pnlHard
             // 
@@ -2080,6 +2084,7 @@
             this.chkHardBack.TabIndex = 1;
             this.chkHardBack.Text = "Hard Back (sewn 40)";
             this.chkHardBack.UseVisualStyleBackColor = true;
+            this.chkHardBack.CheckedChanged += new System.EventHandler(this.chkHardBack_CheckedChanged);
             // 
             // chkCaseBind
             // 
@@ -2092,6 +2097,7 @@
             this.chkCaseBind.TabIndex = 4;
             this.chkCaseBind.Text = "Case Bind (glued 32)";
             this.chkCaseBind.UseVisualStyleBackColor = true;
+            this.chkCaseBind.CheckedChanged += new System.EventHandler(this.chkCaseBind_CheckedChanged);
             // 
             // lblHardbackAmt
             // 
@@ -2385,7 +2391,7 @@
         private System.Windows.Forms.BindingSource quotesBindingSource;
         private DataSets.dsSalesTableAdapters.quotesTableAdapter quotesTableAdapter;
         private DataSets.dsSalesTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.CheckBox chkSaddlStich;
+        private System.Windows.Forms.CheckBox chkSaddlStitch;
         private System.Windows.Forms.CheckBox chkSpiral;
         private System.Windows.Forms.CheckBox chkPerfBind;
         private System.Windows.Forms.CheckBox chkCaseBind;
@@ -2412,7 +2418,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkAllClr;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtClrNumber;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDesc4tot;
         private System.Windows.Forms.TextBox txtDesc4;
@@ -2523,9 +2529,8 @@
         private System.Windows.Forms.Label lbldisc2;
         private System.Windows.Forms.Label lbldisc1;
         private System.Windows.Forms.Label lblsubtot;
-        private System.Windows.Forms.Label lblLaminate;
+        private System.Windows.Forms.Label lblMLaminateAmt;
         private System.Windows.Forms.Label lblLaminateAmt;
-        private System.Windows.Forms.Label lblAllClrAmt;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblPriceEach;
     }

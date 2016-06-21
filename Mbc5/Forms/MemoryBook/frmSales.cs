@@ -170,77 +170,181 @@ namespace Mbc5.Forms.MemoryBook {
                     lblBookTotal.Text = (vBookPrice * copies).ToString();             
             }
           }
+        private void CalcInk() {
+
+
+            }
         private void BookCalc()
         {
+            int numberOfCopies=0;
+            int numberOfPages = 0;
+           var parseresult = int.TryParse(txtNocopies.Text,out numberOfCopies);
+            var parseresult1 = int.TryParse(txtNoPages.Text,out numberOfPages);
+            if (!parseresult)
+                { MessageBox.Show("Number of copies is not valid!","Copies",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+                }
+            if (!parseresult1)
+                {
+                MessageBox.Show("Number of pages is not valid!","Pages",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+                }
             if (this.BookOptionPricing == null || CurPriceYr != txtBYear.Text)
             {
+                
                 //Hardback
+                decimal HardBack =0;
                 if (chkHardBack.Checked)
                 {
-                    lblHardbackAmt.Text = BookOptionPricing.Hardbk.ToString();
-                }
-                else { lblHardbackAmt.Text = null; }
-
+                    HardBack = BookOptionPricing.Hardbk;
+                    lblHardbackAmt.Text = (BookOptionPricing.Hardbk*numberOfCopies).ToString();
+                    CalcInk();
+                    }
+                else { lblHardbackAmt.Text = null;
+                    HardBack = 0; }
                 //Casebind
+                decimal Casebind = 0;
                 if (chkCaseBind.Checked)
-                {
-                    lblCaseamt.Text = BookOptionPricing.Case.ToString();
-                }
-                else { lblCaseamt.Text = null; }
+                    {
+                    Casebind = BookOptionPricing.Case;
+                    lblCaseamt.Text = (BookOptionPricing.Case * numberOfCopies).ToString();
+                    CalcInk();
+                    }
+                else
+                    {
+                    lblCaseamt.Text = null;
+                    Casebind = 0;
+                    }
+                //Check if harback and case both not checked
+                if(!chkHardBack.Checked && !chkCaseBind.Checked)
+                    {
+                    CalcInk();
+                    }
                 //Perfect Bind
+                decimal Perfectbind = 0;
                 if (chkPerfBind.Checked)
                 {
-                    lblPerfbindAmt.Text = BookOptionPricing.Perfectbind.ToString();
+                    Perfectbind = BookOptionPricing.Perfectbind;
+                    lblPerfbindAmt.Text = (BookOptionPricing.Perfectbind*numberOfCopies).ToString();
+                    
                 }
-                else { lblPerfbindAmt.Text = null; }
+                else { lblPerfbindAmt.Text = null;
+                    Perfectbind = 0;
+                    }
                 //Spiral
+                decimal Spiral = 0;
                 if (chkSpiral.Checked)
                 {
-
+                    Spiral = BookOptionPricing.Spiral;
+                    lblSpiralAmt.Text =(BookOptionPricing.Spiral*numberOfCopies).ToString(); 
                 }
+                else{ lblSpiralAmt.Text = null;
+                    Spiral = 0;
+                    }
                 //SaddleStitch
-                if (chkSaddlStich.Checked)
+               decimal SaddleStitch = 0;
+                if (chkSaddlStitch.Checked)
                 {
+                    SaddleStitch = BookOptionPricing.SaddleStitch;
+                    lblSaddleAmt.Text = (BookOptionPricing.SaddleStitch*numberOfCopies).ToString();
+                    
+                    }
+                else{ lblSaddleAmt.Text = null;
+                    SaddleStitch = 0;
+                    }
 
-                }
                 //Professional
+                decimal Professional = 0;
                 if (chkProfessional.Checked)
-                {
+                {    Professional = BookOptionPricing.Professional;
+                    lblProfAmt.Text =(BookOptionPricing.Professional*numberOfPages).ToString();
+                    
+                    }
+                else { lblProfAmt.Text = null;
+                    Professional = 0; }
 
-                }
                 //Convenient
+                decimal Convenient = 0;
                 if (chkConv.Checked)
                 {
-
-                }
+                    Convenient = BookOptionPricing.Convenient;
+                    lblConvAmt.Text =(BookOptionPricing.Convenient*numberOfPages).ToString();
+                    
+                    }
+                else{ lblConvAmt.Text = null;
+                    Convenient = 0;
+                    }
                 //Yir
+                decimal Yir = 0;
                 if (chkYir.Checked)
                 {
-
+                    Yir = BookOptionPricing.Yir;
+                    lblYir.Text =(BookOptionPricing.Yir*numberOfCopies).ToString();   
                 }
+                else
+                    { lblYir.Text = null;
+                    Yir = 0;
+                    }
 
                 //Story
+                decimal Story = 0;
                 if (chkStory.Checked)
                 {
-
-                }
-                //AllClr
-                if (chkAllClr.Checked)
-                {
-
-                }
+                     Story = BookOptionPricing.Story;
+                    lblStoryAmt.Text =(BookOptionPricing.Story*numberOfCopies).ToString();
+                    
+                    }
+                else
+                    { lblStoryAmt.Text = null;
+                    Story = 0;
+                    }
+                             
                 //Gloss
+                decimal Gloss = 0;
                 if (chkGlossLam.Checked)
                 {
-
-                }
+                    Gloss = BookOptionPricing.Lamination;
+                    lblLaminateAmt.Text =(BookOptionPricing.Lamination*numberOfCopies).ToString();
+                    
+                    }
+                else
+                    { lblLaminateAmt.Text = null;
+                    Gloss = 0;
+                    }
+                //Lam
+                decimal Laminationsft = 0;
                 if (chkMLaminate.Checked)
                 {
+                    Laminationsft = BookOptionPricing.Laminationsft;
+                    lblMLaminateAmt.Text =(BookOptionPricing.Laminationsft*numberOfCopies).ToString();
+                    
+                    }
+                else
+                    { lblMLaminateAmt.Text = null;
+                    Laminationsft = 0;
+                    }
+                //convert rest of info from strings to decimals for calculations
+                bool vParseResult;
+                decimal SpecCvrTot = 0;
+                decimal FoilTot=0;
+                decimal ClrPgTot = 0;
+                decimal MiscTot = 0;
+                decimal Desc1Tot = 0;
+                decimal Desc3Tot = 0;
+                decimal Desc4Tot = 0;
+                vParseResult = decimal.TryParse(txtSpeccvr.Text,out SpecCvrTot);
+                vParseResult = decimal.TryParse(txtFoilAd.Text,out FoilTot);
+                vParseResult = decimal.TryParse(txtClrTot.Text,out ClrPgTot);
+                vParseResult = decimal.TryParse(txtMisc.Text,out MiscTot);
+                vParseResult = decimal.TryParse(txtDesc1amt.Text,out Desc1Tot);
+                vParseResult = decimal.TryParse(txtDesc3tot.Text,out Desc3Tot);
+                vParseResult = decimal.TryParse(txtDesc4tot.Text,out Desc4Tot);
 
-                }
 
 
+                decimal SubTotal = (HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story  + Gloss + Laminationsft+SpecCvrTot+FoilTot+ClrPgTot+MiscTot+Desc1Tot+Desc3Tot+Desc4Tot);
 
+              lblsubtot.Text = SubTotal.ToString();
             }
 
         }
@@ -408,13 +512,11 @@ namespace Mbc5.Forms.MemoryBook {
                        Foil= rdr.GetDecimal(rdr.GetOrdinal("Foil")),
                        Ink= rdr.GetDecimal(rdr.GetOrdinal("Ink")),
                        Spiral= rdr.GetDecimal(rdr.GetOrdinal("Spiral")),
-                       Allclr= rdr.GetDecimal(rdr.GetOrdinal("Allclr")),
                        Theme= rdr.GetDecimal(rdr.GetOrdinal("Theme")),
                        Story= rdr.GetDecimal(rdr.GetOrdinal("Story")),
                        Yir= rdr.GetDecimal(rdr.GetOrdinal("Yir")),
                        Supplement= rdr.GetDecimal(rdr.GetOrdinal("Supplement")),
-                       Laminationhrd= rdr.GetDecimal(rdr.GetOrdinal("Laminationhrd")),
-                       Laminationsft= rdr.GetDecimal(rdr.GetOrdinal("Laminationsft"))
+                      Laminationsft= rdr.GetDecimal(rdr.GetOrdinal("Laminationsft"))
 
                     };
                     this.BookOptionPricing = vOptionPrice;
@@ -434,6 +536,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             GetBookPricing();
             CalculateEach();
+            BookCalc();
         }
 
         private void chkPromo_CheckedChanged(object sender, EventArgs e)
@@ -447,7 +550,83 @@ namespace Mbc5.Forms.MemoryBook {
             GetBookOptionPricing();
             CalculateEach();
         }
-    }
+
+        private void chkHardBack_CheckedChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkCaseBind_CheckedChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkPerfBind_CheckedChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkSpiral_CheckedChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkSaddlStitch_CheckedChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkProfessional_CheckedChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkConv_CheckedChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkYir_CheckedChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkStory_CheckedChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkGlossLam_CheckedChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkMLaminate_CheckedChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void inkclrComboBox_SelectedIndexChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void txtSpecCvrEa_TextChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void txtFoilAd_TextChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void txtClrTot_TextChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void txtMisc_TextChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void txtDesc1amt_TextChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void txtDesc3tot_TextChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void txtDesc4tot_TextChanged(object sender,EventArgs e) {
+            BookCalc();
+            }
+        }
 
 
     }

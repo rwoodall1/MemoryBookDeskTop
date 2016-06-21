@@ -18,15 +18,14 @@ namespace Mbc5.Classes
         public decimal Perfectbind { get; set; }
         public decimal Customized { get; set; }
         public decimal Hardbk { get; set; }
+        public decimal SaddleStitch { get; set; }
         public decimal Foil { get; set; }
         public decimal Ink { get; set; }
         public decimal Spiral { get; set; }
-        public decimal Allclr { get; set; }
         public decimal Theme { get; set; }
         public decimal Story { get; set; }
         public decimal Yir { get; set; }
         public decimal Supplement { get; set; }
-        public decimal Laminationhrd { get; set; }
         public decimal Laminationsft { get; set; }
     }
 }
