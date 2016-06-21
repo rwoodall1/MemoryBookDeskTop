@@ -8,7 +8,7 @@ namespace Mbc5.Classes
 {
     public class BookOptionPrice
     {
-       
+       //List of options and prices
         public string Yr { get; set; }
         public decimal Professional { get; set; }
         public decimal Convenient { get; set; }
