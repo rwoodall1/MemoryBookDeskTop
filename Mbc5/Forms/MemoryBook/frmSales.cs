@@ -177,24 +177,28 @@ namespace Mbc5.Forms.MemoryBook {
                 //Hardback
                 if (chkHardBack.Checked)
                 {
-
+                    lblHardbackAmt.Text = BookOptionPricing.Hardbk.ToString();
                 }
+                else { lblHardbackAmt.Text = null; }
+
                 //Casebind
                 if (chkCaseBind.Checked)
                 {
-
+                    lblCaseamt.Text = BookOptionPricing.Case.ToString();
                 }
+                else { lblCaseamt.Text = null; }
                 //Perfect Bind
                 if (chkPerfBind.Checked)
                 {
-
+                    lblPerfbindAmt.Text = BookOptionPricing.Perfectbind.ToString();
                 }
+                else { lblPerfbindAmt.Text = null; }
                 //Spiral
                 if (chkSpiral.Checked)
                 {
 
                 }
-                //SaddleStitchsa
+                //SaddleStitch
                 if (chkSaddlStich.Checked)
                 {
 
@@ -230,6 +234,12 @@ namespace Mbc5.Forms.MemoryBook {
                 {
 
                 }
+                if (chkMLaminate.Checked)
+                {
+
+                }
+
+
 
             }
 
@@ -387,7 +397,8 @@ namespace Mbc5.Forms.MemoryBook {
                     BookOptionPrice vOptionPrice = new BookOptionPrice()
                     {
                        Yr = rdr.GetOrdinal("Yr").ToString(),
-                       Professional= rdr.GetDecimal(rdr.GetOrdinal("Professional")),
+                       Case = rdr.GetDecimal(rdr.GetOrdinal("Case")),
+                        Professional = rdr.GetDecimal(rdr.GetOrdinal("Professional")),
                        Convenient= rdr.GetDecimal(rdr.GetOrdinal("Convenient")),
                        Specialcvr= rdr.GetDecimal(rdr.GetOrdinal("Specialcvr")),
                        Lamination= rdr.GetDecimal(rdr.GetOrdinal("Lamination")),
