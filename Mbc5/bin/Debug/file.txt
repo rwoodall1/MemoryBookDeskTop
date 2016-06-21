@@ -12,3 +12,15 @@ The statement has been terminated. RWCOMPUTER  RWCOMPUTER\randy
 2016/06/07 07:24:09.508 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
 2016/06/07 07:24:42.080 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
 2016/06/07 07:25:22.064 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/21 16:45:22.952 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:45:23.702 Error retrieving Book Option PricingInvalid object name 'BookOptionPricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:45:26.652 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:47:41.569 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:47:43.980 Error retrieving Book Option PricingInvalid object name 'BookOptionPricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:47:45.075 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:49:01.949 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:49:04.344 Error retrieving Book Option PricingInvalid object name 'BookOptionPricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:49:06.003 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:51:25.622 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:51:28.054 Error retrieving Book Option PricingInvalid object name 'BookOptionPricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 17:00:47.543 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    

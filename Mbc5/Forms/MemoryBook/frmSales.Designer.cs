@@ -66,7 +66,7 @@
             System.Windows.Forms.Label label16;
             System.Windows.Forms.Label label18;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblPriceEach = new System.Windows.Forms.Label();
@@ -1062,14 +1062,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1556,7 +1556,6 @@
             this.txtClrTot.Name = "txtClrTot";
             this.txtClrTot.Size = new System.Drawing.Size(53, 20);
             this.txtClrTot.TabIndex = 70;
-            this.txtClrTot.TextChanged += new System.EventHandler(this.txtClrTot_TextChanged);
             // 
             // txtMisc
             // 
@@ -1567,7 +1566,6 @@
             this.txtMisc.Name = "txtMisc";
             this.txtMisc.Size = new System.Drawing.Size(53, 20);
             this.txtMisc.TabIndex = 74;
-            this.txtMisc.TextChanged += new System.EventHandler(this.txtMisc_TextChanged);
             // 
             // txtMdesc
             // 
@@ -1589,7 +1587,6 @@
             this.txtDesc1amt.Name = "txtDesc1amt";
             this.txtDesc1amt.Size = new System.Drawing.Size(53, 20);
             this.txtDesc1amt.TabIndex = 78;
-            this.txtDesc1amt.TextChanged += new System.EventHandler(this.txtDesc1amt_TextChanged);
             // 
             // txtDesc1
             // 
@@ -1611,7 +1608,6 @@
             this.txtDesc3tot.Name = "txtDesc3tot";
             this.txtDesc3tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc3tot.TabIndex = 82;
-            this.txtDesc3tot.TextChanged += new System.EventHandler(this.txtDesc3tot_TextChanged);
             // 
             // txtDesc3
             // 
@@ -1633,7 +1629,6 @@
             this.txtDesc4tot.Name = "txtDesc4tot";
             this.txtDesc4tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc4tot.TabIndex = 86;
-            this.txtDesc4tot.TextChanged += new System.EventHandler(this.txtDesc4tot_TextChanged);
             // 
             // txtDesc4
             // 
@@ -1739,7 +1734,6 @@
             this.chkGlossLam.Text = "Gloss Laminate";
             this.chkGlossLam.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkGlossLam.UseVisualStyleBackColor = true;
-            this.chkGlossLam.CheckedChanged += new System.EventHandler(this.chkGlossLam_CheckedChanged);
             // 
             // chkMLaminate
             // 
@@ -1753,7 +1747,6 @@
             this.chkMLaminate.Text = "Matte Laminate";
             this.chkMLaminate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkMLaminate.UseVisualStyleBackColor = true;
-            this.chkMLaminate.CheckedChanged += new System.EventHandler(this.chkMLaminate_CheckedChanged);
             // 
             // inkclrComboBox
             // 
@@ -1764,7 +1757,6 @@
             this.inkclrComboBox.Name = "inkclrComboBox";
             this.inkclrComboBox.Size = new System.Drawing.Size(53, 21);
             this.inkclrComboBox.TabIndex = 52;
-            this.inkclrComboBox.SelectedIndexChanged += new System.EventHandler(this.inkclrComboBox_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -1817,7 +1809,6 @@
             this.txtSpecCvrEa.Name = "txtSpecCvrEa";
             this.txtSpecCvrEa.Size = new System.Drawing.Size(53, 20);
             this.txtSpecCvrEa.TabIndex = 59;
-            this.txtSpecCvrEa.TextChanged += new System.EventHandler(this.txtSpecCvrEa_TextChanged);
             // 
             // txtFoilAd
             // 
@@ -1827,7 +1818,6 @@
             this.txtFoilAd.Name = "txtFoilAd";
             this.txtFoilAd.Size = new System.Drawing.Size(53, 20);
             this.txtFoilAd.TabIndex = 61;
-            this.txtFoilAd.TextChanged += new System.EventHandler(this.txtFoilAd_TextChanged);
             // 
             // panel2
             // 
@@ -1900,7 +1890,6 @@
             this.chkProfessional.TabIndex = 12;
             this.chkProfessional.Text = "Professional";
             this.chkProfessional.UseVisualStyleBackColor = true;
-            this.chkProfessional.CheckedChanged += new System.EventHandler(this.chkProfessional_CheckedChanged);
             // 
             // chkConv
             // 
@@ -1912,7 +1901,6 @@
             this.chkConv.TabIndex = 14;
             this.chkConv.Text = "Convenient";
             this.chkConv.UseVisualStyleBackColor = true;
-            this.chkConv.CheckedChanged += new System.EventHandler(this.chkConv_CheckedChanged);
             // 
             // chkYir
             // 
@@ -1924,7 +1912,6 @@
             this.chkYir.TabIndex = 16;
             this.chkYir.Text = "YIR Standard";
             this.chkYir.UseVisualStyleBackColor = true;
-            this.chkYir.CheckedChanged += new System.EventHandler(this.chkYir_CheckedChanged);
             // 
             // chkStory
             // 
@@ -1937,7 +1924,6 @@
             this.chkStory.TabIndex = 63;
             this.chkStory.Text = "Our Story/MyStory";
             this.chkStory.UseVisualStyleBackColor = true;
-            this.chkStory.CheckedChanged += new System.EventHandler(this.chkStory_CheckedChanged);
             // 
             // panel1
             // 
@@ -2010,7 +1996,6 @@
             this.chkPerfBind.Text = "Perfect Bind (40)";
             this.chkPerfBind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkPerfBind.UseVisualStyleBackColor = true;
-            this.chkPerfBind.CheckedChanged += new System.EventHandler(this.chkPerfBind_CheckedChanged);
             // 
             // chkSpiral
             // 
@@ -2023,7 +2008,6 @@
             this.chkSpiral.Text = "Spiral";
             this.chkSpiral.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkSpiral.UseVisualStyleBackColor = true;
-            this.chkSpiral.CheckedChanged += new System.EventHandler(this.chkSpiral_CheckedChanged);
             // 
             // chkSaddlStitch
             // 
@@ -2036,7 +2020,6 @@
             this.chkSaddlStitch.Text = "Saddle Stitch";
             this.chkSaddlStitch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkSaddlStitch.UseVisualStyleBackColor = true;
-            this.chkSaddlStitch.CheckedChanged += new System.EventHandler(this.chkSaddlStitch_CheckedChanged);
             // 
             // pnlHard
             // 
@@ -2084,7 +2067,7 @@
             this.chkHardBack.TabIndex = 1;
             this.chkHardBack.Text = "Hard Back (sewn 40)";
             this.chkHardBack.UseVisualStyleBackColor = true;
-            this.chkHardBack.CheckedChanged += new System.EventHandler(this.chkHardBack_CheckedChanged);
+            this.chkHardBack.Click += new System.EventHandler(this.chkHardBack_Click);
             // 
             // chkCaseBind
             // 
@@ -2097,7 +2080,6 @@
             this.chkCaseBind.TabIndex = 4;
             this.chkCaseBind.Text = "Case Bind (glued 32)";
             this.chkCaseBind.UseVisualStyleBackColor = true;
-            this.chkCaseBind.CheckedChanged += new System.EventHandler(this.chkCaseBind_CheckedChanged);
             // 
             // lblHardbackAmt
             // 

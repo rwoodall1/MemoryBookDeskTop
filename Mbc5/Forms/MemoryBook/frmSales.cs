@@ -189,7 +189,7 @@ namespace Mbc5.Forms.MemoryBook {
                 MessageBox.Show("Number of pages is not valid!","Pages",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
                 }
-            if (this.BookOptionPricing == null || CurPriceYr != txtBYear.Text)
+            if (this.BookOptionPricing != null || CurPriceYr == txtBYear.Text)
             {
                 
                 //Hardback
@@ -534,96 +534,28 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void chkAllClr_CheckedChanged(object sender, EventArgs e)
         {
-            GetBookPricing();
-            CalculateEach();
-            BookCalc();
+            //GetBookPricing();
+            //CalculateEach();
+            //BookCalc();
         }
 
         private void chkPromo_CheckedChanged(object sender, EventArgs e)
         {
-            CalculateEach();
+            //CalculateEach();
         }
 
         private void txtBYear_TextChanged(object sender, EventArgs e)
         {
-            GetBookPricing();
-            GetBookOptionPricing();
-            CalculateEach();
+            //GetBookPricing();
+            //GetBookOptionPricing();
+            //CalculateEach();
         }
 
-        private void chkHardBack_CheckedChanged(object sender,EventArgs e) {
-            BookCalc();
+        private void chkHardBack_Validated(object sender,EventArgs e) {
+            
             }
 
-        private void chkCaseBind_CheckedChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void chkPerfBind_CheckedChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void chkSpiral_CheckedChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void chkSaddlStitch_CheckedChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void chkProfessional_CheckedChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void chkConv_CheckedChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void chkYir_CheckedChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void chkStory_CheckedChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void chkGlossLam_CheckedChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void chkMLaminate_CheckedChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void inkclrComboBox_SelectedIndexChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void txtSpecCvrEa_TextChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void txtFoilAd_TextChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void txtClrTot_TextChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void txtMisc_TextChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void txtDesc1amt_TextChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void txtDesc3tot_TextChanged(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void txtDesc4tot_TextChanged(object sender,EventArgs e) {
+        private void chkHardBack_Click(object sender,EventArgs e) {
             BookCalc();
             }
         }
