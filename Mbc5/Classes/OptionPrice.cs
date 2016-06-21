@@ -12,6 +12,7 @@ namespace Mbc5.Classes
         public string Yr { get; set; }
         public decimal Professional { get; set; }
         public decimal Convenient { get; set; }
+        public decimal Case { get; set; }
         public decimal Specialcvr { get; set; }
         public decimal Lamination { get; set; }
         public decimal Perfectbind { get; set; }
