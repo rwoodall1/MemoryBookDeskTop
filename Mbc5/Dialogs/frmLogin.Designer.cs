@@ -1,4 +1,4 @@
-﻿namespace Mbc5.Forms
+﻿namespace Mbc5.Dialogs
 {
     partial class frmLogin
     {

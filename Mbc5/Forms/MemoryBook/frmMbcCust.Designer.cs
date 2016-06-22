@@ -1,5 +1,4 @@
-﻿namespace Mbc5.Forms
-{
+﻿namespace Mbc5.Forms.MemoryBook {
     partial class frmMbcCust
     {
         /// <summary>
@@ -94,10 +93,11 @@
             System.Windows.Forms.Label lblInterOffice;
             System.Windows.Forms.Label contmemoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMbcCust));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
@@ -142,11 +142,11 @@
             this.txtZip = new System.Windows.Forms.TextBox();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
+            this.lblInvno = new System.Windows.Forms.Label();
             this.btnSchoolEmail = new System.Windows.Forms.Button();
             this.nodirectmailCheckBox = new System.Windows.Forms.CheckBox();
             this.nomktemailCheckBox = new System.Windows.Forms.CheckBox();
             this.custDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn106 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn107 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -212,6 +212,12 @@
             this.contaddr2TextBox = new System.Windows.Forms.TextBox();
             this.contaddrTextBox = new System.Windows.Forms.TextBox();
             this.pg3 = new System.Windows.Forms.TabPage();
+            this.chkMktComplete = new System.Windows.Forms.CheckBox();
+            this.btnSaveMktLog = new System.Windows.Forms.Button();
+            this.btnSaveTeleLog = new System.Windows.Forms.Button();
+            this.lblSchcode = new System.Windows.Forms.Label();
+            this.btnAddMarketLog = new System.Windows.Forms.Button();
+            this.btnAddLog = new System.Windows.Forms.Button();
             this.lblMarketing = new System.Windows.Forms.Label();
             this.mktinfoDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -229,11 +235,12 @@
             this.lkpCommentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.datecontDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datecont = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.initial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -257,9 +264,9 @@
             this.lkpMktReferenceTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpMktReferenceTableAdapter();
             this.contpstnTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.contpstnTableAdapter();
             this.dsDateCont = new Mbc5.DataSets.dsDateCont();
-            this.datecontBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterManager3 = new Mbc5.DataSets.dsDateContTableAdapters.TableAdapterManager();
             this.datecontTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.datecontTableAdapter();
+            this.datecontBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             contryearLabel = new System.Windows.Forms.Label();
             contdateLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
@@ -356,14 +363,14 @@
             // 
             // TopPanel
             // 
-            this.TopPanel.Size = new System.Drawing.Size(1264, 10);
+            this.TopPanel.Size = new System.Drawing.Size(1234, 10);
             // 
             // BottomPanel
             // 
             this.BottomPanel.Controls.Add(this.button2);
             this.BottomPanel.Controls.Add(this.button1);
-            this.BottomPanel.Location = new System.Drawing.Point(0, 710);
-            this.BottomPanel.Size = new System.Drawing.Size(1264, 51);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 680);
+            this.BottomPanel.Size = new System.Drawing.Size(1234, 51);
             // 
             // contryearLabel
             // 
@@ -380,7 +387,7 @@
             contdateLabel.Location = new System.Drawing.Point(672, 8);
             contdateLabel.Name = "contdateLabel";
             contdateLabel.Size = new System.Drawing.Size(70, 13);
-            contdateLabel.TabIndex = 69;
+            contdateLabel.TabIndex = 6;
             contdateLabel.Text = "ContactDate:";
             // 
             // csrepLabel
@@ -389,7 +396,7 @@
             csrepLabel.Location = new System.Drawing.Point(533, 8);
             csrepLabel.Name = "csrepLabel";
             csrepLabel.Size = new System.Drawing.Size(69, 13);
-            csrepLabel.TabIndex = 67;
+            csrepLabel.TabIndex = 4;
             csrepLabel.Text = "Service Rep:";
             // 
             // junsnoLabel
@@ -398,7 +405,7 @@
             junsnoLabel.Location = new System.Drawing.Point(951, 11);
             junsnoLabel.Name = "junsnoLabel";
             junsnoLabel.Size = new System.Drawing.Size(45, 13);
-            junsnoLabel.TabIndex = 0;
+            junsnoLabel.TabIndex = 9;
             junsnoLabel.Text = "JUNS#:";
             // 
             // contaddrLabel
@@ -414,7 +421,7 @@
             // 
             contaddr2Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contaddr2Label.AutoSize = true;
-            contaddr2Label.Location = new System.Drawing.Point(357, 55);
+            contaddr2Label.Location = new System.Drawing.Point(327, 55);
             contaddr2Label.Name = "contaddr2Label";
             contaddr2Label.Size = new System.Drawing.Size(54, 13);
             contaddr2Label.TabIndex = 2;
@@ -433,7 +440,7 @@
             // 
             contzipLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contzipLabel.AutoSize = true;
-            contzipLabel.Location = new System.Drawing.Point(386, 81);
+            contzipLabel.Location = new System.Drawing.Point(356, 81);
             contzipLabel.Name = "contzipLabel";
             contzipLabel.Size = new System.Drawing.Size(25, 13);
             contzipLabel.TabIndex = 6;
@@ -479,7 +486,7 @@
             // 
             contlnameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contlnameLabel.AutoSize = true;
-            contlnameLabel.Location = new System.Drawing.Point(350, 29);
+            contlnameLabel.Location = new System.Drawing.Point(320, 29);
             contlnameLabel.Name = "contlnameLabel";
             contlnameLabel.Size = new System.Drawing.Size(61, 13);
             contlnameLabel.TabIndex = 16;
@@ -489,7 +496,7 @@
             // 
             contphnhomLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contphnhomLabel.AutoSize = true;
-            contphnhomLabel.Location = new System.Drawing.Point(339, 108);
+            contphnhomLabel.Location = new System.Drawing.Point(309, 108);
             contphnhomLabel.Name = "contphnhomLabel";
             contphnhomLabel.Size = new System.Drawing.Size(72, 13);
             contphnhomLabel.TabIndex = 18;
@@ -499,7 +506,7 @@
             // 
             positionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             positionLabel.AutoSize = true;
-            positionLabel.Location = new System.Drawing.Point(364, 134);
+            positionLabel.Location = new System.Drawing.Point(334, 134);
             positionLabel.Name = "positionLabel";
             positionLabel.Size = new System.Drawing.Size(47, 13);
             positionLabel.TabIndex = 20;
@@ -509,7 +516,7 @@
             // 
             label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(364, 335);
+            label3.Location = new System.Drawing.Point(334, 335);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(47, 13);
             label3.TabIndex = 44;
@@ -519,7 +526,7 @@
             // 
             label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(339, 309);
+            label4.Location = new System.Drawing.Point(309, 309);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(72, 13);
             label4.TabIndex = 42;
@@ -529,7 +536,7 @@
             // 
             label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(350, 230);
+            label5.Location = new System.Drawing.Point(320, 230);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(61, 13);
             label5.TabIndex = 40;
@@ -575,7 +582,7 @@
             // 
             label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(386, 282);
+            label10.Location = new System.Drawing.Point(356, 282);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(25, 13);
             label10.TabIndex = 30;
@@ -594,7 +601,7 @@
             // 
             label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(357, 256);
+            label12.Location = new System.Drawing.Point(327, 256);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(54, 13);
             label12.TabIndex = 27;
@@ -613,7 +620,7 @@
             // 
             label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label18.AutoSize = true;
-            label18.Location = new System.Drawing.Point(339, 515);
+            label18.Location = new System.Drawing.Point(309, 515);
             label18.Name = "label18";
             label18.Size = new System.Drawing.Size(72, 13);
             label18.TabIndex = 67;
@@ -623,7 +630,7 @@
             // 
             label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label19.AutoSize = true;
-            label19.Location = new System.Drawing.Point(350, 436);
+            label19.Location = new System.Drawing.Point(320, 436);
             label19.Name = "label19";
             label19.Size = new System.Drawing.Size(61, 13);
             label19.TabIndex = 65;
@@ -669,7 +676,7 @@
             // 
             label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label24.AutoSize = true;
-            label24.Location = new System.Drawing.Point(386, 488);
+            label24.Location = new System.Drawing.Point(356, 488);
             label24.Name = "label24";
             label24.Size = new System.Drawing.Size(25, 13);
             label24.TabIndex = 55;
@@ -688,7 +695,7 @@
             // 
             label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label26.AutoSize = true;
-            label26.Location = new System.Drawing.Point(357, 462);
+            label26.Location = new System.Drawing.Point(327, 462);
             label26.Name = "label26";
             label26.Size = new System.Drawing.Size(54, 13);
             label26.TabIndex = 52;
@@ -724,10 +731,10 @@
             // schoutLabel
             // 
             schoutLabel.AutoSize = true;
-            schoutLabel.Location = new System.Drawing.Point(367, 276);
+            schoutLabel.Location = new System.Drawing.Point(346, 276);
             schoutLabel.Name = "schoutLabel";
             schoutLabel.Size = new System.Drawing.Size(52, 13);
-            schoutLabel.TabIndex = 2;
+            schoutLabel.TabIndex = 23;
             schoutLabel.Text = "Last Day:";
             // 
             // spcinstLabel
@@ -736,7 +743,7 @@
             spcinstLabel.Location = new System.Drawing.Point(8, 530);
             spcinstLabel.Name = "spcinstLabel";
             spcinstLabel.Size = new System.Drawing.Size(92, 13);
-            spcinstLabel.TabIndex = 80;
+            spcinstLabel.TabIndex = 43;
             spcinstLabel.Text = "Production Notes:";
             // 
             // extrchgLabel
@@ -745,7 +752,7 @@
             extrchgLabel.Location = new System.Drawing.Point(25, 463);
             extrchgLabel.Name = "extrchgLabel";
             extrchgLabel.Size = new System.Drawing.Size(76, 13);
-            extrchgLabel.TabIndex = 79;
+            extrchgLabel.TabIndex = 41;
             extrchgLabel.Text = "Extra Charges:";
             // 
             // schcolorsLabel
@@ -754,7 +761,7 @@
             schcolorsLabel.Location = new System.Drawing.Point(259, 360);
             schcolorsLabel.Name = "schcolorsLabel";
             schcolorsLabel.Size = new System.Drawing.Size(75, 13);
-            schcolorsLabel.TabIndex = 6;
+            schcolorsLabel.TabIndex = 36;
             schcolorsLabel.Text = "School Colors:";
             // 
             // lblCategory
@@ -763,7 +770,7 @@
             lblCategory.Location = new System.Drawing.Point(246, 335);
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new System.Drawing.Size(88, 13);
-            lblCategory.TabIndex = 4;
+            lblCategory.TabIndex = 32;
             lblCategory.Text = "School Category:";
             // 
             // gradesLabel
@@ -772,7 +779,7 @@
             gradesLabel.Location = new System.Drawing.Point(50, 360);
             gradesLabel.Name = "gradesLabel";
             gradesLabel.Size = new System.Drawing.Size(44, 13);
-            gradesLabel.TabIndex = 2;
+            gradesLabel.TabIndex = 34;
             gradesLabel.Text = "Grades:";
             // 
             // norebookreasonLabel
@@ -781,7 +788,7 @@
             norebookreasonLabel.Location = new System.Drawing.Point(14, 215);
             norebookreasonLabel.Name = "norebookreasonLabel";
             norebookreasonLabel.Size = new System.Drawing.Size(80, 13);
-            norebookreasonLabel.TabIndex = 71;
+            norebookreasonLabel.TabIndex = 12;
             norebookreasonLabel.Text = "Not Rebooked:";
             // 
             // prevpublisherLabel
@@ -790,7 +797,7 @@
             prevpublisherLabel.Location = new System.Drawing.Point(19, 275);
             prevpublisherLabel.Name = "prevpublisherLabel";
             prevpublisherLabel.Size = new System.Drawing.Size(75, 13);
-            prevpublisherLabel.TabIndex = 70;
+            prevpublisherLabel.TabIndex = 20;
             prevpublisherLabel.Text = "Prev Publisher";
             // 
             // enrollmentLabel1
@@ -799,7 +806,7 @@
             enrollmentLabel1.Location = new System.Drawing.Point(35, 335);
             enrollmentLabel1.Name = "enrollmentLabel1";
             enrollmentLabel1.Size = new System.Drawing.Size(59, 13);
-            enrollmentLabel1.TabIndex = 0;
+            enrollmentLabel1.TabIndex = 30;
             enrollmentLabel1.Text = "Enrollment:";
             // 
             // newpublisherLabel1
@@ -808,7 +815,7 @@
             newpublisherLabel1.Location = new System.Drawing.Point(16, 242);
             newpublisherLabel1.Name = "newpublisherLabel1";
             newpublisherLabel1.Size = new System.Drawing.Size(78, 13);
-            newpublisherLabel1.TabIndex = 69;
+            newpublisherLabel1.TabIndex = 16;
             newpublisherLabel1.Text = "New Publisher:";
             // 
             // newpublisherLabel
@@ -817,16 +824,16 @@
             newpublisherLabel.Location = new System.Drawing.Point(260, 307);
             newpublisherLabel.Name = "newpublisherLabel";
             newpublisherLabel.Size = new System.Drawing.Size(74, 13);
-            newpublisherLabel.TabIndex = 68;
+            newpublisherLabel.TabIndex = 28;
             newpublisherLabel.Text = "Photographer:";
             // 
             // clrpg_intLabel
             // 
             clrpg_intLabel.AutoSize = true;
-            clrpg_intLabel.Location = new System.Drawing.Point(280, 275);
+            clrpg_intLabel.Location = new System.Drawing.Point(259, 275);
             clrpg_intLabel.Name = "clrpg_intLabel";
             clrpg_intLabel.Size = new System.Drawing.Size(36, 13);
-            clrpg_intLabel.TabIndex = 66;
+            clrpg_intLabel.TabIndex = 22;
             clrpg_intLabel.Text = "Prints:";
             // 
             // enrollmentLabel
@@ -898,7 +905,7 @@
             dedayoutLabel.Location = new System.Drawing.Point(101, 69);
             dedayoutLabel.Name = "dedayoutLabel";
             dedayoutLabel.Size = new System.Drawing.Size(79, 13);
-            dedayoutLabel.TabIndex = 14;
+            dedayoutLabel.TabIndex = 11;
             dedayoutLabel.Text = "Dead Line Out:";
             // 
             // dedayinLabel
@@ -907,7 +914,7 @@
             dedayinLabel.Location = new System.Drawing.Point(109, 46);
             dedayinLabel.Name = "dedayinLabel";
             dedayinLabel.Size = new System.Drawing.Size(71, 13);
-            dedayinLabel.TabIndex = 12;
+            dedayinLabel.TabIndex = 5;
             dedayinLabel.Text = "Dead Line In:";
             // 
             // lblBookType
@@ -916,7 +923,7 @@
             lblBookType.Location = new System.Drawing.Point(469, 5);
             lblBookType.Name = "lblBookType";
             lblBookType.Size = new System.Drawing.Size(62, 13);
-            lblBookType.TabIndex = 10;
+            lblBookType.TabIndex = 2;
             lblBookType.Text = "Book Type:";
             // 
             // shiptocontLabel
@@ -925,7 +932,7 @@
             shiptocontLabel.Location = new System.Drawing.Point(13, 92);
             shiptocontLabel.Name = "shiptocontLabel";
             shiptocontLabel.Size = new System.Drawing.Size(36, 13);
-            shiptocontLabel.TabIndex = 6;
+            shiptocontLabel.TabIndex = 13;
             shiptocontLabel.Text = "Other:";
             // 
             // yb_sthLabel
@@ -934,7 +941,7 @@
             yb_sthLabel.Location = new System.Drawing.Point(20, 67);
             yb_sthLabel.Name = "yb_sthLabel";
             yb_sthLabel.Size = new System.Drawing.Size(29, 13);
-            yb_sthLabel.TabIndex = 4;
+            yb_sthLabel.TabIndex = 9;
             yb_sthLabel.Text = "Y/B:";
             // 
             // lblInterOffice
@@ -943,14 +950,14 @@
             lblInterOffice.Location = new System.Drawing.Point(35, 390);
             lblInterOffice.Name = "lblInterOffice";
             lblInterOffice.Size = new System.Drawing.Size(62, 13);
-            lblInterOffice.TabIndex = 94;
+            lblInterOffice.TabIndex = 38;
             lblInterOffice.Text = "Inter Office:";
             // 
             // contmemoLabel
             // 
             contmemoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             contmemoLabel.AutoSize = true;
-            contmemoLabel.Location = new System.Drawing.Point(46, 610);
+            contmemoLabel.Location = new System.Drawing.Point(46, 580);
             contmemoLabel.Name = "contmemoLabel";
             contmemoLabel.Size = new System.Drawing.Size(39, 13);
             contmemoLabel.TabIndex = 76;
@@ -967,8 +974,8 @@
             this.CustTab.Location = new System.Drawing.Point(0, 20);
             this.CustTab.Name = "CustTab";
             this.CustTab.SelectedIndex = 0;
-            this.CustTab.Size = new System.Drawing.Size(1264, 684);
-            this.CustTab.TabIndex = 2;
+            this.CustTab.Size = new System.Drawing.Size(1234, 654);
+            this.CustTab.TabIndex = 0;
             // 
             // pg1
             // 
@@ -980,7 +987,7 @@
             this.pg1.Margin = new System.Windows.Forms.Padding(2);
             this.pg1.Name = "pg1";
             this.pg1.Padding = new System.Windows.Forms.Padding(3);
-            this.pg1.Size = new System.Drawing.Size(1256, 658);
+            this.pg1.Size = new System.Drawing.Size(1226, 628);
             this.pg1.TabIndex = 0;
             this.pg1.Text = "School";
             // 
@@ -1057,8 +1064,8 @@
             // 
             // splitContainer.Panel2
             // 
-            this.splitContainer.Panel2.AutoScroll = true;
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel2.Controls.Add(this.lblInvno);
             this.splitContainer.Panel2.Controls.Add(this.btnSchoolEmail);
             this.splitContainer.Panel2.Controls.Add(this.nodirectmailCheckBox);
             this.splitContainer.Panel2.Controls.Add(this.nomktemailCheckBox);
@@ -1074,8 +1081,8 @@
             this.splitContainer.Panel2.Controls.Add(this.shiptocontTextBox);
             this.splitContainer.Panel2.Controls.Add(yb_sthLabel);
             this.splitContainer.Panel2.Controls.Add(this.yb_sthTextBox);
-            this.splitContainer.Size = new System.Drawing.Size(1253, 607);
-            this.splitContainer.SplitterDistance = 615;
+            this.splitContainer.Size = new System.Drawing.Size(1223, 577);
+            this.splitContainer.SplitterDistance = 599;
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
             // 
@@ -1085,7 +1092,7 @@
             this.txtSchColors.Location = new System.Drawing.Point(337, 360);
             this.txtSchColors.Name = "txtSchColors";
             this.txtSchColors.Size = new System.Drawing.Size(182, 20);
-            this.txtSchColors.TabIndex = 92;
+            this.txtSchColors.TabIndex = 37;
             // 
             // custBindingSource
             // 
@@ -1105,7 +1112,7 @@
             this.txtFax.MaxLength = 25;
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(95, 20);
-            this.txtFax.TabIndex = 91;
+            this.txtFax.TabIndex = 5;
             // 
             // label2
             // 
@@ -1144,14 +1151,15 @@
             this.txtSchCode.ReadOnly = true;
             this.txtSchCode.Size = new System.Drawing.Size(100, 20);
             this.txtSchCode.TabIndex = 84;
+            this.txtSchCode.TextChanged += new System.EventHandler(this.txtSchCode_TextChanged);
             // 
             // schoutDateTimePicker
             // 
             this.schoutDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "schout", true));
-            this.schoutDateTimePicker.Location = new System.Drawing.Point(419, 272);
+            this.schoutDateTimePicker.Location = new System.Drawing.Point(398, 272);
             this.schoutDateTimePicker.Name = "schoutDateTimePicker";
             this.schoutDateTimePicker.Size = new System.Drawing.Size(184, 20);
-            this.schoutDateTimePicker.TabIndex = 3;
+            this.schoutDateTimePicker.TabIndex = 25;
             // 
             // spcinstTextBox
             // 
@@ -1160,7 +1168,7 @@
             this.spcinstTextBox.Multiline = true;
             this.spcinstTextBox.Name = "spcinstTextBox";
             this.spcinstTextBox.Size = new System.Drawing.Size(341, 58);
-            this.spcinstTextBox.TabIndex = 81;
+            this.spcinstTextBox.TabIndex = 44;
             // 
             // extrchgTextBox
             // 
@@ -1169,7 +1177,7 @@
             this.extrchgTextBox.Multiline = true;
             this.extrchgTextBox.Name = "extrchgTextBox";
             this.extrchgTextBox.Size = new System.Drawing.Size(341, 58);
-            this.extrchgTextBox.TabIndex = 80;
+            this.extrchgTextBox.TabIndex = 42;
             // 
             // btnInterOffice
             // 
@@ -1179,7 +1187,7 @@
             this.btnInterOffice.Location = new System.Drawing.Point(446, 390);
             this.btnInterOffice.Name = "btnInterOffice";
             this.btnInterOffice.Size = new System.Drawing.Size(36, 25);
-            this.btnInterOffice.TabIndex = 79;
+            this.btnInterOffice.TabIndex = 40;
             this.btnInterOffice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnInterOffice.UseVisualStyleBackColor = true;
             this.btnInterOffice.Click += new System.EventHandler(this.btnInterOffice_Click);
@@ -1191,7 +1199,7 @@
             this.inofficeTextBox.Multiline = true;
             this.inofficeTextBox.Name = "inofficeTextBox";
             this.inofficeTextBox.Size = new System.Drawing.Size(338, 62);
-            this.inofficeTextBox.TabIndex = 78;
+            this.inofficeTextBox.TabIndex = 39;
             // 
             // cmbSchCategory
             // 
@@ -1200,7 +1208,7 @@
             this.cmbSchCategory.Location = new System.Drawing.Point(337, 335);
             this.cmbSchCategory.Name = "cmbSchCategory";
             this.cmbSchCategory.Size = new System.Drawing.Size(182, 21);
-            this.cmbSchCategory.TabIndex = 77;
+            this.cmbSchCategory.TabIndex = 33;
             // 
             // cmbNoRebook
             // 
@@ -1209,7 +1217,7 @@
             this.cmbNoRebook.Location = new System.Drawing.Point(100, 215);
             this.cmbNoRebook.Name = "cmbNoRebook";
             this.cmbNoRebook.Size = new System.Drawing.Size(139, 21);
-            this.cmbNoRebook.TabIndex = 76;
+            this.cmbNoRebook.TabIndex = 13;
             // 
             // cmbPrevPublisher
             // 
@@ -1218,7 +1226,7 @@
             this.cmbPrevPublisher.Location = new System.Drawing.Point(98, 275);
             this.cmbPrevPublisher.Name = "cmbPrevPublisher";
             this.cmbPrevPublisher.Size = new System.Drawing.Size(139, 21);
-            this.cmbPrevPublisher.TabIndex = 75;
+            this.cmbPrevPublisher.TabIndex = 21;
             // 
             // cmbNewPublisher
             // 
@@ -1227,7 +1235,7 @@
             this.cmbNewPublisher.Location = new System.Drawing.Point(100, 242);
             this.cmbNewPublisher.Name = "cmbNewPublisher";
             this.cmbNewPublisher.Size = new System.Drawing.Size(139, 21);
-            this.cmbNewPublisher.TabIndex = 74;
+            this.cmbNewPublisher.TabIndex = 17;
             // 
             // multiyearCheckBox
             // 
@@ -1236,7 +1244,7 @@
             this.multiyearCheckBox.Location = new System.Drawing.Point(24, 306);
             this.multiyearCheckBox.Name = "multiyearCheckBox";
             this.multiyearCheckBox.Size = new System.Drawing.Size(70, 17);
-            this.multiyearCheckBox.TabIndex = 73;
+            this.multiyearCheckBox.TabIndex = 26;
             this.multiyearCheckBox.Text = "MultiYear";
             this.multiyearCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1247,7 +1255,7 @@
             this.gradesTextBox.MaxLength = 16;
             this.gradesTextBox.Name = "gradesTextBox";
             this.gradesTextBox.Size = new System.Drawing.Size(139, 20);
-            this.gradesTextBox.TabIndex = 3;
+            this.gradesTextBox.TabIndex = 35;
             // 
             // enrollmentTextBox
             // 
@@ -1256,7 +1264,7 @@
             this.enrollmentTextBox.MaxLength = 5;
             this.enrollmentTextBox.Name = "enrollmentTextBox";
             this.enrollmentTextBox.Size = new System.Drawing.Size(137, 20);
-            this.enrollmentTextBox.TabIndex = 1;
+            this.enrollmentTextBox.TabIndex = 31;
             // 
             // txtPhotographer
             // 
@@ -1265,7 +1273,7 @@
             this.txtPhotographer.MaxLength = 45;
             this.txtPhotographer.Name = "txtPhotographer";
             this.txtPhotographer.Size = new System.Drawing.Size(182, 20);
-            this.txtPhotographer.TabIndex = 69;
+            this.txtPhotographer.TabIndex = 29;
             // 
             // multiyearComboBox
             // 
@@ -1274,16 +1282,16 @@
             this.multiyearComboBox.Location = new System.Drawing.Point(100, 306);
             this.multiyearComboBox.Name = "multiyearComboBox";
             this.multiyearComboBox.Size = new System.Drawing.Size(139, 21);
-            this.multiyearComboBox.TabIndex = 68;
+            this.multiyearComboBox.TabIndex = 27;
             // 
             // clrpg_intTextBox
             // 
             this.clrpg_intTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "clrpg_int", true));
-            this.clrpg_intTextBox.Location = new System.Drawing.Point(324, 272);
+            this.clrpg_intTextBox.Location = new System.Drawing.Point(303, 272);
             this.clrpg_intTextBox.MaxLength = 1;
             this.clrpg_intTextBox.Name = "clrpg_intTextBox";
             this.clrpg_intTextBox.Size = new System.Drawing.Size(29, 20);
-            this.clrpg_intTextBox.TabIndex = 67;
+            this.clrpg_intTextBox.TabIndex = 24;
             // 
             // schuploadingCheckBox
             // 
@@ -1292,7 +1300,7 @@
             this.schuploadingCheckBox.Location = new System.Drawing.Point(398, 242);
             this.schuploadingCheckBox.Name = "schuploadingCheckBox";
             this.schuploadingCheckBox.Size = new System.Drawing.Size(121, 17);
-            this.schuploadingCheckBox.TabIndex = 66;
+            this.schuploadingCheckBox.TabIndex = 19;
             this.schuploadingCheckBox.Text = "School Is Uploading";
             this.schuploadingCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1303,7 +1311,7 @@
             this.blkwhiteCheckBox.Location = new System.Drawing.Point(398, 215);
             this.blkwhiteCheckBox.Name = "blkwhiteCheckBox";
             this.blkwhiteCheckBox.Size = new System.Drawing.Size(86, 17);
-            this.blkwhiteCheckBox.TabIndex = 65;
+            this.blkwhiteCheckBox.TabIndex = 15;
             this.blkwhiteCheckBox.Text = "Black/White";
             this.blkwhiteCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1314,7 +1322,7 @@
             this.allcolorCheckBox.Location = new System.Drawing.Point(398, 184);
             this.allcolorCheckBox.Name = "allcolorCheckBox";
             this.allcolorCheckBox.Size = new System.Drawing.Size(64, 17);
-            this.allcolorCheckBox.TabIndex = 64;
+            this.allcolorCheckBox.TabIndex = 11;
             this.allcolorCheckBox.Text = "All Color";
             this.allcolorCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1325,7 +1333,7 @@
             this.sprinfoCheckBox.Location = new System.Drawing.Point(282, 242);
             this.sprinfoCheckBox.Name = "sprinfoCheckBox";
             this.sprinfoCheckBox.Size = new System.Drawing.Size(71, 17);
-            this.sprinfoCheckBox.TabIndex = 63;
+            this.sprinfoCheckBox.TabIndex = 18;
             this.sprinfoCheckBox.Text = "CP online";
             this.sprinfoCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1336,7 +1344,7 @@
             this.fallinfoCheckBox.Location = new System.Drawing.Point(282, 215);
             this.fallinfoCheckBox.Name = "fallinfoCheckBox";
             this.fallinfoCheckBox.Size = new System.Drawing.Size(93, 17);
-            this.fallinfoCheckBox.TabIndex = 62;
+            this.fallinfoCheckBox.TabIndex = 14;
             this.fallinfoCheckBox.Text = "CP Alternative";
             this.fallinfoCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1347,7 +1355,7 @@
             this.clspicCheckBox.Location = new System.Drawing.Point(282, 184);
             this.clspicCheckBox.Name = "clspicCheckBox";
             this.clspicCheckBox.Size = new System.Drawing.Size(109, 17);
-            this.clspicCheckBox.TabIndex = 61;
+            this.clspicCheckBox.TabIndex = 10;
             this.clspicCheckBox.Text = "Class Pic\'s on CD";
             this.clspicCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1358,7 +1366,7 @@
             this.springbreakTextBox.MaxLength = 25;
             this.springbreakTextBox.Name = "springbreakTextBox";
             this.springbreakTextBox.Size = new System.Drawing.Size(139, 20);
-            this.springbreakTextBox.TabIndex = 60;
+            this.springbreakTextBox.TabIndex = 9;
             // 
             // txtWebsite
             // 
@@ -1367,7 +1375,7 @@
             this.txtWebsite.MaxLength = 60;
             this.txtWebsite.Name = "txtWebsite";
             this.txtWebsite.Size = new System.Drawing.Size(188, 20);
-            this.txtWebsite.TabIndex = 59;
+            this.txtWebsite.TabIndex = 8;
             // 
             // btnWebsite
             // 
@@ -1375,7 +1383,7 @@
             this.btnWebsite.Location = new System.Drawing.Point(288, 144);
             this.btnWebsite.Name = "btnWebsite";
             this.btnWebsite.Size = new System.Drawing.Size(80, 23);
-            this.btnWebsite.TabIndex = 58;
+            this.btnWebsite.TabIndex = 7;
             this.btnWebsite.Text = "Website";
             this.btnWebsite.UseVisualStyleBackColor = true;
             // 
@@ -1386,7 +1394,7 @@
             this.txtSchEmail.MaxLength = 80;
             this.txtSchEmail.Name = "txtSchEmail";
             this.txtSchEmail.Size = new System.Drawing.Size(188, 20);
-            this.txtSchEmail.TabIndex = 48;
+            this.txtSchEmail.TabIndex = 6;
             // 
             // cmbState
             // 
@@ -1398,7 +1406,7 @@
             this.cmbState.Location = new System.Drawing.Point(312, 91);
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(206, 21);
-            this.cmbState.TabIndex = 57;
+            this.cmbState.TabIndex = 3;
             this.cmbState.ValueMember = "Abrev";
             // 
             // statesBindingSource
@@ -1418,7 +1426,7 @@
             this.txtaddress.MaxLength = 35;
             this.txtaddress.Name = "txtaddress";
             this.txtaddress.Size = new System.Drawing.Size(183, 20);
-            this.txtaddress.TabIndex = 33;
+            this.txtaddress.TabIndex = 0;
             // 
             // txtSchPhone
             // 
@@ -1427,7 +1435,7 @@
             this.txtSchPhone.MaxLength = 25;
             this.txtSchPhone.Name = "txtSchPhone";
             this.txtSchPhone.Size = new System.Drawing.Size(95, 20);
-            this.txtSchPhone.TabIndex = 43;
+            this.txtSchPhone.TabIndex = 4;
             // 
             // txtZip
             // 
@@ -1445,7 +1453,7 @@
             this.txtAddress2.MaxLength = 35;
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(207, 20);
-            this.txtAddress2.TabIndex = 35;
+            this.txtAddress2.TabIndex = 1;
             // 
             // txtCity
             // 
@@ -1454,7 +1462,18 @@
             this.txtCity.MaxLength = 21;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(183, 20);
-            this.txtCity.TabIndex = 37;
+            this.txtCity.TabIndex = 2;
+            // 
+            // lblInvno
+            // 
+            this.lblInvno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "invno", true));
+            this.lblInvno.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblInvno.Location = new System.Drawing.Point(24, 336);
+            this.lblInvno.Name = "lblInvno";
+            this.lblInvno.Size = new System.Drawing.Size(1, 1);
+            this.lblInvno.TabIndex = 15;
+            this.lblInvno.Text = "label29";
+            this.lblInvno.TextChanged += new System.EventHandler(this.lblInvno_TextChanged);
             // 
             // btnSchoolEmail
             // 
@@ -1464,7 +1483,7 @@
             this.btnSchoolEmail.Location = new System.Drawing.Point(411, 46);
             this.btnSchoolEmail.Name = "btnSchoolEmail";
             this.btnSchoolEmail.Size = new System.Drawing.Size(94, 43);
-            this.btnSchoolEmail.TabIndex = 80;
+            this.btnSchoolEmail.TabIndex = 8;
             this.btnSchoolEmail.Text = "Email To School";
             this.btnSchoolEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSchoolEmail.UseVisualStyleBackColor = true;
@@ -1477,7 +1496,7 @@
             this.nodirectmailCheckBox.Location = new System.Drawing.Point(354, 5);
             this.nodirectmailCheckBox.Name = "nodirectmailCheckBox";
             this.nodirectmailCheckBox.Size = new System.Drawing.Size(93, 17);
-            this.nodirectmailCheckBox.TabIndex = 18;
+            this.nodirectmailCheckBox.TabIndex = 1;
             this.nodirectmailCheckBox.Text = "No Direct Mail";
             this.nodirectmailCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1488,24 +1507,24 @@
             this.nomktemailCheckBox.Location = new System.Drawing.Point(225, 5);
             this.nomktemailCheckBox.Name = "nomktemailCheckBox";
             this.nomktemailCheckBox.Size = new System.Drawing.Size(118, 17);
-            this.nomktemailCheckBox.TabIndex = 17;
+            this.nomktemailCheckBox.TabIndex = 0;
             this.nomktemailCheckBox.Text = "No Marketing Email";
             this.nomktemailCheckBox.UseVisualStyleBackColor = true;
             // 
             // custDataGridView
             // 
             this.custDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn105,
             this.dataGridViewTextBoxColumn106,
             this.dataGridViewTextBoxColumn107,
@@ -1513,18 +1532,12 @@
             this.dataGridViewTextBoxColumn111});
             this.custDataGridView.DataSource = this.custBindingSource;
             this.custDataGridView.EnableHeadersVisualStyles = false;
-            this.custDataGridView.Location = new System.Drawing.Point(14, 368);
+            this.custDataGridView.Location = new System.Drawing.Point(14, 345);
             this.custDataGridView.Name = "custDataGridView";
             this.custDataGridView.ReadOnly = true;
             this.custDataGridView.Size = new System.Drawing.Size(596, 220);
-            this.custDataGridView.TabIndex = 16;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "schname";
-            this.dataGridViewTextBoxColumn12.HeaderText = "School Name";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.custDataGridView.TabIndex = 0;
+            this.custDataGridView.Leave += new System.EventHandler(this.custDataGridView_Leave);
             // 
             // dataGridViewTextBoxColumn105
             // 
@@ -1567,7 +1580,7 @@
             this.dedayoutDateTimePicker.Location = new System.Drawing.Point(186, 69);
             this.dedayoutDateTimePicker.Name = "dedayoutDateTimePicker";
             this.dedayoutDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dedayoutDateTimePicker.TabIndex = 15;
+            this.dedayoutDateTimePicker.TabIndex = 12;
             // 
             // dedayinDateTimePicker
             // 
@@ -1575,7 +1588,7 @@
             this.dedayinDateTimePicker.Location = new System.Drawing.Point(186, 46);
             this.dedayinDateTimePicker.Name = "dedayinDateTimePicker";
             this.dedayinDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dedayinDateTimePicker.TabIndex = 13;
+            this.dedayinDateTimePicker.TabIndex = 7;
             // 
             // txtBookType
             // 
@@ -1587,7 +1600,7 @@
             this.txtBookType.Name = "txtBookType";
             this.txtBookType.ReadOnly = true;
             this.txtBookType.Size = new System.Drawing.Size(57, 20);
-            this.txtBookType.TabIndex = 11;
+            this.txtBookType.TabIndex = 3;
             // 
             // label1
             // 
@@ -1595,7 +1608,7 @@
             this.label1.Location = new System.Drawing.Point(11, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 13);
-            this.label1.TabIndex = 8;
+            this.label1.TabIndex = 4;
             this.label1.Text = "Ship to Home?";
             // 
             // shiptocontTextBox
@@ -1606,7 +1619,7 @@
             this.shiptocontTextBox.MaxLength = 1;
             this.shiptocontTextBox.Name = "shiptocontTextBox";
             this.shiptocontTextBox.Size = new System.Drawing.Size(31, 20);
-            this.shiptocontTextBox.TabIndex = 7;
+            this.shiptocontTextBox.TabIndex = 14;
             // 
             // yb_sthTextBox
             // 
@@ -1616,7 +1629,7 @@
             this.yb_sthTextBox.MaxLength = 1;
             this.yb_sthTextBox.Name = "yb_sthTextBox";
             this.yb_sthTextBox.Size = new System.Drawing.Size(31, 20);
-            this.yb_sthTextBox.TabIndex = 5;
+            this.yb_sthTextBox.TabIndex = 10;
             // 
             // pnlHead
             // 
@@ -1637,7 +1650,7 @@
             this.pnlHead.Controls.Add(this.txtSchCodesrch);
             this.pnlHead.Location = new System.Drawing.Point(0, 0);
             this.pnlHead.Name = "pnlHead";
-            this.pnlHead.Size = new System.Drawing.Size(1256, 38);
+            this.pnlHead.Size = new System.Drawing.Size(1226, 38);
             this.pnlHead.TabIndex = 64;
             // 
             // junsnoTextBox
@@ -1647,7 +1660,7 @@
             this.junsnoTextBox.MaxLength = 10;
             this.junsnoTextBox.Name = "junsnoTextBox";
             this.junsnoTextBox.Size = new System.Drawing.Size(100, 20);
-            this.junsnoTextBox.TabIndex = 1;
+            this.junsnoTextBox.TabIndex = 10;
             // 
             // contryearTextBox
             // 
@@ -1656,7 +1669,7 @@
             this.contryearTextBox.MaxLength = 2;
             this.contryearTextBox.Name = "contryearTextBox";
             this.contryearTextBox.Size = new System.Drawing.Size(45, 20);
-            this.contryearTextBox.TabIndex = 73;
+            this.contryearTextBox.TabIndex = 11;
             // 
             // contdateDateTimePicker
             // 
@@ -1664,7 +1677,7 @@
             this.contdateDateTimePicker.Location = new System.Drawing.Point(744, 8);
             this.contdateDateTimePicker.Name = "contdateDateTimePicker";
             this.contdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.contdateDateTimePicker.TabIndex = 72;
+            this.contdateDateTimePicker.TabIndex = 8;
             // 
             // txtCsRep
             // 
@@ -1674,7 +1687,7 @@
             this.txtCsRep.MaxLength = 3;
             this.txtCsRep.Name = "txtCsRep";
             this.txtCsRep.Size = new System.Drawing.Size(54, 20);
-            this.txtCsRep.TabIndex = 70;
+            this.txtCsRep.TabIndex = 5;
             this.txtCsRep.Validating += new System.ComponentModel.CancelEventHandler(this.txtCsRep_Validating);
             this.txtCsRep.Validated += new System.EventHandler(this.txtCsRep_Validated);
             // 
@@ -1683,7 +1696,7 @@
             this.btnSchoolSearch.Location = new System.Drawing.Point(3, 8);
             this.btnSchoolSearch.Name = "btnSchoolSearch";
             this.btnSchoolSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSchoolSearch.TabIndex = 68;
+            this.btnSchoolSearch.TabIndex = 0;
             this.btnSchoolSearch.Text = "School";
             this.btnSchoolSearch.UseVisualStyleBackColor = true;
             this.btnSchoolSearch.Click += new System.EventHandler(this.btnSchoolSearch_Click);
@@ -1694,14 +1707,14 @@
             this.txtSchNamesrch.MaxLength = 34;
             this.txtSchNamesrch.Name = "txtSchNamesrch";
             this.txtSchNamesrch.Size = new System.Drawing.Size(230, 20);
-            this.txtSchNamesrch.TabIndex = 64;
+            this.txtSchNamesrch.TabIndex = 1;
             // 
             // btnSchoolCode
             // 
             this.btnSchoolCode.Location = new System.Drawing.Point(333, 8);
             this.btnSchoolCode.Name = "btnSchoolCode";
             this.btnSchoolCode.Size = new System.Drawing.Size(75, 23);
-            this.btnSchoolCode.TabIndex = 66;
+            this.btnSchoolCode.TabIndex = 2;
             this.btnSchoolCode.Text = "Code";
             this.btnSchoolCode.UseVisualStyleBackColor = true;
             this.btnSchoolCode.Click += new System.EventHandler(this.btnSchoolCode_Click);
@@ -1712,7 +1725,7 @@
             this.txtSchCodesrch.MaxLength = 6;
             this.txtSchCodesrch.Name = "txtSchCodesrch";
             this.txtSchCodesrch.Size = new System.Drawing.Size(69, 20);
-            this.txtSchCodesrch.TabIndex = 65;
+            this.txtSchCodesrch.TabIndex = 3;
             // 
             // pg2
             // 
@@ -1795,7 +1808,7 @@
             this.pg2.Location = new System.Drawing.Point(4, 22);
             this.pg2.Name = "pg2";
             this.pg2.Padding = new System.Windows.Forms.Padding(3);
-            this.pg2.Size = new System.Drawing.Size(1256, 658);
+            this.pg2.Size = new System.Drawing.Size(1226, 628);
             this.pg2.TabIndex = 1;
             this.pg2.Text = "Contacts";
             // 
@@ -1803,12 +1816,12 @@
             // 
             this.contmemoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.contmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contmemo", true));
-            this.contmemoTextBox.Location = new System.Drawing.Point(91, 610);
+            this.contmemoTextBox.Location = new System.Drawing.Point(91, 580);
             this.contmemoTextBox.Multiline = true;
             this.contmemoTextBox.Name = "contmemoTextBox";
             this.contmemoTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.contmemoTextBox.Size = new System.Drawing.Size(575, 42);
-            this.contmemoTextBox.TabIndex = 77;
+            this.contmemoTextBox.TabIndex = 32;
             // 
             // label17
             // 
@@ -1817,7 +1830,7 @@
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label17.Location = new System.Drawing.Point(-23, 601);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(1212, 3);
+            this.label17.Size = new System.Drawing.Size(1182, 3);
             this.label17.TabIndex = 76;
             // 
             // btnEmailContac3
@@ -1876,26 +1889,26 @@
             this.comboBox6.Location = new System.Drawing.Point(91, 488);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(232, 21);
-            this.comboBox6.TabIndex = 70;
+            this.comboBox6.TabIndex = 26;
             this.comboBox6.ValueMember = "Abrev";
             // 
             // textBox3
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontphnhom", true));
-            this.textBox3.Location = new System.Drawing.Point(415, 515);
+            this.textBox3.Location = new System.Drawing.Point(385, 515);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(232, 20);
-            this.textBox3.TabIndex = 68;
+            this.textBox3.TabIndex = 29;
             // 
             // textBox10
             // 
             this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontlname", true));
-            this.textBox10.Location = new System.Drawing.Point(415, 436);
+            this.textBox10.Location = new System.Drawing.Point(385, 436);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(232, 20);
-            this.textBox10.TabIndex = 66;
+            this.textBox10.TabIndex = 23;
             // 
             // textBox11
             // 
@@ -1903,7 +1916,7 @@
             this.textBox11.Location = new System.Drawing.Point(91, 436);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(232, 20);
-            this.textBox11.TabIndex = 64;
+            this.textBox11.TabIndex = 22;
             // 
             // txtContact3Email
             // 
@@ -1911,7 +1924,7 @@
             this.txtContact3Email.Location = new System.Drawing.Point(91, 567);
             this.txtContact3Email.Name = "txtContact3Email";
             this.txtContact3Email.Size = new System.Drawing.Size(328, 20);
-            this.txtContact3Email.TabIndex = 62;
+            this.txtContact3Email.TabIndex = 31;
             // 
             // textBox13
             // 
@@ -1919,7 +1932,7 @@
             this.textBox13.Location = new System.Drawing.Point(91, 541);
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(232, 20);
-            this.textBox13.TabIndex = 60;
+            this.textBox13.TabIndex = 30;
             // 
             // textBox14
             // 
@@ -1927,25 +1940,25 @@
             this.textBox14.Location = new System.Drawing.Point(91, 515);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(232, 20);
-            this.textBox14.TabIndex = 58;
+            this.textBox14.TabIndex = 28;
             // 
             // textBox15
             // 
             this.textBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontzip", true));
-            this.textBox15.Location = new System.Drawing.Point(415, 488);
+            this.textBox15.Location = new System.Drawing.Point(385, 488);
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(232, 20);
-            this.textBox15.TabIndex = 56;
+            this.textBox15.TabIndex = 27;
             // 
             // textBox16
             // 
             this.textBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontaddr2", true));
-            this.textBox16.Location = new System.Drawing.Point(415, 462);
+            this.textBox16.Location = new System.Drawing.Point(385, 462);
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(232, 20);
-            this.textBox16.TabIndex = 53;
+            this.textBox16.TabIndex = 25;
             // 
             // textBox17
             // 
@@ -1953,7 +1966,7 @@
             this.textBox17.Location = new System.Drawing.Point(91, 462);
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(232, 20);
-            this.textBox17.TabIndex = 51;
+            this.textBox17.TabIndex = 24;
             // 
             // label28
             // 
@@ -1962,7 +1975,7 @@
             this.label28.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label28.Location = new System.Drawing.Point(24, 399);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(1212, 3);
+            this.label28.Size = new System.Drawing.Size(1182, 3);
             this.label28.TabIndex = 49;
             // 
             // label15
@@ -1991,10 +2004,10 @@
             this.comboBox3.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "bposition", true));
             this.comboBox3.DisplayMember = "Position";
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(415, 335);
+            this.comboBox3.Location = new System.Drawing.Point(385, 335);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(232, 21);
-            this.comboBox3.TabIndex = 46;
+            this.comboBox3.TabIndex = 20;
             this.comboBox3.ValueMember = "Position";
             // 
             // comboBox4
@@ -2007,26 +2020,26 @@
             this.comboBox4.Location = new System.Drawing.Point(91, 282);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(232, 21);
-            this.comboBox4.TabIndex = 45;
+            this.comboBox4.TabIndex = 15;
             this.comboBox4.ValueMember = "Abrev";
             // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontphnhom", true));
-            this.textBox1.Location = new System.Drawing.Point(415, 309);
+            this.textBox1.Location = new System.Drawing.Point(385, 309);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(232, 20);
-            this.textBox1.TabIndex = 43;
+            this.textBox1.TabIndex = 18;
             // 
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontlname", true));
-            this.textBox2.Location = new System.Drawing.Point(415, 230);
+            this.textBox2.Location = new System.Drawing.Point(385, 230);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(232, 20);
-            this.textBox2.TabIndex = 41;
+            this.textBox2.TabIndex = 12;
             // 
             // txtBContFname
             // 
@@ -2034,7 +2047,7 @@
             this.txtBContFname.Location = new System.Drawing.Point(91, 230);
             this.txtBContFname.Name = "txtBContFname";
             this.txtBContFname.Size = new System.Drawing.Size(232, 20);
-            this.txtBContFname.TabIndex = 39;
+            this.txtBContFname.TabIndex = 11;
             // 
             // txtContact2Email
             // 
@@ -2042,7 +2055,7 @@
             this.txtContact2Email.Location = new System.Drawing.Point(91, 361);
             this.txtContact2Email.Name = "txtContact2Email";
             this.txtContact2Email.Size = new System.Drawing.Size(328, 20);
-            this.txtContact2Email.TabIndex = 37;
+            this.txtContact2Email.TabIndex = 21;
             // 
             // textBox5
             // 
@@ -2050,7 +2063,7 @@
             this.textBox5.Location = new System.Drawing.Point(91, 335);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(232, 20);
-            this.textBox5.TabIndex = 35;
+            this.textBox5.TabIndex = 19;
             // 
             // textBox6
             // 
@@ -2058,25 +2071,25 @@
             this.textBox6.Location = new System.Drawing.Point(91, 309);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(232, 20);
-            this.textBox6.TabIndex = 33;
+            this.textBox6.TabIndex = 17;
             // 
             // textBox7
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontzip", true));
-            this.textBox7.Location = new System.Drawing.Point(415, 282);
+            this.textBox7.Location = new System.Drawing.Point(385, 282);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(232, 20);
-            this.textBox7.TabIndex = 31;
+            this.textBox7.TabIndex = 16;
             // 
             // textBox8
             // 
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "bcontaddr2", true));
-            this.textBox8.Location = new System.Drawing.Point(415, 256);
+            this.textBox8.Location = new System.Drawing.Point(385, 256);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(232, 20);
-            this.textBox8.TabIndex = 28;
+            this.textBox8.TabIndex = 14;
             // 
             // textBox9
             // 
@@ -2084,7 +2097,7 @@
             this.textBox9.Location = new System.Drawing.Point(91, 256);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(232, 20);
-            this.textBox9.TabIndex = 26;
+            this.textBox9.TabIndex = 13;
             // 
             // lblSeperator1
             // 
@@ -2093,7 +2106,7 @@
             this.lblSeperator1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblSeperator1.Location = new System.Drawing.Point(24, 198);
             this.lblSeperator1.Name = "lblSeperator1";
-            this.lblSeperator1.Size = new System.Drawing.Size(1212, 3);
+            this.lblSeperator1.Size = new System.Drawing.Size(1182, 3);
             this.lblSeperator1.TabIndex = 24;
             // 
             // comboBox2
@@ -2103,10 +2116,10 @@
             this.comboBox2.DataSource = this.contpstnBindingSource;
             this.comboBox2.DisplayMember = "Position";
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(415, 134);
+            this.comboBox2.Location = new System.Drawing.Point(385, 134);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(232, 21);
-            this.comboBox2.TabIndex = 23;
+            this.comboBox2.TabIndex = 9;
             this.comboBox2.ValueMember = "Position";
             // 
             // contpstnBindingSource
@@ -2124,26 +2137,26 @@
             this.comboBox1.Location = new System.Drawing.Point(91, 81);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(232, 21);
-            this.comboBox1.TabIndex = 22;
+            this.comboBox1.TabIndex = 4;
             this.comboBox1.ValueMember = "Abrev";
             // 
             // contphnhomTextBox
             // 
             this.contphnhomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contphnhomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contphnhom", true));
-            this.contphnhomTextBox.Location = new System.Drawing.Point(415, 108);
+            this.contphnhomTextBox.Location = new System.Drawing.Point(385, 108);
             this.contphnhomTextBox.Name = "contphnhomTextBox";
             this.contphnhomTextBox.Size = new System.Drawing.Size(232, 20);
-            this.contphnhomTextBox.TabIndex = 19;
+            this.contphnhomTextBox.TabIndex = 7;
             // 
             // contlnameTextBox
             // 
             this.contlnameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contlnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contlname", true));
-            this.contlnameTextBox.Location = new System.Drawing.Point(415, 29);
+            this.contlnameTextBox.Location = new System.Drawing.Point(385, 29);
             this.contlnameTextBox.Name = "contlnameTextBox";
             this.contlnameTextBox.Size = new System.Drawing.Size(232, 20);
-            this.contlnameTextBox.TabIndex = 17;
+            this.contlnameTextBox.TabIndex = 1;
             // 
             // contfnameTextBox
             // 
@@ -2151,7 +2164,7 @@
             this.contfnameTextBox.Location = new System.Drawing.Point(91, 29);
             this.contfnameTextBox.Name = "contfnameTextBox";
             this.contfnameTextBox.Size = new System.Drawing.Size(232, 20);
-            this.contfnameTextBox.TabIndex = 15;
+            this.contfnameTextBox.TabIndex = 0;
             // 
             // txtContactEmail
             // 
@@ -2159,7 +2172,7 @@
             this.txtContactEmail.Location = new System.Drawing.Point(91, 160);
             this.txtContactEmail.Name = "txtContactEmail";
             this.txtContactEmail.Size = new System.Drawing.Size(328, 20);
-            this.txtContactEmail.TabIndex = 13;
+            this.txtContactEmail.TabIndex = 10;
             // 
             // contfaxTextBox
             // 
@@ -2167,7 +2180,7 @@
             this.contfaxTextBox.Location = new System.Drawing.Point(91, 134);
             this.contfaxTextBox.Name = "contfaxTextBox";
             this.contfaxTextBox.Size = new System.Drawing.Size(232, 20);
-            this.contfaxTextBox.TabIndex = 11;
+            this.contfaxTextBox.TabIndex = 8;
             // 
             // contphnwrkTextBox
             // 
@@ -2175,22 +2188,22 @@
             this.contphnwrkTextBox.Location = new System.Drawing.Point(91, 108);
             this.contphnwrkTextBox.Name = "contphnwrkTextBox";
             this.contphnwrkTextBox.Size = new System.Drawing.Size(232, 20);
-            this.contphnwrkTextBox.TabIndex = 9;
+            this.contphnwrkTextBox.TabIndex = 6;
             // 
             // contzipTextBox
             // 
             this.contzipTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contzipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contzip", true));
-            this.contzipTextBox.Location = new System.Drawing.Point(415, 81);
+            this.contzipTextBox.Location = new System.Drawing.Point(385, 81);
             this.contzipTextBox.Name = "contzipTextBox";
             this.contzipTextBox.Size = new System.Drawing.Size(232, 20);
-            this.contzipTextBox.TabIndex = 7;
+            this.contzipTextBox.TabIndex = 5;
             // 
             // contaddr2TextBox
             // 
             this.contaddr2TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contaddr2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contaddr2", true));
-            this.contaddr2TextBox.Location = new System.Drawing.Point(415, 55);
+            this.contaddr2TextBox.Location = new System.Drawing.Point(385, 55);
             this.contaddr2TextBox.Name = "contaddr2TextBox";
             this.contaddr2TextBox.Size = new System.Drawing.Size(232, 20);
             this.contaddr2TextBox.TabIndex = 3;
@@ -2201,31 +2214,101 @@
             this.contaddrTextBox.Location = new System.Drawing.Point(91, 55);
             this.contaddrTextBox.Name = "contaddrTextBox";
             this.contaddrTextBox.Size = new System.Drawing.Size(232, 20);
-            this.contaddrTextBox.TabIndex = 1;
+            this.contaddrTextBox.TabIndex = 2;
             // 
             // pg3
             // 
             this.pg3.AutoScroll = true;
             this.pg3.BackColor = System.Drawing.SystemColors.Control;
+            this.pg3.Controls.Add(this.chkMktComplete);
+            this.pg3.Controls.Add(this.btnSaveMktLog);
+            this.pg3.Controls.Add(this.btnSaveTeleLog);
+            this.pg3.Controls.Add(this.lblSchcode);
+            this.pg3.Controls.Add(this.btnAddMarketLog);
+            this.pg3.Controls.Add(this.btnAddLog);
             this.pg3.Controls.Add(this.lblMarketing);
             this.pg3.Controls.Add(this.mktinfoDataGridView);
             this.pg3.Controls.Add(this.txtReason);
             this.pg3.Controls.Add(this.commentListBox);
             this.pg3.Controls.Add(this.datecontDataGridView);
             this.pg3.Controls.Add(this.lblTeleSchname);
-            this.pg3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pg3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pg3.Location = new System.Drawing.Point(4, 22);
             this.pg3.Name = "pg3";
-            this.pg3.Size = new System.Drawing.Size(1256, 658);
+            this.pg3.Size = new System.Drawing.Size(1226, 628);
             this.pg3.TabIndex = 2;
             this.pg3.Text = "Telephone";
+            this.pg3.Leave += new System.EventHandler(this.pg3_Leave);
+            // 
+            // chkMktComplete
+            // 
+            this.chkMktComplete.AutoSize = true;
+            this.chkMktComplete.Location = new System.Drawing.Point(952, 381);
+            this.chkMktComplete.Name = "chkMktComplete";
+            this.chkMktComplete.Size = new System.Drawing.Size(181, 17);
+            this.chkMktComplete.TabIndex = 8;
+            this.chkMktComplete.Text = "Marketing Information Completed";
+            this.chkMktComplete.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveMktLog
+            // 
+            this.btnSaveMktLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSaveMktLog.Location = new System.Drawing.Point(179, 375);
+            this.btnSaveMktLog.Name = "btnSaveMktLog";
+            this.btnSaveMktLog.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveMktLog.TabIndex = 7;
+            this.btnSaveMktLog.Text = "Save";
+            this.btnSaveMktLog.UseVisualStyleBackColor = true;
+            this.btnSaveMktLog.Click += new System.EventHandler(this.btnSaveMktLog_Click);
+            // 
+            // btnSaveTeleLog
+            // 
+            this.btnSaveTeleLog.Location = new System.Drawing.Point(179, 138);
+            this.btnSaveTeleLog.Name = "btnSaveTeleLog";
+            this.btnSaveTeleLog.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveTeleLog.TabIndex = 4;
+            this.btnSaveTeleLog.Text = "Save";
+            this.btnSaveTeleLog.UseVisualStyleBackColor = true;
+            this.btnSaveTeleLog.Click += new System.EventHandler(this.btnSaveTeleLog_Click);
+            // 
+            // lblSchcode
+            // 
+            this.lblSchcode.AutoSize = true;
+            this.lblSchcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
+            this.lblSchcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSchcode.Location = new System.Drawing.Point(8, 0);
+            this.lblSchcode.Name = "lblSchcode";
+            this.lblSchcode.Size = new System.Drawing.Size(21, 24);
+            this.lblSchcode.TabIndex = 8;
+            this.lblSchcode.Text = "1";
+            // 
+            // btnAddMarketLog
+            // 
+            this.btnAddMarketLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddMarketLog.Location = new System.Drawing.Point(46, 375);
+            this.btnAddMarketLog.Name = "btnAddMarketLog";
+            this.btnAddMarketLog.Size = new System.Drawing.Size(127, 23);
+            this.btnAddMarketLog.TabIndex = 5;
+            this.btnAddMarketLog.Text = "Add Marketing Log";
+            this.btnAddMarketLog.UseVisualStyleBackColor = true;
+            this.btnAddMarketLog.Click += new System.EventHandler(this.btnAddMarketLog_Click);
+            // 
+            // btnAddLog
+            // 
+            this.btnAddLog.Location = new System.Drawing.Point(46, 138);
+            this.btnAddLog.Name = "btnAddLog";
+            this.btnAddLog.Size = new System.Drawing.Size(127, 23);
+            this.btnAddLog.TabIndex = 2;
+            this.btnAddLog.Text = "Add Telephone Log";
+            this.btnAddLog.UseVisualStyleBackColor = true;
+            this.btnAddLog.Click += new System.EventHandler(this.btnAddLog_Click);
             // 
             // lblMarketing
             // 
-            this.lblMarketing.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblMarketing.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblMarketing.AutoSize = true;
             this.lblMarketing.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarketing.Location = new System.Drawing.Point(453, 393);
+            this.lblMarketing.Location = new System.Drawing.Point(438, 363);
             this.lblMarketing.Name = "lblMarketing";
             this.lblMarketing.Size = new System.Drawing.Size(189, 24);
             this.lblMarketing.TabIndex = 5;
@@ -2233,16 +2316,20 @@
             // 
             // mktinfoDataGridView
             // 
+            this.mktinfoDataGridView.AllowUserToAddRows = false;
+            this.mktinfoDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mktinfoDataGridView.AutoGenerateColumns = false;
             this.mktinfoDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.mktinfoDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.mktinfoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mktinfoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -2252,10 +2339,11 @@
             this.dataGridViewTextBoxColumn13});
             this.mktinfoDataGridView.DataSource = this.mktinfoBindingSource;
             this.mktinfoDataGridView.EnableHeadersVisualStyles = false;
-            this.mktinfoDataGridView.Location = new System.Drawing.Point(46, 434);
+            this.mktinfoDataGridView.Location = new System.Drawing.Point(46, 404);
             this.mktinfoDataGridView.Name = "mktinfoDataGridView";
-            this.mktinfoDataGridView.Size = new System.Drawing.Size(1117, 156);
-            this.mktinfoDataGridView.TabIndex = 4;
+            this.mktinfoDataGridView.Size = new System.Drawing.Size(1087, 156);
+            this.mktinfoDataGridView.TabIndex = 6;
+            this.mktinfoDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.mktinfoDataGridView_DataError);
             // 
             // dataGridViewTextBoxColumn15
             // 
@@ -2321,10 +2409,11 @@
             // 
             this.txtReason.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.datecontBindingSource, "reason", true));
             this.txtReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReason.Location = new System.Drawing.Point(46, 60);
+            this.txtReason.Location = new System.Drawing.Point(405, 60);
+            this.txtReason.Multiline = true;
             this.txtReason.Name = "txtReason";
-            this.txtReason.Size = new System.Drawing.Size(338, 20);
-            this.txtReason.TabIndex = 4;
+            this.txtReason.Size = new System.Drawing.Size(338, 32);
+            this.txtReason.TabIndex = 1;
             this.txtReason.Leave += new System.EventHandler(this.txtReason_Leave);
             // 
             // datecontBindingSource
@@ -2339,10 +2428,10 @@
             this.commentListBox.DisplayMember = "Comment";
             this.commentListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.commentListBox.FormattingEnabled = true;
-            this.commentListBox.Location = new System.Drawing.Point(488, 60);
+            this.commentListBox.Location = new System.Drawing.Point(764, 60);
             this.commentListBox.Name = "commentListBox";
-            this.commentListBox.Size = new System.Drawing.Size(338, 95);
-            this.commentListBox.TabIndex = 3;
+            this.commentListBox.Size = new System.Drawing.Size(399, 95);
+            this.commentListBox.TabIndex = 0;
             this.commentListBox.DoubleClick += new System.EventHandler(this.commentListBox_DoubleClick);
             // 
             // lkpCommentsBindingSource
@@ -2352,27 +2441,32 @@
             // 
             // datecontDataGridView
             // 
+            this.datecontDataGridView.AllowUserToAddRows = false;
             this.datecontDataGridView.AllowUserToDeleteRows = false;
             this.datecontDataGridView.AllowUserToOrderColumns = true;
+            this.datecontDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.datecontDataGridView.AutoGenerateColumns = false;
             this.datecontDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datecontDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.datecontDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datecontDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn3,
+            this.id,
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn2,
+            this.datecont,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
+            this.initial,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
@@ -2382,24 +2476,37 @@
             this.datecontDataGridView.EnableHeadersVisualStyles = false;
             this.datecontDataGridView.Location = new System.Drawing.Point(46, 167);
             this.datecontDataGridView.Name = "datecontDataGridView";
-            this.datecontDataGridView.Size = new System.Drawing.Size(1117, 220);
-            this.datecontDataGridView.TabIndex = 1;
+            this.datecontDataGridView.Size = new System.Drawing.Size(1087, 190);
+            this.datecontDataGridView.TabIndex = 3;
+            this.datecontDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datecontDataGridView_CellDoubleClick);
             this.datecontDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.datecontDataGridView_DataError);
             // 
             // dataGridViewCheckBoxColumn3
             // 
+            this.dataGridViewCheckBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewCheckBoxColumn3.DataPropertyName = "techcall";
             this.dataGridViewCheckBoxColumn3.HeaderText = "Tech Call";
             this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
+            this.dataGridViewCheckBoxColumn3.Width = 58;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
             // 
             // dataGridViewCheckBoxColumn1
             // 
+            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewCheckBoxColumn1.DataPropertyName = "callcont";
             this.dataGridViewCheckBoxColumn1.HeaderText = "Call";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Width = 30;
             // 
             // dataGridViewTextBoxColumn10
             // 
+            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn10.DataPropertyName = "priority";
             this.dataGridViewTextBoxColumn10.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.dataGridViewTextBoxColumn10.HeaderText = "Pri";
@@ -2414,45 +2521,64 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn10.Width = 44;
             // 
-            // dataGridViewTextBoxColumn2
+            // datecont
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "datecont";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.datecont.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.datecont.DataPropertyName = "datecont";
+            this.datecont.HeaderText = "Date";
+            this.datecont.Name = "datecont";
+            this.datecont.ReadOnly = true;
+            this.datecont.Width = 55;
             // 
             // dataGridViewTextBoxColumn3
             // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "reason";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTextBoxColumn3.HeaderText = "Reason";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn3.Width = 69;
             // 
-            // dataGridViewTextBoxColumn4
+            // initial
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "initial";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Initial";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.initial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.initial.DataPropertyName = "initial";
+            this.initial.HeaderText = "Initials";
+            this.initial.Name = "initial";
+            this.initial.Width = 61;
             // 
             // dataGridViewTextBoxColumn9
             // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn9.DataPropertyName = "calltime";
             this.dataGridViewTextBoxColumn9.HeaderText = "Call Time";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Width = 69;
             // 
             // dataGridViewTextBoxColumn7
             // 
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn7.DataPropertyName = "nxtdays";
             this.dataGridViewTextBoxColumn7.HeaderText = "Contact (Days)";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 94;
             // 
             // dataGridViewTextBoxColumn8
             // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn8.DataPropertyName = "nxtdate";
-            dataGridViewCellStyle12.NullValue = " / / ";
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.NullValue = " / / ";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn8.HeaderText = "Next Date";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Width = 74;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -2483,7 +2609,7 @@
             this.lblTeleSchname.AutoSize = true;
             this.lblTeleSchname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schname", true));
             this.lblTeleSchname.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTeleSchname.Location = new System.Drawing.Point(584, 14);
+            this.lblTeleSchname.Location = new System.Drawing.Point(569, 14);
             this.lblTeleSchname.Name = "lblTeleSchname";
             this.lblTeleSchname.Size = new System.Drawing.Size(88, 24);
             this.lblTeleSchname.TabIndex = 0;
@@ -2576,11 +2702,6 @@
             this.dsDateCont.DataSetName = "dsDateCont";
             this.dsDateCont.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // datecontBindingSource1
-            // 
-            this.datecontBindingSource1.DataMember = "datecont";
-            this.datecontBindingSource1.DataSource = this.dsDateCont;
-            // 
             // tableAdapterManager3
             // 
             this.tableAdapterManager3.BackupDataSetBeforeUpdate = false;
@@ -2592,14 +2713,20 @@
             // 
             this.datecontTableAdapter.ClearBeforeFill = true;
             // 
+            // datecontBindingSource1
+            // 
+            this.datecontBindingSource1.DataMember = "datecont";
+            this.datecontBindingSource1.DataSource = this.dsDateCont;
+            // 
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1264, 761);
+            this.ClientSize = new System.Drawing.Size(1234, 731);
             this.Controls.Add(this.CustTab);
-            this.MinimumSize = new System.Drawing.Size(1280, 800);
+            this.MinimumSize = new System.Drawing.Size(1250, 770);
             this.Name = "frmMbcCust";
             this.Text = "MBC Customers";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMbcCust_FormClosing);
             this.Load += new System.EventHandler(this.frmMbcCust_Load);
             this.Controls.SetChildIndex(this.CustTab, 0);
             this.Controls.SetChildIndex(this.TopPanel, 0);
@@ -2743,7 +2870,6 @@
         private System.Windows.Forms.TextBox txtAddress2;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.DataGridView custDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn106;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn107;
@@ -2769,17 +2895,6 @@
         private System.Windows.Forms.BindingSource datecontBindingSource;
         private System.Windows.Forms.DataGridView datecontDataGridView;
         private System.Windows.Forms.BindingSource lkpTypeContBindingSource;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.BindingSource lkpCommentsBindingSource;
         private System.Windows.Forms.TextBox txtReason;
         private System.Windows.Forms.ListBox commentListBox;
@@ -2802,8 +2917,28 @@
         private DataSets.LookUpTableAdapters.lkpMktReferenceTableAdapter lkpMktReferenceTableAdapter;
         private DataSets.LookUpTableAdapters.contpstnTableAdapter contpstnTableAdapter;
         private DataSets.dsDateCont dsDateCont;
-        private System.Windows.Forms.BindingSource datecontBindingSource1;
         private DataSets.dsDateContTableAdapters.TableAdapterManager tableAdapterManager3;
         private DataSets.dsCustTableAdapters.datecontTableAdapter datecontTableAdapter;
+        private System.Windows.Forms.Button btnAddMarketLog;
+        private System.Windows.Forms.Button btnAddLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Label lblSchcode;
+        private System.Windows.Forms.Button btnSaveMktLog;
+        private System.Windows.Forms.Button btnSaveTeleLog;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datecont;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn initial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.BindingSource datecontBindingSource1;
+        private System.Windows.Forms.CheckBox chkMktComplete;
+        private System.Windows.Forms.Label lblInvno;
     }
 }

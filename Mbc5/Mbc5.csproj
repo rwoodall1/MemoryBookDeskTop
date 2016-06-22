@@ -58,8 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\UserIdentity.cs" />
-    <Compile Include="Classes\UserPrincipal.cs" />
+    <Compile Include="Classes\OptionPrice.cs" />
+    <Compile Include="Classes\Price.cs" />
     <Compile Include="DataSets\dsChangePassword.cs">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </Compile>
@@ -83,10 +83,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsProdutn.cs">
+      <DependentUpon>dsProdutn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsProdutn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsProdutn.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsRoles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsRoles.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsSales.cs">
+      <DependentUpon>dsSales.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsSales.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSales.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsUser.Designer.cs">
       <DependentUpon>dsUser.xsd</DependentUpon>
@@ -103,6 +119,36 @@
     </Compile>
     <Compile Include="Dialogs\frmAddressList.Designer.cs">
       <DependentUpon>frmAddressList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmProdutn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmProdutn.Designer.cs">
+      <DependentUpon>frmProdutn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmSales.Designer.cs">
+      <DependentUpon>frmSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Meridian\frmMSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Meridian\frmMSales.Designer.cs">
+      <DependentUpon>frmMSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Meridian\frmMBids.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Meridian\frmMBids.Designer.cs">
+      <DependentUpon>frmMBids.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmBids.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmBids.Designer.cs">
+      <DependentUpon>frmBids.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmChangePassword.cs">
       <SubType>Form</SubType>
@@ -122,10 +168,10 @@
     <Compile Include="Forms\frmFogotPassword.Designer.cs">
       <DependentUpon>frmFogotPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLogin.cs">
+    <Compile Include="Dialogs\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLogin.Designer.cs">
+    <Compile Include="Dialogs\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmMain.cs">
@@ -134,16 +180,16 @@
     <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmMbcCust.cs">
+    <Compile Include="Forms\MemoryBook\frmMbcCust.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMbcCust.Designer.cs">
+    <Compile Include="Forms\MemoryBook\frmMbcCust.Designer.cs">
       <DependentUpon>frmMbcCust.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmMerCust.cs">
+    <Compile Include="Forms\Meridian\frmMerCust.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMerCust.Designer.cs">
+    <Compile Include="Forms\Meridian\frmMerCust.Designer.cs">
       <DependentUpon>frmMerCust.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmUser.cs">
@@ -159,6 +205,21 @@
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">
       <DependentUpon>frmAddressList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmProdutn.resx">
+      <DependentUpon>frmProdutn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MemoryBook\frmSales.resx">
+      <DependentUpon>frmSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Meridian\frmMSales.resx">
+      <DependentUpon>frmMSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Meridian\frmMBids.resx">
+      <DependentUpon>frmMBids.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MemoryBook\frmBids.resx">
+      <DependentUpon>frmBids.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,16 +229,16 @@
     <EmbeddedResource Include="Forms\frmFogotPassword.resx">
       <DependentUpon>frmFogotPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.resx">
+    <EmbeddedResource Include="Dialogs\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMbcCust.resx">
+    <EmbeddedResource Include="Forms\MemoryBook\frmMbcCust.resx">
       <DependentUpon>frmMbcCust.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMerCust.resx">
+    <EmbeddedResource Include="Forms\Meridian\frmMerCust.resx">
       <DependentUpon>frmMerCust.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUser.resx">
@@ -188,6 +249,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Report1.rdlc" />
     <None Include="DataSets\dsChangePassword.xsc">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </None>
@@ -232,6 +294,17 @@
     <None Include="DataSets\dsMktInfo.xss">
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
     </None>
+    <None Include="DataSets\dsProdutn.xsc">
+      <DependentUpon>dsProdutn.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsProdutn.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsProdutn.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsProdutn.xss">
+      <DependentUpon>dsProdutn.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\dsRoles.xsc">
       <DependentUpon>dsRoles.xsd</DependentUpon>
     </None>
@@ -242,6 +315,17 @@
     </None>
     <None Include="DataSets\dsRoles.xss">
       <DependentUpon>dsRoles.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsSales.xsc">
+      <DependentUpon>dsSales.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsSales.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSales.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsSales.xss">
+      <DependentUpon>dsSales.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsUser.xsc">
       <DependentUpon>dsUser.xsd</DependentUpon>

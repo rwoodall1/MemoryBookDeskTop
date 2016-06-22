@@ -9,7 +9,7 @@ using System.Security.Principal;
 using BaseClass.Classes;
 namespace BaseClass.Forms
 {
-    public partial class bTopSide : BaseClass.Base
+    public partial class bTopSide : BaseClass.frmBase
     {
         public bTopSide(string[] roles,UserPrincipal user) : base(roles, user)
         { 

@@ -1,0 +1,26 @@
+2016/05/24 15:26:37.160 Failed to Insert telephone log:Conversion failed when converting the nvarchar value '973cf70b-26cc-41a1-a11a-1a3851949874' to data type int. RWCOMPUTER  RWCOMPUTER\randy    
+2016/05/24 15:28:45.943 Failed to Insert telephone log:Conversion failed when converting the nvarchar value '5be1a302-c4df-4ce0-832e-c3619f88c054' to data type int. RWCOMPUTER  RWCOMPUTER\randy    
+2016/05/24 15:29:24.682 Failed to Insert telephone log:Conversion failed when converting the nvarchar value '722c1689-3fc5-4475-b7ea-da12a39d1953' to data type int. RWCOMPUTER  RWCOMPUTER\randy    
+2016/05/24 15:38:52.619 Failed to Insert telephone log:Cannot insert the value NULL into column 'contact', table 'Mbc5.dbo.datecont'; column does not allow nulls. INSERT fails.
+The statement has been terminated. RWCOMPUTER  RWCOMPUTER\randy    
+2016/05/24 17:06:59.936 Failed to update telephone log:Incorrect syntax near ')'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/05/24 21:59:32.604 Failed to update telephone log:Must declare the scalar variable "@typecontact". CHOME  WDFM\rwoodall    
+2016/06/07 07:22:25.206 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:22:30.904 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:23:05.586 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:24:03.721 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:24:09.508 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:24:42.080 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/07 07:25:22.064 Failed to retrieve pricing:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/06/21 16:45:22.952 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:45:23.702 Error retrieving Book Option PricingInvalid object name 'BookOptionPricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:45:26.652 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:47:41.569 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:47:43.980 Error retrieving Book Option PricingInvalid object name 'BookOptionPricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:47:45.075 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:49:01.949 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:49:04.344 Error retrieving Book Option PricingInvalid object name 'BookOptionPricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:49:06.003 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:51:25.622 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 16:51:28.054 Error retrieving Book Option PricingInvalid object name 'BookOptionPricing'. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/21 17:00:47.543 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    

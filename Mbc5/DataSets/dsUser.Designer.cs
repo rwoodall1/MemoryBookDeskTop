@@ -285,7 +285,7 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnPassWord;
             
-            private global::System.Data.DataColumn columnroldid;
+            private global::System.Data.DataColumn columnroleid;
             
             private global::System.Data.DataColumn columnEmailAddress;
             
@@ -354,9 +354,9 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn roldidColumn {
+            public global::System.Data.DataColumn roleidColumn {
                 get {
-                    return this.columnroldid;
+                    return this.columnroleid;
                 }
             }
             
@@ -429,13 +429,13 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public mbcUsersRow AddmbcUsersRow(string id, string UserName, string PassWord, string roldid, string EmailAddress, string FirstName, string LastName, bool ChangePassword) {
+            public mbcUsersRow AddmbcUsersRow(string id, string UserName, string PassWord, string roleid, string EmailAddress, string FirstName, string LastName, bool ChangePassword) {
                 mbcUsersRow rowmbcUsersRow = ((mbcUsersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
                         UserName,
                         PassWord,
-                        roldid,
+                        roleid,
                         EmailAddress,
                         FirstName,
                         LastName,
@@ -472,7 +472,7 @@ namespace Mbc5.DataSets {
                 this.columnid = base.Columns["id"];
                 this.columnUserName = base.Columns["UserName"];
                 this.columnPassWord = base.Columns["PassWord"];
-                this.columnroldid = base.Columns["roldid"];
+                this.columnroleid = base.Columns["roleid"];
                 this.columnEmailAddress = base.Columns["EmailAddress"];
                 this.columnFirstName = base.Columns["FirstName"];
                 this.columnLastName = base.Columns["LastName"];
@@ -488,8 +488,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnUserName);
                 this.columnPassWord = new global::System.Data.DataColumn("PassWord", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPassWord);
-                this.columnroldid = new global::System.Data.DataColumn("roldid", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnroldid);
+                this.columnroleid = new global::System.Data.DataColumn("roleid", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnroleid);
                 this.columnEmailAddress = new global::System.Data.DataColumn("EmailAddress", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmailAddress);
                 this.columnFirstName = new global::System.Data.DataColumn("FirstName", typeof(string), null, global::System.Data.MappingType.Element);
@@ -507,7 +507,7 @@ namespace Mbc5.DataSets {
                 this.columnUserName.MaxLength = 50;
                 this.columnPassWord.AllowDBNull = false;
                 this.columnPassWord.MaxLength = 50;
-                this.columnroldid.MaxLength = 128;
+                this.columnroleid.MaxLength = 128;
                 this.columnEmailAddress.MaxLength = 45;
                 this.columnFirstName.MaxLength = 45;
                 this.columnLastName.MaxLength = 45;
@@ -686,17 +686,17 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string roldid {
+            public string roleid {
                 get {
                     try {
-                        return ((string)(this[this.tablembcUsers.roldidColumn]));
+                        return ((string)(this[this.tablembcUsers.roleidColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'roldid\' in table \'mbcUsers\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'roleid\' in table \'mbcUsers\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablembcUsers.roldidColumn] = value;
+                    this[this.tablembcUsers.roleidColumn] = value;
                 }
             }
             
@@ -766,14 +766,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsroldidNull() {
-                return this.IsNull(this.tablembcUsers.roldidColumn);
+            public bool IsroleidNull() {
+                return this.IsNull(this.tablembcUsers.roleidColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetroldidNull() {
-                this[this.tablembcUsers.roldidColumn] = global::System.Convert.DBNull;
+            public void SetroleidNull() {
+                this[this.tablembcUsers.roleidColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -959,7 +959,7 @@ namespace Mbc5.DataSets.dsUserTableAdapters {
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("UserName", "UserName");
             tableMapping.ColumnMappings.Add("PassWord", "PassWord");
-            tableMapping.ColumnMappings.Add("roldid", "roldid");
+            tableMapping.ColumnMappings.Add("roleid", "roleid");
             tableMapping.ColumnMappings.Add("EmailAddress", "EmailAddress");
             tableMapping.ColumnMappings.Add("FirstName", "FirstName");
             tableMapping.ColumnMappings.Add("LastName", "LastName");
@@ -967,13 +967,13 @@ namespace Mbc5.DataSets.dsUserTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [mbcUsers] WHERE (([id] = @Original_id) AND ([UserName] = @Original_UserName) AND ([PassWord] = @Original_PassWord) AND ((@IsNull_roldid = 1 AND [roldid] IS NULL) OR ([roldid] = @Original_roldid)) AND ((@IsNull_EmailAddress = 1 AND [EmailAddress] IS NULL) OR ([EmailAddress] = @Original_EmailAddress)) AND ((@IsNull_FirstName = 1 AND [FirstName] IS NULL) OR ([FirstName] = @Original_FirstName)) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_ChangePassword = 1 AND [ChangePassword] IS NULL) OR ([ChangePassword] = @Original_ChangePassword)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [mbcUsers] WHERE (([id] = @Original_id) AND ([UserName] = @Original_UserName) AND ([PassWord] = @Original_PassWord) AND ((@IsNull_roleid = 1 AND [roleid] IS NULL) OR ([roleid] = @Original_roleid)) AND ((@IsNull_EmailAddress = 1 AND [EmailAddress] IS NULL) OR ([EmailAddress] = @Original_EmailAddress)) AND ((@IsNull_FirstName = 1 AND [FirstName] IS NULL) OR ([FirstName] = @Original_FirstName)) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_ChangePassword = 1 AND [ChangePassword] IS NULL) OR ([ChangePassword] = @Original_ChangePassword)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PassWord", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassWord", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_roldid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roldid", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_roldid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roldid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_roleid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleid", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_roleid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EmailAddress", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmailAddress", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmailAddress", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmailAddress", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FirstName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -984,26 +984,26 @@ namespace Mbc5.DataSets.dsUserTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ChangePassword", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ChangePassword", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [mbcUsers] ([id], [UserName], [PassWord], [roldid], [EmailAddress], [FirstName], [LastName], [ChangePassword]) VALUES (@id, @UserName, @PassWord, @roldid, @EmailAddress, @FirstName, @LastName, @ChangePassword);
-SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, ChangePassword FROM mbcUsers WHERE (id = @id) ORDER BY LastName";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [mbcUsers] ([id], [UserName], [PassWord], [roleid], [EmailAddress], [FirstName], [LastName], [ChangePassword]) VALUES (@id, @UserName, @PassWord, @roleid, @EmailAddress, @FirstName, @LastName, @ChangePassword);
+SELECT id, UserName, PassWord, roleid, EmailAddress, FirstName, LastName, ChangePassword FROM mbcUsers WHERE (id = @id) ORDER BY LastName";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PassWord", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassWord", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@roldid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roldid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@roleid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmailAddress", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmailAddress", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ChangePassword", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ChangePassword", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [mbcUsers] SET [id] = @id, [UserName] = @UserName, [PassWord] = @PassWord, [roldid] = @roldid, [EmailAddress] = @EmailAddress, [FirstName] = @FirstName, [LastName] = @LastName, [ChangePassword] = @ChangePassword WHERE (([id] = @Original_id) AND ([UserName] = @Original_UserName) AND ([PassWord] = @Original_PassWord) AND ((@IsNull_roldid = 1 AND [roldid] IS NULL) OR ([roldid] = @Original_roldid)) AND ((@IsNull_EmailAddress = 1 AND [EmailAddress] IS NULL) OR ([EmailAddress] = @Original_EmailAddress)) AND ((@IsNull_FirstName = 1 AND [FirstName] IS NULL) OR ([FirstName] = @Original_FirstName)) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_ChangePassword = 1 AND [ChangePassword] IS NULL) OR ([ChangePassword] = @Original_ChangePassword)));
-SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, ChangePassword FROM mbcUsers WHERE (id = @id) ORDER BY LastName";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [mbcUsers] SET [id] = @id, [UserName] = @UserName, [PassWord] = @PassWord, [roleid] = @roleid, [EmailAddress] = @EmailAddress, [FirstName] = @FirstName, [LastName] = @LastName, [ChangePassword] = @ChangePassword WHERE (([id] = @Original_id) AND ([UserName] = @Original_UserName) AND ([PassWord] = @Original_PassWord) AND ((@IsNull_roleid = 1 AND [roleid] IS NULL) OR ([roleid] = @Original_roleid)) AND ((@IsNull_EmailAddress = 1 AND [EmailAddress] IS NULL) OR ([EmailAddress] = @Original_EmailAddress)) AND ((@IsNull_FirstName = 1 AND [FirstName] IS NULL) OR ([FirstName] = @Original_FirstName)) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_ChangePassword = 1 AND [ChangePassword] IS NULL) OR ([ChangePassword] = @Original_ChangePassword)));
+SELECT id, UserName, PassWord, roleid, EmailAddress, FirstName, LastName, ChangePassword FROM mbcUsers WHERE (id = @id) ORDER BY LastName";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PassWord", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassWord", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@roldid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roldid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@roleid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmailAddress", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmailAddress", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1011,8 +1011,8 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PassWord", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassWord", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_roldid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roldid", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_roldid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roldid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_roleid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleid", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_roleid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EmailAddress", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmailAddress", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmailAddress", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmailAddress", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FirstName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1036,7 +1036,7 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, " +
+            this._commandCollection[0].CommandText = "SELECT        id, UserName, PassWord, roleid, EmailAddress, FirstName, LastName, " +
                 "ChangePassword\r\nFROM            mbcUsers\r\nORDER BY LastName";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
@@ -1098,7 +1098,7 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_id, string Original_UserName, string Original_PassWord, string Original_roldid, string Original_EmailAddress, string Original_FirstName, string Original_LastName, global::System.Nullable<bool> Original_ChangePassword) {
+        public virtual int Delete(string Original_id, string Original_UserName, string Original_PassWord, string Original_roleid, string Original_EmailAddress, string Original_FirstName, string Original_LastName, global::System.Nullable<bool> Original_ChangePassword) {
             if ((Original_id == null)) {
                 throw new global::System.ArgumentNullException("Original_id");
             }
@@ -1117,13 +1117,13 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
             else {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_PassWord));
             }
-            if ((Original_roldid == null)) {
+            if ((Original_roleid == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_roldid));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_roleid));
             }
             if ((Original_EmailAddress == null)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
@@ -1177,7 +1177,7 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string id, string UserName, string PassWord, string roldid, string EmailAddress, string FirstName, string LastName, global::System.Nullable<bool> ChangePassword) {
+        public virtual int Insert(string id, string UserName, string PassWord, string roleid, string EmailAddress, string FirstName, string LastName, global::System.Nullable<bool> ChangePassword) {
             if ((id == null)) {
                 throw new global::System.ArgumentNullException("id");
             }
@@ -1196,11 +1196,11 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(PassWord));
             }
-            if ((roldid == null)) {
+            if ((roleid == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(roldid));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(roleid));
             }
             if ((EmailAddress == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -1250,7 +1250,7 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
                     string id, 
                     string UserName, 
                     string PassWord, 
-                    string roldid, 
+                    string roleid, 
                     string EmailAddress, 
                     string FirstName, 
                     string LastName, 
@@ -1258,7 +1258,7 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
                     string Original_id, 
                     string Original_UserName, 
                     string Original_PassWord, 
-                    string Original_roldid, 
+                    string Original_roleid, 
                     string Original_EmailAddress, 
                     string Original_FirstName, 
                     string Original_LastName, 
@@ -1281,11 +1281,11 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(PassWord));
             }
-            if ((roldid == null)) {
+            if ((roleid == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(roldid));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(roleid));
             }
             if ((EmailAddress == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -1329,13 +1329,13 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_PassWord));
             }
-            if ((Original_roldid == null)) {
+            if ((Original_roleid == null)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_roldid));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_roleid));
             }
             if ((Original_EmailAddress == null)) {
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
@@ -1389,8 +1389,8 @@ SELECT id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, Change
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string UserName, string PassWord, string roldid, string EmailAddress, string FirstName, string LastName, global::System.Nullable<bool> ChangePassword, string Original_id, string Original_UserName, string Original_PassWord, string Original_roldid, string Original_EmailAddress, string Original_FirstName, string Original_LastName, global::System.Nullable<bool> Original_ChangePassword) {
-            return this.Update(Original_id, UserName, PassWord, roldid, EmailAddress, FirstName, LastName, ChangePassword, Original_id, Original_UserName, Original_PassWord, Original_roldid, Original_EmailAddress, Original_FirstName, Original_LastName, Original_ChangePassword);
+        public virtual int Update(string UserName, string PassWord, string roleid, string EmailAddress, string FirstName, string LastName, global::System.Nullable<bool> ChangePassword, string Original_id, string Original_UserName, string Original_PassWord, string Original_roleid, string Original_EmailAddress, string Original_FirstName, string Original_LastName, global::System.Nullable<bool> Original_ChangePassword) {
+            return this.Update(Original_id, UserName, PassWord, roleid, EmailAddress, FirstName, LastName, ChangePassword, Original_id, Original_UserName, Original_PassWord, Original_roleid, Original_EmailAddress, Original_FirstName, Original_LastName, Original_ChangePassword);
         }
     }
 }

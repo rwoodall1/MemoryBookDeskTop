@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 namespace BaseClass.Forms
 {
-    public partial class bTopBottom : BaseClass.Base
+    public partial class bTopBottom : BaseClass.frmBase
     {
         public bTopBottom(string[] roles, UserPrincipal user) : base(roles, user)
         {

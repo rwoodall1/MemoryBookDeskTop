@@ -5,7 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Mbc5.Dialogs;
+using Mbc5.Forms.MemoryBook;
+using Mbc5.Forms.Meridian;
 using BaseClass.Classes;
+using BaseClass.Forms;
 using NLog;
 namespace Mbc5.Forms
 {
@@ -23,7 +27,71 @@ namespace Mbc5.Forms
 
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
+        #region "Methods"
+        private int GetInvno()
+        {
+          
 
+            int vInvno = 0;
+            switch (this.ActiveMdiChild.Name)
+            {
+
+                case "frmMbcCust":
+                    {
+
+                        var tmpForm = (frmMbcCust)this.ActiveMdiChild;
+
+                        vInvno = tmpForm.Invno;
+                        break;
+                    }
+                case "frmBids":
+                    {
+                        var tmpForm = (frmBids)this.ActiveMdiChild;
+                        vInvno = tmpForm.Invno;
+                        break;
+                    }
+                case "frmProdutn":
+                    {
+                        var tmpForm = (frmProdutn)this.ActiveMdiChild;
+                        vInvno = tmpForm.Invno;
+                        break;
+                    }
+                
+            }
+            return vInvno;
+        }
+        private string GetSchcode()
+        {
+            string vSchcode =null;
+            switch (this.ActiveMdiChild.Name)
+            {
+
+                case "frmMbcCust":
+                    {
+
+                        var tmpForm = (frmMbcCust)this.ActiveMdiChild;
+
+                        vSchcode = tmpForm.Schcode;
+                        break;
+                    }
+                case "frmBids":
+                    {
+                        var tmpForm = (frmBids)this.ActiveMdiChild;
+                        vSchcode = tmpForm.Schcode;
+                        break;
+                    }
+                case "frmProdutn":
+                    {
+                        var tmpForm = (frmProdutn)this.ActiveMdiChild;
+                        vSchcode = tmpForm.Schcode;
+                        break;
+                    }
+
+            }
+            return vSchcode;
+
+        }
+        #endregion
         private void frmMain_Load(object sender, EventArgs e)
         {
             List<string> a = new List<string>();
@@ -134,5 +202,62 @@ namespace Mbc5.Forms
             frmMer.Show();
             this.Cursor = Cursors.Default;
             }
+
+        private void bidsToolStripMenuItem_Click(object sender,EventArgs e) {
+            this.Cursor = Cursors.AppStarting;
+
+            frmBids frmBids = new frmBids(this.ApplicationUser);
+            frmBids.MdiParent = this;
+            frmBids.Show();
+            this.Cursor = Cursors.Default;
+            }
+
+        private void mbidsToolStripMenuItem_Click(object sender,EventArgs e) {
+            this.Cursor = Cursors.AppStarting;
+
+            frmMBids frmMBids = new frmMBids(this.ApplicationUser);
+            frmMBids.MdiParent = this;
+            frmMBids.Show();
+            this.Cursor = Cursors.Default;
+            }
+
+        private void msalesToolStripMenuItem_Click(object sender,EventArgs e) {
+            this.Cursor = Cursors.AppStarting;
+            frmMSales frmMSales = new frmMSales(this.ApplicationUser);
+            frmMSales.MdiParent = this;
+            frmMSales.Show();
+            this.Cursor = Cursors.Default;
+            }
+
+        private void salesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild == null)
+            {
+                frmSales frmSales = new frmSales(this.ApplicationUser);
+                frmSales.MdiParent = this;
+                frmSales.Show();
+                this.Cursor = Cursors.Default;
+
+
+            }
+            else
+            {
+                this.Cursor = Cursors.AppStarting;
+                int vInvno = GetInvno();
+                string vSchcode = GetSchcode();
+
+                frmSales frmSales = new frmSales(this.ApplicationUser, vInvno, vSchcode);
+                frmSales.MdiParent = this;
+                frmSales.Show();
+                this.Cursor = Cursors.Default;
+
+            }
+
+
+
         }
-}
+
+
+    }
+        }
+

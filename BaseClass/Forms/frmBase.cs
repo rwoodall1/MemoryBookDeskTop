@@ -13,10 +13,10 @@ using BaseClass.Classes;
 using NLog;
 namespace BaseClass
 {
-    public partial class Base : Form
+    public partial class frmBase : Form
     {
       
-        protected Base()
+        protected frmBase()
         {
            
             InitializeComponent();
@@ -34,7 +34,8 @@ namespace BaseClass
             Show,
             ShowWithOwner
         }
-
+        public virtual string Schcode { get; set; }
+        public virtual int Invno { get; set; }
         public event EventHandler UserIsAllowed;
         public event EventHandler UserIsDenied;
         // Variable to capture the roles allowed for this form
@@ -46,7 +47,7 @@ namespace BaseClass
         /// <value><c>true</c> if [user can open form]; otherwise, <c>false</c>.</value>
 		public bool UserCanOpenForm { get; private set; }
         #endregion
-        protected Base(string[] roles, UserPrincipal userPrincipal)
+        protected frmBase(string[] roles, UserPrincipal userPrincipal)
         {
             Log = LogManager.GetLogger(GetType().FullName);
             if (!DesignMode)

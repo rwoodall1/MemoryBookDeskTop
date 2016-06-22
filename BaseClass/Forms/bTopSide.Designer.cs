@@ -38,21 +38,21 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(591, 35);
+            this.panel1.Size = new System.Drawing.Size(818, 35);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(523, 35);
+            this.panel2.Location = new System.Drawing.Point(750, 35);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(68, 308);
+            this.panel2.Size = new System.Drawing.Size(68, 562);
             this.panel2.TabIndex = 1;
             // 
             // bTopSide
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(591, 343);
+            this.ClientSize = new System.Drawing.Size(818, 597);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

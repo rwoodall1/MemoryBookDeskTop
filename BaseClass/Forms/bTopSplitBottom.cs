@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace BaseClass.Forms
 {
-    public partial class bTopSplitBottom : BaseClass.Base
+    public partial class bTopSplitBottom : BaseClass.frmBase
     {
         public bTopSplitBottom()
         {

@@ -1,6 +1,6 @@
 ﻿namespace BaseClass
 {
-    partial class Base
+    partial class frmBase
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Base));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBase));
             this.SuspendLayout();
             // 
-            // Base
+            // frmBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 343);
+            this.ClientSize = new System.Drawing.Size(1234, 731);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Base";
+            this.Name = "frmBase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Base";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Base_FormClosed);
