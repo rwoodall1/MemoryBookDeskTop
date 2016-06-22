@@ -28,7 +28,6 @@ F:\New folder\MemoryBookDeskTop\BaseClass\bin\Debug\BaseClass.dll
 F:\New folder\MemoryBookDeskTop\BaseClass\bin\Debug\BaseClass.pdb
 F:\New folder\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.dll
 F:\New folder\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.xml
-F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Base.resources
 F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopBottom.resources
 F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopSide.resources
 F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopSplitBottom.resources
@@ -49,3 +48,5 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.dll
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.pdb
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.frmBase.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache
+F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache
+F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.frmBase.resources
