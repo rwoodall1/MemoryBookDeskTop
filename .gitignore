@@ -70,3 +70,4 @@ Mbc5/bin/Debug/BaseClass.pdb
 *.pdb
 Mbc5/obj/Debug/Mbc5.csprojResolveAssemblyReference.cache
 *.pdb
+*.suo
