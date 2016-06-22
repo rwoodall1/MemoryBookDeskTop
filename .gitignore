@@ -57,3 +57,16 @@ Mbc5/obj/Debug/Mbc5.csproj.FileListAbsolute.txt
 Mbc5/obj/Debug/Mbc5.csproj.FileListAbsolute.txt
 *.dll
 BaseClass/bin/Debug/BaseClass.dll
+*.dll
+*.dll
+BaseClass/bin/Debug/BaseClass.pdb
+*.txt
+*.pdb
+BaseClass/bin/Debug/BaseClass.dll
+*.txt
+BaseClass/obj/Debug/BaseClass.dll
+*.dll
+Mbc5/bin/Debug/BaseClass.pdb
+*.pdb
+Mbc5/obj/Debug/Mbc5.csprojResolveAssemblyReference.cache
+*.pdb
