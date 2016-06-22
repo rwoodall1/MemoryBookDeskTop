@@ -176,6 +176,10 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private void BookCalc()
         {
+            if (BookOptionPricing == null)
+                { GetBookOptionPricing(); }
+            if(CurPriceYr != txtBYear.Text)
+                { CalculateEach(); }
             int numberOfCopies=0;
             int numberOfPages = 0;
            var parseresult = int.TryParse(txtNocopies.Text,out numberOfCopies);
@@ -189,15 +193,15 @@ namespace Mbc5.Forms.MemoryBook {
                 MessageBox.Show("Number of pages is not valid!","Pages",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
                 }
-            if (this.BookOptionPricing != null || CurPriceYr == txtBYear.Text)
+            if (this.BookOptionPricing != null && CurPriceYr == txtBYear.Text)
             {
                 
                 //Hardback
                 decimal HardBack =0;
                 if (chkHardBack.Checked)
                 {
-                    HardBack = BookOptionPricing.Hardbk;
-                    lblHardbackAmt.Text = (BookOptionPricing.Hardbk*numberOfCopies).ToString();
+                    HardBack = BookOptionPricing.Hardbk * numberOfCopies;
+                    lblHardbackAmt.Text = HardBack.ToString();
                     CalcInk();
                     }
                 else { lblHardbackAmt.Text = null;
@@ -206,8 +210,8 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Casebind = 0;
                 if (chkCaseBind.Checked)
                     {
-                    Casebind = BookOptionPricing.Case;
-                    lblCaseamt.Text = (BookOptionPricing.Case * numberOfCopies).ToString();
+                    Casebind = BookOptionPricing.Case * numberOfCopies;
+                    lblCaseamt.Text = Casebind.ToString();
                     CalcInk();
                     }
                 else
@@ -224,8 +228,8 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Perfectbind = 0;
                 if (chkPerfBind.Checked)
                 {
-                    Perfectbind = BookOptionPricing.Perfectbind;
-                    lblPerfbindAmt.Text = (BookOptionPricing.Perfectbind*numberOfCopies).ToString();
+                    Perfectbind = BookOptionPricing.Perfectbind * numberOfCopies;
+                    lblPerfbindAmt.Text = Perfectbind.ToString();
                     
                 }
                 else { lblPerfbindAmt.Text = null;
@@ -235,8 +239,8 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Spiral = 0;
                 if (chkSpiral.Checked)
                 {
-                    Spiral = BookOptionPricing.Spiral;
-                    lblSpiralAmt.Text =(BookOptionPricing.Spiral*numberOfCopies).ToString(); 
+                    Spiral = (BookOptionPricing.Spiral * numberOfCopies);
+                    lblSpiralAmt.Text = Spiral.ToString(); 
                 }
                 else{ lblSpiralAmt.Text = null;
                     Spiral = 0;
@@ -245,8 +249,8 @@ namespace Mbc5.Forms.MemoryBook {
                decimal SaddleStitch = 0;
                 if (chkSaddlStitch.Checked)
                 {
-                    SaddleStitch = BookOptionPricing.SaddleStitch;
-                    lblSaddleAmt.Text = (BookOptionPricing.SaddleStitch*numberOfCopies).ToString();
+                    SaddleStitch = (BookOptionPricing.SaddleStitch*numberOfCopies) ;
+                    lblSaddleAmt.Text = SaddleStitch.ToString();
                     
                     }
                 else{ lblSaddleAmt.Text = null;
@@ -256,8 +260,8 @@ namespace Mbc5.Forms.MemoryBook {
                 //Professional
                 decimal Professional = 0;
                 if (chkProfessional.Checked)
-                {    Professional = BookOptionPricing.Professional;
-                    lblProfAmt.Text =(BookOptionPricing.Professional*numberOfPages).ToString();
+                {    Professional =(BookOptionPricing.Professional*numberOfPages) ;
+                    lblProfAmt.Text = Professional.ToString();
                     
                     }
                 else { lblProfAmt.Text = null;
@@ -267,8 +271,8 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Convenient = 0;
                 if (chkConv.Checked)
                 {
-                    Convenient = BookOptionPricing.Convenient;
-                    lblConvAmt.Text =(BookOptionPricing.Convenient*numberOfPages).ToString();
+                    Convenient =(BookOptionPricing.Convenient*numberOfPages);
+                    lblConvAmt.Text = Convenient.ToString();
                     
                     }
                 else{ lblConvAmt.Text = null;
@@ -278,8 +282,8 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Yir = 0;
                 if (chkYir.Checked)
                 {
-                    Yir = BookOptionPricing.Yir;
-                    lblYir.Text =(BookOptionPricing.Yir*numberOfCopies).ToString();   
+                    Yir = (BookOptionPricing.Yir * numberOfCopies);
+                    lblYir.Text =Yir.ToString();   
                 }
                 else
                     { lblYir.Text = null;
@@ -290,8 +294,8 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Story = 0;
                 if (chkStory.Checked)
                 {
-                     Story = BookOptionPricing.Story;
-                    lblStoryAmt.Text =(BookOptionPricing.Story*numberOfCopies).ToString();
+                     Story = (BookOptionPricing.Story*numberOfCopies);
+                    lblStoryAmt.Text = Story.ToString();
                     
                     }
                 else
@@ -303,8 +307,8 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Gloss = 0;
                 if (chkGlossLam.Checked)
                 {
-                    Gloss = BookOptionPricing.Lamination;
-                    lblLaminateAmt.Text =(BookOptionPricing.Lamination*numberOfCopies).ToString();
+                    Gloss =(BookOptionPricing.Lamination*numberOfCopies) ;
+                    lblLaminateAmt.Text = Gloss.ToString();
                     
                     }
                 else
@@ -315,8 +319,8 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Laminationsft = 0;
                 if (chkMLaminate.Checked)
                 {
-                    Laminationsft = BookOptionPricing.Laminationsft;
-                    lblMLaminateAmt.Text =(BookOptionPricing.Laminationsft*numberOfCopies).ToString();
+                    Laminationsft =(BookOptionPricing.Laminationsft*numberOfCopies);
+                    lblMLaminateAmt.Text = Laminationsft.ToString();
                     
                     }
                 else
@@ -325,6 +329,7 @@ namespace Mbc5.Forms.MemoryBook {
                     }
                 //convert rest of info from strings to decimals for calculations
                 bool vParseResult;
+                decimal BookTotal = 0;
                 decimal SpecCvrTot = 0;
                 decimal FoilTot=0;
                 decimal ClrPgTot = 0;
@@ -332,6 +337,8 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Desc1Tot = 0;
                 decimal Desc3Tot = 0;
                 decimal Desc4Tot = 0;
+               
+                vParseResult = decimal.TryParse(lblBookTotal.Text.ToString().Replace("$",""),out BookTotal);
                 vParseResult = decimal.TryParse(txtSpeccvr.Text,out SpecCvrTot);
                 vParseResult = decimal.TryParse(txtFoilAd.Text,out FoilTot);
                 vParseResult = decimal.TryParse(txtClrTot.Text,out ClrPgTot);
@@ -342,9 +349,9 @@ namespace Mbc5.Forms.MemoryBook {
 
 
 
-                decimal SubTotal = (HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story  + Gloss + Laminationsft+SpecCvrTot+FoilTot+ClrPgTot+MiscTot+Desc1Tot+Desc3Tot+Desc4Tot);
+                decimal SubTotal = (BookTotal+HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story  + Gloss + Laminationsft+SpecCvrTot+FoilTot+ClrPgTot+MiscTot+Desc1Tot+Desc3Tot+Desc4Tot);
 
-              lblsubtot.Text = SubTotal.ToString();
+              lblsubtot.Text = SubTotal.ToString("c");
             }
 
         }
@@ -378,90 +385,90 @@ namespace Mbc5.Forms.MemoryBook {
                 while (rdr.Read())
                 {
                     Price vprice = new Price()
-                    {
+                        {
                         Copies = rdr.GetInt32(rdr.GetOrdinal("Copies")),
-                       
-                        Pg12 = rdr.GetDecimal(rdr.GetOrdinal("Pg12")),
-                        Pg16 = rdr.GetDecimal(rdr.GetOrdinal("Pg16")),
-                        Pg20 = rdr.GetDecimal(rdr.GetOrdinal("Pg20")),
-                        Pg24 = rdr.GetDecimal(rdr.GetOrdinal("Pg24")),
-                        Pg28 = rdr.GetDecimal(rdr.GetOrdinal("Pg28")),
-                        Pg32 = rdr.GetDecimal(rdr.GetOrdinal("Pg32")),
-                        Pg36 = rdr.GetDecimal(rdr.GetOrdinal("Pg36")),
-                        Pg40 = rdr.GetDecimal(rdr.GetOrdinal("Pg40")),
-                        Pg44 = rdr.GetDecimal(rdr.GetOrdinal("Pg44")),
-                        Pg48 = rdr.GetDecimal(rdr.GetOrdinal("Pg48")),
-                        Pg52 = rdr.GetDecimal(rdr.GetOrdinal("Pg52")),
-                        Pg56 = rdr.GetDecimal(rdr.GetOrdinal("Pg56")),
-                        Pg60 = rdr.GetDecimal(rdr.GetOrdinal("Pg60")),
-                        Pg64 = rdr.GetDecimal(rdr.GetOrdinal("Pg64")),
-                        Pg68 = rdr.GetDecimal(rdr.GetOrdinal("Pg68")),
-                        Pg72 = rdr.GetDecimal(rdr.GetOrdinal("Pg72")),
-                        Pg76 = rdr.GetDecimal(rdr.GetOrdinal("Pg76")),
-                        Pg80 = rdr.GetDecimal(rdr.GetOrdinal("Pg80")),
-                        Pg84 = rdr.GetDecimal(rdr.GetOrdinal("Pg84")),
-                        Pg88 = rdr.GetDecimal(rdr.GetOrdinal("Pg88")),
-                        Pg92 = rdr.GetDecimal(rdr.GetOrdinal("Pg92")),
-                        Pg96 = rdr.GetDecimal(rdr.GetOrdinal("Pg96")),
-                        Pg100 = rdr.GetDecimal(rdr.GetOrdinal("Pg100")),
-                        Pg104 = rdr.GetDecimal(rdr.GetOrdinal("Pg104")),
-                        Pg108 = rdr.GetDecimal(rdr.GetOrdinal("Pg108")),
-                        Pg112 = rdr.GetDecimal(rdr.GetOrdinal("Pg112")),
-                        Pg116 = rdr.GetDecimal(rdr.GetOrdinal("Pg116")),
-                        Pg120 = rdr.GetDecimal(rdr.GetOrdinal("Pg120")),
-                        Pg124 = rdr.GetDecimal(rdr.GetOrdinal("Pg124")),
-                        Pg128 = rdr.GetDecimal(rdr.GetOrdinal("Pg128")),
-                        Pg132 = rdr.GetDecimal(rdr.GetOrdinal("Pg132")),
-                        Pg136 = rdr.GetDecimal(rdr.GetOrdinal("Pg136")),
-                        Pg140 = rdr.GetDecimal(rdr.GetOrdinal("Pg140")),
-                        Pg144 = rdr.GetDecimal(rdr.GetOrdinal("Pg144")),
-                        Pg148 = rdr.GetDecimal(rdr.GetOrdinal("Pg148")),
-                        Pg152 = rdr.GetDecimal(rdr.GetOrdinal("Pg152")),
-                        Pg156 = rdr.GetDecimal(rdr.GetOrdinal("Pg156")),
-                        Pg160 = rdr.GetDecimal(rdr.GetOrdinal("Pg160")),
-                        Pg164 = rdr.GetDecimal(rdr.GetOrdinal("Pg164")),
-                        Pg168 = rdr.GetDecimal(rdr.GetOrdinal("Pg168")),
-                        Pg172 = rdr.GetDecimal(rdr.GetOrdinal("Pg172")),
-                        Pg176 = rdr.GetDecimal(rdr.GetOrdinal("Pg176")),
-                        Pg180 = rdr.GetDecimal(rdr.GetOrdinal("Pg180")),
-                        Pg184 = rdr.GetDecimal(rdr.GetOrdinal("Pg184")),
-                        Pg188 = rdr.GetDecimal(rdr.GetOrdinal("Pg188")),
-                        Pg192 = rdr.GetDecimal(rdr.GetOrdinal("Pg192")),
-                        Pg196 = rdr.GetDecimal(rdr.GetOrdinal("Pg196")),
-                        Pg200 = rdr.GetDecimal(rdr.GetOrdinal("Pg200")),
-                        Pg204 = rdr.GetDecimal(rdr.GetOrdinal("Pg204")),
-                        Pg208 = rdr.GetDecimal(rdr.GetOrdinal("Pg208")),
-                        Pg212 = rdr.GetDecimal(rdr.GetOrdinal("Pg212")),
-                        Pg216 = rdr.GetDecimal(rdr.GetOrdinal("Pg216")),
-                        Pg220 = rdr.GetDecimal(rdr.GetOrdinal("Pg220")),
-                        Pg224 = rdr.GetDecimal(rdr.GetOrdinal("Pg224")),
-                        Pg228 = rdr.GetDecimal(rdr.GetOrdinal("Pg228")),
-                        Pg232 = rdr.GetDecimal(rdr.GetOrdinal("Pg232")),
-                        Pg236 = rdr.GetDecimal(rdr.GetOrdinal("Pg236")),
-                        Pg240 = rdr.GetDecimal(rdr.GetOrdinal("Pg240")),
-                        Pg244 = rdr.GetDecimal(rdr.GetOrdinal("Pg244")),
-                        Pg248 = rdr.GetDecimal(rdr.GetOrdinal("Pg248")),
-                        Pg252 = rdr.GetDecimal(rdr.GetOrdinal("Pg252")),
-                        Pg256 = rdr.GetDecimal(rdr.GetOrdinal("Pg256")),
-                        Pg260 = rdr.GetDecimal(rdr.GetOrdinal("Pg260")),
-                        Pg264 = rdr.GetDecimal(rdr.GetOrdinal("Pg264")),
-                        Pg268 = rdr.GetDecimal(rdr.GetOrdinal("Pg268")),
-                        Pg272 = rdr.GetDecimal(rdr.GetOrdinal("Pg272")),
-                        Pg276 = rdr.GetDecimal(rdr.GetOrdinal("Pg276")),
-                        Pg280 = rdr.GetDecimal(rdr.GetOrdinal("Pg280")),
-                        Pg284 = rdr.GetDecimal(rdr.GetOrdinal("Pg284")),
-                        Pg288 = rdr.GetDecimal(rdr.GetOrdinal("Pg288")),
-                        Pg292 = rdr.GetDecimal(rdr.GetOrdinal("Pg292")),
-                        Pg296 = rdr.GetDecimal(rdr.GetOrdinal("Pg296")),
-                        Pg300 = rdr.GetDecimal(rdr.GetOrdinal("Pg300")),
-                        Pg304 = rdr.GetDecimal(rdr.GetOrdinal("Pg304")),
-                        Pg308 = rdr.GetDecimal(rdr.GetOrdinal("Pg308")),
-                        Pg312 = rdr.GetDecimal(rdr.GetOrdinal("Pg312")),
-                        Pg316 = rdr.GetDecimal(rdr.GetOrdinal("Pg316")),
-                        Pg320 = rdr.GetDecimal(rdr.GetOrdinal("Pg320")),
-                        Pg324 = rdr.GetDecimal(rdr.GetOrdinal("Pg324")),
-                        Pg328 = rdr.GetDecimal(rdr.GetOrdinal("Pg328")),
-                        Pg332 = rdr.GetDecimal(rdr.GetOrdinal("Pg332")),
+
+                        Pg12 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],        
+                        Pg16 = rdr["Pg16"] == DBNull.Value ? 0 : (decimal)rdr["Pg16"],
+                        Pg20 = rdr["Pg20"] == DBNull.Value ? 0 : (decimal)rdr["Pg20"],
+                        Pg24 = rdr["Pg24"] == DBNull.Value ? 0 : (decimal)rdr["Pg24"],
+                        Pg28 = rdr["Pg28"] == DBNull.Value ? 0 : (decimal)rdr["Pg28"],
+                        Pg32 = rdr["Pg32"] == DBNull.Value ? 0 : (decimal)rdr["Pg32"],
+                        Pg36 = rdr["Pg36"] == DBNull.Value ? 0 : (decimal)rdr["Pg36"],
+                        Pg40 = rdr["Pg40"] == DBNull.Value ? 0 : (decimal)rdr["Pg40"],
+                        Pg44 = rdr["Pg44"] == DBNull.Value ? 0 : (decimal)rdr["Pg44"],
+                        Pg48 = rdr["Pg48"] == DBNull.Value ? 0 : (decimal)rdr["Pg48"],
+                        Pg52 = rdr["Pg52"] == DBNull.Value ? 0 : (decimal)rdr["Pg52"],
+                        Pg56 = rdr["Pg56"] == DBNull.Value ? 0 : (decimal)rdr["Pg56"],
+                        Pg60 = rdr["Pg60"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg64 = rdr["Pg64"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg68 = rdr["Pg68"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg72 = rdr["Pg72"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg76 = rdr["Pg76"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg80 = rdr["Pg80"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg84 = rdr["Pg84"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg88 = rdr["Pg88"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg92 = rdr["Pg92"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg96 = rdr["Pg96"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg100 = rdr["P102"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg104 = rdr["Pg104"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg108 = rdr["Pg108"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg112 = rdr["Pg112"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg116 = rdr["Pg114"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg120 = rdr["Pg120"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg124 = rdr["Pg124"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg128 = rdr["Pg128"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg132 = rdr["Pg132"]== DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg136 = rdr["Pg136"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg140 = rdr["Pg140"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg144 = rdr["Pg144"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg148 = rdr["Pg148"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg152 = rdr["Pg152"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg156 = rdr["Pg154"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg160 = rdr["Pg160"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg164 = rdr["Pg164"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg168 = rdr["Pg168"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg172 = rdr["Pg172"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg176 = rdr["Pg176"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg180 = rdr["Pg180"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg184 = rdr["Pg184"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg188 = rdr["Pg188"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg192 = rdr["Pg192"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg196 = rdr["Pg196"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg200 = rdr["Pg200"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg204 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg208 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg212 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg216 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg220 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg224 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg228 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg232 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg236 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg240 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg244 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg248 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg252 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg256 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg260 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg264 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg268 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg272 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg276 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg280 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg284 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg288 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg292 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg296 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg300 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg304 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg308 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg312 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg316 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg320 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg324 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg328 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"],
+                        Pg332 = rdr["Pg12"] == DBNull.Value ? 0 : (decimal)rdr["Pg12"]
                         //Pg336 = rdr.GetDecimal(rdr.GetOrdinal("Pg336")),
                         //Pg340 = rdr.GetDecimal(rdr.GetOrdinal("Pg340")),
                         //Pg344 = rdr.GetDecimal(rdr.GetOrdinal("Pg344")),
@@ -532,31 +539,31 @@ namespace Mbc5.Forms.MemoryBook {
         
         #endregion
 
-        private void chkAllClr_CheckedChanged(object sender, EventArgs e)
-        {
-            //GetBookPricing();
-            //CalculateEach();
-            //BookCalc();
-        }
-
         private void chkPromo_CheckedChanged(object sender, EventArgs e)
         {
             //CalculateEach();
         }
 
-        private void txtBYear_TextChanged(object sender, EventArgs e)
-        {
-            //GetBookPricing();
-            //GetBookOptionPricing();
-            //CalculateEach();
-        }
-
-        private void chkHardBack_Validated(object sender,EventArgs e) {
-            
-            }
+      
 
         private void chkHardBack_Click(object sender,EventArgs e) {
             BookCalc();
+            }
+
+        private void chkAllClr_Click(object sender,EventArgs e) {
+            GetBookPricing();
+            CalculateEach();
+            BookCalc();
+            }
+
+        private void chkPromo_Click(object sender,EventArgs e) {
+            CalculateEach();
+            }
+
+        private void txtBYear_Leave(object sender,EventArgs e) {
+            GetBookPricing();
+            GetBookOptionPricing();
+            CalculateEach();
             }
         }
 
