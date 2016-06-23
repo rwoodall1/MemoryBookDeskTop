@@ -26,3 +26,7 @@ The statement has been terminated. RWCOMPUTER  RWCOMPUTER\randy
 2016/06/21 17:00:47.543 Failed to retrieve pricing:Invalid object name 'Pricing'. RWCOMPUTER  RWCOMPUTER\randy    
 2016/06/22 15:48:35.708 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. RWCOMPUTER  RWCOMPUTER\randy    
 2016/06/22 15:49:59.120 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/23 10:28:22.843 Failed to retrieve pricing:P100 RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/23 10:29:57.344 Failed to retrieve pricing:Pg114 RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/23 10:34:48.804 Failed to retrieve pricing:Invalid attempt to read when no data is present. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/23 10:40:06.707 Failed to retrieve pricing:Invalid attempt to read when no data is present. RWCOMPUTER  RWCOMPUTER\randy    
