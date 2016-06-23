@@ -45,6 +45,30 @@ namespace Mbc5.Forms.MemoryBook {
         {
 
         }
+ private void chkPromo_CheckedChanged(object sender, EventArgs e)
+        {
+            //CalculateEach();
+        }
+
+        private void chkHardBack_Click(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkAllClr_Click(object sender,EventArgs e) {
+            GetBookPricing();
+            CalculateEach();
+            BookCalc();
+            }
+
+        private void chkPromo_Click(object sender,EventArgs e) {
+            CalculateEach();
+            }
+
+        private void txtBYear_Leave(object sender,EventArgs e) {
+            GetBookPricing();
+            GetBookOptionPricing();
+            CalculateEach();
+            }
         #region "Properties"
         public void InvokePropertyChanged(PropertyChangedEventArgs e) {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -73,7 +97,7 @@ namespace Mbc5.Forms.MemoryBook {
         public BookOptionPrice BookOptionPricing{get;set;}
         public string CurPriceYr { get; set; } = null;
         #endregion
-        #region "Methods"
+            #region "Methods"
         private void Fill()
         {
             if (Schcode != null)
@@ -98,6 +122,10 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void CalculateEach()
         {
+            if(!ValidateCopies() || !ValidatePageCount())
+                {
+                   return;
+                }
             string vPage = "Pg" + txtNoPages.Text;
             int copies;
             var result = int.TryParse(txtNocopies.Text, out copies);
@@ -113,49 +141,44 @@ namespace Mbc5.Forms.MemoryBook {
                 lowCopies = copies - 25;
             }
 
-
             if (this.Pricing == null|| CurPriceYr != txtBYear.Text)
-            {
-                
+            {                
                 GetBookPricing();
-                //var vPricingRow = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).ToList();
-                //var aprice = vPricingRow.Select(x => x.GetType().GetProperty("Pg12").GetValue(x));
-                var vBookPrice = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).Select(x => x.GetType().GetProperty(vPage).GetValue(x)).ToList();
-               decimal vFoundPrice  =(decimal) vBookPrice[0];
-                decimal vdiscountamount = 1;
-                if (chkPromo.Checked)
-                {
-                    vdiscountamount =1-((decimal)cmbYrDiscountAmt.SelectedItem);
-                }
-                vFoundPrice = vFoundPrice * vdiscountamount;
-                lblPriceEach.Text = vFoundPrice.ToString("c");
+                if (this.Pricing == null)
+                    { MessageBox.Show("Pricing was not found.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    Log.Error("Pricing was not found:Year-" + txtBYear.Text);
+                    return;
+                    }
             }
-            else
-            {
-                //var vPricingRow = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).ToList();
-                //var aprice = vPricingRow.Select(x => x.GetType().GetProperty("Pg12").GetValue(x));
-                //do it in one statement
-                var vBookPrice = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).Select(x => x.GetType().GetProperty(vPage).GetValue(x)).ToList();
-                 decimal vFoundPrice =(decimal) vBookPrice[0];
-                decimal vdiscountamount = 1;
-                if (chkPromo.Checked)
+           
+            //var vPricingRow = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).ToList();
+            //var aprice = vPricingRow.Select(x => x.GetType().GetProperty("Pg12").GetValue(x));
+
+            var vBookPrice = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).Select(x => x.GetType().GetProperty(vPage).GetValue(x)).ToList();
+            if (vBookPrice.Count < 1)
                 {
-                    var discamt = System.Convert.ToDecimal(cmbYrDiscountAmt.SelectedItem);
-                    vdiscountamount = (1 - discamt);
+                return;
                 }
-                vFoundPrice = vFoundPrice * vdiscountamount;
-                lblPriceEach.Text = vFoundPrice.ToString("c");
-             
-            }
+            decimal vFoundPrice = (decimal)vBookPrice[0];
+            decimal vdiscountamount = 1;
+            if ( cmbYrDiscountAmt.SelectedIndex >0)
+                {
+                  decimal promAmt = 0;
+                   bool proAmtResult = decimal.TryParse(cmbYrDiscountAmt.SelectedItem.ToString(),out promAmt);
+               
+                vdiscountamount = 1 -promAmt;
+                }
+            vFoundPrice = vFoundPrice * vdiscountamount;
+            lblPriceEach.Text = vFoundPrice.ToString("c");
 
             if (String.IsNullOrEmpty(txtPriceOverRide.Text)|| txtPriceOverRide.Text=="$0.00"|| txtPriceOverRide.Text=="$0")
             {
                 try
                 {
                     string price = lblPriceEach.Text.Replace("$", "");//must strip dollar sign
-                    var vBookPrice=System.Convert.ToDecimal(price);
+                   var thePrice=System.Convert.ToDecimal(price);
                     
-                      lblBookTotal.Text = (vBookPrice * copies).ToString("c");
+                      lblBookTotal.Text = (thePrice * copies).ToString("c");
                                                         
                 }
                 catch(Exception ex)
@@ -165,10 +188,17 @@ namespace Mbc5.Forms.MemoryBook {
               }
             else
             {
-                var vBookPrice = System.Convert.ToDecimal(txtPriceOverRide.Text);
-             
-                    lblBookTotal.Text = (vBookPrice * copies).ToString();             
-            }
+                try
+                    {
+                     var thePrice = System.Convert.ToDecimal(txtPriceOverRide.Text);
+                     lblBookTotal.Text = (thePrice * copies).ToString("c");
+                    }
+                catch (Exception ex)
+                    {
+                    MessageBox.Show("Book price is not in a decimal value.");
+                    }
+
+                }
           }
         private void CalcInk() {
 
@@ -176,6 +206,10 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private void BookCalc()
         {
+            if(!ValidateCopies() || !ValidatePageCount())
+                {
+                   return;
+                }
             if (BookOptionPricing == null)
                 { GetBookOptionPricing(); }
             if(CurPriceYr != txtBYear.Text)
@@ -410,11 +444,11 @@ namespace Mbc5.Forms.MemoryBook {
                         Pg88 = rdr["Pg88"] == DBNull.Value ? 0 : (decimal)rdr["Pg88"],
                         Pg92 = rdr["Pg92"] == DBNull.Value ? 0 : (decimal)rdr["Pg92"],
                         Pg96 = rdr["Pg96"] == DBNull.Value ? 0 : (decimal)rdr["Pg96"],
-                        Pg100 = rdr["P100"] == DBNull.Value ? 0 : (decimal)rdr["Pg100"],
+                        Pg100 = rdr["Pg100"] == DBNull.Value ? 0 : (decimal)rdr["Pg100"],
                         Pg104 = rdr["Pg104"] == DBNull.Value ? 0 : (decimal)rdr["Pg104"],
                         Pg108 = rdr["Pg108"] == DBNull.Value ? 0 : (decimal)rdr["Pg108"],
                         Pg112 = rdr["Pg112"] == DBNull.Value ? 0 : (decimal)rdr["Pg112"],
-                        Pg116 = rdr["Pg114"] == DBNull.Value ? 0 : (decimal)rdr["Pg116"],
+                        Pg116 = rdr["Pg116"] == DBNull.Value ? 0 : (decimal)rdr["Pg116"],
                         Pg120 = rdr["Pg120"] == DBNull.Value ? 0 : (decimal)rdr["Pg120"],
                         Pg124 = rdr["Pg124"] == DBNull.Value ? 0 : (decimal)rdr["Pg124"],
                         Pg128 = rdr["Pg128"] == DBNull.Value ? 0 : (decimal)rdr["Pg128"],
@@ -424,7 +458,7 @@ namespace Mbc5.Forms.MemoryBook {
                         Pg144 = rdr["Pg144"] == DBNull.Value ? 0 : (decimal)rdr["Pg144"],
                         Pg148 = rdr["Pg148"] == DBNull.Value ? 0 : (decimal)rdr["Pg148"],
                         Pg152 = rdr["Pg152"] == DBNull.Value ? 0 : (decimal)rdr["Pg152"],
-                        Pg156 = rdr["Pg154"] == DBNull.Value ? 0 : (decimal)rdr["Pg156"],
+                        Pg156 = rdr["Pg156"] == DBNull.Value ? 0 : (decimal)rdr["Pg156"],
                         Pg160 = rdr["Pg160"] == DBNull.Value ? 0 : (decimal)rdr["Pg160"],
                         Pg164 = rdr["Pg164"] == DBNull.Value ? 0 : (decimal)rdr["Pg164"],
                         Pg168 = rdr["Pg168"] == DBNull.Value ? 0 : (decimal)rdr["Pg168"],
@@ -536,34 +570,86 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
            } 
-        
+        private bool ValidatePageCount() {
+            bool retval = true;
+          errorProvider1.Clear();
+            int count;
+            var result = int.TryParse(txtNoPages.Text,out count);
+            //non numeric
+            if (!result)
+                {
+                  errorProvider1.SetError(txtNoPages,"Please enter a number.");
+                retval = false;
+                }
+            //Check over 360
+            if (count > 360)
+                {
+                errorProvider1.SetError(txtNoPages,"Calculations are limited to 360 pages!");
+                retval = false;
+                }
+            //check divisible by 4
+            var mod = (count % 4);
+            if (mod != 0 || count< 12)
+                {
+                   errorProvider1.SetError(txtNoPages,"Pages must be 12 or greater and divisible by 4!");
+                   retval = false;
+                }
+
+            //If CaseBind
+            if(chkCaseBind.Checked && (count < 40 || count>120))
+                {
+                errorProvider1.SetError(txtNoPages,"Case Bind pages must between 40 and 120!");
+                retval = false;
+                }
+
+            if (count > 84 && chkSaddlStitch.Checked)
+                {
+                errorProvider1.SetError(txtNoPages,"Saddle Stitch must be 84 pages or less!");
+                retval = false;
+                }
+
+
+
+            return retval;
+         }
+        private bool ValidateCopies() {
+            bool retval = true;
+            errorProvider1.Clear();
+            int count;
+            var result = int.TryParse(txtNocopies.Text,out count);
+            //non numeric
+            if (!result || count==0)
+                {
+                errorProvider1.SetError(txtNocopies,"Please enter a number.");
+                retval = false;
+                }
+            if (count > 1800)
+                {
+                errorProvider1.SetError(txtNocopies,"Number exceeds maximun quantity. Contact your supervisor.");
+                retval = false;
+                }
+            return retval;
+            }
+            
+
+
         #endregion
 
-        private void chkPromo_CheckedChanged(object sender, EventArgs e)
-        {
-            //CalculateEach();
-        }
+        private void txtNoPages_Leave(object sender,EventArgs e) {
+            
+               
+                CalculateEach();
+                BookCalc();
 
-      
-
-        private void chkHardBack_Click(object sender,EventArgs e) {
-            BookCalc();
+               
             }
 
-        private void chkAllClr_Click(object sender,EventArgs e) {
-            GetBookPricing();
-            CalculateEach();
-            BookCalc();
-            }
+        private void txtNocopies_Leave(object sender,EventArgs e) {
+           
+                CalculateEach();
+                BookCalc();
+               
 
-        private void chkPromo_Click(object sender,EventArgs e) {
-            CalculateEach();
-            }
-
-        private void txtBYear_Leave(object sender,EventArgs e) {
-            GetBookPricing();
-            GetBookOptionPricing();
-            CalculateEach();
             }
         }
 
