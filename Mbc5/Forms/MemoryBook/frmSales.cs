@@ -651,6 +651,69 @@ namespace Mbc5.Forms.MemoryBook {
                
 
             }
+
+        private void txtPriceOverRide_Leave(object sender,EventArgs e) {
+            CalculateEach();
+            BookCalc();
+            }
+
+        private void cmbYrDiscountAmt_Leave(object sender,EventArgs e) {
+            CalculateEach();
+            BookCalc();
+            }
+
+        private void chkCaseBind_Click(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkPerfBind_Click(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkSpiral_Click(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkSaddlStitch_Click(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkProfessional_Click(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkConv_Click(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkYir_Click(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkStory_Click(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkGlossLam_Click(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void chkMLaminate_Click(object sender,EventArgs e) {
+            BookCalc();
+            }
+
+        private void txtSpecCvrEa_Leave(object sender,EventArgs e) {
+            decimal spcEach;
+            int copies;
+            bool result = decimal.TryParse(this.Text,out spcEach);
+            bool result2=int.TryParse
+            if (result)
+                {
+
+                }
+
+            lblSpeccvr.Text = "";
+            }
         }
 
 
