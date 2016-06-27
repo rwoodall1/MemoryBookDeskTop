@@ -30,3 +30,12 @@ The statement has been terminated. RWCOMPUTER  RWCOMPUTER\randy
 2016/06/23 10:29:57.344 Failed to retrieve pricing:Pg114 RWCOMPUTER  RWCOMPUTER\randy    
 2016/06/23 10:34:48.804 Failed to retrieve pricing:Invalid attempt to read when no data is present. RWCOMPUTER  RWCOMPUTER\randy    
 2016/06/23 10:40:06.707 Failed to retrieve pricing:Invalid attempt to read when no data is present. RWCOMPUTER  RWCOMPUTER\randy    
+2016/06/26 11:25:30.620 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
+2016/06/26 11:25:36.369 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
+2016/06/26 11:27:03.080 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
+2016/06/26 11:27:10.328 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
+2016/06/26 11:27:33.675 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
+2016/06/26 11:27:42.108 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
+2016/06/26 21:17:38.847 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
+2016/06/26 21:17:42.705 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
+2016/06/26 21:21:34.860 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    

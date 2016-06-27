@@ -122,13 +122,19 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void CalculateEach()
         {
-            if(!ValidateCopies() || !ValidatePageCount())
+                if(!ValidateCopies() || !ValidatePageCount())
                 {
                    return;
                 }
             string vPage = "Pg" + txtNoPages.Text;
             int copies;
+            int calcCopies;
             var result = int.TryParse(txtNocopies.Text, out copies);
+            if (copies < 100)//min is 100 for calculating
+            {
+                calcCopies = 100;
+            }
+            else { calcCopies = copies; }
             if (!result)
             {
                  MessageBox.Show("Copies is not a numeral.");
@@ -139,6 +145,17 @@ namespace Mbc5.Forms.MemoryBook {
             if (copies > 125)
             {
                 lowCopies = copies - 25;
+            }
+            else
+            {
+                lowCopies = 100;
+            }
+            if (copies > 1800)
+            {
+                MessageBox.Show("Copies are more than the maximum that can be calculated. Contact your supervisor, quantity is being reset at 1800.", "Copies", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtNocopies.Text = "1800";
+                lowCopies = 1800;
+                calcCopies = 1800;
             }
 
             if (this.Pricing == null|| CurPriceYr != txtBYear.Text)
@@ -154,7 +171,7 @@ namespace Mbc5.Forms.MemoryBook {
             //var vPricingRow = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).ToList();
             //var aprice = vPricingRow.Select(x => x.GetType().GetProperty("Pg12").GetValue(x));
 
-            var vBookPrice = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).Select(x => x.GetType().GetProperty(vPage).GetValue(x)).ToList();
+            var vBookPrice = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= calcCopies).Select(x => x.GetType().GetProperty(vPage).GetValue(x)).ToList();
             if (vBookPrice.Count < 1)
                 {
                 return;
@@ -199,6 +216,7 @@ namespace Mbc5.Forms.MemoryBook {
                     }
 
                 }
+            BookCalc();
           }
         private void CalcInk() {
 
@@ -328,7 +346,7 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Story = 0;
                 if (chkStory.Checked)
                 {
-                     Story = (BookOptionPricing.Story*numberOfCopies);
+                     Story = (BookOptionPricing.Story);
                     lblStoryAmt.Text = Story.ToString();
                     
                     }
@@ -373,7 +391,7 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Desc4Tot = 0;
                
                 vParseResult = decimal.TryParse(lblBookTotal.Text.ToString().Replace("$",""),out BookTotal);
-                vParseResult = decimal.TryParse(txtSpeccvr.Text,out SpecCvrTot);
+                vParseResult = decimal.TryParse(lblSpeccvr.Text,out SpecCvrTot);
                 vParseResult = decimal.TryParse(txtFoilAd.Text,out FoilTot);
                 vParseResult = decimal.TryParse(txtClrTot.Text,out ClrPgTot);
                 vParseResult = decimal.TryParse(txtMisc.Text,out MiscTot);
@@ -568,6 +586,10 @@ namespace Mbc5.Forms.MemoryBook {
                 Log.Fatal("Error retrieving Book Option Pricing" + ex.Message);
                 MessageBox.Show("There was an error retrieving Book Option Pricing.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (this.BookOptionPricing == null)
+            {
+                MessageBox.Show("Book Option pricing for this contract year was not found. Contact your supervisor.");
+            }
 
            } 
         private bool ValidatePageCount() {
@@ -705,16 +727,38 @@ namespace Mbc5.Forms.MemoryBook {
         private void txtSpecCvrEa_Leave(object sender,EventArgs e) {
             decimal spcEach;
             int copies;
-            bool result = decimal.TryParse(this.Text,out spcEach);
-            bool result2=int.TryParse
-            if (result)
-                {
-
-                }
-
-            lblSpeccvr.Text = "";
+            bool result = decimal.TryParse(txtSpecCvrEa.Text,out spcEach);
+            bool result2 = int.TryParse(txtNocopies.Text,out copies);
+            if (result && result2)
+            {
+                lblSpeccvr.Text = (copies * spcEach).ToString();
             }
+            else {  lblSpeccvr.Text = ""; }
+            BookCalc();
+
         }
+
+        private void txtMisc_Leave(object sender, EventArgs e)
+        {
+           var a= String.Format("{0:0.00}", txtMisc.Text);
+            BookCalc();
+        }
+
+        private void txtDesc1amt_Leave(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtDesc3tot_Leave(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtDesc4tot_Leave(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+    }
 
 
     }
