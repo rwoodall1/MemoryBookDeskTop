@@ -66,7 +66,7 @@
             System.Windows.Forms.Label label16;
             System.Windows.Forms.Label label18;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblPriceEach = new System.Windows.Forms.Label();
@@ -158,7 +158,7 @@
             this.lblMLaminateAmt = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblLaminateAmt = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtnoClrPgs = new System.Windows.Forms.TextBox();
             this.chkGlossLam = new System.Windows.Forms.CheckBox();
             this.chkMLaminate = new System.Windows.Forms.CheckBox();
             this.inkclrComboBox = new System.Windows.Forms.ComboBox();
@@ -1064,14 +1064,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1558,11 +1558,12 @@
             this.txtClrTot.Name = "txtClrTot";
             this.txtClrTot.Size = new System.Drawing.Size(53, 20);
             this.txtClrTot.TabIndex = 70;
+            this.txtClrTot.Leave += new System.EventHandler(this.txtClrTot_Leave);
             // 
             // txtMisc
             // 
             this.txtMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMisc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "misc", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "N2"));
+            this.txtMisc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "misc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
             this.txtMisc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMisc.Location = new System.Drawing.Point(270, 55);
             this.txtMisc.Name = "txtMisc";
@@ -1655,7 +1656,7 @@
             this.panel3.Controls.Add(this.lblMLaminateAmt);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.lblLaminateAmt);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.txtnoClrPgs);
             this.panel3.Controls.Add(this.chkGlossLam);
             this.panel3.Controls.Add(this.chkMLaminate);
             this.panel3.Controls.Add(this.inkclrComboBox);
@@ -1732,13 +1733,14 @@
             this.lblLaminateAmt.TabIndex = 162;
             this.lblLaminateAmt.Text = "label20";
             // 
-            // textBox1
+            // txtnoClrPgs
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(122, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(53, 20);
-            this.textBox1.TabIndex = 46;
+            this.txtnoClrPgs.BackColor = System.Drawing.Color.Aqua;
+            this.txtnoClrPgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnoClrPgs.Location = new System.Drawing.Point(122, 39);
+            this.txtnoClrPgs.Name = "txtnoClrPgs";
+            this.txtnoClrPgs.Size = new System.Drawing.Size(53, 20);
+            this.txtnoClrPgs.TabIndex = 46;
             // 
             // chkGlossLam
             // 
@@ -2426,7 +2428,7 @@
         private System.Windows.Forms.ComboBox inkclrComboBox;
         private System.Windows.Forms.CheckBox chkMLaminate;
         private System.Windows.Forms.CheckBox chkGlossLam;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtnoClrPgs;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkAllClr;
         private System.Windows.Forms.TextBox txtClrNumber;

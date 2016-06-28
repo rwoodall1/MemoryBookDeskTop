@@ -404,6 +404,22 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal SubTotal = (BookTotal+HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story  + Gloss + Laminationsft+SpecCvrTot+FoilTot+ClrPgTot+MiscTot+Desc1Tot+Desc3Tot+Desc4Tot);
 
               lblsubtot.Text = SubTotal.ToString("c");
+                //calculate after subtotal
+                decimal disc1= 0;
+                decimal disc2 = 0;
+                decimal disc3 = 0;
+                decimal msTot = 0;
+                decimal persTot = 0;
+             
+                vParseResult = decimal.TryParse(lbldisc1.Text, out disc1);
+                vParseResult = decimal.TryParse(lbldisc2.Text, out disc2);
+                vParseResult = decimal.TryParse(lblDisc3.Text, out disc3);
+                vParseResult = decimal.TryParse(lblMsTot.Text, out msTot);
+                vParseResult = decimal.TryParse(lblperstotal.Text, out persTot);
+
+
+
+
             }
 
         }
@@ -755,6 +771,11 @@ namespace Mbc5.Forms.MemoryBook {
         }
 
         private void txtDesc4tot_Leave(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtClrTot_Leave(object sender, EventArgs e)
         {
             BookCalc();
         }
