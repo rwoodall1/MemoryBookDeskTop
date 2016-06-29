@@ -66,7 +66,7 @@
             System.Windows.Forms.Label label16;
             System.Windows.Forms.Label label18;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblPriceEach = new System.Windows.Forms.Label();
@@ -126,7 +126,6 @@
             this.lbldisc2 = new System.Windows.Forms.Label();
             this.lbldisc1 = new System.Windows.Forms.Label();
             this.lblsubtot = new System.Windows.Forms.Label();
-            this.txtFinalTotPrc = new System.Windows.Forms.TextBox();
             this.txtDisc = new System.Windows.Forms.TextBox();
             this.txtFinalbookprc = new System.Windows.Forms.TextBox();
             this.dp1descComboBox = new System.Windows.Forms.ComboBox();
@@ -217,6 +216,7 @@
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
             this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblFinalTotPrc = new System.Windows.Forms.Label();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -467,7 +467,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(396, 38);
+            label11.Location = new System.Drawing.Point(375, 38);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(16, 13);
             label11.TabIndex = 101;
@@ -485,7 +485,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(396, 61);
+            label12.Location = new System.Drawing.Point(375, 61);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(16, 13);
             label12.TabIndex = 107;
@@ -503,7 +503,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(376, 84);
+            label13.Location = new System.Drawing.Point(375, 84);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(16, 13);
             label13.TabIndex = 111;
@@ -566,7 +566,7 @@
             // ftotprcLabel
             // 
             ftotprcLabel.AutoSize = true;
-            ftotprcLabel.Location = new System.Drawing.Point(331, 179);
+            ftotprcLabel.Location = new System.Drawing.Point(338, 182);
             ftotprcLabel.Name = "ftotprcLabel";
             ftotprcLabel.Size = new System.Drawing.Size(104, 13);
             ftotprcLabel.TabIndex = 123;
@@ -1064,14 +1064,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1253,6 +1253,7 @@
             // pnlTot
             // 
             this.pnlTot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTot.Controls.Add(this.lblFinalTotPrc);
             this.pnlTot.Controls.Add(this.lblperstotal);
             this.pnlTot.Controls.Add(this.lblDisc3);
             this.pnlTot.Controls.Add(this.lblMsTot);
@@ -1262,7 +1263,6 @@
             this.pnlTot.Controls.Add(this.lbldisc1);
             this.pnlTot.Controls.Add(dp1Label);
             this.pnlTot.Controls.Add(this.lblsubtot);
-            this.pnlTot.Controls.Add(this.txtFinalTotPrc);
             this.pnlTot.Controls.Add(this.txtDisc);
             this.pnlTot.Controls.Add(fbkprcLabel);
             this.pnlTot.Controls.Add(label11);
@@ -1298,7 +1298,7 @@
             this.lblperstotal.AutoSize = true;
             this.lblperstotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "perstotal", true));
             this.lblperstotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblperstotal.Location = new System.Drawing.Point(449, 131);
+            this.lblperstotal.Location = new System.Drawing.Point(449, 129);
             this.lblperstotal.Name = "lblperstotal";
             this.lblperstotal.Size = new System.Drawing.Size(41, 13);
             this.lblperstotal.TabIndex = 168;
@@ -1369,25 +1369,15 @@
             this.lblsubtot.TabIndex = 164;
             this.lblsubtot.Text = "label21";
             // 
-            // txtFinalTotPrc
-            // 
-            this.txtFinalTotPrc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "ftotprc", true));
-            this.txtFinalTotPrc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFinalTotPrc.ForeColor = System.Drawing.Color.Red;
-            this.txtFinalTotPrc.Location = new System.Drawing.Point(441, 179);
-            this.txtFinalTotPrc.Name = "txtFinalTotPrc";
-            this.txtFinalTotPrc.ReadOnly = true;
-            this.txtFinalTotPrc.Size = new System.Drawing.Size(65, 20);
-            this.txtFinalTotPrc.TabIndex = 124;
-            // 
             // txtDisc
             // 
             this.txtDisc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "dp1", true));
             this.txtDisc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDisc.Location = new System.Drawing.Point(415, 38);
+            this.txtDisc.Location = new System.Drawing.Point(397, 38);
             this.txtDisc.Name = "txtDisc";
-            this.txtDisc.Size = new System.Drawing.Size(28, 20);
+            this.txtDisc.Size = new System.Drawing.Size(46, 20);
             this.txtDisc.TabIndex = 100;
+            this.txtDisc.Leave += new System.EventHandler(this.txtDisc_Leave);
             // 
             // txtFinalbookprc
             // 
@@ -1438,15 +1428,17 @@
             this.chkDc2.TabIndex = 105;
             this.chkDc2.Text = "Full pay w/page submission";
             this.chkDc2.UseVisualStyleBackColor = true;
+            this.chkDc2.CheckedChanged += new System.EventHandler(this.chkDc2_CheckedChanged);
             // 
             // txtDp2
             // 
             this.txtDp2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "dp2", true));
             this.txtDp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDp2.Location = new System.Drawing.Point(415, 61);
+            this.txtDp2.Location = new System.Drawing.Point(397, 61);
             this.txtDp2.Name = "txtDp2";
-            this.txtDp2.Size = new System.Drawing.Size(28, 20);
+            this.txtDp2.Size = new System.Drawing.Size(46, 20);
             this.txtDp2.TabIndex = 106;
+            this.txtDp2.Leave += new System.EventHandler(this.txtDp2_Leave);
             // 
             // persamountTextBox
             // 
@@ -1491,7 +1483,7 @@
             // 
             this.txtMsQty.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "msstanqty", true));
             this.txtMsQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMsQty.Location = new System.Drawing.Point(396, 106);
+            this.txtMsQty.Location = new System.Drawing.Point(395, 106);
             this.txtMsQty.Name = "txtMsQty";
             this.txtMsQty.Size = new System.Drawing.Size(47, 20);
             this.txtMsQty.TabIndex = 114;
@@ -2354,6 +2346,17 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // lblFinalTotPrc
+            // 
+            this.lblFinalTotPrc.AutoSize = true;
+            this.lblFinalTotPrc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "ftotprc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.lblFinalTotPrc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinalTotPrc.Location = new System.Drawing.Point(449, 182);
+            this.lblFinalTotPrc.Name = "lblFinalTotPrc";
+            this.lblFinalTotPrc.Size = new System.Drawing.Size(41, 13);
+            this.lblFinalTotPrc.TabIndex = 169;
+            this.lblFinalTotPrc.Text = "label21";
+            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -2477,7 +2480,6 @@
         private System.Windows.Forms.TextBox txtNumtoPers;
         private System.Windows.Forms.TextBox perscopiesTextBox;
         private System.Windows.Forms.TextBox persamountTextBox;
-        private System.Windows.Forms.TextBox txtFinalTotPrc;
         private System.Windows.Forms.TextBox txtFinalbookprc;
         private System.Windows.Forms.TextBox txtCredits;
         private System.Windows.Forms.TextBox cred_etcTextBox;
@@ -2547,5 +2549,6 @@
         private System.Windows.Forms.Label lblPriceEach;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label lblSpeccvr;
-        }
+        private System.Windows.Forms.Label lblFinalTotPrc;
+    }
     }

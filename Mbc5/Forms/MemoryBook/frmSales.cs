@@ -416,7 +416,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vParseResult = decimal.TryParse(lblDisc3.Text, out disc3);
                 vParseResult = decimal.TryParse(lblMsTot.Text, out msTot);
                 vParseResult = decimal.TryParse(lblperstotal.Text, out persTot);
-
+                lblFinalTotPrc.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot).ToString("c");
 
 
 
@@ -778,6 +778,58 @@ namespace Mbc5.Forms.MemoryBook {
         private void txtClrTot_Leave(object sender, EventArgs e)
         {
             BookCalc();
+        }
+
+        private void txtDisc_Leave(object sender, EventArgs e)
+        {
+            decimal discountpercent = 0;
+            decimal subtot = 0;
+            bool vParseResult = decimal.TryParse(txtDisc.Text, out discountpercent);
+           bool vParseResult1 = decimal.TryParse(lblsubtot.Text.Replace("$",""), out subtot);
+            if (vParseResult && vParseResult1)
+            {
+                var discountprice = (subtot * discountpercent) - ((subtot * discountpercent) * 2);
+                lbldisc1.Text = discountprice.ToString("0.00");
+                BookCalc();
+            }
+            
+        }
+
+        private void chkDc2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDc2.Checked)
+            {
+                txtDp2.Text = ".05";
+                decimal discountpercent = 0;
+                decimal subtot = 0;
+                bool vParseResult = decimal.TryParse(txtDisc.Text, out discountpercent);
+                bool vParseResult1 = decimal.TryParse(lblsubtot.Text.Replace("$", ""), out subtot);
+                if (vParseResult && vParseResult1)
+                {
+                    var discountprice = (subtot * discountpercent) - ((subtot * discountpercent) * 2);
+                    lbldisc2.Text = discountprice.ToString("0.00");
+                }
+
+            }
+            else
+            {
+                txtDp2.Text = "";
+                lbldisc2.Text = "0.00";
+            }
+        }
+
+        private void txtDp2_Leave(object sender, EventArgs e)
+        {
+           
+            decimal discountpercent = 0;
+            decimal subtot = 0;
+            bool vParseResult = decimal.TryParse(txtDisc.Text, out discountpercent);
+            bool vParseResult1 = decimal.TryParse(lblsubtot.Text.Replace("$", ""), out subtot);
+            if (vParseResult && vParseResult1)
+            {
+                var discountprice = (subtot * discountpercent) - ((subtot * discountpercent) * 2);
+                lbldisc2.Text = discountprice.ToString("0.00");
+            }
         }
     }
 
