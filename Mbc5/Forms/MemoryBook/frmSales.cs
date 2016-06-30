@@ -224,200 +224,245 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private void BookCalc()
         {
-            if(!ValidateCopies() || !ValidatePageCount())
-                {
-                   return;
-                }
+            if (!ValidateCopies() || !ValidatePageCount())
+            {
+                return;
+            }
             if (BookOptionPricing == null)
-                { GetBookOptionPricing(); }
-            if(CurPriceYr != txtBYear.Text)
-                { CalculateEach(); }
-            int numberOfCopies=0;
+            { GetBookOptionPricing(); }
+            if (CurPriceYr != txtBYear.Text)
+            { CalculateEach(); }
+            int numberOfCopies = 0;
             int numberOfPages = 0;
-           var parseresult = int.TryParse(txtNocopies.Text,out numberOfCopies);
-            var parseresult1 = int.TryParse(txtNoPages.Text,out numberOfPages);
+            var parseresult = int.TryParse(txtNocopies.Text, out numberOfCopies);
+            var parseresult1 = int.TryParse(txtNoPages.Text, out numberOfPages);
             if (!parseresult)
-                { MessageBox.Show("Number of copies is not valid!","Copies",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            {
+                MessageBox.Show("Number of copies is not valid!", "Copies", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-                }
+            }
             if (!parseresult1)
-                {
-                MessageBox.Show("Number of pages is not valid!","Pages",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            {
+                MessageBox.Show("Number of pages is not valid!", "Pages", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-                }
+            }
             if (this.BookOptionPricing != null && CurPriceYr == txtBYear.Text)
             {
-                
+
                 //Hardback
-                decimal HardBack =0;
+                decimal HardBack = 0;
                 if (chkHardBack.Checked)
                 {
                     HardBack = BookOptionPricing.Hardbk * numberOfCopies;
                     lblHardbackAmt.Text = HardBack.ToString();
                     CalcInk();
-                    }
-                else { lblHardbackAmt.Text = null;
-                    HardBack = 0; }
+                }
+                else
+                {
+                    lblHardbackAmt.Text = null;
+                    HardBack = 0;
+                }
                 //Casebind
                 decimal Casebind = 0;
                 if (chkCaseBind.Checked)
-                    {
+                {
                     Casebind = BookOptionPricing.Case * numberOfCopies;
                     lblCaseamt.Text = Casebind.ToString();
                     CalcInk();
-                    }
+                }
                 else
-                    {
+                {
                     lblCaseamt.Text = null;
                     Casebind = 0;
-                    }
+                }
                 //Check if harback and case both not checked
-                if(!chkHardBack.Checked && !chkCaseBind.Checked)
-                    {
+                if (!chkHardBack.Checked && !chkCaseBind.Checked)
+                {
                     CalcInk();
-                    }
+                }
                 //Perfect Bind
                 decimal Perfectbind = 0;
                 if (chkPerfBind.Checked)
                 {
                     Perfectbind = BookOptionPricing.Perfectbind * numberOfCopies;
                     lblPerfbindAmt.Text = Perfectbind.ToString();
-                    
+
                 }
-                else { lblPerfbindAmt.Text = null;
+                else
+                {
+                    lblPerfbindAmt.Text = null;
                     Perfectbind = 0;
-                    }
+                }
                 //Spiral
                 decimal Spiral = 0;
                 if (chkSpiral.Checked)
                 {
                     Spiral = (BookOptionPricing.Spiral * numberOfCopies);
-                    lblSpiralAmt.Text = Spiral.ToString(); 
+                    lblSpiralAmt.Text = Spiral.ToString();
                 }
-                else{ lblSpiralAmt.Text = null;
+                else
+                {
+                    lblSpiralAmt.Text = null;
                     Spiral = 0;
-                    }
+                }
                 //SaddleStitch
-               decimal SaddleStitch = 0;
+                decimal SaddleStitch = 0;
                 if (chkSaddlStitch.Checked)
                 {
-                    SaddleStitch = (BookOptionPricing.SaddleStitch*numberOfCopies) ;
+                    SaddleStitch = (BookOptionPricing.SaddleStitch * numberOfCopies);
                     lblSaddleAmt.Text = SaddleStitch.ToString();
-                    
-                    }
-                else{ lblSaddleAmt.Text = null;
+
+                }
+                else
+                {
+                    lblSaddleAmt.Text = null;
                     SaddleStitch = 0;
-                    }
+                }
 
                 //Professional
                 decimal Professional = 0;
                 if (chkProfessional.Checked)
-                {    Professional =(BookOptionPricing.Professional*numberOfPages) ;
+                {
+                    Professional = (BookOptionPricing.Professional * numberOfPages);
                     lblProfAmt.Text = Professional.ToString();
-                    
-                    }
-                else { lblProfAmt.Text = null;
-                    Professional = 0; }
+
+                }
+                else
+                {
+                    lblProfAmt.Text = null;
+                    Professional = 0;
+                }
 
                 //Convenient
                 decimal Convenient = 0;
                 if (chkConv.Checked)
                 {
-                    Convenient =(BookOptionPricing.Convenient*numberOfPages);
+                    Convenient = (BookOptionPricing.Convenient * numberOfPages);
                     lblConvAmt.Text = Convenient.ToString();
-                    
-                    }
-                else{ lblConvAmt.Text = null;
+
+                }
+                else
+                {
+                    lblConvAmt.Text = null;
                     Convenient = 0;
-                    }
+                }
                 //Yir
                 decimal Yir = 0;
                 if (chkYir.Checked)
                 {
                     Yir = (BookOptionPricing.Yir * numberOfCopies);
-                    lblYir.Text =Yir.ToString();   
+                    lblYir.Text = Yir.ToString();
                 }
                 else
-                    { lblYir.Text = null;
+                {
+                    lblYir.Text = null;
                     Yir = 0;
-                    }
+                }
 
                 //Story
                 decimal Story = 0;
                 if (chkStory.Checked)
                 {
-                     Story = (BookOptionPricing.Story);
+                    Story = (BookOptionPricing.Story);
                     lblStoryAmt.Text = Story.ToString();
-                    
-                    }
+
+                }
                 else
-                    { lblStoryAmt.Text = null;
+                {
+                    lblStoryAmt.Text = null;
                     Story = 0;
-                    }
-                             
+                }
+
                 //Gloss
                 decimal Gloss = 0;
                 if (chkGlossLam.Checked)
                 {
-                    Gloss =(BookOptionPricing.Lamination*numberOfCopies) ;
+                    Gloss = (BookOptionPricing.Lamination * numberOfCopies);
                     lblLaminateAmt.Text = Gloss.ToString();
-                    
-                    }
+
+                }
                 else
-                    { lblLaminateAmt.Text = null;
+                {
+                    lblLaminateAmt.Text = null;
                     Gloss = 0;
+                }
+                //foilamt/msStory
+                decimal Foil = 0;
+                int MsCopies = 0;
+                var result = int.TryParse(txtMsQty.Text, out MsCopies);
+
+                if (chkMsStandard.Checked)
+                {
+                    if (result)
+                    {
+                        foilamtTextBox.Text = BookOptionPricing.Foil.ToString("0.00");
+                        Foil = (BookOptionPricing.Foil * MsCopies);
+                        lblMsTot.Text = Foil.ToString("0.00");
                     }
+                    else
+                    {
+                        lblMsTot.Text = "0.00";
+                        foilamtTextBox.Text = "0.00";
+                    }
+                }
+                else
+                {
+                    lblMsTot.Text = "0.00";
+                    foilamtTextBox.Text="0.00";
+                }
                 //Lam
                 decimal Laminationsft = 0;
                 if (chkMLaminate.Checked)
                 {
-                    Laminationsft =(BookOptionPricing.Laminationsft*numberOfCopies);
+                    Laminationsft = (BookOptionPricing.Laminationsft * numberOfCopies);
                     lblMLaminateAmt.Text = Laminationsft.ToString();
-                    
-                    }
+
+                }
                 else
-                    { lblMLaminateAmt.Text = null;
+                {
+                    lblMLaminateAmt.Text = null;
                     Laminationsft = 0;
-                    }
+                }
                 //convert rest of info from strings to decimals for calculations
                 bool vParseResult;
                 decimal BookTotal = 0;
                 decimal SpecCvrTot = 0;
-                decimal FoilTot=0;
-                decimal ClrPgTot = 0;
+                decimal FoilTot = 0;
+                 decimal ClrPgTot = 0;
                 decimal MiscTot = 0;
                 decimal Desc1Tot = 0;
                 decimal Desc3Tot = 0;
                 decimal Desc4Tot = 0;
-               
-                vParseResult = decimal.TryParse(lblBookTotal.Text.ToString().Replace("$",""),out BookTotal);
-                vParseResult = decimal.TryParse(lblSpeccvr.Text,out SpecCvrTot);
-                vParseResult = decimal.TryParse(txtFoilAd.Text,out FoilTot);
-                vParseResult = decimal.TryParse(txtClrTot.Text,out ClrPgTot);
-                vParseResult = decimal.TryParse(txtMisc.Text,out MiscTot);
-                vParseResult = decimal.TryParse(txtDesc1amt.Text,out Desc1Tot);
-                vParseResult = decimal.TryParse(txtDesc3tot.Text,out Desc3Tot);
-                vParseResult = decimal.TryParse(txtDesc4tot.Text,out Desc4Tot);
+
+                vParseResult = decimal.TryParse(lblBookTotal.Text.ToString().Replace("$", ""), out BookTotal);
+                vParseResult = decimal.TryParse(lblSpeccvr.Text, out SpecCvrTot);
+                vParseResult = decimal.TryParse(txtFoilAd.Text, out FoilTot);
+                vParseResult = decimal.TryParse(txtClrTot.Text, out ClrPgTot);
+                vParseResult = decimal.TryParse(txtMisc.Text, out MiscTot);
+                vParseResult = decimal.TryParse(txtDesc1amt.Text, out Desc1Tot);
+                vParseResult = decimal.TryParse(txtDesc3tot.Text, out Desc3Tot);
+                vParseResult = decimal.TryParse(txtDesc4tot.Text, out Desc4Tot);
+            
 
 
 
-                decimal SubTotal = (BookTotal+HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story  + Gloss + Laminationsft+SpecCvrTot+FoilTot+ClrPgTot+MiscTot+Desc1Tot+Desc3Tot+Desc4Tot);
+                decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story + Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
 
-              lblsubtot.Text = SubTotal.ToString("c");
+                lblsubtot.Text = SubTotal.ToString("c");
                 //calculate after subtotal
-                decimal disc1= 0;
+                decimal disc1 = 0;
                 decimal disc2 = 0;
                 decimal disc3 = 0;
                 decimal msTot = 0;
                 decimal persTot = 0;
-             
+
                 vParseResult = decimal.TryParse(lbldisc1.Text, out disc1);
                 vParseResult = decimal.TryParse(lbldisc2.Text, out disc2);
                 vParseResult = decimal.TryParse(lblDisc3.Text, out disc3);
                 vParseResult = decimal.TryParse(lblMsTot.Text, out msTot);
                 vParseResult = decimal.TryParse(lblperstotal.Text, out persTot);
                 lblFinalTotPrc.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot).ToString("c");
-
+                txtFinalbookprc.Text = ((SubTotal + disc1 + disc2 + disc3 + msTot + persTot) / numberOfCopies).ToString("c");
 
 
             }
@@ -792,6 +837,11 @@ namespace Mbc5.Forms.MemoryBook {
                 lbldisc1.Text = discountprice.ToString("0.00");
                 BookCalc();
             }
+            else
+            {
+                lbldisc1.Text = "0.00";
+                BookCalc();
+            }
             
         }
 
@@ -802,36 +852,126 @@ namespace Mbc5.Forms.MemoryBook {
                 txtDp2.Text = ".05";
                 decimal discountpercent = 0;
                 decimal subtot = 0;
-                bool vParseResult = decimal.TryParse(txtDisc.Text, out discountpercent);
+                bool vParseResult = decimal.TryParse(txtDp2.Text, out discountpercent);
                 bool vParseResult1 = decimal.TryParse(lblsubtot.Text.Replace("$", ""), out subtot);
                 if (vParseResult && vParseResult1)
                 {
                     var discountprice = (subtot * discountpercent) - ((subtot * discountpercent) * 2);
                     lbldisc2.Text = discountprice.ToString("0.00");
+                    BookCalc();
+                }
+                else
+                {
+                    txtDp2.Text = "0.00";
+                    lbldisc2.Text = "0.00";
+                    BookCalc();
                 }
 
             }
             else
             {
-                txtDp2.Text = "";
+                txtDp2.Text = "0.00";
                 lbldisc2.Text = "0.00";
+                BookCalc();
             }
         }
 
         private void txtDp2_Leave(object sender, EventArgs e)
         {
-           
+            if (chkDc2.Checked)
+            {
+               
+                decimal discountpercent = 0;
+                decimal subtot = 0;
+                bool vParseResult = decimal.TryParse(txtDp2.Text, out discountpercent);
+                bool vParseResult1 = decimal.TryParse(lblsubtot.Text.Replace("$", ""), out subtot);
+                if (vParseResult && vParseResult1)
+                {
+                    var discountprice = (subtot * discountpercent) - ((subtot * discountpercent) * 2);
+                    lbldisc2.Text = discountprice.ToString("0.00");
+                    BookCalc();
+                }
+                else
+                {
+                    txtDp2.Text = "0.00";
+                    lbldisc2.Text = "0.00";
+                    BookCalc();
+                }
+
+            }
+            else
+            {
+                txtDp2.Text = "0.00";
+                lbldisc2.Text = "0.00";
+                BookCalc();
+            }
+        }
+
+        private void dp3ComboBox_Leave(object sender, EventArgs e)
+        {
             decimal discountpercent = 0;
             decimal subtot = 0;
-            bool vParseResult = decimal.TryParse(txtDisc.Text, out discountpercent);
+            bool vParseResult = decimal.TryParse(dp3ComboBox.SelectedItem.ToString(), out discountpercent);
             bool vParseResult1 = decimal.TryParse(lblsubtot.Text.Replace("$", ""), out subtot);
             if (vParseResult && vParseResult1)
             {
                 var discountprice = (subtot * discountpercent) - ((subtot * discountpercent) * 2);
-                lbldisc2.Text = discountprice.ToString("0.00");
+                lblDisc3.Text = discountprice.ToString("0.00");
+                BookCalc();
+            }
+
+
+        }
+
+        private void chkMsStandard_Click(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtMsQty_Leave(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void perscopiesTextBox_Leave(object sender, EventArgs e)
+        {
+            int number = 0;
+            decimal prc = 0;
+            bool result = int.TryParse(perscopiesTextBox.Text, out number);
+            bool result2 = decimal.TryParse(persamountTextBox.Text, out prc);
+           if(result && result2)
+            {
+              lblperstotal.Text = (number * prc).ToString("0.00");
+                BookCalc();
+            }
+            else
+            {
+                lblperstotal.Text = "0.00";
+                BookCalc();
+            }
+            
+        }
+
+        private void persamountTextBox_Leave(object sender, EventArgs e)
+        {
+            int number = 0;
+            decimal prc = 0;
+            bool result = int.TryParse(perscopiesTextBox.Text, out number);
+            bool result2 = decimal.TryParse(persamountTextBox.Text, out prc);
+            if (result && result2)
+            {
+                lblperstotal.Text = (number * prc).ToString("0.00");
+                BookCalc();
+            }
+            else
+            {
+                lblperstotal.Text = "0.00";
+                BookCalc();
             }
         }
-    }
 
 
+        //nothing below here  
     }
+    }
+    

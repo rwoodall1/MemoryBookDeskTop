@@ -66,7 +66,7 @@
             System.Windows.Forms.Label label16;
             System.Windows.Forms.Label label18;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblPriceEach = new System.Windows.Forms.Label();
@@ -119,6 +119,7 @@
             this.cred_etcTextBox1 = new System.Windows.Forms.TextBox();
             this.txtCredits = new System.Windows.Forms.TextBox();
             this.pnlTot = new System.Windows.Forms.Panel();
+            this.lblFinalTotPrc = new System.Windows.Forms.Label();
             this.lblperstotal = new System.Windows.Forms.Label();
             this.lblDisc3 = new System.Windows.Forms.Label();
             this.lblMsTot = new System.Windows.Forms.Label();
@@ -216,7 +217,6 @@
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
             this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblFinalTotPrc = new System.Windows.Forms.Label();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -467,7 +467,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(375, 38);
+            label11.Location = new System.Drawing.Point(368, 38);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(16, 13);
             label11.TabIndex = 101;
@@ -485,7 +485,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(375, 61);
+            label12.Location = new System.Drawing.Point(368, 61);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(16, 13);
             label12.TabIndex = 107;
@@ -503,7 +503,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(375, 84);
+            label13.Location = new System.Drawing.Point(368, 84);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(16, 13);
             label13.TabIndex = 111;
@@ -512,7 +512,7 @@
             // msstanqtyLabel
             // 
             msstanqtyLabel.AutoSize = true;
-            msstanqtyLabel.Location = new System.Drawing.Point(359, 108);
+            msstanqtyLabel.Location = new System.Drawing.Point(352, 108);
             msstanqtyLabel.Name = "msstanqtyLabel";
             msstanqtyLabel.Size = new System.Drawing.Size(30, 13);
             msstanqtyLabel.TabIndex = 113;
@@ -1064,14 +1064,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1293,6 +1293,17 @@
             this.pnlTot.Size = new System.Drawing.Size(520, 210);
             this.pnlTot.TabIndex = 125;
             // 
+            // lblFinalTotPrc
+            // 
+            this.lblFinalTotPrc.AutoSize = true;
+            this.lblFinalTotPrc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "ftotprc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.lblFinalTotPrc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinalTotPrc.Location = new System.Drawing.Point(449, 182);
+            this.lblFinalTotPrc.Name = "lblFinalTotPrc";
+            this.lblFinalTotPrc.Size = new System.Drawing.Size(41, 13);
+            this.lblFinalTotPrc.TabIndex = 169;
+            this.lblFinalTotPrc.Text = "label21";
+            // 
             // lblperstotal
             // 
             this.lblperstotal.AutoSize = true;
@@ -1373,9 +1384,9 @@
             // 
             this.txtDisc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "dp1", true));
             this.txtDisc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDisc.Location = new System.Drawing.Point(397, 38);
+            this.txtDisc.Location = new System.Drawing.Point(387, 38);
             this.txtDisc.Name = "txtDisc";
-            this.txtDisc.Size = new System.Drawing.Size(46, 20);
+            this.txtDisc.Size = new System.Drawing.Size(57, 20);
             this.txtDisc.TabIndex = 100;
             this.txtDisc.Leave += new System.EventHandler(this.txtDisc_Leave);
             // 
@@ -1417,6 +1428,7 @@
             this.perscopiesTextBox.Name = "perscopiesTextBox";
             this.perscopiesTextBox.Size = new System.Drawing.Size(41, 20);
             this.perscopiesTextBox.TabIndex = 120;
+            this.perscopiesTextBox.Leave += new System.EventHandler(this.perscopiesTextBox_Leave);
             // 
             // chkDc2
             // 
@@ -1434,9 +1446,9 @@
             // 
             this.txtDp2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "dp2", true));
             this.txtDp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDp2.Location = new System.Drawing.Point(397, 61);
+            this.txtDp2.Location = new System.Drawing.Point(387, 61);
             this.txtDp2.Name = "txtDp2";
-            this.txtDp2.Size = new System.Drawing.Size(46, 20);
+            this.txtDp2.Size = new System.Drawing.Size(57, 20);
             this.txtDp2.TabIndex = 106;
             this.txtDp2.Leave += new System.EventHandler(this.txtDp2_Leave);
             // 
@@ -1448,6 +1460,7 @@
             this.persamountTextBox.Name = "persamountTextBox";
             this.persamountTextBox.Size = new System.Drawing.Size(56, 20);
             this.persamountTextBox.TabIndex = 118;
+            this.persamountTextBox.Leave += new System.EventHandler(this.persamountTextBox_Leave);
             // 
             // txtDp3Desc
             // 
@@ -1463,10 +1476,52 @@
             this.dp3ComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "dp3", true));
             this.dp3ComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dp3ComboBox.FormattingEnabled = true;
-            this.dp3ComboBox.Location = new System.Drawing.Point(396, 84);
+            this.dp3ComboBox.Items.AddRange(new object[] {
+            ".000",
+            ".005",
+            ".010",
+            ".015",
+            ".020",
+            ".025",
+            ".030",
+            ".035",
+            ".040",
+            ".045",
+            ".050",
+            ".055",
+            ".060",
+            ".065",
+            ".070",
+            ".075",
+            ".080",
+            ".085",
+            ".090",
+            ".100",
+            ".105",
+            ".110",
+            ".115",
+            ".120",
+            ".125",
+            ".130",
+            ".135",
+            ".140",
+            ".145",
+            ".150",
+            ".155",
+            ".160",
+            ".165",
+            ".170",
+            ".175",
+            ".180",
+            ".185",
+            ".190",
+            ".195",
+            ".200"});
+            this.dp3ComboBox.Location = new System.Drawing.Point(386, 84);
             this.dp3ComboBox.Name = "dp3ComboBox";
-            this.dp3ComboBox.Size = new System.Drawing.Size(47, 21);
+            this.dp3ComboBox.Size = new System.Drawing.Size(58, 21);
             this.dp3ComboBox.TabIndex = 110;
+            this.dp3ComboBox.Leave += new System.EventHandler(this.dp3ComboBox_Leave);
             // 
             // chkMsStandard
             // 
@@ -1478,15 +1533,17 @@
             this.chkMsStandard.TabIndex = 112;
             this.chkMsStandard.Text = "MS/Stan with/Pic";
             this.chkMsStandard.UseVisualStyleBackColor = true;
+            this.chkMsStandard.Click += new System.EventHandler(this.chkMsStandard_Click);
             // 
             // txtMsQty
             // 
             this.txtMsQty.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "msstanqty", true));
             this.txtMsQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMsQty.Location = new System.Drawing.Point(395, 106);
+            this.txtMsQty.Location = new System.Drawing.Point(385, 106);
             this.txtMsQty.Name = "txtMsQty";
-            this.txtMsQty.Size = new System.Drawing.Size(47, 20);
+            this.txtMsQty.Size = new System.Drawing.Size(58, 20);
             this.txtMsQty.TabIndex = 114;
+            this.txtMsQty.Leave += new System.EventHandler(this.txtMsQty_Leave);
             // 
             // foilamtTextBox
             // 
@@ -1494,7 +1551,8 @@
             this.foilamtTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.foilamtTextBox.Location = new System.Drawing.Point(202, 106);
             this.foilamtTextBox.Name = "foilamtTextBox";
-            this.foilamtTextBox.Size = new System.Drawing.Size(100, 20);
+            this.foilamtTextBox.ReadOnly = true;
+            this.foilamtTextBox.Size = new System.Drawing.Size(83, 20);
             this.foilamtTextBox.TabIndex = 113;
             // 
             // pnlMiscDiscCred
@@ -2345,17 +2403,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // lblFinalTotPrc
-            // 
-            this.lblFinalTotPrc.AutoSize = true;
-            this.lblFinalTotPrc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "ftotprc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.lblFinalTotPrc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinalTotPrc.Location = new System.Drawing.Point(449, 182);
-            this.lblFinalTotPrc.Name = "lblFinalTotPrc";
-            this.lblFinalTotPrc.Size = new System.Drawing.Size(41, 13);
-            this.lblFinalTotPrc.TabIndex = 169;
-            this.lblFinalTotPrc.Text = "label21";
             // 
             // frmSales
             // 
