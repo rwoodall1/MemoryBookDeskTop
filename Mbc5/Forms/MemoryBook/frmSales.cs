@@ -35,40 +35,12 @@ namespace Mbc5.Forms.MemoryBook {
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CalculateEach();
-        }
-
+        } 
         private void btnInvSrch_Click(object sender, EventArgs e)
         {
 
         }
- private void chkPromo_CheckedChanged(object sender, EventArgs e)
-        {
-            //CalculateEach();
-        }
 
-        private void chkHardBack_Click(object sender,EventArgs e) {
-            BookCalc();
-            }
-
-        private void chkAllClr_Click(object sender,EventArgs e) {
-            GetBookPricing();
-            CalculateEach();
-            BookCalc();
-            }
-
-        private void chkPromo_Click(object sender,EventArgs e) {
-            CalculateEach();
-            }
-
-        private void txtBYear_Leave(object sender,EventArgs e) {
-            GetBookPricing();
-            GetBookOptionPricing();
-            CalculateEach();
-            }
         #region "Properties"
         public void InvokePropertyChanged(PropertyChangedEventArgs e) {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -97,7 +69,7 @@ namespace Mbc5.Forms.MemoryBook {
         public BookOptionPrice BookOptionPricing{get;set;}
         public string CurPriceYr { get; set; } = null;
         #endregion
-            #region "Methods"
+        #region "Methods"
         private void Fill()
         {
             if (Schcode != null)
@@ -118,6 +90,15 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
 
+
+        }
+        private void Save()
+        {
+            if (ValidSales())
+            {
+
+
+            }
 
         }
         private void CalculateEach()
@@ -463,13 +444,28 @@ namespace Mbc5.Forms.MemoryBook {
                 vParseResult = decimal.TryParse(lblperstotal.Text, out persTot);
                 lblFinalTotPrc.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot).ToString("c");
                 txtFinalbookprc.Text = ((SubTotal + disc1 + disc2 + disc3 + msTot + persTot) / numberOfCopies).ToString("c");
-
+                //other charges and credies
+                decimal credit1 = 0;
+                decimal credit2 = 0;
+                decimal otherchrg1 = 0;
+                decimal otherchrg2 = 0;
+                vParseResult = decimal.TryParse(txtCredits.Text, out credit1);
+                vParseResult = decimal.TryParse(txtCredits2.Text, out credit2);
+                vParseResult = decimal.TryParse(txtOtherChrg.Text, out otherchrg1);
+                vParseResult = decimal.TryParse(txtOtherChrg2.Text, out otherchrg2);
+                lbladjbef.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + credit1 + credit2 + otherchrg1 + otherchrg2).ToString("c");
 
             }
 
         }
         private void GetBookPricing()
         {
+            if (String.IsNullOrEmpty(txtBYear.Text))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtBYear, "Please enter a  base price year.");
+                return;
+            }
             this.CurPriceYr = txtBYear.Text;
             
             
@@ -713,11 +709,49 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             return retval;
             }
-            
+        private bool ValidSales()
+        {
+            bool retval = true;
+            retval = ValidatePageCount();
+            if (!retval){return retval;}
+            retval = ValidateCopies();
+            if (!retval) { return retval; }
+            retval = this.ValidateChildren();
+            return retval;
+        }
+
 
 
         #endregion
+        #region CalcEvents
+        private void chkHardBack_Click(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
 
+        private void chkAllClr_Click(object sender, EventArgs e)
+        {
+            GetBookPricing();
+            CalculateEach();
+            BookCalc();
+        }
+
+        private void chkPromo_Click(object sender, EventArgs e)
+        {
+            CalculateEach();
+        }
+
+        private void txtBYear_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtBYear.Text))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtBYear, "Please enter a  base price year.");
+            }
+            GetBookPricing();
+            GetBookOptionPricing();
+            CalculateEach();
+        }
         private void txtNoPages_Leave(object sender,EventArgs e) {
             
                
@@ -970,8 +1004,467 @@ namespace Mbc5.Forms.MemoryBook {
             }
         }
 
+        private void txtCredits_Leave(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
 
+        private void txtCredits2_Leave(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtOtherChrg_Leave(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtOtherChrg2_Leave(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        #endregion
+
+        #region Validation
+        private void txtBYear_Validating(object sender, CancelEventArgs e)
+        {
+            bool retval = true;
+            errorProvider1.Clear();
+            int numeral;
+            var result = int.TryParse(txtBYear.Text, out numeral);
+            //non numeric
+            if (!result || numeral == 0||String.IsNullOrEmpty(txtBYear.Text))
+            {
+                errorProvider1.SetError(txtBYear, "Please enter a  base price year.");
+                e.Cancel = true;
+                retval = false;
+            }
+        }
+        private void txtYear_Validating(object sender, CancelEventArgs e)
+        {
+            bool retval = true;
+            errorProvider1.Clear();
+            int numeral;
+            var result = int.TryParse(txtYear.Text, out numeral);
+            //non numeric
+            if (!result || numeral == 0 || String.IsNullOrEmpty(txtYear.Text))
+            {
+                errorProvider1.SetError(txtBYear, "Please enter a year.");
+                e.Cancel = true;
+                retval = false;
+            }
+        }
+        private void txtClrNumber_Validating(object sender, CancelEventArgs e)
+        {
+            //might have letters
+            //if (!String.IsNullOrEmpty(txtClrNumber.Text))
+            //{
+            //    bool retval = true;
+            //    errorProvider1.Clear();
+            //    int numeral;
+            //    var result = int.TryParse(txtClrNumber.Text, out numeral);
+            //    //non numeric
+            //    if (!result)
+            //    {
+            //        errorProvider1.SetError(txtBYear, "Please enter a number.");
+            //        e.Cancel = true;
+            //        retval = false;
+            //    }
+            //}
+        }
+
+        private void txtSpecCvrEa_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtSpecCvrEa.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtSpecCvrEa.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtSpecCvrEa, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtFoilAd_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtFoilAd.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtFoilAd.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtFoilAd, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtDisc_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtDisc.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtDisc.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtDisc, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtDp2_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtDp2.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtDp2.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtDp2, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtMsQty_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtMsQty.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                int numeral;
+                var result = int.TryParse(txtMsQty.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtMsQty, "Please enter a number.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void perscopiesTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(perscopiesTextBox.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                int numeral;
+                var result = int.TryParse(perscopiesTextBox.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(perscopiesTextBox, "Please enter a number.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void persamountTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(persamountTextBox.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                int numeral;
+                var result = int.TryParse(persamountTextBox.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(persamountTextBox, "Please enter a number.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtNumtoPers_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtNumtoPers.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                int numeral;
+                var result = int.TryParse(txtNumtoPers.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtNumtoPers, "Please enter a number.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void freebooksTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(freebooksTextBox.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                int numeral;
+                var result = int.TryParse(freebooksTextBox.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(freebooksTextBox, "Please enter a number.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+
+
+
+        private void txtClrTot_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtClrTot.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtClrTot.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtClrTot, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtMisc_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtMisc.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtMisc.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtMisc, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtDesc1amt_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtDesc1amt.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtDesc1amt.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtDesc1amt, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtDesc3tot_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtDesc3tot.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtDesc3tot.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtDesc3tot, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtDesc4tot_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtDesc4tot.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtDesc4tot.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtDesc4tot, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtCredits_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtCredits.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtCredits.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtCredits, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtCredits2_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtCredits2.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtCredits2.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtCredits2, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtOtherChrg_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtOtherChrg.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtOtherChrg.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtOtherChrg, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtOtherChrg2_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtOtherChrg2.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtOtherChrg2.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtOtherChrg2, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void saletaxTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(saletaxTextBox.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(saletaxTextBox.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(saletaxTextBox, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+        private void txtPriceOverRide_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtPriceOverRide.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                decimal numeral;
+                var result = decimal.TryParse(txtPriceOverRide.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtPriceOverRide, "Please enter a decimal amount.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+    
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private void txtreqcoverCopies_Validating(object sender, CancelEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtreqcoverCopies.Text))
+            {
+                bool retval = true;
+                errorProvider1.Clear();
+                int numeral;
+                var result = int.TryParse(txtreqcoverCopies.Text, out numeral);
+                //non numeric
+                if (!result)
+                {
+                    errorProvider1.SetError(txtreqcoverCopies, "Please enter a numeral.");
+                    e.Cancel = true;
+                    retval = false;
+                }
+            }
+        }
+
+
+        #endregion
         //nothing below here  
     }
-    }
+}
     

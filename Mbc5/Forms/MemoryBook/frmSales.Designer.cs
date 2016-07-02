@@ -66,13 +66,12 @@
             System.Windows.Forms.Label label16;
             System.Windows.Forms.Label label18;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblPriceEach = new System.Windows.Forms.Label();
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsSales = new Mbc5.DataSets.dsSales();
-            this.button1 = new System.Windows.Forms.Button();
             this.lblBookTotal = new System.Windows.Forms.Label();
             this.lbladjbef = new System.Windows.Forms.Label();
             this.bnSales = new System.Windows.Forms.BindingNavigator(this.components);
@@ -191,7 +190,7 @@
             this.chkHardBack = new System.Windows.Forms.CheckBox();
             this.chkCaseBind = new System.Windows.Forms.CheckBox();
             this.lblHardbackAmt = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtreqcoverCopies = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblInvoice = new System.Windows.Forms.Label();
             this.txtExtChrg = new System.Windows.Forms.TextBox();
@@ -217,6 +216,7 @@
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
             this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -675,8 +675,8 @@
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
-            this.pg1.Controls.Add(this.lblPriceEach);
             this.pg1.Controls.Add(this.button1);
+            this.pg1.Controls.Add(this.lblPriceEach);
             this.pg1.Controls.Add(this.lblBookTotal);
             this.pg1.Controls.Add(this.lbladjbef);
             this.pg1.Controls.Add(this.bnSales);
@@ -703,7 +703,7 @@
             this.pg1.Controls.Add(this.panel2);
             this.pg1.Controls.Add(this.panel1);
             this.pg1.Controls.Add(this.pnlHard);
-            this.pg1.Controls.Add(this.textBox3);
+            this.pg1.Controls.Add(this.txtreqcoverCopies);
             this.pg1.Controls.Add(this.label7);
             this.pg1.Controls.Add(this.lblInvoice);
             this.pg1.Controls.Add(invnoLabel);
@@ -763,16 +763,6 @@
             // 
             this.dsSales.DataSetName = "dsSales";
             this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(940, 364);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 171;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblBookTotal
             // 
@@ -1064,14 +1054,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1131,6 +1121,7 @@
             this.freebooksTextBox.Name = "freebooksTextBox";
             this.freebooksTextBox.Size = new System.Drawing.Size(71, 20);
             this.freebooksTextBox.TabIndex = 139;
+            this.freebooksTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.freebooksTextBox_Validating);
             // 
             // saletaxTextBox
             // 
@@ -1142,6 +1133,7 @@
             this.saletaxTextBox.Name = "saletaxTextBox";
             this.saletaxTextBox.Size = new System.Drawing.Size(43, 20);
             this.saletaxTextBox.TabIndex = 138;
+            this.saletaxTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.saletaxTextBox_Validating);
             // 
             // panel4
             // 
@@ -1175,6 +1167,8 @@
             this.txtOtherChrg.Name = "txtOtherChrg";
             this.txtOtherChrg.Size = new System.Drawing.Size(70, 20);
             this.txtOtherChrg.TabIndex = 136;
+            this.txtOtherChrg.Leave += new System.EventHandler(this.txtOtherChrg_Leave);
+            this.txtOtherChrg.Validating += new System.ComponentModel.CancelEventHandler(this.txtOtherChrg_Validating);
             // 
             // textBox5
             // 
@@ -1196,6 +1190,8 @@
             this.txtOtherChrg2.Name = "txtOtherChrg2";
             this.txtOtherChrg2.Size = new System.Drawing.Size(70, 20);
             this.txtOtherChrg2.TabIndex = 132;
+            this.txtOtherChrg2.Leave += new System.EventHandler(this.txtOtherChrg2_Leave);
+            this.txtOtherChrg2.Validating += new System.ComponentModel.CancelEventHandler(this.txtOtherChrg2_Validating);
             // 
             // desc22TextBox
             // 
@@ -1217,6 +1213,8 @@
             this.txtCredits2.Name = "txtCredits2";
             this.txtCredits2.Size = new System.Drawing.Size(70, 20);
             this.txtCredits2.TabIndex = 130;
+            this.txtCredits2.Leave += new System.EventHandler(this.txtCredits2_Leave);
+            this.txtCredits2.Validating += new System.ComponentModel.CancelEventHandler(this.txtCredits2_Validating);
             // 
             // cred_etcTextBox
             // 
@@ -1249,6 +1247,8 @@
             this.txtCredits.Name = "txtCredits";
             this.txtCredits.Size = new System.Drawing.Size(70, 20);
             this.txtCredits.TabIndex = 127;
+            this.txtCredits.Leave += new System.EventHandler(this.txtCredits_Leave);
+            this.txtCredits.Validating += new System.ComponentModel.CancelEventHandler(this.txtCredits_Validating);
             // 
             // pnlTot
             // 
@@ -1389,6 +1389,7 @@
             this.txtDisc.Size = new System.Drawing.Size(57, 20);
             this.txtDisc.TabIndex = 100;
             this.txtDisc.Leave += new System.EventHandler(this.txtDisc_Leave);
+            this.txtDisc.Validating += new System.ComponentModel.CancelEventHandler(this.txtDisc_Validating);
             // 
             // txtFinalbookprc
             // 
@@ -1419,6 +1420,7 @@
             this.txtNumtoPers.Name = "txtNumtoPers";
             this.txtNumtoPers.Size = new System.Drawing.Size(53, 20);
             this.txtNumtoPers.TabIndex = 122;
+            this.txtNumtoPers.Validating += new System.ComponentModel.CancelEventHandler(this.txtNumtoPers_Validating);
             // 
             // perscopiesTextBox
             // 
@@ -1429,6 +1431,7 @@
             this.perscopiesTextBox.Size = new System.Drawing.Size(41, 20);
             this.perscopiesTextBox.TabIndex = 120;
             this.perscopiesTextBox.Leave += new System.EventHandler(this.perscopiesTextBox_Leave);
+            this.perscopiesTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.perscopiesTextBox_Validating);
             // 
             // chkDc2
             // 
@@ -1451,6 +1454,7 @@
             this.txtDp2.Size = new System.Drawing.Size(57, 20);
             this.txtDp2.TabIndex = 106;
             this.txtDp2.Leave += new System.EventHandler(this.txtDp2_Leave);
+            this.txtDp2.Validating += new System.ComponentModel.CancelEventHandler(this.txtDp2_Validating);
             // 
             // persamountTextBox
             // 
@@ -1461,6 +1465,7 @@
             this.persamountTextBox.Size = new System.Drawing.Size(56, 20);
             this.persamountTextBox.TabIndex = 118;
             this.persamountTextBox.Leave += new System.EventHandler(this.persamountTextBox_Leave);
+            this.persamountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.persamountTextBox_Validating);
             // 
             // txtDp3Desc
             // 
@@ -1544,6 +1549,7 @@
             this.txtMsQty.Size = new System.Drawing.Size(58, 20);
             this.txtMsQty.TabIndex = 114;
             this.txtMsQty.Leave += new System.EventHandler(this.txtMsQty_Leave);
+            this.txtMsQty.Validating += new System.ComponentModel.CancelEventHandler(this.txtMsQty_Validating);
             // 
             // foilamtTextBox
             // 
@@ -1609,6 +1615,7 @@
             this.txtClrTot.Size = new System.Drawing.Size(53, 20);
             this.txtClrTot.TabIndex = 70;
             this.txtClrTot.Leave += new System.EventHandler(this.txtClrTot_Leave);
+            this.txtClrTot.Validating += new System.ComponentModel.CancelEventHandler(this.txtClrTot_Validating);
             // 
             // txtMisc
             // 
@@ -1620,6 +1627,7 @@
             this.txtMisc.Size = new System.Drawing.Size(53, 20);
             this.txtMisc.TabIndex = 74;
             this.txtMisc.Leave += new System.EventHandler(this.txtMisc_Leave);
+            this.txtMisc.Validating += new System.ComponentModel.CancelEventHandler(this.txtMisc_Validating);
             // 
             // txtMdesc
             // 
@@ -1642,6 +1650,7 @@
             this.txtDesc1amt.Size = new System.Drawing.Size(53, 20);
             this.txtDesc1amt.TabIndex = 78;
             this.txtDesc1amt.Leave += new System.EventHandler(this.txtDesc1amt_Leave);
+            this.txtDesc1amt.Validating += new System.ComponentModel.CancelEventHandler(this.txtDesc1amt_Validating);
             // 
             // txtDesc1
             // 
@@ -1664,6 +1673,7 @@
             this.txtDesc3tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc3tot.TabIndex = 82;
             this.txtDesc3tot.Leave += new System.EventHandler(this.txtDesc3tot_Leave);
+            this.txtDesc3tot.Validating += new System.ComponentModel.CancelEventHandler(this.txtDesc3tot_Validating);
             // 
             // txtDesc3
             // 
@@ -1686,6 +1696,7 @@
             this.txtDesc4tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc4tot.TabIndex = 86;
             this.txtDesc4tot.Leave += new System.EventHandler(this.txtDesc4tot_Leave);
+            this.txtDesc4tot.Validating += new System.ComponentModel.CancelEventHandler(this.txtDesc4tot_Validating);
             // 
             // txtDesc4
             // 
@@ -1845,6 +1856,7 @@
             this.txtClrNumber.Name = "txtClrNumber";
             this.txtClrNumber.Size = new System.Drawing.Size(53, 20);
             this.txtClrNumber.TabIndex = 54;
+            this.txtClrNumber.Validating += new System.ComponentModel.CancelEventHandler(this.txtClrNumber_Validating);
             // 
             // txtCoverDesc
             // 
@@ -1872,6 +1884,7 @@
             this.txtSpecCvrEa.Size = new System.Drawing.Size(53, 20);
             this.txtSpecCvrEa.TabIndex = 59;
             this.txtSpecCvrEa.Leave += new System.EventHandler(this.txtSpecCvrEa_Leave);
+            this.txtSpecCvrEa.Validating += new System.ComponentModel.CancelEventHandler(this.txtSpecCvrEa_Validating);
             // 
             // txtFoilAd
             // 
@@ -1881,6 +1894,7 @@
             this.txtFoilAd.Name = "txtFoilAd";
             this.txtFoilAd.Size = new System.Drawing.Size(53, 20);
             this.txtFoilAd.TabIndex = 61;
+            this.txtFoilAd.Validating += new System.ComponentModel.CancelEventHandler(this.txtFoilAd_Validating);
             // 
             // panel2
             // 
@@ -2163,13 +2177,14 @@
             this.lblHardbackAmt.TabIndex = 157;
             this.lblHardbackAmt.Text = "label19";
             // 
-            // textBox3
+            // txtreqcoverCopies
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(126, 62);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(40, 20);
-            this.textBox3.TabIndex = 94;
+            this.txtreqcoverCopies.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtreqcoverCopies.Location = new System.Drawing.Point(126, 62);
+            this.txtreqcoverCopies.Name = "txtreqcoverCopies";
+            this.txtreqcoverCopies.Size = new System.Drawing.Size(40, 20);
+            this.txtreqcoverCopies.TabIndex = 94;
+            this.txtreqcoverCopies.Validating += new System.ComponentModel.CancelEventHandler(this.txtreqcoverCopies_Validating);
             // 
             // label7
             // 
@@ -2289,6 +2304,7 @@
             this.txtPriceOverRide.Size = new System.Drawing.Size(57, 20);
             this.txtPriceOverRide.TabIndex = 20;
             this.txtPriceOverRide.Leave += new System.EventHandler(this.txtPriceOverRide_Leave);
+            this.txtPriceOverRide.Validating += new System.ComponentModel.CancelEventHandler(this.txtPriceOverRide_Validating);
             // 
             // txtSource
             // 
@@ -2348,6 +2364,7 @@
             this.txtBYear.Size = new System.Drawing.Size(31, 20);
             this.txtBYear.TabIndex = 4;
             this.txtBYear.Leave += new System.EventHandler(this.txtBYear_Leave);
+            this.txtBYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtBYear_Validating);
             // 
             // txtYear
             // 
@@ -2358,6 +2375,7 @@
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(39, 20);
             this.txtYear.TabIndex = 2;
+            this.txtYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtYear_Validating);
             // 
             // txtNoPages
             // 
@@ -2403,6 +2421,16 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(986, 363);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 170;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmSales
             // 
@@ -2506,7 +2534,7 @@
         private System.Windows.Forms.Label lblInvoice;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pnlHard;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtreqcoverCopies;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label9;
@@ -2592,10 +2620,10 @@
         private System.Windows.Forms.Label lblsubtot;
         private System.Windows.Forms.Label lblMLaminateAmt;
         private System.Windows.Forms.Label lblLaminateAmt;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblPriceEach;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label lblSpeccvr;
         private System.Windows.Forms.Label lblFinalTotPrc;
+        private System.Windows.Forms.Button button1;
     }
     }
