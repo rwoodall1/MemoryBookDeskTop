@@ -39,3 +39,5 @@ The statement has been terminated. RWCOMPUTER  RWCOMPUTER\randy
 2016/06/26 21:17:38.847 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
 2016/06/26 21:17:42.705 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
 2016/06/26 21:21:34.860 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
+2016/07/02 19:12:37.526 Error Updating cust table:Cannot insert the value NULL into column 'schname', table 'Mbc5.dbo.cust'; column does not allow nulls. INSERT fails.
+The statement has been terminated. CHOME  WDFM\rwoodall    

@@ -35,6 +35,7 @@ namespace Mbc5.Forms.MemoryBook {
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();
+            //this.Text="Sales-"+lblSchoolName.Text;
         } 
         private void btnInvSrch_Click(object sender, EventArgs e)
         {
@@ -93,12 +94,34 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
         private void Save()
-        {
-            if (ValidSales())
-            {
-
+        { 
+            //if (ValidSales())
+            //{
+               
+              
+                try
+                {
+                   
+                    var b=this.Validate();
+              this.quotesBindingSource.EndEdit();
+                    var a =quotesTableAdapter.Update(dsSales.quotes);
+               
 
             }
+              
+                catch (DBConcurrencyException ex1)
+                {
+                    string errmsg = "Concurrency violation" + Environment.NewLine + (string)ex1.Row.ItemArray[0];
+                    this.Log.Error(ex1, ex1.Message);
+                    MessageBox.Show(errmsg);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Record faild to update:" + ex.Message);
+                    this.Log.Error(ex, "Record faild to update:" + ex.Message);
+                }
+
+            //}
 
         }
         private void CalculateEach()
@@ -240,7 +263,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 else
                 {
-                    lblHardbackAmt.Text = null;
+                    lblHardbackAmt.Text = "0.00";
                     HardBack = 0;
                 }
                 //Casebind
@@ -253,7 +276,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 else
                 {
-                    lblCaseamt.Text = null;
+                    lblCaseamt.Text = "0.00";
                     Casebind = 0;
                 }
                 //Check if harback and case both not checked
@@ -271,7 +294,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 else
                 {
-                    lblPerfbindAmt.Text = null;
+                    lblPerfbindAmt.Text = "0.00";
                     Perfectbind = 0;
                 }
                 //Spiral
@@ -283,7 +306,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 else
                 {
-                    lblSpiralAmt.Text = null;
+                    lblSpiralAmt.Text = "0.00";
                     Spiral = 0;
                 }
                 //SaddleStitch
@@ -296,7 +319,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 else
                 {
-                    lblSaddleAmt.Text = null;
+                    lblSaddleAmt.Text = "0.00";
                     SaddleStitch = 0;
                 }
 
@@ -310,7 +333,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 else
                 {
-                    lblProfAmt.Text = null;
+                    lblProfAmt.Text = "0.00";
                     Professional = 0;
                 }
 
@@ -324,7 +347,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 else
                 {
-                    lblConvAmt.Text = null;
+                    lblConvAmt.Text = "0.00";
                     Convenient = 0;
                 }
                 //Yir
@@ -336,7 +359,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 else
                 {
-                    lblYir.Text = null;
+                    lblYir.Text = "0.00";
                     Yir = 0;
                 }
 
@@ -350,7 +373,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 else
                 {
-                    lblStoryAmt.Text = null;
+                    lblStoryAmt.Text = "0.00";
                     Story = 0;
                 }
 
@@ -364,7 +387,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 else
                 {
-                    lblLaminateAmt.Text = null;
+                    lblLaminateAmt.Text = "0.00";
                     Gloss = 0;
                 }
                 //foilamt/msStory
@@ -389,7 +412,7 @@ namespace Mbc5.Forms.MemoryBook {
                 else
                 {
                     lblMsTot.Text = "0.00";
-                    foilamtTextBox.Text="0.00";
+                    foilamtTextBox.Text = "0.00";
                 }
                 //Lam
                 decimal Laminationsft = 0;
@@ -401,7 +424,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 else
                 {
-                    lblMLaminateAmt.Text = null;
+                    lblMLaminateAmt.Text = "0.00";
                     Laminationsft = 0;
                 }
                 //convert rest of info from strings to decimals for calculations
@@ -409,7 +432,7 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal BookTotal = 0;
                 decimal SpecCvrTot = 0;
                 decimal FoilTot = 0;
-                 decimal ClrPgTot = 0;
+                decimal ClrPgTot = 0;
                 decimal MiscTot = 0;
                 decimal Desc1Tot = 0;
                 decimal Desc3Tot = 0;
@@ -423,7 +446,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vParseResult = decimal.TryParse(txtDesc1amt.Text, out Desc1Tot);
                 vParseResult = decimal.TryParse(txtDesc3tot.Text, out Desc3Tot);
                 vParseResult = decimal.TryParse(txtDesc4tot.Text, out Desc4Tot);
-            
+
 
 
 
@@ -457,7 +480,7 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
 
-        }
+            }
         private void GetBookPricing()
         {
             if (String.IsNullOrEmpty(txtBYear.Text))
@@ -716,12 +739,10 @@ namespace Mbc5.Forms.MemoryBook {
             if (!retval){return retval;}
             retval = ValidateCopies();
             if (!retval) { return retval; }
-            retval = this.ValidateChildren();
+            retval = !this.ValidateChildren();
             return retval;
         }
-
-
-
+        
         #endregion
         #region CalcEvents
         private void chkHardBack_Click(object sender, EventArgs e)
@@ -1029,7 +1050,7 @@ namespace Mbc5.Forms.MemoryBook {
         #region Validation
         private void txtBYear_Validating(object sender, CancelEventArgs e)
         {
-            bool retval = true;
+          
             errorProvider1.Clear();
             int numeral;
             var result = int.TryParse(txtBYear.Text, out numeral);
@@ -1038,21 +1059,23 @@ namespace Mbc5.Forms.MemoryBook {
             {
                 errorProvider1.SetError(txtBYear, "Please enter a  base price year.");
                 e.Cancel = true;
-                retval = false;
+             
             }
+         
+
         }
         private void txtYear_Validating(object sender, CancelEventArgs e)
         {
-            bool retval = true;
+            
             errorProvider1.Clear();
             int numeral;
             var result = int.TryParse(txtYear.Text, out numeral);
             //non numeric
             if (!result || numeral == 0 || String.IsNullOrEmpty(txtYear.Text))
             {
-                errorProvider1.SetError(txtBYear, "Please enter a year.");
+                errorProvider1.SetError(txtYear, "Please enter a year.");
                 e.Cancel = true;
-                retval = false;
+              
             }
         }
         private void txtClrNumber_Validating(object sender, CancelEventArgs e)
@@ -1060,7 +1083,7 @@ namespace Mbc5.Forms.MemoryBook {
             //might have letters
             //if (!String.IsNullOrEmpty(txtClrNumber.Text))
             //{
-            //    bool retval = true;
+            //    
             //    errorProvider1.Clear();
             //    int numeral;
             //    var result = int.TryParse(txtClrNumber.Text, out numeral);
@@ -1069,7 +1092,7 @@ namespace Mbc5.Forms.MemoryBook {
             //    {
             //        errorProvider1.SetError(txtBYear, "Please enter a number.");
             //        e.Cancel = true;
-            //        retval = false;
+            //      
             //    }
             //}
         }
@@ -1078,7 +1101,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtSpecCvrEa.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtSpecCvrEa.Text, out numeral);
@@ -1087,7 +1110,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtSpecCvrEa, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1096,7 +1119,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtFoilAd.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtFoilAd.Text, out numeral);
@@ -1105,7 +1128,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtFoilAd, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1114,7 +1137,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDisc.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtDisc.Text, out numeral);
@@ -1123,7 +1146,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtDisc, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1132,7 +1155,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDp2.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtDp2.Text, out numeral);
@@ -1141,7 +1164,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtDp2, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1150,7 +1173,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtMsQty.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 int numeral;
                 var result = int.TryParse(txtMsQty.Text, out numeral);
@@ -1159,7 +1182,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtMsQty, "Please enter a number.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1168,7 +1191,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(perscopiesTextBox.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 int numeral;
                 var result = int.TryParse(perscopiesTextBox.Text, out numeral);
@@ -1177,7 +1200,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(perscopiesTextBox, "Please enter a number.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1186,7 +1209,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(persamountTextBox.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 int numeral;
                 var result = int.TryParse(persamountTextBox.Text, out numeral);
@@ -1195,7 +1218,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(persamountTextBox, "Please enter a number.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1204,7 +1227,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtNumtoPers.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 int numeral;
                 var result = int.TryParse(txtNumtoPers.Text, out numeral);
@@ -1213,7 +1236,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtNumtoPers, "Please enter a number.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1222,7 +1245,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(freebooksTextBox.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 int numeral;
                 var result = int.TryParse(freebooksTextBox.Text, out numeral);
@@ -1231,19 +1254,16 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(freebooksTextBox, "Please enter a number.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
-
-
-
 
         private void txtClrTot_Validating(object sender, CancelEventArgs e)
         {
             if (!String.IsNullOrEmpty(txtClrTot.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtClrTot.Text, out numeral);
@@ -1252,7 +1272,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtClrTot, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1261,7 +1281,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtMisc.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtMisc.Text, out numeral);
@@ -1270,7 +1290,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtMisc, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1279,7 +1299,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDesc1amt.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtDesc1amt.Text, out numeral);
@@ -1288,7 +1308,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtDesc1amt, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1297,7 +1317,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDesc3tot.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtDesc3tot.Text, out numeral);
@@ -1306,7 +1326,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtDesc3tot, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1315,7 +1335,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDesc4tot.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtDesc4tot.Text, out numeral);
@@ -1324,7 +1344,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtDesc4tot, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1333,7 +1353,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtCredits.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtCredits.Text, out numeral);
@@ -1342,7 +1362,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtCredits, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1351,7 +1371,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtCredits2.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtCredits2.Text, out numeral);
@@ -1360,7 +1380,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtCredits2, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1369,7 +1389,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtOtherChrg.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtOtherChrg.Text, out numeral);
@@ -1378,7 +1398,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtOtherChrg, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1387,7 +1407,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtOtherChrg2.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtOtherChrg2.Text, out numeral);
@@ -1396,7 +1416,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtOtherChrg2, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1405,7 +1425,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(saletaxTextBox.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(saletaxTextBox.Text, out numeral);
@@ -1414,7 +1434,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(saletaxTextBox, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
@@ -1423,7 +1443,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtPriceOverRide.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 decimal numeral;
                 var result = decimal.TryParse(txtPriceOverRide.Text, out numeral);
@@ -1432,23 +1452,16 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtPriceOverRide, "Please enter a decimal amount.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
-
-    
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Save();
-        }
-
+        
         private void txtreqcoverCopies_Validating(object sender, CancelEventArgs e)
         {
             if (!String.IsNullOrEmpty(txtreqcoverCopies.Text))
             {
-                bool retval = true;
+                
                 errorProvider1.Clear();
                 int numeral;
                 var result = int.TryParse(txtreqcoverCopies.Text, out numeral);
@@ -1457,13 +1470,30 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     errorProvider1.SetError(txtreqcoverCopies, "Please enter a numeral.");
                     e.Cancel = true;
-                    retval = false;
+                  
                 }
             }
         }
 
-
         #endregion
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Save();
+       
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            test test = new test();
+            //frmSales.MdiParent = this;
+            test.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void lblSchoolName_Paint(object sender, PaintEventArgs e)
+        {
+            this.Text = "Sales-" + lblSchoolName.Text;
+        }
         //nothing below here  
     }
 }
