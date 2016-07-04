@@ -166,7 +166,7 @@ namespace BaseClass
                         }
 
                     }
-                    catch
+                    catch(Exception ex)
                     {
                     }
                 }

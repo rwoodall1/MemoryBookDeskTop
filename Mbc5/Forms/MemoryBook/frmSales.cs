@@ -11,6 +11,7 @@ using BaseClass.Classes;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using Mbc5.Classes;
+using Mbc5.LookUpForms;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
         public frmSales(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal) {
@@ -19,7 +20,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.ApplicationUser = userPrincipal;
             this.Invno = invno;
             this.Schcode = schcode;
-
+           
         }
         public frmSales(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
         {
@@ -35,6 +36,10 @@ namespace Mbc5.Forms.MemoryBook {
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();
+            if (ApplicationUser.Roles.Contains("SA") || ApplicationUser.Roles.Contains("Administrator"))
+            {
+                this.dp1descComboBox.ContextMenuStrip = this.mnuEditLkUp;
+            }
             //this.Text="Sales-"+lblSchoolName.Text;
         } 
         private void btnInvSrch_Click(object sender, EventArgs e)
@@ -103,15 +108,17 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                    
                     var b=this.Validate();
-              this.quotesBindingSource.EndEdit();
+                 this.quotesBindingSource.EndEdit();
                     var a =quotesTableAdapter.Update(dsSales.quotes);
+                //must refill so we get updated time stamp so concurrency is not thrown
+                   this.Fill();
                
 
             }
               
                 catch (DBConcurrencyException ex1)
                 {
-                    string errmsg = "Concurrency violation" + Environment.NewLine + (string)ex1.Row.ItemArray[0];
+                    string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
                     this.Log.Error(ex1, ex1.Message);
                     MessageBox.Show(errmsg);
                 }
@@ -1482,17 +1489,20 @@ namespace Mbc5.Forms.MemoryBook {
        
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            test test = new test();
-            //frmSales.MdiParent = this;
-            test.Show();
-            this.Cursor = Cursors.Default;
-        }
+       
 
         private void lblSchoolName_Paint(object sender, PaintEventArgs e)
         {
             this.Text = "Sales-" + lblSchoolName.Text;
+        }
+
+        private void editLookUpItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LkpDiscount frmDiscount = new LkpDiscount(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmDiscount.MdiParent = this.MdiParent;
+            frmDiscount.Show();
+            this.Cursor = Cursors.Default;
         }
         //nothing below here  
     }

@@ -41,3 +41,81 @@ The statement has been terminated. RWCOMPUTER  RWCOMPUTER\randy
 2016/06/26 21:21:34.860 Error retrieving Book Option PricingData is Null. This method or property cannot be called on Null values. CHOME  WDFM\rwoodall    
 2016/07/02 19:12:37.526 Error Updating cust table:Cannot insert the value NULL into column 'schname', table 'Mbc5.dbo.cust'; column does not allow nulls. INSERT fails.
 The statement has been terminated. CHOME  WDFM\rwoodall    
+2016/07/03 18:40:48.915 Record faild to update:Cannot set column 'source'. The value violates the MaxLength limit of this column. CHOME  WDFM\rwoodall   System.ArgumentException: Cannot set column 'source'. The value violates the MaxLength limit of this column.
+   at System.Data.DataColumn.CheckMaxLength(DataRow dr)
+   at System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
+   at System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
+   at System.Data.DataRow.EndEdit()
+   at System.Data.DataRowView.EndEdit()
+   at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
+   at System.Windows.Forms.BindingSource.EndEdit()
+   at Mbc5.Forms.MemoryBook.frmSales.Save() in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 106 
+2016/07/03 18:45:13.222 Record faild to update:Cannot set column 'source'. The value violates the MaxLength limit of this column. CHOME  WDFM\rwoodall   System.ArgumentException: Cannot set column 'source'. The value violates the MaxLength limit of this column.
+   at System.Data.DataColumn.CheckMaxLength(DataRow dr)
+   at System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
+   at System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
+   at System.Data.DataRow.EndEdit()
+   at System.Data.DataRowView.EndEdit()
+   at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
+   at System.Windows.Forms.BindingSource.EndEdit()
+   at Mbc5.Forms.MemoryBook.frmSales.Save() in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 106 
+2016/07/03 18:51:35.983 Record faild to update:Cannot set column 'mdesc'. The value violates the MaxLength limit of this column. CHOME  WDFM\rwoodall   System.ArgumentException: Cannot set column 'mdesc'. The value violates the MaxLength limit of this column.
+   at System.Data.DataColumn.CheckMaxLength(DataRow dr)
+   at System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
+   at System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
+   at System.Data.DataRow.EndEdit()
+   at System.Data.DataRowView.EndEdit()
+   at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
+   at System.Windows.Forms.BindingSource.EndEdit()
+   at Mbc5.Forms.MemoryBook.frmSales.Save() in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 106 
+2016/07/03 18:55:06.367 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. CHOME  WDFM\rwoodall   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable) in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\DataSets\dsSales.Designer.cs:line 15264
+   at Mbc5.Forms.MemoryBook.frmSales.Save() in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 107 
+2016/07/03 18:57:25.378 Record faild to update:Cannot set column 'mdesc'. The value violates the MaxLength limit of this column. CHOME  WDFM\rwoodall   System.ArgumentException: Cannot set column 'mdesc'. The value violates the MaxLength limit of this column.
+   at System.Data.DataColumn.CheckMaxLength(DataRow dr)
+   at System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
+   at System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
+   at System.Data.DataRow.EndEdit()
+   at System.Data.DataRowView.EndEdit()
+   at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
+   at System.Windows.Forms.BindingSource.EndEdit()
+   at Mbc5.Forms.MemoryBook.frmSales.Save() in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 106 
+2016/07/03 19:05:36.866 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. CHOME  WDFM\rwoodall   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable) in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\DataSets\dsSales.Designer.cs:line 15264
+   at Mbc5.Forms.MemoryBook.frmSales.Save() in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 107 
+2016/07/03 19:10:11.219 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. CHOME  WDFM\rwoodall   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable) in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\DataSets\dsSales.Designer.cs:line 15264
+   at Mbc5.Forms.MemoryBook.frmSales.Save() in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 107 
+2016/07/03 19:18:00.798 Record faild to update:Cannot set column 'desc1'. The value violates the MaxLength limit of this column. CHOME  WDFM\rwoodall   System.ArgumentException: Cannot set column 'desc1'. The value violates the MaxLength limit of this column.
+   at System.Data.DataColumn.CheckMaxLength(DataRow dr)
+   at System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
+   at System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
+   at System.Data.DataRow.EndEdit()
+   at System.Data.DataRowView.EndEdit()
+   at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
+   at System.Windows.Forms.BindingSource.EndEdit()
+   at Mbc5.Forms.MemoryBook.frmSales.Save() in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 106 
+2016/07/04 08:51:19.195 Record faild to update:Cannot set column 'ponum'. The value violates the MaxLength limit of this column. CHOME  WDFM\rwoodall   System.ArgumentException: Cannot set column 'ponum'. The value violates the MaxLength limit of this column.
+   at System.Data.DataColumn.CheckMaxLength(DataRow dr)
+   at System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
+   at System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
+   at System.Data.DataRow.EndEdit()
+   at System.Data.DataRowView.EndEdit()
+   at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
+   at System.Windows.Forms.BindingSource.EndEdit()
+   at Mbc5.Forms.MemoryBook.frmSales.Save() in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 106 

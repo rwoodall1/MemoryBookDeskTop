@@ -198,11 +198,11 @@
     <Compile Include="Forms\frmUser.Designer.cs">
       <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\test.cs">
+    <Compile Include="LookUpForms\LkpDiscount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
+    <Compile Include="LookUpForms\LkpDiscount.Designer.cs">
+      <DependentUpon>LkpDiscount.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -250,8 +250,8 @@
     <EmbeddedResource Include="Forms\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\test.resx">
-      <DependentUpon>test.cs</DependentUpon>
+    <EmbeddedResource Include="LookUpForms\LkpDiscount.resx">
+      <DependentUpon>LkpDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
