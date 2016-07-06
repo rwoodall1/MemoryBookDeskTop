@@ -58,3 +58,4 @@ F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmLogin.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn.resources
 F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpDiscount.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpDiscount.resources

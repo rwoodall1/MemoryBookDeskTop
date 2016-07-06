@@ -693,11 +693,23 @@ namespace Mbc5.Forms.MemoryBook {
             SetInvnoSchCode();
         }
 
+        private void contdateDateTimePicker_CloseUp(object sender,EventArgs e) {
+           DialogResult result=MessageBox.Show("Do you wish to add a sales record?","Add Record",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+                {
+
+
+                }
+            
+            }
+
+
+
 
 
 
 
         //Nothing below here
-    }
+        }
     }
 
