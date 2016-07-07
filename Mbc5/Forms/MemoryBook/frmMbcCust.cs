@@ -11,6 +11,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Diagnostics;
 
+
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
            private bool vMktGo = false;
@@ -80,7 +81,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void btnSchoolCode_Click(object sender,EventArgs e) {
-            if (this.txtSchCode.Text != "038752" && (!this.TeleGo || !this.MktGo))
+            if (this.lblSchcodeVal.Text != "038752" && (!this.TeleGo || !this.MktGo))
                 {
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                 return;
@@ -92,14 +93,14 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             else
                 {
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,txtSchCode.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text.Trim());
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
+                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
                 TeleGo = false;
               
                 }
             }
         private void btnSchoolSearch_Click(object sender,EventArgs e) {
-            if(this.txtSchCode.Text!="038752" && (!this.TeleGo || !this.MktGo)){
+            if(this.lblSchcodeVal.Text!="038752" && (!this.TeleGo || !this.MktGo)){
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                 return;
                 }
@@ -110,8 +111,8 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             else
                 {
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,txtSchCode.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text.Trim());
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
+                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
                 TeleGo = false;
                
                 }
@@ -312,7 +313,7 @@ namespace Mbc5.Forms.MemoryBook {
         #region Methods
         private void SetInvnoSchCode()
         {
-            this.Schcode = txtSchCode.Text;
+            this.Schcode = lblSchcodeVal.Text;
             int val = 0;
             bool parsed = Int32.TryParse(lblInvno.Text, out val);
             if (parsed)
@@ -380,14 +381,14 @@ namespace Mbc5.Forms.MemoryBook {
                 if (Int32.TryParse(vSchcode,out tmpSchcode))
                     {
                     tmpSchcode += 1;
-                    this.txtSchCode.Text = vPreCode + tmpSchcode.ToString();
+                    this.lblSchcodeVal.Text = vPreCode + tmpSchcode.ToString();
                     cmd.CommandText = "Update codecnt Set schcode=@schcode";
                     cmd.Parameters.AddWithValue("@schcode",tmpSchcode.ToString());
                     cmd.ExecuteNonQuery();
 
                     }
                 else
-                    { this.txtSchCode.Text = "error"; }
+                    { this.lblSchcodeVal.Text = "error"; }
 
 
                 }
@@ -436,7 +437,7 @@ namespace Mbc5.Forms.MemoryBook {
                         }
                     finally { cmd.Connection.Close(); }
 
-                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,txtSchCode.Text.Trim());
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
                     }
                 }
             else
@@ -479,7 +480,7 @@ namespace Mbc5.Forms.MemoryBook {
                         }
                     finally { cmd.Connection.Close(); }
 
-                    this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text);
                     }
                 }
             else
@@ -492,9 +493,9 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private void DataRefresh() {
             
-                this.custTableAdapter.Fill(this.dsCust.cust,txtSchCode.Text);
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,txtSchCode.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text.Trim());
+                this.custTableAdapter.Fill(this.dsCust.cust,lblSchcodeVal.Text);
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
+                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
                 }
 
         #endregion
@@ -597,7 +598,7 @@ namespace Mbc5.Forms.MemoryBook {
                 //go on we are not stopping the program for this
                 }
             finally { cmd.Connection.Close(); }
-            this.datecontTableAdapter.Fill(this.dsCust.datecont,txtSchCode.Text);
+            this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text);
 
             }
 
@@ -622,7 +623,7 @@ namespace Mbc5.Forms.MemoryBook {
                 //go on we are not stopping the program for this
                 }
             finally { cmd.Connection.Close(); }
-            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,txtSchCode.Text.Trim());
+            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
             }
 
         private void btnSaveTeleLog_Click(object sender,EventArgs e) {
@@ -632,7 +633,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void frmMbcCust_FormClosing(object sender,FormClosingEventArgs e) {
-            if(txtSchCode.Text!="038752" &&(!TeleGo || !MktGo))
+            if(lblSchcodeVal.Text!="038752" &&(!TeleGo || !MktGo))
                 {
                 e.Cancel = true;
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
@@ -675,7 +676,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
                 }
 
-        private void txtSchCode_TextChanged(object sender, EventArgs e)
+        private void lblSchcodeVal_TextChanged(object sender, EventArgs e)
         {
             SetInvnoSchCode();
         }
@@ -697,9 +698,20 @@ namespace Mbc5.Forms.MemoryBook {
            DialogResult result=MessageBox.Show("Do you wish to add a sales record?","Add Record",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
                 {
-
-
-                }
+                var sqlQuery = new BaseClase.Classes.SQLQuery();
+                //useing hard code until function to generate invno is done
+                SqlParameter[] parameters = new SqlParameter[] {
+                    new SqlParameter("@Invno",1111),
+                     new SqlParameter("@Schcode",lblSchcodeVal.Text),
+                      new SqlParameter("@Contryear", contryearTextBox.Text)
+                    };
+                var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear)  VALUES (@Invno,@Schcode,@Contryear)";
+                var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters);
+                if (userResult!=1){
+                    MessageBox.Show("Failed to insert sales record.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    }
+                this.custTableAdapter.Fill(this.dsCust.cust,lblSchcodeVal.Text);
+                };
             
             }
 

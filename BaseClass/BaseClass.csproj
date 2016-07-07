@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CollectionHelper.cs" />
     <Compile Include="Classes\EmailHelper.cs" />
     <Compile Include="Classes\RandomPasswordGenerator.cs" />
     <Compile Include="Classes\SQLQuery.cs" />

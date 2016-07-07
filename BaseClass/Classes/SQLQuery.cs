@@ -11,7 +11,7 @@ using NLog;
 namespace BaseClase.Classes {
     public class SQLQuery {
      
-        private static string _ConnectionString =ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private static string _ConnectionString =ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
 
         public SQLQuery() {
             
@@ -52,61 +52,59 @@ namespace BaseClase.Classes {
 
             }
 
-        //public async object ExecuteReaderAsync<T>(CommandType cmdType,string cmdText,params SqlParameter[] commandParameters) {
+        public object ExecuteReaderAsync<T>(CommandType cmdType,string cmdText,params SqlParameter[] commandParameters) {
 
-        //    object retval;
+            object retval=null;
 
-        //    using (var connection = new SqlConnection(_ConnectionString))
-        //        {
-        //        using (var command = new SqlCommand(cmdText,connection))
-        //            {
-        //            try
-        //                {
-        //                var dt = new DataTable();
-        //                command.CommandType = cmdType;
-        //                command.Parameters.Clear();
-        //                command.Parameters.AddRange(commandParameters);
-        //                connection.Open();
+            using (var connection = new SqlConnection(_ConnectionString))
+                {
+                using (var command = new SqlCommand(cmdText,connection))
+                    {
+                    try
+                        {
+                        var dt = new DataTable();
+                        command.CommandType = cmdType;
+                        command.Parameters.Clear();
+                        command.Parameters.AddRange(commandParameters);
+                        connection.Open();
 
-        //                using (SqlDataAdapter a = new SqlDataAdapter(command))
-        //                    {
-        //                    a.Fill(dt);
-        //                    }
+                        using (SqlDataAdapter a = new SqlDataAdapter(command))
+                            {
+                            a.Fill(dt);
+                            }
 
-        //                if (dt.Rows.Count < 1)
-        //                    {
-        //                    processingResult.IsSuccessful = false;
-        //                    processingResult.Data = null;
-        //                    return processingResult;
-        //                    }
-        //                try
-        //                    {
-        //                    var Vals = CollectionHelper.ConvertTo<T>(dt);
-        //                    processingResult.Data = Vals;
-        //                    }
-        //                catch (Exception ex)
-        //                    {
-        //                    processingResult.IsSuccessful = false;
-        //                    processingResult.Error = new ProcessingError("Error retrieving data.","Error retrieving data.",true,false);
-        //                    Logger.Fatal("Error retrieving data:" + ex.Message);
-        //                    }
+                        if (dt.Rows.Count < 1)
+                            {
+                           
+                            return retval;
+                            }
+                        try
+                            {
+                            var Vals =BaseClass.Classes.CollectionHelper.ConvertTo<T>(dt);
+                          
+                            }
+                        catch (Exception ex)
+                            {
+                         
+                            Log.Fatal("Error retrieving data:" + ex.Message);
+                            }
 
-        //                return processingResult;
-        //                }
-        //            catch (Exception ex)
-        //                {
-        //                processingResult.IsSuccessful = false;
-        //                Logger.Fatal("Error running ExecuteReaderAsync.",ex);
-        //                processingResult.Error = new ProcessingError("Error running ExecuteReaderAsync. Ex: " + ex.ToString(),"Error running ExecuteReaderAsync. Ex: " + ex.ToString(),false,false);
-        //                return processingResult;
-        //                }
-        //            finally
-        //                {
-        //                connection.Close();
-        //                }
-        //            }
-        //        }
-        //    }
+                        return retval;//has data 
+                        }
+                    catch (Exception ex)
+                        {
+                       
+                       Log.Fatal("Error running ExecuteReaderAsync.",ex.Message);
+                    
+                        return retval;
+                        }
+                    finally
+                        {
+                        connection.Close();
+                        }
+                    }
+                }
+            }
 
         public  DataTable ExecuteReaderAsync(CommandType cmdType,string cmdText,params SqlParameter[] commandParameters) {
             DataTable dt=null;
@@ -117,7 +115,7 @@ namespace BaseClase.Classes {
                     {
                     try
                         {
-                        var dt = new DataTable();
+                       dt = new DataTable();
                         command.CommandType = cmdType;
                         command.Parameters.Clear();
                         command.Parameters.AddRange(commandParameters);
@@ -144,40 +142,40 @@ namespace BaseClase.Classes {
                 }
             }
 
-        //public async Task<object> ExecuteScalarAsync(CommandType cmdType,string cmdText,params SqlParameter[] commandParameters) {
-        //    var result = new ServiceProcessingResult<object> { IsSuccessful = true };
-        //    using (var connection = new SqlConnection(_ConnectionString))
-        //        {
-        //        using (var command = new SqlCommand(cmdText,connection))
-        //            {
-        //            try
-        //                {
-        //                command.CommandType = cmdType;
-        //                command.Parameters.Clear();
-        //                command.Parameters.AddRange(commandParameters);
-        //                connection.Open();
+        public async Task<object> ExecuteScalarAsync(CommandType cmdType,string cmdText,params SqlParameter[] commandParameters) {
+            object sqlResult=null;
+            using (var connection = new SqlConnection(_ConnectionString))
+                {
+                using (var command = new SqlCommand(cmdText,connection))
+                    {
+                    try
+                        {
+                        command.CommandType = cmdType;
+                        command.Parameters.Clear();
+                        command.Parameters.AddRange(commandParameters);
+                        connection.Open();
 
-        //                var sqlResult = await command.ExecuteScalarAsync();
-        //                result.Data = sqlResult;
-        //                }
-        //            catch (Exception ex)
-        //                {
-        //                result.IsSuccessful = false;
-        //                Logger.Fatal("Error running ExecuteScalarAsync.",ex);
-        //                result.Error = new ProcessingError("Error processing ExecuteScalarAsync","Error processing ExecuteScalarAsync",true,false);
-        //                }
-        //            finally
-        //                {
-        //                connection.Close();
-        //                }
+                         sqlResult = await command.ExecuteScalarAsync();
+                     
+                        }
+                    catch (Exception ex)
+                        {
+                      
+                        Log.Fatal("Error running ExecuteScalarAsync.",ex.Message);
+                       
+                        }
+                    finally
+                        {
+                        connection.Close();
+                        }
 
-        //            return result;
-        //            }
-        //        }
-        //    }
+                    return sqlResult ;
+                    }
+                }
+            }
 
-        //protected string GetFormattedGenericLogMessage(string logMessage) {
-        //    return String.Format(logMessage);
-        //    }
+        protected string GetFormattedGenericLogMessage(string logMessage) {
+            return String.Format(logMessage);
+            }
         }
     }
