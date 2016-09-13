@@ -111,6 +111,7 @@ namespace Mbc5.Dialogs {
           
             catch (Exception ex)
             {
+                
                 this.DialogResult = DialogResult.Abort;
                 return;
 

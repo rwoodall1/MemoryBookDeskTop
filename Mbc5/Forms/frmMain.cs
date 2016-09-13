@@ -10,6 +10,7 @@ using Mbc5.Forms.MemoryBook;
 using Mbc5.Forms.Meridian;
 using BaseClass.Classes;
 using BaseClass.Forms;
+using Mbc5.LookUpForms;
 using NLog;
 namespace Mbc5.Forms
 {
@@ -256,8 +257,27 @@ namespace Mbc5.Forms
 
 
         }
+        #region DataMait
+        private void discountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LkpDiscount frmDiscount = new LkpDiscount(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmDiscount.MdiParent = this;
+            frmDiscount.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cut();
+        }
+        #endregion
 
 
+
+
+
+        //nothing below here
     }
         }
 

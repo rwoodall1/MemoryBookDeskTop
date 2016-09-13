@@ -101,14 +101,14 @@
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.txtSchColors = new System.Windows.Forms.TextBox();
+            this.txtSchname = new System.Windows.Forms.TextBox();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
+            this.lblSchcodeVal = new System.Windows.Forms.Label();
+            this.txtSchColors = new System.Windows.Forms.TextBox();
             this.txtFax = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblSchName = new System.Windows.Forms.Label();
-            this.txtSchname = new System.Windows.Forms.TextBox();
-            this.txtSchCode = new System.Windows.Forms.TextBox();
             this.schoutDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.spcinstTextBox = new System.Windows.Forms.TextBox();
             this.extrchgTextBox = new System.Windows.Forms.TextBox();
@@ -1002,6 +1002,8 @@
             // splitContainer.Panel1
             // 
             this.splitContainer.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel1.Controls.Add(this.txtSchname);
+            this.splitContainer.Panel1.Controls.Add(this.lblSchcodeVal);
             this.splitContainer.Panel1.Controls.Add(lblInterOffice);
             this.splitContainer.Panel1.Controls.Add(lblEmail);
             this.splitContainer.Panel1.Controls.Add(this.txtSchColors);
@@ -1009,8 +1011,6 @@
             this.splitContainer.Panel1.Controls.Add(lblFax);
             this.splitContainer.Panel1.Controls.Add(this.label2);
             this.splitContainer.Panel1.Controls.Add(this.lblSchName);
-            this.splitContainer.Panel1.Controls.Add(this.txtSchname);
-            this.splitContainer.Panel1.Controls.Add(this.txtSchCode);
             this.splitContainer.Panel1.Controls.Add(schoutLabel);
             this.splitContainer.Panel1.Controls.Add(spcinstLabel);
             this.splitContainer.Panel1.Controls.Add(this.schoutDateTimePicker);
@@ -1086,13 +1086,13 @@
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
             // 
-            // txtSchColors
+            // txtSchname
             // 
-            this.txtSchColors.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcolors", true));
-            this.txtSchColors.Location = new System.Drawing.Point(337, 360);
-            this.txtSchColors.Name = "txtSchColors";
-            this.txtSchColors.Size = new System.Drawing.Size(182, 20);
-            this.txtSchColors.TabIndex = 37;
+            this.txtSchname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schname", true));
+            this.txtSchname.Location = new System.Drawing.Point(86, 35);
+            this.txtSchname.Name = "txtSchname";
+            this.txtSchname.Size = new System.Drawing.Size(249, 20);
+            this.txtSchname.TabIndex = 96;
             // 
             // custBindingSource
             // 
@@ -1104,6 +1104,24 @@
             this.dsCust.DataSetName = "dsCust";
             this.dsCust.EnforceConstraints = false;
             this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lblSchcodeVal
+            // 
+            this.lblSchcodeVal.AutoSize = true;
+            this.lblSchcodeVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
+            this.lblSchcodeVal.Location = new System.Drawing.Point(415, 35);
+            this.lblSchcodeVal.Name = "lblSchcodeVal";
+            this.lblSchcodeVal.Size = new System.Drawing.Size(41, 13);
+            this.lblSchcodeVal.TabIndex = 94;
+            this.lblSchcodeVal.Text = "label29";
+            // 
+            // txtSchColors
+            // 
+            this.txtSchColors.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcolors", true));
+            this.txtSchColors.Location = new System.Drawing.Point(337, 360);
+            this.txtSchColors.Name = "txtSchColors";
+            this.txtSchColors.Size = new System.Drawing.Size(182, 20);
+            this.txtSchColors.TabIndex = 37;
             // 
             // txtFax
             // 
@@ -1117,7 +1135,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(344, 45);
+            this.label2.Location = new System.Drawing.Point(344, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 89;
@@ -1126,32 +1144,11 @@
             // lblSchName
             // 
             this.lblSchName.AutoSize = true;
-            this.lblSchName.Location = new System.Drawing.Point(13, 46);
+            this.lblSchName.Location = new System.Drawing.Point(13, 35);
             this.lblSchName.Name = "lblSchName";
             this.lblSchName.Size = new System.Drawing.Size(74, 13);
             this.lblSchName.TabIndex = 86;
             this.lblSchName.Text = "School Name:";
-            // 
-            // txtSchname
-            // 
-            this.txtSchname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schname", true));
-            this.txtSchname.Location = new System.Drawing.Point(87, 42);
-            this.txtSchname.MaxLength = 34;
-            this.txtSchname.Name = "txtSchname";
-            this.txtSchname.ReadOnly = true;
-            this.txtSchname.Size = new System.Drawing.Size(230, 20);
-            this.txtSchname.TabIndex = 83;
-            // 
-            // txtSchCode
-            // 
-            this.txtSchCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
-            this.txtSchCode.Location = new System.Drawing.Point(415, 42);
-            this.txtSchCode.MaxLength = 5;
-            this.txtSchCode.Name = "txtSchCode";
-            this.txtSchCode.ReadOnly = true;
-            this.txtSchCode.Size = new System.Drawing.Size(100, 20);
-            this.txtSchCode.TabIndex = 84;
-            this.txtSchCode.TextChanged += new System.EventHandler(this.txtSchCode_TextChanged);
             // 
             // schoutDateTimePicker
             // 
@@ -1417,6 +1414,7 @@
             // lookUp
             // 
             this.lookUp.DataSetName = "LookUp";
+            this.lookUp.EnforceConstraints = false;
             this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtaddress
@@ -1678,6 +1676,7 @@
             this.contdateDateTimePicker.Name = "contdateDateTimePicker";
             this.contdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.contdateDateTimePicker.TabIndex = 8;
+            this.contdateDateTimePicker.CloseUp += new System.EventHandler(this.contdateDateTimePicker_CloseUp);
             // 
             // txtCsRep
             // 
@@ -2661,6 +2660,7 @@
             this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager1.contpstnTableAdapter = null;
             this.tableAdapterManager1.lkpCommentsTableAdapter = null;
+            this.tableAdapterManager1.LkpDdiscntTableAdapter = null;
             this.tableAdapterManager1.lkpMktReferenceTableAdapter = null;
             this.tableAdapterManager1.lkpPromotionsTableAdapter = null;
             this.tableAdapterManager1.lkpTypeContTableAdapter = null;
@@ -2836,8 +2836,6 @@
         private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblSchName;
-        private System.Windows.Forms.TextBox txtSchname;
-        private System.Windows.Forms.TextBox txtSchCode;
         private System.Windows.Forms.DateTimePicker schoutDateTimePicker;
         private System.Windows.Forms.TextBox spcinstTextBox;
         private System.Windows.Forms.TextBox extrchgTextBox;
@@ -2940,5 +2938,8 @@
         private System.Windows.Forms.BindingSource datecontBindingSource1;
         private System.Windows.Forms.CheckBox chkMktComplete;
         private System.Windows.Forms.Label lblInvno;
-    }
+     
+        private System.Windows.Forms.Label lblSchcodeVal;
+        private System.Windows.Forms.TextBox txtSchname;
+        }
 }
