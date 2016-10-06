@@ -66,7 +66,7 @@
             System.Windows.Forms.Label label16;
             System.Windows.Forms.Label label18;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblSchoolName = new System.Windows.Forms.Label();
@@ -110,7 +110,7 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invHstBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.freebooksTextBox = new System.Windows.Forms.TextBox();
+            this.txtfreebooks = new System.Windows.Forms.TextBox();
             this.saletaxTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtOtherChrg = new System.Windows.Forms.TextBox();
@@ -699,7 +699,7 @@
             this.pg1.Controls.Add(this.btnPoSrch);
             this.pg1.Controls.Add(this.invHstDataGridView);
             this.pg1.Controls.Add(freebooksLabel);
-            this.pg1.Controls.Add(this.freebooksTextBox);
+            this.pg1.Controls.Add(this.txtfreebooks);
             this.pg1.Controls.Add(saletaxLabel);
             this.pg1.Controls.Add(this.saletaxTextBox);
             this.pg1.Controls.Add(this.panel4);
@@ -778,6 +778,7 @@
             this.button2.TabIndex = 171;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -961,6 +962,7 @@
             this.btnInvoice.TabIndex = 148;
             this.btnInvoice.Text = "Create/OverRide Invoice";
             this.btnInvoice.UseVisualStyleBackColor = true;
+            this.btnInvoice.Click += new System.EventHandler(this.btnInvoice_Click);
             // 
             // btnCreateWIP
             // 
@@ -1094,14 +1096,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1153,15 +1155,15 @@
             this.invHstBindingSource.DataMember = "InvHst";
             this.invHstBindingSource.DataSource = this.dsSales;
             // 
-            // freebooksTextBox
+            // txtfreebooks
             // 
-            this.freebooksTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "freebooks", true));
-            this.freebooksTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.freebooksTextBox.Location = new System.Drawing.Point(457, 607);
-            this.freebooksTextBox.Name = "freebooksTextBox";
-            this.freebooksTextBox.Size = new System.Drawing.Size(71, 20);
-            this.freebooksTextBox.TabIndex = 139;
-            this.freebooksTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.freebooksTextBox_Validating);
+            this.txtfreebooks.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "freebooks", true));
+            this.txtfreebooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtfreebooks.Location = new System.Drawing.Point(457, 607);
+            this.txtfreebooks.Name = "txtfreebooks";
+            this.txtfreebooks.Size = new System.Drawing.Size(71, 20);
+            this.txtfreebooks.TabIndex = 139;
+            this.txtfreebooks.Validating += new System.ComponentModel.CancelEventHandler(this.freebooksTextBox_Validating);
             // 
             // saletaxTextBox
             // 
@@ -2619,7 +2621,7 @@
         private System.Windows.Forms.TextBox desc22TextBox;
         private System.Windows.Forms.TextBox txtCredits2;
         private System.Windows.Forms.TextBox cred_etcTextBox1;
-        private System.Windows.Forms.TextBox freebooksTextBox;
+        private System.Windows.Forms.TextBox txtfreebooks;
         private System.Windows.Forms.BindingSource invHstBindingSource;
         private DataSets.dsSalesTableAdapters.InvHstTableAdapter invHstTableAdapter;
         private System.Windows.Forms.TextBox txtInvoSrch;

@@ -9,11 +9,14 @@ using System.Windows.Forms;
 using System.Configuration;
 using BaseClass.Classes;
 using System.Data.Sql;
+using BaseClase.Classes;
 using System.Data.SqlClient;
 using Mbc5.Classes;
 using Mbc5.LookUpForms;
+using BindingModels;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
+        private static string _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
         public frmSales(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal) {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -749,7 +752,65 @@ namespace Mbc5.Forms.MemoryBook {
             retval = !this.ValidateChildren();
             return retval;
         }
-        
+        private void CreateInvoice() {
+            var connection = new SqlConnection(_ConnectionString);
+            string cmdText = "";
+            var command = new SqlCommand(cmdText,connection);
+          
+                command.CommandType =CommandType.Text;
+                command.Parameters.Clear();
+            command.Parameters.AddWithValue("@invno",lblInvoice.Text);
+            try {
+                connection.Open();
+                connection.BeginTransaction();
+                cmdText = "Update Quotes set invoice=1 where invno=@invon";
+                command.ExecuteNonQuery();
+                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_each,source,ponum,invtot,baldue,contryear,allclrck,freebooks) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks)";
+                command.CommandText = cmdText;
+                command.Parameters.Clear();
+                SqlParameter[] parameters = new SqlParameter[] {
+                    new SqlParameter("@invno",lblInvoice.Text),
+                    new SqlParameter("@schcode",this.Schcode ),
+                    new SqlParameter("@qtedate",dteQuote.Value ),
+                    new SqlParameter("@nopages",txtNoPages.Text ),
+                    new SqlParameter("@nocopies",txtNocopies.Text ),
+                    new SqlParameter("@book_each",lblPriceEach.Text),
+                    new SqlParameter("@source",txtSource.Text ),
+                    new SqlParameter("@ponum",txtPoNum.Text),
+                    new SqlParameter("@invtot",lblFinalTotPrc.Text ),
+                    new SqlParameter("@baldue",lblFinalTotPrc.Text ),
+                    new SqlParameter("@contryear",txtYear.Text),
+                    new SqlParameter("@allclrck",chkAllClr.Checked),
+                    new SqlParameter("@freebooks",txtfreebooks.Text ),
+               
+              };
+                command.Parameters.AddRange(parameters);
+                command.ExecuteNonQuery();
+                command.Parameters.Clear();
+                cmdText = "Insert Into Invdetail (descr,price,discpercent,invno,schode) Values(@descr,@price,@discpercent,@invno,@schcode)";
+                var = GetDetailRecords(lblInvoice.Text);
+
+                } catch(Exception ex) {
+                
+            
+                }            
+                        
+                        }
+        private void InvoiceOverRide() {
+
+            }
+
+        private InvoiceDetails GetDetailRecords(string invno) {
+            if (chkHardBack.Checked) {
+            var rec=new InvoiceDetailBindingModel {
+                invno=lblInvoice.Text,
+
+                }
+
+                }
+            
+
+            }
         #endregion
         #region CalcEvents
         private void chkHardBack_Click(object sender, EventArgs e)
@@ -1250,16 +1311,16 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void freebooksTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(freebooksTextBox.Text))
+            if (!String.IsNullOrEmpty(txtfreebooks.Text))
             {
                 
                 errorProvider1.Clear();
                 int numeral;
-                var result = int.TryParse(freebooksTextBox.Text, out numeral);
+                var result = int.TryParse(txtfreebooks.Text, out numeral);
                 //non numeric
                 if (!result)
                 {
-                    errorProvider1.SetError(freebooksTextBox, "Please enter a number.");
+                    errorProvider1.SetError(txtfreebooks, "Please enter a number.");
                     e.Cancel = true;
                   
                 }
@@ -1493,7 +1554,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void lblSchoolName_Paint(object sender, PaintEventArgs e)
         {
-            this.Text = "Sales-" + lblSchoolName.Text;
+            this.Text = "Sales-" + lblSchoolName.Text.Trim()+" ("+this.Schcode.Trim()+")";
         }
 
         private void editLookUpItemsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1504,7 +1565,24 @@ namespace Mbc5.Forms.MemoryBook {
             frmDiscount.Show();
             this.Cursor = Cursors.Default;
         }
+
+        private void button2_Click(object sender,EventArgs e) {
+
+            }
+
+        private void btnInvoice_Click(object sender,EventArgs e) {
+            //Check if invoice exist to see what to do.
+            var sqlQuery = new SQLQuery();
+            var queryString = "SELECT Invno From Invoice where Invno=@Invno ";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,queryString,parameters);
+            if (result.Rows.Count > 0) {
+                CreateInvoice();
+                } else { InvoiceOverRide(); }
+            }
         //nothing below here  
-    }
+        }
 }
     

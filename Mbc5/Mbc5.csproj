@@ -395,6 +395,10 @@
       <Project>{d872b75b-b77f-41c3-bd82-84c88690bc82}</Project>
       <Name>BaseClass</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BindingModels\BindingModels.csproj">
+      <Project>{5f448496-325e-429a-ae98-18aa1015ad80}</Project>
+      <Name>BindingModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\MemBook-Jostens Logo.jpg" />
