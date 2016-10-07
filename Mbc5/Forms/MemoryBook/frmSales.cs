@@ -14,6 +14,8 @@ using System.Data.SqlClient;
 using Mbc5.Classes;
 using Mbc5.LookUpForms;
 using BindingModels;
+using Exceptionless;
+using Exceptionless.Models;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
         private static string _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
@@ -36,6 +38,14 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void frmSales_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'invoice.invdetail' table. You can move, or remove it, as needed.
+            this.invdetailTableAdapter.Fill(this.invoice.invdetail);
+            // TODO: This line of code loads data into the 'invoice.quotes' table. You can move, or remove it, as needed.
+            this.quotesTableAdapter1.Fill(this.invoice.quotes);
+            // TODO: This line of code loads data into the 'invoice.invoice' table. You can move, or remove it, as needed.
+            this.invoiceTableAdapter.Fill(this.invoice.invoice);
+            // TODO: This line of code loads data into the 'invoice.cust' table. You can move, or remove it, as needed.
+            this.custTableAdapter1.Fill(this.invoice.cust);
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();
@@ -391,10 +401,14 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Gloss = 0;
                 if (chkGlossLam.Checked)
                 {
-                    Gloss = (BookOptionPricing.Lamination * numberOfCopies);
-                    lblLaminateAmt.Text = Gloss.ToString();
-
-                }
+                    if (chkHardBack.Checked || chkCaseBind.Checked) {
+                        lblLaminateAmt.Text = "0.00";
+                        Gloss = 0;
+                        } else {
+                        Gloss = (BookOptionPricing.Lamination * numberOfCopies);
+                        lblLaminateAmt.Text = Gloss.ToString();
+                        }
+                        }
                 else
                 {
                     lblLaminateAmt.Text = "0.00";
@@ -449,7 +463,7 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal Desc4Tot = 0;
 
                 vParseResult = decimal.TryParse(lblBookTotal.Text.ToString().Replace("$", ""), out BookTotal);
-                vParseResult = decimal.TryParse(lblSpeccvr.Text, out SpecCvrTot);
+                vParseResult = decimal.TryParse(lblSpeccvrtot.Text, out SpecCvrTot);
                 vParseResult = decimal.TryParse(txtFoilAd.Text, out FoilTot);
                 vParseResult = decimal.TryParse(txtClrTot.Text, out ClrPgTot);
                 vParseResult = decimal.TryParse(txtMisc.Text, out MiscTot);
@@ -787,30 +801,282 @@ namespace Mbc5.Forms.MemoryBook {
                 command.Parameters.AddRange(parameters);
                 command.ExecuteNonQuery();
                 command.Parameters.Clear();
-                cmdText = "Insert Into Invdetail (descr,price,discpercent,invno,schode) Values(@descr,@price,@discpercent,@invno,@schcode)";
-                var = GetDetailRecords(lblInvoice.Text);
+                cmdText = "Insert Into Invdetail (descr,price,discpercent,invno,schoolcode) Values(@descr,@price,@discpercent,@invno,@schcode)";
+                var Details = GetDetailRecords(lblInvoice.Text);
+                if (Details.Count>0) {
+                    foreach(var row in Details) {
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@descr",row.descr);
+                        command.Parameters.AddWithValue("@price",row.price);
+                        command.Parameters.AddWithValue("@discpercent",row.discpercent);
+                        command.Parameters.AddWithValue("@invno",row.invno);
+                        command.Parameters.AddWithValue("schoolcode",row.schoolcode);
+                        try {
+                            command.ExecuteNonQuery();
 
+                            }catch(Exception ex) {
+                            ex.ToExceptionless()
+                                .AddTags("CreateInvoice")
+                                .AddObject(command)
+                                .MarkAsCritical()
+                                .Submit();
+
+                            }
+                    
+                        }
+                    
+                    }
+                command.Transaction.Commit();
                 } catch(Exception ex) {
-                
-            
-                }            
+                command.Transaction.Rollback();
+
+                } finally { connection.Close(); }          
                         
                         }
         private void InvoiceOverRide() {
 
             }
 
-        private InvoiceDetails GetDetailRecords(string invno) {
+        private List<InvoiceDetailBindingModel> GetDetailRecords(string invno) {
+            int vinvno = 0;
+            if(!int.TryParse(lblInvoice.Text,out vinvno)) {
+                MessageBox.Show("Could not create invoice because invoice number is not available.");
+                return null;
+                }
+            var Details = new List<InvoiceDetailBindingModel>();
+
             if (chkHardBack.Checked) {
-            var rec=new InvoiceDetailBindingModel {
-                invno=lblInvoice.Text,
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Hard Back (sewn)",
+                    discpercent = null,
+                    price= Convert.ToDecimal(lblHardbackAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+                Details.Add(rec);
 
                 }
 
-                }
-            
+            if (chkCaseBind.Checked) {                          
+                    var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Case Binding (glued)",
+                    discpercent = null,
+                    price= Convert.ToDecimal(lblCaseamt.Text),
+                        schoolcode = this.Schcode
+                    };
+              
+                Details.Add(rec);
 
+                }
+            if (chkPerfBind.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Perfect Bind",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblPerfbindAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkSpiral.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Spiral Bind",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblSpiralAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkSaddlStitch.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Soft Cover Stapled",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblSaddleAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkProfessional.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Professional",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblProfAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkConv.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Convenient",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblConvAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkYir.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Year In Review Standard",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblYir.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkStory.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Our Story/My Story Cover",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblStoryAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkMLaminate.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Matte Laminate",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblMLaminateAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkGlossLam.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Gloss Laminate",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblLaminateAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (Convert.ToDecimal(lblSpeccvrtot.Text)>0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Special Cover",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblSpeccvrtot.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (Convert.ToDecimal(txtFoilAd.Text) > 0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Foil (Additional)",
+                    discpercent = null,
+                    price = Convert.ToDecimal(txtFoilAd.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (Convert.ToDecimal(lbldisc1.Text) > 0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = dp1descComboBox.SelectedValue.ToString(),
+                    discpercent = txtDisc.Text +"% discount",
+                    price = Convert.ToDecimal(txtFoilAd.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkDc2.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Full pay w/page submission",
+                    discpercent = txtDp2.Text+"% discount",
+                    price = Convert.ToDecimal(lbldisc2.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (Convert.ToDecimal(lblDisc3.Text)>0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = txtDp3Desc.Text,
+                    discpercent = dp3ComboBox.Text + "% discount",
+                    price = Convert.ToDecimal(lblDisc3.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkMsStandard.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "My Story With Picture Personalization",
+                    discpercent =null,
+                    price = Convert.ToDecimal(lblMsTot.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (Convert.ToDecimal(lblperstotal.Text)>0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Personalization",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblperstotal.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+if (Convert.ToDecimal(lblIconTot.Text) > 0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Icons",
+                    discpercent = null,
+                    price = Convert.ToDecimal(lblIconTot.Text),
+                    schoolcode = this.Schcode
+                    };
+
+        Details.Add(rec);
+
+                }
+            return Details;
             }
+      
+            
         #endregion
         #region CalcEvents
         private void chkHardBack_Click(object sender, EventArgs e)
@@ -915,9 +1181,9 @@ namespace Mbc5.Forms.MemoryBook {
             bool result2 = int.TryParse(txtNocopies.Text,out copies);
             if (result && result2)
             {
-                lblSpeccvr.Text = (copies * spcEach).ToString();
+                lblSpeccvrtot.Text = (copies * spcEach).ToString();
             }
-            else {  lblSpeccvr.Text = ""; }
+            else {  lblSpeccvrtot.Text = ""; }
             BookCalc();
 
         }
@@ -1581,6 +1847,20 @@ namespace Mbc5.Forms.MemoryBook {
             if (result.Rows.Count > 0) {
                 CreateInvoice();
                 } else { InvoiceOverRide(); }
+            }
+
+        private void txtIconCopies_Leave(object sender,EventArgs e) {
+            int number = 0;
+            decimal prc = 0;
+            bool result = int.TryParse(txtIconCopies.Text,out number);
+            bool result2 = decimal.TryParse(txtIconamt.Text,out prc);
+            if (result && result2) {
+                lblIconTot.Text = (number * prc).ToString("0.00");
+                BookCalc();
+                } else {
+                lblIconTot.Text = "0.00";
+                BookCalc();
+                }
             }
         //nothing below here  
         }
