@@ -39,11 +39,11 @@ namespace Mbc5.Forms.MemoryBook {
         private void frmSales_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'invoice.invdetail' table. You can move, or remove it, as needed.
-            this.invdetailTableAdapter.Fill(this.invoice.invdetail);
+           // this.invdetailTableAdapter.Fill(this.invoice.invdetail);
             // TODO: This line of code loads data into the 'invoice.quotes' table. You can move, or remove it, as needed.
             this.quotesTableAdapter1.Fill(this.invoice.quotes);
             // TODO: This line of code loads data into the 'invoice.invoice' table. You can move, or remove it, as needed.
-            this.invoiceTableAdapter.Fill(this.invoice.invoice);
+            //this.invoiceTableAdapter.Fill(this.invoice.invoice);
             // TODO: This line of code loads data into the 'invoice.cust' table. You can move, or remove it, as needed.
             this.custTableAdapter1.Fill(this.invoice.cust);
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
