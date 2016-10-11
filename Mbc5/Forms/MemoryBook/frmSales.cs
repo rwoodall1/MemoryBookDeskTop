@@ -776,8 +776,11 @@ namespace Mbc5.Forms.MemoryBook {
             command.Parameters.AddWithValue("@invno",lblInvoice.Text);
             try {
                 connection.Open();
-                connection.BeginTransaction();
-                cmdText = "Update Quotes set invoice=1 where invno=@invon";
+                var trans=connection.BeginTransaction();
+                command.Transaction = trans;
+                //command.Parameters.AddWithValue("@invno",lblInvoice.Text);
+                cmdText = "Update Quotes set invoice=1 where invno=@invno";
+                command.CommandText = cmdText;
                 command.ExecuteNonQuery();
                 cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_each,source,ponum,invtot,baldue,contryear,allclrck,freebooks) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks)";
                 command.CommandText = cmdText;
@@ -1845,8 +1848,8 @@ if (Convert.ToDecimal(lblIconTot.Text) > 0) {
             };
             var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,queryString,parameters);
             if (result.Rows.Count > 0) {
-                CreateInvoice();
-                } else { InvoiceOverRide(); }
+                InvoiceOverRide();
+                } else { CreateInvoice(); }
             }
 
         private void txtIconCopies_Leave(object sender,EventArgs e) {

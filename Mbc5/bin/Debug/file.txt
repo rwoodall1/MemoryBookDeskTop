@@ -119,3 +119,8 @@ The statement has been terminated. CHOME  WDFM\rwoodall
    at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
    at System.Windows.Forms.BindingSource.EndEdit()
    at Mbc5.Forms.MemoryBook.frmSales.Save() in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 106 
+2016/10/11 16:29:47.015 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    
+2016/10/11 16:32:30.361 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    
+2016/10/11 16:32:34.482 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    
+2016/10/11 16:56:07.536 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    
+2016/10/11 16:56:12.119 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    
