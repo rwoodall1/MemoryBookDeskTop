@@ -779,23 +779,25 @@ namespace Mbc5.Forms.MemoryBook {
                 var trans=connection.BeginTransaction();
                 command.Transaction = trans;
                 //command.Parameters.AddWithValue("@invno",lblInvoice.Text);
-                cmdText = "Update Quotes set invoice=1 where invno=@invno";
+                cmdText = "Update Quotes set invoiced=1 where invno=@invno";
                 command.CommandText = cmdText;
                 command.ExecuteNonQuery();
-                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_each,source,ponum,invtot,baldue,contryear,allclrck,freebooks) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks)";
+                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks)";
+                //cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each)";
                 command.CommandText = cmdText;
                 command.Parameters.Clear();
+                var aa = lblPriceEach.Text.Replace("$","");
                 SqlParameter[] parameters = new SqlParameter[] {
                     new SqlParameter("@invno",lblInvoice.Text),
                     new SqlParameter("@schcode",this.Schcode ),
                     new SqlParameter("@qtedate",dteQuote.Value ),
                     new SqlParameter("@nopages",txtNoPages.Text ),
                     new SqlParameter("@nocopies",txtNocopies.Text ),
-                    new SqlParameter("@book_each",lblPriceEach.Text),
+                    new SqlParameter("@book_each",lblPriceEach.Text.Replace("$","").Replace(",","")),
                     new SqlParameter("@source",txtSource.Text ),
                     new SqlParameter("@ponum",txtPoNum.Text),
-                    new SqlParameter("@invtot",lblFinalTotPrc.Text ),
-                    new SqlParameter("@baldue",lblFinalTotPrc.Text ),
+                    new SqlParameter("@invtot",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
+                    new SqlParameter("@baldue",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
                     new SqlParameter("@contryear",txtYear.Text),
                     new SqlParameter("@allclrck",chkAllClr.Checked),
                     new SqlParameter("@freebooks",txtfreebooks.Text ),
@@ -980,7 +982,7 @@ namespace Mbc5.Forms.MemoryBook {
                 Details.Add(rec);
 
                 }
-            if (Convert.ToDecimal(lblSpeccvrtot.Text)>0) {
+            if ((String.IsNullOrEmpty(lblSpeccvrtot.Text)? 0 : Convert.ToDecimal(lblSpeccvrtot.Text))  >0) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
                     descr = "Special Cover",
@@ -992,7 +994,7 @@ namespace Mbc5.Forms.MemoryBook {
                 Details.Add(rec);
 
                 }
-            if (Convert.ToDecimal(txtFoilAd.Text) > 0) {
+            if ((String.IsNullOrEmpty(txtFoilAd.Text)?0:Convert.ToDecimal(txtFoilAd.Text)) > 0) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
                     descr = "Foil (Additional)",
@@ -1004,7 +1006,7 @@ namespace Mbc5.Forms.MemoryBook {
                 Details.Add(rec);
 
                 }
-            if (Convert.ToDecimal(lbldisc1.Text) > 0) {
+            if ((String.IsNullOrEmpty(lbldisc1.Text) ?0:Convert.ToDecimal(lbldisc1.Text)) > 0) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
                     descr = dp1descComboBox.SelectedValue.ToString(),
@@ -1021,14 +1023,14 @@ namespace Mbc5.Forms.MemoryBook {
                     invno = vinvno,
                     descr = "Full pay w/page submission",
                     discpercent = txtDp2.Text+"% discount",
-                    price = Convert.ToDecimal(lbldisc2.Text),
+                    price =String.IsNullOrEmpty(lbldisc2.Text)?0:Convert.ToDecimal(lbldisc2.Text),
                     schoolcode = this.Schcode
                     };
 
                 Details.Add(rec);
 
                 }
-            if (Convert.ToDecimal(lblDisc3.Text)>0) {
+            if ((String.IsNullOrEmpty(lblDisc3.Text) ?0:Convert.ToDecimal(lblDisc3.Text))>0) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
                     descr = txtDp3Desc.Text,
@@ -1045,14 +1047,14 @@ namespace Mbc5.Forms.MemoryBook {
                     invno = vinvno,
                     descr = "My Story With Picture Personalization",
                     discpercent =null,
-                    price = Convert.ToDecimal(lblMsTot.Text),
+                    price =String.IsNullOrEmpty(lblMsTot.Text) ?0: Convert.ToDecimal(lblMsTot.Text),
                     schoolcode = this.Schcode
                     };
 
                 Details.Add(rec);
 
                 }
-            if (Convert.ToDecimal(lblperstotal.Text)>0) {
+            if ((String.IsNullOrEmpty(lblperstotal.Text) ?0:Convert.ToDecimal(lblperstotal.Text))>0) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
                     descr = "Personalization",
@@ -1064,7 +1066,7 @@ namespace Mbc5.Forms.MemoryBook {
                 Details.Add(rec);
 
                 }
-if (Convert.ToDecimal(lblIconTot.Text) > 0) {
+            if ((String.IsNullOrEmpty(lblIconTot.Text) ?0:Convert.ToDecimal(lblIconTot.Text)) > 0) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
                     descr = "Icons",

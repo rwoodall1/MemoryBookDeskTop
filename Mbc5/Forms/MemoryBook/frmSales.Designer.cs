@@ -68,8 +68,6 @@
             System.Windows.Forms.Label lblIconCopies;
             System.Windows.Forms.Label label20;
             System.Windows.Forms.Label label21;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label10;
             System.Windows.Forms.Label label22;
             System.Windows.Forms.Label label24;
@@ -83,6 +81,8 @@
             System.Windows.Forms.Label invtotLabel;
             System.Windows.Forms.Label paymentsLabel;
             System.Windows.Forms.Label baldueLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblSchoolName = new System.Windows.Forms.Label();
@@ -233,46 +233,33 @@
             this.txtYear = new System.Windows.Forms.TextBox();
             this.txtNoPages = new System.Windows.Forms.TextBox();
             this.pg2 = new System.Windows.Forms.TabPage();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
-            this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
-            this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
-            this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
-            this.mnuEditLkUp = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editLookUpItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.poamtLabel1 = new System.Windows.Forms.Label();
+            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invoice = new Mbc5.DataSets.Invoice();
+            this.book_priceLabel2 = new System.Windows.Forms.Label();
+            this.quotesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.book_eaLabel2 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.custBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.book_eaLabel2 = new System.Windows.Forms.Label();
-            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.invoice = new Mbc5.DataSets.Invoice();
-            this.custBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.custTableAdapter1 = new Mbc5.DataSets.InvoiceTableAdapters.custTableAdapter();
-            this.tableAdapterManager1 = new Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager();
-            this.invoiceTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invoiceTableAdapter();
-            this.quotesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.quotesTableAdapter1 = new Mbc5.DataSets.InvoiceTableAdapters.quotesTableAdapter();
-            this.book_priceLabel2 = new System.Windows.Forms.Label();
-            this.csrepLabel1 = new System.Windows.Forms.Label();
-            this.schcodeLabel2 = new System.Windows.Forms.Label();
-            this.invnoLabel2 = new System.Windows.Forms.Label();
-            this.qtedateLabel2 = new System.Windows.Forms.Label();
-            this.poamtLabel1 = new System.Windows.Forms.Label();
-            this.invtotLabel1 = new System.Windows.Forms.Label();
-            this.paymentsLabel1 = new System.Windows.Forms.Label();
             this.baldueLabel1 = new System.Windows.Forms.Label();
-            this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.invdetailTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invdetailTableAdapter();
+            this.paymentsLabel1 = new System.Windows.Forms.Label();
+            this.invtotLabel1 = new System.Windows.Forms.Label();
+            this.qtedateLabel2 = new System.Windows.Forms.Label();
+            this.invnoLabel2 = new System.Windows.Forms.Label();
+            this.schcodeLabel2 = new System.Windows.Forms.Label();
+            this.csrepLabel1 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.invdetailDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -280,6 +267,19 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
+            this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
+            this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
+            this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
+            this.mnuEditLkUp = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editLookUpItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.custTableAdapter1 = new Mbc5.DataSets.InvoiceTableAdapters.custTableAdapter();
+            this.tableAdapterManager1 = new Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager();
+            this.invoiceTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invoiceTableAdapter();
+            this.quotesTableAdapter1 = new Mbc5.DataSets.InvoiceTableAdapters.quotesTableAdapter();
+            this.invdetailTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invdetailTableAdapter();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -355,18 +355,18 @@
             this.panel1.SuspendLayout();
             this.pnlHard.SuspendLayout();
             this.pg2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.mnuEditLkUp.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource1)).BeginInit();
+            this.panel12.SuspendLayout();
+            this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.mnuEditLkUp.SuspendLayout();
             this.SuspendLayout();
             // 
             // nopagesLabel
@@ -775,6 +775,123 @@
             label21.Size = new System.Drawing.Size(26, 13);
             label21.TabIndex = 170;
             label21.Text = "@$";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(12, 165);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(42, 13);
+            label10.TabIndex = 21;
+            label10.Text = "Pages";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new System.Drawing.Point(112, 165);
+            label22.Name = "label22";
+            label22.Size = new System.Drawing.Size(45, 13);
+            label22.TabIndex = 20;
+            label22.Text = "Copies";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new System.Drawing.Point(133, 142);
+            label24.Name = "label24";
+            label24.Size = new System.Drawing.Size(78, 13);
+            label24.TabIndex = 19;
+            label24.Text = "P.O. Amount";
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Location = new System.Drawing.Point(6, 142);
+            label26.Name = "label26";
+            label26.Size = new System.Drawing.Size(44, 13);
+            label26.TabIndex = 18;
+            label26.Text = "P.O. #";
+            // 
+            // book_eaLabel1
+            // 
+            book_eaLabel1.AutoSize = true;
+            book_eaLabel1.Location = new System.Drawing.Point(201, 165);
+            book_eaLabel1.Name = "book_eaLabel1";
+            book_eaLabel1.Size = new System.Drawing.Size(110, 13);
+            book_eaLabel1.TabIndex = 22;
+            book_eaLabel1.Text = "Bace Price (Each)";
+            // 
+            // book_priceLabel1
+            // 
+            book_priceLabel1.AutoSize = true;
+            book_priceLabel1.Location = new System.Drawing.Point(353, 165);
+            book_priceLabel1.Name = "book_priceLabel1";
+            book_priceLabel1.Size = new System.Drawing.Size(36, 13);
+            book_priceLabel1.TabIndex = 23;
+            book_priceLabel1.Text = "Total";
+            // 
+            // csrepLabel
+            // 
+            csrepLabel.AutoSize = true;
+            csrepLabel.Location = new System.Drawing.Point(42, 10);
+            csrepLabel.Name = "csrepLabel";
+            csrepLabel.Size = new System.Drawing.Size(50, 13);
+            csrepLabel.TabIndex = 0;
+            csrepLabel.Text = "CS Rep";
+            // 
+            // schcodeLabel
+            // 
+            schcodeLabel.AutoSize = true;
+            schcodeLabel.Location = new System.Drawing.Point(13, 32);
+            schcodeLabel.Name = "schcodeLabel";
+            schcodeLabel.Size = new System.Drawing.Size(79, 13);
+            schcodeLabel.TabIndex = 2;
+            schcodeLabel.Text = "School Code";
+            // 
+            // invnoLabel1
+            // 
+            invnoLabel1.AutoSize = true;
+            invnoLabel1.Location = new System.Drawing.Point(31, 55);
+            invnoLabel1.Name = "invnoLabel1";
+            invnoLabel1.Size = new System.Drawing.Size(61, 13);
+            invnoLabel1.TabIndex = 4;
+            invnoLabel1.Text = "Invoice #";
+            // 
+            // qtedateLabel1
+            // 
+            qtedateLabel1.AutoSize = true;
+            qtedateLabel1.Location = new System.Drawing.Point(20, 82);
+            qtedateLabel1.Name = "qtedateLabel1";
+            qtedateLabel1.Size = new System.Drawing.Size(72, 13);
+            qtedateLabel1.TabIndex = 6;
+            qtedateLabel1.Text = "Quote Date";
+            // 
+            // invtotLabel
+            // 
+            invtotLabel.AutoSize = true;
+            invtotLabel.Location = new System.Drawing.Point(338, 121);
+            invtotLabel.Name = "invtotLabel";
+            invtotLabel.Size = new System.Drawing.Size(36, 13);
+            invtotLabel.TabIndex = 8;
+            invtotLabel.Text = "Total";
+            // 
+            // paymentsLabel
+            // 
+            paymentsLabel.AutoSize = true;
+            paymentsLabel.Location = new System.Drawing.Point(313, 142);
+            paymentsLabel.Name = "paymentsLabel";
+            paymentsLabel.Size = new System.Drawing.Size(61, 13);
+            paymentsLabel.TabIndex = 10;
+            paymentsLabel.Text = "Payments";
+            // 
+            // baldueLabel
+            // 
+            baldueLabel.AutoSize = true;
+            baldueLabel.Location = new System.Drawing.Point(294, 161);
+            baldueLabel.Name = "baldueLabel";
+            baldueLabel.Size = new System.Drawing.Size(80, 13);
+            baldueLabel.TabIndex = 12;
+            baldueLabel.Text = "Balance Due";
             // 
             // tabSales
             // 
@@ -1209,14 +1326,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1727,7 +1844,7 @@
             // chkMsStandard
             // 
             this.chkMsStandard.AutoSize = true;
-            this.chkMsStandard.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "foilck", true));
+            this.chkMsStandard.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "foilck", true));
             this.chkMsStandard.Location = new System.Drawing.Point(69, 106);
             this.chkMsStandard.Name = "chkMsStandard";
             this.chkMsStandard.Size = new System.Drawing.Size(127, 17);
@@ -2270,7 +2387,7 @@
             // 
             this.chkPerfBind.AutoSize = true;
             this.chkPerfBind.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkPerfBind.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "peyn", true));
+            this.chkPerfBind.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "peyn", true));
             this.chkPerfBind.Location = new System.Drawing.Point(26, 19);
             this.chkPerfBind.Name = "chkPerfBind";
             this.chkPerfBind.Size = new System.Drawing.Size(122, 17);
@@ -2283,7 +2400,7 @@
             // chkSpiral
             // 
             this.chkSpiral.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkSpiral.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "spirck", true));
+            this.chkSpiral.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "spirck", true));
             this.chkSpiral.Location = new System.Drawing.Point(44, 37);
             this.chkSpiral.Name = "chkSpiral";
             this.chkSpiral.Size = new System.Drawing.Size(104, 17);
@@ -2296,7 +2413,7 @@
             // chkSaddlStitch
             // 
             this.chkSaddlStitch.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkSaddlStitch.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "sdlstich", true));
+            this.chkSaddlStitch.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "sdlstich", true));
             this.chkSaddlStitch.Location = new System.Drawing.Point(44, 56);
             this.chkSaddlStitch.Name = "chkSaddlStitch";
             this.chkSaddlStitch.Size = new System.Drawing.Size(104, 17);
@@ -2345,7 +2462,7 @@
             // 
             this.chkHardBack.AutoSize = true;
             this.chkHardBack.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkHardBack.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "hdbky_n", true));
+            this.chkHardBack.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "hdbky_n", true));
             this.chkHardBack.Location = new System.Drawing.Point(3, 23);
             this.chkHardBack.Name = "chkHardBack";
             this.chkHardBack.Size = new System.Drawing.Size(145, 17);
@@ -2358,7 +2475,7 @@
             // 
             this.chkCaseBind.AutoSize = true;
             this.chkCaseBind.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkCaseBind.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "casey_n", true));
+            this.chkCaseBind.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "casey_n", true));
             this.chkCaseBind.Location = new System.Drawing.Point(4, 42);
             this.chkCaseBind.Name = "chkCaseBind";
             this.chkCaseBind.Size = new System.Drawing.Size(144, 17);
@@ -2599,53 +2716,6 @@
             this.pg2.TabIndex = 1;
             this.pg2.Text = "Invoices";
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // quotesTableAdapter
-            // 
-            this.quotesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.custTableAdapter = null;
-            this.tableAdapterManager.InvHstTableAdapter = null;
-            this.tableAdapterManager.quotesTableAdapter = this.quotesTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // custTableAdapter
-            // 
-            this.custTableAdapter.ClearBeforeFill = true;
-            // 
-            // invHstTableAdapter
-            // 
-            this.invHstTableAdapter.ClearBeforeFill = true;
-            // 
-            // mnuEditLkUp
-            // 
-            this.mnuEditLkUp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editLookUpItemsToolStripMenuItem});
-            this.mnuEditLkUp.Name = "mnuEditLkUp";
-            this.mnuEditLkUp.Size = new System.Drawing.Size(174, 26);
-            // 
-            // editLookUpItemsToolStripMenuItem
-            // 
-            this.editLookUpItemsToolStripMenuItem.Name = "editLookUpItemsToolStripMenuItem";
-            this.editLookUpItemsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.editLookUpItemsToolStripMenuItem.Text = "Edit Look Up Items";
-            this.editLookUpItemsToolStripMenuItem.Click += new System.EventHandler(this.editLookUpItemsToolStripMenuItem_Click);
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.invdetailDataGridView);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(3, 232);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1219, 470);
-            this.panel9.TabIndex = 2;
-            // 
             // panel10
             // 
             this.panel10.Controls.Add(this.panel11);
@@ -2681,14 +2751,47 @@
             this.panel11.Size = new System.Drawing.Size(532, 198);
             this.panel11.TabIndex = 0;
             // 
-            // label10
+            // poamtLabel1
             // 
-            label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(12, 165);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(42, 13);
-            label10.TabIndex = 21;
-            label10.Text = "Pages";
+            this.poamtLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "poamt", true));
+            this.poamtLabel1.Location = new System.Drawing.Point(217, 142);
+            this.poamtLabel1.Name = "poamtLabel1";
+            this.poamtLabel1.Size = new System.Drawing.Size(100, 13);
+            this.poamtLabel1.TabIndex = 25;
+            this.poamtLabel1.Text = "label34";
+            // 
+            // invoiceBindingSource
+            // 
+            this.invoiceBindingSource.DataMember = "invoice";
+            this.invoiceBindingSource.DataSource = this.invoice;
+            // 
+            // invoice
+            // 
+            this.invoice.DataSetName = "Invoice";
+            this.invoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // book_priceLabel2
+            // 
+            this.book_priceLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource1, "book_price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.book_priceLabel2.Location = new System.Drawing.Point(395, 165);
+            this.book_priceLabel2.Name = "book_priceLabel2";
+            this.book_priceLabel2.Size = new System.Drawing.Size(40, 13);
+            this.book_priceLabel2.TabIndex = 24;
+            this.book_priceLabel2.Text = "label34";
+            // 
+            // quotesBindingSource1
+            // 
+            this.quotesBindingSource1.DataMember = "quotes";
+            this.quotesBindingSource1.DataSource = this.invoice;
+            // 
+            // book_eaLabel2
+            // 
+            this.book_eaLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "book_ea", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.book_eaLabel2.Location = new System.Drawing.Point(315, 165);
+            this.book_eaLabel2.Name = "book_eaLabel2";
+            this.book_eaLabel2.Size = new System.Drawing.Size(40, 13);
+            this.book_eaLabel2.TabIndex = 23;
+            this.book_eaLabel2.Text = "label34";
             // 
             // label19
             // 
@@ -2699,15 +2802,6 @@
             this.label19.TabIndex = 22;
             this.label19.Text = "label10";
             // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Location = new System.Drawing.Point(112, 165);
-            label22.Name = "label22";
-            label22.Size = new System.Drawing.Size(45, 13);
-            label22.TabIndex = 20;
-            label22.Text = "Copies";
-            // 
             // label23
             // 
             this.label23.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "book_ea", true));
@@ -2716,24 +2810,6 @@
             this.label23.Size = new System.Drawing.Size(34, 13);
             this.label23.TabIndex = 21;
             this.label23.Text = "label10";
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Location = new System.Drawing.Point(133, 142);
-            label24.Name = "label24";
-            label24.Size = new System.Drawing.Size(78, 13);
-            label24.TabIndex = 19;
-            label24.Text = "P.O. Amount";
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Location = new System.Drawing.Point(6, 142);
-            label26.Name = "label26";
-            label26.Size = new System.Drawing.Size(44, 13);
-            label26.TabIndex = 18;
-            label26.Text = "P.O. #";
             // 
             // label27
             // 
@@ -2753,6 +2829,11 @@
             this.label28.Size = new System.Drawing.Size(48, 13);
             this.label28.TabIndex = 18;
             this.label28.Text = "label10";
+            // 
+            // custBindingSource1
+            // 
+            this.custBindingSource1.DataMember = "cust";
+            this.custBindingSource1.DataSource = this.invoice;
             // 
             // label29
             // 
@@ -2824,193 +2905,15 @@
             this.panel12.Size = new System.Drawing.Size(657, 197);
             this.panel12.TabIndex = 1;
             // 
-            // book_eaLabel1
+            // baldueLabel1
             // 
-            book_eaLabel1.AutoSize = true;
-            book_eaLabel1.Location = new System.Drawing.Point(201, 165);
-            book_eaLabel1.Name = "book_eaLabel1";
-            book_eaLabel1.Size = new System.Drawing.Size(110, 13);
-            book_eaLabel1.TabIndex = 22;
-            book_eaLabel1.Text = "Bace Price (Each)";
-            // 
-            // book_eaLabel2
-            // 
-            this.book_eaLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "book_ea", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.book_eaLabel2.Location = new System.Drawing.Point(315, 165);
-            this.book_eaLabel2.Name = "book_eaLabel2";
-            this.book_eaLabel2.Size = new System.Drawing.Size(40, 13);
-            this.book_eaLabel2.TabIndex = 23;
-            this.book_eaLabel2.Text = "label34";
-            // 
-            // invoiceBindingSource
-            // 
-            this.invoiceBindingSource.DataMember = "invoice";
-            this.invoiceBindingSource.DataSource = this.invoice;
-            // 
-            // invoice
-            // 
-            this.invoice.DataSetName = "Invoice";
-            this.invoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // custBindingSource1
-            // 
-            this.custBindingSource1.DataMember = "cust";
-            this.custBindingSource1.DataSource = this.invoice;
-            // 
-            // custTableAdapter1
-            // 
-            this.custTableAdapter1.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.custTableAdapter = this.custTableAdapter1;
-            this.tableAdapterManager1.invdetailTableAdapter = null;
-            this.tableAdapterManager1.invoiceTableAdapter = null;
-            this.tableAdapterManager1.quotesTableAdapter = null;
-            this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // invoiceTableAdapter
-            // 
-            this.invoiceTableAdapter.ClearBeforeFill = true;
-            // 
-            // quotesBindingSource1
-            // 
-            this.quotesBindingSource1.DataMember = "quotes";
-            this.quotesBindingSource1.DataSource = this.invoice;
-            // 
-            // quotesTableAdapter1
-            // 
-            this.quotesTableAdapter1.ClearBeforeFill = true;
-            // 
-            // book_priceLabel1
-            // 
-            book_priceLabel1.AutoSize = true;
-            book_priceLabel1.Location = new System.Drawing.Point(353, 165);
-            book_priceLabel1.Name = "book_priceLabel1";
-            book_priceLabel1.Size = new System.Drawing.Size(36, 13);
-            book_priceLabel1.TabIndex = 23;
-            book_priceLabel1.Text = "Total";
-            // 
-            // book_priceLabel2
-            // 
-            this.book_priceLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource1, "book_price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.book_priceLabel2.Location = new System.Drawing.Point(395, 165);
-            this.book_priceLabel2.Name = "book_priceLabel2";
-            this.book_priceLabel2.Size = new System.Drawing.Size(40, 13);
-            this.book_priceLabel2.TabIndex = 24;
-            this.book_priceLabel2.Text = "label34";
-            // 
-            // csrepLabel
-            // 
-            csrepLabel.AutoSize = true;
-            csrepLabel.Location = new System.Drawing.Point(42, 10);
-            csrepLabel.Name = "csrepLabel";
-            csrepLabel.Size = new System.Drawing.Size(50, 13);
-            csrepLabel.TabIndex = 0;
-            csrepLabel.Text = "CS Rep";
-            // 
-            // csrepLabel1
-            // 
-            this.csrepLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource1, "csrep", true));
-            this.csrepLabel1.Location = new System.Drawing.Point(98, 10);
-            this.csrepLabel1.Name = "csrepLabel1";
-            this.csrepLabel1.Size = new System.Drawing.Size(30, 13);
-            this.csrepLabel1.TabIndex = 1;
-            this.csrepLabel1.Text = "label34";
-            // 
-            // schcodeLabel
-            // 
-            schcodeLabel.AutoSize = true;
-            schcodeLabel.Location = new System.Drawing.Point(13, 32);
-            schcodeLabel.Name = "schcodeLabel";
-            schcodeLabel.Size = new System.Drawing.Size(79, 13);
-            schcodeLabel.TabIndex = 2;
-            schcodeLabel.Text = "School Code";
-            // 
-            // schcodeLabel2
-            // 
-            this.schcodeLabel2.AutoSize = true;
-            this.schcodeLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource1, "schcode", true));
-            this.schcodeLabel2.Location = new System.Drawing.Point(98, 32);
-            this.schcodeLabel2.Name = "schcodeLabel2";
-            this.schcodeLabel2.Size = new System.Drawing.Size(48, 13);
-            this.schcodeLabel2.TabIndex = 4;
-            this.schcodeLabel2.Text = "label34";
-            // 
-            // invnoLabel1
-            // 
-            invnoLabel1.AutoSize = true;
-            invnoLabel1.Location = new System.Drawing.Point(31, 55);
-            invnoLabel1.Name = "invnoLabel1";
-            invnoLabel1.Size = new System.Drawing.Size(61, 13);
-            invnoLabel1.TabIndex = 4;
-            invnoLabel1.Text = "Invoice #";
-            // 
-            // invnoLabel2
-            // 
-            this.invnoLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "invno", true));
-            this.invnoLabel2.Location = new System.Drawing.Point(98, 56);
-            this.invnoLabel2.Name = "invnoLabel2";
-            this.invnoLabel2.Size = new System.Drawing.Size(60, 13);
-            this.invnoLabel2.TabIndex = 5;
-            this.invnoLabel2.Text = "label34";
-            // 
-            // qtedateLabel1
-            // 
-            qtedateLabel1.AutoSize = true;
-            qtedateLabel1.Location = new System.Drawing.Point(20, 82);
-            qtedateLabel1.Name = "qtedateLabel1";
-            qtedateLabel1.Size = new System.Drawing.Size(72, 13);
-            qtedateLabel1.TabIndex = 6;
-            qtedateLabel1.Text = "Quote Date";
-            // 
-            // qtedateLabel2
-            // 
-            this.qtedateLabel2.AutoSize = true;
-            this.qtedateLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "qtedate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
-            this.qtedateLabel2.Location = new System.Drawing.Point(98, 82);
-            this.qtedateLabel2.Name = "qtedateLabel2";
-            this.qtedateLabel2.Size = new System.Drawing.Size(48, 13);
-            this.qtedateLabel2.TabIndex = 7;
-            this.qtedateLabel2.Text = "label34";
-            // 
-            // poamtLabel1
-            // 
-            this.poamtLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "poamt", true));
-            this.poamtLabel1.Location = new System.Drawing.Point(217, 142);
-            this.poamtLabel1.Name = "poamtLabel1";
-            this.poamtLabel1.Size = new System.Drawing.Size(100, 13);
-            this.poamtLabel1.TabIndex = 25;
-            this.poamtLabel1.Text = "label34";
-            // 
-            // invtotLabel
-            // 
-            invtotLabel.AutoSize = true;
-            invtotLabel.Location = new System.Drawing.Point(338, 121);
-            invtotLabel.Name = "invtotLabel";
-            invtotLabel.Size = new System.Drawing.Size(36, 13);
-            invtotLabel.TabIndex = 8;
-            invtotLabel.Text = "Total";
-            // 
-            // invtotLabel1
-            // 
-            this.invtotLabel1.AutoSize = true;
-            this.invtotLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "invtot", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.invtotLabel1.Location = new System.Drawing.Point(384, 121);
-            this.invtotLabel1.Name = "invtotLabel1";
-            this.invtotLabel1.Size = new System.Drawing.Size(48, 13);
-            this.invtotLabel1.TabIndex = 9;
-            this.invtotLabel1.Text = "label25";
-            // 
-            // paymentsLabel
-            // 
-            paymentsLabel.AutoSize = true;
-            paymentsLabel.Location = new System.Drawing.Point(313, 142);
-            paymentsLabel.Name = "paymentsLabel";
-            paymentsLabel.Size = new System.Drawing.Size(61, 13);
-            paymentsLabel.TabIndex = 10;
-            paymentsLabel.Text = "Payments";
+            this.baldueLabel1.AutoSize = true;
+            this.baldueLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "baldue", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.baldueLabel1.Location = new System.Drawing.Point(384, 161);
+            this.baldueLabel1.Name = "baldueLabel1";
+            this.baldueLabel1.Size = new System.Drawing.Size(48, 13);
+            this.baldueLabel1.TabIndex = 13;
+            this.baldueLabel1.Text = "label25";
             // 
             // paymentsLabel1
             // 
@@ -3022,33 +2925,62 @@
             this.paymentsLabel1.TabIndex = 11;
             this.paymentsLabel1.Text = "label25";
             // 
-            // baldueLabel
+            // invtotLabel1
             // 
-            baldueLabel.AutoSize = true;
-            baldueLabel.Location = new System.Drawing.Point(294, 161);
-            baldueLabel.Name = "baldueLabel";
-            baldueLabel.Size = new System.Drawing.Size(80, 13);
-            baldueLabel.TabIndex = 12;
-            baldueLabel.Text = "Balance Due";
+            this.invtotLabel1.AutoSize = true;
+            this.invtotLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "invtot", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.invtotLabel1.Location = new System.Drawing.Point(384, 121);
+            this.invtotLabel1.Name = "invtotLabel1";
+            this.invtotLabel1.Size = new System.Drawing.Size(48, 13);
+            this.invtotLabel1.TabIndex = 9;
+            this.invtotLabel1.Text = "label25";
             // 
-            // baldueLabel1
+            // qtedateLabel2
             // 
-            this.baldueLabel1.AutoSize = true;
-            this.baldueLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "baldue", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.baldueLabel1.Location = new System.Drawing.Point(384, 161);
-            this.baldueLabel1.Name = "baldueLabel1";
-            this.baldueLabel1.Size = new System.Drawing.Size(48, 13);
-            this.baldueLabel1.TabIndex = 13;
-            this.baldueLabel1.Text = "label25";
+            this.qtedateLabel2.AutoSize = true;
+            this.qtedateLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "qtedate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
+            this.qtedateLabel2.Location = new System.Drawing.Point(98, 82);
+            this.qtedateLabel2.Name = "qtedateLabel2";
+            this.qtedateLabel2.Size = new System.Drawing.Size(48, 13);
+            this.qtedateLabel2.TabIndex = 7;
+            this.qtedateLabel2.Text = "label34";
             // 
-            // invdetailBindingSource
+            // invnoLabel2
             // 
-            this.invdetailBindingSource.DataMember = "invdetail";
-            this.invdetailBindingSource.DataSource = this.invoice;
+            this.invnoLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "invno", true));
+            this.invnoLabel2.Location = new System.Drawing.Point(98, 56);
+            this.invnoLabel2.Name = "invnoLabel2";
+            this.invnoLabel2.Size = new System.Drawing.Size(60, 13);
+            this.invnoLabel2.TabIndex = 5;
+            this.invnoLabel2.Text = "label34";
             // 
-            // invdetailTableAdapter
+            // schcodeLabel2
             // 
-            this.invdetailTableAdapter.ClearBeforeFill = true;
+            this.schcodeLabel2.AutoSize = true;
+            this.schcodeLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource1, "schcode", true));
+            this.schcodeLabel2.Location = new System.Drawing.Point(98, 32);
+            this.schcodeLabel2.Name = "schcodeLabel2";
+            this.schcodeLabel2.Size = new System.Drawing.Size(48, 13);
+            this.schcodeLabel2.TabIndex = 4;
+            this.schcodeLabel2.Text = "label34";
+            // 
+            // csrepLabel1
+            // 
+            this.csrepLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource1, "csrep", true));
+            this.csrepLabel1.Location = new System.Drawing.Point(98, 10);
+            this.csrepLabel1.Name = "csrepLabel1";
+            this.csrepLabel1.Size = new System.Drawing.Size(30, 13);
+            this.csrepLabel1.TabIndex = 1;
+            this.csrepLabel1.Text = "label34";
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.invdetailDataGridView);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel9.Location = new System.Drawing.Point(3, 232);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1219, 470);
+            this.panel9.TabIndex = 2;
             // 
             // invdetailDataGridView
             // 
@@ -3105,6 +3037,74 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.Visible = false;
             // 
+            // invdetailBindingSource
+            // 
+            this.invdetailBindingSource.DataMember = "invdetail";
+            this.invdetailBindingSource.DataSource = this.invoice;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // quotesTableAdapter
+            // 
+            this.quotesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.custTableAdapter = null;
+            this.tableAdapterManager.InvHstTableAdapter = null;
+            this.tableAdapterManager.quotesTableAdapter = this.quotesTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // custTableAdapter
+            // 
+            this.custTableAdapter.ClearBeforeFill = true;
+            // 
+            // invHstTableAdapter
+            // 
+            this.invHstTableAdapter.ClearBeforeFill = true;
+            // 
+            // mnuEditLkUp
+            // 
+            this.mnuEditLkUp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editLookUpItemsToolStripMenuItem});
+            this.mnuEditLkUp.Name = "mnuEditLkUp";
+            this.mnuEditLkUp.Size = new System.Drawing.Size(174, 26);
+            // 
+            // editLookUpItemsToolStripMenuItem
+            // 
+            this.editLookUpItemsToolStripMenuItem.Name = "editLookUpItemsToolStripMenuItem";
+            this.editLookUpItemsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.editLookUpItemsToolStripMenuItem.Text = "Edit Look Up Items";
+            this.editLookUpItemsToolStripMenuItem.Click += new System.EventHandler(this.editLookUpItemsToolStripMenuItem_Click);
+            // 
+            // custTableAdapter1
+            // 
+            this.custTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.custTableAdapter = this.custTableAdapter1;
+            this.tableAdapterManager1.invdetailTableAdapter = null;
+            this.tableAdapterManager1.invoiceTableAdapter = null;
+            this.tableAdapterManager1.quotesTableAdapter = null;
+            this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // invoiceTableAdapter
+            // 
+            this.invoiceTableAdapter.ClearBeforeFill = true;
+            // 
+            // quotesTableAdapter1
+            // 
+            this.quotesTableAdapter1.ClearBeforeFill = true;
+            // 
+            // invdetailTableAdapter
+            // 
+            this.invdetailTableAdapter.ClearBeforeFill = true;
+            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -3143,20 +3143,20 @@
             this.pnlHard.ResumeLayout(false);
             this.pnlHard.PerformLayout();
             this.pg2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.mnuEditLkUp.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource1)).EndInit();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            this.panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.invdetailDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.mnuEditLkUp.ResumeLayout(false);
             this.ResumeLayout(false);
 
             }
