@@ -124,3 +124,5 @@ The statement has been terminated. CHOME  WDFM\rwoodall
 2016/10/11 16:32:34.482 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    
 2016/10/11 16:56:07.536 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    
 2016/10/11 16:56:12.119 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    
+2016/10/13 13:33:38.490 Pricing was not found:Year-15 RWCOMPUTER  RWCOMPUTER\randy    
+2016/10/13 13:33:45.190 Pricing was not found:Year-15 RWCOMPUTER  RWCOMPUTER\randy    

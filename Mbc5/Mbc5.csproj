@@ -117,13 +117,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="DataSets\Invoice.cs">
-      <DependentUpon>Invoice.xsd</DependentUpon>
+    <Compile Include="DataSets\dsInvoice.cs">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\Invoice.Designer.cs">
+    <Compile Include="DataSets\dsInvoice1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Invoice.xsd</DependentUpon>
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\LookUp.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -371,16 +371,16 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="DataSets\Invoice.xsc">
-      <DependentUpon>Invoice.xsd</DependentUpon>
+    <None Include="DataSets\dsInvoice.xsc">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\Invoice.xsd">
+    <None Include="DataSets\dsInvoice.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Invoice.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsInvoice1.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataSets\Invoice.xss">
-      <DependentUpon>Invoice.xsd</DependentUpon>
+    <None Include="DataSets\dsInvoice.xss">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
     </None>
     <None Include="DataSets\LookUp.xsc">
       <DependentUpon>LookUp.xsd</DependentUpon>
