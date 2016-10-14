@@ -1816,7 +1816,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void tabSales_SelectedIndexChanged(object sender,EventArgs e) {
-            if (this.tabSales.SelectedIndex == 1) {
+            if (this.tabSales.SelectedIndex == 2) {
                 this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
                 this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
                 }
