@@ -311,6 +311,31 @@ namespace Mbc5.Forms.MemoryBook {
             }
         #endregion
         #region Methods
+        private int GetInvno()
+        {
+           
+            var sqlQuery = new BaseClase.Classes.SQLQuery();
+          
+            SqlParameter[] parameters = new SqlParameter[] {
+                   
+                    };
+            var strQuery = "SELECT Invno FROM Invcnum";
+            try
+            {
+                DataTable userResult = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+                DataRow dr = userResult.Rows[0];
+                int Invno =(int) dr["Invno1"];
+                return Invno;
+
+            }catch(Exception ex)
+            {
+                Log.Error("Failed to get invoice number for a new record:" + ex.Message);
+                MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+
+            }
+           
+        }
         private void SetInvnoSchCode()
         {
             this.Schcode = lblSchcodeVal.Text;
@@ -697,21 +722,26 @@ namespace Mbc5.Forms.MemoryBook {
         private void contdateDateTimePicker_CloseUp(object sender,EventArgs e) {
            DialogResult result=MessageBox.Show("Do you wish to add a sales record?","Add Record",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
+            {
+                int InvNum = GetInvno();
+                if (InvNum != 0)
                 {
-                var sqlQuery = new BaseClase.Classes.SQLQuery();
-                //useing hard code until function to generate invno is done
-                SqlParameter[] parameters = new SqlParameter[] {
+                    var sqlQuery = new BaseClase.Classes.SQLQuery();
+                    //useing hard code until function to generate invno is done
+                    SqlParameter[] parameters = new SqlParameter[] {
                     new SqlParameter("@Invno",1111),
                      new SqlParameter("@Schcode",lblSchcodeVal.Text),
                       new SqlParameter("@Contryear", contryearTextBox.Text)
                     };
-                var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear)  VALUES (@Invno,@Schcode,@Contryear)";
-                var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters);
-                if (userResult!=1){
-                    MessageBox.Show("Failed to insert sales record.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear)  VALUES (@Invno,@Schcode,@Contryear)";
+                    var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+                    if (userResult != 1)
+                    {
+                        MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                this.custTableAdapter.Fill(this.dsCust.cust,lblSchcodeVal.Text);
+                    this.custTableAdapter.Fill(this.dsCust.cust, lblSchcodeVal.Text);
                 };
+            }//not = 0
             
             }
 

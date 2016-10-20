@@ -10,13 +10,13 @@ using System.Data.SqlClient;
 using NLog;
 namespace BaseClase.Classes {
     public class SQLQuery {
-     
+        protected Logger Log { get; private set; }
         private static string _ConnectionString =ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
 
         public SQLQuery() {
-            
-            }
-        protected Logger Log { get; private set; }
+            Log = LogManager.GetLogger(GetType().FullName);
+        }
+      
         public int ExecuteNonQueryAsync(CommandType cmdType,string cmdText,params SqlParameter[] commandParameters) {
             int retval = 0;
 

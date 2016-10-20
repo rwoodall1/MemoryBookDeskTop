@@ -119,3 +119,7 @@ The statement has been terminated. CHOME  WDFM\rwoodall
    at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
    at System.Windows.Forms.BindingSource.EndEdit()
    at Mbc5.Forms.MemoryBook.frmSales.Save() in F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 106 
+2016/07/10 09:35:07.676 Failed to get invoice number for a new record:Column 'Invno1' does not belong to table . CHOME  WDFM\rwoodall    
+2016/07/10 09:38:52.779 Failed to get invoice number for a new record:There is no row at position 0. CHOME  WDFM\rwoodall    
+2016/07/10 09:39:38.897 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2016/07/10 09:40:15.501 Failed to get invoice number for a new record:There is no row at position 0. CHOME  WDFM\rwoodall    
