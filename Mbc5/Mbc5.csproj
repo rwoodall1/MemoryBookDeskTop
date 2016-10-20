@@ -36,6 +36,14 @@
     <StartupObject>Mbc5.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Exceptionless, Version=4.0.1906.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Exceptionless.4.0.1906\lib\net45\Exceptionless.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Exceptionless.Windows, Version=4.0.1906.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Exceptionless.Windows.4.0.1906\lib\net45\Exceptionless.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.3.2\lib\net45\NLog.dll</HintPath>
@@ -108,6 +116,14 @@
       <DependentUpon>dsUser.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DataSets\dsInvoice.cs">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsInvoice1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\LookUp.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -203,6 +219,11 @@
     </Compile>
     <Compile Include="LookUpForms\LkpDiscount.Designer.cs">
       <DependentUpon>LkpDiscount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mbc5DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -350,6 +371,17 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="DataSets\dsInvoice.xsc">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsInvoice.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInvoice1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsInvoice.xss">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\LookUp.xsc">
       <DependentUpon>LookUp.xsd</DependentUpon>
     </None>
@@ -360,6 +392,17 @@
     </None>
     <None Include="DataSets\LookUp.xss">
       <DependentUpon>LookUp.xsd</DependentUpon>
+    </None>
+    <None Include="Mbc5DataSet.xsc">
+      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Mbc5DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Mbc5DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Mbc5DataSet.xss">
+      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
     </None>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
@@ -394,6 +437,10 @@
     <ProjectReference Include="..\BaseClass\BaseClass.csproj">
       <Project>{d872b75b-b77f-41c3-bd82-84c88690bc82}</Project>
       <Name>BaseClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BindingModels\BindingModels.csproj">
+      <Project>{5f448496-325e-429a-ae98-18aa1015ad80}</Project>
+      <Name>BindingModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

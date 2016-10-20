@@ -59,3 +59,21 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn
 F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpDiscount.resources
 F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpDiscount.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\csc.exe
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CSharp.Core.targets
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.VisualBasic.Core.targets
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.Collections.Immutable.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.Reflection.Metadata.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\vbc.exe
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\VBCSCompiler.exe
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\VBCSCompiler.exe.config
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.pdb
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.xml
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.xml

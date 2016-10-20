@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mbc5", "Mbc5\Mbc5.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseClass", "BaseClass\BaseClass.csproj", "{D872B75B-B77F-41C3-BD82-84C88690BC82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingModels", "BindingModels\BindingModels.csproj", "{5F448496-325E-429A-AE98-18AA1015AD80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D872B75B-B77F-41C3-BD82-84C88690BC82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D872B75B-B77F-41C3-BD82-84C88690BC82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D872B75B-B77F-41C3-BD82-84C88690BC82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F448496-325E-429A-AE98-18AA1015AD80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F448496-325E-429A-AE98-18AA1015AD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F448496-325E-429A-AE98-18AA1015AD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F448496-325E-429A-AE98-18AA1015AD80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

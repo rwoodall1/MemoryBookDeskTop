@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mbc5.Forms;
+using Exceptionless;
+
 namespace Mbc5
 {
     static class Program
@@ -14,6 +16,7 @@ namespace Mbc5
         [STAThread]
         static void Main()
         {
+            ExceptionlessClient.Default.Register();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
