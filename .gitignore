@@ -75,3 +75,5 @@ Mbc5/obj/Debug/Mbc5.csprojResolveAssemblyReference.cache
 .vs/MemoryBook/v14/.suo
 *.exe
 *.pdb
+BaseClass/bin/Debug/BaseClass.dll
+*.dll

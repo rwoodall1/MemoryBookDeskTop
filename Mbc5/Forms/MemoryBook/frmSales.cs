@@ -784,6 +784,48 @@ namespace Mbc5.Forms.MemoryBook {
         private void InvoiceOverRide() {
 
             }
+        private void SetOnlinePayOptions(string textboxname,string checkboxname,bool vcheck ) {
+            List<TextBox> vControls = new List<TextBox>();
+            List<CheckBox> vControls1 = new List<CheckBox>();
+                vControls.Add(this.txtInkPersAmt);
+                vControls.Add(this.txtInkTxtOnly);
+                vControls.Add(this.txtFoilIcons);
+                vControls.Add(this.txtFoilTxt);
+                vControls.Add(this.txtPicPers);
+                vControls1.Add(this.chkInkPers);
+                vControls1.Add(this.chkInkTxt);
+                vControls1.Add(this.chkFoilIcons);
+                vControls1.Add(this.chkFoiltxt);
+                vControls1.Add(this.chkPicPers);
+            
+            foreach (TextBox ctr in vControls) {
+                if (vcheck == true) {
+                    if (ctr.Name != textboxname) {
+                        ctr.Enabled = false;
+                        ctr.Text = "0.00";
+                        } else { ctr.Enabled = true; }
+                    } else {
+                    ctr.Text = "0.00";
+
+                    }
+                }
+            foreach(CheckBox ctr1 in vControls1) {
+                if (vcheck== true) {
+                    if (ctr1.Name != checkboxname) {
+                        ctr1.Enabled = false;
+
+                        } else { ctr1.Enabled = true; }
+
+                    }else {
+                    
+                    ctr1.Enabled = true;
+
+                    }
+
+
+                }
+
+            }
 
         private List<InvoiceDetailBindingModel> GetDetailRecords(string invno) {
             int vinvno = 0;
@@ -1820,6 +1862,31 @@ namespace Mbc5.Forms.MemoryBook {
                 this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
                 this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
                 }
+            }
+
+        private void oppicpersCheckBox1_CheckedChanged(object sender,EventArgs e) {
+            SetOnlinePayOptions(this.txtPicPers.Name,this.chkPicPers.Name,chkPicPers.Checked);
+            }
+
+        private void luvlinesCheckBox_CheckedChanged(object sender,EventArgs e) {
+          
+            }
+
+        private void chkInkPers_CheckedChanged(object sender,EventArgs e) {
+            SetOnlinePayOptions(this.txtInkPersAmt.Name,chkInkPers.Name,chkInkPers.Checked);
+            }
+
+        private void chkInkTxt_CheckedChanged(object sender,EventArgs e) {
+            SetOnlinePayOptions(this.txtInkTxtOnly.Name,chkInkTxt.Name,chkInkTxt.Checked);
+            
+            }
+
+        private void chkFoilIcons_CheckedChanged(object sender,EventArgs e) {
+            SetOnlinePayOptions(this.txtFoilIcons.Name,chkFoilIcons.Name,chkFoilIcons.Checked);
+            }
+
+        private void chkFoiltxt_CheckedChanged(object sender,EventArgs e) {
+            SetOnlinePayOptions(this.txtFoilTxt.Name,chkFoiltxt.Name,chkFoiltxt.Checked);
             }
         //nothing below here  
         }
