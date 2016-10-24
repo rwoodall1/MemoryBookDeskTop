@@ -806,7 +806,7 @@ namespace Mbc5.Forms.MemoryBook {
                         } else { ctr.Enabled = true; }
                     } else {
                     ctr.Text = "0.00";
-
+                    ctr.Enabled = false;
                     }
                 }
             foreach(CheckBox ctr1 in vControls1) {
@@ -826,7 +826,58 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
+        private void CalcOnlineTotals()
+        {
 
+            if(basicamounTextBox1.Text != null || basicamounTextBox1.Text != "0.00" || basicamounTextBox1.Text != ""){
+                lblOprcperbk.Text = basicamounTextBox1.Text;
+            }
+            else
+            {
+                lblOprcperbk.Text = "0.00";
+
+            }
+
+            if (txtInkPersAmt.Text != null || txtInkPersAmt.Text != "0.00" || txtInkPersAmt.Text != "")
+            {
+                txtOprcperbk2.Text = txtInkPersAmt.Text;
+            }
+            else
+            {
+                txtOprcperbk2.Text = "0.00";
+
+            }
+            if (txtInkTxtOnly.Text != null || txtInkTxtOnly.Text != "0.00" || txtInkTxtOnly.Text != "")
+            {
+                txtOprcperbk2.Text = txtInkTxtOnly.Text;
+            }
+            else
+            {
+                txtOprcperbk2.Text = "0.00";
+
+            }
+
+            if (txtFoilIcons.Text != null || txtFoilIcons.Text != "0.00" || txtFoilIcons.Text != "")
+            {
+                txtOprcperbk2.Text = txtFoilIcons.Text;
+            }
+            else
+            {
+                txtOprcperbk2.Text = "0.00";
+
+            }
+            if (txtFoilTxt.Text != null || txtFoilTxt.Text != "0.00" || txtFoilTxt.Text != "")
+            {
+                txtOprcperbk2.Text = txtFoilTxt.Text;
+            }
+            else
+            {
+                txtOprcperbk2.Text = "0.00";
+
+            }
+
+
+        }
         private List<InvoiceDetailBindingModel> GetDetailRecords(string invno) {
             int vinvno = 0;
             decimal per;
@@ -1888,7 +1939,93 @@ namespace Mbc5.Forms.MemoryBook {
         private void chkFoiltxt_CheckedChanged(object sender,EventArgs e) {
             SetOnlinePayOptions(this.txtFoilTxt.Name,chkFoiltxt.Name,chkFoiltxt.Checked);
             }
-        //nothing below here  
+
+       
+
+        private void chkAllowAds_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAllowAds.Checked)
+            {
+                txtFullAd.Enabled = true;
+                txtHaldfAd.Enabled = true;
+                txtQuarterAd.Enabled = true;
+                txtEighthAd.Enabled = true;
+
+            }
+            else
+            {
+                txtFullAd.Enabled = false;
+                txtHaldfAd.Enabled = false;
+                txtQuarterAd.Enabled = false;
+                txtEighthAd.Enabled = false;
+
+                txtFullAd.Text ="0.00";
+                txtHaldfAd.Text = "0.00";
+                txtQuarterAd.Text = "0.00";
+                txtEighthAd.Text = "0.00";
+            }
         }
+
+        private void bascippCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            var vcheck = bascippCheckBox.Checked;
+            List<TextBox> vControls = new List<TextBox>();
+            List<CheckBox> vControls1 = new List<CheckBox>();
+            vControls.Add(this.txtInkPersAmt);
+            vControls.Add(this.txtInkTxtOnly);
+            vControls.Add(this.txtFoilIcons);
+            vControls.Add(this.txtFoilTxt);
+            vControls.Add(this.txtPicPers);
+            vControls1.Add(this.chkInkPers);
+            vControls1.Add(this.chkInkTxt);
+            vControls1.Add(this.chkFoilIcons);
+            vControls1.Add(this.chkFoiltxt);
+            vControls1.Add(this.chkPicPers);
+
+            foreach (TextBox ctr in vControls)
+            {
+                
+                if (vcheck == true)
+                {
+                    if (ctr.Name != bascippCheckBox.Name)
+                    {
+                        ctr.Enabled = false;
+                        ctr.Text = "0.00";
+                    }
+                    else { ctr.Enabled = true; }
+                }
+                else
+                {
+                    ctr.Text = "0.00";
+                    ctr.Enabled = false;
+                }
+            }
+            foreach (CheckBox ctr1 in vControls1)
+            {
+                if (vcheck == true)
+                {
+                    if (ctr1.Name != bascippCheckBox.Name)
+                    {
+                        ctr1.Enabled = false;
+
+                    }
+                    else { ctr1.Enabled = true; }
+
+                }
+                else
+                {
+
+                    ctr1.Enabled = true;
+
+                }
+            }
+            }
+
+        private void basicamounTextBox1_Leave(object sender, EventArgs e)
+        {
+
+        }
+        //nothing below here  
+    }
 }
     

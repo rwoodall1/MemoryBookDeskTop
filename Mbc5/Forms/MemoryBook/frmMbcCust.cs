@@ -10,6 +10,7 @@ using BaseClass.Classes;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using BaseClass;
 
 
 namespace Mbc5.Forms.MemoryBook {
