@@ -77,3 +77,9 @@ F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.dll
 F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.pdb
 F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.xml
 F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.xml
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.pdb
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.xml
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.xml

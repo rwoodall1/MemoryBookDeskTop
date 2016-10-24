@@ -101,15 +101,18 @@
             System.Windows.Forms.Label calOnlineCutoff;
             System.Windows.Forms.Label qtedateLabel4;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.schnameLabel1 = new System.Windows.Forms.Label();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsSales = new Mbc5.DataSets.dsSales();
             this.lblSchoolName = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lblPriceEach = new System.Windows.Forms.Label();
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblBookTotal = new System.Windows.Forms.Label();
             this.lbladjbef = new System.Windows.Forms.Label();
             this.bnSales = new System.Windows.Forms.BindingNavigator(this.components);
@@ -139,6 +142,11 @@
             this.btnInvSrch = new System.Windows.Forms.Button();
             this.btnPoSrch = new System.Windows.Forms.Button();
             this.invHstDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invHstBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtfreebooks = new System.Windows.Forms.TextBox();
             this.saletaxTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -246,6 +254,28 @@
             this.txtYear = new System.Windows.Forms.TextBox();
             this.txtNoPages = new System.Windows.Forms.TextBox();
             this.pg2 = new System.Windows.Forms.TabPage();
+            this.onlinenotesTextBox = new System.Windows.Forms.TextBox();
+            this.onlinecutoDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.agreerecCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.lblOprcperbk = new System.Windows.Forms.Label();
+            this.txtOprcperbk2 = new System.Windows.Forms.Label();
+            this.txtInkPersAmt = new System.Windows.Forms.TextBox();
+            this.chkInkPers = new System.Windows.Forms.CheckBox();
+            this.txtFoilTxt = new System.Windows.Forms.TextBox();
+            this.chkFoiltxt = new System.Windows.Forms.CheckBox();
+            this.txtFoilIcons = new System.Windows.Forms.TextBox();
+            this.chkFoilIcons = new System.Windows.Forms.CheckBox();
+            this.txtPicPers = new System.Windows.Forms.TextBox();
+            this.chkPicPers = new System.Windows.Forms.CheckBox();
+            this.txtInkTxtOnly = new System.Windows.Forms.TextBox();
+            this.chkInkTxt = new System.Windows.Forms.CheckBox();
+            this.txtFullAd = new System.Windows.Forms.TextBox();
+            this.txtHaldfAd = new System.Windows.Forms.TextBox();
+            this.txtQuarterAd = new System.Windows.Forms.TextBox();
+            this.txtEighthAd = new System.Windows.Forms.TextBox();
+            this.chkAllowAds = new System.Windows.Forms.CheckBox();
+            this.adcutoDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.webonlyCheckBox = new System.Windows.Forms.CheckBox();
             this.mbconlinepasswordLabel3 = new System.Windows.Forms.Label();
             this.basicamounTextBox1 = new System.Windows.Forms.TextBox();
             this.bascippCheckBox = new System.Windows.Forms.CheckBox();
@@ -299,45 +329,15 @@
             this.tableAdapterManager1 = new Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager();
             this.invoiceTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invoiceTableAdapter();
             this.invdetailTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invdetailTableAdapter();
-            this.totalsoldonlineLabel3 = new System.Windows.Forms.Label();
-            this.totalpersonlineLabel3 = new System.Windows.Forms.Label();
-            this.totaldollarsonlineLabel3 = new System.Windows.Forms.Label();
-            this.totallovelinesLabel3 = new System.Windows.Forms.Label();
-            this.totaladsLabel3 = new System.Windows.Forms.Label();
-            this.webonlyCheckBox = new System.Windows.Forms.CheckBox();
-            this.adcutoDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.adlineCheckBox1 = new System.Windows.Forms.CheckBox();
-            this.eighthadamtTextBox1 = new System.Windows.Forms.TextBox();
-            this.quarteradamtTextBox1 = new System.Windows.Forms.TextBox();
-            this.halfadamtTextBox1 = new System.Windows.Forms.TextBox();
-            this.fulladamtTextBox1 = new System.Windows.Forms.TextBox();
-            this.chkInkTxt = new System.Windows.Forms.CheckBox();
-            this.txtInkTxtOnly = new System.Windows.Forms.TextBox();
-            this.chkPicPers = new System.Windows.Forms.CheckBox();
-            this.txtPicPers = new System.Windows.Forms.TextBox();
-            this.chkFoilIcons = new System.Windows.Forms.CheckBox();
-            this.txtFoilIcons = new System.Windows.Forms.TextBox();
-            this.chkFoiltxt = new System.Windows.Forms.CheckBox();
-            this.txtFoilTxt = new System.Windows.Forms.TextBox();
-            this.chkInkPers = new System.Windows.Forms.CheckBox();
-            this.txtInkPersAmt = new System.Windows.Forms.TextBox();
-            this.oprcperbk2Label1 = new System.Windows.Forms.Label();
-            this.oprcperbkLabel3 = new System.Windows.Forms.Label();
-            this.agreerecCheckBox1 = new System.Windows.Forms.CheckBox();
-            this.onlinecutoDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsSales = new Mbc5.DataSets.dsSales();
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invHstBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
             this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
-            this.onlinenotesTextBox = new System.Windows.Forms.TextBox();
+            this.totalsoldonlineTextBox = new System.Windows.Forms.TextBox();
+            this.totalpersonlineTextBox = new System.Windows.Forms.TextBox();
+            this.totaldollarsonlineTextBox = new System.Windows.Forms.TextBox();
+            this.totallovelinesTextBox = new System.Windows.Forms.TextBox();
+            this.totaladsTextBox = new System.Windows.Forms.TextBox();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -415,11 +415,15 @@
             qtedateLabel4 = new System.Windows.Forms.Label();
             this.tabSales.SuspendLayout();
             this.pg1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnSales)).BeginInit();
             this.bnSales.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlTot.SuspendLayout();
             this.pnlMiscDiscCred.SuspendLayout();
@@ -438,10 +442,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.mnuEditLkUp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nopagesLabel
@@ -1082,9 +1082,9 @@
             totaldollarsonlineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             totaldollarsonlineLabel.Location = new System.Drawing.Point(140, 460);
             totaldollarsonlineLabel.Name = "totaldollarsonlineLabel";
-            totaldollarsonlineLabel.Size = new System.Drawing.Size(173, 13);
+            totaldollarsonlineLabel.Size = new System.Drawing.Size(176, 13);
             totaldollarsonlineLabel.TabIndex = 45;
-            totaldollarsonlineLabel.Text = "Total Dollars Colected Online";
+            totaldollarsonlineLabel.Text = "Total Dollars Collected Online";
             // 
             // totaladsLabel1
             // 
@@ -1284,6 +1284,16 @@
             this.schnameLabel1.TabIndex = 173;
             this.schnameLabel1.Text = "label25";
             // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsSales;
+            // 
+            // dsSales
+            // 
+            this.dsSales.DataSetName = "dsSales";
+            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // lblSchoolName
             // 
             this.lblSchoolName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schname", true));
@@ -1321,6 +1331,11 @@
             this.lblPriceEach.Name = "lblPriceEach";
             this.lblPriceEach.Size = new System.Drawing.Size(0, 13);
             this.lblPriceEach.TabIndex = 18;
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsSales;
             // 
             // lblBookTotal
             // 
@@ -1612,14 +1627,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1633,6 +1648,43 @@
             this.invHstDataGridView.ReadOnly = true;
             this.invHstDataGridView.Size = new System.Drawing.Size(321, 113);
             this.invHstDataGridView.TabIndex = 139;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "contryear";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Year";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 54;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "qtedate";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Sales Date";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 84;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "invno";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Invoice#";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 74;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "baldue";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Balance Due";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 94;
+            // 
+            // invHstBindingSource
+            // 
+            this.invHstBindingSource.DataMember = "InvHst";
+            this.invHstBindingSource.DataSource = this.dsSales;
             // 
             // txtfreebooks
             // 
@@ -2933,11 +2985,16 @@
             // 
             this.pg2.AutoScroll = true;
             this.pg2.BackColor = System.Drawing.SystemColors.Control;
+            this.pg2.Controls.Add(this.totaladsTextBox);
+            this.pg2.Controls.Add(this.totallovelinesTextBox);
+            this.pg2.Controls.Add(this.totaldollarsonlineTextBox);
+            this.pg2.Controls.Add(this.totalpersonlineTextBox);
+            this.pg2.Controls.Add(this.totalsoldonlineTextBox);
             this.pg2.Controls.Add(this.onlinenotesTextBox);
             this.pg2.Controls.Add(this.onlinecutoDateTimePicker);
             this.pg2.Controls.Add(this.agreerecCheckBox1);
-            this.pg2.Controls.Add(this.oprcperbkLabel3);
-            this.pg2.Controls.Add(this.oprcperbk2Label1);
+            this.pg2.Controls.Add(this.lblOprcperbk);
+            this.pg2.Controls.Add(this.txtOprcperbk2);
             this.pg2.Controls.Add(this.txtInkPersAmt);
             this.pg2.Controls.Add(this.chkInkPers);
             this.pg2.Controls.Add(this.txtFoilTxt);
@@ -2948,18 +3005,13 @@
             this.pg2.Controls.Add(this.chkPicPers);
             this.pg2.Controls.Add(this.txtInkTxtOnly);
             this.pg2.Controls.Add(this.chkInkTxt);
-            this.pg2.Controls.Add(this.fulladamtTextBox1);
-            this.pg2.Controls.Add(this.halfadamtTextBox1);
-            this.pg2.Controls.Add(this.quarteradamtTextBox1);
-            this.pg2.Controls.Add(this.eighthadamtTextBox1);
-            this.pg2.Controls.Add(this.adlineCheckBox1);
+            this.pg2.Controls.Add(this.txtFullAd);
+            this.pg2.Controls.Add(this.txtHaldfAd);
+            this.pg2.Controls.Add(this.txtQuarterAd);
+            this.pg2.Controls.Add(this.txtEighthAd);
+            this.pg2.Controls.Add(this.chkAllowAds);
             this.pg2.Controls.Add(this.adcutoDateTimePicker);
             this.pg2.Controls.Add(this.webonlyCheckBox);
-            this.pg2.Controls.Add(this.totaladsLabel3);
-            this.pg2.Controls.Add(this.totallovelinesLabel3);
-            this.pg2.Controls.Add(this.totaldollarsonlineLabel3);
-            this.pg2.Controls.Add(this.totalpersonlineLabel3);
-            this.pg2.Controls.Add(this.totalsoldonlineLabel3);
             this.pg2.Controls.Add(this.mbconlinepasswordLabel3);
             this.pg2.Controls.Add(this.basicamounTextBox1);
             this.pg2.Controls.Add(this.bascippCheckBox);
@@ -2997,6 +3049,234 @@
             this.pg2.TabIndex = 2;
             this.pg2.Text = "Online Pay";
             // 
+            // onlinenotesTextBox
+            // 
+            this.onlinenotesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "onlinenotes", true));
+            this.onlinenotesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.onlinenotesTextBox.Location = new System.Drawing.Point(195, 559);
+            this.onlinenotesTextBox.Multiline = true;
+            this.onlinenotesTextBox.Name = "onlinenotesTextBox";
+            this.onlinenotesTextBox.Size = new System.Drawing.Size(746, 115);
+            this.onlinenotesTextBox.TabIndex = 97;
+            // 
+            // onlinecutoDateTimePicker
+            // 
+            this.onlinecutoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.quotesBindingSource, "onlinecuto", true));
+            this.onlinecutoDateTimePicker.Location = new System.Drawing.Point(765, 260);
+            this.onlinecutoDateTimePicker.Name = "onlinecutoDateTimePicker";
+            this.onlinecutoDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.onlinecutoDateTimePicker.TabIndex = 96;
+            // 
+            // agreerecCheckBox1
+            // 
+            this.agreerecCheckBox1.AutoSize = true;
+            this.agreerecCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "agreerec", true));
+            this.agreerecCheckBox1.Location = new System.Drawing.Point(764, 208);
+            this.agreerecCheckBox1.Name = "agreerecCheckBox1";
+            this.agreerecCheckBox1.Size = new System.Drawing.Size(144, 17);
+            this.agreerecCheckBox1.TabIndex = 95;
+            this.agreerecCheckBox1.Text = "Agreement Received";
+            this.agreerecCheckBox1.UseVisualStyleBackColor = true;
+            // 
+            // lblOprcperbk
+            // 
+            this.lblOprcperbk.AutoSize = true;
+            this.lblOprcperbk.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "oprcperbk", true));
+            this.lblOprcperbk.Location = new System.Drawing.Point(851, 107);
+            this.lblOprcperbk.Name = "lblOprcperbk";
+            this.lblOprcperbk.Size = new System.Drawing.Size(48, 13);
+            this.lblOprcperbk.TabIndex = 94;
+            this.lblOprcperbk.Text = "label35";
+            // 
+            // txtOprcperbk2
+            // 
+            this.txtOprcperbk2.AutoSize = true;
+            this.txtOprcperbk2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "oprcperbk2", true));
+            this.txtOprcperbk2.Location = new System.Drawing.Point(851, 136);
+            this.txtOprcperbk2.Name = "txtOprcperbk2";
+            this.txtOprcperbk2.Size = new System.Drawing.Size(48, 13);
+            this.txtOprcperbk2.TabIndex = 93;
+            this.txtOprcperbk2.Text = "label35";
+            // 
+            // txtInkPersAmt
+            // 
+            this.txtInkPersAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "opinkpersamt", true));
+            this.txtInkPersAmt.Enabled = false;
+            this.txtInkPersAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInkPersAmt.Location = new System.Drawing.Point(322, 132);
+            this.txtInkPersAmt.Name = "txtInkPersAmt";
+            this.txtInkPersAmt.Size = new System.Drawing.Size(100, 20);
+            this.txtInkPersAmt.TabIndex = 92;
+            // 
+            // chkInkPers
+            // 
+            this.chkInkPers.AutoSize = true;
+            this.chkInkPers.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "opinkpers", true));
+            this.chkInkPers.Location = new System.Drawing.Point(135, 132);
+            this.chkInkPers.Name = "chkInkPers";
+            this.chkInkPers.Size = new System.Drawing.Size(134, 17);
+            this.chkInkPers.TabIndex = 91;
+            this.chkInkPers.Text = "Ink Personalization";
+            this.chkInkPers.UseVisualStyleBackColor = true;
+            this.chkInkPers.CheckedChanged += new System.EventHandler(this.chkInkPers_CheckedChanged);
+            // 
+            // txtFoilTxt
+            // 
+            this.txtFoilTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "opfoiltxtamt", true));
+            this.txtFoilTxt.Enabled = false;
+            this.txtFoilTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFoilTxt.Location = new System.Drawing.Point(322, 203);
+            this.txtFoilTxt.Name = "txtFoilTxt";
+            this.txtFoilTxt.Size = new System.Drawing.Size(100, 20);
+            this.txtFoilTxt.TabIndex = 90;
+            // 
+            // chkFoiltxt
+            // 
+            this.chkFoiltxt.AutoSize = true;
+            this.chkFoiltxt.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "opfoiltxt", true));
+            this.chkFoiltxt.Location = new System.Drawing.Point(135, 203);
+            this.chkFoiltxt.Name = "chkFoiltxt";
+            this.chkFoiltxt.Size = new System.Drawing.Size(187, 17);
+            this.chkFoiltxt.TabIndex = 89;
+            this.chkFoiltxt.Text = "Foil Personalization Txt Only";
+            this.chkFoiltxt.UseVisualStyleBackColor = true;
+            this.chkFoiltxt.CheckedChanged += new System.EventHandler(this.chkFoiltxt_CheckedChanged);
+            // 
+            // txtFoilIcons
+            // 
+            this.txtFoilIcons.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "opfoilpersamt", true));
+            this.txtFoilIcons.Enabled = false;
+            this.txtFoilIcons.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFoilIcons.Location = new System.Drawing.Point(322, 179);
+            this.txtFoilIcons.Name = "txtFoilIcons";
+            this.txtFoilIcons.Size = new System.Drawing.Size(100, 20);
+            this.txtFoilIcons.TabIndex = 88;
+            // 
+            // chkFoilIcons
+            // 
+            this.chkFoilIcons.AutoSize = true;
+            this.chkFoilIcons.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "opfoilpers", true));
+            this.chkFoilIcons.Location = new System.Drawing.Point(135, 179);
+            this.chkFoilIcons.Name = "chkFoilIcons";
+            this.chkFoilIcons.Size = new System.Drawing.Size(171, 17);
+            this.chkFoilIcons.TabIndex = 87;
+            this.chkFoilIcons.Text = "Foil Personalization Icons";
+            this.chkFoilIcons.UseVisualStyleBackColor = true;
+            this.chkFoilIcons.CheckedChanged += new System.EventHandler(this.chkFoilIcons_CheckedChanged);
+            // 
+            // txtPicPers
+            // 
+            this.txtPicPers.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "oppicpersamt", true));
+            this.txtPicPers.Enabled = false;
+            this.txtPicPers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPicPers.Location = new System.Drawing.Point(322, 227);
+            this.txtPicPers.Name = "txtPicPers";
+            this.txtPicPers.Size = new System.Drawing.Size(100, 20);
+            this.txtPicPers.TabIndex = 86;
+            // 
+            // chkPicPers
+            // 
+            this.chkPicPers.AutoSize = true;
+            this.chkPicPers.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "oppicpers", true));
+            this.chkPicPers.Location = new System.Drawing.Point(135, 227);
+            this.chkPicPers.Name = "chkPicPers";
+            this.chkPicPers.Size = new System.Drawing.Size(156, 17);
+            this.chkPicPers.TabIndex = 85;
+            this.chkPicPers.Text = "Picture Personalization";
+            this.chkPicPers.UseVisualStyleBackColor = true;
+            this.chkPicPers.CheckedChanged += new System.EventHandler(this.oppicpersCheckBox1_CheckedChanged);
+            // 
+            // txtInkTxtOnly
+            // 
+            this.txtInkTxtOnly.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "opfoiltxtamt", true));
+            this.txtInkTxtOnly.Enabled = false;
+            this.txtInkTxtOnly.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInkTxtOnly.Location = new System.Drawing.Point(322, 155);
+            this.txtInkTxtOnly.Name = "txtInkTxtOnly";
+            this.txtInkTxtOnly.Size = new System.Drawing.Size(100, 20);
+            this.txtInkTxtOnly.TabIndex = 84;
+            // 
+            // chkInkTxt
+            // 
+            this.chkInkTxt.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "opfoiltxt", true));
+            this.chkInkTxt.Location = new System.Drawing.Point(135, 155);
+            this.chkInkTxt.Name = "chkInkTxt";
+            this.chkInkTxt.Size = new System.Drawing.Size(104, 24);
+            this.chkInkTxt.TabIndex = 83;
+            this.chkInkTxt.Text = "Ink Text Only";
+            this.chkInkTxt.UseVisualStyleBackColor = true;
+            this.chkInkTxt.CheckedChanged += new System.EventHandler(this.chkInkTxt_CheckedChanged);
+            // 
+            // txtFullAd
+            // 
+            this.txtFullAd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "fulladamt", true));
+            this.txtFullAd.Enabled = false;
+            this.txtFullAd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFullAd.Location = new System.Drawing.Point(322, 301);
+            this.txtFullAd.Name = "txtFullAd";
+            this.txtFullAd.Size = new System.Drawing.Size(100, 20);
+            this.txtFullAd.TabIndex = 81;
+            // 
+            // txtHaldfAd
+            // 
+            this.txtHaldfAd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "halfadamt", true));
+            this.txtHaldfAd.Enabled = false;
+            this.txtHaldfAd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHaldfAd.Location = new System.Drawing.Point(322, 327);
+            this.txtHaldfAd.Name = "txtHaldfAd";
+            this.txtHaldfAd.Size = new System.Drawing.Size(100, 20);
+            this.txtHaldfAd.TabIndex = 80;
+            // 
+            // txtQuarterAd
+            // 
+            this.txtQuarterAd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "quarteradamt", true));
+            this.txtQuarterAd.Enabled = false;
+            this.txtQuarterAd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuarterAd.Location = new System.Drawing.Point(322, 351);
+            this.txtQuarterAd.Name = "txtQuarterAd";
+            this.txtQuarterAd.Size = new System.Drawing.Size(100, 20);
+            this.txtQuarterAd.TabIndex = 79;
+            // 
+            // txtEighthAd
+            // 
+            this.txtEighthAd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "eighthadamt", true));
+            this.txtEighthAd.Enabled = false;
+            this.txtEighthAd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEighthAd.Location = new System.Drawing.Point(322, 377);
+            this.txtEighthAd.Name = "txtEighthAd";
+            this.txtEighthAd.Size = new System.Drawing.Size(100, 20);
+            this.txtEighthAd.TabIndex = 78;
+            // 
+            // chkAllowAds
+            // 
+            this.chkAllowAds.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "adline", true));
+            this.chkAllowAds.Location = new System.Drawing.Point(135, 280);
+            this.chkAllowAds.Name = "chkAllowAds";
+            this.chkAllowAds.Size = new System.Drawing.Size(104, 24);
+            this.chkAllowAds.TabIndex = 77;
+            this.chkAllowAds.Text = "Allow Ads";
+            this.chkAllowAds.UseVisualStyleBackColor = true;
+            this.chkAllowAds.CheckedChanged += new System.EventHandler(this.chkAllowAds_CheckedChanged);
+            // 
+            // adcutoDateTimePicker
+            // 
+            this.adcutoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.quotesBindingSource, "adcuto", true));
+            this.adcutoDateTimePicker.Location = new System.Drawing.Point(765, 283);
+            this.adcutoDateTimePicker.Name = "adcutoDateTimePicker";
+            this.adcutoDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.adcutoDateTimePicker.TabIndex = 76;
+            // 
+            // webonlyCheckBox
+            // 
+            this.webonlyCheckBox.AutoSize = true;
+            this.webonlyCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "webonly", true));
+            this.webonlyCheckBox.Location = new System.Drawing.Point(682, 162);
+            this.webonlyCheckBox.Name = "webonlyCheckBox";
+            this.webonlyCheckBox.Size = new System.Drawing.Size(209, 17);
+            this.webonlyCheckBox.TabIndex = 75;
+            this.webonlyCheckBox.Text = "Persaonalized Online Sales Only";
+            this.webonlyCheckBox.UseVisualStyleBackColor = true;
+            // 
             // mbconlinepasswordLabel3
             // 
             this.mbconlinepasswordLabel3.AutoSize = true;
@@ -3010,10 +3290,12 @@
             // basicamounTextBox1
             // 
             this.basicamounTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "basicamoun", true));
+            this.basicamounTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.basicamounTextBox1.Location = new System.Drawing.Point(322, 109);
             this.basicamounTextBox1.Name = "basicamounTextBox1";
             this.basicamounTextBox1.Size = new System.Drawing.Size(100, 20);
             this.basicamounTextBox1.TabIndex = 68;
+            this.basicamounTextBox1.Leave += new System.EventHandler(this.basicamounTextBox1_Leave);
             // 
             // bascippCheckBox
             // 
@@ -3025,10 +3307,12 @@
             this.bascippCheckBox.TabIndex = 67;
             this.bascippCheckBox.Text = "Basic Online Pay Only";
             this.bascippCheckBox.UseVisualStyleBackColor = true;
+            this.bascippCheckBox.CheckedChanged += new System.EventHandler(this.bascippCheckBox_CheckedChanged);
             // 
             // luvlineamtTextBox1
             // 
             this.luvlineamtTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "luvlineamt", true));
+            this.luvlineamtTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.luvlineamtTextBox1.Location = new System.Drawing.Point(322, 252);
             this.luvlineamtTextBox1.Name = "luvlineamtTextBox1";
             this.luvlineamtTextBox1.Size = new System.Drawing.Size(100, 20);
@@ -3447,14 +3731,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.invdetailDataGridView.AutoGenerateColumns = false;
             this.invdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.invdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
@@ -3566,312 +3850,6 @@
             // 
             this.invdetailTableAdapter.ClearBeforeFill = true;
             // 
-            // totalsoldonlineLabel3
-            // 
-            this.totalsoldonlineLabel3.AutoSize = true;
-            this.totalsoldonlineLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalsoldonline", true));
-            this.totalsoldonlineLabel3.Location = new System.Drawing.Point(324, 412);
-            this.totalsoldonlineLabel3.Name = "totalsoldonlineLabel3";
-            this.totalsoldonlineLabel3.Size = new System.Drawing.Size(48, 13);
-            this.totalsoldonlineLabel3.TabIndex = 70;
-            this.totalsoldonlineLabel3.Text = "label35";
-            // 
-            // totalpersonlineLabel3
-            // 
-            this.totalpersonlineLabel3.AutoSize = true;
-            this.totalpersonlineLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalpersonline", true));
-            this.totalpersonlineLabel3.Location = new System.Drawing.Point(324, 436);
-            this.totalpersonlineLabel3.Name = "totalpersonlineLabel3";
-            this.totalpersonlineLabel3.Size = new System.Drawing.Size(48, 13);
-            this.totalpersonlineLabel3.TabIndex = 71;
-            this.totalpersonlineLabel3.Text = "label35";
-            // 
-            // totaldollarsonlineLabel3
-            // 
-            this.totaldollarsonlineLabel3.AutoSize = true;
-            this.totaldollarsonlineLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totaldollarsonline", true));
-            this.totaldollarsonlineLabel3.Location = new System.Drawing.Point(324, 460);
-            this.totaldollarsonlineLabel3.Name = "totaldollarsonlineLabel3";
-            this.totaldollarsonlineLabel3.Size = new System.Drawing.Size(48, 13);
-            this.totaldollarsonlineLabel3.TabIndex = 72;
-            this.totaldollarsonlineLabel3.Text = "label35";
-            // 
-            // totallovelinesLabel3
-            // 
-            this.totallovelinesLabel3.AutoSize = true;
-            this.totallovelinesLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totallovelines", true));
-            this.totallovelinesLabel3.Location = new System.Drawing.Point(324, 485);
-            this.totallovelinesLabel3.Name = "totallovelinesLabel3";
-            this.totallovelinesLabel3.Size = new System.Drawing.Size(48, 13);
-            this.totallovelinesLabel3.TabIndex = 73;
-            this.totallovelinesLabel3.Text = "label35";
-            // 
-            // totaladsLabel3
-            // 
-            this.totaladsLabel3.AutoSize = true;
-            this.totaladsLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalads", true));
-            this.totaladsLabel3.Location = new System.Drawing.Point(324, 514);
-            this.totaladsLabel3.Name = "totaladsLabel3";
-            this.totaladsLabel3.Size = new System.Drawing.Size(48, 13);
-            this.totaladsLabel3.TabIndex = 74;
-            this.totaladsLabel3.Text = "label35";
-            // 
-            // webonlyCheckBox
-            // 
-            this.webonlyCheckBox.AutoSize = true;
-            this.webonlyCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "webonly", true));
-            this.webonlyCheckBox.Location = new System.Drawing.Point(682, 162);
-            this.webonlyCheckBox.Name = "webonlyCheckBox";
-            this.webonlyCheckBox.Size = new System.Drawing.Size(209, 17);
-            this.webonlyCheckBox.TabIndex = 75;
-            this.webonlyCheckBox.Text = "Persaonalized Online Sales Only";
-            this.webonlyCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // adcutoDateTimePicker
-            // 
-            this.adcutoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.quotesBindingSource, "adcuto", true));
-            this.adcutoDateTimePicker.Location = new System.Drawing.Point(765, 283);
-            this.adcutoDateTimePicker.Name = "adcutoDateTimePicker";
-            this.adcutoDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.adcutoDateTimePicker.TabIndex = 76;
-            // 
-            // adlineCheckBox1
-            // 
-            this.adlineCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "adline", true));
-            this.adlineCheckBox1.Location = new System.Drawing.Point(135, 280);
-            this.adlineCheckBox1.Name = "adlineCheckBox1";
-            this.adlineCheckBox1.Size = new System.Drawing.Size(104, 24);
-            this.adlineCheckBox1.TabIndex = 77;
-            this.adlineCheckBox1.Text = "Allow Ads";
-            this.adlineCheckBox1.UseVisualStyleBackColor = true;
-            // 
-            // eighthadamtTextBox1
-            // 
-            this.eighthadamtTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "eighthadamt", true));
-            this.eighthadamtTextBox1.Location = new System.Drawing.Point(322, 377);
-            this.eighthadamtTextBox1.Name = "eighthadamtTextBox1";
-            this.eighthadamtTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.eighthadamtTextBox1.TabIndex = 78;
-            // 
-            // quarteradamtTextBox1
-            // 
-            this.quarteradamtTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "quarteradamt", true));
-            this.quarteradamtTextBox1.Location = new System.Drawing.Point(322, 351);
-            this.quarteradamtTextBox1.Name = "quarteradamtTextBox1";
-            this.quarteradamtTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.quarteradamtTextBox1.TabIndex = 79;
-            // 
-            // halfadamtTextBox1
-            // 
-            this.halfadamtTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "halfadamt", true));
-            this.halfadamtTextBox1.Location = new System.Drawing.Point(322, 327);
-            this.halfadamtTextBox1.Name = "halfadamtTextBox1";
-            this.halfadamtTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.halfadamtTextBox1.TabIndex = 80;
-            // 
-            // fulladamtTextBox1
-            // 
-            this.fulladamtTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "fulladamt", true));
-            this.fulladamtTextBox1.Location = new System.Drawing.Point(322, 301);
-            this.fulladamtTextBox1.Name = "fulladamtTextBox1";
-            this.fulladamtTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.fulladamtTextBox1.TabIndex = 81;
-            // 
-            // chkInkTxt
-            // 
-            this.chkInkTxt.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "opfoiltxt", true));
-            this.chkInkTxt.Location = new System.Drawing.Point(135, 155);
-            this.chkInkTxt.Name = "chkInkTxt";
-            this.chkInkTxt.Size = new System.Drawing.Size(104, 24);
-            this.chkInkTxt.TabIndex = 83;
-            this.chkInkTxt.Text = "Ink Text Only";
-            this.chkInkTxt.UseVisualStyleBackColor = true;
-            this.chkInkTxt.CheckedChanged += new System.EventHandler(this.chkInkTxt_CheckedChanged);
-            // 
-            // txtInkTxtOnly
-            // 
-            this.txtInkTxtOnly.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "opfoiltxtamt", true));
-            this.txtInkTxtOnly.Enabled = false;
-            this.txtInkTxtOnly.Location = new System.Drawing.Point(322, 155);
-            this.txtInkTxtOnly.Name = "txtInkTxtOnly";
-            this.txtInkTxtOnly.Size = new System.Drawing.Size(100, 20);
-            this.txtInkTxtOnly.TabIndex = 84;
-            // 
-            // chkPicPers
-            // 
-            this.chkPicPers.AutoSize = true;
-            this.chkPicPers.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "oppicpers", true));
-            this.chkPicPers.Location = new System.Drawing.Point(135, 227);
-            this.chkPicPers.Name = "chkPicPers";
-            this.chkPicPers.Size = new System.Drawing.Size(156, 17);
-            this.chkPicPers.TabIndex = 85;
-            this.chkPicPers.Text = "Picture Personalization";
-            this.chkPicPers.UseVisualStyleBackColor = true;
-            this.chkPicPers.CheckedChanged += new System.EventHandler(this.oppicpersCheckBox1_CheckedChanged);
-            // 
-            // txtPicPers
-            // 
-            this.txtPicPers.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "oppicpersamt", true));
-            this.txtPicPers.Enabled = false;
-            this.txtPicPers.Location = new System.Drawing.Point(322, 227);
-            this.txtPicPers.Name = "txtPicPers";
-            this.txtPicPers.Size = new System.Drawing.Size(100, 20);
-            this.txtPicPers.TabIndex = 86;
-            // 
-            // chkFoilIcons
-            // 
-            this.chkFoilIcons.AutoSize = true;
-            this.chkFoilIcons.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "opfoilpers", true));
-            this.chkFoilIcons.Location = new System.Drawing.Point(135, 179);
-            this.chkFoilIcons.Name = "chkFoilIcons";
-            this.chkFoilIcons.Size = new System.Drawing.Size(171, 17);
-            this.chkFoilIcons.TabIndex = 87;
-            this.chkFoilIcons.Text = "Foil Personalization Icons";
-            this.chkFoilIcons.UseVisualStyleBackColor = true;
-            this.chkFoilIcons.CheckedChanged += new System.EventHandler(this.chkFoilIcons_CheckedChanged);
-            // 
-            // txtFoilIcons
-            // 
-            this.txtFoilIcons.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "opfoilpersamt", true));
-            this.txtFoilIcons.Enabled = false;
-            this.txtFoilIcons.Location = new System.Drawing.Point(322, 179);
-            this.txtFoilIcons.Name = "txtFoilIcons";
-            this.txtFoilIcons.Size = new System.Drawing.Size(100, 20);
-            this.txtFoilIcons.TabIndex = 88;
-            // 
-            // chkFoiltxt
-            // 
-            this.chkFoiltxt.AutoSize = true;
-            this.chkFoiltxt.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "opfoiltxt", true));
-            this.chkFoiltxt.Location = new System.Drawing.Point(135, 203);
-            this.chkFoiltxt.Name = "chkFoiltxt";
-            this.chkFoiltxt.Size = new System.Drawing.Size(187, 17);
-            this.chkFoiltxt.TabIndex = 89;
-            this.chkFoiltxt.Text = "Foil Personalization Txt Only";
-            this.chkFoiltxt.UseVisualStyleBackColor = true;
-            this.chkFoiltxt.CheckedChanged += new System.EventHandler(this.chkFoiltxt_CheckedChanged);
-            // 
-            // txtFoilTxt
-            // 
-            this.txtFoilTxt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "opfoiltxtamt", true));
-            this.txtFoilTxt.Enabled = false;
-            this.txtFoilTxt.Location = new System.Drawing.Point(322, 203);
-            this.txtFoilTxt.Name = "txtFoilTxt";
-            this.txtFoilTxt.Size = new System.Drawing.Size(100, 20);
-            this.txtFoilTxt.TabIndex = 90;
-            // 
-            // chkInkPers
-            // 
-            this.chkInkPers.AutoSize = true;
-            this.chkInkPers.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "opinkpers", true));
-            this.chkInkPers.Location = new System.Drawing.Point(135, 132);
-            this.chkInkPers.Name = "chkInkPers";
-            this.chkInkPers.Size = new System.Drawing.Size(134, 17);
-            this.chkInkPers.TabIndex = 91;
-            this.chkInkPers.Text = "Ink Personalization";
-            this.chkInkPers.UseVisualStyleBackColor = true;
-            this.chkInkPers.CheckedChanged += new System.EventHandler(this.chkInkPers_CheckedChanged);
-            // 
-            // txtInkPersAmt
-            // 
-            this.txtInkPersAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "opinkpersamt", true));
-            this.txtInkPersAmt.Enabled = false;
-            this.txtInkPersAmt.Location = new System.Drawing.Point(322, 132);
-            this.txtInkPersAmt.Name = "txtInkPersAmt";
-            this.txtInkPersAmt.Size = new System.Drawing.Size(100, 20);
-            this.txtInkPersAmt.TabIndex = 92;
-            // 
-            // oprcperbk2Label1
-            // 
-            this.oprcperbk2Label1.AutoSize = true;
-            this.oprcperbk2Label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "oprcperbk2", true));
-            this.oprcperbk2Label1.Location = new System.Drawing.Point(851, 136);
-            this.oprcperbk2Label1.Name = "oprcperbk2Label1";
-            this.oprcperbk2Label1.Size = new System.Drawing.Size(48, 13);
-            this.oprcperbk2Label1.TabIndex = 93;
-            this.oprcperbk2Label1.Text = "label35";
-            // 
-            // oprcperbkLabel3
-            // 
-            this.oprcperbkLabel3.AutoSize = true;
-            this.oprcperbkLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "oprcperbk", true));
-            this.oprcperbkLabel3.Location = new System.Drawing.Point(851, 107);
-            this.oprcperbkLabel3.Name = "oprcperbkLabel3";
-            this.oprcperbkLabel3.Size = new System.Drawing.Size(48, 13);
-            this.oprcperbkLabel3.TabIndex = 94;
-            this.oprcperbkLabel3.Text = "label35";
-            // 
-            // agreerecCheckBox1
-            // 
-            this.agreerecCheckBox1.AutoSize = true;
-            this.agreerecCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "agreerec", true));
-            this.agreerecCheckBox1.Location = new System.Drawing.Point(764, 208);
-            this.agreerecCheckBox1.Name = "agreerecCheckBox1";
-            this.agreerecCheckBox1.Size = new System.Drawing.Size(144, 17);
-            this.agreerecCheckBox1.TabIndex = 95;
-            this.agreerecCheckBox1.Text = "Agreement Received";
-            this.agreerecCheckBox1.UseVisualStyleBackColor = true;
-            // 
-            // onlinecutoDateTimePicker
-            // 
-            this.onlinecutoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.quotesBindingSource, "onlinecuto", true));
-            this.onlinecutoDateTimePicker.Location = new System.Drawing.Point(765, 260);
-            this.onlinecutoDateTimePicker.Name = "onlinecutoDateTimePicker";
-            this.onlinecutoDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.onlinecutoDateTimePicker.TabIndex = 96;
-            // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsSales;
-            // 
-            // dsSales
-            // 
-            this.dsSales.DataSetName = "dsSales";
-            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsSales;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "contryear";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Year";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 54;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "qtedate";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Sales Date";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 84;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "invno";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Invoice#";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 74;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "baldue";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Balance Due";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 94;
-            // 
-            // invHstBindingSource
-            // 
-            this.invHstBindingSource.DataMember = "InvHst";
-            this.invHstBindingSource.DataSource = this.dsSales;
-            // 
             // quotesTableAdapter
             // 
             this.quotesTableAdapter.ClearBeforeFill = true;
@@ -3892,14 +3870,45 @@
             // 
             this.invHstTableAdapter.ClearBeforeFill = true;
             // 
-            // onlinenotesTextBox
+            // totalsoldonlineTextBox
             // 
-            this.onlinenotesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "onlinenotes", true));
-            this.onlinenotesTextBox.Location = new System.Drawing.Point(195, 559);
-            this.onlinenotesTextBox.Multiline = true;
-            this.onlinenotesTextBox.Name = "onlinenotesTextBox";
-            this.onlinenotesTextBox.Size = new System.Drawing.Size(746, 115);
-            this.onlinenotesTextBox.TabIndex = 97;
+            this.totalsoldonlineTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalsoldonline", true));
+            this.totalsoldonlineTextBox.Location = new System.Drawing.Point(319, 412);
+            this.totalsoldonlineTextBox.Name = "totalsoldonlineTextBox";
+            this.totalsoldonlineTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totalsoldonlineTextBox.TabIndex = 98;
+            // 
+            // totalpersonlineTextBox
+            // 
+            this.totalpersonlineTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalpersonline", true));
+            this.totalpersonlineTextBox.Location = new System.Drawing.Point(319, 436);
+            this.totalpersonlineTextBox.Name = "totalpersonlineTextBox";
+            this.totalpersonlineTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totalpersonlineTextBox.TabIndex = 99;
+            // 
+            // totaldollarsonlineTextBox
+            // 
+            this.totaldollarsonlineTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totaldollarsonline", true));
+            this.totaldollarsonlineTextBox.Location = new System.Drawing.Point(319, 462);
+            this.totaldollarsonlineTextBox.Name = "totaldollarsonlineTextBox";
+            this.totaldollarsonlineTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totaldollarsonlineTextBox.TabIndex = 100;
+            // 
+            // totallovelinesTextBox
+            // 
+            this.totallovelinesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totallovelines", true));
+            this.totallovelinesTextBox.Location = new System.Drawing.Point(319, 485);
+            this.totallovelinesTextBox.Name = "totallovelinesTextBox";
+            this.totallovelinesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totallovelinesTextBox.TabIndex = 101;
+            // 
+            // totaladsTextBox
+            // 
+            this.totaladsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalads", true));
+            this.totaladsTextBox.Location = new System.Drawing.Point(319, 515);
+            this.totaladsTextBox.Name = "totaladsTextBox";
+            this.totaladsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totaladsTextBox.TabIndex = 102;
             // 
             // frmSales
             // 
@@ -3914,12 +3923,16 @@
             this.tabSales.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnSales)).EndInit();
             this.bnSales.ResumeLayout(false);
             this.bnSales.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.pnlTot.ResumeLayout(false);
@@ -3948,10 +3961,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.mnuEditLkUp.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -4168,11 +4177,6 @@
         private System.Windows.Forms.TextBox basicamounTextBox1;
         private System.Windows.Forms.CheckBox bascippCheckBox;
         private System.Windows.Forms.Label mbconlinepasswordLabel3;
-        private System.Windows.Forms.Label totaladsLabel3;
-        private System.Windows.Forms.Label totallovelinesLabel3;
-        private System.Windows.Forms.Label totaldollarsonlineLabel3;
-        private System.Windows.Forms.Label totalpersonlineLabel3;
-        private System.Windows.Forms.Label totalsoldonlineLabel3;
         private System.Windows.Forms.TextBox txtFoilTxt;
         private System.Windows.Forms.CheckBox chkFoiltxt;
         private System.Windows.Forms.TextBox txtFoilIcons;
@@ -4181,19 +4185,24 @@
         private System.Windows.Forms.CheckBox chkPicPers;
         private System.Windows.Forms.TextBox txtInkTxtOnly;
         private System.Windows.Forms.CheckBox chkInkTxt;
-        private System.Windows.Forms.TextBox fulladamtTextBox1;
-        private System.Windows.Forms.TextBox halfadamtTextBox1;
-        private System.Windows.Forms.TextBox quarteradamtTextBox1;
-        private System.Windows.Forms.TextBox eighthadamtTextBox1;
-        private System.Windows.Forms.CheckBox adlineCheckBox1;
+        private System.Windows.Forms.TextBox txtFullAd;
+        private System.Windows.Forms.TextBox txtHaldfAd;
+        private System.Windows.Forms.TextBox txtQuarterAd;
+        private System.Windows.Forms.TextBox txtEighthAd;
+        private System.Windows.Forms.CheckBox chkAllowAds;
         private System.Windows.Forms.DateTimePicker adcutoDateTimePicker;
         private System.Windows.Forms.CheckBox webonlyCheckBox;
         private System.Windows.Forms.TextBox txtInkPersAmt;
         private System.Windows.Forms.CheckBox chkInkPers;
         private System.Windows.Forms.CheckBox agreerecCheckBox1;
-        private System.Windows.Forms.Label oprcperbkLabel3;
-        private System.Windows.Forms.Label oprcperbk2Label1;
+        private System.Windows.Forms.Label lblOprcperbk;
+        private System.Windows.Forms.Label txtOprcperbk2;
         private System.Windows.Forms.DateTimePicker onlinecutoDateTimePicker;
         private System.Windows.Forms.TextBox onlinenotesTextBox;
-        }
+        private System.Windows.Forms.TextBox totaladsTextBox;
+        private System.Windows.Forms.TextBox totallovelinesTextBox;
+        private System.Windows.Forms.TextBox totaldollarsonlineTextBox;
+        private System.Windows.Forms.TextBox totalpersonlineTextBox;
+        private System.Windows.Forms.TextBox totalsoldonlineTextBox;
+    }
     }
