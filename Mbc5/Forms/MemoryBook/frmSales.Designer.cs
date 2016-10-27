@@ -101,8 +101,8 @@
             System.Windows.Forms.Label calOnlineCutoff;
             System.Windows.Forms.Label qtedateLabel4;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.schnameLabel1 = new System.Windows.Forms.Label();
@@ -254,6 +254,11 @@
             this.txtYear = new System.Windows.Forms.TextBox();
             this.txtNoPages = new System.Windows.Forms.TextBox();
             this.pg2 = new System.Windows.Forms.TabPage();
+            this.totaladsTextBox = new System.Windows.Forms.TextBox();
+            this.totallovelinesTextBox = new System.Windows.Forms.TextBox();
+            this.totaldollarsonlineTextBox = new System.Windows.Forms.TextBox();
+            this.totalpersonlineTextBox = new System.Windows.Forms.TextBox();
+            this.totalsoldonlineTextBox = new System.Windows.Forms.TextBox();
             this.onlinenotesTextBox = new System.Windows.Forms.TextBox();
             this.onlinecutoDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.agreerecCheckBox1 = new System.Windows.Forms.CheckBox();
@@ -279,7 +284,7 @@
             this.mbconlinepasswordLabel3 = new System.Windows.Forms.Label();
             this.basicamounTextBox1 = new System.Windows.Forms.TextBox();
             this.bascippCheckBox = new System.Windows.Forms.CheckBox();
-            this.luvlineamtTextBox1 = new System.Windows.Forms.TextBox();
+            this.txtLuvLineAmt = new System.Windows.Forms.TextBox();
             this.luvlinesCheckBox = new System.Windows.Forms.CheckBox();
             this.lblschname11 = new System.Windows.Forms.Label();
             this.schcodeLabel5 = new System.Windows.Forms.Label();
@@ -333,11 +338,6 @@
             this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
             this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
-            this.totalsoldonlineTextBox = new System.Windows.Forms.TextBox();
-            this.totalpersonlineTextBox = new System.Windows.Forms.TextBox();
-            this.totaldollarsonlineTextBox = new System.Windows.Forms.TextBox();
-            this.totallovelinesTextBox = new System.Windows.Forms.TextBox();
-            this.totaladsTextBox = new System.Windows.Forms.TextBox();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -1197,6 +1197,7 @@
             this.tabSales.Size = new System.Drawing.Size(1222, 731);
             this.tabSales.TabIndex = 0;
             this.tabSales.SelectedIndexChanged += new System.EventHandler(this.tabSales_SelectedIndexChanged);
+            this.tabSales.Click += new System.EventHandler(this.tabSales_Click);
             // 
             // pg1
             // 
@@ -1627,14 +1628,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -3015,7 +3016,7 @@
             this.pg2.Controls.Add(this.mbconlinepasswordLabel3);
             this.pg2.Controls.Add(this.basicamounTextBox1);
             this.pg2.Controls.Add(this.bascippCheckBox);
-            this.pg2.Controls.Add(this.luvlineamtTextBox1);
+            this.pg2.Controls.Add(this.txtLuvLineAmt);
             this.pg2.Controls.Add(this.luvlinesCheckBox);
             this.pg2.Controls.Add(this.lblschname11);
             this.pg2.Controls.Add(this.schcodeLabel5);
@@ -3048,6 +3049,46 @@
             this.pg2.Size = new System.Drawing.Size(1214, 705);
             this.pg2.TabIndex = 2;
             this.pg2.Text = "Online Pay";
+            // 
+            // totaladsTextBox
+            // 
+            this.totaladsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalads", true));
+            this.totaladsTextBox.Location = new System.Drawing.Point(319, 515);
+            this.totaladsTextBox.Name = "totaladsTextBox";
+            this.totaladsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totaladsTextBox.TabIndex = 102;
+            // 
+            // totallovelinesTextBox
+            // 
+            this.totallovelinesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totallovelines", true));
+            this.totallovelinesTextBox.Location = new System.Drawing.Point(319, 485);
+            this.totallovelinesTextBox.Name = "totallovelinesTextBox";
+            this.totallovelinesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totallovelinesTextBox.TabIndex = 101;
+            // 
+            // totaldollarsonlineTextBox
+            // 
+            this.totaldollarsonlineTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totaldollarsonline", true));
+            this.totaldollarsonlineTextBox.Location = new System.Drawing.Point(319, 462);
+            this.totaldollarsonlineTextBox.Name = "totaldollarsonlineTextBox";
+            this.totaldollarsonlineTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totaldollarsonlineTextBox.TabIndex = 100;
+            // 
+            // totalpersonlineTextBox
+            // 
+            this.totalpersonlineTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalpersonline", true));
+            this.totalpersonlineTextBox.Location = new System.Drawing.Point(319, 436);
+            this.totalpersonlineTextBox.Name = "totalpersonlineTextBox";
+            this.totalpersonlineTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totalpersonlineTextBox.TabIndex = 99;
+            // 
+            // totalsoldonlineTextBox
+            // 
+            this.totalsoldonlineTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalsoldonline", true));
+            this.totalsoldonlineTextBox.Location = new System.Drawing.Point(319, 412);
+            this.totalsoldonlineTextBox.Name = "totalsoldonlineTextBox";
+            this.totalsoldonlineTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totalsoldonlineTextBox.TabIndex = 98;
             // 
             // onlinenotesTextBox
             // 
@@ -3107,6 +3148,7 @@
             this.txtInkPersAmt.Name = "txtInkPersAmt";
             this.txtInkPersAmt.Size = new System.Drawing.Size(100, 20);
             this.txtInkPersAmt.TabIndex = 92;
+            this.txtInkPersAmt.Leave += new System.EventHandler(this.txtInkPersAmt_Leave);
             // 
             // chkInkPers
             // 
@@ -3119,6 +3161,7 @@
             this.chkInkPers.Text = "Ink Personalization";
             this.chkInkPers.UseVisualStyleBackColor = true;
             this.chkInkPers.CheckedChanged += new System.EventHandler(this.chkInkPers_CheckedChanged);
+            this.chkInkPers.Paint += new System.Windows.Forms.PaintEventHandler(this.chkInkPers_Paint);
             // 
             // txtFoilTxt
             // 
@@ -3129,6 +3172,7 @@
             this.txtFoilTxt.Name = "txtFoilTxt";
             this.txtFoilTxt.Size = new System.Drawing.Size(100, 20);
             this.txtFoilTxt.TabIndex = 90;
+            this.txtFoilTxt.Leave += new System.EventHandler(this.txtFoilTxt_Leave);
             // 
             // chkFoiltxt
             // 
@@ -3151,6 +3195,7 @@
             this.txtFoilIcons.Name = "txtFoilIcons";
             this.txtFoilIcons.Size = new System.Drawing.Size(100, 20);
             this.txtFoilIcons.TabIndex = 88;
+            this.txtFoilIcons.Leave += new System.EventHandler(this.txtFoilIcons_Leave);
             // 
             // chkFoilIcons
             // 
@@ -3173,6 +3218,7 @@
             this.txtPicPers.Name = "txtPicPers";
             this.txtPicPers.Size = new System.Drawing.Size(100, 20);
             this.txtPicPers.TabIndex = 86;
+            this.txtPicPers.Leave += new System.EventHandler(this.txtPicPers_Leave);
             // 
             // chkPicPers
             // 
@@ -3195,6 +3241,7 @@
             this.txtInkTxtOnly.Name = "txtInkTxtOnly";
             this.txtInkTxtOnly.Size = new System.Drawing.Size(100, 20);
             this.txtInkTxtOnly.TabIndex = 84;
+            this.txtInkTxtOnly.Leave += new System.EventHandler(this.txtInkTxtOnly_Leave);
             // 
             // chkInkTxt
             // 
@@ -3309,14 +3356,15 @@
             this.bascippCheckBox.UseVisualStyleBackColor = true;
             this.bascippCheckBox.CheckedChanged += new System.EventHandler(this.bascippCheckBox_CheckedChanged);
             // 
-            // luvlineamtTextBox1
+            // txtLuvLineAmt
             // 
-            this.luvlineamtTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "luvlineamt", true));
-            this.luvlineamtTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.luvlineamtTextBox1.Location = new System.Drawing.Point(322, 252);
-            this.luvlineamtTextBox1.Name = "luvlineamtTextBox1";
-            this.luvlineamtTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.luvlineamtTextBox1.TabIndex = 66;
+            this.txtLuvLineAmt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "luvlineamt", true));
+            this.txtLuvLineAmt.Enabled = false;
+            this.txtLuvLineAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLuvLineAmt.Location = new System.Drawing.Point(322, 252);
+            this.txtLuvLineAmt.Name = "txtLuvLineAmt";
+            this.txtLuvLineAmt.Size = new System.Drawing.Size(100, 20);
+            this.txtLuvLineAmt.TabIndex = 66;
             // 
             // luvlinesCheckBox
             // 
@@ -3731,14 +3779,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.invdetailDataGridView.AutoGenerateColumns = false;
             this.invdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.invdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
@@ -3869,46 +3917,6 @@
             // invHstTableAdapter
             // 
             this.invHstTableAdapter.ClearBeforeFill = true;
-            // 
-            // totalsoldonlineTextBox
-            // 
-            this.totalsoldonlineTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalsoldonline", true));
-            this.totalsoldonlineTextBox.Location = new System.Drawing.Point(319, 412);
-            this.totalsoldonlineTextBox.Name = "totalsoldonlineTextBox";
-            this.totalsoldonlineTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalsoldonlineTextBox.TabIndex = 98;
-            // 
-            // totalpersonlineTextBox
-            // 
-            this.totalpersonlineTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalpersonline", true));
-            this.totalpersonlineTextBox.Location = new System.Drawing.Point(319, 436);
-            this.totalpersonlineTextBox.Name = "totalpersonlineTextBox";
-            this.totalpersonlineTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalpersonlineTextBox.TabIndex = 99;
-            // 
-            // totaldollarsonlineTextBox
-            // 
-            this.totaldollarsonlineTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totaldollarsonline", true));
-            this.totaldollarsonlineTextBox.Location = new System.Drawing.Point(319, 462);
-            this.totaldollarsonlineTextBox.Name = "totaldollarsonlineTextBox";
-            this.totaldollarsonlineTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totaldollarsonlineTextBox.TabIndex = 100;
-            // 
-            // totallovelinesTextBox
-            // 
-            this.totallovelinesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totallovelines", true));
-            this.totallovelinesTextBox.Location = new System.Drawing.Point(319, 485);
-            this.totallovelinesTextBox.Name = "totallovelinesTextBox";
-            this.totallovelinesTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totallovelinesTextBox.TabIndex = 101;
-            // 
-            // totaladsTextBox
-            // 
-            this.totaladsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "totalads", true));
-            this.totaladsTextBox.Location = new System.Drawing.Point(319, 515);
-            this.totaladsTextBox.Name = "totaladsTextBox";
-            this.totaladsTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totaladsTextBox.TabIndex = 102;
             // 
             // frmSales
             // 
@@ -4173,7 +4181,7 @@
         private System.Windows.Forms.Label schcodeLabel5;
         private System.Windows.Forms.Label lblschname11;
         private System.Windows.Forms.CheckBox luvlinesCheckBox;
-        private System.Windows.Forms.TextBox luvlineamtTextBox1;
+        private System.Windows.Forms.TextBox txtLuvLineAmt;
         private System.Windows.Forms.TextBox basicamounTextBox1;
         private System.Windows.Forms.CheckBox bascippCheckBox;
         private System.Windows.Forms.Label mbconlinepasswordLabel3;

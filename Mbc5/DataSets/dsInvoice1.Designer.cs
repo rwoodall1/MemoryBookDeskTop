@@ -32,11 +32,11 @@ namespace Mbc5.DataSets {
         
         private quotesDataTable tablequotes;
         
-        private global::System.Data.DataRelation relationFK_invoice_invdetail;
-        
         private global::System.Data.DataRelation relationcust_quotes;
         
         private global::System.Data.DataRelation relationquotes_invoice;
+        
+        private global::System.Data.DataRelation relationFK_invoice_invdetail;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -278,9 +278,9 @@ namespace Mbc5.DataSets {
                     this.tablequotes.InitVars();
                 }
             }
-            this.relationFK_invoice_invdetail = this.Relations["FK_invoice_invdetail"];
             this.relationcust_quotes = this.Relations["cust_quotes"];
             this.relationquotes_invoice = this.Relations["quotes_invoice"];
+            this.relationFK_invoice_invdetail = this.Relations["FK_invoice_invdetail"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -299,18 +299,6 @@ namespace Mbc5.DataSets {
             base.Tables.Add(this.tablecust);
             this.tablequotes = new quotesDataTable();
             base.Tables.Add(this.tablequotes);
-            global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_invoice_invdetail", new global::System.Data.DataColumn[] {
-                        this.tableinvoice.invnoColumn}, new global::System.Data.DataColumn[] {
-                        this.tableinvdetail.invnoColumn});
-            this.tableinvdetail.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_invoice_invdetail = new global::System.Data.DataRelation("FK_invoice_invdetail", new global::System.Data.DataColumn[] {
-                        this.tableinvoice.invnoColumn}, new global::System.Data.DataColumn[] {
-                        this.tableinvdetail.invnoColumn}, false);
-            this.Relations.Add(this.relationFK_invoice_invdetail);
             this.relationcust_quotes = new global::System.Data.DataRelation("cust_quotes", new global::System.Data.DataColumn[] {
                         this.tablecust.schcodeColumn}, new global::System.Data.DataColumn[] {
                         this.tablequotes.schcodeColumn}, false);
@@ -319,6 +307,10 @@ namespace Mbc5.DataSets {
                         this.tablequotes.invnoColumn}, new global::System.Data.DataColumn[] {
                         this.tableinvoice.invnoColumn}, false);
             this.Relations.Add(this.relationquotes_invoice);
+            this.relationFK_invoice_invdetail = new global::System.Data.DataRelation("FK_invoice_invdetail", new global::System.Data.DataColumn[] {
+                        this.tableinvoice.invnoColumn}, new global::System.Data.DataColumn[] {
+                        this.tableinvdetail.invnoColumn}, false);
+            this.Relations.Add(this.relationFK_invoice_invdetail);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
