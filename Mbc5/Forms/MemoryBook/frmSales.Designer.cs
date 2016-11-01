@@ -101,8 +101,8 @@
             System.Windows.Forms.Label calOnlineCutoff;
             System.Windows.Forms.Label qtedateLabel4;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.schnameLabel1 = new System.Windows.Forms.Label();
@@ -1197,6 +1197,7 @@
             this.tabSales.Size = new System.Drawing.Size(1222, 731);
             this.tabSales.TabIndex = 0;
             this.tabSales.SelectedIndexChanged += new System.EventHandler(this.tabSales_SelectedIndexChanged);
+            this.tabSales.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabSales_Selecting);
             this.tabSales.Click += new System.EventHandler(this.tabSales_Click);
             // 
             // pg1
@@ -1628,14 +1629,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -3057,6 +3058,7 @@
             this.totaladsTextBox.Name = "totaladsTextBox";
             this.totaladsTextBox.Size = new System.Drawing.Size(100, 20);
             this.totaladsTextBox.TabIndex = 102;
+            this.totaladsTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.totaladsTextBox_Validating);
             // 
             // totallovelinesTextBox
             // 
@@ -3065,6 +3067,7 @@
             this.totallovelinesTextBox.Name = "totallovelinesTextBox";
             this.totallovelinesTextBox.Size = new System.Drawing.Size(100, 20);
             this.totallovelinesTextBox.TabIndex = 101;
+            this.totallovelinesTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.totallovelinesTextBox_Validating);
             // 
             // totaldollarsonlineTextBox
             // 
@@ -3073,6 +3076,7 @@
             this.totaldollarsonlineTextBox.Name = "totaldollarsonlineTextBox";
             this.totaldollarsonlineTextBox.Size = new System.Drawing.Size(100, 20);
             this.totaldollarsonlineTextBox.TabIndex = 100;
+            this.totaldollarsonlineTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.totaldollarsonlineTextBox_Validating);
             // 
             // totalpersonlineTextBox
             // 
@@ -3081,6 +3085,7 @@
             this.totalpersonlineTextBox.Name = "totalpersonlineTextBox";
             this.totalpersonlineTextBox.Size = new System.Drawing.Size(100, 20);
             this.totalpersonlineTextBox.TabIndex = 99;
+            this.totalpersonlineTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.totalpersonlineTextBox_Validating);
             // 
             // totalsoldonlineTextBox
             // 
@@ -3089,6 +3094,7 @@
             this.totalsoldonlineTextBox.Name = "totalsoldonlineTextBox";
             this.totalsoldonlineTextBox.Size = new System.Drawing.Size(100, 20);
             this.totalsoldonlineTextBox.TabIndex = 98;
+            this.totalsoldonlineTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.totalsoldonlineTextBox_Validating);
             // 
             // onlinenotesTextBox
             // 
@@ -3149,6 +3155,7 @@
             this.txtInkPersAmt.Size = new System.Drawing.Size(100, 20);
             this.txtInkPersAmt.TabIndex = 92;
             this.txtInkPersAmt.Leave += new System.EventHandler(this.txtInkPersAmt_Leave);
+            this.txtInkPersAmt.Validating += new System.ComponentModel.CancelEventHandler(this.txtInkPersAmt_Validating);
             // 
             // chkInkPers
             // 
@@ -3173,6 +3180,7 @@
             this.txtFoilTxt.Size = new System.Drawing.Size(100, 20);
             this.txtFoilTxt.TabIndex = 90;
             this.txtFoilTxt.Leave += new System.EventHandler(this.txtFoilTxt_Leave);
+            this.txtFoilTxt.Validating += new System.ComponentModel.CancelEventHandler(this.txtFoilTxt_Validating);
             // 
             // chkFoiltxt
             // 
@@ -3195,6 +3203,7 @@
             this.txtFoilIcons.Name = "txtFoilIcons";
             this.txtFoilIcons.Size = new System.Drawing.Size(100, 20);
             this.txtFoilIcons.TabIndex = 88;
+            this.txtFoilIcons.VisibleChanged += new System.EventHandler(this.txtFoilIcons_VisibleChanged);
             this.txtFoilIcons.Leave += new System.EventHandler(this.txtFoilIcons_Leave);
             // 
             // chkFoilIcons
@@ -3219,6 +3228,7 @@
             this.txtPicPers.Size = new System.Drawing.Size(100, 20);
             this.txtPicPers.TabIndex = 86;
             this.txtPicPers.Leave += new System.EventHandler(this.txtPicPers_Leave);
+            this.txtPicPers.Validating += new System.ComponentModel.CancelEventHandler(this.txtPicPers_Validating);
             // 
             // chkPicPers
             // 
@@ -3242,6 +3252,7 @@
             this.txtInkTxtOnly.Size = new System.Drawing.Size(100, 20);
             this.txtInkTxtOnly.TabIndex = 84;
             this.txtInkTxtOnly.Leave += new System.EventHandler(this.txtInkTxtOnly_Leave);
+            this.txtInkTxtOnly.Validating += new System.ComponentModel.CancelEventHandler(this.txtInkTxtOnly_Validating);
             // 
             // chkInkTxt
             // 
@@ -3263,6 +3274,7 @@
             this.txtFullAd.Name = "txtFullAd";
             this.txtFullAd.Size = new System.Drawing.Size(100, 20);
             this.txtFullAd.TabIndex = 81;
+            this.txtFullAd.Validating += new System.ComponentModel.CancelEventHandler(this.txtFullAd_Validating);
             // 
             // txtHaldfAd
             // 
@@ -3273,6 +3285,7 @@
             this.txtHaldfAd.Name = "txtHaldfAd";
             this.txtHaldfAd.Size = new System.Drawing.Size(100, 20);
             this.txtHaldfAd.TabIndex = 80;
+            this.txtHaldfAd.Validating += new System.ComponentModel.CancelEventHandler(this.txtHaldfAd_Validating);
             // 
             // txtQuarterAd
             // 
@@ -3283,6 +3296,7 @@
             this.txtQuarterAd.Name = "txtQuarterAd";
             this.txtQuarterAd.Size = new System.Drawing.Size(100, 20);
             this.txtQuarterAd.TabIndex = 79;
+            this.txtQuarterAd.Validating += new System.ComponentModel.CancelEventHandler(this.txtQuarterAd_Validating);
             // 
             // txtEighthAd
             // 
@@ -3293,6 +3307,7 @@
             this.txtEighthAd.Name = "txtEighthAd";
             this.txtEighthAd.Size = new System.Drawing.Size(100, 20);
             this.txtEighthAd.TabIndex = 78;
+            this.txtEighthAd.Validating += new System.ComponentModel.CancelEventHandler(this.txtEighthAd_Validating);
             // 
             // chkAllowAds
             // 
@@ -3343,6 +3358,7 @@
             this.basicamounTextBox1.Size = new System.Drawing.Size(100, 20);
             this.basicamounTextBox1.TabIndex = 68;
             this.basicamounTextBox1.Leave += new System.EventHandler(this.basicamounTextBox1_Leave);
+            this.basicamounTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.basicamounTextBox1_Validating);
             // 
             // bascippCheckBox
             // 
@@ -3365,6 +3381,7 @@
             this.txtLuvLineAmt.Name = "txtLuvLineAmt";
             this.txtLuvLineAmt.Size = new System.Drawing.Size(100, 20);
             this.txtLuvLineAmt.TabIndex = 66;
+            this.txtLuvLineAmt.Validating += new System.ComponentModel.CancelEventHandler(this.txtLuvLineAmt_Validating);
             // 
             // luvlinesCheckBox
             // 
@@ -3779,14 +3796,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.invdetailDataGridView.AutoGenerateColumns = false;
             this.invdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
             this.invdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,

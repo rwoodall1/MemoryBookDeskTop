@@ -95,29 +95,32 @@ namespace Mbc5.Forms.MemoryBook {
 
 
             }
-        private void Save() {
-            //if (ValidSales())
-            //{
-
+        private bool Save() {
+            if (ValidSales())
+            {
+            bool retval = true;
 
             try {
+                if (this.Validate()&& this.ValidateChildren()) {
 
-                var b = this.Validate();
-                this.quotesBindingSource.EndEdit();
-                var a = quotesTableAdapter.Update(dsSales.quotes);
-                //must refill so we get updated time stamp so concurrency is not thrown
-                this.Fill();
-
-
+                    this.quotesBindingSource.EndEdit();
+                    quotesTableAdapter.Update(dsSales.quotes);
+                    //must refill so we get updated time stamp so concurrency is not thrown
+                    this.Fill();
+                
+                    }
+   
                 } catch (DBConcurrencyException ex1) {
+                retval = false;
                 string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
                 this.Log.Error(ex1,ex1.Message);
                 MessageBox.Show(errmsg);
                 } catch (Exception ex) {
+                retval = false;
                 MessageBox.Show("Record faild to update:" + ex.Message);
                 this.Log.Error(ex,"Record faild to update:" + ex.Message);
                 }
-
+            return retval;
             //}
 
             }
@@ -192,7 +195,8 @@ namespace Mbc5.Forms.MemoryBook {
                         }
                     } else {
                     try {
-                        var thePrice = System.Convert.ToDecimal(txtPriceOverRide.Text);
+                        string price = txtPriceOverRide.Text.Replace("$","");//must strip dollar sign
+                        var thePrice = System.Convert.ToDecimal(price);
                         lblBookTotal.Text = (thePrice * copies).ToString("c");
                         } catch (Exception ex) {
                         MessageBox.Show("Book price is not in a decimal value.");
@@ -653,7 +657,7 @@ namespace Mbc5.Forms.MemoryBook {
             if (!retval) { return retval; }
             retval = ValidateCopies();
             if (!retval) { return retval; }
-            retval = !this.ValidateChildren();
+            retval = this.ValidateChildren();
             return retval;
             }
         private void CreateInvoice() {
@@ -787,8 +791,8 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private void CalcOnlineTotals()
         {
-
-            if(basicamounTextBox1.Text != null && basicamounTextBox1.Text != "0.00" && basicamounTextBox1.Text != ""){
+            
+            if (basicamounTextBox1.Text != null && basicamounTextBox1.Text != "0.00" && basicamounTextBox1.Text != ""){
                 lblOprcperbk.Text = basicamounTextBox1.Text;
             }
             else
@@ -1413,6 +1417,82 @@ namespace Mbc5.Forms.MemoryBook {
          
 
         }
+        private void basicamounTextBox1_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.Clear();
+            if (String.IsNullOrEmpty(basicamounTextBox1.Text)) {
+                basicamounTextBox1.Text = "0.00";
+                }
+                string price = basicamounTextBox1.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(basicamounTextBox1,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                
+            }
+
+        private void txtInkPersAmt_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void txtInkTxtOnly_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void txtFoilIcons_VisibleChanged(object sender,EventArgs e) {
+
+            }
+
+        private void txtFoilTxt_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void txtPicPers_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void txtLuvLineAmt_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void txtFullAd_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void txtHaldfAd_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void txtQuarterAd_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void txtEighthAd_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void totalsoldonlineTextBox_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void totalpersonlineTextBox_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void totaldollarsonlineTextBox_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void totallovelinesTextBox_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        private void totaladsTextBox_Validating(object sender,CancelEventArgs e) {
+
+            }
         private void txtYear_Validating(object sender, CancelEventArgs e)
         {
             
@@ -1792,17 +1872,18 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtPriceOverRide.Text))
             {
-                
                 errorProvider1.Clear();
-                decimal numeral;
-                var result = decimal.TryParse(txtPriceOverRide.Text, out numeral);
-                //non numeric
-                if (!result)
-                {
-                    errorProvider1.SetError(txtPriceOverRide, "Please enter a decimal amount.");
-                    e.Cancel = true;
-                  
-                }
+                if (!String.IsNullOrEmpty(txtPriceOverRide.Text)) {
+                    string price = txtPriceOverRide.Text.Replace("$","");//must strip dollar sign
+                    decimal val;
+                    var result = decimal.TryParse(price,out val);
+                    //non numeric
+                    if (!result) {
+                        errorProvider1.SetError(txtPriceOverRide,"Please enter a decimal amount.");
+                        e.Cancel = true;
+
+                        }
+                    }             
             }
         }
         
@@ -1879,11 +1960,11 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void tabSales_SelectedIndexChanged(object sender,EventArgs e) {
+            
+          
             if (this.tabSales.SelectedIndex == 2) {
                 this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
                 this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
-                
-               
                 }
             }
 
@@ -1999,7 +2080,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void basicamounTextBox1_Leave(object sender, EventArgs e)
-        {
+        {           
             CalcOnlineTotals();
         }
 
@@ -2032,6 +2113,19 @@ namespace Mbc5.Forms.MemoryBook {
         private void txtPicPers_Leave(object sender,EventArgs e) {
             CalcOnlineTotals();
             }
+
+        private void tabSales_Selecting(object sender,TabControlCancelEventArgs e) {
+            var result = this.ValidateChildren();
+            if (result) {
+                this.Save();//saves sales only
+                } else {
+                e.Cancel = true;
+
+                }
+
+            }
+
+
         //nothing below here  
         }
 }
