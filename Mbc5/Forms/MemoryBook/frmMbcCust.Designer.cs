@@ -250,7 +250,6 @@
             this.lblTeleSchname = new System.Windows.Forms.Label();
             this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
-            this.button1 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
@@ -368,9 +367,8 @@
             // BottomPanel
             // 
             this.BottomPanel.Controls.Add(this.button2);
-            this.BottomPanel.Controls.Add(this.button1);
-            this.BottomPanel.Location = new System.Drawing.Point(0, 680);
-            this.BottomPanel.Size = new System.Drawing.Size(1234, 51);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 693);
+            this.BottomPanel.Size = new System.Drawing.Size(1234, 38);
             // 
             // contryearLabel
             // 
@@ -974,7 +972,7 @@
             this.CustTab.Location = new System.Drawing.Point(0, 20);
             this.CustTab.Name = "CustTab";
             this.CustTab.SelectedIndex = 0;
-            this.CustTab.Size = new System.Drawing.Size(1234, 654);
+            this.CustTab.Size = new System.Drawing.Size(1234, 670);
             this.CustTab.TabIndex = 0;
             // 
             // pg1
@@ -987,7 +985,7 @@
             this.pg1.Margin = new System.Windows.Forms.Padding(2);
             this.pg1.Name = "pg1";
             this.pg1.Padding = new System.Windows.Forms.Padding(3);
-            this.pg1.Size = new System.Drawing.Size(1226, 628);
+            this.pg1.Size = new System.Drawing.Size(1226, 644);
             this.pg1.TabIndex = 0;
             this.pg1.Text = "School";
             // 
@@ -1081,7 +1079,7 @@
             this.splitContainer.Panel2.Controls.Add(this.shiptocontTextBox);
             this.splitContainer.Panel2.Controls.Add(yb_sthLabel);
             this.splitContainer.Panel2.Controls.Add(this.yb_sthTextBox);
-            this.splitContainer.Size = new System.Drawing.Size(1223, 577);
+            this.splitContainer.Size = new System.Drawing.Size(1223, 593);
             this.splitContainer.SplitterDistance = 599;
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
@@ -2627,16 +2625,6 @@
             this.tableAdapterManager.datecontTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(369, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -2645,9 +2633,9 @@
             // 
             this.button2.Location = new System.Drawing.Point(595, 14);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(125, 23);
             this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
+            this.button2.Text = "Add Customer";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -2786,7 +2774,6 @@
         private System.Windows.Forms.TextBox txtSchCodesrch;
         private DataSets.dsCustTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox junsnoTextBox;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button button2;
         private DataSets.LookUp lookUp;

@@ -95,8 +95,8 @@ namespace Mbc5.Forms
         #endregion
         private void frmMain_Load(object sender, EventArgs e)
         {
-            List<string> a = new List<string>();
-            this.ValidatedUserRoles = a;
+            List<string> roles = new List<string>();
+            this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
             this.Hide();
 

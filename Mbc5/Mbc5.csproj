@@ -139,6 +139,12 @@
     <Compile Include="Dialogs\frmAddressList.Designer.cs">
       <DependentUpon>frmAddressList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\frmSelctCust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmSelctCust.Designer.cs">
+      <DependentUpon>frmSelctCust.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmProdutn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,9 @@
     <Content Include="NOTES TODO.txt" />
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">
       <DependentUpon>frmAddressList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmSelctCust.resx">
+      <DependentUpon>frmSelctCust.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProdutn.resx">
       <DependentUpon>frmProdutn.cs</DependentUpon>

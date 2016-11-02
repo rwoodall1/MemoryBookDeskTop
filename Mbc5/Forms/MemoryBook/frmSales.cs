@@ -45,6 +45,8 @@ namespace Mbc5.Forms.MemoryBook {
                 this.dp1descComboBox.ContextMenuStrip = this.mnuEditLkUp;
                 }
             startup = false;
+            CalculateEach();
+            BookCalc();
             }
         private void btnInvSrch_Click(object sender,EventArgs e) {
 
@@ -92,40 +94,37 @@ namespace Mbc5.Forms.MemoryBook {
                     MessageBox.Show("Invoice number was not found.","Invoice#",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                     }
                 }
-
+            CalculateEach();
+            BookCalc();
 
             }
-        private bool Save() {
-            if (ValidSales())
-            {
-            bool retval = true;
+        private new bool Save() {
+            bool retval = false;
+            if (ValidSales()) {
 
-            try {
-                if (this.Validate()&& this.ValidateChildren()) {
-
-                    this.quotesBindingSource.EndEdit();
-                    quotesTableAdapter.Update(dsSales.quotes);
-                    //must refill so we get updated time stamp so concurrency is not thrown
-                    this.Fill();
-                
+                try {
+                        this.quotesBindingSource.EndEdit();
+                        quotesTableAdapter.Update(dsSales.quotes);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        this.Fill();
+                       retval = true;
+                    } catch (DBConcurrencyException ex1) {
+                    retval = false;
+                    string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
+                    this.Log.Error(ex1,ex1.Message);
+                    MessageBox.Show(errmsg);
+                    } catch (Exception ex) {
+                    retval = false;
+                    MessageBox.Show("Record faild to update:" + ex.Message);
+                    this.Log.Error(ex,"Record faild to update:" + ex.Message);
+                           }
                     }
    
-                } catch (DBConcurrencyException ex1) {
-                retval = false;
-                string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
-                this.Log.Error(ex1,ex1.Message);
-                MessageBox.Show(errmsg);
-                } catch (Exception ex) {
-                retval = false;
-                MessageBox.Show("Record faild to update:" + ex.Message);
-                this.Log.Error(ex,"Record faild to update:" + ex.Message);
-                }
-            return retval;
-            //}
-
+                return retval;
             }
         private void CalculateEach() {
             //Don't calculate until fill is done.
+            decimal thePrice = 0;
             if (!startup) {
                 if (!ValidateCopies() || !ValidatePageCount()) {
                     return;
@@ -186,7 +185,7 @@ namespace Mbc5.Forms.MemoryBook {
                 if (String.IsNullOrEmpty(txtPriceOverRide.Text) || txtPriceOverRide.Text == "$0.00" || txtPriceOverRide.Text == "$0") {
                     try {
                         string price = lblPriceEach.Text.Replace("$","");//must strip dollar sign
-                        var thePrice = System.Convert.ToDecimal(price);
+                         thePrice = System.Convert.ToDecimal(price);
 
                         lblBookTotal.Text = (thePrice * copies).ToString("c");
 
@@ -196,13 +195,25 @@ namespace Mbc5.Forms.MemoryBook {
                     } else {
                     try {
                         string price = txtPriceOverRide.Text.Replace("$","");//must strip dollar sign
-                        var thePrice = System.Convert.ToDecimal(price);
+                         thePrice = System.Convert.ToDecimal(price);
                         lblBookTotal.Text = (thePrice * copies).ToString("c");
                         } catch (Exception ex) {
                         MessageBox.Show("Book price is not in a decimal value.");
                         }
 
                     }
+                //original book thePrice
+                var theTotal = System.Convert.ToDecimal(lblBookTotal.Text.Replace("$",""));
+                decimal profTotal = 0;
+                decimal conTotal = 0;
+                result = decimal.TryParse(lblProfAmt.Text.Replace("$",""),out profTotal);
+                result = decimal.TryParse(lblConvAmt.Text.Replace("$",""),out conTotal);
+                decimal vprofprce= thePrice + ((conTotal / copies) +( profTotal / copies));
+                lblprofprice.Text = vprofprce.ToString("c");
+
+                lblProftotalPrc.Text = (vprofprce * copies).ToString("c");
+
+
                 BookCalc();
                 }
             }
@@ -658,6 +669,8 @@ namespace Mbc5.Forms.MemoryBook {
             retval = ValidateCopies();
             if (!retval) { return retval; }
             retval = this.ValidateChildren();
+            if (!retval) { return retval; }
+            retval = this.Validate();
             return retval;
             }
         private void CreateInvoice() {
@@ -1170,10 +1183,13 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void chkProfessional_Click(object sender,EventArgs e) {
+
+            
             BookCalc();
             }
 
         private void chkConv_Click(object sender,EventArgs e) {
+          
             BookCalc();
             }
 
@@ -1928,10 +1944,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.Cursor = Cursors.Default;
         }
 
-        private void button2_Click(object sender,EventArgs e) {
-
-            }
-
         private void btnInvoice_Click(object sender,EventArgs e) {
             //Check if invoice exist to see what to do.
             var sqlQuery = new SQLQuery();
@@ -2115,15 +2127,22 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void tabSales_Selecting(object sender,TabControlCancelEventArgs e) {
-            var result = this.ValidateChildren();
-            if (result) {
-                this.Save();//saves sales only
-                } else {
+           //validation is done in save if validation fails returns false.
+            if (!this.Save()) {
                 e.Cancel = true;
-
-                }
-
+                } 
             }
+
+        private void lblProfAmt_TextChanged(object sender,EventArgs e) {
+               CalculateEach();
+            }
+
+        private void lblConvAmt_TextChanged(object sender,EventArgs e) {
+            CalculateEach();
+            }
+
+        
+
 
 
         //nothing below here  

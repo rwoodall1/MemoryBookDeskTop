@@ -11,7 +11,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using BaseClass;
-
+using Mbc5.Dialogs;
 
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
@@ -82,15 +82,26 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void btnSchoolCode_Click(object sender,EventArgs e) {
-            if (this.lblSchcodeVal.Text != "038752" && (!this.TeleGo || !this.MktGo))
+            var currentSchool = lblSchcodeVal.Text.Trim();
+            if (DoPhoneLog())
                 {
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                 return;
                 }
+            if (!this.Save()) {
+                DialogResult result = MessageBox.Show("Record failed to save. Hit cancel to correct.","Save",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                if (result == DialogResult.Cancel) {
+                    return;
+                    }
+                }
             var records = this.custTableAdapter.Fill(this.dsCust.cust,txtSchCodesrch.Text);
             if (records < 1)
                 {
+                this.custTableAdapter.Fill(this.dsCust.cust,currentSchool);
                 MessageBox.Show("Record was not found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
+                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
+                TeleGo = false;
                 }
             else
                 {
@@ -99,16 +110,39 @@ namespace Mbc5.Forms.MemoryBook {
                 TeleGo = false;
               
                 }
+            txtSchCodesrch.Text = "";
             }
         private void btnSchoolSearch_Click(object sender,EventArgs e) {
-            if(this.lblSchcodeVal.Text!="038752" && (!this.TeleGo || !this.MktGo)){
+            var currentSchool = lblSchcodeVal.Text.Trim();
+            if (DoPhoneLog()){
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                 return;
+                }
+            if (!this.Save()) {
+                DialogResult result = MessageBox.Show("Record failed to save. Hit cancel to correct.","Save",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                if (result == DialogResult.Cancel) {
+                    return;
+                    }
                 }
             var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
             if (records < 1)
                 {
+                this.custTableAdapter.Fill(this.dsCust.cust,currentSchool);
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
+                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
+                TeleGo = false;
                 MessageBox.Show("Record was not found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }else if (records>1) {
+                //more than one record select which one you want
+                DataTable tmpTable = dsCust.Tables["Cust"];
+                this.Cursor = Cursors.AppStarting;
+                frmSelctCust frmSelectCust = new frmSelctCust(tmpTable);
+                DialogResult result=frmSelectCust.ShowDialog();
+                this.Cursor = Cursors.Default;
+               this.custTableAdapter.Fill(this.dsCust.cust,frmSelectCust.retval);
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
+                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
+                TeleGo = false;
                 }
             else
                 {
@@ -117,6 +151,7 @@ namespace Mbc5.Forms.MemoryBook {
                 TeleGo = false;
                
                 }
+            txtSchNamesrch.Text = "";
             }
         #region CrudOperations
       
@@ -253,6 +288,7 @@ namespace Mbc5.Forms.MemoryBook {
                 this.errorProvider1.SetError(this.txtCsRep,"Sales rep is required.");
                 }
             e.Cancel = cancel;
+            return;
             }
         private void txtCsRep_Validated(object sender,EventArgs e) {
             this.errorProvider1.SetError(this.txtCsRep,string.Empty);
@@ -312,20 +348,46 @@ namespace Mbc5.Forms.MemoryBook {
             }
         #endregion
         #region Methods
+        public bool DoPhoneLog() {
+            bool retval = true;
+            frmMain vparent =(frmMain) this.ParentForm;
+            
+            if(vparent.ValidatedUserRoles.Contains("SA")|| vparent.ValidatedUserRoles.Contains("Admin")) {
+               retval= false;
+
+                }
+            if (this.lblSchcodeVal.Text == "038752") {
+                retval = false;
+
+                }
+            if (this.TeleGo && this.MktGo) {
+                retval = false;
+
+                }
+            return retval;
+             }
+            
         private int GetInvno()
         {
            
             var sqlQuery = new BaseClase.Classes.SQLQuery();
-          
+
             SqlParameter[] parameters = new SqlParameter[] {
-                   
+
                     };
             var strQuery = "SELECT Invno FROM Invcnum";
             try
             {
                 DataTable userResult = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
                 DataRow dr = userResult.Rows[0];
-                int Invno =(int) dr["Invno1"];
+                int Invno =(int) dr["Invno"];
+                int newInvno = Invno + 1;
+                strQuery = "Update Invcnum Set invno=@newInvno";
+                SqlParameter[] parameters1 = new SqlParameter[] {
+                      new SqlParameter("@newInvno",newInvno),
+                    };
+                sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
+
                 return Invno;
 
             }catch(Exception ex)
@@ -347,25 +409,23 @@ namespace Mbc5.Forms.MemoryBook {
                 this.Invno = val;
             }
         }
-        public override void Save() {
+        public new bool Save() {
+            bool retval = false;
             txtSchname.ReadOnly = true;
-            this.ValidateChildren(ValidationConstraints.Enabled);
-            this.custBindingSource.EndEdit();
-            try
-                {
-                custTableAdapter.Update(dsCust);
+            if (this.ValidateChildren(ValidationConstraints.Enabled)) {
+                this.custBindingSource.EndEdit();
+                try {
+                    custTableAdapter.Update(dsCust);
+                    retval = true;
+                    } catch (DBConcurrencyException dbex) {
+                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo);
+                    ProcessDialogResult(response);
+                    } catch (Exception ex) {
+                    Log.Fatal("Error Updating cust table:" + ex.Message);
+                    MessageBox.Show("An error was thrown while attempting to update the customer table.");
+                    }
                 }
-            catch (DBConcurrencyException dbex)
-                {
-                DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo);
-                ProcessDialogResult(response);
-                }
-            catch (Exception ex)
-                {
-                Log.Fatal("Error Updating cust table:" + ex.Message);
-                MessageBox.Show("An error was thrown while attempting to update the customer table.");
-                }
-
+            return retval;
             }
         public override void Add() {
             dsCust.Clear();
@@ -659,10 +719,19 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void frmMbcCust_FormClosing(object sender,FormClosingEventArgs e) {
-            if(lblSchcodeVal.Text!="038752" &&(!TeleGo || !MktGo))
+            if(DoPhoneLog())
                 {
                 e.Cancel = true;
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                return;
+                }
+            if (!this.Save()) {
+                DialogResult result=MessageBox.Show("Record failed to save. Continue closeing?","Save",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                if (result == DialogResult.No) {
+                    e.Cancel = true;
+                    return;
+                    }
+                
                 }
             }
 
@@ -730,7 +799,7 @@ namespace Mbc5.Forms.MemoryBook {
                     var sqlQuery = new BaseClase.Classes.SQLQuery();
                     //useing hard code until function to generate invno is done
                     SqlParameter[] parameters = new SqlParameter[] {
-                    new SqlParameter("@Invno",1111),
+                    new SqlParameter("@Invno",InvNum),
                      new SqlParameter("@Schcode",lblSchcodeVal.Text),
                       new SqlParameter("@Contryear", contryearTextBox.Text)
                     };
@@ -740,6 +809,7 @@ namespace Mbc5.Forms.MemoryBook {
                     {
                         MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                    Save();
                     this.custTableAdapter.Fill(this.dsCust.cust, lblSchcodeVal.Text);
                 };
             }//not = 0

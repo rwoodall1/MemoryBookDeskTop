@@ -65,3 +65,4 @@ F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.dll
 F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.pdb
 F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.xml
 F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.xml
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmSelctCust.resources

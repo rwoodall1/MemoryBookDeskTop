@@ -123,3 +123,13 @@ The statement has been terminated. CHOME  WDFM\rwoodall
 2016/07/10 09:38:52.779 Failed to get invoice number for a new record:There is no row at position 0. CHOME  WDFM\rwoodall    
 2016/07/10 09:39:38.897 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
 2016/07/10 09:40:15.501 Failed to get invoice number for a new record:There is no row at position 0. CHOME  WDFM\rwoodall    
+2016/11/02 10:05:55.780 Error running ExecuteReaderAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/02 10:05:55.848 Failed to get invoice number for a new record:There is no row at position 0. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/02 10:08:47.923 Error running ExecuteReaderAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/02 10:08:47.941 Failed to get invoice number for a new record:There is no row at position 0. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/02 10:09:54.046 Error running ExecuteReaderAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/02 10:10:49.187 Failed to get invoice number for a new record:There is no row at position 0. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/02 10:13:57.143 Error running ExecuteReaderAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/02 10:15:02.974 Failed to get invoice number for a new record:There is no row at position 0. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/02 10:15:40.018 Failed to get invoice number for a new record:Column 'Invno1' does not belong to table . RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/02 10:16:40.443 Failed to get invoice number for a new record:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy    
