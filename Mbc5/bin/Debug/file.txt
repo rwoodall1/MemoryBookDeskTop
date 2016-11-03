@@ -133,3 +133,63 @@ The statement has been terminated. CHOME  WDFM\rwoodall
 2016/11/02 10:15:02.974 Failed to get invoice number for a new record:There is no row at position 0. RWCOMPUTER  RWCOMPUTER\randy    
 2016/11/02 10:15:40.018 Failed to get invoice number for a new record:Column 'Invno1' does not belong to table . RWCOMPUTER  RWCOMPUTER\randy    
 2016/11/02 10:16:40.443 Failed to get invoice number for a new record:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/03 08:46:43.395 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. RWCOMPUTER  RWCOMPUTER\randy   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable)
+   at Mbc5.Forms.MemoryBook.frmSales.Save() 
+2016/11/03 09:06:03.777 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. RWCOMPUTER  RWCOMPUTER\randy   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable)
+   at Mbc5.Forms.MemoryBook.frmSales.Save() 
+2016/11/03 09:06:07.715 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. RWCOMPUTER  RWCOMPUTER\randy   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable)
+   at Mbc5.Forms.MemoryBook.frmSales.Save() 
+2016/11/03 09:24:18.771 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. RWCOMPUTER  RWCOMPUTER\randy   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable)
+   at Mbc5.Forms.MemoryBook.frmSales.Save() 
+2016/11/03 09:25:59.079 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. RWCOMPUTER  RWCOMPUTER\randy   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable)
+   at Mbc5.Forms.MemoryBook.frmSales.Save() 
+2016/11/03 09:26:40.233 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. RWCOMPUTER  RWCOMPUTER\randy   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable)
+   at Mbc5.Forms.MemoryBook.frmSales.Save() 
+2016/11/03 09:37:12.621 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. RWCOMPUTER  RWCOMPUTER\randy   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable)
+   at Mbc5.Forms.MemoryBook.frmSales.Save() 
+2016/11/03 10:06:26.041 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/03 10:08:27.606 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/03 10:11:40.592 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/03 10:13:48.581 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    

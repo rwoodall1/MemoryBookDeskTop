@@ -16,6 +16,7 @@ using Mbc5.LookUpForms;
 using BindingModels;
 using Exceptionless;
 using Exceptionless.Models;
+using Outlook= Microsoft.Office.Interop.Outlook;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
         private static string _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
@@ -103,11 +104,11 @@ namespace Mbc5.Forms.MemoryBook {
             if (ValidSales()) {
 
                 try {
-                        this.quotesBindingSource.EndEdit();
-                        quotesTableAdapter.Update(dsSales.quotes);
-                        //must refill so we get updated time stamp so concurrency is not thrown
-                        this.Fill();
-                       retval = true;
+                    this.quotesBindingSource.EndEdit();
+                    quotesTableAdapter.Update(dsSales.quotes);
+                    //must refill so we get updated time stamp so concurrency is not thrown
+                    this.Fill();
+                    retval = true;
                     } catch (DBConcurrencyException ex1) {
                     retval = false;
                     string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
@@ -117,10 +118,10 @@ namespace Mbc5.Forms.MemoryBook {
                     retval = false;
                     MessageBox.Show("Record faild to update:" + ex.Message);
                     this.Log.Error(ex,"Record faild to update:" + ex.Message);
-                           }
                     }
-   
-                return retval;
+                }
+
+            return retval;
             }
         private void CalculateEach() {
             //Don't calculate until fill is done.
@@ -185,7 +186,7 @@ namespace Mbc5.Forms.MemoryBook {
                 if (String.IsNullOrEmpty(txtPriceOverRide.Text) || txtPriceOverRide.Text == "$0.00" || txtPriceOverRide.Text == "$0") {
                     try {
                         string price = lblPriceEach.Text.Replace("$","");//must strip dollar sign
-                         thePrice = System.Convert.ToDecimal(price);
+                        thePrice = System.Convert.ToDecimal(price);
 
                         lblBookTotal.Text = (thePrice * copies).ToString("c");
 
@@ -195,7 +196,7 @@ namespace Mbc5.Forms.MemoryBook {
                     } else {
                     try {
                         string price = txtPriceOverRide.Text.Replace("$","");//must strip dollar sign
-                         thePrice = System.Convert.ToDecimal(price);
+                        thePrice = System.Convert.ToDecimal(price);
                         lblBookTotal.Text = (thePrice * copies).ToString("c");
                         } catch (Exception ex) {
                         MessageBox.Show("Book price is not in a decimal value.");
@@ -208,7 +209,7 @@ namespace Mbc5.Forms.MemoryBook {
                 decimal conTotal = 0;
                 result = decimal.TryParse(lblProfAmt.Text.Replace("$",""),out profTotal);
                 result = decimal.TryParse(lblConvAmt.Text.Replace("$",""),out conTotal);
-                decimal vprofprce= thePrice + ((conTotal / copies) +( profTotal / copies));
+                decimal vprofprce = thePrice + ((conTotal / copies) + (profTotal / copies));
                 lblprofprice.Text = vprofprce.ToString("c");
 
                 lblProftotalPrc.Text = (vprofprce * copies).ToString("c");
@@ -673,7 +674,25 @@ namespace Mbc5.Forms.MemoryBook {
             retval = this.Validate();
             return retval;
             }
-        private void CreateInvoice() {
+        private bool DeleteInvoice() {
+            bool retval = true;
+            var sqlQuery = new SQLQuery();
+            var queryString = "Delete  From Invoice where Invno=@Invno ";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+            queryString = "Delete  From InvDetail where Invno=@Invno ";
+            SqlParameter[] parameters1 = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+            //use same parameter
+            var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters1);
+            if (result1 == 0 || result == 0) { retval = false; }
+            return retval;
+            }
+        private bool CreateInvoice() {
+            bool retval = true;
             var connection = new SqlConnection(_ConnectionString);
             string cmdText = "";
             var command = new SqlCommand(cmdText,connection);
@@ -735,10 +754,14 @@ namespace Mbc5.Forms.MemoryBook {
                                 .Submit();
                             command.Transaction.Rollback();
                             MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                            return;
+                            retval = false;
                             }
 
                         }
+                    command.Transaction.Commit();
+                    MessageBox.Show("Invoice has been created.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    } else {
+                    //no detail records so just commit header.
                     command.Transaction.Commit();
                     MessageBox.Show("Invoice has been created.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     }
@@ -751,14 +774,12 @@ namespace Mbc5.Forms.MemoryBook {
                                 .Submit();
                 command.Transaction.Rollback();
                 MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return;
+                retval = false;
 
                 } finally { connection.Close(); }
-
-            }
-        private void InvoiceOverRide() {
-
-            }
+            return retval;
+            } 
+      
      
         private void SetOnlinePayOptions(string textboxname,string checkboxname,bool vcheck ) {
             List<TextBox> vControls = new List<TextBox>();
@@ -872,8 +893,23 @@ namespace Mbc5.Forms.MemoryBook {
                 MessageBox.Show("Could not create invoice because invoice number is not available.");
                 return null;
                 }
+             
             var Details = new List<InvoiceDetailBindingModel>();
+        if (true) {
+            //add base alway true
+            var rec = new InvoiceDetailBindingModel {
+                invno = vinvno,
+                descr = "Base Price",
+                discpercent = 0,
+                price = Convert.ToDecimal(lblBookTotal.Text.Replace("$","")),
+                schoolcode = this.Schcode
+                };
+            Details.Add(rec);
 
+            }
+
+
+            
             if (chkHardBack.Checked) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
@@ -1952,9 +1988,20 @@ namespace Mbc5.Forms.MemoryBook {
                 new SqlParameter("@Invno",lblInvoice.Text)
             };
             var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,queryString,parameters);
+            //refill to keep concurrency correct
             if (result.Rows.Count > 0) {
-                InvoiceOverRide();
-                } else { CreateInvoice(); }
+               DialogResult invoiceresult= MessageBox.Show("There is already an invoice created, do you want to overwrite the current invoice","Invoice",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                if (invoiceresult == DialogResult.Yes) {
+                    if (DeleteInvoice()) {
+                        CreateInvoice();
+                        this.Fill();
+                        }
+                    }
+                
+                } else {
+                CreateInvoice();
+                this.Fill();
+                }
             }
 
         private void txtIconCopies_Leave(object sender,EventArgs e) {
@@ -2076,10 +2123,13 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     if (ctr1.Name != bascippCheckBox.Name)
                     {
+                        ctr1.Checked = false;
                         ctr1.Enabled = false;
+                        
 
                     }
-                    else { ctr1.Enabled = true; }
+                    else {
+                        ctr1.Enabled = true; }
 
                 }
                 else
@@ -2141,7 +2191,38 @@ namespace Mbc5.Forms.MemoryBook {
             CalculateEach();
             }
 
-        
+        private void pg1_Click(object sender,EventArgs e) {
+
+            }
+
+        private void button1_Click_1(object sender,EventArgs e) {
+           
+            }
+
+        private void btnDeleteInvoice_Click(object sender,EventArgs e) {
+            DeleteInvoice();
+            this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
+            this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
+            var sqlQuery = new SQLQuery();
+            var queryString = "Update Invoice set invno=0 where Invno=@Invno ";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+            this.Fill();
+            }
+
+        private void btnOnlineAgreement_Click(object sender,EventArgs e) {
+            List<string> address = new List<string>();
+            address.Add("randy@305spin.com");
+            address.Add("randy@woodalldevelopment.com");
+            EmailHelper a = new EmailHelper();
+            a.SendOutLookEmail("test",address,"","This is a test.",EmailType.Mbc);
+
+
+            }
+
+
 
 
 

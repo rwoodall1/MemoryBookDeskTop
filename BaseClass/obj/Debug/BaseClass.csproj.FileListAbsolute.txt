@@ -49,3 +49,8 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.pdb
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.frmBase.resources
 F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.frmBase.resources
 F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache
+F:\New folder\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.dll
+F:\New folder\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.Windows.dll
+F:\New folder\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.xml
+F:\New folder\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.Windows.xml
+F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csproj.ResolveComReference.cache
