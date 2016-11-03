@@ -1,11 +1,13 @@
-﻿namespace Mbc5.Forms.MemoryBook {
+﻿using System.Drawing.Printing;
+
+namespace Mbc5.Forms.MemoryBook {
     partial class frmMbcCust
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
+        private PrintDocument printDocument1 = new PrintDocument();
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -266,6 +268,7 @@
             this.tableAdapterManager3 = new Mbc5.DataSets.dsDateContTableAdapters.TableAdapterManager();
             this.datecontTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.datecontTableAdapter();
             this.datecontBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             contryearLabel = new System.Windows.Forms.Label();
             contdateLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
@@ -1063,6 +1066,7 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel2.Controls.Add(this.button1);
             this.splitContainer.Panel2.Controls.Add(this.lblInvno);
             this.splitContainer.Panel2.Controls.Add(this.btnSchoolEmail);
             this.splitContainer.Panel2.Controls.Add(this.nodirectmailCheckBox);
@@ -1805,7 +1809,7 @@
             this.pg2.Location = new System.Drawing.Point(4, 22);
             this.pg2.Name = "pg2";
             this.pg2.Padding = new System.Windows.Forms.Padding(3);
-            this.pg2.Size = new System.Drawing.Size(1226, 628);
+            this.pg2.Size = new System.Drawing.Size(1226, 644);
             this.pg2.TabIndex = 1;
             this.pg2.Text = "Contacts";
             // 
@@ -2232,7 +2236,7 @@
             this.pg3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pg3.Location = new System.Drawing.Point(4, 22);
             this.pg3.Name = "pg3";
-            this.pg3.Size = new System.Drawing.Size(1226, 628);
+            this.pg3.Size = new System.Drawing.Size(1226, 644);
             this.pg3.TabIndex = 2;
             this.pg3.Text = "Telephone";
             this.pg3.Leave += new System.EventHandler(this.pg3_Leave);
@@ -2706,6 +2710,18 @@
             this.datecontBindingSource1.DataMember = "datecont";
             this.datecontBindingSource1.DataSource = this.dsDateCont;
             // 
+            // button1
+            // 
+
+            this.button1.Location = new System.Drawing.Point(357, 213);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+            // 
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2928,5 +2944,6 @@
      
         private System.Windows.Forms.Label lblSchcodeVal;
         private System.Windows.Forms.TextBox txtSchname;
+        private System.Windows.Forms.Button button1;
         }
 }

@@ -66,7 +66,21 @@
             this.userMaintinanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lookUpMaintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMain = new System.Windows.Forms.ToolStrip();
+            this.tsAdd = new System.Windows.Forms.ToolStripButton();
+            this.tsSave = new System.Windows.Forms.ToolStripButton();
+            this.tsDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsUndo = new System.Windows.Forms.ToolStripButton();
+            this.tsCopy = new System.Windows.Forms.ToolStripButton();
+            this.tsCut = new System.Windows.Forms.ToolStripButton();
+            this.tsPaste = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsPrint = new System.Windows.Forms.ToolStripButton();
+            this.tsEmail = new System.Windows.Forms.ToolStripButton();
+            this.tsPrintScreen = new System.Windows.Forms.ToolStripButton();
             this.mnuMain.SuspendLayout();
+            this.tsMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuMain
@@ -359,18 +373,144 @@
             this.discountToolStripMenuItem.Text = "Discount";
             this.discountToolStripMenuItem.Click += new System.EventHandler(this.discountToolStripMenuItem_Click);
             // 
+            // tsMain
+            // 
+            this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsAdd,
+            this.tsSave,
+            this.tsDelete,
+            this.toolStripSeparator1,
+            this.tsUndo,
+            this.tsCopy,
+            this.tsCut,
+            this.tsPaste,
+            this.toolStripSeparator2,
+            this.tsPrint,
+            this.tsEmail,
+            this.tsPrintScreen});
+            this.tsMain.Location = new System.Drawing.Point(0, 24);
+            this.tsMain.Name = "tsMain";
+            this.tsMain.Size = new System.Drawing.Size(1181, 25);
+            this.tsMain.TabIndex = 2;
+            this.tsMain.Text = "toolStrip1";
+            // 
+            // tsAdd
+            // 
+            this.tsAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsAdd.Image")));
+            this.tsAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsAdd.Name = "tsAdd";
+            this.tsAdd.Size = new System.Drawing.Size(23, 22);
+            this.tsAdd.Text = "Add";
+            // 
+            // tsSave
+            // 
+            this.tsSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsSave.Image = ((System.Drawing.Image)(resources.GetObject("tsSave.Image")));
+            this.tsSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsSave.Name = "tsSave";
+            this.tsSave.Size = new System.Drawing.Size(23, 22);
+            this.tsSave.Text = "Save";
+            // 
+            // tsDelete
+            // 
+            this.tsDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsDelete.Image")));
+            this.tsDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsDelete.Name = "tsDelete";
+            this.tsDelete.Size = new System.Drawing.Size(23, 22);
+            this.tsDelete.Text = "Delete";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsUndo
+            // 
+            this.tsUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsUndo.Image = ((System.Drawing.Image)(resources.GetObject("tsUndo.Image")));
+            this.tsUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsUndo.Name = "tsUndo";
+            this.tsUndo.Size = new System.Drawing.Size(23, 22);
+            this.tsUndo.Text = "toolStripButton1";
+            // 
+            // tsCopy
+            // 
+            this.tsCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsCopy.Image = ((System.Drawing.Image)(resources.GetObject("tsCopy.Image")));
+            this.tsCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCopy.Name = "tsCopy";
+            this.tsCopy.Size = new System.Drawing.Size(23, 22);
+            this.tsCopy.Text = "Copy";
+            // 
+            // tsCut
+            // 
+            this.tsCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsCut.Image = ((System.Drawing.Image)(resources.GetObject("tsCut.Image")));
+            this.tsCut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCut.Name = "tsCut";
+            this.tsCut.Size = new System.Drawing.Size(23, 22);
+            this.tsCut.Text = "Cut";
+            // 
+            // tsPaste
+            // 
+            this.tsPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsPaste.Image = ((System.Drawing.Image)(resources.GetObject("tsPaste.Image")));
+            this.tsPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsPaste.Name = "tsPaste";
+            this.tsPaste.Size = new System.Drawing.Size(23, 22);
+            this.tsPaste.Text = "Paste";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsPrint
+            // 
+            this.tsPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsPrint.Image = ((System.Drawing.Image)(resources.GetObject("tsPrint.Image")));
+            this.tsPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsPrint.Name = "tsPrint";
+            this.tsPrint.Size = new System.Drawing.Size(23, 22);
+            this.tsPrint.Text = "Print";
+            // 
+            // tsEmail
+            // 
+            this.tsEmail.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsEmail.Image = ((System.Drawing.Image)(resources.GetObject("tsEmail.Image")));
+            this.tsEmail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsEmail.Name = "tsEmail";
+            this.tsEmail.Size = new System.Drawing.Size(23, 22);
+            this.tsEmail.Text = "Email";
+            // 
+            // tsPrintScreen
+            // 
+            this.tsPrintScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsPrintScreen.Image = ((System.Drawing.Image)(resources.GetObject("tsPrintScreen.Image")));
+            this.tsPrintScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsPrintScreen.Name = "tsPrintScreen";
+            this.tsPrintScreen.Size = new System.Drawing.Size(23, 22);
+            this.tsPrintScreen.Text = "Print Screen";
+            this.tsPrintScreen.Click += new System.EventHandler(this.tsPrintScreen_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1181, 674);
+            this.Controls.Add(this.tsMain);
             this.Controls.Add(this.mnuMain);
             this.Name = "frmMain";
             this.OpenForms = ((System.Collections.Generic.List<BaseClass.FormHandler.FormInstance>)(resources.GetObject("$this.OpenForms")));
             this.Text = "MBC";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Controls.SetChildIndex(this.mnuMain, 0);
+            this.Controls.SetChildIndex(this.tsMain, 0);
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
+            this.tsMain.ResumeLayout(false);
+            this.tsMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,5 +555,18 @@
         private System.Windows.Forms.ToolStripMenuItem resetPasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lookUpMaintenanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem discountToolStripMenuItem;
-    }
+        private System.Windows.Forms.ToolStrip tsMain;
+        private System.Windows.Forms.ToolStripButton tsAdd;
+        private System.Windows.Forms.ToolStripButton tsSave;
+        private System.Windows.Forms.ToolStripButton tsDelete;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tsUndo;
+        private System.Windows.Forms.ToolStripButton tsCopy;
+        private System.Windows.Forms.ToolStripButton tsCut;
+        private System.Windows.Forms.ToolStripButton tsPaste;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tsPrint;
+        private System.Windows.Forms.ToolStripButton tsEmail;
+        private System.Windows.Forms.ToolStripButton tsPrintScreen;
+        }
 }

@@ -18,7 +18,7 @@ namespace Mbc5.Forms.MemoryBook {
            private bool vMktGo = false;
         private string vSchcode = null;
         private int vInvno = 0;
-          
+        Bitmap memoryImage;
         public frmMbcCust(UserPrincipal userPrincipal) : base(new string[] { "SA","Administrator","MbcCS" },userPrincipal) {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -366,7 +366,20 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             return retval;
              }
-            
+        private void CaptureScreen() {
+            //https://msdn.microsoft.com/en-us/library/6he9hz8c(v=vs.110).aspx
+           
+            Graphics myGraphics = this.CreateGraphics();
+            Size s = this.Size;
+            memoryImage = new Bitmap(s.Width,s.Height,myGraphics);
+            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
+            memoryGraphics.CopyFromScreen(this.Location.X,this.Location.Y,0,0,s);
+            }
+
+        private void printDocument1_PrintPage(System.Object sender,
+             System.Drawing.Printing.PrintPageEventArgs e) {
+            e.Graphics.DrawImage(memoryImage,0,0);
+            }
         private int GetInvno()
         {
            
@@ -814,6 +827,12 @@ namespace Mbc5.Forms.MemoryBook {
                 };
             }//not = 0
             
+            }
+
+        private void button1_Click_1(object sender,EventArgs e) {
+            CaptureScreen();
+            printDocument1.Print();
+
             }
 
 

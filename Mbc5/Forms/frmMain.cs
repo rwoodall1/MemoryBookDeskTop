@@ -271,6 +271,10 @@ namespace Mbc5.Forms
         {
             this.Cut();
         }
+
+        private void tsPrintScreen_Click(object sender,EventArgs e) {
+
+            }
         #endregion
 
 
@@ -278,6 +282,6 @@ namespace Mbc5.Forms
 
 
         //nothing below here
-    }
+        }
         }
 

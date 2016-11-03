@@ -277,15 +277,7 @@ namespace BaseClass.Classes
             smtpClient.Send(mailMessage);
             }
 
-
-
-
-
-
-
-
-
-
+        
         public void SendOutLookEmail(string Subject,string ToAddresses,string CCAddresses,string Body,EmailType TypeEmail) {
             var brandedHtml = "";
             if (TypeEmail == EmailType.Mbc) {
@@ -330,14 +322,18 @@ namespace BaseClass.Classes
             try {
                 Outlook.Application outlookApp = new Outlook.Application();
                 Outlook.MailItem mailItem = (Outlook.MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
-
+                var vToAddresses = "";
+                var vCCAddresses = "";
                 foreach (var address in ToAddresses) {
-                    mailItem.To = mailItem.To + address + ";";
+                    vToAddresses = vToAddresses + address + "'";
+                   
                     }
+                    mailItem.To = vToAddresses;
                 foreach (var address in CCAddresses) {
-                    mailItem.CC = mailItem.CC + address + ";";
+                    vCCAddresses = vCCAddresses + address + ";";
+                    
                     }
-
+                 mailItem.CC =vCCAddresses;
                 mailItem.Subject = Subject;
                 mailItem.HTMLBody = brandedHtml;
                 mailItem.Display(true);
@@ -365,10 +361,12 @@ namespace BaseClass.Classes
 
                 
                     mailItem.To =ToAddresses;
-                  
+                var vCCAddresses = "";
                 foreach (var address in CCAddresses) {
-                    mailItem.CC = mailItem.CC + address + ";";
+                    vCCAddresses = vCCAddresses + address + ";";
+
                     }
+                mailItem.CC = vCCAddresses;
 
                 mailItem.Subject = Subject;
                 mailItem.HTMLBody = brandedHtml;
@@ -399,7 +397,7 @@ namespace BaseClass.Classes
                     vToAddress = vToAddress + address + ";";
                    
                     }
-                  mailItem.To = vToAddress;
+                    mailItem.To = vToAddress;
                     mailItem.CC =CCAddresses;
                  
 
