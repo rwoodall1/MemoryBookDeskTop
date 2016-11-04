@@ -443,6 +443,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\SystemIcons\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
