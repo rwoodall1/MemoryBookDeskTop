@@ -10,6 +10,7 @@ using Mbc5.Forms.MemoryBook;
 using Mbc5.Forms.Meridian;
 using BaseClass.Classes;
 using BaseClass.Forms;
+
 using Mbc5.LookUpForms;
 using NLog;
 namespace Mbc5.Forms
@@ -29,6 +30,19 @@ namespace Mbc5.Forms
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
         #region "Methods"
+        public void PrintScreen() {
+            ScreenPrinter vScreenPrinter = new ScreenPrinter(this);
+           vScreenPrinter.PrintScreen();
+
+            }
+        public void ValidateUserRoles() {
+            string[] AvailableRoles = new string[] { "SA","Administrator" };//list all roles when completed
+            foreach (string role in AvailableRoles)
+
+                if (this.ApplicationUser.IsInRole(role))
+                    this.ValidatedUserRoles.Add(role);
+
+            }
         private int GetInvno()
         {
           
@@ -153,7 +167,7 @@ namespace Mbc5.Forms
         {
             Application.Exit();
         }
-
+        #region MenuActions
         private void userMaintinanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUser vUser = new frmUser(this.ApplicationUser);
@@ -163,16 +177,7 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
 
         }
-        public void ValidateUserRoles()
-        {
-            string[] AvailableRoles = new string[] { "SA", "Administrator" };//list all roles when completed
-            foreach (string role in AvailableRoles)
-
-                if (this.ApplicationUser.IsInRole(role))
-                    this.ValidatedUserRoles.Add(role);
-           
-        }
-
+   
         private void resetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -257,7 +262,8 @@ namespace Mbc5.Forms
 
 
         }
-        #region DataMait
+        #endregion
+        #region DataMaint
         private void discountToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LkpDiscount frmDiscount = new LkpDiscount(this.ApplicationUser);
@@ -273,7 +279,83 @@ namespace Mbc5.Forms
         }
 
         private void tsPrintScreen_Click(object sender,EventArgs e) {
+            this.PrintScreen();
+            }
 
+        private void testToolStripMenuItem_Click(object sender,EventArgs e) {
+            this.Cursor = Cursors.AppStarting;
+            test test = new test();
+          
+            test.MdiParent = this;
+            test.Show();
+            this.Cursor = Cursors.Default;
+            }
+
+        private void tsSave_Click(object sender,EventArgs e) {
+            try {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.Save(); }
+            catch(Exception ex) {
+                MessageBox.Show("Save is not implemented for this form.","Save",MessageBoxButtons.OK,MessageBoxIcon.Hand);
+                }
+            }
+
+        private void tsAdd_Click(object sender,EventArgs e) {
+            try {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.Add();
+                
+                } catch (Exception ex) {
+                MessageBox.Show("Add record is not implemented for this form.","Add",MessageBoxButtons.OK,MessageBoxIcon.Hand);
+                }
+            }
+
+        private void tsDelete_Click(object sender,EventArgs e) {
+            try {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.Delete();
+
+                } catch (Exception ex) {
+                MessageBox.Show("Delete is not implemented for this form.","Delete",MessageBoxButtons.OK,MessageBoxIcon.Hand);
+                }
+            }
+
+        private void undoToolStripMenuItem_Click(object sender,EventArgs e) {
+            this.undo();
+            }
+
+        private void tsCut_Click(object sender,EventArgs e) {
+            this.Cut();
+            }
+
+        private void copyToolStripMenuItem_Click(object sender,EventArgs e) {
+            this.Copy();
+            }
+
+        private void pasteToolStripMenuItem_Click(object sender,EventArgs e) {
+            this.Paste();
+            }
+
+        private void tsUndo_Click(object sender,EventArgs e) {
+            this.undo();
+            }
+
+        private void tsCopy_Click(object sender,EventArgs e) {
+            this.Copy();
+            }
+
+        private void tsPaste_Click(object sender,EventArgs e) {
+            this.Paste();
+            }
+
+        private void tsPrint_Click(object sender,EventArgs e) {
+            this.PrintScreen();
+            }
+
+        private void tsEmail_Click(object sender,EventArgs e) {
+            
+            var helper = new EmailHelper();
+            helper.SendOutLookEmail("","","","",EmailType.Blank);
             }
         #endregion
 

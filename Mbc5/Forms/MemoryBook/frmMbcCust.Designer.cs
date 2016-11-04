@@ -7,7 +7,7 @@ namespace Mbc5.Forms.MemoryBook {
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private PrintDocument printDocument1 = new PrintDocument();
+        
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -144,6 +144,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtZip = new System.Windows.Forms.TextBox();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblInvno = new System.Windows.Forms.Label();
             this.btnSchoolEmail = new System.Windows.Forms.Button();
             this.nodirectmailCheckBox = new System.Windows.Forms.CheckBox();
@@ -268,7 +269,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.tableAdapterManager3 = new Mbc5.DataSets.dsDateContTableAdapters.TableAdapterManager();
             this.datecontTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.datecontTableAdapter();
             this.datecontBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             contryearLabel = new System.Windows.Forms.Label();
             contdateLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
@@ -1066,6 +1067,7 @@ namespace Mbc5.Forms.MemoryBook {
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel2.Controls.Add(this.button3);
             this.splitContainer.Panel2.Controls.Add(this.button1);
             this.splitContainer.Panel2.Controls.Add(this.lblInvno);
             this.splitContainer.Panel2.Controls.Add(this.btnSchoolEmail);
@@ -1463,6 +1465,16 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(183, 20);
             this.txtCity.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(357, 213);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // lblInvno
             // 
@@ -2710,17 +2722,15 @@ namespace Mbc5.Forms.MemoryBook {
             this.datecontBindingSource1.DataMember = "datecont";
             this.datecontBindingSource1.DataSource = this.dsDateCont;
             // 
-            // button1
+            // button3
             // 
-
-            this.button1.Location = new System.Drawing.Point(357, 213);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            this.printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+            this.button3.Location = new System.Drawing.Point(357, 137);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // frmMbcCust
             // 
@@ -2945,5 +2955,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.Label lblSchcodeVal;
         private System.Windows.Forms.TextBox txtSchname;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
         }
 }

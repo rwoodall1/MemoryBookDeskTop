@@ -177,8 +177,12 @@ namespace BaseClass.Classes
             else if (TypeEmail == EmailType.System)
             {
                 brandedHtml = BuildEmailSystem(Body);
-            }
-            else
+            } else if (TypeEmail == EmailType.System)
+            {
+                brandedHtml = BuildEmailSystem(Body);
+             } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
+                } else
             {
                 return;
             }
@@ -203,6 +207,8 @@ namespace BaseClass.Classes
                 brandedHtml = BuildEmailMeridian(Body);
                 } else if (TypeEmail == EmailType.System) {
                 brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
                 } else {
                 return;
                 }
@@ -231,6 +237,8 @@ namespace BaseClass.Classes
                 brandedHtml = BuildEmailMeridian(Body);
                 } else if (TypeEmail == EmailType.System) {
                 brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
                 } else {
                 return;
                 }
@@ -259,6 +267,8 @@ namespace BaseClass.Classes
                 brandedHtml = BuildEmailMeridian(Body);
                 } else if (TypeEmail == EmailType.System) {
                 brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
                 } else {
                 return;
                 }
@@ -286,6 +296,8 @@ namespace BaseClass.Classes
                 brandedHtml = BuildEmailMeridian(Body);
                 } else if (TypeEmail == EmailType.System) {
                 brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
                 } else {
                 return;
                 }
@@ -316,6 +328,8 @@ namespace BaseClass.Classes
                 brandedHtml = BuildEmailMeridian(Body);
                 } else if (TypeEmail == EmailType.System) {
                 brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
                 } else {
                 return;
                 }
@@ -352,6 +366,8 @@ namespace BaseClass.Classes
                 brandedHtml = BuildEmailMeridian(Body);
                 } else if (TypeEmail == EmailType.System) {
                 brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
                 } else {
                 return;
                 }
@@ -386,6 +402,8 @@ namespace BaseClass.Classes
                 brandedHtml = BuildEmailMeridian(Body);
                 } else if (TypeEmail == EmailType.System) {
                 brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
                 } else {
                 return;
                 }

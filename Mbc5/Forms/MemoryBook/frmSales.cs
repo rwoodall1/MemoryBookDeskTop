@@ -31,6 +31,11 @@ namespace Mbc5.Forms.MemoryBook {
             }
         public frmSales(UserPrincipal userPrincipal) : base(new string[] { "SA","Administrator","MbcCS" },userPrincipal) {
             InitializeComponent();
+            this.DisableControls(this);
+            EnableControls(this.txtInvoSrch);
+            EnableControls(btnInvSrch);
+            EnableControls(btnPoSrch);
+            EnableControls(txtPoSrch);
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ApplicationUser = userPrincipal;
             this.Invno = 0;
@@ -50,7 +55,22 @@ namespace Mbc5.Forms.MemoryBook {
             BookCalc();
             }
         private void btnInvSrch_Click(object sender,EventArgs e) {
-
+            var sqlQuery = new SQLQuery();
+            string querystring = "Select schcode,invno from Quotes where Invno=@Invno";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",txtInvoSrch.Text.Trim())
+            };
+            DataTable result = sqlQuery.ExecuteReaderAsync(CommandType.Text,querystring,parameters);
+            if (result.Rows.Count > 0) {
+                foreach (DataRow row in result.Rows) {
+                    //only one row so just set variabls
+                    this.Invno = Convert.ToInt32(row["invno"]);
+                    this.Schcode = row["schcode"].ToString();
+                    this.Fill();
+                    EnableAllControls(this);
+                    }
+                } else { MessageBox.Show("No records were found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
             }
 
         #region "Properties"
@@ -82,6 +102,25 @@ namespace Mbc5.Forms.MemoryBook {
         public string CurPriceYr { get; set; } = null;
         #endregion
         #region "Methods"
+        private void DisableControls(Control con) {
+            foreach (Control c in con.Controls) {
+                DisableControls(c);
+                }
+            con.Enabled = false;
+            }
+        private void EnableControls(Control con) {
+            if (con != null) {
+                con.Enabled = true;
+                EnableControls(con.Parent);
+                }
+            }
+        private void EnableAllControls(Control con) {
+            foreach (Control c in con.Controls) {
+                EnableAllControls(c);
+                }
+            con.Enabled = true;
+            }
+        
         private void Fill() {
             if (Schcode != null) {
                 custTableAdapter.Fill(dsSales.cust,Schcode);
@@ -1968,7 +2007,10 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void lblSchoolName_Paint(object sender, PaintEventArgs e)
         {
-            this.Text = "Sales-" + lblSchoolName.Text.Trim()+" ("+this.Schcode.Trim()+")";
+            try { this.Text = "Sales-" + lblSchoolName.Text.Trim()+" ("+this.Schcode.Trim()+")"; } catch {
+
+                }
+           
         }
 
         private void editLookUpItemsToolStripMenuItem_Click(object sender, EventArgs e)

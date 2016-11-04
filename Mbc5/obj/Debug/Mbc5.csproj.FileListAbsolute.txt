@@ -75,3 +75,4 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.pdb
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.xml
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.xml
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmSelctCust.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.test.resources

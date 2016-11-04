@@ -366,20 +366,6 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             return retval;
              }
-        private void CaptureScreen() {
-            //https://msdn.microsoft.com/en-us/library/6he9hz8c(v=vs.110).aspx
-           
-            Graphics myGraphics = this.CreateGraphics();
-            Size s = this.Size;
-            memoryImage = new Bitmap(s.Width,s.Height,myGraphics);
-            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
-            memoryGraphics.CopyFromScreen(this.Location.X,this.Location.Y,0,0,s);
-            }
-
-        private void printDocument1_PrintPage(System.Object sender,
-             System.Drawing.Printing.PrintPageEventArgs e) {
-            e.Graphics.DrawImage(memoryImage,0,0);
-            }
         private int GetInvno()
         {
            
@@ -830,8 +816,14 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void button1_Click_1(object sender,EventArgs e) {
-            CaptureScreen();
-            printDocument1.Print();
+            var a = new ScreenPrinter(this);
+            a.PrintScreen();
+
+            }
+
+        private void button3_Click(object sender,EventArgs e) {
+            var a = 1;
+            ScreenPrinter aa = new ScreenPrinter(this);
 
             }
 

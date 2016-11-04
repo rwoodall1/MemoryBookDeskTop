@@ -45,6 +45,7 @@
             this.productionWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endSheetSupplementPreFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMBCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,8 +68,8 @@
             this.lookUpMaintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMain = new System.Windows.Forms.ToolStrip();
-            this.tsAdd = new System.Windows.Forms.ToolStripButton();
             this.tsSave = new System.Windows.Forms.ToolStripButton();
+            this.tsAdd = new System.Windows.Forms.ToolStripButton();
             this.tsDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsUndo = new System.Windows.Forms.ToolStripButton();
@@ -78,7 +79,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsPrint = new System.Windows.Forms.ToolStripButton();
             this.tsEmail = new System.Windows.Forms.ToolStripButton();
-            this.tsPrintScreen = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -106,7 +107,8 @@
             this.mBCToolStripMenuItem,
             this.meridianToolStripMenuItem,
             this.productionToolStripMenuItem,
-            this.exitMBCToolStripMenuItem});
+            this.exitMBCToolStripMenuItem,
+            this.testToolStripMenuItem});
             this.formsToolStripMenuItem.Name = "formsToolStripMenuItem";
             this.formsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.formsToolStripMenuItem.Text = "&Forms";
@@ -215,6 +217,13 @@
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
             // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.testToolStripMenuItem.Text = "test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -232,14 +241,15 @@
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.undoToolStripMenuItem.Text = "&Undo ";
+            this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.cutToolStripMenuItem.Text = "Cu&t";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
@@ -247,22 +257,24 @@
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.copyToolStripMenuItem.Text = "&Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.pasteToolStripMenuItem.Text = "&Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resetPasswordToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // resetPasswordToolStripMenuItem
@@ -376,8 +388,8 @@
             // tsMain
             // 
             this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsAdd,
             this.tsSave,
+            this.tsAdd,
             this.tsDelete,
             this.toolStripSeparator1,
             this.tsUndo,
@@ -387,39 +399,39 @@
             this.toolStripSeparator2,
             this.tsPrint,
             this.tsEmail,
-            this.tsPrintScreen});
+            this.toolStripSeparator3});
             this.tsMain.Location = new System.Drawing.Point(0, 24);
             this.tsMain.Name = "tsMain";
             this.tsMain.Size = new System.Drawing.Size(1181, 25);
             this.tsMain.TabIndex = 2;
             this.tsMain.Text = "toolStrip1";
             // 
-            // tsAdd
-            // 
-            this.tsAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsAdd.Image")));
-            this.tsAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsAdd.Name = "tsAdd";
-            this.tsAdd.Size = new System.Drawing.Size(23, 22);
-            this.tsAdd.Text = "Add";
-            // 
             // tsSave
             // 
-            this.tsSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsSave.Image = ((System.Drawing.Image)(resources.GetObject("tsSave.Image")));
             this.tsSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsSave.Name = "tsSave";
-            this.tsSave.Size = new System.Drawing.Size(23, 22);
+            this.tsSave.Size = new System.Drawing.Size(51, 22);
             this.tsSave.Text = "Save";
+            this.tsSave.Click += new System.EventHandler(this.tsSave_Click);
+            // 
+            // tsAdd
+            // 
+            this.tsAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsAdd.Image")));
+            this.tsAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsAdd.Name = "tsAdd";
+            this.tsAdd.Size = new System.Drawing.Size(49, 22);
+            this.tsAdd.Text = "Add";
+            this.tsAdd.Click += new System.EventHandler(this.tsAdd_Click);
             // 
             // tsDelete
             // 
-            this.tsDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsDelete.Image")));
             this.tsDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsDelete.Name = "tsDelete";
-            this.tsDelete.Size = new System.Drawing.Size(23, 22);
+            this.tsDelete.Size = new System.Drawing.Size(60, 22);
             this.tsDelete.Text = "Delete";
+            this.tsDelete.Click += new System.EventHandler(this.tsDelete_Click);
             // 
             // toolStripSeparator1
             // 
@@ -428,39 +440,39 @@
             // 
             // tsUndo
             // 
-            this.tsUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsUndo.Image = ((System.Drawing.Image)(resources.GetObject("tsUndo.Image")));
             this.tsUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsUndo.Name = "tsUndo";
-            this.tsUndo.Size = new System.Drawing.Size(23, 22);
-            this.tsUndo.Text = "toolStripButton1";
+            this.tsUndo.Size = new System.Drawing.Size(57, 22);
+            this.tsUndo.Text = "UnDo";
+            this.tsUndo.Click += new System.EventHandler(this.tsUndo_Click);
             // 
             // tsCopy
             // 
-            this.tsCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsCopy.Image = ((System.Drawing.Image)(resources.GetObject("tsCopy.Image")));
             this.tsCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsCopy.Name = "tsCopy";
-            this.tsCopy.Size = new System.Drawing.Size(23, 22);
+            this.tsCopy.Size = new System.Drawing.Size(55, 22);
             this.tsCopy.Text = "Copy";
+            this.tsCopy.Click += new System.EventHandler(this.tsCopy_Click);
             // 
             // tsCut
             // 
-            this.tsCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsCut.Image = ((System.Drawing.Image)(resources.GetObject("tsCut.Image")));
             this.tsCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsCut.Name = "tsCut";
-            this.tsCut.Size = new System.Drawing.Size(23, 22);
+            this.tsCut.Size = new System.Drawing.Size(46, 22);
             this.tsCut.Text = "Cut";
+            this.tsCut.Click += new System.EventHandler(this.tsCut_Click);
             // 
             // tsPaste
             // 
-            this.tsPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsPaste.Image = ((System.Drawing.Image)(resources.GetObject("tsPaste.Image")));
             this.tsPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsPaste.Name = "tsPaste";
-            this.tsPaste.Size = new System.Drawing.Size(23, 22);
+            this.tsPaste.Size = new System.Drawing.Size(55, 22);
             this.tsPaste.Text = "Paste";
+            this.tsPaste.Click += new System.EventHandler(this.tsPaste_Click);
             // 
             // toolStripSeparator2
             // 
@@ -469,31 +481,26 @@
             // 
             // tsPrint
             // 
-            this.tsPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsPrint.Image = ((System.Drawing.Image)(resources.GetObject("tsPrint.Image")));
             this.tsPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsPrint.Name = "tsPrint";
-            this.tsPrint.Size = new System.Drawing.Size(23, 22);
+            this.tsPrint.Size = new System.Drawing.Size(52, 22);
             this.tsPrint.Text = "Print";
+            this.tsPrint.Click += new System.EventHandler(this.tsPrint_Click);
             // 
             // tsEmail
             // 
-            this.tsEmail.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsEmail.Image = ((System.Drawing.Image)(resources.GetObject("tsEmail.Image")));
             this.tsEmail.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsEmail.Name = "tsEmail";
-            this.tsEmail.Size = new System.Drawing.Size(23, 22);
+            this.tsEmail.Size = new System.Drawing.Size(56, 22);
             this.tsEmail.Text = "Email";
+            this.tsEmail.Click += new System.EventHandler(this.tsEmail_Click);
             // 
-            // tsPrintScreen
+            // toolStripSeparator3
             // 
-            this.tsPrintScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsPrintScreen.Image = ((System.Drawing.Image)(resources.GetObject("tsPrintScreen.Image")));
-            this.tsPrintScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsPrintScreen.Name = "tsPrintScreen";
-            this.tsPrintScreen.Size = new System.Drawing.Size(23, 22);
-            this.tsPrintScreen.Text = "Print Screen";
-            this.tsPrintScreen.Click += new System.EventHandler(this.tsPrintScreen_Click);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // frmMain
             // 
@@ -567,6 +574,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsPrint;
         private System.Windows.Forms.ToolStripButton tsEmail;
-        private System.Windows.Forms.ToolStripButton tsPrintScreen;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         }
 }
