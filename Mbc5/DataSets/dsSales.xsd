@@ -1099,7 +1099,7 @@ WHERE        (invno = @Invno)</CommandText>
   <xs:element name="dsSales" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsSales" msprop:Generator_UserDSName="dsSales">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="quotes" msprop:Generator_TableClassName="quotesDataTable" msprop:Generator_TableVarName="tablequotes" msprop:Generator_TablePropName="quotes" msprop:Generator_RowDeletingName="quotesRowDeleting" msprop:Generator_RowChangingName="quotesRowChanging" msprop:Generator_RowEvHandlerName="quotesRowChangeEventHandler" msprop:Generator_RowDeletedName="quotesRowDeleted" msprop:Generator_UserTableName="quotes" msprop:Generator_RowChangedName="quotesRowChanged" msprop:Generator_RowEvArgName="quotesRowChangeEvent" msprop:Generator_RowClassName="quotesRow">
+        <xs:element name="quotes" msprop:Generator_TableClassName="quotesDataTable" msprop:Generator_TableVarName="tablequotes" msprop:Generator_RowChangedName="quotesRowChanged" msprop:Generator_TablePropName="quotes" msprop:Generator_RowDeletingName="quotesRowDeleting" msprop:Generator_RowChangingName="quotesRowChanging" msprop:Generator_RowEvHandlerName="quotesRowChangeEventHandler" msprop:Generator_RowDeletedName="quotesRowDeleted" msprop:Generator_RowClassName="quotesRow" msprop:Generator_UserTableName="quotes" msprop:Generator_RowEvArgName="quotesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="invno" msprop:Generator_ColumnVarNameInTable="columninvno" msprop:Generator_ColumnPropNameInRow="invno" msprop:Generator_ColumnPropNameInTable="invnoColumn" msprop:Generator_UserColumnName="invno" type="xs:decimal" />
@@ -1409,7 +1409,7 @@ WHERE        (invno = @Invno)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_UserTableName="cust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_RowEvArgName="custRowChangeEvent" msprop:Generator_RowClassName="custRow">
+        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_RowClassName="custRow" msprop:Generator_UserTableName="cust" msprop:Generator_RowEvArgName="custRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -2110,10 +2110,11 @@ WHERE        (invno = @Invno)</CommandText>
               <xs:element name="TimeStamp" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTimeStamp" msprop:Generator_ColumnPropNameInRow="TimeStamp" msprop:Generator_ColumnPropNameInTable="TimeStampColumn" msprop:Generator_UserColumnName="TimeStamp" type="xs:base64Binary" minOccurs="0" />
               <xs:element name="fullname" msdata:ReadOnly="true" msdata:Expression="TRIM(contfname)+' ' + TRIM(contlname)" msprop:Generator_ColumnVarNameInTable="columnfullname" msprop:Generator_ColumnPropNameInRow="fullname" msprop:Generator_ColumnPropNameInTable="fullnameColumn" msprop:Generator_UserColumnName="fullname" type="xs:string" minOccurs="0" />
               <xs:element name="citystatezip" msdata:ReadOnly="true" msdata:Expression="TRIM(schcity)+','+TRIM(schstate)+' '+TRIM(schzip)" msprop:Generator_ColumnVarNameInTable="columncitystatezip" msprop:Generator_ColumnPropNameInRow="citystatezip" msprop:Generator_ColumnPropNameInTable="citystatezipColumn" msprop:Generator_UserColumnName="citystatezip" type="xs:string" minOccurs="0" />
+              <xs:element name="namecode" msdata:ReadOnly="true" msdata:Expression="TRIM(schname)+' (' + TRIM(schcode)+')'" msprop:Generator_ColumnVarNameInTable="columnnamecode" msprop:Generator_ColumnPropNameInRow="namecode" msprop:Generator_ColumnPropNameInTable="namecodeColumn" msprop:Generator_UserColumnName="namecode" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="InvHst" msprop:Generator_TableClassName="InvHstDataTable" msprop:Generator_TableVarName="tableInvHst" msprop:Generator_RowChangedName="InvHstRowChanged" msprop:Generator_TablePropName="InvHst" msprop:Generator_RowDeletingName="InvHstRowDeleting" msprop:Generator_RowChangingName="InvHstRowChanging" msprop:Generator_RowEvHandlerName="InvHstRowChangeEventHandler" msprop:Generator_RowDeletedName="InvHstRowDeleted" msprop:Generator_RowClassName="InvHstRow" msprop:Generator_UserTableName="InvHst" msprop:Generator_RowEvArgName="InvHstRowChangeEvent">
+        <xs:element name="InvHst" msprop:Generator_TableClassName="InvHstDataTable" msprop:Generator_TableVarName="tableInvHst" msprop:Generator_TablePropName="InvHst" msprop:Generator_RowDeletingName="InvHstRowDeleting" msprop:Generator_RowChangingName="InvHstRowChanging" msprop:Generator_RowEvHandlerName="InvHstRowChangeEventHandler" msprop:Generator_RowDeletedName="InvHstRowDeleted" msprop:Generator_UserTableName="InvHst" msprop:Generator_RowChangedName="InvHstRowChanged" msprop:Generator_RowEvArgName="InvHstRowChangeEvent" msprop:Generator_RowClassName="InvHstRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="invno" msprop:Generator_ColumnVarNameInTable="columninvno" msprop:Generator_ColumnPropNameInRow="invno" msprop:Generator_ColumnPropNameInTable="invnoColumn" msprop:Generator_UserColumnName="invno" type="xs:decimal" />
@@ -2142,7 +2143,7 @@ WHERE        (invno = @Invno)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="cust_quotes" msdata:parent="cust" msdata:child="quotes" msdata:parentkey="schcode" msdata:childkey="schcode" msprop:Generator_UserChildTable="quotes" msprop:Generator_ChildPropName="GetquotesRows" msprop:Generator_UserRelationName="cust_quotes" msprop:Generator_RelationVarName="relationcust_quotes" msprop:Generator_UserParentTable="cust" msprop:Generator_ParentPropName="custRow" />
+      <msdata:Relationship name="cust_quotes" msdata:parent="cust" msdata:child="quotes" msdata:parentkey="schcode" msdata:childkey="schcode" msprop:Generator_UserChildTable="quotes" msprop:Generator_ChildPropName="GetquotesRows" msprop:Generator_UserRelationName="cust_quotes" msprop:Generator_ParentPropName="custRow" msprop:Generator_RelationVarName="relationcust_quotes" msprop:Generator_UserParentTable="cust" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

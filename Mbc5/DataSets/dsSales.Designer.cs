@@ -351,6 +351,7 @@ namespace Mbc5.DataSets {
         private void InitExpressions() {
             this.cust.fullnameColumn.Expression = "TRIM(contfname)+\' \' + TRIM(contlname)";
             this.cust.citystatezipColumn.Expression = "TRIM(schcity)+\',\'+TRIM(schstate)+\' \'+TRIM(schzip)";
+            this.cust.namecodeColumn.Expression = "TRIM(schname)+\' (\' + TRIM(schcode)+\')\'";
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -3565,6 +3566,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columncitystatezip;
             
+            private global::System.Data.DataColumn columnnamecode;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public custDataTable() : 
@@ -4633,6 +4636,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn namecodeColumn {
+                get {
+                    return this.columnnamecode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4796,7 +4807,8 @@ namespace Mbc5.DataSets {
                         System.DateTime DateModified, 
                         byte[] TimeStamp, 
                         string fullname, 
-                        string citystatezip) {
+                        string citystatezip, 
+                        string namecode) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -4926,7 +4938,8 @@ namespace Mbc5.DataSets {
                         DateModified,
                         TimeStamp,
                         fullname,
-                        citystatezip};
+                        citystatezip,
+                        namecode};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -5190,6 +5203,7 @@ namespace Mbc5.DataSets {
                         DateModified,
                         TimeStamp,
                         null,
+                        null,
                         null};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
@@ -5348,6 +5362,7 @@ namespace Mbc5.DataSets {
                 this.columnTimeStamp = base.Columns["TimeStamp"];
                 this.columnfullname = base.Columns["fullname"];
                 this.columncitystatezip = base.Columns["citystatezip"];
+                this.columnnamecode = base.Columns["namecode"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5609,6 +5624,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnfullname);
                 this.columncitystatezip = new global::System.Data.DataColumn("citystatezip", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncitystatezip);
+                this.columnnamecode = new global::System.Data.DataColumn("namecode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnamecode);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columnschcode.AllowDBNull = false;
@@ -5718,6 +5735,7 @@ namespace Mbc5.DataSets {
                 this.columnTimeStamp.ReadOnly = true;
                 this.columnfullname.ReadOnly = true;
                 this.columncitystatezip.ReadOnly = true;
+                this.columnnamecode.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5743,6 +5761,7 @@ namespace Mbc5.DataSets {
             private void InitExpressions() {
                 this.fullnameColumn.Expression = "TRIM(contfname)+\' \' + TRIM(contlname)";
                 this.citystatezipColumn.Expression = "TRIM(schcity)+\',\'+TRIM(schstate)+\' \'+TRIM(schzip)";
+                this.namecodeColumn.Expression = "TRIM(schname)+\' (\' + TRIM(schcode)+\')\'";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13145,6 +13164,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string namecode {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.namecodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'namecode\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.namecodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
@@ -14581,6 +14616,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetcitystatezipNull() {
                 this[this.tablecust.citystatezipColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnamecodeNull() {
+                return this.IsNull(this.tablecust.namecodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnamecodeNull() {
+                this[this.tablecust.namecodeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

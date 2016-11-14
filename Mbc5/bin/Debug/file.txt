@@ -193,3 +193,9 @@ The statement has been terminated. CHOME  WDFM\rwoodall
 2016/11/03 10:08:27.606 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
 2016/11/03 10:11:40.592 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
 2016/11/03 10:13:48.581 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/14 16:06:47.543 Error running ExecuteReaderAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/14 16:08:33.221 Error running ExecuteReaderAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/14 16:09:54.792 Error running ExecuteReaderAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/14 16:37:35.856 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/14 16:38:54.770 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/14 16:39:51.041 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    

@@ -43,7 +43,8 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
         private void frmSales_Load(object sender,EventArgs e) {
-
+            
+          
             lblPCEach.DataBindings.Add("Text",this,"PrcEa",false,DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text",this,"PrcTot",false,DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();
@@ -120,7 +121,20 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             con.Enabled = true;
             }
-        
+        private void CalculatePayments() {
+            var SqlQuery = new SQLQuery();
+            var cmdText = "SELECT        SUM(ISNULL(payment, 0) + ISNULL(refund, 0) + ISNULL(adjmnt, 0) + ISNULL(compamt, 0)) AS paymentresult FROM paymnt where Invno=@Invno";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text) };
+            var result = SqlQuery.ExecuteReaderAsync(CommandType.Text,cmdText,parameters);
+            var paymentTotals =(decimal) result.Rows[0]["paymentresult"];
+            cmdText = "Insert into invoice (paymnt) Values(@payments) where Invno=@Invno ";
+            SqlParameter[] parameters1 = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text),
+                new SqlParameter("@payments",paymentTotals)};
+            SqlQuery.ExecuteNonQueryAsync(CommandType.Text,cmdText,parameters1);
+            this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
+            }
         private void Fill() {
             if (Schcode != null) {
                 custTableAdapter.Fill(dsSales.cust,Schcode);
@@ -2061,11 +2075,12 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void tabSales_SelectedIndexChanged(object sender,EventArgs e) {
-            
-          
-            if (this.tabSales.SelectedIndex == 2) {
+
+
+            if (this.tabSales.SelectedIndex == 2 || this.tabSales.SelectedIndex == 3) {
                 this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
                 this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
+                this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
                 }
             }
 
@@ -2262,6 +2277,33 @@ namespace Mbc5.Forms.MemoryBook {
             a.SendOutLookEmail("test",address,"","This is a test.",EmailType.Mbc);
 
 
+            }
+
+        private void btnNewPayment_Click(object sender,EventArgs e) {
+            txtPaypoamt.Enabled = true;
+            txtInitials.Enabled = true;
+            calpmtdate.Enabled = true;
+            txtCheckNo.Enabled = true;
+            txtMethod.Enabled = true;
+            txtPayment.Enabled = true;
+            txtRefund.Enabled = true;
+            txtAdjustment.Enabled = true;
+            txtCompensation.Enabled = true;
+            txtCompReason.Enabled = true;
+            paymntBindingSource.AddNew();
+
+            DataRowView current = (DataRowView)paymntBindingSource.Current;
+            current["Invno"] = lblInvoice.Text;
+            current["Code"] = lblschname11.Text;
+
+
+            }
+
+        private void button1_Click_2(object sender,EventArgs e) {
+            this.paymntBindingSource.EndEdit();
+             this.paymntTableAdapter.Update(dsInvoice.paymnt);
+            this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
+            this.CalculatePayments();
             }
 
 
