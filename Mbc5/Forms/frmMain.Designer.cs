@@ -80,6 +80,7 @@
             this.tsPrint = new System.Windows.Forms.ToolStripButton();
             this.tsEmail = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsCancel = new System.Windows.Forms.ToolStripButton();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -391,6 +392,7 @@
             this.tsSave,
             this.tsAdd,
             this.tsDelete,
+            this.tsCancel,
             this.toolStripSeparator1,
             this.tsUndo,
             this.tsCopy,
@@ -502,6 +504,14 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
+            // tsCancel
+            // 
+            this.tsCancel.Image = ((System.Drawing.Image)(resources.GetObject("tsCancel.Image")));
+            this.tsCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCancel.Name = "tsCancel";
+            this.tsCancel.Size = new System.Drawing.Size(63, 22);
+            this.tsCancel.Text = "Cancel";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -565,7 +575,6 @@
         private System.Windows.Forms.ToolStrip tsMain;
         private System.Windows.Forms.ToolStripButton tsAdd;
         private System.Windows.Forms.ToolStripButton tsSave;
-        private System.Windows.Forms.ToolStripButton tsDelete;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsUndo;
         private System.Windows.Forms.ToolStripButton tsCopy;
@@ -576,5 +585,7 @@
         private System.Windows.Forms.ToolStripButton tsEmail;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton tsDelete;
+        private System.Windows.Forms.ToolStripButton tsCancel;
         }
 }

@@ -112,13 +112,13 @@
             System.Windows.Forms.Label compamtLabel;
             System.Windows.Forms.Label compreasLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblProftotalPrc = new System.Windows.Forms.Label();
@@ -364,6 +364,19 @@
             this.calpmtdate = new System.Windows.Forms.DateTimePicker();
             this.invno = new System.Windows.Forms.Label();
             this.paymntDataGridView = new System.Windows.Forms.DataGridView();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.mnuEditLkUp = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editLookUpItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
+            this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
+            this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
+            this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
+            this.custBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tableAdapterManager1 = new Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager();
+            this.invoiceTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invoiceTableAdapter();
+            this.invdetailTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invdetailTableAdapter();
+            this.paymntTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.paymntTableAdapter();
+            this.custTableAdapter1 = new Mbc5.DataSets.InvoiceTableAdapters.custTableAdapter();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -382,19 +395,6 @@
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.mnuEditLkUp = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editLookUpItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
-            this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
-            this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
-            this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
-            this.custBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tableAdapterManager1 = new Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager();
-            this.invoiceTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invoiceTableAdapter();
-            this.invdetailTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invdetailTableAdapter();
-            this.paymntTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.paymntTableAdapter();
-            this.custTableAdapter1 = new Mbc5.DataSets.InvoiceTableAdapters.custTableAdapter();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -1380,8 +1380,6 @@
             this.tabSales.SelectedIndex = 0;
             this.tabSales.Size = new System.Drawing.Size(1228, 731);
             this.tabSales.TabIndex = 0;
-            this.tabSales.SelectedIndexChanged += new System.EventHandler(this.tabSales_SelectedIndexChanged);
-            this.tabSales.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabSales_Selecting);
             this.tabSales.Deselecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabSales_Deselecting);
             // 
             // pg1
@@ -1807,14 +1805,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -3697,6 +3695,7 @@
             this.pg3.Size = new System.Drawing.Size(1220, 705);
             this.pg3.TabIndex = 1;
             this.pg3.Text = "Invoices";
+            this.pg3.Enter += new System.EventHandler(this.pg3_Enter);
             // 
             // panel10
             // 
@@ -4019,14 +4018,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.invdetailDataGridView.AutoGenerateColumns = false;
             this.invdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.invdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
@@ -4047,8 +4046,8 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "schcode";
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridViewTextBoxColumn5.HeaderText = "School Code";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -4056,8 +4055,8 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "invno";
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridViewTextBoxColumn6.HeaderText = "Invoice #";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -4065,8 +4064,8 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "descr";
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridViewTextBoxColumn7.HeaderText = "Description";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -4074,8 +4073,8 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "price";
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle27;
             this.dataGridViewTextBoxColumn8.HeaderText = "Amount";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -4328,14 +4327,14 @@
             // 
             this.paymntDataGridView.AutoGenerateColumns = false;
             this.paymntDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.paymntDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paymntDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -4364,6 +4363,76 @@
             this.paymntDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.paymntDataGridView.Size = new System.Drawing.Size(1192, 220);
             this.paymntDataGridView.TabIndex = 0;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // mnuEditLkUp
+            // 
+            this.mnuEditLkUp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editLookUpItemsToolStripMenuItem});
+            this.mnuEditLkUp.Name = "mnuEditLkUp";
+            this.mnuEditLkUp.Size = new System.Drawing.Size(174, 26);
+            // 
+            // editLookUpItemsToolStripMenuItem
+            // 
+            this.editLookUpItemsToolStripMenuItem.Name = "editLookUpItemsToolStripMenuItem";
+            this.editLookUpItemsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.editLookUpItemsToolStripMenuItem.Text = "Edit Look Up Items";
+            this.editLookUpItemsToolStripMenuItem.Click += new System.EventHandler(this.editLookUpItemsToolStripMenuItem_Click);
+            // 
+            // quotesTableAdapter
+            // 
+            this.quotesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.custTableAdapter = null;
+            this.tableAdapterManager.InvHstTableAdapter = null;
+            this.tableAdapterManager.quotesTableAdapter = this.quotesTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // custTableAdapter
+            // 
+            this.custTableAdapter.ClearBeforeFill = true;
+            // 
+            // invHstTableAdapter
+            // 
+            this.invHstTableAdapter.ClearBeforeFill = true;
+            // 
+            // custBindingSource1
+            // 
+            this.custBindingSource1.DataMember = "cust";
+            this.custBindingSource1.DataSource = this.dsInvoice;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.Connection = null;
+            this.tableAdapterManager1.custTableAdapter = null;
+            this.tableAdapterManager1.invdetailTableAdapter = null;
+            this.tableAdapterManager1.invoiceTableAdapter = null;
+            this.tableAdapterManager1.paymntTableAdapter = null;
+            this.tableAdapterManager1.quotesTableAdapter = null;
+            this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // invoiceTableAdapter
+            // 
+            this.invoiceTableAdapter.ClearBeforeFill = true;
+            // 
+            // invdetailTableAdapter
+            // 
+            this.invdetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // paymntTableAdapter
+            // 
+            this.paymntTableAdapter.ClearBeforeFill = true;
+            // 
+            // custTableAdapter1
+            // 
+            this.custTableAdapter1.ClearBeforeFill = true;
             // 
             // Id
             // 
@@ -4457,6 +4526,7 @@
             this.dataGridViewTextBoxColumn22.HeaderText = "Comp Reason";
             this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
             this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            this.dataGridViewTextBoxColumn22.Visible = false;
             // 
             // dataGridViewTextBoxColumn23
             // 
@@ -4497,76 +4567,6 @@
             this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
             this.dataGridViewTextBoxColumn27.ReadOnly = true;
             this.dataGridViewTextBoxColumn27.Visible = false;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // mnuEditLkUp
-            // 
-            this.mnuEditLkUp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editLookUpItemsToolStripMenuItem});
-            this.mnuEditLkUp.Name = "mnuEditLkUp";
-            this.mnuEditLkUp.Size = new System.Drawing.Size(174, 26);
-            // 
-            // editLookUpItemsToolStripMenuItem
-            // 
-            this.editLookUpItemsToolStripMenuItem.Name = "editLookUpItemsToolStripMenuItem";
-            this.editLookUpItemsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.editLookUpItemsToolStripMenuItem.Text = "Edit Look Up Items";
-            this.editLookUpItemsToolStripMenuItem.Click += new System.EventHandler(this.editLookUpItemsToolStripMenuItem_Click);
-            // 
-            // quotesTableAdapter
-            // 
-            this.quotesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.custTableAdapter = null;
-            this.tableAdapterManager.InvHstTableAdapter = null;
-            this.tableAdapterManager.quotesTableAdapter = this.quotesTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // custTableAdapter
-            // 
-            this.custTableAdapter.ClearBeforeFill = true;
-            // 
-            // invHstTableAdapter
-            // 
-            this.invHstTableAdapter.ClearBeforeFill = true;
-            // 
-            // custBindingSource1
-            // 
-            this.custBindingSource1.DataMember = "cust";
-            this.custBindingSource1.DataSource = this.dsInvoice;
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.Connection = null;
-            this.tableAdapterManager1.custTableAdapter = null;
-            this.tableAdapterManager1.invdetailTableAdapter = null;
-            this.tableAdapterManager1.invoiceTableAdapter = null;
-            this.tableAdapterManager1.paymntTableAdapter = null;
-            this.tableAdapterManager1.quotesTableAdapter = null;
-            this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // invoiceTableAdapter
-            // 
-            this.invoiceTableAdapter.ClearBeforeFill = true;
-            // 
-            // invdetailTableAdapter
-            // 
-            this.invdetailTableAdapter.ClearBeforeFill = true;
-            // 
-            // paymntTableAdapter
-            // 
-            this.paymntTableAdapter.ClearBeforeFill = true;
-            // 
-            // custTableAdapter1
-            // 
-            this.custTableAdapter1.ClearBeforeFill = true;
             // 
             // frmSales
             // 

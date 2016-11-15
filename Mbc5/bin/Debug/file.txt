@@ -230,3 +230,50 @@ The statement has been terminated. CHOME  WDFM\rwoodall
 2016/11/15 15:16:14.073 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
    at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 226
    at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 151 
+2016/11/15 15:28:25.252 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments()
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() 
+2016/11/15 15:34:22.027 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 245
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 169 
+2016/11/15 15:36:33.122 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 245
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 169 
+2016/11/15 15:36:44.737 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 245
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 169 
+2016/11/15 15:37:21.240 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 245
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 169 
+2016/11/15 15:39:21.470 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 245
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 169 
+2016/11/15 15:40:52.950 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 245
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 169 
+2016/11/15 15:59:38.311 Payment failed to update:Cannot set column 'compreas'. The value violates the MaxLength limit of this column. RWCOMPUTER  RWCOMPUTER\randy   System.ArgumentException: Cannot set column 'compreas'. The value violates the MaxLength limit of this column.
+   at System.Data.DataColumn.CheckMaxLength(DataRow dr)
+   at System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
+   at System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
+   at System.Data.DataRow.EndEdit()
+   at System.Data.DataRowView.EndEdit()
+   at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
+   at System.Windows.Forms.BindingSource.EndEdit()
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 166 
+2016/11/15 16:00:41.032 Payment failed to update:Cannot set column 'compreas'. The value violates the MaxLength limit of this column. RWCOMPUTER  RWCOMPUTER\randy   System.ArgumentException: Cannot set column 'compreas'. The value violates the MaxLength limit of this column.
+   at System.Data.DataColumn.CheckMaxLength(DataRow dr)
+   at System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
+   at System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
+   at System.Data.DataRow.EndEdit()
+   at System.Data.DataRowView.EndEdit()
+   at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
+   at System.Windows.Forms.BindingSource.EndEdit()
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 166 
+2016/11/15 16:05:44.527 Payment failed to update:Update requires a valid UpdateCommand when passed DataRow collection with modified rows. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidOperationException: Update requires a valid UpdateCommand when passed DataRow collection with modified rows.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.InvoiceTableAdapters.paymntTableAdapter.Update(paymntDataTable dataTable) in F:\New folder\MemoryBookDeskTop\Mbc5\DataSets\dsInvoice1.Designer.cs:line 7566
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 167 

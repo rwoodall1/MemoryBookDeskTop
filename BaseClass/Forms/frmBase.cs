@@ -211,14 +211,16 @@ namespace BaseClass
 
         }
         [Browsable(true)]
+        public virtual void Cancel() {
+
+
+            }
+        [Browsable(true)]
         public virtual void Add()
         {
 
         }
-        public virtual void Cancel()
-        {
-
-        }
+       
 
       
     }

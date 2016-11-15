@@ -124,6 +124,23 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
         #region "Methods"
         //Payment Tab
+        private void SetCrudButtons() {
+            btnSavePayment.Enabled = paymntBindingSource.Count > 0;
+            btnDelete.Enabled = paymntBindingSource.Count > 0;
+            btnEdit.Enabled = paymntBindingSource.Count > 0;
+            if (paymntBindingSource.Count < 1) {
+                txtPaypoamt.Enabled = false;
+                txtInitials.Enabled = false;
+                calpmtdate.Enabled = false;
+                txtCheckNo.Enabled = false;
+                txtMethod.Enabled = false;
+                txtPayment.Enabled = false;
+                txtRefund.Enabled = false;
+                txtAdjustment.Enabled = false;
+                txtCompensation.Enabled = false;
+                txtCompReason.Enabled = false;
+                }
+            }
         private void NewPayment() {
             txtPaypoamt.Enabled = true;
             txtInitials.Enabled = true;
@@ -140,6 +157,7 @@ namespace Mbc5.Forms.MemoryBook {
             DataRowView current = (DataRowView)paymntBindingSource.Current;
             current["Invno"] = lblInvoice.Text;
             current["Code"] = this.Schcode;
+            SetCrudButtons();
             }
         private bool SavePayment() {
             bool retval = true;
@@ -188,6 +206,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
 
             if (result == 0) { retval = false; }
+            SetCrudButtons();
             return retval;
             }
         private void CancelPayment() {
@@ -202,7 +221,7 @@ namespace Mbc5.Forms.MemoryBook {
             txtAdjustment.Enabled = false;
             txtCompensation.Enabled = false;
             txtCompReason.Enabled = false;
-       
+            errorProvider1.Clear();
             }
         private void EditPayment() {
             txtPaypoamt.Enabled = true;
@@ -218,18 +237,23 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
        private void CalculatePayments() {
+            decimal paymentTotals = 0;
             var SqlQuery = new SQLQuery();
             var cmdText = "SELECT        SUM(ISNULL(payment, 0) + ISNULL(refund, 0) + ISNULL(adjmnt, 0) + ISNULL(compamt, 0)) AS paymentresult FROM paymnt where Invno=@Invno";
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Invno",lblInvoice.Text) };
             var result = SqlQuery.ExecuteReaderAsync(CommandType.Text,cmdText,parameters);
-            var paymentTotals =(decimal) result.Rows[0]["paymentresult"];
+            try {  paymentTotals =(decimal) result.Rows[0]["paymentresult"];
             cmdText = "Update invoice set payments=@payments,baldue=baldue-@payments  where Invno=@Invno ";
             SqlParameter[] parameters1 = new SqlParameter[] {
                 new SqlParameter("@Invno",lblInvoice.Text),
                 new SqlParameter("@payments",paymentTotals)};
-            var a=SqlQuery.ExecuteNonQueryAsync(CommandType.Text,cmdText,parameters1);
-            this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
+                var a=SqlQuery.ExecuteNonQueryAsync(CommandType.Text,cmdText,parameters1);
+                 this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
+                } catch(Exception ex) {
+
+                }
+          
             }
         //Invoice
         private bool DeleteInvoice() {
@@ -1303,6 +1327,7 @@ namespace Mbc5.Forms.MemoryBook {
             con.Enabled = true;
             }
        //General
+       
         private void Fill() {
             if (Schcode != null) {
                 custTableAdapter.Fill(dsSales.cust,Schcode);
@@ -1320,7 +1345,7 @@ namespace Mbc5.Forms.MemoryBook {
             BookCalc();
 
             }
-        public new void  Save() {
+        public override void  Save() {
             switch (tabSales.SelectedIndex) {
                 case 0:
                 case 1:
@@ -1340,7 +1365,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
-        public new void Add() {
+        public override void Add() {
             switch (tabSales.SelectedIndex) {
                 case 0:
                 case 1:
@@ -1359,7 +1384,7 @@ namespace Mbc5.Forms.MemoryBook {
 
                 }
             }
-        public new void Delete() {
+        public override void Delete() {
             switch (tabSales.SelectedIndex) {
                 case 0:
                 case 1:
@@ -1376,7 +1401,7 @@ namespace Mbc5.Forms.MemoryBook {
 
                 }
             }
-        public new void Cancel() {
+        public override void Cancel() {
             CancelPayment();
             quotesBindingSource.CancelEdit();
             invdetailBindingSource.CancelEdit();
@@ -2265,16 +2290,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
 
-        private void tabSales_SelectedIndexChanged(object sender,EventArgs e) {
-
-
-            if (this.tabSales.SelectedIndex == 2 || this.tabSales.SelectedIndex == 3) {
-                this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
-                this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
-                this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
-               
-                }
-            }
+       
 
         private void oppicpersCheckBox1_CheckedChanged(object sender,EventArgs e) {
             SetOnlinePayOptions(this.txtPicPers.Name,this.chkPicPers.Name,chkPicPers.Checked);
@@ -2421,13 +2437,7 @@ namespace Mbc5.Forms.MemoryBook {
             CalcOnlineTotals();
             }
 
-        private void tabSales_Selecting(object sender,TabControlCancelEventArgs e) {
-           //validation is done in save if validation fails returns false.
-            //if (!this.Save()) {
-            //    e.Cancel = true;
-            //    } 
-            }
-
+       
         private void lblProfAmt_TextChanged(object sender,EventArgs e) {
                CalculateEach();
             }
@@ -2489,7 +2499,13 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void pg4_Enter(object sender,EventArgs e) {
+            this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
+            SetCrudButtons();
+            }
 
+        private void pg3_Enter(object sender,EventArgs e) {
+            this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
+            this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
             }
 
 
