@@ -149,6 +149,16 @@ namespace Mbc5.Forms.MemoryBook {
                     this.paymntTableAdapter.Update(dsInvoice.paymnt);
                     this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
                     this.CalculatePayments();
+                    txtPaypoamt.Enabled = false;
+                    txtInitials.Enabled = false;
+                    calpmtdate.Enabled = false;
+                    txtCheckNo.Enabled = false;
+                    txtMethod.Enabled = false;
+                    txtPayment.Enabled = false;
+                    txtRefund.Enabled = false;
+                    txtAdjustment.Enabled = false;
+                    txtCompensation.Enabled = false;
+                    txtCompReason.Enabled = false;
                     retval = true;
                     } catch (DBConcurrencyException ex1) {
                     retval = false;
@@ -166,14 +176,17 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private bool DeletePayment() {
             bool retval = true;
+            DataRowView current = (DataRowView)paymntBindingSource.Current;
+           var Id= current["Id"] ;
+          
             var sqlQuery = new SQLQuery();
-            var queryString = "Delete  From  paymnt where Invno=@Invno ";
+            var queryString = "Delete  From  paymnt where Id=@Id ";
             SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
+                new SqlParameter("@Id",Id)
             };
             var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-            
-           
+            this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
+
             if (result == 0) { retval = false; }
             return retval;
             }
@@ -2259,6 +2272,7 @@ namespace Mbc5.Forms.MemoryBook {
                 this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
                 this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
                 this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
+               
                 }
             }
 
@@ -2422,14 +2436,6 @@ namespace Mbc5.Forms.MemoryBook {
             CalculateEach();
             }
 
-        private void pg1_Click(object sender,EventArgs e) {
-
-            }
-
-        private void button1_Click_1(object sender,EventArgs e) {
-           
-            }
-
         private void btnDeleteInvoice_Click(object sender,EventArgs e) {
             DeleteInvoice();
             
@@ -2447,11 +2453,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void btnNewPayment_Click(object sender,EventArgs e) {
             NewPayment();
-
-
             }
-
-       
 
         private void tabSales_Deselecting(object sender,TabControlCancelEventArgs e) {
          if(this.tabSales.SelectedIndex==3){
@@ -2466,13 +2468,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
 
-        private void tabSales_Selected(object sender,TabControlEventArgs e) {
-            this.tabSales.SelectedTab.CausesValidation = true;
-            }
-
-        private void tabSales_Deselected(object sender,TabControlEventArgs e) {
-            this.tabSales.SelectedTab.CausesValidation = false;
-            }
+        
 
         private void btnCancel_Click(object sender,EventArgs e) {
             CancelPayment();
@@ -2490,6 +2486,10 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void btnDelete_Click(object sender,EventArgs e) {
             DeletePayment();
+            }
+
+        private void pg4_Enter(object sender,EventArgs e) {
+
             }
 
 

@@ -2276,6 +2276,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnpaytype;
             
+            private global::System.Data.DataColumn columnId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public paymntDataTable() {
@@ -2447,6 +2449,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2518,7 +2528,8 @@ namespace Mbc5.DataSets {
                         transid,
                         authcode,
                         ccnum,
-                        paytype};
+                        paytype,
+                        null};
                 if ((parentinvoiceRowByinvoice_paymnt != null)) {
                     columnValuesArray[1] = parentinvoiceRowByinvoice_paymnt[1];
                 }
@@ -2561,6 +2572,7 @@ namespace Mbc5.DataSets {
                 this.columnauthcode = base.Columns["authcode"];
                 this.columnccnum = base.Columns["ccnum"];
                 this.columnpaytype = base.Columns["paytype"];
+                this.columnId = base.Columns["Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2600,6 +2612,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnccnum);
                 this.columnpaytype = new global::System.Data.DataColumn("paytype", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpaytype);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
                 this.columncode.AllowDBNull = false;
                 this.columncode.MaxLength = 6;
                 this.columninvno.AllowDBNull = false;
@@ -2611,6 +2625,11 @@ namespace Mbc5.DataSets {
                 this.columnauthcode.MaxLength = 20;
                 this.columnccnum.MaxLength = 6;
                 this.columnpaytype.MaxLength = 3;
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4247,6 +4266,17 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tablepaymnt.paytypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tablepaymnt.IdColumn]));
+                }
+                set {
+                    this[this.tablepaymnt.IdColumn] = value;
                 }
             }
             
@@ -7458,6 +7488,7 @@ SELECT invno, schcode, book_price FROM quotes WHERE (invno = @invno)";
             tableMapping.ColumnMappings.Add("authcode", "authcode");
             tableMapping.ColumnMappings.Add("ccnum", "ccnum");
             tableMapping.ColumnMappings.Add("paytype", "paytype");
+            tableMapping.ColumnMappings.Add("Id", "Id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -7496,8 +7527,8 @@ SELECT invno, schcode, book_price FROM quotes WHERE (invno = @invno)";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        code, invno, pmtdate, payment, checkno, poamt, refund, method, init" +
-                "_, adjmnt, compamt, compreas, ppfee, transid, authcode, ccnum, paytype\r\nFROM    " +
-                "        paymnt\r\nWHERE        (invno = @invno)";
+                "_, adjmnt, compamt, compreas, ppfee, transid, authcode, ccnum, paytype, Id\r\nFROM" +
+                "            paymnt\r\nWHERE        (invno = @invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

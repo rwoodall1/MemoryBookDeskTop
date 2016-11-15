@@ -467,7 +467,7 @@ SELECT invno, schcode, book_price FROM quotes WHERE (invno = @invno)</CommandTex
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT        code, invno, pmtdate, payment, checkno, poamt, refund, method, init_, adjmnt, compamt, compreas, ppfee, transid, authcode, ccnum, paytype
+                    <CommandText>SELECT        code, invno, pmtdate, payment, checkno, poamt, refund, method, init_, adjmnt, compamt, compreas, ppfee, transid, authcode, ccnum, paytype, Id
 FROM            paymnt
 WHERE        (invno = @invno)</CommandText>
                     <Parameters>
@@ -495,6 +495,7 @@ WHERE        (invno = @invno)</CommandText>
               <Mapping SourceColumn="authcode" DataSetColumn="authcode" />
               <Mapping SourceColumn="ccnum" DataSetColumn="ccnum" />
               <Mapping SourceColumn="paytype" DataSetColumn="paytype" />
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -506,7 +507,7 @@ WHERE        (invno = @invno)</CommandText>
   <xs:element name="Invoice" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Invoice" msprop:Generator_UserDSName="Invoice">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="invoice" msprop:Generator_TableClassName="invoiceDataTable" msprop:Generator_TableVarName="tableinvoice" msprop:Generator_RowChangedName="invoiceRowChanged" msprop:Generator_TablePropName="invoice" msprop:Generator_RowDeletingName="invoiceRowDeleting" msprop:Generator_RowChangingName="invoiceRowChanging" msprop:Generator_RowEvHandlerName="invoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="invoiceRowDeleted" msprop:Generator_RowClassName="invoiceRow" msprop:Generator_UserTableName="invoice" msprop:Generator_RowEvArgName="invoiceRowChangeEvent">
+        <xs:element name="invoice" msprop:Generator_TableClassName="invoiceDataTable" msprop:Generator_TableVarName="tableinvoice" msprop:Generator_TablePropName="invoice" msprop:Generator_RowDeletingName="invoiceRowDeleting" msprop:Generator_RowChangingName="invoiceRowChanging" msprop:Generator_RowEvHandlerName="invoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="invoiceRowDeleted" msprop:Generator_UserTableName="invoice" msprop:Generator_RowChangedName="invoiceRowChanged" msprop:Generator_RowEvArgName="invoiceRowChangeEvent" msprop:Generator_RowClassName="invoiceRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -616,7 +617,7 @@ WHERE        (invno = @invno)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="invdetail" msprop:Generator_TableClassName="invdetailDataTable" msprop:Generator_TableVarName="tableinvdetail" msprop:Generator_RowChangedName="invdetailRowChanged" msprop:Generator_TablePropName="invdetail" msprop:Generator_RowDeletingName="invdetailRowDeleting" msprop:Generator_RowChangingName="invdetailRowChanging" msprop:Generator_RowEvHandlerName="invdetailRowChangeEventHandler" msprop:Generator_RowDeletedName="invdetailRowDeleted" msprop:Generator_RowClassName="invdetailRow" msprop:Generator_UserTableName="invdetail" msprop:Generator_RowEvArgName="invdetailRowChangeEvent">
+        <xs:element name="invdetail" msprop:Generator_TableClassName="invdetailDataTable" msprop:Generator_TableVarName="tableinvdetail" msprop:Generator_TablePropName="invdetail" msprop:Generator_RowDeletingName="invdetailRowDeleting" msprop:Generator_RowChangingName="invdetailRowChanging" msprop:Generator_RowEvHandlerName="invdetailRowChangeEventHandler" msprop:Generator_RowDeletedName="invdetailRowDeleted" msprop:Generator_UserTableName="invdetail" msprop:Generator_RowChangedName="invdetailRowChanged" msprop:Generator_RowEvArgName="invdetailRowChangeEvent" msprop:Generator_RowClassName="invdetailRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -646,7 +647,7 @@ WHERE        (invno = @invno)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_UserTableName="cust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_RowEvArgName="custRowChangeEvent" msprop:Generator_RowClassName="custRow">
+        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_RowClassName="custRow" msprop:Generator_UserTableName="cust" msprop:Generator_RowEvArgName="custRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -732,7 +733,7 @@ WHERE        (invno = @invno)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="quotes" msprop:Generator_TableClassName="quotesDataTable" msprop:Generator_TableVarName="tablequotes" msprop:Generator_TablePropName="quotes" msprop:Generator_RowDeletingName="quotesRowDeleting" msprop:Generator_RowChangingName="quotesRowChanging" msprop:Generator_RowEvHandlerName="quotesRowChangeEventHandler" msprop:Generator_RowDeletedName="quotesRowDeleted" msprop:Generator_UserTableName="quotes" msprop:Generator_RowChangedName="quotesRowChanged" msprop:Generator_RowEvArgName="quotesRowChangeEvent" msprop:Generator_RowClassName="quotesRow">
+        <xs:element name="quotes" msprop:Generator_TableClassName="quotesDataTable" msprop:Generator_TableVarName="tablequotes" msprop:Generator_RowChangedName="quotesRowChanged" msprop:Generator_TablePropName="quotes" msprop:Generator_RowDeletingName="quotesRowDeleting" msprop:Generator_RowChangingName="quotesRowChanging" msprop:Generator_RowEvHandlerName="quotesRowChangeEventHandler" msprop:Generator_RowDeletedName="quotesRowDeleted" msprop:Generator_RowClassName="quotesRow" msprop:Generator_UserTableName="quotes" msprop:Generator_RowEvArgName="quotesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="invno" msprop:Generator_ColumnVarNameInTable="columninvno" msprop:Generator_ColumnPropNameInRow="invno" msprop:Generator_ColumnPropNameInTable="invnoColumn" msprop:Generator_UserColumnName="invno" type="xs:decimal" />
@@ -747,7 +748,7 @@ WHERE        (invno = @invno)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="paymnt" msprop:Generator_TableClassName="paymntDataTable" msprop:Generator_TableVarName="tablepaymnt" msprop:Generator_TablePropName="paymnt" msprop:Generator_RowDeletingName="paymntRowDeleting" msprop:Generator_RowChangingName="paymntRowChanging" msprop:Generator_RowEvHandlerName="paymntRowChangeEventHandler" msprop:Generator_RowDeletedName="paymntRowDeleted" msprop:Generator_UserTableName="paymnt" msprop:Generator_RowChangedName="paymntRowChanged" msprop:Generator_RowEvArgName="paymntRowChangeEvent" msprop:Generator_RowClassName="paymntRow">
+        <xs:element name="paymnt" msprop:Generator_TableClassName="paymntDataTable" msprop:Generator_TableVarName="tablepaymnt" msprop:Generator_RowChangedName="paymntRowChanged" msprop:Generator_TablePropName="paymnt" msprop:Generator_RowDeletingName="paymntRowDeleting" msprop:Generator_RowChangingName="paymntRowChanging" msprop:Generator_RowEvHandlerName="paymntRowChangeEventHandler" msprop:Generator_RowDeletedName="paymntRowDeleted" msprop:Generator_RowClassName="paymntRow" msprop:Generator_UserTableName="paymnt" msprop:Generator_RowEvArgName="paymntRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="code" msprop:Generator_ColumnVarNameInTable="columncode" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_UserColumnName="code">
@@ -821,6 +822,7 @@ WHERE        (invno = @invno)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -845,10 +847,10 @@ WHERE        (invno = @invno)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="cust_quotes" msdata:parent="cust" msdata:child="quotes" msdata:parentkey="schcode" msdata:childkey="schcode" msprop:Generator_UserChildTable="quotes" msprop:Generator_ChildPropName="GetquotesRows" msprop:Generator_UserRelationName="cust_quotes" msprop:Generator_ParentPropName="custRow" msprop:Generator_RelationVarName="relationcust_quotes" msprop:Generator_UserParentTable="cust" />
-      <msdata:Relationship name="quotes_invoice" msdata:parent="quotes" msdata:child="invoice" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="invoice" msprop:Generator_ChildPropName="GetinvoiceRows" msprop:Generator_UserRelationName="quotes_invoice" msprop:Generator_RelationVarName="relationquotes_invoice" msprop:Generator_UserParentTable="quotes" msprop:Generator_ParentPropName="quotesRow" />
-      <msdata:Relationship name="FK_invoice_invdetail" msdata:parent="invoice" msdata:child="invdetail" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="invdetail" msprop:Generator_ChildPropName="GetinvdetailRows" msprop:Generator_UserRelationName="FK_invoice_invdetail" msprop:Generator_RelationVarName="relationFK_invoice_invdetail" msprop:Generator_UserParentTable="invoice" msprop:Generator_ParentPropName="invoiceRow" />
-      <msdata:Relationship name="invoice_paymnt" msdata:parent="invoice" msdata:child="paymnt" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="paymnt" msprop:Generator_ChildPropName="GetpaymntRows" msprop:Generator_UserRelationName="invoice_paymnt" msprop:Generator_ParentPropName="invoiceRow" msprop:Generator_RelationVarName="relationinvoice_paymnt" msprop:Generator_UserParentTable="invoice" />
+      <msdata:Relationship name="cust_quotes" msdata:parent="cust" msdata:child="quotes" msdata:parentkey="schcode" msdata:childkey="schcode" msprop:Generator_UserChildTable="quotes" msprop:Generator_ChildPropName="GetquotesRows" msprop:Generator_UserRelationName="cust_quotes" msprop:Generator_RelationVarName="relationcust_quotes" msprop:Generator_UserParentTable="cust" msprop:Generator_ParentPropName="custRow" />
+      <msdata:Relationship name="quotes_invoice" msdata:parent="quotes" msdata:child="invoice" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="invoice" msprop:Generator_ChildPropName="GetinvoiceRows" msprop:Generator_UserRelationName="quotes_invoice" msprop:Generator_ParentPropName="quotesRow" msprop:Generator_RelationVarName="relationquotes_invoice" msprop:Generator_UserParentTable="quotes" />
+      <msdata:Relationship name="FK_invoice_invdetail" msdata:parent="invoice" msdata:child="invdetail" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="invdetail" msprop:Generator_ChildPropName="GetinvdetailRows" msprop:Generator_UserRelationName="FK_invoice_invdetail" msprop:Generator_ParentPropName="invoiceRow" msprop:Generator_RelationVarName="relationFK_invoice_invdetail" msprop:Generator_UserParentTable="invoice" />
+      <msdata:Relationship name="invoice_paymnt" msdata:parent="invoice" msdata:child="paymnt" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="paymnt" msprop:Generator_ChildPropName="GetpaymntRows" msprop:Generator_UserRelationName="invoice_paymnt" msprop:Generator_RelationVarName="relationinvoice_paymnt" msprop:Generator_UserParentTable="invoice" msprop:Generator_ParentPropName="invoiceRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

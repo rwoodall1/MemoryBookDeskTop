@@ -209,3 +209,24 @@ The statement has been terminated. CHOME  WDFM\rwoodall
    at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
    at System.Windows.Forms.BindingSource.EndEdit()
    at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 183 
+2016/11/15 14:50:42.602 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 213
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 151 
+2016/11/15 14:50:45.248 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 213
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 151 
+2016/11/15 15:06:34.374 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 216
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 151 
+2016/11/15 15:07:31.674 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 216
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 151 
+2016/11/15 15:09:39.586 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments()
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() 
+2016/11/15 15:12:08.276 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments()
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() 
+2016/11/15 15:16:14.073 Payment failed to update:Specified cast is not valid. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidCastException: Specified cast is not valid.
+   at Mbc5.Forms.MemoryBook.frmSales.CalculatePayments() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 226
+   at Mbc5.Forms.MemoryBook.frmSales.SavePayment() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 151 
