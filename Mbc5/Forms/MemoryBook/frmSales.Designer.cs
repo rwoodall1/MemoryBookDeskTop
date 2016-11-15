@@ -100,10 +100,6 @@
             System.Windows.Forms.Label calOnlineCutoff;
             System.Windows.Forms.Label qtedateLabel4;
             System.Windows.Forms.Label label35;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label invnoLabel5;
             System.Windows.Forms.Label pmtdateLabel;
             System.Windows.Forms.Label paymentLabel;
@@ -115,16 +111,23 @@
             System.Windows.Forms.Label adjmntLabel;
             System.Windows.Forms.Label compamtLabel;
             System.Windows.Forms.Label compreasLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblProftotalPrc = new System.Windows.Forms.Label();
             this.lblprofprice = new System.Windows.Forms.Label();
             this.lblSchoolName = new System.Windows.Forms.Label();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsSales = new Mbc5.DataSets.dsSales();
             this.lblPriceEach = new System.Windows.Forms.Label();
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblBookTotal = new System.Windows.Forms.Label();
             this.lbladjbef = new System.Windows.Forms.Label();
             this.bnSales = new System.Windows.Forms.BindingNavigator(this.components);
@@ -154,6 +157,11 @@
             this.btnInvSrch = new System.Windows.Forms.Button();
             this.btnPoSrch = new System.Windows.Forms.Button();
             this.invHstDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invHstBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtfreebooks = new System.Windows.Forms.TextBox();
             this.saletaxTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -305,6 +313,8 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.poamtLabel1 = new System.Windows.Forms.Label();
+            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsInvoice = new Mbc5.DataSets.Invoice();
             this.baldueLabel1 = new System.Windows.Forms.Label();
             this.book_priceLabel2 = new System.Windows.Forms.Label();
             this.paymentsLabel1 = new System.Windows.Forms.Label();
@@ -327,25 +337,6 @@
             this.btnDeleteInvoice = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.invdetailDataGridView = new System.Windows.Forms.DataGridView();
-            this.pg4 = new System.Windows.Forms.TabPage();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.mnuEditLkUp = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editLookUpItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.paymntDataGridView = new System.Windows.Forms.DataGridView();
-            this.invno = new System.Windows.Forms.Label();
-            this.calpmtdate = new System.Windows.Forms.DateTimePicker();
-            this.txtPayment = new System.Windows.Forms.TextBox();
-            this.txtCheckNo = new System.Windows.Forms.TextBox();
-            this.txtPaypoamt = new System.Windows.Forms.TextBox();
-            this.txtRefund = new System.Windows.Forms.TextBox();
-            this.txtMethod = new System.Windows.Forms.TextBox();
-            this.txtInitials = new System.Windows.Forms.TextBox();
-            this.txtAdjustment = new System.Windows.Forms.TextBox();
-            this.txtCompensation = new System.Windows.Forms.TextBox();
-            this.txtCompReason = new System.Windows.Forms.TextBox();
-            this.namecode = new System.Windows.Forms.Label();
-            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsInvoice = new Mbc5.DataSets.Invoice();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -353,8 +344,22 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.custBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.pg4 = new System.Windows.Forms.TabPage();
+            this.btnNewPayment = new System.Windows.Forms.Button();
+            this.namecode = new System.Windows.Forms.Label();
+            this.txtCompReason = new System.Windows.Forms.TextBox();
             this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtCompensation = new System.Windows.Forms.TextBox();
+            this.txtAdjustment = new System.Windows.Forms.TextBox();
+            this.txtInitials = new System.Windows.Forms.TextBox();
+            this.txtMethod = new System.Windows.Forms.TextBox();
+            this.txtRefund = new System.Windows.Forms.TextBox();
+            this.txtPaypoamt = new System.Windows.Forms.TextBox();
+            this.txtCheckNo = new System.Windows.Forms.TextBox();
+            this.txtPayment = new System.Windows.Forms.TextBox();
+            this.calpmtdate = new System.Windows.Forms.DateTimePicker();
+            this.invno = new System.Windows.Forms.Label();
+            this.paymntDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -372,25 +377,23 @@
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.mnuEditLkUp = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editLookUpItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.custBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterManager1 = new Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager();
             this.invoiceTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invoiceTableAdapter();
             this.invdetailTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.paymntTableAdapter();
             this.custTableAdapter1 = new Mbc5.DataSets.InvoiceTableAdapters.custTableAdapter();
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsSales = new Mbc5.DataSets.dsSales();
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invHstBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
             this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
-            this.btnNewPayment = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnSavePayment = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -479,11 +482,15 @@
             compreasLabel = new System.Windows.Forms.Label();
             this.tabSales.SuspendLayout();
             this.pg1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnSales)).BeginInit();
             this.bnSales.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlTot.SuspendLayout();
             this.pnlMiscDiscCred.SuspendLayout();
@@ -495,21 +502,17 @@
             this.pg3.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailDataGridView)).BeginInit();
-            this.pg4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.mnuEditLkUp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource1)).BeginInit();
+            this.pg4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.mnuEditLkUp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // nopagesLabel
@@ -1252,6 +1255,116 @@
             label35.TabIndex = 13;
             label35.Text = "Invoice No.";
             // 
+            // invnoLabel5
+            // 
+            invnoLabel5.AutoSize = true;
+            invnoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            invnoLabel5.Location = new System.Drawing.Point(1047, 10);
+            invnoLabel5.Name = "invnoLabel5";
+            invnoLabel5.Size = new System.Drawing.Size(57, 13);
+            invnoLabel5.TabIndex = 3;
+            invnoLabel5.Text = "Invoice#";
+            // 
+            // pmtdateLabel
+            // 
+            pmtdateLabel.AutoSize = true;
+            pmtdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            pmtdateLabel.Location = new System.Drawing.Point(62, 94);
+            pmtdateLabel.Name = "pmtdateLabel";
+            pmtdateLabel.Size = new System.Drawing.Size(86, 13);
+            pmtdateLabel.TabIndex = 5;
+            pmtdateLabel.Text = "Payment Date";
+            // 
+            // paymentLabel
+            // 
+            paymentLabel.AutoSize = true;
+            paymentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            paymentLabel.Location = new System.Drawing.Point(51, 175);
+            paymentLabel.Name = "paymentLabel";
+            paymentLabel.Size = new System.Drawing.Size(101, 13);
+            paymentLabel.TabIndex = 7;
+            paymentLabel.Text = "Payment Amount";
+            // 
+            // checknoLabel
+            // 
+            checknoLabel.AutoSize = true;
+            checknoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            checknoLabel.Location = new System.Drawing.Point(101, 123);
+            checknoLabel.Name = "checknoLabel";
+            checknoLabel.Size = new System.Drawing.Size(51, 13);
+            checknoLabel.TabIndex = 9;
+            checknoLabel.Text = "Check#";
+            // 
+            // poamtLabel
+            // 
+            poamtLabel.AutoSize = true;
+            poamtLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            poamtLabel.Location = new System.Drawing.Point(20, 10);
+            poamtLabel.Name = "poamtLabel";
+            poamtLabel.Size = new System.Drawing.Size(78, 13);
+            poamtLabel.TabIndex = 11;
+            poamtLabel.Text = "P.O. Amount";
+            // 
+            // refundLabel
+            // 
+            refundLabel.AutoSize = true;
+            refundLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            refundLabel.Location = new System.Drawing.Point(104, 205);
+            refundLabel.Name = "refundLabel";
+            refundLabel.Size = new System.Drawing.Size(48, 13);
+            refundLabel.TabIndex = 13;
+            refundLabel.Text = "Refund";
+            // 
+            // methodLabel
+            // 
+            methodLabel.AutoSize = true;
+            methodLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            methodLabel.Location = new System.Drawing.Point(103, 152);
+            methodLabel.Name = "methodLabel";
+            methodLabel.Size = new System.Drawing.Size(49, 13);
+            methodLabel.TabIndex = 15;
+            methodLabel.Text = "Method";
+            // 
+            // init_Label
+            // 
+            init_Label.AutoSize = true;
+            init_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            init_Label.Location = new System.Drawing.Point(1060, 37);
+            init_Label.Name = "init_Label";
+            init_Label.Size = new System.Drawing.Size(44, 13);
+            init_Label.TabIndex = 17;
+            init_Label.Text = "Initials";
+            // 
+            // adjmntLabel
+            // 
+            adjmntLabel.AutoSize = true;
+            adjmntLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            adjmntLabel.Location = new System.Drawing.Point(83, 234);
+            adjmntLabel.Name = "adjmntLabel";
+            adjmntLabel.Size = new System.Drawing.Size(69, 13);
+            adjmntLabel.TabIndex = 19;
+            adjmntLabel.Text = "Adjustment";
+            // 
+            // compamtLabel
+            // 
+            compamtLabel.AutoSize = true;
+            compamtLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            compamtLabel.Location = new System.Drawing.Point(66, 266);
+            compamtLabel.Name = "compamtLabel";
+            compamtLabel.Size = new System.Drawing.Size(86, 13);
+            compamtLabel.TabIndex = 21;
+            compamtLabel.Text = "Compensation";
+            // 
+            // compreasLabel
+            // 
+            compreasLabel.AutoSize = true;
+            compreasLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            compreasLabel.Location = new System.Drawing.Point(19, 301);
+            compreasLabel.Name = "compreasLabel";
+            compreasLabel.Size = new System.Drawing.Size(133, 13);
+            compreasLabel.TabIndex = 23;
+            compreasLabel.Text = "Compensation Reason";
+            // 
             // tabSales
             // 
             this.tabSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1268,7 +1381,7 @@
             this.tabSales.TabIndex = 0;
             this.tabSales.SelectedIndexChanged += new System.EventHandler(this.tabSales_SelectedIndexChanged);
             this.tabSales.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabSales_Selecting);
-            this.tabSales.Click += new System.EventHandler(this.tabSales_Click);
+            this.tabSales.Deselecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabSales_Deselecting);
             // 
             // pg1
             // 
@@ -1377,6 +1490,16 @@
             this.lblSchoolName.TabIndex = 172;
             this.lblSchoolName.Paint += new System.Windows.Forms.PaintEventHandler(this.lblSchoolName_Paint);
             // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsSales;
+            // 
+            // dsSales
+            // 
+            this.dsSales.DataSetName = "dsSales";
+            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // lblPriceEach
             // 
             this.lblPriceEach.AutoSize = true;
@@ -1386,6 +1509,11 @@
             this.lblPriceEach.Size = new System.Drawing.Size(28, 13);
             this.lblPriceEach.TabIndex = 18;
             this.lblPriceEach.Text = "0.00";
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsSales;
             // 
             // lblBookTotal
             // 
@@ -1671,6 +1799,7 @@
             this.btnPoSrch.TabIndex = 28;
             this.btnPoSrch.Text = "PO# Search";
             this.btnPoSrch.UseVisualStyleBackColor = true;
+            this.btnPoSrch.Click += new System.EventHandler(this.btnPoSrch_Click);
             // 
             // invHstDataGridView
             // 
@@ -1678,14 +1807,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1699,6 +1828,43 @@
             this.invHstDataGridView.ReadOnly = true;
             this.invHstDataGridView.Size = new System.Drawing.Size(321, 113);
             this.invHstDataGridView.TabIndex = 139;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "contryear";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Year";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 54;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "qtedate";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Sales Date";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 84;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "invno";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Invoice#";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 74;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "baldue";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Balance Due";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 94;
+            // 
+            // invHstBindingSource
+            // 
+            this.invHstBindingSource.DataMember = "InvHst";
+            this.invHstBindingSource.DataSource = this.dsSales;
             // 
             // txtfreebooks
             // 
@@ -3595,6 +3761,16 @@
             this.poamtLabel1.TabIndex = 25;
             this.poamtLabel1.Text = "label34";
             // 
+            // invoiceBindingSource
+            // 
+            this.invoiceBindingSource.DataMember = "invoice";
+            this.invoiceBindingSource.DataSource = this.dsInvoice;
+            // 
+            // dsInvoice
+            // 
+            this.dsInvoice.DataSetName = "dsInvoice";
+            this.dsInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // baldueLabel1
             // 
             this.baldueLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -3790,6 +3966,7 @@
             // 
             // panel9
             // 
+            this.panel9.CausesValidation = false;
             this.panel9.Controls.Add(this.label34);
             this.panel9.Controls.Add(label35);
             this.panel9.Controls.Add(this.btnDeleteInvoice);
@@ -3842,14 +4019,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.invdetailDataGridView.AutoGenerateColumns = false;
             this.invdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.invdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
@@ -3867,11 +4044,71 @@
             this.invdetailDataGridView.Size = new System.Drawing.Size(1210, 362);
             this.invdetailDataGridView.TabIndex = 0;
             // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "schcode";
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewTextBoxColumn5.HeaderText = "School Code";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "invno";
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Invoice #";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "descr";
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "price";
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Amount";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "discpercent";
+            this.dataGridViewTextBoxColumn9.HeaderText = "discpercent";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn10.HeaderText = "id";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Visible = false;
+            // 
+            // invdetailBindingSource
+            // 
+            this.invdetailBindingSource.DataMember = "invdetail";
+            this.invdetailBindingSource.DataSource = this.dsInvoice;
+            // 
             // pg4
             // 
             this.pg4.AutoScroll = true;
             this.pg4.BackColor = System.Drawing.SystemColors.Control;
-            this.pg4.Controls.Add(this.button1);
+            this.pg4.Controls.Add(this.btnDelete);
+            this.pg4.Controls.Add(this.btnSavePayment);
+            this.pg4.Controls.Add(this.btnEdit);
+            this.pg4.Controls.Add(this.btnCancel);
             this.pg4.Controls.Add(this.btnNewPayment);
             this.pg4.Controls.Add(this.namecode);
             this.pg4.Controls.Add(compreasLabel);
@@ -3903,36 +4140,157 @@
             this.pg4.TabIndex = 3;
             this.pg4.Text = "Payments";
             // 
-            // errorProvider1
+            // btnNewPayment
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.btnNewPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewPayment.Location = new System.Drawing.Point(1069, 124);
+            this.btnNewPayment.Name = "btnNewPayment";
+            this.btnNewPayment.Size = new System.Drawing.Size(92, 23);
+            this.btnNewPayment.TabIndex = 27;
+            this.btnNewPayment.Text = "New Payment";
+            this.btnNewPayment.UseVisualStyleBackColor = true;
+            this.btnNewPayment.Click += new System.EventHandler(this.btnNewPayment_Click);
             // 
-            // mnuEditLkUp
+            // namecode
             // 
-            this.mnuEditLkUp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editLookUpItemsToolStripMenuItem});
-            this.mnuEditLkUp.Name = "mnuEditLkUp";
-            this.mnuEditLkUp.Size = new System.Drawing.Size(174, 26);
+            this.namecode.AutoSize = true;
+            this.namecode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "namecode", true));
+            this.namecode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.namecode.Location = new System.Drawing.Point(560, 10);
+            this.namecode.Name = "namecode";
+            this.namecode.Size = new System.Drawing.Size(92, 20);
+            this.namecode.TabIndex = 26;
+            this.namecode.Text = "namecode";
             // 
-            // editLookUpItemsToolStripMenuItem
+            // txtCompReason
             // 
-            this.editLookUpItemsToolStripMenuItem.Name = "editLookUpItemsToolStripMenuItem";
-            this.editLookUpItemsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.editLookUpItemsToolStripMenuItem.Text = "Edit Look Up Items";
-            this.editLookUpItemsToolStripMenuItem.Click += new System.EventHandler(this.editLookUpItemsToolStripMenuItem_Click);
+            this.txtCompReason.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "compreas", true));
+            this.txtCompReason.Enabled = false;
+            this.txtCompReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCompReason.Location = new System.Drawing.Point(163, 298);
+            this.txtCompReason.Multiline = true;
+            this.txtCompReason.Name = "txtCompReason";
+            this.txtCompReason.Size = new System.Drawing.Size(433, 58);
+            this.txtCompReason.TabIndex = 24;
+            // 
+            // paymntBindingSource
+            // 
+            this.paymntBindingSource.DataMember = "paymnt";
+            this.paymntBindingSource.DataSource = this.dsInvoice;
+            // 
+            // txtCompensation
+            // 
+            this.txtCompensation.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "compamt", true));
+            this.txtCompensation.Enabled = false;
+            this.txtCompensation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCompensation.Location = new System.Drawing.Point(163, 263);
+            this.txtCompensation.Name = "txtCompensation";
+            this.txtCompensation.Size = new System.Drawing.Size(100, 20);
+            this.txtCompensation.TabIndex = 22;
+            // 
+            // txtAdjustment
+            // 
+            this.txtAdjustment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "adjmnt", true));
+            this.txtAdjustment.Enabled = false;
+            this.txtAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdjustment.Location = new System.Drawing.Point(163, 231);
+            this.txtAdjustment.Name = "txtAdjustment";
+            this.txtAdjustment.Size = new System.Drawing.Size(100, 20);
+            this.txtAdjustment.TabIndex = 20;
+            // 
+            // txtInitials
+            // 
+            this.txtInitials.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "init_", true));
+            this.txtInitials.Enabled = false;
+            this.txtInitials.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInitials.Location = new System.Drawing.Point(1107, 37);
+            this.txtInitials.Name = "txtInitials";
+            this.txtInitials.Size = new System.Drawing.Size(54, 20);
+            this.txtInitials.TabIndex = 18;
+            this.txtInitials.Validating += new System.ComponentModel.CancelEventHandler(this.txtInitials_Validating);
+            // 
+            // txtMethod
+            // 
+            this.txtMethod.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "method", true));
+            this.txtMethod.Enabled = false;
+            this.txtMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMethod.Location = new System.Drawing.Point(165, 149);
+            this.txtMethod.Name = "txtMethod";
+            this.txtMethod.Size = new System.Drawing.Size(100, 20);
+            this.txtMethod.TabIndex = 16;
+            // 
+            // txtRefund
+            // 
+            this.txtRefund.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "refund", true));
+            this.txtRefund.Enabled = false;
+            this.txtRefund.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRefund.Location = new System.Drawing.Point(165, 205);
+            this.txtRefund.Name = "txtRefund";
+            this.txtRefund.Size = new System.Drawing.Size(100, 20);
+            this.txtRefund.TabIndex = 14;
+            // 
+            // txtPaypoamt
+            // 
+            this.txtPaypoamt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "poamt", true));
+            this.txtPaypoamt.Enabled = false;
+            this.txtPaypoamt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaypoamt.Location = new System.Drawing.Point(104, 7);
+            this.txtPaypoamt.Name = "txtPaypoamt";
+            this.txtPaypoamt.Size = new System.Drawing.Size(100, 20);
+            this.txtPaypoamt.TabIndex = 12;
+            // 
+            // txtCheckNo
+            // 
+            this.txtCheckNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "checkno", true));
+            this.txtCheckNo.Enabled = false;
+            this.txtCheckNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCheckNo.Location = new System.Drawing.Point(165, 120);
+            this.txtCheckNo.Name = "txtCheckNo";
+            this.txtCheckNo.Size = new System.Drawing.Size(100, 20);
+            this.txtCheckNo.TabIndex = 10;
+            // 
+            // txtPayment
+            // 
+            this.txtPayment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "payment", true));
+            this.txtPayment.Enabled = false;
+            this.txtPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPayment.Location = new System.Drawing.Point(165, 175);
+            this.txtPayment.Name = "txtPayment";
+            this.txtPayment.Size = new System.Drawing.Size(100, 20);
+            this.txtPayment.TabIndex = 8;
+            // 
+            // calpmtdate
+            // 
+            this.calpmtdate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.paymntBindingSource, "pmtdate", true));
+            this.calpmtdate.Enabled = false;
+            this.calpmtdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calpmtdate.Location = new System.Drawing.Point(165, 94);
+            this.calpmtdate.Name = "calpmtdate";
+            this.calpmtdate.Size = new System.Drawing.Size(200, 20);
+            this.calpmtdate.TabIndex = 6;
+            // 
+            // invno
+            // 
+            this.invno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "invno", true));
+            this.invno.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invno.Location = new System.Drawing.Point(1104, 10);
+            this.invno.Name = "invno";
+            this.invno.Size = new System.Drawing.Size(100, 23);
+            this.invno.TabIndex = 4;
+            this.invno.Text = "label36";
             // 
             // paymntDataGridView
             // 
             this.paymntDataGridView.AutoGenerateColumns = false;
             this.paymntDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.paymntDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paymntDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn11,
@@ -3960,315 +4318,6 @@
             this.paymntDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.paymntDataGridView.Size = new System.Drawing.Size(1192, 220);
             this.paymntDataGridView.TabIndex = 0;
-            // 
-            // invnoLabel5
-            // 
-            invnoLabel5.AutoSize = true;
-            invnoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            invnoLabel5.Location = new System.Drawing.Point(1047, 10);
-            invnoLabel5.Name = "invnoLabel5";
-            invnoLabel5.Size = new System.Drawing.Size(57, 13);
-            invnoLabel5.TabIndex = 3;
-            invnoLabel5.Text = "Invoice#";
-            // 
-            // invno
-            // 
-            this.invno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "invno", true));
-            this.invno.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.invno.Location = new System.Drawing.Point(1104, 10);
-            this.invno.Name = "invno";
-            this.invno.Size = new System.Drawing.Size(100, 23);
-            this.invno.TabIndex = 4;
-            this.invno.Text = "label36";
-            // 
-            // pmtdateLabel
-            // 
-            pmtdateLabel.AutoSize = true;
-            pmtdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            pmtdateLabel.Location = new System.Drawing.Point(62, 94);
-            pmtdateLabel.Name = "pmtdateLabel";
-            pmtdateLabel.Size = new System.Drawing.Size(86, 13);
-            pmtdateLabel.TabIndex = 5;
-            pmtdateLabel.Text = "Payment Date";
-            // 
-            // calpmtdate
-            // 
-            this.calpmtdate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.paymntBindingSource, "pmtdate", true));
-            this.calpmtdate.Enabled = false;
-            this.calpmtdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calpmtdate.Location = new System.Drawing.Point(165, 94);
-            this.calpmtdate.Name = "calpmtdate";
-            this.calpmtdate.Size = new System.Drawing.Size(200, 20);
-            this.calpmtdate.TabIndex = 6;
-            // 
-            // paymentLabel
-            // 
-            paymentLabel.AutoSize = true;
-            paymentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            paymentLabel.Location = new System.Drawing.Point(51, 175);
-            paymentLabel.Name = "paymentLabel";
-            paymentLabel.Size = new System.Drawing.Size(101, 13);
-            paymentLabel.TabIndex = 7;
-            paymentLabel.Text = "Payment Amount";
-            // 
-            // txtPayment
-            // 
-            this.txtPayment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "payment", true));
-            this.txtPayment.Enabled = false;
-            this.txtPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPayment.Location = new System.Drawing.Point(165, 175);
-            this.txtPayment.Name = "txtPayment";
-            this.txtPayment.Size = new System.Drawing.Size(100, 20);
-            this.txtPayment.TabIndex = 8;
-            // 
-            // checknoLabel
-            // 
-            checknoLabel.AutoSize = true;
-            checknoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            checknoLabel.Location = new System.Drawing.Point(101, 123);
-            checknoLabel.Name = "checknoLabel";
-            checknoLabel.Size = new System.Drawing.Size(51, 13);
-            checknoLabel.TabIndex = 9;
-            checknoLabel.Text = "Check#";
-            // 
-            // txtCheckNo
-            // 
-            this.txtCheckNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "checkno", true));
-            this.txtCheckNo.Enabled = false;
-            this.txtCheckNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCheckNo.Location = new System.Drawing.Point(165, 120);
-            this.txtCheckNo.Name = "txtCheckNo";
-            this.txtCheckNo.Size = new System.Drawing.Size(100, 20);
-            this.txtCheckNo.TabIndex = 10;
-            // 
-            // poamtLabel
-            // 
-            poamtLabel.AutoSize = true;
-            poamtLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            poamtLabel.Location = new System.Drawing.Point(20, 10);
-            poamtLabel.Name = "poamtLabel";
-            poamtLabel.Size = new System.Drawing.Size(78, 13);
-            poamtLabel.TabIndex = 11;
-            poamtLabel.Text = "P.O. Amount";
-            // 
-            // txtPaypoamt
-            // 
-            this.txtPaypoamt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "poamt", true));
-            this.txtPaypoamt.Enabled = false;
-            this.txtPaypoamt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaypoamt.Location = new System.Drawing.Point(104, 7);
-            this.txtPaypoamt.Name = "txtPaypoamt";
-            this.txtPaypoamt.Size = new System.Drawing.Size(100, 20);
-            this.txtPaypoamt.TabIndex = 12;
-            // 
-            // refundLabel
-            // 
-            refundLabel.AutoSize = true;
-            refundLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            refundLabel.Location = new System.Drawing.Point(104, 205);
-            refundLabel.Name = "refundLabel";
-            refundLabel.Size = new System.Drawing.Size(48, 13);
-            refundLabel.TabIndex = 13;
-            refundLabel.Text = "Refund";
-            // 
-            // txtRefund
-            // 
-            this.txtRefund.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "refund", true));
-            this.txtRefund.Enabled = false;
-            this.txtRefund.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRefund.Location = new System.Drawing.Point(165, 205);
-            this.txtRefund.Name = "txtRefund";
-            this.txtRefund.Size = new System.Drawing.Size(100, 20);
-            this.txtRefund.TabIndex = 14;
-            // 
-            // methodLabel
-            // 
-            methodLabel.AutoSize = true;
-            methodLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            methodLabel.Location = new System.Drawing.Point(103, 152);
-            methodLabel.Name = "methodLabel";
-            methodLabel.Size = new System.Drawing.Size(49, 13);
-            methodLabel.TabIndex = 15;
-            methodLabel.Text = "Method";
-            // 
-            // txtMethod
-            // 
-            this.txtMethod.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "method", true));
-            this.txtMethod.Enabled = false;
-            this.txtMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMethod.Location = new System.Drawing.Point(165, 149);
-            this.txtMethod.Name = "txtMethod";
-            this.txtMethod.Size = new System.Drawing.Size(100, 20);
-            this.txtMethod.TabIndex = 16;
-            // 
-            // init_Label
-            // 
-            init_Label.AutoSize = true;
-            init_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            init_Label.Location = new System.Drawing.Point(1060, 37);
-            init_Label.Name = "init_Label";
-            init_Label.Size = new System.Drawing.Size(44, 13);
-            init_Label.TabIndex = 17;
-            init_Label.Text = "Initials";
-            // 
-            // txtInitials
-            // 
-            this.txtInitials.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "init_", true));
-            this.txtInitials.Enabled = false;
-            this.txtInitials.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInitials.Location = new System.Drawing.Point(1107, 37);
-            this.txtInitials.Name = "txtInitials";
-            this.txtInitials.Size = new System.Drawing.Size(54, 20);
-            this.txtInitials.TabIndex = 18;
-            // 
-            // adjmntLabel
-            // 
-            adjmntLabel.AutoSize = true;
-            adjmntLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            adjmntLabel.Location = new System.Drawing.Point(83, 234);
-            adjmntLabel.Name = "adjmntLabel";
-            adjmntLabel.Size = new System.Drawing.Size(69, 13);
-            adjmntLabel.TabIndex = 19;
-            adjmntLabel.Text = "Adjustment";
-            // 
-            // txtAdjustment
-            // 
-            this.txtAdjustment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "adjmnt", true));
-            this.txtAdjustment.Enabled = false;
-            this.txtAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdjustment.Location = new System.Drawing.Point(163, 231);
-            this.txtAdjustment.Name = "txtAdjustment";
-            this.txtAdjustment.Size = new System.Drawing.Size(100, 20);
-            this.txtAdjustment.TabIndex = 20;
-            // 
-            // compamtLabel
-            // 
-            compamtLabel.AutoSize = true;
-            compamtLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            compamtLabel.Location = new System.Drawing.Point(66, 266);
-            compamtLabel.Name = "compamtLabel";
-            compamtLabel.Size = new System.Drawing.Size(86, 13);
-            compamtLabel.TabIndex = 21;
-            compamtLabel.Text = "Compensation";
-            // 
-            // txtCompensation
-            // 
-            this.txtCompensation.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "compamt", true));
-            this.txtCompensation.Enabled = false;
-            this.txtCompensation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCompensation.Location = new System.Drawing.Point(163, 263);
-            this.txtCompensation.Name = "txtCompensation";
-            this.txtCompensation.Size = new System.Drawing.Size(100, 20);
-            this.txtCompensation.TabIndex = 22;
-            // 
-            // compreasLabel
-            // 
-            compreasLabel.AutoSize = true;
-            compreasLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            compreasLabel.Location = new System.Drawing.Point(19, 301);
-            compreasLabel.Name = "compreasLabel";
-            compreasLabel.Size = new System.Drawing.Size(133, 13);
-            compreasLabel.TabIndex = 23;
-            compreasLabel.Text = "Compensation Reason";
-            // 
-            // txtCompReason
-            // 
-            this.txtCompReason.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "compreas", true));
-            this.txtCompReason.Enabled = false;
-            this.txtCompReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCompReason.Location = new System.Drawing.Point(163, 298);
-            this.txtCompReason.Multiline = true;
-            this.txtCompReason.Name = "txtCompReason";
-            this.txtCompReason.Size = new System.Drawing.Size(433, 58);
-            this.txtCompReason.TabIndex = 24;
-            // 
-            // namecode
-            // 
-            this.namecode.AutoSize = true;
-            this.namecode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "namecode", true));
-            this.namecode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namecode.Location = new System.Drawing.Point(560, 10);
-            this.namecode.Name = "namecode";
-            this.namecode.Size = new System.Drawing.Size(92, 20);
-            this.namecode.TabIndex = 26;
-            this.namecode.Text = "namecode";
-            // 
-            // invoiceBindingSource
-            // 
-            this.invoiceBindingSource.DataMember = "invoice";
-            this.invoiceBindingSource.DataSource = this.dsInvoice;
-            // 
-            // dsInvoice
-            // 
-            this.dsInvoice.DataSetName = "dsInvoice";
-            this.dsInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "schcode";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn5.HeaderText = "School Code";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "invno";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Invoice #";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "descr";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Description";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "price";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn8.HeaderText = "Amount";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "discpercent";
-            this.dataGridViewTextBoxColumn9.HeaderText = "discpercent";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn10.HeaderText = "id";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Visible = false;
-            // 
-            // invdetailBindingSource
-            // 
-            this.invdetailBindingSource.DataMember = "invdetail";
-            this.invdetailBindingSource.DataSource = this.dsInvoice;
-            // 
-            // custBindingSource1
-            // 
-            this.custBindingSource1.DataMember = "cust";
-            this.custBindingSource1.DataSource = this.dsInvoice;
-            // 
-            // paymntBindingSource
-            // 
-            this.paymntBindingSource.DataMember = "paymnt";
-            this.paymntBindingSource.DataSource = this.dsInvoice;
             // 
             // dataGridViewTextBoxColumn11
             // 
@@ -4395,6 +4444,29 @@
             this.dataGridViewTextBoxColumn27.ReadOnly = true;
             this.dataGridViewTextBoxColumn27.Visible = false;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // mnuEditLkUp
+            // 
+            this.mnuEditLkUp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editLookUpItemsToolStripMenuItem});
+            this.mnuEditLkUp.Name = "mnuEditLkUp";
+            this.mnuEditLkUp.Size = new System.Drawing.Size(174, 26);
+            // 
+            // editLookUpItemsToolStripMenuItem
+            // 
+            this.editLookUpItemsToolStripMenuItem.Name = "editLookUpItemsToolStripMenuItem";
+            this.editLookUpItemsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.editLookUpItemsToolStripMenuItem.Text = "Edit Look Up Items";
+            this.editLookUpItemsToolStripMenuItem.Click += new System.EventHandler(this.editLookUpItemsToolStripMenuItem_Click);
+            // 
+            // custBindingSource1
+            // 
+            this.custBindingSource1.DataMember = "cust";
+            this.custBindingSource1.DataSource = this.dsInvoice;
+            // 
             // tableAdapterManager1
             // 
             this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
@@ -4422,58 +4494,6 @@
             // 
             this.custTableAdapter1.ClearBeforeFill = true;
             // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsSales;
-            // 
-            // dsSales
-            // 
-            this.dsSales.DataSetName = "dsSales";
-            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsSales;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "contryear";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Year";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 54;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "qtedate";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Sales Date";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 84;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "invno";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Invoice#";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 74;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "baldue";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Balance Due";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 94;
-            // 
-            // invHstBindingSource
-            // 
-            this.invHstBindingSource.DataMember = "InvHst";
-            this.invHstBindingSource.DataSource = this.dsSales;
-            // 
             // quotesTableAdapter
             // 
             this.quotesTableAdapter.ClearBeforeFill = true;
@@ -4494,25 +4514,49 @@
             // 
             this.invHstTableAdapter.ClearBeforeFill = true;
             // 
-            // btnNewPayment
+            // btnCancel
             // 
-            this.btnNewPayment.Location = new System.Drawing.Point(64, 48);
-            this.btnNewPayment.Name = "btnNewPayment";
-            this.btnNewPayment.Size = new System.Drawing.Size(101, 23);
-            this.btnNewPayment.TabIndex = 27;
-            this.btnNewPayment.Text = "New Payment";
-            this.btnNewPayment.UseVisualStyleBackColor = true;
-            this.btnNewPayment.Click += new System.EventHandler(this.btnNewPayment_Click);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(1069, 185);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(92, 23);
+            this.btnCancel.TabIndex = 28;
+            this.btnCancel.Text = "Cancel ";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // button1
+            // btnEdit
             // 
-            this.button1.Location = new System.Drawing.Point(626, 149);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(1069, 156);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(92, 23);
+            this.btnEdit.TabIndex = 29;
+            this.btnEdit.Text = "Edit Payment";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnSavePayment
+            // 
+            this.btnSavePayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSavePayment.Location = new System.Drawing.Point(1069, 95);
+            this.btnSavePayment.Name = "btnSavePayment";
+            this.btnSavePayment.Size = new System.Drawing.Size(92, 23);
+            this.btnSavePayment.TabIndex = 30;
+            this.btnSavePayment.Text = "Save";
+            this.btnSavePayment.UseVisualStyleBackColor = true;
+            this.btnSavePayment.Click += new System.EventHandler(this.btnSavePayment_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(1069, 217);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(92, 23);
+            this.btnDelete.TabIndex = 31;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // frmSales
             // 
@@ -4527,12 +4571,16 @@
             this.tabSales.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnSales)).EndInit();
             this.bnSales.ResumeLayout(false);
             this.bnSales.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.pnlTot.ResumeLayout(false);
@@ -4553,23 +4601,19 @@
             this.panel10.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
             this.pg4.ResumeLayout(false);
             this.pg4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.mnuEditLkUp.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.paymntDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -4849,6 +4893,9 @@
         private System.Windows.Forms.Label invno;
         private System.Windows.Forms.Label namecode;
         private System.Windows.Forms.Button btnNewPayment;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnSavePayment;
+        private System.Windows.Forms.Button btnDelete;
         }
     }

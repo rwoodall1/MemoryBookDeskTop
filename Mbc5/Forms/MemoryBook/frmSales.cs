@@ -54,6 +54,7 @@ namespace Mbc5.Forms.MemoryBook {
             startup = false;
             CalculateEach();
             BookCalc();
+                        
             }
         private void btnInvSrch_Click(object sender,EventArgs e) {
             var sqlQuery = new SQLQuery();
@@ -71,6 +72,25 @@ namespace Mbc5.Forms.MemoryBook {
                     EnableAllControls(this);
                     }
                 } else { MessageBox.Show("No records were found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
+            }
+        private void btnPoSrch_Click(object sender,EventArgs e) {
+            var sqlQuery = new SQLQuery();
+            string querystring = "Select schcode,invno from Quotes where PoNum=@PoNum";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@PoNum",txtPoSrch.Text.Trim())
+            };
+            DataTable result = sqlQuery.ExecuteReaderAsync(CommandType.Text,querystring,parameters);
+            if (result.Rows.Count > 0) {
+                foreach (DataRow row in result.Rows) {
+                    //only one row so just set variabls
+                    this.Invno = Convert.ToInt32(row["invno"]);
+                    this.Schcode = row["schcode"].ToString();
+                    this.Fill();
+                    EnableAllControls(this);
+                    }
+                } else {
+                MessageBox.Show("No records were found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
             }
 
@@ -103,56 +123,477 @@ namespace Mbc5.Forms.MemoryBook {
         public string CurPriceYr { get; set; } = null;
         #endregion
         #region "Methods"
-        private void DisableControls(Control con) {
-            foreach (Control c in con.Controls) {
-                DisableControls(c);
-                }
-            con.Enabled = false;
+        //Payment Tab
+        private void NewPayment() {
+            txtPaypoamt.Enabled = true;
+            txtInitials.Enabled = true;
+            calpmtdate.Enabled = true;
+            txtCheckNo.Enabled = true;
+            txtMethod.Enabled = true;
+            txtPayment.Enabled = true;
+            txtRefund.Enabled = true;
+            txtAdjustment.Enabled = true;
+            txtCompensation.Enabled = true;
+            txtCompReason.Enabled = true;
+            paymntBindingSource.AddNew();
+
+            DataRowView current = (DataRowView)paymntBindingSource.Current;
+            current["Invno"] = lblInvoice.Text;
+            current["Code"] = this.Schcode;
             }
-        private void EnableControls(Control con) {
-            if (con != null) {
-                con.Enabled = true;
-                EnableControls(con.Parent);
-                }
+        private bool SavePayment() {
+            bool retval = true;
+            if (this.ValidateChildren()) {
+                try {
+                    this.paymntBindingSource.EndEdit();
+                    this.paymntTableAdapter.Update(dsInvoice.paymnt);
+                    this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
+                    this.CalculatePayments();
+                    retval = true;
+                    } catch (DBConcurrencyException ex1) {
+                    retval = false;
+                    string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
+                    this.Log.Error(ex1,ex1.Message);
+                    MessageBox.Show(errmsg);
+                    } catch (Exception ex) {
+                    retval = false;
+                    MessageBox.Show("Payment failed to update:" + ex.Message);
+                    this.Log.Error(ex,"Payment failed to update:" + ex.Message);
+
+                    }
+                } else { retval = false; }
+            return retval;
             }
-        private void EnableAllControls(Control con) {
-            foreach (Control c in con.Controls) {
-                EnableAllControls(c);
-                }
-            con.Enabled = true;
+        private bool DeletePayment() {
+            bool retval = true;
+            var sqlQuery = new SQLQuery();
+            var queryString = "Delete  From  paymnt where Invno=@Invno ";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+            
+           
+            if (result == 0) { retval = false; }
+            return retval;
             }
-        private void CalculatePayments() {
+        private void CancelPayment() {
+            paymntBindingSource.CancelEdit();
+            txtPaypoamt.Enabled = false;
+            txtInitials.Enabled = false;
+            calpmtdate.Enabled = false;
+            txtCheckNo.Enabled = false;
+            txtMethod.Enabled = false;
+            txtPayment.Enabled = false;
+            txtRefund.Enabled = false;
+            txtAdjustment.Enabled = false;
+            txtCompensation.Enabled = false;
+            txtCompReason.Enabled = false;
+       
+            }
+        private void EditPayment() {
+            txtPaypoamt.Enabled = true;
+            txtInitials.Enabled = true;
+            calpmtdate.Enabled = true;
+            txtCheckNo.Enabled = true;
+            txtMethod.Enabled = true;
+            txtPayment.Enabled = true;
+            txtRefund.Enabled = true;
+            txtAdjustment.Enabled = true;
+            txtCompensation.Enabled = true;
+            txtCompReason.Enabled = true;
+
+            }
+       private void CalculatePayments() {
             var SqlQuery = new SQLQuery();
             var cmdText = "SELECT        SUM(ISNULL(payment, 0) + ISNULL(refund, 0) + ISNULL(adjmnt, 0) + ISNULL(compamt, 0)) AS paymentresult FROM paymnt where Invno=@Invno";
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Invno",lblInvoice.Text) };
             var result = SqlQuery.ExecuteReaderAsync(CommandType.Text,cmdText,parameters);
             var paymentTotals =(decimal) result.Rows[0]["paymentresult"];
-            cmdText = "Insert into invoice (paymnt) Values(@payments) where Invno=@Invno ";
+            cmdText = "Update invoice set payments=@payments,baldue=baldue-@payments  where Invno=@Invno ";
             SqlParameter[] parameters1 = new SqlParameter[] {
                 new SqlParameter("@Invno",lblInvoice.Text),
                 new SqlParameter("@payments",paymentTotals)};
-            SqlQuery.ExecuteNonQueryAsync(CommandType.Text,cmdText,parameters1);
+            var a=SqlQuery.ExecuteNonQueryAsync(CommandType.Text,cmdText,parameters1);
             this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
             }
-        private void Fill() {
-            if (Schcode != null) {
-                custTableAdapter.Fill(dsSales.cust,Schcode);
-                quotesTableAdapter.Fill(dsSales.quotes,Schcode);
-                }
-            if (Invno != 0) {
-                var pos = quotesBindingSource.Find("invno",this.Invno);
-                if (pos > -1) {
-                    quotesBindingSource.Position = pos;
-                    } else {
-                    MessageBox.Show("Invoice number was not found.","Invoice#",MessageBoxButtons.OK,MessageBoxIcon.Stop);
-                    }
-                }
-            CalculateEach();
-            BookCalc();
+        //Invoice
+        private bool DeleteInvoice() {
+            bool retval = true;
+            var sqlQuery = new SQLQuery();
+            var queryString = "Delete  From Invoice where Invno=@Invno ";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+            queryString = "Delete  From InvDetail where Invno=@Invno ";
+            SqlParameter[] parameters1 = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+            //use same parameter
+            var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters1);
+            if (result1 == 0 || result == 0) { retval = false; }
 
+            this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
+            this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
+           // var sqlQuery = new SQLQuery();
+           queryString = "Update Invoice set invno=0 where Invno=@Invno ";
+            SqlParameter[] parameters2 = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+            var result2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters2);
+            this.Fill();
+
+            return retval;
             }
-        private new bool Save() {
+        private bool CreateInvoice() {
+            bool retval = true;
+            var connection = new SqlConnection(_ConnectionString);
+            string cmdText = "";
+            var command = new SqlCommand(cmdText,connection);
+
+            command.CommandType = CommandType.Text;
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@invno",lblInvoice.Text);
+            try {
+                connection.Open();
+                var trans = connection.BeginTransaction();
+                command.Transaction = trans;
+                //command.Parameters.AddWithValue("@invno",lblInvoice.Text);
+                cmdText = "Update Quotes set invoiced=1 where invno=@invno";
+                command.CommandText = cmdText;
+                command.ExecuteNonQuery();
+                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks)";
+                //cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each)";
+                command.CommandText = cmdText;
+                command.Parameters.Clear();
+                var aa = lblPriceEach.Text.Replace("$","");
+                SqlParameter[] parameters = new SqlParameter[] {
+                    new SqlParameter("@invno",lblInvoice.Text),
+                    new SqlParameter("@schcode",this.Schcode ),
+                    new SqlParameter("@qtedate",dteQuote.Value ),
+                    new SqlParameter("@nopages",txtNoPages.Text ),
+                    new SqlParameter("@nocopies",txtNocopies.Text ),
+                    new SqlParameter("@book_each",lblPriceEach.Text.Replace("$","").Replace(",","")),
+                    new SqlParameter("@source",txtSource.Text ),
+                    new SqlParameter("@ponum",txtPoNum.Text),
+                    new SqlParameter("@invtot",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
+                    new SqlParameter("@baldue",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
+                    new SqlParameter("@contryear",txtYear.Text),
+                    new SqlParameter("@allclrck",chkAllClr.Checked),
+                    new SqlParameter("@freebooks",txtfreebooks.Text ),
+
+              };
+                command.Parameters.AddRange(parameters);
+                command.ExecuteNonQuery();
+                command.Parameters.Clear();
+                cmdText = "Insert Into Invdetail (descr,price,discpercent,invno,schcode) Values(@descr,@price,@discpercent,@invno,@schcode)";
+                var Details = GetDetailRecords(lblInvoice.Text);
+                command.CommandText = cmdText;
+                if (Details.Count > 0) {
+                    foreach (var row in Details) {
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@descr",row.descr);
+                        command.Parameters.AddWithValue("@price",row.price);
+                        command.Parameters.AddWithValue("@discpercent",row.discpercent);
+                        command.Parameters.AddWithValue("@invno",row.invno);
+                        command.Parameters.AddWithValue("@schcode",row.schoolcode);
+                        try {
+                            command.ExecuteNonQuery();
+
+                            } catch (Exception ex) {
+                            ex.ToExceptionless()
+                                .AddTags("CreateInvoice")
+                                .AddObject(command)
+                                .MarkAsCritical()
+                                .Submit();
+                            command.Transaction.Rollback();
+                            MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            retval = false;
+                            }
+
+                        }
+                    command.Transaction.Commit();
+                    MessageBox.Show("Invoice has been created.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    } else {
+                    //no detail records so just commit header.
+                    command.Transaction.Commit();
+                    MessageBox.Show("Invoice has been created.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    }
+
+                } catch (Exception ex) {
+                ex.ToExceptionless()
+                                .AddTags("CreateInvoice")
+                                .AddObject(command)
+                                .MarkAsCritical()
+                                .Submit();
+                command.Transaction.Rollback();
+                MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                retval = false;
+
+                } finally { connection.Close(); }
+            return retval;
+            }
+        private List<InvoiceDetailBindingModel> GetDetailRecords(string invno) {
+            int vinvno = 0;
+            decimal per;
+            if (!int.TryParse(lblInvoice.Text,out vinvno)) {
+                MessageBox.Show("Could not create invoice because invoice number is not available.");
+                return null;
+                }
+
+            var Details = new List<InvoiceDetailBindingModel>();
+            if (true) {
+                //add base alway true
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Base Price",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblBookTotal.Text.Replace("$","")),
+                    schoolcode = this.Schcode
+                    };
+                Details.Add(rec);
+
+                }
+
+
+
+            if (chkHardBack.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Hard Back (sewn)",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblHardbackAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+                Details.Add(rec);
+
+                }
+
+            if (chkCaseBind.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Case Binding (glued)",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblCaseamt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkPerfBind.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Perfect Bind",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblPerfbindAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkSpiral.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Spiral Bind",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblSpiralAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkSaddlStitch.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Soft Cover Stapled",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblSaddleAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkProfessional.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Professional",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblProfAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkConv.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Convenient",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblConvAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkYir.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Year In Review Standard",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblYir.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkStory.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Our Story/My Story Cover",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblStoryAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkMLaminate.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Matte Laminate",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblMLaminateAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkGlossLam.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Gloss Laminate",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblLaminateAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(lblSpeccvrtot.Text) ? 0 : Convert.ToDecimal(lblSpeccvrtot.Text)) > 0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Special Cover",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblSpeccvrtot.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(txtFoilAd.Text) ? 0 : Convert.ToDecimal(txtFoilAd.Text)) > 0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Foil (Additional)",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(txtFoilAd.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(lbldisc1.Text) ? 0 : Convert.ToDecimal(lbldisc1.Text)) > 0) {
+                per = String.IsNullOrEmpty(txtDisc.Text) ? 0 : Convert.ToDecimal(txtDisc.Text);
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = dp1descComboBox.SelectedValue.ToString(),
+                    discpercent = per,
+                    price = Convert.ToDecimal(txtFoilAd.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkDc2.Checked) {
+                per = String.IsNullOrEmpty(txtDp2.Text) ? 0 : Convert.ToDecimal(txtDp2.Text);
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Full pay w/page submission",
+                    discpercent = per,
+                    price = String.IsNullOrEmpty(lbldisc2.Text) ? 0 : Convert.ToDecimal(lbldisc2.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(lblDisc3.Text) ? 0 : Convert.ToDecimal(lblDisc3.Text)) > 0) {
+                per = String.IsNullOrEmpty(dp3ComboBox.Text) ? 0 : Convert.ToDecimal(dp3ComboBox.Text);
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = txtDp3Desc.Text,
+                    discpercent = per,
+                    price = Convert.ToDecimal(lblDisc3.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkMsStandard.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "My Story With Picture Personalization",
+                    discpercent = 0,
+                    price = String.IsNullOrEmpty(lblMsTot.Text) ? 0 : Convert.ToDecimal(lblMsTot.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(lblperstotal.Text) ? 0 : Convert.ToDecimal(lblperstotal.Text)) > 0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Personalization",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblperstotal.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(lblIconTot.Text) ? 0 : Convert.ToDecimal(lblIconTot.Text)) > 0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Icons",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblIconTot.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            return Details;
+            }
+        //Sales
+        private bool SaveSales() {
             bool retval = false;
             if (ValidSales()) {
 
@@ -169,11 +610,22 @@ namespace Mbc5.Forms.MemoryBook {
                     MessageBox.Show(errmsg);
                     } catch (Exception ex) {
                     retval = false;
-                    MessageBox.Show("Record faild to update:" + ex.Message);
-                    this.Log.Error(ex,"Record faild to update:" + ex.Message);
+                    MessageBox.Show("Sales record failed to update:" + ex.Message);
+                    this.Log.Error(ex,"Record sales record failed to update:" + ex.Message);
                     }
-                }
+                } else { retval = false; }
 
+            return retval;
+            }
+        private bool DeleteSale() {
+            bool retval = true;
+            var sqlQuery = new SQLQuery();
+            var queryString = "Delete  From Quotes where Invno=@Invno ";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+            if (result == 0) { retval = false; }
             return retval;
             }
         private void CalculateEach() {
@@ -718,136 +1170,31 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private bool ValidSales() {
             bool retval = true;
+           
             retval = ValidatePageCount();
             if (!retval) { return retval; }
             retval = ValidateCopies();
             if (!retval) { return retval; }
             retval = this.ValidateChildren();
-            if (!retval) { return retval; }
+          if (!retval) { return retval; }
             retval = this.Validate();
             return retval;
             }
-        private bool DeleteInvoice() {
-            bool retval = true;
-            var sqlQuery = new SQLQuery();
-            var queryString = "Delete  From Invoice where Invno=@Invno ";
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
-            };
-            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-            queryString = "Delete  From InvDetail where Invno=@Invno ";
-            SqlParameter[] parameters1 = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
-            };
-            //use same parameter
-            var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters1);
-            if (result1 == 0 || result == 0) { retval = false; }
-            return retval;
-            }
-        private bool CreateInvoice() {
-            bool retval = true;
-            var connection = new SqlConnection(_ConnectionString);
-            string cmdText = "";
-            var command = new SqlCommand(cmdText,connection);
-
-            command.CommandType = CommandType.Text;
-            command.Parameters.Clear();
-            command.Parameters.AddWithValue("@invno",lblInvoice.Text);
-            try {
-                connection.Open();
-                var trans = connection.BeginTransaction();
-                command.Transaction = trans;
-                //command.Parameters.AddWithValue("@invno",lblInvoice.Text);
-                cmdText = "Update Quotes set invoiced=1 where invno=@invno";
-                command.CommandText = cmdText;
-                command.ExecuteNonQuery();
-                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks)";
-                //cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each)";
-                command.CommandText = cmdText;
-                command.Parameters.Clear();
-                var aa = lblPriceEach.Text.Replace("$","");
-                SqlParameter[] parameters = new SqlParameter[] {
-                    new SqlParameter("@invno",lblInvoice.Text),
-                    new SqlParameter("@schcode",this.Schcode ),
-                    new SqlParameter("@qtedate",dteQuote.Value ),
-                    new SqlParameter("@nopages",txtNoPages.Text ),
-                    new SqlParameter("@nocopies",txtNocopies.Text ),
-                    new SqlParameter("@book_each",lblPriceEach.Text.Replace("$","").Replace(",","")),
-                    new SqlParameter("@source",txtSource.Text ),
-                    new SqlParameter("@ponum",txtPoNum.Text),
-                    new SqlParameter("@invtot",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
-                    new SqlParameter("@baldue",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
-                    new SqlParameter("@contryear",txtYear.Text),
-                    new SqlParameter("@allclrck",chkAllClr.Checked),
-                    new SqlParameter("@freebooks",txtfreebooks.Text ),
-
-              };
-                command.Parameters.AddRange(parameters);
-                command.ExecuteNonQuery();
-                command.Parameters.Clear();
-                cmdText = "Insert Into Invdetail (descr,price,discpercent,invno,schcode) Values(@descr,@price,@discpercent,@invno,@schcode)";
-                var Details = GetDetailRecords(lblInvoice.Text);
-                command.CommandText = cmdText;
-                if (Details.Count > 0) {
-                    foreach (var row in Details) {
-                        command.Parameters.Clear();
-                        command.Parameters.AddWithValue("@descr",row.descr);
-                        command.Parameters.AddWithValue("@price",row.price);
-                        command.Parameters.AddWithValue("@discpercent",row.discpercent);
-                        command.Parameters.AddWithValue("@invno",row.invno);
-                        command.Parameters.AddWithValue("@schcode",row.schoolcode);
-                        try {
-                            command.ExecuteNonQuery();
-
-                            } catch (Exception ex) {
-                            ex.ToExceptionless()
-                                .AddTags("CreateInvoice")
-                                .AddObject(command)
-                                .MarkAsCritical()
-                                .Submit();
-                            command.Transaction.Rollback();
-                            MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                            retval = false;
-                            }
-
-                        }
-                    command.Transaction.Commit();
-                    MessageBox.Show("Invoice has been created.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    } else {
-                    //no detail records so just commit header.
-                    command.Transaction.Commit();
-                    MessageBox.Show("Invoice has been created.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    }
-
-                } catch (Exception ex) {
-                ex.ToExceptionless()
-                                .AddTags("CreateInvoice")
-                                .AddObject(command)
-                                .MarkAsCritical()
-                                .Submit();
-                command.Transaction.Rollback();
-                MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                retval = false;
-
-                } finally { connection.Close(); }
-            return retval;
-            } 
-      
-     
-        private void SetOnlinePayOptions(string textboxname,string checkboxname,bool vcheck ) {
+        //OnlinePay
+        private void SetOnlinePayOptions(string textboxname,string checkboxname,bool vcheck) {
             List<TextBox> vControls = new List<TextBox>();
             List<CheckBox> vControls1 = new List<CheckBox>();
-                vControls.Add(this.txtInkPersAmt);
-                vControls.Add(this.txtInkTxtOnly);
-                vControls.Add(this.txtFoilIcons);
-                vControls.Add(this.txtFoilTxt);
-                vControls.Add(this.txtPicPers);
-                vControls1.Add(this.chkInkPers);
-                vControls1.Add(this.chkInkTxt);
-                vControls1.Add(this.chkFoilIcons);
-                vControls1.Add(this.chkFoiltxt);
-                vControls1.Add(this.chkPicPers);
-            
+            vControls.Add(this.txtInkPersAmt);
+            vControls.Add(this.txtInkTxtOnly);
+            vControls.Add(this.txtFoilIcons);
+            vControls.Add(this.txtFoilTxt);
+            vControls.Add(this.txtPicPers);
+            vControls1.Add(this.chkInkPers);
+            vControls1.Add(this.chkInkTxt);
+            vControls1.Add(this.chkFoilIcons);
+            vControls1.Add(this.chkFoiltxt);
+            vControls1.Add(this.chkPicPers);
+
             foreach (TextBox ctr in vControls) {
                 if (vcheck == true) {
                     if (ctr.Name != textboxname) {
@@ -859,15 +1206,15 @@ namespace Mbc5.Forms.MemoryBook {
                     ctr.Enabled = false;
                     }
                 }
-            foreach(CheckBox ctr1 in vControls1) {
-                if (vcheck== true) {
+            foreach (CheckBox ctr1 in vControls1) {
+                if (vcheck == true) {
                     if (ctr1.Name != checkboxname) {
                         ctr1.Enabled = false;
 
                         } else { ctr1.Enabled = true; }
 
-                    }else {
-                    
+                    } else {
+
                     ctr1.Enabled = true;
 
                     }
@@ -876,60 +1223,45 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
-        private void CalcOnlineTotals()
-        {
-            
-            if (basicamounTextBox1.Text != null && basicamounTextBox1.Text != "0.00" && basicamounTextBox1.Text != ""){
+        private void CalcOnlineTotals() {
+
+            if (basicamounTextBox1.Text != null && basicamounTextBox1.Text != "0.00" && basicamounTextBox1.Text != "") {
                 lblOprcperbk.Text = basicamounTextBox1.Text;
-            }
-            else
-            {
+                } else {
                 lblOprcperbk.Text = "0.00";
 
-            }
+                }
 
-            if (txtInkPersAmt.Text != null && txtInkPersAmt.Text != "0.00" && txtInkPersAmt.Text != "")
-            {
+            if (txtInkPersAmt.Text != null && txtInkPersAmt.Text != "0.00" && txtInkPersAmt.Text != "") {
                 txtOprcperbk2.Text = txtInkPersAmt.Text;
                 return;
-            }
-            else
-            {
+                } else {
                 txtOprcperbk2.Text = "0.00";
-               
+
                 }
-            if (txtInkTxtOnly.Text != null && txtInkTxtOnly.Text != "0.00" && txtInkTxtOnly.Text != "")
-            {
+            if (txtInkTxtOnly.Text != null && txtInkTxtOnly.Text != "0.00" && txtInkTxtOnly.Text != "") {
                 txtOprcperbk2.Text = txtInkTxtOnly.Text;
                 return;
-                }
-            else
-            {
+                } else {
                 txtOprcperbk2.Text = "0.00";
 
-            }
+                }
 
-            if (txtFoilIcons.Text != null && txtFoilIcons.Text != "0.00" && txtFoilIcons.Text != "")
-            {
+            if (txtFoilIcons.Text != null && txtFoilIcons.Text != "0.00" && txtFoilIcons.Text != "") {
                 txtOprcperbk2.Text = txtFoilIcons.Text;
                 return;
-                }
-            else
-            {
+                } else {
                 txtOprcperbk2.Text = "0.00";
 
-            }
-            if (txtFoilTxt.Text != null && txtFoilTxt.Text != "0.00" && txtFoilTxt.Text != "")
-            {
+                }
+            if (txtFoilTxt.Text != null && txtFoilTxt.Text != "0.00" && txtFoilTxt.Text != "") {
                 txtOprcperbk2.Text = txtFoilTxt.Text;
                 return;
-                }
-            else
-            {
+                } else {
                 txtOprcperbk2.Text = "0.00";
 
-            }
-            
+                }
+
             if (txtPicPers.Text != null && txtPicPers.Text != "0.00" && txtPicPers.Text != "") {
                 txtOprcperbk2.Text = txtFoilTxt.Text;
                 return;
@@ -939,265 +1271,105 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
-        private List<InvoiceDetailBindingModel> GetDetailRecords(string invno) {
-            int vinvno = 0;
-            decimal per;
-            if (!int.TryParse(lblInvoice.Text,out vinvno)) {
-                MessageBox.Show("Could not create invoice because invoice number is not available.");
-                return null;
+        private void DisableControls(Control con) {
+            foreach (Control c in con.Controls) {
+                DisableControls(c);
                 }
-             
-            var Details = new List<InvoiceDetailBindingModel>();
-        if (true) {
-            //add base alway true
-            var rec = new InvoiceDetailBindingModel {
-                invno = vinvno,
-                descr = "Base Price",
-                discpercent = 0,
-                price = Convert.ToDecimal(lblBookTotal.Text.Replace("$","")),
-                schoolcode = this.Schcode
-                };
-            Details.Add(rec);
+            con.Enabled = false;
+            }
+        private void EnableControls(Control con) {
+            if (con != null) {
+                con.Enabled = true;
+                EnableControls(con.Parent);
+                }
+            }
+        private void EnableAllControls(Control con) {
+            foreach (Control c in con.Controls) {
+                EnableAllControls(c);
+                }
+            con.Enabled = true;
+            }
+       //General
+        private void Fill() {
+            if (Schcode != null) {
+                custTableAdapter.Fill(dsSales.cust,Schcode);
+                quotesTableAdapter.Fill(dsSales.quotes,Schcode);
+                }
+            if (Invno != 0) {
+                var pos = quotesBindingSource.Find("invno",this.Invno);
+                if (pos > -1) {
+                    quotesBindingSource.Position = pos;
+                    } else {
+                    MessageBox.Show("Invoice number was not found.","Invoice#",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                    }
+                }
+            CalculateEach();
+            BookCalc();
 
             }
+        public new void  Save() {
+            switch (tabSales.SelectedIndex) {
+                case 0:
+                case 1:
+                        {
+                        SaveSales();
+                            break;
+                        }
 
-
-            
-            if (chkHardBack.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Hard Back (sewn)",
-                    discpercent = 0,
-                    price= Convert.ToDecimal(lblHardbackAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-                Details.Add(rec);
-
-                }
-
-            if (chkCaseBind.Checked) {                          
-                    var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Case Binding (glued)",
-                    discpercent = 0,
-                    price= Convert.ToDecimal(lblCaseamt.Text),
-                        schoolcode = this.Schcode
-                    };
+                   
+                case 2:
+                    MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    break;
+                case 3:
+                    SavePayment();
+                    break;
               
-                Details.Add(rec);
-
                 }
-            if (chkPerfBind.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Perfect Bind",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblPerfbindAmt.Text),
-                    schoolcode = this.Schcode
-                    };
 
-                Details.Add(rec);
-
-                }
-            if (chkSpiral.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Spiral Bind",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblSpiralAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkSaddlStitch.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Soft Cover Stapled",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblSaddleAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkProfessional.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Professional",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblProfAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkConv.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Convenient",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblConvAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkYir.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Year In Review Standard",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblYir.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkStory.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Our Story/My Story Cover",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblStoryAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkMLaminate.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Matte Laminate",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblMLaminateAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkGlossLam.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Gloss Laminate",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblLaminateAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(lblSpeccvrtot.Text)? 0 : Convert.ToDecimal(lblSpeccvrtot.Text))  >0) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Special Cover",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblSpeccvrtot.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(txtFoilAd.Text)?0:Convert.ToDecimal(txtFoilAd.Text)) > 0) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Foil (Additional)",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(txtFoilAd.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(lbldisc1.Text) ?0:Convert.ToDecimal(lbldisc1.Text)) > 0) {
-                per = String.IsNullOrEmpty(txtDisc.Text) ? 0 : Convert.ToDecimal(txtDisc.Text);
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = dp1descComboBox.SelectedValue.ToString(),
-                    discpercent = per,
-                    price = Convert.ToDecimal(txtFoilAd.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkDc2.Checked) {
-                per = String.IsNullOrEmpty(txtDp2.Text) ? 0 : Convert.ToDecimal(txtDp2.Text);
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Full pay w/page submission",
-                    discpercent =per,
-                    price =String.IsNullOrEmpty(lbldisc2.Text)?0:Convert.ToDecimal(lbldisc2.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(lblDisc3.Text) ?0:Convert.ToDecimal(lblDisc3.Text))>0) {
-                per = String.IsNullOrEmpty(dp3ComboBox.Text) ? 0 : Convert.ToDecimal(dp3ComboBox.Text);
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = txtDp3Desc.Text,
-                    discpercent = per,
-                    price = Convert.ToDecimal(lblDisc3.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkMsStandard.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "My Story With Picture Personalization",
-                    discpercent =0,
-                    price =String.IsNullOrEmpty(lblMsTot.Text) ?0: Convert.ToDecimal(lblMsTot.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(lblperstotal.Text) ?0:Convert.ToDecimal(lblperstotal.Text))>0) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Personalization",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblperstotal.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(lblIconTot.Text) ?0:Convert.ToDecimal(lblIconTot.Text)) > 0) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Icons",
-                    discpercent =0,
-                    price = Convert.ToDecimal(lblIconTot.Text),
-                    schoolcode = this.Schcode
-                    };
-
-        Details.Add(rec);
-
-                }
-            return Details;
             }
-      
-            
+        public new void Add() {
+            switch (tabSales.SelectedIndex) {
+                case 0:
+                case 1:
+                        {
+                        MessageBox.Show("This function is not available in the sales screen tab. Add a sales record from the customer screen.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        break;
+                        }
+
+
+                case 2:
+                    MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    break;
+                case 3:
+                    NewPayment();
+                    break;
+
+                }
+            }
+        public new void Delete() {
+            switch (tabSales.SelectedIndex) {
+                case 0:
+                case 1:
+                        {
+                        DeleteSale();
+                        break;
+                        }
+                case 2:
+                    DeleteInvoice();
+                    break;
+                case 3:
+                    DeletePayment();
+                    break;
+
+                }
+            }
+        public new void Cancel() {
+            CancelPayment();
+            quotesBindingSource.CancelEdit();
+            invdetailBindingSource.CancelEdit();
+            invoiceBindingSource.CancelEdit();
+            }
+                    
         #endregion
         #region CalcEvents
         private void chkHardBack_Click(object sender, EventArgs e)
@@ -1506,6 +1678,16 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
 
         #region Validation
+        private void txtInitials_Validating(object sender,CancelEventArgs e) {
+            if (this.tabSales.SelectedIndex == 3 && txtInitials.Enabled == true) {
+                errorProvider1.Clear();
+                if (String.IsNullOrEmpty(txtInitials.Text)) {
+                    errorProvider1.SetError(txtInitials,"Please enter your initials.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
         private void txtBYear_Validating(object sender, CancelEventArgs e)
         {
           
@@ -2011,11 +2193,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
 
         #endregion
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Save();
-       
-        }
+     
 
        
 
@@ -2207,11 +2385,7 @@ namespace Mbc5.Forms.MemoryBook {
           
             }
 
-        private void tabSales_Click(object sender,EventArgs e) {
-            if (tabSales.SelectedIndex == 2) {
-               
-                }
-            }
+     
 
         private void txtInkPersAmt_Leave(object sender,EventArgs e) {
             CalcOnlineTotals();
@@ -2235,9 +2409,9 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void tabSales_Selecting(object sender,TabControlCancelEventArgs e) {
            //validation is done in save if validation fails returns false.
-            if (!this.Save()) {
-                e.Cancel = true;
-                } 
+            //if (!this.Save()) {
+            //    e.Cancel = true;
+            //    } 
             }
 
         private void lblProfAmt_TextChanged(object sender,EventArgs e) {
@@ -2258,15 +2432,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void btnDeleteInvoice_Click(object sender,EventArgs e) {
             DeleteInvoice();
-            this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
-            this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
-            var sqlQuery = new SQLQuery();
-            var queryString = "Update Invoice set invno=0 where Invno=@Invno ";
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
-            };
-            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-            this.Fill();
+            
             }
 
         private void btnOnlineAgreement_Click(object sender,EventArgs e) {
@@ -2280,31 +2446,55 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void btnNewPayment_Click(object sender,EventArgs e) {
-            txtPaypoamt.Enabled = true;
-            txtInitials.Enabled = true;
-            calpmtdate.Enabled = true;
-            txtCheckNo.Enabled = true;
-            txtMethod.Enabled = true;
-            txtPayment.Enabled = true;
-            txtRefund.Enabled = true;
-            txtAdjustment.Enabled = true;
-            txtCompensation.Enabled = true;
-            txtCompReason.Enabled = true;
-            paymntBindingSource.AddNew();
-
-            DataRowView current = (DataRowView)paymntBindingSource.Current;
-            current["Invno"] = lblInvoice.Text;
-            current["Code"] = lblschname11.Text;
+            NewPayment();
 
 
             }
 
-        private void button1_Click_2(object sender,EventArgs e) {
-            this.paymntBindingSource.EndEdit();
-             this.paymntTableAdapter.Update(dsInvoice.paymnt);
-            this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
-            this.CalculatePayments();
+       
+
+        private void tabSales_Deselecting(object sender,TabControlCancelEventArgs e) {
+         if(this.tabSales.SelectedIndex==3){
+                if (!this.SavePayment()) {
+                    e.Cancel = true;
+                    }
+                }
+            if (this.tabSales.SelectedIndex ==0|| this.tabSales.SelectedIndex == 1) {
+                if (!this.SaveSales()) {
+                    e.Cancel = true;
+                    }
+                }
             }
+
+        private void tabSales_Selected(object sender,TabControlEventArgs e) {
+            this.tabSales.SelectedTab.CausesValidation = true;
+            }
+
+        private void tabSales_Deselected(object sender,TabControlEventArgs e) {
+            this.tabSales.SelectedTab.CausesValidation = false;
+            }
+
+        private void btnCancel_Click(object sender,EventArgs e) {
+            CancelPayment();
+           
+            }
+
+        private void btnEdit_Click(object sender,EventArgs e) {
+            EditPayment();
+                   
+            }
+
+        private void btnSavePayment_Click(object sender,EventArgs e) {
+            SavePayment();
+            }
+
+        private void btnDelete_Click(object sender,EventArgs e) {
+            DeletePayment();
+            }
+
+
+
+
 
 
 
