@@ -13,6 +13,8 @@ using System.Diagnostics;
 using BaseClass;
 using Mbc5.Dialogs;
 
+using BaseClase.Classes;
+
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
            private bool vMktGo = false;
@@ -434,10 +436,24 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
         public override void Delete() {
+           
+            DialogResult messageResult = MessageBox.Show("This will delete the current customer. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (messageResult == DialogResult.Yes) {
+                DataRowView current = (DataRowView)custBindingSource.Current;
+                var schcode = current["schcode"];
 
+                var sqlQuery = new SQLQuery();
+                var queryString = "Delete  From  cust where schcode=@schcode ";
+                SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@schcode",schcode)
+            };
+                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+                this.custTableAdapter.Fill(this.dsCust.cust,"038752");//set to cs record                
+                }
+          
             }
         public override void Cancel() {
-
+            custBindingSource.CancelEdit();
             }
         private void GetSetSchcode() {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
@@ -825,6 +841,12 @@ namespace Mbc5.Forms.MemoryBook {
             var a = 1;
             ScreenPrinter aa = new ScreenPrinter(this);
 
+            }
+
+        private void pg1_Enter(object sender,EventArgs e) {
+            if (custBindingSource.Count < 1) {
+                CustTab.Enabled = false;
+                }
             }
 
 

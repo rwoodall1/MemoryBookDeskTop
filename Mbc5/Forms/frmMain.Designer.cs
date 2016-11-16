@@ -71,6 +71,7 @@
             this.tsSave = new System.Windows.Forms.ToolStripButton();
             this.tsAdd = new System.Windows.Forms.ToolStripButton();
             this.tsDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsCancel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsUndo = new System.Windows.Forms.ToolStripButton();
             this.tsCopy = new System.Windows.Forms.ToolStripButton();
@@ -80,7 +81,6 @@
             this.tsPrint = new System.Windows.Forms.ToolStripButton();
             this.tsEmail = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsCancel = new System.Windows.Forms.ToolStripButton();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -435,6 +435,15 @@
             this.tsDelete.Text = "Delete";
             this.tsDelete.Click += new System.EventHandler(this.tsDelete_Click);
             // 
+            // tsCancel
+            // 
+            this.tsCancel.Image = ((System.Drawing.Image)(resources.GetObject("tsCancel.Image")));
+            this.tsCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCancel.Name = "tsCancel";
+            this.tsCancel.Size = new System.Drawing.Size(63, 22);
+            this.tsCancel.Text = "Cancel";
+            this.tsCancel.Click += new System.EventHandler(this.tsCancel_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -503,14 +512,6 @@
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsCancel
-            // 
-            this.tsCancel.Image = ((System.Drawing.Image)(resources.GetObject("tsCancel.Image")));
-            this.tsCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsCancel.Name = "tsCancel";
-            this.tsCancel.Size = new System.Drawing.Size(63, 22);
-            this.tsCancel.Text = "Cancel";
             // 
             // frmMain
             // 

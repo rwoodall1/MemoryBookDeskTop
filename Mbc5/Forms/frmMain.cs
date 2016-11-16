@@ -357,6 +357,16 @@ namespace Mbc5.Forms
             var helper = new EmailHelper();
             helper.SendOutLookEmail("","","","",EmailType.Blank);
             }
+
+        private void tsCancel_Click(object sender,EventArgs e) {
+            try {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.Cancel();
+
+                } catch (Exception ex) {
+                MessageBox.Show("Add record is not implemented for this form.","Add",MessageBoxButtons.OK,MessageBoxIcon.Hand);
+                }
+            }
         #endregion
 
 

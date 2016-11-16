@@ -194,19 +194,22 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private bool DeletePayment() {
             bool retval = true;
-            DataRowView current = (DataRowView)paymntBindingSource.Current;
-           var Id= current["Id"] ;
-          
-            var sqlQuery = new SQLQuery();
-            var queryString = "Delete  From  paymnt where Id=@Id ";
-            SqlParameter[] parameters = new SqlParameter[] {
+           DialogResult messageResult= MessageBox.Show("This will delete the current line item payment. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (messageResult==DialogResult.Yes) {
+                DataRowView current = (DataRowView)paymntBindingSource.Current;
+                var Id = current["Id"];
+
+                var sqlQuery = new SQLQuery();
+                var queryString = "Delete  From  paymnt where Id=@Id ";
+                SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Id",Id)
             };
-            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-            this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
+                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+                this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
 
-            if (result == 0) { retval = false; }
-            SetCrudButtons();
+                if (result == 0) { retval = false; }
+                SetCrudButtons();
+                }
             return retval;
             }
         private void CancelPayment() {
@@ -258,30 +261,32 @@ namespace Mbc5.Forms.MemoryBook {
         //Invoice
         private bool DeleteInvoice() {
             bool retval = true;
-            var sqlQuery = new SQLQuery();
-            var queryString = "Delete  From Invoice where Invno=@Invno ";
-            SqlParameter[] parameters = new SqlParameter[] {
+            DialogResult messageResult = MessageBox.Show("This will delete the current invoice. Any payments related to this invoice will remain. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (messageResult == DialogResult.Yes) {
+                var sqlQuery = new SQLQuery();
+                var queryString = "Delete  From Invoice where Invno=@Invno ";
+                SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Invno",lblInvoice.Text)
             };
-            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-            queryString = "Delete  From InvDetail where Invno=@Invno ";
-            SqlParameter[] parameters1 = new SqlParameter[] {
+                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+                queryString = "Delete  From InvDetail where Invno=@Invno ";
+                SqlParameter[] parameters1 = new SqlParameter[] {
                 new SqlParameter("@Invno",lblInvoice.Text)
             };
-            //use same parameter
-            var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters1);
-            if (result1 == 0 || result == 0) { retval = false; }
+                //use same parameter
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters1);
+                if (result1 == 0 || result == 0) { retval = false; }
 
-            this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
-            this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
-           // var sqlQuery = new SQLQuery();
-           queryString = "Update Invoice set invno=0 where Invno=@Invno ";
-            SqlParameter[] parameters2 = new SqlParameter[] {
+                this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
+                this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
+                // var sqlQuery = new SQLQuery();
+                queryString = "Update Invoice set invno=0 where Invno=@Invno ";
+                SqlParameter[] parameters2 = new SqlParameter[] {
                 new SqlParameter("@Invno",lblInvoice.Text)
             };
-            var result2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters2);
-            this.Fill();
-
+                var result2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters2);
+                this.Fill();
+                }
             return retval;
             }
         private bool CreateInvoice() {
@@ -656,13 +661,16 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private bool DeleteSale() {
             bool retval = true;
-            var sqlQuery = new SQLQuery();
-            var queryString = "Delete  From Quotes where Invno=@Invno ";
-            SqlParameter[] parameters = new SqlParameter[] {
+            DialogResult messageResult = MessageBox.Show("This will delete the current sale record. All related invoices and payments must be removed first. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (messageResult == DialogResult.Yes) {
+                var sqlQuery = new SQLQuery();
+                var queryString = "Delete  From Quotes where Invno=@Invno ";
+                SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Invno",lblInvoice.Text)
             };
-            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-            if (result == 0) { retval = false; }
+                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+                if (result == 0) { retval = false; }
+                }
             return retval;
             }
         private void CalculateEach() {
