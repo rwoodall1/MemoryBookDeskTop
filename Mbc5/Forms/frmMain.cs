@@ -80,7 +80,14 @@ namespace Mbc5.Forms
             string vSchcode =null;
             switch (this.ActiveMdiChild.Name)
             {
+                case "frmSales":
+                        {
 
+                        var tmpForm = (frmSales)this.ActiveMdiChild;
+
+                        vSchcode = tmpForm.Schcode;
+                        break;
+                        }
                 case "frmMbcCust":
                     {
 
@@ -192,13 +199,40 @@ namespace Mbc5.Forms
 
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.AppStarting;
+            
+            if (this.ActiveMdiChild == null) {
+                this.Cursor = Cursors.AppStarting;
 
-            frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser);
-            frmCust.MdiParent = this;
-            frmCust.Show();
-            this.Cursor = Cursors.Default;
-        }
+                frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser);
+                frmCust.MdiParent = this;
+                frmCust.Show();
+                this.Cursor = Cursors.Default;
+
+
+                } else {
+                this.Cursor = Cursors.AppStarting;
+                string vSchcode = GetSchcode();
+
+                if (String.IsNullOrEmpty(vSchcode) ) {
+                    this.Cursor = Cursors.AppStarting;
+
+                    frmMbcCust frmCust1 = new frmMbcCust(this.ApplicationUser);
+                    frmCust1.MdiParent = this;
+                    frmCust1.Show();
+                    this.Cursor = Cursors.Default;
+                    }
+
+                this.Cursor = Cursors.AppStarting;
+
+                frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser,vSchcode);
+                frmCust.MdiParent = this;
+                frmCust.Show();
+                this.Cursor = Cursors.Default;
+
+                }
+
+
+            }
 
         private void MerToolStrip_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
@@ -237,9 +271,10 @@ namespace Mbc5.Forms
 
         private void salesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             if (this.ActiveMdiChild == null)
             {
-                frmSales frmSales = new frmSales(this.ApplicationUser);
+               frmSales frmSales = new frmSales(this.ApplicationUser);
                 frmSales.MdiParent = this;
                 frmSales.Show();
                 this.Cursor = Cursors.Default;
@@ -251,6 +286,14 @@ namespace Mbc5.Forms
                 this.Cursor = Cursors.AppStarting;
                 int vInvno = GetInvno();
                 string vSchcode = GetSchcode();
+
+                if (vInvno==0) {
+                    MessageBox.Show("This school does not have a sales record to go to. Please search for record from Sales Screen.","Sales",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    frmSales frmSales1 = new frmSales(this.ApplicationUser);
+                    frmSales1.MdiParent = this;
+                    frmSales1.Show();
+                    this.Cursor = Cursors.Default;
+                    }
 
                 frmSales frmSales = new frmSales(this.ApplicationUser, vInvno, vSchcode);
                 frmSales.MdiParent = this;

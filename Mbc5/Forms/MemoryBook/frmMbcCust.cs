@@ -27,6 +27,13 @@ namespace Mbc5.Forms.MemoryBook {
             this.ApplicationUser = userPrincipal;
 
             }
+        public frmMbcCust(UserPrincipal userPrincipal,string vschcode) : base(new string[] { "SA","Administrator","MbcCS" },userPrincipal) {
+            InitializeComponent();
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.ApplicationUser = userPrincipal;
+            this.Schcode = vschcode;
+            
+            }
         public void InvokePropertyChanged(PropertyChangedEventArgs e) {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
@@ -45,13 +52,13 @@ namespace Mbc5.Forms.MemoryBook {
         private bool MktLogAdded { get; set; } = false;
         private bool TeleGo { get; set; } = false;
         private bool TeleLogAdded { get; set; } = false;
-        
+        public override string Schcode { get; set; } = "038752";
      
 
         #endregion
 
         private void frmMbcCust_Load(object sender,EventArgs e) {
-
+            var vSchocode = this.Schcode; 
              this.chkMktComplete.DataBindings.Add("Checked",this,"MktGo",false,DataSourceUpdateMode.OnPropertyChanged);//bind check box to property of form
 
             if (!ApplicationUser.Roles.Contains("MbcCS"))
@@ -60,7 +67,7 @@ namespace Mbc5.Forms.MemoryBook {
                 MktGo = true;
                 }
            
-
+             
             
             // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
             this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
@@ -71,14 +78,14 @@ namespace Mbc5.Forms.MemoryBook {
             // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
             this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
             // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
-            this.datecontTableAdapter.Fill(this.dsCust.datecont,"038752");
+            this.datecontTableAdapter.Fill(this.dsCust.datecont,vSchocode);
             // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
-            this.custTableAdapter.Fill(this.dsCust.cust,"038752");
+            this.custTableAdapter.Fill(this.dsCust.cust,vSchocode);
             // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
             this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
             this.statesTableAdapter.Fill(this.lookUp.states);
-            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,"038752");
+            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,vSchocode);
             SetInvnoSchCode();
 
             }
@@ -113,6 +120,7 @@ namespace Mbc5.Forms.MemoryBook {
               
                 }
             txtSchCodesrch.Text = "";
+            SetInvnoSchCode();
             }
         private void btnSchoolSearch_Click(object sender,EventArgs e) {
             var currentSchool = lblSchcodeVal.Text.Trim();
@@ -154,6 +162,7 @@ namespace Mbc5.Forms.MemoryBook {
                
                 }
             txtSchNamesrch.Text = "";
+            SetInvnoSchCode();
             }
         #region CrudOperations
       
@@ -404,6 +413,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             this.Schcode = lblSchcodeVal.Text;
             int val = 0;
+            this.Invno = 0;
             bool parsed = Int32.TryParse(lblInvno.Text, out val);
             if (parsed)
             {
@@ -600,14 +610,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
         #endregion
-        private void button1_Click(object sender,EventArgs e) {
-            this.Save();
-            }
-
-        private void button2_Click(object sender,EventArgs e) {
-            this.Add();
-            }
-
+     
         private void btnWebsite_Click(object sender,EventArgs e) {
             try
                 { Process.Start(txtWebsite.Text); }
@@ -793,8 +796,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void custDataGridView_Leave(object sender, EventArgs e)
         {
-           
-           
+ 
             lblSchcode.Refresh();
             custDataGridView.Parent.Refresh();
         }
@@ -845,7 +847,8 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void pg1_Enter(object sender,EventArgs e) {
             if (custBindingSource.Count < 1) {
-                CustTab.Enabled = false;
+                this.splitContainer.Panel1.Enabled = false;
+                this.splitContainer.Panel2.Enabled = false;
                 }
             }
 
