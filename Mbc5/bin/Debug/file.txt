@@ -280,3 +280,14 @@ The statement has been terminated. CHOME  WDFM\rwoodall
 2016/11/17 14:16:40.742 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    
 2016/11/17 14:25:22.890 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    
 2016/11/17 14:25:32.913 Pricing was not found:Year-15 RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/17 14:47:42.891 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    
+2016/11/17 14:48:07.034 Record sales record failed to update:Cannot set column 'contryear'. The value violates the MaxLength limit of this column. RWCOMPUTER  RWCOMPUTER\randy   System.ArgumentException: Cannot set column 'contryear'. The value violates the MaxLength limit of this column.
+   at System.Data.DataColumn.CheckMaxLength(DataRow dr)
+   at System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
+   at System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
+   at System.Data.DataRow.EndEdit()
+   at System.Data.DataRowView.EndEdit()
+   at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
+   at System.Windows.Forms.BindingSource.EndEdit()
+   at Mbc5.Forms.MemoryBook.frmSales.SaveSales() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 650 
+2016/11/17 14:53:30.913 Pricing was not found:Year- RWCOMPUTER  RWCOMPUTER\randy    

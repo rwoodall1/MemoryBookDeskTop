@@ -112,22 +112,19 @@
             System.Windows.Forms.Label compamtLabel;
             System.Windows.Forms.Label compreasLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblProftotalPrc = new System.Windows.Forms.Label();
             this.lblprofprice = new System.Windows.Forms.Label();
             this.lblSchoolName = new System.Windows.Forms.Label();
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsSales = new Mbc5.DataSets.dsSales();
             this.lblPriceEach = new System.Windows.Forms.Label();
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblBookTotal = new System.Windows.Forms.Label();
             this.lbladjbef = new System.Windows.Forms.Label();
             this.bnSales = new System.Windows.Forms.BindingNavigator(this.components);
@@ -157,11 +154,6 @@
             this.btnInvSrch = new System.Windows.Forms.Button();
             this.btnPoSrch = new System.Windows.Forms.Button();
             this.invHstDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invHstBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtfreebooks = new System.Windows.Forms.TextBox();
             this.saletaxTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -385,16 +377,24 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.mnuEditLkUp = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editLookUpItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
-            this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
-            this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
-            this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
             this.custBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterManager1 = new Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager();
             this.invoiceTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invoiceTableAdapter();
             this.invdetailTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.paymntTableAdapter();
             this.custTableAdapter1 = new Mbc5.DataSets.InvoiceTableAdapters.custTableAdapter();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsSales = new Mbc5.DataSets.dsSales();
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invHstBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
+            this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
+            this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
+            this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -483,15 +483,11 @@
             compreasLabel = new System.Windows.Forms.Label();
             this.tabSales.SuspendLayout();
             this.pg1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnSales)).BeginInit();
             this.bnSales.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlTot.SuspendLayout();
             this.pnlMiscDiscCred.SuspendLayout();
@@ -514,6 +510,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.mnuEditLkUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nopagesLabel
@@ -699,7 +699,7 @@
             dp1Label.Location = new System.Drawing.Point(69, 38);
             dp1Label.Name = "dp1Label";
             dp1Label.Size = new System.Drawing.Size(61, 13);
-            dp1Label.TabIndex = 99;
+            dp1Label.TabIndex = 1;
             dp1Label.Text = "Discount:";
             // 
             // label11
@@ -735,7 +735,7 @@
             dp3descLabel.Location = new System.Drawing.Point(69, 84);
             dp3descLabel.Name = "dp3descLabel";
             dp3descLabel.Size = new System.Drawing.Size(71, 13);
-            dp3descLabel.TabIndex = 108;
+            dp3descLabel.TabIndex = 8;
             dp3descLabel.Text = "Other Disc:";
             // 
             // label13
@@ -753,7 +753,7 @@
             msstanqtyLabel.Location = new System.Drawing.Point(352, 108);
             msstanqtyLabel.Name = "msstanqtyLabel";
             msstanqtyLabel.Size = new System.Drawing.Size(30, 13);
-            msstanqtyLabel.TabIndex = 113;
+            msstanqtyLabel.TabIndex = 14;
             msstanqtyLabel.Text = "Qty:";
             // 
             // persamountLabel
@@ -762,7 +762,7 @@
             persamountLabel.Location = new System.Drawing.Point(225, 129);
             persamountLabel.Name = "persamountLabel";
             persamountLabel.Size = new System.Drawing.Size(26, 13);
-            persamountLabel.TabIndex = 117;
+            persamountLabel.TabIndex = 19;
             persamountLabel.Text = "@$";
             // 
             // perstotalLabel
@@ -771,7 +771,7 @@
             perstotalLabel.Location = new System.Drawing.Point(404, 129);
             perstotalLabel.Name = "perstotalLabel";
             perstotalLabel.Size = new System.Drawing.Size(40, 13);
-            perstotalLabel.TabIndex = 118;
+            perstotalLabel.TabIndex = 21;
             perstotalLabel.Text = "Total:";
             // 
             // perscopiesLabel
@@ -780,7 +780,7 @@
             perscopiesLabel.Location = new System.Drawing.Point(63, 129);
             perscopiesLabel.Name = "perscopiesLabel";
             perscopiesLabel.Size = new System.Drawing.Size(105, 13);
-            perscopiesLabel.TabIndex = 119;
+            perscopiesLabel.TabIndex = 17;
             perscopiesLabel.Text = "Personalization #";
             // 
             // label15
@@ -789,7 +789,7 @@
             label15.Location = new System.Drawing.Point(158, 175);
             label15.Name = "label15";
             label15.Size = new System.Drawing.Size(94, 13);
-            label15.TabIndex = 121;
+            label15.TabIndex = 30;
             label15.Text = "#to persoanlize";
             // 
             // fbkprcLabel
@@ -798,7 +798,7 @@
             fbkprcLabel.Location = new System.Drawing.Point(51, 196);
             fbkprcLabel.Name = "fbkprcLabel";
             fbkprcLabel.Size = new System.Drawing.Size(104, 13);
-            fbkprcLabel.TabIndex = 122;
+            fbkprcLabel.TabIndex = 32;
             fbkprcLabel.Text = "Final Book Price:";
             // 
             // ftotprcLabel
@@ -807,7 +807,7 @@
             ftotprcLabel.Location = new System.Drawing.Point(338, 199);
             ftotprcLabel.Name = "ftotprcLabel";
             ftotprcLabel.Size = new System.Drawing.Size(104, 13);
-            ftotprcLabel.TabIndex = 123;
+            ftotprcLabel.TabIndex = 34;
             ftotprcLabel.Text = "Final Book Total:";
             // 
             // cred_etcLabel
@@ -902,7 +902,7 @@
             lblIconCopies.Location = new System.Drawing.Point(120, 151);
             lblIconCopies.Name = "lblIconCopies";
             lblIconCopies.Size = new System.Drawing.Size(44, 13);
-            lblIconCopies.TabIndex = 173;
+            lblIconCopies.TabIndex = 24;
             lblIconCopies.Text = "Icon #";
             // 
             // label20
@@ -911,7 +911,7 @@
             label20.Location = new System.Drawing.Point(404, 151);
             label20.Name = "label20";
             label20.Size = new System.Drawing.Size(40, 13);
-            label20.TabIndex = 171;
+            label20.TabIndex = 28;
             label20.Text = "Total:";
             // 
             // label21
@@ -920,7 +920,7 @@
             label21.Location = new System.Drawing.Point(225, 151);
             label21.Name = "label21";
             label21.Size = new System.Drawing.Size(26, 13);
-            label21.TabIndex = 170;
+            label21.TabIndex = 26;
             label21.Text = "@$";
             // 
             // label10
@@ -1476,7 +1476,7 @@
             this.lblprofprice.Location = new System.Drawing.Point(312, 91);
             this.lblprofprice.Name = "lblprofprice";
             this.lblprofprice.Size = new System.Drawing.Size(32, 13);
-            this.lblprofprice.TabIndex = 173;
+            this.lblprofprice.TabIndex = 10;
             this.lblprofprice.Text = "0.00";
             // 
             // lblSchoolName
@@ -1488,16 +1488,6 @@
             this.lblSchoolName.TabIndex = 172;
             this.lblSchoolName.Paint += new System.Windows.Forms.PaintEventHandler(this.lblSchoolName_Paint);
             // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsSales;
-            // 
-            // dsSales
-            // 
-            this.dsSales.DataSetName = "dsSales";
-            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // lblPriceEach
             // 
             this.lblPriceEach.AutoSize = true;
@@ -1505,13 +1495,8 @@
             this.lblPriceEach.Location = new System.Drawing.Point(310, 64);
             this.lblPriceEach.Name = "lblPriceEach";
             this.lblPriceEach.Size = new System.Drawing.Size(28, 13);
-            this.lblPriceEach.TabIndex = 18;
+            this.lblPriceEach.TabIndex = 4;
             this.lblPriceEach.Text = "0.00";
-            // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsSales;
             // 
             // lblBookTotal
             // 
@@ -1521,7 +1506,7 @@
             this.lblBookTotal.Location = new System.Drawing.Point(664, 64);
             this.lblBookTotal.Name = "lblBookTotal";
             this.lblBookTotal.Size = new System.Drawing.Size(28, 13);
-            this.lblBookTotal.TabIndex = 22;
+            this.lblBookTotal.TabIndex = 6;
             this.lblBookTotal.Text = "0.00";
             // 
             // lbladjbef
@@ -1532,7 +1517,7 @@
             this.lbladjbef.Location = new System.Drawing.Point(806, 518);
             this.lbladjbef.Name = "lbladjbef";
             this.lbladjbef.Size = new System.Drawing.Size(41, 13);
-            this.lbladjbef.TabIndex = 169;
+            this.lbladjbef.TabIndex = 14;
             this.lbladjbef.Text = "label21";
             // 
             // bnSales
@@ -1562,7 +1547,7 @@
             this.bnSales.Name = "bnSales";
             this.bnSales.PositionItem = this.bindingNavigatorPositionItem;
             this.bnSales.Size = new System.Drawing.Size(1214, 25);
-            this.bnSales.TabIndex = 156;
+            this.bnSales.TabIndex = 18;
             this.bnSales.Text = "SaleNav";
             // 
             // bindingNavigatorCountItem
@@ -1667,7 +1652,7 @@
             this.btnInvoice.Location = new System.Drawing.Point(3, 6);
             this.btnInvoice.Name = "btnInvoice";
             this.btnInvoice.Size = new System.Drawing.Size(156, 39);
-            this.btnInvoice.TabIndex = 148;
+            this.btnInvoice.TabIndex = 0;
             this.btnInvoice.Text = "Create/OverRide Invoice";
             this.btnInvoice.UseVisualStyleBackColor = true;
             this.btnInvoice.Click += new System.EventHandler(this.btnInvoice_Click);
@@ -1677,7 +1662,7 @@
             this.btnCreateWIP.Location = new System.Drawing.Point(105, 51);
             this.btnCreateWIP.Name = "btnCreateWIP";
             this.btnCreateWIP.Size = new System.Drawing.Size(101, 36);
-            this.btnCreateWIP.TabIndex = 149;
+            this.btnCreateWIP.TabIndex = 2;
             this.btnCreateWIP.Text = "Create/Update WIP";
             this.btnCreateWIP.UseVisualStyleBackColor = true;
             // 
@@ -1686,7 +1671,7 @@
             this.btnPrntInvoice.Location = new System.Drawing.Point(165, 6);
             this.btnPrntInvoice.Name = "btnPrntInvoice";
             this.btnPrntInvoice.Size = new System.Drawing.Size(101, 23);
-            this.btnPrntInvoice.TabIndex = 150;
+            this.btnPrntInvoice.TabIndex = 1;
             this.btnPrntInvoice.Text = "Print Invoice";
             this.btnPrntInvoice.UseVisualStyleBackColor = true;
             // 
@@ -1708,7 +1693,7 @@
             this.btnNoPayPo.Location = new System.Drawing.Point(16, 16);
             this.btnNoPayPo.Name = "btnNoPayPo";
             this.btnNoPayPo.Size = new System.Drawing.Size(143, 23);
-            this.btnNoPayPo.TabIndex = 151;
+            this.btnNoPayPo.TabIndex = 0;
             this.btnNoPayPo.Text = "No Payment PO/Half";
             this.btnNoPayPo.UseVisualStyleBackColor = true;
             // 
@@ -1717,7 +1702,7 @@
             this.btnPaymentNotRec.Location = new System.Drawing.Point(165, 16);
             this.btnPaymentNotRec.Name = "btnPaymentNotRec";
             this.btnPaymentNotRec.Size = new System.Drawing.Size(137, 23);
-            this.btnPaymentNotRec.TabIndex = 152;
+            this.btnPaymentNotRec.TabIndex = 1;
             this.btnPaymentNotRec.Text = "Payment Not Rec 5%";
             this.btnPaymentNotRec.UseVisualStyleBackColor = true;
             // 
@@ -1726,7 +1711,7 @@
             this.btnRemove.Location = new System.Drawing.Point(96, 45);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(137, 23);
-            this.btnRemove.TabIndex = 153;
+            this.btnRemove.TabIndex = 2;
             this.btnRemove.Text = "Removing 5%";
             this.btnRemove.UseVisualStyleBackColor = true;
             // 
@@ -1740,7 +1725,7 @@
             this.txtPOAmt.Name = "txtPOAmt";
             this.txtPOAmt.ReadOnly = true;
             this.txtPOAmt.Size = new System.Drawing.Size(49, 20);
-            this.txtPOAmt.TabIndex = 147;
+            this.txtPOAmt.TabIndex = 17;
             // 
             // txtPayments
             // 
@@ -1752,7 +1737,7 @@
             this.txtPayments.Name = "txtPayments";
             this.txtPayments.ReadOnly = true;
             this.txtPayments.Size = new System.Drawing.Size(49, 20);
-            this.txtPayments.TabIndex = 145;
+            this.txtPayments.TabIndex = 16;
             // 
             // txtInvoSrch
             // 
@@ -1762,7 +1747,7 @@
             this.txtInvoSrch.MaxLength = 5;
             this.txtInvoSrch.Name = "txtInvoSrch";
             this.txtInvoSrch.Size = new System.Drawing.Size(106, 20);
-            this.txtInvoSrch.TabIndex = 27;
+            this.txtInvoSrch.TabIndex = 8;
             // 
             // txtPoSrch
             // 
@@ -1771,7 +1756,7 @@
             this.txtPoSrch.Location = new System.Drawing.Point(1067, 86);
             this.txtPoSrch.Name = "txtPoSrch";
             this.txtPoSrch.Size = new System.Drawing.Size(106, 20);
-            this.txtPoSrch.TabIndex = 29;
+            this.txtPoSrch.TabIndex = 11;
             // 
             // btnInvSrch
             // 
@@ -1805,14 +1790,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1827,43 +1812,6 @@
             this.invHstDataGridView.Size = new System.Drawing.Size(321, 113);
             this.invHstDataGridView.TabIndex = 139;
             // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "contryear";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Year";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 54;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "qtedate";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Sales Date";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 84;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "invno";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Invoice#";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 74;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "baldue";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Balance Due";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 94;
-            // 
-            // invHstBindingSource
-            // 
-            this.invHstBindingSource.DataMember = "InvHst";
-            this.invHstBindingSource.DataSource = this.dsSales;
-            // 
             // txtfreebooks
             // 
             this.txtfreebooks.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "freebooks", true));
@@ -1871,7 +1819,7 @@
             this.txtfreebooks.Location = new System.Drawing.Point(457, 619);
             this.txtfreebooks.Name = "txtfreebooks";
             this.txtfreebooks.Size = new System.Drawing.Size(71, 20);
-            this.txtfreebooks.TabIndex = 139;
+            this.txtfreebooks.TabIndex = 13;
             this.txtfreebooks.Validating += new System.ComponentModel.CancelEventHandler(this.freebooksTextBox_Validating);
             // 
             // saletaxTextBox
@@ -1883,7 +1831,7 @@
             this.saletaxTextBox.Location = new System.Drawing.Point(806, 540);
             this.saletaxTextBox.Name = "saletaxTextBox";
             this.saletaxTextBox.Size = new System.Drawing.Size(49, 20);
-            this.saletaxTextBox.TabIndex = 138;
+            this.saletaxTextBox.TabIndex = 15;
             this.saletaxTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.saletaxTextBox_Validating);
             // 
             // panel4
@@ -1917,7 +1865,7 @@
             this.txtOtherChrg.Location = new System.Drawing.Point(236, 56);
             this.txtOtherChrg.Name = "txtOtherChrg";
             this.txtOtherChrg.Size = new System.Drawing.Size(70, 20);
-            this.txtOtherChrg.TabIndex = 136;
+            this.txtOtherChrg.TabIndex = 5;
             this.txtOtherChrg.Leave += new System.EventHandler(this.txtOtherChrg_Leave);
             this.txtOtherChrg.Validating += new System.ComponentModel.CancelEventHandler(this.txtOtherChrg_Validating);
             // 
@@ -1931,7 +1879,7 @@
             this.textBox5.MaxLength = 40;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(142, 20);
-            this.textBox5.TabIndex = 135;
+            this.textBox5.TabIndex = 4;
             // 
             // txtOtherChrg2
             // 
@@ -1941,7 +1889,7 @@
             this.txtOtherChrg2.Location = new System.Drawing.Point(236, 78);
             this.txtOtherChrg2.Name = "txtOtherChrg2";
             this.txtOtherChrg2.Size = new System.Drawing.Size(70, 20);
-            this.txtOtherChrg2.TabIndex = 132;
+            this.txtOtherChrg2.TabIndex = 7;
             this.txtOtherChrg2.Leave += new System.EventHandler(this.txtOtherChrg2_Leave);
             this.txtOtherChrg2.Validating += new System.ComponentModel.CancelEventHandler(this.txtOtherChrg2_Validating);
             // 
@@ -1955,7 +1903,7 @@
             this.desc22TextBox.MaxLength = 40;
             this.desc22TextBox.Name = "desc22TextBox";
             this.desc22TextBox.Size = new System.Drawing.Size(142, 20);
-            this.desc22TextBox.TabIndex = 131;
+            this.desc22TextBox.TabIndex = 6;
             // 
             // txtCredits2
             // 
@@ -1965,7 +1913,7 @@
             this.txtCredits2.Location = new System.Drawing.Point(236, 33);
             this.txtCredits2.Name = "txtCredits2";
             this.txtCredits2.Size = new System.Drawing.Size(70, 20);
-            this.txtCredits2.TabIndex = 130;
+            this.txtCredits2.TabIndex = 3;
             this.txtCredits2.Leave += new System.EventHandler(this.txtCredits2_Leave);
             this.txtCredits2.Validating += new System.ComponentModel.CancelEventHandler(this.txtCredits2_Validating);
             // 
@@ -1979,7 +1927,7 @@
             this.cred_etcTextBox.MaxLength = 40;
             this.cred_etcTextBox.Name = "cred_etcTextBox";
             this.cred_etcTextBox.Size = new System.Drawing.Size(142, 20);
-            this.cred_etcTextBox.TabIndex = 126;
+            this.cred_etcTextBox.TabIndex = 0;
             // 
             // cred_etcTextBox1
             // 
@@ -1991,7 +1939,7 @@
             this.cred_etcTextBox1.MaxLength = 40;
             this.cred_etcTextBox1.Name = "cred_etcTextBox1";
             this.cred_etcTextBox1.Size = new System.Drawing.Size(142, 20);
-            this.cred_etcTextBox1.TabIndex = 129;
+            this.cred_etcTextBox1.TabIndex = 2;
             // 
             // txtCredits
             // 
@@ -2001,7 +1949,7 @@
             this.txtCredits.Location = new System.Drawing.Point(236, 10);
             this.txtCredits.Name = "txtCredits";
             this.txtCredits.Size = new System.Drawing.Size(70, 20);
-            this.txtCredits.TabIndex = 127;
+            this.txtCredits.TabIndex = 1;
             this.txtCredits.Leave += new System.EventHandler(this.txtCredits_Leave);
             this.txtCredits.Validating += new System.ComponentModel.CancelEventHandler(this.txtCredits_Validating);
             // 
@@ -2062,7 +2010,7 @@
             this.lblIconTot.Location = new System.Drawing.Point(449, 151);
             this.lblIconTot.Name = "lblIconTot";
             this.lblIconTot.Size = new System.Drawing.Size(0, 13);
-            this.lblIconTot.TabIndex = 175;
+            this.lblIconTot.TabIndex = 29;
             // 
             // txtIconCopies
             // 
@@ -2071,7 +2019,7 @@
             this.txtIconCopies.Location = new System.Drawing.Point(171, 151);
             this.txtIconCopies.Name = "txtIconCopies";
             this.txtIconCopies.Size = new System.Drawing.Size(41, 20);
-            this.txtIconCopies.TabIndex = 174;
+            this.txtIconCopies.TabIndex = 25;
             this.txtIconCopies.Leave += new System.EventHandler(this.txtIconCopies_Leave);
             // 
             // txtIconamt
@@ -2081,7 +2029,7 @@
             this.txtIconamt.Location = new System.Drawing.Point(257, 151);
             this.txtIconamt.Name = "txtIconamt";
             this.txtIconamt.Size = new System.Drawing.Size(56, 20);
-            this.txtIconamt.TabIndex = 172;
+            this.txtIconamt.TabIndex = 27;
             // 
             // lblFinalTotPrc
             // 
@@ -2091,7 +2039,7 @@
             this.lblFinalTotPrc.Location = new System.Drawing.Point(449, 199);
             this.lblFinalTotPrc.Name = "lblFinalTotPrc";
             this.lblFinalTotPrc.Size = new System.Drawing.Size(0, 13);
-            this.lblFinalTotPrc.TabIndex = 169;
+            this.lblFinalTotPrc.TabIndex = 35;
             // 
             // lblperstotal
             // 
@@ -2101,7 +2049,7 @@
             this.lblperstotal.Location = new System.Drawing.Point(449, 129);
             this.lblperstotal.Name = "lblperstotal";
             this.lblperstotal.Size = new System.Drawing.Size(0, 13);
-            this.lblperstotal.TabIndex = 168;
+            this.lblperstotal.TabIndex = 22;
             // 
             // lblDisc3
             // 
@@ -2111,7 +2059,7 @@
             this.lblDisc3.Location = new System.Drawing.Point(449, 87);
             this.lblDisc3.Name = "lblDisc3";
             this.lblDisc3.Size = new System.Drawing.Size(0, 13);
-            this.lblDisc3.TabIndex = 167;
+            this.lblDisc3.TabIndex = 11;
             // 
             // lblMsTot
             // 
@@ -2121,7 +2069,7 @@
             this.lblMsTot.Location = new System.Drawing.Point(449, 110);
             this.lblMsTot.Name = "lblMsTot";
             this.lblMsTot.Size = new System.Drawing.Size(0, 13);
-            this.lblMsTot.TabIndex = 167;
+            this.lblMsTot.TabIndex = 16;
             // 
             // label14
             // 
@@ -2141,7 +2089,7 @@
             this.lbldisc2.Location = new System.Drawing.Point(449, 64);
             this.lbldisc2.Name = "lbldisc2";
             this.lbldisc2.Size = new System.Drawing.Size(0, 13);
-            this.lbldisc2.TabIndex = 166;
+            this.lbldisc2.TabIndex = 7;
             // 
             // lbldisc1
             // 
@@ -2151,7 +2099,7 @@
             this.lbldisc1.Location = new System.Drawing.Point(449, 41);
             this.lbldisc1.Name = "lbldisc1";
             this.lbldisc1.Size = new System.Drawing.Size(0, 13);
-            this.lbldisc1.TabIndex = 165;
+            this.lbldisc1.TabIndex = 4;
             // 
             // lblsubtot
             // 
@@ -2161,7 +2109,7 @@
             this.lblsubtot.Location = new System.Drawing.Point(446, 15);
             this.lblsubtot.Name = "lblsubtot";
             this.lblsubtot.Size = new System.Drawing.Size(0, 13);
-            this.lblsubtot.TabIndex = 164;
+            this.lblsubtot.TabIndex = 0;
             // 
             // txtDisc
             // 
@@ -2170,7 +2118,7 @@
             this.txtDisc.Location = new System.Drawing.Point(387, 38);
             this.txtDisc.Name = "txtDisc";
             this.txtDisc.Size = new System.Drawing.Size(57, 20);
-            this.txtDisc.TabIndex = 100;
+            this.txtDisc.TabIndex = 3;
             this.txtDisc.Leave += new System.EventHandler(this.txtDisc_Leave);
             this.txtDisc.Validating += new System.ComponentModel.CancelEventHandler(this.txtDisc_Validating);
             // 
@@ -2183,7 +2131,7 @@
             this.txtFinalbookprc.Name = "txtFinalbookprc";
             this.txtFinalbookprc.ReadOnly = true;
             this.txtFinalbookprc.Size = new System.Drawing.Size(65, 20);
-            this.txtFinalbookprc.TabIndex = 123;
+            this.txtFinalbookprc.TabIndex = 33;
             // 
             // dp1descComboBox
             // 
@@ -2193,7 +2141,7 @@
             this.dp1descComboBox.Location = new System.Drawing.Point(134, 38);
             this.dp1descComboBox.Name = "dp1descComboBox";
             this.dp1descComboBox.Size = new System.Drawing.Size(121, 21);
-            this.dp1descComboBox.TabIndex = 102;
+            this.dp1descComboBox.TabIndex = 2;
             // 
             // txtNumtoPers
             // 
@@ -2202,7 +2150,7 @@
             this.txtNumtoPers.Location = new System.Drawing.Point(257, 175);
             this.txtNumtoPers.Name = "txtNumtoPers";
             this.txtNumtoPers.Size = new System.Drawing.Size(53, 20);
-            this.txtNumtoPers.TabIndex = 122;
+            this.txtNumtoPers.TabIndex = 31;
             this.txtNumtoPers.Validating += new System.ComponentModel.CancelEventHandler(this.txtNumtoPers_Validating);
             // 
             // perscopiesTextBox
@@ -2212,7 +2160,7 @@
             this.perscopiesTextBox.Location = new System.Drawing.Point(171, 129);
             this.perscopiesTextBox.Name = "perscopiesTextBox";
             this.perscopiesTextBox.Size = new System.Drawing.Size(41, 20);
-            this.perscopiesTextBox.TabIndex = 120;
+            this.perscopiesTextBox.TabIndex = 18;
             this.perscopiesTextBox.Leave += new System.EventHandler(this.perscopiesTextBox_Leave);
             this.perscopiesTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.perscopiesTextBox_Validating);
             // 
@@ -2223,7 +2171,7 @@
             this.chkDc2.Location = new System.Drawing.Point(69, 61);
             this.chkDc2.Name = "chkDc2";
             this.chkDc2.Size = new System.Drawing.Size(182, 17);
-            this.chkDc2.TabIndex = 105;
+            this.chkDc2.TabIndex = 5;
             this.chkDc2.Text = "Full pay w/page submission";
             this.chkDc2.UseVisualStyleBackColor = true;
             this.chkDc2.CheckedChanged += new System.EventHandler(this.chkDc2_CheckedChanged);
@@ -2235,7 +2183,7 @@
             this.txtDp2.Location = new System.Drawing.Point(387, 61);
             this.txtDp2.Name = "txtDp2";
             this.txtDp2.Size = new System.Drawing.Size(57, 20);
-            this.txtDp2.TabIndex = 106;
+            this.txtDp2.TabIndex = 6;
             this.txtDp2.Leave += new System.EventHandler(this.txtDp2_Leave);
             this.txtDp2.Validating += new System.ComponentModel.CancelEventHandler(this.txtDp2_Validating);
             // 
@@ -2246,7 +2194,7 @@
             this.persamountTextBox.Location = new System.Drawing.Point(257, 129);
             this.persamountTextBox.Name = "persamountTextBox";
             this.persamountTextBox.Size = new System.Drawing.Size(56, 20);
-            this.persamountTextBox.TabIndex = 118;
+            this.persamountTextBox.TabIndex = 20;
             this.persamountTextBox.Leave += new System.EventHandler(this.persamountTextBox_Leave);
             this.persamountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.persamountTextBox_Validating);
             // 
@@ -2258,7 +2206,7 @@
             this.txtDp3Desc.MaxLength = 40;
             this.txtDp3Desc.Name = "txtDp3Desc";
             this.txtDp3Desc.Size = new System.Drawing.Size(79, 20);
-            this.txtDp3Desc.TabIndex = 109;
+            this.txtDp3Desc.TabIndex = 9;
             // 
             // dp3ComboBox
             // 
@@ -2309,7 +2257,7 @@
             this.dp3ComboBox.Location = new System.Drawing.Point(386, 84);
             this.dp3ComboBox.Name = "dp3ComboBox";
             this.dp3ComboBox.Size = new System.Drawing.Size(58, 21);
-            this.dp3ComboBox.TabIndex = 110;
+            this.dp3ComboBox.TabIndex = 10;
             this.dp3ComboBox.Leave += new System.EventHandler(this.dp3ComboBox_Leave);
             // 
             // chkMsStandard
@@ -2319,7 +2267,7 @@
             this.chkMsStandard.Location = new System.Drawing.Point(69, 106);
             this.chkMsStandard.Name = "chkMsStandard";
             this.chkMsStandard.Size = new System.Drawing.Size(127, 17);
-            this.chkMsStandard.TabIndex = 112;
+            this.chkMsStandard.TabIndex = 12;
             this.chkMsStandard.Text = "MS/Stan with/Pic";
             this.chkMsStandard.UseVisualStyleBackColor = true;
             this.chkMsStandard.Click += new System.EventHandler(this.chkMsStandard_Click);
@@ -2331,7 +2279,7 @@
             this.txtMsQty.Location = new System.Drawing.Point(385, 106);
             this.txtMsQty.Name = "txtMsQty";
             this.txtMsQty.Size = new System.Drawing.Size(58, 20);
-            this.txtMsQty.TabIndex = 114;
+            this.txtMsQty.TabIndex = 15;
             this.txtMsQty.Leave += new System.EventHandler(this.txtMsQty_Leave);
             this.txtMsQty.Validating += new System.ComponentModel.CancelEventHandler(this.txtMsQty_Validating);
             // 
@@ -2343,7 +2291,7 @@
             this.foilamtTextBox.Name = "foilamtTextBox";
             this.foilamtTextBox.ReadOnly = true;
             this.foilamtTextBox.Size = new System.Drawing.Size(83, 20);
-            this.foilamtTextBox.TabIndex = 113;
+            this.foilamtTextBox.TabIndex = 13;
             // 
             // pnlMiscDiscCred
             // 
@@ -2387,7 +2335,7 @@
             this.txtClrDesc.MaxLength = 40;
             this.txtClrDesc.Name = "txtClrDesc";
             this.txtClrDesc.Size = new System.Drawing.Size(265, 20);
-            this.txtClrDesc.TabIndex = 68;
+            this.txtClrDesc.TabIndex = 0;
             // 
             // txtClrTot
             // 
@@ -2398,7 +2346,7 @@
             this.txtClrTot.Location = new System.Drawing.Point(276, 32);
             this.txtClrTot.Name = "txtClrTot";
             this.txtClrTot.Size = new System.Drawing.Size(53, 20);
-            this.txtClrTot.TabIndex = 70;
+            this.txtClrTot.TabIndex = 1;
             this.txtClrTot.Leave += new System.EventHandler(this.txtClrTot_Leave);
             this.txtClrTot.Validating += new System.ComponentModel.CancelEventHandler(this.txtClrTot_Validating);
             // 
@@ -2410,7 +2358,7 @@
             this.txtMisc.Location = new System.Drawing.Point(276, 55);
             this.txtMisc.Name = "txtMisc";
             this.txtMisc.Size = new System.Drawing.Size(53, 20);
-            this.txtMisc.TabIndex = 74;
+            this.txtMisc.TabIndex = 3;
             this.txtMisc.Leave += new System.EventHandler(this.txtMisc_Leave);
             this.txtMisc.Validating += new System.ComponentModel.CancelEventHandler(this.txtMisc_Validating);
             // 
@@ -2424,7 +2372,7 @@
             this.txtMdesc.MaxLength = 40;
             this.txtMdesc.Name = "txtMdesc";
             this.txtMdesc.Size = new System.Drawing.Size(265, 20);
-            this.txtMdesc.TabIndex = 72;
+            this.txtMdesc.TabIndex = 2;
             // 
             // txtDesc1amt
             // 
@@ -2434,7 +2382,7 @@
             this.txtDesc1amt.Location = new System.Drawing.Point(276, 78);
             this.txtDesc1amt.Name = "txtDesc1amt";
             this.txtDesc1amt.Size = new System.Drawing.Size(53, 20);
-            this.txtDesc1amt.TabIndex = 78;
+            this.txtDesc1amt.TabIndex = 5;
             this.txtDesc1amt.Leave += new System.EventHandler(this.txtDesc1amt_Leave);
             this.txtDesc1amt.Validating += new System.ComponentModel.CancelEventHandler(this.txtDesc1amt_Validating);
             // 
@@ -2448,7 +2396,7 @@
             this.txtDesc1.MaxLength = 40;
             this.txtDesc1.Name = "txtDesc1";
             this.txtDesc1.Size = new System.Drawing.Size(265, 20);
-            this.txtDesc1.TabIndex = 76;
+            this.txtDesc1.TabIndex = 4;
             // 
             // txtDesc3tot
             // 
@@ -2458,7 +2406,7 @@
             this.txtDesc3tot.Location = new System.Drawing.Point(276, 101);
             this.txtDesc3tot.Name = "txtDesc3tot";
             this.txtDesc3tot.Size = new System.Drawing.Size(53, 20);
-            this.txtDesc3tot.TabIndex = 82;
+            this.txtDesc3tot.TabIndex = 7;
             this.txtDesc3tot.Leave += new System.EventHandler(this.txtDesc3tot_Leave);
             this.txtDesc3tot.Validating += new System.ComponentModel.CancelEventHandler(this.txtDesc3tot_Validating);
             // 
@@ -2472,7 +2420,7 @@
             this.txtDesc3.MaxLength = 40;
             this.txtDesc3.Name = "txtDesc3";
             this.txtDesc3.Size = new System.Drawing.Size(265, 20);
-            this.txtDesc3.TabIndex = 80;
+            this.txtDesc3.TabIndex = 6;
             // 
             // txtDesc4tot
             // 
@@ -2482,7 +2430,7 @@
             this.txtDesc4tot.Location = new System.Drawing.Point(276, 125);
             this.txtDesc4tot.Name = "txtDesc4tot";
             this.txtDesc4tot.Size = new System.Drawing.Size(53, 20);
-            this.txtDesc4tot.TabIndex = 86;
+            this.txtDesc4tot.TabIndex = 9;
             this.txtDesc4tot.Leave += new System.EventHandler(this.txtDesc4tot_Leave);
             this.txtDesc4tot.Validating += new System.ComponentModel.CancelEventHandler(this.txtDesc4tot_Validating);
             // 
@@ -2496,7 +2444,7 @@
             this.txtDesc4.MaxLength = 40;
             this.txtDesc4.Name = "txtDesc4";
             this.txtDesc4.Size = new System.Drawing.Size(265, 20);
-            this.txtDesc4.TabIndex = 84;
+            this.txtDesc4.TabIndex = 8;
             // 
             // panel3
             // 
@@ -2534,7 +2482,7 @@
             this.lblSpeccvrtot.Location = new System.Drawing.Point(125, 201);
             this.lblSpeccvrtot.Name = "lblSpeccvrtot";
             this.lblSpeccvrtot.Size = new System.Drawing.Size(0, 13);
-            this.lblSpeccvrtot.TabIndex = 165;
+            this.lblSpeccvrtot.TabIndex = 6;
             // 
             // chkAllClr
             // 
@@ -2544,7 +2492,7 @@
             this.chkAllClr.Location = new System.Drawing.Point(42, 17);
             this.chkAllClr.Name = "chkAllClr";
             this.chkAllClr.Size = new System.Drawing.Size(73, 17);
-            this.chkAllClr.TabIndex = 43;
+            this.chkAllClr.TabIndex = 0;
             this.chkAllClr.Text = "All Color";
             this.chkAllClr.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkAllClr.UseVisualStyleBackColor = true;
@@ -2587,7 +2535,7 @@
             this.txtnoClrPgs.Location = new System.Drawing.Point(122, 39);
             this.txtnoClrPgs.Name = "txtnoClrPgs";
             this.txtnoClrPgs.Size = new System.Drawing.Size(53, 20);
-            this.txtnoClrPgs.TabIndex = 46;
+            this.txtnoClrPgs.TabIndex = 1;
             // 
             // chkGlossLam
             // 
@@ -2596,7 +2544,7 @@
             this.chkGlossLam.Location = new System.Drawing.Point(11, 61);
             this.chkGlossLam.Name = "chkGlossLam";
             this.chkGlossLam.Size = new System.Drawing.Size(104, 24);
-            this.chkGlossLam.TabIndex = 47;
+            this.chkGlossLam.TabIndex = 2;
             this.chkGlossLam.Text = "Gloss Laminate";
             this.chkGlossLam.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkGlossLam.UseVisualStyleBackColor = true;
@@ -2610,7 +2558,7 @@
             this.chkMLaminate.Location = new System.Drawing.Point(2, 84);
             this.chkMLaminate.Name = "chkMLaminate";
             this.chkMLaminate.Size = new System.Drawing.Size(113, 17);
-            this.chkMLaminate.TabIndex = 50;
+            this.chkMLaminate.TabIndex = 3;
             this.chkMLaminate.Text = "Matte Laminate";
             this.chkMLaminate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkMLaminate.UseVisualStyleBackColor = true;
@@ -2650,7 +2598,7 @@
             this.txtCoverDesc.Location = new System.Drawing.Point(122, 154);
             this.txtCoverDesc.Name = "txtCoverDesc";
             this.txtCoverDesc.Size = new System.Drawing.Size(53, 20);
-            this.txtCoverDesc.TabIndex = 55;
+            this.txtCoverDesc.TabIndex = 4;
             // 
             // label5
             // 
@@ -2668,7 +2616,7 @@
             this.txtSpecCvrEa.Location = new System.Drawing.Point(122, 176);
             this.txtSpecCvrEa.Name = "txtSpecCvrEa";
             this.txtSpecCvrEa.Size = new System.Drawing.Size(53, 20);
-            this.txtSpecCvrEa.TabIndex = 59;
+            this.txtSpecCvrEa.TabIndex = 5;
             this.txtSpecCvrEa.Leave += new System.EventHandler(this.txtSpecCvrEa_Leave);
             this.txtSpecCvrEa.Validating += new System.ComponentModel.CancelEventHandler(this.txtSpecCvrEa_Validating);
             // 
@@ -2679,7 +2627,7 @@
             this.txtFoilAd.Location = new System.Drawing.Point(122, 220);
             this.txtFoilAd.Name = "txtFoilAd";
             this.txtFoilAd.Size = new System.Drawing.Size(53, 20);
-            this.txtFoilAd.TabIndex = 61;
+            this.txtFoilAd.TabIndex = 7;
             this.txtFoilAd.Validating += new System.ComponentModel.CancelEventHandler(this.txtFoilAd_Validating);
             // 
             // panel2
@@ -2752,7 +2700,7 @@
             this.chkProfessional.Location = new System.Drawing.Point(44, 9);
             this.chkProfessional.Name = "chkProfessional";
             this.chkProfessional.Size = new System.Drawing.Size(104, 17);
-            this.chkProfessional.TabIndex = 12;
+            this.chkProfessional.TabIndex = 0;
             this.chkProfessional.Text = "Professional";
             this.chkProfessional.UseVisualStyleBackColor = true;
             this.chkProfessional.Click += new System.EventHandler(this.chkProfessional_Click);
@@ -2764,7 +2712,7 @@
             this.chkConv.Location = new System.Drawing.Point(44, 27);
             this.chkConv.Name = "chkConv";
             this.chkConv.Size = new System.Drawing.Size(104, 24);
-            this.chkConv.TabIndex = 14;
+            this.chkConv.TabIndex = 1;
             this.chkConv.Text = "Convenient";
             this.chkConv.UseVisualStyleBackColor = true;
             this.chkConv.Click += new System.EventHandler(this.chkConv_Click);
@@ -2776,7 +2724,7 @@
             this.chkYir.Location = new System.Drawing.Point(44, 52);
             this.chkYir.Name = "chkYir";
             this.chkYir.Size = new System.Drawing.Size(104, 18);
-            this.chkYir.TabIndex = 16;
+            this.chkYir.TabIndex = 2;
             this.chkYir.Text = "YIR Standard";
             this.chkYir.UseVisualStyleBackColor = true;
             this.chkYir.Click += new System.EventHandler(this.chkYir_Click);
@@ -2789,7 +2737,7 @@
             this.chkStory.Location = new System.Drawing.Point(18, 70);
             this.chkStory.Name = "chkStory";
             this.chkStory.Size = new System.Drawing.Size(130, 17);
-            this.chkStory.TabIndex = 63;
+            this.chkStory.TabIndex = 3;
             this.chkStory.Text = "Our Story/MyStory";
             this.chkStory.UseVisualStyleBackColor = true;
             this.chkStory.Click += new System.EventHandler(this.chkStory_Click);
@@ -2861,7 +2809,7 @@
             this.chkPerfBind.Location = new System.Drawing.Point(27, 19);
             this.chkPerfBind.Name = "chkPerfBind";
             this.chkPerfBind.Size = new System.Drawing.Size(122, 17);
-            this.chkPerfBind.TabIndex = 6;
+            this.chkPerfBind.TabIndex = 0;
             this.chkPerfBind.Text = "Perfect Bind (40)";
             this.chkPerfBind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkPerfBind.UseVisualStyleBackColor = true;
@@ -2874,7 +2822,7 @@
             this.chkSpiral.Location = new System.Drawing.Point(45, 37);
             this.chkSpiral.Name = "chkSpiral";
             this.chkSpiral.Size = new System.Drawing.Size(104, 17);
-            this.chkSpiral.TabIndex = 8;
+            this.chkSpiral.TabIndex = 1;
             this.chkSpiral.Text = "Spiral";
             this.chkSpiral.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkSpiral.UseVisualStyleBackColor = true;
@@ -2887,7 +2835,7 @@
             this.chkSaddlStitch.Location = new System.Drawing.Point(45, 56);
             this.chkSaddlStitch.Name = "chkSaddlStitch";
             this.chkSaddlStitch.Size = new System.Drawing.Size(104, 17);
-            this.chkSaddlStitch.TabIndex = 10;
+            this.chkSaddlStitch.TabIndex = 2;
             this.chkSaddlStitch.Text = "Saddle Stitch";
             this.chkSaddlStitch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkSaddlStitch.UseVisualStyleBackColor = true;
@@ -2936,7 +2884,7 @@
             this.chkHardBack.Location = new System.Drawing.Point(4, 23);
             this.chkHardBack.Name = "chkHardBack";
             this.chkHardBack.Size = new System.Drawing.Size(145, 17);
-            this.chkHardBack.TabIndex = 1;
+            this.chkHardBack.TabIndex = 0;
             this.chkHardBack.Text = "Hard Back (sewn 40)";
             this.chkHardBack.UseVisualStyleBackColor = true;
             this.chkHardBack.Click += new System.EventHandler(this.chkHardBack_Click);
@@ -2949,7 +2897,7 @@
             this.chkCaseBind.Location = new System.Drawing.Point(5, 42);
             this.chkCaseBind.Name = "chkCaseBind";
             this.chkCaseBind.Size = new System.Drawing.Size(144, 17);
-            this.chkCaseBind.TabIndex = 4;
+            this.chkCaseBind.TabIndex = 1;
             this.chkCaseBind.Text = "Case Bind (glued 32)";
             this.chkCaseBind.UseVisualStyleBackColor = true;
             this.chkCaseBind.Click += new System.EventHandler(this.chkCaseBind_Click);
@@ -2971,7 +2919,7 @@
             this.txtreqcoverCopies.Location = new System.Drawing.Point(126, 89);
             this.txtreqcoverCopies.Name = "txtreqcoverCopies";
             this.txtreqcoverCopies.Size = new System.Drawing.Size(40, 20);
-            this.txtreqcoverCopies.TabIndex = 94;
+            this.txtreqcoverCopies.TabIndex = 9;
             this.txtreqcoverCopies.Validating += new System.ComponentModel.CancelEventHandler(this.txtreqcoverCopies_Validating);
             // 
             // label7
@@ -3008,7 +2956,7 @@
             this.txtExtChrg.Name = "txtExtChrg";
             this.txtExtChrg.ReadOnly = true;
             this.txtExtChrg.Size = new System.Drawing.Size(275, 40);
-            this.txtExtChrg.TabIndex = 88;
+            this.txtExtChrg.TabIndex = 12;
             // 
             // cmbYrDiscountAmt
             // 
@@ -3022,7 +2970,7 @@
             this.cmbYrDiscountAmt.Location = new System.Drawing.Point(813, 64);
             this.cmbYrDiscountAmt.Name = "cmbYrDiscountAmt";
             this.cmbYrDiscountAmt.Size = new System.Drawing.Size(79, 21);
-            this.cmbYrDiscountAmt.TabIndex = 25;
+            this.cmbYrDiscountAmt.TabIndex = 7;
             this.cmbYrDiscountAmt.Leave += new System.EventHandler(this.cmbYrDiscountAmt_Leave);
             // 
             // chkPromo
@@ -3085,7 +3033,7 @@
             this.txtPriceOverRide.Location = new System.Drawing.Point(493, 64);
             this.txtPriceOverRide.Name = "txtPriceOverRide";
             this.txtPriceOverRide.Size = new System.Drawing.Size(57, 20);
-            this.txtPriceOverRide.TabIndex = 20;
+            this.txtPriceOverRide.TabIndex = 5;
             this.txtPriceOverRide.Leave += new System.EventHandler(this.txtPriceOverRide_Leave);
             this.txtPriceOverRide.Validating += new System.ComponentModel.CancelEventHandler(this.txtPriceOverRide_Validating);
             // 
@@ -3116,7 +3064,7 @@
             this.txtNocopies.MaxLength = 5;
             this.txtNocopies.Name = "txtNocopies";
             this.txtNocopies.Size = new System.Drawing.Size(39, 20);
-            this.txtNocopies.TabIndex = 14;
+            this.txtNocopies.TabIndex = 2;
             this.txtNocopies.Leave += new System.EventHandler(this.txtNocopies_Leave);
             // 
             // dteQuote
@@ -3135,7 +3083,7 @@
             this.txtPoNum.Location = new System.Drawing.Point(413, 35);
             this.txtPoNum.Name = "txtPoNum";
             this.txtPoNum.Size = new System.Drawing.Size(100, 20);
-            this.txtPoNum.TabIndex = 7;
+            this.txtPoNum.TabIndex = 1;
             // 
             // txtBYear
             // 
@@ -3145,7 +3093,7 @@
             this.txtBYear.MaxLength = 2;
             this.txtBYear.Name = "txtBYear";
             this.txtBYear.Size = new System.Drawing.Size(31, 20);
-            this.txtBYear.TabIndex = 4;
+            this.txtBYear.TabIndex = 0;
             this.txtBYear.Leave += new System.EventHandler(this.txtBYear_Leave);
             this.txtBYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtBYear_Validating);
             // 
@@ -3168,7 +3116,7 @@
             this.txtNoPages.MaxLength = 4;
             this.txtNoPages.Name = "txtNoPages";
             this.txtNoPages.Size = new System.Drawing.Size(37, 20);
-            this.txtNoPages.TabIndex = 16;
+            this.txtNoPages.TabIndex = 3;
             this.txtNoPages.Leave += new System.EventHandler(this.txtNoPages_Leave);
             // 
             // pg2
@@ -4018,14 +3966,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.invdetailDataGridView.AutoGenerateColumns = false;
             this.invdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.invdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
@@ -4046,8 +3994,8 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "schcode";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTextBoxColumn5.HeaderText = "School Code";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -4055,8 +4003,8 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "invno";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewTextBoxColumn6.HeaderText = "Invoice #";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -4064,8 +4012,8 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "descr";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewTextBoxColumn7.HeaderText = "Description";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -4073,8 +4021,8 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "price";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewTextBoxColumn8.HeaderText = "Amount";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -4146,7 +4094,7 @@
             this.btnDelete.Location = new System.Drawing.Point(1069, 217);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(92, 23);
-            this.btnDelete.TabIndex = 31;
+            this.btnDelete.TabIndex = 24;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -4157,7 +4105,7 @@
             this.btnSavePayment.Location = new System.Drawing.Point(1069, 95);
             this.btnSavePayment.Name = "btnSavePayment";
             this.btnSavePayment.Size = new System.Drawing.Size(92, 23);
-            this.btnSavePayment.TabIndex = 30;
+            this.btnSavePayment.TabIndex = 20;
             this.btnSavePayment.Text = "Save";
             this.btnSavePayment.UseVisualStyleBackColor = true;
             this.btnSavePayment.Click += new System.EventHandler(this.btnSavePayment_Click);
@@ -4168,7 +4116,7 @@
             this.btnEdit.Location = new System.Drawing.Point(1069, 156);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(92, 23);
-            this.btnEdit.TabIndex = 29;
+            this.btnEdit.TabIndex = 22;
             this.btnEdit.Text = "Edit Payment";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -4179,7 +4127,7 @@
             this.btnCancel.Location = new System.Drawing.Point(1069, 185);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(92, 23);
-            this.btnCancel.TabIndex = 28;
+            this.btnCancel.TabIndex = 23;
             this.btnCancel.Text = "Cancel ";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -4190,7 +4138,7 @@
             this.btnNewPayment.Location = new System.Drawing.Point(1069, 124);
             this.btnNewPayment.Name = "btnNewPayment";
             this.btnNewPayment.Size = new System.Drawing.Size(92, 23);
-            this.btnNewPayment.TabIndex = 27;
+            this.btnNewPayment.TabIndex = 21;
             this.btnNewPayment.Text = "New Payment";
             this.btnNewPayment.UseVisualStyleBackColor = true;
             this.btnNewPayment.Click += new System.EventHandler(this.btnNewPayment_Click);
@@ -4215,7 +4163,7 @@
             this.txtCompReason.Multiline = true;
             this.txtCompReason.Name = "txtCompReason";
             this.txtCompReason.Size = new System.Drawing.Size(433, 58);
-            this.txtCompReason.TabIndex = 24;
+            this.txtCompReason.TabIndex = 18;
             // 
             // paymntBindingSource
             // 
@@ -4230,7 +4178,7 @@
             this.txtCompensation.Location = new System.Drawing.Point(163, 263);
             this.txtCompensation.Name = "txtCompensation";
             this.txtCompensation.Size = new System.Drawing.Size(100, 20);
-            this.txtCompensation.TabIndex = 22;
+            this.txtCompensation.TabIndex = 17;
             // 
             // txtAdjustment
             // 
@@ -4240,7 +4188,7 @@
             this.txtAdjustment.Location = new System.Drawing.Point(163, 231);
             this.txtAdjustment.Name = "txtAdjustment";
             this.txtAdjustment.Size = new System.Drawing.Size(100, 20);
-            this.txtAdjustment.TabIndex = 20;
+            this.txtAdjustment.TabIndex = 16;
             // 
             // txtInitials
             // 
@@ -4250,7 +4198,7 @@
             this.txtInitials.Location = new System.Drawing.Point(1107, 37);
             this.txtInitials.Name = "txtInitials";
             this.txtInitials.Size = new System.Drawing.Size(54, 20);
-            this.txtInitials.TabIndex = 18;
+            this.txtInitials.TabIndex = 19;
             this.txtInitials.Validating += new System.ComponentModel.CancelEventHandler(this.txtInitials_Validating);
             // 
             // txtMethod
@@ -4261,7 +4209,7 @@
             this.txtMethod.Location = new System.Drawing.Point(165, 149);
             this.txtMethod.Name = "txtMethod";
             this.txtMethod.Size = new System.Drawing.Size(100, 20);
-            this.txtMethod.TabIndex = 16;
+            this.txtMethod.TabIndex = 13;
             // 
             // txtRefund
             // 
@@ -4271,7 +4219,7 @@
             this.txtRefund.Location = new System.Drawing.Point(165, 205);
             this.txtRefund.Name = "txtRefund";
             this.txtRefund.Size = new System.Drawing.Size(100, 20);
-            this.txtRefund.TabIndex = 14;
+            this.txtRefund.TabIndex = 15;
             // 
             // txtPaypoamt
             // 
@@ -4281,7 +4229,7 @@
             this.txtPaypoamt.Location = new System.Drawing.Point(104, 7);
             this.txtPaypoamt.Name = "txtPaypoamt";
             this.txtPaypoamt.Size = new System.Drawing.Size(100, 20);
-            this.txtPaypoamt.TabIndex = 12;
+            this.txtPaypoamt.TabIndex = 10;
             // 
             // txtCheckNo
             // 
@@ -4291,7 +4239,7 @@
             this.txtCheckNo.Location = new System.Drawing.Point(165, 120);
             this.txtCheckNo.Name = "txtCheckNo";
             this.txtCheckNo.Size = new System.Drawing.Size(100, 20);
-            this.txtCheckNo.TabIndex = 10;
+            this.txtCheckNo.TabIndex = 12;
             // 
             // txtPayment
             // 
@@ -4301,7 +4249,7 @@
             this.txtPayment.Location = new System.Drawing.Point(165, 175);
             this.txtPayment.Name = "txtPayment";
             this.txtPayment.Size = new System.Drawing.Size(100, 20);
-            this.txtPayment.TabIndex = 8;
+            this.txtPayment.TabIndex = 14;
             // 
             // calpmtdate
             // 
@@ -4311,7 +4259,7 @@
             this.calpmtdate.Location = new System.Drawing.Point(165, 94);
             this.calpmtdate.Name = "calpmtdate";
             this.calpmtdate.Size = new System.Drawing.Size(200, 20);
-            this.calpmtdate.TabIndex = 6;
+            this.calpmtdate.TabIndex = 11;
             // 
             // invno
             // 
@@ -4321,7 +4269,7 @@
             this.invno.Name = "invno";
             this.invno.Size = new System.Drawing.Size(100, 23);
             this.invno.TabIndex = 4;
-            this.invno.Text = "label36";
+            this.invno.Text = "N/a";
             // 
             // paymntDataGridView
             // 
@@ -4329,14 +4277,14 @@
             this.paymntDataGridView.AllowUserToDeleteRows = false;
             this.paymntDataGridView.AutoGenerateColumns = false;
             this.paymntDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.paymntDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paymntDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -4366,7 +4314,7 @@
             this.paymntDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.paymntDataGridView.ShowEditingIcon = false;
             this.paymntDataGridView.Size = new System.Drawing.Size(1192, 220);
-            this.paymntDataGridView.TabIndex = 0;
+            this.paymntDataGridView.TabIndex = 25;
             // 
             // Id
             // 
@@ -4520,26 +4468,6 @@
             this.editLookUpItemsToolStripMenuItem.Text = "Edit Look Up Items";
             this.editLookUpItemsToolStripMenuItem.Click += new System.EventHandler(this.editLookUpItemsToolStripMenuItem_Click);
             // 
-            // quotesTableAdapter
-            // 
-            this.quotesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.custTableAdapter = null;
-            this.tableAdapterManager.InvHstTableAdapter = null;
-            this.tableAdapterManager.quotesTableAdapter = this.quotesTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // custTableAdapter
-            // 
-            this.custTableAdapter.ClearBeforeFill = true;
-            // 
-            // invHstTableAdapter
-            // 
-            this.invHstTableAdapter.ClearBeforeFill = true;
-            // 
             // custBindingSource1
             // 
             this.custBindingSource1.DataMember = "cust";
@@ -4572,6 +4500,78 @@
             // 
             this.custTableAdapter1.ClearBeforeFill = true;
             // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsSales;
+            // 
+            // dsSales
+            // 
+            this.dsSales.DataSetName = "dsSales";
+            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsSales;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "contryear";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Year";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 54;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "qtedate";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Sales Date";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 84;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "invno";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Invoice#";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 74;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "baldue";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Balance Due";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 94;
+            // 
+            // invHstBindingSource
+            // 
+            this.invHstBindingSource.DataMember = "InvHst";
+            this.invHstBindingSource.DataSource = this.dsSales;
+            // 
+            // quotesTableAdapter
+            // 
+            this.quotesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.custTableAdapter = null;
+            this.tableAdapterManager.InvHstTableAdapter = null;
+            this.tableAdapterManager.quotesTableAdapter = this.quotesTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // custTableAdapter
+            // 
+            this.custTableAdapter.ClearBeforeFill = true;
+            // 
+            // invHstTableAdapter
+            // 
+            this.invHstTableAdapter.ClearBeforeFill = true;
+            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -4585,16 +4585,12 @@
             this.tabSales.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnSales)).EndInit();
             this.bnSales.ResumeLayout(false);
             this.bnSales.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.pnlTot.ResumeLayout(false);
@@ -4628,6 +4624,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.mnuEditLkUp.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).EndInit();
             this.ResumeLayout(false);
 
             }

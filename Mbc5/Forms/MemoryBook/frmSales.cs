@@ -43,7 +43,7 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
         private void frmSales_Load(object sender,EventArgs e) {
-            
+          
           
             lblPCEach.DataBindings.Add("Text",this,"PrcEa",false,DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text",this,"PrcTot",false,DataSourceUpdateMode.OnPropertyChanged);//bind
@@ -54,7 +54,8 @@ namespace Mbc5.Forms.MemoryBook {
             startup = false;
             CalculateEach();
             BookCalc();
-                        
+            txtBYear.Focus();
+            
             }
         private void btnInvSrch_Click(object sender,EventArgs e) {
             var sqlQuery = new SQLQuery();
@@ -127,6 +128,7 @@ namespace Mbc5.Forms.MemoryBook {
         public List<Price> Pricing { get; set; }
         public BookOptionPrice BookOptionPricing { get; set; }
         public string CurPriceYr { get; set; } = null;
+        private bool StartUp { get; set; }
         #endregion
         #region "Methods"
         //Payment Tab
@@ -167,35 +169,38 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private bool SavePayment() {
             bool retval = true;
-            if (this.ValidateChildren()) {
-                try {
-                    this.paymntBindingSource.EndEdit();
-                    this.paymntTableAdapter.Update(dsInvoice.paymnt);
-                    this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
-                    this.CalculatePayments();
-                    txtPaypoamt.Enabled = false;
-                    txtInitials.Enabled = false;
-                    calpmtdate.Enabled = false;
-                    txtCheckNo.Enabled = false;
-                    txtMethod.Enabled = false;
-                    txtPayment.Enabled = false;
-                    txtRefund.Enabled = false;
-                    txtAdjustment.Enabled = false;
-                    txtCompensation.Enabled = false;
-                    txtCompReason.Enabled = false;
-                    retval = true;
-                    } catch (DBConcurrencyException ex1) {
-                    retval = false;
-                    string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
-                    this.Log.Error(ex1,ex1.Message);
-                    MessageBox.Show(errmsg);
-                    } catch (Exception ex) {
-                    retval = false;
-                    MessageBox.Show("Payment failed to update:" + ex.Message);
-                    this.Log.Error(ex,"Payment failed to update:" + ex.Message);
+            if (paymntBindingSource.Count > 0) {
+                if (this.ValidatePayment()) {
 
-                    }
-                } else { retval = false; }
+                    try {
+                        this.paymntBindingSource.EndEdit();
+                        this.paymntTableAdapter.Update(dsInvoice.paymnt);
+                        this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
+                        this.CalculatePayments();
+                        txtPaypoamt.Enabled = false;
+                        txtInitials.Enabled = false;
+                        calpmtdate.Enabled = false;
+                        txtCheckNo.Enabled = false;
+                        txtMethod.Enabled = false;
+                        txtPayment.Enabled = false;
+                        txtRefund.Enabled = false;
+                        txtAdjustment.Enabled = false;
+                        txtCompensation.Enabled = false;
+                        txtCompReason.Enabled = false;
+                        retval = true;
+                        } catch (DBConcurrencyException ex1) {
+                        retval = false;
+                        string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
+                        this.Log.Error(ex1,ex1.Message);
+                        MessageBox.Show(errmsg);
+                        } catch (Exception ex) {
+                        retval = false;
+                        MessageBox.Show("Payment failed to update:" + ex.Message);
+                        this.Log.Error(ex,"Payment failed to update:" + ex.Message);
+
+                        }
+                    } else { retval = false; }
+                }
             return retval;
             }
         private bool DeletePayment() {
@@ -644,26 +649,27 @@ namespace Mbc5.Forms.MemoryBook {
         //Sales
         private bool SaveSales() {
             bool retval = false;
-            if (ValidSales()) {
+            if (quotesBindingSource.Count > 0) {
+                if (ValidSales()) {
 
-                try {
-                    this.quotesBindingSource.EndEdit();
-                    quotesTableAdapter.Update(dsSales.quotes);
-                    //must refill so we get updated time stamp so concurrency is not thrown
-                    this.Fill();
-                    retval = true;
-                    } catch (DBConcurrencyException ex1) {
-                    retval = false;
-                    string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
-                    this.Log.Error(ex1,ex1.Message);
-                    MessageBox.Show(errmsg);
-                    } catch (Exception ex) {
-                    retval = false;
-                    MessageBox.Show("Sales record failed to update:" + ex.Message);
-                    this.Log.Error(ex,"Record sales record failed to update:" + ex.Message);
-                    }
-                } else { retval = false; }
-
+                    try {
+                        this.quotesBindingSource.EndEdit();
+                        quotesTableAdapter.Update(dsSales.quotes);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        this.Fill();
+                        retval = true;
+                        } catch (DBConcurrencyException ex1) {
+                        retval = false;
+                        string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
+                        this.Log.Error(ex1,ex1.Message);
+                        MessageBox.Show(errmsg);
+                        } catch (Exception ex) {
+                        retval = false;
+                        MessageBox.Show("Sales record failed to update:" + ex.Message);
+                        this.Log.Error(ex,"Record sales record failed to update:" + ex.Message);
+                        }
+                    } else { retval = false; }
+                }
             return retval;
             }
         private bool DeleteSale() {
@@ -1350,8 +1356,14 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             con.Enabled = true;
             }
-       //General
-       
+        //General
+        private void SetCodeInvno() {
+            if (quotesBindingSource.Count > 0) {
+                DataRowView current = (DataRowView)quotesBindingSource.Current;
+                this.Schcode = current["schcode"].ToString();
+                this.Invno = Convert.ToInt32(current["invno"]);
+                }
+            }
         private void Fill() {
             if (Schcode != null) {
                 custTableAdapter.Fill(dsSales.cust,Schcode);
@@ -1367,9 +1379,8 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             CalculateEach();
             BookCalc();
-            DataRowView current = (DataRowView)quotesBindingSource.Current;
-             this.Schcode = current["schcode"].ToString();
-            this.Invno=Convert.ToInt32(current["invno"]);
+            SetCodeInvno();
+           
             
 
 
@@ -1745,6 +1756,52 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
 
         #region Validation
+        private bool ValidatePayment() {
+            bool retval = true;
+            if (txtInitials.Enabled == true) {
+                errorProvider1.Clear();
+                if (String.IsNullOrEmpty(txtInitials.Text)) {
+                    errorProvider1.SetError(txtInitials,"Please enter your initials.");
+                    retval = false;
+                    return retval;
+                    }
+                }
+            bool result = true;
+            decimal val = 0;
+            if (!String.IsNullOrEmpty(txtPayment.Text)) {
+                result = Decimal.TryParse(txtPayment.Text,out val);
+                if (!result) {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(txtPayment,"Value must be a Decimal.");
+                    }
+
+                } else if (!String.IsNullOrEmpty(txtRefund.Text)) {
+                result = Decimal.TryParse(txtRefund.Text,out val);
+                if (!result) {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(txtRefund,"Value must be a Decimal.");
+                    }
+
+                } else if (!String.IsNullOrEmpty(txtAdjustment.Text)) {
+                result = Decimal.TryParse(txtAdjustment.Text,out val);
+                if (!result) {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(txtAdjustment,"Value must be a Decimal.");
+                    }
+
+
+                } else if (!String.IsNullOrEmpty(txtCompensation.Text)) {
+                result = Decimal.TryParse(txtCompensation.Text,out val);
+                if (!result) {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(txtCompensation,"Value must be a Decimal.");
+                    }
+
+                }
+
+            return retval;
+            }
+
         private void txtInitials_Validating(object sender,CancelEventArgs e) {
             if (this.tabSales.SelectedIndex == 3 && txtInitials.Enabled == true) {
                 errorProvider1.Clear();
@@ -2261,9 +2318,6 @@ namespace Mbc5.Forms.MemoryBook {
 
         #endregion
      
-
-       
-
         private void lblSchoolName_Paint(object sender, PaintEventArgs e)
         {
             try { this.Text = "Sales-" + lblSchoolName.Text.Trim()+" ("+this.Schcode.Trim()+")"; } catch {
@@ -2495,19 +2549,19 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void tabSales_Deselecting(object sender,TabControlCancelEventArgs e) {
-         if(this.tabSales.SelectedIndex==3){
+            if (this.tabSales.SelectedIndex == 3) {
                 if (!this.SavePayment()) {
                     e.Cancel = true;
                     }
                 }
-            if (this.tabSales.SelectedIndex ==0|| this.tabSales.SelectedIndex == 1) {
+            if (this.tabSales.SelectedIndex == 0 || this.tabSales.SelectedIndex == 1) {
                 if (!this.SaveSales()) {
                     e.Cancel = true;
                     }
                 }
             }
 
-        
+
 
         private void btnCancel_Click(object sender,EventArgs e) {
             CancelPayment();
