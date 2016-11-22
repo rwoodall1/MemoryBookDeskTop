@@ -165,7 +165,51 @@ namespace Mbc5.Forms.MemoryBook {
             SetInvnoSchCode();
             }
         #region CrudOperations
-      
+      public new bool Save() {
+            bool retval = false;
+            txtSchname.ReadOnly = true;
+            if (this.ValidateChildren(ValidationConstraints.Enabled)) {
+                this.custBindingSource.EndEdit();
+                try {
+                    custTableAdapter.Update(dsCust);
+                    retval = true;
+                    } catch (DBConcurrencyException dbex) {
+                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo);
+                    ProcessDialogResult(response);
+                    } catch (Exception ex) {
+                    Log.Fatal("Error Updating cust table:" + ex.Message);
+                    MessageBox.Show("An error was thrown while attempting to update the customer table.");
+                    }
+                }
+            return retval;
+            }
+        public override void Add() {
+            dsCust.Clear();
+            DataRowView newrow = (DataRowView)custBindingSource.AddNew();
+            GetSetSchcode();
+            txtSchname.ReadOnly = false;
+
+            }
+        public override void Delete() {
+           
+            DialogResult messageResult = MessageBox.Show("This will delete the current customer. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (messageResult == DialogResult.Yes) {
+                DataRowView current = (DataRowView)custBindingSource.Current;
+                var schcode = current["schcode"];
+
+                var sqlQuery = new SQLQuery();
+                var queryString = "Delete  From  cust where schcode=@schcode ";
+                SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@schcode",schcode)
+            };
+                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+                this.custTableAdapter.Fill(this.dsCust.cust,"038752");//set to cs record                
+                }
+          
+            }
+        public override void Cancel() {
+            custBindingSource.CancelEdit();
+            }
         #region ConcurrencyProcs
         private string CreateMessage(DataSets.dsCust.custRow cr) {
             return
@@ -420,51 +464,7 @@ namespace Mbc5.Forms.MemoryBook {
                 this.Invno = val;
             }
         }
-        public new bool Save() {
-            bool retval = false;
-            txtSchname.ReadOnly = true;
-            if (this.ValidateChildren(ValidationConstraints.Enabled)) {
-                this.custBindingSource.EndEdit();
-                try {
-                    custTableAdapter.Update(dsCust);
-                    retval = true;
-                    } catch (DBConcurrencyException dbex) {
-                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo);
-                    ProcessDialogResult(response);
-                    } catch (Exception ex) {
-                    Log.Fatal("Error Updating cust table:" + ex.Message);
-                    MessageBox.Show("An error was thrown while attempting to update the customer table.");
-                    }
-                }
-            return retval;
-            }
-        public override void Add() {
-            dsCust.Clear();
-            DataRowView newrow = (DataRowView)custBindingSource.AddNew();
-            GetSetSchcode();
-            txtSchname.ReadOnly = false;
-
-            }
-        public override void Delete() {
-           
-            DialogResult messageResult = MessageBox.Show("This will delete the current customer. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
-            if (messageResult == DialogResult.Yes) {
-                DataRowView current = (DataRowView)custBindingSource.Current;
-                var schcode = current["schcode"];
-
-                var sqlQuery = new SQLQuery();
-                var queryString = "Delete  From  cust where schcode=@schcode ";
-                SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@schcode",schcode)
-            };
-                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-                this.custTableAdapter.Fill(this.dsCust.cust,"038752");//set to cs record                
-                }
-          
-            }
-        public override void Cancel() {
-            custBindingSource.CancelEdit();
-            }
+        
         private void GetSetSchcode() {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
             SqlCommand cmd = new SqlCommand("SELECT precode,schcode from codecnt ",conn);
@@ -850,6 +850,10 @@ namespace Mbc5.Forms.MemoryBook {
                 this.splitContainer.Panel1.Enabled = false;
                 this.splitContainer.Panel2.Enabled = false;
                 }
+            }
+
+        private void custDataGridView_Enter(object sender,EventArgs e) {
+            this.custTableAdapter.Fill(this.dsCust.cust,this.Schcode);
             }
 
 

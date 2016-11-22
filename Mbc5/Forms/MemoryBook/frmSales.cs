@@ -71,8 +71,9 @@ namespace Mbc5.Forms.MemoryBook {
                     this.Schcode = row["schcode"].ToString();
                     this.Fill();
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : (int)current["Invno"];
-                    this.Schcode = current["Code"].ToString();
+            
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
                     EnableAllControls(this);
                     }
                 } else { MessageBox.Show("No records were found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -682,106 +683,118 @@ namespace Mbc5.Forms.MemoryBook {
                 new SqlParameter("@Invno",lblInvoice.Text)
             };
                 var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-                if (result == 0) { retval = false; }
+                if (result == 1) {
+                    this.Invno = 0;
+                    this.Fill();
+                    } else { retval = false; }
                 }
             return retval;
             }
         private void CalculateEach() {
+            if (String.IsNullOrEmpty(txtBYear.Text)) {
+             
+                lblBookTotal.Text = (0 * 0).ToString("c");
+                lblProftotalPrc.Text = (0 * 0).ToString("c");
+                lblPriceEach.Text = (0 * 0).ToString("c");
+                lblprofprice.Text = 0.ToString("c");
+                return;
+                }
             //Don't calculate until fill is done.
             decimal thePrice = 0;
-            if (!startup) {
-                if (quotesBindingSource.Count > 0) {
-                    if (!ValidateCopies() || !ValidatePageCount()) {
-                        return;
-                        }
-                    string vPage = "Pg" + txtNoPages.Text;
-                    int copies;
-                    int calcCopies;
-                    var result = int.TryParse(txtNocopies.Text,out copies);
-                    if (copies < 100)//min is 100 for calculating
-                    {
-                        calcCopies = 100;
-                        } else { calcCopies = copies; }
-                    if (!result) {
-                        MessageBox.Show("Copies is not a numeral.");
-                        return;
-                        }
-
-                    var lowCopies = 0;
-                    if (copies > 125) {
-                        lowCopies = copies - 25;
-                        } else {
-                        lowCopies = 100;
-                        }
-                    if (copies > 1800) {
-                        MessageBox.Show("Copies are more than the maximum that can be calculated. Contact your supervisor, quantity is being reset at 1800.","Copies",MessageBoxButtons.OK,MessageBoxIcon.Stop);
-                        txtNocopies.Text = "1800";
-                        lowCopies = 1800;
-                        calcCopies = 1800;
-                        }
-
-                    if (this.Pricing == null || CurPriceYr != txtBYear.Text) {
-                        GetBookPricing();
-                        if (this.Pricing == null) {
-                            MessageBox.Show("Pricing was not found.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                            Log.Error("Pricing was not found:Year-" + txtBYear.Text);
+                if (!startup) {
+                    if (quotesBindingSource.Count > 0) {
+                        if (!ValidateCopies() || !ValidatePageCount()) {
                             return;
                             }
-                        }
-
-                    //var vPricingRow = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).ToList();
-                    //var aprice = vPricingRow.Select(x => x.GetType().GetProperty("Pg12").GetValue(x));
-
-                    var vBookPrice = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= calcCopies).Select(x => x.GetType().GetProperty(vPage).GetValue(x)).ToList();
-                    if (vBookPrice.Count < 1) {
-                        return;
-                        }
-                    decimal vFoundPrice = (decimal)vBookPrice[0];
-                    decimal vdiscountamount = 1;
-                    if (cmbYrDiscountAmt.SelectedIndex > 0) {
-                        decimal promAmt = 0;
-                        bool proAmtResult = decimal.TryParse(cmbYrDiscountAmt.SelectedItem.ToString(),out promAmt);
-
-                        vdiscountamount = 1 - promAmt;
-                        }
-                    vFoundPrice = vFoundPrice * vdiscountamount;
-                    lblPriceEach.Text = vFoundPrice.ToString("c");
-
-                    if (String.IsNullOrEmpty(txtPriceOverRide.Text) || txtPriceOverRide.Text == "$0.00" || txtPriceOverRide.Text == "$0") {
-                        try {
-                            string price = lblPriceEach.Text.Replace("$","");//must strip dollar sign
-                            thePrice = System.Convert.ToDecimal(price);
-
-                            lblBookTotal.Text = (thePrice * copies).ToString("c");
-
-                            } catch (Exception ex) {
-                            MessageBox.Show("Book price is not in a decimal value.");
-                            }
-                        } else {
-                        try {
-                            string price = txtPriceOverRide.Text.Replace("$","");//must strip dollar sign
-                            thePrice = System.Convert.ToDecimal(price);
-                            lblBookTotal.Text = (thePrice * copies).ToString("c");
-                            } catch (Exception ex) {
-                            MessageBox.Show("Book price is not in a decimal value.");
+                        string vPage = "Pg" + txtNoPages.Text;
+                        int copies;
+                        int calcCopies;
+                        var result = int.TryParse(txtNocopies.Text,out copies);
+                        if (copies < 100)//min is 100 for calculating
+                        {
+                            calcCopies = 100;
+                            } else { calcCopies = copies; }
+                        if (!result) {
+                            MessageBox.Show("Copies is not a numeral.");
+                            return;
                             }
 
+                        var lowCopies = 0;
+                        if (copies > 125) {
+                            lowCopies = copies - 25;
+                            } else {
+                            lowCopies = 100;
+                            }
+                        if (copies > 1800) {
+                            MessageBox.Show("Copies are more than the maximum that can be calculated. Contact your supervisor, quantity is being reset at 1800.","Copies",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                            txtNocopies.Text = "1800";
+                            lowCopies = 1800;
+                            calcCopies = 1800;
+                            }
+
+                        if (this.Pricing == null || CurPriceYr != txtBYear.Text) {
+                            GetBookPricing();
+                            if (this.Pricing == null) {
+                                MessageBox.Show("Pricing was not found.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                                Log.Error("Pricing was not found:Year-" + txtBYear.Text);
+                                return;
+                                }
+                            }
+
+                        //var vPricingRow = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).ToList();
+                        //var aprice = vPricingRow.Select(x => x.GetType().GetProperty("Pg12").GetValue(x));
+
+                        var vBookPrice = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= calcCopies).Select(x => x.GetType().GetProperty(vPage).GetValue(x)).ToList();
+                        if (vBookPrice.Count < 1) {
+                            return;
+                            }
+                        decimal vFoundPrice = (decimal)vBookPrice[0];
+                        decimal vdiscountamount = 1;
+                        if (cmbYrDiscountAmt.SelectedIndex > 0) {
+                            decimal promAmt = 0;
+                            bool proAmtResult = decimal.TryParse(cmbYrDiscountAmt.SelectedItem.ToString(),out promAmt);
+
+                            vdiscountamount = 1 - promAmt;
+                            }
+                        vFoundPrice = vFoundPrice * vdiscountamount;
+                        lblPriceEach.Text = vFoundPrice.ToString("c");
+
+                        if (String.IsNullOrEmpty(txtPriceOverRide.Text) || txtPriceOverRide.Text == "$0.00" || txtPriceOverRide.Text == "$0") {
+                            try {
+                                string price = lblPriceEach.Text.Replace("$","");//must strip dollar sign
+                                thePrice = System.Convert.ToDecimal(price);
+
+                                lblBookTotal.Text = (thePrice * copies).ToString("c");
+
+                                } catch (Exception ex) {
+                                MessageBox.Show("Book price is not in a decimal value.");
+                                }
+                            } else {
+                            try {
+                                string price = txtPriceOverRide.Text.Replace("$","");//must strip dollar sign
+                                thePrice = System.Convert.ToDecimal(price);
+                                lblBookTotal.Text = (thePrice * copies).ToString("c");
+                                } catch (Exception ex) {
+                                MessageBox.Show("Book price is not in a decimal value.");
+                                }
+
+                            }
+                        //original book thePrice
+                        var theTotal = System.Convert.ToDecimal(lblBookTotal.Text.Replace("$",""));
+                        decimal profTotal = 0;
+                        decimal conTotal = 0;
+                        result = decimal.TryParse(lblProfAmt.Text.Replace("$",""),out profTotal);
+                        result = decimal.TryParse(lblConvAmt.Text.Replace("$",""),out conTotal);
+                        decimal vprofprce = thePrice + ((conTotal / copies) + (profTotal / copies));
+                        lblprofprice.Text = vprofprce.ToString("c");
+
+                        lblProftotalPrc.Text = (vprofprce * copies).ToString("c");
+
+
+                        BookCalc();
                         }
-                    //original book thePrice
-                    var theTotal = System.Convert.ToDecimal(lblBookTotal.Text.Replace("$",""));
-                    decimal profTotal = 0;
-                    decimal conTotal = 0;
-                    result = decimal.TryParse(lblProfAmt.Text.Replace("$",""),out profTotal);
-                    result = decimal.TryParse(lblConvAmt.Text.Replace("$",""),out conTotal);
-                    decimal vprofprce = thePrice + ((conTotal / copies) + (profTotal / copies));
-                    lblprofprice.Text = vprofprce.ToString("c");
-
-                    lblProftotalPrc.Text = (vprofprce * copies).ToString("c");
-
-
-                    BookCalc();
                     }
-                }
+                
             }
         private void CalcInk() {
 
@@ -1004,7 +1017,8 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private void GetBookPricing() {
             if (String.IsNullOrEmpty(txtBYear.Text)) {
-                errorProvider1.Clear();
+                errorProvider1.SetError(txtBYear,"");
+                
                 errorProvider1.SetError(txtBYear,"Please enter a  base price year.");
                 return;
                 }
@@ -1177,76 +1191,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
-        private bool ValidatePageCount() {
-            bool retval = true;
-           
-                errorProvider1.Clear();
-                int count;
-                var result = int.TryParse(txtNoPages.Text,out count);
-                //non numeric
-                if (!result) {
-                    errorProvider1.SetError(txtNoPages,"Please enter a number.");
-                    retval = false;
-                    }
-                //Check over 360
-                if (count > 360) {
-                    errorProvider1.SetError(txtNoPages,"Calculations are limited to 360 pages!");
-                    retval = false;
-                    }
-                //check divisible by 4
-                var mod = (count % 4);
-                if (mod != 0 || count < 12) {
-                    errorProvider1.SetError(txtNoPages,"Pages must be 12 or greater and divisible by 4!");
-                    retval = false;
-                    }
-
-                //If CaseBind
-                if (chkCaseBind.Checked && (count < 40 || count > 120)) {
-                    errorProvider1.SetError(txtNoPages,"Case Bind pages must between 40 and 120!");
-                    retval = false;
-                    }
-
-                if (count > 84 && chkSaddlStitch.Checked) {
-                    errorProvider1.SetError(txtNoPages,"Saddle Stitch must be 84 pages or less!");
-                    retval = false;
-                    }
-
-                
-
-            return retval;
-            }
-        private bool ValidateCopies() {
-           
-                bool retval = true;
-           
-                errorProvider1.Clear();
-                int count;
-                var result = int.TryParse(txtNocopies.Text,out count);
-                //non numeric
-                if (!result || count == 0) {
-                    errorProvider1.SetError(txtNocopies,"Please enter a number.");
-                    retval = false;
-                    }
-                if (count > 1800) {
-                    errorProvider1.SetError(txtNocopies,"Number exceeds maximun quantity. Contact your supervisor.");
-                    retval = false;
-                    }
-                
-                return retval;
-                
-            }
-        private bool ValidSales() {
-            bool retval = true;
-           
-            retval = ValidatePageCount();
-            if (!retval) { return retval; }
-            retval = ValidateCopies();
-            if (!retval) { return retval; }
-            retval = this.ValidateChildren();
-          if (!retval) { return retval; }
-            retval = this.Validate();
-            return retval;
-            }
+    
         //OnlinePay
         private void SetOnlinePayOptions(string textboxname,string checkboxname,bool vcheck) {
             List<TextBox> vControls = new List<TextBox>();
@@ -1469,9 +1414,10 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void txtBYear_Leave(object sender, EventArgs e)
         {
+            errorProvider1.SetError(txtBYear,"");
             if (String.IsNullOrEmpty(txtBYear.Text))
             {
-                errorProvider1.Clear();
+               // errorProvider1.Clear();
                 errorProvider1.SetError(txtBYear, "Please enter a  base price year.");
             }
             GetBookPricing();
@@ -1759,7 +1705,8 @@ namespace Mbc5.Forms.MemoryBook {
         private bool ValidatePayment() {
             bool retval = true;
             if (txtInitials.Enabled == true) {
-                errorProvider1.Clear();
+                errorProvider1.SetError(txtInitials,"");
+
                 if (String.IsNullOrEmpty(txtInitials.Text)) {
                     errorProvider1.SetError(txtInitials,"Please enter your initials.");
                     retval = false;
@@ -1770,30 +1717,34 @@ namespace Mbc5.Forms.MemoryBook {
             decimal val = 0;
             if (!String.IsNullOrEmpty(txtPayment.Text)) {
                 result = Decimal.TryParse(txtPayment.Text,out val);
+                errorProvider1.SetError(txtPayment,"Value must be a Decimal.");
                 if (!result) {
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtPayment,"Value must be a Decimal.");
+                    errorProvider1.SetError(txtPayment,"");
+                    
                     }
 
                 } else if (!String.IsNullOrEmpty(txtRefund.Text)) {
                 result = Decimal.TryParse(txtRefund.Text,out val);
+                errorProvider1.SetError(txtRefund,"");
                 if (!result) {
-                    errorProvider1.Clear();
+                   
                     errorProvider1.SetError(txtRefund,"Value must be a Decimal.");
                     }
 
                 } else if (!String.IsNullOrEmpty(txtAdjustment.Text)) {
                 result = Decimal.TryParse(txtAdjustment.Text,out val);
+                errorProvider1.SetError(txtAdjustment,"");
                 if (!result) {
-                    errorProvider1.Clear();
+                    
                     errorProvider1.SetError(txtAdjustment,"Value must be a Decimal.");
                     }
 
 
                 } else if (!String.IsNullOrEmpty(txtCompensation.Text)) {
                 result = Decimal.TryParse(txtCompensation.Text,out val);
+                errorProvider1.SetError(txtCompensation,"");
                 if (!result) {
-                    errorProvider1.Clear();
+                  
                     errorProvider1.SetError(txtCompensation,"Value must be a Decimal.");
                     }
 
@@ -1801,10 +1752,93 @@ namespace Mbc5.Forms.MemoryBook {
 
             return retval;
             }
+        private bool ValidatePageCount() {
+            bool retval = true;
+            errorProvider1.SetError(txtNoPages,"");
+            if (String.IsNullOrEmpty(txtNoPages.Text)) {
+                
+              retval= false;
+               
+                }
+            int count;
+            var result = int.TryParse(txtNoPages.Text,out count);
+            //non numeric
+            if (!result) {
+                errorProvider1.SetError(txtNoPages,"Please enter a number.");
+                retval = false;
+                }
+            //Check over 360
+            if (count > 360) {
+                errorProvider1.SetError(txtNoPages,"Calculations are limited to 360 pages!");
+                retval = false;
+                }
+            //check divisible by 4
+            var mod = (count % 4);
+            if (mod != 0 || count < 12) {
+                errorProvider1.SetError(txtNoPages,"Pages must be 12 or greater and divisible by 4!");
+                retval = false;
+                }
 
+            //If CaseBind
+            if (chkCaseBind.Checked && (count < 40 || count > 120)) {
+                errorProvider1.SetError(txtNoPages,"Case Bind pages must between 40 and 120!");
+                retval = false;
+                }
+
+            if (count > 84 && chkSaddlStitch.Checked) {
+                errorProvider1.SetError(txtNoPages,"Saddle Stitch must be 84 pages or less!");
+                retval = false;
+                }
+
+            if (retval == false){
+                lblBookTotal.Text = (0 * 0).ToString("c");
+                lblProftotalPrc.Text = (0 * 0).ToString("c");
+                lblPriceEach.Text = (0 * 0).ToString("c");
+                lblprofprice.Text = 0.ToString("c");
+                }
+
+            return retval;
+            }
+        private bool ValidateCopies() {
+
+            bool retval = true;
+
+            errorProvider1.SetError(txtNocopies,"");
+            int count;
+            var result = int.TryParse(txtNocopies.Text,out count);
+            //non numeric
+            if (!result || count == 0) {
+                errorProvider1.SetError(txtNocopies,"Please enter a number.");
+                retval = false;
+                }
+            if (count > 1800) {
+                errorProvider1.SetError(txtNocopies,"Number exceeds maximun quantity. Contact your supervisor.");
+                retval = false;
+                }
+            if (retval == false) {
+                lblBookTotal.Text = (0 * 0).ToString("c");
+                lblProftotalPrc.Text = (0 * 0).ToString("c");
+                lblPriceEach.Text = (0 * 0).ToString("c");
+                lblprofprice.Text = 0.ToString("c");
+                }
+            return retval;
+
+            }
+        private bool ValidSales() {
+            bool retval = true;
+
+            retval = ValidatePageCount();
+            if (!retval) { return retval; }
+            retval = ValidateCopies();
+            if (!retval) { return retval; }
+            retval = this.ValidateChildren();
+            if (!retval) { return retval; }
+            retval = this.Validate();
+            return retval;
+            }
         private void txtInitials_Validating(object sender,CancelEventArgs e) {
             if (this.tabSales.SelectedIndex == 3 && txtInitials.Enabled == true) {
-                errorProvider1.Clear();
+                errorProvider1.SetError(txtInitials,"");
                 if (String.IsNullOrEmpty(txtInitials.Text)) {
                     errorProvider1.SetError(txtInitials,"Please enter your initials.");
                     e.Cancel = true;
@@ -1814,8 +1848,8 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private void txtBYear_Validating(object sender, CancelEventArgs e)
         {
-          
-            errorProvider1.Clear();
+
+            errorProvider1.SetError(txtBYear,"");
             int numeral;
             var result = int.TryParse(txtBYear.Text, out numeral);
             //non numeric
@@ -1823,13 +1857,13 @@ namespace Mbc5.Forms.MemoryBook {
             {
                 errorProvider1.SetError(txtBYear, "Please enter a  base price year.");
                 e.Cancel = true;
-             
+                return;
             }
          
 
         }
         private void basicamounTextBox1_Validating(object sender,CancelEventArgs e) {
-            errorProvider1.Clear();
+            errorProvider1.SetError(basicamounTextBox1,"");
             if (String.IsNullOrEmpty(basicamounTextBox1.Text)) {
                 basicamounTextBox1.Text = "0.00";
                 }
@@ -1846,11 +1880,35 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void txtInkPersAmt_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtInkPersAmt,"");
+            if (String.IsNullOrEmpty(txtInkPersAmt.Text)) {
+                basicamounTextBox1.Text = "0.00";
+                }
+            string price = txtInkPersAmt.Text.Replace("$","");//must strip dollar sign
+            decimal val;
+            var result = decimal.TryParse(price,out val);
+            //non numeric
+            if (!result) {
+                errorProvider1.SetError(txtInkPersAmt,"Please enter a decimal amount.");
+                e.Cancel = true;
 
+                }
             }
 
         private void txtInkTxtOnly_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtInkTxtOnly,"");
+            if (String.IsNullOrEmpty(txtInkTxtOnly.Text)) {
+                txtInkTxtOnly.Text = "0.00";
+                }
+            string price = txtInkTxtOnly.Text.Replace("$","");//must strip dollar sign
+            decimal val;
+            var result = decimal.TryParse(price,out val);
+            //non numeric
+            if (!result) {
+                errorProvider1.SetError(txtInkTxtOnly,"Please enter a decimal amount.");
+                e.Cancel = true;
 
+                }
             }
 
         private void txtFoilIcons_VisibleChanged(object sender,EventArgs e) {
@@ -1906,8 +1964,8 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private void txtYear_Validating(object sender, CancelEventArgs e)
         {
-            
-            errorProvider1.Clear();
+
+            errorProvider1.SetError(txtYear,"");
             int numeral;
             var result = int.TryParse(txtYear.Text, out numeral);
             //non numeric
@@ -1941,8 +1999,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtSpecCvrEa.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtSpecCvrEa,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtSpecCvrEa.Text, out numeral);
                 //non numeric
@@ -1959,8 +2017,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtFoilAd.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtFoilAd,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtFoilAd.Text, out numeral);
                 //non numeric
@@ -1977,8 +2035,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDisc.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtDisc,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtDisc.Text, out numeral);
                 //non numeric
@@ -1995,8 +2053,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDp2.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtDp2,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtDp2.Text, out numeral);
                 //non numeric
@@ -2013,8 +2071,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtMsQty.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtMsQty,"");
                 int numeral;
                 var result = int.TryParse(txtMsQty.Text, out numeral);
                 //non numeric
@@ -2031,8 +2089,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(perscopiesTextBox.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(perscopiesTextBox,"");
                 int numeral;
                 var result = int.TryParse(perscopiesTextBox.Text, out numeral);
                 //non numeric
@@ -2049,8 +2107,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(persamountTextBox.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(persamountTextBox,"");
                 int numeral;
                 var result = int.TryParse(persamountTextBox.Text, out numeral);
                 //non numeric
@@ -2067,8 +2125,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtNumtoPers.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtNumtoPers,"");
                 int numeral;
                 var result = int.TryParse(txtNumtoPers.Text, out numeral);
                 //non numeric
@@ -2085,8 +2143,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtfreebooks.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtfreebooks,"");
                 int numeral;
                 var result = int.TryParse(txtfreebooks.Text, out numeral);
                 //non numeric
@@ -2103,8 +2161,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtClrTot.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtClrTot,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtClrTot.Text, out numeral);
                 //non numeric
@@ -2121,8 +2179,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtMisc.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtMisc,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtMisc.Text, out numeral);
                 //non numeric
@@ -2139,8 +2197,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDesc1amt.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtDesc1amt,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtDesc1amt.Text, out numeral);
                 //non numeric
@@ -2157,8 +2215,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDesc3tot.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtDesc3tot,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtDesc3tot.Text, out numeral);
                 //non numeric
@@ -2175,8 +2233,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDesc4tot.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtDesc4tot,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtDesc4tot.Text, out numeral);
                 //non numeric
@@ -2193,8 +2251,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtCredits.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtCredits,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtCredits.Text, out numeral);
                 //non numeric
@@ -2211,8 +2269,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtCredits2.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtCredits2,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtCredits2.Text, out numeral);
                 //non numeric
@@ -2229,8 +2287,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtOtherChrg.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtOtherChrg,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtOtherChrg.Text, out numeral);
                 //non numeric
@@ -2247,8 +2305,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtOtherChrg2.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtOtherChrg2,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtOtherChrg2.Text, out numeral);
                 //non numeric
@@ -2265,8 +2323,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(saletaxTextBox.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(saletaxTextBox,"");
                 decimal numeral;
                 var result = decimal.TryParse(saletaxTextBox.Text, out numeral);
                 //non numeric
@@ -2283,7 +2341,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtPriceOverRide.Text))
             {
-                errorProvider1.Clear();
+                errorProvider1.SetError(txtPriceOverRide,"");
                 if (!String.IsNullOrEmpty(txtPriceOverRide.Text)) {
                     string price = txtPriceOverRide.Text.Replace("$","");//must strip dollar sign
                     decimal val;
@@ -2302,8 +2360,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtreqcoverCopies.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtreqcoverCopies,"");
                 int numeral;
                 var result = int.TryParse(txtreqcoverCopies.Text, out numeral);
                 //non numeric
@@ -2590,6 +2648,43 @@ namespace Mbc5.Forms.MemoryBook {
             this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
             this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
             }
+
+       
+
+        private void bindingNavigatorMoveNextItem_Click(object sender,EventArgs e) {
+            if (!this.ValidateChildren()) {
+                return;
+                }
+            quotesBindingSource.MoveNext();
+           
+            }
+
+        private void bindingNavigatorMoveFirstItem_Click(object sender,EventArgs e) {
+            if (!this.ValidateChildren()) {
+                return;
+                }
+            quotesBindingSource.MoveFirst();
+            }
+
+        private void bindingNavigatorMovePreviousItem_Click(object sender,EventArgs e) {
+            if (!this.ValidateChildren()) {
+                return;
+                }
+            quotesBindingSource.MovePrevious();
+            }
+
+        private void bindingNavigatorMoveLastItem_Click(object sender,EventArgs e) {
+            if (!this.ValidateChildren()) {
+                return;
+                }
+            quotesBindingSource.MoveLast();
+            }
+
+        private void bindingNavigatorDeleteItem_Click(object sender,EventArgs e) {
+            this.Delete();
+            }
+
+
 
 
 
