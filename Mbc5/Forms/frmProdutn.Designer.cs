@@ -38,15 +38,19 @@
             this.companyTextBox = new System.Windows.Forms.TextBox();
             this.invnoLabel1 = new System.Windows.Forms.Label();
             this.prodnoLabel1 = new System.Windows.Forms.Label();
-            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contryearLabel1 = new System.Windows.Forms.Label();
+            this.allclrckCheckBox = new System.Windows.Forms.CheckBox();
+            this.btnBookType = new System.Windows.Forms.Button();
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsProdutn = new Mbc5.DataSets.dsProdutn();
+            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager();
             this.produtnTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.produtnTableAdapter();
             this.quotesTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.quotesTableAdapter();
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contryearLabel1 = new System.Windows.Forms.Label();
+            this.booktypeTextBox = new System.Windows.Forms.TextBox();
+            this.bkmixedCheckBox = new System.Windows.Forms.CheckBox();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -54,10 +58,10 @@
             this.tbProdutn.SuspendLayout();
             this.pg1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tbProdutn
@@ -79,6 +83,10 @@
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.bkmixedCheckBox);
+            this.pg1.Controls.Add(this.booktypeTextBox);
+            this.pg1.Controls.Add(this.btnBookType);
+            this.pg1.Controls.Add(this.allclrckCheckBox);
             this.pg1.Controls.Add(contryearLabel);
             this.pg1.Controls.Add(this.contryearLabel1);
             this.pg1.Controls.Add(prodnoLabel);
@@ -194,15 +202,59 @@
             this.prodnoLabel1.TabIndex = 11;
             this.prodnoLabel1.Text = "label1";
             // 
-            // produtnBindingSource
+            // contryearLabel
             // 
-            this.produtnBindingSource.DataMember = "produtn";
-            this.produtnBindingSource.DataSource = this.dsProdutn;
+            contryearLabel.AutoSize = true;
+            contryearLabel.Location = new System.Drawing.Point(534, 10);
+            contryearLabel.Name = "contryearLabel";
+            contryearLabel.Size = new System.Drawing.Size(54, 13);
+            contryearLabel.TabIndex = 11;
+            contryearLabel.Text = "contryear:";
+            // 
+            // contryearLabel1
+            // 
+            this.contryearLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "contryear", true));
+            this.contryearLabel1.Location = new System.Drawing.Point(594, 10);
+            this.contryearLabel1.Name = "contryearLabel1";
+            this.contryearLabel1.Size = new System.Drawing.Size(100, 23);
+            this.contryearLabel1.TabIndex = 12;
+            this.contryearLabel1.Text = "label1";
+            // 
+            // allclrckCheckBox
+            // 
+            this.allclrckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "allclrck", true));
+            this.allclrckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.allclrckCheckBox.ForeColor = System.Drawing.Color.Red;
+            this.allclrckCheckBox.Location = new System.Drawing.Point(1101, 5);
+            this.allclrckCheckBox.Name = "allclrckCheckBox";
+            this.allclrckCheckBox.Size = new System.Drawing.Size(113, 24);
+            this.allclrckCheckBox.TabIndex = 13;
+            this.allclrckCheckBox.Text = "All Color Book";
+            this.allclrckCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // btnBookType
+            // 
+            this.btnBookType.Location = new System.Drawing.Point(13, 52);
+            this.btnBookType.Name = "btnBookType";
+            this.btnBookType.Size = new System.Drawing.Size(71, 23);
+            this.btnBookType.TabIndex = 14;
+            this.btnBookType.Text = "Book Type";
+            this.btnBookType.UseVisualStyleBackColor = true;
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsProdutn;
             // 
             // dsProdutn
             // 
             this.dsProdutn.DataSetName = "dsProdutn";
             this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // produtnBindingSource
+            // 
+            this.produtnBindingSource.DataMember = "produtn";
+            this.produtnBindingSource.DataSource = this.dsProdutn;
             // 
             // custBindingSource
             // 
@@ -229,28 +281,23 @@
             // 
             this.quotesTableAdapter.ClearBeforeFill = true;
             // 
-            // quotesBindingSource
+            // booktypeTextBox
             // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsProdutn;
+            this.booktypeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "booktype", true));
+            this.booktypeTextBox.Location = new System.Drawing.Point(90, 52);
+            this.booktypeTextBox.Name = "booktypeTextBox";
+            this.booktypeTextBox.Size = new System.Drawing.Size(53, 20);
+            this.booktypeTextBox.TabIndex = 15;
             // 
-            // contryearLabel
+            // bkmixedCheckBox
             // 
-            contryearLabel.AutoSize = true;
-            contryearLabel.Location = new System.Drawing.Point(534, 10);
-            contryearLabel.Name = "contryearLabel";
-            contryearLabel.Size = new System.Drawing.Size(54, 13);
-            contryearLabel.TabIndex = 11;
-            contryearLabel.Text = "contryear:";
-            // 
-            // contryearLabel1
-            // 
-            this.contryearLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "contryear", true));
-            this.contryearLabel1.Location = new System.Drawing.Point(594, 10);
-            this.contryearLabel1.Name = "contryearLabel1";
-            this.contryearLabel1.Size = new System.Drawing.Size(100, 23);
-            this.contryearLabel1.TabIndex = 12;
-            this.contryearLabel1.Text = "label1";
+            this.bkmixedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "reorder", true));
+            this.bkmixedCheckBox.Location = new System.Drawing.Point(689, 10);
+            this.bkmixedCheckBox.Name = "bkmixedCheckBox";
+            this.bkmixedCheckBox.Size = new System.Drawing.Size(66, 24);
+            this.bkmixedCheckBox.TabIndex = 16;
+            this.bkmixedCheckBox.Text = "Reorder";
+            this.bkmixedCheckBox.UseVisualStyleBackColor = true;
             // 
             // frmProdutn
             // 
@@ -267,10 +314,10 @@
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -295,5 +342,9 @@
         private System.Windows.Forms.Label prodnoLabel1;
         private System.Windows.Forms.Label invnoLabel1;
         private System.Windows.Forms.Label contryearLabel1;
+        private System.Windows.Forms.Button btnBookType;
+        private System.Windows.Forms.CheckBox allclrckCheckBox;
+        private System.Windows.Forms.CheckBox bkmixedCheckBox;
+        private System.Windows.Forms.TextBox booktypeTextBox;
         }
     }
