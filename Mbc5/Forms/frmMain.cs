@@ -305,6 +305,34 @@ namespace Mbc5.Forms
 
 
         }
+        private void productionWIPToolStripMenuItem_Click(object sender,EventArgs e) {
+            if (this.ActiveMdiChild == null) {
+                frmProdutn frmProdutn = new frmProdutn(this.ApplicationUser);
+                frmProdutn.MdiParent = this;
+                frmProdutn.Show();
+                this.Cursor = Cursors.Default;
+
+
+                } else {
+                this.Cursor = Cursors.AppStarting;
+                int vInvno = GetInvno();
+                string vSchcode = GetSchcode();
+
+                if (vInvno == 0) {
+                    MessageBox.Show("This school does not have a production record to go to. Please search for record from Production Screen.","Production",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    frmProdutn frmProdutn1 = new frmProdutn(this.ApplicationUser);
+                    frmProdutn1.MdiParent = this;
+                    frmProdutn1.Show();
+                    this.Cursor = Cursors.Default;
+                    }
+
+                frmProdutn frmProduction = new frmProdutn(this.ApplicationUser,vInvno,vSchcode);
+                frmProduction.MdiParent = this;
+                frmProduction.Show();
+                this.Cursor = Cursors.Default;
+
+                }
+            }
         #endregion
         #region DataMaint
         private void discountToolStripMenuItem_Click(object sender, EventArgs e)
@@ -410,6 +438,8 @@ namespace Mbc5.Forms
                 MessageBox.Show("Add record is not implemented for this form.","Add",MessageBoxButtons.OK,MessageBoxIcon.Hand);
                 }
             }
+
+        
         #endregion
 
 

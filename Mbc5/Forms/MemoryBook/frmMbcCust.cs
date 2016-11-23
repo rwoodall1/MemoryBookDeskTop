@@ -12,7 +12,8 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using BaseClass;
 using Mbc5.Dialogs;
-
+using Exceptionless;
+using Exceptionless.Models;
 using BaseClase.Classes;
 
 namespace Mbc5.Forms.MemoryBook {
@@ -403,6 +404,21 @@ namespace Mbc5.Forms.MemoryBook {
             }
         #endregion
         #region Methods
+        private void GoToSales() {
+
+            
+                this.Cursor = Cursors.AppStarting;
+                     int vInvno = this.Invno;
+                    string vSchcode = lblSchcodeVal.Text;
+
+                frmSales frmSales = new frmSales(this.ApplicationUser,vInvno,vSchcode);
+                frmSales.MdiParent = this.MdiParent;
+                frmSales.Show();
+                this.Cursor = Cursors.Default;
+
+                
+
+            }
         public bool DoPhoneLog() {
             bool retval = true;
             frmMain vparent =(frmMain) this.ParentForm;
@@ -453,6 +469,38 @@ namespace Mbc5.Forms.MemoryBook {
             }
            
         }
+        private string GetProdNo() {
+            var sqlQuery = new SQLQuery();
+            //useing hard code until function to generate invno is done
+            SqlParameter[] parameters = new SqlParameter[] { };
+            var strQuery = "Select * from prodnum";
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,strQuery,parameters);
+            int? prodNum = null;
+            try {
+                prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
+                strQuery = "Insert Into Prodnum (lstprodno) values(@lstprodno)";
+                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno",(prodNum + 1)) };
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
+                if (result1 != 1) {
+                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
+                         .AddTags("New prod number error.")
+                         .Submit();
+
+                    }
+
+                } catch (Exception ex) {
+                MessageBox.Show("There was an error getting the production number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+
+                ex.ToExceptionless()
+                  .AddTags("MBCWindows")
+                  .SetMessage("Error getting production number.")
+                  .Submit();
+
+                }
+
+            return prodNum.ToString();
+
+            }
         private void SetInvnoSchCode()
         {
             this.Schcode = lblSchcodeVal.Text;
@@ -464,7 +512,36 @@ namespace Mbc5.Forms.MemoryBook {
                 this.Invno = val;
             }
         }
-        
+        private string GetCoverNumber() {
+            var sqlQuery = new SQLQuery();
+            //useing hard code until function to generate invno is done
+            SqlParameter[] parameters = new SqlParameter[] {};
+            var strQuery = "Select * from Spcover";
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,strQuery,parameters);
+            int? coverNum=null;
+            try {
+                   coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
+                  strQuery = "Insert Into Spcover (speccvno) values(@speccvno)";
+                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno",(coverNum+1)) };
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
+                if (result1 != 1) {
+                    ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
+                         .AddTags("New cover number error.")
+                         .Submit();
+                         
+                    }
+
+                } catch(Exception ex){
+                MessageBox.Show("There was an error getting the cover number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                ex.ToExceptionless()
+                  .AddTags("MBCWindows")
+                  .SetMessage("Error getting cover number.")
+                  .Submit();
+
+                }
+
+            return coverNum.ToString();
+            }
         private void GetSetSchcode() {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
             SqlCommand cmd = new SqlCommand("SELECT precode,schcode from codecnt ",conn);
@@ -825,7 +902,24 @@ namespace Mbc5.Forms.MemoryBook {
                     if (userResult != 1)
                     {
                         MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
+                    SqlParameter[] parameters1 = new SqlParameter[] {
+                    new SqlParameter("@Invno",InvNum),
+                     new SqlParameter("@Schcode",lblSchcodeVal.Text),
+                     new SqlParameter("@ProdNo",GetProdNo()),
+                      new SqlParameter("@Contryear", contryearTextBox.Text),
+                       new SqlParameter("@CoverNum", GetCoverNumber()),
+                       new SqlParameter("@Company","MBC")
+                    };
+                    strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Speccover,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@CoverNum,@Company)";
+                    var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
+                    if (userResult1 != 1) {
+                        MessageBox.Show("Failed to insert production record.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        return;
+                        }
+
+
                     Save();
                     this.custTableAdapter.Fill(this.dsCust.cust, lblSchcodeVal.Text);
                 };
@@ -854,6 +948,14 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void custDataGridView_Enter(object sender,EventArgs e) {
             this.custTableAdapter.Fill(this.dsCust.cust,this.Schcode);
+            }
+
+        private void custDataGridView_RowHeaderMouseDoubleClick(object sender,DataGridViewCellMouseEventArgs e) {
+            GoToSales();
+            }
+
+        private void custDataGridView_CellDoubleClick(object sender,DataGridViewCellEventArgs e) {
+            GoToSales();
             }
 
 

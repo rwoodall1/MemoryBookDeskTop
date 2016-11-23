@@ -1325,10 +1325,6 @@ namespace Mbc5.Forms.MemoryBook {
             CalculateEach();
             BookCalc();
             SetCodeInvno();
-           
-            
-
-
             }
         public override void  Save() {
             switch (tabSales.SelectedIndex) {
@@ -1717,10 +1713,10 @@ namespace Mbc5.Forms.MemoryBook {
             decimal val = 0;
             if (!String.IsNullOrEmpty(txtPayment.Text)) {
                 result = Decimal.TryParse(txtPayment.Text,out val);
-                errorProvider1.SetError(txtPayment,"Value must be a Decimal.");
+               errorProvider1.SetError(txtPayment,"");
                 if (!result) {
-                    errorProvider1.SetError(txtPayment,"");
                     
+                     errorProvider1.SetError(txtPayment,"Value must be a Decimal.");
                     }
 
                 } else if (!String.IsNullOrEmpty(txtRefund.Text)) {
@@ -1836,6 +1832,268 @@ namespace Mbc5.Forms.MemoryBook {
             retval = this.Validate();
             return retval;
             }
+        //online pay
+        private void basicamounTextBox1_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(basicamounTextBox1,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(basicamounTextBox1.Text)) {
+                    basicamounTextBox1.Text = "0.00";
+                    }
+                string price = basicamounTextBox1.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(basicamounTextBox1,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+        private void txtFoilIcons_Validating(object sender,CancelEventArgs e) {
+
+            }
+        private void txtInkPersAmt_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtInkPersAmt,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtInkPersAmt.Text)) {
+                    basicamounTextBox1.Text = "0.00";
+                    }
+                string price = txtInkPersAmt.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtInkPersAmt,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void txtInkTxtOnly_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtInkTxtOnly,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtInkTxtOnly.Text)) {
+                    txtInkTxtOnly.Text = "0.00";
+                    }
+                string price = txtInkTxtOnly.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtInkTxtOnly,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+       
+
+        private void txtFoilTxt_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtFoilIcons,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtFoilTxt.Text)) {
+                    txtInkTxtOnly.Text = "0.00";
+                    }
+                string price = txtFoilTxt.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtFoilTxt,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void txtPicPers_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtPicPers,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtPicPers.Text)) {
+                    txtInkTxtOnly.Text = "0.00";
+                    }
+                string price = txtPicPers.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtPicPers,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void txtLuvLineAmt_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtLuvLineAmt,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtLuvLineAmt.Text)) {
+                    txtInkTxtOnly.Text = "0.00";
+                    }
+                string price = txtLuvLineAmt.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtLuvLineAmt,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void txtFullAd_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtFullAd,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtFullAd.Text)) {
+                    txtInkTxtOnly.Text = "0.00";
+                    }
+                string price = txtFullAd.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtFullAd,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void txtHaldfAd_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtHaldfAd,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtHaldfAd.Text)) {
+                    txtHaldfAd.Text = "0.00";
+                    }
+                string price = txtHaldfAd.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtHaldfAd,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void txtQuarterAd_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtQuarterAd,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtQuarterAd.Text)) {
+                    txtQuarterAd.Text = "0.00";
+                    }
+                string price = txtQuarterAd.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtQuarterAd,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void txtEighthAd_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtEighthAd,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtEighthAd.Text)) {
+                    txtQuarterAd.Text = "0.00";
+                    }
+                string price = txtEighthAd.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtEighthAd,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void totalsoldonlineTextBox_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(totalsoldonlineTextBox,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(totalsoldonlineTextBox.Text)) {
+                    totalsoldonlineTextBox.Text = "0";
+                    }
+               
+                int val;
+                var result = int.TryParse(totalsoldonlineTextBox.Text,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(totalsoldonlineTextBox,"Please enter a integer.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void totalpersonlineTextBox_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(totalpersonlineTextBox,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(totalpersonlineTextBox.Text)) {
+                    totalsoldonlineTextBox.Text = "0";
+                    }
+
+                int val;
+                var result = int.TryParse(totalpersonlineTextBox.Text,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(totalpersonlineTextBox,"Please enter a integer.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void totaldollarsonlineTextBox_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(totaldollarsonlineTextBox,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(totaldollarsonlineTextBox.Text)) {
+                    txtQuarterAd.Text = "0.00";
+                    }
+                string price = totaldollarsonlineTextBox.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(totaldollarsonlineTextBox,"Please enter a decimal amount.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void totallovelinesTextBox_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(totallovelinesTextBox,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(totallovelinesTextBox.Text)) {
+                    totalsoldonlineTextBox.Text = "0";
+                    }
+
+                int val;
+                var result = int.TryParse(totallovelinesTextBox.Text,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(totallovelinesTextBox,"Please enter a integer.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+
+        private void totaladsTextBox_Validating(object sender,CancelEventArgs e) {
+
+            }
+
+        //end online sales
         private void txtInitials_Validating(object sender,CancelEventArgs e) {
             if (this.tabSales.SelectedIndex == 3 && txtInitials.Enabled == true) {
                 errorProvider1.SetError(txtInitials,"");
@@ -1862,106 +2120,7 @@ namespace Mbc5.Forms.MemoryBook {
          
 
         }
-        private void basicamounTextBox1_Validating(object sender,CancelEventArgs e) {
-            errorProvider1.SetError(basicamounTextBox1,"");
-            if (String.IsNullOrEmpty(basicamounTextBox1.Text)) {
-                basicamounTextBox1.Text = "0.00";
-                }
-                string price = basicamounTextBox1.Text.Replace("$","");//must strip dollar sign
-                decimal val;
-                var result = decimal.TryParse(price,out val);
-                //non numeric
-                if (!result) {
-                    errorProvider1.SetError(basicamounTextBox1,"Please enter a decimal amount.");
-                    e.Cancel = true;
-
-                    }
-                
-            }
-
-        private void txtInkPersAmt_Validating(object sender,CancelEventArgs e) {
-            errorProvider1.SetError(txtInkPersAmt,"");
-            if (String.IsNullOrEmpty(txtInkPersAmt.Text)) {
-                basicamounTextBox1.Text = "0.00";
-                }
-            string price = txtInkPersAmt.Text.Replace("$","");//must strip dollar sign
-            decimal val;
-            var result = decimal.TryParse(price,out val);
-            //non numeric
-            if (!result) {
-                errorProvider1.SetError(txtInkPersAmt,"Please enter a decimal amount.");
-                e.Cancel = true;
-
-                }
-            }
-
-        private void txtInkTxtOnly_Validating(object sender,CancelEventArgs e) {
-            errorProvider1.SetError(txtInkTxtOnly,"");
-            if (String.IsNullOrEmpty(txtInkTxtOnly.Text)) {
-                txtInkTxtOnly.Text = "0.00";
-                }
-            string price = txtInkTxtOnly.Text.Replace("$","");//must strip dollar sign
-            decimal val;
-            var result = decimal.TryParse(price,out val);
-            //non numeric
-            if (!result) {
-                errorProvider1.SetError(txtInkTxtOnly,"Please enter a decimal amount.");
-                e.Cancel = true;
-
-                }
-            }
-
-        private void txtFoilIcons_VisibleChanged(object sender,EventArgs e) {
-
-            }
-
-        private void txtFoilTxt_Validating(object sender,CancelEventArgs e) {
-
-            }
-
-        private void txtPicPers_Validating(object sender,CancelEventArgs e) {
-
-            }
-
-        private void txtLuvLineAmt_Validating(object sender,CancelEventArgs e) {
-
-            }
-
-        private void txtFullAd_Validating(object sender,CancelEventArgs e) {
-
-            }
-
-        private void txtHaldfAd_Validating(object sender,CancelEventArgs e) {
-
-            }
-
-        private void txtQuarterAd_Validating(object sender,CancelEventArgs e) {
-
-            }
-
-        private void txtEighthAd_Validating(object sender,CancelEventArgs e) {
-
-            }
-
-        private void totalsoldonlineTextBox_Validating(object sender,CancelEventArgs e) {
-
-            }
-
-        private void totalpersonlineTextBox_Validating(object sender,CancelEventArgs e) {
-
-            }
-
-        private void totaldollarsonlineTextBox_Validating(object sender,CancelEventArgs e) {
-
-            }
-
-        private void totallovelinesTextBox_Validating(object sender,CancelEventArgs e) {
-
-            }
-
-        private void totaladsTextBox_Validating(object sender,CancelEventArgs e) {
-
-            }
+       
         private void txtYear_Validating(object sender, CancelEventArgs e)
         {
 
@@ -2683,6 +2842,8 @@ namespace Mbc5.Forms.MemoryBook {
         private void bindingNavigatorDeleteItem_Click(object sender,EventArgs e) {
             this.Delete();
             }
+
+        
 
 
 
