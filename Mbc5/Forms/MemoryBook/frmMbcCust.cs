@@ -12,6 +12,9 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using BaseClass;
 using Mbc5.Dialogs;
+using Exceptionless;
+using Exceptionless.Models;
+using BaseClase.Classes;
 
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
@@ -24,6 +27,13 @@ namespace Mbc5.Forms.MemoryBook {
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ApplicationUser = userPrincipal;
 
+            }
+        public frmMbcCust(UserPrincipal userPrincipal,string vschcode) : base(new string[] { "SA","Administrator","MbcCS" },userPrincipal) {
+            InitializeComponent();
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.ApplicationUser = userPrincipal;
+            this.Schcode = vschcode;
+            
             }
         public void InvokePropertyChanged(PropertyChangedEventArgs e) {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -43,13 +53,13 @@ namespace Mbc5.Forms.MemoryBook {
         private bool MktLogAdded { get; set; } = false;
         private bool TeleGo { get; set; } = false;
         private bool TeleLogAdded { get; set; } = false;
-        
+        public override string Schcode { get; set; } = "038752";
      
 
         #endregion
 
         private void frmMbcCust_Load(object sender,EventArgs e) {
-
+            var vSchocode = this.Schcode; 
              this.chkMktComplete.DataBindings.Add("Checked",this,"MktGo",false,DataSourceUpdateMode.OnPropertyChanged);//bind check box to property of form
 
             if (!ApplicationUser.Roles.Contains("MbcCS"))
@@ -58,7 +68,7 @@ namespace Mbc5.Forms.MemoryBook {
                 MktGo = true;
                 }
            
-
+             
             
             // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
             this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
@@ -69,14 +79,14 @@ namespace Mbc5.Forms.MemoryBook {
             // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
             this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
             // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
-            this.datecontTableAdapter.Fill(this.dsCust.datecont,"038752");
+            this.datecontTableAdapter.Fill(this.dsCust.datecont,vSchocode);
             // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
-            this.custTableAdapter.Fill(this.dsCust.cust,"038752");
+            this.custTableAdapter.Fill(this.dsCust.cust,vSchocode);
             // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
             this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
             this.statesTableAdapter.Fill(this.lookUp.states);
-            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,"038752");
+            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,vSchocode);
             SetInvnoSchCode();
 
             }
@@ -111,6 +121,7 @@ namespace Mbc5.Forms.MemoryBook {
               
                 }
             txtSchCodesrch.Text = "";
+            SetInvnoSchCode();
             }
         private void btnSchoolSearch_Click(object sender,EventArgs e) {
             var currentSchool = lblSchcodeVal.Text.Trim();
@@ -152,9 +163,54 @@ namespace Mbc5.Forms.MemoryBook {
                
                 }
             txtSchNamesrch.Text = "";
+            SetInvnoSchCode();
             }
         #region CrudOperations
-      
+      public new bool Save() {
+            bool retval = false;
+            txtSchname.ReadOnly = true;
+            if (this.ValidateChildren(ValidationConstraints.Enabled)) {
+                this.custBindingSource.EndEdit();
+                try {
+                    custTableAdapter.Update(dsCust);
+                    retval = true;
+                    } catch (DBConcurrencyException dbex) {
+                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo);
+                    ProcessDialogResult(response);
+                    } catch (Exception ex) {
+                    Log.Fatal("Error Updating cust table:" + ex.Message);
+                    MessageBox.Show("An error was thrown while attempting to update the customer table.");
+                    }
+                }
+            return retval;
+            }
+        public override void Add() {
+            dsCust.Clear();
+            DataRowView newrow = (DataRowView)custBindingSource.AddNew();
+            GetSetSchcode();
+            txtSchname.ReadOnly = false;
+
+            }
+        public override void Delete() {
+           
+            DialogResult messageResult = MessageBox.Show("This will delete the current customer. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (messageResult == DialogResult.Yes) {
+                DataRowView current = (DataRowView)custBindingSource.Current;
+                var schcode = current["schcode"];
+
+                var sqlQuery = new SQLQuery();
+                var queryString = "Delete  From  cust where schcode=@schcode ";
+                SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@schcode",schcode)
+            };
+                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+                this.custTableAdapter.Fill(this.dsCust.cust,"038752");//set to cs record                
+                }
+          
+            }
+        public override void Cancel() {
+            custBindingSource.CancelEdit();
+            }
         #region ConcurrencyProcs
         private string CreateMessage(DataSets.dsCust.custRow cr) {
             return
@@ -348,6 +404,21 @@ namespace Mbc5.Forms.MemoryBook {
             }
         #endregion
         #region Methods
+        private void GoToSales() {
+
+            
+                this.Cursor = Cursors.AppStarting;
+                     int vInvno = this.Invno;
+                    string vSchcode = lblSchcodeVal.Text;
+
+                frmSales frmSales = new frmSales(this.ApplicationUser,vInvno,vSchcode);
+                frmSales.MdiParent = this.MdiParent;
+                frmSales.Show();
+                this.Cursor = Cursors.Default;
+
+                
+
+            }
         public bool DoPhoneLog() {
             bool retval = true;
             frmMain vparent =(frmMain) this.ParentForm;
@@ -398,46 +469,78 @@ namespace Mbc5.Forms.MemoryBook {
             }
            
         }
+        private string GetProdNo() {
+            var sqlQuery = new SQLQuery();
+            //useing hard code until function to generate invno is done
+            SqlParameter[] parameters = new SqlParameter[] { };
+            var strQuery = "Select * from prodnum";
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,strQuery,parameters);
+            int? prodNum = null;
+            try {
+                prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
+                strQuery = "Insert Into Prodnum (lstprodno) values(@lstprodno)";
+                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno",(prodNum + 1)) };
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
+                if (result1 != 1) {
+                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
+                         .AddTags("New prod number error.")
+                         .Submit();
+
+                    }
+
+                } catch (Exception ex) {
+                MessageBox.Show("There was an error getting the production number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+
+                ex.ToExceptionless()
+                  .AddTags("MBCWindows")
+                  .SetMessage("Error getting production number.")
+                  .Submit();
+
+                }
+
+            return prodNum.ToString();
+
+            }
         private void SetInvnoSchCode()
         {
             this.Schcode = lblSchcodeVal.Text;
             int val = 0;
+            this.Invno = 0;
             bool parsed = Int32.TryParse(lblInvno.Text, out val);
             if (parsed)
             {
                 this.Invno = val;
             }
         }
-        public new bool Save() {
-            bool retval = false;
-            txtSchname.ReadOnly = true;
-            if (this.ValidateChildren(ValidationConstraints.Enabled)) {
-                this.custBindingSource.EndEdit();
-                try {
-                    custTableAdapter.Update(dsCust);
-                    retval = true;
-                    } catch (DBConcurrencyException dbex) {
-                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo);
-                    ProcessDialogResult(response);
-                    } catch (Exception ex) {
-                    Log.Fatal("Error Updating cust table:" + ex.Message);
-                    MessageBox.Show("An error was thrown while attempting to update the customer table.");
+        private string GetCoverNumber() {
+            var sqlQuery = new SQLQuery();
+            //useing hard code until function to generate invno is done
+            SqlParameter[] parameters = new SqlParameter[] {};
+            var strQuery = "Select * from Spcover";
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,strQuery,parameters);
+            int? coverNum=null;
+            try {
+                   coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
+                  strQuery = "Insert Into Spcover (speccvno) values(@speccvno)";
+                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno",(coverNum+1)) };
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
+                if (result1 != 1) {
+                    ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
+                         .AddTags("New cover number error.")
+                         .Submit();
+                         
                     }
+
+                } catch(Exception ex){
+                MessageBox.Show("There was an error getting the cover number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                ex.ToExceptionless()
+                  .AddTags("MBCWindows")
+                  .SetMessage("Error getting cover number.")
+                  .Submit();
+
                 }
-            return retval;
-            }
-        public override void Add() {
-            dsCust.Clear();
-            DataRowView newrow = (DataRowView)custBindingSource.AddNew();
-            GetSetSchcode();
-            txtSchname.ReadOnly = false;
 
-            }
-        public override void Delete() {
-
-            }
-        public override void Cancel() {
-
+            return coverNum.ToString();
             }
         private void GetSetSchcode() {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
@@ -584,14 +687,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
         #endregion
-        private void button1_Click(object sender,EventArgs e) {
-            this.Save();
-            }
-
-        private void button2_Click(object sender,EventArgs e) {
-            this.Add();
-            }
-
+     
         private void btnWebsite_Click(object sender,EventArgs e) {
             try
                 { Process.Start(txtWebsite.Text); }
@@ -777,8 +873,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void custDataGridView_Leave(object sender, EventArgs e)
         {
-           
-           
+ 
             lblSchcode.Refresh();
             custDataGridView.Parent.Refresh();
         }
@@ -807,7 +902,24 @@ namespace Mbc5.Forms.MemoryBook {
                     if (userResult != 1)
                     {
                         MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
+                    SqlParameter[] parameters1 = new SqlParameter[] {
+                    new SqlParameter("@Invno",InvNum),
+                     new SqlParameter("@Schcode",lblSchcodeVal.Text),
+                     new SqlParameter("@ProdNo",GetProdNo()),
+                      new SqlParameter("@Contryear", contryearTextBox.Text),
+                       new SqlParameter("@CoverNum", GetCoverNumber()),
+                       new SqlParameter("@Company","MBC")
+                    };
+                    strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Speccover,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@CoverNum,@Company)";
+                    var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
+                    if (userResult1 != 1) {
+                        MessageBox.Show("Failed to insert production record.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        return;
+                        }
+
+
                     Save();
                     this.custTableAdapter.Fill(this.dsCust.cust, lblSchcodeVal.Text);
                 };
@@ -825,6 +937,25 @@ namespace Mbc5.Forms.MemoryBook {
             var a = 1;
             ScreenPrinter aa = new ScreenPrinter(this);
 
+            }
+
+        private void pg1_Enter(object sender,EventArgs e) {
+            if (custBindingSource.Count < 1) {
+                this.splitContainer.Panel1.Enabled = false;
+                this.splitContainer.Panel2.Enabled = false;
+                }
+            }
+
+        private void custDataGridView_Enter(object sender,EventArgs e) {
+            this.custTableAdapter.Fill(this.dsCust.cust,this.Schcode);
+            }
+
+        private void custDataGridView_RowHeaderMouseDoubleClick(object sender,DataGridViewCellMouseEventArgs e) {
+            GoToSales();
+            }
+
+        private void custDataGridView_CellDoubleClick(object sender,DataGridViewCellEventArgs e) {
+            GoToSales();
             }
 
 

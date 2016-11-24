@@ -43,7 +43,8 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
         private void frmSales_Load(object sender,EventArgs e) {
-
+          
+          
             lblPCEach.DataBindings.Add("Text",this,"PrcEa",false,DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text",this,"PrcTot",false,DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();
@@ -53,6 +54,8 @@ namespace Mbc5.Forms.MemoryBook {
             startup = false;
             CalculateEach();
             BookCalc();
+            txtBYear.Focus();
+            
             }
         private void btnInvSrch_Click(object sender,EventArgs e) {
             var sqlQuery = new SQLQuery();
@@ -67,9 +70,35 @@ namespace Mbc5.Forms.MemoryBook {
                     this.Invno = Convert.ToInt32(row["invno"]);
                     this.Schcode = row["schcode"].ToString();
                     this.Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+            
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
                     EnableAllControls(this);
                     }
                 } else { MessageBox.Show("No records were found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
+            }
+        private void btnPoSrch_Click(object sender,EventArgs e) {
+            var sqlQuery = new SQLQuery();
+            string querystring = "Select schcode,invno from Quotes where PoNum=@PoNum";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@PoNum",txtPoSrch.Text.Trim())
+            };
+            DataTable result = sqlQuery.ExecuteReaderAsync(CommandType.Text,querystring,parameters);
+            if (result.Rows.Count > 0) {
+                foreach (DataRow row in result.Rows) {
+                    //only one row so just set variabls
+                    this.Invno = Convert.ToInt32(row["invno"]);
+                    this.Schcode = row["schcode"].ToString();
+                    this.Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : (int)current["Invno"];
+                    this.Schcode = current["Code"].ToString();
+                    EnableAllControls(this);
+                    }
+                } else {
+                MessageBox.Show("No records were found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
             }
 
@@ -100,162 +129,672 @@ namespace Mbc5.Forms.MemoryBook {
         public List<Price> Pricing { get; set; }
         public BookOptionPrice BookOptionPricing { get; set; }
         public string CurPriceYr { get; set; } = null;
+        private bool StartUp { get; set; }
         #endregion
         #region "Methods"
-        private void DisableControls(Control con) {
-            foreach (Control c in con.Controls) {
-                DisableControls(c);
+        //Payment Tab
+        private void SetCrudButtons() {
+            btnSavePayment.Enabled = paymntBindingSource.Count > 0;
+            btnDelete.Enabled = paymntBindingSource.Count > 0;
+            btnEdit.Enabled = paymntBindingSource.Count > 0;
+            if (paymntBindingSource.Count < 1) {
+                txtPaypoamt.Enabled = false;
+                txtInitials.Enabled = false;
+                calpmtdate.Enabled = false;
+                txtCheckNo.Enabled = false;
+                txtMethod.Enabled = false;
+                txtPayment.Enabled = false;
+                txtRefund.Enabled = false;
+                txtAdjustment.Enabled = false;
+                txtCompensation.Enabled = false;
+                txtCompReason.Enabled = false;
                 }
-            con.Enabled = false;
             }
-        private void EnableControls(Control con) {
-            if (con != null) {
-                con.Enabled = true;
-                EnableControls(con.Parent);
-                }
+        private void NewPayment() {
+            txtPaypoamt.Enabled = true;
+            txtInitials.Enabled = true;
+            calpmtdate.Enabled = true;
+            txtCheckNo.Enabled = true;
+            txtMethod.Enabled = true;
+            txtPayment.Enabled = true;
+            txtRefund.Enabled = true;
+            txtAdjustment.Enabled = true;
+            txtCompensation.Enabled = true;
+            txtCompReason.Enabled = true;
+            paymntBindingSource.AddNew();
+
+            DataRowView current = (DataRowView)paymntBindingSource.Current;
+            current["Invno"] = lblInvoice.Text;
+            current["Code"] = this.Schcode;
+            SetCrudButtons();
             }
-        private void EnableAllControls(Control con) {
-            foreach (Control c in con.Controls) {
-                EnableAllControls(c);
+        private bool SavePayment() {
+            bool retval = true;
+            if (paymntBindingSource.Count > 0) {
+                if (this.ValidatePayment()) {
+
+                    try {
+                        this.paymntBindingSource.EndEdit();
+                        this.paymntTableAdapter.Update(dsInvoice.paymnt);
+                        this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
+                        this.CalculatePayments();
+                        txtPaypoamt.Enabled = false;
+                        txtInitials.Enabled = false;
+                        calpmtdate.Enabled = false;
+                        txtCheckNo.Enabled = false;
+                        txtMethod.Enabled = false;
+                        txtPayment.Enabled = false;
+                        txtRefund.Enabled = false;
+                        txtAdjustment.Enabled = false;
+                        txtCompensation.Enabled = false;
+                        txtCompReason.Enabled = false;
+                        retval = true;
+                        } catch (DBConcurrencyException ex1) {
+                        retval = false;
+                        string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
+                        this.Log.Error(ex1,ex1.Message);
+                        MessageBox.Show(errmsg);
+                        } catch (Exception ex) {
+                        retval = false;
+                        MessageBox.Show("Payment failed to update:" + ex.Message);
+                        this.Log.Error(ex,"Payment failed to update:" + ex.Message);
+
+                        }
+                    } else { retval = false; }
                 }
-            con.Enabled = true;
+            return retval;
             }
-        
-        private void Fill() {
-            if (Schcode != null) {
-                custTableAdapter.Fill(dsSales.cust,Schcode);
-                quotesTableAdapter.Fill(dsSales.quotes,Schcode);
+        private bool DeletePayment() {
+            bool retval = true;
+           DialogResult messageResult= MessageBox.Show("This will delete the current line item payment. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (messageResult==DialogResult.Yes) {
+                DataRowView current = (DataRowView)paymntBindingSource.Current;
+                var Id = current["Id"];
+
+                var sqlQuery = new SQLQuery();
+                var queryString = "Delete  From  paymnt where Id=@Id ";
+                SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Id",Id)
+            };
+                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+                this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
+
+                if (result == 0) { retval = false; }
+                SetCrudButtons();
                 }
-            if (Invno != 0) {
-                var pos = quotesBindingSource.Find("invno",this.Invno);
-                if (pos > -1) {
-                    quotesBindingSource.Position = pos;
+            return retval;
+            
+            }
+        private void CancelPayment() {
+            paymntBindingSource.CancelEdit();
+            txtPaypoamt.Enabled = false;
+            txtInitials.Enabled = false;
+            calpmtdate.Enabled = false;
+            txtCheckNo.Enabled = false;
+            txtMethod.Enabled = false;
+            txtPayment.Enabled = false;
+            txtRefund.Enabled = false;
+            txtAdjustment.Enabled = false;
+            txtCompensation.Enabled = false;
+            txtCompReason.Enabled = false;
+            errorProvider1.Clear();
+            }
+        private void EditPayment() {
+            txtPaypoamt.Enabled = true;
+            txtInitials.Enabled = true;
+            calpmtdate.Enabled = true;
+            txtCheckNo.Enabled = true;
+            txtMethod.Enabled = true;
+            txtPayment.Enabled = true;
+            txtRefund.Enabled = true;
+            txtAdjustment.Enabled = true;
+            txtCompensation.Enabled = true;
+            txtCompReason.Enabled = true;
+
+            }
+       private void CalculatePayments() {
+            decimal paymentTotals = 0;
+            var SqlQuery = new SQLQuery();
+            var cmdText = "SELECT        SUM(ISNULL(payment, 0) + ISNULL(refund, 0) + ISNULL(adjmnt, 0) + ISNULL(compamt, 0)) AS paymentresult FROM paymnt where Invno=@Invno";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text) };
+            var result = SqlQuery.ExecuteReaderAsync(CommandType.Text,cmdText,parameters);
+            try {  paymentTotals =(decimal) result.Rows[0]["paymentresult"];
+            cmdText = "Update invoice set payments=@payments,baldue=baldue-@payments  where Invno=@Invno ";
+            SqlParameter[] parameters1 = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text),
+                new SqlParameter("@payments",paymentTotals)};
+                var a=SqlQuery.ExecuteNonQueryAsync(CommandType.Text,cmdText,parameters1);
+                 this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
+                } catch(Exception ex) {
+
+                }
+          
+            }
+        //Invoice
+        private bool DeleteInvoice() {
+            bool retval = true;
+            DialogResult messageResult = MessageBox.Show("This will delete the current invoice. Any payments related to this invoice will remain. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (messageResult == DialogResult.Yes) {
+                var sqlQuery = new SQLQuery();
+                var queryString = "Delete  From Invoice where Invno=@Invno ";
+                SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+                queryString = "Delete  From InvDetail where Invno=@Invno ";
+                SqlParameter[] parameters1 = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+                //use same parameter
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters1);
+                if (result1 == 0 || result == 0) { retval = false; }
+
+                this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
+                this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
+                // var sqlQuery = new SQLQuery();
+                queryString = "Update Invoice set invno=0 where Invno=@Invno ";
+                SqlParameter[] parameters2 = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+                var result2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters2);
+                this.Fill();
+                }
+            return retval;
+            }
+        private bool CreateInvoice() {
+            bool retval = true;
+            var connection = new SqlConnection(_ConnectionString);
+            string cmdText = "";
+            var command = new SqlCommand(cmdText,connection);
+
+            command.CommandType = CommandType.Text;
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@invno",lblInvoice.Text);
+            try {
+                connection.Open();
+                var trans = connection.BeginTransaction();
+                command.Transaction = trans;
+                //command.Parameters.AddWithValue("@invno",lblInvoice.Text);
+                cmdText = "Update Quotes set invoiced=1 where invno=@invno";
+                command.CommandText = cmdText;
+                command.ExecuteNonQuery();
+                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks)";
+                //cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each)";
+                command.CommandText = cmdText;
+                command.Parameters.Clear();
+                var aa = lblPriceEach.Text.Replace("$","");
+                SqlParameter[] parameters = new SqlParameter[] {
+                    new SqlParameter("@invno",lblInvoice.Text),
+                    new SqlParameter("@schcode",this.Schcode ),
+                    new SqlParameter("@qtedate",dteQuote.Value ),
+                    new SqlParameter("@nopages",txtNoPages.Text ),
+                    new SqlParameter("@nocopies",txtNocopies.Text ),
+                    new SqlParameter("@book_each",lblPriceEach.Text.Replace("$","").Replace(",","")),
+                    new SqlParameter("@source",txtSource.Text ),
+                    new SqlParameter("@ponum",txtPoNum.Text),
+                    new SqlParameter("@invtot",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
+                    new SqlParameter("@baldue",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
+                    new SqlParameter("@contryear",txtYear.Text),
+                    new SqlParameter("@allclrck",chkAllClr.Checked),
+                    new SqlParameter("@freebooks",txtfreebooks.Text ),
+
+              };
+                command.Parameters.AddRange(parameters);
+                command.ExecuteNonQuery();
+                command.Parameters.Clear();
+                cmdText = "Insert Into Invdetail (descr,price,discpercent,invno,schcode) Values(@descr,@price,@discpercent,@invno,@schcode)";
+                var Details = GetDetailRecords(lblInvoice.Text);
+                command.CommandText = cmdText;
+                if (Details.Count > 0) {
+                    foreach (var row in Details) {
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@descr",row.descr);
+                        command.Parameters.AddWithValue("@price",row.price);
+                        command.Parameters.AddWithValue("@discpercent",row.discpercent);
+                        command.Parameters.AddWithValue("@invno",row.invno);
+                        command.Parameters.AddWithValue("@schcode",row.schoolcode);
+                        try {
+                            command.ExecuteNonQuery();
+
+                            } catch (Exception ex) {
+                            ex.ToExceptionless()
+                                .AddTags("CreateInvoice")
+                                .AddObject(command)
+                                .MarkAsCritical()
+                                .Submit();
+                            command.Transaction.Rollback();
+                            MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            retval = false;
+                            }
+
+                        }
+                    command.Transaction.Commit();
+                    MessageBox.Show("Invoice has been created.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     } else {
-                    MessageBox.Show("Invoice number was not found.","Invoice#",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                    //no detail records so just commit header.
+                    command.Transaction.Commit();
+                    MessageBox.Show("Invoice has been created.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     }
-                }
-            CalculateEach();
-            BookCalc();
 
+                } catch (Exception ex) {
+                ex.ToExceptionless()
+                                .AddTags("CreateInvoice")
+                                .AddObject(command)
+                                .MarkAsCritical()
+                                .Submit();
+                command.Transaction.Rollback();
+                MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                retval = false;
+
+                } finally { connection.Close(); }
+            return retval;
             }
-        private new bool Save() {
-            bool retval = false;
-            if (ValidSales()) {
-
-                try {
-                    this.quotesBindingSource.EndEdit();
-                    quotesTableAdapter.Update(dsSales.quotes);
-                    //must refill so we get updated time stamp so concurrency is not thrown
-                    this.Fill();
-                    retval = true;
-                    } catch (DBConcurrencyException ex1) {
-                    retval = false;
-                    string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
-                    this.Log.Error(ex1,ex1.Message);
-                    MessageBox.Show(errmsg);
-                    } catch (Exception ex) {
-                    retval = false;
-                    MessageBox.Show("Record faild to update:" + ex.Message);
-                    this.Log.Error(ex,"Record faild to update:" + ex.Message);
-                    }
+        private List<InvoiceDetailBindingModel> GetDetailRecords(string invno) {
+            int vinvno = 0;
+            decimal per;
+            if (!int.TryParse(lblInvoice.Text,out vinvno)) {
+                MessageBox.Show("Could not create invoice because invoice number is not available.");
+                return null;
                 }
 
+            var Details = new List<InvoiceDetailBindingModel>();
+            if (true) {
+                //add base alway true
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Base Price",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblBookTotal.Text.Replace("$","")),
+                    schoolcode = this.Schcode
+                    };
+                Details.Add(rec);
+
+                }
+
+
+
+            if (chkHardBack.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Hard Back (sewn)",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblHardbackAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+                Details.Add(rec);
+
+                }
+
+            if (chkCaseBind.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Case Binding (glued)",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblCaseamt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkPerfBind.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Perfect Bind",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblPerfbindAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkSpiral.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Spiral Bind",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblSpiralAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkSaddlStitch.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Soft Cover Stapled",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblSaddleAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkProfessional.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Professional",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblProfAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkConv.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Convenient",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblConvAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkYir.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Year In Review Standard",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblYir.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkStory.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Our Story/My Story Cover",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblStoryAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkMLaminate.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Matte Laminate",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblMLaminateAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkGlossLam.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Gloss Laminate",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblLaminateAmt.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(lblSpeccvrtot.Text) ? 0 : Convert.ToDecimal(lblSpeccvrtot.Text)) > 0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Special Cover",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblSpeccvrtot.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(txtFoilAd.Text) ? 0 : Convert.ToDecimal(txtFoilAd.Text)) > 0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Foil (Additional)",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(txtFoilAd.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(lbldisc1.Text) ? 0 : Convert.ToDecimal(lbldisc1.Text)) > 0) {
+                per = String.IsNullOrEmpty(txtDisc.Text) ? 0 : Convert.ToDecimal(txtDisc.Text);
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = dp1descComboBox.SelectedValue.ToString(),
+                    discpercent = per,
+                    price = Convert.ToDecimal(txtFoilAd.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkDc2.Checked) {
+                per = String.IsNullOrEmpty(txtDp2.Text) ? 0 : Convert.ToDecimal(txtDp2.Text);
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Full pay w/page submission",
+                    discpercent = per,
+                    price = String.IsNullOrEmpty(lbldisc2.Text) ? 0 : Convert.ToDecimal(lbldisc2.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(lblDisc3.Text) ? 0 : Convert.ToDecimal(lblDisc3.Text)) > 0) {
+                per = String.IsNullOrEmpty(dp3ComboBox.Text) ? 0 : Convert.ToDecimal(dp3ComboBox.Text);
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = txtDp3Desc.Text,
+                    discpercent = per,
+                    price = Convert.ToDecimal(lblDisc3.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if (chkMsStandard.Checked) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "My Story With Picture Personalization",
+                    discpercent = 0,
+                    price = String.IsNullOrEmpty(lblMsTot.Text) ? 0 : Convert.ToDecimal(lblMsTot.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(lblperstotal.Text) ? 0 : Convert.ToDecimal(lblperstotal.Text)) > 0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Personalization",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblperstotal.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            if ((String.IsNullOrEmpty(lblIconTot.Text) ? 0 : Convert.ToDecimal(lblIconTot.Text)) > 0) {
+                var rec = new InvoiceDetailBindingModel {
+                    invno = vinvno,
+                    descr = "Icons",
+                    discpercent = 0,
+                    price = Convert.ToDecimal(lblIconTot.Text),
+                    schoolcode = this.Schcode
+                    };
+
+                Details.Add(rec);
+
+                }
+            return Details;
+            }
+        //Sales
+        private bool SaveSales() {
+            bool retval = false;
+            if (quotesBindingSource.Count > 0) {
+                if (ValidSales()) {
+
+                    try {
+                        this.quotesBindingSource.EndEdit();
+                        quotesTableAdapter.Update(dsSales.quotes);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        this.Fill();
+                        retval = true;
+                        } catch (DBConcurrencyException ex1) {
+                        retval = false;
+                        string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
+                        this.Log.Error(ex1,ex1.Message);
+                        MessageBox.Show(errmsg);
+                        } catch (Exception ex) {
+                        retval = false;
+                        MessageBox.Show("Sales record failed to update:" + ex.Message);
+                        this.Log.Error(ex,"Record sales record failed to update:" + ex.Message);
+                        }
+                    } else { retval = false; }
+                }
+            return retval;
+            }
+        private bool DeleteSale() {
+            bool retval = true;
+            DialogResult messageResult = MessageBox.Show("This will delete the current sale record. All related invoices and payments must be removed first. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (messageResult == DialogResult.Yes) {
+                var sqlQuery = new SQLQuery();
+                var queryString = "Delete  From Quotes where Invno=@Invno ";
+                SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",lblInvoice.Text)
+            };
+                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
+                if (result == 1) {
+                    this.Invno = 0;
+                    this.Fill();
+                    } else { retval = false; }
+                }
             return retval;
             }
         private void CalculateEach() {
+            if (String.IsNullOrEmpty(txtBYear.Text)) {
+             
+                lblBookTotal.Text = (0 * 0).ToString("c");
+                lblProftotalPrc.Text = (0 * 0).ToString("c");
+                lblPriceEach.Text = (0 * 0).ToString("c");
+                lblprofprice.Text = 0.ToString("c");
+                return;
+                }
             //Don't calculate until fill is done.
             decimal thePrice = 0;
-            if (!startup) {
-                if (!ValidateCopies() || !ValidatePageCount()) {
-                    return;
-                    }
-                string vPage = "Pg" + txtNoPages.Text;
-                int copies;
-                int calcCopies;
-                var result = int.TryParse(txtNocopies.Text,out copies);
-                if (copies < 100)//min is 100 for calculating
-                {
-                    calcCopies = 100;
-                    } else { calcCopies = copies; }
-                if (!result) {
-                    MessageBox.Show("Copies is not a numeral.");
-                    return;
-                    }
+                if (!startup) {
+                    if (quotesBindingSource.Count > 0) {
+                        if (!ValidateCopies() || !ValidatePageCount()) {
+                            return;
+                            }
+                        string vPage = "Pg" + txtNoPages.Text;
+                        int copies;
+                        int calcCopies;
+                        var result = int.TryParse(txtNocopies.Text,out copies);
+                        if (copies < 100)//min is 100 for calculating
+                        {
+                            calcCopies = 100;
+                            } else { calcCopies = copies; }
+                        if (!result) {
+                            MessageBox.Show("Copies is not a numeral.");
+                            return;
+                            }
 
-                var lowCopies = 0;
-                if (copies > 125) {
-                    lowCopies = copies - 25;
-                    } else {
-                    lowCopies = 100;
-                    }
-                if (copies > 1800) {
-                    MessageBox.Show("Copies are more than the maximum that can be calculated. Contact your supervisor, quantity is being reset at 1800.","Copies",MessageBoxButtons.OK,MessageBoxIcon.Stop);
-                    txtNocopies.Text = "1800";
-                    lowCopies = 1800;
-                    calcCopies = 1800;
-                    }
+                        var lowCopies = 0;
+                        if (copies > 125) {
+                            lowCopies = copies - 25;
+                            } else {
+                            lowCopies = 100;
+                            }
+                        if (copies > 1800) {
+                            MessageBox.Show("Copies are more than the maximum that can be calculated. Contact your supervisor, quantity is being reset at 1800.","Copies",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                            txtNocopies.Text = "1800";
+                            lowCopies = 1800;
+                            calcCopies = 1800;
+                            }
 
-                if (this.Pricing == null || CurPriceYr != txtBYear.Text) {
-                    GetBookPricing();
-                    if (this.Pricing == null) {
-                        MessageBox.Show("Pricing was not found.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                        Log.Error("Pricing was not found:Year-" + txtBYear.Text);
-                        return;
+                        if (this.Pricing == null || CurPriceYr != txtBYear.Text) {
+                            GetBookPricing();
+                            if (this.Pricing == null) {
+                                MessageBox.Show("Pricing was not found.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                                Log.Error("Pricing was not found:Year-" + txtBYear.Text);
+                                return;
+                                }
+                            }
+
+                        //var vPricingRow = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).ToList();
+                        //var aprice = vPricingRow.Select(x => x.GetType().GetProperty("Pg12").GetValue(x));
+
+                        var vBookPrice = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= calcCopies).Select(x => x.GetType().GetProperty(vPage).GetValue(x)).ToList();
+                        if (vBookPrice.Count < 1) {
+                            return;
+                            }
+                        decimal vFoundPrice = (decimal)vBookPrice[0];
+                        decimal vdiscountamount = 1;
+                        if (cmbYrDiscountAmt.SelectedIndex > 0) {
+                            decimal promAmt = 0;
+                            bool proAmtResult = decimal.TryParse(cmbYrDiscountAmt.SelectedItem.ToString(),out promAmt);
+
+                            vdiscountamount = 1 - promAmt;
+                            }
+                        vFoundPrice = vFoundPrice * vdiscountamount;
+                        lblPriceEach.Text = vFoundPrice.ToString("c");
+
+                        if (String.IsNullOrEmpty(txtPriceOverRide.Text) || txtPriceOverRide.Text == "$0.00" || txtPriceOverRide.Text == "$0") {
+                            try {
+                                string price = lblPriceEach.Text.Replace("$","");//must strip dollar sign
+                                thePrice = System.Convert.ToDecimal(price);
+
+                                lblBookTotal.Text = (thePrice * copies).ToString("c");
+
+                                } catch (Exception ex) {
+                                MessageBox.Show("Book price is not in a decimal value.");
+                                }
+                            } else {
+                            try {
+                                string price = txtPriceOverRide.Text.Replace("$","");//must strip dollar sign
+                                thePrice = System.Convert.ToDecimal(price);
+                                lblBookTotal.Text = (thePrice * copies).ToString("c");
+                                } catch (Exception ex) {
+                                MessageBox.Show("Book price is not in a decimal value.");
+                                }
+
+                            }
+                        //original book thePrice
+                        var theTotal = System.Convert.ToDecimal(lblBookTotal.Text.Replace("$",""));
+                        decimal profTotal = 0;
+                        decimal conTotal = 0;
+                        result = decimal.TryParse(lblProfAmt.Text.Replace("$",""),out profTotal);
+                        result = decimal.TryParse(lblConvAmt.Text.Replace("$",""),out conTotal);
+                        decimal vprofprce = thePrice + ((conTotal / copies) + (profTotal / copies));
+                        lblprofprice.Text = vprofprce.ToString("c");
+
+                        lblProftotalPrc.Text = (vprofprce * copies).ToString("c");
+
+
+                        BookCalc();
                         }
                     }
-
-                //var vPricingRow = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= copies).ToList();
-                //var aprice = vPricingRow.Select(x => x.GetType().GetProperty("Pg12").GetValue(x));
-
-                var vBookPrice = Pricing.Where(a => a.Copies >= lowCopies && a.Copies <= calcCopies).Select(x => x.GetType().GetProperty(vPage).GetValue(x)).ToList();
-                if (vBookPrice.Count < 1) {
-                    return;
-                    }
-                decimal vFoundPrice = (decimal)vBookPrice[0];
-                decimal vdiscountamount = 1;
-                if (cmbYrDiscountAmt.SelectedIndex > 0) {
-                    decimal promAmt = 0;
-                    bool proAmtResult = decimal.TryParse(cmbYrDiscountAmt.SelectedItem.ToString(),out promAmt);
-
-                    vdiscountamount = 1 - promAmt;
-                    }
-                vFoundPrice = vFoundPrice * vdiscountamount;
-                lblPriceEach.Text = vFoundPrice.ToString("c");
-
-                if (String.IsNullOrEmpty(txtPriceOverRide.Text) || txtPriceOverRide.Text == "$0.00" || txtPriceOverRide.Text == "$0") {
-                    try {
-                        string price = lblPriceEach.Text.Replace("$","");//must strip dollar sign
-                        thePrice = System.Convert.ToDecimal(price);
-
-                        lblBookTotal.Text = (thePrice * copies).ToString("c");
-
-                        } catch (Exception ex) {
-                        MessageBox.Show("Book price is not in a decimal value.");
-                        }
-                    } else {
-                    try {
-                        string price = txtPriceOverRide.Text.Replace("$","");//must strip dollar sign
-                        thePrice = System.Convert.ToDecimal(price);
-                        lblBookTotal.Text = (thePrice * copies).ToString("c");
-                        } catch (Exception ex) {
-                        MessageBox.Show("Book price is not in a decimal value.");
-                        }
-
-                    }
-                //original book thePrice
-                var theTotal = System.Convert.ToDecimal(lblBookTotal.Text.Replace("$",""));
-                decimal profTotal = 0;
-                decimal conTotal = 0;
-                result = decimal.TryParse(lblProfAmt.Text.Replace("$",""),out profTotal);
-                result = decimal.TryParse(lblConvAmt.Text.Replace("$",""),out conTotal);
-                decimal vprofprce = thePrice + ((conTotal / copies) + (profTotal / copies));
-                lblprofprice.Text = vprofprce.ToString("c");
-
-                lblProftotalPrc.Text = (vprofprce * copies).ToString("c");
-
-
-                BookCalc();
-                }
+                
             }
         private void CalcInk() {
 
@@ -263,220 +802,223 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private void BookCalc() {
             if (!startup) {
-                if (!ValidateCopies() || !ValidatePageCount()) {
-                    return;
-                    }
-                if (BookOptionPricing == null) { GetBookOptionPricing(); }
-                if (CurPriceYr != txtBYear.Text) { CalculateEach(); }
-                int numberOfCopies = 0;
-                int numberOfPages = 0;
-                var parseresult = int.TryParse(txtNocopies.Text,out numberOfCopies);
-                var parseresult1 = int.TryParse(txtNoPages.Text,out numberOfPages);
-                if (!parseresult) {
-                    MessageBox.Show("Number of copies is not valid!","Copies",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    return;
-                    }
-                if (!parseresult1) {
-                    MessageBox.Show("Number of pages is not valid!","Pages",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    return;
-                    }
-                if (this.BookOptionPricing != null && CurPriceYr == txtBYear.Text) {
-
-                    //Hardback
-                    decimal HardBack = 0;
-                    if (chkHardBack.Checked) {
-                        HardBack = BookOptionPricing.Hardbk * numberOfCopies;
-                        lblHardbackAmt.Text = HardBack.ToString();
-                        CalcInk();
-                        } else {
-                        lblHardbackAmt.Text = "0.00";
-                        HardBack = 0;
+                if (quotesBindingSource.Count > 0) {
+                    if (!ValidateCopies() || !ValidatePageCount()) {
+                        return;
                         }
-                    //Casebind
-                    decimal Casebind = 0;
-                    if (chkCaseBind.Checked) {
-                        Casebind = BookOptionPricing.Case * numberOfCopies;
-                        lblCaseamt.Text = Casebind.ToString();
-                        CalcInk();
-                        } else {
-                        lblCaseamt.Text = "0.00";
-                        Casebind = 0;
+                    if (BookOptionPricing == null) { GetBookOptionPricing(); }
+                    if (CurPriceYr != txtBYear.Text) { CalculateEach(); }
+                    int numberOfCopies = 0;
+                    int numberOfPages = 0;
+                    var parseresult = int.TryParse(txtNocopies.Text,out numberOfCopies);
+                    var parseresult1 = int.TryParse(txtNoPages.Text,out numberOfPages);
+                    if (!parseresult) {
+                        MessageBox.Show("Number of copies is not valid!","Copies",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        return;
                         }
-                    //Check if harback and case both not checked
-                    if (!chkHardBack.Checked && !chkCaseBind.Checked) {
-                        CalcInk();
+                    if (!parseresult1) {
+                        MessageBox.Show("Number of pages is not valid!","Pages",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        return;
                         }
-                    //Perfect Bind
-                    decimal Perfectbind = 0;
-                    if (chkPerfBind.Checked) {
-                        Perfectbind = BookOptionPricing.Perfectbind * numberOfCopies;
-                        lblPerfbindAmt.Text = Perfectbind.ToString();
+                    if (this.BookOptionPricing != null && CurPriceYr == txtBYear.Text) {
 
-                        } else {
-                        lblPerfbindAmt.Text = "0.00";
-                        Perfectbind = 0;
-                        }
-                    //Spiral
-                    decimal Spiral = 0;
-                    if (chkSpiral.Checked) {
-                        Spiral = (BookOptionPricing.Spiral * numberOfCopies);
-                        lblSpiralAmt.Text = Spiral.ToString();
-                        } else {
-                        lblSpiralAmt.Text = "0.00";
-                        Spiral = 0;
-                        }
-                    //SaddleStitch
-                    decimal SaddleStitch = 0;
-                    if (chkSaddlStitch.Checked) {
-                        SaddleStitch = (BookOptionPricing.SaddleStitch * numberOfCopies);
-                        lblSaddleAmt.Text = SaddleStitch.ToString();
+                        //Hardback
+                        decimal HardBack = 0;
+                        if (chkHardBack.Checked) {
+                            HardBack = BookOptionPricing.Hardbk * numberOfCopies;
+                            lblHardbackAmt.Text = HardBack.ToString();
+                            CalcInk();
+                            } else {
+                            lblHardbackAmt.Text = "0.00";
+                            HardBack = 0;
+                            }
+                        //Casebind
+                        decimal Casebind = 0;
+                        if (chkCaseBind.Checked) {
+                            Casebind = BookOptionPricing.Case * numberOfCopies;
+                            lblCaseamt.Text = Casebind.ToString();
+                            CalcInk();
+                            } else {
+                            lblCaseamt.Text = "0.00";
+                            Casebind = 0;
+                            }
+                        //Check if harback and case both not checked
+                        if (!chkHardBack.Checked && !chkCaseBind.Checked) {
+                            CalcInk();
+                            }
+                        //Perfect Bind
+                        decimal Perfectbind = 0;
+                        if (chkPerfBind.Checked) {
+                            Perfectbind = BookOptionPricing.Perfectbind * numberOfCopies;
+                            lblPerfbindAmt.Text = Perfectbind.ToString();
 
-                        } else {
-                        lblSaddleAmt.Text = "0.00";
-                        SaddleStitch = 0;
-                        }
+                            } else {
+                            lblPerfbindAmt.Text = "0.00";
+                            Perfectbind = 0;
+                            }
+                        //Spiral
+                        decimal Spiral = 0;
+                        if (chkSpiral.Checked) {
+                            Spiral = (BookOptionPricing.Spiral * numberOfCopies);
+                            lblSpiralAmt.Text = Spiral.ToString();
+                            } else {
+                            lblSpiralAmt.Text = "0.00";
+                            Spiral = 0;
+                            }
+                        //SaddleStitch
+                        decimal SaddleStitch = 0;
+                        if (chkSaddlStitch.Checked) {
+                            SaddleStitch = (BookOptionPricing.SaddleStitch * numberOfCopies);
+                            lblSaddleAmt.Text = SaddleStitch.ToString();
 
-                    //Professional
-                    decimal Professional = 0;
-                    if (chkProfessional.Checked) {
-                        Professional = (BookOptionPricing.Professional * numberOfPages);
-                        lblProfAmt.Text = Professional.ToString();
+                            } else {
+                            lblSaddleAmt.Text = "0.00";
+                            SaddleStitch = 0;
+                            }
 
-                        } else {
-                        lblProfAmt.Text = "0.00";
-                        Professional = 0;
-                        }
+                        //Professional
+                        decimal Professional = 0;
+                        if (chkProfessional.Checked) {
+                            Professional = (BookOptionPricing.Professional * numberOfPages);
+                            lblProfAmt.Text = Professional.ToString();
 
-                    //Convenient
-                    decimal Convenient = 0;
-                    if (chkConv.Checked) {
-                        Convenient = (BookOptionPricing.Convenient * numberOfPages);
-                        lblConvAmt.Text = Convenient.ToString();
+                            } else {
+                            lblProfAmt.Text = "0.00";
+                            Professional = 0;
+                            }
 
-                        } else {
-                        lblConvAmt.Text = "0.00";
-                        Convenient = 0;
-                        }
-                    //Yir
-                    decimal Yir = 0;
-                    if (chkYir.Checked) {
-                        Yir = (BookOptionPricing.Yir * numberOfCopies);
-                        lblYir.Text = Yir.ToString();
-                        } else {
-                        lblYir.Text = "0.00";
-                        Yir = 0;
-                        }
+                        //Convenient
+                        decimal Convenient = 0;
+                        if (chkConv.Checked) {
+                            Convenient = (BookOptionPricing.Convenient * numberOfPages);
+                            lblConvAmt.Text = Convenient.ToString();
 
-                    //Story
-                    decimal Story = 0;
-                    if (chkStory.Checked) {
-                        Story = (BookOptionPricing.Story);
-                        lblStoryAmt.Text = Story.ToString();
+                            } else {
+                            lblConvAmt.Text = "0.00";
+                            Convenient = 0;
+                            }
+                        //Yir
+                        decimal Yir = 0;
+                        if (chkYir.Checked) {
+                            Yir = (BookOptionPricing.Yir * numberOfCopies);
+                            lblYir.Text = Yir.ToString();
+                            } else {
+                            lblYir.Text = "0.00";
+                            Yir = 0;
+                            }
 
-                        } else {
-                        lblStoryAmt.Text = "0.00";
-                        Story = 0;
-                        }
+                        //Story
+                        decimal Story = 0;
+                        if (chkStory.Checked) {
+                            Story = (BookOptionPricing.Story);
+                            lblStoryAmt.Text = Story.ToString();
 
-                    //Gloss
-                    decimal Gloss = 0;
-                    if (chkGlossLam.Checked) {
-                        if (chkHardBack.Checked || chkCaseBind.Checked) {
+                            } else {
+                            lblStoryAmt.Text = "0.00";
+                            Story = 0;
+                            }
+
+                        //Gloss
+                        decimal Gloss = 0;
+                        if (chkGlossLam.Checked) {
+                            if (chkHardBack.Checked || chkCaseBind.Checked) {
+                                lblLaminateAmt.Text = "0.00";
+                                Gloss = 0;
+                                } else {
+                                Gloss = (BookOptionPricing.Lamination * numberOfCopies);
+                                lblLaminateAmt.Text = Gloss.ToString();
+                                }
+                            } else {
                             lblLaminateAmt.Text = "0.00";
                             Gloss = 0;
-                            } else {
-                            Gloss = (BookOptionPricing.Lamination * numberOfCopies);
-                            lblLaminateAmt.Text = Gloss.ToString();
                             }
-                        } else {
-                        lblLaminateAmt.Text = "0.00";
-                        Gloss = 0;
-                        }
-                    //foilamt/msStory
-                    decimal Foil = 0;
-                    int MsCopies = 0;
-                    var result = int.TryParse(txtMsQty.Text,out MsCopies);
+                        //foilamt/msStory
+                        decimal Foil = 0;
+                        int MsCopies = 0;
+                        var result = int.TryParse(txtMsQty.Text,out MsCopies);
 
-                    if (chkMsStandard.Checked) {
-                        if (result) {
-                            foilamtTextBox.Text = BookOptionPricing.Foil.ToString("0.00");
-                            Foil = (BookOptionPricing.Foil * MsCopies);
-                            lblMsTot.Text = Foil.ToString("0.00");
+                        if (chkMsStandard.Checked) {
+                            if (result) {
+                                foilamtTextBox.Text = BookOptionPricing.Foil.ToString("0.00");
+                                Foil = (BookOptionPricing.Foil * MsCopies);
+                                lblMsTot.Text = Foil.ToString("0.00");
+                                } else {
+                                lblMsTot.Text = "0.00";
+                                foilamtTextBox.Text = "0.00";
+                                }
                             } else {
                             lblMsTot.Text = "0.00";
                             foilamtTextBox.Text = "0.00";
                             }
-                        } else {
-                        lblMsTot.Text = "0.00";
-                        foilamtTextBox.Text = "0.00";
+                        //Lam
+                        decimal Laminationsft = 0;
+                        if (chkMLaminate.Checked) {
+                            Laminationsft = (BookOptionPricing.Laminationsft * numberOfCopies);
+                            lblMLaminateAmt.Text = Laminationsft.ToString();
+
+                            } else {
+                            lblMLaminateAmt.Text = "0.00";
+                            Laminationsft = 0;
+                            }
+                        //convert rest of info from strings to decimals for calculations
+                        bool vParseResult;
+                        decimal BookTotal = 0;
+                        decimal SpecCvrTot = 0;
+                        decimal FoilTot = 0;
+                        decimal ClrPgTot = 0;
+                        decimal MiscTot = 0;
+                        decimal Desc1Tot = 0;
+                        decimal Desc3Tot = 0;
+                        decimal Desc4Tot = 0;
+
+                        vParseResult = decimal.TryParse(lblBookTotal.Text.ToString().Replace("$",""),out BookTotal);
+                        vParseResult = decimal.TryParse(lblSpeccvrtot.Text,out SpecCvrTot);
+                        vParseResult = decimal.TryParse(txtFoilAd.Text,out FoilTot);
+                        vParseResult = decimal.TryParse(txtClrTot.Text,out ClrPgTot);
+                        vParseResult = decimal.TryParse(txtMisc.Text,out MiscTot);
+                        vParseResult = decimal.TryParse(txtDesc1amt.Text,out Desc1Tot);
+                        vParseResult = decimal.TryParse(txtDesc3tot.Text,out Desc3Tot);
+                        vParseResult = decimal.TryParse(txtDesc4tot.Text,out Desc4Tot);
+
+
+
+
+                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story + Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
+
+                        lblsubtot.Text = SubTotal.ToString("c");
+                        //calculate after subtotal
+                        decimal disc1 = 0;
+                        decimal disc2 = 0;
+                        decimal disc3 = 0;
+                        decimal msTot = 0;
+                        decimal persTot = 0;
+
+                        vParseResult = decimal.TryParse(lbldisc1.Text,out disc1);
+                        vParseResult = decimal.TryParse(lbldisc2.Text,out disc2);
+                        vParseResult = decimal.TryParse(lblDisc3.Text,out disc3);
+                        vParseResult = decimal.TryParse(lblMsTot.Text,out msTot);
+                        vParseResult = decimal.TryParse(lblperstotal.Text,out persTot);
+                        lblFinalTotPrc.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot).ToString("c");
+                        txtFinalbookprc.Text = ((SubTotal + disc1 + disc2 + disc3 + msTot + persTot) / numberOfCopies).ToString("c");
+                        //other charges and credies
+                        decimal credit1 = 0;
+                        decimal credit2 = 0;
+                        decimal otherchrg1 = 0;
+                        decimal otherchrg2 = 0;
+                        vParseResult = decimal.TryParse(txtCredits.Text,out credit1);
+                        vParseResult = decimal.TryParse(txtCredits2.Text,out credit2);
+                        vParseResult = decimal.TryParse(txtOtherChrg.Text,out otherchrg1);
+                        vParseResult = decimal.TryParse(txtOtherChrg2.Text,out otherchrg2);
+                        lbladjbef.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + credit1 + credit2 + otherchrg1 + otherchrg2).ToString("c");
+
                         }
-                    //Lam
-                    decimal Laminationsft = 0;
-                    if (chkMLaminate.Checked) {
-                        Laminationsft = (BookOptionPricing.Laminationsft * numberOfCopies);
-                        lblMLaminateAmt.Text = Laminationsft.ToString();
-
-                        } else {
-                        lblMLaminateAmt.Text = "0.00";
-                        Laminationsft = 0;
-                        }
-                    //convert rest of info from strings to decimals for calculations
-                    bool vParseResult;
-                    decimal BookTotal = 0;
-                    decimal SpecCvrTot = 0;
-                    decimal FoilTot = 0;
-                    decimal ClrPgTot = 0;
-                    decimal MiscTot = 0;
-                    decimal Desc1Tot = 0;
-                    decimal Desc3Tot = 0;
-                    decimal Desc4Tot = 0;
-
-                    vParseResult = decimal.TryParse(lblBookTotal.Text.ToString().Replace("$",""),out BookTotal);
-                    vParseResult = decimal.TryParse(lblSpeccvrtot.Text,out SpecCvrTot);
-                    vParseResult = decimal.TryParse(txtFoilAd.Text,out FoilTot);
-                    vParseResult = decimal.TryParse(txtClrTot.Text,out ClrPgTot);
-                    vParseResult = decimal.TryParse(txtMisc.Text,out MiscTot);
-                    vParseResult = decimal.TryParse(txtDesc1amt.Text,out Desc1Tot);
-                    vParseResult = decimal.TryParse(txtDesc3tot.Text,out Desc3Tot);
-                    vParseResult = decimal.TryParse(txtDesc4tot.Text,out Desc4Tot);
-
-
-
-
-                    decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story + Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
-
-                    lblsubtot.Text = SubTotal.ToString("c");
-                    //calculate after subtotal
-                    decimal disc1 = 0;
-                    decimal disc2 = 0;
-                    decimal disc3 = 0;
-                    decimal msTot = 0;
-                    decimal persTot = 0;
-
-                    vParseResult = decimal.TryParse(lbldisc1.Text,out disc1);
-                    vParseResult = decimal.TryParse(lbldisc2.Text,out disc2);
-                    vParseResult = decimal.TryParse(lblDisc3.Text,out disc3);
-                    vParseResult = decimal.TryParse(lblMsTot.Text,out msTot);
-                    vParseResult = decimal.TryParse(lblperstotal.Text,out persTot);
-                    lblFinalTotPrc.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot).ToString("c");
-                    txtFinalbookprc.Text = ((SubTotal + disc1 + disc2 + disc3 + msTot + persTot) / numberOfCopies).ToString("c");
-                    //other charges and credies
-                    decimal credit1 = 0;
-                    decimal credit2 = 0;
-                    decimal otherchrg1 = 0;
-                    decimal otherchrg2 = 0;
-                    vParseResult = decimal.TryParse(txtCredits.Text,out credit1);
-                    vParseResult = decimal.TryParse(txtCredits2.Text,out credit2);
-                    vParseResult = decimal.TryParse(txtOtherChrg.Text,out otherchrg1);
-                    vParseResult = decimal.TryParse(txtOtherChrg2.Text,out otherchrg2);
-                    lbladjbef.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + credit1 + credit2 + otherchrg1 + otherchrg2).ToString("c");
-
                     }
                 }
             }
         private void GetBookPricing() {
             if (String.IsNullOrEmpty(txtBYear.Text)) {
-                errorProvider1.Clear();
+                errorProvider1.SetError(txtBYear,"");
+                
                 errorProvider1.SetError(txtBYear,"Please enter a  base price year.");
                 return;
                 }
@@ -649,191 +1191,22 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
-        private bool ValidatePageCount() {
-            bool retval = true;
-            errorProvider1.Clear();
-            int count;
-            var result = int.TryParse(txtNoPages.Text,out count);
-            //non numeric
-            if (!result) {
-                errorProvider1.SetError(txtNoPages,"Please enter a number.");
-                retval = false;
-                }
-            //Check over 360
-            if (count > 360) {
-                errorProvider1.SetError(txtNoPages,"Calculations are limited to 360 pages!");
-                retval = false;
-                }
-            //check divisible by 4
-            var mod = (count % 4);
-            if (mod != 0 || count < 12) {
-                errorProvider1.SetError(txtNoPages,"Pages must be 12 or greater and divisible by 4!");
-                retval = false;
-                }
-
-            //If CaseBind
-            if (chkCaseBind.Checked && (count < 40 || count > 120)) {
-                errorProvider1.SetError(txtNoPages,"Case Bind pages must between 40 and 120!");
-                retval = false;
-                }
-
-            if (count > 84 && chkSaddlStitch.Checked) {
-                errorProvider1.SetError(txtNoPages,"Saddle Stitch must be 84 pages or less!");
-                retval = false;
-                }
-
-
-
-            return retval;
-            }
-        private bool ValidateCopies() {
-            bool retval = true;
-            errorProvider1.Clear();
-            int count;
-            var result = int.TryParse(txtNocopies.Text,out count);
-            //non numeric
-            if (!result || count == 0) {
-                errorProvider1.SetError(txtNocopies,"Please enter a number.");
-                retval = false;
-                }
-            if (count > 1800) {
-                errorProvider1.SetError(txtNocopies,"Number exceeds maximun quantity. Contact your supervisor.");
-                retval = false;
-                }
-            return retval;
-            }
-        private bool ValidSales() {
-            bool retval = true;
-            retval = ValidatePageCount();
-            if (!retval) { return retval; }
-            retval = ValidateCopies();
-            if (!retval) { return retval; }
-            retval = this.ValidateChildren();
-            if (!retval) { return retval; }
-            retval = this.Validate();
-            return retval;
-            }
-        private bool DeleteInvoice() {
-            bool retval = true;
-            var sqlQuery = new SQLQuery();
-            var queryString = "Delete  From Invoice where Invno=@Invno ";
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
-            };
-            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-            queryString = "Delete  From InvDetail where Invno=@Invno ";
-            SqlParameter[] parameters1 = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
-            };
-            //use same parameter
-            var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters1);
-            if (result1 == 0 || result == 0) { retval = false; }
-            return retval;
-            }
-        private bool CreateInvoice() {
-            bool retval = true;
-            var connection = new SqlConnection(_ConnectionString);
-            string cmdText = "";
-            var command = new SqlCommand(cmdText,connection);
-
-            command.CommandType = CommandType.Text;
-            command.Parameters.Clear();
-            command.Parameters.AddWithValue("@invno",lblInvoice.Text);
-            try {
-                connection.Open();
-                var trans = connection.BeginTransaction();
-                command.Transaction = trans;
-                //command.Parameters.AddWithValue("@invno",lblInvoice.Text);
-                cmdText = "Update Quotes set invoiced=1 where invno=@invno";
-                command.CommandText = cmdText;
-                command.ExecuteNonQuery();
-                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks)";
-                //cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each)";
-                command.CommandText = cmdText;
-                command.Parameters.Clear();
-                var aa = lblPriceEach.Text.Replace("$","");
-                SqlParameter[] parameters = new SqlParameter[] {
-                    new SqlParameter("@invno",lblInvoice.Text),
-                    new SqlParameter("@schcode",this.Schcode ),
-                    new SqlParameter("@qtedate",dteQuote.Value ),
-                    new SqlParameter("@nopages",txtNoPages.Text ),
-                    new SqlParameter("@nocopies",txtNocopies.Text ),
-                    new SqlParameter("@book_each",lblPriceEach.Text.Replace("$","").Replace(",","")),
-                    new SqlParameter("@source",txtSource.Text ),
-                    new SqlParameter("@ponum",txtPoNum.Text),
-                    new SqlParameter("@invtot",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
-                    new SqlParameter("@baldue",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
-                    new SqlParameter("@contryear",txtYear.Text),
-                    new SqlParameter("@allclrck",chkAllClr.Checked),
-                    new SqlParameter("@freebooks",txtfreebooks.Text ),
-
-              };
-                command.Parameters.AddRange(parameters);
-                command.ExecuteNonQuery();
-                command.Parameters.Clear();
-                cmdText = "Insert Into Invdetail (descr,price,discpercent,invno,schcode) Values(@descr,@price,@discpercent,@invno,@schcode)";
-                var Details = GetDetailRecords(lblInvoice.Text);
-                command.CommandText = cmdText;
-                if (Details.Count > 0) {
-                    foreach (var row in Details) {
-                        command.Parameters.Clear();
-                        command.Parameters.AddWithValue("@descr",row.descr);
-                        command.Parameters.AddWithValue("@price",row.price);
-                        command.Parameters.AddWithValue("@discpercent",row.discpercent);
-                        command.Parameters.AddWithValue("@invno",row.invno);
-                        command.Parameters.AddWithValue("@schcode",row.schoolcode);
-                        try {
-                            command.ExecuteNonQuery();
-
-                            } catch (Exception ex) {
-                            ex.ToExceptionless()
-                                .AddTags("CreateInvoice")
-                                .AddObject(command)
-                                .MarkAsCritical()
-                                .Submit();
-                            command.Transaction.Rollback();
-                            MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                            retval = false;
-                            }
-
-                        }
-                    command.Transaction.Commit();
-                    MessageBox.Show("Invoice has been created.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    } else {
-                    //no detail records so just commit header.
-                    command.Transaction.Commit();
-                    MessageBox.Show("Invoice has been created.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    }
-
-                } catch (Exception ex) {
-                ex.ToExceptionless()
-                                .AddTags("CreateInvoice")
-                                .AddObject(command)
-                                .MarkAsCritical()
-                                .Submit();
-                command.Transaction.Rollback();
-                MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                retval = false;
-
-                } finally { connection.Close(); }
-            return retval;
-            } 
-      
-     
-        private void SetOnlinePayOptions(string textboxname,string checkboxname,bool vcheck ) {
+    
+        //OnlinePay
+        private void SetOnlinePayOptions(string textboxname,string checkboxname,bool vcheck) {
             List<TextBox> vControls = new List<TextBox>();
             List<CheckBox> vControls1 = new List<CheckBox>();
-                vControls.Add(this.txtInkPersAmt);
-                vControls.Add(this.txtInkTxtOnly);
-                vControls.Add(this.txtFoilIcons);
-                vControls.Add(this.txtFoilTxt);
-                vControls.Add(this.txtPicPers);
-                vControls1.Add(this.chkInkPers);
-                vControls1.Add(this.chkInkTxt);
-                vControls1.Add(this.chkFoilIcons);
-                vControls1.Add(this.chkFoiltxt);
-                vControls1.Add(this.chkPicPers);
-            
+            vControls.Add(this.txtInkPersAmt);
+            vControls.Add(this.txtInkTxtOnly);
+            vControls.Add(this.txtFoilIcons);
+            vControls.Add(this.txtFoilTxt);
+            vControls.Add(this.txtPicPers);
+            vControls1.Add(this.chkInkPers);
+            vControls1.Add(this.chkInkTxt);
+            vControls1.Add(this.chkFoilIcons);
+            vControls1.Add(this.chkFoiltxt);
+            vControls1.Add(this.chkPicPers);
+
             foreach (TextBox ctr in vControls) {
                 if (vcheck == true) {
                     if (ctr.Name != textboxname) {
@@ -845,15 +1218,15 @@ namespace Mbc5.Forms.MemoryBook {
                     ctr.Enabled = false;
                     }
                 }
-            foreach(CheckBox ctr1 in vControls1) {
-                if (vcheck== true) {
+            foreach (CheckBox ctr1 in vControls1) {
+                if (vcheck == true) {
                     if (ctr1.Name != checkboxname) {
                         ctr1.Enabled = false;
 
                         } else { ctr1.Enabled = true; }
 
-                    }else {
-                    
+                    } else {
+
                     ctr1.Enabled = true;
 
                     }
@@ -862,60 +1235,45 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
-        private void CalcOnlineTotals()
-        {
-            
-            if (basicamounTextBox1.Text != null && basicamounTextBox1.Text != "0.00" && basicamounTextBox1.Text != ""){
+        private void CalcOnlineTotals() {
+
+            if (basicamounTextBox1.Text != null && basicamounTextBox1.Text != "0.00" && basicamounTextBox1.Text != "") {
                 lblOprcperbk.Text = basicamounTextBox1.Text;
-            }
-            else
-            {
+                } else {
                 lblOprcperbk.Text = "0.00";
 
-            }
+                }
 
-            if (txtInkPersAmt.Text != null && txtInkPersAmt.Text != "0.00" && txtInkPersAmt.Text != "")
-            {
+            if (txtInkPersAmt.Text != null && txtInkPersAmt.Text != "0.00" && txtInkPersAmt.Text != "") {
                 txtOprcperbk2.Text = txtInkPersAmt.Text;
                 return;
-            }
-            else
-            {
+                } else {
                 txtOprcperbk2.Text = "0.00";
-               
+
                 }
-            if (txtInkTxtOnly.Text != null && txtInkTxtOnly.Text != "0.00" && txtInkTxtOnly.Text != "")
-            {
+            if (txtInkTxtOnly.Text != null && txtInkTxtOnly.Text != "0.00" && txtInkTxtOnly.Text != "") {
                 txtOprcperbk2.Text = txtInkTxtOnly.Text;
                 return;
-                }
-            else
-            {
+                } else {
                 txtOprcperbk2.Text = "0.00";
 
-            }
+                }
 
-            if (txtFoilIcons.Text != null && txtFoilIcons.Text != "0.00" && txtFoilIcons.Text != "")
-            {
+            if (txtFoilIcons.Text != null && txtFoilIcons.Text != "0.00" && txtFoilIcons.Text != "") {
                 txtOprcperbk2.Text = txtFoilIcons.Text;
                 return;
-                }
-            else
-            {
+                } else {
                 txtOprcperbk2.Text = "0.00";
 
-            }
-            if (txtFoilTxt.Text != null && txtFoilTxt.Text != "0.00" && txtFoilTxt.Text != "")
-            {
+                }
+            if (txtFoilTxt.Text != null && txtFoilTxt.Text != "0.00" && txtFoilTxt.Text != "") {
                 txtOprcperbk2.Text = txtFoilTxt.Text;
                 return;
-                }
-            else
-            {
+                } else {
                 txtOprcperbk2.Text = "0.00";
 
-            }
-            
+                }
+
             if (txtPicPers.Text != null && txtPicPers.Text != "0.00" && txtPicPers.Text != "") {
                 txtOprcperbk2.Text = txtFoilTxt.Text;
                 return;
@@ -925,265 +1283,112 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
-        private List<InvoiceDetailBindingModel> GetDetailRecords(string invno) {
-            int vinvno = 0;
-            decimal per;
-            if (!int.TryParse(lblInvoice.Text,out vinvno)) {
-                MessageBox.Show("Could not create invoice because invoice number is not available.");
-                return null;
+        private void DisableControls(Control con) {
+            foreach (Control c in con.Controls) {
+                DisableControls(c);
                 }
-             
-            var Details = new List<InvoiceDetailBindingModel>();
-        if (true) {
-            //add base alway true
-            var rec = new InvoiceDetailBindingModel {
-                invno = vinvno,
-                descr = "Base Price",
-                discpercent = 0,
-                price = Convert.ToDecimal(lblBookTotal.Text.Replace("$","")),
-                schoolcode = this.Schcode
-                };
-            Details.Add(rec);
-
+            con.Enabled = false;
             }
-
-
-            
-            if (chkHardBack.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Hard Back (sewn)",
-                    discpercent = 0,
-                    price= Convert.ToDecimal(lblHardbackAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-                Details.Add(rec);
-
+        private void EnableControls(Control con) {
+            if (con != null) {
+                con.Enabled = true;
+                EnableControls(con.Parent);
                 }
+            }
+        private void EnableAllControls(Control con) {
+            foreach (Control c in con.Controls) {
+                EnableAllControls(c);
+                }
+            con.Enabled = true;
+            }
+        //General
+        private void SetCodeInvno() {
+            if (quotesBindingSource.Count > 0) {
+                DataRowView current = (DataRowView)quotesBindingSource.Current;
+                this.Schcode = current["schcode"].ToString();
+                this.Invno = Convert.ToInt32(current["invno"]);
+                }
+            }
+        private void Fill() {
+            if (Schcode != null) {
+                custTableAdapter.Fill(dsSales.cust,Schcode);
+                quotesTableAdapter.Fill(dsSales.quotes,Schcode);
+                }
+            if (Invno != 0) {
+                var pos = quotesBindingSource.Find("invno",this.Invno);
+                if (pos > -1) {
+                    quotesBindingSource.Position = pos;
+                    } else {
+                    MessageBox.Show("Invoice number was not found.","Invoice#",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                    }
+                }
+            CalculateEach();
+            BookCalc();
+            SetCodeInvno();
+            }
+        public override void  Save() {
+            switch (tabSales.SelectedIndex) {
+                case 0:
+                case 1:
+                        {
+                        SaveSales();
+                            break;
+                        }
 
-            if (chkCaseBind.Checked) {                          
-                    var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Case Binding (glued)",
-                    discpercent = 0,
-                    price= Convert.ToDecimal(lblCaseamt.Text),
-                        schoolcode = this.Schcode
-                    };
+                   
+                case 2:
+                    MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    break;
+                case 3:
+                    SavePayment();
+                    break;
               
-                Details.Add(rec);
-
                 }
-            if (chkPerfBind.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Perfect Bind",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblPerfbindAmt.Text),
-                    schoolcode = this.Schcode
-                    };
 
-                Details.Add(rec);
-
-                }
-            if (chkSpiral.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Spiral Bind",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblSpiralAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkSaddlStitch.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Soft Cover Stapled",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblSaddleAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkProfessional.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Professional",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblProfAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkConv.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Convenient",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblConvAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkYir.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Year In Review Standard",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblYir.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkStory.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Our Story/My Story Cover",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblStoryAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkMLaminate.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Matte Laminate",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblMLaminateAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkGlossLam.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Gloss Laminate",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblLaminateAmt.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(lblSpeccvrtot.Text)? 0 : Convert.ToDecimal(lblSpeccvrtot.Text))  >0) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Special Cover",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblSpeccvrtot.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(txtFoilAd.Text)?0:Convert.ToDecimal(txtFoilAd.Text)) > 0) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Foil (Additional)",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(txtFoilAd.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(lbldisc1.Text) ?0:Convert.ToDecimal(lbldisc1.Text)) > 0) {
-                per = String.IsNullOrEmpty(txtDisc.Text) ? 0 : Convert.ToDecimal(txtDisc.Text);
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = dp1descComboBox.SelectedValue.ToString(),
-                    discpercent = per,
-                    price = Convert.ToDecimal(txtFoilAd.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkDc2.Checked) {
-                per = String.IsNullOrEmpty(txtDp2.Text) ? 0 : Convert.ToDecimal(txtDp2.Text);
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Full pay w/page submission",
-                    discpercent =per,
-                    price =String.IsNullOrEmpty(lbldisc2.Text)?0:Convert.ToDecimal(lbldisc2.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(lblDisc3.Text) ?0:Convert.ToDecimal(lblDisc3.Text))>0) {
-                per = String.IsNullOrEmpty(dp3ComboBox.Text) ? 0 : Convert.ToDecimal(dp3ComboBox.Text);
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = txtDp3Desc.Text,
-                    discpercent = per,
-                    price = Convert.ToDecimal(lblDisc3.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if (chkMsStandard.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "My Story With Picture Personalization",
-                    discpercent =0,
-                    price =String.IsNullOrEmpty(lblMsTot.Text) ?0: Convert.ToDecimal(lblMsTot.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(lblperstotal.Text) ?0:Convert.ToDecimal(lblperstotal.Text))>0) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Personalization",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblperstotal.Text),
-                    schoolcode = this.Schcode
-                    };
-
-                Details.Add(rec);
-
-                }
-            if ((String.IsNullOrEmpty(lblIconTot.Text) ?0:Convert.ToDecimal(lblIconTot.Text)) > 0) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Icons",
-                    discpercent =0,
-                    price = Convert.ToDecimal(lblIconTot.Text),
-                    schoolcode = this.Schcode
-                    };
-
-        Details.Add(rec);
-
-                }
-            return Details;
             }
-      
-            
+        public override void Add() {
+            switch (tabSales.SelectedIndex) {
+                case 0:
+                case 1:
+                        {
+                        MessageBox.Show("This function is not available in the sales screen tab. Add a sales record from the customer screen.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        break;
+                        }
+
+
+                case 2:
+                    MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    break;
+                case 3:
+                    NewPayment();
+                    break;
+
+                }
+            }
+        public override void Delete() {
+            switch (tabSales.SelectedIndex) {
+                case 0:
+                case 1:
+                        {
+                        DeleteSale();
+                        break;
+                        }
+                case 2:
+                    DeleteInvoice();
+                    break;
+                case 3:
+                    DeletePayment();
+                    break;
+
+                }
+            }
+        public override void Cancel() {
+            CancelPayment();
+            quotesBindingSource.CancelEdit();
+            invdetailBindingSource.CancelEdit();
+            invoiceBindingSource.CancelEdit();
+            }
+                    
         #endregion
         #region CalcEvents
         private void chkHardBack_Click(object sender, EventArgs e)
@@ -1205,9 +1410,10 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void txtBYear_Leave(object sender, EventArgs e)
         {
+            errorProvider1.SetError(txtBYear,"");
             if (String.IsNullOrEmpty(txtBYear.Text))
             {
-                errorProvider1.Clear();
+               // errorProvider1.Clear();
                 errorProvider1.SetError(txtBYear, "Please enter a  base price year.");
             }
             GetBookPricing();
@@ -1492,27 +1698,147 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
 
         #region Validation
-        private void txtBYear_Validating(object sender, CancelEventArgs e)
-        {
-          
-            errorProvider1.Clear();
-            int numeral;
-            var result = int.TryParse(txtBYear.Text, out numeral);
-            //non numeric
-            if (!result || numeral == 0||String.IsNullOrEmpty(txtBYear.Text))
-            {
-                errorProvider1.SetError(txtBYear, "Please enter a  base price year.");
-                e.Cancel = true;
-             
-            }
-         
+        private bool ValidatePayment() {
+            bool retval = true;
+            if (txtInitials.Enabled == true) {
+                errorProvider1.SetError(txtInitials,"");
 
-        }
-        private void basicamounTextBox1_Validating(object sender,CancelEventArgs e) {
-            errorProvider1.Clear();
-            if (String.IsNullOrEmpty(basicamounTextBox1.Text)) {
-                basicamounTextBox1.Text = "0.00";
+                if (String.IsNullOrEmpty(txtInitials.Text)) {
+                    errorProvider1.SetError(txtInitials,"Please enter your initials.");
+                    retval = false;
+                    return retval;
+                    }
                 }
+            bool result = true;
+            decimal val = 0;
+            if (!String.IsNullOrEmpty(txtPayment.Text)) {
+                result = Decimal.TryParse(txtPayment.Text,out val);
+               errorProvider1.SetError(txtPayment,"");
+                if (!result) {
+                    
+                     errorProvider1.SetError(txtPayment,"Value must be a Decimal.");
+                    }
+
+                } else if (!String.IsNullOrEmpty(txtRefund.Text)) {
+                result = Decimal.TryParse(txtRefund.Text,out val);
+                errorProvider1.SetError(txtRefund,"");
+                if (!result) {
+                   
+                    errorProvider1.SetError(txtRefund,"Value must be a Decimal.");
+                    }
+
+                } else if (!String.IsNullOrEmpty(txtAdjustment.Text)) {
+                result = Decimal.TryParse(txtAdjustment.Text,out val);
+                errorProvider1.SetError(txtAdjustment,"");
+                if (!result) {
+                    
+                    errorProvider1.SetError(txtAdjustment,"Value must be a Decimal.");
+                    }
+
+
+                } else if (!String.IsNullOrEmpty(txtCompensation.Text)) {
+                result = Decimal.TryParse(txtCompensation.Text,out val);
+                errorProvider1.SetError(txtCompensation,"");
+                if (!result) {
+                  
+                    errorProvider1.SetError(txtCompensation,"Value must be a Decimal.");
+                    }
+
+                }
+
+            return retval;
+            }
+        private bool ValidatePageCount() {
+            bool retval = true;
+            errorProvider1.SetError(txtNoPages,"");
+            if (String.IsNullOrEmpty(txtNoPages.Text)) {
+                
+              retval= false;
+               
+                }
+            int count;
+            var result = int.TryParse(txtNoPages.Text,out count);
+            //non numeric
+            if (!result) {
+                errorProvider1.SetError(txtNoPages,"Please enter a number.");
+                retval = false;
+                }
+            //Check over 360
+            if (count > 360) {
+                errorProvider1.SetError(txtNoPages,"Calculations are limited to 360 pages!");
+                retval = false;
+                }
+            //check divisible by 4
+            var mod = (count % 4);
+            if (mod != 0 || count < 12) {
+                errorProvider1.SetError(txtNoPages,"Pages must be 12 or greater and divisible by 4!");
+                retval = false;
+                }
+
+            //If CaseBind
+            if (chkCaseBind.Checked && (count < 40 || count > 120)) {
+                errorProvider1.SetError(txtNoPages,"Case Bind pages must between 40 and 120!");
+                retval = false;
+                }
+
+            if (count > 84 && chkSaddlStitch.Checked) {
+                errorProvider1.SetError(txtNoPages,"Saddle Stitch must be 84 pages or less!");
+                retval = false;
+                }
+
+            if (retval == false){
+                lblBookTotal.Text = (0 * 0).ToString("c");
+                lblProftotalPrc.Text = (0 * 0).ToString("c");
+                lblPriceEach.Text = (0 * 0).ToString("c");
+                lblprofprice.Text = 0.ToString("c");
+                }
+
+            return retval;
+            }
+        private bool ValidateCopies() {
+
+            bool retval = true;
+
+            errorProvider1.SetError(txtNocopies,"");
+            int count;
+            var result = int.TryParse(txtNocopies.Text,out count);
+            //non numeric
+            if (!result || count == 0) {
+                errorProvider1.SetError(txtNocopies,"Please enter a number.");
+                retval = false;
+                }
+            if (count > 1800) {
+                errorProvider1.SetError(txtNocopies,"Number exceeds maximun quantity. Contact your supervisor.");
+                retval = false;
+                }
+            if (retval == false) {
+                lblBookTotal.Text = (0 * 0).ToString("c");
+                lblProftotalPrc.Text = (0 * 0).ToString("c");
+                lblPriceEach.Text = (0 * 0).ToString("c");
+                lblprofprice.Text = 0.ToString("c");
+                }
+            return retval;
+
+            }
+        private bool ValidSales() {
+            bool retval = true;
+
+            retval = ValidatePageCount();
+            if (!retval) { return retval; }
+            retval = ValidateCopies();
+            if (!retval) { return retval; }
+            retval = this.ValidateChildren();
+            if (!retval) { return retval; }
+            retval = this.Validate();
+            return retval;
+            }
+        //online pay
+        private void basicamounTextBox1_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(basicamounTextBox1,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(basicamounTextBox1.Text)) {
+                    basicamounTextBox1.Text = "0.00";
+                    }
                 string price = basicamounTextBox1.Text.Replace("$","");//must strip dollar sign
                 decimal val;
                 var result = decimal.TryParse(price,out val);
@@ -1522,72 +1848,283 @@ namespace Mbc5.Forms.MemoryBook {
                     e.Cancel = true;
 
                     }
-                
+                }
             }
+        private void txtFoilIcons_Validating(object sender,CancelEventArgs e) {
 
+            }
         private void txtInkPersAmt_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtInkPersAmt,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtInkPersAmt.Text)) {
+                    basicamounTextBox1.Text = "0.00";
+                    }
+                string price = txtInkPersAmt.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtInkPersAmt,"Please enter a decimal amount.");
+                    e.Cancel = true;
 
+                    }
+                }
             }
 
         private void txtInkTxtOnly_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtInkTxtOnly,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtInkTxtOnly.Text)) {
+                    txtInkTxtOnly.Text = "0.00";
+                    }
+                string price = txtInkTxtOnly.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtInkTxtOnly,"Please enter a decimal amount.");
+                    e.Cancel = true;
 
+                    }
+                }
             }
 
-        private void txtFoilIcons_VisibleChanged(object sender,EventArgs e) {
-
-            }
+       
 
         private void txtFoilTxt_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtFoilIcons,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtFoilTxt.Text)) {
+                    txtInkTxtOnly.Text = "0.00";
+                    }
+                string price = txtFoilTxt.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtFoilTxt,"Please enter a decimal amount.");
+                    e.Cancel = true;
 
+                    }
+                }
             }
 
         private void txtPicPers_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtPicPers,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtPicPers.Text)) {
+                    txtInkTxtOnly.Text = "0.00";
+                    }
+                string price = txtPicPers.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtPicPers,"Please enter a decimal amount.");
+                    e.Cancel = true;
 
+                    }
+                }
             }
 
         private void txtLuvLineAmt_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtLuvLineAmt,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtLuvLineAmt.Text)) {
+                    txtInkTxtOnly.Text = "0.00";
+                    }
+                string price = txtLuvLineAmt.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtLuvLineAmt,"Please enter a decimal amount.");
+                    e.Cancel = true;
 
+                    }
+                }
             }
 
         private void txtFullAd_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtFullAd,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtFullAd.Text)) {
+                    txtInkTxtOnly.Text = "0.00";
+                    }
+                string price = txtFullAd.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtFullAd,"Please enter a decimal amount.");
+                    e.Cancel = true;
 
+                    }
+                }
             }
 
         private void txtHaldfAd_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtHaldfAd,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtHaldfAd.Text)) {
+                    txtHaldfAd.Text = "0.00";
+                    }
+                string price = txtHaldfAd.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtHaldfAd,"Please enter a decimal amount.");
+                    e.Cancel = true;
 
+                    }
+                }
             }
 
         private void txtQuarterAd_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtQuarterAd,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtQuarterAd.Text)) {
+                    txtQuarterAd.Text = "0.00";
+                    }
+                string price = txtQuarterAd.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtQuarterAd,"Please enter a decimal amount.");
+                    e.Cancel = true;
 
+                    }
+                }
             }
 
         private void txtEighthAd_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(txtEighthAd,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(txtEighthAd.Text)) {
+                    txtQuarterAd.Text = "0.00";
+                    }
+                string price = txtEighthAd.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(txtEighthAd,"Please enter a decimal amount.");
+                    e.Cancel = true;
 
+                    }
+                }
             }
 
         private void totalsoldonlineTextBox_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(totalsoldonlineTextBox,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(totalsoldonlineTextBox.Text)) {
+                    totalsoldonlineTextBox.Text = "0";
+                    }
+               
+                int val;
+                var result = int.TryParse(totalsoldonlineTextBox.Text,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(totalsoldonlineTextBox,"Please enter a integer.");
+                    e.Cancel = true;
 
+                    }
+                }
             }
 
         private void totalpersonlineTextBox_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(totalpersonlineTextBox,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(totalpersonlineTextBox.Text)) {
+                    totalsoldonlineTextBox.Text = "0";
+                    }
 
+                int val;
+                var result = int.TryParse(totalpersonlineTextBox.Text,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(totalpersonlineTextBox,"Please enter a integer.");
+                    e.Cancel = true;
+
+                    }
+                }
             }
 
         private void totaldollarsonlineTextBox_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(totaldollarsonlineTextBox,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(totaldollarsonlineTextBox.Text)) {
+                    txtQuarterAd.Text = "0.00";
+                    }
+                string price = totaldollarsonlineTextBox.Text.Replace("$","");//must strip dollar sign
+                decimal val;
+                var result = decimal.TryParse(price,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(totaldollarsonlineTextBox,"Please enter a decimal amount.");
+                    e.Cancel = true;
 
+                    }
+                }
             }
 
         private void totallovelinesTextBox_Validating(object sender,CancelEventArgs e) {
+            errorProvider1.SetError(totallovelinesTextBox,"");
+            if (tabSales.SelectedIndex == 1) {
+                if (String.IsNullOrEmpty(totallovelinesTextBox.Text)) {
+                    totalsoldonlineTextBox.Text = "0";
+                    }
 
+                int val;
+                var result = int.TryParse(totallovelinesTextBox.Text,out val);
+                //non numeric
+                if (!result) {
+                    errorProvider1.SetError(totallovelinesTextBox,"Please enter a integer.");
+                    e.Cancel = true;
+
+                    }
+                }
             }
 
         private void totaladsTextBox_Validating(object sender,CancelEventArgs e) {
 
             }
+
+        //end online sales
+        private void txtInitials_Validating(object sender,CancelEventArgs e) {
+            if (this.tabSales.SelectedIndex == 3 && txtInitials.Enabled == true) {
+                errorProvider1.SetError(txtInitials,"");
+                if (String.IsNullOrEmpty(txtInitials.Text)) {
+                    errorProvider1.SetError(txtInitials,"Please enter your initials.");
+                    e.Cancel = true;
+
+                    }
+                }
+            }
+        private void txtBYear_Validating(object sender, CancelEventArgs e)
+        {
+
+            errorProvider1.SetError(txtBYear,"");
+            int numeral;
+            var result = int.TryParse(txtBYear.Text, out numeral);
+            //non numeric
+            if (!result || numeral == 0||String.IsNullOrEmpty(txtBYear.Text))
+            {
+                errorProvider1.SetError(txtBYear, "Please enter a  base price year.");
+                e.Cancel = true;
+                return;
+            }
+         
+
+        }
+       
         private void txtYear_Validating(object sender, CancelEventArgs e)
         {
-            
-            errorProvider1.Clear();
+
+            errorProvider1.SetError(txtYear,"");
             int numeral;
             var result = int.TryParse(txtYear.Text, out numeral);
             //non numeric
@@ -1621,8 +2158,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtSpecCvrEa.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtSpecCvrEa,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtSpecCvrEa.Text, out numeral);
                 //non numeric
@@ -1639,8 +2176,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtFoilAd.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtFoilAd,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtFoilAd.Text, out numeral);
                 //non numeric
@@ -1657,8 +2194,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDisc.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtDisc,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtDisc.Text, out numeral);
                 //non numeric
@@ -1675,8 +2212,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDp2.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtDp2,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtDp2.Text, out numeral);
                 //non numeric
@@ -1693,8 +2230,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtMsQty.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtMsQty,"");
                 int numeral;
                 var result = int.TryParse(txtMsQty.Text, out numeral);
                 //non numeric
@@ -1711,8 +2248,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(perscopiesTextBox.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(perscopiesTextBox,"");
                 int numeral;
                 var result = int.TryParse(perscopiesTextBox.Text, out numeral);
                 //non numeric
@@ -1729,8 +2266,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(persamountTextBox.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(persamountTextBox,"");
                 int numeral;
                 var result = int.TryParse(persamountTextBox.Text, out numeral);
                 //non numeric
@@ -1747,8 +2284,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtNumtoPers.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtNumtoPers,"");
                 int numeral;
                 var result = int.TryParse(txtNumtoPers.Text, out numeral);
                 //non numeric
@@ -1765,8 +2302,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtfreebooks.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtfreebooks,"");
                 int numeral;
                 var result = int.TryParse(txtfreebooks.Text, out numeral);
                 //non numeric
@@ -1783,8 +2320,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtClrTot.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtClrTot,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtClrTot.Text, out numeral);
                 //non numeric
@@ -1801,8 +2338,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtMisc.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtMisc,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtMisc.Text, out numeral);
                 //non numeric
@@ -1819,8 +2356,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDesc1amt.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtDesc1amt,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtDesc1amt.Text, out numeral);
                 //non numeric
@@ -1837,8 +2374,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDesc3tot.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtDesc3tot,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtDesc3tot.Text, out numeral);
                 //non numeric
@@ -1855,8 +2392,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtDesc4tot.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtDesc4tot,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtDesc4tot.Text, out numeral);
                 //non numeric
@@ -1873,8 +2410,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtCredits.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtCredits,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtCredits.Text, out numeral);
                 //non numeric
@@ -1891,8 +2428,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtCredits2.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtCredits2,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtCredits2.Text, out numeral);
                 //non numeric
@@ -1909,8 +2446,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtOtherChrg.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtOtherChrg,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtOtherChrg.Text, out numeral);
                 //non numeric
@@ -1927,8 +2464,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtOtherChrg2.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtOtherChrg2,"");
                 decimal numeral;
                 var result = decimal.TryParse(txtOtherChrg2.Text, out numeral);
                 //non numeric
@@ -1945,8 +2482,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(saletaxTextBox.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(saletaxTextBox,"");
                 decimal numeral;
                 var result = decimal.TryParse(saletaxTextBox.Text, out numeral);
                 //non numeric
@@ -1963,7 +2500,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtPriceOverRide.Text))
             {
-                errorProvider1.Clear();
+                errorProvider1.SetError(txtPriceOverRide,"");
                 if (!String.IsNullOrEmpty(txtPriceOverRide.Text)) {
                     string price = txtPriceOverRide.Text.Replace("$","");//must strip dollar sign
                     decimal val;
@@ -1982,8 +2519,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (!String.IsNullOrEmpty(txtreqcoverCopies.Text))
             {
-                
-                errorProvider1.Clear();
+
+                errorProvider1.SetError(txtreqcoverCopies,"");
                 int numeral;
                 var result = int.TryParse(txtreqcoverCopies.Text, out numeral);
                 //non numeric
@@ -1997,14 +2534,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
 
         #endregion
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Save();
-       
-        }
-
-       
-
+     
         private void lblSchoolName_Paint(object sender, PaintEventArgs e)
         {
             try { this.Text = "Sales-" + lblSchoolName.Text.Trim()+" ("+this.Schcode.Trim()+")"; } catch {
@@ -2060,14 +2590,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
 
-        private void tabSales_SelectedIndexChanged(object sender,EventArgs e) {
-            
-          
-            if (this.tabSales.SelectedIndex == 2) {
-                this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
-                this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
-                }
-            }
+       
 
         private void oppicpersCheckBox1_CheckedChanged(object sender,EventArgs e) {
             SetOnlinePayOptions(this.txtPicPers.Name,this.chkPicPers.Name,chkPicPers.Checked);
@@ -2192,11 +2715,7 @@ namespace Mbc5.Forms.MemoryBook {
           
             }
 
-        private void tabSales_Click(object sender,EventArgs e) {
-            if (tabSales.SelectedIndex == 2) {
-               
-                }
-            }
+     
 
         private void txtInkPersAmt_Leave(object sender,EventArgs e) {
             CalcOnlineTotals();
@@ -2218,13 +2737,7 @@ namespace Mbc5.Forms.MemoryBook {
             CalcOnlineTotals();
             }
 
-        private void tabSales_Selecting(object sender,TabControlCancelEventArgs e) {
-           //validation is done in save if validation fails returns false.
-            if (!this.Save()) {
-                e.Cancel = true;
-                } 
-            }
-
+       
         private void lblProfAmt_TextChanged(object sender,EventArgs e) {
                CalculateEach();
             }
@@ -2233,25 +2746,9 @@ namespace Mbc5.Forms.MemoryBook {
             CalculateEach();
             }
 
-        private void pg1_Click(object sender,EventArgs e) {
-
-            }
-
-        private void button1_Click_1(object sender,EventArgs e) {
-           
-            }
-
         private void btnDeleteInvoice_Click(object sender,EventArgs e) {
             DeleteInvoice();
-            this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
-            this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
-            var sqlQuery = new SQLQuery();
-            var queryString = "Update Invoice set invno=0 where Invno=@Invno ";
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
-            };
-            var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-            this.Fill();
+            
             }
 
         private void btnOnlineAgreement_Click(object sender,EventArgs e) {
@@ -2263,6 +2760,96 @@ namespace Mbc5.Forms.MemoryBook {
 
 
             }
+
+        private void btnNewPayment_Click(object sender,EventArgs e) {
+            NewPayment();
+            }
+
+        private void tabSales_Deselecting(object sender,TabControlCancelEventArgs e) {
+            if (this.tabSales.SelectedIndex == 3) {
+                if (!this.SavePayment()) {
+                    e.Cancel = true;
+                    }
+                }
+            if (this.tabSales.SelectedIndex == 0 || this.tabSales.SelectedIndex == 1) {
+                if (!this.SaveSales()) {
+                    e.Cancel = true;
+                    }
+                }
+            }
+
+
+
+        private void btnCancel_Click(object sender,EventArgs e) {
+            CancelPayment();
+           
+            }
+
+        private void btnEdit_Click(object sender,EventArgs e) {
+            EditPayment();
+                   
+            }
+
+        private void btnSavePayment_Click(object sender,EventArgs e) {
+            SavePayment();
+            }
+
+        private void btnDelete_Click(object sender,EventArgs e) {
+            DeletePayment();
+            }
+
+        private void pg4_Enter(object sender,EventArgs e) {
+            this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
+            SetCrudButtons();
+            }
+
+        private void pg3_Enter(object sender,EventArgs e) {
+            this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
+            this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
+            }
+
+       
+
+        private void bindingNavigatorMoveNextItem_Click(object sender,EventArgs e) {
+            if (!this.ValidateChildren()) {
+                return;
+                }
+            quotesBindingSource.MoveNext();
+           
+            }
+
+        private void bindingNavigatorMoveFirstItem_Click(object sender,EventArgs e) {
+            if (!this.ValidateChildren()) {
+                return;
+                }
+            quotesBindingSource.MoveFirst();
+            }
+
+        private void bindingNavigatorMovePreviousItem_Click(object sender,EventArgs e) {
+            if (!this.ValidateChildren()) {
+                return;
+                }
+            quotesBindingSource.MovePrevious();
+            }
+
+        private void bindingNavigatorMoveLastItem_Click(object sender,EventArgs e) {
+            if (!this.ValidateChildren()) {
+                return;
+                }
+            quotesBindingSource.MoveLast();
+            }
+
+        private void bindingNavigatorDeleteItem_Click(object sender,EventArgs e) {
+            this.Delete();
+            }
+
+        
+
+
+
+
+
+
 
 
 
