@@ -157,6 +157,10 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
 
+        private void pg1_Click(object sender,EventArgs e) {
+
+            }
+
         #endregion
 
         //nothing below here  
