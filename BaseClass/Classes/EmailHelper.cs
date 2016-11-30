@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using BaseClass.Classes;
+using Exceptionless.Models;
+using Exceptionless;
+using Outlook = Microsoft.Office.Interop.Outlook;
 namespace BaseClass.Classes
 {
     public class EmailHelper
@@ -38,7 +41,7 @@ namespace BaseClass.Classes
 			    .right{text-align:right;}
 			    .center{text-align:center;}
 		    </style>
-			<table border='0' cellspacing='0' cellpadding='0' width='900' align='center' style='max-width: 600px;border:1px solid #333'>
+			<table border='0' cellspacing='0' cellpadding='0' width='1024' align='center' style='max-width: 600px;border:1px solid #333'>
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
@@ -87,7 +90,7 @@ namespace BaseClass.Classes
 			    .right{text-align:right;}
 			    .center{text-align:center;}
 		    </style>
-			<table border='0' cellspacing='0' cellpadding='0' width='600' align='center' style='max-width: 600px;border:1px solid #333'>
+			<table border='0' cellspacing='0' cellpadding='0' width='900' align='center' style='max-width: 600px;border:1px solid #333'>
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
@@ -136,7 +139,7 @@ namespace BaseClass.Classes
 			    .right{text-align:right;}
 			    .center{text-align:center;}
 		    </style>
-			<table border='0' cellspacing='0' cellpadding='0' width='600' align='center' style='max-width: 600px;border:1px solid #333'>
+			<table border='0' cellspacing='0' cellpadding='0' width='1024' align='center' style='max-width: 600px;border:1px solid #333'>
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
@@ -174,8 +177,12 @@ namespace BaseClass.Classes
             else if (TypeEmail == EmailType.System)
             {
                 brandedHtml = BuildEmailSystem(Body);
-            }
-            else
+            } else if (TypeEmail == EmailType.System)
+            {
+                brandedHtml = BuildEmailSystem(Body);
+             } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
+                } else
             {
                 return;
             }
@@ -191,5 +198,239 @@ namespace BaseClass.Classes
             mailMessage.To.Add(ToAddresses);
             smtpClient.Send(mailMessage);
         }
-    }
+
+        public void SendEmail(string Subject,List<string> ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
+            var brandedHtml = "";
+            if (TypeEmail == EmailType.Mbc) {
+                brandedHtml = BuildEmailMBC(Body);
+                } else if (TypeEmail == EmailType.Meridian) {
+                brandedHtml = BuildEmailMeridian(Body);
+                } else if (TypeEmail == EmailType.System) {
+                brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
+                } else {
+                return;
+                }
+
+            var smtpClient = new SmtpClient();
+            var mailMessage = new MailMessage {
+                Subject = Subject,
+                Body = brandedHtml,
+                IsBodyHtml = true
+                };
+            foreach(var address in ToAddresses) {
+                    mailMessage.To.Add(address);
+                }
+            foreach (var address in CCAddresses) {
+                mailMessage.To.Add(address);
+                }
+
+            smtpClient.Send(mailMessage);
+            }
+
+        public void SendEmail(string Subject,List<string> ToAddresses,string CCAddresses,string Body,EmailType TypeEmail) {
+            var brandedHtml = "";
+            if (TypeEmail == EmailType.Mbc) {
+                brandedHtml = BuildEmailMBC(Body);
+                } else if (TypeEmail == EmailType.Meridian) {
+                brandedHtml = BuildEmailMeridian(Body);
+                } else if (TypeEmail == EmailType.System) {
+                brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
+                } else {
+                return;
+                }
+
+            var smtpClient = new SmtpClient();
+            var mailMessage = new MailMessage {
+                Subject = Subject,
+                Body = brandedHtml,
+                IsBodyHtml = true
+                };
+            foreach (var address in ToAddresses) {
+                mailMessage.To.Add(address);
+                }
+           
+                mailMessage.To.Add(CCAddresses);
+              
+
+            smtpClient.Send(mailMessage);
+            }
+
+        public void SendEmail(string Subject,string ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
+            var brandedHtml = "";
+            if (TypeEmail == EmailType.Mbc) {
+                brandedHtml = BuildEmailMBC(Body);
+                } else if (TypeEmail == EmailType.Meridian) {
+                brandedHtml = BuildEmailMeridian(Body);
+                } else if (TypeEmail == EmailType.System) {
+                brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
+                } else {
+                return;
+                }
+
+            var smtpClient = new SmtpClient();
+            var mailMessage = new MailMessage {
+                Subject = Subject,
+                Body = brandedHtml,
+                IsBodyHtml = true
+                };
+             mailMessage.To.Add(ToAddresses);
+            foreach (var address in CCAddresses) {
+                mailMessage.CC.Add(address);
+                }
+            
+            smtpClient.Send(mailMessage);
+            }
+
+        
+        public void SendOutLookEmail(string Subject,string ToAddresses,string CCAddresses,string Body,EmailType TypeEmail) {
+            var brandedHtml = "";
+            if (TypeEmail == EmailType.Mbc) {
+                brandedHtml = BuildEmailMBC(Body);
+                } else if (TypeEmail == EmailType.Meridian) {
+                brandedHtml = BuildEmailMeridian(Body);
+                } else if (TypeEmail == EmailType.System) {
+                brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
+                } else {
+                return;
+                }
+            try {
+                Outlook.Application outlookApp = new Outlook.Application();
+                Outlook.MailItem mailItem = (Outlook.MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
+                mailItem.To = ToAddresses;
+                if (!String.IsNullOrEmpty(CCAddresses)) {
+                    mailItem.CC = CCAddresses;
+                    }
+
+                mailItem.Subject = Subject;
+                mailItem.HTMLBody = brandedHtml;
+                mailItem.Display(true);
+                }catch(Exception ex) {
+                ex.ToExceptionless()
+                  .MarkAsCritical()
+                  .AddTags("Outlook Error")
+                  .Submit();
+                    
+                }
+            }
+        public void SendOutLookEmail(string Subject,List<string> ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
+            var brandedHtml = "";
+            if (TypeEmail == EmailType.Mbc) {
+                brandedHtml = BuildEmailMBC(Body);
+                } else if (TypeEmail == EmailType.Meridian) {
+                brandedHtml = BuildEmailMeridian(Body);
+                } else if (TypeEmail == EmailType.System) {
+                brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
+                } else {
+                return;
+                }
+            try {
+                Outlook.Application outlookApp = new Outlook.Application();
+                Outlook.MailItem mailItem = (Outlook.MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
+                var vToAddresses = "";
+                var vCCAddresses = "";
+                foreach (var address in ToAddresses) {
+                    vToAddresses = vToAddresses + address + "'";
+                   
+                    }
+                    mailItem.To = vToAddresses;
+                foreach (var address in CCAddresses) {
+                    vCCAddresses = vCCAddresses + address + ";";
+                    
+                    }
+                 mailItem.CC =vCCAddresses;
+                mailItem.Subject = Subject;
+                mailItem.HTMLBody = brandedHtml;
+                mailItem.Display(true);
+                }catch(Exception ex1) {
+                ex1.ToExceptionless()
+              .MarkAsCritical()
+              .AddTags("Outlook Error")
+              .Submit();
+                }
+            }
+        public void SendOutLookEmail(string Subject,string ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
+            var brandedHtml = "";
+            if (TypeEmail == EmailType.Mbc) {
+                brandedHtml = BuildEmailMBC(Body);
+                } else if (TypeEmail == EmailType.Meridian) {
+                brandedHtml = BuildEmailMeridian(Body);
+                } else if (TypeEmail == EmailType.System) {
+                brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
+                } else {
+                return;
+                }
+            try {
+                Outlook.Application outlookApp = new Outlook.Application();
+                Outlook.MailItem mailItem = (Outlook.MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
+
+                
+                    mailItem.To =ToAddresses;
+                var vCCAddresses = "";
+                foreach (var address in CCAddresses) {
+                    vCCAddresses = vCCAddresses + address + ";";
+
+                    }
+                mailItem.CC = vCCAddresses;
+
+                mailItem.Subject = Subject;
+                mailItem.HTMLBody = brandedHtml;
+                mailItem.Display(true);
+                } catch (Exception ex1) {
+                ex1.ToExceptionless()
+              .MarkAsCritical()
+              .AddTags("Outlook Error")
+              .Submit();
+                }
+            }
+        public void SendOutLookEmail(string Subject,List<string> ToAddresses,string CCAddresses,string Body,EmailType TypeEmail) {
+            var brandedHtml = "";
+            if (TypeEmail == EmailType.Mbc) {
+                brandedHtml = BuildEmailMBC(Body);
+                } else if (TypeEmail == EmailType.Meridian) {
+                brandedHtml = BuildEmailMeridian(Body);
+                } else if (TypeEmail == EmailType.System) {
+                brandedHtml = BuildEmailSystem(Body);
+                } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
+                } else {
+                return;
+                }
+            try {
+                Outlook.Application outlookApp = new Outlook.Application();
+                Outlook.MailItem mailItem = (Outlook.MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
+                var vToAddress = "";
+                foreach (var address in ToAddresses) {
+                    vToAddress = vToAddress + address + ";";
+                   
+                    }
+                    mailItem.To = vToAddress;
+                    mailItem.CC =CCAddresses;
+                 
+
+                mailItem.Subject = Subject;
+                mailItem.HTMLBody = brandedHtml;
+                mailItem.Display(true);
+                } catch (Exception ex1) {
+                ex1.ToExceptionless()
+              .MarkAsCritical()
+              .AddTags("Outlook Error")
+              .Submit();
+                }
+            }
+
+
+
+        }
 }

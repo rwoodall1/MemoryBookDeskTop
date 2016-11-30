@@ -36,6 +36,17 @@
     <StartupObject>Mbc5.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BindingModels">
+      <HintPath>..\BindingModels\bin\BindingModels.dll</HintPath>
+    </Reference>
+    <Reference Include="Exceptionless, Version=4.0.1906.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Exceptionless.4.0.1906\lib\net45\Exceptionless.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Exceptionless.Windows, Version=4.0.1906.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Exceptionless.Windows.4.0.1906\lib\net45\Exceptionless.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.3.2\lib\net45\NLog.dll</HintPath>
@@ -109,6 +120,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="DataSets\dsInvoice.cs">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsInvoice1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\LookUp.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -119,6 +138,12 @@
     </Compile>
     <Compile Include="Dialogs\frmAddressList.Designer.cs">
       <DependentUpon>frmAddressList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmSelctCust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmSelctCust.Designer.cs">
+      <DependentUpon>frmSelctCust.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmProdutn.cs">
       <SubType>Form</SubType>
@@ -131,6 +156,12 @@
     </Compile>
     <Compile Include="Forms\MemoryBook\frmSales.Designer.cs">
       <DependentUpon>frmSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Meridian\frmMSales.cs">
       <SubType>Form</SubType>
@@ -204,6 +235,11 @@
     <Compile Include="LookUpForms\LkpDiscount.Designer.cs">
       <DependentUpon>LkpDiscount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mbc5DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Content\MAIL.png" />
@@ -211,11 +247,17 @@
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">
       <DependentUpon>frmAddressList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmSelctCust.resx">
+      <DependentUpon>frmSelctCust.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProdutn.resx">
       <DependentUpon>frmProdutn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryBook\frmSales.resx">
       <DependentUpon>frmSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MemoryBook\test.resx">
+      <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meridian\frmMSales.resx">
       <DependentUpon>frmMSales.cs</DependentUpon>
@@ -350,6 +392,17 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="DataSets\dsInvoice.xsc">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsInvoice.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInvoice1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsInvoice.xss">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\LookUp.xsc">
       <DependentUpon>LookUp.xsd</DependentUpon>
     </None>
@@ -360,6 +413,17 @@
     </None>
     <None Include="DataSets\LookUp.xss">
       <DependentUpon>LookUp.xsd</DependentUpon>
+    </None>
+    <None Include="Mbc5DataSet.xsc">
+      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Mbc5DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Mbc5DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Mbc5DataSet.xss">
+      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
     </None>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
@@ -388,6 +452,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\SystemIcons\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
@@ -398,6 +463,35 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\MemBook-Jostens Logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Outlook">
+      <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

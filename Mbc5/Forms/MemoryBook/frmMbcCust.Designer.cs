@@ -1,11 +1,13 @@
-﻿namespace Mbc5.Forms.MemoryBook {
+﻿using System.Drawing.Printing;
+
+namespace Mbc5.Forms.MemoryBook {
     partial class frmMbcCust
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
+        
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -250,7 +252,6 @@
             this.lblTeleSchname = new System.Windows.Forms.Label();
             this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
-            this.button1 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
@@ -368,9 +369,8 @@
             // BottomPanel
             // 
             this.BottomPanel.Controls.Add(this.button2);
-            this.BottomPanel.Controls.Add(this.button1);
-            this.BottomPanel.Location = new System.Drawing.Point(0, 680);
-            this.BottomPanel.Size = new System.Drawing.Size(1234, 51);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 693);
+            this.BottomPanel.Size = new System.Drawing.Size(1234, 38);
             // 
             // contryearLabel
             // 
@@ -761,7 +761,7 @@
             schcolorsLabel.Location = new System.Drawing.Point(259, 360);
             schcolorsLabel.Name = "schcolorsLabel";
             schcolorsLabel.Size = new System.Drawing.Size(75, 13);
-            schcolorsLabel.TabIndex = 36;
+            schcolorsLabel.TabIndex = 27;
             schcolorsLabel.Text = "School Colors:";
             // 
             // lblCategory
@@ -770,7 +770,7 @@
             lblCategory.Location = new System.Drawing.Point(246, 335);
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new System.Drawing.Size(88, 13);
-            lblCategory.TabIndex = 32;
+            lblCategory.TabIndex = 24;
             lblCategory.Text = "School Category:";
             // 
             // gradesLabel
@@ -824,7 +824,7 @@
             newpublisherLabel.Location = new System.Drawing.Point(260, 307);
             newpublisherLabel.Name = "newpublisherLabel";
             newpublisherLabel.Size = new System.Drawing.Size(74, 13);
-            newpublisherLabel.TabIndex = 28;
+            newpublisherLabel.TabIndex = 22;
             newpublisherLabel.Text = "Photographer:";
             // 
             // clrpg_intLabel
@@ -974,7 +974,7 @@
             this.CustTab.Location = new System.Drawing.Point(0, 20);
             this.CustTab.Name = "CustTab";
             this.CustTab.SelectedIndex = 0;
-            this.CustTab.Size = new System.Drawing.Size(1234, 654);
+            this.CustTab.Size = new System.Drawing.Size(1234, 670);
             this.CustTab.TabIndex = 0;
             // 
             // pg1
@@ -987,9 +987,10 @@
             this.pg1.Margin = new System.Windows.Forms.Padding(2);
             this.pg1.Name = "pg1";
             this.pg1.Padding = new System.Windows.Forms.Padding(3);
-            this.pg1.Size = new System.Drawing.Size(1226, 628);
+            this.pg1.Size = new System.Drawing.Size(1226, 644);
             this.pg1.TabIndex = 0;
             this.pg1.Text = "School";
+            this.pg1.Enter += new System.EventHandler(this.pg1_Enter);
             // 
             // splitContainer
             // 
@@ -1081,7 +1082,7 @@
             this.splitContainer.Panel2.Controls.Add(this.shiptocontTextBox);
             this.splitContainer.Panel2.Controls.Add(yb_sthLabel);
             this.splitContainer.Panel2.Controls.Add(this.yb_sthTextBox);
-            this.splitContainer.Size = new System.Drawing.Size(1223, 577);
+            this.splitContainer.Size = new System.Drawing.Size(1223, 593);
             this.splitContainer.SplitterDistance = 599;
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
@@ -1092,7 +1093,7 @@
             this.txtSchname.Location = new System.Drawing.Point(86, 35);
             this.txtSchname.Name = "txtSchname";
             this.txtSchname.Size = new System.Drawing.Size(249, 20);
-            this.txtSchname.TabIndex = 96;
+            this.txtSchname.TabIndex = 0;
             // 
             // custBindingSource
             // 
@@ -1112,7 +1113,7 @@
             this.lblSchcodeVal.Location = new System.Drawing.Point(415, 35);
             this.lblSchcodeVal.Name = "lblSchcodeVal";
             this.lblSchcodeVal.Size = new System.Drawing.Size(41, 13);
-            this.lblSchcodeVal.TabIndex = 94;
+            this.lblSchcodeVal.TabIndex = 2;
             this.lblSchcodeVal.Text = "label29";
             // 
             // txtSchColors
@@ -1121,7 +1122,7 @@
             this.txtSchColors.Location = new System.Drawing.Point(337, 360);
             this.txtSchColors.Name = "txtSchColors";
             this.txtSchColors.Size = new System.Drawing.Size(182, 20);
-            this.txtSchColors.TabIndex = 37;
+            this.txtSchColors.TabIndex = 28;
             // 
             // txtFax
             // 
@@ -1130,7 +1131,7 @@
             this.txtFax.MaxLength = 25;
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(95, 20);
-            this.txtFax.TabIndex = 5;
+            this.txtFax.TabIndex = 8;
             // 
             // label2
             // 
@@ -1138,7 +1139,7 @@
             this.label2.Location = new System.Drawing.Point(344, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
-            this.label2.TabIndex = 89;
+            this.label2.TabIndex = 1;
             this.label2.Text = "School Code:";
             // 
             // lblSchName
@@ -1156,7 +1157,7 @@
             this.schoutDateTimePicker.Location = new System.Drawing.Point(398, 272);
             this.schoutDateTimePicker.Name = "schoutDateTimePicker";
             this.schoutDateTimePicker.Size = new System.Drawing.Size(184, 20);
-            this.schoutDateTimePicker.TabIndex = 25;
+            this.schoutDateTimePicker.TabIndex = 18;
             // 
             // spcinstTextBox
             // 
@@ -1165,7 +1166,7 @@
             this.spcinstTextBox.Multiline = true;
             this.spcinstTextBox.Name = "spcinstTextBox";
             this.spcinstTextBox.Size = new System.Drawing.Size(341, 58);
-            this.spcinstTextBox.TabIndex = 44;
+            this.spcinstTextBox.TabIndex = 31;
             // 
             // extrchgTextBox
             // 
@@ -1174,7 +1175,7 @@
             this.extrchgTextBox.Multiline = true;
             this.extrchgTextBox.Name = "extrchgTextBox";
             this.extrchgTextBox.Size = new System.Drawing.Size(341, 58);
-            this.extrchgTextBox.TabIndex = 42;
+            this.extrchgTextBox.TabIndex = 30;
             // 
             // btnInterOffice
             // 
@@ -1196,7 +1197,7 @@
             this.inofficeTextBox.Multiline = true;
             this.inofficeTextBox.Name = "inofficeTextBox";
             this.inofficeTextBox.Size = new System.Drawing.Size(338, 62);
-            this.inofficeTextBox.TabIndex = 39;
+            this.inofficeTextBox.TabIndex = 29;
             // 
             // cmbSchCategory
             // 
@@ -1205,7 +1206,7 @@
             this.cmbSchCategory.Location = new System.Drawing.Point(337, 335);
             this.cmbSchCategory.Name = "cmbSchCategory";
             this.cmbSchCategory.Size = new System.Drawing.Size(182, 21);
-            this.cmbSchCategory.TabIndex = 33;
+            this.cmbSchCategory.TabIndex = 25;
             // 
             // cmbNoRebook
             // 
@@ -1223,7 +1224,7 @@
             this.cmbPrevPublisher.Location = new System.Drawing.Point(98, 275);
             this.cmbPrevPublisher.Name = "cmbPrevPublisher";
             this.cmbPrevPublisher.Size = new System.Drawing.Size(139, 21);
-            this.cmbPrevPublisher.TabIndex = 21;
+            this.cmbPrevPublisher.TabIndex = 17;
             // 
             // cmbNewPublisher
             // 
@@ -1232,7 +1233,7 @@
             this.cmbNewPublisher.Location = new System.Drawing.Point(100, 242);
             this.cmbNewPublisher.Name = "cmbNewPublisher";
             this.cmbNewPublisher.Size = new System.Drawing.Size(139, 21);
-            this.cmbNewPublisher.TabIndex = 17;
+            this.cmbNewPublisher.TabIndex = 15;
             // 
             // multiyearCheckBox
             // 
@@ -1252,7 +1253,7 @@
             this.gradesTextBox.MaxLength = 16;
             this.gradesTextBox.Name = "gradesTextBox";
             this.gradesTextBox.Size = new System.Drawing.Size(139, 20);
-            this.gradesTextBox.TabIndex = 35;
+            this.gradesTextBox.TabIndex = 26;
             // 
             // enrollmentTextBox
             // 
@@ -1261,7 +1262,7 @@
             this.enrollmentTextBox.MaxLength = 5;
             this.enrollmentTextBox.Name = "enrollmentTextBox";
             this.enrollmentTextBox.Size = new System.Drawing.Size(137, 20);
-            this.enrollmentTextBox.TabIndex = 31;
+            this.enrollmentTextBox.TabIndex = 23;
             // 
             // txtPhotographer
             // 
@@ -1270,7 +1271,7 @@
             this.txtPhotographer.MaxLength = 45;
             this.txtPhotographer.Name = "txtPhotographer";
             this.txtPhotographer.Size = new System.Drawing.Size(182, 20);
-            this.txtPhotographer.TabIndex = 29;
+            this.txtPhotographer.TabIndex = 21;
             // 
             // multiyearComboBox
             // 
@@ -1279,7 +1280,7 @@
             this.multiyearComboBox.Location = new System.Drawing.Point(100, 306);
             this.multiyearComboBox.Name = "multiyearComboBox";
             this.multiyearComboBox.Size = new System.Drawing.Size(139, 21);
-            this.multiyearComboBox.TabIndex = 27;
+            this.multiyearComboBox.TabIndex = 20;
             // 
             // clrpg_intTextBox
             // 
@@ -1288,7 +1289,7 @@
             this.clrpg_intTextBox.MaxLength = 1;
             this.clrpg_intTextBox.Name = "clrpg_intTextBox";
             this.clrpg_intTextBox.Size = new System.Drawing.Size(29, 20);
-            this.clrpg_intTextBox.TabIndex = 24;
+            this.clrpg_intTextBox.TabIndex = 19;
             // 
             // schuploadingCheckBox
             // 
@@ -1297,7 +1298,7 @@
             this.schuploadingCheckBox.Location = new System.Drawing.Point(398, 242);
             this.schuploadingCheckBox.Name = "schuploadingCheckBox";
             this.schuploadingCheckBox.Size = new System.Drawing.Size(121, 17);
-            this.schuploadingCheckBox.TabIndex = 19;
+            this.schuploadingCheckBox.TabIndex = 16;
             this.schuploadingCheckBox.Text = "School Is Uploading";
             this.schuploadingCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1308,7 +1309,7 @@
             this.blkwhiteCheckBox.Location = new System.Drawing.Point(398, 215);
             this.blkwhiteCheckBox.Name = "blkwhiteCheckBox";
             this.blkwhiteCheckBox.Size = new System.Drawing.Size(86, 17);
-            this.blkwhiteCheckBox.TabIndex = 15;
+            this.blkwhiteCheckBox.TabIndex = 14;
             this.blkwhiteCheckBox.Text = "Black/White";
             this.blkwhiteCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1319,7 +1320,7 @@
             this.allcolorCheckBox.Location = new System.Drawing.Point(398, 184);
             this.allcolorCheckBox.Name = "allcolorCheckBox";
             this.allcolorCheckBox.Size = new System.Drawing.Size(64, 17);
-            this.allcolorCheckBox.TabIndex = 11;
+            this.allcolorCheckBox.TabIndex = 12;
             this.allcolorCheckBox.Text = "All Color";
             this.allcolorCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1363,7 +1364,7 @@
             this.springbreakTextBox.MaxLength = 25;
             this.springbreakTextBox.Name = "springbreakTextBox";
             this.springbreakTextBox.Size = new System.Drawing.Size(139, 20);
-            this.springbreakTextBox.TabIndex = 9;
+            this.springbreakTextBox.TabIndex = 11;
             // 
             // txtWebsite
             // 
@@ -1372,7 +1373,7 @@
             this.txtWebsite.MaxLength = 60;
             this.txtWebsite.Name = "txtWebsite";
             this.txtWebsite.Size = new System.Drawing.Size(188, 20);
-            this.txtWebsite.TabIndex = 8;
+            this.txtWebsite.TabIndex = 10;
             // 
             // btnWebsite
             // 
@@ -1391,7 +1392,7 @@
             this.txtSchEmail.MaxLength = 80;
             this.txtSchEmail.Name = "txtSchEmail";
             this.txtSchEmail.Size = new System.Drawing.Size(188, 20);
-            this.txtSchEmail.TabIndex = 6;
+            this.txtSchEmail.TabIndex = 9;
             // 
             // cmbState
             // 
@@ -1403,7 +1404,7 @@
             this.cmbState.Location = new System.Drawing.Point(312, 91);
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(206, 21);
-            this.cmbState.TabIndex = 3;
+            this.cmbState.TabIndex = 6;
             this.cmbState.ValueMember = "Abrev";
             // 
             // statesBindingSource
@@ -1424,7 +1425,7 @@
             this.txtaddress.MaxLength = 35;
             this.txtaddress.Name = "txtaddress";
             this.txtaddress.Size = new System.Drawing.Size(183, 20);
-            this.txtaddress.TabIndex = 0;
+            this.txtaddress.TabIndex = 3;
             // 
             // txtSchPhone
             // 
@@ -1433,7 +1434,7 @@
             this.txtSchPhone.MaxLength = 25;
             this.txtSchPhone.Name = "txtSchPhone";
             this.txtSchPhone.Size = new System.Drawing.Size(95, 20);
-            this.txtSchPhone.TabIndex = 4;
+            this.txtSchPhone.TabIndex = 7;
             // 
             // txtZip
             // 
@@ -1451,7 +1452,7 @@
             this.txtAddress2.MaxLength = 35;
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(207, 20);
-            this.txtAddress2.TabIndex = 1;
+            this.txtAddress2.TabIndex = 4;
             // 
             // txtCity
             // 
@@ -1460,7 +1461,7 @@
             this.txtCity.MaxLength = 21;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(183, 20);
-            this.txtCity.TabIndex = 2;
+            this.txtCity.TabIndex = 5;
             // 
             // lblInvno
             // 
@@ -1481,7 +1482,7 @@
             this.btnSchoolEmail.Location = new System.Drawing.Point(411, 46);
             this.btnSchoolEmail.Name = "btnSchoolEmail";
             this.btnSchoolEmail.Size = new System.Drawing.Size(94, 43);
-            this.btnSchoolEmail.TabIndex = 8;
+            this.btnSchoolEmail.TabIndex = 4;
             this.btnSchoolEmail.Text = "Email To School";
             this.btnSchoolEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSchoolEmail.UseVisualStyleBackColor = true;
@@ -1494,7 +1495,7 @@
             this.nodirectmailCheckBox.Location = new System.Drawing.Point(354, 5);
             this.nodirectmailCheckBox.Name = "nodirectmailCheckBox";
             this.nodirectmailCheckBox.Size = new System.Drawing.Size(93, 17);
-            this.nodirectmailCheckBox.TabIndex = 1;
+            this.nodirectmailCheckBox.TabIndex = 0;
             this.nodirectmailCheckBox.Text = "No Direct Mail";
             this.nodirectmailCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1511,6 +1512,8 @@
             // 
             // custDataGridView
             // 
+            this.custDataGridView.AllowUserToAddRows = false;
+            this.custDataGridView.AllowUserToDeleteRows = false;
             this.custDataGridView.AutoGenerateColumns = false;
             this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1534,7 +1537,10 @@
             this.custDataGridView.Name = "custDataGridView";
             this.custDataGridView.ReadOnly = true;
             this.custDataGridView.Size = new System.Drawing.Size(596, 220);
-            this.custDataGridView.TabIndex = 0;
+            this.custDataGridView.TabIndex = 5;
+            this.custDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGridView_CellDoubleClick);
+            this.custDataGridView.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.custDataGridView_RowHeaderMouseDoubleClick);
+            this.custDataGridView.Enter += new System.EventHandler(this.custDataGridView_Enter);
             this.custDataGridView.Leave += new System.EventHandler(this.custDataGridView_Leave);
             // 
             // dataGridViewTextBoxColumn105
@@ -1578,7 +1584,7 @@
             this.dedayoutDateTimePicker.Location = new System.Drawing.Point(186, 69);
             this.dedayoutDateTimePicker.Name = "dedayoutDateTimePicker";
             this.dedayoutDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dedayoutDateTimePicker.TabIndex = 12;
+            this.dedayoutDateTimePicker.TabIndex = 3;
             // 
             // dedayinDateTimePicker
             // 
@@ -1586,7 +1592,7 @@
             this.dedayinDateTimePicker.Location = new System.Drawing.Point(186, 46);
             this.dedayinDateTimePicker.Name = "dedayinDateTimePicker";
             this.dedayinDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dedayinDateTimePicker.TabIndex = 7;
+            this.dedayinDateTimePicker.TabIndex = 2;
             // 
             // txtBookType
             // 
@@ -1598,7 +1604,7 @@
             this.txtBookType.Name = "txtBookType";
             this.txtBookType.ReadOnly = true;
             this.txtBookType.Size = new System.Drawing.Size(57, 20);
-            this.txtBookType.TabIndex = 3;
+            this.txtBookType.TabIndex = 1;
             // 
             // label1
             // 
@@ -1658,7 +1664,7 @@
             this.junsnoTextBox.MaxLength = 10;
             this.junsnoTextBox.Name = "junsnoTextBox";
             this.junsnoTextBox.Size = new System.Drawing.Size(100, 20);
-            this.junsnoTextBox.TabIndex = 10;
+            this.junsnoTextBox.TabIndex = 4;
             // 
             // contryearTextBox
             // 
@@ -1667,7 +1673,7 @@
             this.contryearTextBox.MaxLength = 2;
             this.contryearTextBox.Name = "contryearTextBox";
             this.contryearTextBox.Size = new System.Drawing.Size(45, 20);
-            this.contryearTextBox.TabIndex = 11;
+            this.contryearTextBox.TabIndex = 5;
             // 
             // contdateDateTimePicker
             // 
@@ -1675,7 +1681,7 @@
             this.contdateDateTimePicker.Location = new System.Drawing.Point(744, 8);
             this.contdateDateTimePicker.Name = "contdateDateTimePicker";
             this.contdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.contdateDateTimePicker.TabIndex = 8;
+            this.contdateDateTimePicker.TabIndex = 3;
             this.contdateDateTimePicker.CloseUp += new System.EventHandler(this.contdateDateTimePicker_CloseUp);
             // 
             // txtCsRep
@@ -1686,7 +1692,7 @@
             this.txtCsRep.MaxLength = 3;
             this.txtCsRep.Name = "txtCsRep";
             this.txtCsRep.Size = new System.Drawing.Size(54, 20);
-            this.txtCsRep.TabIndex = 5;
+            this.txtCsRep.TabIndex = 2;
             this.txtCsRep.Validating += new System.ComponentModel.CancelEventHandler(this.txtCsRep_Validating);
             this.txtCsRep.Validated += new System.EventHandler(this.txtCsRep_Validated);
             // 
@@ -1706,7 +1712,7 @@
             this.txtSchNamesrch.MaxLength = 34;
             this.txtSchNamesrch.Name = "txtSchNamesrch";
             this.txtSchNamesrch.Size = new System.Drawing.Size(230, 20);
-            this.txtSchNamesrch.TabIndex = 1;
+            this.txtSchNamesrch.TabIndex = 0;
             // 
             // btnSchoolCode
             // 
@@ -1724,7 +1730,7 @@
             this.txtSchCodesrch.MaxLength = 6;
             this.txtSchCodesrch.Name = "txtSchCodesrch";
             this.txtSchCodesrch.Size = new System.Drawing.Size(69, 20);
-            this.txtSchCodesrch.TabIndex = 3;
+            this.txtSchCodesrch.TabIndex = 1;
             // 
             // pg2
             // 
@@ -1807,7 +1813,7 @@
             this.pg2.Location = new System.Drawing.Point(4, 22);
             this.pg2.Name = "pg2";
             this.pg2.Padding = new System.Windows.Forms.Padding(3);
-            this.pg2.Size = new System.Drawing.Size(1226, 628);
+            this.pg2.Size = new System.Drawing.Size(1226, 644);
             this.pg2.TabIndex = 1;
             this.pg2.Text = "Contacts";
             // 
@@ -2234,7 +2240,7 @@
             this.pg3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pg3.Location = new System.Drawing.Point(4, 22);
             this.pg3.Name = "pg3";
-            this.pg3.Size = new System.Drawing.Size(1226, 628);
+            this.pg3.Size = new System.Drawing.Size(1226, 644);
             this.pg3.TabIndex = 2;
             this.pg3.Text = "Telephone";
             this.pg3.Leave += new System.EventHandler(this.pg3_Leave);
@@ -2627,29 +2633,16 @@
             this.tableAdapterManager.datecontTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(369, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(595, 14);
+            this.button2.Location = new System.Drawing.Point(0, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.TabIndex = 0;
             // 
             // statesTableAdapter
             // 
@@ -2786,7 +2779,6 @@
         private System.Windows.Forms.TextBox txtSchCodesrch;
         private DataSets.dsCustTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox junsnoTextBox;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button button2;
         private DataSets.LookUp lookUp;

@@ -8415,7 +8415,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "recvd, cust.TimeStamp\r\nFROM            cust LEFT OUTER JOIN\r\n                   " +
                 "      quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN\r\n                 " +
                 "        produtn ON quotes.invno = produtn.invno\r\nWHERE        (cust.schcode = @s" +
-                "chcode)\r\nORDER BY Qyear DESC";
+                "chcode)\r\nORDER BY Qyear DESC, quotes.invno DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -8498,7 +8498,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         public virtual int FillBySchname(dsCust.custDataTable dataTable, string schname) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((schname == null)) {
-                throw new global::System.ArgumentNullException("schname");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schname));
@@ -8517,7 +8517,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         public virtual dsCust.custDataTable GetDataBy(string schname) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((schname == null)) {
-                throw new global::System.ArgumentNullException("schname");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schname));
