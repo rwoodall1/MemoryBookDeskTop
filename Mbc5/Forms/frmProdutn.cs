@@ -39,7 +39,13 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
         private void frmProdutn_Load(object sender,EventArgs e) {
-          
+            // TODO: This line of code loads data into the 'dsProdutn.wipg' table. You can move, or remove it, as needed.
+            this.wipgTableAdapter.Fill(this.dsProdutn.wipg);
+            // TODO: This line of code loads data into the 'dsProdutn.ptbkb' table. You can move, or remove it, as needed.
+            this.ptbkbTableAdapter.Fill(this.dsProdutn.ptbkb);
+            // TODO: This line of code loads data into the 'dsProdutn.partbk' table. You can move, or remove it, as needed.
+            this.partbkTableAdapter.Fill(this.dsProdutn.partbk);
+
             Fill();
             //if (ApplicationUser.Roles.Contains("SA") || ApplicationUser.Roles.Contains("Administrator")) {
             //    this.dp1descComboBox.ContextMenuStrip = this.mnuEditLkUp;
@@ -73,6 +79,11 @@ namespace Mbc5.Forms.MemoryBook {
                 custTableAdapter.Fill(dsProdutn.cust,Schcode);
                 quotesTableAdapter.Fill(dsProdutn.quotes,Schcode);
                 produtnTableAdapter.Fill(dsProdutn.produtn,Schcode);
+                partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
+                ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
+                wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
+                wipTableAdapter.Fill(dsProdutn.wip,Schcode);
+                
                 }
             if (Invno != 0) {
                 var pos = produtnBindingSource.Find("invno",this.Invno);
@@ -86,23 +97,29 @@ namespace Mbc5.Forms.MemoryBook {
 
                 }
         public override void  Save() {
-            //switch (tabSales.SelectedIndex) {
-            //    case 0:
-            //    case 1:
-            //            {
-            //            SaveSales();
-            //                break;
-            //            }
+            switch (tbProdutn.SelectedIndex) {
+                case 0:
+                    SaveProdutn();
+                    break;
+                case 1:
+                        {
+                        SaveSales();
+                        break;
+                        }
 
-                   
-            //    case 2:
-            //        MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            //        break;
-            //    case 3:
-            //        SavePayment();
-            //        break;
-              
-            //    }
+
+                case 2:
+                    MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    break;
+                case 3:
+                    SavePayment();
+                    break;
+
+                }
+
+            }
+        private void SaveProdutn() {
+
 
             }
         public override void Add() {
@@ -157,9 +174,9 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
 
-        private void pg1_Click(object sender,EventArgs e) {
+        
 
-            }
+      
 
         #endregion
 

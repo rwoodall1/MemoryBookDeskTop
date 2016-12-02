@@ -38,7 +38,6 @@
             System.Windows.Forms.Label dedayoutLabel;
             System.Windows.Forms.Label dedmadeLabel;
             System.Windows.Forms.Label lblfoilclr;
-            System.Windows.Forms.Label label4;
             System.Windows.Forms.Label ptbrcvdLabel;
             System.Windows.Forms.Label ptnopgsLabel;
             System.Windows.Forms.Label ptrecvdLabel;
@@ -61,7 +60,6 @@
             System.Windows.Forms.Label prshpdteLabel;
             System.Windows.Forms.Label prmsdateLabel;
             System.Windows.Forms.Label shpdateLabel;
-            System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label cstsvcdteLabel;
@@ -71,12 +69,16 @@
             System.Windows.Forms.Label jobnoLabel;
             System.Windows.Forms.Label label11;
             System.Windows.Forms.Label label13;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
             System.Windows.Forms.Label typestyleLabel;
+            System.Windows.Forms.Label ptnopgsLabel1;
+            System.Windows.Forms.Label ptrecvdLabel1;
+            System.Windows.Forms.Label booktypeLabel;
+            System.Windows.Forms.Label label14;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
+            System.Windows.Forms.Label schcodeLabel;
+            System.Windows.Forms.Label schcodeLabel1;
             this.tbProdutn = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
-            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsProdutn = new Mbc5.DataSets.dsProdutn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cominitlTextBox = new System.Windows.Forms.TextBox();
             this.comdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -122,6 +124,7 @@
             this.prmsdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.shpdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cprecvDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ptbrcvdDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ptnopgsTextBox = new System.Windows.Forms.TextBox();
             this.ptrecvdDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -137,8 +140,9 @@
             this.coverdescTextBox = new System.Windows.Forms.TextBox();
             this.covertypeTextBox = new System.Windows.Forms.TextBox();
             this.pnl11 = new System.Windows.Forms.Panel();
+            this.booktypeTextBox2 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.vendcdComboBox = new System.Windows.Forms.ComboBox();
             this.cstatComboBox = new System.Windows.Forms.ComboBox();
             this.bkgrndComboBox = new System.Windows.Forms.ComboBox();
@@ -160,7 +164,6 @@
             this.btnEmailProdForm = new System.Windows.Forms.Button();
             this.bkmixedCheckBox = new System.Windows.Forms.CheckBox();
             this.booktypeTextBox = new System.Windows.Forms.TextBox();
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnBookType = new System.Windows.Forms.Button();
             this.allclrckCheckBox = new System.Windows.Forms.CheckBox();
             this.contryearLabel1 = new System.Windows.Forms.Label();
@@ -168,22 +171,41 @@
             this.invnoLabel1 = new System.Windows.Forms.Label();
             this.companyTextBox = new System.Windows.Forms.TextBox();
             this.lblSchoolName = new System.Windows.Forms.Label();
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pg2 = new System.Windows.Forms.TabPage();
             this.pg3 = new System.Windows.Forms.TabPage();
             this.pg4 = new System.Windows.Forms.TabPage();
             this.pg5 = new System.Windows.Forms.TabPage();
+            this.booktypeTextBox1 = new System.Windows.Forms.TextBox();
+            this.ptrecvdDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.ptnopgsTextBox1 = new System.Windows.Forms.TextBox();
+            this.typestyleTextBox = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.pg6 = new System.Windows.Forms.TabPage();
             this.pg7 = new System.Windows.Forms.TabPage();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cpnumTextBox = new System.Windows.Forms.TextBox();
+            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsProdutn = new Mbc5.DataSets.dsProdutn();
+            this.wipgBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ptbkbBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.partbkBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager();
             this.produtnTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.produtnTableAdapter();
             this.quotesTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.quotesTableAdapter();
-            this.typestyleTextBox = new System.Windows.Forms.TextBox();
+            this.partbkTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.partbkTableAdapter();
+            this.ptbkbTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ptbkbTableAdapter();
+            this.wipgTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.wipgTableAdapter();
+            this.wipBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.wipTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.wipTableAdapter();
+            this.schcodeTextBox = new System.Windows.Forms.TextBox();
+            this.coversBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.coversTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coversTableAdapter();
+            this.schcodeTextBox1 = new System.Windows.Forms.TextBox();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -198,7 +220,6 @@
             dedayoutLabel = new System.Windows.Forms.Label();
             dedmadeLabel = new System.Windows.Forms.Label();
             lblfoilclr = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
             ptbrcvdLabel = new System.Windows.Forms.Label();
             ptnopgsLabel = new System.Windows.Forms.Label();
             ptrecvdLabel = new System.Windows.Forms.Label();
@@ -221,7 +242,6 @@
             prshpdteLabel = new System.Windows.Forms.Label();
             prmsdateLabel = new System.Windows.Forms.Label();
             shpdateLabel = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             cstsvcdteLabel = new System.Windows.Forms.Label();
@@ -232,20 +252,33 @@
             label11 = new System.Windows.Forms.Label();
             label13 = new System.Windows.Forms.Label();
             typestyleLabel = new System.Windows.Forms.Label();
+            ptnopgsLabel1 = new System.Windows.Forms.Label();
+            ptrecvdLabel1 = new System.Windows.Forms.Label();
+            booktypeLabel = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            schcodeLabel = new System.Windows.Forms.Label();
+            schcodeLabel1 = new System.Windows.Forms.Label();
             this.tbProdutn.SuspendLayout();
             this.pg1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnl11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            this.pg2.SuspendLayout();
+            this.pg3.SuspendLayout();
             this.pg5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wipgBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbkbBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partbkBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // companyLabel
@@ -287,7 +320,7 @@
             // lblTypeStyle
             // 
             lblTypeStyle.AutoSize = true;
-            lblTypeStyle.Location = new System.Drawing.Point(51, 42);
+            lblTypeStyle.Location = new System.Drawing.Point(53, 53);
             lblTypeStyle.Name = "lblTypeStyle";
             lblTypeStyle.Size = new System.Drawing.Size(57, 13);
             lblTypeStyle.TabIndex = 41;
@@ -296,7 +329,7 @@
             // cstatLabel
             // 
             cstatLabel.AutoSize = true;
-            cstatLabel.Location = new System.Drawing.Point(4, 67);
+            cstatLabel.Location = new System.Drawing.Point(6, 78);
             cstatLabel.Name = "cstatLabel";
             cstatLabel.Size = new System.Drawing.Size(104, 13);
             cstatLabel.TabIndex = 43;
@@ -305,7 +338,7 @@
             // bkgrndLabel
             // 
             bkgrndLabel.AutoSize = true;
-            bkgrndLabel.Location = new System.Drawing.Point(38, 94);
+            bkgrndLabel.Location = new System.Drawing.Point(40, 105);
             bkgrndLabel.Name = "bkgrndLabel";
             bkgrndLabel.Size = new System.Drawing.Size(70, 13);
             bkgrndLabel.TabIndex = 45;
@@ -314,7 +347,7 @@
             // nopagesLabel
             // 
             nopagesLabel.AutoSize = true;
-            nopagesLabel.Location = new System.Drawing.Point(51, 121);
+            nopagesLabel.Location = new System.Drawing.Point(53, 132);
             nopagesLabel.Name = "nopagesLabel";
             nopagesLabel.Size = new System.Drawing.Size(57, 13);
             nopagesLabel.TabIndex = 47;
@@ -323,7 +356,7 @@
             // nocopiesLabel
             // 
             nocopiesLabel.AutoSize = true;
-            nocopiesLabel.Location = new System.Drawing.Point(49, 147);
+            nocopiesLabel.Location = new System.Drawing.Point(51, 158);
             nocopiesLabel.Name = "nocopiesLabel";
             nocopiesLabel.Size = new System.Drawing.Size(59, 13);
             nocopiesLabel.TabIndex = 49;
@@ -332,7 +365,7 @@
             // adduploaddateLabel
             // 
             adduploaddateLabel.AutoSize = true;
-            adduploaddateLabel.Location = new System.Drawing.Point(25, 174);
+            adduploaddateLabel.Location = new System.Drawing.Point(27, 185);
             adduploaddateLabel.Name = "adduploaddateLabel";
             adduploaddateLabel.Size = new System.Drawing.Size(83, 13);
             adduploaddateLabel.TabIndex = 51;
@@ -341,7 +374,7 @@
             // dedayinLabel
             // 
             dedayinLabel.AutoSize = true;
-            dedayinLabel.Location = new System.Drawing.Point(24, 251);
+            dedayinLabel.Location = new System.Drawing.Point(27, 251);
             dedayinLabel.Name = "dedayinLabel";
             dedayinLabel.Size = new System.Drawing.Size(83, 13);
             dedayinLabel.TabIndex = 54;
@@ -350,7 +383,7 @@
             // dedayoutLabel
             // 
             dedayoutLabel.AutoSize = true;
-            dedayoutLabel.Location = new System.Drawing.Point(16, 277);
+            dedayoutLabel.Location = new System.Drawing.Point(19, 277);
             dedayoutLabel.Name = "dedayoutLabel";
             dedayoutLabel.Size = new System.Drawing.Size(91, 13);
             dedayoutLabel.TabIndex = 56;
@@ -359,7 +392,7 @@
             // dedmadeLabel
             // 
             dedmadeLabel.AutoSize = true;
-            dedmadeLabel.Location = new System.Drawing.Point(28, 303);
+            dedmadeLabel.Location = new System.Drawing.Point(31, 303);
             dedmadeLabel.Name = "dedmadeLabel";
             dedmadeLabel.Size = new System.Drawing.Size(79, 13);
             dedmadeLabel.TabIndex = 58;
@@ -368,20 +401,11 @@
             // lblfoilclr
             // 
             lblfoilclr.AutoSize = true;
-            lblfoilclr.Location = new System.Drawing.Point(69, 375);
+            lblfoilclr.Location = new System.Drawing.Point(79, 375);
             lblfoilclr.Name = "lblfoilclr";
             lblfoilclr.Size = new System.Drawing.Size(31, 13);
             lblfoilclr.TabIndex = 62;
             lblfoilclr.Text = "Color";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(155, 384);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(100, 13);
-            label4.TabIndex = 128;
-            label4.Text = "End sheet recvdate";
             // 
             // ptbrcvdLabel
             // 
@@ -404,7 +428,7 @@
             // ptrecvdLabel
             // 
             ptrecvdLabel.AutoSize = true;
-            ptrecvdLabel.Location = new System.Drawing.Point(22, 309);
+            ptrecvdLabel.Location = new System.Drawing.Point(22, 306);
             ptrecvdLabel.Name = "ptrecvdLabel";
             ptrecvdLabel.Size = new System.Drawing.Size(123, 13);
             ptrecvdLabel.TabIndex = 122;
@@ -413,7 +437,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(133, 285);
+            label3.Location = new System.Drawing.Point(44, 278);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(101, 13);
             label3.TabIndex = 121;
@@ -422,7 +446,7 @@
             // diecutLabel2
             // 
             diecutLabel2.AutoSize = true;
-            diecutLabel2.Location = new System.Drawing.Point(141, 262);
+            diecutLabel2.Location = new System.Drawing.Point(78, 255);
             diecutLabel2.Name = "diecutLabel2";
             diecutLabel2.Size = new System.Drawing.Size(67, 13);
             diecutLabel2.TabIndex = 120;
@@ -581,15 +605,6 @@
             shpdateLabel.TabIndex = 108;
             shpdateLabel.Text = "Ship Date";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(116, 294);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(53, 13);
-            label5.TabIndex = 130;
-            label5.Text = "Tag Color";
-            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -677,6 +692,51 @@
             label13.TabIndex = 14;
             label13.Text = "Company";
             // 
+            // typestyleLabel
+            // 
+            typestyleLabel.AutoSize = true;
+            typestyleLabel.Location = new System.Drawing.Point(20, 35);
+            typestyleLabel.Name = "typestyleLabel";
+            typestyleLabel.Size = new System.Drawing.Size(67, 13);
+            typestyleLabel.TabIndex = 135;
+            typestyleLabel.Text = "Type Style";
+            // 
+            // ptnopgsLabel1
+            // 
+            ptnopgsLabel1.AutoSize = true;
+            ptnopgsLabel1.Location = new System.Drawing.Point(253, 35);
+            ptnopgsLabel1.Name = "ptnopgsLabel1";
+            ptnopgsLabel1.Size = new System.Drawing.Size(127, 13);
+            ptnopgsLabel1.TabIndex = 136;
+            ptnopgsLabel1.Text = "# of Pages Received";
+            // 
+            // ptrecvdLabel1
+            // 
+            ptrecvdLabel1.AutoSize = true;
+            ptrecvdLabel1.Location = new System.Drawing.Point(452, 35);
+            ptrecvdLabel1.Name = "ptrecvdLabel1";
+            ptrecvdLabel1.Size = new System.Drawing.Size(87, 13);
+            ptrecvdLabel1.TabIndex = 137;
+            ptrecvdLabel1.Text = "recieved Date";
+            // 
+            // booktypeLabel
+            // 
+            booktypeLabel.AutoSize = true;
+            booktypeLabel.Location = new System.Drawing.Point(751, 35);
+            booktypeLabel.Name = "booktypeLabel";
+            booktypeLabel.Size = new System.Drawing.Size(68, 13);
+            booktypeLabel.TabIndex = 138;
+            booktypeLabel.Text = "Book Type";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(38, 3);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(72, 13);
+            label14.TabIndex = 140;
+            label14.Text = "Book Type(A)";
+            // 
             // tbProdutn
             // 
             this.tbProdutn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -730,17 +790,6 @@
             this.pg1.Size = new System.Drawing.Size(1220, 705);
             this.pg1.TabIndex = 0;
             this.pg1.Text = " Production";
-            this.pg1.Click += new System.EventHandler(this.pg1_Click);
-            // 
-            // produtnBindingSource
-            // 
-            this.produtnBindingSource.DataMember = "produtn";
-            this.produtnBindingSource.DataSource = this.dsProdutn;
-            // 
-            // dsProdutn
-            // 
-            this.dsProdutn.DataSetName = "dsProdutn";
-            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel4
             // 
@@ -865,7 +914,6 @@
             this.panel3.Controls.Add(this.textBox2);
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(label5);
             this.panel3.Location = new System.Drawing.Point(1014, 64);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(203, 316);
@@ -1226,7 +1274,8 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(label4);
+            this.panel1.Controls.Add(this.cpnumTextBox);
+            this.panel1.Controls.Add(this.cprecvDateTimePicker);
             this.panel1.Controls.Add(ptbrcvdLabel);
             this.panel1.Controls.Add(this.ptbrcvdDateTimePicker);
             this.panel1.Controls.Add(ptnopgsLabel);
@@ -1261,12 +1310,20 @@
             this.panel1.Size = new System.Drawing.Size(352, 408);
             this.panel1.TabIndex = 128;
             // 
+            // cprecvDateTimePicker
+            // 
+            this.cprecvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.wipgBindingSource, "cprecv", true));
+            this.cprecvDateTimePicker.Location = new System.Drawing.Point(149, 278);
+            this.cprecvDateTimePicker.Name = "cprecvDateTimePicker";
+            this.cprecvDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.cprecvDateTimePicker.TabIndex = 129;
+            // 
             // ptbrcvdDateTimePicker
             // 
             this.ptbrcvdDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ptbrcvdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "ptbrcvd", true));
-            this.ptbrcvdDateTimePicker.Location = new System.Drawing.Point(150, 354);
+            this.ptbrcvdDateTimePicker.Location = new System.Drawing.Point(149, 354);
             this.ptbrcvdDateTimePicker.Name = "ptbrcvdDateTimePicker";
             this.ptbrcvdDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.ptbrcvdDateTimePicker.TabIndex = 127;
@@ -1276,7 +1333,7 @@
             this.ptnopgsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ptnopgsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ptnopgs", true));
-            this.ptnopgsTextBox.Location = new System.Drawing.Point(155, 329);
+            this.ptnopgsTextBox.Location = new System.Drawing.Point(149, 329);
             this.ptnopgsTextBox.Name = "ptnopgsTextBox";
             this.ptnopgsTextBox.Size = new System.Drawing.Size(100, 20);
             this.ptnopgsTextBox.TabIndex = 125;
@@ -1286,15 +1343,15 @@
             this.ptrecvdDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ptrecvdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "ptrecvd", true));
-            this.ptrecvdDateTimePicker.Location = new System.Drawing.Point(150, 309);
+            this.ptrecvdDateTimePicker.Location = new System.Drawing.Point(149, 306);
             this.ptrecvdDateTimePicker.Name = "ptrecvdDateTimePicker";
             this.ptrecvdDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.ptrecvdDateTimePicker.TabIndex = 123;
             // 
             // colorpgsCheckBox
             // 
-            this.colorpgsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "colorpgs", true));
-            this.colorpgsCheckBox.Location = new System.Drawing.Point(151, 233);
+            this.colorpgsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.wipgBindingSource, "cpnum", true));
+            this.colorpgsCheckBox.Location = new System.Drawing.Point(149, 233);
             this.colorpgsCheckBox.Name = "colorpgsCheckBox";
             this.colorpgsCheckBox.Size = new System.Drawing.Size(104, 24);
             this.colorpgsCheckBox.TabIndex = 119;
@@ -1306,7 +1363,7 @@
             this.coilclrTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.coilclrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coilclr", true));
-            this.coilclrTextBox.Location = new System.Drawing.Point(150, 210);
+            this.coilclrTextBox.Location = new System.Drawing.Point(149, 210);
             this.coilclrTextBox.Name = "coilclrTextBox";
             this.coilclrTextBox.Size = new System.Drawing.Size(100, 20);
             this.coilclrTextBox.TabIndex = 118;
@@ -1316,7 +1373,7 @@
             this.perfbindTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.perfbindTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "perfbind", true));
-            this.perfbindTextBox.Location = new System.Drawing.Point(150, 188);
+            this.perfbindTextBox.Location = new System.Drawing.Point(149, 188);
             this.perfbindTextBox.Name = "perfbindTextBox";
             this.perfbindTextBox.Size = new System.Drawing.Size(100, 20);
             this.perfbindTextBox.TabIndex = 116;
@@ -1326,7 +1383,7 @@
             this.laminatedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.laminatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "laminated", true));
-            this.laminatedTextBox.Location = new System.Drawing.Point(150, 167);
+            this.laminatedTextBox.Location = new System.Drawing.Point(149, 167);
             this.laminatedTextBox.Name = "laminatedTextBox";
             this.laminatedTextBox.Size = new System.Drawing.Size(33, 20);
             this.laminatedTextBox.TabIndex = 114;
@@ -1336,7 +1393,7 @@
             this.diecutTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.diecutTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "diecut", true));
-            this.diecutTextBox.Location = new System.Drawing.Point(150, 102);
+            this.diecutTextBox.Location = new System.Drawing.Point(149, 102);
             this.diecutTextBox.Name = "diecutTextBox";
             this.diecutTextBox.Size = new System.Drawing.Size(100, 20);
             this.diecutTextBox.TabIndex = 112;
@@ -1346,7 +1403,7 @@
             this.dcdesc2TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dcdesc2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "dcdesc2", true));
-            this.dcdesc2TextBox.Location = new System.Drawing.Point(150, 146);
+            this.dcdesc2TextBox.Location = new System.Drawing.Point(149, 146);
             this.dcdesc2TextBox.Name = "dcdesc2TextBox";
             this.dcdesc2TextBox.Size = new System.Drawing.Size(100, 20);
             this.dcdesc2TextBox.TabIndex = 110;
@@ -1356,7 +1413,7 @@
             this.dcdesc1TextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dcdesc1TextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "dcdesc1", true));
-            this.dcdesc1TextBox1.Location = new System.Drawing.Point(150, 124);
+            this.dcdesc1TextBox1.Location = new System.Drawing.Point(149, 124);
             this.dcdesc1TextBox1.Name = "dcdesc1TextBox1";
             this.dcdesc1TextBox1.Size = new System.Drawing.Size(100, 20);
             this.dcdesc1TextBox1.TabIndex = 108;
@@ -1366,7 +1423,7 @@
             this.colorsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.colorsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "colors", true));
-            this.colorsTextBox.Location = new System.Drawing.Point(150, 79);
+            this.colorsTextBox.Location = new System.Drawing.Point(149, 79);
             this.colorsTextBox.Name = "colorsTextBox";
             this.colorsTextBox.Size = new System.Drawing.Size(100, 20);
             this.colorsTextBox.TabIndex = 106;
@@ -1376,7 +1433,7 @@
             this.screcvDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.screcvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "screcv", true));
-            this.screcvDateTimePicker.Location = new System.Drawing.Point(150, 56);
+            this.screcvDateTimePicker.Location = new System.Drawing.Point(149, 56);
             this.screcvDateTimePicker.Name = "screcvDateTimePicker";
             this.screcvDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.screcvDateTimePicker.TabIndex = 104;
@@ -1386,7 +1443,7 @@
             this.coverdescTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.coverdescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coverdesc", true));
-            this.coverdescTextBox.Location = new System.Drawing.Point(150, 34);
+            this.coverdescTextBox.Location = new System.Drawing.Point(149, 34);
             this.coverdescTextBox.Name = "coverdescTextBox";
             this.coverdescTextBox.Size = new System.Drawing.Size(100, 20);
             this.coverdescTextBox.TabIndex = 102;
@@ -1396,15 +1453,17 @@
             this.covertypeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.covertypeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "covertype", true));
-            this.covertypeTextBox.Location = new System.Drawing.Point(150, 12);
+            this.covertypeTextBox.Location = new System.Drawing.Point(149, 12);
             this.covertypeTextBox.Name = "covertypeTextBox";
             this.covertypeTextBox.Size = new System.Drawing.Size(100, 20);
             this.covertypeTextBox.TabIndex = 100;
             // 
             // pnl11
             // 
+            this.pnl11.Controls.Add(this.booktypeTextBox2);
+            this.pnl11.Controls.Add(label14);
+            this.pnl11.Controls.Add(this.textBox5);
             this.pnl11.Controls.Add(this.label2);
-            this.pnl11.Controls.Add(this.label1);
             this.pnl11.Controls.Add(this.vendcdComboBox);
             this.pnl11.Controls.Add(lblTypeStyle);
             this.pnl11.Controls.Add(this.cstatComboBox);
@@ -1433,29 +1492,36 @@
             this.pnl11.Size = new System.Drawing.Size(318, 400);
             this.pnl11.TabIndex = 127;
             // 
+            // booktypeTextBox2
+            // 
+            this.booktypeTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "booktype", true));
+            this.booktypeTextBox2.Location = new System.Drawing.Point(117, 26);
+            this.booktypeTextBox2.Name = "booktypeTextBox2";
+            this.booktypeTextBox2.Size = new System.Drawing.Size(44, 20);
+            this.booktypeTextBox2.TabIndex = 142;
+            // 
+            // textBox5
+            // 
+            this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "booktype", true));
+            this.textBox5.Location = new System.Drawing.Point(117, 3);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(44, 20);
+            this.textBox5.TabIndex = 141;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(38, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 65;
-            this.label2.Text = "booktype b";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 64;
-            this.label1.Text = "boo type a";
+            this.label2.Text = "Book Type(B)";
             // 
             // vendcdComboBox
             // 
             this.vendcdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "typestyle", true));
             this.vendcdComboBox.FormattingEnabled = true;
-            this.vendcdComboBox.Location = new System.Drawing.Point(114, 39);
+            this.vendcdComboBox.Location = new System.Drawing.Point(114, 50);
             this.vendcdComboBox.Name = "vendcdComboBox";
             this.vendcdComboBox.Size = new System.Drawing.Size(121, 21);
             this.vendcdComboBox.TabIndex = 42;
@@ -1464,7 +1530,7 @@
             // 
             this.cstatComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "cstat", true));
             this.cstatComboBox.FormattingEnabled = true;
-            this.cstatComboBox.Location = new System.Drawing.Point(114, 64);
+            this.cstatComboBox.Location = new System.Drawing.Point(114, 75);
             this.cstatComboBox.Name = "cstatComboBox";
             this.cstatComboBox.Size = new System.Drawing.Size(121, 21);
             this.cstatComboBox.TabIndex = 44;
@@ -1473,7 +1539,7 @@
             // 
             this.bkgrndComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "bkgrnd", true));
             this.bkgrndComboBox.FormattingEnabled = true;
-            this.bkgrndComboBox.Location = new System.Drawing.Point(114, 91);
+            this.bkgrndComboBox.Location = new System.Drawing.Point(114, 102);
             this.bkgrndComboBox.Name = "bkgrndComboBox";
             this.bkgrndComboBox.Size = new System.Drawing.Size(121, 21);
             this.bkgrndComboBox.TabIndex = 46;
@@ -1481,7 +1547,7 @@
             // nopagesTextBox
             // 
             this.nopagesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "nopages", true));
-            this.nopagesTextBox.Location = new System.Drawing.Point(114, 118);
+            this.nopagesTextBox.Location = new System.Drawing.Point(114, 129);
             this.nopagesTextBox.Name = "nopagesTextBox";
             this.nopagesTextBox.ReadOnly = true;
             this.nopagesTextBox.Size = new System.Drawing.Size(100, 20);
@@ -1490,7 +1556,7 @@
             // nocopiesTextBox
             // 
             this.nocopiesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "nocopies", true));
-            this.nocopiesTextBox.Location = new System.Drawing.Point(114, 144);
+            this.nocopiesTextBox.Location = new System.Drawing.Point(114, 155);
             this.nocopiesTextBox.Name = "nocopiesTextBox";
             this.nocopiesTextBox.ReadOnly = true;
             this.nocopiesTextBox.Size = new System.Drawing.Size(100, 20);
@@ -1499,7 +1565,7 @@
             // adduploaddateDateTimePicker
             // 
             this.adduploaddateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "adduploaddate", true));
-            this.adduploaddateDateTimePicker.Location = new System.Drawing.Point(114, 170);
+            this.adduploaddateDateTimePicker.Location = new System.Drawing.Point(114, 181);
             this.adduploaddateDateTimePicker.Name = "adduploaddateDateTimePicker";
             this.adduploaddateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.adduploaddateDateTimePicker.TabIndex = 52;
@@ -1559,7 +1625,7 @@
             // 
             // btnCalcDeadLine
             // 
-            this.btnCalcDeadLine.Location = new System.Drawing.Point(10, 216);
+            this.btnCalcDeadLine.Location = new System.Drawing.Point(13, 216);
             this.btnCalcDeadLine.Name = "btnCalcDeadLine";
             this.btnCalcDeadLine.Size = new System.Drawing.Size(97, 23);
             this.btnCalcDeadLine.TabIndex = 53;
@@ -1646,11 +1712,6 @@
             this.booktypeTextBox.Size = new System.Drawing.Size(53, 20);
             this.booktypeTextBox.TabIndex = 15;
             // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsProdutn;
-            // 
             // btnBookType
             // 
             this.btnBookType.Location = new System.Drawing.Point(13, 37);
@@ -1717,15 +1778,12 @@
             this.lblSchoolName.TabIndex = 8;
             this.lblSchoolName.Text = "label1";
             // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsProdutn;
-            // 
             // pg2
             // 
             this.pg2.AutoScroll = true;
             this.pg2.BackColor = System.Drawing.SystemColors.Control;
+            this.pg2.Controls.Add(schcodeLabel);
+            this.pg2.Controls.Add(this.schcodeTextBox);
             this.pg2.Location = new System.Drawing.Point(4, 22);
             this.pg2.Name = "pg2";
             this.pg2.Size = new System.Drawing.Size(1220, 705);
@@ -1736,6 +1794,8 @@
             // 
             this.pg3.AutoScroll = true;
             this.pg3.BackColor = System.Drawing.SystemColors.Control;
+            this.pg3.Controls.Add(schcodeLabel1);
+            this.pg3.Controls.Add(this.schcodeTextBox1);
             this.pg3.Location = new System.Drawing.Point(4, 22);
             this.pg3.Name = "pg3";
             this.pg3.Padding = new System.Windows.Forms.Padding(3);
@@ -1756,6 +1816,12 @@
             // pg5
             // 
             this.pg5.BackColor = System.Drawing.SystemColors.Control;
+            this.pg5.Controls.Add(booktypeLabel);
+            this.pg5.Controls.Add(this.booktypeTextBox1);
+            this.pg5.Controls.Add(ptrecvdLabel1);
+            this.pg5.Controls.Add(this.ptrecvdDateTimePicker1);
+            this.pg5.Controls.Add(ptnopgsLabel1);
+            this.pg5.Controls.Add(this.ptnopgsTextBox1);
             this.pg5.Controls.Add(typestyleLabel);
             this.pg5.Controls.Add(this.typestyleTextBox);
             this.pg5.Controls.Add(this.checkBox1);
@@ -1768,6 +1834,38 @@
             this.pg5.Size = new System.Drawing.Size(1220, 705);
             this.pg5.TabIndex = 4;
             this.pg5.Text = "Partial Book (A)";
+            // 
+            // booktypeTextBox1
+            // 
+            this.booktypeTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "booktype", true));
+            this.booktypeTextBox1.Location = new System.Drawing.Point(820, 35);
+            this.booktypeTextBox1.Name = "booktypeTextBox1";
+            this.booktypeTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.booktypeTextBox1.TabIndex = 139;
+            // 
+            // ptrecvdDateTimePicker1
+            // 
+            this.ptrecvdDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "ptrecvd", true));
+            this.ptrecvdDateTimePicker1.Location = new System.Drawing.Point(543, 35);
+            this.ptrecvdDateTimePicker1.Name = "ptrecvdDateTimePicker1";
+            this.ptrecvdDateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.ptrecvdDateTimePicker1.TabIndex = 138;
+            // 
+            // ptnopgsTextBox1
+            // 
+            this.ptnopgsTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ptnopgs", true));
+            this.ptnopgsTextBox1.Location = new System.Drawing.Point(386, 35);
+            this.ptnopgsTextBox1.Name = "ptnopgsTextBox1";
+            this.ptnopgsTextBox1.Size = new System.Drawing.Size(41, 20);
+            this.ptnopgsTextBox1.TabIndex = 137;
+            // 
+            // typestyleTextBox
+            // 
+            this.typestyleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "typestyle", true));
+            this.typestyleTextBox.Location = new System.Drawing.Point(87, 35);
+            this.typestyleTextBox.Name = "typestyleTextBox";
+            this.typestyleTextBox.Size = new System.Drawing.Size(154, 20);
+            this.typestyleTextBox.TabIndex = 136;
             // 
             // checkBox1
             // 
@@ -1821,6 +1919,49 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // cpnumTextBox
+            // 
+            this.cpnumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "cpnum", true));
+            this.cpnumTextBox.Location = new System.Drawing.Point(149, 255);
+            this.cpnumTextBox.Name = "cpnumTextBox";
+            this.cpnumTextBox.Size = new System.Drawing.Size(50, 20);
+            this.cpnumTextBox.TabIndex = 130;
+            // 
+            // produtnBindingSource
+            // 
+            this.produtnBindingSource.DataMember = "produtn";
+            this.produtnBindingSource.DataSource = this.dsProdutn;
+            // 
+            // dsProdutn
+            // 
+            this.dsProdutn.DataSetName = "dsProdutn";
+            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // wipgBindingSource
+            // 
+            this.wipgBindingSource.DataMember = "wipg";
+            this.wipgBindingSource.DataSource = this.dsProdutn;
+            // 
+            // ptbkbBindingSource
+            // 
+            this.ptbkbBindingSource.DataMember = "ptbkb";
+            this.ptbkbBindingSource.DataSource = this.dsProdutn;
+            // 
+            // partbkBindingSource
+            // 
+            this.partbkBindingSource.DataMember = "partbk";
+            this.partbkBindingSource.DataSource = this.dsProdutn;
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsProdutn;
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsProdutn;
+            // 
             // custTableAdapter
             // 
             this.custTableAdapter.ClearBeforeFill = true;
@@ -1841,22 +1982,69 @@
             // 
             this.quotesTableAdapter.ClearBeforeFill = true;
             // 
-            // typestyleLabel
+            // partbkTableAdapter
             // 
-            typestyleLabel.AutoSize = true;
-            typestyleLabel.Location = new System.Drawing.Point(20, 34);
-            typestyleLabel.Name = "typestyleLabel";
-            typestyleLabel.Size = new System.Drawing.Size(67, 13);
-            typestyleLabel.TabIndex = 135;
-            typestyleLabel.Text = "Type Style";
+            this.partbkTableAdapter.ClearBeforeFill = true;
             // 
-            // typestyleTextBox
+            // ptbkbTableAdapter
             // 
-            this.typestyleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "typestyle", true));
-            this.typestyleTextBox.Location = new System.Drawing.Point(87, 34);
-            this.typestyleTextBox.Name = "typestyleTextBox";
-            this.typestyleTextBox.Size = new System.Drawing.Size(154, 20);
-            this.typestyleTextBox.TabIndex = 136;
+            this.ptbkbTableAdapter.ClearBeforeFill = true;
+            // 
+            // wipgTableAdapter
+            // 
+            this.wipgTableAdapter.ClearBeforeFill = true;
+            // 
+            // wipBindingSource
+            // 
+            this.wipBindingSource.DataMember = "wip";
+            this.wipBindingSource.DataSource = this.dsProdutn;
+            // 
+            // wipTableAdapter
+            // 
+            this.wipTableAdapter.ClearBeforeFill = true;
+            // 
+            // schcodeLabel
+            // 
+            schcodeLabel.AutoSize = true;
+            schcodeLabel.Location = new System.Drawing.Point(136, 98);
+            schcodeLabel.Name = "schcodeLabel";
+            schcodeLabel.Size = new System.Drawing.Size(59, 13);
+            schcodeLabel.TabIndex = 0;
+            schcodeLabel.Text = "schcode:";
+            // 
+            // schcodeTextBox
+            // 
+            this.schcodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipBindingSource, "schcode", true));
+            this.schcodeTextBox.Location = new System.Drawing.Point(201, 95);
+            this.schcodeTextBox.Name = "schcodeTextBox";
+            this.schcodeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.schcodeTextBox.TabIndex = 1;
+            // 
+            // coversBindingSource
+            // 
+            this.coversBindingSource.DataSource = this.dsProdutn;
+            this.coversBindingSource.Position = 0;
+            // 
+            // coversTableAdapter
+            // 
+            this.coversTableAdapter.ClearBeforeFill = true;
+            // 
+            // schcodeLabel1
+            // 
+            schcodeLabel1.AutoSize = true;
+            schcodeLabel1.Location = new System.Drawing.Point(92, 75);
+            schcodeLabel1.Name = "schcodeLabel1";
+            schcodeLabel1.Size = new System.Drawing.Size(59, 13);
+            schcodeLabel1.TabIndex = 0;
+            schcodeLabel1.Text = "schcode:";
+            // 
+            // schcodeTextBox1
+            // 
+            this.schcodeTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource, "schcode", true));
+            this.schcodeTextBox1.Location = new System.Drawing.Point(157, 72);
+            this.schcodeTextBox1.Name = "schcodeTextBox1";
+            this.schcodeTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.schcodeTextBox1.TabIndex = 1;
             // 
             // frmProdutn
             // 
@@ -1872,8 +2060,6 @@
             this.tbProdutn.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -1886,11 +2072,22 @@
             this.panel1.PerformLayout();
             this.pnl11.ResumeLayout(false);
             this.pnl11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            this.pg2.ResumeLayout(false);
+            this.pg2.PerformLayout();
+            this.pg3.ResumeLayout(false);
+            this.pg3.PerformLayout();
             this.pg5.ResumeLayout(false);
             this.pg5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wipgBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbkbBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partbkBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -1927,7 +2124,6 @@
         private System.Windows.Forms.CheckBox reccardsentCheckBox;
         private System.Windows.Forms.Panel pnl11;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox vendcdComboBox;
         private System.Windows.Forms.ComboBox cstatComboBox;
         private System.Windows.Forms.ComboBox bkgrndComboBox;
@@ -2007,5 +2203,24 @@
         private System.Windows.Forms.TabPage pg6;
         private System.Windows.Forms.TabPage pg7;
         private System.Windows.Forms.TextBox typestyleTextBox;
+        private System.Windows.Forms.TextBox ptnopgsTextBox1;
+        private System.Windows.Forms.DateTimePicker ptrecvdDateTimePicker1;
+        private System.Windows.Forms.BindingSource partbkBindingSource;
+        private DataSets.dsProdutnTableAdapters.partbkTableAdapter partbkTableAdapter;
+        private System.Windows.Forms.TextBox booktypeTextBox1;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.BindingSource ptbkbBindingSource;
+        private DataSets.dsProdutnTableAdapters.ptbkbTableAdapter ptbkbTableAdapter;
+        private System.Windows.Forms.TextBox booktypeTextBox2;
+        private System.Windows.Forms.BindingSource wipgBindingSource;
+        private DataSets.dsProdutnTableAdapters.wipgTableAdapter wipgTableAdapter;
+        private System.Windows.Forms.DateTimePicker cprecvDateTimePicker;
+        private System.Windows.Forms.TextBox cpnumTextBox;
+        private System.Windows.Forms.BindingSource wipBindingSource;
+        private DataSets.dsProdutnTableAdapters.wipTableAdapter wipTableAdapter;
+        private System.Windows.Forms.TextBox schcodeTextBox;
+        private System.Windows.Forms.BindingSource coversBindingSource;
+        private DataSets.dsProdutnTableAdapters.coversTableAdapter coversTableAdapter;
+        private System.Windows.Forms.TextBox schcodeTextBox1;
         }
     }

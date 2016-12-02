@@ -2,6 +2,8 @@
 
 
     partial class dsProdutn {
+        partial class produtnDataTable {
+            }
         }
     }
 
