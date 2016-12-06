@@ -74,13 +74,15 @@
             System.Windows.Forms.Label ptrecvdLabel1;
             System.Windows.Forms.Label booktypeLabel;
             System.Windows.Forms.Label label14;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
             System.Windows.Forms.Label schcodeLabel;
             System.Windows.Forms.Label schcodeLabel1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
             this.tbProdutn = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cominitlTextBox = new System.Windows.Forms.TextBox();
+            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsProdutn = new Mbc5.DataSets.dsProdutn();
             this.comdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.cstsvcdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.btnEmailPw = new System.Windows.Forms.Button();
@@ -104,10 +106,10 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.btnCalCS = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtCalcResult = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDays = new System.Windows.Forms.TextBox();
+            this.txtWeeks = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnKitRecv = new System.Windows.Forms.Button();
@@ -124,6 +126,8 @@
             this.prmsdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.shpdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cpnumTextBox = new System.Windows.Forms.TextBox();
+            this.wipgBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cprecvDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ptbrcvdDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ptnopgsTextBox = new System.Windows.Forms.TextBox();
@@ -141,7 +145,9 @@
             this.covertypeTextBox = new System.Windows.Forms.TextBox();
             this.pnl11 = new System.Windows.Forms.Panel();
             this.booktypeTextBox2 = new System.Windows.Forms.TextBox();
+            this.ptbkbBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.partbkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.vendcdComboBox = new System.Windows.Forms.ComboBox();
             this.cstatComboBox = new System.Windows.Forms.ComboBox();
@@ -164,6 +170,7 @@
             this.btnEmailProdForm = new System.Windows.Forms.Button();
             this.bkmixedCheckBox = new System.Windows.Forms.CheckBox();
             this.booktypeTextBox = new System.Windows.Forms.TextBox();
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnBookType = new System.Windows.Forms.Button();
             this.allclrckCheckBox = new System.Windows.Forms.CheckBox();
             this.contryearLabel1 = new System.Windows.Forms.Label();
@@ -171,8 +178,13 @@
             this.invnoLabel1 = new System.Windows.Forms.Label();
             this.companyTextBox = new System.Windows.Forms.TextBox();
             this.lblSchoolName = new System.Windows.Forms.Label();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pg2 = new System.Windows.Forms.TabPage();
+            this.schcodeTextBox = new System.Windows.Forms.TextBox();
+            this.wipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pg3 = new System.Windows.Forms.TabPage();
+            this.schcodeTextBox1 = new System.Windows.Forms.TextBox();
+            this.coversBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pg4 = new System.Windows.Forms.TabPage();
             this.pg5 = new System.Windows.Forms.TabPage();
             this.booktypeTextBox1 = new System.Windows.Forms.TextBox();
@@ -185,14 +197,6 @@
             this.pg6 = new System.Windows.Forms.TabPage();
             this.pg7 = new System.Windows.Forms.TabPage();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cpnumTextBox = new System.Windows.Forms.TextBox();
-            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsProdutn = new Mbc5.DataSets.dsProdutn();
-            this.wipgBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ptbkbBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.partbkBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager();
             this.produtnTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.produtnTableAdapter();
@@ -200,12 +204,9 @@
             this.partbkTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.partbkTableAdapter();
             this.ptbkbTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ptbkbTableAdapter();
             this.wipgTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.wipgTableAdapter();
-            this.wipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.wipTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.wipTableAdapter();
-            this.schcodeTextBox = new System.Windows.Forms.TextBox();
-            this.coversBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.coversTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coversTableAdapter();
-            this.schcodeTextBox1 = new System.Windows.Forms.TextBox();
+            this.btnDeadLineInfo = new System.Windows.Forms.Button();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -261,24 +262,24 @@
             this.tbProdutn.SuspendLayout();
             this.pg1.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.pnl11.SuspendLayout();
-            this.pg2.SuspendLayout();
-            this.pg3.SuspendLayout();
-            this.pg5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipgBindingSource)).BeginInit();
+            this.pnl11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbkbBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partbkBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            this.pg2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).BeginInit();
+            this.pg3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).BeginInit();
+            this.pg5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // companyLabel
@@ -737,6 +738,24 @@
             label14.TabIndex = 140;
             label14.Text = "Book Type(A)";
             // 
+            // schcodeLabel
+            // 
+            schcodeLabel.AutoSize = true;
+            schcodeLabel.Location = new System.Drawing.Point(136, 98);
+            schcodeLabel.Name = "schcodeLabel";
+            schcodeLabel.Size = new System.Drawing.Size(59, 13);
+            schcodeLabel.TabIndex = 0;
+            schcodeLabel.Text = "schcode:";
+            // 
+            // schcodeLabel1
+            // 
+            schcodeLabel1.AutoSize = true;
+            schcodeLabel1.Location = new System.Drawing.Point(92, 75);
+            schcodeLabel1.Name = "schcodeLabel1";
+            schcodeLabel1.Size = new System.Drawing.Size(59, 13);
+            schcodeLabel1.TabIndex = 0;
+            schcodeLabel1.Text = "schcode:";
+            // 
             // tbProdutn
             // 
             this.tbProdutn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -824,6 +843,16 @@
             this.cominitlTextBox.Size = new System.Drawing.Size(100, 20);
             this.cominitlTextBox.TabIndex = 154;
             // 
+            // produtnBindingSource
+            // 
+            this.produtnBindingSource.DataMember = "produtn";
+            this.produtnBindingSource.DataSource = this.dsProdutn;
+            // 
+            // dsProdutn
+            // 
+            this.dsProdutn.DataSetName = "dsProdutn";
+            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // comdateDateTimePicker
             // 
             this.comdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "comdate", true));
@@ -909,10 +938,10 @@
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Controls.Add(this.btnCalCS);
-            this.panel3.Controls.Add(this.textBox3);
+            this.panel3.Controls.Add(this.txtCalcResult);
             this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.txtDays);
+            this.panel3.Controls.Add(this.txtWeeks);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Location = new System.Drawing.Point(1014, 64);
             this.panel3.Name = "panel3";
@@ -1091,13 +1120,15 @@
             this.btnCalCS.TabIndex = 136;
             this.btnCalCS.Text = "Calc CS Date";
             this.btnCalCS.UseVisualStyleBackColor = true;
+            this.btnCalCS.Click += new System.EventHandler(this.btnCalCS_Click);
             // 
-            // textBox3
+            // txtCalcResult
             // 
-            this.textBox3.Location = new System.Drawing.Point(72, 33);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 135;
+            this.txtCalcResult.Location = new System.Drawing.Point(72, 33);
+            this.txtCalcResult.Name = "txtCalcResult";
+            this.txtCalcResult.ReadOnly = true;
+            this.txtCalcResult.Size = new System.Drawing.Size(100, 20);
+            this.txtCalcResult.TabIndex = 135;
             // 
             // label10
             // 
@@ -1110,19 +1141,19 @@
             this.label10.TabIndex = 134;
             this.label10.Text = "CS Date";
             // 
-            // textBox2
+            // txtDays
             // 
-            this.textBox2.Location = new System.Drawing.Point(134, 9);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(38, 20);
-            this.textBox2.TabIndex = 133;
+            this.txtDays.Location = new System.Drawing.Point(134, 9);
+            this.txtDays.Name = "txtDays";
+            this.txtDays.Size = new System.Drawing.Size(38, 20);
+            this.txtDays.TabIndex = 133;
             // 
-            // textBox1
+            // txtWeeks
             // 
-            this.textBox1.Location = new System.Drawing.Point(52, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(38, 20);
-            this.textBox1.TabIndex = 132;
+            this.txtWeeks.Location = new System.Drawing.Point(52, 9);
+            this.txtWeeks.Name = "txtWeeks";
+            this.txtWeeks.Size = new System.Drawing.Size(38, 20);
+            this.txtWeeks.TabIndex = 132;
             // 
             // label8
             // 
@@ -1310,6 +1341,19 @@
             this.panel1.Size = new System.Drawing.Size(352, 408);
             this.panel1.TabIndex = 128;
             // 
+            // cpnumTextBox
+            // 
+            this.cpnumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "cpnum", true));
+            this.cpnumTextBox.Location = new System.Drawing.Point(149, 255);
+            this.cpnumTextBox.Name = "cpnumTextBox";
+            this.cpnumTextBox.Size = new System.Drawing.Size(50, 20);
+            this.cpnumTextBox.TabIndex = 130;
+            // 
+            // wipgBindingSource
+            // 
+            this.wipgBindingSource.DataMember = "wipg";
+            this.wipgBindingSource.DataSource = this.dsProdutn;
+            // 
             // cprecvDateTimePicker
             // 
             this.cprecvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.wipgBindingSource, "cprecv", true));
@@ -1460,6 +1504,7 @@
             // 
             // pnl11
             // 
+            this.pnl11.Controls.Add(this.btnDeadLineInfo);
             this.pnl11.Controls.Add(this.booktypeTextBox2);
             this.pnl11.Controls.Add(label14);
             this.pnl11.Controls.Add(this.textBox5);
@@ -1500,6 +1545,11 @@
             this.booktypeTextBox2.Size = new System.Drawing.Size(44, 20);
             this.booktypeTextBox2.TabIndex = 142;
             // 
+            // ptbkbBindingSource
+            // 
+            this.ptbkbBindingSource.DataMember = "ptbkb";
+            this.ptbkbBindingSource.DataSource = this.dsProdutn;
+            // 
             // textBox5
             // 
             this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "booktype", true));
@@ -1507,6 +1557,11 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(44, 20);
             this.textBox5.TabIndex = 141;
+            // 
+            // partbkBindingSource
+            // 
+            this.partbkBindingSource.DataMember = "partbk";
+            this.partbkBindingSource.DataSource = this.dsProdutn;
             // 
             // label2
             // 
@@ -1625,12 +1680,15 @@
             // 
             // btnCalcDeadLine
             // 
+            this.btnCalcDeadLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalcDeadLine.ForeColor = System.Drawing.Color.Blue;
             this.btnCalcDeadLine.Location = new System.Drawing.Point(13, 216);
             this.btnCalcDeadLine.Name = "btnCalcDeadLine";
-            this.btnCalcDeadLine.Size = new System.Drawing.Size(97, 23);
+            this.btnCalcDeadLine.Size = new System.Drawing.Size(109, 23);
             this.btnCalcDeadLine.TabIndex = 53;
             this.btnCalcDeadLine.Text = "Calc Deadline In";
             this.btnCalcDeadLine.UseVisualStyleBackColor = true;
+            this.btnCalcDeadLine.Click += new System.EventHandler(this.btnCalcDeadLine_Click);
             // 
             // reccardsentCheckBox
             // 
@@ -1712,6 +1770,11 @@
             this.booktypeTextBox.Size = new System.Drawing.Size(53, 20);
             this.booktypeTextBox.TabIndex = 15;
             // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsProdutn;
+            // 
             // btnBookType
             // 
             this.btnBookType.Location = new System.Drawing.Point(13, 37);
@@ -1778,6 +1841,11 @@
             this.lblSchoolName.TabIndex = 8;
             this.lblSchoolName.Text = "label1";
             // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsProdutn;
+            // 
             // pg2
             // 
             this.pg2.AutoScroll = true;
@@ -1789,6 +1857,19 @@
             this.pg2.Size = new System.Drawing.Size(1220, 705);
             this.pg2.TabIndex = 2;
             this.pg2.Text = "WIP";
+            // 
+            // schcodeTextBox
+            // 
+            this.schcodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipBindingSource, "schcode", true));
+            this.schcodeTextBox.Location = new System.Drawing.Point(201, 95);
+            this.schcodeTextBox.Name = "schcodeTextBox";
+            this.schcodeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.schcodeTextBox.TabIndex = 1;
+            // 
+            // wipBindingSource
+            // 
+            this.wipBindingSource.DataMember = "wip";
+            this.wipBindingSource.DataSource = this.dsProdutn;
             // 
             // pg3
             // 
@@ -1802,6 +1883,19 @@
             this.pg3.Size = new System.Drawing.Size(1220, 705);
             this.pg3.TabIndex = 1;
             this.pg3.Text = "Special Covers";
+            // 
+            // schcodeTextBox1
+            // 
+            this.schcodeTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource, "schcode", true));
+            this.schcodeTextBox1.Location = new System.Drawing.Point(157, 72);
+            this.schcodeTextBox1.Name = "schcodeTextBox1";
+            this.schcodeTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.schcodeTextBox1.TabIndex = 1;
+            // 
+            // coversBindingSource
+            // 
+            this.coversBindingSource.DataSource = this.dsProdutn;
+            this.coversBindingSource.Position = 0;
             // 
             // pg4
             // 
@@ -1919,49 +2013,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // cpnumTextBox
-            // 
-            this.cpnumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "cpnum", true));
-            this.cpnumTextBox.Location = new System.Drawing.Point(149, 255);
-            this.cpnumTextBox.Name = "cpnumTextBox";
-            this.cpnumTextBox.Size = new System.Drawing.Size(50, 20);
-            this.cpnumTextBox.TabIndex = 130;
-            // 
-            // produtnBindingSource
-            // 
-            this.produtnBindingSource.DataMember = "produtn";
-            this.produtnBindingSource.DataSource = this.dsProdutn;
-            // 
-            // dsProdutn
-            // 
-            this.dsProdutn.DataSetName = "dsProdutn";
-            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // wipgBindingSource
-            // 
-            this.wipgBindingSource.DataMember = "wipg";
-            this.wipgBindingSource.DataSource = this.dsProdutn;
-            // 
-            // ptbkbBindingSource
-            // 
-            this.ptbkbBindingSource.DataMember = "ptbkb";
-            this.ptbkbBindingSource.DataSource = this.dsProdutn;
-            // 
-            // partbkBindingSource
-            // 
-            this.partbkBindingSource.DataMember = "partbk";
-            this.partbkBindingSource.DataSource = this.dsProdutn;
-            // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsProdutn;
-            // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsProdutn;
-            // 
             // custTableAdapter
             // 
             this.custTableAdapter.ClearBeforeFill = true;
@@ -1994,57 +2045,26 @@
             // 
             this.wipgTableAdapter.ClearBeforeFill = true;
             // 
-            // wipBindingSource
-            // 
-            this.wipBindingSource.DataMember = "wip";
-            this.wipBindingSource.DataSource = this.dsProdutn;
-            // 
             // wipTableAdapter
             // 
             this.wipTableAdapter.ClearBeforeFill = true;
-            // 
-            // schcodeLabel
-            // 
-            schcodeLabel.AutoSize = true;
-            schcodeLabel.Location = new System.Drawing.Point(136, 98);
-            schcodeLabel.Name = "schcodeLabel";
-            schcodeLabel.Size = new System.Drawing.Size(59, 13);
-            schcodeLabel.TabIndex = 0;
-            schcodeLabel.Text = "schcode:";
-            // 
-            // schcodeTextBox
-            // 
-            this.schcodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipBindingSource, "schcode", true));
-            this.schcodeTextBox.Location = new System.Drawing.Point(201, 95);
-            this.schcodeTextBox.Name = "schcodeTextBox";
-            this.schcodeTextBox.Size = new System.Drawing.Size(100, 20);
-            this.schcodeTextBox.TabIndex = 1;
-            // 
-            // coversBindingSource
-            // 
-            this.coversBindingSource.DataSource = this.dsProdutn;
-            this.coversBindingSource.Position = 0;
             // 
             // coversTableAdapter
             // 
             this.coversTableAdapter.ClearBeforeFill = true;
             // 
-            // schcodeLabel1
+            // btnDeadLineInfo
             // 
-            schcodeLabel1.AutoSize = true;
-            schcodeLabel1.Location = new System.Drawing.Point(92, 75);
-            schcodeLabel1.Name = "schcodeLabel1";
-            schcodeLabel1.Size = new System.Drawing.Size(59, 13);
-            schcodeLabel1.TabIndex = 0;
-            schcodeLabel1.Text = "schcode:";
-            // 
-            // schcodeTextBox1
-            // 
-            this.schcodeTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource, "schcode", true));
-            this.schcodeTextBox1.Location = new System.Drawing.Point(157, 72);
-            this.schcodeTextBox1.Name = "schcodeTextBox1";
-            this.schcodeTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.schcodeTextBox1.TabIndex = 1;
+            this.btnDeadLineInfo.AutoSize = true;
+            this.btnDeadLineInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnDeadLineInfo.Image")));
+            this.btnDeadLineInfo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDeadLineInfo.Location = new System.Drawing.Point(128, 215);
+            this.btnDeadLineInfo.Name = "btnDeadLineInfo";
+            this.btnDeadLineInfo.Size = new System.Drawing.Size(33, 24);
+            this.btnDeadLineInfo.TabIndex = 150;
+            this.btnDeadLineInfo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDeadLineInfo.UseVisualStyleBackColor = true;
+            this.btnDeadLineInfo.Click += new System.EventHandler(this.btnDeadLineInfo_Click);
             // 
             // frmProdutn
             // 
@@ -2062,6 +2082,8 @@
             this.pg1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -2070,24 +2092,22 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wipgBindingSource)).EndInit();
             this.pnl11.ResumeLayout(false);
             this.pnl11.PerformLayout();
-            this.pg2.ResumeLayout(false);
-            this.pg2.PerformLayout();
-            this.pg3.ResumeLayout(false);
-            this.pg3.PerformLayout();
-            this.pg5.ResumeLayout(false);
-            this.pg5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wipgBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbkbBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.partbkBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            this.pg2.ResumeLayout(false);
+            this.pg2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).EndInit();
+            this.pg3.ResumeLayout(false);
+            this.pg3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).EndInit();
+            this.pg5.ResumeLayout(false);
+            this.pg5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -2180,10 +2200,10 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button btnCalCS;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCalcResult;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDays;
+        private System.Windows.Forms.TextBox txtWeeks;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox cominitlTextBox;
@@ -2222,5 +2242,6 @@
         private System.Windows.Forms.BindingSource coversBindingSource;
         private DataSets.dsProdutnTableAdapters.coversTableAdapter coversTableAdapter;
         private System.Windows.Forms.TextBox schcodeTextBox1;
+        private System.Windows.Forms.Button btnDeadLineInfo;
         }
     }

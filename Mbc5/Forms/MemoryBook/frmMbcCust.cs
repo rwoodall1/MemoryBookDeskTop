@@ -14,7 +14,7 @@ using BaseClass;
 using Mbc5.Dialogs;
 using Exceptionless;
 using Exceptionless.Models;
-using BaseClase.Classes;
+using BaseClass.Classes;
 
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
@@ -440,7 +440,7 @@ namespace Mbc5.Forms.MemoryBook {
         private int GetInvno()
         {
            
-            var sqlQuery = new BaseClase.Classes.SQLQuery();
+            var sqlQuery = new BaseClass.Classes.SQLQuery();
 
             SqlParameter[] parameters = new SqlParameter[] {
 
@@ -890,7 +890,7 @@ namespace Mbc5.Forms.MemoryBook {
                 int InvNum = GetInvno();
                 if (InvNum != 0)
                 {
-                    var sqlQuery = new BaseClase.Classes.SQLQuery();
+                    var sqlQuery = new SQLQuery();
                     //useing hard code until function to generate invno is done
                     SqlParameter[] parameters = new SqlParameter[] {
                     new SqlParameter("@Invno",InvNum),

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using BaseClass.Classes;
 using System.Data.Sql;
-using BaseClase.Classes;
+using BaseClass.Classes;
 using System.Data.SqlClient;
 using Mbc5.Classes;
 using Mbc5.LookUpForms;
@@ -39,17 +39,10 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
         private void frmProdutn_Load(object sender,EventArgs e) {
-            // TODO: This line of code loads data into the 'dsProdutn.wipg' table. You can move, or remove it, as needed.
-            this.wipgTableAdapter.Fill(this.dsProdutn.wipg);
-            // TODO: This line of code loads data into the 'dsProdutn.ptbkb' table. You can move, or remove it, as needed.
-            this.ptbkbTableAdapter.Fill(this.dsProdutn.ptbkb);
-            // TODO: This line of code loads data into the 'dsProdutn.partbk' table. You can move, or remove it, as needed.
-            this.partbkTableAdapter.Fill(this.dsProdutn.partbk);
+            
 
             Fill();
-            //if (ApplicationUser.Roles.Contains("SA") || ApplicationUser.Roles.Contains("Administrator")) {
-            //    this.dp1descComboBox.ContextMenuStrip = this.mnuEditLkUp;
-            //    }
+          
          
             
             }
@@ -62,7 +55,8 @@ namespace Mbc5.Forms.MemoryBook {
             }
         public event PropertyChangedEventHandler PropertyChanged;
         private UserPrincipal ApplicationUser { get; set; }
-        private bool StartUp { get; set; }
+        private string CurrentCompany { get; set; }
+
         #endregion
         #region "Methods"
        
@@ -103,7 +97,7 @@ namespace Mbc5.Forms.MemoryBook {
                     break;
                 case 1:
                         {
-                        SaveSales();
+                        //SaveSales();
                         break;
                         }
 
@@ -112,7 +106,7 @@ namespace Mbc5.Forms.MemoryBook {
                     MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     break;
                 case 3:
-                    SavePayment();
+                    //SavePayment();
                     break;
 
                 }
@@ -174,13 +168,65 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
 
-        
+        private void btnCalcDeadLine_Click(object sender,EventArgs e) {
+            if (!String.IsNullOrEmpty(dedayoutDateTimePicker.Value.ToString())) {
+                int wks = 0;
+                int days = 0;
+                int.TryParse(txtWeeks.Text,out wks);
+                int.TryParse(txtDays.Text,out days);
+                var BusinessDay = new BusinessDays();
 
-      
+                var numDays = (wks * 5) + (days);
+                var result = BusinessDay.BusDaySubtract(dedayoutDateTimePicker.Value,numDays);
+                if (result != null) {
+                    dedayinDateTimePicker.Value = result;
+                    }
+                } else { MessageBox.Show("Please enter a Deadline out Date."); }
+
+
+                }
+
+        private void btnCalCS_Click(object sender,EventArgs e) {
+            if (!String.IsNullOrEmpty(kitrecvdDateTimePicker.Value.ToString())){
+                int wks = 0;
+                int days = 0;
+                int.TryParse(txtWeeks.Text,out wks);
+                int.TryParse(txtDays.Text,out days);
+                var BusinessDay = new BusinessDays();
+
+                var numDays = (wks * 5) + (days);
+                var result = BusinessDay.BusDayAdd(kitrecvdDateTimePicker.Value,numDays);
+                if (result != null) {
+                    dedayinDateTimePicker.Value = result;
+                    }
+                txtCalcResult.Text = result.ToShortDateString();
+
+                }
+            }
+
+        private void btnDeadLineInfo_Click(object sender,EventArgs e) {
+            var emailHelper = new EmailHelper();
+            string subject = this.Schcode + " " + lblSchoolName.Text + " " + "Memorybook Deadlines";
+            string body = "Here is your Memory Book deadline information." + Environment.NewLine+ System.Environment.NewLine+ System.Environment.NewLine + "Pages due in plant " + dedayinDateTimePicker.Value.ToShortDateString() + System.Environment.NewLine+ "Delivery date " + dedayoutDateTimePicker.Value.ToShortDateString();
+            EmailType type =EmailType.Blank;
+            if (CurrentCompany == "MBC") {
+                 type = EmailType.Mbc;
+                }else if (CurrentCompany == "MER") {
+                 type = EmailType.Meridian;
+                }
+
+            emailHelper.SendEmail(subject,,,body,EmailType.Mbc)
+            }
+
+
+
+
+
 
         #endregion
 
         //nothing below here  
         }
 }
+
     

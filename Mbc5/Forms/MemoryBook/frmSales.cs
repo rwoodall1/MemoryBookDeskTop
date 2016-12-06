@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using System.Configuration;
 using BaseClass.Classes;
 using System.Data.Sql;
-using BaseClase.Classes;
 using System.Data.SqlClient;
 using Mbc5.Classes;
 using Mbc5.LookUpForms;
