@@ -90,7 +90,7 @@ namespace BaseClass.Classes
 			    .right{text-align:right;}
 			    .center{text-align:center;}
 		    </style>
-			<table border='0' cellspacing='0' cellpadding='0' width='900' align='center' style='max-width: 600px;border:1px solid #333'>
+			<table border='0' cellspacing='0' cellpadding='0' width='1024' align='center' style='max-width: 600px;border:1px solid #333'>
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>

@@ -89,9 +89,9 @@
             this.btnPrntMbOnline = new System.Windows.Forms.Button();
             this.btnUpdateJob = new System.Windows.Forms.Button();
             this.onlineyrTextBox = new System.Windows.Forms.TextBox();
-            this.stfpwTextBox = new System.Windows.Forms.TextBox();
-            this.advpwTextBox = new System.Windows.Forms.TextBox();
-            this.jobnoTextBox = new System.Windows.Forms.TextBox();
+            this.txtstfpw = new System.Windows.Forms.TextBox();
+            this.txtadvpw = new System.Windows.Forms.TextBox();
+            this.txtjobno = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -144,6 +144,7 @@
             this.coverdescTextBox = new System.Windows.Forms.TextBox();
             this.covertypeTextBox = new System.Windows.Forms.TextBox();
             this.pnl11 = new System.Windows.Forms.Panel();
+            this.btnDeadLineInfo = new System.Windows.Forms.Button();
             this.booktypeTextBox2 = new System.Windows.Forms.TextBox();
             this.ptbkbBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -206,7 +207,6 @@
             this.wipgTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.wipgTableAdapter();
             this.wipTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.wipTableAdapter();
             this.coversTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coversTableAdapter();
-            this.btnDeadLineInfo = new System.Windows.Forms.Button();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -825,11 +825,11 @@
             this.panel4.Controls.Add(onlineyrLabel);
             this.panel4.Controls.Add(this.onlineyrTextBox);
             this.panel4.Controls.Add(stfpwLabel);
-            this.panel4.Controls.Add(this.stfpwTextBox);
+            this.panel4.Controls.Add(this.txtstfpw);
             this.panel4.Controls.Add(advpwLabel);
-            this.panel4.Controls.Add(this.advpwTextBox);
+            this.panel4.Controls.Add(this.txtadvpw);
             this.panel4.Controls.Add(jobnoLabel);
-            this.panel4.Controls.Add(this.jobnoTextBox);
+            this.panel4.Controls.Add(this.txtjobno);
             this.panel4.Location = new System.Drawing.Point(685, 383);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(530, 316);
@@ -881,6 +881,7 @@
             this.btnEmailPw.Text = "Send MBO Reg & PW";
             this.btnEmailPw.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEmailPw.UseVisualStyleBackColor = true;
+            this.btnEmailPw.Click += new System.EventHandler(this.btnEmailPw_Click);
             // 
             // btnPrntMbOnline
             // 
@@ -908,29 +909,29 @@
             this.onlineyrTextBox.Size = new System.Drawing.Size(58, 20);
             this.onlineyrTextBox.TabIndex = 146;
             // 
-            // stfpwTextBox
+            // txtstfpw
             // 
-            this.stfpwTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "stfpw", true));
-            this.stfpwTextBox.Location = new System.Drawing.Point(240, 125);
-            this.stfpwTextBox.Name = "stfpwTextBox";
-            this.stfpwTextBox.Size = new System.Drawing.Size(100, 20);
-            this.stfpwTextBox.TabIndex = 144;
+            this.txtstfpw.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "stfpw", true));
+            this.txtstfpw.Location = new System.Drawing.Point(240, 125);
+            this.txtstfpw.Name = "txtstfpw";
+            this.txtstfpw.Size = new System.Drawing.Size(100, 20);
+            this.txtstfpw.TabIndex = 144;
             // 
-            // advpwTextBox
+            // txtadvpw
             // 
-            this.advpwTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "advpw", true));
-            this.advpwTextBox.Location = new System.Drawing.Point(240, 102);
-            this.advpwTextBox.Name = "advpwTextBox";
-            this.advpwTextBox.Size = new System.Drawing.Size(100, 20);
-            this.advpwTextBox.TabIndex = 142;
+            this.txtadvpw.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "advpw", true));
+            this.txtadvpw.Location = new System.Drawing.Point(240, 102);
+            this.txtadvpw.Name = "txtadvpw";
+            this.txtadvpw.Size = new System.Drawing.Size(100, 20);
+            this.txtadvpw.TabIndex = 142;
             // 
-            // jobnoTextBox
+            // txtjobno
             // 
-            this.jobnoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "jobno", true));
-            this.jobnoTextBox.Location = new System.Drawing.Point(240, 80);
-            this.jobnoTextBox.Name = "jobnoTextBox";
-            this.jobnoTextBox.Size = new System.Drawing.Size(66, 20);
-            this.jobnoTextBox.TabIndex = 141;
+            this.txtjobno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "jobno", true));
+            this.txtjobno.Location = new System.Drawing.Point(240, 80);
+            this.txtjobno.Name = "txtjobno";
+            this.txtjobno.Size = new System.Drawing.Size(66, 20);
+            this.txtjobno.TabIndex = 141;
             // 
             // panel3
             // 
@@ -1537,6 +1538,19 @@
             this.pnl11.Size = new System.Drawing.Size(318, 400);
             this.pnl11.TabIndex = 127;
             // 
+            // btnDeadLineInfo
+            // 
+            this.btnDeadLineInfo.AutoSize = true;
+            this.btnDeadLineInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnDeadLineInfo.Image")));
+            this.btnDeadLineInfo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDeadLineInfo.Location = new System.Drawing.Point(128, 215);
+            this.btnDeadLineInfo.Name = "btnDeadLineInfo";
+            this.btnDeadLineInfo.Size = new System.Drawing.Size(33, 24);
+            this.btnDeadLineInfo.TabIndex = 150;
+            this.btnDeadLineInfo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDeadLineInfo.UseVisualStyleBackColor = true;
+            this.btnDeadLineInfo.Click += new System.EventHandler(this.btnDeadLineInfo_Click);
+            // 
             // booktypeTextBox2
             // 
             this.booktypeTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "booktype", true));
@@ -2053,19 +2067,6 @@
             // 
             this.coversTableAdapter.ClearBeforeFill = true;
             // 
-            // btnDeadLineInfo
-            // 
-            this.btnDeadLineInfo.AutoSize = true;
-            this.btnDeadLineInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnDeadLineInfo.Image")));
-            this.btnDeadLineInfo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDeadLineInfo.Location = new System.Drawing.Point(128, 215);
-            this.btnDeadLineInfo.Name = "btnDeadLineInfo";
-            this.btnDeadLineInfo.Size = new System.Drawing.Size(33, 24);
-            this.btnDeadLineInfo.TabIndex = 150;
-            this.btnDeadLineInfo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDeadLineInfo.UseVisualStyleBackColor = true;
-            this.btnDeadLineInfo.Click += new System.EventHandler(this.btnDeadLineInfo_Click);
-            // 
             // frmProdutn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -2213,9 +2214,9 @@
         private System.Windows.Forms.Button btnPrntMbOnline;
         private System.Windows.Forms.Button btnUpdateJob;
         private System.Windows.Forms.TextBox onlineyrTextBox;
-        private System.Windows.Forms.TextBox stfpwTextBox;
-        private System.Windows.Forms.TextBox advpwTextBox;
-        private System.Windows.Forms.TextBox jobnoTextBox;
+        private System.Windows.Forms.TextBox txtstfpw;
+        private System.Windows.Forms.TextBox txtadvpw;
+        private System.Windows.Forms.TextBox txtjobno;
         private System.Windows.Forms.TabPage pg5;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox textBox4;
