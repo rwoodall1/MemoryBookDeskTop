@@ -176,7 +176,7 @@
             this.allclrckCheckBox = new System.Windows.Forms.CheckBox();
             this.contryearLabel1 = new System.Windows.Forms.Label();
             this.prodnoLabel1 = new System.Windows.Forms.Label();
-            this.invnoLabel1 = new System.Windows.Forms.Label();
+            this.lblInvno = new System.Windows.Forms.Label();
             this.companyTextBox = new System.Windows.Forms.TextBox();
             this.lblSchoolName = new System.Windows.Forms.Label();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -798,7 +798,7 @@
             this.pg1.Controls.Add(prodnoLabel);
             this.pg1.Controls.Add(this.prodnoLabel1);
             this.pg1.Controls.Add(invnoLabel);
-            this.pg1.Controls.Add(this.invnoLabel1);
+            this.pg1.Controls.Add(this.lblInvno);
             this.pg1.Controls.Add(companyLabel);
             this.pg1.Controls.Add(this.companyTextBox);
             this.pg1.Controls.Add(this.lblSchoolName);
@@ -1752,6 +1752,7 @@
             this.btnBinderyEmail.Text = "Bindery/Vendor Email";
             this.btnBinderyEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBinderyEmail.UseVisualStyleBackColor = true;
+            this.btnBinderyEmail.Click += new System.EventHandler(this.btnBinderyEmail_Click);
             // 
             // btnEmailProdForm
             // 
@@ -1828,14 +1829,14 @@
             this.prodnoLabel1.TabIndex = 11;
             this.prodnoLabel1.Text = "label1";
             // 
-            // invnoLabel1
+            // lblInvno
             // 
-            this.invnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "invno", true));
-            this.invnoLabel1.Location = new System.Drawing.Point(367, 9);
-            this.invnoLabel1.Name = "invnoLabel1";
-            this.invnoLabel1.Size = new System.Drawing.Size(100, 23);
-            this.invnoLabel1.TabIndex = 10;
-            this.invnoLabel1.Text = "label1";
+            this.lblInvno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "invno", true));
+            this.lblInvno.Location = new System.Drawing.Point(367, 9);
+            this.lblInvno.Name = "lblInvno";
+            this.lblInvno.Size = new System.Drawing.Size(100, 23);
+            this.lblInvno.TabIndex = 10;
+            this.lblInvno.Text = "label1";
             // 
             // companyTextBox
             // 
@@ -2131,7 +2132,7 @@
         private System.Windows.Forms.Label lblSchoolName;
         private System.Windows.Forms.TextBox companyTextBox;
         private System.Windows.Forms.Label prodnoLabel1;
-        private System.Windows.Forms.Label invnoLabel1;
+        private System.Windows.Forms.Label lblInvno;
         private System.Windows.Forms.Label contryearLabel1;
         private System.Windows.Forms.Button btnBookType;
         private System.Windows.Forms.CheckBox allclrckCheckBox;

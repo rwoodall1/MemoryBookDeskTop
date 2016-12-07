@@ -254,7 +254,35 @@ namespace Mbc5.Forms.MemoryBook {
                 type = EmailType.Meridian;
                 }
 
-            emailHelper.SendOutLookEmail(subject,AllEmails,"",body,EmailType.Mbc);
+            emailHelper.SendOutLookEmail(subject,AllEmails,"",body,type);
+            }
+
+        private void btnBinderyEmail_Click(object sender,EventArgs e) {
+            var sqlQuery = new SQLQuery();
+            var queryString = " Select cust.schname,quotes.invno,produtn.prodno,produtn.nopages,covers.reqstdcpy,produtn.covertype,produtn.diecut,produtn.coilclr,produtn.prshpdte from cust inner join quotes on cust.schcode = quotes.schcodeleft join produtn on quotes.invno = produtn.invno left join covers on quotes.invno = covers.invno where cust.schcode = @Schcode and quotes.invno = @Invno";
+            int vInvno = 0;
+             int.TryParse(lblInvno.Text,out vInvno);
+            SqlParameter[] parameters = new SqlParameter[] {
+                 new SqlParameter("@Schcode",Schcode),
+                 new SqlParameter("@Invno",vInvno)
+            };
+            List<BinderyInfo> result = (List<BinderyInfo>)sqlQuery.ExecuteReaderAsync<BinderyInfo>(CommandType.Text,queryString,parameters);
+            if (result.Count < 1) {
+                MessageBox.Show("Bindery information was not found.");
+                return;
+                }
+            var body = "<strong>School Information<strong/><br/><br/>School Name " + result[0].Schname + "<br/>Production No. " + result[0].ProdNo + "<br/> No. of Pages " + result[0].NoPages + "<br/>Cover Type " + result[0].CoverType + "<br/>Die Cut " + result[0].Diecut + "<br/>Coil Color " + result[0].CoilClr + "<br/>Projected Ship Date " + result[0].ProjShpDate;
+            var subject = "Memory Book company Vendor Information";
+            var emailHelper = new EmailHelper();
+            EmailType type = EmailType.Blank;
+            if (CurrentCompany == "MBC") {
+                type = EmailType.Mbc;
+                } else if (CurrentCompany == "MER") {
+                type = EmailType.Meridian;
+                }
+            emailHelper.SendOutLookEmail(subject,"production@memorybook.com","",body,type);
+
+
             }
 
 
@@ -266,6 +294,16 @@ namespace Mbc5.Forms.MemoryBook {
 
         //nothing below here  
         }
+    public class BinderyInfo {
+        public string Schname { get; set; }
+        public string CoverType { get; set; }
+        public string ProdNo { get; set; }
+        public int NoPages{get;set;}
+        public int NoCopies { get; set; }
+        public bool Diecut { get; set; }
+        public string CoilClr { get; set; }
+        public DateTime ProjShpDate { get; set; }
+
 }
 
-    
+
