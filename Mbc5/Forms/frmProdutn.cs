@@ -56,10 +56,35 @@ namespace Mbc5.Forms.MemoryBook {
         public event PropertyChangedEventHandler PropertyChanged;
         private UserPrincipal ApplicationUser { get; set; }
         private string CurrentCompany { get; set; }
+        private string SchEmail { get; set; }
+        private string ContactEmail { get; set; }
+        private string BcontactEmail { get; set; }
+        private string CcontactEmail { get; set; }
+        private List<string> AllEmails { get; set; }
 
         #endregion
         #region "Methods"
-       
+       private void SetEmail() {
+            SchEmail = dsProdutn.cust.Rows[0].IsNull("schemail") ? null : dsProdutn.cust.Rows[0]["schemail"].ToString().Trim();
+            ContactEmail = dsProdutn.cust.Rows[0].IsNull("contemail") ? null : dsProdutn.cust.Rows[0]["contemail"].ToString().Trim();
+           BcontactEmail = dsProdutn.cust.Rows[0].IsNull("bcontemail") ? null : dsProdutn.cust.Rows[0]["bcontemail"].ToString().Trim();
+           CcontactEmail = dsProdutn.cust.Rows[0].IsNull("ccontemail") ? null : dsProdutn.cust.Rows[0]["ccontemail"].ToString().Trim();
+            var vAllEmails = new List<string>();
+            if (!String.IsNullOrEmpty(SchEmail) {
+                vAllEmails.Add(SchEmail);
+                }
+            if (!String.IsNullOrEmpty(ContactEmail) {
+                vAllEmails.Add(ContactEmail);
+                }
+            if (!String.IsNullOrEmpty(BcontactEmail) {
+                vAllEmails.Add(BcontactEmail);
+                }
+
+            if (!String.IsNullOrEmpty(CcontactEmail) {
+                vAllEmails.Add(CcontactEmail);
+                }
+
+            }
         //General
         private void SetCodeInvno() {
             //if (quotesBindingSource.Count > 0) {
@@ -206,8 +231,8 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void btnDeadLineInfo_Click(object sender,EventArgs e) {
             var emailHelper = new EmailHelper();
-            string subject = this.Schcode + " " + lblSchoolName.Text + " " + "Memorybook Deadlines";
-            string body = "Here is your Memory Book deadline information." + Environment.NewLine+ System.Environment.NewLine+ System.Environment.NewLine + "Pages due in plant " + dedayinDateTimePicker.Value.ToShortDateString() + System.Environment.NewLine+ "Delivery date " + dedayoutDateTimePicker.Value.ToShortDateString();
+            string subject = this.Schcode + " " + lblSchoolName.Text.Trim() + " " + "Memorybook Deadlines";
+            string body = "Here is your Memory Book deadline information.<br/><br/>Pages due in plant " + dedayinDateTimePicker.Value.ToShortDateString() +"<br/>Delivery date " + dedayoutDateTimePicker.Value.ToShortDateString();
             EmailType type =EmailType.Blank;
             if (CurrentCompany == "MBC") {
                  type = EmailType.Mbc;
@@ -215,7 +240,21 @@ namespace Mbc5.Forms.MemoryBook {
                  type = EmailType.Meridian;
                 }
 
-            emailHelper.SendEmail(subject,,,body,EmailType.Mbc)
+            emailHelper.SendOutLookEmail(subject,AllEmails,"",body,EmailType.Mbc);
+            }
+
+        private void btnEmailPw_Click(object sender,EventArgs e) {
+            var emailHelper = new EmailHelper();
+            string subject = this.Schcode + " " + lblSchoolName.Text.Trim() + " " + "Memorybook Online Access";
+            string body = "Here is your Memory Book Online Access information.<br/>(Online account available the following business day by noon central time)<br/><br/>Job Number - " + txtjobno.Text + "<br/>Adviser User Name - Adviser<br/>Adviser Password - " + txtadvpw.Text + "<br/>Staff User Name - Staff <br/>Staff Password - " + txtstfpw.Text + "<br/><br/>Please note the passwords are case sensitive<br/>You can copy and paste the link below into a web browser to take you to the online website to enter your password information.<br/><br/>www.memoryebooks.com";
+            EmailType type = EmailType.Blank;
+            if (CurrentCompany == "MBC") {
+                type = EmailType.Mbc;
+                } else if (CurrentCompany == "MER") {
+                type = EmailType.Meridian;
+                }
+
+            emailHelper.SendOutLookEmail(subject,AllEmails,"",body,EmailType.Mbc);
             }
 
 
