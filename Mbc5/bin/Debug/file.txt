@@ -295,3 +295,23 @@ The statement has been terminated. CHOME  WDFM\rwoodall
 2016/11/23 14:17:12.290 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
 2016/11/23 14:18:11.949 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
 2016/11/23 14:18:51.222 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2016/12/07 20:25:53.519 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2016/12/07 20:25:53.653 Failed to get invoice number for a new record:There is no row at position 0. CHOME  WDFM\rwoodall    
+2016/12/07 20:26:20.178 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2016/12/07 20:26:20.213 Failed to get invoice number for a new record:There is no row at position 0. CHOME  WDFM\rwoodall    
+2016/12/07 20:27:33.810 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2016/12/07 20:27:33.841 Failed to get invoice number for a new record:There is no row at position 0. CHOME  WDFM\rwoodall    
+2016/12/07 20:28:56.395 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2016/12/07 20:28:56.428 Failed to get invoice number for a new record:There is no row at position 0. CHOME  WDFM\rwoodall    
+2016/12/07 20:29:21.329 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2016/12/07 20:30:52.605 Failed to get invoice number for a new record:There is no row at position 0. CHOME  WDFM\rwoodall    
+2016/12/07 20:31:04.760 Failed to get invoice number for a new record:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/12/07 20:32:24.482 Failed to get invoice number for a new record:Specified cast is not valid. CHOME  WDFM\rwoodall    
+2016/12/07 20:44:47.437 Error running ExecuteNonQueryAsync. CHOME  WDFM\rwoodall    
+2016/12/07 20:47:22.703 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2016/12/07 20:47:28.159 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2016/12/07 21:10:32.334 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2016/12/07 21:46:08.114 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2016/12/07 21:49:44.591 Error retrieving data:No parameterless constructor defined for this object. CHOME  WDFM\rwoodall    
+2016/12/07 21:51:53.942 Error running ExecuteScalarAsync. CHOME  WDFM\rwoodall    
+2016/12/07 21:53:35.929 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    

@@ -55,7 +55,6 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Meridian.f
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.cache
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.compiled
 F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmLogin.resources
-F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpDiscount.resources
 F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpDiscount.resources
 F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.dll
@@ -76,3 +75,5 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmSelctCust.resources
 F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.test.resources
 F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmProdutn.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmProdutn.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.test.resources

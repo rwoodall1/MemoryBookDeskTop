@@ -2727,6 +2727,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnccontemail;
             
+            private global::System.Data.DataColumn columnschstate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public custDataTable() {
@@ -2866,6 +2868,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn schstateColumn {
+                get {
+                    return this.columnschstate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2901,7 +2911,7 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public custRow AddcustRow(string schcode, string schname, string contryear, string schemail, string contfname, string contlname, string contemail, string bcontfname, string bcontlname, string bcontemail, string ccontfname, string ccontlname, string ccontemail) {
+            public custRow AddcustRow(string schcode, string schname, string contryear, string schemail, string contfname, string contlname, string contemail, string bcontfname, string bcontlname, string bcontemail, string ccontfname, string ccontlname, string ccontemail, string schstate) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -2916,7 +2926,8 @@ namespace Mbc5.DataSets {
                         bcontemail,
                         ccontfname,
                         ccontlname,
-                        ccontemail};
+                        ccontemail,
+                        schstate};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -2959,6 +2970,7 @@ namespace Mbc5.DataSets {
                 this.columnccontfname = base.Columns["ccontfname"];
                 this.columnccontlname = base.Columns["ccontlname"];
                 this.columnccontemail = base.Columns["ccontemail"];
+                this.columnschstate = base.Columns["schstate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2990,6 +3002,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnccontlname);
                 this.columnccontemail = new global::System.Data.DataColumn("ccontemail", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnccontemail);
+                this.columnschstate = new global::System.Data.DataColumn("schstate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschstate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columnschcode.AllowDBNull = false;
@@ -3008,6 +3022,8 @@ namespace Mbc5.DataSets {
                 this.columnccontfname.MaxLength = 20;
                 this.columnccontlname.MaxLength = 20;
                 this.columnccontemail.MaxLength = 45;
+                this.columnschstate.AllowDBNull = false;
+                this.columnschstate.MaxLength = 3;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9526,6 +9542,17 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string schstate {
+                get {
+                    return ((string)(this[this.tablecust.schstateColumn]));
+                }
+                set {
+                    this[this.tablecust.schstateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
@@ -12653,10 +12680,11 @@ WHERE        (prodno = @Prodno)";
             tableMapping.ColumnMappings.Add("ccontfname", "ccontfname");
             tableMapping.ColumnMappings.Add("ccontlname", "ccontlname");
             tableMapping.ColumnMappings.Add("ccontemail", "ccontemail");
+            tableMapping.ColumnMappings.Add("schstate", "schstate");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [cust] WHERE (([schcode] = @Original_schcode) AND ([schname] = @Original_schname) AND ((@IsNull_contryear = 1 AND [contryear] IS NULL) OR ([contryear] = @Original_contryear)) AND ((@IsNull_schemail = 1 AND [schemail] IS NULL) OR ([schemail] = @Original_schemail)) AND ((@IsNull_contfname = 1 AND [contfname] IS NULL) OR ([contfname] = @Original_contfname)) AND ((@IsNull_contlname = 1 AND [contlname] IS NULL) OR ([contlname] = @Original_contlname)) AND ((@IsNull_contemail = 1 AND [contemail] IS NULL) OR ([contemail] = @Original_contemail)) AND ((@IsNull_bcontfname = 1 AND [bcontfname] IS NULL) OR ([bcontfname] = @Original_bcontfname)) AND ((@IsNull_bcontlname = 1 AND [bcontlname] IS NULL) OR ([bcontlname] = @Original_bcontlname)) AND ((@IsNull_bcontemail = 1 AND [bcontemail] IS NULL) OR ([bcontemail] = @Original_bcontemail)) AND ((@IsNull_ccontfname = 1 AND [ccontfname] IS NULL) OR ([ccontfname] = @Original_ccontfname)) AND ((@IsNull_ccontlname = 1 AND [ccontlname] IS NULL) OR ([ccontlname] = @Original_ccontlname)) AND ((@IsNull_ccontemail = 1 AND [ccontemail] IS NULL) OR ([ccontemail] = @Original_ccontemail)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [cust] WHERE (([schcode] = @Original_schcode) AND ([schname] = @Original_schname) AND ((@IsNull_contryear = 1 AND [contryear] IS NULL) OR ([contryear] = @Original_contryear)) AND ((@IsNull_schemail = 1 AND [schemail] IS NULL) OR ([schemail] = @Original_schemail)) AND ((@IsNull_contfname = 1 AND [contfname] IS NULL) OR ([contfname] = @Original_contfname)) AND ((@IsNull_contlname = 1 AND [contlname] IS NULL) OR ([contlname] = @Original_contlname)) AND ((@IsNull_contemail = 1 AND [contemail] IS NULL) OR ([contemail] = @Original_contemail)) AND ((@IsNull_bcontfname = 1 AND [bcontfname] IS NULL) OR ([bcontfname] = @Original_bcontfname)) AND ((@IsNull_bcontlname = 1 AND [bcontlname] IS NULL) OR ([bcontlname] = @Original_bcontlname)) AND ((@IsNull_bcontemail = 1 AND [bcontemail] IS NULL) OR ([bcontemail] = @Original_bcontemail)) AND ((@IsNull_ccontfname = 1 AND [ccontfname] IS NULL) OR ([ccontfname] = @Original_ccontfname)) AND ((@IsNull_ccontlname = 1 AND [ccontlname] IS NULL) OR ([ccontlname] = @Original_ccontlname)) AND ((@IsNull_ccontemail = 1 AND [ccontemail] IS NULL) OR ([ccontemail] = @Original_ccontemail)) AND ([schstate] = @Original_schstate))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -12682,29 +12710,31 @@ WHERE        (prodno = @Prodno)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ccontlname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontlname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ccontemail", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontemail", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ccontemail", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontemail", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schstate", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schstate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [cust] SET [schcode] = @schcode, [schname] = @schname, [contryear] = @cont" +
                 "ryear, [schemail] = @schemail, [contfname] = @contfname, [contlname] = @contlnam" +
                 "e, [contemail] = @contemail, [bcontfname] = @bcontfname, [bcontlname] = @bcontln" +
                 "ame, [bcontemail] = @bcontemail, [ccontfname] = @ccontfname, [ccontlname] = @cco" +
-                "ntlname, [ccontemail] = @ccontemail WHERE (([schcode] = @Original_schcode) AND (" +
-                "[schname] = @Original_schname) AND ((@IsNull_contryear = 1 AND [contryear] IS NU" +
-                "LL) OR ([contryear] = @Original_contryear)) AND ((@IsNull_schemail = 1 AND [sche" +
-                "mail] IS NULL) OR ([schemail] = @Original_schemail)) AND ((@IsNull_contfname = 1" +
-                " AND [contfname] IS NULL) OR ([contfname] = @Original_contfname)) AND ((@IsNull_" +
-                "contlname = 1 AND [contlname] IS NULL) OR ([contlname] = @Original_contlname)) A" +
-                "ND ((@IsNull_contemail = 1 AND [contemail] IS NULL) OR ([contemail] = @Original_" +
-                "contemail)) AND ((@IsNull_bcontfname = 1 AND [bcontfname] IS NULL) OR ([bcontfna" +
-                "me] = @Original_bcontfname)) AND ((@IsNull_bcontlname = 1 AND [bcontlname] IS NU" +
-                "LL) OR ([bcontlname] = @Original_bcontlname)) AND ((@IsNull_bcontemail = 1 AND [" +
-                "bcontemail] IS NULL) OR ([bcontemail] = @Original_bcontemail)) AND ((@IsNull_cco" +
-                "ntfname = 1 AND [ccontfname] IS NULL) OR ([ccontfname] = @Original_ccontfname)) " +
-                "AND ((@IsNull_ccontlname = 1 AND [ccontlname] IS NULL) OR ([ccontlname] = @Origi" +
-                "nal_ccontlname)) AND ((@IsNull_ccontemail = 1 AND [ccontemail] IS NULL) OR ([cco" +
-                "ntemail] = @Original_ccontemail)));\r\nSELECT schcode, schname, contryear, schemai" +
-                "l, contfname, contlname, contemail, bcontfname, bcontlname, bcontemail, ccontfna" +
-                "me, ccontlname, ccontemail FROM cust WHERE (schcode = @schcode)";
+                "ntlname, [ccontemail] = @ccontemail, [schstate] = @schstate WHERE (([schcode] = " +
+                "@Original_schcode) AND ([schname] = @Original_schname) AND ((@IsNull_contryear =" +
+                " 1 AND [contryear] IS NULL) OR ([contryear] = @Original_contryear)) AND ((@IsNul" +
+                "l_schemail = 1 AND [schemail] IS NULL) OR ([schemail] = @Original_schemail)) AND" +
+                " ((@IsNull_contfname = 1 AND [contfname] IS NULL) OR ([contfname] = @Original_co" +
+                "ntfname)) AND ((@IsNull_contlname = 1 AND [contlname] IS NULL) OR ([contlname] =" +
+                " @Original_contlname)) AND ((@IsNull_contemail = 1 AND [contemail] IS NULL) OR (" +
+                "[contemail] = @Original_contemail)) AND ((@IsNull_bcontfname = 1 AND [bcontfname" +
+                "] IS NULL) OR ([bcontfname] = @Original_bcontfname)) AND ((@IsNull_bcontlname = " +
+                "1 AND [bcontlname] IS NULL) OR ([bcontlname] = @Original_bcontlname)) AND ((@IsN" +
+                "ull_bcontemail = 1 AND [bcontemail] IS NULL) OR ([bcontemail] = @Original_bconte" +
+                "mail)) AND ((@IsNull_ccontfname = 1 AND [ccontfname] IS NULL) OR ([ccontfname] =" +
+                " @Original_ccontfname)) AND ((@IsNull_ccontlname = 1 AND [ccontlname] IS NULL) O" +
+                "R ([ccontlname] = @Original_ccontlname)) AND ((@IsNull_ccontemail = 1 AND [ccont" +
+                "email] IS NULL) OR ([ccontemail] = @Original_ccontemail)) AND ([schstate] = @Ori" +
+                "ginal_schstate));\r\nSELECT schcode, schname, contryear, schemail, contfname, cont" +
+                "lname, contemail, bcontfname, bcontlname, bcontemail, ccontfname, ccontlname, cc" +
+                "ontemail, schstate FROM cust WHERE (schcode = @schcode)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -12719,6 +12749,7 @@ WHERE        (prodno = @Prodno)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontfname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontlname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontemail", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schstate", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_contryear", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -12743,6 +12774,7 @@ WHERE        (prodno = @Prodno)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ccontlname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontlname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ccontemail", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontemail", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ccontemail", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontemail", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schstate", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schstate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12759,8 +12791,8 @@ WHERE        (prodno = @Prodno)";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        schcode, schname, contryear, schemail, contfname, contlname, contem" +
-                "ail, bcontfname, bcontlname, bcontemail, ccontfname, ccontlname, ccontemail\r\nFRO" +
-                "M            cust\r\nWHERE        (schcode = @schcode)";
+                "ail, bcontfname, bcontlname, bcontemail, ccontfname, ccontlname, ccontemail, sch" +
+                "state\r\nFROM            cust\r\nWHERE        (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -12834,7 +12866,7 @@ WHERE        (prodno = @Prodno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_schcode, string Original_schname, string Original_contryear, string Original_schemail, string Original_contfname, string Original_contlname, string Original_contemail, string Original_bcontfname, string Original_bcontlname, string Original_bcontemail, string Original_ccontfname, string Original_ccontlname, string Original_ccontemail) {
+        public virtual int Delete(string Original_schcode, string Original_schname, string Original_contryear, string Original_schemail, string Original_contfname, string Original_contlname, string Original_contemail, string Original_bcontfname, string Original_bcontlname, string Original_bcontemail, string Original_ccontfname, string Original_ccontlname, string Original_ccontemail, string Original_schstate) {
             if ((Original_schcode == null)) {
                 throw new global::System.ArgumentNullException("Original_schcode");
             }
@@ -12935,6 +12967,12 @@ WHERE        (prodno = @Prodno)";
                 this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[23].Value = ((string)(Original_ccontemail));
             }
+            if ((Original_schstate == null)) {
+                throw new global::System.ArgumentNullException("Original_schstate");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((string)(Original_schstate));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12969,6 +13007,7 @@ WHERE        (prodno = @Prodno)";
                     string ccontfname, 
                     string ccontlname, 
                     string ccontemail, 
+                    string schstate, 
                     string Original_schcode, 
                     string Original_schname, 
                     string Original_contryear, 
@@ -12981,7 +13020,8 @@ WHERE        (prodno = @Prodno)";
                     string Original_bcontemail, 
                     string Original_ccontfname, 
                     string Original_ccontlname, 
-                    string Original_ccontemail) {
+                    string Original_ccontemail, 
+                    string Original_schstate) {
             if ((schcode == null)) {
                 throw new global::System.ArgumentNullException("schcode");
             }
@@ -13060,105 +13100,117 @@ WHERE        (prodno = @Prodno)";
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(ccontemail));
             }
+            if ((schstate == null)) {
+                throw new global::System.ArgumentNullException("schstate");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(schstate));
+            }
             if ((Original_schcode == null)) {
                 throw new global::System.ArgumentNullException("Original_schcode");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_schcode));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_schcode));
             }
             if ((Original_schname == null)) {
                 throw new global::System.ArgumentNullException("Original_schname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_schname));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_schname));
             }
             if ((Original_contryear == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_contryear));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_contryear));
             }
             if ((Original_schemail == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_schemail));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_schemail));
             }
             if ((Original_contfname == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_contfname));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_contfname));
             }
             if ((Original_contlname == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_contlname));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_contlname));
             }
             if ((Original_contemail == null)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_contemail));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_contemail));
             }
             if ((Original_bcontfname == null)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_bcontfname));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_bcontfname));
             }
             if ((Original_bcontlname == null)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_bcontlname));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_bcontlname));
             }
             if ((Original_bcontemail == null)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_bcontemail));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_bcontemail));
             }
             if ((Original_ccontfname == null)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_ccontfname));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_ccontfname));
             }
             if ((Original_ccontlname == null)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_ccontlname));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(Original_ccontlname));
             }
             if ((Original_ccontemail == null)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_ccontemail));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((string)(Original_ccontemail));
+            }
+            if ((Original_schstate == null)) {
+                throw new global::System.ArgumentNullException("Original_schstate");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(Original_schstate));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -13193,6 +13245,7 @@ WHERE        (prodno = @Prodno)";
                     string ccontfname, 
                     string ccontlname, 
                     string ccontemail, 
+                    string schstate, 
                     string Original_schcode, 
                     string Original_schname, 
                     string Original_contryear, 
@@ -13205,8 +13258,9 @@ WHERE        (prodno = @Prodno)";
                     string Original_bcontemail, 
                     string Original_ccontfname, 
                     string Original_ccontlname, 
-                    string Original_ccontemail) {
-            return this.Update(Original_schcode, schname, contryear, schemail, contfname, contlname, contemail, bcontfname, bcontlname, bcontemail, ccontfname, ccontlname, ccontemail, Original_schcode, Original_schname, Original_contryear, Original_schemail, Original_contfname, Original_contlname, Original_contemail, Original_bcontfname, Original_bcontlname, Original_bcontemail, Original_ccontfname, Original_ccontlname, Original_ccontemail);
+                    string Original_ccontemail, 
+                    string Original_schstate) {
+            return this.Update(Original_schcode, schname, contryear, schemail, contfname, contlname, contemail, bcontfname, bcontlname, bcontemail, ccontfname, ccontlname, ccontemail, schstate, Original_schcode, Original_schname, Original_contryear, Original_schemail, Original_contfname, Original_contlname, Original_contemail, Original_bcontfname, Original_bcontlname, Original_bcontemail, Original_ccontfname, Original_ccontlname, Original_ccontemail, Original_schstate);
         }
     }
     

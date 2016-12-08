@@ -70,17 +70,17 @@ namespace Mbc5.Forms.MemoryBook {
            BcontactEmail = dsProdutn.cust.Rows[0].IsNull("bcontemail") ? null : dsProdutn.cust.Rows[0]["bcontemail"].ToString().Trim();
            CcontactEmail = dsProdutn.cust.Rows[0].IsNull("ccontemail") ? null : dsProdutn.cust.Rows[0]["ccontemail"].ToString().Trim();
             var vAllEmails = new List<string>();
-            if (!String.IsNullOrEmpty(SchEmail) {
+            if (!String.IsNullOrEmpty(SchEmail)) {
                 vAllEmails.Add(SchEmail);
                 }
-            if (!String.IsNullOrEmpty(ContactEmail) {
+            if (!String.IsNullOrEmpty(ContactEmail)) {
                 vAllEmails.Add(ContactEmail);
                 }
-            if (!String.IsNullOrEmpty(BcontactEmail) {
+            if (!String.IsNullOrEmpty(BcontactEmail)) {
                 vAllEmails.Add(BcontactEmail);
                 }
 
-            if (!String.IsNullOrEmpty(CcontactEmail) {
+            if (!String.IsNullOrEmpty(CcontactEmail)) {
                 vAllEmails.Add(CcontactEmail);
                 }
 
@@ -285,6 +285,40 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
 
+        private void btnUpdateJob_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtPerfbind.Text))
+            {
+                MessageBox.Show("Please enter binding information before issueing a job number.");
+                return;
+            }
+            var vInvno = 0;
+            int.TryParse(lblInvno.Text, out vInvno);
+            var sqlQuery = new SQLQuery();
+            var queryString = "Select Top(1) quotes.invno,produtn.jobno from quotes inner join produtn on quotes.invno=produtn.invno  where quotes.schcode=@Schcode and quotes.invno<@Invno Order by Invno";  
+                SqlParameter[] parameters = new SqlParameter[] {
+                 new SqlParameter("@Schcode",Schcode),
+                 new SqlParameter("@Invno",vInvno)
+            };
+            
+            var result=sqlQuery.ExecuteReaderAsync(CommandType.Text, queryString, parameters);
+            if (result.Rows.Count > 0)
+            {
+                var oldJobNo = result.Rows[0]["jobno"].ToString();
+                txtjobno.Text = oldJobNo;
+            }
+            else
+            {
+                txtjobno.Text = "8" + lblProdNo.Text.Substring(1,5);
+             
+            }
+            txtadvpw.Text = lblProdNo.Text.Substring(0, 6);
+            txtstfpw.Text = dsProdutn.cust.Rows[0]["schstate"].ToString().Substring(0, 2) + lblcontryear.Text;
+
+
+
+        }
+
 
 
 
@@ -293,17 +327,18 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
 
         //nothing below here  
-        }
-    public class BinderyInfo {
+    }
+    public class BinderyInfo
+    {
         public string Schname { get; set; }
         public string CoverType { get; set; }
         public string ProdNo { get; set; }
-        public int NoPages{get;set;}
+        public int NoPages { get; set; }
         public int NoCopies { get; set; }
         public bool Diecut { get; set; }
         public string CoilClr { get; set; }
         public DateTime ProjShpDate { get; set; }
-
+    }
 }
 
 

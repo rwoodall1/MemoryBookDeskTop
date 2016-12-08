@@ -85,8 +85,8 @@ namespace BaseClass.Classes
             };
        var result = sqlQuery.ExecuteReaderAsync<HolidayDate>(CommandType.Text,queryString,parameters);
             if (result == null) {
-                MessageBox.Show("Failed to get Holiday Dates.","Error",MessageBoxButtons.OK,MessageBoxIcon.Stop);
-                return DateTime.Now;
+                MessageBox.Show("There are no Holiday dates entered to be calculated.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+               
                 }
             var HolidayDates = new List<HolidayDate>();
             HolidayDates =(List<HolidayDate>)result;
@@ -106,10 +106,19 @@ namespace BaseClass.Classes
                         vEndDate = vEndDate.AddDays(-2);
                         }
                     //Now check if holiday
-                    if (!HolidayDates.Exists(a => a.Date.Date == vEndDate.Date)) {
+                    if (HolidayDates!=null)
+                    {
+                        if (!HolidayDates.Exists(a => a.Date.Date == vEndDate.Date))
+                        {
+                            oK = true;
+                        }
+                        else { vEndDate = vEndDate.AddDays(-1); }
+                    }
+                    else
+                    {
                         oK = true;
-                        } else { vEndDate = vEndDate.AddDays(-1); }
-                    
+
+                    }
                     }//End While
 
                 }//End for
@@ -123,8 +132,8 @@ namespace BaseClass.Classes
             };
             var result = sqlQuery.ExecuteReaderAsync<HolidayDate>(CommandType.Text,queryString,parameters);
             if (result == null) {
-                MessageBox.Show("Failed to get Holiday Dates.","Error",MessageBoxButtons.OK,MessageBoxIcon.Stop);
-                return DateTime.Now;
+                MessageBox.Show("There are no Holiday dates entered to be calculated.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+              
                 }
             var HolidayDates = new List<HolidayDate>();
             HolidayDates = (List<HolidayDate>)result;
@@ -144,11 +153,18 @@ namespace BaseClass.Classes
                         vStartDate = vStartDate.AddDays(1);
                         }
                     //Now check if holiday
-                    if (!HolidayDates.Exists(a => a.Date.Date == vStartDate.Date)) {
+                    if (HolidayDates != null)
+                    {
+                        if (!HolidayDates.Exists(a => a.Date.Date == vStartDate.Date)) {
                         oK = true;
                         } else { vStartDate = vStartDate.AddDays(1); }
+                    }
+                    else
+                    {
+                        oK = true;
 
-                    }//End While
+                    }
+                }//End While
 
                 }//End for
             return vStartDate;

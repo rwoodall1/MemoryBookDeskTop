@@ -134,7 +134,7 @@
             this.ptrecvdDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.colorpgsCheckBox = new System.Windows.Forms.CheckBox();
             this.coilclrTextBox = new System.Windows.Forms.TextBox();
-            this.perfbindTextBox = new System.Windows.Forms.TextBox();
+            this.txtPerfbind = new System.Windows.Forms.TextBox();
             this.laminatedTextBox = new System.Windows.Forms.TextBox();
             this.diecutTextBox = new System.Windows.Forms.TextBox();
             this.dcdesc2TextBox = new System.Windows.Forms.TextBox();
@@ -174,8 +174,8 @@
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnBookType = new System.Windows.Forms.Button();
             this.allclrckCheckBox = new System.Windows.Forms.CheckBox();
-            this.contryearLabel1 = new System.Windows.Forms.Label();
-            this.prodnoLabel1 = new System.Windows.Forms.Label();
+            this.lblcontryear = new System.Windows.Forms.Label();
+            this.lblProdNo = new System.Windows.Forms.Label();
             this.lblInvno = new System.Windows.Forms.Label();
             this.companyTextBox = new System.Windows.Forms.TextBox();
             this.lblSchoolName = new System.Windows.Forms.Label();
@@ -794,9 +794,9 @@
             this.pg1.Controls.Add(this.btnBookType);
             this.pg1.Controls.Add(this.allclrckCheckBox);
             this.pg1.Controls.Add(contryearLabel);
-            this.pg1.Controls.Add(this.contryearLabel1);
+            this.pg1.Controls.Add(this.lblcontryear);
             this.pg1.Controls.Add(prodnoLabel);
-            this.pg1.Controls.Add(this.prodnoLabel1);
+            this.pg1.Controls.Add(this.lblProdNo);
             this.pg1.Controls.Add(invnoLabel);
             this.pg1.Controls.Add(this.lblInvno);
             this.pg1.Controls.Add(companyLabel);
@@ -900,6 +900,7 @@
             this.btnUpdateJob.TabIndex = 147;
             this.btnUpdateJob.Text = "Update Job Info";
             this.btnUpdateJob.UseVisualStyleBackColor = true;
+            this.btnUpdateJob.Click += new System.EventHandler(this.btnUpdateJob_Click);
             // 
             // onlineyrTextBox
             // 
@@ -930,6 +931,7 @@
             this.txtjobno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "jobno", true));
             this.txtjobno.Location = new System.Drawing.Point(240, 80);
             this.txtjobno.Name = "txtjobno";
+            this.txtjobno.ReadOnly = true;
             this.txtjobno.Size = new System.Drawing.Size(66, 20);
             this.txtjobno.TabIndex = 141;
             // 
@@ -1320,7 +1322,7 @@
             this.panel1.Controls.Add(coilclrLabel);
             this.panel1.Controls.Add(this.coilclrTextBox);
             this.panel1.Controls.Add(perfbindLabel);
-            this.panel1.Controls.Add(this.perfbindTextBox);
+            this.panel1.Controls.Add(this.txtPerfbind);
             this.panel1.Controls.Add(laminatedLabel);
             this.panel1.Controls.Add(this.laminatedTextBox);
             this.panel1.Controls.Add(diecutLabel1);
@@ -1413,15 +1415,15 @@
             this.coilclrTextBox.Size = new System.Drawing.Size(100, 20);
             this.coilclrTextBox.TabIndex = 118;
             // 
-            // perfbindTextBox
+            // txtPerfbind
             // 
-            this.perfbindTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPerfbind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.perfbindTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "perfbind", true));
-            this.perfbindTextBox.Location = new System.Drawing.Point(149, 188);
-            this.perfbindTextBox.Name = "perfbindTextBox";
-            this.perfbindTextBox.Size = new System.Drawing.Size(100, 20);
-            this.perfbindTextBox.TabIndex = 116;
+            this.txtPerfbind.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "perfbind", true));
+            this.txtPerfbind.Location = new System.Drawing.Point(149, 188);
+            this.txtPerfbind.Name = "txtPerfbind";
+            this.txtPerfbind.Size = new System.Drawing.Size(33, 20);
+            this.txtPerfbind.TabIndex = 116;
             // 
             // laminatedTextBox
             // 
@@ -1638,6 +1640,7 @@
             this.adduploaddateDateTimePicker.Name = "adduploaddateDateTimePicker";
             this.adduploaddateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.adduploaddateDateTimePicker.TabIndex = 52;
+            this.adduploaddateDateTimePicker.Value = new System.DateTime(2016, 12, 7, 21, 23, 13, 0);
             // 
             // cmbfoilclr
             // 
@@ -1811,23 +1814,23 @@
             this.allclrckCheckBox.Text = "All Color Book";
             this.allclrckCheckBox.UseVisualStyleBackColor = true;
             // 
-            // contryearLabel1
+            // lblcontryear
             // 
-            this.contryearLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "contryear", true));
-            this.contryearLabel1.Location = new System.Drawing.Point(568, 9);
-            this.contryearLabel1.Name = "contryearLabel1";
-            this.contryearLabel1.Size = new System.Drawing.Size(100, 20);
-            this.contryearLabel1.TabIndex = 12;
-            this.contryearLabel1.Text = "label1";
+            this.lblcontryear.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "contryear", true));
+            this.lblcontryear.Location = new System.Drawing.Point(568, 9);
+            this.lblcontryear.Name = "lblcontryear";
+            this.lblcontryear.Size = new System.Drawing.Size(100, 20);
+            this.lblcontryear.TabIndex = 12;
+            this.lblcontryear.Text = "label1";
             // 
-            // prodnoLabel1
+            // lblProdNo
             // 
-            this.prodnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
-            this.prodnoLabel1.Location = new System.Drawing.Point(207, 9);
-            this.prodnoLabel1.Name = "prodnoLabel1";
-            this.prodnoLabel1.Size = new System.Drawing.Size(100, 20);
-            this.prodnoLabel1.TabIndex = 11;
-            this.prodnoLabel1.Text = "label1";
+            this.lblProdNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
+            this.lblProdNo.Location = new System.Drawing.Point(207, 9);
+            this.lblProdNo.Name = "lblProdNo";
+            this.lblProdNo.Size = new System.Drawing.Size(100, 20);
+            this.lblProdNo.TabIndex = 11;
+            this.lblProdNo.Text = "label1";
             // 
             // lblInvno
             // 
@@ -2131,9 +2134,9 @@
         private System.Windows.Forms.BindingSource produtnBindingSource;
         private System.Windows.Forms.Label lblSchoolName;
         private System.Windows.Forms.TextBox companyTextBox;
-        private System.Windows.Forms.Label prodnoLabel1;
+        private System.Windows.Forms.Label lblProdNo;
         private System.Windows.Forms.Label lblInvno;
-        private System.Windows.Forms.Label contryearLabel1;
+        private System.Windows.Forms.Label lblcontryear;
         private System.Windows.Forms.Button btnBookType;
         private System.Windows.Forms.CheckBox allclrckCheckBox;
         private System.Windows.Forms.CheckBox bkmixedCheckBox;
@@ -2179,7 +2182,7 @@
         private System.Windows.Forms.DateTimePicker ptrecvdDateTimePicker;
         private System.Windows.Forms.CheckBox colorpgsCheckBox;
         private System.Windows.Forms.TextBox coilclrTextBox;
-        private System.Windows.Forms.TextBox perfbindTextBox;
+        private System.Windows.Forms.TextBox txtPerfbind;
         private System.Windows.Forms.TextBox laminatedTextBox;
         private System.Windows.Forms.TextBox diecutTextBox;
         private System.Windows.Forms.TextBox dcdesc2TextBox;

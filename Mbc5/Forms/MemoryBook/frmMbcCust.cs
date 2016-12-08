@@ -478,7 +478,7 @@ namespace Mbc5.Forms.MemoryBook {
             int? prodNum = null;
             try {
                 prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
-                strQuery = "Insert Into Prodnum (lstprodno) values(@lstprodno)";
+                strQuery = "Update Prodnum Set lstprodno=@lstprodno";
                 SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno",(prodNum + 1)) };
                 var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
                 if (result1 != 1) {
@@ -521,7 +521,7 @@ namespace Mbc5.Forms.MemoryBook {
             int? coverNum=null;
             try {
                    coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
-                  strQuery = "Insert Into Spcover (speccvno) values(@speccvno)";
+                  strQuery = "Update Spcover set speccvno=@speccvno";
                 SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno",(coverNum+1)) };
                 var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
                 if (result1 != 1) {

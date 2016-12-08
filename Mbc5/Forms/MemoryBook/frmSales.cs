@@ -687,6 +687,14 @@ namespace Mbc5.Forms.MemoryBook {
                     this.Fill();
                     } else { retval = false; }
                 }
+            if (String.IsNullOrEmpty(lblInvoice.Text) || lblInvoice.Text == "0")
+            {
+                this.DisableControls(this);
+                EnableControls(this.txtInvoSrch);
+                EnableControls(btnInvSrch);
+                EnableControls(btnPoSrch);
+                EnableControls(txtPoSrch);
+            }
             return retval;
             }
         private void CalculateEach() {
