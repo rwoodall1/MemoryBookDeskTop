@@ -137,8 +137,30 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
-        private void SaveProdutn() {
+        private bool SaveProdutn() {
+            bool retval = false;
+            if (quotesBindingSource.Count > 0) {
+                //if (ValidSales()) {
 
+                    try {
+                        this.produtnBindingSource.EndEdit();
+                       produtnTableAdapter.Update(dsProdutn.produtn);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        this.Fill();
+                        retval = true;
+                        } catch (DBConcurrencyException ex1) {
+                        retval = false;
+                        string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
+                        this.Log.Error(ex1,ex1.Message);
+                        MessageBox.Show(errmsg);
+                        } catch (Exception ex) {
+                        retval = false;
+                        MessageBox.Show("Production record failed to update:" + ex.Message);
+                        this.Log.Error(ex,"Production record failed to update:" + ex.Message);
+                        }
+                    } else { retval = false; }
+                //}
+            return retval;
 
             }
         public override void Add() {

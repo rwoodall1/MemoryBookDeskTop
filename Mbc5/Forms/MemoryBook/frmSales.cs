@@ -2850,7 +2850,33 @@ namespace Mbc5.Forms.MemoryBook {
             this.Delete();
             }
 
-        
+        private void frmSales_FormClosing(object sender,FormClosingEventArgs e) {
+            switch (tabSales.SelectedIndex) {
+                case 0:
+                case 1:
+                    if (!SaveSales()) {
+                        var result = MessageBox.Show("Sales record could not be saved. Continue closing form?","Warning",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                        if (result == DialogResult.No) {
+                            e.Cancel = true;
+                            return;
+                            }
+                        }
+                    break;
+                case 3:
+                    if (!SavePayment()) {
+                        var result = MessageBox.Show("Payment record could not be saved. Continue closing form?","Warning",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                        if (result == DialogResult.No) {
+                            e.Cancel = true;
+                            return;
+                            }
+
+
+                        }
+                    break;
+                }
+            }
+
+
 
 
 
