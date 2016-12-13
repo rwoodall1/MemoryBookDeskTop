@@ -59,4 +59,3 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.xm
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.Windows.xml
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csproj.ResolveComReference.cache
-F:\New folder\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache

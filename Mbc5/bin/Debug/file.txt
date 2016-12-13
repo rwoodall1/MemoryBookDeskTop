@@ -315,3 +315,21 @@ The statement has been terminated. CHOME  WDFM\rwoodall
 2016/12/07 21:49:44.591 Error retrieving data:No parameterless constructor defined for this object. CHOME  WDFM\rwoodall    
 2016/12/07 21:51:53.942 Error running ExecuteScalarAsync. CHOME  WDFM\rwoodall    
 2016/12/07 21:53:35.929 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2016/12/13 10:35:57.305 Production record failed to update:Update requires a valid UpdateCommand when passed DataRow collection with modified rows. RWCOMPUTER  RWCOMPUTER\randy   System.InvalidOperationException: Update requires a valid UpdateCommand when passed DataRow collection with modified rows.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsProdutnTableAdapters.produtnTableAdapter.Update(produtnDataTable dataTable) in F:\New folder\MemoryBookDeskTop\Mbc5\DataSets\dsProdutn.Designer.cs:line 11646
+   at Mbc5.Forms.MemoryBook.frmProdutn.SaveProdutn() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\frmProdutn.cs:line 147 
+2016/12/13 11:14:19.644 Production record failed to update:The parameterized query '(@prodno char(12),@contrecvd char(1),@deadlinein char(1),@typest' expects the parameter '@Original_TimeStamp', which was not supplied. RWCOMPUTER  RWCOMPUTER\randy   System.Data.SqlClient.SqlException (0x80131904): The parameterized query '(@prodno char(12),@contrecvd char(1),@deadlinein char(1),@typest' expects the parameter '@Original_TimeStamp', which was not supplied.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsProdutnTableAdapters.produtnTableAdapter.Update(produtnDataTable dataTable) in F:\New folder\MemoryBookDeskTop\Mbc5\DataSets\dsProdutn.Designer.cs:line 11752
+   at Mbc5.Forms.MemoryBook.frmProdutn.SaveProdutn() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\frmProdutn.cs:line 147
+ClientConnectionId:bc0f703f-055d-4be0-992f-40fdb14d01cb
+Error Number:8178,State:1,Class:16 

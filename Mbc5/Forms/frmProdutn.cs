@@ -98,11 +98,11 @@ namespace Mbc5.Forms.MemoryBook {
                 custTableAdapter.Fill(dsProdutn.cust,Schcode);
                 quotesTableAdapter.Fill(dsProdutn.quotes,Schcode);
                 produtnTableAdapter.Fill(dsProdutn.produtn,Schcode);
-                partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
-                ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
-                wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
-                wipTableAdapter.Fill(dsProdutn.wip,Schcode);
-                
+                //partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
+                //ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
+                //wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
+                wipTableAdapter.Fill(dsProdutn.wip,Invno);
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Invno);
                 }
             if (Invno != 0) {
                 var pos = produtnBindingSource.Find("invno",this.Invno);
@@ -122,7 +122,7 @@ namespace Mbc5.Forms.MemoryBook {
                     break;
                 case 1:
                         {
-                        //SaveSales();
+                        SaveWip();
                         break;
                         }
 
@@ -139,7 +139,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private bool SaveProdutn() {
             bool retval = false;
-            if (quotesBindingSource.Count > 0) {
+            if (produtnBindingSource.Count > 0) {
                 //if (ValidSales()) {
 
                     try {
@@ -160,6 +160,32 @@ namespace Mbc5.Forms.MemoryBook {
                         }
                     } else { retval = false; }
                 //}
+            return retval;
+
+            }
+        private bool SaveWip() {
+            bool retval = false;
+            if (wipBindingSource.Count > 0) {
+                //if (ValidSales()) {
+
+                try {
+                    this.wipBindingSource.EndEdit();
+                    wipTableAdapter.Update(dsProdutn.wip); 
+                    //must refill so we get updated time stamp so concurrency is not thrown
+                    this.Fill();
+                    retval = true;
+                    } catch (DBConcurrencyException ex1) {
+                    retval = false;
+                    string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
+                    this.Log.Error(ex1,ex1.Message);
+                    MessageBox.Show(errmsg);
+                    } catch (Exception ex) {
+                    retval = false;
+                    MessageBox.Show("Wip record failed to update:" + ex.Message);
+                    this.Log.Error(ex,"Wip record failed to update:" + ex.Message);
+                    }
+                } else { retval = false; }
+            //}
             return retval;
 
             }
@@ -206,9 +232,104 @@ namespace Mbc5.Forms.MemoryBook {
             //invoiceBindingSource.CancelEdit();
             }
 
-        
-       
+        #endregion
+        #region DatePickers
+        private void rmbfrmDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            rmbfrmDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
 
+        private void rmbtoDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            rmbtoDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void ioutDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            ioutDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void frmbindDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            frmbindDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void iinDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            iinDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void binddteDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            binddteDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void rmptoDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            rmptoDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void rmpfrmDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            rmpfrmDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void adduploaddateDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            adduploaddateDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void dedayinDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            dedayinDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void dedayoutDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            dedayoutDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void screcvDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            screcvDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void cprecvDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            cprecvDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void ptrecvdDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            ptrecvdDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void ptbrcvdDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            ptbrcvdDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void kitrecvdDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            kitrecvdDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void toprodDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            toprodDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void tovendDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            tovendDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void warndateDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            warndateDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void prshpdteDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            prshpdteDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void prmsdateDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            prmsdateDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void shpdateDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            shpdateDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void cstsvcdteDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            cstsvcdteDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void comdateDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            comdateDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+        #endregion
         private void frmProdutn_Paint(object sender,PaintEventArgs e) {
             try { this.Text = "Production-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; } catch {
 
@@ -231,10 +352,10 @@ namespace Mbc5.Forms.MemoryBook {
                 } else { MessageBox.Show("Please enter a Deadline out Date."); }
 
 
-                }
+            }
 
         private void btnCalCS_Click(object sender,EventArgs e) {
-            if (!String.IsNullOrEmpty(kitrecvdDateTimePicker.Value.ToString())){
+            if (!String.IsNullOrEmpty(kitrecvdDateTimePicker.Value.ToString())) {
                 int wks = 0;
                 int days = 0;
                 int.TryParse(txtWeeks.Text,out wks);
@@ -254,12 +375,12 @@ namespace Mbc5.Forms.MemoryBook {
         private void btnDeadLineInfo_Click(object sender,EventArgs e) {
             var emailHelper = new EmailHelper();
             string subject = this.Schcode + " " + lblSchoolName.Text.Trim() + " " + "Memorybook Deadlines";
-            string body = "Here is your Memory Book deadline information.<br/><br/>Pages due in plant " + dedayinDateTimePicker.Value.ToShortDateString() +"<br/>Delivery date " + dedayoutDateTimePicker.Value.ToShortDateString();
-            EmailType type =EmailType.Blank;
+            string body = "Here is your Memory Book deadline information.<br/><br/>Pages due in plant " + dedayinDateTimePicker.Value.ToShortDateString() + "<br/>Delivery date " + dedayoutDateTimePicker.Value.ToShortDateString();
+            EmailType type = EmailType.Blank;
             if (CurrentCompany == "MBC") {
-                 type = EmailType.Mbc;
-                }else if (CurrentCompany == "MER") {
-                 type = EmailType.Meridian;
+                type = EmailType.Mbc;
+                } else if (CurrentCompany == "MER") {
+                type = EmailType.Meridian;
                 }
 
             emailHelper.SendOutLookEmail(subject,AllEmails,"",body,EmailType.Mbc);
@@ -283,7 +404,7 @@ namespace Mbc5.Forms.MemoryBook {
             var sqlQuery = new SQLQuery();
             var queryString = " Select cust.schname,quotes.invno,produtn.prodno,produtn.nopages,covers.reqstdcpy,produtn.covertype,produtn.diecut,produtn.coilclr,produtn.prshpdte from cust inner join quotes on cust.schcode = quotes.schcodeleft join produtn on quotes.invno = produtn.invno left join covers on quotes.invno = covers.invno where cust.schcode = @Schcode and quotes.invno = @Invno";
             int vInvno = 0;
-             int.TryParse(lblInvno.Text,out vInvno);
+            int.TryParse(lblInvno.Text,out vInvno);
             SqlParameter[] parameters = new SqlParameter[] {
                  new SqlParameter("@Schcode",Schcode),
                  new SqlParameter("@Invno",vInvno)
@@ -307,49 +428,40 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
 
-        private void btnUpdateJob_Click(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtPerfbind.Text))
-            {
+        private void btnUpdateJob_Click(object sender,EventArgs e) {
+            if (String.IsNullOrEmpty(txtPerfbind.Text)) {
                 MessageBox.Show("Please enter binding information before issueing a job number.");
                 return;
-            }
+                }
             var vInvno = 0;
-            int.TryParse(lblInvno.Text, out vInvno);
+            int.TryParse(lblInvno.Text,out vInvno);
             var sqlQuery = new SQLQuery();
-            var queryString = "Select Top(1) quotes.invno,produtn.jobno from quotes inner join produtn on quotes.invno=produtn.invno  where quotes.schcode=@Schcode and quotes.invno<@Invno Order by Invno";  
-                SqlParameter[] parameters = new SqlParameter[] {
+            var queryString = "Select Top(1) quotes.invno,produtn.jobno from quotes inner join produtn on quotes.invno=produtn.invno  where quotes.schcode=@Schcode and quotes.invno<@Invno Order by Invno";
+            SqlParameter[] parameters = new SqlParameter[] {
                  new SqlParameter("@Schcode",Schcode),
                  new SqlParameter("@Invno",vInvno)
             };
-            
-            var result=sqlQuery.ExecuteReaderAsync(CommandType.Text, queryString, parameters);
-            if (result.Rows.Count > 0)
-            {
+
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,queryString,parameters);
+            if (result.Rows.Count > 0) {
                 var oldJobNo = result.Rows[0]["jobno"].ToString();
                 txtjobno.Text = oldJobNo;
-            }
-            else
-            {
+                } else {
                 txtjobno.Text = "8" + lblProdNo.Text.Substring(1,5);
-             
+
+                }
+            txtadvpw.Text = lblProdNo.Text.Substring(0,6);
+            txtstfpw.Text = dsProdutn.cust.Rows[0]["schstate"].ToString().Substring(0,2) + lblcontryear.Text;
+
+
+
             }
-            txtadvpw.Text = lblProdNo.Text.Substring(0, 6);
-            txtstfpw.Text = dsProdutn.cust.Rows[0]["schstate"].ToString().Substring(0, 2) + lblcontryear.Text;
 
+        private void pg2_Click(object sender,EventArgs e) {
 
-
-        }
-
-
-
-
-
-
-        #endregion
-
+            }
         //nothing below here  
-    }
+        }
     public class BinderyInfo
     {
         public string Schname { get; set; }
