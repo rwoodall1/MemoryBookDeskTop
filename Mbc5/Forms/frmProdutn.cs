@@ -39,12 +39,10 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
         private void frmProdutn_Load(object sender,EventArgs e) {
-            
+              Fill();
+            SetShipLabel();
+            CurrentProdNo = lblProdNo.Text;
 
-            Fill();
-          
-         
-            
             }
      
         #region "Properties"
@@ -61,9 +59,16 @@ namespace Mbc5.Forms.MemoryBook {
         private string BcontactEmail { get; set; }
         private string CcontactEmail { get; set; }
         private List<string> AllEmails { get; set; }
+        private string CurrentProdNo { get; set; }
 
         #endregion
         #region "Methods"
+        private void SetShipLabel()
+        {
+            var current = (DataRowView)produtnBindingSource.Current;
+            var shipdate = current["shpdate"].ToString();
+            lblShipped.Visible = !String.IsNullOrEmpty(shipdate);
+        }
        private void SetEmail() {
             SchEmail = dsProdutn.cust.Rows[0].IsNull("schemail") ? null : dsProdutn.cust.Rows[0]["schemail"].ToString().Trim();
             ContactEmail = dsProdutn.cust.Rows[0].IsNull("contemail") ? null : dsProdutn.cust.Rows[0]["contemail"].ToString().Trim();
@@ -147,6 +152,7 @@ namespace Mbc5.Forms.MemoryBook {
                        produtnTableAdapter.Update(dsProdutn.produtn);
                         //must refill so we get updated time stamp so concurrency is not thrown
                         this.Fill();
+                    SetShipLabel();
                         retval = true;
                         } catch (DBConcurrencyException ex1) {
                         retval = false;
@@ -320,7 +326,8 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void shpdateDateTimePicker_ValueChanged(object sender,EventArgs e) {
             shpdateDateTimePicker.Format = DateTimePickerFormat.Long;
-            }
+           
+        }
 
         private void cstsvcdteDateTimePicker_ValueChanged(object sender,EventArgs e) {
             cstsvcdteDateTimePicker.Format = DateTimePickerFormat.Long;
@@ -460,8 +467,39 @@ namespace Mbc5.Forms.MemoryBook {
         private void pg2_Click(object sender,EventArgs e) {
 
             }
-        //nothing below here  
+
+        private void txtPerfbind_Leave(object sender, EventArgs e)
+        {
+            var row = (DataRowView)produtnBindingSource.Current;
+           
+            string prodno = lblProdNo.Text;
+            switch (txtCompany.Text.ToUpper())
+            {
+                case "MBC":
+                    if (!String.IsNullOrEmpty(prodno.Substring(0,2)))//has prodno
+                    {
+                        if (!String.IsNullOrEmpty(prodno.Substring(0, 1)))//letter changed not added
+                        {
+                            MessageBox.Show("Your Production Number (Binding) First Digit is not the same as this value... Press andy key to continue...It is being changed!", "Binding Type Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                         if(txtPerfbind.Text=="C"|| txtPerfbind.Text == "G"|| txtPerfbind.Text == "K"|| txtPerfbind.Text == "H"|| txtPerfbind.Text == "P"|| txtPerfbind.Text == "S"|| txtPerfbind.Text == "M"|| txtPerfbind.Text == "")
+                            {
+                                lblProdNo.Text = txtPerfbind.Text + lblProdNo.Text.Substring(0);
+                                //need to replace quote prono at some time.
+                            }
+
+
+                        }//if2
+
+                    }//if 1
+                    break;
+                case "MER":
+
+                    break;
+            }
+
         }
+        //nothing below here  
+    }
     public class BinderyInfo
     {
         public string Schname { get; set; }

@@ -145,6 +145,12 @@
     <Compile Include="Dialogs\frmSelctCust.Designer.cs">
       <DependentUpon>frmSelctCust.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmBarScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBarScan.Designer.cs">
+      <DependentUpon>frmBarScan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmProdutn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmSelctCust.resx">
       <DependentUpon>frmSelctCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBarScan.resx">
+      <DependentUpon>frmBarScan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProdutn.resx">
       <DependentUpon>frmProdutn.cs</DependentUpon>
