@@ -132,6 +132,7 @@ namespace Mbc5.Forms.MemoryBook {
             if (Schcode != null) {
                 custTableAdapter.Fill(dsProdutn.cust,Schcode);
                 quotesTableAdapter.Fill(dsProdutn.quotes,Schcode);
+
                 produtnTableAdapter.Fill(dsProdutn.produtn,Schcode);
                 //partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
                 //ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
@@ -162,16 +163,16 @@ namespace Mbc5.Forms.MemoryBook {
               
                 if (dsProdutn.covers.Count < 1) {
                    
-                    DisableControls(this.tbProdutn.TabPages[2]);
+                    DisableControls(specinstTextBox);
+                    var aa = this.tbProdutn.TabPages[2];
                     } else { EnableAllControls(this.tbProdutn.TabPages[2]); }
                 wipTableAdapter.Fill(dsProdutn.wip,Invno);
-                DataRowView a = (DataRowView)coversBindingSource.Current;
-                var b = a["invno"].ToString();
-                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Invno);
-                if (dsProdutn.wip.Count < 1) {
-                    DisableControls(this.tbProdutn.TabPages[3]);
+           
+                //wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Invno);
+                //if (dsProdutn.wip.Count < 1) {
+                //    DisableControls(this.tbProdutn.TabPages[3]);
 
-                    } else { EnableAllControls(this.tbProdutn.TabPages[3]); }
+                //    } else { EnableAllControls(this.tbProdutn.TabPages[3]); }
 
 
                 }
