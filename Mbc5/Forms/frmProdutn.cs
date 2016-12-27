@@ -36,12 +36,21 @@ namespace Mbc5.Forms.MemoryBook {
             this.ApplicationUser = userPrincipal;
             this.Invno = 0;
             this.Schcode = null;
+            DisableControls(this.tbProdutn.TabPages[0]);
+           foreach(TabPage tab in tbProdutn.TabPages) {
+                DisableControls(tab);
+                }
+            EnableControls(this.txtInvoiceNoSrch);
+            EnableControls(this.txtProdNoSrch);
+            EnableControls(this.btnProdSrch);
+            EnableControls(this.btnInvoiceSrch);
 
             }
         private void frmProdutn_Load(object sender,EventArgs e) {
-              Fill();
+           
+            Fill();
             SetShipLabel();
-            CurrentProdNo = lblProdNo.Text;
+            CurrentProdNo = lblProdNo.Text ;
 
             }
      
@@ -63,11 +72,32 @@ namespace Mbc5.Forms.MemoryBook {
 
         #endregion
         #region "Methods"
+        private void DisableControls(Control con) {
+            foreach (Control c in con.Controls) {
+                DisableControls(c);
+                }
+            con.Enabled = false;
+            }
+        private void EnableControls(Control con) {
+            if (con != null) {
+                con.Enabled = true;
+                EnableControls(con.Parent);
+                }
+            }
+        private void EnableAllControls(Control con) {
+            foreach (Control c in con.Controls) {
+                EnableAllControls(c);
+                }
+            con.Enabled = true;
+            }
         private void SetShipLabel()
         {
             var current = (DataRowView)produtnBindingSource.Current;
-            var shipdate = current["shpdate"].ToString();
-            lblShipped.Visible = !String.IsNullOrEmpty(shipdate);
+            if (current != null) {
+              var shipdate = current["shpdate"].ToString();
+             lblShipped.Visible = !String.IsNullOrEmpty(shipdate);
+                }
+           
         }
        private void SetEmail() {
             SchEmail = dsProdutn.cust.Rows[0].IsNull("schemail") ? null : dsProdutn.cust.Rows[0]["schemail"].ToString().Trim();
@@ -106,9 +136,13 @@ namespace Mbc5.Forms.MemoryBook {
                 //partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
                 //ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
                 //wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
-                wipTableAdapter.Fill(dsProdutn.wip,Invno);
-                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Invno);
+               
+                FillWithInvno();
+                if (produtnBindingSource.Count > 0) {
+                    EnableAllControls(this);
+                    } else { DisableControls(this); }
                 }
+            
             if (Invno != 0) {
                 var pos = produtnBindingSource.Find("invno",this.Invno);
                 if (pos > -1) {
@@ -120,6 +154,30 @@ namespace Mbc5.Forms.MemoryBook {
                 
 
                 }
+        private void FillWithInvno() {
+            if (Invno != 0) {
+                coversTableAdapter.Fill(dsProdutn.covers,Invno);
+                coverdetailTableAdapter.Fill(dsProdutn.coverdetail,Invno);
+
+              
+                if (dsProdutn.covers.Count < 1) {
+                   
+                    DisableControls(this.tbProdutn.TabPages[2]);
+                    } else { EnableAllControls(this.tbProdutn.TabPages[2]); }
+                wipTableAdapter.Fill(dsProdutn.wip,Invno);
+                DataRowView a = (DataRowView)coversBindingSource.Current;
+                var b = a["invno"].ToString();
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Invno);
+                if (dsProdutn.wip.Count < 1) {
+                    DisableControls(this.tbProdutn.TabPages[3]);
+
+                    } else { EnableAllControls(this.tbProdutn.TabPages[3]); }
+
+
+                }
+            }
+
+
         public override void  Save() {
             switch (tbProdutn.SelectedIndex) {
                 case 0:
@@ -499,43 +557,41 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
 
-        private void fillToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.coversTableAdapter.Fill(this.dsProdutn.covers, schcodeToolStripTextBox.Text);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+               
+
+        private void produtnBindingSource_CurrentChanged(object sender,EventArgs e) {
+            FillWithInvno();
             }
 
-        }
-
-        private void pg3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prfreqCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fillToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                this.coverdetailTableAdapter.Fill(this.dsProdutn.coverdetail, ((int)(System.Convert.ChangeType(invnoToolStripTextBox.Text, typeof(int)))));
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+        private void btnProdSrch_Click(object sender,EventArgs e) {
+            var sqlQuery = new SQLQuery();
+            string query = "Select prodno,invno,schcode from produtn where prodno=@prodno";
+            var parameters = new SqlParameter[] { new SqlParameter("@prodno",txtProdNoSrch.Text) };
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,query,parameters);
+            if (result.Rows.Count > 0) {
+                Schcode = result.Rows[0]["schcode"].ToString();
+                Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
+                Fill();
+                }
+            else{ MessageBox.Show("Record was not found.","Production Number Search",MessageBoxButtons.OK,MessageBoxIcon.Information); }
             }
 
-        }
+        private void btnInvoiceSrch_Click(object sender,EventArgs e) {
+            
+            var sqlQuery = new SQLQuery();
+            string query = "Select prodno,invno,schcode from produtn where invno=@invno";
+            var parameters = new SqlParameter[] { new SqlParameter("@invno",txtInvoiceNoSrch.Text) };
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,query,parameters);
+            if (result.Rows.Count > 0) {
+                Schcode = result.Rows[0]["schcode"].ToString();
+                Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
+                Fill();
+                } else { MessageBox.Show("Record was not found.","Invoice Number Search",MessageBoxButtons.OK,MessageBoxIcon.Information); }
+            }
+
+
         //nothing below here  
-    }
+        }
     public class BinderyInfo
     {
         public string Schname { get; set; }

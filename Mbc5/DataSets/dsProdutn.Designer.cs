@@ -18728,23 +18728,18 @@ WHERE        (invno = @Invno)";
                          dcdtebk, othr, othrvend, otdtesent, otdtebk, prntsam, acceptd, reqstdcpy, reprntdte, reprnacp, reason, desorgdte, persondest, mascot, room, shelf, rack, desc3, finishedcopies, desc4, spback, company, typeset, 
                          front, spine, emailed, overprnt, desc1a, custsubmtx, perslist, app, perslistdate, laminit, clr1, clr2, clr3, clr4, proofsent
 FROM            covers
-WHERE        (specovr = @Schcode)";
+WHERE        (invno = @invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.Char, 5, global::System.Data.ParameterDirection.Input, 0, 0, "specovr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsProdutn.coversDataTable dataTable, string Schcode) {
+        public virtual int Fill(dsProdutn.coversDataTable dataTable, int invno) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Schcode == null)) {
-                throw new global::System.ArgumentNullException("Schcode");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(invno));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -18756,14 +18751,9 @@ WHERE        (specovr = @Schcode)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsProdutn.coversDataTable GetData(string Schcode) {
+        public virtual dsProdutn.coversDataTable GetData(int invno) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Schcode == null)) {
-                throw new global::System.ArgumentNullException("Schcode");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(invno));
             dsProdutn.coversDataTable dataTable = new dsProdutn.coversDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

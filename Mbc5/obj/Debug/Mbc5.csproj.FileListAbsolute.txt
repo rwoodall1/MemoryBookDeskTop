@@ -78,3 +78,4 @@ F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmProdutn.
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmProdutn.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.test.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmBarScan.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmBarScan.resources

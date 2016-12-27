@@ -131,6 +131,24 @@ namespace Mbc5.Forms.MemoryBook {
         private bool StartUp { get; set; }
         #endregion
         #region "Methods"
+        private void DisableControls(Control con) {
+            foreach (Control c in con.Controls) {
+                DisableControls(c);
+                }
+            con.Enabled = false;
+            }
+        private void EnableControls(Control con) {
+            if (con != null) {
+                con.Enabled = true;
+                EnableControls(con.Parent);
+                }
+            }
+        private void EnableAllControls(Control con) {
+            foreach (Control c in con.Controls) {
+                EnableAllControls(c);
+                }
+            con.Enabled = true;
+            }
         //Payment Tab
         private void SetCrudButtons() {
             btnSavePayment.Enabled = paymntBindingSource.Count > 0;
@@ -1290,24 +1308,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
-        private void DisableControls(Control con) {
-            foreach (Control c in con.Controls) {
-                DisableControls(c);
-                }
-            con.Enabled = false;
-            }
-        private void EnableControls(Control con) {
-            if (con != null) {
-                con.Enabled = true;
-                EnableControls(con.Parent);
-                }
-            }
-        private void EnableAllControls(Control con) {
-            foreach (Control c in con.Controls) {
-                EnableAllControls(c);
-                }
-            con.Enabled = true;
-            }
+      
         //General
         private void SetCodeInvno() {
             if (quotesBindingSource.Count > 0) {
