@@ -498,6 +498,42 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         }
+
+        private void fillToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.coversTableAdapter.Fill(this.dsProdutn.covers, schcodeToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void pg3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void prfreqCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fillToolStripButton_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.coverdetailTableAdapter.Fill(this.dsProdutn.coverdetail, ((int)(System.Convert.ChangeType(invnoToolStripTextBox.Text, typeof(int)))));
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
         //nothing below here  
     }
     public class BinderyInfo
