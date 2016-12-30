@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using BaseClass.Classes;
 using System.Data.Sql;
-using BaseClass.Classes;
+
 using System.Data.SqlClient;
 using Mbc5.Classes;
 using Mbc5.LookUpForms;
@@ -139,7 +139,7 @@ namespace Mbc5.Forms.MemoryBook {
                 //wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
                
                 FillWithInvno();
-                if (produtnBindingSource.Count > 0) {
+                if (dsProdutn.produtn.Count > 0) {
                     EnableAllControls(this);
                     } else { DisableControls(this); }
                 }
@@ -203,8 +203,8 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private bool SaveProdutn() {
             bool retval = false;
-            if (produtnBindingSource.Count > 0) {
-                //if (ValidSales()) {
+            if (dsProdutn.produtn.Count > 0) {
+           
 
                     try {
                         this.produtnBindingSource.EndEdit();
@@ -214,24 +214,31 @@ namespace Mbc5.Forms.MemoryBook {
                     SetShipLabel();
                         retval = true;
                         } catch (DBConcurrencyException ex1) {
+                    ex1.ToExceptionless()
+                   .SetMessage("Production record failed to update:" + ex1.Message)
+                   .Submit();
                         retval = false;
                         string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
-                        this.Log.Error(ex1,ex1.Message);
+                        //this.Log.Error(ex1,ex1.Message);
+
                         MessageBox.Show(errmsg);
                         } catch (Exception ex) {
                         retval = false;
                         MessageBox.Show("Production record failed to update:" + ex.Message);
-                        this.Log.Error(ex,"Production record failed to update:" + ex.Message);
+                    ex.ToExceptionless()
+                   .SetMessage("Production record failed to update:" + ex.Message)
+                   .Submit();
+                       
                         }
                     } else { retval = false; }
-                //}
+            
             return retval;
 
             }
         private bool SaveWip() {
             bool retval = false;
-            if (wipBindingSource.Count > 0) {
-                //if (ValidSales()) {
+            if (dsProdutn.wip.Count > 0) {
+              
 
                 try {
                     this.wipBindingSource.EndEdit();
@@ -240,19 +247,55 @@ namespace Mbc5.Forms.MemoryBook {
                     this.Fill();
                     retval = true;
                     } catch (DBConcurrencyException ex1) {
+                    ex1.ToExceptionless()
+                   .SetMessage("WIP record failed to update:" + ex1.Message)
+                   .Submit();
                     retval = false;
                     string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
-                    this.Log.Error(ex1,ex1.Message);
+                   
                     MessageBox.Show(errmsg);
                     } catch (Exception ex) {
+                    ex.ToExceptionless()
+                   .SetMessage("WIP record failed to update:" + ex.Message)
+                   .Submit();
                     retval = false;
                     MessageBox.Show("Wip record failed to update:" + ex.Message);
-                    this.Log.Error(ex,"Wip record failed to update:" + ex.Message);
+                 ;
                     }
                 } else { retval = false; }
-            //}
+            
             return retval;
 
+            }
+        private bool SaveCovers() {
+            bool retval = false;
+            if (dsProdutn.covers.Count > 0) {
+
+
+                try {
+                    this.coversBindingSource.EndEdit();
+                    coversTableAdapter.Update(dsProdutn.covers);
+                    //must refill so we get updated time stamp so concurrency is not thrown
+                    this.Fill();
+                    retval = true;
+                    } catch (DBConcurrencyException ex1) {
+                    ex1.ToExceptionless()
+                   .SetMessage("Covers record failed to update:" + ex1.Message)
+                   .Submit();
+                    retval = false;
+                    string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
+                
+                    MessageBox.Show(errmsg);
+                    } catch (Exception ex) {
+                    ex.ToExceptionless()
+                   .SetMessage("Coves record failed to update:" + ex.Message)
+                   .Submit();
+                    retval = false;
+                  
+                    }
+                } else { retval = false; }
+
+            return retval;
             }
         public override void Add() {
             //switch (tabSales.SelectedIndex) {
@@ -588,6 +631,10 @@ namespace Mbc5.Forms.MemoryBook {
                 Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
                 Fill();
                 } else { MessageBox.Show("Record was not found.","Invoice Number Search",MessageBoxButtons.OK,MessageBoxIcon.Information); }
+            }
+
+        private void wipDetailDataGridView_CellContentClick(object sender,DataGridViewCellEventArgs e) {
+            wipDetailDataGridView.CurrentCell.RowIndex;
             }
 
 

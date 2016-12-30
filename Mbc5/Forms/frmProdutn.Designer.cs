@@ -3035,6 +3035,7 @@
             this.wipDetailDataGridView.RowHeadersVisible = false;
             this.wipDetailDataGridView.Size = new System.Drawing.Size(1003, 265);
             this.wipDetailDataGridView.TabIndex = 130;
+            this.wipDetailDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.wipDetailDataGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
