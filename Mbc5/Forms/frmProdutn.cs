@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using BaseClass.Classes;
 using System.Data.Sql;
-
+using Mbc5.Dialogs;
 using System.Data.SqlClient;
 using Mbc5.Classes;
 using Mbc5.LookUpForms;
@@ -158,24 +158,26 @@ namespace Mbc5.Forms.MemoryBook {
         private void FillWithInvno() {
             if (Invno != 0) {
                 coversTableAdapter.Fill(dsProdutn.covers,Invno);
-                coverdetailTableAdapter.Fill(dsProdutn.coverdetail,Invno);
+                //coverdetailTableAdapter.Fill(dsProdutn.coverdetail,Invno);
 
               
-                if (dsProdutn.covers.Count < 1) {
+                //if (dsProdutn.covers.Count < 1) {
                    
-                    DisableControls(specinstTextBox);
-                    var aa = this.tbProdutn.TabPages[2];
-                    } else { EnableAllControls(this.tbProdutn.TabPages[2]); }
+                //    DisableControls(specinstTextBox);
+                //    var aa = this.tbProdutn.TabPages[2];
+                //    } else { EnableAllControls(this.tbProdutn.TabPages[2]); }
                 wipTableAdapter.Fill(dsProdutn.wip,Invno);
-           
-                //wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Invno);
-                //if (dsProdutn.wip.Count < 1) {
-                //    DisableControls(this.tbProdutn.TabPages[3]);
 
-                //    } else { EnableAllControls(this.tbProdutn.TabPages[3]); }
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
+            //    if (dsProdutn.wip.Count < 1)
+            //    {
+            //        DisableControls(this.tbProdutn.TabPages[3]);
+
+            //    }
+            //    else { EnableAllControls(this.tbProdutn.TabPages[3]); }
 
 
-                }
+            }
             }
 
 
@@ -633,13 +635,25 @@ namespace Mbc5.Forms.MemoryBook {
                 } else { MessageBox.Show("Record was not found.","Invoice Number Search",MessageBoxButtons.OK,MessageBoxIcon.Information); }
             }
 
-        private void wipDetailDataGridView_CellContentClick(object sender,DataGridViewCellEventArgs e) {
-            wipDetailDataGridView.CurrentCell.RowIndex;
+       
+
+        private void wipDetailDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataRowView row = (DataRowView)wipDetailBindingSource.Current;
+            int id = (int)row["id"];
+            int invno = (int)row["invno"];
+            frmEditWip frmeditWip = new frmEditWip(id, invno);
+            var result=frmeditWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
             }
+        }
+
 
 
         //nothing below here  
-        }
+    }
     public class BinderyInfo
     {
         public string Schname { get; set; }

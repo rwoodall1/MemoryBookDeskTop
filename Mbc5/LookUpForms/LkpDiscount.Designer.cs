@@ -65,7 +65,7 @@
             // 
             // BottomPanel
             // 
-            this.BottomPanel.Location = new System.Drawing.Point(0, 635);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 575);
             this.BottomPanel.Size = new System.Drawing.Size(381, 1);
             // 
             // lblDiscount
@@ -125,7 +125,7 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.lkpDdiscntBindingNavigatorSaveItem});
-            this.lkpDdiscntBindingNavigator.Location = new System.Drawing.Point(0, 610);
+            this.lkpDdiscntBindingNavigator.Location = new System.Drawing.Point(0, 550);
             this.lkpDdiscntBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.lkpDdiscntBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.lkpDdiscntBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -242,7 +242,7 @@
             this.lkpDdiscntDataGridView.DataSource = this.lkpDdiscntBindingSource;
             this.lkpDdiscntDataGridView.Location = new System.Drawing.Point(0, 54);
             this.lkpDdiscntDataGridView.Name = "lkpDdiscntDataGridView";
-            this.lkpDdiscntDataGridView.Size = new System.Drawing.Size(377, 545);
+            this.lkpDdiscntDataGridView.Size = new System.Drawing.Size(377, 485);
             this.lkpDdiscntDataGridView.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1
@@ -255,7 +255,7 @@
             // LkpDiscount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(381, 636);
+            this.ClientSize = new System.Drawing.Size(381, 576);
             this.Controls.Add(this.lkpDdiscntDataGridView);
             this.Controls.Add(this.lkpDdiscntBindingNavigator);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

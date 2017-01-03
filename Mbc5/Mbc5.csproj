@@ -241,6 +241,12 @@
     <Compile Include="Forms\frmUser.Designer.cs">
       <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="LookUpForms\LkpWipDescriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpWipDescriptions.Designer.cs">
+      <DependentUpon>LkpWipDescriptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="LookUpForms\LkpDiscount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -309,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpWipDescriptions.resx">
+      <DependentUpon>LkpWipDescriptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpDiscount.resx">
       <DependentUpon>LkpDiscount.cs</DependentUpon>
