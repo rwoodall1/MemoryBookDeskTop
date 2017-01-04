@@ -794,7 +794,7 @@
         </member>
         <member name="M:Exceptionless.ExceptionlessClientExtensions.Startup(Exceptionless.ExceptionlessClient,System.String)">
             <summary>
-            Reads configuration settings, configures various plugins and wires up to platform specific exception handlers. 
+            Reads configuration settings, configures various plugins and wires up to platform specific exception handlers.
             </summary>
             <param name="client">The ExceptionlessClient.</param>
             <param name="apiKey">The API key that will be used when sending events to the server.</param>
@@ -1010,7 +1010,7 @@
         </member>
         <member name="M:Exceptionless.ExceptionlessConfigurationExtensions.ReadFromAttributes(Exceptionless.ExceptionlessConfiguration,System.Reflection.Assembly[])">
             <summary>
-            Reads the <see cref="T:Exceptionless.Configuration.ExceptionlessAttribute" /> and <see cref="T:Exceptionless.Configuration.ExceptionlessSettingAttribute" /> 
+            Reads the <see cref="T:Exceptionless.Configuration.ExceptionlessAttribute" /> and <see cref="T:Exceptionless.Configuration.ExceptionlessSettingAttribute" />
             from the passed in assembly.
             </summary>
             <param name="config">The configuration object you want to apply the attribute settings to.</param>
@@ -1018,7 +1018,7 @@
         </member>
         <member name="M:Exceptionless.ExceptionlessConfigurationExtensions.ReadFromAttributes(Exceptionless.ExceptionlessConfiguration,System.Collections.Generic.ICollection{System.Reflection.Assembly})">
             <summary>
-            Reads the <see cref="T:Exceptionless.Configuration.ExceptionlessAttribute" /> and <see cref="T:Exceptionless.Configuration.ExceptionlessSettingAttribute" /> 
+            Reads the <see cref="T:Exceptionless.Configuration.ExceptionlessAttribute" /> and <see cref="T:Exceptionless.Configuration.ExceptionlessSettingAttribute" />
             from the passed in assemblies.
             </summary>
             <param name="config">The configuration object you want to apply the attribute settings to.</param>
@@ -10550,6 +10550,65 @@
             Duplicates events based on hashcode and interval.
             </summary>
             <param name="interval">The amount of time events will be deduplicated.</param>
+        </member>
+        <member name="M:Exceptionless.Storage.LockFile.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Exceptionless.Storage.LockFile"/> class.
+            </summary>
+            <param name="path"></param>
+            <param name="defaultTimeOutInSeconds"></param>
+        </member>
+        <member name="M:Exceptionless.Storage.LockFile.AcquireLock">
+            <summary>
+            Acquires a lock while waiting with the default timeout value.
+            </summary>
+        </member>
+        <member name="M:Exceptionless.Storage.LockFile.AcquireLock(System.TimeSpan)">
+            <summary>
+            Acquires a lock in a specific amount of time.
+            </summary>
+            <param name="timeout">The time to wait for when trying to acquire a lock.</param>
+        </member>
+        <member name="M:Exceptionless.Storage.LockFile.Acquire(System.String,System.Nullable{System.TimeSpan})">
+            <summary>
+            Acquires a lock in a specific amount of time.
+            </summary>
+            <param name="path">The path to acquire a lock on.</param>
+            <param name="timeout">The time to wait for when trying to acquire a lock.</param>
+            <returns>A lock instance.</returns>
+        </member>
+        <member name="M:Exceptionless.Storage.LockFile.CreateLock(System.String,System.TimeSpan)">
+            <summary>
+            Creates a lock file.
+            </summary>
+            <param name="path">The place to create the lock file.</param>
+            <param name="timeout">The amount of time to wait before a TimeoutException is thrown.</param>
+        </member>
+        <member name="M:Exceptionless.Storage.LockFile.ReleaseLock">
+            <summary>
+            Releases the lock.
+            </summary>
+        </member>
+        <member name="M:Exceptionless.Storage.LockFile.RemoveLock(System.String)">
+            <summary>
+            Releases the lock.
+            </summary>
+            <param name="path">The path to the lock file.</param>
+        </member>
+        <member name="P:Exceptionless.Storage.LockFile.FileName">
+            <summary>
+            The file that is being locked.
+            </summary>
+        </member>
+        <member name="P:Exceptionless.Storage.LockFile.DefaultTimeOutInSeconds">
+            <summary>
+            The default time to wait when trying to acquire a lock.
+            </summary>
+        </member>
+        <member name="M:Exceptionless.Storage.LockFile.Dispose">
+            <summary>
+            Releases the lock.
+            </summary>
         </member>
         <member name="M:Exceptionless.Utility.PathHelper.ExpandPath(System.String)">
             <summary>
