@@ -37,14 +37,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BindingModels">
-      <HintPath>..\BindingModels\bin\BindingModels.dll</HintPath>
+      <HintPath>..\BindingModels\obj\Debug\BindingModels.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless, Version=4.0.1906.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Exceptionless.4.0.1906\lib\net45\Exceptionless.dll</HintPath>
+      <HintPath>..\BaseClass\bin\Debug\Exceptionless.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Exceptionless.Windows, Version=4.0.1906.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Exceptionless.Windows.4.0.1906\lib\net45\Exceptionless.Windows.dll</HintPath>
+      <HintPath>..\BaseClass\bin\Debug\Exceptionless.Windows.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />

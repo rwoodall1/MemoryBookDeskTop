@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using BaseClass.Classes;
-using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using BaseClass;
 using Mbc5.Dialogs;
-using Exceptionless;
-using Exceptionless.Models;
 using BaseClase.Classes;
 
 namespace Mbc5.Forms.MemoryBook {
@@ -482,19 +476,19 @@ namespace Mbc5.Forms.MemoryBook {
                 SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno",(prodNum + 1)) };
                 var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
                 if (result1 != 1) {
-                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
-                         .AddTags("New prod number error.")
-                         .Submit();
+                    //ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
+                    //     .AddTags("New prod number error.")
+                    //     .Submit();
 
                     }
 
                 } catch (Exception ex) {
                 MessageBox.Show("There was an error getting the production number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
 
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting production number.")
-                  .Submit();
+                //ex.ToExceptionless()
+                //  .AddTags("MBCWindows")
+                //  .SetMessage("Error getting production number.")
+                //  .Submit();
 
                 }
 
@@ -525,18 +519,18 @@ namespace Mbc5.Forms.MemoryBook {
                 SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno",(coverNum+1)) };
                 var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
                 if (result1 != 1) {
-                    ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
-                         .AddTags("New cover number error.")
-                         .Submit();
+                    //ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
+                    //     .AddTags("New cover number error.")
+                    //     .Submit();
                          
                     }
 
                 } catch(Exception ex){
                 MessageBox.Show("There was an error getting the cover number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting cover number.")
-                  .Submit();
+                //ex.ToExceptionless()
+                //  .AddTags("MBCWindows")
+                //  .SetMessage("Error getting cover number.")
+                //  .Submit();
 
                 }
 

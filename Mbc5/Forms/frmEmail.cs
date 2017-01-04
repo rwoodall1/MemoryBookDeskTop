@@ -12,6 +12,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Configuration;
 using Mbc5.Dialogs;
+
 namespace Mbc5.Forms
 {
     public partial class frmEmail : BaseClass.Forms.bTopBottom

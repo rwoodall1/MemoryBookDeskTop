@@ -13,10 +13,8 @@ using BaseClase.Classes;
 using System.Data.SqlClient;
 using Mbc5.Classes;
 using Mbc5.LookUpForms;
-using BindingModels;
-using Exceptionless;
-using Exceptionless.Models;
 using Outlook= Microsoft.Office.Interop.Outlook;
+using BindingModels;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
         private static string _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
@@ -358,11 +356,11 @@ namespace Mbc5.Forms.MemoryBook {
                             command.ExecuteNonQuery();
 
                             } catch (Exception ex) {
-                            ex.ToExceptionless()
-                                .AddTags("CreateInvoice")
-                                .AddObject(command)
-                                .MarkAsCritical()
-                                .Submit();
+                            //ex.ToExceptionless()
+                            //    .AddTags("CreateInvoice")
+                            //    .AddObject(command)
+                            //    .MarkAsCritical()
+                            //    .Submit();
                             command.Transaction.Rollback();
                             MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
                             retval = false;
@@ -378,11 +376,11 @@ namespace Mbc5.Forms.MemoryBook {
                     }
 
                 } catch (Exception ex) {
-                ex.ToExceptionless()
-                                .AddTags("CreateInvoice")
-                                .AddObject(command)
-                                .MarkAsCritical()
-                                .Submit();
+                //ex.ToExceptionless()
+                //                .AddTags("CreateInvoice")
+                //                .AddObject(command)
+                //                .MarkAsCritical()
+                //                .Submit();
                 command.Transaction.Rollback();
                 MessageBox.Show("There was an error creating the invoice.","Invoice",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 retval = false;

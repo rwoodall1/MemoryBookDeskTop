@@ -13,9 +13,8 @@ using BaseClase.Classes;
 using System.Data.SqlClient;
 using Mbc5.Classes;
 using Mbc5.LookUpForms;
-using BindingModels;
-using Exceptionless;
-using Exceptionless.Models;
+
+
 using Outlook= Microsoft.Office.Interop.Outlook;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged {

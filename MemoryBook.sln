@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mbc5", "Mbc5\Mbc5.csproj", "{68CC54B3-1A90-4DE3-9397-9ED85AAC500D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5F448496-325E-429A-AE98-18AA1015AD80} = {5F448496-325E-429A-AE98-18AA1015AD80}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseClass", "BaseClass\BaseClass.csproj", "{D872B75B-B77F-41C3-BD82-84C88690BC82}"
 EndProject

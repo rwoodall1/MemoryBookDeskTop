@@ -786,7 +786,7 @@
         </member>
         <member name="M:Exceptionless.ExceptionlessClientExtensions.Startup(Exceptionless.ExceptionlessClient,System.String)">
             <summary>
-            Reads configuration settings, configures various plugins and wires up to platform specific exception handlers. 
+            Reads configuration settings, configures various plugins and wires up to platform specific exception handlers.
             </summary>
             <param name="client">The ExceptionlessClient.</param>
             <param name="apiKey">The API key that will be used when sending events to the server.</param>
@@ -1002,7 +1002,7 @@
         </member>
         <member name="M:Exceptionless.ExceptionlessConfigurationExtensions.ReadFromAttributes(Exceptionless.ExceptionlessConfiguration,System.Reflection.Assembly[])">
             <summary>
-            Reads the <see cref="T:Exceptionless.Configuration.ExceptionlessAttribute" /> and <see cref="T:Exceptionless.Configuration.ExceptionlessSettingAttribute" /> 
+            Reads the <see cref="T:Exceptionless.Configuration.ExceptionlessAttribute" /> and <see cref="T:Exceptionless.Configuration.ExceptionlessSettingAttribute" />
             from the passed in assembly.
             </summary>
             <param name="config">The configuration object you want to apply the attribute settings to.</param>
@@ -1010,7 +1010,7 @@
         </member>
         <member name="M:Exceptionless.ExceptionlessConfigurationExtensions.ReadFromAttributes(Exceptionless.ExceptionlessConfiguration,System.Collections.Generic.ICollection{System.Reflection.Assembly})">
             <summary>
-            Reads the <see cref="T:Exceptionless.Configuration.ExceptionlessAttribute" /> and <see cref="T:Exceptionless.Configuration.ExceptionlessSettingAttribute" /> 
+            Reads the <see cref="T:Exceptionless.Configuration.ExceptionlessAttribute" /> and <see cref="T:Exceptionless.Configuration.ExceptionlessSettingAttribute" />
             from the passed in assemblies.
             </summary>
             <param name="config">The configuration object you want to apply the attribute settings to.</param>
