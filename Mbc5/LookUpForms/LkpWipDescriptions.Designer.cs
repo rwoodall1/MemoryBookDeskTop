@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label descriptionLabel;
+            System.Windows.Forms.Label tableNameLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LkpWipDescriptions));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dsProdutn = new Mbc5.DataSets.dsProdutn();
             this.wipDescriptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -50,8 +52,14 @@
             this.wipDescriptionsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.wipDescriptionsDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.tableNameComboBox = new System.Windows.Forms.ComboBox();
+            this.btnFilter = new System.Windows.Forms.ToolStripButton();
+            this.cmbFilterVal = new System.Windows.Forms.ToolStripComboBox();
+            descriptionLabel = new System.Windows.Forms.Label();
+            tableNameLabel = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
@@ -64,19 +72,37 @@
             // TopPanel
             // 
             this.TopPanel.Controls.Add(this.label1);
-            this.TopPanel.Size = new System.Drawing.Size(792, 48);
+            this.TopPanel.Size = new System.Drawing.Size(517, 48);
             // 
             // BottomPanel
             // 
             this.BottomPanel.Controls.Add(this.wipDescriptionsBindingNavigator);
-            this.BottomPanel.Location = new System.Drawing.Point(0, 491);
-            this.BottomPanel.Size = new System.Drawing.Size(792, 37);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 505);
+            this.BottomPanel.Size = new System.Drawing.Size(517, 37);
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Location = new System.Drawing.Point(24, 54);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(63, 13);
+            descriptionLabel.TabIndex = 3;
+            descriptionLabel.Text = "Description:";
+            // 
+            // tableNameLabel
+            // 
+            tableNameLabel.AutoSize = true;
+            tableNameLabel.Location = new System.Drawing.Point(24, 80);
+            tableNameLabel.Name = "tableNameLabel";
+            tableNameLabel.Size = new System.Drawing.Size(68, 13);
+            tableNameLabel.TabIndex = 5;
+            tableNameLabel.Text = "Table Name:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(162, 13);
+            this.label1.Location = new System.Drawing.Point(80, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(266, 26);
             this.label1.TabIndex = 0;
@@ -127,7 +153,9 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
-            this.wipDescriptionsBindingNavigatorSaveItem});
+            this.wipDescriptionsBindingNavigatorSaveItem,
+            this.btnFilter,
+            this.cmbFilterVal});
             this.wipDescriptionsBindingNavigator.Location = new System.Drawing.Point(0, 12);
             this.wipDescriptionsBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.wipDescriptionsBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -135,7 +163,7 @@
             this.wipDescriptionsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.wipDescriptionsBindingNavigator.Name = "wipDescriptionsBindingNavigator";
             this.wipDescriptionsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.wipDescriptionsBindingNavigator.Size = new System.Drawing.Size(792, 25);
+            this.wipDescriptionsBindingNavigator.Size = new System.Drawing.Size(517, 25);
             this.wipDescriptionsBindingNavigator.TabIndex = 2;
             this.wipDescriptionsBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -229,14 +257,15 @@
             this.wipDescriptionsDataGridView.AllowUserToAddRows = false;
             this.wipDescriptionsDataGridView.AllowUserToDeleteRows = false;
             this.wipDescriptionsDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.wipDescriptionsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.wipDescriptionsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.wipDescriptionsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.wipDescriptionsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.wipDescriptionsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -244,31 +273,25 @@
             this.dataGridViewTextBoxColumn3});
             this.wipDescriptionsDataGridView.DataSource = this.wipDescriptionsBindingSource;
             this.wipDescriptionsDataGridView.EnableHeadersVisualStyles = false;
-            this.wipDescriptionsDataGridView.Location = new System.Drawing.Point(34, 92);
+            this.wipDescriptionsDataGridView.Location = new System.Drawing.Point(24, 113);
             this.wipDescriptionsDataGridView.Name = "wipDescriptionsDataGridView";
-            this.wipDescriptionsDataGridView.Size = new System.Drawing.Size(724, 323);
-            this.wipDescriptionsDataGridView.TabIndex = 4;
-            this.wipDescriptionsDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.wipDescriptionsDataGridView_DataError);
+            this.wipDescriptionsDataGridView.ReadOnly = true;
+            this.wipDescriptionsDataGridView.Size = new System.Drawing.Size(463, 373);
+            this.wipDescriptionsDataGridView.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
             this.dataGridViewTextBoxColumn1.HeaderText = "Description";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 341;
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewTextBoxColumn2.DataPropertyName = "TableName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Table";
-            this.dataGridViewTextBoxColumn2.Items.AddRange(new object[] {
-            "Covers",
-            "WIP"});
+            this.dataGridViewTextBoxColumn2.HeaderText = "TableName";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewTextBoxColumn2.Width = 340;
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -278,17 +301,67 @@
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Visible = false;
             // 
+            // descriptionTextBox
+            // 
+            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipDescriptionsBindingSource, "Description", true));
+            this.descriptionTextBox.Location = new System.Drawing.Point(91, 54);
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(285, 20);
+            this.descriptionTextBox.TabIndex = 4;
+            // 
+            // tableNameComboBox
+            // 
+            this.tableNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipDescriptionsBindingSource, "TableName", true));
+            this.tableNameComboBox.FormattingEnabled = true;
+            this.tableNameComboBox.Items.AddRange(new object[] {
+            "Covers",
+            "WIP"});
+            this.tableNameComboBox.Location = new System.Drawing.Point(91, 80);
+            this.tableNameComboBox.Name = "tableNameComboBox";
+            this.tableNameComboBox.Size = new System.Drawing.Size(285, 21);
+            this.tableNameComboBox.TabIndex = 7;
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnFilter.Image")));
+            this.btnFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(68, 22);
+            this.btnFilter.Text = "Table Filter";
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // cmbFilterVal
+            // 
+            this.cmbFilterVal.Items.AddRange(new object[] {
+            "",
+            "Covers",
+            "WIP"});
+            this.cmbFilterVal.Name = "cmbFilterVal";
+            this.cmbFilterVal.Size = new System.Drawing.Size(121, 25);
+            // 
             // LkpWipDescriptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(792, 528);
+            this.ClientSize = new System.Drawing.Size(517, 542);
+            this.Controls.Add(this.tableNameComboBox);
+            this.Controls.Add(tableNameLabel);
+            this.Controls.Add(descriptionLabel);
+            this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.wipDescriptionsDataGridView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "LkpWipDescriptions";
             this.Text = "WIP/Cover Descriptions";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LkpWipDescriptions_FormClosing);
             this.Load += new System.EventHandler(this.LkpWipDescriptions_Load);
             this.Controls.SetChildIndex(this.TopPanel, 0);
             this.Controls.SetChildIndex(this.BottomPanel, 0);
             this.Controls.SetChildIndex(this.wipDescriptionsDataGridView, 0);
+            this.Controls.SetChildIndex(this.descriptionTextBox, 0);
+            this.Controls.SetChildIndex(descriptionLabel, 0);
+            this.Controls.SetChildIndex(tableNameLabel, 0);
+            this.Controls.SetChildIndex(this.tableNameComboBox, 0);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.BottomPanel.ResumeLayout(false);
@@ -300,6 +373,7 @@
             this.wipDescriptionsBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wipDescriptionsDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -324,7 +398,11 @@
         private System.Windows.Forms.ToolStripButton wipDescriptionsBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView wipDescriptionsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.TextBox descriptionTextBox;
+        private System.Windows.Forms.ComboBox tableNameComboBox;
+        private System.Windows.Forms.ToolStripButton btnFilter;
+        private System.Windows.Forms.ToolStripComboBox cmbFilterVal;
     }
 }
