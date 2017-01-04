@@ -179,8 +179,6 @@ namespace Mbc5.Forms.MemoryBook {
 
             }
             }
-
-
         public override void  Save() {
             switch (tbProdutn.SelectedIndex) {
                 case 0:
@@ -272,9 +270,7 @@ namespace Mbc5.Forms.MemoryBook {
         private bool SaveCovers() {
             bool retval = false;
             if (dsProdutn.covers.Count > 0) {
-
-
-                try {
+               try {
                     this.coversBindingSource.EndEdit();
                     coversTableAdapter.Update(dsProdutn.covers);
                     //must refill so we get updated time stamp so concurrency is not thrown
@@ -603,8 +599,6 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
 
-               
-
         private void produtnBindingSource_CurrentChanged(object sender,EventArgs e) {
             FillWithInvno();
             }
@@ -635,8 +629,6 @@ namespace Mbc5.Forms.MemoryBook {
                 } else { MessageBox.Show("Record was not found.","Invoice Number Search",MessageBoxButtons.OK,MessageBoxIcon.Information); }
             }
 
-       
-
         private void wipDetailDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DataRowView row = (DataRowView)wipDetailBindingSource.Current;
@@ -649,8 +641,6 @@ namespace Mbc5.Forms.MemoryBook {
                 wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
             }
         }
-
-
 
         //nothing below here  
     }

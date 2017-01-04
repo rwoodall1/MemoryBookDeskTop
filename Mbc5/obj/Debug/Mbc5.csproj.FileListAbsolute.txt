@@ -81,3 +81,5 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmBarScan
 F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmBarScan.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditWip.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpWipDescriptions.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditWip.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpWipDescriptions.resources
