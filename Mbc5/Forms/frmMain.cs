@@ -439,7 +439,16 @@ namespace Mbc5.Forms
                 }
             }
 
-        
+        private void scanDescriptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LkpWipDescriptions frmWipDesc = new LkpWipDescriptions(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmWipDesc.MdiParent = this;
+            frmWipDesc.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+
         #endregion
 
 
@@ -447,6 +456,6 @@ namespace Mbc5.Forms
 
 
         //nothing below here
-        }
+    }
         }
 

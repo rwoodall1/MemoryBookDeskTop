@@ -67,6 +67,7 @@
             this.userMaintinanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lookUpMaintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scanDescriptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.tsSave = new System.Windows.Forms.ToolStripButton();
             this.tsAdd = new System.Windows.Forms.ToolStripButton();
@@ -122,7 +123,7 @@
             this.bidsToolStripMenuItem,
             this.onlineFormsToolStripMenuItem});
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
-            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
             // 
             // customerToolStripMenuItem
@@ -160,7 +161,7 @@
             this.mbidsToolStripMenuItem,
             this.onlineFormsToolStripMenuItem1});
             this.meridianToolStripMenuItem.Name = "meridianToolStripMenuItem";
-            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
             // 
             // MerToolStrip
@@ -196,7 +197,7 @@
             this.productionWIPToolStripMenuItem,
             this.endSheetSupplementPreFlightToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -215,14 +216,14 @@
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.testToolStripMenuItem.Text = "test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
@@ -375,7 +376,8 @@
             // lookUpMaintenanceToolStripMenuItem
             // 
             this.lookUpMaintenanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.discountToolStripMenuItem});
+            this.discountToolStripMenuItem,
+            this.scanDescriptionsToolStripMenuItem});
             this.lookUpMaintenanceToolStripMenuItem.Name = "lookUpMaintenanceToolStripMenuItem";
             this.lookUpMaintenanceToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.lookUpMaintenanceToolStripMenuItem.Text = "Look Up Maintenance";
@@ -383,9 +385,16 @@
             // discountToolStripMenuItem
             // 
             this.discountToolStripMenuItem.Name = "discountToolStripMenuItem";
-            this.discountToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.discountToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.discountToolStripMenuItem.Text = "Discount";
             this.discountToolStripMenuItem.Click += new System.EventHandler(this.discountToolStripMenuItem_Click);
+            // 
+            // scanDescriptionsToolStripMenuItem
+            // 
+            this.scanDescriptionsToolStripMenuItem.Name = "scanDescriptionsToolStripMenuItem";
+            this.scanDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.scanDescriptionsToolStripMenuItem.Text = "Scan Descriptions";
+            this.scanDescriptionsToolStripMenuItem.Click += new System.EventHandler(this.scanDescriptionsToolStripMenuItem_Click);
             // 
             // tsMain
             // 
@@ -521,7 +530,6 @@
             this.Controls.Add(this.tsMain);
             this.Controls.Add(this.mnuMain);
             this.Name = "frmMain";
-            this.OpenForms = ((System.Collections.Generic.List<BaseClass.FormHandler.FormInstance>)(resources.GetObject("$this.OpenForms")));
             this.Text = "MBC";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Controls.SetChildIndex(this.mnuMain, 0);
@@ -589,5 +597,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsDelete;
         private System.Windows.Forms.ToolStripButton tsCancel;
-        }
+        private System.Windows.Forms.ToolStripMenuItem scanDescriptionsToolStripMenuItem;
+    }
 }

@@ -4587,6 +4587,7 @@
             this.MinimumSize = new System.Drawing.Size(1250, 770);
             this.Name = "frmSales";
             this.Text = "Sales";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSales_FormClosing);
             this.Load += new System.EventHandler(this.frmSales_Load);
             this.tabSales.ResumeLayout(false);
             this.pg1.ResumeLayout(false);

@@ -18,33 +18,6 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Properties.Resou
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.GenerateResource.Cache
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.exe
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe.config
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.exe
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csprojResolveAssemblyReference.cache
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmAddressList.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmChangePassword.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmEmail.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmFogotPassword.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmMain.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmUser.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Properties.Resources.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.GenerateResource.Cache
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.config
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.pdb
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BaseClass.dll
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.dll
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BaseClass.pdb
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.xml
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmSales.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Meridian.frmMSales.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Meridian.frmMBids.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmBids.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmMbcCust.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Meridian.frmMerCust.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.cache
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.compiled
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmSales.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Meridian.frmMSales.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Meridian.frmMBids.resources
@@ -54,18 +27,7 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Meridian.frmMerCust.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.cache
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.compiled
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmLogin.resources
-F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpDiscount.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpDiscount.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.dll
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.dll
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.dll
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.pdb
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.xml
-F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.xml
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmSelctCust.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.ResolveComReference.cache
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.ResolveComReference.cache
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.dll
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.dll
@@ -74,5 +36,108 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.pdb
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.xml
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.xml
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmSelctCust.resources
-F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.test.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmProdutn.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.test.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmBarScan.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditWip.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpWipDescriptions.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Form1.resources
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\csc.exe
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\csc.exe.config
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\csc.rsp
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\csi.exe
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\csi.rsp
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CSharp.Core.targets
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.VisualBasic.Core.targets
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.AppContext.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.Collections.Immutable.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.Diagnostics.StackTrace.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.IO.FileSystem.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.IO.FileSystem.Primitives.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.Reflection.Metadata.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\vbc.exe
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\vbc.exe.config
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\vbc.rsp
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\VBCSCompiler.exe
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\VBCSCompiler.exe.config
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.ResolveComReference.cache
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmAddressList.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditWip.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmSelctCust.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Form1.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmBarScan.resources
 F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmProdutn.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmSales.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.test.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Meridian.frmMSales.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Meridian.frmMBids.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmBids.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmChangePassword.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmEmail.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmFogotPassword.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmLogin.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmMbcCust.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Meridian.frmMerCust.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmUser.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpWipDescriptions.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpDiscount.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Properties.Resources.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.GenerateResource.Cache
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmMain.resources
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.cache
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.compiled
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csprojResolveAssemblyReference.cache
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\csc.exe.config
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\csc.rsp
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\csi.rsp
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CSharp.Core.targets
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.VisualBasic.Core.targets
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\vbc.exe.config
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\vbc.rsp
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\VBCSCompiler.exe.config
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\csc.exe
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\csi.exe
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.AppContext.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.Collections.Immutable.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.Diagnostics.StackTrace.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.IO.FileSystem.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.IO.FileSystem.Primitives.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\System.Reflection.Metadata.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\vbc.exe
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\roslyn\VBCSCompiler.exe
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.config
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe.config
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.pdb
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BaseClass.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.dll
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BaseClass.pdb
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.pdb
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.xml
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.xml
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\New folder\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.xml
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.exe
+F:\New folder\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb

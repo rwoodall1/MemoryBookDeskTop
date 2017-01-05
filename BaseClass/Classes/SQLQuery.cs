@@ -8,7 +8,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using NLog;
-namespace BaseClase.Classes {
+namespace BaseClass.Classes {
     public class SQLQuery {
         protected Logger Log { get; private set; }
         private static string _ConnectionString =ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
@@ -81,11 +81,10 @@ namespace BaseClase.Classes {
                         try
                             {
                             var Vals =BaseClass.Classes.CollectionHelper.ConvertTo<T>(dt);
-                          
+                            retval = Vals;
                             }
                         catch (Exception ex)
-                            {
-                         
+                            {                       
                             Log.Fatal("Error retrieving data:" + ex.Message);
                             }
 
