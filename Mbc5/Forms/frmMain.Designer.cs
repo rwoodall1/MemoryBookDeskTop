@@ -67,6 +67,7 @@
             this.userMaintinanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lookUpMaintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scanDescriptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.tsSave = new System.Windows.Forms.ToolStripButton();
             this.tsAdd = new System.Windows.Forms.ToolStripButton();
@@ -81,7 +82,6 @@
             this.tsPrint = new System.Windows.Forms.ToolStripButton();
             this.tsEmail = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.scanDescriptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -389,6 +389,13 @@
             this.discountToolStripMenuItem.Text = "Discount";
             this.discountToolStripMenuItem.Click += new System.EventHandler(this.discountToolStripMenuItem_Click);
             // 
+            // scanDescriptionsToolStripMenuItem
+            // 
+            this.scanDescriptionsToolStripMenuItem.Name = "scanDescriptionsToolStripMenuItem";
+            this.scanDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.scanDescriptionsToolStripMenuItem.Text = "Scan Descriptions";
+            this.scanDescriptionsToolStripMenuItem.Click += new System.EventHandler(this.scanDescriptionsToolStripMenuItem_Click);
+            // 
             // tsMain
             // 
             this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -516,13 +523,6 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // scanDescriptionsToolStripMenuItem
-            // 
-            this.scanDescriptionsToolStripMenuItem.Name = "scanDescriptionsToolStripMenuItem";
-            this.scanDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.scanDescriptionsToolStripMenuItem.Text = "Scan Descriptions";
-            this.scanDescriptionsToolStripMenuItem.Click += new System.EventHandler(this.scanDescriptionsToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -530,7 +530,6 @@
             this.Controls.Add(this.tsMain);
             this.Controls.Add(this.mnuMain);
             this.Name = "frmMain";
-            this.OpenForms = ((System.Collections.Generic.List<BaseClass.FormHandler.FormInstance>)(resources.GetObject("$this.OpenForms")));
             this.Text = "MBC";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Controls.SetChildIndex(this.mnuMain, 0);
