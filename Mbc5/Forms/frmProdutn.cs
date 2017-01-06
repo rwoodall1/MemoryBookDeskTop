@@ -122,12 +122,13 @@ namespace Mbc5.Forms.MemoryBook {
             }
         //General
         private void SetCodeInvno() {
-            //if (quotesBindingSource.Count > 0) {
-            //    DataRowView current = (DataRowView)quotesBindingSource.Current;
-            //    this.Schcode = current["schcode"].ToString();
-            //    this.Invno = Convert.ToInt32(current["invno"]);
-            //    }
+            if (dsProdutn.quotes.Count > 0)
+            {
+                DataRowView current = (DataRowView)quotesBindingSource.Current;
+                this.Schcode = current["schcode"].ToString();
+                this.Invno = Convert.ToInt32(current["invno"]);
             }
+        }
         private void Fill() {
             if (Schcode != null) {
                 custTableAdapter.Fill(dsProdutn.cust,Schcode);
@@ -137,12 +138,24 @@ namespace Mbc5.Forms.MemoryBook {
                 //partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
                 //ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
                 //wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
-               
-                FillWithInvno();
                 if (dsProdutn.produtn.Count > 0) {
                     EnableAllControls(this);
-                    } else { DisableControls(this); }
+                    FillWithInvno();
+                } else {
+                    DisableControls(this.tbProdutn.TabPages[5]);
+                    DisableControls(this.tbProdutn.TabPages[4]);
+                    DisableControls(this.tbProdutn.TabPages[3]);
+                    DisableControls(this.tbProdutn.TabPages[2]);
+                    DisableControls(this.tbProdutn.TabPages[1]);
+                    DisableControls(this.tbProdutn.TabPages[0]);
+                    EnableControls(btnProdSrch);
+                    EnableControls(txtProdNoSrch);
+                    EnableControls(btnInvoiceSrch);
+                    EnableControls(txtInvoiceNoSrch);
+                   }
                 }
+                
+               
             
             if (Invno != 0) {
                 var pos = produtnBindingSource.Find("invno",this.Invno);
@@ -157,24 +170,27 @@ namespace Mbc5.Forms.MemoryBook {
                 }
         private void FillWithInvno() {
             if (Invno != 0) {
-                coversTableAdapter.Fill(dsProdutn.covers,Invno);
-                //coverdetailTableAdapter.Fill(dsProdutn.coverdetail,Invno);
+                //coversTableAdapter.Fill(dsProdutn.covers,Invno);
+                //coverdetailTableAdapter.Fill(dsProdutn.coverdetail, Invno);
+                //if (dsProdutn.covers.Count < 1)
+                //{
+                //    DisableControls(specinstTextBox);                
+                //}
+                //else { EnableAllControls(this.tbProdutn.TabPages[2]); }
 
-              
-                //if (dsProdutn.covers.Count < 1) {
-                   
-                //    DisableControls(specinstTextBox);
-                //    var aa = this.tbProdutn.TabPages[2];
-                //    } else { EnableAllControls(this.tbProdutn.TabPages[2]); }
+
                 wipTableAdapter.Fill(dsProdutn.wip,Invno);
 
                 wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
-            //    if (dsProdutn.wip.Count < 1)
-            //    {
-            //        DisableControls(this.tbProdutn.TabPages[3]);
-
-            //    }
-            //    else { EnableAllControls(this.tbProdutn.TabPages[3]); }
+                if (dsProdutn.wip.Count < 1)
+                {
+                    var aa = this.tbProdutn.TabPages[3];
+                    DisableControls(this.tbProdutn.TabPages[3]);
+                    
+                }
+                else {
+                      EnableAllControls(this.tbProdutn.TabPages[3]);                    
+                    }
 
 
             }
