@@ -99,10 +99,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\dsProdutn.cs">
-      <DependentUpon>dsProdutn.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSets\dsProdutn.Designer.cs">
+    <Compile Include="DataSets\dsProdutn1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsProdutn.xsd</DependentUpon>
@@ -393,7 +390,7 @@
     <None Include="DataSets\dsProdutn.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsProdutn.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsProdutn1.Designer.cs</LastGenOutput>
     </None>
     <None Include="DataSets\dsProdutn.xss">
       <DependentUpon>dsProdutn.xsd</DependentUpon>

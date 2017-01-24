@@ -143,13 +143,13 @@
             System.Windows.Forms.Label shelfLabel;
             System.Windows.Forms.Label finishedcopiesLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle100 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle101 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle102 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle103 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle104 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle105 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle99 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbProdutn = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.btnInvoiceSrch = new System.Windows.Forms.Button();
@@ -159,6 +159,8 @@
             this.lblShipped = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cominitlTextBox = new System.Windows.Forms.TextBox();
+            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsProdutn = new Mbc5.DataSets.dsProdutn();
             this.comdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.cstsvcdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.btnEmailPw = new System.Windows.Forms.Button();
@@ -203,6 +205,7 @@
             this.shpdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cpnumTextBox = new System.Windows.Forms.TextBox();
+            this.wipgBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cprecvDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ptbrcvdDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ptnopgsTextBox = new System.Windows.Forms.TextBox();
@@ -221,7 +224,9 @@
             this.pnl11 = new System.Windows.Forms.Panel();
             this.btnDeadLineInfo = new System.Windows.Forms.Button();
             this.booktypeTextBox2 = new System.Windows.Forms.TextBox();
+            this.ptbkbBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.partbkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.vendcdComboBox = new System.Windows.Forms.ComboBox();
             this.cstatComboBox = new System.Windows.Forms.ComboBox();
@@ -244,6 +249,7 @@
             this.btnEmailProdForm = new System.Windows.Forms.Button();
             this.bkmixedCheckBox = new System.Windows.Forms.CheckBox();
             this.booktypeTextBox = new System.Windows.Forms.TextBox();
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnBookType = new System.Windows.Forms.Button();
             this.allclrckCheckBox = new System.Windows.Forms.CheckBox();
             this.lblcontryear = new System.Windows.Forms.Label();
@@ -251,11 +257,21 @@
             this.lblInvno = new System.Windows.Forms.Label();
             this.txtCompany = new System.Windows.Forms.TextBox();
             this.lblSchoolName = new System.Windows.Forms.Label();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pg2 = new System.Windows.Forms.TabPage();
             this.label23 = new System.Windows.Forms.Label();
             this.wipDetailDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wipDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kitrecvdLabel1 = new System.Windows.Forms.Label();
             this.manovrdeTextBox = new System.Windows.Forms.TextBox();
+            this.wipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nocopiesTextBox1 = new System.Windows.Forms.TextBox();
             this.totsigsTextBox = new System.Windows.Forms.TextBox();
             this.wipmemoTextBox = new System.Windows.Forms.TextBox();
@@ -284,8 +300,17 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.coverdetailDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coverdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label36 = new System.Windows.Forms.Label();
             this.finishedcopiesTextBox = new System.Windows.Forms.TextBox();
+            this.coversBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.shelfTextBox = new System.Windows.Forms.TextBox();
             this.rackTextBox = new System.Windows.Forms.TextBox();
             this.roomTextBox = new System.Windows.Forms.TextBox();
@@ -379,31 +404,6 @@
             this.pg6 = new System.Windows.Forms.TabPage();
             this.pg7 = new System.Windows.Forms.TabPage();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsProdutn = new Mbc5.DataSets.dsProdutn();
-            this.wipgBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ptbkbBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.partbkBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wipDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.wipBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coverdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.coversBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.coversBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager();
@@ -537,28 +537,28 @@
             this.tbProdutn.SuspendLayout();
             this.pg1.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.pnl11.SuspendLayout();
-            this.pg2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wipDetailDataGridView)).BeginInit();
-            this.pg3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.coverdetailDataGridView)).BeginInit();
-            this.pg5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipgBindingSource)).BeginInit();
+            this.pnl11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbkbBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partbkBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            this.pg2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wipDetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).BeginInit();
+            this.pg3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.coverdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).BeginInit();
+            this.pg5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1599,7 +1599,7 @@
             // reprntdteLabel
             // 
             reprntdteLabel.AutoSize = true;
-            reprntdteLabel.Location = new System.Drawing.Point(908, 324);
+            reprntdteLabel.Location = new System.Drawing.Point(888, 324);
             reprntdteLabel.Name = "reprntdteLabel";
             reprntdteLabel.Size = new System.Drawing.Size(79, 13);
             reprntdteLabel.TabIndex = 170;
@@ -1608,7 +1608,7 @@
             // desorgdteLabel
             // 
             desorgdteLabel.AutoSize = true;
-            desorgdteLabel.Location = new System.Drawing.Point(861, 346);
+            desorgdteLabel.Location = new System.Drawing.Point(841, 346);
             desorgdteLabel.Name = "desorgdteLabel";
             desorgdteLabel.Size = new System.Drawing.Size(126, 13);
             desorgdteLabel.TabIndex = 171;
@@ -1842,6 +1842,17 @@
             this.cominitlTextBox.Name = "cominitlTextBox";
             this.cominitlTextBox.Size = new System.Drawing.Size(100, 20);
             this.cominitlTextBox.TabIndex = 154;
+            // 
+            // produtnBindingSource
+            // 
+            this.produtnBindingSource.DataMember = "produtn";
+            this.produtnBindingSource.DataSource = this.dsProdutn;
+            this.produtnBindingSource.CurrentChanged += new System.EventHandler(this.produtnBindingSource_CurrentChanged);
+            // 
+            // dsProdutn
+            // 
+            this.dsProdutn.DataSetName = "dsProdutn";
+            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // comdateDateTimePicker
             // 
@@ -2375,6 +2386,11 @@
             this.cpnumTextBox.Size = new System.Drawing.Size(50, 20);
             this.cpnumTextBox.TabIndex = 130;
             // 
+            // wipgBindingSource
+            // 
+            this.wipgBindingSource.DataMember = "wipg";
+            this.wipgBindingSource.DataSource = this.dsProdutn;
+            // 
             // cprecvDateTimePicker
             // 
             this.cprecvDateTimePicker.CustomFormat = "\'\'";
@@ -2595,6 +2611,11 @@
             this.booktypeTextBox2.Size = new System.Drawing.Size(44, 20);
             this.booktypeTextBox2.TabIndex = 142;
             // 
+            // ptbkbBindingSource
+            // 
+            this.ptbkbBindingSource.DataMember = "ptbkb";
+            this.ptbkbBindingSource.DataSource = this.dsProdutn;
+            // 
             // textBox5
             // 
             this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "booktype", true));
@@ -2602,6 +2623,11 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(44, 20);
             this.textBox5.TabIndex = 141;
+            // 
+            // partbkBindingSource
+            // 
+            this.partbkBindingSource.DataMember = "partbk";
+            this.partbkBindingSource.DataSource = this.dsProdutn;
             // 
             // label2
             // 
@@ -2831,6 +2857,11 @@
             this.booktypeTextBox.Size = new System.Drawing.Size(53, 20);
             this.booktypeTextBox.TabIndex = 15;
             // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsProdutn;
+            // 
             // btnBookType
             // 
             this.btnBookType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2894,6 +2925,11 @@
             this.lblSchoolName.Size = new System.Drawing.Size(0, 0);
             this.lblSchoolName.TabIndex = 8;
             this.lblSchoolName.Text = "label1";
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsProdutn;
             // 
             // pg2
             // 
@@ -2974,14 +3010,14 @@
             this.wipDetailDataGridView.AllowUserToOrderColumns = true;
             this.wipDetailDataGridView.AutoGenerateColumns = false;
             this.wipDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle100.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle100.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle100.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle100.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle100.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle100.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle100.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle100;
             this.wipDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.wipDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -3001,6 +3037,72 @@
             this.wipDetailDataGridView.TabIndex = 130;
             this.wipDetailDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.wipDetailDataGridView_CellMouseDoubleClick);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            dataGridViewCellStyle101.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle101;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "War";
+            dataGridViewCellStyle102.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle102;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Actual";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Wdr";
+            dataGridViewCellStyle103.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle103;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Due";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Wtr";
+            dataGridViewCellStyle104.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle104;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Time";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Wir";
+            dataGridViewCellStyle105.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle105;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Initials";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Invno";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Invno";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn7.HeaderText = "id";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Visible = false;
+            // 
+            // wipDetailBindingSource
+            // 
+            this.wipDetailBindingSource.DataMember = "WipDetail";
+            this.wipDetailBindingSource.DataSource = this.dsProdutn;
+            // 
             // kitrecvdLabel1
             // 
             this.kitrecvdLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "kitrecvd", true));
@@ -3019,6 +3121,11 @@
             this.manovrdeTextBox.Name = "manovrdeTextBox";
             this.manovrdeTextBox.Size = new System.Drawing.Size(100, 20);
             this.manovrdeTextBox.TabIndex = 129;
+            // 
+            // wipBindingSource
+            // 
+            this.wipBindingSource.DataMember = "wip";
+            this.wipBindingSource.DataSource = this.dsProdutn;
             // 
             // nocopiesTextBox1
             // 
@@ -3431,14 +3538,14 @@
             this.coverdetailDataGridView.AllowUserToOrderColumns = true;
             this.coverdetailDataGridView.AutoGenerateColumns = false;
             this.coverdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle99.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle99.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle99.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle99.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle99.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle99.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle99.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle99;
             this.coverdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.coverdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn8,
@@ -3454,6 +3561,56 @@
             this.coverdetailDataGridView.Name = "coverdetailDataGridView";
             this.coverdetailDataGridView.Size = new System.Drawing.Size(751, 220);
             this.coverdetailDataGridView.TabIndex = 201;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "description";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "war";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Actual";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "wdr";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Due";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "wtr";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Time";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "wir";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Initials";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "Invno";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Invno";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn14.HeaderText = "id";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            this.dataGridViewTextBoxColumn14.Visible = false;
+            // 
+            // coverdetailBindingSource
+            // 
+            this.coverdetailBindingSource.DataMember = "coverdetail";
+            this.coverdetailBindingSource.DataSource = this.dsProdutn;
             // 
             // label36
             // 
@@ -3471,6 +3628,11 @@
             this.finishedcopiesTextBox.Name = "finishedcopiesTextBox";
             this.finishedcopiesTextBox.Size = new System.Drawing.Size(65, 20);
             this.finishedcopiesTextBox.TabIndex = 200;
+            // 
+            // coversBindingSource1
+            // 
+            this.coversBindingSource1.DataMember = "covers";
+            this.coversBindingSource1.DataSource = this.dsProdutn;
             // 
             // shelfTextBox
             // 
@@ -3606,11 +3768,14 @@
             // 
             // lamdtesentDateTimePicker
             // 
+            this.lamdtesentDateTimePicker.CustomFormat = "\'\'";
             this.lamdtesentDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "lamdtesent", true));
+            this.lamdtesentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.lamdtesentDateTimePicker.Location = new System.Drawing.Point(165, 408);
             this.lamdtesentDateTimePicker.Name = "lamdtesentDateTimePicker";
             this.lamdtesentDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.lamdtesentDateTimePicker.TabIndex = 185;
+            this.lamdtesentDateTimePicker.ValueChanged += new System.EventHandler(this.lamdtesentDateTimePicker_ValueChanged);
             // 
             // lamvendTextBox
             // 
@@ -3711,19 +3876,25 @@
             // 
             // desorgdteDateTimePicker
             // 
+            this.desorgdteDateTimePicker.CustomFormat = "\'\'";
             this.desorgdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "desorgdte", true));
-            this.desorgdteDateTimePicker.Location = new System.Drawing.Point(993, 342);
+            this.desorgdteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.desorgdteDateTimePicker.Location = new System.Drawing.Point(973, 342);
             this.desorgdteDateTimePicker.Name = "desorgdteDateTimePicker";
             this.desorgdteDateTimePicker.Size = new System.Drawing.Size(212, 20);
             this.desorgdteDateTimePicker.TabIndex = 172;
+            this.desorgdteDateTimePicker.ValueChanged += new System.EventHandler(this.desorgdteDateTimePicker_ValueChanged);
             // 
             // reprntdteDateTimePicker
             // 
+            this.reprntdteDateTimePicker.CustomFormat = "\'\'";
             this.reprntdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "reprntdte", true));
-            this.reprntdteDateTimePicker.Location = new System.Drawing.Point(993, 320);
+            this.reprntdteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.reprntdteDateTimePicker.Location = new System.Drawing.Point(973, 320);
             this.reprntdteDateTimePicker.Name = "reprntdteDateTimePicker";
             this.reprntdteDateTimePicker.Size = new System.Drawing.Size(212, 20);
             this.reprntdteDateTimePicker.TabIndex = 171;
+            this.reprntdteDateTimePicker.ValueChanged += new System.EventHandler(this.reprntdteDateTimePicker_ValueChanged);
             // 
             // spineTextBox
             // 
@@ -3773,11 +3944,14 @@
             // 
             // prntsamDateTimePicker
             // 
+            this.prntsamDateTimePicker.CustomFormat = "\'\'";
             this.prntsamDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "prntsam", true));
+            this.prntsamDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.prntsamDateTimePicker.Location = new System.Drawing.Point(650, 132);
             this.prntsamDateTimePicker.Name = "prntsamDateTimePicker";
             this.prntsamDateTimePicker.Size = new System.Drawing.Size(211, 20);
             this.prntsamDateTimePicker.TabIndex = 165;
+            this.prntsamDateTimePicker.ValueChanged += new System.EventHandler(this.prntsamDateTimePicker_ValueChanged);
             // 
             // mascotComboBox
             // 
@@ -3836,11 +4010,14 @@
             // 
             // perslistdateDateTimePicker
             // 
+            this.perslistdateDateTimePicker.CustomFormat = "\'\'";
             this.perslistdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "perslistdate", true));
+            this.perslistdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.perslistdateDateTimePicker.Location = new System.Drawing.Point(282, 336);
             this.perslistdateDateTimePicker.Name = "perslistdateDateTimePicker";
             this.perslistdateDateTimePicker.Size = new System.Drawing.Size(219, 20);
             this.perslistdateDateTimePicker.TabIndex = 158;
+            this.perslistdateDateTimePicker.ValueChanged += new System.EventHandler(this.perslistdateDateTimePicker_ValueChanged);
             // 
             // perslistComboBox
             // 
@@ -3889,35 +4066,47 @@
             // 
             // otdtebkDateTimePicker
             // 
+            this.otdtebkDateTimePicker.CustomFormat = "\'\'";
             this.otdtebkDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "otdtebk", true));
+            this.otdtebkDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.otdtebkDateTimePicker.Location = new System.Drawing.Point(432, 311);
             this.otdtebkDateTimePicker.Name = "otdtebkDateTimePicker";
             this.otdtebkDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.otdtebkDateTimePicker.TabIndex = 152;
+            this.otdtebkDateTimePicker.ValueChanged += new System.EventHandler(this.otdtebkDateTimePicker_ValueChanged);
             // 
             // otdtesentDateTimePicker1
             // 
+            this.otdtesentDateTimePicker1.CustomFormat = "\'\'";
             this.otdtesentDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "otdtesent", true));
+            this.otdtesentDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.otdtesentDateTimePicker1.Location = new System.Drawing.Point(200, 311);
             this.otdtesentDateTimePicker1.Name = "otdtesentDateTimePicker1";
             this.otdtesentDateTimePicker1.Size = new System.Drawing.Size(218, 20);
             this.otdtesentDateTimePicker1.TabIndex = 151;
+            this.otdtesentDateTimePicker1.ValueChanged += new System.EventHandler(this.otdtesentDateTimePicker1_ValueChanged);
             // 
             // dcdtebkDateTimePicker
             // 
+            this.dcdtebkDateTimePicker.CustomFormat = "\'\'";
             this.dcdtebkDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "dcdtebk", true));
+            this.dcdtebkDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dcdtebkDateTimePicker.Location = new System.Drawing.Point(432, 287);
             this.dcdtebkDateTimePicker.Name = "dcdtebkDateTimePicker";
             this.dcdtebkDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.dcdtebkDateTimePicker.TabIndex = 149;
+            this.dcdtebkDateTimePicker.ValueChanged += new System.EventHandler(this.dcdtebkDateTimePicker_ValueChanged);
             // 
             // dcdtesentDateTimePicker
             // 
+            this.dcdtesentDateTimePicker.CustomFormat = "\'\'";
             this.dcdtesentDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "dcdtesent", true));
+            this.dcdtesentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dcdtesentDateTimePicker.Location = new System.Drawing.Point(200, 287);
             this.dcdtesentDateTimePicker.Name = "dcdtesentDateTimePicker";
             this.dcdtesentDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.dcdtesentDateTimePicker.TabIndex = 148;
+            this.dcdtesentDateTimePicker.ValueChanged += new System.EventHandler(this.dcdtesentDateTimePicker_ValueChanged);
             // 
             // othrvendTextBox
             // 
@@ -3937,19 +4126,25 @@
             // 
             // prtdtebkDateTimePicker
             // 
+            this.prtdtebkDateTimePicker.CustomFormat = "\'\'";
             this.prtdtebkDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "prtdtebk", true));
+            this.prtdtebkDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.prtdtebkDateTimePicker.Location = new System.Drawing.Point(432, 264);
             this.prtdtebkDateTimePicker.Name = "prtdtebkDateTimePicker";
             this.prtdtebkDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.prtdtebkDateTimePicker.TabIndex = 145;
+            this.prtdtebkDateTimePicker.ValueChanged += new System.EventHandler(this.prtdtebkDateTimePicker_ValueChanged);
             // 
             // prtdtesentDateTimePicker
             // 
+            this.prtdtesentDateTimePicker.CustomFormat = "\'\'";
             this.prtdtesentDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "prtdtesent", true));
+            this.prtdtesentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.prtdtesentDateTimePicker.Location = new System.Drawing.Point(200, 264);
             this.prtdtesentDateTimePicker.Name = "prtdtesentDateTimePicker";
             this.prtdtesentDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.prtdtesentDateTimePicker.TabIndex = 144;
+            this.prtdtesentDateTimePicker.ValueChanged += new System.EventHandler(this.prtdtesentDateTimePicker_ValueChanged);
             // 
             // othrTextBox
             // 
@@ -4052,11 +4247,14 @@
             // 
             // screcvDateTimePicker1
             // 
+            this.screcvDateTimePicker1.CustomFormat = "\'\'";
             this.screcvDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "screcv", true));
+            this.screcvDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.screcvDateTimePicker1.Location = new System.Drawing.Point(231, 85);
             this.screcvDateTimePicker1.Name = "screcvDateTimePicker1";
             this.screcvDateTimePicker1.Size = new System.Drawing.Size(208, 20);
             this.screcvDateTimePicker1.TabIndex = 129;
+            this.screcvDateTimePicker1.ValueChanged += new System.EventHandler(this.screcvDateTimePicker1_ValueChanged);
             // 
             // specovrTextBox
             // 
@@ -4303,168 +4501,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // produtnBindingSource
-            // 
-            this.produtnBindingSource.DataMember = "produtn";
-            this.produtnBindingSource.DataSource = this.dsProdutn;
-            this.produtnBindingSource.CurrentChanged += new System.EventHandler(this.produtnBindingSource_CurrentChanged);
-            // 
-            // dsProdutn
-            // 
-            this.dsProdutn.DataSetName = "dsProdutn";
-            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // wipgBindingSource
-            // 
-            this.wipgBindingSource.DataMember = "wipg";
-            this.wipgBindingSource.DataSource = this.dsProdutn;
-            // 
-            // ptbkbBindingSource
-            // 
-            this.ptbkbBindingSource.DataMember = "ptbkb";
-            this.ptbkbBindingSource.DataSource = this.dsProdutn;
-            // 
-            // partbkBindingSource
-            // 
-            this.partbkBindingSource.DataMember = "partbk";
-            this.partbkBindingSource.DataSource = this.dsProdutn;
-            // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsProdutn;
-            // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsProdutn;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Description";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "War";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Actual";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Wdr";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Due";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Wtr";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Time";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Wir";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Initials";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Invno";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Invno";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn7.HeaderText = "id";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Visible = false;
-            // 
-            // wipDetailBindingSource
-            // 
-            this.wipDetailBindingSource.DataMember = "WipDetail";
-            this.wipDetailBindingSource.DataSource = this.dsProdutn;
-            // 
-            // wipBindingSource
-            // 
-            this.wipBindingSource.DataMember = "wip";
-            this.wipBindingSource.DataSource = this.dsProdutn;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "description";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Description";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "war";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Actual";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "wdr";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Due";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "wtr";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Time";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "wir";
-            this.dataGridViewTextBoxColumn12.HeaderText = "Initials";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "Invno";
-            this.dataGridViewTextBoxColumn13.HeaderText = "Invno";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn14.HeaderText = "id";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Visible = false;
-            // 
-            // coverdetailBindingSource
-            // 
-            this.coverdetailBindingSource.DataMember = "coverdetail";
-            this.coverdetailBindingSource.DataSource = this.dsProdutn;
-            // 
-            // coversBindingSource1
-            // 
-            this.coversBindingSource1.DataMember = "covers";
-            this.coversBindingSource1.DataSource = this.dsProdutn;
-            // 
             // coversBindingSource
             // 
             this.coversBindingSource.DataSource = this.dsProdutn;
@@ -4483,6 +4519,7 @@
             this.tableAdapterManager.produtnTableAdapter = this.produtnTableAdapter;
             this.tableAdapterManager.quotesTableAdapter = this.quotesTableAdapter;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.WipDescriptionsTableAdapter = null;
             this.tableAdapterManager.WipDetailTableAdapter = null;
             this.tableAdapterManager.wipTableAdapter = null;
             // 
@@ -4538,6 +4575,8 @@
             this.pg1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -4546,28 +4585,26 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wipgBindingSource)).EndInit();
             this.pnl11.ResumeLayout(false);
             this.pnl11.PerformLayout();
-            this.pg2.ResumeLayout(false);
-            this.pg2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wipDetailDataGridView)).EndInit();
-            this.pg3.ResumeLayout(false);
-            this.pg3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.coverdetailDataGridView)).EndInit();
-            this.pg5.ResumeLayout(false);
-            this.pg5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wipgBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbkbBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.partbkBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            this.pg2.ResumeLayout(false);
+            this.pg2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wipDetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).EndInit();
+            this.pg3.ResumeLayout(false);
+            this.pg3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.coverdetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).EndInit();
+            this.pg5.ResumeLayout(false);
+            this.pg5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).EndInit();
             this.ResumeLayout(false);
 

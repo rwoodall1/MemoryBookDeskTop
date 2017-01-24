@@ -120,6 +120,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             }
+       
         //General
         private void SetCodeInvno() {
             //if (quotesBindingSource.Count > 0) {
@@ -132,18 +133,30 @@ namespace Mbc5.Forms.MemoryBook {
             if (Schcode != null) {
                 custTableAdapter.Fill(dsProdutn.cust,Schcode);
                 quotesTableAdapter.Fill(dsProdutn.quotes,Schcode);
-
-                produtnTableAdapter.Fill(dsProdutn.produtn,Schcode);
+                
+                produtnTableAdapter.Fill(dsProdutn.produtn,Schcode);             
+                if (dsProdutn.produtn.Count < 1) {
+                    DisableControls(this.tbProdutn.TabPages[0]);
+                    foreach (TabPage tab in tbProdutn.TabPages) {
+                        DisableControls(tab);
+                        }
+                    EnableControls(this.txtInvoiceNoSrch);
+                    EnableControls(this.txtProdNoSrch);
+                    EnableControls(this.btnProdSrch);
+                    EnableControls(this.btnInvoiceSrch);
+                    } else {EnableAllControls(this); }
+                coversTableAdapter.Fill(dsProdutn.covers,Schcode);
+                if (dsProdutn.covers.Count < 1) {
+                    DisableControls(this.tbProdutn.TabPages[2]);
+                    } else { EnableAllControls(this.tbProdutn.TabPages[2]); }
                 //partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
                 //ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
                 //wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
-               
+
                 FillWithInvno();
-                if (dsProdutn.produtn.Count > 0) {
-                    EnableAllControls(this);
-                    } else { DisableControls(this); }
+
+                    
                 }
-            
             if (Invno != 0) {
                 var pos = produtnBindingSource.Find("invno",this.Invno);
                 if (pos > -1) {
@@ -157,27 +170,17 @@ namespace Mbc5.Forms.MemoryBook {
                 }
         private void FillWithInvno() {
             if (Invno != 0) {
-                coversTableAdapter.Fill(dsProdutn.covers,Invno);
+               
                 //coverdetailTableAdapter.Fill(dsProdutn.coverdetail,Invno);
-
-              
                 //if (dsProdutn.covers.Count < 1) {
-                   
-                //    DisableControls(specinstTextBox);
-                //    var aa = this.tbProdutn.TabPages[2];
+                //    DisableControls(this.tbProdutn.TabPages[2]);
                 //    } else { EnableAllControls(this.tbProdutn.TabPages[2]); }
                 wipTableAdapter.Fill(dsProdutn.wip,Invno);
-
                 wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
-            //    if (dsProdutn.wip.Count < 1)
-            //    {
-            //        DisableControls(this.tbProdutn.TabPages[3]);
-
-            //    }
-            //    else { EnableAllControls(this.tbProdutn.TabPages[3]); }
-
-
-            }
+                if (dsProdutn.wip.Count < 1) {
+                    DisableControls(this.tbProdutn.TabPages[1]);
+                    } else { EnableAllControls(this.tbProdutn.TabPages[1]); }
+                }
             }
         public override void  Save() {
             switch (tbProdutn.SelectedIndex) {
@@ -189,11 +192,12 @@ namespace Mbc5.Forms.MemoryBook {
                         SaveWip();
                         break;
                         }
-
-
-                case 2:
-                    MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    break;
+                case 2: 
+                    {
+                        SaveCovers();
+                        break;
+                        }
+                   
                 case 3:
                     //SavePayment();
                     break;
@@ -340,6 +344,9 @@ namespace Mbc5.Forms.MemoryBook {
 
         #endregion
         #region DatePickers
+        private void screcvDateTimePicker1_ValueChanged(object sender,EventArgs e) {
+            screcvDateTimePicker1.Format = DateTimePickerFormat.Long;
+            }
         private void rmbfrmDateTimePicker_ValueChanged(object sender,EventArgs e) {
             rmbfrmDateTimePicker.Format = DateTimePickerFormat.Long;
             }
@@ -642,8 +649,56 @@ namespace Mbc5.Forms.MemoryBook {
             }
         }
 
+        private void prntsamDateTimePicker_ValueChanged(object sender,EventArgs e) {
+
+            prntsamDateTimePicker.Format = DateTimePickerFormat.Long;
+          
+        }
+
+        private void prtdtesentDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            prtdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void prtdtebkDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            prtdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void dcdtesentDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            dcdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void dcdtebkDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            dcdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void otdtesentDateTimePicker1_ValueChanged(object sender,EventArgs e) {
+            otdtesentDateTimePicker1.Format = DateTimePickerFormat.Long;
+            }
+
+        private void otdtebkDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            otdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void perslistdateDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            perslistdateDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void lamdtesentDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            lamdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void reprntdteDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            reprntdteDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void desorgdteDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            desorgdteDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+
+
         //nothing below here  
-    }
+        }
     public class BinderyInfo
     {
         public string Schname { get; set; }

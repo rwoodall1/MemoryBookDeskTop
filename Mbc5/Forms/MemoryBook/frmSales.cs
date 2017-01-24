@@ -1897,8 +1897,6 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
 
-       
-
         private void txtFoilTxt_Validating(object sender,CancelEventArgs e) {
             errorProvider1.SetError(txtFoilIcons,"");
             if (tabSales.SelectedIndex == 1) {
