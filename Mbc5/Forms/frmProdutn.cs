@@ -146,14 +146,19 @@ namespace Mbc5.Forms.MemoryBook {
                     EnableControls(this.btnInvoiceSrch);
                     } else {EnableAllControls(this); }
                 coversTableAdapter.Fill(dsProdutn.covers,Schcode);
+               // coverdetailTableAdapter.Fill(dsProdutn.coverdetail,Invno);
                 if (dsProdutn.covers.Count < 1) {
                     DisableControls(this.tbProdutn.TabPages[2]);
                     } else { EnableAllControls(this.tbProdutn.TabPages[2]); }
+                wipTableAdapter.Fill(dsProdutn.wip,Schcode);
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Invno);
+                if (dsProdutn.wip.Count < 1) {
+                    DisableControls(this.tbProdutn.TabPages[1]);
+                    } else { EnableAllControls(this.tbProdutn.TabPages[1]); }
                 //partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
                 //ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
                 //wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
 
-                FillWithInvno();
 
                     
                 }
@@ -168,24 +173,12 @@ namespace Mbc5.Forms.MemoryBook {
                 
 
                 }
-        private void FillWithInvno() {
-            if (Invno != 0) {
-               
-                //coverdetailTableAdapter.Fill(dsProdutn.coverdetail,Invno);
-                //if (dsProdutn.covers.Count < 1) {
-                //    DisableControls(this.tbProdutn.TabPages[2]);
-                //    } else { EnableAllControls(this.tbProdutn.TabPages[2]); }
-                wipTableAdapter.Fill(dsProdutn.wip,Invno);
-                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
-                if (dsProdutn.wip.Count < 1) {
-                    DisableControls(this.tbProdutn.TabPages[1]);
-                    } else { EnableAllControls(this.tbProdutn.TabPages[1]); }
-                }
-            }
+     
         public override void  Save() {
             switch (tbProdutn.SelectedIndex) {
                 case 0:
                     SaveProdutn();
+                    SaveCovers();
                     break;
                 case 1:
                         {
@@ -194,6 +187,7 @@ namespace Mbc5.Forms.MemoryBook {
                         }
                 case 2: 
                     {
+                        SaveProdutn();
                         SaveCovers();
                         break;
                         }
@@ -344,6 +338,52 @@ namespace Mbc5.Forms.MemoryBook {
 
         #endregion
         #region DatePickers
+        private void prntsamDateTimePicker_ValueChanged(object sender,EventArgs e) {
+
+            prntsamDateTimePicker.Format = DateTimePickerFormat.Long;
+
+            }
+
+        private void prtdtesentDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            prtdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void prtdtebkDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            prtdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void dcdtesentDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            dcdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void dcdtebkDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            dcdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void otdtesentDateTimePicker1_ValueChanged(object sender,EventArgs e) {
+            otdtesentDateTimePicker1.Format = DateTimePickerFormat.Long;
+            }
+
+        private void otdtebkDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            otdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void perslistdateDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            perslistdateDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void lamdtesentDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            lamdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void reprntdteDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            reprntdteDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
+        private void desorgdteDateTimePicker_ValueChanged(object sender,EventArgs e) {
+            desorgdteDateTimePicker.Format = DateTimePickerFormat.Long;
+            }
+
         private void screcvDateTimePicker1_ValueChanged(object sender,EventArgs e) {
             screcvDateTimePicker1.Format = DateTimePickerFormat.Long;
             }
@@ -607,7 +647,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
 
         private void produtnBindingSource_CurrentChanged(object sender,EventArgs e) {
-            FillWithInvno();
+           
             }
 
         private void btnProdSrch_Click(object sender,EventArgs e) {
@@ -648,54 +688,6 @@ namespace Mbc5.Forms.MemoryBook {
                 wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
             }
         }
-
-        private void prntsamDateTimePicker_ValueChanged(object sender,EventArgs e) {
-
-            prntsamDateTimePicker.Format = DateTimePickerFormat.Long;
-          
-        }
-
-        private void prtdtesentDateTimePicker_ValueChanged(object sender,EventArgs e) {
-            prtdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
-            }
-
-        private void prtdtebkDateTimePicker_ValueChanged(object sender,EventArgs e) {
-            prtdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
-            }
-
-        private void dcdtesentDateTimePicker_ValueChanged(object sender,EventArgs e) {
-            dcdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
-            }
-
-        private void dcdtebkDateTimePicker_ValueChanged(object sender,EventArgs e) {
-            dcdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
-            }
-
-        private void otdtesentDateTimePicker1_ValueChanged(object sender,EventArgs e) {
-            otdtesentDateTimePicker1.Format = DateTimePickerFormat.Long;
-            }
-
-        private void otdtebkDateTimePicker_ValueChanged(object sender,EventArgs e) {
-            otdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
-            }
-
-        private void perslistdateDateTimePicker_ValueChanged(object sender,EventArgs e) {
-            perslistdateDateTimePicker.Format = DateTimePickerFormat.Long;
-            }
-
-        private void lamdtesentDateTimePicker_ValueChanged(object sender,EventArgs e) {
-            lamdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
-            }
-
-        private void reprntdteDateTimePicker_ValueChanged(object sender,EventArgs e) {
-            reprntdteDateTimePicker.Format = DateTimePickerFormat.Long;
-            }
-
-        private void desorgdteDateTimePicker_ValueChanged(object sender,EventArgs e) {
-            desorgdteDateTimePicker.Format = DateTimePickerFormat.Long;
-            }
-
-
 
         //nothing below here  
         }

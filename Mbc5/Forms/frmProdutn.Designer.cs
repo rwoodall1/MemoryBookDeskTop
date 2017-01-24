@@ -143,13 +143,13 @@
             System.Windows.Forms.Label shelfLabel;
             System.Windows.Forms.Label finishedcopiesLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle100 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle101 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle102 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle103 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle104 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle105 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle99 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbProdutn = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.btnInvoiceSrch = new System.Windows.Forms.Button();
@@ -3010,14 +3010,14 @@
             this.wipDetailDataGridView.AllowUserToOrderColumns = true;
             this.wipDetailDataGridView.AutoGenerateColumns = false;
             this.wipDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle100.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle100.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle100.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle100.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle100.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle100.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle100.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle100;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.wipDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.wipDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -3040,8 +3040,8 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            dataGridViewCellStyle101.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle101;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewTextBoxColumn1.HeaderText = "Description";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -3049,8 +3049,8 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "War";
-            dataGridViewCellStyle102.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle102;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewTextBoxColumn2.HeaderText = "Actual";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -3058,8 +3058,8 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Wdr";
-            dataGridViewCellStyle103.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle103;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewTextBoxColumn3.HeaderText = "Due";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -3067,8 +3067,8 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Wtr";
-            dataGridViewCellStyle104.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle104;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewTextBoxColumn4.HeaderText = "Time";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -3076,8 +3076,8 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "Wir";
-            dataGridViewCellStyle105.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle105;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewTextBoxColumn5.HeaderText = "Initials";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -3538,14 +3538,14 @@
             this.coverdetailDataGridView.AllowUserToOrderColumns = true;
             this.coverdetailDataGridView.AutoGenerateColumns = false;
             this.coverdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle99.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle99.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle99.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle99.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle99.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle99.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle99.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle99;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.coverdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.coverdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn8,
@@ -3660,7 +3660,7 @@
             // 
             // schpicCheckBox
             // 
-            this.schpicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "schpic", true));
+            this.schpicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "schpic", true));
             this.schpicCheckBox.Location = new System.Drawing.Point(686, 386);
             this.schpicCheckBox.Name = "schpicCheckBox";
             this.schpicCheckBox.Size = new System.Drawing.Size(115, 16);
@@ -3670,7 +3670,7 @@
             // 
             // emailedCheckBox
             // 
-            this.emailedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.coversBindingSource1, "emailed", true));
+            this.emailedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.coversBindingSource1, "emailed", true));
             this.emailedCheckBox.Location = new System.Drawing.Point(686, 367);
             this.emailedCheckBox.Name = "emailedCheckBox";
             this.emailedCheckBox.Size = new System.Drawing.Size(70, 17);
@@ -3680,7 +3680,7 @@
             // 
             // indivpicCheckBox
             // 
-            this.indivpicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "indivpic", true));
+            this.indivpicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "indivpic", true));
             this.indivpicCheckBox.Location = new System.Drawing.Point(547, 408);
             this.indivpicCheckBox.Name = "indivpicCheckBox";
             this.indivpicCheckBox.Size = new System.Drawing.Size(136, 16);
@@ -3690,7 +3690,7 @@
             // 
             // indivnameCheckBox
             // 
-            this.indivnameCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "indivname", true));
+            this.indivnameCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "indivname", true));
             this.indivnameCheckBox.Location = new System.Drawing.Point(547, 386);
             this.indivnameCheckBox.Name = "indivnameCheckBox";
             this.indivnameCheckBox.Size = new System.Drawing.Size(117, 16);
@@ -3700,7 +3700,7 @@
             // 
             // custsubmtxCheckBox
             // 
-            this.custsubmtxCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.coversBindingSource1, "custsubmtx", true));
+            this.custsubmtxCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.coversBindingSource1, "custsubmtx", true));
             this.custsubmtxCheckBox.Location = new System.Drawing.Point(547, 367);
             this.custsubmtxCheckBox.Name = "custsubmtxCheckBox";
             this.custsubmtxCheckBox.Size = new System.Drawing.Size(138, 16);
@@ -3710,7 +3710,7 @@
             // 
             // mkCheckBox
             // 
-            this.mkCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "mk", true));
+            this.mkCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "mk", true));
             this.mkCheckBox.Location = new System.Drawing.Point(769, 367);
             this.mkCheckBox.Name = "mkCheckBox";
             this.mkCheckBox.Size = new System.Drawing.Size(50, 20);
@@ -3720,7 +3720,7 @@
             // 
             // icon_CheckBox
             // 
-            this.icon_CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "icon_", true));
+            this.icon_CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "icon_", true));
             this.icon_CheckBox.Location = new System.Drawing.Point(686, 408);
             this.icon_CheckBox.Name = "icon_CheckBox";
             this.icon_CheckBox.Size = new System.Drawing.Size(57, 16);
@@ -3730,7 +3730,7 @@
             // 
             // yrCheckBox
             // 
-            this.yrCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "yr", true));
+            this.yrCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "yr", true));
             this.yrCheckBox.Location = new System.Drawing.Point(445, 408);
             this.yrCheckBox.Name = "yrCheckBox";
             this.yrCheckBox.Size = new System.Drawing.Size(104, 16);
@@ -3740,7 +3740,7 @@
             // 
             // scnameCheckBox
             // 
-            this.scnameCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "scname", true));
+            this.scnameCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "scname", true));
             this.scnameCheckBox.Location = new System.Drawing.Point(445, 386);
             this.scnameCheckBox.Name = "scnameCheckBox";
             this.scnameCheckBox.Size = new System.Drawing.Size(104, 16);
@@ -3750,7 +3750,7 @@
             // 
             // foilingCheckBox
             // 
-            this.foilingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "foiling", true));
+            this.foilingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "foiling", true));
             this.foilingCheckBox.Location = new System.Drawing.Point(445, 367);
             this.foilingCheckBox.Name = "foilingCheckBox";
             this.foilingCheckBox.Size = new System.Drawing.Size(104, 16);
@@ -3858,7 +3858,7 @@
             // 
             // remakeCheckBox
             // 
-            this.remakeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.coversBindingSource1, "remake", true));
+            this.remakeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.coversBindingSource1, "remake", true));
             this.remakeCheckBox.Location = new System.Drawing.Point(1040, 383);
             this.remakeCheckBox.Name = "remakeCheckBox";
             this.remakeCheckBox.Size = new System.Drawing.Size(72, 24);
@@ -3914,7 +3914,7 @@
             // 
             // prfreqCheckBox
             // 
-            this.prfreqCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "prfreq", true));
+            this.prfreqCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "prfreq", true));
             this.prfreqCheckBox.Location = new System.Drawing.Point(662, 231);
             this.prfreqCheckBox.Name = "prfreqCheckBox";
             this.prfreqCheckBox.Size = new System.Drawing.Size(129, 24);
@@ -3924,7 +3924,7 @@
             // 
             // hcproofCheckBox
             // 
-            this.hcproofCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "hcproof", true));
+            this.hcproofCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "hcproof", true));
             this.hcproofCheckBox.Location = new System.Drawing.Point(662, 207);
             this.hcproofCheckBox.Name = "hcproofCheckBox";
             this.hcproofCheckBox.Size = new System.Drawing.Size(136, 24);
@@ -3934,7 +3934,7 @@
             // 
             // typesetCheckBox
             // 
-            this.typesetCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.coversBindingSource1, "typeset", true));
+            this.typesetCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.coversBindingSource1, "typeset", true));
             this.typesetCheckBox.Location = new System.Drawing.Point(661, 261);
             this.typesetCheckBox.Name = "typesetCheckBox";
             this.typesetCheckBox.Size = new System.Drawing.Size(104, 24);
@@ -3990,7 +3990,7 @@
             // 
             // persnlzCheckBox1
             // 
-            this.persnlzCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "persnlz", true));
+            this.persnlzCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "persnlz", true));
             this.persnlzCheckBox1.Location = new System.Drawing.Point(135, 360);
             this.persnlzCheckBox1.Name = "persnlzCheckBox1";
             this.persnlzCheckBox1.Size = new System.Drawing.Size(123, 24);
@@ -4000,7 +4000,7 @@
             // 
             // listrecdCheckBox1
             // 
-            this.listrecdCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "listrecd", true));
+            this.listrecdCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "listrecd", true));
             this.listrecdCheckBox1.Location = new System.Drawing.Point(42, 360);
             this.listrecdCheckBox1.Name = "listrecdCheckBox1";
             this.listrecdCheckBox1.Size = new System.Drawing.Size(104, 24);
@@ -4307,7 +4307,7 @@
             // 
             // appCheckBox
             // 
-            this.appCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.coversBindingSource1, "app", true));
+            this.appCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.coversBindingSource1, "app", true));
             this.appCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appCheckBox.Location = new System.Drawing.Point(640, 30);
             this.appCheckBox.Name = "appCheckBox";
