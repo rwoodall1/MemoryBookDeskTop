@@ -5491,6 +5491,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnremaketype;
             
+            private global::System.Data.DataColumn columnTimeStamp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public coversDataTable() {
@@ -6014,6 +6016,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TimeStampColumn {
+                get {
+                    return this.columnTimeStamp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6110,7 +6120,8 @@ namespace Mbc5.DataSets {
                         string clr3, 
                         string clr4, 
                         System.DateTime proofsent, 
-                        string remaketype) {
+                        string remaketype, 
+                        byte[] TimeStamp) {
                 coversRow rowcoversRow = ((coversRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         specovr,
@@ -6173,7 +6184,8 @@ namespace Mbc5.DataSets {
                         clr3,
                         clr4,
                         proofsent,
-                        remaketype};
+                        remaketype,
+                        TimeStamp};
                 if ((parentprodutnRowByprodutn_covers != null)) {
                     columnValuesArray[2] = parentprodutnRowByprodutn_covers[1];
                 }
@@ -6267,6 +6279,7 @@ namespace Mbc5.DataSets {
                 this.columnclr4 = base.Columns["clr4"];
                 this.columnproofsent = base.Columns["proofsent"];
                 this.columnremaketype = base.Columns["remaketype"];
+                this.columnTimeStamp = base.Columns["TimeStamp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6394,6 +6407,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnproofsent);
                 this.columnremaketype = new global::System.Data.DataColumn("remaketype", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnremaketype);
+                this.columnTimeStamp = new global::System.Data.DataColumn("TimeStamp", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTimeStamp);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columnspecovr.MaxLength = 5;
@@ -6430,6 +6445,7 @@ namespace Mbc5.DataSets {
                 this.columndesc1a.MaxLength = 25;
                 this.columnperslist.MaxLength = 3;
                 this.columnlaminit.MaxLength = 3;
+                this.columnTimeStamp.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13818,6 +13834,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] TimeStamp {
+                get {
+                    try {
+                        return ((byte[])(this[this.tablecovers.TimeStampColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TimeStamp\' in table \'covers\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecovers.TimeStampColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public produtnRow produtnRow {
                 get {
                     return ((produtnRow)(this.GetParentRow(this.Table.ParentRelations["produtn_covers"])));
@@ -14533,6 +14565,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetremaketypeNull() {
                 this[this.tablecovers.remaketypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTimeStampNull() {
+                return this.IsNull(this.tablecovers.TimeStampColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTimeStampNull() {
+                this[this.tablecovers.TimeStampColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -20311,6 +20355,7 @@ WHERE        (schcode = @schcode)";
             tableMapping.ColumnMappings.Add("clr3", "clr3");
             tableMapping.ColumnMappings.Add("clr4", "clr4");
             tableMapping.ColumnMappings.Add("proofsent", "proofsent");
+            tableMapping.ColumnMappings.Add("TimeStamp", "TimeStamp");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -20598,15 +20643,15 @@ WHERE        (schcode = @schcode)";
                 "@laminit, clr1 = @clr1, \r\n                         clr2 = @clr2, clr3 = @clr3, c" +
                 "lr4 = @clr4, proofsent = @proofsent\r\nWHERE        (TimeStamp IS NULL) AND (invno" +
                 " = @Original_invno) AND (@IsNull_TimeStamp = 1) OR\r\n                         (Ti" +
-                "meStamp = @Original_TimeStamp) AND (invno = @Original_invno);   \r\nSELECT specovr" +
-                ", schcode, invno, cvrstock, remake, prntsmp, i_press, a_press, d_press, t_press," +
-                " apprvdte, desc_, desc2, specinst, prtvend, prtdtesent, prtdtebk, lamvend, lamdt" +
-                "esent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, othrvend, otdtesent, otdtebk," +
-                " prntsam, acceptd, reqstdcpy, reprntdte, reprnacp, reason, desorgdte, persondest" +
-                ", mascot, room, shelf, rack, desc3, finishedcopies, desc4, spback, company, type" +
-                "set, front, spine, emailed, overprnt, desc1a, custsubmtx, perslist, app, perslis" +
-                "tdate, laminit, clr1, clr2, clr3, clr4, proofsent FROM covers WHERE (invno = @in" +
-                "vno)";
+                "meStamp = @Original_TimeStamp) AND (invno = @Original_invno);     \r\nSELECT speco" +
+                "vr, schcode, invno, cvrstock, remake, prntsmp, i_press, a_press, d_press, t_pres" +
+                "s, apprvdte, desc_, desc2, specinst, prtvend, prtdtesent, prtdtebk, lamvend, lam" +
+                "dtesent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, othrvend, otdtesent, otdteb" +
+                "k, prntsam, acceptd, reqstdcpy, reprntdte, reprnacp, reason, desorgdte, personde" +
+                "st, mascot, room, shelf, rack, desc3, finishedcopies, desc4, spback, company, ty" +
+                "peset, front, spine, emailed, overprnt, desc1a, custsubmtx, perslist, app, persl" +
+                "istdate, laminit, clr1, clr2, clr3, clr4, proofsent FROM covers WHERE (invno = @" +
+                "invno)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@specovr", global::System.Data.SqlDbType.Char, 5, global::System.Data.ParameterDirection.Input, 0, 0, "specovr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -20688,7 +20733,7 @@ WHERE        (schcode = @schcode)";
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        specovr, schcode, invno, cvrstock, remake, prntsmp, i_press, a_press, d_press, t_press, apprvdte, desc_, desc2, specinst, prtvend, prtdtesent, prtdtebk, lamvend, lamdtesent, lamdtebk, dcvend, dcdtesent, 
                          dcdtebk, othr, othrvend, otdtesent, otdtebk, prntsam, acceptd, reqstdcpy, reprntdte, reprnacp, reason, desorgdte, persondest, mascot, room, shelf, rack, desc3, finishedcopies, desc4, spback, company, typeset, 
-                         front, spine, emailed, overprnt, desc1a, custsubmtx, perslist, app, perslistdate, laminit, clr1, clr2, clr3, clr4, proofsent
+                         front, spine, emailed, overprnt, desc1a, custsubmtx, perslist, app, perslistdate, laminit, clr1, clr2, clr3, clr4, proofsent, TimeStamp
 FROM            covers
 WHERE        (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;

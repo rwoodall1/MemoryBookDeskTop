@@ -17,8 +17,9 @@ namespace Mbc5.LookUpForms
             InitializeComponent();
         }
         public DataTable TableVals { get; set; }
-         override public void Save()
+         override public bool Save()          
         {
+            bool retval = true;
            this.Validate();
             this.wipDescriptionsBindingSource.EndEdit();
             try
@@ -31,7 +32,7 @@ namespace Mbc5.LookUpForms
                     .Submit();
                 MessageBox.Show("Error saving record. The record was not saved.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
+            return retval;
         }
         public override void Delete()
         {

@@ -174,7 +174,8 @@ namespace Mbc5.Forms.MemoryBook {
 
                 }
      
-        public override void  Save() {
+        public override bool  Save() {
+            bool retval = true;
             switch (tbProdutn.SelectedIndex) {
                 case 0:
                     SaveProdutn();
@@ -187,7 +188,7 @@ namespace Mbc5.Forms.MemoryBook {
                         }
                 case 2: 
                     {
-                        SaveProdutn();
+                        //SaveProdutn();
                         SaveCovers();
                         break;
                         }
@@ -197,7 +198,7 @@ namespace Mbc5.Forms.MemoryBook {
                     break;
 
                 }
-
+            return retval;
             }
         private bool SaveProdutn() {
             bool retval = false;
@@ -211,16 +212,10 @@ namespace Mbc5.Forms.MemoryBook {
                         this.Fill();
                     SetShipLabel();
                         retval = true;
-                        } catch (DBConcurrencyException ex1) {
-                    ex1.ToExceptionless()
-                   .SetMessage("Production record failed to update:" + ex1.Message)
-                   .Submit();
-                        retval = false;
-                        string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
-                        //this.Log.Error(ex1,ex1.Message);
-
-                        MessageBox.Show(errmsg);
-                        } catch (Exception ex) {
+                        } catch (DBConcurrencyException dbex) {
+                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
+                    ProcessDialogResult(response);
+                    } catch (Exception ex) {
                         retval = false;
                         MessageBox.Show("Production record failed to update:" + ex.Message);
                     ex.ToExceptionless()
@@ -268,27 +263,23 @@ namespace Mbc5.Forms.MemoryBook {
         private bool SaveCovers() {
             bool retval = false;
             if (dsProdutn.covers.Count > 0) {
-               try {
-                    this.coversBindingSource.EndEdit();
-                    coversTableAdapter.Update(dsProdutn.covers);
+                try {
+                    this.coversBindingSource1.EndEdit();
+                    var a = coversTableAdapter.Update(dsProdutn.covers);
                     //must refill so we get updated time stamp so concurrency is not thrown
                     this.Fill();
                     retval = true;
-                    } catch (DBConcurrencyException ex1) {
-                    ex1.ToExceptionless()
-                   .SetMessage("Covers record failed to update:" + ex1.Message)
-                   .Submit();
-                    retval = false;
-                    string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
-                
-                    MessageBox.Show(errmsg);
+                    //} catch (DBConcurrencyException dbex) {
+                    //DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo);
+                    //ProcessDialogResult(response);
+                    //} 
                     } catch (Exception ex) {
                     ex.ToExceptionless()
-                   .SetMessage("Coves record failed to update:" + ex.Message)
+                   .SetMessage("Covers record failed to update:" + ex.Message)
                    .Submit();
                     retval = false;
-                  
                     }
+                
                 } else { retval = false; }
 
             return retval;
@@ -335,7 +326,59 @@ namespace Mbc5.Forms.MemoryBook {
             //invdetailBindingSource.CancelEdit();
             //invoiceBindingSource.CancelEdit();
             }
+        //#region ConcurrencyProcs
+        //private string CreateMessage(DataSets.dsCust.custRow cr) {
+        //    return
+        //        "Database Current Data: " + GetRowData(GetCurrentRowInDB(cr),DataRowVersion.Default) + "\n \n" +
+        //        "Database Original: " + GetRowData(cr,DataRowVersion.Original) + "\n \n" +
+        //        "Your Data: " + GetRowData(cr,DataRowVersion.Current) + "\n \n" +
+        //        "Do you still want to update the database with the proposed value?";
+        //    }
 
+
+        ////--------------------------------------------------------------------------
+        //// This method loads a temporary table with current records from the database
+        //// and returns the current values from the row that caused the exception.
+        ////--------------------------------------------------------------------------
+        //private DataSets.dsCust.custDataTable tempCustomersDataTable =
+        //    new DataSets.dsCust.custDataTable();
+
+        //private DataSets.dsCust.custRow GetCurrentRowInDB(DataSets.dsCust.custRow RowWithError) {
+        //    this.custTableAdapter.Fill(tempCustomersDataTable,RowWithError.schcode);
+
+        //    DataSets.dsCust.custRow currentRowInDb =
+        //        tempCustomersDataTable.FindByschcode(RowWithError.schcode);
+
+        //    return currentRowInDb;
+        //    }
+
+
+        ////--------------------------------------------------------------------------
+        //// This method takes a CustomersRow and RowVersion 
+        //// and returns a string of column values to display to the user.
+        ////--------------------------------------------------------------------------
+        //private string GetRowData(DataSets.dsCust.custRow custRow,DataRowVersion RowVersion) {
+        //    string rowData = "";
+
+        //    for (int i = 0; i < custRow.ItemArray.Length; i++) {
+        //        rowData = rowData + custRow[i,RowVersion].ToString().Trim() + " ";
+        //        }
+        //    return rowData;
+        //    }
+        //private void ProcessDialogResult(DialogResult response) {
+        //    switch (response) {
+        //        case DialogResult.Yes:
+        //            dsCust.Merge(tempCustomersDataTable,true,MissingSchemaAction.Ignore);
+        //            Save();
+        //            break;
+
+        //        case DialogResult.No:
+        //            dsCust.Merge(tempCustomersDataTable);
+        //            MessageBox.Show("Update cancelled");
+        //            break;
+        //        }
+        //    }
+        //#endregion
         #endregion
         #region DatePickers
         private void prntsamDateTimePicker_ValueChanged(object sender,EventArgs e) {
@@ -688,7 +731,61 @@ namespace Mbc5.Forms.MemoryBook {
                 wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
             }
         }
+        #region Concurrency
+        private string CreateMessage(DataSets.dsProdutn.produtnRow cr) {
+            return
+            GetRowData(GetCurrentRowInDB(cr),cr,DataRowVersion.Default) + "\n \n" +
+             "Do you still want to update the database with the proposed value?";
+            }
+        private DataSets.dsProdutn.produtnDataTable tempProdutnDataTable = new DataSets.dsProdutn.produtnDataTable();
+        private DataSets.dsProdutn.produtnRow GetCurrentRowInDB(DataSets.dsProdutn.produtnRow RowWithError) {
+        
+            try {
+                this.produtnTableAdapter.Fill(tempProdutnDataTable,RowWithError.schcode);
+                } catch (Exception ex) {
 
+                }
+            DataSets.dsProdutn.produtnRow currentRowInDb =
+              (DataSets.dsProdutn.produtnRow)tempProdutnDataTable.Rows[0];
+
+            return currentRowInDb;
+            }
+        private string GetRowData(DataSets.dsProdutn.produtnRow curCustRow,DataSets.dsProdutn.produtnRow vrow,DataRowVersion RowVersion) {
+            //string rowData = "";
+            string columnDataDefault = "";
+            string columnDataOriginal = "";
+            string columnDataCurrent = "";
+            string badColumns = "";
+            for (int i = 0; i < curCustRow.ItemArray.Length; i++) {
+                columnDataDefault = tempProdutnDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Default].ToString().Trim();
+                columnDataOriginal = tempProdutnDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Original].ToString().Trim();
+                columnDataCurrent = tempProdutnDataTable.Columns[i].ColumnName.ToString() + ":" + curCustRow[i,DataRowVersion.Current].ToString().Trim();
+                if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent) {
+                    badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+                    }
+
+                }
+            return badColumns;
+            }
+        private void ProcessDialogResult(DialogResult response) {
+            switch (response) {
+                case DialogResult.Yes:
+                    dsProdutn.Merge(tempProdutnDataTable,true,MissingSchemaAction.Ignore);
+                    Save();
+                    break;
+
+                case DialogResult.No:
+                    dsProdutn.Merge(tempProdutnDataTable);
+                    MessageBox.Show("Update cancelled");
+                    break;
+                }
+            }
+
+
+
+
+
+        #endregion
         //nothing below here  
         }
     public class BinderyInfo

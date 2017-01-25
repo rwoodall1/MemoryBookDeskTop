@@ -99,7 +99,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\dsProdutn1.Designer.cs">
+    <Compile Include="DataSets\dsProdutn.cs">
+      <DependentUpon>dsProdutn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsProdutn.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsProdutn.xsd</DependentUpon>
@@ -260,11 +263,6 @@
     </Compile>
     <Compile Include="LookUpForms\LkpDiscount.Designer.cs">
       <DependentUpon>LkpDiscount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Mbc5DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -452,17 +450,6 @@
     </None>
     <None Include="DataSets\LookUp.xss">
       <DependentUpon>LookUp.xsd</DependentUpon>
-    </None>
-    <None Include="Mbc5DataSet.xsc">
-      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Mbc5DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Mbc5DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Mbc5DataSet.xss">
-      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
     </None>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>

@@ -201,10 +201,11 @@ namespace BaseClass
            
         }
         [Browsable(true)]
-        public virtual void Save()
+        public virtual bool Save()
         {
-
+            return true;
         }
+       
         [Browsable(true)]
         public virtual void Delete()
         {

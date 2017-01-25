@@ -1334,7 +1334,8 @@ namespace Mbc5.Forms.MemoryBook {
             BookCalc();
             SetCodeInvno();
             }
-        public override void  Save() {
+        public override bool  Save() {
+            bool retval = true;
             switch (tabSales.SelectedIndex) {
                 case 0:
                 case 1:
@@ -1352,7 +1353,7 @@ namespace Mbc5.Forms.MemoryBook {
                     break;
               
                 }
-
+            return retval;
             }
         public override void Add() {
             switch (tabSales.SelectedIndex) {

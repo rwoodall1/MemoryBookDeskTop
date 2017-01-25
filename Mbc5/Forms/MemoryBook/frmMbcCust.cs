@@ -166,7 +166,7 @@ namespace Mbc5.Forms.MemoryBook {
             SetInvnoSchCode();
             }
         #region CrudOperations
-      public new bool Save() {
+        public override bool Save() {
             bool retval = false;
             txtSchname.ReadOnly = true;
             if (this.ValidateChildren(ValidationConstraints.Enabled)) {
@@ -175,7 +175,7 @@ namespace Mbc5.Forms.MemoryBook {
                     custTableAdapter.Update(dsCust);
                     retval = true;
                     } catch (DBConcurrencyException dbex) {
-                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo);
+                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
                     ProcessDialogResult(response);
                     } catch (Exception ex) {
                     Log.Fatal("Error Updating cust table:" + ex.Message);
@@ -213,11 +213,15 @@ namespace Mbc5.Forms.MemoryBook {
             }
         #region ConcurrencyProcs
         private string CreateMessage(DataSets.dsCust.custRow cr) {
-            return
-                "Database Current Data: " + GetRowData(GetCurrentRowInDB(cr),DataRowVersion.Default) + "\n \n" +
-                "Database Original: " + GetRowData(cr,DataRowVersion.Original) + "\n \n" +
-                "Your Data: " + GetRowData(cr,DataRowVersion.Current) + "\n \n" +
-                "Do you still want to update the database with the proposed value?";
+   
+            return 
+            GetRowData(GetCurrentRowInDB(cr),cr,DataRowVersion.Default) + "\n \n" +
+             "Do you still want to update the database with the proposed value?";
+
+            //"Database Current Data: " + GetRowData(GetCurrentRowInDB(cr),DataRowVersion.Default) + "\n \n" +
+            //"Database Original: " + GetRowData(cr,DataRowVersion.Original) + "\n \n" +
+            //"Your Data: " + GetRowData(cr,DataRowVersion.Current) + "\n \n" +
+            //"Do you still want to update the database with the proposed value?";
             }
 
 
@@ -227,9 +231,15 @@ namespace Mbc5.Forms.MemoryBook {
         //--------------------------------------------------------------------------
         private DataSets.dsCust.custDataTable tempCustomersDataTable =
             new DataSets.dsCust.custDataTable();
-
+      
         private DataSets.dsCust.custRow GetCurrentRowInDB(DataSets.dsCust.custRow RowWithError) {
-            this.custTableAdapter.Fill(tempCustomersDataTable,RowWithError.schcode);
+            try {
+                  this.custTableAdapter.Fill(tempCustomersDataTable,RowWithError.schcode);
+                } catch(Exception ex) {
+
+
+                }
+           
 
             DataSets.dsCust.custRow currentRowInDb =
                 tempCustomersDataTable.FindByschcode(RowWithError.schcode);
@@ -242,15 +252,29 @@ namespace Mbc5.Forms.MemoryBook {
         // This method takes a CustomersRow and RowVersion 
         // and returns a string of column values to display to the user.
         //--------------------------------------------------------------------------
-        private string GetRowData(DataSets.dsCust.custRow custRow,DataRowVersion RowVersion) {
-            string rowData = "";
+        private string GetRowData(DataSets.dsCust.custRow curCustRow,DataSets.dsCust.custRow vrow,DataRowVersion RowVersion) {
+            //string rowData = "";
+            string columnDataDefault = "";
+            string columnDataOriginal = "";
+            string columnDataCurrent = "";
+            string badColumns = "";
+            for (int i = 0; i < curCustRow.ItemArray.Length; i++) {
+                columnDataDefault = tempCustomersDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Default].ToString().Trim();
+                columnDataOriginal = tempCustomersDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Original].ToString().Trim();
+                columnDataCurrent = tempCustomersDataTable.Columns[i].ColumnName.ToString() + ":" + curCustRow[i,DataRowVersion.Current].ToString().Trim();
+                if (columnDataDefault != columnDataOriginal || columnDataDefault !=columnDataCurrent ) {
+                    badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+                    }
 
-            for (int i = 0; i < custRow.ItemArray.Length; i++)
-                {
-                rowData = rowData + custRow[i,RowVersion].ToString().Trim() + " ";
                 }
-            return rowData;
+            return badColumns;
             }
+
+        //for (int i = 0; i < custRow.ItemArray.Length; i++) {
+        //    rowData = rowData + custRow[i,RowVersion].ToString().Trim() + " ";
+        //    }
+        //return rowData;
+        //}
         private void ProcessDialogResult(DialogResult response) {
             switch (response)
                 {
