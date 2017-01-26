@@ -13,13 +13,12 @@ namespace Mbc5.Classes
         public static string CreateMessage(DataSets.dsProdutn.produtnRow cr)
         {
            
-           
-
-            return
-            GetRowData(GetCurrentRowInDB(cr), cr, DataRowVersion.Default) + "\n \n" +
+           string msg= GetRowData(GetCurrentRowInDB(cr), cr, DataRowVersion.Default) + "\n \n" +
              "Do you still want to update the database with the proposed value?";
+            //dataset.Merge(tempProdutnDataTable,true,MissingSchemaAction.Ignore);
+            return msg;
         }
-        public static DataSets.dsProdutn.produtnDataTable tempProdutnDataTable = new DataSets.dsProdutn.produtnDataTable();
+       public static DataSets.dsProdutn.produtnDataTable tempProdutnDataTable = new DataSets.dsProdutn.produtnDataTable();
         private static DataSets.dsProdutn.produtnRow GetCurrentRowInDB(DataSets.dsProdutn.produtnRow RowWithError)
         {
             DataSets.dsProdutnTableAdapters.produtnTableAdapter vTableAdapter = new DataSets.dsProdutnTableAdapters.produtnTableAdapter();
@@ -55,8 +54,9 @@ namespace Mbc5.Classes
                 }
 
             }
+           
             return badColumns;
         }
-
-    }
+       
+      }
 }

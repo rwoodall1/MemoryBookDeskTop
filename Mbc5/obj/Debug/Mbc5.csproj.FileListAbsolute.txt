@@ -191,7 +191,6 @@ F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditWip.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmSelctCust.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Form1.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmBarScan.resources
-F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmProdutn.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.frmSales.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.MemoryBook.test.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.Meridian.frmMSales.resources
@@ -212,3 +211,4 @@ F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.GenerateResource.Cache
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.cache
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.compiled
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn.resources
+F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn.resources

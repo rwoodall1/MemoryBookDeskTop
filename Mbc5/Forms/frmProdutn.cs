@@ -17,6 +17,7 @@ using BindingModels;
 using Exceptionless;
 using Exceptionless.Models;
 using Outlook= Microsoft.Office.Interop.Outlook;
+
 namespace Mbc5.Forms {
     public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged {
         private static string _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
@@ -213,8 +214,13 @@ namespace Mbc5.Forms {
                     SetShipLabel();
                         retval = true;
                         } catch (DBConcurrencyException dbex) {
-                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
-                    ProcessDialogResult(response);
+                    DialogResult response = MessageBox.Show(ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
+                    if(response == DialogResult.Yes) {
+                        dsProdutn.Merge(ExceptionHandler.tempProdutnDataTable,true,MissingSchemaAction.Ignore);
+                        SaveProdutn();
+                        }
+                    //DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
+                    //ExceptionHandler.ProcessDialogResult(response,ref dsProdutn);
                     } catch (Exception ex) {
                         retval = false;
                         MessageBox.Show("Production record failed to update:" + ex.Message);
