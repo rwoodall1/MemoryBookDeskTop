@@ -10,12 +10,12 @@ namespace Mbc5.Classes
 {
    public static class ExceptionHandler
     {
-        public static string CreateMessage(DataSets.dsProdutn.produtnRow cr)
-        {
-           
+        public static string CreateMessage(DataSets.dsProdutn.produtnRow cr,ref DataSets.dsProdutn dataset)
+        {          
            string msg= GetRowData(GetCurrentRowInDB(cr), cr, DataRowVersion.Default) + "\n \n" +
              "Do you still want to update the database with the proposed value?";
-            //dataset.Merge(tempProdutnDataTable,true,MissingSchemaAction.Ignore);
+            MessageBox.Show(ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row),ref dsProdutn),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
+            dataset.Merge(tempProdutnDataTable,true,MissingSchemaAction.Ignore);
             return msg;
         }
        public static DataSets.dsProdutn.produtnDataTable tempProdutnDataTable = new DataSets.dsProdutn.produtnDataTable();
