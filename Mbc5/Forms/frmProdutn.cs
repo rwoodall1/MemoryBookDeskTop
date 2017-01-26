@@ -214,13 +214,15 @@ namespace Mbc5.Forms {
                     SetShipLabel();
                         retval = true;
                         } catch (DBConcurrencyException dbex) {
-                    DialogResult response = MessageBox.Show(ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
-                    if(response == DialogResult.Yes) {
-                        dsProdutn.Merge(ExceptionHandler.tempProdutnDataTable,true,MissingSchemaAction.Ignore);
-                        SaveProdutn();
-                        }
-                    //DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
-                    //ExceptionHandler.ProcessDialogResult(response,ref dsProdutn);
+                    //DialogResult response = MessageBox.Show(ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
+                    //if(response == DialogResult.Yes) {
+                    //    dsProdutn.Merge(ExceptionHandler.tempProdutnDataTable,true,MissingSchemaAction.Ignore);
+                    //    SaveProdutn();
+                    //    }
+                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
+                    //ProcessDialogResult(response,ref dsProdutn);
+                    ProcessDialogResult(response);
+
                     } catch (Exception ex) {
                         retval = false;
                         MessageBox.Show("Production record failed to update:" + ex.Message);
