@@ -240,9 +240,7 @@ namespace Mbc5.Forms.MemoryBook {
 
                 }
            
-
-            DataSets.dsCust.custRow currentRowInDb =
-                tempCustomersDataTable.FindByschcode(RowWithError.schcode);
+            DataSets.dsCust.custRow currentRowInDb = tempCustomersDataTable.FindByschcode(RowWithError.schcode);
 
             return currentRowInDb;
             }
@@ -279,6 +277,7 @@ namespace Mbc5.Forms.MemoryBook {
             switch (response)
                 {
                 case DialogResult.Yes:
+                    var a = tempCustomersDataTable.Rows[0]["contryear"].ToString();
                     dsCust.Merge(tempCustomersDataTable,true,MissingSchemaAction.Ignore);
                     Save();
                     break;

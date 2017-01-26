@@ -17,7 +17,7 @@ using BindingModels;
 using Exceptionless;
 using Exceptionless.Models;
 using Outlook= Microsoft.Office.Interop.Outlook;
-namespace Mbc5.Forms.MemoryBook {
+namespace Mbc5.Forms {
     public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged {
         private static string _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
         private bool startup = true;
@@ -737,11 +737,11 @@ namespace Mbc5.Forms.MemoryBook {
             GetRowData(GetCurrentRowInDB(cr),cr,DataRowVersion.Default) + "\n \n" +
              "Do you still want to update the database with the proposed value?";
             }
-        private DataSets.dsProdutn.produtnDataTable tempProdutnDataTable = new DataSets.dsProdutn.produtnDataTable();
+        public DataSets.dsProdutn.produtnDataTable tempProdutnDataTable = new DataSets.dsProdutn.produtnDataTable();
         private DataSets.dsProdutn.produtnRow GetCurrentRowInDB(DataSets.dsProdutn.produtnRow RowWithError) {
         
             try {
-                this.produtnTableAdapter.Fill(tempProdutnDataTable,RowWithError.schcode);
+                this.produtnTableAdapter.FillByInvno(tempProdutnDataTable,RowWithError.invno);
                 } catch (Exception ex) {
 
                 }
@@ -750,33 +750,38 @@ namespace Mbc5.Forms.MemoryBook {
 
             return currentRowInDb;
             }
-        private string GetRowData(DataSets.dsProdutn.produtnRow curCustRow,DataSets.dsProdutn.produtnRow vrow,DataRowVersion RowVersion) {
+        private string GetRowData(DataSets.dsProdutn.produtnRow curData,DataSets.dsProdutn.produtnRow vrow,DataRowVersion RowVersion) {
             //string rowData = "";
             string columnDataDefault = "";
             string columnDataOriginal = "";
             string columnDataCurrent = "";
             string badColumns = "";
-            for (int i = 0; i < curCustRow.ItemArray.Length; i++) {
+            for (int i = 0; i < vrow.ItemArray.Length; i++) {
                 columnDataDefault = tempProdutnDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Default].ToString().Trim();
                 columnDataOriginal = tempProdutnDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Original].ToString().Trim();
-                columnDataCurrent = tempProdutnDataTable.Columns[i].ColumnName.ToString() + ":" + curCustRow[i,DataRowVersion.Current].ToString().Trim();
+                columnDataCurrent = tempProdutnDataTable.Columns[i].ColumnName.ToString() + ":" + curData[i,DataRowVersion.Current].ToString().Trim();
                 if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent) {
                     badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
                     }
 
                 }
             return badColumns;
-            }
-        private void ProcessDialogResult(DialogResult response) {
+        }
+        private void ProcessDialogResult(DialogResult response)
+        {
             switch (response) {
                 case DialogResult.Yes:
-                    dsProdutn.Merge(tempProdutnDataTable,true,MissingSchemaAction.Ignore);
+                 
+                 dsProdutn.Merge(tempProdutnDataTable,true,MissingSchemaAction.Ignore);
                     Save();
                     break;
 
                 case DialogResult.No:
-                    dsProdutn.Merge(tempProdutnDataTable);
+                   
+                   dsProdutn.Merge(tempProdutnDataTable);
+                   
                     MessageBox.Show("Update cancelled");
+                   
                     break;
                 }
             }

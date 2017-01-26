@@ -16,7 +16,7 @@ namespace BaseClass
     public partial class frmBase : Form
     {
       
-        protected frmBase()
+        public frmBase()
         {
            
             InitializeComponent();

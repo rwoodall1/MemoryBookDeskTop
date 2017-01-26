@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ExceptionHandler.cs" />
     <Compile Include="Classes\OptionPrice.cs" />
     <Compile Include="Classes\Price.cs" />
     <Compile Include="DataSets\dsChangePassword.cs">
@@ -388,7 +389,7 @@
     <None Include="DataSets\dsProdutn.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsProdutn1.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsProdutn.Designer.cs</LastGenOutput>
     </None>
     <None Include="DataSets\dsProdutn.xss">
       <DependentUpon>dsProdutn.xsd</DependentUpon>
