@@ -677,10 +677,12 @@ namespace Mbc5.Forms.MemoryBook {
                         this.Fill();
                         retval = true;
                         } catch (DBConcurrencyException ex1) {
-                        retval = false;
-                        string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
-                        this.Log.Error(ex1,ex1.Message);
-                        MessageBox.Show(errmsg);
+                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsSales.quotesRow)(ex1.Row),ref dsSales);
+                        if (result == DialogResult.Yes) {
+                            Save();
+                            } else {
+                            retval = true;
+                            }
                         } catch (Exception ex) {
                         retval = false;
                         MessageBox.Show("Sales record failed to update:" + ex.Message);

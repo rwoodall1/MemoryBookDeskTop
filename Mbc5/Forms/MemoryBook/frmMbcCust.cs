@@ -185,9 +185,15 @@ namespace Mbc5.Forms.MemoryBook {
                         Save();
                     }
                     else {
-                        retval = false;
+                        retval = true;
                     }                  
-                }
+                }catch(Exception ex) {
+                    MessageBox.Show("School record failed to update:" + ex.Message);
+                    ex.ToExceptionless()
+                   .SetMessage("School record failed to update:" + ex.Message)
+                   .Submit();
+                    retval = false;
+                    }
             }
             return retval;
         }

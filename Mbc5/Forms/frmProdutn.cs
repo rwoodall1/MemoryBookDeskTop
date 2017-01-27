@@ -24,7 +24,8 @@ namespace Mbc5.Forms {
         private bool startup = true;
         public frmProdutn(UserPrincipal userPrincipal,int invno,string schcode) : base(new string[] { "SA","Administrator","MbcCS" },userPrincipal) {
             InitializeComponent();
-            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            //this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+           // this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ApplicationUser = userPrincipal;
             this.Invno = invno;
             this.Schcode = schcode;
@@ -32,8 +33,9 @@ namespace Mbc5.Forms {
             }
         public frmProdutn(UserPrincipal userPrincipal) : base(new string[] { "SA","Administrator","MbcCS" },userPrincipal) {
             InitializeComponent();
-           
-            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+
+            // this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+           // this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ApplicationUser = userPrincipal;
             this.Invno = 0;
             this.Schcode = null;
@@ -179,17 +181,19 @@ namespace Mbc5.Forms {
             switch (tbProdutn.SelectedIndex) {
                 case 0:
                     SaveProdutn();
-                    SaveCovers();
+                 
                     break;
                 case 1:
                         {
                         SaveWip();
+                        SaveProdutn();//some produtn fiels are on covers tab so save
                         break;
                         }
                 case 2: 
                     {
-                        //SaveProdutn();
-                        SaveCovers();
+                      SaveCovers();
+                      SaveProdutn();//some produtn fiels are on covers tab so save
+                       
                         break;
                         }
                    
@@ -203,86 +207,80 @@ namespace Mbc5.Forms {
         private bool SaveProdutn()
         {
             bool retval = false;
-            if (dsProdutn.produtn.Count > 0)
-            {
-                try
-                {
-                    this.produtnBindingSource.EndEdit();
-                    produtnTableAdapter.Update(dsProdutn.produtn);
-                    //must refill so we get updated time stamp so concurrency is not thrown
-                    this.Fill();
-                    SetShipLabel();
-                    retval = true;
-                }
-                catch (DBConcurrencyException dbex)
-                {
-                    DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row), ref dsProdutn);
-                    if (result == DialogResult.Yes) { SaveProdutn(); }
-                }
-                catch (Exception ex)
-                {
-                    retval = false;
-                    MessageBox.Show("Production record failed to update:" + ex.Message);
-                    ex.ToExceptionless()
-                   .SetMessage("Production record failed to update:" + ex.Message)
-                   .Submit();
-                }
-            }
-            else { retval = false; }
+            if (dsProdutn.produtn.Count > 0) {
+                if (this.ValidateChildren(ValidationConstraints.Enabled)) {
+                    try {
+
+                        this.produtnBindingSource.EndEdit();
+                        var a = produtnTableAdapter.Update(dsProdutn.produtn);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        produtnTableAdapter.Fill(dsProdutn.produtn,Schcode);
+                        SetShipLabel();
+                        retval = true;
+
+                        } catch (DBConcurrencyException dbex) {
+                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row),ref dsProdutn);
+                        if (result == DialogResult.Yes) { SaveProdutn(); }
+                        } catch (Exception ex) {
+                        retval = false;
+                        MessageBox.Show("Production record failed to update:" + ex.Message);
+                        ex.ToExceptionless()
+                       .SetMessage("Production record failed to update:" + ex.Message)
+                       .Submit();
+                        }
+                    }
+                } else { retval = false; }
             return retval;
         }
         private bool SaveWip() {
             bool retval = false;
             if (dsProdutn.wip.Count > 0) {
-              
 
-                try {
-                    this.wipBindingSource.EndEdit();
-                    wipTableAdapter.Update(dsProdutn.wip); 
-                    //must refill so we get updated time stamp so concurrency is not thrown
-                    this.Fill();
-                    retval = true;
-                    } catch (DBConcurrencyException ex1) {
-                    ex1.ToExceptionless()
-                   .SetMessage("WIP record failed to update:" + ex1.Message)
-                   .Submit();
-                    retval = false;
-                    string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
-                   
-                    MessageBox.Show(errmsg);
-                    } catch (Exception ex) {
-                    ex.ToExceptionless()
-                   .SetMessage("WIP record failed to update:" + ex.Message)
-                   .Submit();
-                    retval = false;
-                    MessageBox.Show("Wip record failed to update:" + ex.Message);
-                 ;
-                    }
-                } else { retval = false; }
-            
+              //  if (this.Validate()) {
+                    try {
+                        this.wipBindingSource.EndEdit();
+                        var a = wipTableAdapter.Update(dsProdutn.wip);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        wipTableAdapter.Fill(dsProdutn.wip,Schcode);
+                        retval = true;
+                        } catch (DBConcurrencyException ex1) {
+                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.wipRow)(ex1.Row),ref dsProdutn);
+                        if (result == DialogResult.Yes) { SaveWip(); };
+                        } catch (Exception ex) {
+                        ex.ToExceptionless()
+                       .SetMessage("WIP record failed to update:" + ex.Message)
+                       .Submit();
+                        retval = false;
+                        MessageBox.Show("Wip record failed to update:" + ex.Message);
+                        ;
+                        }
+                   // }
+                } 
+                else { retval = false; }
+                
             return retval;
 
             }
         private bool SaveCovers() {
             bool retval = false;
             if (dsProdutn.covers.Count > 0) {
-                try {
-                    this.coversBindingSource1.EndEdit();
-                    var a = coversTableAdapter.Update(dsProdutn.covers);
-                    //must refill so we get updated time stamp so concurrency is not thrown
-                    this.Fill();
-                    retval = true;
-                    //} catch (DBConcurrencyException dbex) {
-                    //DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo);
-                    //ProcessDialogResult(response);
-                    //} 
-                    } catch (Exception ex) {
-                    ex.ToExceptionless()
-                   .SetMessage("Covers record failed to update:" + ex.Message)
-                   .Submit();
-                    retval = false;
+                if (this.ValidateChildren(ValidationConstraints.Enabled)) {
+                    try {
+                        this.coversBindingSource1.EndEdit();
+                        var a = coversTableAdapter.Update(dsProdutn.covers);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        coversTableAdapter.Fill(dsProdutn.covers,Schcode);
+                        retval = true;
+                        } catch (DBConcurrencyException dbex) {
+                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row),ref dsProdutn);
+                        if (result == DialogResult.Yes) { SaveCovers(); };
+                        } catch (Exception ex) {
+                        ex.ToExceptionless()
+                       .SetMessage("Covers record failed to update:" + ex.Message)
+                       .Submit();
+                        retval = false;
+                        }
                     }
-                
                 } else { retval = false; }
 
             return retval;
@@ -618,14 +616,33 @@ namespace Mbc5.Forms {
                 case "MBC":
                     if (!String.IsNullOrEmpty(prodno.Substring(0,2)))//has prodno
                     {
-                        if (!String.IsNullOrEmpty(prodno.Substring(0, 1)))//letter changed not added
+                        if (!String.IsNullOrEmpty(prodno))//letter changed not added
                         {
+                            var vVal = prodno.Substring(0,1);
+                            if (txtPerfbind.Text!= vVal) {
                             MessageBox.Show("Your Production Number (Binding) First Digit is not the same as this value... Press andy key to continue...It is being changed!", "Binding Type Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                         if(txtPerfbind.Text=="C"|| txtPerfbind.Text == "G"|| txtPerfbind.Text == "K"|| txtPerfbind.Text == "H"|| txtPerfbind.Text == "P"|| txtPerfbind.Text == "S"|| txtPerfbind.Text == "M"|| txtPerfbind.Text == "")
-                            {
-                                lblProdNo.Text = txtPerfbind.Text + lblProdNo.Text.Substring(0);
-                                //need to replace quote prono at some time.
-                            }
+                                if (txtPerfbind.Text == "C" || txtPerfbind.Text == "G" || txtPerfbind.Text == "K" || vVal == "H" || txtPerfbind.Text == "P" || txtPerfbind.Text == "S" || txtPerfbind.Text == "M") {
+                                    if (vVal == "C" || vVal == "G" || vVal == "K" || vVal == "H" || vVal == "P" || vVal == "S" || vVal == "M") {
+
+                                        //replacing binding
+                                        lblProdNo.Text = txtPerfbind.Text + lblProdNo.Text.Substring(1).Trim();
+
+                                        } else {
+                                        //adding binding
+                                       
+                                            lblProdNo.Text = txtPerfbind.Text + lblProdNo.Text.Trim();
+                                        //need to replace quote prono at some time.
+
+
+                                        }
+                                    }else { MessageBox.Show("Unknow binding!","Binding"); }
+
+                                }
+
+
+
+
+                       
 
 
                         }//if2
@@ -681,6 +698,61 @@ namespace Mbc5.Forms {
                 wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
             }
         }
+
+        private void nocopiesTextBox1_Validating(object sender,CancelEventArgs e) {
+            this.errorProvider1.SetError(nocopiesTextBox,"");
+            int vInt;
+            if (!String.IsNullOrEmpty(nocopiesTextBox.Text) &&!int.TryParse(nocopiesTextBox.Text,out vInt)) {
+           
+                this.errorProvider1.SetError(nocopiesTextBox,"Only numbers are allowed.");
+                e.Cancel = true;
+                }
+            }
+
+        private void totsigsTextBox_Validating(object sender,CancelEventArgs e) {
+            this.errorProvider1.SetError(totsigsTextBox,"");
+            int vInt;
+            if (!String.IsNullOrEmpty(totsigsTextBox.Text) && !int.TryParse(totsigsTextBox.Text,out vInt)) {
+                
+                this.errorProvider1.SetError(totsigsTextBox,"Only numbers are allowed.");
+                e.Cancel = true;
+                }else { e.Cancel = false; }
+            }
+
+        private void reqstdcpyTextBox_Validating(object sender,CancelEventArgs e) {
+            this.errorProvider1.SetError(reqstdcpyTextBox,"");
+        
+            int vInt;
+            if (!String.IsNullOrEmpty(reqstdcpyTextBox.Text) && !int.TryParse(reqstdcpyTextBox.Text,out vInt)) {
+
+                this.errorProvider1.SetError(reqstdcpyTextBox,"Only numbers are allowed.");
+                e.Cancel = true;
+                }
+            }
+
+        private void txtnoPlates_Validating(object sender,CancelEventArgs e) {
+            this.errorProvider1.SetError(txtnoPlates,"");
+            int vInt;
+            if (!String.IsNullOrEmpty(txtnoPlates.Text) && !int.TryParse(txtnoPlates.Text,out vInt)) {
+
+                this.errorProvider1.SetError(txtnoPlates,"Only numbers are allowed.");
+                e.Cancel = true;
+                }
+            }
+
+        private void textBox7_Validating(object sender,CancelEventArgs e) {
+            this.errorProvider1.SetError(textBox7,"");
+            int vInt;
+            if (!String.IsNullOrEmpty(textBox7.Text) && !int.TryParse(textBox7.Text,out vInt)) {
+
+                this.errorProvider1.SetError(textBox7,"Only numbers are allowed.");
+                e.Cancel = true;
+                }
+            }
+        #region Validation
+
+
+        #endregion
 
         //nothing below here  
         }

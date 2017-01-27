@@ -333,3 +333,11 @@ The statement has been terminated. CHOME  WDFM\rwoodall
    at Mbc5.Forms.MemoryBook.frmProdutn.SaveProdutn() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\frmProdutn.cs:line 147
 ClientConnectionId:bc0f703f-055d-4be0-992f-40fdb14d01cb
 Error Number:8178,State:1,Class:16 
+2017/01/27 10:17:38.544 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. RWCOMPUTER  RWCOMPUTER\randy   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable) in F:\Mb\MemoryBookDeskTop\Mbc5\DataSets\dsSales.Designer.cs:line 15696
+   at Mbc5.Forms.MemoryBook.frmSales.SaveSales() in F:\Mb\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 675 

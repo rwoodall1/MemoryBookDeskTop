@@ -2221,7 +2221,7 @@ namespace Mbc5.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public quotesRow AddquotesRow(
-                        decimal invno, 
+                        int invno, 
                         custRow parentcustRowBycust_quotes, 
                         string prodno, 
                         string booktype, 
@@ -2589,7 +2589,7 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public quotesRow FindByinvno(decimal invno) {
+            public quotesRow FindByinvno(int invno) {
                 return ((quotesRow)(this.Rows.Find(new object[] {
                             invno})));
             }
@@ -2794,7 +2794,7 @@ namespace Mbc5.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columninvno = new global::System.Data.DataColumn("invno", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columninvno = new global::System.Data.DataColumn("invno", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninvno);
                 this.columnschcode = new global::System.Data.DataColumn("schcode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschcode);
@@ -6180,9 +6180,9 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal invno {
+            public int invno {
                 get {
-                    return ((decimal)(this[this.tablequotes.invnoColumn]));
+                    return ((int)(this[this.tablequotes.invnoColumn]));
                 }
                 set {
                     this[this.tablequotes.invnoColumn] = value;
@@ -15619,7 +15619,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        invno, schcode, prodno, booktype, qtedate, contryear, nopages, noco" +
@@ -15651,6 +15651,37 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "(schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        invno, schcode, prodno, booktype, qtedate, contryear, nopages, noco" +
+                "pies, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, l" +
+                "ayn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, \r\n               " +
+                "          spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, custo" +
+                "mized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3" +
+                ", dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, \r\n                    " +
+                "     source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoi" +
+                "ced, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, d" +
+                "esc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, \r\n                     " +
+                "    glsamt, acovrde, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story" +
+                ", supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, our" +
+                "supp, oursuppamt, ourovrride, dp1desc, \r\n                         rebookinvremv," +
+                " rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5," +
+                " rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, " +
+                "themovrride, cbovrride, \r\n                         spiovrride, pbovrride, yirsov" +
+                "rride, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, c" +
+                "opiesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcpe" +
+                "rbk2, agreedte, \r\n                         onlinecuto, basicpp, msstanqty, mssta" +
+                "ndtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlaminat" +
+                "ion, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt" +
+                ", \r\n                         opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opi" +
+                "nkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt" +
+                ", halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, \r\n " +
+                "                        cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, w" +
+                "ebonly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalad" +
+                "s, totallovelines, TimeStamp, onlinenotes\r\nFROM            quotes\r\nWHERE        " +
+                "(invno = @invno)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15684,6 +15715,32 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schcode));
             }
+            dsSales.quotesDataTable dataTable = new dsSales.quotesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByInvno(dsSales.quotesDataTable dataTable, int invno) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(invno));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual dsSales.quotesDataTable GetDataBy(int invno) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(invno));
             dsSales.quotesDataTable dataTable = new dsSales.quotesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
