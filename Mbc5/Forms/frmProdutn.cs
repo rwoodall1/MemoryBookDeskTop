@@ -70,7 +70,6 @@ namespace Mbc5.Forms {
         private string CcontactEmail { get; set; }
         private List<string> AllEmails { get; set; }
         private string CurrentProdNo { get; set; }
-
         #endregion
         #region "Methods"
         private void DisableControls(Control con) {
@@ -201,40 +200,37 @@ namespace Mbc5.Forms {
                 }
             return retval;
             }
-        private bool SaveProdutn() {
+        private bool SaveProdutn()
+        {
             bool retval = false;
-            if (dsProdutn.produtn.Count > 0) {
-           
-
-                    try {
-                        this.produtnBindingSource.EndEdit();
-                       produtnTableAdapter.Update(dsProdutn.produtn);
-                        //must refill so we get updated time stamp so concurrency is not thrown
-                        this.Fill();
+            if (dsProdutn.produtn.Count > 0)
+            {
+                try
+                {
+                    this.produtnBindingSource.EndEdit();
+                    produtnTableAdapter.Update(dsProdutn.produtn);
+                    //must refill so we get updated time stamp so concurrency is not thrown
+                    this.Fill();
                     SetShipLabel();
-                        retval = true;
-                        } catch (DBConcurrencyException dbex) {
-                    ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row),ref dsProdutn);
-                    //DialogResult response = MessageBox.Show(ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row),ref dsProdutn ),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
-                    // if(response == DialogResult.Yes) {
-                    //dsProdutn.Merge(ExceptionHandler.tempProdutnDataTable,true,MissingSchemaAction.Ignore);
-                    SaveProdutn();
-                        }
-                    //DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
-                    //ExceptionHandler.ProcessDialogResult(response,ref dsProdutn);
-                   catch (Exception ex) {
-                        retval = false;
-                        MessageBox.Show("Production record failed to update:" + ex.Message);
+                    retval = true;
+                }
+                catch (DBConcurrencyException dbex)
+                {
+                    DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row), ref dsProdutn);
+                    if (result == DialogResult.Yes) { SaveProdutn(); }
+                }
+                catch (Exception ex)
+                {
+                    retval = false;
+                    MessageBox.Show("Production record failed to update:" + ex.Message);
                     ex.ToExceptionless()
                    .SetMessage("Production record failed to update:" + ex.Message)
                    .Submit();
-                       
-                        }
-                    } else { retval = false; }
-            
-            return retval;
-
+                }
             }
+            else { retval = false; }
+            return retval;
+        }
         private bool SaveWip() {
             bool retval = false;
             if (dsProdutn.wip.Count > 0) {
@@ -333,59 +329,6 @@ namespace Mbc5.Forms {
             //invdetailBindingSource.CancelEdit();
             //invoiceBindingSource.CancelEdit();
             }
-        //#region ConcurrencyProcs
-        //private string CreateMessage(DataSets.dsCust.custRow cr) {
-        //    return
-        //        "Database Current Data: " + GetRowData(GetCurrentRowInDB(cr),DataRowVersion.Default) + "\n \n" +
-        //        "Database Original: " + GetRowData(cr,DataRowVersion.Original) + "\n \n" +
-        //        "Your Data: " + GetRowData(cr,DataRowVersion.Current) + "\n \n" +
-        //        "Do you still want to update the database with the proposed value?";
-        //    }
-
-
-        ////--------------------------------------------------------------------------
-        //// This method loads a temporary table with current records from the database
-        //// and returns the current values from the row that caused the exception.
-        ////--------------------------------------------------------------------------
-        //private DataSets.dsCust.custDataTable tempCustomersDataTable =
-        //    new DataSets.dsCust.custDataTable();
-
-        //private DataSets.dsCust.custRow GetCurrentRowInDB(DataSets.dsCust.custRow RowWithError) {
-        //    this.custTableAdapter.Fill(tempCustomersDataTable,RowWithError.schcode);
-
-        //    DataSets.dsCust.custRow currentRowInDb =
-        //        tempCustomersDataTable.FindByschcode(RowWithError.schcode);
-
-        //    return currentRowInDb;
-        //    }
-
-
-        ////--------------------------------------------------------------------------
-        //// This method takes a CustomersRow and RowVersion 
-        //// and returns a string of column values to display to the user.
-        ////--------------------------------------------------------------------------
-        //private string GetRowData(DataSets.dsCust.custRow custRow,DataRowVersion RowVersion) {
-        //    string rowData = "";
-
-        //    for (int i = 0; i < custRow.ItemArray.Length; i++) {
-        //        rowData = rowData + custRow[i,RowVersion].ToString().Trim() + " ";
-        //        }
-        //    return rowData;
-        //    }
-        //private void ProcessDialogResult(DialogResult response) {
-        //    switch (response) {
-        //        case DialogResult.Yes:
-        //            dsCust.Merge(tempCustomersDataTable,true,MissingSchemaAction.Ignore);
-        //            Save();
-        //            break;
-
-        //        case DialogResult.No:
-        //            dsCust.Merge(tempCustomersDataTable);
-        //            MessageBox.Show("Update cancelled");
-        //            break;
-        //        }
-        //    }
-        //#endregion
         #endregion
         #region DatePickers
         private void prntsamDateTimePicker_ValueChanged(object sender,EventArgs e) {
@@ -738,66 +681,7 @@ namespace Mbc5.Forms {
                 wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
             }
         }
-        #region Concurrency
-        private string CreateMessage(DataSets.dsProdutn.produtnRow cr) {
-            return
-            GetRowData(GetCurrentRowInDB(cr),cr,DataRowVersion.Default) + "\n \n" +
-             "Do you still want to update the database with the proposed value?";
-            }
-        public DataSets.dsProdutn.produtnDataTable tempProdutnDataTable = new DataSets.dsProdutn.produtnDataTable();
-        private DataSets.dsProdutn.produtnRow GetCurrentRowInDB(DataSets.dsProdutn.produtnRow RowWithError) {
-        
-            try {
-                this.produtnTableAdapter.FillByInvno(tempProdutnDataTable,RowWithError.invno);
-                } catch (Exception ex) {
 
-                }
-            DataSets.dsProdutn.produtnRow currentRowInDb =
-              (DataSets.dsProdutn.produtnRow)tempProdutnDataTable.Rows[0];
-
-            return currentRowInDb;
-            }
-        private string GetRowData(DataSets.dsProdutn.produtnRow curData,DataSets.dsProdutn.produtnRow vrow,DataRowVersion RowVersion) {
-            //string rowData = "";
-            string columnDataDefault = "";
-            string columnDataOriginal = "";
-            string columnDataCurrent = "";
-            string badColumns = "";
-            for (int i = 0; i < vrow.ItemArray.Length; i++) {
-                columnDataDefault = tempProdutnDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Default].ToString().Trim();
-                columnDataOriginal = tempProdutnDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Original].ToString().Trim();
-                columnDataCurrent = tempProdutnDataTable.Columns[i].ColumnName.ToString() + ":" + curData[i,DataRowVersion.Current].ToString().Trim();
-                if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent) {
-                    badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
-                    }
-
-                }
-            return badColumns;
-        }
-        private void ProcessDialogResult(DialogResult response)
-        {
-            switch (response) {
-                case DialogResult.Yes:
-                 
-                 dsProdutn.Merge(tempProdutnDataTable,true,MissingSchemaAction.Ignore);
-                    Save();
-                    break;
-
-                case DialogResult.No:
-                   
-                   dsProdutn.Merge(tempProdutnDataTable);
-                   
-                    MessageBox.Show("Update cancelled");
-                   
-                    break;
-                }
-            }
-
-
-
-
-
-        #endregion
         //nothing below here  
         }
     public class BinderyInfo
@@ -811,6 +695,6 @@ namespace Mbc5.Forms {
         public string CoilClr { get; set; }
         public DateTime ProjShpDate { get; set; }
     }
-}
+ }
 
 

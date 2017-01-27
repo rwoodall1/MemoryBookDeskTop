@@ -10,15 +10,88 @@ namespace Mbc5.Classes
 {
    public static class ExceptionHandler
     {
-        public static string CreateMessage(DataSets.dsProdutn.produtnRow cr,ref DataSets.dsProdutn dataset)
+        //Cust
+        public static DialogResult CreateMessage(DataSets.dsCust.custRow cr, ref DataSets.dsCust dataset)
+        {
+            string msg = GetRowData(GetCurrentRowInDB(cr), cr, DataRowVersion.Default) + "\n \n" +
+              "Do you still want to update the database with the proposed value?";
+            DialogResult response = MessageBox.Show(msg, "Concurrency Exception", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+            if (response == DialogResult.Yes)
+            {
+                //keeps form data
+                dataset.Merge(tempCustDataTable, true, MissingSchemaAction.Ignore);
+            }
+            else
+            {
+                //keeps data on server
+                dataset.Merge(tempCustDataTable, true, MissingSchemaAction.Ignore);
+
+            }
+            return response;
+
+        }
+        public static DataSets.dsCust.custDataTable tempCustDataTable = new DataSets.dsCust.custDataTable();
+        private static DataSets.dsCust.custRow GetCurrentRowInDB(DataSets.dsCust.custRow RowWithError)
+        {
+            DataSets.dsCustTableAdapters.custTableAdapter vTableAdapter = new DataSets.dsCustTableAdapters.custTableAdapter();
+
+            try
+            {
+               
+                vTableAdapter.Fill(tempCustDataTable, RowWithError.schcode);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            DataSets.dsCust.custRow currentRowInDb =
+              (DataSets.dsCust.custRow)tempCustDataTable.Rows[0];
+
+            return currentRowInDb;
+        }
+        private static string GetRowData(DataSets.dsCust.custRow curData, DataSets.dsCust.custRow vrow, DataRowVersion RowVersion)
+        {
+            //string rowData = "";
+            string columnDataDefault = "";
+            string columnDataOriginal = "";
+            string columnDataCurrent = "";
+            string badColumns = "";
+            for (int i = 0; i < vrow.ItemArray.Length; i++)
+            {
+                columnDataDefault = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Default].ToString().Trim();
+                columnDataOriginal = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Original].ToString().Trim();
+                columnDataCurrent = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + curData[i, DataRowVersion.Current].ToString().Trim();
+                if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent)
+                {
+                    badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+                }
+
+            }
+
+            return badColumns;
+        }
+        //EndCust
+        //produtn
+        public static DialogResult CreateMessage(DataSets.dsProdutn.produtnRow cr,ref DataSets.dsProdutn dataset)
         {          
            string msg= GetRowData(GetCurrentRowInDB(cr), cr, DataRowVersion.Default) + "\n \n" +
              "Do you still want to update the database with the proposed value?";
-            MessageBox.Show(ExceptionHandler.CreateMessage((DataSets.dsProdutn.produtnRow)(dbex.Row),ref dsProdutn),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
-            dataset.Merge(tempProdutnDataTable,true,MissingSchemaAction.Ignore);
-            return msg;
+            DialogResult response=MessageBox.Show(msg,"Concurrency Exception",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Hand);
+            if (response == DialogResult.Yes)
+            {
+                //keeps form data
+                dataset.Merge(tempProdutnDataTable,true,MissingSchemaAction.Ignore);
+            }
+            else
+            {
+                //keeps data on server
+                dataset.Merge(tempProdutnDataTable, true, MissingSchemaAction.Ignore);
+              
+            }
+            return response;
+          
         }
-       public static DataSets.dsProdutn.produtnDataTable tempProdutnDataTable = new DataSets.dsProdutn.produtnDataTable();
+        public static DataSets.dsProdutn.produtnDataTable tempProdutnDataTable = new DataSets.dsProdutn.produtnDataTable();
         private static DataSets.dsProdutn.produtnRow GetCurrentRowInDB(DataSets.dsProdutn.produtnRow RowWithError)
         {
             DataSets.dsProdutnTableAdapters.produtnTableAdapter vTableAdapter = new DataSets.dsProdutnTableAdapters.produtnTableAdapter();
@@ -57,6 +130,6 @@ namespace Mbc5.Classes
            
             return badColumns;
         }
-       
+       //Endprodutn
       }
 }

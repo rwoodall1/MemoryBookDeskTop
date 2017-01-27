@@ -14,7 +14,7 @@ using BaseClass;
 using Mbc5.Dialogs;
 using Exceptionless;
 using Exceptionless.Models;
-using BaseClass.Classes;
+using Mbc5.Classes;
 
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
@@ -166,24 +166,31 @@ namespace Mbc5.Forms.MemoryBook {
             SetInvnoSchCode();
             }
         #region CrudOperations
-        public override bool Save() {
+        public override bool Save()
+        {
             bool retval = false;
             txtSchname.ReadOnly = true;
-            if (this.ValidateChildren(ValidationConstraints.Enabled)) {
+            if (this.ValidateChildren(ValidationConstraints.Enabled))
+            {
                 this.custBindingSource.EndEdit();
-                try {
+                try
+                {
                     custTableAdapter.Update(dsCust);
                     retval = true;
-                    } catch (DBConcurrencyException dbex) {
-                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo,MessageBoxIcon.Hand);
-                    ProcessDialogResult(response);
-                    } catch (Exception ex) {
-                    Log.Fatal("Error Updating cust table:" + ex.Message);
-                    MessageBox.Show("An error was thrown while attempting to update the customer table.");
-                    }
                 }
-            return retval;
+                catch (DBConcurrencyException dbex)
+                {
+                    DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsCust.custRow)(dbex.Row), ref dsCust);
+                    if (result == DialogResult.Yes) {
+                        Save();
+                    }
+                    else {
+                        retval = false;
+                    }                  
+                }
             }
+            return retval;
+        }
         public override void Add() {
             dsCust.Clear();
             DataRowView newrow = (DataRowView)custBindingSource.AddNew();
@@ -210,85 +217,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
         public override void Cancel() {
             custBindingSource.CancelEdit();
-            }
-        #region ConcurrencyProcs
-        private string CreateMessage(DataSets.dsCust.custRow cr) {
-   
-            return 
-            GetRowData(GetCurrentRowInDB(cr),cr,DataRowVersion.Default) + "\n \n" +
-             "Do you still want to update the database with the proposed value?";
-
-            //"Database Current Data: " + GetRowData(GetCurrentRowInDB(cr),DataRowVersion.Default) + "\n \n" +
-            //"Database Original: " + GetRowData(cr,DataRowVersion.Original) + "\n \n" +
-            //"Your Data: " + GetRowData(cr,DataRowVersion.Current) + "\n \n" +
-            //"Do you still want to update the database with the proposed value?";
-            }
-
-
-        //--------------------------------------------------------------------------
-        // This method loads a temporary table with current records from the database
-        // and returns the current values from the row that caused the exception.
-        //--------------------------------------------------------------------------
-        private DataSets.dsCust.custDataTable tempCustomersDataTable =
-            new DataSets.dsCust.custDataTable();
-      
-        private DataSets.dsCust.custRow GetCurrentRowInDB(DataSets.dsCust.custRow RowWithError) {
-            try {
-                  this.custTableAdapter.Fill(tempCustomersDataTable,RowWithError.schcode);
-                } catch(Exception ex) {
-
-
-                }
-           
-            DataSets.dsCust.custRow currentRowInDb = tempCustomersDataTable.FindByschcode(RowWithError.schcode);
-
-            return currentRowInDb;
-            }
-
-
-        //--------------------------------------------------------------------------
-        // This method takes a CustomersRow and RowVersion 
-        // and returns a string of column values to display to the user.
-        //--------------------------------------------------------------------------
-        private string GetRowData(DataSets.dsCust.custRow curCustRow,DataSets.dsCust.custRow vrow,DataRowVersion RowVersion) {
-            //string rowData = "";
-            string columnDataDefault = "";
-            string columnDataOriginal = "";
-            string columnDataCurrent = "";
-            string badColumns = "";
-            for (int i = 0; i < curCustRow.ItemArray.Length; i++) {
-                columnDataDefault = tempCustomersDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Default].ToString().Trim();
-                columnDataOriginal = tempCustomersDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Original].ToString().Trim();
-                columnDataCurrent = tempCustomersDataTable.Columns[i].ColumnName.ToString() + ":" + curCustRow[i,DataRowVersion.Current].ToString().Trim();
-                if (columnDataDefault != columnDataOriginal || columnDataDefault !=columnDataCurrent ) {
-                    badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
-                    }
-
-                }
-            return badColumns;
-            }
-
-        //for (int i = 0; i < custRow.ItemArray.Length; i++) {
-        //    rowData = rowData + custRow[i,RowVersion].ToString().Trim() + " ";
-        //    }
-        //return rowData;
-        //}
-        private void ProcessDialogResult(DialogResult response) {
-            switch (response)
-                {
-                case DialogResult.Yes:
-                    var a = tempCustomersDataTable.Rows[0]["contryear"].ToString();
-                    dsCust.Merge(tempCustomersDataTable,true,MissingSchemaAction.Ignore);
-                    Save();
-                    break;
-
-                case DialogResult.No:
-                    dsCust.Merge(tempCustomersDataTable);
-                    MessageBox.Show("Update cancelled");
-                    break;
-                }
-            }
-        #endregion
+            }     
         #endregion
 
         #region Validation
