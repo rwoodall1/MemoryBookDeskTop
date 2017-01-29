@@ -1683,6 +1683,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.contdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.contdateDateTimePicker.TabIndex = 3;
             this.contdateDateTimePicker.CloseUp += new System.EventHandler(this.contdateDateTimePicker_CloseUp);
+            this.contdateDateTimePicker.ValueChanged += new System.EventHandler(this.contdateDateTimePicker_ValueChanged);
             // 
             // txtCsRep
             // 

@@ -702,7 +702,9 @@ namespace Mbc5.Forms {
         private void nocopiesTextBox1_Validating(object sender,CancelEventArgs e) {
             this.errorProvider1.SetError(nocopiesTextBox,"");
             int vInt;
-            if (!String.IsNullOrEmpty(nocopiesTextBox.Text) &&!int.TryParse(nocopiesTextBox.Text,out vInt)) {
+            if (String.IsNullOrEmpty(nocopiesTextBox.Text))
+            { nocopiesTextBox.Text = "0"; }
+                if (!String.IsNullOrEmpty(nocopiesTextBox.Text) &&!int.TryParse(nocopiesTextBox.Text,out vInt)) {
            
                 this.errorProvider1.SetError(nocopiesTextBox,"Only numbers are allowed.");
                 e.Cancel = true;
@@ -712,7 +714,9 @@ namespace Mbc5.Forms {
         private void totsigsTextBox_Validating(object sender,CancelEventArgs e) {
             this.errorProvider1.SetError(totsigsTextBox,"");
             int vInt;
-            if (!String.IsNullOrEmpty(totsigsTextBox.Text) && !int.TryParse(totsigsTextBox.Text,out vInt)) {
+            if (String.IsNullOrEmpty(totsigsTextBox.Text) )
+            { totsigsTextBox.Text = "0"; }
+                if (!String.IsNullOrEmpty(totsigsTextBox.Text) && !int.TryParse(totsigsTextBox.Text,out vInt)) {
                 
                 this.errorProvider1.SetError(totsigsTextBox,"Only numbers are allowed.");
                 e.Cancel = true;
@@ -721,8 +725,11 @@ namespace Mbc5.Forms {
 
         private void reqstdcpyTextBox_Validating(object sender,CancelEventArgs e) {
             this.errorProvider1.SetError(reqstdcpyTextBox,"");
-        
-            int vInt;
+            if (String.IsNullOrEmpty(reqstdcpyTextBox.Text))
+            {
+                reqstdcpyTextBox.Text = "0";
+            }
+                int vInt;
             if (!String.IsNullOrEmpty(reqstdcpyTextBox.Text) && !int.TryParse(reqstdcpyTextBox.Text,out vInt)) {
 
                 this.errorProvider1.SetError(reqstdcpyTextBox,"Only numbers are allowed.");
@@ -732,7 +739,9 @@ namespace Mbc5.Forms {
 
         private void txtnoPlates_Validating(object sender,CancelEventArgs e) {
             this.errorProvider1.SetError(txtnoPlates,"");
-            int vInt;
+            if (String.IsNullOrEmpty(txtnoPlates.Text))
+            { txtnoPlates.Text = "0"; }
+                int vInt;
             if (!String.IsNullOrEmpty(txtnoPlates.Text) && !int.TryParse(txtnoPlates.Text,out vInt)) {
 
                 this.errorProvider1.SetError(txtnoPlates,"Only numbers are allowed.");

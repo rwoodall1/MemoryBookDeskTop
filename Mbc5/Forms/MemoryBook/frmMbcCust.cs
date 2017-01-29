@@ -643,7 +643,27 @@ namespace Mbc5.Forms.MemoryBook {
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
                 this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
                 }
+        private string GetInstructions()
+        {
+            string val = "";
+            DataRowView current = (DataRowView)custBindingSource.Current;
+            var invno=current["invno"];
+            var sqlQuery = new SQLQuery();
+          
+            SqlParameter[] parameters = new SqlParameter[] {
+                    new SqlParameter("@Invno",invno),
+                   
+                    };
+            var strQuery = "Select Specinst from Covers Where Invno=@Invno";
+            try { var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+             val = result.Rows[0][0].ToString(); } catch(Exception ex)
+            {
 
+            }
+           
+            return val;
+
+        }
         #endregion
      
         private void btnWebsite_Click(object sender,EventArgs e) {
@@ -867,17 +887,28 @@ namespace Mbc5.Forms.MemoryBook {
                      new SqlParameter("@Schcode",lblSchcodeVal.Text),
                      new SqlParameter("@ProdNo",GetProdNo()),
                       new SqlParameter("@Contryear", contryearTextBox.Text),
-                       new SqlParameter("@CoverNum", GetCoverNumber()),
                        new SqlParameter("@Company","MBC")
                     };
-                    strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Speccover,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@CoverNum,@Company)";
+                    strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo@Company)";
                     var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
                     if (userResult1 != 1) {
                         MessageBox.Show("Failed to insert production record.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                         return;
                         }
-
-
+                    SqlParameter[] parameters2 = new SqlParameter[] {
+                    new SqlParameter("@Invno",InvNum),
+                     new SqlParameter("@Schcode",lblSchcodeVal.Text),
+                     new SqlParameter("@Specovr",GetCoverNumber()),
+                         new SqlParameter("@Specinst",GetInstructions() ),
+                       new SqlParameter("@Company","MBC")
+                    };
+                    strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Prtvend,@Specvr,@Specinst)";
+                    var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
+                    if (userResult2 != 1)
+                    {
+                        MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                     Save();
                     this.custTableAdapter.Fill(this.dsCust.cust, lblSchcodeVal.Text);
                 };
@@ -916,6 +947,11 @@ namespace Mbc5.Forms.MemoryBook {
             GoToSales();
             }
 
+        private void contdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 
@@ -923,6 +959,6 @@ namespace Mbc5.Forms.MemoryBook {
 
 
         //Nothing below here
-        }
+    }
     }
 
