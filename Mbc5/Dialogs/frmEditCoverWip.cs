@@ -47,7 +47,7 @@ namespace Mbc5.Dialogs
             int descid = (int)cmbDescription.SelectedValue;
             
             DateTime war = (DateTime)row["War"];
-          DateTime wdr = (DateTime)row["Wdr"];
+            DateTime wdr = (DateTime)row["Wdr"];
             decimal wtr = (decimal)row["Wtr"];
            string wir = row["Wir"].ToString();
             int invno = (int)row["Invno"];
