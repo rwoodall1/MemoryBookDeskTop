@@ -127,7 +127,6 @@
             System.Windows.Forms.Label diecutLabel3;
             System.Windows.Forms.Label othrLabel;
             System.Windows.Forms.Label perslistLabel;
-            System.Windows.Forms.Label foilclrLabel;
             System.Windows.Forms.Label spbackLabel;
             System.Windows.Forms.Label typestyleLabel1;
             System.Windows.Forms.Label mascotLabel;
@@ -146,6 +145,7 @@
             System.Windows.Forms.Label rackLabel;
             System.Windows.Forms.Label shelfLabel;
             System.Windows.Forms.Label finishedcopiesLabel;
+            System.Windows.Forms.Label label37;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -233,8 +233,11 @@
             this.partbkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.vendcdComboBox = new System.Windows.Forms.ComboBox();
+            this.lkTypeDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lookUp = new Mbc5.DataSets.LookUp();
             this.cstatComboBox = new System.Windows.Forms.ComboBox();
             this.bkgrndComboBox = new System.Windows.Forms.ComboBox();
+            this.lkpBackGroundBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nopagesTextBox = new System.Windows.Forms.TextBox();
             this.nocopiesTextBox = new System.Windows.Forms.TextBox();
             this.adduploaddateDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -299,21 +302,15 @@
             this.invnoLabel2 = new System.Windows.Forms.Label();
             this.lblProdNodata = new System.Windows.Forms.Label();
             this.pg3 = new System.Windows.Forms.TabPage();
+            this.lblCoverNum = new System.Windows.Forms.Label();
+            this.coversBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.coverdetailDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coverdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label36 = new System.Windows.Forms.Label();
             this.finishedcopiesTextBox = new System.Windows.Forms.TextBox();
-            this.coversBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.shelfTextBox = new System.Windows.Forms.TextBox();
             this.rackTextBox = new System.Windows.Forms.TextBox();
             this.roomTextBox = new System.Windows.Forms.TextBox();
@@ -351,7 +348,6 @@
             this.mascotComboBox = new System.Windows.Forms.ComboBox();
             this.typestyleComboBox = new System.Windows.Forms.ComboBox();
             this.spbackTextBox = new System.Windows.Forms.TextBox();
-            this.foilclrComboBox = new System.Windows.Forms.ComboBox();
             this.persnlzCheckBox1 = new System.Windows.Forms.CheckBox();
             this.listrecdCheckBox1 = new System.Windows.Forms.CheckBox();
             this.perslistdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -381,8 +377,8 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.reqstdcpyTextBox = new System.Windows.Forms.TextBox();
             this.screcvDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.specovrTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtspecov = new System.Windows.Forms.TextBox();
+            this.btncoverSrch = new System.Windows.Forms.Button();
             this.clr4TextBox = new System.Windows.Forms.TextBox();
             this.clr3TextBox = new System.Windows.Forms.TextBox();
             this.clr2TextBox = new System.Windows.Forms.TextBox();
@@ -418,6 +414,16 @@
             this.coversTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coversTableAdapter();
             this.wipDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.WipDetailTableAdapter();
             this.coverdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coverdetailTableAdapter();
+            this.lkTypeDataTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkTypeDataTableAdapter();
+            this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
+            this.lkpBackGroundTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpBackGroundTableAdapter();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -516,7 +522,6 @@
             diecutLabel3 = new System.Windows.Forms.Label();
             othrLabel = new System.Windows.Forms.Label();
             perslistLabel = new System.Windows.Forms.Label();
-            foilclrLabel = new System.Windows.Forms.Label();
             spbackLabel = new System.Windows.Forms.Label();
             typestyleLabel1 = new System.Windows.Forms.Label();
             mascotLabel = new System.Windows.Forms.Label();
@@ -535,6 +540,7 @@
             rackLabel = new System.Windows.Forms.Label();
             shelfLabel = new System.Windows.Forms.Label();
             finishedcopiesLabel = new System.Windows.Forms.Label();
+            label37 = new System.Windows.Forms.Label();
             this.tbProdutn.SuspendLayout();
             this.pg1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -548,6 +554,9 @@
             this.pnl11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbkbBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partbkBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkTypeDataBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpBackGroundBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             this.pg2.SuspendLayout();
@@ -555,9 +564,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).BeginInit();
             this.pg3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).BeginInit();
             this.pg5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -1523,15 +1532,6 @@
             perslistLabel.TabIndex = 156;
             perslistLabel.Text = "Personalization list sent";
             // 
-            // foilclrLabel
-            // 
-            foilclrLabel.AutoSize = true;
-            foilclrLabel.Location = new System.Drawing.Point(510, 336);
-            foilclrLabel.Name = "foilclrLabel";
-            foilclrLabel.Size = new System.Drawing.Size(36, 13);
-            foilclrLabel.TabIndex = 160;
-            foilclrLabel.Text = "Color";
-            // 
             // spbackLabel
             // 
             spbackLabel.AutoSize = true;
@@ -1693,6 +1693,16 @@
             finishedcopiesLabel.Size = new System.Drawing.Size(96, 13);
             finishedcopiesLabel.TabIndex = 199;
             finishedcopiesLabel.Text = "Finished Copies";
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label37.Location = new System.Drawing.Point(35, 85);
+            label37.Name = "label37";
+            label37.Size = new System.Drawing.Size(48, 13);
+            label37.TabIndex = 205;
+            label37.Text = "Cover#";
             // 
             // tbProdutn
             // 
@@ -2640,16 +2650,42 @@
             // vendcdComboBox
             // 
             this.vendcdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "typestyle", true));
+            this.vendcdComboBox.DataSource = this.lkTypeDataBindingSource;
+            this.vendcdComboBox.DisplayMember = "Style";
             this.vendcdComboBox.FormattingEnabled = true;
             this.vendcdComboBox.Location = new System.Drawing.Point(129, 50);
             this.vendcdComboBox.Name = "vendcdComboBox";
             this.vendcdComboBox.Size = new System.Drawing.Size(121, 21);
             this.vendcdComboBox.TabIndex = 42;
+            this.vendcdComboBox.ValueMember = "Style";
+            // 
+            // lkTypeDataBindingSource
+            // 
+            this.lkTypeDataBindingSource.DataMember = "lkTypeData";
+            this.lkTypeDataBindingSource.DataSource = this.lookUp;
+            // 
+            // lookUp
+            // 
+            this.lookUp.DataSetName = "LookUp";
+            this.lookUp.EnforceConstraints = false;
+            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // cstatComboBox
             // 
             this.cstatComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "cstat", true));
             this.cstatComboBox.FormattingEnabled = true;
+            this.cstatComboBox.Items.AddRange(new object[] {
+            "N/A",
+            "FOLDERS",
+            "NEW",
+            "ONLINE ORDERS ONLY",
+            "PAST CUSTOMER",
+            "REBOOK",
+            "SAMPLE BOOK",
+            "SCHOOOL ANNUAL",
+            "SUPPLEMENT",
+            "",
+            ""});
             this.cstatComboBox.Location = new System.Drawing.Point(129, 75);
             this.cstatComboBox.Name = "cstatComboBox";
             this.cstatComboBox.Size = new System.Drawing.Size(121, 21);
@@ -2658,11 +2694,19 @@
             // bkgrndComboBox
             // 
             this.bkgrndComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "bkgrnd", true));
+            this.bkgrndComboBox.DataSource = this.lkpBackGroundBindingSource;
+            this.bkgrndComboBox.DisplayMember = "BkgrndName";
             this.bkgrndComboBox.FormattingEnabled = true;
             this.bkgrndComboBox.Location = new System.Drawing.Point(129, 102);
             this.bkgrndComboBox.Name = "bkgrndComboBox";
             this.bkgrndComboBox.Size = new System.Drawing.Size(121, 21);
             this.bkgrndComboBox.TabIndex = 46;
+            this.bkgrndComboBox.ValueMember = "BkgrndName";
+            // 
+            // lkpBackGroundBindingSource
+            // 
+            this.lkpBackGroundBindingSource.DataMember = "lkpBackGround";
+            this.lkpBackGroundBindingSource.DataSource = this.lookUp;
             // 
             // nopagesTextBox
             // 
@@ -2698,6 +2742,27 @@
             // 
             this.cmbfoilclr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "foilclr", true));
             this.cmbfoilclr.FormattingEnabled = true;
+            this.cmbfoilclr.Items.AddRange(new object[] {
+            "BLUE",
+            "BLACK FOIL",
+            "BLACK INK",
+            "BLUE INK",
+            "BLUE FOIL",
+            "COPPER FOIL",
+            "DARK BLUE INK",
+            "FOIL",
+            "GOLD FOIL",
+            "GOLD INK",
+            "GREEN FOIL",
+            "INK",
+            "PHOTO & NAME",
+            "PURPLE FOIL",
+            "RED FOIL",
+            "RED INK",
+            "REVERSED",
+            "SILVER FOIL",
+            "YELLOW INK",
+            "PURPLE INK"});
             this.cmbfoilclr.Location = new System.Drawing.Point(129, 375);
             this.cmbfoilclr.Name = "cmbfoilclr";
             this.cmbfoilclr.Size = new System.Drawing.Size(121, 21);
@@ -3361,6 +3426,8 @@
             // 
             this.pg3.AutoScroll = true;
             this.pg3.BackColor = System.Drawing.SystemColors.Control;
+            this.pg3.Controls.Add(label37);
+            this.pg3.Controls.Add(this.lblCoverNum);
             this.pg3.Controls.Add(this.button4);
             this.pg3.Controls.Add(this.button3);
             this.pg3.Controls.Add(this.button2);
@@ -3422,8 +3489,6 @@
             this.pg3.Controls.Add(this.typestyleComboBox);
             this.pg3.Controls.Add(spbackLabel);
             this.pg3.Controls.Add(this.spbackTextBox);
-            this.pg3.Controls.Add(foilclrLabel);
-            this.pg3.Controls.Add(this.foilclrComboBox);
             this.pg3.Controls.Add(this.persnlzCheckBox1);
             this.pg3.Controls.Add(this.listrecdCheckBox1);
             this.pg3.Controls.Add(this.perslistdateDateTimePicker);
@@ -3466,8 +3531,8 @@
             this.pg3.Controls.Add(this.reqstdcpyTextBox);
             this.pg3.Controls.Add(screcvLabel1);
             this.pg3.Controls.Add(this.screcvDateTimePicker1);
-            this.pg3.Controls.Add(this.specovrTextBox);
-            this.pg3.Controls.Add(this.button1);
+            this.pg3.Controls.Add(this.txtspecov);
+            this.pg3.Controls.Add(this.btncoverSrch);
             this.pg3.Controls.Add(clr4Label);
             this.pg3.Controls.Add(this.clr4TextBox);
             this.pg3.Controls.Add(clr3Label);
@@ -3498,6 +3563,21 @@
             this.pg3.Size = new System.Drawing.Size(1220, 705);
             this.pg3.TabIndex = 1;
             this.pg3.Text = "Special Covers";
+            // 
+            // lblCoverNum
+            // 
+            this.lblCoverNum.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "specovr", true));
+            this.lblCoverNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCoverNum.Location = new System.Drawing.Point(93, 85);
+            this.lblCoverNum.Name = "lblCoverNum";
+            this.lblCoverNum.Size = new System.Drawing.Size(71, 20);
+            this.lblCoverNum.TabIndex = 206;
+            this.lblCoverNum.Text = "label1";
+            // 
+            // coversBindingSource1
+            // 
+            this.coversBindingSource1.DataMember = "covers";
+            this.coversBindingSource1.DataSource = this.dsProdutn;
             // 
             // button4
             // 
@@ -3543,7 +3623,7 @@
             this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.coverdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.coverdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn8,
+            this.Column1,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11,
@@ -3554,53 +3634,10 @@
             this.coverdetailDataGridView.EnableHeadersVisualStyles = false;
             this.coverdetailDataGridView.Location = new System.Drawing.Point(50, 437);
             this.coverdetailDataGridView.Name = "coverdetailDataGridView";
+            this.coverdetailDataGridView.RowHeadersVisible = false;
             this.coverdetailDataGridView.Size = new System.Drawing.Size(751, 220);
             this.coverdetailDataGridView.TabIndex = 201;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "description";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Description";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "war";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Actual";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "wdr";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Due";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "wtr";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Time";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "wir";
-            this.dataGridViewTextBoxColumn12.HeaderText = "Initials";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "Invno";
-            this.dataGridViewTextBoxColumn13.HeaderText = "Invno";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn14.HeaderText = "id";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Visible = false;
+            this.coverdetailDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.coverdetailDataGridView_CellDoubleClick);
             // 
             // coverdetailBindingSource
             // 
@@ -3623,11 +3660,6 @@
             this.finishedcopiesTextBox.Name = "finishedcopiesTextBox";
             this.finishedcopiesTextBox.Size = new System.Drawing.Size(65, 20);
             this.finishedcopiesTextBox.TabIndex = 200;
-            // 
-            // coversBindingSource1
-            // 
-            this.coversBindingSource1.DataMember = "covers";
-            this.coversBindingSource1.DataSource = this.dsProdutn;
             // 
             // shelfTextBox
             // 
@@ -3977,15 +4009,6 @@
             this.spbackTextBox.Size = new System.Drawing.Size(36, 20);
             this.spbackTextBox.TabIndex = 162;
             // 
-            // foilclrComboBox
-            // 
-            this.foilclrComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "foilclr", true));
-            this.foilclrComboBox.FormattingEnabled = true;
-            this.foilclrComboBox.Location = new System.Drawing.Point(551, 336);
-            this.foilclrComboBox.Name = "foilclrComboBox";
-            this.foilclrComboBox.Size = new System.Drawing.Size(121, 21);
-            this.foilclrComboBox.TabIndex = 161;
-            // 
             // persnlzCheckBox1
             // 
             this.persnlzCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "persnlz", true));
@@ -4021,6 +4044,9 @@
             // 
             this.perslistComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "perslist", true));
             this.perslistComboBox.FormattingEnabled = true;
+            this.perslistComboBox.Items.AddRange(new object[] {
+            "MBC",
+            "JOS"});
             this.perslistComboBox.Location = new System.Drawing.Point(190, 336);
             this.perslistComboBox.Name = "perslistComboBox";
             this.perslistComboBox.Size = new System.Drawing.Size(86, 21);
@@ -4168,6 +4194,17 @@
             // 
             this.prtvendComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "prtvend", true));
             this.prtvendComboBox.FormattingEnabled = true;
+            this.prtvendComboBox.Items.AddRange(new object[] {
+            "DIG",
+            "JOC",
+            "JOV",
+            "JOS",
+            "MB4",
+            "MER",
+            "MIL",
+            "NEX",
+            "PRE",
+            "SUP"});
             this.prtvendComboBox.Location = new System.Drawing.Point(126, 264);
             this.prtvendComboBox.Name = "prtvendComboBox";
             this.prtvendComboBox.Size = new System.Drawing.Size(68, 21);
@@ -4259,22 +4296,23 @@
             this.screcvDateTimePicker1.TabIndex = 129;
             this.screcvDateTimePicker1.ValueChanged += new System.EventHandler(this.screcvDateTimePicker1_ValueChanged);
             // 
-            // specovrTextBox
+            // txtspecov
             // 
-            this.specovrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "specovr", true));
-            this.specovrTextBox.Location = new System.Drawing.Point(88, 85);
-            this.specovrTextBox.Name = "specovrTextBox";
-            this.specovrTextBox.Size = new System.Drawing.Size(71, 20);
-            this.specovrTextBox.TabIndex = 128;
+            this.txtspecov.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtspecov.Location = new System.Drawing.Point(426, 5);
+            this.txtspecov.Name = "txtspecov";
+            this.txtspecov.Size = new System.Drawing.Size(71, 20);
+            this.txtspecov.TabIndex = 128;
             // 
-            // button1
+            // btncoverSrch
             // 
-            this.button1.Location = new System.Drawing.Point(26, 85);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(57, 23);
-            this.button1.TabIndex = 127;
-            this.button1.Text = "Cover#";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btncoverSrch.Location = new System.Drawing.Point(343, 5);
+            this.btncoverSrch.Name = "btncoverSrch";
+            this.btncoverSrch.Size = new System.Drawing.Size(78, 23);
+            this.btncoverSrch.TabIndex = 127;
+            this.btncoverSrch.Text = "Cover Srch";
+            this.btncoverSrch.UseVisualStyleBackColor = true;
+            this.btncoverSrch.Click += new System.EventHandler(this.btncoverSrch_Click);
             // 
             // clr4TextBox
             // 
@@ -4561,6 +4599,73 @@
             // 
             this.coverdetailTableAdapter.ClearBeforeFill = true;
             // 
+            // lkTypeDataTableAdapter
+            // 
+            this.lkTypeDataTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.contpstnTableAdapter = null;
+            this.tableAdapterManager1.lkpBackGroundTableAdapter = null;
+            this.tableAdapterManager1.lkpCommentsTableAdapter = null;
+            this.tableAdapterManager1.LkpDdiscntTableAdapter = null;
+            this.tableAdapterManager1.lkpMktReferenceTableAdapter = null;
+            this.tableAdapterManager1.lkpPromotionsTableAdapter = null;
+            this.tableAdapterManager1.lkpTypeContTableAdapter = null;
+            this.tableAdapterManager1.lkTypeDataTableAdapter = this.lkTypeDataTableAdapter;
+            this.tableAdapterManager1.statesTableAdapter = null;
+            this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // lkpBackGroundTableAdapter
+            // 
+            this.lkpBackGroundTableAdapter.ClearBeforeFill = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Description";
+            this.Column1.HeaderText = "Description";
+            this.Column1.Name = "Column1";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "war";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Actual";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "wdr";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Due";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "wtr";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Time";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "wir";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Initials";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "Invno";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Invno";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn14.HeaderText = "id";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            this.dataGridViewTextBoxColumn14.Visible = false;
+            // 
             // frmProdutn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -4592,6 +4697,9 @@
             this.pnl11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbkbBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.partbkBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkTypeDataBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpBackGroundBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             this.pg2.ResumeLayout(false);
@@ -4601,9 +4709,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).EndInit();
             this.pg3.ResumeLayout(false);
             this.pg3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).EndInit();
             this.pg5.ResumeLayout(false);
             this.pg5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -4787,8 +4895,8 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox reqstdcpyTextBox;
         private System.Windows.Forms.DateTimePicker screcvDateTimePicker1;
-        private System.Windows.Forms.TextBox specovrTextBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtspecov;
+        private System.Windows.Forms.Button btncoverSrch;
         private System.Windows.Forms.TextBox clr4TextBox;
         private System.Windows.Forms.TextBox clr3TextBox;
         private System.Windows.Forms.TextBox clr2TextBox;
@@ -4807,7 +4915,6 @@
         private System.Windows.Forms.ComboBox mascotComboBox;
         private System.Windows.Forms.ComboBox typestyleComboBox;
         private System.Windows.Forms.TextBox spbackTextBox;
-        private System.Windows.Forms.ComboBox foilclrComboBox;
         private System.Windows.Forms.CheckBox persnlzCheckBox1;
         private System.Windows.Forms.CheckBox listrecdCheckBox1;
         private System.Windows.Forms.DateTimePicker perslistdateDateTimePicker;
@@ -4863,12 +4970,6 @@
         private DataSets.dsProdutnTableAdapters.coverdetailTableAdapter coverdetailTableAdapter;
         private System.Windows.Forms.DataGridView coverdetailDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -4876,5 +4977,19 @@
         private System.Windows.Forms.TextBox txtInvoiceNoSrch;
         private System.Windows.Forms.TextBox txtProdNoSrch;
         private System.Windows.Forms.Button btnProdSrch;
-    }
+        private DataSets.LookUp lookUp;
+        private System.Windows.Forms.BindingSource lkTypeDataBindingSource;
+        private DataSets.LookUpTableAdapters.lkTypeDataTableAdapter lkTypeDataTableAdapter;
+        private DataSets.LookUpTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.BindingSource lkpBackGroundBindingSource;
+        private DataSets.LookUpTableAdapters.lkpBackGroundTableAdapter lkpBackGroundTableAdapter;
+        private System.Windows.Forms.Label lblCoverNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        }
 }

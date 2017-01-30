@@ -341,3 +341,9 @@ Error Number:8178,State:1,Class:16
    at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
    at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable) in F:\Mb\MemoryBookDeskTop\Mbc5\DataSets\dsSales.Designer.cs:line 15696
    at Mbc5.Forms.MemoryBook.frmSales.SaveSales() in F:\Mb\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 675 
+2017/01/30 08:31:27.036 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2017/01/30 08:31:58.041 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2017/01/30 08:37:22.334 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2017/01/30 08:39:16.869 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2017/01/30 08:40:29.708 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2017/01/30 08:41:51.349 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    

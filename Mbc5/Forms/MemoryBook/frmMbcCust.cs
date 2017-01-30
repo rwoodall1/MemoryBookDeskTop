@@ -646,6 +646,7 @@ namespace Mbc5.Forms.MemoryBook {
         private string GetInstructions()
         {
             string val = "";
+            custBindingSource.MoveFirst();//make sure on first row
             DataRowView current = (DataRowView)custBindingSource.Current;
             var invno=current["invno"];
             var sqlQuery = new SQLQuery();
@@ -889,7 +890,7 @@ namespace Mbc5.Forms.MemoryBook {
                       new SqlParameter("@Contryear", contryearTextBox.Text),
                        new SqlParameter("@Company","MBC")
                     };
-                    strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo@Company)";
+                    strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
                     var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
                     if (userResult1 != 1) {
                         MessageBox.Show("Failed to insert production record.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
@@ -902,7 +903,7 @@ namespace Mbc5.Forms.MemoryBook {
                          new SqlParameter("@Specinst",GetInstructions() ),
                        new SqlParameter("@Company","MBC")
                     };
-                    strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Prtvend,@Specvr,@Specinst)";
+                    strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
                     var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
                     if (userResult2 != 1)
                     {

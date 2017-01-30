@@ -12,9 +12,9 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 namespace Mbc5.Dialogs
 {
-    public partial class frmEditWip : Form
+    public partial class frmEditCoverWip : Form
     {
-        public frmEditWip(int id, int invno)
+        public frmEditCoverWip(int id, int invno)
         {
             InitializeComponent();
             ID = id;
@@ -25,12 +25,12 @@ namespace Mbc5.Dialogs
         public bool Refill { get; set; }
         private void frmEditWip_Load(object sender, EventArgs e)
         {
-            wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "WIP");
-            wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
-            var pos = wipDetailBindingSource.Find("id", ID);
+            wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "Covers");
+            coverdetailTableAdapter.FillBy(dsProdutn.coverdetail, Invno);
+            var pos =coverdetailBindingSource.Find("id", ID);
             if (pos > -1)
             {
-                wipDetailBindingSource.Position = pos;
+                coverdetailBindingSource.Position = pos;
 
             }
             else
@@ -42,17 +42,18 @@ namespace Mbc5.Dialogs
         private void wipDetailBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
-            this.wipDetailBindingSource.EndEdit();
-            DataRowView row = (DataRowView)wipDetailBindingSource.Current;           
+            this.coverdetailBindingSource.EndEdit();
+            DataRowView row = (DataRowView)coverdetailBindingSource.Current;           
             int descid = (int)cmbDescription.SelectedValue;
-           DateTime war = (DateTime)row["War"];
+            
+            DateTime war = (DateTime)row["War"];
           DateTime wdr = (DateTime)row["Wdr"];
             decimal wtr = (decimal)row["Wtr"];
            string wir = row["Wir"].ToString();
             int invno = (int)row["Invno"];
             int id = (int)row["id"];
             SQLQuery sqlQuery = new SQLQuery();
-            var cmdtxt = "UPDATE WipDetail SET DescripId = @DescripId,War =@War,Wdr =@Wdr,Wtr =@Wtr,Wir =@Wir,Invno =@Invno WHERE Id=@Id";
+            var cmdtxt = "UPDATE CoverDetail SET DescripId = @DescripId,War =@War,Wdr =@Wdr,Wtr =@Wtr,Wir =@Wir,Invno =@Invno WHERE Id=@Id";
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@DescripId",descid),
                 new SqlParameter("@War",war),
@@ -82,8 +83,8 @@ namespace Mbc5.Dialogs
             var result=MessageBox.Show("This will permentaly remove the record. Continue?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
-                wipDetailTableAdapter.Delete(ID);
-                wipDetailBindingSource.RemoveCurrent();
+               coverdetailTableAdapter.Delete(ID);
+               coverdetailBindingSource.RemoveCurrent();
                 Refill = true;
             }
      
@@ -94,5 +95,6 @@ namespace Mbc5.Dialogs
             if (Refill) { this.DialogResult = DialogResult.OK; } else { this.DialogResult = DialogResult.Cancel; ; }
         }
 
-    }
+       
+        }
 }

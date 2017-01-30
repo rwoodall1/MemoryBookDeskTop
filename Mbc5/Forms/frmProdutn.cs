@@ -50,7 +50,11 @@ namespace Mbc5.Forms {
 
             }
         private void frmProdutn_Load(object sender,EventArgs e) {
-           
+            // TODO: This line of code loads data into the 'lookUp.lkpBackGround' table. You can move, or remove it, as needed.
+            this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
+            //LookUp Data
+            this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
+
             Fill();
             SetShipLabel();
             CurrentProdNo = lblProdNo.Text ;
@@ -148,12 +152,12 @@ namespace Mbc5.Forms {
                     EnableControls(this.btnInvoiceSrch);
                     } else {EnableAllControls(this); }
                 coversTableAdapter.Fill(dsProdutn.covers,Schcode);
-               // coverdetailTableAdapter.Fill(dsProdutn.coverdetail,Invno);
+               coverdetailTableAdapter.Fill(dsProdutn.coverdetail,Schcode);
                 if (dsProdutn.covers.Count < 1) {
                     DisableControls(this.tbProdutn.TabPages[2]);
                     } else { EnableAllControls(this.tbProdutn.TabPages[2]); }
                 wipTableAdapter.Fill(dsProdutn.wip,Schcode);
-                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Invno);
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Schcode);
                 if (dsProdutn.wip.Count < 1) {
                     DisableControls(this.tbProdutn.TabPages[1]);
                     } else { EnableAllControls(this.tbProdutn.TabPages[1]); }
@@ -326,6 +330,11 @@ namespace Mbc5.Forms {
             //quotesBindingSource.CancelEdit();
             //invdetailBindingSource.CancelEdit();
             //invoiceBindingSource.CancelEdit();
+            }
+        public void CoverSrch() {
+            var pos = coversBindingSource1.Find("Specovr",txtspecov.Text);
+            coversBindingSource1.Position = pos;
+
             }
         #endregion
         #region DatePickers
@@ -695,7 +704,7 @@ namespace Mbc5.Forms {
             var result=frmeditWip.ShowDialog();
             if (result == DialogResult.OK)
             {
-                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Schcode);
             }
         }
 
@@ -757,6 +766,22 @@ namespace Mbc5.Forms {
                 this.errorProvider1.SetError(textBox7,"Only numbers are allowed.");
                 e.Cancel = true;
                 }
+            }
+
+        private void btncoverSrch_Click(object sender,EventArgs e) {
+            CoverSrch();
+            }
+
+        private void coverdetailDataGridView_CellDoubleClick(object sender,DataGridViewCellEventArgs e) {
+            DataRowView row = (DataRowView)coverdetailBindingSource.Current;
+            int id = (int)row["id"];
+            int invno = (int)row["invno"];
+            frmEditCoverWip frmeditCoverWip = new frmEditCoverWip(id, invno);
+            var result=frmeditCoverWip.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Schcode);
+            }
             }
         #region Validation
 
