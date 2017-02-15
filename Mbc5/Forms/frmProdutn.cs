@@ -50,6 +50,8 @@ namespace Mbc5.Forms {
 
             }
         private void frmProdutn_Load(object sender,EventArgs e) {
+            // TODO: This line of code loads data into the 'dsProdutn.PartBkDetail' table. You can move, or remove it, as needed.
+            this.partBkDetailTableAdapter.Fill(this.dsProdutn.PartBkDetail);
             // TODO: This line of code loads data into the 'lookUp.lkpBackGround' table. You can move, or remove it, as needed.
             this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
             //LookUp Data
@@ -782,6 +784,17 @@ namespace Mbc5.Forms {
             {
                 wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Schcode);
             }
+            }
+
+        private void partBkDetailDataGridView_CellDoubleClick(object sender,DataGridViewCellEventArgs e) {
+            DataRowView row = (DataRowView)partBkDetailBindingSource.Current;
+            int id = (int)row["id"];
+            int invno = (int)row["invno"];
+            frmEditCoverWip frmeditCoverWip = new frmEditCoverWip(id,invno);
+            var result = frmeditCoverWip.ShowDialog();
+            if (result == DialogResult.OK) {
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Schcode);
+                }
             }
         #region Validation
 
