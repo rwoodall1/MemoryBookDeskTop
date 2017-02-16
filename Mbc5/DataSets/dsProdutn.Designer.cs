@@ -8291,6 +8291,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnDescription;
             
+            private global::System.Data.DataColumn columnExpr1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PartBkDetailDataTable() {
@@ -8398,6 +8400,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Expr1Column {
+                get {
+                    return this.columnExpr1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8444,7 +8454,8 @@ namespace Mbc5.DataSets {
                         Wir,
                         null,
                         DescripId,
-                        Description};
+                        Description,
+                        null};
                 if ((parentpartbkRowBypartbk_PartBkDetail != null)) {
                     columnValuesArray[1] = parentpartbkRowBypartbk_PartBkDetail[1];
                 }
@@ -8486,6 +8497,7 @@ namespace Mbc5.DataSets {
                 this.columnid = base.Columns["id"];
                 this.columnDescripId = base.Columns["DescripId"];
                 this.columnDescription = base.Columns["Description"];
+                this.columnExpr1 = base.Columns["Expr1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8509,8 +8521,12 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnDescripId);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
+                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnExpr1}, false));
                 this.columnSchcode.MaxLength = 6;
                 this.columnInvno.AllowDBNull = false;
                 this.columnWir.MaxLength = 5;
@@ -8522,6 +8538,12 @@ namespace Mbc5.DataSets {
                 this.columnid.Unique = true;
                 this.columnDescription.AllowDBNull = false;
                 this.columnDescription.MaxLength = 75;
+                this.columnExpr1.AutoIncrement = true;
+                this.columnExpr1.AutoIncrementSeed = -1;
+                this.columnExpr1.AutoIncrementStep = -1;
+                this.columnExpr1.AllowDBNull = false;
+                this.columnExpr1.ReadOnly = true;
+                this.columnExpr1.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16832,6 +16854,17 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Expr1 {
+                get {
+                    return ((int)(this[this.tablePartBkDetail.Expr1Column]));
+                }
+                set {
+                    this[this.tablePartBkDetail.Expr1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public partbkRow partbkRow {
                 get {
                     return ((partbkRow)(this.GetParentRow(this.Table.ParentRelations["partbk_PartBkDetail"])));
@@ -21172,6 +21205,21 @@ SELECT invno, prodno, schcode, contryear, allclrck, booktype FROM quotes WHERE (
             tableMapping.ColumnMappings.Add("timestamp_column", "timestamp_column");
             tableMapping.ColumnMappings.Add("id", "id");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [partbk] ([schcode], [invno], [booktype], [pdtoprod], [partmemo], [ii" +
+                "n], [iout], [idept], [iinit]) VALUES (@schcode, @invno, @booktype, @pdtoprod, @p" +
+                "artmemo, @iin, @iout, @idept, @iinit)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pdtoprod", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pdtoprod", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@partmemo", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "partmemo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@iin", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "iin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@iout", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "iout", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idept", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idept", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@iinit", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "iinit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21188,18 +21236,24 @@ SELECT invno, prodno, schcode, contryear, allclrck, booktype FROM quotes WHERE (
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        schcode, invno, booktype, pdtoprod, partmemo, iin, iout, idept, iin" +
-                "it, timestamp_column, id\r\nFROM            partbk\r\nWHERE        (invno = @Invno)";
+                "it, timestamp_column, id\r\nFROM            partbk\r\nWHERE        (schcode = @Schco" +
+                "de)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsProdutn.partbkDataTable dataTable, int Invno) {
+        public virtual int Fill(dsProdutn.partbkDataTable dataTable, string Schcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno));
+            if ((Schcode == null)) {
+                throw new global::System.ArgumentNullException("Schcode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -21211,12 +21265,46 @@ SELECT invno, prodno, schcode, contryear, allclrck, booktype FROM quotes WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsProdutn.partbkDataTable GetData(int Invno) {
+        public virtual dsProdutn.partbkDataTable GetData(string Schcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Invno));
+            if ((Schcode == null)) {
+                throw new global::System.ArgumentNullException("Schcode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
+            }
             dsProdutn.partbkDataTable dataTable = new dsProdutn.partbkDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(dsProdutn.partbkDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(dsProdutn dataSet) {
+            return this.Adapter.Update(dataSet, "partbk");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
         }
     }
     
@@ -24691,6 +24779,7 @@ WHERE        (coverdetail.invno = @Invno)";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("DescripId", "DescripId");
             tableMapping.ColumnMappings.Add("Description", "Description");
+            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -24722,16 +24811,24 @@ WHERE        (coverdetail.invno = @Invno)";
             this._commandCollection[0].CommandText = @"SELECT        PartBkDetail.Schcode, PartBkDetail.Invno, PartBkDetail.War, PartBkDetail.Wdr, PartBkDetail.Wtr, PartBkDetail.Wir, PartBkDetail.id, PartBkDetail.DescripId, WipDescriptions.Id AS Expr1, 
                          WipDescriptions.Description
 FROM            PartBkDetail INNER JOIN
-                         WipDescriptions ON PartBkDetail.DescripId = WipDescriptions.Id";
+                         WipDescriptions ON PartBkDetail.DescripId = WipDescriptions.Id
+WHERE        (PartBkDetail.Schcode = @schode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schode", global::System.Data.SqlDbType.NVarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "Schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsProdutn.PartBkDetailDataTable dataTable) {
+        public virtual int Fill(dsProdutn.PartBkDetailDataTable dataTable, string schode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((schode == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schode));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -24743,8 +24840,14 @@ FROM            PartBkDetail INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsProdutn.PartBkDetailDataTable GetData() {
+        public virtual dsProdutn.PartBkDetailDataTable GetData(string schode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((schode == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schode));
+            }
             dsProdutn.PartBkDetailDataTable dataTable = new dsProdutn.PartBkDetailDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -24856,6 +24959,8 @@ FROM            PartBkDetail INNER JOIN
         
         private quotesTableAdapter _quotesTableAdapter;
         
+        private partbkTableAdapter _partbkTableAdapter;
+        
         private wipTableAdapter _wipTableAdapter;
         
         private coversTableAdapter _coversTableAdapter;
@@ -24922,6 +25027,20 @@ FROM            PartBkDetail INNER JOIN
             }
             set {
                 this._quotesTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public partbkTableAdapter partbkTableAdapter {
+            get {
+                return this._partbkTableAdapter;
+            }
+            set {
+                this._partbkTableAdapter = value;
             }
         }
         
@@ -25040,6 +25159,10 @@ FROM            PartBkDetail INNER JOIN
                             && (this._quotesTableAdapter.Connection != null))) {
                     return this._quotesTableAdapter.Connection;
                 }
+                if (((this._partbkTableAdapter != null) 
+                            && (this._partbkTableAdapter.Connection != null))) {
+                    return this._partbkTableAdapter.Connection;
+                }
                 if (((this._wipTableAdapter != null) 
                             && (this._wipTableAdapter.Connection != null))) {
                     return this._wipTableAdapter.Connection;
@@ -25084,6 +25207,9 @@ FROM            PartBkDetail INNER JOIN
                     count = (count + 1);
                 }
                 if ((this._quotesTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._partbkTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._wipTableAdapter != null)) {
@@ -25139,6 +25265,15 @@ FROM            PartBkDetail INNER JOIN
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._produtnTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._partbkTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.partbk.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._partbkTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -25227,6 +25362,14 @@ FROM            PartBkDetail INNER JOIN
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._produtnTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._partbkTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.partbk.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._partbkTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -25336,6 +25479,14 @@ FROM            PartBkDetail INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._partbkTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.partbk.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._partbkTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._produtnTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.produtn.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -25411,6 +25562,11 @@ FROM            PartBkDetail INNER JOIN
             }
             if (((this._quotesTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._quotesTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._partbkTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._partbkTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -25501,6 +25657,15 @@ FROM            PartBkDetail INNER JOIN
                     if (this._quotesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._quotesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._quotesTableAdapter.Adapter);
+                    }
+                }
+                if ((this._partbkTableAdapter != null)) {
+                    revertConnections.Add(this._partbkTableAdapter, this._partbkTableAdapter.Connection);
+                    this._partbkTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._partbkTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._partbkTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._partbkTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._partbkTableAdapter.Adapter);
                     }
                 }
                 if ((this._wipTableAdapter != null)) {
@@ -25626,6 +25791,10 @@ FROM            PartBkDetail INNER JOIN
                 if ((this._quotesTableAdapter != null)) {
                     this._quotesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._quotesTableAdapter]));
                     this._quotesTableAdapter.Transaction = null;
+                }
+                if ((this._partbkTableAdapter != null)) {
+                    this._partbkTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._partbkTableAdapter]));
+                    this._partbkTableAdapter.Transaction = null;
                 }
                 if ((this._wipTableAdapter != null)) {
                     this._wipTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._wipTableAdapter]));

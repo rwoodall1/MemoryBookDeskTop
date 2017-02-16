@@ -31,9 +31,6 @@
             System.Windows.Forms.Label wirLabel;
             System.Windows.Forms.Label invnoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditCoverWip));
-            System.Windows.Forms.Label idLabel;
-            System.Windows.Forms.Label idLabel1;
-            System.Windows.Forms.Label descriptionLabel1;
             this.coverDetailBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.coverdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -59,18 +56,12 @@
             this.tableAdapterManager = new Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager();
             this.wipDescriptionsTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter();
             this.coverdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coverdetailTableAdapter();
-            this.idTextBox = new System.Windows.Forms.TextBox();
-            this.idTextBox1 = new System.Windows.Forms.TextBox();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
             descriptionLabel = new System.Windows.Forms.Label();
             warLabel = new System.Windows.Forms.Label();
             wdrLabel = new System.Windows.Forms.Label();
             wtrLabel = new System.Windows.Forms.Label();
             wirLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
-            idLabel = new System.Windows.Forms.Label();
-            idLabel1 = new System.Windows.Forms.Label();
-            descriptionLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.coverDetailBindingNavigator)).BeginInit();
             this.coverDetailBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailBindingSource)).BeginInit();
@@ -164,7 +155,7 @@
             this.coverDetailBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.coverDetailBindingNavigator.Name = "coverDetailBindingNavigator";
             this.coverDetailBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.coverDetailBindingNavigator.Size = new System.Drawing.Size(590, 25);
+            this.coverDetailBindingNavigator.Size = new System.Drawing.Size(429, 25);
             this.coverDetailBindingNavigator.TabIndex = 0;
             this.coverDetailBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -339,6 +330,7 @@
             this.tableAdapterManager.coverdetailTableAdapter = null;
             this.tableAdapterManager.coversTableAdapter = null;
             this.tableAdapterManager.custTableAdapter = null;
+            this.tableAdapterManager.PartBkDetailTableAdapter = null;
             this.tableAdapterManager.produtnTableAdapter = null;
             this.tableAdapterManager.quotesTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -354,68 +346,11 @@
             // 
             this.coverdetailTableAdapter.ClearBeforeFill = true;
             // 
-            // idLabel
-            // 
-            idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(330, 225);
-            idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(18, 13);
-            idLabel.TabIndex = 13;
-            idLabel.Text = "id:";
-            // 
-            // idTextBox
-            // 
-            this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coverdetailBindingSource, "id", true));
-            this.idTextBox.Location = new System.Drawing.Point(354, 222);
-            this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(100, 20);
-            this.idTextBox.TabIndex = 14;
-            // 
-            // idLabel1
-            // 
-            idLabel1.AutoSize = true;
-            idLabel1.Location = new System.Drawing.Point(376, 193);
-            idLabel1.Name = "idLabel1";
-            idLabel1.Size = new System.Drawing.Size(19, 13);
-            idLabel1.TabIndex = 15;
-            idLabel1.Text = "Id:";
-            // 
-            // idTextBox1
-            // 
-            this.idTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipDescriptionsBindingSource, "Id", true));
-            this.idTextBox1.Location = new System.Drawing.Point(401, 190);
-            this.idTextBox1.Name = "idTextBox1";
-            this.idTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.idTextBox1.TabIndex = 16;
-            // 
-            // descriptionLabel1
-            // 
-            descriptionLabel1.AutoSize = true;
-            descriptionLabel1.Location = new System.Drawing.Point(401, 166);
-            descriptionLabel1.Name = "descriptionLabel1";
-            descriptionLabel1.Size = new System.Drawing.Size(63, 13);
-            descriptionLabel1.TabIndex = 17;
-            descriptionLabel1.Text = "Description:";
-            // 
-            // descriptionTextBox
-            // 
-            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipDescriptionsBindingSource, "Description", true));
-            this.descriptionTextBox.Location = new System.Drawing.Point(470, 163);
-            this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(100, 20);
-            this.descriptionTextBox.TabIndex = 18;
-            // 
             // frmEditCoverWip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 262);
-            this.Controls.Add(descriptionLabel1);
-            this.Controls.Add(this.descriptionTextBox);
-            this.Controls.Add(idLabel1);
-            this.Controls.Add(this.idTextBox1);
-            this.Controls.Add(idLabel);
-            this.Controls.Add(this.idTextBox);
+            this.ClientSize = new System.Drawing.Size(429, 262);
             this.Controls.Add(invnoLabel);
             this.Controls.Add(this.txtInvno);
             this.Controls.Add(wirLabel);
@@ -473,8 +408,5 @@
         private DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter wipDescriptionsTableAdapter;
         private System.Windows.Forms.BindingSource coverdetailBindingSource;
         private DataSets.dsProdutnTableAdapters.coverdetailTableAdapter coverdetailTableAdapter;
-        private System.Windows.Forms.TextBox idTextBox;
-        private System.Windows.Forms.TextBox idTextBox1;
-        private System.Windows.Forms.TextBox descriptionTextBox;
         }
     }

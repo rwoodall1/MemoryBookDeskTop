@@ -50,9 +50,9 @@ namespace Mbc5.Forms {
 
             }
         private void frmProdutn_Load(object sender,EventArgs e) {
-            // TODO: This line of code loads data into the 'dsProdutn.PartBkDetail' table. You can move, or remove it, as needed.
-            this.partBkDetailTableAdapter.Fill(this.dsProdutn.PartBkDetail);
-            // TODO: This line of code loads data into the 'lookUp.lkpBackGround' table. You can move, or remove it, as needed.
+           
+           
+           
             this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
             //LookUp Data
             this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
@@ -163,12 +163,19 @@ namespace Mbc5.Forms {
                 if (dsProdutn.wip.Count < 1) {
                     DisableControls(this.tbProdutn.TabPages[1]);
                     } else { EnableAllControls(this.tbProdutn.TabPages[1]); }
+                this.partbkTableAdapter.Fill(this.dsProdutn.partbk,Schcode);
+                this.partBkDetailTableAdapter.Fill(this.dsProdutn.PartBkDetail,Schcode);
+                if (dsProdutn.partbk.Count < 1) {
+                    DisableControls(this.tbProdutn.TabPages[4]);
+                    } else{ EnableAllControls(this.tbProdutn.TabPages[4]); }
+
+
                 //partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
                 //ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
                 //wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
 
 
-                    
+
                 }
             if (Invno != 0) {
                 var pos = produtnBindingSource.Find("invno",this.Invno);
@@ -206,8 +213,35 @@ namespace Mbc5.Forms {
                 case 3:
                     //SavePayment();
                     break;
+                case 4:
+                   SavePartBK();
+                    break;
 
                 }
+            return retval;
+            }
+        private bool SavePartBK() {
+            bool retval = false;
+            if (dsProdutn.partbk.Count > 0) {
+                if (this.ValidateChildren(ValidationConstraints.Enabled)) {
+                    try {
+                        this.partbkBindingSource.EndEdit();
+                        var a = partbkTableAdapter.Update(dsProdutn.partbk);
+                        //must refill so we get updated time stamp so concurrency is not thrown
+                        partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
+                        retval = true;
+                        } catch (DBConcurrencyException dbex) {
+                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row),ref dsProdutn);
+                        if (result == DialogResult.Yes) { SavePartBK(); };
+                        } catch (Exception ex) {
+                        ex.ToExceptionless()
+                       .SetMessage("Partial Bk record failed to update:" + ex.Message)
+                       .Submit();
+                        retval = false;
+                        }
+                    }
+                } else { retval = false; }
+
             return retval;
             }
         private bool SaveProdutn()

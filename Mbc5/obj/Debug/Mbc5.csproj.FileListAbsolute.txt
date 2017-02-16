@@ -213,3 +213,4 @@ F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.compiled
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditCoverWip.resources
+F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditPartBkWip.resources

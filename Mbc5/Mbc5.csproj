@@ -151,6 +151,12 @@
     <Compile Include="Dialogs\frmEditCoverWip.Designer.cs">
       <DependentUpon>frmEditCoverWip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\frmEditPartBkWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditPartBkWip.Designer.cs">
+      <DependentUpon>frmEditPartBkWip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\frmEditWip.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmEditCoverWip.resx">
       <DependentUpon>frmEditCoverWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditPartBkWip.resx">
+      <DependentUpon>frmEditPartBkWip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmEditWip.resx">
       <DependentUpon>frmEditWip.cs</DependentUpon>
