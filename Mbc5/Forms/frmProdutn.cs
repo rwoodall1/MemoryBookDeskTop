@@ -169,11 +169,11 @@ namespace Mbc5.Forms {
                     DisableControls(this.tbProdutn.TabPages[4]);
                     } else{ EnableAllControls(this.tbProdutn.TabPages[4]); }
 
-
-                //partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
-                //ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
-                //wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
-
+                ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
+                prtbkbdetailTableAdapter.Fill(dsProdutn.prtbkbdetail,Schcode);
+                if (dsProdutn.ptbkb.Count < 1) {
+                    DisableControls(this.tbProdutn.TabPages[5]);
+                    } else { EnableAllControls(this.tbProdutn.TabPages[5]); }
 
 
                 }
@@ -830,6 +830,8 @@ namespace Mbc5.Forms {
                 wipDetailTableAdapter.Fill(dsProdutn.WipDetail,Schcode);
                 }
             }
+
+      
         #region Validation
 
 
