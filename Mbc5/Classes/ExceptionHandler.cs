@@ -73,6 +73,7 @@ namespace Mbc5.Classes
         }
         //EndCust
         #endregion
+
         #region Quotes
         public static DialogResult CreateMessage(DataSets.dsSales.quotesRow cr1,ref DataSets.dsSales dataset) {
             string msg = GetRowData(GetCurrentRowInDB(cr1),cr1,DataRowVersion.Default) + "\n \n" +
@@ -285,6 +286,58 @@ namespace Mbc5.Classes
                 }
             return badColumns;
             }
+        #endregion
+        #region PartBK
+        public static DialogResult CreateMessage(DataSets.dsProdutn.partbkRow cr,ref DataSets.dsProdutn dataset) {
+            string msg = GetRowData(GetCurrentRowInDB(cr),cr,DataRowVersion.Default) + "\n \n" +
+              "Do you still want to update the database with the proposed value?";
+            DialogResult response = MessageBox.Show(msg,"Concurrency Exception",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Hand);
+            if (response == DialogResult.Yes) {
+                //keeps form data
+                dataset.Merge(tempCustDataTable,true,MissingSchemaAction.Ignore);
+                } else {
+                //keeps data on server
+                dataset.Merge(tempCustDataTable);
+                MessageBox.Show("Update was canceled.","Update",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                }
+            return response;
+
+            }
+        public static DataSets.dsProdutn.partbkDataTable tempPartBKDataTable = new DataSets.dsProdutn.partbkDataTable();
+        private static DataSets.dsProdutn.partbkRow GetCurrentRowInDB(DataSets.dsProdutn.partbkRow RowWithError) {
+            DataSets.dsProdutnTableAdapters.partbkTableAdapter vTableAdapter = new DataSets.dsProdutnTableAdapters.partbkTableAdapter();
+
+            try {
+
+                vTableAdapter.Fill(tempPartBKDataTable,RowWithError.schcode);
+                } catch (Exception ex) {
+
+                }
+            DataSets.dsProdutn.partbkRow currentRowInDb =
+              (DataSets.dsProdutn.partbkRow)tempCustDataTable.Rows[0];
+
+            return currentRowInDb;
+            }
+        private static string GetRowData(DataSets.dsProdutn.partbkRow curData,DataSets.dsProdutn.partbkRow vrow,DataRowVersion RowVersion) {
+            //string rowData = "";
+            string columnDataDefault = "";
+            string columnDataOriginal = "";
+            string columnDataCurrent = "";
+            string badColumns = "";
+            for (int i = 0; i < vrow.ItemArray.Length; i++) {
+                columnDataDefault = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Default].ToString().Trim();
+                columnDataOriginal = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i,DataRowVersion.Original].ToString().Trim();
+                columnDataCurrent = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + curData[i,DataRowVersion.Current].ToString().Trim();
+                if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent) {
+                    badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+                    }
+
+                }
+
+            return badColumns;
+            }
+
+
         #endregion
         }
     }

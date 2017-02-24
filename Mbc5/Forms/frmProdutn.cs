@@ -215,27 +215,34 @@ namespace Mbc5.Forms {
                     break;
                 case 4:
                    SavePartBK();
+                    SaveProdutn();
+                    break;
+                case 5:
+                    SavePtBkB();
+                    SaveProdutn();
                     break;
 
                 }
             return retval;
             }
-        private bool SavePartBK() {
+        
+        private bool SavePtBkB()
+            {
             bool retval = false;
-            if (dsProdutn.partbk.Count > 0) {
+            if (dsProdutn.ptbkb.Count > 0) {
                 if (this.ValidateChildren(ValidationConstraints.Enabled)) {
                     try {
-                        this.partbkBindingSource.EndEdit();
-                        var a = partbkTableAdapter.Update(dsProdutn.partbk);
+                        this.ptbkbBindingSource.EndEdit();
+                        var a = ptbkbTableAdapter.Update(dsProdutn.ptbkb);
                         //must refill so we get updated time stamp so concurrency is not thrown
-                        partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
+                        ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
                         retval = true;
                         } catch (DBConcurrencyException dbex) {
-                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.coversRow)(dbex.Row),ref dsProdutn);
-                        if (result == DialogResult.Yes) { SavePartBK(); };
+                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.ptbkbRow)(dbex.Row),ref dsProdutn);
+                        if (result == DialogResult.Yes) { SavePtBKB(); };
                         } catch (Exception ex) {
                         ex.ToExceptionless()
-                       .SetMessage("Partial Bk record failed to update:" + ex.Message)
+                       .SetMessage("Photos On CD record failed to update:" + ex.Message)
                        .Submit();
                         retval = false;
                         }
