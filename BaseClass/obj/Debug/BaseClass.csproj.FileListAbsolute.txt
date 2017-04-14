@@ -49,3 +49,16 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.dll
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.pdb
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.frmBase.resources
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache
+F:\Home\MemoryBookDeskTop\BaseClass\bin\Debug\BaseClass.dll
+F:\Home\MemoryBookDeskTop\BaseClass\bin\Debug\BaseClass.pdb
+F:\Home\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.dll
+F:\Home\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.xml
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.frmBase.resources
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopBottom.resources
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopSide.resources
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopSplitBottom.resources
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.ParentForm.resources
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csproj.GenerateResource.Cache
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.dll
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.pdb
