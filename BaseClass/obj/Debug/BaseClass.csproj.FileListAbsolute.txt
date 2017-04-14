@@ -184,3 +184,13 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\bin\Debug\System.Reflectio
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\bin\Debug\System.Collections.Immutable.dll
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
 F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\BaseClass\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csproj.ResolveComReference.cache
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.frmBase.resources
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopBottom.resources
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopSide.resources
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopSplitBottom.resources
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.ParentForm.resources
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csproj.GenerateResource.Cache
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.dll
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.pdb
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache
