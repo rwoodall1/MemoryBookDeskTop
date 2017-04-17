@@ -338,6 +338,73 @@ namespace Mbc5.Classes
             }
 
 
-        #endregion
-        }
-    }
+		#endregion
+
+
+		#region PtBKB
+		public static DialogResult CreateMessage(DataSets.dsProdutn.ptbkbRow cr, ref DataSets.dsProdutn dataset)
+		{
+			string msg = GetRowData(GetCurrentRowInDB(cr), cr, DataRowVersion.Default) + "\n \n" +
+			  "Do you still want to update the database with the proposed value?";
+			DialogResult response = MessageBox.Show(msg, "Concurrency Exception", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+			if (response == DialogResult.Yes)
+			{
+				//keeps form data
+				dataset.Merge(tempCustDataTable, true, MissingSchemaAction.Ignore);
+			}
+			else
+			{
+				//keeps data on server
+				dataset.Merge(tempCustDataTable);
+				MessageBox.Show("Update was canceled.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			}
+			return response;
+
+		}
+		public static DataSets.dsProdutn.ptbkbDataTable tempPtBKBDataTable = new DataSets.dsProdutn.ptbkbDataTable();
+		private static DataSets.dsProdutn.ptbkbRow GetCurrentRowInDB(DataSets.dsProdutn.ptbkbRow RowWithError)
+		{
+			DataSets.dsProdutnTableAdapters.ptbkbTableAdapter vTableAdapter = new DataSets.dsProdutnTableAdapters.ptbkbTableAdapter();
+
+			try
+			{
+
+				vTableAdapter.Fill(tempPtBKBDataTable, RowWithError.schcode);
+			}
+			catch (Exception ex)
+			{
+
+			}
+			DataSets.dsProdutn.ptbkbRow currentRowInDb =
+			  (DataSets.dsProdutn.ptbkbRow)tempCustDataTable.Rows[0];
+
+			return currentRowInDb;
+		}
+		private static string GetRowData(DataSets.dsProdutn.ptbkbRow curData, DataSets.dsProdutn.ptbkbRow vrow, DataRowVersion RowVersion)
+		{
+			//string rowData = "";
+			string columnDataDefault = "";
+			string columnDataOriginal = "";
+			string columnDataCurrent = "";
+			string badColumns = "";
+			for (int i = 0; i < vrow.ItemArray.Length; i++)
+			{
+				columnDataDefault = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Default].ToString().Trim();
+				columnDataOriginal = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Original].ToString().Trim();
+				columnDataCurrent = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + curData[i, DataRowVersion.Current].ToString().Trim();
+				if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent)
+				{
+					badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+				}
+
+			}
+
+			return badColumns;
+		}
+
+
+		#endregion
+
+
+	}
+}

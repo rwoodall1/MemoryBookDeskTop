@@ -3735,6 +3735,18 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnbooktype;
             
+            private global::System.Data.DataColumn columnpdtoprod;
+            
+            private global::System.Data.DataColumn columnpartmemo;
+            
+            private global::System.Data.DataColumn columniin;
+            
+            private global::System.Data.DataColumn columniout;
+            
+            private global::System.Data.DataColumn columnidept;
+            
+            private global::System.Data.DataColumn columniinit;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public partbkDataTable() {
@@ -3810,6 +3822,54 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn pdtoprodColumn {
+                get {
+                    return this.columnpdtoprod;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn partmemoColumn {
+                get {
+                    return this.columnpartmemo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn iinColumn {
+                get {
+                    return this.columniin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ioutColumn {
+                get {
+                    return this.columniout;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ideptColumn {
+                get {
+                    return this.columnidept;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn iinitColumn {
+                get {
+                    return this.columniinit;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3845,14 +3905,20 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public partbkRow AddpartbkRow(string schcode, produtnRow parentprodutnRowByprodutn_partbk, byte[] timestamp_column, string booktype) {
+            public partbkRow AddpartbkRow(string schcode, produtnRow parentprodutnRowByprodutn_partbk, byte[] timestamp_column, string booktype, System.DateTime pdtoprod, string partmemo, System.DateTime iin, System.DateTime iout, string idept, string iinit) {
                 partbkRow rowpartbkRow = ((partbkRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
                         null,
                         null,
                         timestamp_column,
-                        booktype};
+                        booktype,
+                        pdtoprod,
+                        partmemo,
+                        iin,
+                        iout,
+                        idept,
+                        iinit};
                 if ((parentprodutnRowByprodutn_partbk != null)) {
                     columnValuesArray[1] = parentprodutnRowByprodutn_partbk[0];
                 }
@@ -3890,6 +3956,12 @@ namespace Mbc5.DataSets {
                 this.columnid = base.Columns["id"];
                 this.columntimestamp_column = base.Columns["timestamp_column"];
                 this.columnbooktype = base.Columns["booktype"];
+                this.columnpdtoprod = base.Columns["pdtoprod"];
+                this.columnpartmemo = base.Columns["partmemo"];
+                this.columniin = base.Columns["iin"];
+                this.columniout = base.Columns["iout"];
+                this.columnidept = base.Columns["idept"];
+                this.columniinit = base.Columns["iinit"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3905,6 +3977,18 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columntimestamp_column);
                 this.columnbooktype = new global::System.Data.DataColumn("booktype", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbooktype);
+                this.columnpdtoprod = new global::System.Data.DataColumn("pdtoprod", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpdtoprod);
+                this.columnpartmemo = new global::System.Data.DataColumn("partmemo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpartmemo);
+                this.columniin = new global::System.Data.DataColumn("iin", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columniin);
+                this.columniout = new global::System.Data.DataColumn("iout", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columniout);
+                this.columnidept = new global::System.Data.DataColumn("idept", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidept);
+                this.columniinit = new global::System.Data.DataColumn("iinit", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columniinit);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnschcode.AllowDBNull = false;
@@ -3917,6 +4001,9 @@ namespace Mbc5.DataSets {
                 this.columnid.Unique = true;
                 this.columntimestamp_column.ReadOnly = true;
                 this.columnbooktype.MaxLength = 4;
+                this.columnpartmemo.MaxLength = 2147483647;
+                this.columnidept.MaxLength = 3;
+                this.columniinit.MaxLength = 3;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13429,6 +13516,102 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime pdtoprod {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablepartbk.pdtoprodColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'pdtoprod\' in table \'partbk\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepartbk.pdtoprodColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string partmemo {
+                get {
+                    try {
+                        return ((string)(this[this.tablepartbk.partmemoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'partmemo\' in table \'partbk\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepartbk.partmemoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime iin {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablepartbk.iinColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'iin\' in table \'partbk\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepartbk.iinColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime iout {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablepartbk.ioutColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'iout\' in table \'partbk\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepartbk.ioutColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string idept {
+                get {
+                    try {
+                        return ((string)(this[this.tablepartbk.ideptColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'idept\' in table \'partbk\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepartbk.ideptColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string iinit {
+                get {
+                    try {
+                        return ((string)(this[this.tablepartbk.iinitColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'iinit\' in table \'partbk\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepartbk.iinitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public produtnRow produtnRow {
                 get {
                     return ((produtnRow)(this.GetParentRow(this.Table.ParentRelations["produtn_partbk"])));
@@ -13460,6 +13643,78 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetbooktypeNull() {
                 this[this.tablepartbk.booktypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IspdtoprodNull() {
+                return this.IsNull(this.tablepartbk.pdtoprodColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetpdtoprodNull() {
+                this[this.tablepartbk.pdtoprodColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IspartmemoNull() {
+                return this.IsNull(this.tablepartbk.partmemoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetpartmemoNull() {
+                this[this.tablepartbk.partmemoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsiinNull() {
+                return this.IsNull(this.tablepartbk.iinColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetiinNull() {
+                this[this.tablepartbk.iinColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsioutNull() {
+                return this.IsNull(this.tablepartbk.ioutColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetioutNull() {
+                this[this.tablepartbk.ioutColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsideptNull() {
+                return this.IsNull(this.tablepartbk.ideptColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetideptNull() {
+                this[this.tablepartbk.ideptColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsiinitNull() {
+                return this.IsNull(this.tablepartbk.iinitColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetiinitNull() {
+                this[this.tablepartbk.iinitColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22647,16 +22902,28 @@ SELECT invno, prodno, schcode, contryear, allclrck, booktype FROM quotes WHERE (
             tableMapping.ColumnMappings.Add("invno", "invno");
             tableMapping.ColumnMappings.Add("timestamp_column", "timestamp_column");
             tableMapping.ColumnMappings.Add("booktype", "booktype");
+            tableMapping.ColumnMappings.Add("pdtoprod", "pdtoprod");
+            tableMapping.ColumnMappings.Add("partmemo", "partmemo");
+            tableMapping.ColumnMappings.Add("iin", "iin");
+            tableMapping.ColumnMappings.Add("iout", "iout");
+            tableMapping.ColumnMappings.Add("idept", "idept");
+            tableMapping.ColumnMappings.Add("iinit", "iinit");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO partbk\r\n                         (schcode, invno, booktype, pdtoprod," +
-                " partmemo, iin, iout, idept, id)\r\nVALUES        (@schcode,@invno,@booktype,,,,,," +
-                ")";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [partbk] ([schcode], [invno], [booktype], [pdtoprod], [partmemo], [ii" +
+                "n], [iout], [idept], [iinit]) VALUES (@schcode, @invno, @booktype, @pdtoprod, @p" +
+                "artmemo, @iin, @iout, @idept, @iinit)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.Char, 4, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pdtoprod", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pdtoprod", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@partmemo", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "partmemo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@iin", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "iin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@iout", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "iout", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idept", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idept", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@iinit", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "iinit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE       partbk\r\nSET                schcode = @schode, pdtoprod = @pdtoprod, " +
@@ -22687,8 +22954,9 @@ SELECT invno, prodno, schcode, contryear, allclrck, booktype FROM quotes WHERE (
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        schcode, invno, timestamp_column, id, booktype\r\nFROM            par" +
-                "tbk\r\nWHERE        (schcode = @Schcode)";
+            this._commandCollection[0].CommandText = "SELECT          schcode, invno, timestamp_column, id, booktype, pdtoprod, partmem" +
+                "o, iin, iout, idept, iinit\r\nFROM              partbk\r\nWHERE          (schcode = " +
+                "@Schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

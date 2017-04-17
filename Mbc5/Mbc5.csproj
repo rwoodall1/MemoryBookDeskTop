@@ -95,6 +95,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsDateCont.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsEndSheet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsEndSheet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsMktInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -168,6 +173,12 @@
     </Compile>
     <Compile Include="Dialogs\frmSelctCust.Designer.cs">
       <DependentUpon>frmSelctCust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EndSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EndSheet.Designer.cs">
+      <DependentUpon>EndSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
@@ -296,6 +307,9 @@
     <EmbeddedResource Include="Dialogs\frmSelctCust.resx">
       <DependentUpon>frmSelctCust.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EndSheet.resx">
+      <DependentUpon>EndSheet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -389,6 +403,17 @@
     </None>
     <None Include="DataSets\dsDateCont.xss">
       <DependentUpon>dsDateCont.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsEndSheet.xsc">
+      <DependentUpon>dsEndSheet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsEndSheet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEndSheet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsEndSheet.xss">
+      <DependentUpon>dsEndSheet.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsMktInfo.xsc">
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
