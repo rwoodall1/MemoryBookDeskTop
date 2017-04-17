@@ -214,7 +214,7 @@ namespace Mbc5.Forms {
                     //SavePayment();
                     break;
                 case 4:
-                   SavePartBK();
+                   //SavePartBK();
                     SaveProdutn();
                     break;
                 case 5:
@@ -229,25 +229,25 @@ namespace Mbc5.Forms {
         private bool SavePtBkB()
             {
             bool retval = false;
-            if (dsProdutn.ptbkb.Count > 0) {
-                if (this.ValidateChildren(ValidationConstraints.Enabled)) {
-                    try {
-                        this.ptbkbBindingSource.EndEdit();
-                        var a = ptbkbTableAdapter.Update(dsProdutn.ptbkb);
-                        //must refill so we get updated time stamp so concurrency is not thrown
-                        ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
-                        retval = true;
-                        } catch (DBConcurrencyException dbex) {
-                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.ptbkbRow)(dbex.Row),ref dsProdutn);
-                        if (result == DialogResult.Yes) { SavePtBKB(); };
-                        } catch (Exception ex) {
-                        ex.ToExceptionless()
-                       .SetMessage("Photos On CD record failed to update:" + ex.Message)
-                       .Submit();
-                        retval = false;
-                        }
-                    }
-                } else { retval = false; }
+            //if (dsProdutn.ptbkb.Count > 0) {
+            //    if (this.ValidateChildren(ValidationConstraints.Enabled)) {
+            //        try {
+            //            this.ptbkbBindingSource.EndEdit();
+            //            var a = ptbkbTableAdapter.Update(dsProdutn.ptbkb);
+            //            //must refill so we get updated time stamp so concurrency is not thrown
+            //            ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
+            //            retval = true;
+            //            } catch (DBConcurrencyException dbex) {
+            //            DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.ptbkbRow)(dbex.Row),ref dsProdutn);
+            //            if (result == DialogResult.Yes) { SavePtBKB(); };
+            //            } catch (Exception ex) {
+            //            ex.ToExceptionless()
+            //           .SetMessage("Photos On CD record failed to update:" + ex.Message)
+            //           .Submit();
+            //            retval = false;
+            //            }
+            //        }
+            //    } else { retval = false; }
 
             return retval;
             }
