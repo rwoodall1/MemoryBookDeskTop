@@ -193,7 +193,6 @@ F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.ParentForm.resources
 F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csproj.GenerateResource.Cache
 F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.dll
 F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.pdb
-F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache
 F:\Home\MemoryBookDeskTop\BaseClass\bin\Debug\roslyn\csc.exe.config
 F:\Home\MemoryBookDeskTop\BaseClass\bin\Debug\roslyn\csc.rsp
 F:\Home\MemoryBookDeskTop\BaseClass\bin\Debug\roslyn\csi.rsp
@@ -238,3 +237,4 @@ F:\Home\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.xml
 F:\Home\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.Windows.xml
 F:\Home\MemoryBookDeskTop\BaseClass\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 F:\Home\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.xml
+F:\Home\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache

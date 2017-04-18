@@ -286,3 +286,4 @@ F:\Home\MemoryBookDeskTop\Mbc5\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompi
 F:\Home\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.xml
 F:\Home\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.exe
 F:\Home\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb
+F:\Home\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmEndSheet.resources

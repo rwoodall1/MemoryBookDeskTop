@@ -87,6 +87,7 @@ namespace BaseClass
 
         public new virtual void Show()
         {
+			
             Show(CalledShowMethod.Show, null);
         }
         public new virtual void Show(IWin32Window owner)
@@ -99,6 +100,7 @@ namespace BaseClass
             {
                 if (UserCanOpenForm)
                 {
+					
                     ShowForm(calledShowMethod, owner);
                     if (UserIsAllowed != null)
                         UserIsAllowed(this, new EventArgs());
@@ -121,6 +123,7 @@ namespace BaseClass
         private void ShowForm(CalledShowMethod calledShowMethod, IWin32Window owner)
         {
             if (calledShowMethod == CalledShowMethod.Show)
+				
                 base.Show();
             else
                 base.Show(owner);
@@ -164,6 +167,7 @@ namespace BaseClass
         }
         private void Base_Load(object sender, EventArgs e)
         {
+			
             if (!this.DesignMode)
             {
                    FormInstance vForm = ((ParentForm)this.MdiParent).GetFormInstance(this.Name);

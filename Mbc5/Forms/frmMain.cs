@@ -448,14 +448,48 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
         }
 
+		private void endSheetSupplementPreFlightToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (this.ActiveMdiChild == null)
+			{
+				frmEndSheet frmProdutn = new frmEndSheet(this.ApplicationUser);
+				frmProdutn.MdiParent = this;
+				frmProdutn.Show();
+				this.Cursor = Cursors.Default;
 
-        #endregion
+
+			}
+			else
+			{
+				this.Cursor = Cursors.AppStarting;
+				int vInvno = GetInvno();
+				string vSchcode = GetSchcode();
+
+				if (vInvno == 0)
+				{
+					MessageBox.Show("This school does not have a end sheet record to go to. Please search for record from end sheet Screen.", "Production", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					frmProdutn frmProdutn1 = new frmProdutn(this.ApplicationUser);
+					frmProdutn1.MdiParent = this;
+					frmProdutn1.Show();
+					this.Cursor = Cursors.Default;
+				}
+
+				frmEndSheet frmEndSheet = new frmEndSheet(this.ApplicationUser, vInvno, vSchcode);
+				frmEndSheet.MdiParent = this;
+				frmEndSheet.Show();
+				this.Cursor = Cursors.Default;
+
+			}
+		}
+
+
+		#endregion
 
 
 
 
 
-        //nothing below here
-    }
+		//nothing below here
+	}
         }
 
