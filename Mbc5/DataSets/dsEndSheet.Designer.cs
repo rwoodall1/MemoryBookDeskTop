@@ -449,8 +449,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnendshtno;
             
-            private global::System.Data.DataColumn columnschcode;
-            
             private global::System.Data.DataColumn columninvno;
             
             private global::System.Data.DataColumn columnstock;
@@ -462,18 +460,6 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnremake;
             
             private global::System.Data.DataColumn columnprntsmp;
-            
-            private global::System.Data.DataColumn columnclr1;
-            
-            private global::System.Data.DataColumn columnclr2;
-            
-            private global::System.Data.DataColumn columnclr3;
-            
-            private global::System.Data.DataColumn columnclr4;
-            
-            private global::System.Data.DataColumn columnclr5;
-            
-            private global::System.Data.DataColumn columnclr6;
             
             private global::System.Data.DataColumn columnproofsent;
             
@@ -592,14 +578,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn schcodeColumn {
-                get {
-                    return this.columnschcode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn invnoColumn {
                 get {
                     return this.columninvno;
@@ -643,54 +621,6 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn prntsmpColumn {
                 get {
                     return this.columnprntsmp;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn clr1Column {
-                get {
-                    return this.columnclr1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn clr2Column {
-                get {
-                    return this.columnclr2;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn clr3Column {
-                get {
-                    return this.columnclr3;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn clr4Column {
-                get {
-                    return this.columnclr4;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn clr5Column {
-                get {
-                    return this.columnclr5;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn clr6Column {
-                get {
-                    return this.columnclr6;
                 }
             }
             
@@ -1029,19 +959,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public endsheetRow AddendsheetRow(
                         string endshtno, 
-                        string schcode, 
                         quotesRow parentquotesRowByquotes_endsheet, 
                         string stock, 
                         bool fourclr, 
                         bool scanner, 
                         bool remake, 
                         string prntsmp, 
-                        string clr1, 
-                        string clr2, 
-                        string clr3, 
-                        string clr4, 
-                        string clr5, 
-                        string clr6, 
                         System.DateTime proofsent, 
                         System.DateTime apprvdte, 
                         string fldesc, 
@@ -1082,19 +1005,12 @@ namespace Mbc5.DataSets {
                 endsheetRow rowendsheetRow = ((endsheetRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         endshtno,
-                        schcode,
                         null,
                         stock,
                         fourclr,
                         scanner,
                         remake,
                         prntsmp,
-                        clr1,
-                        clr2,
-                        clr3,
-                        clr4,
-                        clr5,
-                        clr6,
                         proofsent,
                         apprvdte,
                         fldesc,
@@ -1133,7 +1049,7 @@ namespace Mbc5.DataSets {
                         brdesc,
                         timestamp_column};
                 if ((parentquotesRowByquotes_endsheet != null)) {
-                    columnValuesArray[2] = parentquotesRowByquotes_endsheet[4];
+                    columnValuesArray[1] = parentquotesRowByquotes_endsheet[4];
                 }
                 rowendsheetRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowendsheetRow);
@@ -1158,19 +1074,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnendshtno = base.Columns["endshtno"];
-                this.columnschcode = base.Columns["schcode"];
                 this.columninvno = base.Columns["invno"];
                 this.columnstock = base.Columns["stock"];
                 this.columnfourclr = base.Columns["fourclr"];
                 this.columnscanner = base.Columns["scanner"];
                 this.columnremake = base.Columns["remake"];
                 this.columnprntsmp = base.Columns["prntsmp"];
-                this.columnclr1 = base.Columns["clr1"];
-                this.columnclr2 = base.Columns["clr2"];
-                this.columnclr3 = base.Columns["clr3"];
-                this.columnclr4 = base.Columns["clr4"];
-                this.columnclr5 = base.Columns["clr5"];
-                this.columnclr6 = base.Columns["clr6"];
                 this.columnproofsent = base.Columns["proofsent"];
                 this.columnapprvdte = base.Columns["apprvdte"];
                 this.columnfldesc = base.Columns["fldesc"];
@@ -1215,8 +1124,6 @@ namespace Mbc5.DataSets {
             private void InitClass() {
                 this.columnendshtno = new global::System.Data.DataColumn("endshtno", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnendshtno);
-                this.columnschcode = new global::System.Data.DataColumn("schcode", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnschcode);
                 this.columninvno = new global::System.Data.DataColumn("invno", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninvno);
                 this.columnstock = new global::System.Data.DataColumn("stock", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1229,18 +1136,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnremake);
                 this.columnprntsmp = new global::System.Data.DataColumn("prntsmp", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprntsmp);
-                this.columnclr1 = new global::System.Data.DataColumn("clr1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnclr1);
-                this.columnclr2 = new global::System.Data.DataColumn("clr2", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnclr2);
-                this.columnclr3 = new global::System.Data.DataColumn("clr3", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnclr3);
-                this.columnclr4 = new global::System.Data.DataColumn("clr4", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnclr4);
-                this.columnclr5 = new global::System.Data.DataColumn("clr5", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnclr5);
-                this.columnclr6 = new global::System.Data.DataColumn("clr6", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnclr6);
                 this.columnproofsent = new global::System.Data.DataColumn("proofsent", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproofsent);
                 this.columnapprvdte = new global::System.Data.DataColumn("apprvdte", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -1317,8 +1212,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columntimestamp_column);
                 this.columnendshtno.AllowDBNull = false;
                 this.columnendshtno.MaxLength = 5;
-                this.columnschcode.AllowDBNull = false;
-                this.columnschcode.MaxLength = 6;
                 this.columninvno.AllowDBNull = false;
                 this.columnstock.AllowDBNull = false;
                 this.columnstock.MaxLength = 34;
@@ -1327,18 +1220,6 @@ namespace Mbc5.DataSets {
                 this.columnremake.AllowDBNull = false;
                 this.columnprntsmp.AllowDBNull = false;
                 this.columnprntsmp.MaxLength = 1;
-                this.columnclr1.AllowDBNull = false;
-                this.columnclr1.MaxLength = 15;
-                this.columnclr2.AllowDBNull = false;
-                this.columnclr2.MaxLength = 15;
-                this.columnclr3.AllowDBNull = false;
-                this.columnclr3.MaxLength = 15;
-                this.columnclr4.AllowDBNull = false;
-                this.columnclr4.MaxLength = 15;
-                this.columnclr5.AllowDBNull = false;
-                this.columnclr5.MaxLength = 15;
-                this.columnclr6.AllowDBNull = false;
-                this.columnclr6.MaxLength = 15;
                 this.columnproofsent.AllowDBNull = false;
                 this.columnapprvdte.AllowDBNull = false;
                 this.columnfldesc.AllowDBNull = false;
@@ -2671,6 +2552,14 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnperfbind;
             
+            private global::System.Data.DataColumn columnnopages;
+            
+            private global::System.Data.DataColumn columnnocopies;
+            
+            private global::System.Data.DataColumn columnlaminated;
+            
+            private global::System.Data.DataColumn columndiecut;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public produtnDataTable() {
@@ -2730,6 +2619,38 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nopagesColumn {
+                get {
+                    return this.columnnopages;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nocopiesColumn {
+                get {
+                    return this.columnnocopies;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn laminatedColumn {
+                get {
+                    return this.columnlaminated;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn diecutColumn {
+                get {
+                    return this.columndiecut;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2765,12 +2686,16 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public produtnRow AddprodutnRow(quotesRow parentquotesRowByquotes_produtn, string prodno, string perfbind) {
+            public produtnRow AddprodutnRow(quotesRow parentquotesRowByquotes_produtn, string prodno, string perfbind, decimal nopages, decimal nocopies, string laminated, string diecut) {
                 produtnRow rowprodutnRow = ((produtnRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         prodno,
-                        perfbind};
+                        perfbind,
+                        nopages,
+                        nocopies,
+                        laminated,
+                        diecut};
                 if ((parentquotesRowByquotes_produtn != null)) {
                     columnValuesArray[0] = parentquotesRowByquotes_produtn[4];
                 }
@@ -2806,6 +2731,10 @@ namespace Mbc5.DataSets {
                 this.columninvno = base.Columns["invno"];
                 this.columnprodno = base.Columns["prodno"];
                 this.columnperfbind = base.Columns["perfbind"];
+                this.columnnopages = base.Columns["nopages"];
+                this.columnnocopies = base.Columns["nocopies"];
+                this.columnlaminated = base.Columns["laminated"];
+                this.columndiecut = base.Columns["diecut"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2817,6 +2746,14 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnprodno);
                 this.columnperfbind = new global::System.Data.DataColumn("perfbind", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnperfbind);
+                this.columnnopages = new global::System.Data.DataColumn("nopages", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnopages);
+                this.columnnocopies = new global::System.Data.DataColumn("nocopies", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnocopies);
+                this.columnlaminated = new global::System.Data.DataColumn("laminated", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlaminated);
+                this.columndiecut = new global::System.Data.DataColumn("diecut", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndiecut);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columninvno.AllowDBNull = false;
@@ -2824,6 +2761,8 @@ namespace Mbc5.DataSets {
                 this.columnprodno.AllowDBNull = false;
                 this.columnprodno.MaxLength = 12;
                 this.columnperfbind.MaxLength = 1;
+                this.columnlaminated.MaxLength = 1;
+                this.columndiecut.MaxLength = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2977,17 +2916,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string schcode {
-                get {
-                    return ((string)(this[this.tableendsheet.schcodeColumn]));
-                }
-                set {
-                    this[this.tableendsheet.schcodeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int invno {
                 get {
                     return ((int)(this[this.tableendsheet.invnoColumn]));
@@ -3049,72 +2977,6 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tableendsheet.prntsmpColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string clr1 {
-                get {
-                    return ((string)(this[this.tableendsheet.clr1Column]));
-                }
-                set {
-                    this[this.tableendsheet.clr1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string clr2 {
-                get {
-                    return ((string)(this[this.tableendsheet.clr2Column]));
-                }
-                set {
-                    this[this.tableendsheet.clr2Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string clr3 {
-                get {
-                    return ((string)(this[this.tableendsheet.clr3Column]));
-                }
-                set {
-                    this[this.tableendsheet.clr3Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string clr4 {
-                get {
-                    return ((string)(this[this.tableendsheet.clr4Column]));
-                }
-                set {
-                    this[this.tableendsheet.clr4Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string clr5 {
-                get {
-                    return ((string)(this[this.tableendsheet.clr5Column]));
-                }
-                set {
-                    this[this.tableendsheet.clr5Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string clr6 {
-                get {
-                    return ((string)(this[this.tableendsheet.clr6Column]));
-                }
-                set {
-                    this[this.tableendsheet.clr6Column] = value;
                 }
             }
             
@@ -4107,6 +3969,70 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal nopages {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableprodutn.nopagesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nopages\' in table \'produtn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutn.nopagesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal nocopies {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableprodutn.nocopiesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nocopies\' in table \'produtn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutn.nocopiesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string laminated {
+                get {
+                    try {
+                        return ((string)(this[this.tableprodutn.laminatedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'laminated\' in table \'produtn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutn.laminatedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string diecut {
+                get {
+                    try {
+                        return ((string)(this[this.tableprodutn.diecutColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'diecut\' in table \'produtn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutn.diecutColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public quotesRow quotesRow {
                 get {
                     return ((quotesRow)(this.GetParentRow(this.Table.ParentRelations["quotes_produtn"])));
@@ -4126,6 +4052,54 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetperfbindNull() {
                 this[this.tableprodutn.perfbindColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnopagesNull() {
+                return this.IsNull(this.tableprodutn.nopagesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnopagesNull() {
+                this[this.tableprodutn.nopagesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnocopiesNull() {
+                return this.IsNull(this.tableprodutn.nocopiesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnocopiesNull() {
+                this[this.tableprodutn.nocopiesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IslaminatedNull() {
+                return this.IsNull(this.tableprodutn.laminatedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetlaminatedNull() {
+                this[this.tableprodutn.laminatedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdiecutNull() {
+                return this.IsNull(this.tableprodutn.diecutColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdiecutNull() {
+                this[this.tableprodutn.diecutColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4425,19 +4399,11 @@ namespace Mbc5.DataSets.dsEndSheetTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "endsheet";
             tableMapping.ColumnMappings.Add("endshtno", "endshtno");
-            tableMapping.ColumnMappings.Add("schcode", "schcode");
             tableMapping.ColumnMappings.Add("invno", "invno");
             tableMapping.ColumnMappings.Add("stock", "stock");
             tableMapping.ColumnMappings.Add("fourclr", "fourclr");
             tableMapping.ColumnMappings.Add("scanner", "scanner");
             tableMapping.ColumnMappings.Add("remake", "remake");
-            tableMapping.ColumnMappings.Add("prntsmp", "prntsmp");
-            tableMapping.ColumnMappings.Add("clr1", "clr1");
-            tableMapping.ColumnMappings.Add("clr2", "clr2");
-            tableMapping.ColumnMappings.Add("clr3", "clr3");
-            tableMapping.ColumnMappings.Add("clr4", "clr4");
-            tableMapping.ColumnMappings.Add("clr5", "clr5");
-            tableMapping.ColumnMappings.Add("clr6", "clr6");
             tableMapping.ColumnMappings.Add("proofsent", "proofsent");
             tableMapping.ColumnMappings.Add("apprvdte", "apprvdte");
             tableMapping.ColumnMappings.Add("fldesc", "fldesc");
@@ -4491,9 +4457,9 @@ namespace Mbc5.DataSets.dsEndSheetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT          endshtno, schcode, invno, stock, fourclr, scanner, remake, prntsmp, clr1, clr2, clr3, clr4, clr5, clr6, proofsent, apprvdte, fldesc, frdesc, specinst, prtvend, prtdtesent, prtdtebk, lamvend, 
-                            lamdtesent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, othrvend, otdtesent, otdtebk, prntsam, acceptd, reqstdcpy, reprnacp, reprntdte, reason, desorgdte, persondest, reprreas, csonhold, 
-                            csoffhold, endshtype, endstrecv, spotclr, frcopies, bkcopies, bldesc, brdesc, timestamp_column
+            this._commandCollection[0].CommandText = @"SELECT          endshtno, invno, stock, fourclr, scanner, remake, lamvend, lamdtesent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, othrvend, otdtesent, otdtebk, prntsam, acceptd, reqstdcpy, 
+                            reprntdte, reprnacp, reason, desorgdte, reprreas, persondest, csonhold, csoffhold, endshtype, endstrecv, spotclr, frcopies, bkcopies, bldesc, brdesc, timestamp_column, prtdtebk, 
+                            prtdtesent, prtvend, specinst, proofsent, apprvdte, fldesc, frdesc
 FROM              endsheet";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
@@ -5333,29 +5299,51 @@ SELECT schcode, schname, contryear FROM cust WHERE (schcode = @schcode)";
             tableMapping.ColumnMappings.Add("invno", "invno");
             tableMapping.ColumnMappings.Add("prodno", "prodno");
             tableMapping.ColumnMappings.Add("perfbind", "perfbind");
+            tableMapping.ColumnMappings.Add("nopages", "nopages");
+            tableMapping.ColumnMappings.Add("nocopies", "nocopies");
+            tableMapping.ColumnMappings.Add("laminated", "laminated");
+            tableMapping.ColumnMappings.Add("diecut", "diecut");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [produtn] WHERE (([invno] = @Original_invno) AND ([prodno] = @Origina" +
-                "l_prodno) AND ((@IsNull_perfbind = 1 AND [perfbind] IS NULL) OR ([perfbind] = @O" +
-                "riginal_perfbind)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [produtn] WHERE (([invno] = @Original_invno) AND ([prodno] = @Original_prodno) AND ((@IsNull_perfbind = 1 AND [perfbind] IS NULL) OR ([perfbind] = @Original_perfbind)) AND ((@IsNull_nopages = 1 AND [nopages] IS NULL) OR ([nopages] = @Original_nopages)) AND ((@IsNull_nocopies = 1 AND [nocopies] IS NULL) OR ([nocopies] = @Original_nocopies)) AND ((@IsNull_laminated = 1 AND [laminated] IS NULL) OR ([laminated] = @Original_laminated)) AND ((@IsNull_diecut = 1 AND [diecut] IS NULL) OR ([diecut] = @Original_diecut)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prodno", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_perfbind", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "perfbind", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_perfbind", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "perfbind", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_nopages", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nopages", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nopages", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "nopages", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_nocopies", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nocopies", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nocopies", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "nocopies", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_laminated", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "laminated", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_laminated", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "laminated", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_diecut", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "diecut", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_diecut", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "diecut", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [produtn] SET [invno] = @invno, [prodno] = @prodno, [perfbind] = @perfbind WHERE (([invno] = @Original_invno) AND ([prodno] = @Original_prodno) AND ((@IsNull_perfbind = 1 AND [perfbind] IS NULL) OR ([perfbind] = @Original_perfbind)));
-SELECT invno, prodno, perfbind FROM produtn WHERE (invno = @invno)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [produtn] SET [invno] = @invno, [prodno] = @prodno, [perfbind] = @perfbind, [nopages] = @nopages, [nocopies] = @nocopies, [laminated] = @laminated, [diecut] = @diecut WHERE (([invno] = @Original_invno) AND ([prodno] = @Original_prodno) AND ((@IsNull_perfbind = 1 AND [perfbind] IS NULL) OR ([perfbind] = @Original_perfbind)) AND ((@IsNull_nopages = 1 AND [nopages] IS NULL) OR ([nopages] = @Original_nopages)) AND ((@IsNull_nocopies = 1 AND [nocopies] IS NULL) OR ([nocopies] = @Original_nocopies)) AND ((@IsNull_laminated = 1 AND [laminated] IS NULL) OR ([laminated] = @Original_laminated)) AND ((@IsNull_diecut = 1 AND [diecut] IS NULL) OR ([diecut] = @Original_diecut)));
+SELECT invno, prodno, perfbind, nopages, nocopies, laminated, diecut FROM produtn WHERE (invno = @invno)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@perfbind", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "perfbind", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nopages", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "nopages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nocopies", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "nocopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@laminated", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "laminated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@diecut", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "diecut", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_prodno", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_perfbind", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "perfbind", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_perfbind", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "perfbind", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_nopages", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nopages", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nopages", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "nopages", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_nocopies", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nocopies", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nocopies", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "nocopies", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_laminated", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "laminated", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_laminated", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "laminated", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_diecut", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "diecut", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_diecut", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "diecut", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5371,7 +5359,8 @@ SELECT invno, prodno, perfbind FROM produtn WHERE (invno = @invno)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT          invno, prodno, perfbind\r\nFROM              produtn";
+            this._commandCollection[0].CommandText = "SELECT          invno, prodno, perfbind, nopages, nocopies,laminated,diecut\r\nFROM" +
+                "              produtn";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5432,7 +5421,7 @@ SELECT invno, prodno, perfbind FROM produtn WHERE (invno = @invno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_invno, string Original_prodno, string Original_perfbind) {
+        public virtual int Delete(int Original_invno, string Original_prodno, string Original_perfbind, global::System.Nullable<decimal> Original_nopages, global::System.Nullable<decimal> Original_nocopies, string Original_laminated, string Original_diecut) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_invno));
             if ((Original_prodno == null)) {
                 throw new global::System.ArgumentNullException("Original_prodno");
@@ -5447,6 +5436,38 @@ SELECT invno, prodno, perfbind FROM produtn WHERE (invno = @invno)";
             else {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_perfbind));
+            }
+            if ((Original_nopages.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((decimal)(Original_nopages.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((Original_nocopies.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((decimal)(Original_nocopies.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((Original_laminated == null)) {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_laminated));
+            }
+            if ((Original_diecut == null)) {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_diecut));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5468,7 +5489,7 @@ SELECT invno, prodno, perfbind FROM produtn WHERE (invno = @invno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int invno, string prodno, string perfbind, int Original_invno, string Original_prodno, string Original_perfbind) {
+        public virtual int Update(int invno, string prodno, string perfbind, global::System.Nullable<decimal> nopages, global::System.Nullable<decimal> nocopies, string laminated, string diecut, int Original_invno, string Original_prodno, string Original_perfbind, global::System.Nullable<decimal> Original_nopages, global::System.Nullable<decimal> Original_nocopies, string Original_laminated, string Original_diecut) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(invno));
             if ((prodno == null)) {
                 throw new global::System.ArgumentNullException("prodno");
@@ -5482,20 +5503,76 @@ SELECT invno, prodno, perfbind FROM produtn WHERE (invno = @invno)";
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(perfbind));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_invno));
+            if ((nopages.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(nopages.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((nocopies.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(nocopies.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((laminated == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(laminated));
+            }
+            if ((diecut == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(diecut));
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_invno));
             if ((Original_prodno == null)) {
                 throw new global::System.ArgumentNullException("Original_prodno");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_prodno));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_prodno));
             }
             if ((Original_perfbind == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_perfbind));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_perfbind));
+            }
+            if ((Original_nopages.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(Original_nopages.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_nocopies.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_nocopies.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Original_laminated == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_laminated));
+            }
+            if ((Original_diecut == null)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_diecut));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5517,8 +5594,8 @@ SELECT invno, prodno, perfbind FROM produtn WHERE (invno = @invno)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string prodno, string perfbind, int Original_invno, string Original_prodno, string Original_perfbind) {
-            return this.Update(Original_invno, prodno, perfbind, Original_invno, Original_prodno, Original_perfbind);
+        public virtual int Update(string prodno, string perfbind, global::System.Nullable<decimal> nopages, global::System.Nullable<decimal> nocopies, string laminated, string diecut, int Original_invno, string Original_prodno, string Original_perfbind, global::System.Nullable<decimal> Original_nopages, global::System.Nullable<decimal> Original_nocopies, string Original_laminated, string Original_diecut) {
+            return this.Update(Original_invno, prodno, perfbind, nopages, nocopies, laminated, diecut, Original_invno, Original_prodno, Original_perfbind, Original_nopages, Original_nocopies, Original_laminated, Original_diecut);
         }
     }
     
