@@ -254,6 +254,7 @@
 			this.prmsdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.shpdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.chkLaminated = new System.Windows.Forms.CheckBox();
 			this.cpnumTextBox = new System.Windows.Forms.TextBox();
 			this.wipgBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.cprecvDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -263,7 +264,6 @@
 			this.colorpgsCheckBox = new System.Windows.Forms.CheckBox();
 			this.coilclrTextBox = new System.Windows.Forms.TextBox();
 			this.txtPerfbind = new System.Windows.Forms.TextBox();
-			this.laminatedTextBox = new System.Windows.Forms.TextBox();
 			this.diecutTextBox = new System.Windows.Forms.TextBox();
 			this.dcdesc2TextBox = new System.Windows.Forms.TextBox();
 			this.dcdesc1TextBox1 = new System.Windows.Forms.TextBox();
@@ -542,7 +542,6 @@
 			this.lkpBackGroundTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpBackGroundTableAdapter();
 			this.partBkDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.PartBkDetailTableAdapter();
 			this.prtbkbdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.prtbkbdetailTableAdapter();
-			this.chkLaminated = new System.Windows.Forms.CheckBox();
 			companyLabel = new System.Windows.Forms.Label();
 			invnoLabel = new System.Windows.Forms.Label();
 			prodnoLabel = new System.Windows.Forms.Label();
@@ -1325,6 +1324,7 @@
 			// 
 			// label17
 			// 
+			label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			label17.AutoSize = true;
 			label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			label17.Location = new System.Drawing.Point(634, 76);
@@ -1335,6 +1335,7 @@
 			// 
 			// label18
 			// 
+			label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			label18.AutoSize = true;
 			label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			label18.Location = new System.Drawing.Point(697, 76);
@@ -1365,6 +1366,7 @@
 			// 
 			// rmbtoLabel
 			// 
+			rmbtoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			rmbtoLabel.AutoSize = true;
 			rmbtoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			rmbtoLabel.Location = new System.Drawing.Point(430, 161);
@@ -1385,6 +1387,7 @@
 			// 
 			// wipremaketypeLabel
 			// 
+			wipremaketypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			wipremaketypeLabel.AutoSize = true;
 			wipremaketypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			wipremaketypeLabel.Location = new System.Drawing.Point(435, 188);
@@ -1405,6 +1408,7 @@
 			// 
 			// rmbfrmLabel
 			// 
+			rmbfrmLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			rmbfrmLabel.AutoSize = true;
 			rmbfrmLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			rmbfrmLabel.Location = new System.Drawing.Point(418, 219);
@@ -1415,6 +1419,7 @@
 			// 
 			// rmbtotLabel
 			// 
+			rmbtotLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			rmbtotLabel.AutoSize = true;
 			rmbtotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			rmbtotLabel.Location = new System.Drawing.Point(410, 241);
@@ -1425,6 +1430,7 @@
 			// 
 			// wipmemoLabel
 			// 
+			wipmemoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			wipmemoLabel.AutoSize = true;
 			wipmemoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			wipmemoLabel.Location = new System.Drawing.Point(765, 95);
@@ -1609,6 +1615,7 @@
 			// 
 			// label28
 			// 
+			label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			label28.AutoSize = true;
 			label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			label28.Location = new System.Drawing.Point(604, 85);
@@ -1655,6 +1662,7 @@
 			// 
 			// specinstLabel
 			// 
+			specinstLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			specinstLabel.AutoSize = true;
 			specinstLabel.Location = new System.Drawing.Point(891, 33);
 			specinstLabel.Name = "specinstLabel";
@@ -1664,6 +1672,7 @@
 			// 
 			// label29
 			// 
+			label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			label29.AutoSize = true;
 			label29.Location = new System.Drawing.Point(892, 220);
 			label29.Name = "label29";
@@ -1709,6 +1718,7 @@
 			// 
 			// spbackLabel
 			// 
+			spbackLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			spbackLabel.AutoSize = true;
 			spbackLabel.Location = new System.Drawing.Point(562, 112);
 			spbackLabel.Name = "spbackLabel";
@@ -1718,6 +1728,7 @@
 			// 
 			// typestyleLabel1
 			// 
+			typestyleLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			typestyleLabel1.AutoSize = true;
 			typestyleLabel1.Location = new System.Drawing.Point(612, 157);
 			typestyleLabel1.Name = "typestyleLabel1";
@@ -1727,6 +1738,7 @@
 			// 
 			// mascotLabel
 			// 
+			mascotLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			mascotLabel.AutoSize = true;
 			mascotLabel.Location = new System.Drawing.Point(596, 180);
 			mascotLabel.Name = "mascotLabel";
@@ -1736,6 +1748,7 @@
 			// 
 			// prntsamLabel
 			// 
+			prntsamLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			prntsamLabel.AutoSize = true;
 			prntsamLabel.Location = new System.Drawing.Point(546, 136);
 			prntsamLabel.Name = "prntsamLabel";
@@ -1745,6 +1758,7 @@
 			// 
 			// frontLabel
 			// 
+			frontLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			frontLabel.AutoSize = true;
 			frontLabel.Location = new System.Drawing.Point(656, 291);
 			frontLabel.Name = "frontLabel";
@@ -1754,6 +1768,7 @@
 			// 
 			// spineLabel
 			// 
+			spineLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			spineLabel.AutoSize = true;
 			spineLabel.Location = new System.Drawing.Point(650, 314);
 			spineLabel.Name = "spineLabel";
@@ -1763,6 +1778,7 @@
 			// 
 			// reprntdteLabel
 			// 
+			reprntdteLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			reprntdteLabel.AutoSize = true;
 			reprntdteLabel.Location = new System.Drawing.Point(888, 324);
 			reprntdteLabel.Name = "reprntdteLabel";
@@ -1772,6 +1788,7 @@
 			// 
 			// desorgdteLabel
 			// 
+			desorgdteLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			desorgdteLabel.AutoSize = true;
 			desorgdteLabel.Location = new System.Drawing.Point(841, 346);
 			desorgdteLabel.Name = "desorgdteLabel";
@@ -1781,6 +1798,7 @@
 			// 
 			// persondestLabel
 			// 
+			persondestLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			persondestLabel.AutoSize = true;
 			persondestLabel.Location = new System.Drawing.Point(943, 367);
 			persondestLabel.Name = "persondestLabel";
@@ -1790,6 +1808,7 @@
 			// 
 			// remaketypeLabel
 			// 
+			remaketypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			remaketypeLabel.AutoSize = true;
 			remaketypeLabel.Location = new System.Drawing.Point(951, 411);
 			remaketypeLabel.Name = "remaketypeLabel";
@@ -1799,6 +1818,7 @@
 			// 
 			// fullremakeLabel
 			// 
+			fullremakeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			fullremakeLabel.AutoSize = true;
 			fullremakeLabel.Location = new System.Drawing.Point(959, 437);
 			fullremakeLabel.Name = "fullremakeLabel";
@@ -1808,6 +1828,7 @@
 			// 
 			// shortremakLabel
 			// 
+			shortremakLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			shortremakLabel.AutoSize = true;
 			shortremakLabel.Location = new System.Drawing.Point(949, 459);
 			shortremakLabel.Name = "shortremakLabel";
@@ -1817,6 +1838,7 @@
 			// 
 			// indivremakLabel
 			// 
+			indivremakLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			indivremakLabel.AutoSize = true;
 			indivremakLabel.Location = new System.Drawing.Point(924, 481);
 			indivremakLabel.Name = "indivremakLabel";
@@ -1826,6 +1848,7 @@
 			// 
 			// reasonLabel
 			// 
+			reasonLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			reasonLabel.AutoSize = true;
 			reasonLabel.Location = new System.Drawing.Point(941, 504);
 			reasonLabel.Name = "reasonLabel";
@@ -1835,6 +1858,7 @@
 			// 
 			// roomLabel
 			// 
+			roomLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			roomLabel.AutoSize = true;
 			roomLabel.Location = new System.Drawing.Point(1062, 608);
 			roomLabel.Name = "roomLabel";
@@ -1844,6 +1868,7 @@
 			// 
 			// rackLabel
 			// 
+			rackLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			rackLabel.AutoSize = true;
 			rackLabel.Location = new System.Drawing.Point(1064, 631);
 			rackLabel.Name = "rackLabel";
@@ -1853,6 +1878,7 @@
 			// 
 			// shelfLabel
 			// 
+			shelfLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			shelfLabel.AutoSize = true;
 			shelfLabel.Location = new System.Drawing.Point(1065, 654);
 			shelfLabel.Name = "shelfLabel";
@@ -1862,6 +1888,7 @@
 			// 
 			// finishedcopiesLabel
 			// 
+			finishedcopiesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			finishedcopiesLabel.AutoSize = true;
 			finishedcopiesLabel.Location = new System.Drawing.Point(1005, 677);
 			finishedcopiesLabel.Name = "finishedcopiesLabel";
@@ -2174,6 +2201,7 @@
 			// 
 			// label51
 			// 
+			label51.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			label51.AutoSize = true;
 			label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			label51.Location = new System.Drawing.Point(348, 376);
@@ -2184,6 +2212,7 @@
 			// 
 			// label52
 			// 
+			label52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			label52.AutoSize = true;
 			label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			label52.Location = new System.Drawing.Point(575, 376);
@@ -2194,6 +2223,7 @@
 			// 
 			// label53
 			// 
+			label53.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			label53.AutoSize = true;
 			label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			label53.Location = new System.Drawing.Point(684, 376);
@@ -2204,6 +2234,7 @@
 			// 
 			// bindvendLabel
 			// 
+			bindvendLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			bindvendLabel.AutoSize = true;
 			bindvendLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			bindvendLabel.Location = new System.Drawing.Point(576, 449);
@@ -2254,6 +2285,7 @@
 			// 
 			// rmbtoLabel1
 			// 
+			rmbtoLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			rmbtoLabel1.AutoSize = true;
 			rmbtoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			rmbtoLabel1.Location = new System.Drawing.Point(390, 495);
@@ -2274,6 +2306,7 @@
 			// 
 			// rmbfrmLabel1
 			// 
+			rmbfrmLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			rmbfrmLabel1.AutoSize = true;
 			rmbfrmLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			rmbfrmLabel1.Location = new System.Drawing.Point(378, 519);
@@ -2294,6 +2327,7 @@
 			// 
 			// rmbtotLabel1
 			// 
+			rmbtotLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			rmbtotLabel1.AutoSize = true;
 			rmbtotLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			rmbtotLabel1.Location = new System.Drawing.Point(371, 543);
@@ -2340,7 +2374,6 @@
 			this.pg1.Controls.Add(this.btnRcvCard);
 			this.pg1.Controls.Add(this.btnBinderyEmail);
 			this.pg1.Controls.Add(this.btnEmailProdForm);
-			this.pg1.Controls.Add(this.laminatedTextBox);
 			this.pg1.Controls.Add(this.bkmixedCheckBox);
 			this.pg1.Controls.Add(this.booktypeTextBox);
 			this.pg1.Controls.Add(this.btnBookType);
@@ -2364,6 +2397,7 @@
 			// 
 			// btnInvoiceSrch
 			// 
+			this.btnInvoiceSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnInvoiceSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnInvoiceSrch.Location = new System.Drawing.Point(855, 33);
 			this.btnInvoiceSrch.Name = "btnInvoiceSrch";
@@ -2375,6 +2409,7 @@
 			// 
 			// txtInvoiceNoSrch
 			// 
+			this.txtInvoiceNoSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtInvoiceNoSrch.Location = new System.Drawing.Point(969, 33);
 			this.txtInvoiceNoSrch.Name = "txtInvoiceNoSrch";
 			this.txtInvoiceNoSrch.Size = new System.Drawing.Size(105, 20);
@@ -2382,6 +2417,7 @@
 			// 
 			// txtProdNoSrch
 			// 
+			this.txtProdNoSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtProdNoSrch.Location = new System.Drawing.Point(969, 10);
 			this.txtProdNoSrch.Name = "txtProdNoSrch";
 			this.txtProdNoSrch.Size = new System.Drawing.Size(105, 20);
@@ -2389,6 +2425,7 @@
 			// 
 			// btnProdSrch
 			// 
+			this.btnProdSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnProdSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnProdSrch.Location = new System.Drawing.Point(855, 10);
 			this.btnProdSrch.Name = "btnProdSrch";
@@ -2979,6 +3016,16 @@
 			this.panel1.Size = new System.Drawing.Size(352, 408);
 			this.panel1.TabIndex = 128;
 			// 
+			// chkLaminated
+			// 
+			this.chkLaminated.AutoSize = true;
+			this.chkLaminated.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "laminated", true));
+			this.chkLaminated.Location = new System.Drawing.Point(169, 170);
+			this.chkLaminated.Name = "chkLaminated";
+			this.chkLaminated.Size = new System.Drawing.Size(15, 14);
+			this.chkLaminated.TabIndex = 131;
+			this.chkLaminated.UseVisualStyleBackColor = true;
+			// 
 			// cpnumTextBox
 			// 
 			this.cpnumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "cpnum", true));
@@ -3072,18 +3119,6 @@
 			this.txtPerfbind.Size = new System.Drawing.Size(33, 20);
 			this.txtPerfbind.TabIndex = 116;
 			this.txtPerfbind.Leave += new System.EventHandler(this.txtPerfbind_Leave);
-			// 
-			// laminatedTextBox
-			// 
-			this.laminatedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.laminatedTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.laminatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "laminated", true));
-			this.laminatedTextBox.Location = new System.Drawing.Point(497, 508);
-			this.laminatedTextBox.MaxLength = 1;
-			this.laminatedTextBox.Name = "laminatedTextBox";
-			this.laminatedTextBox.Size = new System.Drawing.Size(33, 20);
-			this.laminatedTextBox.TabIndex = 114;
 			// 
 			// diecutTextBox
 			// 
@@ -3503,6 +3538,7 @@
 			// 
 			// bkmixedCheckBox
 			// 
+			this.bkmixedCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.bkmixedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "reorder", true));
 			this.bkmixedCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.bkmixedCheckBox.Location = new System.Drawing.Point(1101, 29);
@@ -3538,6 +3574,7 @@
 			// 
 			// allclrckCheckBox
 			// 
+			this.allclrckCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.allclrckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "allclrck", true));
 			this.allclrckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.allclrckCheckBox.ForeColor = System.Drawing.Color.Red;
@@ -3670,6 +3707,9 @@
 			this.wipDetailDataGridView.AllowUserToAddRows = false;
 			this.wipDetailDataGridView.AllowUserToDeleteRows = false;
 			this.wipDetailDataGridView.AllowUserToOrderColumns = true;
+			this.wipDetailDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.wipDetailDataGridView.AutoGenerateColumns = false;
 			this.wipDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -3691,7 +3731,7 @@
             this.dataGridViewTextBoxColumn7});
 			this.wipDetailDataGridView.DataSource = this.wipDetailBindingSource;
 			this.wipDetailDataGridView.EnableHeadersVisualStyles = false;
-			this.wipDetailDataGridView.Location = new System.Drawing.Point(27, 331);
+			this.wipDetailDataGridView.Location = new System.Drawing.Point(74, 331);
 			this.wipDetailDataGridView.Name = "wipDetailDataGridView";
 			this.wipDetailDataGridView.ReadOnly = true;
 			this.wipDetailDataGridView.RowHeadersVisible = false;
@@ -3811,6 +3851,7 @@
 			// 
 			// wipmemoTextBox
 			// 
+			this.wipmemoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.wipmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipBindingSource, "wipmemo", true));
 			this.wipmemoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.wipmemoTextBox.Location = new System.Drawing.Point(812, 92);
@@ -3821,6 +3862,7 @@
 			// 
 			// rmbtotTextBox
 			// 
+			this.rmbtotTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.rmbtotTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipBindingSource, "rmbtot", true));
 			this.rmbtotTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rmbtotTextBox.Location = new System.Drawing.Point(541, 241);
@@ -3830,6 +3872,7 @@
 			// 
 			// rmbfrmDateTimePicker
 			// 
+			this.rmbfrmDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.rmbfrmDateTimePicker.CustomFormat = "\' \'";
 			this.rmbfrmDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.wipBindingSource, "rmbfrm", true));
 			this.rmbfrmDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3851,6 +3894,7 @@
 			// 
 			// wipremaketypeComboBox
 			// 
+			this.wipremaketypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.wipremaketypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "wipremaketype", true));
 			this.wipremaketypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.wipremaketypeComboBox.FormattingEnabled = true;
@@ -3873,6 +3917,7 @@
 			// 
 			// rmbtoDateTimePicker
 			// 
+			this.rmbtoDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.rmbtoDateTimePicker.CustomFormat = "\'\'";
 			this.rmbtoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.wipBindingSource, "rmbto", true));
 			this.rmbtoDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3921,6 +3966,7 @@
 			// 
 			// iinitTextBox
 			// 
+			this.iinitTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.iinitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipBindingSource, "iinit", true));
 			this.iinitTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.iinitTextBox.Location = new System.Drawing.Point(696, 95);
@@ -3931,6 +3977,7 @@
 			// 
 			// ideptTextBox
 			// 
+			this.ideptTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.ideptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipBindingSource, "idept", true));
 			this.ideptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ideptTextBox.Location = new System.Drawing.Point(629, 95);
@@ -3993,6 +4040,7 @@
 			// 
 			// allclrckCheckBox1
 			// 
+			this.allclrckCheckBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.allclrckCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "allclrck", true));
 			this.allclrckCheckBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.allclrckCheckBox1.Location = new System.Drawing.Point(1104, 5);
@@ -4210,6 +4258,8 @@
 			this.coverdetailDataGridView.AllowUserToAddRows = false;
 			this.coverdetailDataGridView.AllowUserToDeleteRows = false;
 			this.coverdetailDataGridView.AllowUserToOrderColumns = true;
+			this.coverdetailDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.coverdetailDataGridView.AutoGenerateColumns = false;
 			this.coverdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -4290,6 +4340,7 @@
 			// 
 			// label36
 			// 
+			this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label36.AutoSize = true;
 			this.label36.Location = new System.Drawing.Point(1107, 591);
 			this.label36.Name = "label36";
@@ -4299,6 +4350,7 @@
 			// 
 			// finishedcopiesTextBox
 			// 
+			this.finishedcopiesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.finishedcopiesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "finishedcopies", true));
 			this.finishedcopiesTextBox.Location = new System.Drawing.Point(1105, 677);
 			this.finishedcopiesTextBox.Name = "finishedcopiesTextBox";
@@ -4307,6 +4359,7 @@
 			// 
 			// shelfTextBox
 			// 
+			this.shelfTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.shelfTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "shelf", true));
 			this.shelfTextBox.Location = new System.Drawing.Point(1105, 654);
 			this.shelfTextBox.Name = "shelfTextBox";
@@ -4315,6 +4368,7 @@
 			// 
 			// rackTextBox
 			// 
+			this.rackTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.rackTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "rack", true));
 			this.rackTextBox.Location = new System.Drawing.Point(1105, 631);
 			this.rackTextBox.Name = "rackTextBox";
@@ -4323,6 +4377,7 @@
 			// 
 			// roomTextBox
 			// 
+			this.roomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.roomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "room", true));
 			this.roomTextBox.Location = new System.Drawing.Point(1105, 608);
 			this.roomTextBox.Name = "roomTextBox";
@@ -4488,6 +4543,7 @@
 			// 
 			// reasonTextBox
 			// 
+			this.reasonTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.reasonTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "reason", true));
 			this.reasonTextBox.Location = new System.Drawing.Point(1040, 501);
 			this.reasonTextBox.Multiline = true;
@@ -4497,6 +4553,7 @@
 			// 
 			// indivremakTextBox
 			// 
+			this.indivremakTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.indivremakTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "indivremak", true));
 			this.indivremakTextBox.Location = new System.Drawing.Point(1040, 478);
 			this.indivremakTextBox.Name = "indivremakTextBox";
@@ -4505,6 +4562,7 @@
 			// 
 			// shortremakTextBox
 			// 
+			this.shortremakTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.shortremakTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "shortremak", true));
 			this.shortremakTextBox.Location = new System.Drawing.Point(1040, 456);
 			this.shortremakTextBox.Name = "shortremakTextBox";
@@ -4513,6 +4571,7 @@
 			// 
 			// fullremakeTextBox
 			// 
+			this.fullremakeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.fullremakeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "fullremake", true));
 			this.fullremakeTextBox.Location = new System.Drawing.Point(1040, 434);
 			this.fullremakeTextBox.Name = "fullremakeTextBox";
@@ -4521,6 +4580,7 @@
 			// 
 			// remaketypeComboBox
 			// 
+			this.remaketypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.remaketypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "remaketype", true));
 			this.remaketypeComboBox.FormattingEnabled = true;
 			this.remaketypeComboBox.Location = new System.Drawing.Point(1040, 411);
@@ -4530,6 +4590,7 @@
 			// 
 			// remakeCheckBox
 			// 
+			this.remakeCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.remakeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.coversBindingSource1, "remake", true));
 			this.remakeCheckBox.Location = new System.Drawing.Point(1040, 383);
 			this.remakeCheckBox.Name = "remakeCheckBox";
@@ -4540,6 +4601,7 @@
 			// 
 			// persondestTextBox
 			// 
+			this.persondestTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.persondestTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "persondest", true));
 			this.persondestTextBox.Location = new System.Drawing.Point(993, 364);
 			this.persondestTextBox.MaxLength = 37;
@@ -4549,6 +4611,7 @@
 			// 
 			// desorgdteDateTimePicker
 			// 
+			this.desorgdteDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.desorgdteDateTimePicker.CustomFormat = "\'\'";
 			this.desorgdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "desorgdte", true));
 			this.desorgdteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -4560,6 +4623,7 @@
 			// 
 			// reprntdteDateTimePicker
 			// 
+			this.reprntdteDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.reprntdteDateTimePicker.CustomFormat = "\'\'";
 			this.reprntdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "reprntdte", true));
 			this.reprntdteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -4571,6 +4635,7 @@
 			// 
 			// spineTextBox
 			// 
+			this.spineTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.spineTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "spine", true));
 			this.spineTextBox.Location = new System.Drawing.Point(697, 314);
 			this.spineTextBox.Name = "spineTextBox";
@@ -4579,6 +4644,7 @@
 			// 
 			// frontTextBox
 			// 
+			this.frontTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.frontTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "front", true));
 			this.frontTextBox.Location = new System.Drawing.Point(697, 291);
 			this.frontTextBox.Name = "frontTextBox";
@@ -4587,6 +4653,7 @@
 			// 
 			// prfreqCheckBox
 			// 
+			this.prfreqCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.prfreqCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "prfreq", true));
 			this.prfreqCheckBox.Location = new System.Drawing.Point(662, 231);
 			this.prfreqCheckBox.Name = "prfreqCheckBox";
@@ -4597,6 +4664,7 @@
 			// 
 			// hcproofCheckBox
 			// 
+			this.hcproofCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.hcproofCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "hcproof", true));
 			this.hcproofCheckBox.Location = new System.Drawing.Point(662, 207);
 			this.hcproofCheckBox.Name = "hcproofCheckBox";
@@ -4607,6 +4675,7 @@
 			// 
 			// typesetCheckBox
 			// 
+			this.typesetCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.typesetCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.coversBindingSource1, "typeset", true));
 			this.typesetCheckBox.Location = new System.Drawing.Point(661, 261);
 			this.typesetCheckBox.Name = "typesetCheckBox";
@@ -4617,6 +4686,7 @@
 			// 
 			// prntsamDateTimePicker
 			// 
+			this.prntsamDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.prntsamDateTimePicker.CustomFormat = "\'\'";
 			this.prntsamDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coversBindingSource1, "prntsam", true));
 			this.prntsamDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -4628,6 +4698,7 @@
 			// 
 			// mascotComboBox
 			// 
+			this.mascotComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.mascotComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "mascot", true));
 			this.mascotComboBox.FormattingEnabled = true;
 			this.mascotComboBox.Location = new System.Drawing.Point(650, 180);
@@ -4637,6 +4708,7 @@
 			// 
 			// typestyleComboBox
 			// 
+			this.typestyleComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.typestyleComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "typestyle", true));
 			this.typestyleComboBox.FormattingEnabled = true;
 			this.typestyleComboBox.Location = new System.Drawing.Point(650, 157);
@@ -4646,6 +4718,7 @@
 			// 
 			// spbackTextBox
 			// 
+			this.spbackTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.spbackTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "spback", true));
 			this.spbackTextBox.Location = new System.Drawing.Point(650, 109);
 			this.spbackTextBox.MaxLength = 1;
@@ -4856,6 +4929,7 @@
 			// 
 			// textBox8
 			// 
+			this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox8.Location = new System.Drawing.Point(889, 239);
 			this.textBox8.Multiline = true;
 			this.textBox8.Name = "textBox8";
@@ -4864,6 +4938,7 @@
 			// 
 			// specinstTextBox
 			// 
+			this.specinstTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.specinstTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "specinst", true));
 			this.specinstTextBox.Location = new System.Drawing.Point(889, 49);
 			this.specinstTextBox.Multiline = true;
@@ -4873,6 +4948,8 @@
 			// 
 			// desc4TextBox
 			// 
+			this.desc4TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.desc4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "desc4", true));
 			this.desc4TextBox.Location = new System.Drawing.Point(88, 205);
 			this.desc4TextBox.Name = "desc4TextBox";
@@ -4881,6 +4958,8 @@
 			// 
 			// desc1aTextBox
 			// 
+			this.desc1aTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.desc1aTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "desc1a", true));
 			this.desc1aTextBox.Location = new System.Drawing.Point(88, 135);
 			this.desc1aTextBox.Name = "desc1aTextBox";
@@ -4889,6 +4968,8 @@
 			// 
 			// desc3TextBox
 			// 
+			this.desc3TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.desc3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "desc3", true));
 			this.desc3TextBox.Location = new System.Drawing.Point(88, 181);
 			this.desc3TextBox.Name = "desc3TextBox";
@@ -4897,6 +4978,8 @@
 			// 
 			// desc2TextBox
 			// 
+			this.desc2TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.desc2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "desc2", true));
 			this.desc2TextBox.Location = new System.Drawing.Point(88, 158);
 			this.desc2TextBox.Name = "desc2TextBox";
@@ -4905,6 +4988,8 @@
 			// 
 			// desc_TextBox
 			// 
+			this.desc_TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.desc_TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "desc_", true));
 			this.desc_TextBox.Location = new System.Drawing.Point(88, 112);
 			this.desc_TextBox.Name = "desc_TextBox";
@@ -4913,6 +4998,7 @@
 			// 
 			// textBox7
 			// 
+			this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "nopages", true));
 			this.textBox7.Location = new System.Drawing.Point(675, 82);
 			this.textBox7.Name = "textBox7";
@@ -5566,6 +5652,7 @@
 			// 
 			// rmbtotTextBox1
 			// 
+			this.rmbtotTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.rmbtotTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "rmbtot", true));
 			this.rmbtotTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rmbtotTextBox1.Location = new System.Drawing.Point(501, 543);
@@ -5584,6 +5671,7 @@
 			// 
 			// rmbfrmDateTimePicker1
 			// 
+			this.rmbfrmDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.rmbfrmDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "rmbfrm", true));
 			this.rmbfrmDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rmbfrmDateTimePicker1.Location = new System.Drawing.Point(501, 519);
@@ -5593,6 +5681,8 @@
 			// 
 			// rmpfrmDateTimePicker1
 			// 
+			this.rmpfrmDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.rmpfrmDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "rmpfrm", true));
 			this.rmpfrmDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rmpfrmDateTimePicker1.Location = new System.Drawing.Point(148, 519);
@@ -5602,6 +5692,7 @@
 			// 
 			// rmbtoDateTimePicker1
 			// 
+			this.rmbtoDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.rmbtoDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "rmbto", true));
 			this.rmbtoDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rmbtoDateTimePicker1.Location = new System.Drawing.Point(501, 495);
@@ -5611,6 +5702,8 @@
 			// 
 			// rmptoDateTimePicker1
 			// 
+			this.rmptoDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.rmptoDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "rmpto", true));
 			this.rmptoDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rmptoDateTimePicker1.Location = new System.Drawing.Point(148, 495);
@@ -5620,6 +5713,8 @@
 			// 
 			// wipmemoTextBox2
 			// 
+			this.wipmemoTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.wipmemoTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "wipmemo", true));
 			this.wipmemoTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.wipmemoTextBox2.Location = new System.Drawing.Point(148, 579);
@@ -5630,6 +5725,7 @@
 			// 
 			// bindvendTextBox1
 			// 
+			this.bindvendTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.bindvendTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "bindvend", true));
 			this.bindvendTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.bindvendTextBox1.Location = new System.Drawing.Point(680, 449);
@@ -5639,6 +5735,7 @@
 			// 
 			// frmbindDateTimePicker1
 			// 
+			this.frmbindDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.frmbindDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "frmbind", true));
 			this.frmbindDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.frmbindDateTimePicker1.Location = new System.Drawing.Point(347, 449);
@@ -5648,6 +5745,8 @@
 			// 
 			// binddteDateTimePicker1
 			// 
+			this.binddteDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.binddteDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "binddte", true));
 			this.binddteDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.binddteDateTimePicker1.Location = new System.Drawing.Point(122, 449);
@@ -5657,6 +5756,7 @@
 			// 
 			// iinitTextBox2
 			// 
+			this.iinitTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.iinitTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "iinit", true));
 			this.iinitTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.iinitTextBox2.Location = new System.Drawing.Point(680, 423);
@@ -5666,6 +5766,7 @@
 			// 
 			// ideptTextBox2
 			// 
+			this.ideptTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.ideptTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "idept", true));
 			this.ideptTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ideptTextBox2.Location = new System.Drawing.Point(571, 423);
@@ -5675,6 +5776,7 @@
 			// 
 			// ioutDateTimePicker2
 			// 
+			this.ioutDateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.ioutDateTimePicker2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "iout", true));
 			this.ioutDateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ioutDateTimePicker2.Location = new System.Drawing.Point(348, 423);
@@ -5684,6 +5786,8 @@
 			// 
 			// iinDateTimePicker2
 			// 
+			this.iinDateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.iinDateTimePicker2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "iin", true));
 			this.iinDateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.iinDateTimePicker2.Location = new System.Drawing.Point(122, 423);
@@ -5693,6 +5797,7 @@
 			// 
 			// hinitTextBox
 			// 
+			this.hinitTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.hinitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "hinit", true));
 			this.hinitTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.hinitTextBox.Location = new System.Drawing.Point(680, 396);
@@ -5702,6 +5807,7 @@
 			// 
 			// hdeptTextBox
 			// 
+			this.hdeptTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.hdeptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "hdept", true));
 			this.hdeptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.hdeptTextBox.Location = new System.Drawing.Point(571, 395);
@@ -5711,6 +5817,7 @@
 			// 
 			// houtDateTimePicker
 			// 
+			this.houtDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.houtDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "hout", true));
 			this.houtDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.houtDateTimePicker.Location = new System.Drawing.Point(348, 395);
@@ -5720,6 +5827,8 @@
 			// 
 			// hinDateTimePicker
 			// 
+			this.hinDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.hinDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "hin", true));
 			this.hinDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.hinDateTimePicker.Location = new System.Drawing.Point(122, 395);
@@ -5758,6 +5867,8 @@
 			// 
 			this.prtbkbdetailDataGridView.AllowUserToAddRows = false;
 			this.prtbkbdetailDataGridView.AllowUserToOrderColumns = true;
+			this.prtbkbdetailDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.prtbkbdetailDataGridView.AutoGenerateColumns = false;
 			this.prtbkbdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -5876,8 +5987,6 @@
 			// 
 			// dateTimePicker1
 			// 
-			this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dateTimePicker1.CustomFormat = "\'\'";
 			this.dateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "ptbrcvd", true));
 			this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -6012,16 +6121,6 @@
 			// 
 			this.prtbkbdetailTableAdapter.ClearBeforeFill = true;
 			// 
-			// chkLaminated
-			// 
-			this.chkLaminated.AutoSize = true;
-			this.chkLaminated.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "laminated", true));
-			this.chkLaminated.Location = new System.Drawing.Point(169, 170);
-			this.chkLaminated.Name = "chkLaminated";
-			this.chkLaminated.Size = new System.Drawing.Size(15, 14);
-			this.chkLaminated.TabIndex = 131;
-			this.chkLaminated.UseVisualStyleBackColor = true;
-			// 
 			// frmProdutn
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -6149,7 +6248,6 @@
         private System.Windows.Forms.CheckBox colorpgsCheckBox;
         private System.Windows.Forms.TextBox coilclrTextBox;
         private System.Windows.Forms.TextBox txtPerfbind;
-        private System.Windows.Forms.TextBox laminatedTextBox;
         private System.Windows.Forms.TextBox diecutTextBox;
         private System.Windows.Forms.TextBox dcdesc2TextBox;
         private System.Windows.Forms.TextBox dcdesc1TextBox1;
