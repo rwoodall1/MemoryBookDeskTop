@@ -953,13 +953,18 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
 
+		private void button2_Click(object sender, EventArgs e)
+		{
+
+		}
 
 
 
 
 
 
-        //Nothing below here
-    }
+
+		//Nothing below here
+	}
     }
 
