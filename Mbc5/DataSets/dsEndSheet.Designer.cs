@@ -38,6 +38,8 @@ namespace Mbc5.DataSets {
         
         private suppdetailDataTable tablesuppdetail;
         
+        private preflitDataTable tablepreflit;
+        
         private global::System.Data.DataRelation relationcust_quotes;
         
         private global::System.Data.DataRelation relationquotes_endsheet;
@@ -49,6 +51,8 @@ namespace Mbc5.DataSets {
         private global::System.Data.DataRelation relationendsheet_endsheetdetail;
         
         private global::System.Data.DataRelation relationsuppl_suppdetail;
+        
+        private global::System.Data.DataRelation relationquotes_preflit;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -98,6 +102,9 @@ namespace Mbc5.DataSets {
                 }
                 if ((ds.Tables["suppdetail"] != null)) {
                     base.Tables.Add(new suppdetailDataTable(ds.Tables["suppdetail"]));
+                }
+                if ((ds.Tables["preflit"] != null)) {
+                    base.Tables.Add(new preflitDataTable(ds.Tables["preflit"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -189,6 +196,16 @@ namespace Mbc5.DataSets {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public preflitDataTable preflit {
+            get {
+                return this.tablepreflit;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -275,6 +292,9 @@ namespace Mbc5.DataSets {
                 if ((ds.Tables["suppdetail"] != null)) {
                     base.Tables.Add(new suppdetailDataTable(ds.Tables["suppdetail"]));
                 }
+                if ((ds.Tables["preflit"] != null)) {
+                    base.Tables.Add(new preflitDataTable(ds.Tables["preflit"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -350,12 +370,19 @@ namespace Mbc5.DataSets {
                     this.tablesuppdetail.InitVars();
                 }
             }
+            this.tablepreflit = ((preflitDataTable)(base.Tables["preflit"]));
+            if ((initTable == true)) {
+                if ((this.tablepreflit != null)) {
+                    this.tablepreflit.InitVars();
+                }
+            }
             this.relationcust_quotes = this.Relations["cust_quotes"];
             this.relationquotes_endsheet = this.Relations["quotes_endsheet"];
             this.relationquotes_suppl = this.Relations["quotes_suppl"];
             this.relationquotes_produtn = this.Relations["quotes_produtn"];
             this.relationendsheet_endsheetdetail = this.Relations["endsheet_endsheetdetail"];
             this.relationsuppl_suppdetail = this.Relations["suppl_suppdetail"];
+            this.relationquotes_preflit = this.Relations["quotes_preflit"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -380,6 +407,8 @@ namespace Mbc5.DataSets {
             base.Tables.Add(this.tableendsheetdetail);
             this.tablesuppdetail = new suppdetailDataTable();
             base.Tables.Add(this.tablesuppdetail);
+            this.tablepreflit = new preflitDataTable();
+            base.Tables.Add(this.tablepreflit);
             this.relationcust_quotes = new global::System.Data.DataRelation("cust_quotes", new global::System.Data.DataColumn[] {
                         this.tablecust.schcodeColumn}, new global::System.Data.DataColumn[] {
                         this.tablequotes.schcodeColumn}, false);
@@ -404,6 +433,10 @@ namespace Mbc5.DataSets {
                         this.tablesuppl.invnoColumn}, new global::System.Data.DataColumn[] {
                         this.tablesuppdetail.invnoColumn}, false);
             this.Relations.Add(this.relationsuppl_suppdetail);
+            this.relationquotes_preflit = new global::System.Data.DataRelation("quotes_preflit", new global::System.Data.DataColumn[] {
+                        this.tablequotes.invnoColumn}, new global::System.Data.DataColumn[] {
+                        this.tablepreflit.invnoColumn}, false);
+            this.Relations.Add(this.relationquotes_preflit);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -445,6 +478,12 @@ namespace Mbc5.DataSets {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializesuppdetail() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializepreflit() {
             return false;
         }
         
@@ -523,6 +562,9 @@ namespace Mbc5.DataSets {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void suppdetailRowChangeEventHandler(object sender, suppdetailRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void preflitRowChangeEventHandler(object sender, preflitRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3918,6 +3960,891 @@ namespace Mbc5.DataSets {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class preflitDataTable : global::System.Data.TypedTableBase<preflitRow> {
+            
+            private global::System.Data.DataColumn columnschcode;
+            
+            private global::System.Data.DataColumn columninvno;
+            
+            private global::System.Data.DataColumn columnpredate;
+            
+            private global::System.Data.DataColumn columninitial;
+            
+            private global::System.Data.DataColumn columnprodno;
+            
+            private global::System.Data.DataColumn columnprogname;
+            
+            private global::System.Data.DataColumn columnformatpc;
+            
+            private global::System.Data.DataColumn columnformatmac;
+            
+            private global::System.Data.DataColumn columnlinks;
+            
+            private global::System.Data.DataColumn columnalllinks;
+            
+            private global::System.Data.DataColumn columnmisslinks;
+            
+            private global::System.Data.DataColumn columnembedd;
+            
+            private global::System.Data.DataColumn columnfontsb20;
+            
+            private global::System.Data.DataColumn columnfontsall;
+            
+            private global::System.Data.DataColumn columnfontsmis;
+            
+            private global::System.Data.DataColumn columnfembed;
+            
+            private global::System.Data.DataColumn columnmargok;
+            
+            private global::System.Data.DataColumn columnfreadonly;
+            
+            private global::System.Data.DataColumn columnmargfix;
+            
+            private global::System.Data.DataColumn columnimg200;
+            
+            private global::System.Data.DataColumn columnimglow;
+            
+            private global::System.Data.DataColumn columnimgdark;
+            
+            private global::System.Data.DataColumn columnimglight;
+            
+            private global::System.Data.DataColumn columnimglow2;
+            
+            private global::System.Data.DataColumn columndcok;
+            
+            private global::System.Data.DataColumn columndcnotset;
+            
+            private global::System.Data.DataColumn columnbleedset;
+            
+            private global::System.Data.DataColumn columndcnocut;
+            
+            private global::System.Data.DataColumn columnbleedovr;
+            
+            private global::System.Data.DataColumn columnpspa;
+            
+            private global::System.Data.DataColumn columnhires;
+            
+            private global::System.Data.DataColumn columncvrrecv;
+            
+            private global::System.Data.DataColumn columnnumsent;
+            
+            private global::System.Data.DataColumn columndhavboth;
+            
+            private global::System.Data.DataColumn columndmissing;
+            
+            private global::System.Data.DataColumn columnphave;
+            
+            private global::System.Data.DataColumn columnpmissing;
+            
+            private global::System.Data.DataColumn columnchave;
+            
+            private global::System.Data.DataColumn columncmissing;
+            
+            private global::System.Data.DataColumn columncustquest;
+            
+            private global::System.Data.DataColumn columntechnote;
+            
+            private global::System.Data.DataColumn columntimestamp_column;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public preflitDataTable() {
+                this.TableName = "preflit";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal preflitDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected preflitDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn schcodeColumn {
+                get {
+                    return this.columnschcode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn invnoColumn {
+                get {
+                    return this.columninvno;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn predateColumn {
+                get {
+                    return this.columnpredate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn initialColumn {
+                get {
+                    return this.columninitial;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn prodnoColumn {
+                get {
+                    return this.columnprodno;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn prognameColumn {
+                get {
+                    return this.columnprogname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn formatpcColumn {
+                get {
+                    return this.columnformatpc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn formatmacColumn {
+                get {
+                    return this.columnformatmac;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn linksColumn {
+                get {
+                    return this.columnlinks;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn alllinksColumn {
+                get {
+                    return this.columnalllinks;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn misslinksColumn {
+                get {
+                    return this.columnmisslinks;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn embeddColumn {
+                get {
+                    return this.columnembedd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fontsb20Column {
+                get {
+                    return this.columnfontsb20;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fontsallColumn {
+                get {
+                    return this.columnfontsall;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fontsmisColumn {
+                get {
+                    return this.columnfontsmis;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fembedColumn {
+                get {
+                    return this.columnfembed;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn margokColumn {
+                get {
+                    return this.columnmargok;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn freadonlyColumn {
+                get {
+                    return this.columnfreadonly;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn margfixColumn {
+                get {
+                    return this.columnmargfix;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn img200Column {
+                get {
+                    return this.columnimg200;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn imglowColumn {
+                get {
+                    return this.columnimglow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn imgdarkColumn {
+                get {
+                    return this.columnimgdark;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn imglightColumn {
+                get {
+                    return this.columnimglight;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn imglow2Column {
+                get {
+                    return this.columnimglow2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn dcokColumn {
+                get {
+                    return this.columndcok;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn dcnotsetColumn {
+                get {
+                    return this.columndcnotset;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn bleedsetColumn {
+                get {
+                    return this.columnbleedset;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn dcnocutColumn {
+                get {
+                    return this.columndcnocut;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn bleedovrColumn {
+                get {
+                    return this.columnbleedovr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn pspaColumn {
+                get {
+                    return this.columnpspa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn hiresColumn {
+                get {
+                    return this.columnhires;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cvrrecvColumn {
+                get {
+                    return this.columncvrrecv;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn numsentColumn {
+                get {
+                    return this.columnnumsent;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn dhavbothColumn {
+                get {
+                    return this.columndhavboth;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn dmissingColumn {
+                get {
+                    return this.columndmissing;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn phaveColumn {
+                get {
+                    return this.columnphave;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn pmissingColumn {
+                get {
+                    return this.columnpmissing;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn chaveColumn {
+                get {
+                    return this.columnchave;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cmissingColumn {
+                get {
+                    return this.columncmissing;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn custquestColumn {
+                get {
+                    return this.columncustquest;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn technoteColumn {
+                get {
+                    return this.columntechnote;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn timestamp_columnColumn {
+                get {
+                    return this.columntimestamp_column;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public preflitRow this[int index] {
+                get {
+                    return ((preflitRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event preflitRowChangeEventHandler preflitRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event preflitRowChangeEventHandler preflitRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event preflitRowChangeEventHandler preflitRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event preflitRowChangeEventHandler preflitRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddpreflitRow(preflitRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public preflitRow AddpreflitRow(
+                        string schcode, 
+                        quotesRow parentquotesRowByquotes_preflit, 
+                        System.DateTime predate, 
+                        string initial, 
+                        string prodno, 
+                        string progname, 
+                        bool formatpc, 
+                        bool formatmac, 
+                        bool links, 
+                        bool alllinks, 
+                        bool misslinks, 
+                        bool embedd, 
+                        bool fontsb20, 
+                        bool fontsall, 
+                        bool fontsmis, 
+                        bool fembed, 
+                        bool margok, 
+                        bool freadonly, 
+                        bool margfix, 
+                        bool img200, 
+                        bool imglow, 
+                        bool imgdark, 
+                        bool imglight, 
+                        bool imglow2, 
+                        bool dcok, 
+                        bool dcnotset, 
+                        bool bleedset, 
+                        bool dcnocut, 
+                        bool bleedovr, 
+                        bool pspa, 
+                        bool hires, 
+                        bool cvrrecv, 
+                        decimal numsent, 
+                        bool dhavboth, 
+                        bool dmissing, 
+                        bool phave, 
+                        bool pmissing, 
+                        bool chave, 
+                        bool cmissing, 
+                        string custquest, 
+                        string technote, 
+                        byte[] timestamp_column) {
+                preflitRow rowpreflitRow = ((preflitRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        schcode,
+                        null,
+                        predate,
+                        initial,
+                        prodno,
+                        progname,
+                        formatpc,
+                        formatmac,
+                        links,
+                        alllinks,
+                        misslinks,
+                        embedd,
+                        fontsb20,
+                        fontsall,
+                        fontsmis,
+                        fembed,
+                        margok,
+                        freadonly,
+                        margfix,
+                        img200,
+                        imglow,
+                        imgdark,
+                        imglight,
+                        imglow2,
+                        dcok,
+                        dcnotset,
+                        bleedset,
+                        dcnocut,
+                        bleedovr,
+                        pspa,
+                        hires,
+                        cvrrecv,
+                        numsent,
+                        dhavboth,
+                        dmissing,
+                        phave,
+                        pmissing,
+                        chave,
+                        cmissing,
+                        custquest,
+                        technote,
+                        timestamp_column};
+                if ((parentquotesRowByquotes_preflit != null)) {
+                    columnValuesArray[1] = parentquotesRowByquotes_preflit[4];
+                }
+                rowpreflitRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowpreflitRow);
+                return rowpreflitRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public preflitRow FindByinvno(int invno) {
+                return ((preflitRow)(this.Rows.Find(new object[] {
+                            invno})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                preflitDataTable cln = ((preflitDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new preflitDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnschcode = base.Columns["schcode"];
+                this.columninvno = base.Columns["invno"];
+                this.columnpredate = base.Columns["predate"];
+                this.columninitial = base.Columns["initial"];
+                this.columnprodno = base.Columns["prodno"];
+                this.columnprogname = base.Columns["progname"];
+                this.columnformatpc = base.Columns["formatpc"];
+                this.columnformatmac = base.Columns["formatmac"];
+                this.columnlinks = base.Columns["links"];
+                this.columnalllinks = base.Columns["alllinks"];
+                this.columnmisslinks = base.Columns["misslinks"];
+                this.columnembedd = base.Columns["embedd"];
+                this.columnfontsb20 = base.Columns["fontsb20"];
+                this.columnfontsall = base.Columns["fontsall"];
+                this.columnfontsmis = base.Columns["fontsmis"];
+                this.columnfembed = base.Columns["fembed"];
+                this.columnmargok = base.Columns["margok"];
+                this.columnfreadonly = base.Columns["freadonly"];
+                this.columnmargfix = base.Columns["margfix"];
+                this.columnimg200 = base.Columns["img200"];
+                this.columnimglow = base.Columns["imglow"];
+                this.columnimgdark = base.Columns["imgdark"];
+                this.columnimglight = base.Columns["imglight"];
+                this.columnimglow2 = base.Columns["imglow2"];
+                this.columndcok = base.Columns["dcok"];
+                this.columndcnotset = base.Columns["dcnotset"];
+                this.columnbleedset = base.Columns["bleedset"];
+                this.columndcnocut = base.Columns["dcnocut"];
+                this.columnbleedovr = base.Columns["bleedovr"];
+                this.columnpspa = base.Columns["pspa"];
+                this.columnhires = base.Columns["hires"];
+                this.columncvrrecv = base.Columns["cvrrecv"];
+                this.columnnumsent = base.Columns["numsent"];
+                this.columndhavboth = base.Columns["dhavboth"];
+                this.columndmissing = base.Columns["dmissing"];
+                this.columnphave = base.Columns["phave"];
+                this.columnpmissing = base.Columns["pmissing"];
+                this.columnchave = base.Columns["chave"];
+                this.columncmissing = base.Columns["cmissing"];
+                this.columncustquest = base.Columns["custquest"];
+                this.columntechnote = base.Columns["technote"];
+                this.columntimestamp_column = base.Columns["timestamp_column"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnschcode = new global::System.Data.DataColumn("schcode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschcode);
+                this.columninvno = new global::System.Data.DataColumn("invno", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninvno);
+                this.columnpredate = new global::System.Data.DataColumn("predate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpredate);
+                this.columninitial = new global::System.Data.DataColumn("initial", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninitial);
+                this.columnprodno = new global::System.Data.DataColumn("prodno", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprodno);
+                this.columnprogname = new global::System.Data.DataColumn("progname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprogname);
+                this.columnformatpc = new global::System.Data.DataColumn("formatpc", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnformatpc);
+                this.columnformatmac = new global::System.Data.DataColumn("formatmac", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnformatmac);
+                this.columnlinks = new global::System.Data.DataColumn("links", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlinks);
+                this.columnalllinks = new global::System.Data.DataColumn("alllinks", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnalllinks);
+                this.columnmisslinks = new global::System.Data.DataColumn("misslinks", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmisslinks);
+                this.columnembedd = new global::System.Data.DataColumn("embedd", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembedd);
+                this.columnfontsb20 = new global::System.Data.DataColumn("fontsb20", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfontsb20);
+                this.columnfontsall = new global::System.Data.DataColumn("fontsall", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfontsall);
+                this.columnfontsmis = new global::System.Data.DataColumn("fontsmis", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfontsmis);
+                this.columnfembed = new global::System.Data.DataColumn("fembed", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfembed);
+                this.columnmargok = new global::System.Data.DataColumn("margok", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmargok);
+                this.columnfreadonly = new global::System.Data.DataColumn("freadonly", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfreadonly);
+                this.columnmargfix = new global::System.Data.DataColumn("margfix", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmargfix);
+                this.columnimg200 = new global::System.Data.DataColumn("img200", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimg200);
+                this.columnimglow = new global::System.Data.DataColumn("imglow", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimglow);
+                this.columnimgdark = new global::System.Data.DataColumn("imgdark", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimgdark);
+                this.columnimglight = new global::System.Data.DataColumn("imglight", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimglight);
+                this.columnimglow2 = new global::System.Data.DataColumn("imglow2", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimglow2);
+                this.columndcok = new global::System.Data.DataColumn("dcok", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndcok);
+                this.columndcnotset = new global::System.Data.DataColumn("dcnotset", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndcnotset);
+                this.columnbleedset = new global::System.Data.DataColumn("bleedset", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbleedset);
+                this.columndcnocut = new global::System.Data.DataColumn("dcnocut", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndcnocut);
+                this.columnbleedovr = new global::System.Data.DataColumn("bleedovr", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbleedovr);
+                this.columnpspa = new global::System.Data.DataColumn("pspa", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpspa);
+                this.columnhires = new global::System.Data.DataColumn("hires", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnhires);
+                this.columncvrrecv = new global::System.Data.DataColumn("cvrrecv", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncvrrecv);
+                this.columnnumsent = new global::System.Data.DataColumn("numsent", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumsent);
+                this.columndhavboth = new global::System.Data.DataColumn("dhavboth", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndhavboth);
+                this.columndmissing = new global::System.Data.DataColumn("dmissing", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndmissing);
+                this.columnphave = new global::System.Data.DataColumn("phave", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnphave);
+                this.columnpmissing = new global::System.Data.DataColumn("pmissing", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpmissing);
+                this.columnchave = new global::System.Data.DataColumn("chave", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnchave);
+                this.columncmissing = new global::System.Data.DataColumn("cmissing", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncmissing);
+                this.columncustquest = new global::System.Data.DataColumn("custquest", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustquest);
+                this.columntechnote = new global::System.Data.DataColumn("technote", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntechnote);
+                this.columntimestamp_column = new global::System.Data.DataColumn("timestamp_column", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntimestamp_column);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columninvno}, true));
+                this.columnschcode.AllowDBNull = false;
+                this.columnschcode.MaxLength = 6;
+                this.columninvno.AllowDBNull = false;
+                this.columninvno.Unique = true;
+                this.columninitial.MaxLength = 3;
+                this.columnprodno.MaxLength = 11;
+                this.columnprogname.MaxLength = 30;
+                this.columncustquest.MaxLength = 2147483647;
+                this.columntechnote.MaxLength = 2147483647;
+                this.columntimestamp_column.ReadOnly = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public preflitRow NewpreflitRow() {
+                return ((preflitRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new preflitRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(preflitRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.preflitRowChanged != null)) {
+                    this.preflitRowChanged(this, new preflitRowChangeEvent(((preflitRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.preflitRowChanging != null)) {
+                    this.preflitRowChanging(this, new preflitRowChangeEvent(((preflitRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.preflitRowDeleted != null)) {
+                    this.preflitRowDeleted(this, new preflitRowChangeEvent(((preflitRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.preflitRowDeleting != null)) {
+                    this.preflitRowDeleting(this, new preflitRowChangeEvent(((preflitRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemovepreflitRow(preflitRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dsEndSheet ds = new dsEndSheet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "preflitDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class endsheetRow : global::System.Data.DataRow {
@@ -6324,6 +7251,17 @@ namespace Mbc5.DataSets {
                     return ((produtnRow[])(base.GetChildRows(this.Table.ChildRelations["quotes_produtn"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public preflitRow[] GetpreflitRows() {
+                if ((this.Table.ChildRelations["quotes_preflit"] == null)) {
+                    return new preflitRow[0];
+                }
+                else {
+                    return ((preflitRow[])(base.GetChildRows(this.Table.ChildRelations["quotes_preflit"])));
+                }
+            }
         }
         
         /// <summary>
@@ -6969,6 +7907,1174 @@ namespace Mbc5.DataSets {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class preflitRow : global::System.Data.DataRow {
+            
+            private preflitDataTable tablepreflit;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal preflitRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablepreflit = ((preflitDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string schcode {
+                get {
+                    return ((string)(this[this.tablepreflit.schcodeColumn]));
+                }
+                set {
+                    this[this.tablepreflit.schcodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int invno {
+                get {
+                    return ((int)(this[this.tablepreflit.invnoColumn]));
+                }
+                set {
+                    this[this.tablepreflit.invnoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime predate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablepreflit.predateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'predate\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.predateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string initial {
+                get {
+                    try {
+                        return ((string)(this[this.tablepreflit.initialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'initial\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.initialColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string prodno {
+                get {
+                    try {
+                        return ((string)(this[this.tablepreflit.prodnoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'prodno\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.prodnoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string progname {
+                get {
+                    try {
+                        return ((string)(this[this.tablepreflit.prognameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'progname\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.prognameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool formatpc {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.formatpcColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'formatpc\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.formatpcColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool formatmac {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.formatmacColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'formatmac\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.formatmacColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool links {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.linksColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'links\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.linksColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool alllinks {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.alllinksColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'alllinks\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.alllinksColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool misslinks {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.misslinksColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'misslinks\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.misslinksColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool embedd {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.embeddColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embedd\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.embeddColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool fontsb20 {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.fontsb20Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fontsb20\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.fontsb20Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool fontsall {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.fontsallColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fontsall\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.fontsallColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool fontsmis {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.fontsmisColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fontsmis\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.fontsmisColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool fembed {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.fembedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fembed\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.fembedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool margok {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.margokColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'margok\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.margokColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool freadonly {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.freadonlyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'freadonly\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.freadonlyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool margfix {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.margfixColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'margfix\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.margfixColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool img200 {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.img200Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'img200\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.img200Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool imglow {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.imglowColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'imglow\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.imglowColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool imgdark {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.imgdarkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'imgdark\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.imgdarkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool imglight {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.imglightColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'imglight\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.imglightColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool imglow2 {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.imglow2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'imglow2\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.imglow2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool dcok {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.dcokColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dcok\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.dcokColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool dcnotset {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.dcnotsetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dcnotset\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.dcnotsetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool bleedset {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.bleedsetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'bleedset\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.bleedsetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool dcnocut {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.dcnocutColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dcnocut\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.dcnocutColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool bleedovr {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.bleedovrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'bleedovr\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.bleedovrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool pspa {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.pspaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'pspa\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.pspaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool hires {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.hiresColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'hires\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.hiresColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool cvrrecv {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.cvrrecvColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cvrrecv\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.cvrrecvColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal numsent {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablepreflit.numsentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'numsent\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.numsentColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool dhavboth {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.dhavbothColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dhavboth\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.dhavbothColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool dmissing {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.dmissingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dmissing\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.dmissingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool phave {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.phaveColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'phave\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.phaveColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool pmissing {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.pmissingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'pmissing\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.pmissingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool chave {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.chaveColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'chave\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.chaveColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool cmissing {
+                get {
+                    try {
+                        return ((bool)(this[this.tablepreflit.cmissingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cmissing\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.cmissingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string custquest {
+                get {
+                    try {
+                        return ((string)(this[this.tablepreflit.custquestColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'custquest\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.custquestColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string technote {
+                get {
+                    try {
+                        return ((string)(this[this.tablepreflit.technoteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'technote\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.technoteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] timestamp_column {
+                get {
+                    try {
+                        return ((byte[])(this[this.tablepreflit.timestamp_columnColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'timestamp_column\' in table \'preflit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepreflit.timestamp_columnColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public quotesRow quotesRow {
+                get {
+                    return ((quotesRow)(this.GetParentRow(this.Table.ParentRelations["quotes_preflit"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["quotes_preflit"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IspredateNull() {
+                return this.IsNull(this.tablepreflit.predateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetpredateNull() {
+                this[this.tablepreflit.predateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsinitialNull() {
+                return this.IsNull(this.tablepreflit.initialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetinitialNull() {
+                this[this.tablepreflit.initialColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsprodnoNull() {
+                return this.IsNull(this.tablepreflit.prodnoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetprodnoNull() {
+                this[this.tablepreflit.prodnoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsprognameNull() {
+                return this.IsNull(this.tablepreflit.prognameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetprognameNull() {
+                this[this.tablepreflit.prognameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsformatpcNull() {
+                return this.IsNull(this.tablepreflit.formatpcColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetformatpcNull() {
+                this[this.tablepreflit.formatpcColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsformatmacNull() {
+                return this.IsNull(this.tablepreflit.formatmacColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetformatmacNull() {
+                this[this.tablepreflit.formatmacColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IslinksNull() {
+                return this.IsNull(this.tablepreflit.linksColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetlinksNull() {
+                this[this.tablepreflit.linksColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsalllinksNull() {
+                return this.IsNull(this.tablepreflit.alllinksColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetalllinksNull() {
+                this[this.tablepreflit.alllinksColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmisslinksNull() {
+                return this.IsNull(this.tablepreflit.misslinksColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmisslinksNull() {
+                this[this.tablepreflit.misslinksColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsembeddNull() {
+                return this.IsNull(this.tablepreflit.embeddColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetembeddNull() {
+                this[this.tablepreflit.embeddColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfontsb20Null() {
+                return this.IsNull(this.tablepreflit.fontsb20Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfontsb20Null() {
+                this[this.tablepreflit.fontsb20Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfontsallNull() {
+                return this.IsNull(this.tablepreflit.fontsallColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfontsallNull() {
+                this[this.tablepreflit.fontsallColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfontsmisNull() {
+                return this.IsNull(this.tablepreflit.fontsmisColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfontsmisNull() {
+                this[this.tablepreflit.fontsmisColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfembedNull() {
+                return this.IsNull(this.tablepreflit.fembedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfembedNull() {
+                this[this.tablepreflit.fembedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmargokNull() {
+                return this.IsNull(this.tablepreflit.margokColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmargokNull() {
+                this[this.tablepreflit.margokColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfreadonlyNull() {
+                return this.IsNull(this.tablepreflit.freadonlyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfreadonlyNull() {
+                this[this.tablepreflit.freadonlyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmargfixNull() {
+                return this.IsNull(this.tablepreflit.margfixColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmargfixNull() {
+                this[this.tablepreflit.margfixColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isimg200Null() {
+                return this.IsNull(this.tablepreflit.img200Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setimg200Null() {
+                this[this.tablepreflit.img200Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsimglowNull() {
+                return this.IsNull(this.tablepreflit.imglowColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetimglowNull() {
+                this[this.tablepreflit.imglowColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsimgdarkNull() {
+                return this.IsNull(this.tablepreflit.imgdarkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetimgdarkNull() {
+                this[this.tablepreflit.imgdarkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsimglightNull() {
+                return this.IsNull(this.tablepreflit.imglightColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetimglightNull() {
+                this[this.tablepreflit.imglightColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isimglow2Null() {
+                return this.IsNull(this.tablepreflit.imglow2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setimglow2Null() {
+                this[this.tablepreflit.imglow2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdcokNull() {
+                return this.IsNull(this.tablepreflit.dcokColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdcokNull() {
+                this[this.tablepreflit.dcokColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdcnotsetNull() {
+                return this.IsNull(this.tablepreflit.dcnotsetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdcnotsetNull() {
+                this[this.tablepreflit.dcnotsetColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsbleedsetNull() {
+                return this.IsNull(this.tablepreflit.bleedsetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetbleedsetNull() {
+                this[this.tablepreflit.bleedsetColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdcnocutNull() {
+                return this.IsNull(this.tablepreflit.dcnocutColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdcnocutNull() {
+                this[this.tablepreflit.dcnocutColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsbleedovrNull() {
+                return this.IsNull(this.tablepreflit.bleedovrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetbleedovrNull() {
+                this[this.tablepreflit.bleedovrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IspspaNull() {
+                return this.IsNull(this.tablepreflit.pspaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetpspaNull() {
+                this[this.tablepreflit.pspaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IshiresNull() {
+                return this.IsNull(this.tablepreflit.hiresColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SethiresNull() {
+                this[this.tablepreflit.hiresColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscvrrecvNull() {
+                return this.IsNull(this.tablepreflit.cvrrecvColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcvrrecvNull() {
+                this[this.tablepreflit.cvrrecvColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnumsentNull() {
+                return this.IsNull(this.tablepreflit.numsentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnumsentNull() {
+                this[this.tablepreflit.numsentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdhavbothNull() {
+                return this.IsNull(this.tablepreflit.dhavbothColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdhavbothNull() {
+                this[this.tablepreflit.dhavbothColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdmissingNull() {
+                return this.IsNull(this.tablepreflit.dmissingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdmissingNull() {
+                this[this.tablepreflit.dmissingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsphaveNull() {
+                return this.IsNull(this.tablepreflit.phaveColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetphaveNull() {
+                this[this.tablepreflit.phaveColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IspmissingNull() {
+                return this.IsNull(this.tablepreflit.pmissingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetpmissingNull() {
+                this[this.tablepreflit.pmissingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IschaveNull() {
+                return this.IsNull(this.tablepreflit.chaveColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetchaveNull() {
+                this[this.tablepreflit.chaveColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscmissingNull() {
+                return this.IsNull(this.tablepreflit.cmissingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcmissingNull() {
+                this[this.tablepreflit.cmissingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscustquestNull() {
+                return this.IsNull(this.tablepreflit.custquestColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcustquestNull() {
+                this[this.tablepreflit.custquestColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstechnoteNull() {
+                return this.IsNull(this.tablepreflit.technoteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettechnoteNull() {
+                this[this.tablepreflit.technoteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istimestamp_columnNull() {
+                return this.IsNull(this.tablepreflit.timestamp_columnColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settimestamp_columnNull() {
+                this[this.tablepreflit.timestamp_columnColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -7192,6 +9298,40 @@ namespace Mbc5.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public suppdetailRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class preflitRowChangeEvent : global::System.EventArgs {
+            
+            private preflitRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public preflitRowChangeEvent(preflitRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public preflitRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -9175,6 +11315,1054 @@ WHERE          (suppdetail .schcode = @schcode)
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class preflitTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public preflitTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "preflit";
+            tableMapping.ColumnMappings.Add("schcode", "schcode");
+            tableMapping.ColumnMappings.Add("invno", "invno");
+            tableMapping.ColumnMappings.Add("predate", "predate");
+            tableMapping.ColumnMappings.Add("initial", "initial");
+            tableMapping.ColumnMappings.Add("prodno", "prodno");
+            tableMapping.ColumnMappings.Add("progname", "progname");
+            tableMapping.ColumnMappings.Add("formatpc", "formatpc");
+            tableMapping.ColumnMappings.Add("formatmac", "formatmac");
+            tableMapping.ColumnMappings.Add("links", "links");
+            tableMapping.ColumnMappings.Add("alllinks", "alllinks");
+            tableMapping.ColumnMappings.Add("misslinks", "misslinks");
+            tableMapping.ColumnMappings.Add("embedd", "embedd");
+            tableMapping.ColumnMappings.Add("fontsb20", "fontsb20");
+            tableMapping.ColumnMappings.Add("fontsall", "fontsall");
+            tableMapping.ColumnMappings.Add("fontsmis", "fontsmis");
+            tableMapping.ColumnMappings.Add("fembed", "fembed");
+            tableMapping.ColumnMappings.Add("margok", "margok");
+            tableMapping.ColumnMappings.Add("freadonly", "freadonly");
+            tableMapping.ColumnMappings.Add("margfix", "margfix");
+            tableMapping.ColumnMappings.Add("img200", "img200");
+            tableMapping.ColumnMappings.Add("imglow", "imglow");
+            tableMapping.ColumnMappings.Add("imgdark", "imgdark");
+            tableMapping.ColumnMappings.Add("imglight", "imglight");
+            tableMapping.ColumnMappings.Add("imglow2", "imglow2");
+            tableMapping.ColumnMappings.Add("dcok", "dcok");
+            tableMapping.ColumnMappings.Add("dcnotset", "dcnotset");
+            tableMapping.ColumnMappings.Add("bleedset", "bleedset");
+            tableMapping.ColumnMappings.Add("dcnocut", "dcnocut");
+            tableMapping.ColumnMappings.Add("bleedovr", "bleedovr");
+            tableMapping.ColumnMappings.Add("pspa", "pspa");
+            tableMapping.ColumnMappings.Add("hires", "hires");
+            tableMapping.ColumnMappings.Add("cvrrecv", "cvrrecv");
+            tableMapping.ColumnMappings.Add("numsent", "numsent");
+            tableMapping.ColumnMappings.Add("dhavboth", "dhavboth");
+            tableMapping.ColumnMappings.Add("dmissing", "dmissing");
+            tableMapping.ColumnMappings.Add("phave", "phave");
+            tableMapping.ColumnMappings.Add("pmissing", "pmissing");
+            tableMapping.ColumnMappings.Add("chave", "chave");
+            tableMapping.ColumnMappings.Add("cmissing", "cmissing");
+            tableMapping.ColumnMappings.Add("custquest", "custquest");
+            tableMapping.ColumnMappings.Add("technote", "technote");
+            tableMapping.ColumnMappings.Add("timestamp_column", "timestamp_column");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [preflit] WHERE (([invno] = @Original_invno) AND ([timestamp_column] " +
+                "= @Original_timestamp_column))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_timestamp_column", global::System.Data.SqlDbType.Timestamp, 0, global::System.Data.ParameterDirection.Input, 0, 0, "timestamp_column", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [preflit] ([schcode], [invno], [predate], [initial], [prodno], [progname], [formatpc], [formatmac], [links], [alllinks], [misslinks], [embedd], [fontsb20], [fontsall], [fontsmis], [fembed], [margok], [freadonly], [margfix], [img200], [imglow], [imgdark], [imglight], [imglow2], [dcok], [dcnotset], [bleedset], [dcnocut], [bleedovr], [pspa], [hires], [cvrrecv], [numsent], [dhavboth], [dmissing], [phave], [pmissing], [chave], [cmissing], [custquest], [technote]) VALUES (@schcode, @invno, @predate, @initial, @prodno, @progname, @formatpc, @formatmac, @links, @alllinks, @misslinks, @embedd, @fontsb20, @fontsall, @fontsmis, @fembed, @margok, @freadonly, @margfix, @img200, @imglow, @imgdark, @imglight, @imglow2, @dcok, @dcnotset, @bleedset, @dcnocut, @bleedovr, @pspa, @hires, @cvrrecv, @numsent, @dhavboth, @dmissing, @phave, @pmissing, @chave, @cmissing, @custquest, @technote);
+SELECT schcode, invno, predate, initial, prodno, progname, formatpc, formatmac, links, alllinks, misslinks, embedd, fontsb20, fontsall, fontsmis, fembed, margok, freadonly, margfix, img200, imglow, imgdark, imglight, imglow2, dcok, dcnotset, bleedset, dcnocut, bleedovr, pspa, hires, cvrrecv, numsent, dhavboth, dmissing, phave, pmissing, chave, cmissing, custquest, technote, timestamp_column FROM preflit WHERE (invno = @invno)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@predate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "predate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@initial", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "initial", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@progname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "progname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@formatpc", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "formatpc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@formatmac", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "formatmac", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@links", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "links", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@alllinks", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "alllinks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@misslinks", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "misslinks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@embedd", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "embedd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fontsb20", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fontsb20", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fontsall", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fontsall", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fontsmis", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fontsmis", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fembed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fembed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@margok", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "margok", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@freadonly", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freadonly", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@margfix", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "margfix", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@img200", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "img200", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@imglow", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "imglow", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@imgdark", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "imgdark", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@imglight", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "imglight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@imglow2", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "imglow2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dcok", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dcok", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dcnotset", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dcnotset", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bleedset", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bleedset", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dcnocut", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dcnocut", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bleedovr", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bleedovr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pspa", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pspa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hires", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "hires", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cvrrecv", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cvrrecv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numsent", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 3, 0, "numsent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dhavboth", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dhavboth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dmissing", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dmissing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phave", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phave", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pmissing", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pmissing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@chave", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chave", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cmissing", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cmissing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@custquest", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "custquest", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@technote", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "technote", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [preflit] SET [schcode] = @schcode, [invno] = @invno, [predate] = @predate, [initial] = @initial, [prodno] = @prodno, [progname] = @progname, [formatpc] = @formatpc, [formatmac] = @formatmac, [links] = @links, [alllinks] = @alllinks, [misslinks] = @misslinks, [embedd] = @embedd, [fontsb20] = @fontsb20, [fontsall] = @fontsall, [fontsmis] = @fontsmis, [fembed] = @fembed, [margok] = @margok, [freadonly] = @freadonly, [margfix] = @margfix, [img200] = @img200, [imglow] = @imglow, [imgdark] = @imgdark, [imglight] = @imglight, [imglow2] = @imglow2, [dcok] = @dcok, [dcnotset] = @dcnotset, [bleedset] = @bleedset, [dcnocut] = @dcnocut, [bleedovr] = @bleedovr, [pspa] = @pspa, [hires] = @hires, [cvrrecv] = @cvrrecv, [numsent] = @numsent, [dhavboth] = @dhavboth, [dmissing] = @dmissing, [phave] = @phave, [pmissing] = @pmissing, [chave] = @chave, [cmissing] = @cmissing, [custquest] = @custquest, [technote] = @technote WHERE (([invno] = @Original_invno) AND ([timestamp_column] = @Original_timestamp_column));
+SELECT schcode, invno, predate, initial, prodno, progname, formatpc, formatmac, links, alllinks, misslinks, embedd, fontsb20, fontsall, fontsmis, fembed, margok, freadonly, margfix, img200, imglow, imgdark, imglight, imglow2, dcok, dcnotset, bleedset, dcnocut, bleedovr, pspa, hires, cvrrecv, numsent, dhavboth, dmissing, phave, pmissing, chave, cmissing, custquest, technote, timestamp_column FROM preflit WHERE (invno = @invno)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@predate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "predate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@initial", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "initial", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@progname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "progname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@formatpc", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "formatpc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@formatmac", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "formatmac", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@links", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "links", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@alllinks", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "alllinks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@misslinks", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "misslinks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@embedd", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "embedd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fontsb20", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fontsb20", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fontsall", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fontsall", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fontsmis", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fontsmis", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fembed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fembed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@margok", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "margok", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@freadonly", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freadonly", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@margfix", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "margfix", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@img200", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "img200", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@imglow", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "imglow", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@imgdark", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "imgdark", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@imglight", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "imglight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@imglow2", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "imglow2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dcok", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dcok", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dcnotset", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dcnotset", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bleedset", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bleedset", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dcnocut", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dcnocut", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bleedovr", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bleedovr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pspa", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pspa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hires", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "hires", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cvrrecv", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cvrrecv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numsent", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 3, 0, "numsent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dhavboth", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dhavboth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dmissing", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dmissing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phave", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phave", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pmissing", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pmissing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@chave", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chave", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cmissing", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cmissing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@custquest", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "custquest", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@technote", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "technote", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_timestamp_column", global::System.Data.SqlDbType.Timestamp, 0, global::System.Data.ParameterDirection.Input, 0, 0, "timestamp_column", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT          schcode, invno, predate, initial, prodno, progname, formatpc, formatmac, links, alllinks, misslinks, embedd, fontsb20, fontsall, fontsmis, fembed, margok, freadonly, margfix, img200, 
+                            imglow, imgdark, imglight, imglow2, dcok, dcnotset, bleedset, dcnocut, bleedovr, pspa, hires, cvrrecv, numsent, dhavboth, dmissing, phave, pmissing, chave, cmissing, custquest, 
+                            technote, timestamp_column
+FROM              preflit
+WHERE          (schcode = @Schcode)";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(dsEndSheet.preflitDataTable dataTable, string Schcode) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((Schcode == null)) {
+                throw new global::System.ArgumentNullException("Schcode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual dsEndSheet.preflitDataTable GetData(string Schcode) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((Schcode == null)) {
+                throw new global::System.ArgumentNullException("Schcode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Schcode));
+            }
+            dsEndSheet.preflitDataTable dataTable = new dsEndSheet.preflitDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(dsEndSheet.preflitDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(dsEndSheet dataSet) {
+            return this.Adapter.Update(dataSet, "preflit");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_invno, byte[] Original_timestamp_column) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_invno));
+            if ((Original_timestamp_column == null)) {
+                throw new global::System.ArgumentNullException("Original_timestamp_column");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((byte[])(Original_timestamp_column));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(
+                    string schcode, 
+                    int invno, 
+                    global::System.Nullable<global::System.DateTime> predate, 
+                    string initial, 
+                    string prodno, 
+                    string progname, 
+                    global::System.Nullable<bool> formatpc, 
+                    global::System.Nullable<bool> formatmac, 
+                    global::System.Nullable<bool> links, 
+                    global::System.Nullable<bool> alllinks, 
+                    global::System.Nullable<bool> misslinks, 
+                    global::System.Nullable<bool> embedd, 
+                    global::System.Nullable<bool> fontsb20, 
+                    global::System.Nullable<bool> fontsall, 
+                    global::System.Nullable<bool> fontsmis, 
+                    global::System.Nullable<bool> fembed, 
+                    global::System.Nullable<bool> margok, 
+                    global::System.Nullable<bool> freadonly, 
+                    global::System.Nullable<bool> margfix, 
+                    global::System.Nullable<bool> img200, 
+                    global::System.Nullable<bool> imglow, 
+                    global::System.Nullable<bool> imgdark, 
+                    global::System.Nullable<bool> imglight, 
+                    global::System.Nullable<bool> imglow2, 
+                    global::System.Nullable<bool> dcok, 
+                    global::System.Nullable<bool> dcnotset, 
+                    global::System.Nullable<bool> bleedset, 
+                    global::System.Nullable<bool> dcnocut, 
+                    global::System.Nullable<bool> bleedovr, 
+                    global::System.Nullable<bool> pspa, 
+                    global::System.Nullable<bool> hires, 
+                    global::System.Nullable<bool> cvrrecv, 
+                    global::System.Nullable<decimal> numsent, 
+                    global::System.Nullable<bool> dhavboth, 
+                    global::System.Nullable<bool> dmissing, 
+                    global::System.Nullable<bool> phave, 
+                    global::System.Nullable<bool> pmissing, 
+                    global::System.Nullable<bool> chave, 
+                    global::System.Nullable<bool> cmissing, 
+                    string custquest, 
+                    string technote) {
+            if ((schcode == null)) {
+                throw new global::System.ArgumentNullException("schcode");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(schcode));
+            }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(invno));
+            if ((predate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(predate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((initial == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(initial));
+            }
+            if ((prodno == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(prodno));
+            }
+            if ((progname == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(progname));
+            }
+            if ((formatpc.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((bool)(formatpc.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((formatmac.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(formatmac.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((links.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((bool)(links.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((alllinks.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((bool)(alllinks.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((misslinks.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((bool)(misslinks.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((embedd.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((bool)(embedd.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((fontsb20.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((bool)(fontsb20.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((fontsall.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((bool)(fontsall.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((fontsmis.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((bool)(fontsmis.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((fembed.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((bool)(fembed.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((margok.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((bool)(margok.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((freadonly.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[17].Value = ((bool)(freadonly.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((margfix.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[18].Value = ((bool)(margfix.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((img200.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = ((bool)(img200.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((imglow.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[20].Value = ((bool)(imglow.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((imgdark.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[21].Value = ((bool)(imgdark.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((imglight.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[22].Value = ((bool)(imglight.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((imglow2.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[23].Value = ((bool)(imglow2.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((dcok.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[24].Value = ((bool)(dcok.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            if ((dcnotset.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[25].Value = ((bool)(dcnotset.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((bleedset.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[26].Value = ((bool)(bleedset.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((dcnocut.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[27].Value = ((bool)(dcnocut.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((bleedovr.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[28].Value = ((bool)(bleedovr.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            if ((pspa.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[29].Value = ((bool)(pspa.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            if ((hires.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[30].Value = ((bool)(hires.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            if ((cvrrecv.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[31].Value = ((bool)(cvrrecv.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            if ((numsent.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[32].Value = ((decimal)(numsent.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            if ((dhavboth.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[33].Value = ((bool)(dhavboth.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            if ((dmissing.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[34].Value = ((bool)(dmissing.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            if ((phave.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[35].Value = ((bool)(phave.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            if ((pmissing.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[36].Value = ((bool)(pmissing.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            if ((chave.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[37].Value = ((bool)(chave.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[37].Value = global::System.DBNull.Value;
+            }
+            if ((cmissing.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[38].Value = ((bool)(cmissing.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((custquest == null)) {
+                this.Adapter.InsertCommand.Parameters[39].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[39].Value = ((string)(custquest));
+            }
+            if ((technote == null)) {
+                this.Adapter.InsertCommand.Parameters[40].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[40].Value = ((string)(technote));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string schcode, 
+                    int invno, 
+                    global::System.Nullable<global::System.DateTime> predate, 
+                    string initial, 
+                    string prodno, 
+                    string progname, 
+                    global::System.Nullable<bool> formatpc, 
+                    global::System.Nullable<bool> formatmac, 
+                    global::System.Nullable<bool> links, 
+                    global::System.Nullable<bool> alllinks, 
+                    global::System.Nullable<bool> misslinks, 
+                    global::System.Nullable<bool> embedd, 
+                    global::System.Nullable<bool> fontsb20, 
+                    global::System.Nullable<bool> fontsall, 
+                    global::System.Nullable<bool> fontsmis, 
+                    global::System.Nullable<bool> fembed, 
+                    global::System.Nullable<bool> margok, 
+                    global::System.Nullable<bool> freadonly, 
+                    global::System.Nullable<bool> margfix, 
+                    global::System.Nullable<bool> img200, 
+                    global::System.Nullable<bool> imglow, 
+                    global::System.Nullable<bool> imgdark, 
+                    global::System.Nullable<bool> imglight, 
+                    global::System.Nullable<bool> imglow2, 
+                    global::System.Nullable<bool> dcok, 
+                    global::System.Nullable<bool> dcnotset, 
+                    global::System.Nullable<bool> bleedset, 
+                    global::System.Nullable<bool> dcnocut, 
+                    global::System.Nullable<bool> bleedovr, 
+                    global::System.Nullable<bool> pspa, 
+                    global::System.Nullable<bool> hires, 
+                    global::System.Nullable<bool> cvrrecv, 
+                    global::System.Nullable<decimal> numsent, 
+                    global::System.Nullable<bool> dhavboth, 
+                    global::System.Nullable<bool> dmissing, 
+                    global::System.Nullable<bool> phave, 
+                    global::System.Nullable<bool> pmissing, 
+                    global::System.Nullable<bool> chave, 
+                    global::System.Nullable<bool> cmissing, 
+                    string custquest, 
+                    string technote, 
+                    int Original_invno, 
+                    byte[] Original_timestamp_column) {
+            if ((schcode == null)) {
+                throw new global::System.ArgumentNullException("schcode");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(schcode));
+            }
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(invno));
+            if ((predate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(predate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((initial == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(initial));
+            }
+            if ((prodno == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(prodno));
+            }
+            if ((progname == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(progname));
+            }
+            if ((formatpc.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(formatpc.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((formatmac.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(formatmac.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((links.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(links.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((alllinks.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((bool)(alllinks.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((misslinks.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(misslinks.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((embedd.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(embedd.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((fontsb20.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(fontsb20.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((fontsall.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(fontsall.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((fontsmis.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((bool)(fontsmis.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((fembed.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(fembed.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((margok.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((bool)(margok.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((freadonly.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((bool)(freadonly.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((margfix.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((bool)(margfix.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((img200.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((bool)(img200.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((imglow.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((bool)(imglow.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((imgdark.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((bool)(imgdark.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((imglight.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((bool)(imglight.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((imglow2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((bool)(imglow2.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((dcok.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((bool)(dcok.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            if ((dcnotset.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((bool)(dcnotset.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((bleedset.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((bool)(bleedset.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((dcnocut.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((bool)(dcnocut.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((bleedovr.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((bool)(bleedovr.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            if ((pspa.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((bool)(pspa.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            if ((hires.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((bool)(hires.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            if ((cvrrecv.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((bool)(cvrrecv.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            if ((numsent.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((decimal)(numsent.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            if ((dhavboth.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((bool)(dhavboth.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            if ((dmissing.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((bool)(dmissing.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            if ((phave.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((bool)(phave.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            if ((pmissing.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((bool)(pmissing.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            if ((chave.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((bool)(chave.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
+            }
+            if ((cmissing.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((bool)(cmissing.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((custquest == null)) {
+                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((string)(custquest));
+            }
+            if ((technote == null)) {
+                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(technote));
+            }
+            this.Adapter.UpdateCommand.Parameters[41].Value = ((int)(Original_invno));
+            if ((Original_timestamp_column == null)) {
+                throw new global::System.ArgumentNullException("Original_timestamp_column");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((byte[])(Original_timestamp_column));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string schcode, 
+                    global::System.Nullable<global::System.DateTime> predate, 
+                    string initial, 
+                    string prodno, 
+                    string progname, 
+                    global::System.Nullable<bool> formatpc, 
+                    global::System.Nullable<bool> formatmac, 
+                    global::System.Nullable<bool> links, 
+                    global::System.Nullable<bool> alllinks, 
+                    global::System.Nullable<bool> misslinks, 
+                    global::System.Nullable<bool> embedd, 
+                    global::System.Nullable<bool> fontsb20, 
+                    global::System.Nullable<bool> fontsall, 
+                    global::System.Nullable<bool> fontsmis, 
+                    global::System.Nullable<bool> fembed, 
+                    global::System.Nullable<bool> margok, 
+                    global::System.Nullable<bool> freadonly, 
+                    global::System.Nullable<bool> margfix, 
+                    global::System.Nullable<bool> img200, 
+                    global::System.Nullable<bool> imglow, 
+                    global::System.Nullable<bool> imgdark, 
+                    global::System.Nullable<bool> imglight, 
+                    global::System.Nullable<bool> imglow2, 
+                    global::System.Nullable<bool> dcok, 
+                    global::System.Nullable<bool> dcnotset, 
+                    global::System.Nullable<bool> bleedset, 
+                    global::System.Nullable<bool> dcnocut, 
+                    global::System.Nullable<bool> bleedovr, 
+                    global::System.Nullable<bool> pspa, 
+                    global::System.Nullable<bool> hires, 
+                    global::System.Nullable<bool> cvrrecv, 
+                    global::System.Nullable<decimal> numsent, 
+                    global::System.Nullable<bool> dhavboth, 
+                    global::System.Nullable<bool> dmissing, 
+                    global::System.Nullable<bool> phave, 
+                    global::System.Nullable<bool> pmissing, 
+                    global::System.Nullable<bool> chave, 
+                    global::System.Nullable<bool> cmissing, 
+                    string custquest, 
+                    string technote, 
+                    int Original_invno, 
+                    byte[] Original_timestamp_column) {
+            return this.Update(schcode, Original_invno, predate, initial, prodno, progname, formatpc, formatmac, links, alllinks, misslinks, embedd, fontsb20, fontsall, fontsmis, fembed, margok, freadonly, margfix, img200, imglow, imgdark, imglight, imglow2, dcok, dcnotset, bleedset, dcnocut, bleedovr, pspa, hires, cvrrecv, numsent, dhavboth, dmissing, phave, pmissing, chave, cmissing, custquest, technote, Original_invno, Original_timestamp_column);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9191,6 +12379,8 @@ WHERE          (suppdetail .schcode = @schcode)
         private custTableAdapter _custTableAdapter;
         
         private produtnTableAdapter _produtnTableAdapter;
+        
+        private preflitTableAdapter _preflitTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -9251,6 +12441,20 @@ WHERE          (suppdetail .schcode = @schcode)
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public preflitTableAdapter preflitTableAdapter {
+            get {
+                return this._preflitTableAdapter;
+            }
+            set {
+                this._preflitTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -9280,6 +12484,10 @@ WHERE          (suppdetail .schcode = @schcode)
                             && (this._produtnTableAdapter.Connection != null))) {
                     return this._produtnTableAdapter.Connection;
                 }
+                if (((this._preflitTableAdapter != null) 
+                            && (this._preflitTableAdapter.Connection != null))) {
+                    return this._preflitTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -9300,6 +12508,9 @@ WHERE          (suppdetail .schcode = @schcode)
                     count = (count + 1);
                 }
                 if ((this._produtnTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._preflitTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -9340,6 +12551,15 @@ WHERE          (suppdetail .schcode = @schcode)
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._preflitTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.preflit.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._preflitTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -9374,6 +12594,14 @@ WHERE          (suppdetail .schcode = @schcode)
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._preflitTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.preflit.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._preflitTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -9384,6 +12612,14 @@ WHERE          (suppdetail .schcode = @schcode)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(dsEndSheet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._preflitTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.preflit.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._preflitTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._produtnTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.produtn.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -9462,6 +12698,11 @@ WHERE          (suppdetail .schcode = @schcode)
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._preflitTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._preflitTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -9519,6 +12760,15 @@ WHERE          (suppdetail .schcode = @schcode)
                     if (this._produtnTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._produtnTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._produtnTableAdapter.Adapter);
+                    }
+                }
+                if ((this._preflitTableAdapter != null)) {
+                    revertConnections.Add(this._preflitTableAdapter, this._preflitTableAdapter.Connection);
+                    this._preflitTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._preflitTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._preflitTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._preflitTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._preflitTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -9590,6 +12840,10 @@ WHERE          (suppdetail .schcode = @schcode)
                 if ((this._produtnTableAdapter != null)) {
                     this._produtnTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._produtnTableAdapter]));
                     this._produtnTableAdapter.Transaction = null;
+                }
+                if ((this._preflitTableAdapter != null)) {
+                    this._preflitTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._preflitTableAdapter]));
+                    this._preflitTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

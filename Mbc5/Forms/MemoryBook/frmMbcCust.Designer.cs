@@ -267,6 +267,7 @@ namespace Mbc5.Forms.MemoryBook {
 			this.tableAdapterManager3 = new Mbc5.DataSets.dsDateContTableAdapters.TableAdapterManager();
 			this.datecontTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.datecontTableAdapter();
 			this.datecontBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+			this.txtModifiedBy = new System.Windows.Forms.TextBox();
 			contryearLabel = new System.Windows.Forms.Label();
 			contdateLabel = new System.Windows.Forms.Label();
 			csrepLabel = new System.Windows.Forms.Label();
@@ -331,6 +332,7 @@ namespace Mbc5.Forms.MemoryBook {
 			yb_sthLabel = new System.Windows.Forms.Label();
 			lblInterOffice = new System.Windows.Forms.Label();
 			contmemoLabel = new System.Windows.Forms.Label();
+			this.BottomPanel.SuspendLayout();
 			this.CustTab.SuspendLayout();
 			this.pg1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -366,6 +368,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// 
 			// BottomPanel
 			// 
+			this.BottomPanel.Controls.Add(this.txtModifiedBy);
 			this.BottomPanel.Location = new System.Drawing.Point(0, 693);
 			this.BottomPanel.Size = new System.Drawing.Size(1234, 38);
 			// 
@@ -1089,8 +1092,10 @@ namespace Mbc5.Forms.MemoryBook {
 			this.txtSchname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schname", true));
 			this.txtSchname.Location = new System.Drawing.Point(86, 35);
 			this.txtSchname.Name = "txtSchname";
+			this.txtSchname.ReadOnly = true;
 			this.txtSchname.Size = new System.Drawing.Size(249, 20);
 			this.txtSchname.TabIndex = 0;
+			this.txtSchname.DoubleClick += new System.EventHandler(this.txtSchname_DoubleClick);
 			// 
 			// custBindingSource
 			// 
@@ -1235,7 +1240,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// multiyearCheckBox
 			// 
 			this.multiyearCheckBox.AutoSize = true;
-			this.multiyearCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "multiyear", true));
+			this.multiyearCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "multiyear", true));
 			this.multiyearCheckBox.Location = new System.Drawing.Point(24, 306);
 			this.multiyearCheckBox.Name = "multiyearCheckBox";
 			this.multiyearCheckBox.Size = new System.Drawing.Size(70, 17);
@@ -1291,7 +1296,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// schuploadingCheckBox
 			// 
 			this.schuploadingCheckBox.AutoSize = true;
-			this.schuploadingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "schuploading", true));
+			this.schuploadingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "schuploading", true));
 			this.schuploadingCheckBox.Location = new System.Drawing.Point(398, 242);
 			this.schuploadingCheckBox.Name = "schuploadingCheckBox";
 			this.schuploadingCheckBox.Size = new System.Drawing.Size(121, 17);
@@ -1302,7 +1307,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// blkwhiteCheckBox
 			// 
 			this.blkwhiteCheckBox.AutoSize = true;
-			this.blkwhiteCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "blkwhite", true));
+			this.blkwhiteCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "blkwhite", true));
 			this.blkwhiteCheckBox.Location = new System.Drawing.Point(398, 215);
 			this.blkwhiteCheckBox.Name = "blkwhiteCheckBox";
 			this.blkwhiteCheckBox.Size = new System.Drawing.Size(86, 17);
@@ -1313,7 +1318,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// allcolorCheckBox
 			// 
 			this.allcolorCheckBox.AutoSize = true;
-			this.allcolorCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "allcolor", true));
+			this.allcolorCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "allcolor", true));
 			this.allcolorCheckBox.Location = new System.Drawing.Point(398, 184);
 			this.allcolorCheckBox.Name = "allcolorCheckBox";
 			this.allcolorCheckBox.Size = new System.Drawing.Size(64, 17);
@@ -1324,7 +1329,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// sprinfoCheckBox
 			// 
 			this.sprinfoCheckBox.AutoSize = true;
-			this.sprinfoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "sprinfo", true));
+			this.sprinfoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "sprinfo", true));
 			this.sprinfoCheckBox.Location = new System.Drawing.Point(282, 242);
 			this.sprinfoCheckBox.Name = "sprinfoCheckBox";
 			this.sprinfoCheckBox.Size = new System.Drawing.Size(71, 17);
@@ -1335,7 +1340,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// fallinfoCheckBox
 			// 
 			this.fallinfoCheckBox.AutoSize = true;
-			this.fallinfoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "fallinfo", true));
+			this.fallinfoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "fallinfo", true));
 			this.fallinfoCheckBox.Location = new System.Drawing.Point(282, 215);
 			this.fallinfoCheckBox.Name = "fallinfoCheckBox";
 			this.fallinfoCheckBox.Size = new System.Drawing.Size(93, 17);
@@ -1346,7 +1351,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// clspicCheckBox
 			// 
 			this.clspicCheckBox.AutoSize = true;
-			this.clspicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "clspic", true));
+			this.clspicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "clspic", true));
 			this.clspicCheckBox.Location = new System.Drawing.Point(282, 184);
 			this.clspicCheckBox.Name = "clspicCheckBox";
 			this.clspicCheckBox.Size = new System.Drawing.Size(109, 17);
@@ -1488,7 +1493,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// nodirectmailCheckBox
 			// 
 			this.nodirectmailCheckBox.AutoSize = true;
-			this.nodirectmailCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "nodirectmail", true));
+			this.nodirectmailCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "nodirectmail", true));
 			this.nodirectmailCheckBox.Location = new System.Drawing.Point(354, 5);
 			this.nodirectmailCheckBox.Name = "nodirectmailCheckBox";
 			this.nodirectmailCheckBox.Size = new System.Drawing.Size(93, 17);
@@ -1499,7 +1504,9 @@ namespace Mbc5.Forms.MemoryBook {
 			// nomktemailCheckBox
 			// 
 			this.nomktemailCheckBox.AutoSize = true;
-			this.nomktemailCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "nomktemail", true));
+			this.nomktemailCheckBox.Checked = true;
+			this.nomktemailCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.nomktemailCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "nomktemail", true));
 			this.nomktemailCheckBox.Location = new System.Drawing.Point(225, 5);
 			this.nomktemailCheckBox.Name = "nomktemailCheckBox";
 			this.nomktemailCheckBox.Size = new System.Drawing.Size(118, 17);
@@ -2704,6 +2711,15 @@ namespace Mbc5.Forms.MemoryBook {
 			this.datecontBindingSource1.DataMember = "datecont";
 			this.datecontBindingSource1.DataSource = this.dsDateCont;
 			// 
+			// txtModifiedBy
+			// 
+			this.txtModifiedBy.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "ModifiedBy", true));
+			this.txtModifiedBy.Enabled = false;
+			this.txtModifiedBy.Location = new System.Drawing.Point(1219, 15);
+			this.txtModifiedBy.Name = "txtModifiedBy";
+			this.txtModifiedBy.Size = new System.Drawing.Size(1, 20);
+			this.txtModifiedBy.TabIndex = 17;
+			// 
 			// frmMbcCust
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2717,6 +2733,8 @@ namespace Mbc5.Forms.MemoryBook {
 			this.Controls.SetChildIndex(this.CustTab, 0);
 			this.Controls.SetChildIndex(this.TopPanel, 0);
 			this.Controls.SetChildIndex(this.BottomPanel, 0);
+			this.BottomPanel.ResumeLayout(false);
+			this.BottomPanel.PerformLayout();
 			this.CustTab.ResumeLayout(false);
 			this.pg1.ResumeLayout(false);
 			this.splitContainer.Panel1.ResumeLayout(false);
@@ -2924,5 +2942,6 @@ namespace Mbc5.Forms.MemoryBook {
      
         private System.Windows.Forms.Label lblSchcodeVal;
         private System.Windows.Forms.TextBox txtSchname;
-        }
+		private System.Windows.Forms.TextBox txtModifiedBy;
+	}
 }

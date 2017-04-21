@@ -168,8 +168,11 @@ namespace Mbc5.Forms.MemoryBook {
         #region CrudOperations
         public override bool Save()
         {
+			this.txtModifiedBy.Text  = this.ApplicationUser.id;
             bool retval = false;
+		
             txtSchname.ReadOnly = true;
+
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
                 this.custBindingSource.EndEdit();
@@ -195,32 +198,37 @@ namespace Mbc5.Forms.MemoryBook {
                     retval = false;
                     }
             }
-            return retval;
+			this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+			return retval;
         }
         public override void Add() {
-            dsCust.Clear();
+			
+			dsCust.Clear();
             DataRowView newrow = (DataRowView)custBindingSource.AddNew();
             GetSetSchcode();
             txtSchname.ReadOnly = false;
-
+            this.txtModifiedBy.Text = this.ApplicationUser.id;
             }
         public override void Delete() {
-           
-            DialogResult messageResult = MessageBox.Show("This will delete the current customer. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
-            if (messageResult == DialogResult.Yes) {
-                DataRowView current = (DataRowView)custBindingSource.Current;
-                var schcode = current["schcode"];
 
-                var sqlQuery = new SQLQuery();
-                var queryString = "Delete  From  cust where schcode=@schcode ";
-                SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@schcode",schcode)
-            };
-                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-                this.custTableAdapter.Fill(this.dsCust.cust,"038752");//set to cs record                
-                }
-          
-            }
+			//should mark as deleted or remove??
+			this.txtModifiedBy.Text = this.ApplicationUser.id;
+			DialogResult messageResult = MessageBox.Show("This will delete the current customer. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+			if (messageResult == DialogResult.Yes)
+			{
+				DataRowView current = (DataRowView)custBindingSource.Current;
+				var schcode = current["schcode"];
+
+				var sqlQuery = new SQLQuery();
+				var queryString = "Delete  From  cust where schcode=@schcode ";
+				SqlParameter[] parameters = new SqlParameter[] {
+				new SqlParameter("@schcode",schcode)
+			};
+				var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
+				this.custTableAdapter.Fill(this.dsCust.cust, "038752");//set to cs record                
+			}
+
+		}
         public override void Cancel() {
             custBindingSource.CancelEdit();
             }     
@@ -956,6 +964,19 @@ namespace Mbc5.Forms.MemoryBook {
 		private void button2_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void txtSchname_MouseClick(object sender, MouseEventArgs e)
+		{
+
+		}
+
+		private void txtSchname_DoubleClick(object sender, EventArgs e)
+		{
+			if (ApplicationUser.IsInRole("SA")|| ApplicationUser.IsInRole("Administrator"))
+			{
+				txtSchname.ReadOnly = false;
+			}
 		}
 
 

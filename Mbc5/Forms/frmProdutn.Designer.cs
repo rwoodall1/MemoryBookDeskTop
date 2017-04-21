@@ -542,6 +542,7 @@
 			this.lkpBackGroundTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpBackGroundTableAdapter();
 			this.partBkDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.PartBkDetailTableAdapter();
 			this.prtbkbdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.prtbkbdetailTableAdapter();
+			this.modifiedByTextBox = new System.Windows.Forms.TextBox();
 			companyLabel = new System.Windows.Forms.Label();
 			invnoLabel = new System.Windows.Forms.Label();
 			prodnoLabel = new System.Windows.Forms.Label();
@@ -2449,6 +2450,7 @@
 			// panel4
 			// 
 			this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel4.Controls.Add(this.modifiedByTextBox);
 			this.panel4.Controls.Add(label7);
 			this.panel4.Controls.Add(this.cominitlTextBox);
 			this.panel4.Controls.Add(label6);
@@ -6121,6 +6123,15 @@
 			// 
 			this.prtbkbdetailTableAdapter.ClearBeforeFill = true;
 			// 
+			// modifiedByTextBox
+			// 
+			this.modifiedByTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ModifiedBy", true));
+			this.modifiedByTextBox.Enabled = false;
+			this.modifiedByTextBox.Location = new System.Drawing.Point(514, 293);
+			this.modifiedByTextBox.Name = "modifiedByTextBox";
+			this.modifiedByTextBox.Size = new System.Drawing.Size(1, 20);
+			this.modifiedByTextBox.TabIndex = 156;
+			// 
 			// frmProdutn
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -6526,5 +6537,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
 		private System.Windows.Forms.CheckBox chkLaminated;
+		private System.Windows.Forms.TextBox modifiedByTextBox;
 	}
 }
