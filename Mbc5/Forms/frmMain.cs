@@ -59,7 +59,13 @@ namespace Mbc5.Forms
                         vInvno = tmpForm.Invno;
                         break;
                     }
-                case "frmBids":
+				case "frmSales":
+					{
+						var tmpForm = (frmSales)this.ActiveMdiChild;
+						vInvno = tmpForm.Invno;
+						break;
+					}
+				case "frmBids":
                     {
                         var tmpForm = (frmBids)this.ActiveMdiChild;
                         vInvno = tmpForm.Invno;
