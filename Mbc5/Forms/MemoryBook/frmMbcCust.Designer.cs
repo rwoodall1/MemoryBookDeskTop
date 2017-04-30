@@ -150,16 +150,13 @@ namespace Mbc5.Forms.MemoryBook {
 			this.txtZip = new System.Windows.Forms.TextBox();
 			this.txtAddress2 = new System.Windows.Forms.TextBox();
 			this.txtCity = new System.Windows.Forms.TextBox();
+			this.dedayoutLabel2 = new System.Windows.Forms.Label();
+			this.dedayinLabel2 = new System.Windows.Forms.Label();
 			this.lblInvno = new System.Windows.Forms.Label();
 			this.btnSchoolEmail = new System.Windows.Forms.Button();
 			this.nodirectmailCheckBox = new System.Windows.Forms.CheckBox();
 			this.nomktemailCheckBox = new System.Windows.Forms.CheckBox();
 			this.custDataGridView = new System.Windows.Forms.DataGridView();
-			this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn106 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn107 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn108 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn111 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.txtBookType = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.spcinstTextBox = new System.Windows.Forms.TextBox();
@@ -169,6 +166,7 @@ namespace Mbc5.Forms.MemoryBook {
 			this.yb_sthTextBox = new System.Windows.Forms.TextBox();
 			this.inofficeTextBox = new System.Windows.Forms.TextBox();
 			this.pnlHead = new System.Windows.Forms.Panel();
+			this.btnNewCustomer = new System.Windows.Forms.Button();
 			this.btnOracleSrch = new System.Windows.Forms.Button();
 			this.txtOracleCodeSrch = new System.Windows.Forms.TextBox();
 			this.btnSchoolSearch = new System.Windows.Forms.Button();
@@ -274,9 +272,11 @@ namespace Mbc5.Forms.MemoryBook {
 			this.datecontTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.datecontTableAdapter();
 			this.datecontBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
 			this.txtModifiedBy = new System.Windows.Forms.TextBox();
-			this.dedayinLabel2 = new System.Windows.Forms.Label();
-			this.dedayoutLabel2 = new System.Windows.Forms.Label();
-			this.btnNewCustomer = new System.Windows.Forms.Button();
+			this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn106 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn107 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn108 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn111 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			contryearLabel = new System.Windows.Forms.Label();
 			csrepLabel = new System.Windows.Forms.Label();
 			junsnoLabel = new System.Windows.Forms.Label();
@@ -1552,6 +1552,24 @@ namespace Mbc5.Forms.MemoryBook {
 			this.txtCity.Size = new System.Drawing.Size(183, 20);
 			this.txtCity.TabIndex = 5;
 			// 
+			// dedayoutLabel2
+			// 
+			this.dedayoutLabel2.AutoSize = true;
+			this.dedayoutLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "dedayout", true));
+			this.dedayoutLabel2.Location = new System.Drawing.Point(186, 69);
+			this.dedayoutLabel2.Name = "dedayoutLabel2";
+			this.dedayoutLabel2.Size = new System.Drawing.Size(0, 13);
+			this.dedayoutLabel2.TabIndex = 45;
+			// 
+			// dedayinLabel2
+			// 
+			this.dedayinLabel2.AutoSize = true;
+			this.dedayinLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "dedayin", true));
+			this.dedayinLabel2.Location = new System.Drawing.Point(186, 46);
+			this.dedayinLabel2.Name = "dedayinLabel2";
+			this.dedayinLabel2.Size = new System.Drawing.Size(0, 13);
+			this.dedayinLabel2.TabIndex = 44;
+			// 
 			// lblInvno
 			// 
 			this.lblInvno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "invno", true));
@@ -1633,41 +1651,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.custDataGridView.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.custDataGridView_RowHeaderMouseDoubleClick);
 			this.custDataGridView.Enter += new System.EventHandler(this.custDataGridView_Enter);
 			this.custDataGridView.Leave += new System.EventHandler(this.custDataGridView_Leave);
-			// 
-			// dataGridViewTextBoxColumn105
-			// 
-			this.dataGridViewTextBoxColumn105.DataPropertyName = "booktype";
-			this.dataGridViewTextBoxColumn105.HeaderText = "Book Type";
-			this.dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
-			this.dataGridViewTextBoxColumn105.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn106
-			// 
-			this.dataGridViewTextBoxColumn106.DataPropertyName = "Qyear";
-			this.dataGridViewTextBoxColumn106.HeaderText = "Year";
-			this.dataGridViewTextBoxColumn106.Name = "dataGridViewTextBoxColumn106";
-			this.dataGridViewTextBoxColumn106.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn107
-			// 
-			this.dataGridViewTextBoxColumn107.DataPropertyName = "invno";
-			this.dataGridViewTextBoxColumn107.HeaderText = "Invoice#";
-			this.dataGridViewTextBoxColumn107.Name = "dataGridViewTextBoxColumn107";
-			this.dataGridViewTextBoxColumn107.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn108
-			// 
-			this.dataGridViewTextBoxColumn108.DataPropertyName = "prodno";
-			this.dataGridViewTextBoxColumn108.HeaderText = "Prod No#";
-			this.dataGridViewTextBoxColumn108.Name = "dataGridViewTextBoxColumn108";
-			this.dataGridViewTextBoxColumn108.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn111
-			// 
-			this.dataGridViewTextBoxColumn111.DataPropertyName = "kitrecvd";
-			this.dataGridViewTextBoxColumn111.HeaderText = "Kit Recvd Date";
-			this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
-			this.dataGridViewTextBoxColumn111.ReadOnly = true;
 			// 
 			// txtBookType
 			// 
@@ -1766,6 +1749,20 @@ namespace Mbc5.Forms.MemoryBook {
 			this.pnlHead.Name = "pnlHead";
 			this.pnlHead.Size = new System.Drawing.Size(1226, 38);
 			this.pnlHead.TabIndex = 64;
+			// 
+			// btnNewCustomer
+			// 
+			this.btnNewCustomer.AutoSize = true;
+			this.btnNewCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnNewCustomer.Image")));
+			this.btnNewCustomer.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+			this.btnNewCustomer.Location = new System.Drawing.Point(1060, 6);
+			this.btnNewCustomer.Name = "btnNewCustomer";
+			this.btnNewCustomer.Size = new System.Drawing.Size(159, 23);
+			this.btnNewCustomer.TabIndex = 9;
+			this.btnNewCustomer.Text = "New Customer Email";
+			this.btnNewCustomer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnNewCustomer.UseVisualStyleBackColor = true;
+			this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
 			// 
 			// btnOracleSrch
 			// 
@@ -2804,37 +2801,40 @@ namespace Mbc5.Forms.MemoryBook {
 			this.txtModifiedBy.Size = new System.Drawing.Size(1, 20);
 			this.txtModifiedBy.TabIndex = 17;
 			// 
-			// dedayinLabel2
+			// dataGridViewTextBoxColumn105
 			// 
-			this.dedayinLabel2.AutoSize = true;
-			this.dedayinLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "dedayin", true));
-			this.dedayinLabel2.Location = new System.Drawing.Point(186, 46);
-			this.dedayinLabel2.Name = "dedayinLabel2";
-			this.dedayinLabel2.Size = new System.Drawing.Size(0, 13);
-			this.dedayinLabel2.TabIndex = 44;
+			this.dataGridViewTextBoxColumn105.DataPropertyName = "booktype";
+			this.dataGridViewTextBoxColumn105.HeaderText = "Book Type";
+			this.dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
+			this.dataGridViewTextBoxColumn105.ReadOnly = true;
 			// 
-			// dedayoutLabel2
+			// dataGridViewTextBoxColumn106
 			// 
-			this.dedayoutLabel2.AutoSize = true;
-			this.dedayoutLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "dedayout", true));
-			this.dedayoutLabel2.Location = new System.Drawing.Point(186, 69);
-			this.dedayoutLabel2.Name = "dedayoutLabel2";
-			this.dedayoutLabel2.Size = new System.Drawing.Size(0, 13);
-			this.dedayoutLabel2.TabIndex = 45;
+			this.dataGridViewTextBoxColumn106.DataPropertyName = "Qyear";
+			this.dataGridViewTextBoxColumn106.HeaderText = "Year";
+			this.dataGridViewTextBoxColumn106.Name = "dataGridViewTextBoxColumn106";
+			this.dataGridViewTextBoxColumn106.ReadOnly = true;
 			// 
-			// btnNewCustomer
+			// dataGridViewTextBoxColumn107
 			// 
-			this.btnNewCustomer.AutoSize = true;
-			this.btnNewCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnNewCustomer.Image")));
-			this.btnNewCustomer.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-			this.btnNewCustomer.Location = new System.Drawing.Point(1060, 6);
-			this.btnNewCustomer.Name = "btnNewCustomer";
-			this.btnNewCustomer.Size = new System.Drawing.Size(159, 23);
-			this.btnNewCustomer.TabIndex = 9;
-			this.btnNewCustomer.Text = "New Customer Email";
-			this.btnNewCustomer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnNewCustomer.UseVisualStyleBackColor = true;
-			this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
+			this.dataGridViewTextBoxColumn107.DataPropertyName = "invno";
+			this.dataGridViewTextBoxColumn107.HeaderText = "Invoice#";
+			this.dataGridViewTextBoxColumn107.Name = "dataGridViewTextBoxColumn107";
+			this.dataGridViewTextBoxColumn107.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn108
+			// 
+			this.dataGridViewTextBoxColumn108.DataPropertyName = "prodno";
+			this.dataGridViewTextBoxColumn108.HeaderText = "Prod No#";
+			this.dataGridViewTextBoxColumn108.Name = "dataGridViewTextBoxColumn108";
+			this.dataGridViewTextBoxColumn108.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn111
+			// 
+			this.dataGridViewTextBoxColumn111.DataPropertyName = "kitrecvd";
+			this.dataGridViewTextBoxColumn111.HeaderText = "Kit Recvd Date";
+			this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
+			this.dataGridViewTextBoxColumn111.ReadOnly = true;
 			// 
 			// frmMbcCust
 			// 
@@ -2985,11 +2985,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.TextBox txtAddress2;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.DataGridView custDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn106;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn107;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn108;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn111;
         private System.Windows.Forms.TextBox txtBookType;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox shiptocontTextBox;
@@ -3066,5 +3061,10 @@ namespace Mbc5.Forms.MemoryBook {
 		private System.Windows.Forms.Label dedayoutLabel2;
 		private System.Windows.Forms.Label dedayinLabel2;
 		private System.Windows.Forms.Button btnNewCustomer;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn106;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn107;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn108;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn111;
 	}
 }

@@ -182,14 +182,6 @@
     <Compile Include="Dialogs\frmSelctCust.Designer.cs">
       <DependentUpon>frmSelctCust.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\..\..\frmEndSheet.cs">
-      <SubType>Form</SubType>
-      <Link>Forms\frmEndSheet.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\frmEndSheet.Designer.cs">
-      <DependentUpon>frmEndSheet.cs</DependentUpon>
-      <Link>Forms\frmEndSheet.Designer.cs</Link>
-    </Compile>
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +193,12 @@
     </Compile>
     <Compile Include="Forms\frmBarScan.Designer.cs">
       <DependentUpon>frmBarScan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEndSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEndSheet.designer.cs">
+      <DependentUpon>frmEndSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmProdutn.cs">
       <SubType>Form</SubType>
@@ -317,15 +315,14 @@
     <EmbeddedResource Include="Dialogs\frmSelctCust.resx">
       <DependentUpon>frmSelctCust.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\..\..\frmEndSheet.resx">
-      <DependentUpon>frmEndSheet.cs</DependentUpon>
-      <Link>Forms\frmEndSheet.resx</Link>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBarScan.resx">
       <DependentUpon>frmBarScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEndSheet.resx">
+      <DependentUpon>frmEndSheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProdutn.resx">
       <DependentUpon>frmProdutn.cs</DependentUpon>
