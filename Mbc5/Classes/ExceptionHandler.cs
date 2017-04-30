@@ -73,7 +73,6 @@ namespace Mbc5.Classes
         }
         //EndCust
         #endregion
-
         #region Quotes
         public static DialogResult CreateMessage(DataSets.dsSales.quotesRow cr1,ref DataSets.dsSales dataset) {
             string msg = GetRowData(GetCurrentRowInDB(cr1),cr1,DataRowVersion.Default) + "\n \n" +
@@ -338,6 +337,256 @@ namespace Mbc5.Classes
             }
 
 
-        #endregion
-        }
-    }
+		#endregion
+		#region PtBKB
+		public static DialogResult CreateMessage(DataSets.dsProdutn.ptbkbRow cr, ref DataSets.dsProdutn dataset)
+		{
+			string msg = GetRowData(GetCurrentRowInDB(cr), cr, DataRowVersion.Default) + "\n \n" +
+			  "Do you still want to update the database with the proposed value?";
+			DialogResult response = MessageBox.Show(msg, "Concurrency Exception", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+			if (response == DialogResult.Yes)
+			{
+				//keeps form data
+				dataset.Merge(tempCustDataTable, true, MissingSchemaAction.Ignore);
+			}
+			else
+			{
+				//keeps data on server
+				dataset.Merge(tempCustDataTable);
+				MessageBox.Show("Update was canceled.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			}
+			return response;
+
+		}
+		public static DataSets.dsProdutn.ptbkbDataTable tempPtBKBDataTable = new DataSets.dsProdutn.ptbkbDataTable();
+		private static DataSets.dsProdutn.ptbkbRow GetCurrentRowInDB(DataSets.dsProdutn.ptbkbRow RowWithError)
+		{
+			DataSets.dsProdutnTableAdapters.ptbkbTableAdapter vTableAdapter = new DataSets.dsProdutnTableAdapters.ptbkbTableAdapter();
+
+			try
+			{
+
+				vTableAdapter.Fill(tempPtBKBDataTable, RowWithError.schcode);
+			}
+			catch (Exception ex)
+			{
+
+			}
+			DataSets.dsProdutn.ptbkbRow currentRowInDb =
+			  (DataSets.dsProdutn.ptbkbRow)tempCustDataTable.Rows[0];
+
+			return currentRowInDb;
+		}
+		private static string GetRowData(DataSets.dsProdutn.ptbkbRow curData, DataSets.dsProdutn.ptbkbRow vrow, DataRowVersion RowVersion)
+		{
+			//string rowData = "";
+			string columnDataDefault = "";
+			string columnDataOriginal = "";
+			string columnDataCurrent = "";
+			string badColumns = "";
+			for (int i = 0; i < vrow.ItemArray.Length; i++)
+			{
+				columnDataDefault = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Default].ToString().Trim();
+				columnDataOriginal = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Original].ToString().Trim();
+				columnDataCurrent = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + curData[i, DataRowVersion.Current].ToString().Trim();
+				if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent)
+				{
+					badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+				}
+
+			}
+
+			return badColumns;
+		}
+
+
+		#endregion
+		#region EndSheet
+		public static DialogResult CreateMessage(DataSets.dsEndSheet.endsheetRow cr1, ref DataSets.dsEndSheet dataset)
+		{
+			string msg = GetRowData(GetCurrentRowInDB(cr1), cr1, DataRowVersion.Default) + "\n \n" +
+			  "Do you still want to update the database with the proposed value?";
+			DialogResult response = MessageBox.Show(msg, "Concurrency Exception", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+			if (response == DialogResult.Yes)
+			{
+				//keeps form data
+				dataset.Merge(tempEndSheetDataTable, true, MissingSchemaAction.Ignore);
+			}
+			else
+			{
+				//keeps data on server
+				dataset.Merge(tempEndSheetDataTable);
+				MessageBox.Show("Update was canceled.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			}
+			return response;
+
+		}
+		public static DataSets.dsEndSheet.endsheetDataTable tempEndSheetDataTable = new DataSets.dsEndSheet.endsheetDataTable();
+		private static DataSets.dsEndSheet.endsheetRow GetCurrentRowInDB(DataSets.dsEndSheet.endsheetRow RowWithError)
+		{
+			DataSets.dsEndSheetTableAdapters.endsheetTableAdapter vTableAdapter = new DataSets.dsEndSheetTableAdapters.endsheetTableAdapter();
+
+			try
+			{
+
+				vTableAdapter.FillByInvno(tempEndSheetDataTable, RowWithError.invno);
+			}
+			catch (Exception ex)
+			{
+
+			}
+			DataSets.dsEndSheet.endsheetRow currentRowInDb =
+			  (DataSets.dsEndSheet.endsheetRow)tempEndSheetDataTable.Rows[0];
+
+			return currentRowInDb;
+		}
+		private static string GetRowData(DataSets.dsEndSheet.endsheetRow curData, DataSets.dsEndSheet.endsheetRow vrow, DataRowVersion RowVersion)
+		{
+			//string rowData = "";
+			string columnDataDefault = "";
+			string columnDataOriginal = "";
+			string columnDataCurrent = "";
+			string badColumns = "";
+			for (int i = 0; i < vrow.ItemArray.Length; i++)
+			{
+				columnDataDefault = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Default].ToString().Trim();
+				columnDataOriginal = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Original].ToString().Trim();
+				columnDataCurrent = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + curData[i, DataRowVersion.Current].ToString().Trim();
+				if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent)
+				{
+					badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+				}
+
+			}
+
+			return badColumns;
+		}
+
+		#endregion
+		#region Supplement
+		public static DialogResult CreateMessage(DataSets.dsEndSheet.supplRow cr1, ref DataSets.dsEndSheet dataset)
+		{
+			string msg = GetRowData(GetCurrentRowInDB(cr1), cr1, DataRowVersion.Default) + "\n \n" +
+			  "Do you still want to update the database with the proposed value?";
+			DialogResult response = MessageBox.Show(msg, "Concurrency Exception", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+			if (response == DialogResult.Yes)
+			{
+				//keeps form data
+				dataset.Merge(tempsupplDataTable, true, MissingSchemaAction.Ignore);
+			}
+			else
+			{
+				//keeps data on server
+				dataset.Merge(tempsupplDataTable);
+				MessageBox.Show("Update was canceled.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			}
+			return response;
+
+		}
+		public static DataSets.dsEndSheet.supplDataTable tempsupplDataTable = new DataSets.dsEndSheet.supplDataTable();
+		private static DataSets.dsEndSheet.supplRow GetCurrentRowInDB(DataSets.dsEndSheet.supplRow RowWithError)
+		{
+			DataSets.dsEndSheetTableAdapters.supplTableAdapter vTableAdapter = new DataSets.dsEndSheetTableAdapters.supplTableAdapter();
+
+			try
+			{
+
+				vTableAdapter.FillByInvno(tempsupplDataTable, RowWithError.invno);
+			}
+			catch (Exception ex)
+			{
+
+			}
+			DataSets.dsEndSheet.supplRow currentRowInDb =
+			  (DataSets.dsEndSheet.supplRow)tempQuotesDataTable.Rows[0];
+
+			return currentRowInDb;
+		}
+		private static string GetRowData(DataSets.dsEndSheet.supplRow curData, DataSets.dsEndSheet.supplRow vrow, DataRowVersion RowVersion)
+		{
+			//string rowData = "";
+			string columnDataDefault = "";
+			string columnDataOriginal = "";
+			string columnDataCurrent = "";
+			string badColumns = "";
+			for (int i = 0; i < vrow.ItemArray.Length; i++)
+			{
+				columnDataDefault = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Default].ToString().Trim();
+				columnDataOriginal = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Original].ToString().Trim();
+				columnDataCurrent = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + curData[i, DataRowVersion.Current].ToString().Trim();
+				if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent)
+				{
+					badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+				}
+
+			}
+
+			return badColumns;
+		}
+
+		#endregion
+		#region Preflit
+		public static DialogResult CreateMessage(DataSets.dsEndSheet.preflitRow cr1, ref DataSets.dsEndSheet dataset)
+		{
+			string msg = GetRowData(GetCurrentRowInDB(cr1), cr1, DataRowVersion.Default) + "\n \n" +
+			  "Do you still want to update the database with the proposed value?";
+			DialogResult response = MessageBox.Show(msg, "Concurrency Exception", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+			if (response == DialogResult.Yes)
+			{
+				//keeps form data
+				dataset.Merge(temppreflitlDataTable, true, MissingSchemaAction.Ignore);
+			}
+			else
+			{
+				//keeps data on server
+				dataset.Merge(temppreflitlDataTable);
+				MessageBox.Show("Update was canceled.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			}
+			return response;
+
+		}
+		public static DataSets.dsEndSheet.preflitDataTable temppreflitlDataTable = new DataSets.dsEndSheet.preflitDataTable();
+		private static DataSets.dsEndSheet.preflitRow GetCurrentRowInDB(DataSets.dsEndSheet.preflitRow RowWithError)
+		{
+			DataSets.dsEndSheetTableAdapters.preflitTableAdapter vTableAdapter = new DataSets.dsEndSheetTableAdapters.preflitTableAdapter();
+
+			try
+			{
+
+				vTableAdapter.FillByInvno(temppreflitlDataTable, RowWithError.invno);
+			}
+			catch (Exception ex)
+			{
+
+			}
+			DataSets.dsEndSheet.preflitRow currentRowInDb =
+			  (DataSets.dsEndSheet.preflitRow)temppreflitlDataTable.Rows[0];
+
+			return currentRowInDb;
+		}
+		private static string GetRowData(DataSets.dsEndSheet.preflitRow curData, DataSets.dsEndSheet.preflitRow vrow, DataRowVersion RowVersion)
+		{
+			//string rowData = "";
+			string columnDataDefault = "";
+			string columnDataOriginal = "";
+			string columnDataCurrent = "";
+			string badColumns = "";
+			for (int i = 0; i < vrow.ItemArray.Length; i++)
+			{
+				columnDataDefault = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Default].ToString().Trim();
+				columnDataOriginal = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Original].ToString().Trim();
+				columnDataCurrent = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + curData[i, DataRowVersion.Current].ToString().Trim();
+				if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent)
+				{
+					badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+				}
+
+			}
+
+			return badColumns;
+		}
+
+		#endregion
+
+	}
+}

@@ -211,7 +211,7 @@ namespace Mbc5.Forms {
                         }
                    
                 case 3:
-                    //SavePayment();
+                    
                     break;
                 case 4:
                    SavePartBK();
@@ -225,31 +225,71 @@ namespace Mbc5.Forms {
                 }
             return retval;
             }
-        
-        private bool SavePtBkB()
+		private bool SavePartBK()
+		{
+			bool retval = false;
+			if (dsProdutn.partbk.Count > 0)
+			{
+				if (this.ValidateChildren(ValidationConstraints.Enabled))
+				{
+					try
+					{
+						this.partbkBindingSource.EndEdit();
+						var a =partbkTableAdapter.Update(dsProdutn.partbk);
+						//must refill so we get updated time stamp so concurrency is not thrown
+						partbkTableAdapter.Fill(dsProdutn.partbk, Schcode);
+						retval = true;
+					}
+					catch (DBConcurrencyException dbex)
+					{
+						DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.partbkRow)(dbex.Row), ref dsProdutn);
+						if (result == DialogResult.Yes) { SavePartBK(); };
+					}
+					catch (Exception ex)
+					{
+						ex.ToExceptionless()
+					   .SetMessage("Partial Book A record failed to update:" + ex.Message)
+					   .Submit();
+						retval = false;
+					}
+				}
+			}
+			else { retval = false; }
+
+			return retval;
+		}
+		private bool SavePtBkB()
             {
             bool retval = false;
-            if (dsProdutn.ptbkb.Count > 0) {
-                if (this.ValidateChildren(ValidationConstraints.Enabled)) {
-                    try {
-                        this.ptbkbBindingSource.EndEdit();
-                        var a = ptbkbTableAdapter.Update(dsProdutn.ptbkb);
-                        //must refill so we get updated time stamp so concurrency is not thrown
-                        ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
-                        retval = true;
-                        } catch (DBConcurrencyException dbex) {
-                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.ptbkbRow)(dbex.Row),ref dsProdutn);
-                        if (result == DialogResult.Yes) { SavePtBKB(); };
-                        } catch (Exception ex) {
-                        ex.ToExceptionless()
-                       .SetMessage("Photos On CD record failed to update:" + ex.Message)
-                       .Submit();
-                        retval = false;
-                        }
-                    }
-                } else { retval = false; }
+			if (dsProdutn.ptbkb.Count > 0)
+			{
+				if (this.ValidateChildren(ValidationConstraints.Enabled))
+				{
+					try
+					{
+						this.ptbkbBindingSource.EndEdit();
+						var a = ptbkbTableAdapter.Update(dsProdutn.ptbkb);
+						//must refill so we get updated time stamp so concurrency is not thrown
+						ptbkbTableAdapter.Fill(dsProdutn.ptbkb, Schcode);
+						retval = true;
+					}
+					catch (DBConcurrencyException dbex)
+					{
+						DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsProdutn.ptbkbRow)(dbex.Row), ref dsProdutn);
+						if (result == DialogResult.Yes) { SavePtBkB(); };
+					}
+					catch (Exception ex)
+					{
+						ex.ToExceptionless()
+					   .SetMessage("Photos On CD record failed to update:" + ex.Message)
+					   .Submit();
+						retval = false;
+					}
+				}
+			}
+			else { retval = false; }
 
-            return retval;
+			return retval;
             }
         private bool SaveProdutn()
         {
@@ -607,7 +647,7 @@ namespace Mbc5.Forms {
                  new SqlParameter("@Invno",vInvno)
             };
             List<BinderyInfo> result = (List<BinderyInfo>)sqlQuery.ExecuteReaderAsync<BinderyInfo>(CommandType.Text,queryString,parameters);
-            if (result.Count < 1) {
+            if (result==null||result.Count < 1) {
                 MessageBox.Show("Bindery information was not found.");
                 return;
                 }
