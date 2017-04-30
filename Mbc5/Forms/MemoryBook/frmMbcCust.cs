@@ -90,8 +90,43 @@ namespace Mbc5.Forms.MemoryBook {
             SetInvnoSchCode();
 
             }
+		private void btnOracleSrch_Click(object sender, EventArgs e)
+		{
+			var currentSchool = lblSchcodeVal.Text.Trim();
+			if (DoPhoneLog())
+			{
+				MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+				return;
+			}
+			if (!this.Save())
+			{
+				DialogResult result = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+				if (result == DialogResult.Cancel)
+				{
+					return;
+				}
+			}
+			var records = this.custTableAdapter.FillByOracleCode(this.dsCust.cust, txtOracleCodeSrch.Text);
+			if (records < 1)
+			{
+				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
+				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+				TeleGo = false;
+			}
+			else
+			{
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+				TeleGo = false;
 
-        private void btnSchoolCode_Click(object sender,EventArgs e) {
+			}
+			txtOracleCodeSrch.Text = "";
+			SetInvnoSchCode();
+		}
+
+		private void btnSchoolCode_Click(object sender,EventArgs e) {
             var currentSchool = lblSchcodeVal.Text.Trim();
             if (DoPhoneLog())
                 {
@@ -130,40 +165,53 @@ namespace Mbc5.Forms.MemoryBook {
                 return;
                 }
             if (!this.Save()) {
-                DialogResult result = MessageBox.Show("Record failed to save. Hit cancel to correct.","Save",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                if (result == DialogResult.Cancel) {
-                    return;
-                    }
+                DialogResult result = MessageBox.Show("Record failed to save correct and save again.","Save",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+				return;
                 }
             var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
-            if (records < 1)
-                {
-                this.custTableAdapter.Fill(this.dsCust.cust,currentSchool);
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
-                TeleGo = false;
-                MessageBox.Show("Record was not found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                }else if (records>1) {
-                //more than one record select which one you want
-                DataTable tmpTable = dsCust.Tables["Cust"];
-                this.Cursor = Cursors.AppStarting;
-                frmSelctCust frmSelectCust = new frmSelctCust(tmpTable);
-                DialogResult result=frmSelectCust.ShowDialog();
-                this.Cursor = Cursors.Default;
-               this.custTableAdapter.Fill(this.dsCust.cust,frmSelectCust.retval);
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
-                TeleGo = false;
-                }
-            else
-                {
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
-                TeleGo = false;
-               
-                }
-            txtSchNamesrch.Text = "";
-            SetInvnoSchCode();
+			if (records < 1)
+			{
+				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+				TeleGo = false;
+				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else if (records > 1)
+			{
+				//more than one record select which one you want
+				DataTable tmpTable = dsCust.Tables["Cust"];
+				this.Cursor = Cursors.AppStarting;
+				frmSelctCust frmSelectCust = new frmSelctCust(tmpTable);
+				DialogResult result = frmSelectCust.ShowDialog();
+				this.Cursor = Cursors.Default;
+				if (result != DialogResult.Cancel)
+				{
+					this.custTableAdapter.Fill(this.dsCust.cust, frmSelectCust.retval);
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+					TeleGo = false;
+				}
+				else
+				{
+					//refill normal
+					this.custTableAdapter.Fill(this.dsCust.cust, Schcode );
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+					TeleGo = false;
+				}
+			}
+
+			else
+			{
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+				TeleGo = false;
+
+			}
+				txtSchNamesrch.Text = "";
+				SetInvnoSchCode();
+			
             }
         #region CrudOperations
         public override bool Save()
@@ -978,6 +1026,51 @@ namespace Mbc5.Forms.MemoryBook {
 				txtSchname.ReadOnly = false;
 			}
 		}
+
+		private void frmMbcCust_Paint(object sender, PaintEventArgs e)
+		{
+			try { this.Text = "MBC Customers-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+			catch
+			{
+
+			}
+		}
+
+		private void schoutDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			schoutDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void contdateDateTimePicker_ValueChanged_1(object sender, EventArgs e)
+		{
+			contdateDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void initcontDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			initcontDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void sourdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			sourdateDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void btnNewCustomer_Click(object sender, EventArgs e)
+		{
+			this.Cursor = Cursors.AppStarting;
+			string body = txtSchname.Text.Trim() + "<br/>" + txtaddress.Text.Trim() + "<br/>" +  txtCity.Text.Trim() + ", " + cmbState.SelectedValue + ' ' + txtZip.Text.Trim() + "<br/><br/>Congratulations to the Jostens Team...Memory Book just signed the following NEW customer in your territory for the " + contryearTextBox.Text + " school year! ";
+			string subj = Schcode + " " + txtSchname.Text.Trim() + " " + cmbState.SelectedValue + " NEW SCHOOL By Customer Service Rep " + txtCsRep.Text;
+			//string email = "yearbook@memorybook.com;hcantrell@memorybook.com;john.cox@jostens.com;tammy.whitaker@jostens.com";
+			string email = "randy@woodalldevelopment.com";
+			var emailHelper = new EmailHelper();
+			EmailType type = EmailType.Mbc;
+			emailHelper.SendOutLookEmail(subj, email, "", body, type);
+			this.Cursor = Cursors.Default;
+
+			
+		}
+
 
 
 

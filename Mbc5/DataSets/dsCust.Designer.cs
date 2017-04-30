@@ -609,6 +609,12 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnModifiedBy;
             
+            private global::System.Data.DataColumn columninvno1;
+            
+            private global::System.Data.DataColumn columnExpr1;
+            
+            private global::System.Data.DataColumn columnoraclecode;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public custDataTable() {
@@ -1684,6 +1690,30 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn invno1Column {
+                get {
+                    return this.columninvno1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Expr1Column {
+                get {
+                    return this.columnExpr1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn oraclecodeColumn {
+                get {
+                    return this.columnoraclecode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1849,7 +1879,10 @@ namespace Mbc5.DataSets {
                         System.DateTime kitrecvd, 
                         byte[] TimeStamp, 
                         string schname, 
-                        string ModifiedBy) {
+                        string ModifiedBy, 
+                        int invno1, 
+                        string Expr1, 
+                        string oraclecode) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cstatus,
@@ -1981,7 +2014,10 @@ namespace Mbc5.DataSets {
                         kitrecvd,
                         TimeStamp,
                         schname,
-                        ModifiedBy};
+                        ModifiedBy,
+                        invno1,
+                        Expr1,
+                        oraclecode};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -2141,6 +2177,9 @@ namespace Mbc5.DataSets {
                 this.columnTimeStamp = base.Columns["TimeStamp"];
                 this.columnschname = base.Columns["schname"];
                 this.columnModifiedBy = base.Columns["ModifiedBy"];
+                this.columninvno1 = base.Columns["invno1"];
+                this.columnExpr1 = base.Columns["Expr1"];
+                this.columnoraclecode = base.Columns["oraclecode"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2406,6 +2445,12 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnschname);
                 this.columnModifiedBy = new global::System.Data.DataColumn("ModifiedBy", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnModifiedBy);
+                this.columninvno1 = new global::System.Data.DataColumn("invno1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninvno1);
+                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpr1);
+                this.columnoraclecode = new global::System.Data.DataColumn("oraclecode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoraclecode);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columncstatus.MaxLength = 40;
@@ -2509,9 +2554,12 @@ namespace Mbc5.DataSets {
                 this.columnQyear.MaxLength = 2;
                 this.columnprodno.MaxLength = 12;
                 this.columnTimeStamp.ReadOnly = true;
-                this.columnschname.AllowDBNull = false;
                 this.columnschname.MaxLength = 34;
                 this.columnModifiedBy.MaxLength = 128;
+                this.columninvno1.Caption = "invno";
+                this.columnExpr1.AllowDBNull = false;
+                this.columnExpr1.MaxLength = 34;
+                this.columnoraclecode.MaxLength = 7;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5494,7 +5542,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string schname {
                 get {
-                    return ((string)(this[this.tablecust.schnameColumn]));
+                    try {
+                        return ((string)(this[this.tablecust.schnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schname\' in table \'cust\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablecust.schnameColumn] = value;
@@ -5514,6 +5567,49 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tablecust.ModifiedByColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int invno1 {
+                get {
+                    try {
+                        return ((int)(this[this.tablecust.invno1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'invno1\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.invno1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Expr1 {
+                get {
+                    return ((string)(this[this.tablecust.Expr1Column]));
+                }
+                set {
+                    this[this.tablecust.Expr1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string oraclecode {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.oraclecodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'oraclecode\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.oraclecodeColumn] = value;
                 }
             }
             
@@ -6995,6 +7091,18 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsschnameNull() {
+                return this.IsNull(this.tablecust.schnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetschnameNull() {
+                this[this.tablecust.schnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsModifiedByNull() {
                 return this.IsNull(this.tablecust.ModifiedByColumn);
             }
@@ -7003,6 +7111,30 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetModifiedByNull() {
                 this[this.tablecust.ModifiedByColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isinvno1Null() {
+                return this.IsNull(this.tablecust.invno1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setinvno1Null() {
+                this[this.tablecust.invno1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsoraclecodeNull() {
+                return this.IsNull(this.tablecust.oraclecodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetoraclecodeNull() {
+                this[this.tablecust.oraclecodeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7861,6 +7993,9 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             tableMapping.ColumnMappings.Add("TimeStamp", "TimeStamp");
             tableMapping.ColumnMappings.Add("schname", "schname");
             tableMapping.ColumnMappings.Add("ModifiedBy", "ModifiedBy");
+            tableMapping.ColumnMappings.Add("invno", "invno1");
+            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
+            tableMapping.ColumnMappings.Add("oraclecode", "oraclecode");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -8415,7 +8550,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT          cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust" +
@@ -8447,16 +8582,53 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 " cust.leadsource, \r\n                            cust.leadsname, cust.prevpublish" +
                 "er, cust.leadname, quotes.booktype, quotes.contryear AS Qyear, quotes.invno, pro" +
                 "dutn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, \r\n            " +
-                "                cust.TimeStamp, cust.ModifiedBy\r\nFROM              cust LEFT OUT" +
-                "ER JOIN\r\n                            quotes ON cust.schcode = quotes.schcode LEF" +
-                "T OUTER JOIN\r\n                            produtn ON quotes.invno = produtn.invn" +
-                "o\r\nWHERE          (cust.schcode = @schcode)\r\nORDER BY   Qyear DESC, quotes.invno" +
-                " DESC";
+                "                cust.TimeStamp, cust.ModifiedBy, cust.schname AS Expr1, cust.ora" +
+                "clecode\r\nFROM              cust LEFT OUTER JOIN\r\n                            quo" +
+                "tes ON cust.schcode = quotes.schcode LEFT OUTER JOIN\r\n                          " +
+                "  produtn ON quotes.invno = produtn.invno\r\nWHERE          (cust.schcode = @schco" +
+                "de)\r\nORDER BY   Qyear DESC, quotes.invno DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +
+            this._commandCollection[1].CommandText = "SELECT          cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust" +
+                ".secsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.reboo" +
+                "kdte, cust.refby, cust.schcode, \r\n                            cust.schname, cust" +
+                ".contryear, cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2," +
+                " cust.schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.sche" +
+                "mail, \r\n                            cust.sprngbrk, cust.schout, cust.contmemo, c" +
+                "ust.position, cust.gender, cust.contfname, cust.contlname, cust.newfname, cust.n" +
+                "ewlname, cust.yb_sth, cust.shiptocont, cust.contaddr, \r\n                        " +
+                "    cust.contaddr2, cust.contcity, cust.contstate, cust.contzip, cust.contphnhom" +
+                ", cust.contphnwrk, cust.contfax, cust.contemail, cust.vcrsent, cust.sigfopf, cus" +
+                "t.envflyer, cust.marketing, \r\n                            cust.yearrnd, cust.clr" +
+                "pg_int, cust.shipmemo, cust.schclosed, cust.inoffice, cust.digintrst, cust.svcod" +
+                "e1, cust.svdesc1, cust.svcode2, cust.svdesc2, cust.spcinst, cust.lastcont, \r\n   " +
+                "                         cust.nextcont, cust.csrep, cust.cstat, cust.xeldate, cu" +
+                "st.allcolor, cust.rbinit, cust.rbdate, cust.clspic, cust.magic, cust.extrchg, cu" +
+                "st.sprinfo, cust.fallinfo, cust.initcont, cust.highsp, \r\n                       " +
+                "     cust.slownone, cust.pcmac, cust.junsno, cust.jobno, cust.advpw, cust.stfpw," +
+                " cust.bcontfname, cust.bcontlname, cust.bcontaddr, cust.bcontaddr2, cust.bcontci" +
+                "ty, cust.bcontstate, \r\n                            cust.bcontzip, cust.bcontphnh" +
+                "om, cust.bcontphnwrk, cust.bcontfax, cust.bcontemail, cust.multiyroptions, cust." +
+                "multiyear, cust.schuploading, cust.website, cust.nomktemail, \r\n                 " +
+                "           cust.nodirectmail, cust.bposition, cust.blkwhite, cust.mbconlinepassw" +
+                "ord, cust.ccontfname, cust.ccontlname, cust.ccontaddr, cust.ccontaddr2, cust.cco" +
+                "ntcity, cust.ccontstate, cust.ccontzip, \r\n                            cust.ccont" +
+                "phnhom, cust.ccontphnwork, cust.ccontfax, cust.ccontemail, cust.norebookreason, " +
+                "cust.newpublisher, cust.csrep2, cust.schcolors, cust.keeppswd, cust.leadsource, " +
+                "\r\n                            cust.leadsname, cust.prevpublisher, cust.leadname," +
+                " quotes.booktype, quotes.contryear AS Qyear, quotes.invno, produtn.prodno, produ" +
+                "tn.dedayin, produtn.dedayout, produtn.kitrecvd, \r\n                            cu" +
+                "st.oraclecode\r\nFROM              cust LEFT OUTER JOIN\r\n                         " +
+                "   quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN\r\n                    " +
+                "        produtn ON quotes.invno = produtn.invno\r\nWHERE          (cust.oraclecode" +
+                " = @oraclecode)\r\nORDER BY   Qyear DESC";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oraclecode", global::System.Data.SqlDbType.NVarChar, 7, global::System.Data.ParameterDirection.Input, 0, 0, "oraclecode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +
                 "ecsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookd" +
                 "te, cust.refby, cust.schcode, cust.schname, cust.contryear, \r\n                  " +
                 "       cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust" +
@@ -8487,8 +8659,8 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "     cust LEFT OUTER JOIN\r\n                         quotes ON cust.schcode = quo" +
                 "tes.schcode LEFT OUTER JOIN\r\n                         produtn ON quotes.invno = " +
                 "produtn.invno\r\nWHERE        (cust.schname = @schname)\r\nORDER BY Qyear DESC";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.Char, 34, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.Char, 34, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8531,10 +8703,46 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBySchname(dsCust.custDataTable dataTable, string schname) {
+        public virtual int FillByOracleCode(dsCust.custDataTable dataTable, string oraclecode) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((oraclecode == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(oraclecode));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual dsCust.custDataTable GetDataBy1(string oraclecode) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((oraclecode == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(oraclecode));
+            }
+            dsCust.custDataTable dataTable = new dsCust.custDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBySchname(dsCust.custDataTable dataTable, string schname) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((schname == null)) {
-                throw new global::System.ArgumentNullException("schname");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schname));
@@ -8551,9 +8759,9 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual dsCust.custDataTable GetDataBy(string schname) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((schname == null)) {
-                throw new global::System.ArgumentNullException("schname");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schname));

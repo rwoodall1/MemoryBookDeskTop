@@ -647,7 +647,7 @@ namespace Mbc5.Forms {
                  new SqlParameter("@Invno",vInvno)
             };
             List<BinderyInfo> result = (List<BinderyInfo>)sqlQuery.ExecuteReaderAsync<BinderyInfo>(CommandType.Text,queryString,parameters);
-            if (result.Count < 1) {
+            if (result==null||result.Count < 1) {
                 MessageBox.Show("Bindery information was not found.");
                 return;
                 }
