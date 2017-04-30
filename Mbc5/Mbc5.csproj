@@ -77,6 +77,11 @@
     <Compile Include="Classes\ExceptionHandler.cs" />
     <Compile Include="Classes\OptionPrice.cs" />
     <Compile Include="Classes\Price.cs" />
+    <Compile Include="DataSets\dsBids.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsChangePassword.cs">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </Compile>
@@ -84,6 +89,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsCust.cs">
+      <DependentUpon>dsCust.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsCust.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -357,6 +365,17 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Report1.rdlc" />
+    <None Include="DataSets\dsBids.xsc">
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsBids.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBids.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsBids.xss">
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\dsChangePassword.xsc">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </None>

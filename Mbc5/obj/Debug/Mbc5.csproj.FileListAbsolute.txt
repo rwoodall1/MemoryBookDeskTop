@@ -214,3 +214,7 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditCoverWip.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditPartBkWip.resources
+F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe.config
+F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.ResolveComReference.cache
+F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.exe
+F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb
