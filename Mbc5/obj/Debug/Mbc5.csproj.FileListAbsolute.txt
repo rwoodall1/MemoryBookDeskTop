@@ -214,12 +214,12 @@ F:\InetPub\wwwroot\GitHub\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmProdutn.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditCoverWip.resources
 F:\Mb\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditPartBkWip.resources
-<<<<<<< HEAD
+
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Mbc5.exe.config
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.ResolveComReference.cache
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.exe
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb
-=======
+
 F:\Home\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csprojResolveAssemblyReference.cache
 F:\Home\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.ResolveComReference.cache
 F:\Home\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmAddressList.resources
@@ -293,4 +293,4 @@ F:\Home\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.xml
 F:\Home\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.exe
 F:\Home\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.pdb
 F:\Home\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Forms.frmEndSheet.resources
->>>>>>> origin/Production
+
