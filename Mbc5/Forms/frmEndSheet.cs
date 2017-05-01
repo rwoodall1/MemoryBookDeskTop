@@ -64,6 +64,33 @@ namespace Mbc5.Forms
 			Fill();
 		}
 		#region Methods
+		private void AddEndSheet()
+		{
+			var sqlQuery = new SQLQuery();
+		
+			SqlParameter[] parameters = new SqlParameter[] {
+					new SqlParameter("@Invno",this.Invno),
+					 new SqlParameter("@Schcode",this.Schcode),
+					
+					};
+			var strQuery = "INSERT INTO [dbo].[endsheet](Invno,Schcode)  VALUES (@Invno,@Schcode,@Contryear)";
+			var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+			if (userResult != 1)
+			{
+				MessageBox.Show("Failed to insert endsheet record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			var strQuery = "INSERT INTO [dbo].[suppl](Invno,Schcode)  VALUES (@Invno,@Schcode,@Contryear)";
+			var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+			if (userResult != 1)
+			{
+				MessageBox.Show("Failed to insert endsheet record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+
+
+		}
 		private void Fill()
 		{
 			if (Schcode != null)
@@ -131,7 +158,12 @@ namespace Mbc5.Forms
 				}
 				else
 				{
-					MessageBox.Show("End Sheet record was not found.", "Invoice#", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+					DialogResult result=MessageBox.Show("End Sheet record was not found. For this invoice number, do you want to add one>", "Invoice#", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Stop);
+					if (result == DialogResult.Yes)
+					{
+						AddEndSheet();
+
+					}
 				}
 			}
 
