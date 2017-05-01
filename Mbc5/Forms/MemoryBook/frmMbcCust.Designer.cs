@@ -98,21 +98,20 @@ namespace Mbc5.Forms.MemoryBook {
 			System.Windows.Forms.Label sourdateLabel;
 			System.Windows.Forms.Label initcontLabel;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMbcCust));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.CustTab = new System.Windows.Forms.TabControl();
 			this.pg1 = new System.Windows.Forms.TabPage();
 			this.splitContainer = new System.Windows.Forms.SplitContainer();
-			this.initcontDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.dsCust = new Mbc5.DataSets.dsCust();
+			this.initcontDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.sourdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.contdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.oraclecodeTextBox = new System.Windows.Forms.TextBox();
-			this.contryearTextBox = new System.Windows.Forms.TextBox();
 			this.txtSchname = new System.Windows.Forms.TextBox();
 			this.lblSchcodeVal = new System.Windows.Forms.Label();
 			this.junsnoTextBox = new System.Windows.Forms.TextBox();
@@ -157,6 +156,11 @@ namespace Mbc5.Forms.MemoryBook {
 			this.nodirectmailCheckBox = new System.Windows.Forms.CheckBox();
 			this.nomktemailCheckBox = new System.Windows.Forms.CheckBox();
 			this.custDataGridView = new System.Windows.Forms.DataGridView();
+			this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn106 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn107 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn108 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn111 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.txtBookType = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.spcinstTextBox = new System.Windows.Forms.TextBox();
@@ -272,11 +276,7 @@ namespace Mbc5.Forms.MemoryBook {
 			this.datecontTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.datecontTableAdapter();
 			this.datecontBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
 			this.txtModifiedBy = new System.Windows.Forms.TextBox();
-			this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn106 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn107 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn108 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn111 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.contryearTextBox = new System.Windows.Forms.TextBox();
 			contryearLabel = new System.Windows.Forms.Label();
 			csrepLabel = new System.Windows.Forms.Label();
 			junsnoLabel = new System.Windows.Forms.Label();
@@ -1042,6 +1042,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// splitContainer.Panel1
 			// 
 			this.splitContainer.Panel1.BackColor = System.Drawing.Color.Transparent;
+			this.splitContainer.Panel1.Controls.Add(this.contryearTextBox);
 			this.splitContainer.Panel1.Controls.Add(initcontLabel);
 			this.splitContainer.Panel1.Controls.Add(this.initcontDateTimePicker);
 			this.splitContainer.Panel1.Controls.Add(sourdateLabel);
@@ -1052,7 +1053,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.splitContainer.Panel1.Controls.Add(this.oraclecodeTextBox);
 			this.splitContainer.Panel1.Controls.Add(contryearLabel);
 			this.splitContainer.Panel1.Controls.Add(junsnoLabel);
-			this.splitContainer.Panel1.Controls.Add(this.contryearTextBox);
 			this.splitContainer.Panel1.Controls.Add(this.txtSchname);
 			this.splitContainer.Panel1.Controls.Add(this.lblSchcodeVal);
 			this.splitContainer.Panel1.Controls.Add(this.junsnoTextBox);
@@ -1140,17 +1140,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.splitContainer.SplitterWidth = 2;
 			this.splitContainer.TabIndex = 65;
 			// 
-			// initcontDateTimePicker
-			// 
-			this.initcontDateTimePicker.CustomFormat = "\'\'";
-			this.initcontDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "initcont", true));
-			this.initcontDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.initcontDateTimePicker.Location = new System.Drawing.Point(92, 61);
-			this.initcontDateTimePicker.Name = "initcontDateTimePicker";
-			this.initcontDateTimePicker.Size = new System.Drawing.Size(200, 20);
-			this.initcontDateTimePicker.TabIndex = 98;
-			this.initcontDateTimePicker.ValueChanged += new System.EventHandler(this.initcontDateTimePicker_ValueChanged);
-			// 
 			// custBindingSource
 			// 
 			this.custBindingSource.DataMember = "cust";
@@ -1161,6 +1150,17 @@ namespace Mbc5.Forms.MemoryBook {
 			this.dsCust.DataSetName = "dsCust";
 			this.dsCust.EnforceConstraints = false;
 			this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// initcontDateTimePicker
+			// 
+			this.initcontDateTimePicker.CustomFormat = "\'\'";
+			this.initcontDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "initcont", true));
+			this.initcontDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.initcontDateTimePicker.Location = new System.Drawing.Point(92, 61);
+			this.initcontDateTimePicker.Name = "initcontDateTimePicker";
+			this.initcontDateTimePicker.Size = new System.Drawing.Size(200, 20);
+			this.initcontDateTimePicker.TabIndex = 98;
+			this.initcontDateTimePicker.ValueChanged += new System.EventHandler(this.initcontDateTimePicker_ValueChanged);
 			// 
 			// sourdateDateTimePicker
 			// 
@@ -1182,6 +1182,7 @@ namespace Mbc5.Forms.MemoryBook {
 			this.contdateDateTimePicker.Name = "contdateDateTimePicker";
 			this.contdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
 			this.contdateDateTimePicker.TabIndex = 95;
+			this.contdateDateTimePicker.CloseUp += new System.EventHandler(this.contdateDateTimePicker_CloseUp);
 			this.contdateDateTimePicker.ValueChanged += new System.EventHandler(this.contdateDateTimePicker_ValueChanged_1);
 			// 
 			// oraclecodeTextBox
@@ -1191,15 +1192,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.oraclecodeTextBox.Name = "oraclecodeTextBox";
 			this.oraclecodeTextBox.Size = new System.Drawing.Size(100, 20);
 			this.oraclecodeTextBox.TabIndex = 94;
-			// 
-			// contryearTextBox
-			// 
-			this.contryearTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contryear", true));
-			this.contryearTextBox.Location = new System.Drawing.Point(551, 8);
-			this.contryearTextBox.MaxLength = 2;
-			this.contryearTextBox.Name = "contryearTextBox";
-			this.contryearTextBox.Size = new System.Drawing.Size(45, 20);
-			this.contryearTextBox.TabIndex = 5;
 			// 
 			// txtSchname
 			// 
@@ -1625,14 +1617,14 @@ namespace Mbc5.Forms.MemoryBook {
 			this.custDataGridView.AllowUserToDeleteRows = false;
 			this.custDataGridView.AutoGenerateColumns = false;
 			this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn105,
@@ -1651,6 +1643,41 @@ namespace Mbc5.Forms.MemoryBook {
 			this.custDataGridView.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.custDataGridView_RowHeaderMouseDoubleClick);
 			this.custDataGridView.Enter += new System.EventHandler(this.custDataGridView_Enter);
 			this.custDataGridView.Leave += new System.EventHandler(this.custDataGridView_Leave);
+			// 
+			// dataGridViewTextBoxColumn105
+			// 
+			this.dataGridViewTextBoxColumn105.DataPropertyName = "booktype";
+			this.dataGridViewTextBoxColumn105.HeaderText = "Book Type";
+			this.dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
+			this.dataGridViewTextBoxColumn105.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn106
+			// 
+			this.dataGridViewTextBoxColumn106.DataPropertyName = "Qyear";
+			this.dataGridViewTextBoxColumn106.HeaderText = "Year";
+			this.dataGridViewTextBoxColumn106.Name = "dataGridViewTextBoxColumn106";
+			this.dataGridViewTextBoxColumn106.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn107
+			// 
+			this.dataGridViewTextBoxColumn107.DataPropertyName = "invno";
+			this.dataGridViewTextBoxColumn107.HeaderText = "Invoice#";
+			this.dataGridViewTextBoxColumn107.Name = "dataGridViewTextBoxColumn107";
+			this.dataGridViewTextBoxColumn107.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn108
+			// 
+			this.dataGridViewTextBoxColumn108.DataPropertyName = "prodno";
+			this.dataGridViewTextBoxColumn108.HeaderText = "Prod No#";
+			this.dataGridViewTextBoxColumn108.Name = "dataGridViewTextBoxColumn108";
+			this.dataGridViewTextBoxColumn108.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn111
+			// 
+			this.dataGridViewTextBoxColumn111.DataPropertyName = "kitrecvd";
+			this.dataGridViewTextBoxColumn111.HeaderText = "Kit Recvd Date";
+			this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
+			this.dataGridViewTextBoxColumn111.ReadOnly = true;
 			// 
 			// txtBookType
 			// 
@@ -2413,14 +2440,14 @@ namespace Mbc5.Forms.MemoryBook {
 			this.mktinfoDataGridView.AutoGenerateColumns = false;
 			this.mktinfoDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.mktinfoDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
+			dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
 			this.mktinfoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.mktinfoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -2541,14 +2568,14 @@ namespace Mbc5.Forms.MemoryBook {
 			this.datecontDataGridView.AutoGenerateColumns = false;
 			this.datecontDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.datecontDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue;
+			dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
 			this.datecontDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.datecontDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn3,
@@ -2627,8 +2654,8 @@ namespace Mbc5.Forms.MemoryBook {
 			// 
 			this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
 			this.dataGridViewTextBoxColumn3.DataPropertyName = "reason";
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle9;
 			this.dataGridViewTextBoxColumn3.HeaderText = "Reason";
 			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
 			this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -2662,11 +2689,11 @@ namespace Mbc5.Forms.MemoryBook {
 			// 
 			this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
 			this.dataGridViewTextBoxColumn8.DataPropertyName = "nxtdate";
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle5.NullValue = " / / ";
-			this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle10.NullValue = " / / ";
+			this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle10;
 			this.dataGridViewTextBoxColumn8.HeaderText = "Next Date";
 			this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
 			this.dataGridViewTextBoxColumn8.Width = 74;
@@ -2801,40 +2828,13 @@ namespace Mbc5.Forms.MemoryBook {
 			this.txtModifiedBy.Size = new System.Drawing.Size(1, 20);
 			this.txtModifiedBy.TabIndex = 17;
 			// 
-			// dataGridViewTextBoxColumn105
+			// contryearTextBox
 			// 
-			this.dataGridViewTextBoxColumn105.DataPropertyName = "booktype";
-			this.dataGridViewTextBoxColumn105.HeaderText = "Book Type";
-			this.dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
-			this.dataGridViewTextBoxColumn105.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn106
-			// 
-			this.dataGridViewTextBoxColumn106.DataPropertyName = "Qyear";
-			this.dataGridViewTextBoxColumn106.HeaderText = "Year";
-			this.dataGridViewTextBoxColumn106.Name = "dataGridViewTextBoxColumn106";
-			this.dataGridViewTextBoxColumn106.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn107
-			// 
-			this.dataGridViewTextBoxColumn107.DataPropertyName = "invno";
-			this.dataGridViewTextBoxColumn107.HeaderText = "Invoice#";
-			this.dataGridViewTextBoxColumn107.Name = "dataGridViewTextBoxColumn107";
-			this.dataGridViewTextBoxColumn107.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn108
-			// 
-			this.dataGridViewTextBoxColumn108.DataPropertyName = "prodno";
-			this.dataGridViewTextBoxColumn108.HeaderText = "Prod No#";
-			this.dataGridViewTextBoxColumn108.Name = "dataGridViewTextBoxColumn108";
-			this.dataGridViewTextBoxColumn108.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn111
-			// 
-			this.dataGridViewTextBoxColumn111.DataPropertyName = "kitrecvd";
-			this.dataGridViewTextBoxColumn111.HeaderText = "Kit Recvd Date";
-			this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
-			this.dataGridViewTextBoxColumn111.ReadOnly = true;
+			this.contryearTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "Qyear", true));
+			this.contryearTextBox.Location = new System.Drawing.Point(547, 9);
+			this.contryearTextBox.Name = "contryearTextBox";
+			this.contryearTextBox.Size = new System.Drawing.Size(49, 20);
+			this.contryearTextBox.TabIndex = 99;
 			// 
 			// frmMbcCust
 			// 
@@ -2897,7 +2897,6 @@ namespace Mbc5.Forms.MemoryBook {
         private DataSets.dsCustTableAdapters.custTableAdapter custTableAdapter;
         private System.Windows.Forms.BindingSource custBindingSource;
         private System.Windows.Forms.Panel pnlHead;
-        private System.Windows.Forms.TextBox contryearTextBox;
         private System.Windows.Forms.TextBox txtCsRep;
         private System.Windows.Forms.Button btnSchoolSearch;
         private System.Windows.Forms.TextBox txtSchNamesrch;
@@ -3066,5 +3065,6 @@ namespace Mbc5.Forms.MemoryBook {
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn107;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn108;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn111;
+		private System.Windows.Forms.TextBox contryearTextBox;
 	}
 }

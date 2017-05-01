@@ -7873,46 +7873,46 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.UpdateCommand.CommandText = "UPDATE          cust\r\nSET                   cstatus = @cstatus, source = @source," +
                 " sourdate = @sourdate, secsource = @secsource, contdate = @contdate, origsour = " +
                 "@origsour, origyear = @origyear, rebook = @rebook, \r\n                           " +
-                " rebookdte = @rebookdte, refby = @refby, schcode = @schcode, enrollment = @enrol" +
-                "lment, grades = @grades, sal = @sal, schaddr = @schaddr, schaddr2 = @schaddr2, \r" +
-                "\n                            schcity = @schcity, schstate = @schstate, schzip = " +
-                "@schzip, schphone = @schphone, schfax = @schfax, schemail = @schemail, sprngbrk " +
-                "= @sprngbrk, schout = @schout, \r\n                            contmemo = @contmem" +
-                "o, position = @position, gender = @gender, contfname = @contfname, contlname = @" +
-                "contlname, newfname = @newfname, newlname = @newlname, \r\n                       " +
-                "     yb_sth = @yb_sth, shiptocont = @shiptocont, contaddr = @contaddr, contaddr2" +
-                " = @contaddr2, contcity = @contcity, contstate = @contstate, contzip = @contzip," +
-                " \r\n                            contphnhom = @contphnhom, contphnwrk = @contphnwr" +
-                "k, contfax = @contfax, contemail = @contemail, booktype = @booktype, vcrsent = @" +
-                "vcrsent, sigfopf = @sigfopf, \r\n                            envflyer = @envflyer," +
-                " marketing = @marketing, yearrnd = @yearrnd, clrpg_int = @clrpg_int, shipmemo = " +
-                "@shipmemo, schclosed = @schclosed, inoffice = @inoffice, digintrst = @digintrst," +
-                "\r\n                             svcode1 = @svcode1, svdesc1 = @svdesc1, svcode2 =" +
-                " @svcode2, svdesc2 = @svdesc2, spcinst = @spcinst, lastcont = @lastcont, nextcon" +
-                "t = @nextcont, csrep = @csrep, \r\n                            cstat = @cstat, xel" +
-                "date = @xeldate, allcolor = @allcolor, rbinit = @rbinit, rbdate = @rbdate, clspi" +
-                "c = @clspic, magic = @magic, extrchg = @extrchg, sprinfo = @sprinfo, fallinfo = " +
-                "@fallinfo, \r\n                            initcont = @initcont, highsp = @highsp," +
-                " slownone = @slownone, pcmac = @pcmac, junsno = @junsno, jobno = @jobno, advpw =" +
-                " @advpw, stfpw = @stfpw, bcontfname = @bcontfname, \r\n                           " +
-                " bcontlname = @bcontlname, bcontaddr = @bcontaddr, bcontaddr2 = @bcontaddr2, bco" +
-                "ntcity = @bcontcity, bcontstate = @bcontstate, bcontzip = @bcontzip, \r\n         " +
-                "                   bcontphnhom = @bcontphnhom, bcontphnwrk = @bcontphnwrk, bcont" +
-                "fax = @bcontfax, bcontemail = @bcontemail, multiyroptions = @multiyroptions, mul" +
-                "tiyear = @multiyear, \r\n                            schuploading = @schuploading," +
-                " website = @website, nomktemail = @nomktemail, nodirectmail = @nodirectmail, bpo" +
-                "sition = @bposition, blkwhite = @blkwhite, \r\n                            mbconli" +
-                "nepassword = @mbconlinepassword, ccontfname = @ccontfname, ccontlname = @ccontln" +
-                "ame, ccontaddr = @ccontaddr, ccontaddr2 = @ccontaddr2, ccontcity = @ccontcity, \r" +
-                "\n                            ccontstate = @ccontstate, ccontzip = @ccontzip, cco" +
-                "ntphnhom = @ccontphnhom, ccontphnwork = @ccontphnwork, ccontfax = @ccontfax, cco" +
-                "ntemail = @ccontemail, \r\n                            norebookreason = @norebookr" +
-                "eason, newpublisher = @newpublisher, csrep2 = @csrep2, schcolors = @schcolors, k" +
-                "eeppswd = @keeppswd, leadsource = @leadsource, \r\n                            lea" +
-                "dsname = @leadsname, prevpublisher = @prevpublisher, leadname = @leadname, DateM" +
-                "odified = GETDATE(), photographer = @Photographer, ModifiedBy = @ModifiedBy, \r\n " +
-                "                           schname = @Schname\r\nWHERE          (schcode = @schcod" +
-                "e) AND (TimeStamp = @Orig_TimeStamp)";
+                " rebookdte = @rebookdte, refby = @refby, schcode = @schcode, contryear = @contry" +
+                "ear, enrollment = @enrollment, grades = @grades, sal = @sal, schaddr = @schaddr," +
+                " \r\n                            schaddr2 = @schaddr2, schcity = @schcity, schstat" +
+                "e = @schstate, schzip = @schzip, schphone = @schphone, schfax = @schfax, schemai" +
+                "l = @schemail, sprngbrk = @sprngbrk, \r\n                            schout = @sch" +
+                "out, contmemo = @contmemo, position = @position, gender = @gender, contfname = @" +
+                "contfname, contlname = @contlname, newfname = @newfname, \r\n                     " +
+                "       newlname = @newlname, yb_sth = @yb_sth, shiptocont = @shiptocont, contadd" +
+                "r = @contaddr, contaddr2 = @contaddr2, contcity = @contcity, contstate = @contst" +
+                "ate, contzip = @contzip, \r\n                            contphnhom = @contphnhom," +
+                " contphnwrk = @contphnwrk, contfax = @contfax, contemail = @contemail, booktype " +
+                "= @booktype, vcrsent = @vcrsent, sigfopf = @sigfopf, \r\n                         " +
+                "   envflyer = @envflyer, marketing = @marketing, yearrnd = @yearrnd, clrpg_int =" +
+                " @clrpg_int, shipmemo = @shipmemo, schclosed = @schclosed, inoffice = @inoffice," +
+                " digintrst = @digintrst,\r\n                             svcode1 = @svcode1, svdes" +
+                "c1 = @svdesc1, svcode2 = @svcode2, svdesc2 = @svdesc2, spcinst = @spcinst, lastc" +
+                "ont = @lastcont, nextcont = @nextcont, csrep = @csrep, \r\n                       " +
+                "     cstat = @cstat, xeldate = @xeldate, allcolor = @allcolor, rbinit = @rbinit," +
+                " rbdate = @rbdate, clspic = @clspic, magic = @magic, extrchg = @extrchg, sprinfo" +
+                " = @sprinfo, fallinfo = @fallinfo, \r\n                            initcont = @ini" +
+                "tcont, highsp = @highsp, slownone = @slownone, pcmac = @pcmac, junsno = @junsno," +
+                " jobno = @jobno, advpw = @advpw, stfpw = @stfpw, bcontfname = @bcontfname, \r\n   " +
+                "                         bcontlname = @bcontlname, bcontaddr = @bcontaddr, bcont" +
+                "addr2 = @bcontaddr2, bcontcity = @bcontcity, bcontstate = @bcontstate, bcontzip " +
+                "= @bcontzip, \r\n                            bcontphnhom = @bcontphnhom, bcontphnw" +
+                "rk = @bcontphnwrk, bcontfax = @bcontfax, bcontemail = @bcontemail, multiyroption" +
+                "s = @multiyroptions, multiyear = @multiyear, \r\n                            schup" +
+                "loading = @schuploading, website = @website, nomktemail = @nomktemail, nodirectm" +
+                "ail = @nodirectmail, bposition = @bposition, blkwhite = @blkwhite, \r\n           " +
+                "                 mbconlinepassword = @mbconlinepassword, ccontfname = @ccontfnam" +
+                "e, ccontlname = @ccontlname, ccontaddr = @ccontaddr, ccontaddr2 = @ccontaddr2, c" +
+                "contcity = @ccontcity, \r\n                            ccontstate = @ccontstate, c" +
+                "contzip = @ccontzip, ccontphnhom = @ccontphnhom, ccontphnwork = @ccontphnwork, c" +
+                "contfax = @ccontfax, ccontemail = @ccontemail, \r\n                            nor" +
+                "ebookreason = @norebookreason, newpublisher = @newpublisher, csrep2 = @csrep2, s" +
+                "chcolors = @schcolors, keeppswd = @keeppswd, leadsource = @leadsource, \r\n       " +
+                "                     leadsname = @leadsname, prevpublisher = @prevpublisher, lea" +
+                "dname = @leadname, DateModified = GETDATE(), photographer = @Photographer, Modif" +
+                "iedBy = @ModifiedBy, \r\n                            schname = @Schname\r\nWHERE    " +
+                "      (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cstatus", global::System.Data.SqlDbType.Char, 40, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.Char, 3, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7925,6 +7925,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebookdte", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "rebookdte", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@refby", global::System.Data.SqlDbType.Char, 25, global::System.Data.ParameterDirection.Input, 0, 0, "refby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contryear", global::System.Data.SqlDbType.Char, 2, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@enrollment", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 5, 0, "enrollment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@grades", global::System.Data.SqlDbType.Char, 16, global::System.Data.ParameterDirection.Input, 0, 0, "grades", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sal", global::System.Data.SqlDbType.Char, 25, global::System.Data.ParameterDirection.Input, 0, 0, "sal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

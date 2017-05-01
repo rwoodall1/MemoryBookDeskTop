@@ -920,7 +920,60 @@ namespace Mbc5.Forms.MemoryBook {
             SetInvnoSchCode();
         }
 
-       
+        private void contdateDateTimePicker_CloseUp(object sender,EventArgs e) {
+           DialogResult result=MessageBox.Show("Do you wish to add a sales record?","Add Record",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                int InvNum = GetInvno();
+                if (InvNum != 0)
+                {
+                    var sqlQuery = new SQLQuery();
+                    //useing hard code until function to generate invno is done
+                    SqlParameter[] parameters = new SqlParameter[] {
+                    new SqlParameter("@Invno",InvNum),
+                     new SqlParameter("@Schcode",lblSchcodeVal.Text),
+                      new SqlParameter("@Contryear", contryearTextBox.Text)
+                    };
+                    var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear)  VALUES (@Invno,@Schcode,@Contryear)";
+                    var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+                    if (userResult != 1)
+                    {
+                        MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    SqlParameter[] parameters1 = new SqlParameter[] {
+                    new SqlParameter("@Invno",InvNum),
+                     new SqlParameter("@Schcode",lblSchcodeVal.Text),
+                     new SqlParameter("@ProdNo",GetProdNo()),
+                      new SqlParameter("@Contryear", contryearTextBox.Text),
+                       new SqlParameter("@Company","MBC")
+                    };
+                    strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
+                    var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
+                    if (userResult1 != 1) {
+                        MessageBox.Show("Failed to insert production record.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        return;
+                        }
+                    SqlParameter[] parameters2 = new SqlParameter[] {
+                    new SqlParameter("@Invno",InvNum),
+                     new SqlParameter("@Schcode",lblSchcodeVal.Text),
+                     new SqlParameter("@Specovr",GetCoverNumber()),
+                         new SqlParameter("@Specinst",GetInstructions() ),
+                       new SqlParameter("@Company","MBC")
+                    };
+                    strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
+                    var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
+                    if (userResult2 != 1)
+                    {
+                        MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    Save();
+                    this.custTableAdapter.Fill(this.dsCust.cust, lblSchcodeVal.Text);
+                };
+            }//not = 0
+            
+            }
 
         private void button1_Click_1(object sender,EventArgs e) {
             var a = new ScreenPrinter(this);
@@ -1019,66 +1072,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.Cursor = Cursors.Default;
 
 			
-		}
-
-		private void contdateDateTimePicker_CloseUp(object sender, EventArgs e)
-		{
-			
-				DialogResult result = MessageBox.Show("Do you wish to add a sales record?", "Add Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-				if (result == DialogResult.Yes)
-				{
-					int InvNum = GetInvno();
-					if (InvNum != 0)
-					{
-						var sqlQuery = new SQLQuery();
-						//useing hard code until function to generate invno is done
-						SqlParameter[] parameters = new SqlParameter[] {
-					new SqlParameter("@Invno",InvNum),
-					 new SqlParameter("@Schcode",lblSchcodeVal.Text),
-					  new SqlParameter("@Contryear", contryearTextBox.Text)
-					};
-						var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear)  VALUES (@Invno,@Schcode,@Contryear)";
-						var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-						if (userResult != 1)
-						{
-							MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-							return;
-						}
-						SqlParameter[] parameters1 = new SqlParameter[] {
-					new SqlParameter("@Invno",InvNum),
-					 new SqlParameter("@Schcode",lblSchcodeVal.Text),
-					 new SqlParameter("@ProdNo",GetProdNo()),
-					  new SqlParameter("@Contryear", contryearTextBox.Text),
-					   new SqlParameter("@Company","MBC")
-					};
-						strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
-						var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
-						if (userResult1 != 1)
-						{
-							MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-							return;
-						}
-						SqlParameter[] parameters2 = new SqlParameter[] {
-					new SqlParameter("@Invno",InvNum),
-					 new SqlParameter("@Schcode",lblSchcodeVal.Text),
-					 new SqlParameter("@Specovr",GetCoverNumber()),
-						 new SqlParameter("@Specinst",GetInstructions() ),
-					   new SqlParameter("@Company","MBC")
-					};
-						strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
-						var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
-						if (userResult2 != 1)
-						{
-							MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-							return;
-						}
-						Save();
-						this.custTableAdapter.Fill(this.dsCust.cust, lblSchcodeVal.Text);
-					};
-				}//not = 0
-
-			
-
 		}
 
 
