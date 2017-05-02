@@ -115,8 +115,8 @@ namespace Mbc5.Forms
 			parameters = null;
 			var pos1 = preflitBindingSource.Find("invno", this.Invno);
 			if (pos1 == -1)
-			{
-				strQuery = "INSERT INTO [dbo].[priflit](Invno,Schcode)  VALUES (@Invno,@Schcode)";
+			{                
+		strQuery = "INSERT INTO [dbo].[preflit](Invno,Schcode)  VALUES (@Invno,@Schcode)";
 				parameters = new SqlParameter[] {
 					new SqlParameter("@Invno",this.Invno),
 					 new SqlParameter("@Schcode",this.Schcode),
