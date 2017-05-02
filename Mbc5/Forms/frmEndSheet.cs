@@ -64,30 +64,42 @@ namespace Mbc5.Forms
 			Fill();
 		}
 		#region Methods
-		private void AddEndSheet()
+		private bool AddEndSheet()
 		{
 			var sqlQuery = new SQLQuery();
-		
 			SqlParameter[] parameters = new SqlParameter[] {
 					new SqlParameter("@Invno",this.Invno),
 					 new SqlParameter("@Schcode",this.Schcode),
-					
 					};
-			var strQuery = "INSERT INTO [dbo].[endsheet](Invno,Schcode)  VALUES (@Invno,@Schcode,@Contryear)";
-			var endsheetResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-			if (endsheetResult != 1)
-			{
-				ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
-					.AddTags("MemoryBook DestTop")
-					.AddObject("Invoice#:" + Invno)
-					.AddObject("Schcode:" + Schcode)
-					.Submit();
-				MessageBox.Show("Failed to insert endsheet record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				
-					
-				return;
+			var strQuery = "";
+			var pos = endsheetBindingSource.Find("invno", this.Invno);
+			if (pos == -1)
+			{		
+				 strQuery = "INSERT INTO [dbo].[endsheet](Invno,Schcode)  VALUES (@Invno,@Schcode)";
+				var endsheetResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+				if (endsheetResult != 1)
+				{
+					ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
+						.AddTags("MemoryBook DestTop")
+						.AddObject("Invoice#:" + Invno)
+						.AddObject("Schcode:" + Schcode)
+						.Submit();
+					MessageBox.Show("Failed to insert endsheet record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					return false;
+				}
 			}
-			strQuery = "INSERT INTO [dbo].[suppl](Invno,Schcode)  VALUES (@Invno,@Schcode)";
+		
+			
+			parameters = null;
+			var pos2 = supplBindingSource.Find("invno", this.Invno);
+			if (pos2 == -1)
+			{
+				 parameters = new SqlParameter[] {
+					new SqlParameter("@Invno",this.Invno),
+					 new SqlParameter("@Schcode",this.Schcode),
+
+					};
+				strQuery = "INSERT INTO [dbo].[suppl](Invno,Schcode)  VALUES (@Invno,@Schcode)";
 			var supplResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
 			if (supplResult != 1)
 			{
@@ -97,23 +109,32 @@ namespace Mbc5.Forms
 					.AddObject("Schcode:" + Schcode)
 					.Submit();
 				MessageBox.Show("Failed to insert supplement record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
+					return false;
+				}
 			}
-			strQuery = "INSERT INTO [dbo].[priflit](Invno,Schcode)  VALUES (@Invno,@Schcode)";
-			var priResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-			if (priResult != 1)
+			parameters = null;
+			var pos1 = preflitBindingSource.Find("invno", this.Invno);
+			if (pos1 == -1)
 			{
-				ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
-					.AddTags("MemoryBook DestTop")
-					.AddObject("Invoice#:" + Invno)
-					.AddObject("Schcode:" + Schcode)
-					.Submit();
-				MessageBox.Show("Failed to insert priflit record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
+				strQuery = "INSERT INTO [dbo].[priflit](Invno,Schcode)  VALUES (@Invno,@Schcode)";
+				parameters = new SqlParameter[] {
+					new SqlParameter("@Invno",this.Invno),
+					 new SqlParameter("@Schcode",this.Schcode),
+
+					};
+				var priResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+				if (priResult != 1)
+					{
+						ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
+							.AddTags("MemoryBook DestTop")
+							.AddObject("Invoice#:" + Invno)
+							.AddObject("Schcode:" + Schcode)
+							.Submit();
+						MessageBox.Show("Failed to insert priflit record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					return false;
+				}
 			}
-
-
-
+			return true;
 		}
 		private void Fill()
 		{
@@ -185,9 +206,10 @@ namespace Mbc5.Forms
 					DialogResult result=MessageBox.Show("End Sheet record was not found. For this invoice number ("+Invno+"), do you want to add one?", "Invoice#", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Stop);
 					if (result == DialogResult.Yes)
 					{
-						AddEndSheet();
-						Fill();
-
+						if (AddEndSheet())
+						{
+							Fill();
+						}
 					}
 				}
 			}
