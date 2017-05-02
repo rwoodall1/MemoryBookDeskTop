@@ -238,6 +238,31 @@ namespace Mbc5.Forms
 
 		}
 
-		
+		private void frmEndSheet_Paint(object sender, PaintEventArgs e)
+		{
+			try { this.Text = "End Sheet/Supplements/Preflight-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+			catch
+			{
+
+			}
+		}
+
+		private void label22_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void fillToolStripButton_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				this.suppdetailTableAdapter.Fill(this.dsEndSheet.suppdetail, schcodeToolStripTextBox.Text);
+			}
+			catch (System.Exception ex)
+			{
+				System.Windows.Forms.MessageBox.Show(ex.Message);
+			}
+
+		}
 	}
 }

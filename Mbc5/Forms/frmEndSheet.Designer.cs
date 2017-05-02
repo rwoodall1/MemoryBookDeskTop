@@ -57,6 +57,15 @@
 			System.Windows.Forms.Label persondestLabel;
 			System.Windows.Forms.Label reasonLabel;
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.Label label16;
+			System.Windows.Forms.Label nopagesLabel1;
+			System.Windows.Forms.Label nocopiesLabel1;
+			System.Windows.Forms.Label recvdteLabel;
+			System.Windows.Forms.Label duedateLabel;
+			System.Windows.Forms.Label booktypeLabel;
+			System.Windows.Forms.Label totsigsLabel;
+			System.Windows.Forms.Label partmemoLabel;
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.tbEndSheets = new System.Windows.Forms.TabControl();
 			this.pgEndSheets = new System.Windows.Forms.TabPage();
 			this.btnInvoiceSrch = new System.Windows.Forms.Button();
@@ -135,8 +144,7 @@
 			this.clr3TextBox = new System.Windows.Forms.TextBox();
 			this.clr2TextBox = new System.Windows.Forms.TextBox();
 			this.clr1TextBox = new System.Windows.Forms.TextBox();
-			this.schcodeTextBox = new System.Windows.Forms.TextBox();
-			this.schnameTextBox = new System.Windows.Forms.TextBox();
+			this.txtSchname = new System.Windows.Forms.TextBox();
 			this.Supplement = new System.Windows.Forms.TabPage();
 			this.PreFlight = new System.Windows.Forms.TabPage();
 			this.custTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.custTableAdapter();
@@ -145,6 +153,55 @@
 			this.quotesTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.quotesTableAdapter();
 			this.endsheetTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.endsheetTableAdapter();
 			this.endsheetdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.endsheetdetailTableAdapter();
+			this.label15 = new System.Windows.Forms.Label();
+			this.supplBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.supplTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.supplTableAdapter();
+			this.nopagesTextBox1 = new System.Windows.Forms.TextBox();
+			this.nocopiesTextBox = new System.Windows.Forms.TextBox();
+			this.recvdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.duedateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.booktypeLabel1 = new System.Windows.Forms.Label();
+			this.button2 = new System.Windows.Forms.Button();
+			this.supnoTextBox = new System.Windows.Forms.TextBox();
+			this.label17 = new System.Windows.Forms.Label();
+			this.label18 = new System.Windows.Forms.Label();
+			this.label19 = new System.Windows.Forms.Label();
+			this.label20 = new System.Windows.Forms.Label();
+			this.label21 = new System.Windows.Forms.Label();
+			this.label22 = new System.Windows.Forms.Label();
+			this.iinDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.ioutDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.ideptTextBox = new System.Windows.Forms.TextBox();
+			this.iinitTextBox = new System.Windows.Forms.TextBox();
+			this.binddteDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.frmbindDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.label23 = new System.Windows.Forms.Label();
+			this.vendcdTextBox = new System.Windows.Forms.TextBox();
+			this.tape_1CheckBox = new System.Windows.Forms.CheckBox();
+			this.label24 = new System.Windows.Forms.Label();
+			this.label25 = new System.Windows.Forms.Label();
+			this.label26 = new System.Windows.Forms.Label();
+			this.label27 = new System.Windows.Forms.Label();
+			this.rmbtoDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.remaketypeComboBox = new System.Windows.Forms.ComboBox();
+			this.rmbfrmDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.rmbtotTextBox = new System.Windows.Forms.TextBox();
+			this.oursuppCheckBox = new System.Windows.Forms.CheckBox();
+			this.supplementsCheckBox = new System.Windows.Forms.CheckBox();
+			this.totsigsTextBox = new System.Windows.Forms.TextBox();
+			this.partmemoTextBox = new System.Windows.Forms.TextBox();
+			this.suppdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.suppdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.suppdetailTableAdapter();
+			this.suppdetailDataGridView = new System.Windows.Forms.DataGridView();
+			this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.button3 = new System.Windows.Forms.Button();
+			this.button4 = new System.Windows.Forms.Button();
 			prodnoLabel = new System.Windows.Forms.Label();
 			invnoLabel = new System.Windows.Forms.Label();
 			clr1Label = new System.Windows.Forms.Label();
@@ -172,6 +229,14 @@
 			desorgdteLabel = new System.Windows.Forms.Label();
 			persondestLabel = new System.Windows.Forms.Label();
 			reasonLabel = new System.Windows.Forms.Label();
+			label16 = new System.Windows.Forms.Label();
+			nopagesLabel1 = new System.Windows.Forms.Label();
+			nocopiesLabel1 = new System.Windows.Forms.Label();
+			recvdteLabel = new System.Windows.Forms.Label();
+			duedateLabel = new System.Windows.Forms.Label();
+			booktypeLabel = new System.Windows.Forms.Label();
+			totsigsLabel = new System.Windows.Forms.Label();
+			partmemoLabel = new System.Windows.Forms.Label();
 			this.tbEndSheets.SuspendLayout();
 			this.pgEndSheets.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.endsheetdetailDataGridView)).BeginInit();
@@ -183,6 +248,10 @@
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+			this.Supplement.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// prodnoLabel
@@ -523,8 +592,7 @@
 			this.pgEndSheets.Controls.Add(this.clr1TextBox);
 			this.pgEndSheets.Controls.Add(invnoLabel);
 			this.pgEndSheets.Controls.Add(prodnoLabel);
-			this.pgEndSheets.Controls.Add(this.schcodeTextBox);
-			this.pgEndSheets.Controls.Add(this.schnameTextBox);
+			this.pgEndSheets.Controls.Add(this.txtSchname);
 			this.pgEndSheets.Location = new System.Drawing.Point(4, 22);
 			this.pgEndSheets.Name = "pgEndSheets";
 			this.pgEndSheets.Padding = new System.Windows.Forms.Padding(3);
@@ -1179,25 +1247,65 @@
 			this.clr1TextBox.Size = new System.Drawing.Size(45, 20);
 			this.clr1TextBox.TabIndex = 9;
 			// 
-			// schcodeTextBox
+			// txtSchname
 			// 
-			this.schcodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
-			this.schcodeTextBox.Location = new System.Drawing.Point(13, 7);
-			this.schcodeTextBox.Name = "schcodeTextBox";
-			this.schcodeTextBox.Size = new System.Drawing.Size(68, 20);
-			this.schcodeTextBox.TabIndex = 3;
-			// 
-			// schnameTextBox
-			// 
-			this.schnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schname", true));
-			this.schnameTextBox.Location = new System.Drawing.Point(91, 7);
-			this.schnameTextBox.Name = "schnameTextBox";
-			this.schnameTextBox.Size = new System.Drawing.Size(188, 20);
-			this.schnameTextBox.TabIndex = 1;
+			this.txtSchname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schname", true));
+			this.txtSchname.Location = new System.Drawing.Point(1197, 711);
+			this.txtSchname.Name = "txtSchname";
+			this.txtSchname.ReadOnly = true;
+			this.txtSchname.Size = new System.Drawing.Size(1, 20);
+			this.txtSchname.TabIndex = 1;
 			// 
 			// Supplement
 			// 
+			this.Supplement.AutoScroll = true;
 			this.Supplement.BackColor = System.Drawing.SystemColors.Control;
+			this.Supplement.Controls.Add(this.button4);
+			this.Supplement.Controls.Add(this.button3);
+			this.Supplement.Controls.Add(this.suppdetailDataGridView);
+			this.Supplement.Controls.Add(partmemoLabel);
+			this.Supplement.Controls.Add(this.partmemoTextBox);
+			this.Supplement.Controls.Add(totsigsLabel);
+			this.Supplement.Controls.Add(this.totsigsTextBox);
+			this.Supplement.Controls.Add(this.supplementsCheckBox);
+			this.Supplement.Controls.Add(this.oursuppCheckBox);
+			this.Supplement.Controls.Add(this.rmbtotTextBox);
+			this.Supplement.Controls.Add(this.rmbfrmDateTimePicker);
+			this.Supplement.Controls.Add(this.remaketypeComboBox);
+			this.Supplement.Controls.Add(this.rmbtoDateTimePicker);
+			this.Supplement.Controls.Add(this.label27);
+			this.Supplement.Controls.Add(this.label26);
+			this.Supplement.Controls.Add(this.label25);
+			this.Supplement.Controls.Add(this.label24);
+			this.Supplement.Controls.Add(this.tape_1CheckBox);
+			this.Supplement.Controls.Add(this.vendcdTextBox);
+			this.Supplement.Controls.Add(this.label23);
+			this.Supplement.Controls.Add(this.frmbindDateTimePicker);
+			this.Supplement.Controls.Add(this.binddteDateTimePicker);
+			this.Supplement.Controls.Add(this.iinitTextBox);
+			this.Supplement.Controls.Add(this.ideptTextBox);
+			this.Supplement.Controls.Add(this.ioutDateTimePicker);
+			this.Supplement.Controls.Add(this.iinDateTimePicker);
+			this.Supplement.Controls.Add(this.label22);
+			this.Supplement.Controls.Add(this.label21);
+			this.Supplement.Controls.Add(this.label20);
+			this.Supplement.Controls.Add(this.label19);
+			this.Supplement.Controls.Add(this.label18);
+			this.Supplement.Controls.Add(this.label17);
+			this.Supplement.Controls.Add(this.supnoTextBox);
+			this.Supplement.Controls.Add(this.button2);
+			this.Supplement.Controls.Add(booktypeLabel);
+			this.Supplement.Controls.Add(this.booktypeLabel1);
+			this.Supplement.Controls.Add(duedateLabel);
+			this.Supplement.Controls.Add(this.duedateDateTimePicker);
+			this.Supplement.Controls.Add(recvdteLabel);
+			this.Supplement.Controls.Add(this.recvdteDateTimePicker);
+			this.Supplement.Controls.Add(nocopiesLabel1);
+			this.Supplement.Controls.Add(this.nocopiesTextBox);
+			this.Supplement.Controls.Add(nopagesLabel1);
+			this.Supplement.Controls.Add(this.nopagesTextBox1);
+			this.Supplement.Controls.Add(this.label15);
+			this.Supplement.Controls.Add(label16);
 			this.Supplement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Supplement.Location = new System.Drawing.Point(4, 22);
 			this.Supplement.Name = "Supplement";
@@ -1246,6 +1354,499 @@
 			// 
 			this.endsheetdetailTableAdapter.ClearBeforeFill = true;
 			// 
+			// label15
+			// 
+			this.label15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
+			this.label15.Location = new System.Drawing.Point(64, 13);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(84, 23);
+			this.label15.TabIndex = 57;
+			this.label15.Text = "label7";
+			// 
+			// label16
+			// 
+			label16.AutoSize = true;
+			label16.Location = new System.Drawing.Point(17, 13);
+			label16.Name = "label16";
+			label16.Size = new System.Drawing.Size(41, 13);
+			label16.TabIndex = 56;
+			label16.Text = "Prod#";
+			// 
+			// supplBindingSource
+			// 
+			this.supplBindingSource.DataMember = "suppl";
+			this.supplBindingSource.DataSource = this.dsEndSheet;
+			// 
+			// supplTableAdapter
+			// 
+			this.supplTableAdapter.ClearBeforeFill = true;
+			// 
+			// nopagesLabel1
+			// 
+			nopagesLabel1.AutoSize = true;
+			nopagesLabel1.Location = new System.Drawing.Point(12, 39);
+			nopagesLabel1.Name = "nopagesLabel1";
+			nopagesLabel1.Size = new System.Drawing.Size(127, 13);
+			nopagesLabel1.TabIndex = 57;
+			nopagesLabel1.Text = "# of Pages Received";
+			// 
+			// nopagesTextBox1
+			// 
+			this.nopagesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nopages", true));
+			this.nopagesTextBox1.Location = new System.Drawing.Point(145, 39);
+			this.nopagesTextBox1.Name = "nopagesTextBox1";
+			this.nopagesTextBox1.Size = new System.Drawing.Size(100, 20);
+			this.nopagesTextBox1.TabIndex = 58;
+			// 
+			// nocopiesLabel1
+			// 
+			nocopiesLabel1.AutoSize = true;
+			nocopiesLabel1.Location = new System.Drawing.Point(261, 39);
+			nocopiesLabel1.Name = "nocopiesLabel1";
+			nocopiesLabel1.Size = new System.Drawing.Size(57, 13);
+			nocopiesLabel1.TabIndex = 58;
+			nocopiesLabel1.Text = "# Copies";
+			// 
+			// nocopiesTextBox
+			// 
+			this.nocopiesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nocopies", true));
+			this.nocopiesTextBox.Location = new System.Drawing.Point(324, 39);
+			this.nocopiesTextBox.Name = "nocopiesTextBox";
+			this.nocopiesTextBox.Size = new System.Drawing.Size(100, 20);
+			this.nocopiesTextBox.TabIndex = 59;
+			// 
+			// recvdteLabel
+			// 
+			recvdteLabel.AutoSize = true;
+			recvdteLabel.Location = new System.Drawing.Point(435, 39);
+			recvdteLabel.Name = "recvdteLabel";
+			recvdteLabel.Size = new System.Drawing.Size(95, 13);
+			recvdteLabel.TabIndex = 59;
+			recvdteLabel.Text = "Recievied Date";
+			// 
+			// recvdteDateTimePicker
+			// 
+			this.recvdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "recvdte", true));
+			this.recvdteDateTimePicker.Location = new System.Drawing.Point(530, 39);
+			this.recvdteDateTimePicker.Name = "recvdteDateTimePicker";
+			this.recvdteDateTimePicker.Size = new System.Drawing.Size(218, 20);
+			this.recvdteDateTimePicker.TabIndex = 60;
+			// 
+			// duedateLabel
+			// 
+			duedateLabel.AutoSize = true;
+			duedateLabel.Location = new System.Drawing.Point(755, 39);
+			duedateLabel.Name = "duedateLabel";
+			duedateLabel.Size = new System.Drawing.Size(61, 13);
+			duedateLabel.TabIndex = 60;
+			duedateLabel.Text = "Due Date";
+			// 
+			// duedateDateTimePicker
+			// 
+			this.duedateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "duedate", true));
+			this.duedateDateTimePicker.Location = new System.Drawing.Point(821, 39);
+			this.duedateDateTimePicker.Name = "duedateDateTimePicker";
+			this.duedateDateTimePicker.Size = new System.Drawing.Size(212, 20);
+			this.duedateDateTimePicker.TabIndex = 61;
+			// 
+			// booktypeLabel
+			// 
+			booktypeLabel.AutoSize = true;
+			booktypeLabel.Location = new System.Drawing.Point(1038, 13);
+			booktypeLabel.Name = "booktypeLabel";
+			booktypeLabel.Size = new System.Drawing.Size(68, 13);
+			booktypeLabel.TabIndex = 61;
+			booktypeLabel.Text = "Book Type";
+			// 
+			// booktypeLabel1
+			// 
+			this.booktypeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "booktype", true));
+			this.booktypeLabel1.Location = new System.Drawing.Point(1107, 13);
+			this.booktypeLabel1.Name = "booktypeLabel1";
+			this.booktypeLabel1.Size = new System.Drawing.Size(100, 23);
+			this.booktypeLabel1.TabIndex = 62;
+			this.booktypeLabel1.Text = "label17";
+			// 
+			// button2
+			// 
+			this.button2.Location = new System.Drawing.Point(19, 63);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.TabIndex = 63;
+			this.button2.Text = "Suppl #";
+			this.button2.UseVisualStyleBackColor = true;
+			// 
+			// supnoTextBox
+			// 
+			this.supnoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "supno", true));
+			this.supnoTextBox.Location = new System.Drawing.Point(100, 65);
+			this.supnoTextBox.Name = "supnoTextBox";
+			this.supnoTextBox.Size = new System.Drawing.Size(80, 20);
+			this.supnoTextBox.TabIndex = 64;
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Location = new System.Drawing.Point(35, 116);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(84, 13);
+			this.label17.TabIndex = 65;
+			this.label17.Text = "Check In/Out";
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Location = new System.Drawing.Point(20, 145);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(99, 13);
+			this.label18.TabIndex = 66;
+			this.label18.Text = "Date To Bindery";
+			// 
+			// label19
+			// 
+			this.label19.AutoSize = true;
+			this.label19.Location = new System.Drawing.Point(343, 97);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(27, 13);
+			this.label19.TabIndex = 67;
+			this.label19.Text = "Out";
+			// 
+			// label20
+			// 
+			this.label20.AutoSize = true;
+			this.label20.Location = new System.Drawing.Point(630, 97);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(25, 13);
+			this.label20.TabIndex = 68;
+			this.label20.Text = "Init";
+			// 
+			// label21
+			// 
+			this.label21.AutoSize = true;
+			this.label21.Location = new System.Drawing.Point(559, 97);
+			this.label21.Name = "label21";
+			this.label21.Size = new System.Drawing.Size(34, 13);
+			this.label21.TabIndex = 69;
+			this.label21.Text = "Dept";
+			// 
+			// label22
+			// 
+			this.label22.AutoSize = true;
+			this.label22.Location = new System.Drawing.Point(125, 97);
+			this.label22.Name = "label22";
+			this.label22.Size = new System.Drawing.Size(18, 13);
+			this.label22.TabIndex = 70;
+			this.label22.Text = "In";
+			this.label22.Click += new System.EventHandler(this.label22_Click);
+			// 
+			// iinDateTimePicker
+			// 
+			this.iinDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "iin", true));
+			this.iinDateTimePicker.Location = new System.Drawing.Point(125, 116);
+			this.iinDateTimePicker.Name = "iinDateTimePicker";
+			this.iinDateTimePicker.Size = new System.Drawing.Size(212, 20);
+			this.iinDateTimePicker.TabIndex = 71;
+			// 
+			// ioutDateTimePicker
+			// 
+			this.ioutDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "iout", true));
+			this.ioutDateTimePicker.Location = new System.Drawing.Point(343, 116);
+			this.ioutDateTimePicker.Name = "ioutDateTimePicker";
+			this.ioutDateTimePicker.Size = new System.Drawing.Size(210, 20);
+			this.ioutDateTimePicker.TabIndex = 72;
+			// 
+			// ideptTextBox
+			// 
+			this.ideptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "idept", true));
+			this.ideptTextBox.Location = new System.Drawing.Point(559, 116);
+			this.ideptTextBox.Name = "ideptTextBox";
+			this.ideptTextBox.Size = new System.Drawing.Size(62, 20);
+			this.ideptTextBox.TabIndex = 73;
+			// 
+			// iinitTextBox
+			// 
+			this.iinitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "iinit", true));
+			this.iinitTextBox.Location = new System.Drawing.Point(630, 116);
+			this.iinitTextBox.Name = "iinitTextBox";
+			this.iinitTextBox.Size = new System.Drawing.Size(49, 20);
+			this.iinitTextBox.TabIndex = 74;
+			// 
+			// binddteDateTimePicker
+			// 
+			this.binddteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "binddte", true));
+			this.binddteDateTimePicker.Location = new System.Drawing.Point(125, 145);
+			this.binddteDateTimePicker.Name = "binddteDateTimePicker";
+			this.binddteDateTimePicker.Size = new System.Drawing.Size(212, 20);
+			this.binddteDateTimePicker.TabIndex = 75;
+			// 
+			// frmbindDateTimePicker
+			// 
+			this.frmbindDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "frmbind", true));
+			this.frmbindDateTimePicker.Location = new System.Drawing.Point(343, 145);
+			this.frmbindDateTimePicker.Name = "frmbindDateTimePicker";
+			this.frmbindDateTimePicker.Size = new System.Drawing.Size(210, 20);
+			this.frmbindDateTimePicker.TabIndex = 76;
+			// 
+			// label23
+			// 
+			this.label23.AutoSize = true;
+			this.label23.Location = new System.Drawing.Point(559, 145);
+			this.label23.Name = "label23";
+			this.label23.Size = new System.Drawing.Size(77, 13);
+			this.label23.TabIndex = 77;
+			this.label23.Text = "Print Vendor";
+			// 
+			// vendcdTextBox
+			// 
+			this.vendcdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "vendcd", true));
+			this.vendcdTextBox.Location = new System.Drawing.Point(642, 145);
+			this.vendcdTextBox.Name = "vendcdTextBox";
+			this.vendcdTextBox.Size = new System.Drawing.Size(36, 20);
+			this.vendcdTextBox.TabIndex = 78;
+			// 
+			// tape_1CheckBox
+			// 
+			this.tape_1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.supplBindingSource, "tape_1", true));
+			this.tape_1CheckBox.Location = new System.Drawing.Point(125, 171);
+			this.tape_1CheckBox.Name = "tape_1CheckBox";
+			this.tape_1CheckBox.Size = new System.Drawing.Size(63, 24);
+			this.tape_1CheckBox.TabIndex = 80;
+			this.tape_1CheckBox.Text = "Tape";
+			this.tape_1CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// label24
+			// 
+			this.label24.AutoSize = true;
+			this.label24.Location = new System.Drawing.Point(692, 116);
+			this.label24.Name = "label24";
+			this.label24.Size = new System.Drawing.Size(104, 13);
+			this.label24.TabIndex = 81;
+			this.label24.Text = "To book Remake";
+			// 
+			// label25
+			// 
+			this.label25.AutoSize = true;
+			this.label25.Location = new System.Drawing.Point(696, 148);
+			this.label25.Name = "label25";
+			this.label25.Size = new System.Drawing.Size(100, 13);
+			this.label25.TabIndex = 82;
+			this.label25.Text = "Type of Remake";
+			// 
+			// label26
+			// 
+			this.label26.AutoSize = true;
+			this.label26.Location = new System.Drawing.Point(680, 175);
+			this.label26.Name = "label26";
+			this.label26.Size = new System.Drawing.Size(116, 13);
+			this.label26.TabIndex = 83;
+			this.label26.Text = "From book Remake";
+			// 
+			// label27
+			// 
+			this.label27.AutoSize = true;
+			this.label27.Location = new System.Drawing.Point(671, 199);
+			this.label27.Name = "label27";
+			this.label27.Size = new System.Drawing.Size(125, 13);
+			this.label27.TabIndex = 84;
+			this.label27.Text = "Total Book Remakes";
+			// 
+			// rmbtoDateTimePicker
+			// 
+			this.rmbtoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "rmbto", true));
+			this.rmbtoDateTimePicker.Location = new System.Drawing.Point(802, 116);
+			this.rmbtoDateTimePicker.Name = "rmbtoDateTimePicker";
+			this.rmbtoDateTimePicker.Size = new System.Drawing.Size(216, 20);
+			this.rmbtoDateTimePicker.TabIndex = 85;
+			// 
+			// remaketypeComboBox
+			// 
+			this.remaketypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "remaketype", true));
+			this.remaketypeComboBox.FormattingEnabled = true;
+			this.remaketypeComboBox.Location = new System.Drawing.Point(802, 148);
+			this.remaketypeComboBox.Name = "remaketypeComboBox";
+			this.remaketypeComboBox.Size = new System.Drawing.Size(215, 21);
+			this.remaketypeComboBox.TabIndex = 86;
+			// 
+			// rmbfrmDateTimePicker
+			// 
+			this.rmbfrmDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "rmbfrm", true));
+			this.rmbfrmDateTimePicker.Location = new System.Drawing.Point(802, 175);
+			this.rmbfrmDateTimePicker.Name = "rmbfrmDateTimePicker";
+			this.rmbfrmDateTimePicker.Size = new System.Drawing.Size(216, 20);
+			this.rmbfrmDateTimePicker.TabIndex = 87;
+			// 
+			// rmbtotTextBox
+			// 
+			this.rmbtotTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "rmbtot", true));
+			this.rmbtotTextBox.Location = new System.Drawing.Point(802, 199);
+			this.rmbtotTextBox.Name = "rmbtotTextBox";
+			this.rmbtotTextBox.Size = new System.Drawing.Size(100, 20);
+			this.rmbtotTextBox.TabIndex = 88;
+			// 
+			// oursuppCheckBox
+			// 
+			this.oursuppCheckBox.AutoSize = true;
+			this.oursuppCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "oursupp", true));
+			this.oursuppCheckBox.Location = new System.Drawing.Point(188, 175);
+			this.oursuppCheckBox.Name = "oursuppCheckBox";
+			this.oursuppCheckBox.Size = new System.Drawing.Size(149, 17);
+			this.oursuppCheckBox.TabIndex = 89;
+			this.oursuppCheckBox.Text = "Our Story Supplement";
+			this.oursuppCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// supplementsCheckBox
+			// 
+			this.supplementsCheckBox.AutoSize = true;
+			this.supplementsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "supplements", true));
+			this.supplementsCheckBox.Location = new System.Drawing.Point(343, 178);
+			this.supplementsCheckBox.Name = "supplementsCheckBox";
+			this.supplementsCheckBox.Size = new System.Drawing.Size(145, 17);
+			this.supplementsCheckBox.TabIndex = 90;
+			this.supplementsCheckBox.Text = "My Story Supplement";
+			this.supplementsCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// totsigsLabel
+			// 
+			totsigsLabel.AutoSize = true;
+			totsigsLabel.Location = new System.Drawing.Point(487, 178);
+			totsigsLabel.Name = "totsigsLabel";
+			totsigsLabel.Size = new System.Drawing.Size(43, 13);
+			totsigsLabel.TabIndex = 90;
+			totsigsLabel.Text = "# Sigs";
+			// 
+			// totsigsTextBox
+			// 
+			this.totsigsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "totsigs", true));
+			this.totsigsTextBox.Location = new System.Drawing.Point(536, 175);
+			this.totsigsTextBox.Name = "totsigsTextBox";
+			this.totsigsTextBox.Size = new System.Drawing.Size(100, 20);
+			this.totsigsTextBox.TabIndex = 91;
+			// 
+			// partmemoLabel
+			// 
+			partmemoLabel.AutoSize = true;
+			partmemoLabel.Location = new System.Drawing.Point(127, 204);
+			partmemoLabel.Name = "partmemoLabel";
+			partmemoLabel.Size = new System.Drawing.Size(40, 13);
+			partmemoLabel.TabIndex = 91;
+			partmemoLabel.Text = "Memo";
+			// 
+			// partmemoTextBox
+			// 
+			this.partmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "partmemo", true));
+			this.partmemoTextBox.Location = new System.Drawing.Point(174, 201);
+			this.partmemoTextBox.Multiline = true;
+			this.partmemoTextBox.Name = "partmemoTextBox";
+			this.partmemoTextBox.Size = new System.Drawing.Size(481, 64);
+			this.partmemoTextBox.TabIndex = 92;
+			// 
+			// suppdetailBindingSource
+			// 
+			this.suppdetailBindingSource.DataMember = "suppdetail";
+			this.suppdetailBindingSource.DataSource = this.dsEndSheet;
+			// 
+			// suppdetailTableAdapter
+			// 
+			this.suppdetailTableAdapter.ClearBeforeFill = true;
+			// 
+			// suppdetailDataGridView
+			// 
+			this.suppdetailDataGridView.AllowUserToAddRows = false;
+			this.suppdetailDataGridView.AllowUserToDeleteRows = false;
+			this.suppdetailDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.suppdetailDataGridView.AutoGenerateColumns = false;
+			this.suppdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			this.suppdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.suppdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13});
+			this.suppdetailDataGridView.DataSource = this.suppdetailBindingSource;
+			this.suppdetailDataGridView.EnableHeadersVisualStyles = false;
+			this.suppdetailDataGridView.Location = new System.Drawing.Point(164, 292);
+			this.suppdetailDataGridView.Name = "suppdetailDataGridView";
+			this.suppdetailDataGridView.RowHeadersVisible = false;
+			this.suppdetailDataGridView.Size = new System.Drawing.Size(913, 334);
+			this.suppdetailDataGridView.TabIndex = 92;
+			// 
+			// dataGridViewTextBoxColumn15
+			// 
+			this.dataGridViewTextBoxColumn15.DataPropertyName = "Description";
+			this.dataGridViewTextBoxColumn15.HeaderText = "Description";
+			this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+			// 
+			// dataGridViewTextBoxColumn8
+			// 
+			this.dataGridViewTextBoxColumn8.DataPropertyName = "war";
+			this.dataGridViewTextBoxColumn8.HeaderText = "Actual";
+			this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+			// 
+			// dataGridViewTextBoxColumn9
+			// 
+			this.dataGridViewTextBoxColumn9.DataPropertyName = "wdr";
+			this.dataGridViewTextBoxColumn9.HeaderText = "Due";
+			this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+			// 
+			// dataGridViewTextBoxColumn10
+			// 
+			this.dataGridViewTextBoxColumn10.DataPropertyName = "wtr";
+			this.dataGridViewTextBoxColumn10.HeaderText = "Time";
+			this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+			// 
+			// dataGridViewTextBoxColumn11
+			// 
+			this.dataGridViewTextBoxColumn11.DataPropertyName = "invno";
+			this.dataGridViewTextBoxColumn11.HeaderText = "invno";
+			this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+			this.dataGridViewTextBoxColumn11.Visible = false;
+			// 
+			// dataGridViewTextBoxColumn12
+			// 
+			this.dataGridViewTextBoxColumn12.DataPropertyName = "wir";
+			this.dataGridViewTextBoxColumn12.HeaderText = "Initials";
+			this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+			// 
+			// dataGridViewTextBoxColumn13
+			// 
+			this.dataGridViewTextBoxColumn13.DataPropertyName = "id";
+			this.dataGridViewTextBoxColumn13.HeaderText = "id";
+			this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+			this.dataGridViewTextBoxColumn13.ReadOnly = true;
+			this.dataGridViewTextBoxColumn13.Visible = false;
+			// 
+			// button3
+			// 
+			this.button3.AutoSize = true;
+			this.button3.Location = new System.Drawing.Point(174, 643);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(185, 23);
+			this.button3.TabIndex = 93;
+			this.button3.Text = "Change All Supplement Dates";
+			this.button3.UseVisualStyleBackColor = true;
+			// 
+			// button4
+			// 
+			this.button4.AutoSize = true;
+			this.button4.Location = new System.Drawing.Point(365, 643);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(146, 23);
+			this.button4.TabIndex = 94;
+			this.button4.Text = "Prod End Sheet Ticket";
+			this.button4.UseVisualStyleBackColor = true;
+			// 
 			// frmEndSheet
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1254,6 +1855,7 @@
 			this.Name = "frmEndSheet";
 			this.Text = "End Sheet/Supplements/Preflight";
 			this.Load += new System.EventHandler(this.frmEndSheet_Load);
+			this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmEndSheet_Paint);
 			this.tbEndSheets.ResumeLayout(false);
 			this.pgEndSheets.ResumeLayout(false);
 			this.pgEndSheets.PerformLayout();
@@ -1268,6 +1870,11 @@
 			this.groupBox1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+			this.Supplement.ResumeLayout(false);
+			this.Supplement.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1282,8 +1889,7 @@
 		private System.Windows.Forms.BindingSource custBindingSource;
 		private DataSets.dsEndSheetTableAdapters.custTableAdapter custTableAdapter;
 		private DataSets.dsEndSheetTableAdapters.TableAdapterManager tableAdapterManager;
-		private System.Windows.Forms.TextBox schcodeTextBox;
-		private System.Windows.Forms.TextBox schnameTextBox;
+		private System.Windows.Forms.TextBox txtSchname;
 		private System.Windows.Forms.BindingSource produtnBindingSource;
 		private DataSets.dsEndSheetTableAdapters.produtnTableAdapter produtnTableAdapter;
 		private System.Windows.Forms.BindingSource quotesBindingSource;
@@ -1362,5 +1968,54 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
 		private System.Windows.Forms.Button btnInvoiceSrch;
 		private System.Windows.Forms.TextBox txtInvoiceNoSrch;
+		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.BindingSource supplBindingSource;
+		private DataSets.dsEndSheetTableAdapters.supplTableAdapter supplTableAdapter;
+		private System.Windows.Forms.Label booktypeLabel1;
+		private System.Windows.Forms.DateTimePicker duedateDateTimePicker;
+		private System.Windows.Forms.DateTimePicker recvdteDateTimePicker;
+		private System.Windows.Forms.TextBox nocopiesTextBox;
+		private System.Windows.Forms.TextBox nopagesTextBox1;
+		private System.Windows.Forms.DateTimePicker frmbindDateTimePicker;
+		private System.Windows.Forms.DateTimePicker binddteDateTimePicker;
+		private System.Windows.Forms.TextBox iinitTextBox;
+		private System.Windows.Forms.TextBox ideptTextBox;
+		private System.Windows.Forms.DateTimePicker ioutDateTimePicker;
+		private System.Windows.Forms.DateTimePicker iinDateTimePicker;
+		private System.Windows.Forms.Label label22;
+		private System.Windows.Forms.Label label21;
+		private System.Windows.Forms.Label label20;
+		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.TextBox supnoTextBox;
+		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.TextBox rmbtotTextBox;
+		private System.Windows.Forms.DateTimePicker rmbfrmDateTimePicker;
+		private System.Windows.Forms.ComboBox remaketypeComboBox;
+		private System.Windows.Forms.DateTimePicker rmbtoDateTimePicker;
+		private System.Windows.Forms.Label label27;
+		private System.Windows.Forms.Label label26;
+		private System.Windows.Forms.Label label25;
+		private System.Windows.Forms.Label label24;
+		private System.Windows.Forms.CheckBox tape_1CheckBox;
+		private System.Windows.Forms.TextBox vendcdTextBox;
+		private System.Windows.Forms.Label label23;
+		private System.Windows.Forms.CheckBox supplementsCheckBox;
+		private System.Windows.Forms.CheckBox oursuppCheckBox;
+		private System.Windows.Forms.TextBox totsigsTextBox;
+		private System.Windows.Forms.TextBox partmemoTextBox;
+		private System.Windows.Forms.BindingSource suppdetailBindingSource;
+		private DataSets.dsEndSheetTableAdapters.suppdetailTableAdapter suppdetailTableAdapter;
+		private System.Windows.Forms.DataGridView suppdetailDataGridView;
+		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
 	}
 }
