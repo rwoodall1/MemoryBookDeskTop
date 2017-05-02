@@ -74,17 +74,41 @@ namespace Mbc5.Forms
 					
 					};
 			var strQuery = "INSERT INTO [dbo].[endsheet](Invno,Schcode)  VALUES (@Invno,@Schcode,@Contryear)";
-			var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-			if (userResult != 1)
+			var endsheetResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+			if (endsheetResult != 1)
 			{
+				ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
+					.AddTags("MemoryBook DestTop")
+					.AddObject("Invoice#:" + Invno)
+					.AddObject("Schcode:" + Schcode)
+					.Submit();
 				MessageBox.Show("Failed to insert endsheet record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				
+					
 				return;
 			}
-			var strQuery = "INSERT INTO [dbo].[suppl](Invno,Schcode)  VALUES (@Invno,@Schcode,@Contryear)";
-			var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-			if (userResult != 1)
+			strQuery = "INSERT INTO [dbo].[suppl](Invno,Schcode)  VALUES (@Invno,@Schcode)";
+			var supplResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+			if (supplResult != 1)
 			{
-				MessageBox.Show("Failed to insert endsheet record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
+					.AddTags("MemoryBook DestTop")
+					.AddObject("Invoice#:" + Invno)
+					.AddObject("Schcode:" + Schcode)
+					.Submit();
+				MessageBox.Show("Failed to insert supplement record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			strQuery = "INSERT INTO [dbo].[priflit](Invno,Schcode)  VALUES (@Invno,@Schcode)";
+			var priResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+			if (priResult != 1)
+			{
+				ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
+					.AddTags("MemoryBook DestTop")
+					.AddObject("Invoice#:" + Invno)
+					.AddObject("Schcode:" + Schcode)
+					.Submit();
+				MessageBox.Show("Failed to insert priflit record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
@@ -158,10 +182,11 @@ namespace Mbc5.Forms
 				}
 				else
 				{
-					DialogResult result=MessageBox.Show("End Sheet record was not found. For this invoice number, do you want to add one>", "Invoice#", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Stop);
+					DialogResult result=MessageBox.Show("End Sheet record was not found. For this invoice number ("+Invno+"), do you want to add one?", "Invoice#", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Stop);
 					if (result == DialogResult.Yes)
 					{
 						AddEndSheet();
+						Fill();
 
 					}
 				}

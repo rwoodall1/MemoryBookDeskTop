@@ -1224,7 +1224,10 @@
 			// 
 			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
 			this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
+			this.tableAdapterManager.endsheetTableAdapter = null;
+			this.tableAdapterManager.preflitTableAdapter = null;
 			this.tableAdapterManager.produtnTableAdapter = null;
+			this.tableAdapterManager.supplTableAdapter = null;
 			this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
 			// 
 			// produtnTableAdapter
