@@ -246,23 +246,129 @@ namespace Mbc5.Forms
 
 			}
 		}
-
-		private void label22_Click(object sender, EventArgs e)
+		#region DateFormat
+		private void predateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-
+			predateDateTimePicker.Format = DateTimePickerFormat.Long;
 		}
 
-		private void fillToolStripButton_Click(object sender, EventArgs e)
+		private void recvdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			try
-			{
-				this.suppdetailTableAdapter.Fill(this.dsEndSheet.suppdetail, schcodeToolStripTextBox.Text);
-			}
-			catch (System.Exception ex)
-			{
-				System.Windows.Forms.MessageBox.Show(ex.Message);
-			}
-
+			recvdteDateTimePicker.Format = DateTimePickerFormat.Long;
 		}
+
+		private void duedateDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			duedateDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void iinDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			iinDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void ioutDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			ioutDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void binddteDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			binddteDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void frmbindDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			frmbindDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void rmbtoDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			rmbtoDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void remaketypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			
+		}
+
+		private void rmbfrmDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			rmbfrmDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void csonholdDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			csonholdDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void csoffholdDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			csoffholdDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void endstrecvDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			endstrecvDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void prtdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			prtdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void lamdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			lamdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void dcdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			dcdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void otdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			otdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void prtdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			prtdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void lamdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			lamdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void dcdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			dcdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void otdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			otdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void prntsamDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			prntsamDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		
+		private void reprntdteDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			reprntdteDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+		private void desorgdteDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			desorgdteDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		#endregion
+
+		
 	}
 }

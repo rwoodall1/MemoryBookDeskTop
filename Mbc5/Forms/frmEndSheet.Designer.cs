@@ -56,7 +56,6 @@
 			System.Windows.Forms.Label desorgdteLabel;
 			System.Windows.Forms.Label persondestLabel;
 			System.Windows.Forms.Label reasonLabel;
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.Label label16;
 			System.Windows.Forms.Label nopagesLabel1;
 			System.Windows.Forms.Label nocopiesLabel1;
@@ -65,9 +64,22 @@
 			System.Windows.Forms.Label booktypeLabel;
 			System.Windows.Forms.Label totsigsLabel;
 			System.Windows.Forms.Label partmemoLabel;
+			System.Windows.Forms.Label label29;
+			System.Windows.Forms.Label label31;
+			System.Windows.Forms.Label label33;
+			System.Windows.Forms.Label predateLabel;
+			System.Windows.Forms.Label initialLabel;
+			System.Windows.Forms.Label prognameLabel;
+			System.Windows.Forms.Label numsentLabel;
+			System.Windows.Forms.Label custquestLabel;
+			System.Windows.Forms.Label technoteLabel;
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			this.endsheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.dsEndSheet = new Mbc5.DataSets.dsEndSheet();
 			this.tbEndSheets = new System.Windows.Forms.TabControl();
 			this.pgEndSheets = new System.Windows.Forms.TabPage();
+			this.reprntdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.btnInvoiceSrch = new System.Windows.Forms.Button();
 			this.txtInvoiceNoSrch = new System.Windows.Forms.TextBox();
 			this.endsheetdetailDataGridView = new System.Windows.Forms.DataGridView();
@@ -79,15 +91,12 @@
 			this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.endsheetdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.dsEndSheet = new Mbc5.DataSets.dsEndSheet();
 			this.reasonTextBox = new System.Windows.Forms.TextBox();
-			this.endsheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.persondestTextBox = new System.Windows.Forms.TextBox();
 			this.reprnacpCheckBox = new System.Windows.Forms.CheckBox();
 			this.acceptdCheckBox = new System.Windows.Forms.CheckBox();
 			this.remakeCheckBox = new System.Windows.Forms.CheckBox();
 			this.desorgdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
-			this.reprntdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.prntsamDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.otdtebkDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.otdtesentDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -146,52 +155,9 @@
 			this.clr1TextBox = new System.Windows.Forms.TextBox();
 			this.txtSchname = new System.Windows.Forms.TextBox();
 			this.Supplement = new System.Windows.Forms.TabPage();
-			this.PreFlight = new System.Windows.Forms.TabPage();
-			this.custTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.custTableAdapter();
-			this.tableAdapterManager = new Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager();
-			this.produtnTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.produtnTableAdapter();
-			this.quotesTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.quotesTableAdapter();
-			this.endsheetTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.endsheetTableAdapter();
-			this.endsheetdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.endsheetdetailTableAdapter();
-			this.label15 = new System.Windows.Forms.Label();
-			this.supplBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.supplTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.supplTableAdapter();
-			this.nopagesTextBox1 = new System.Windows.Forms.TextBox();
-			this.nocopiesTextBox = new System.Windows.Forms.TextBox();
-			this.recvdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
-			this.duedateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-			this.booktypeLabel1 = new System.Windows.Forms.Label();
-			this.button2 = new System.Windows.Forms.Button();
-			this.supnoTextBox = new System.Windows.Forms.TextBox();
-			this.label17 = new System.Windows.Forms.Label();
-			this.label18 = new System.Windows.Forms.Label();
-			this.label19 = new System.Windows.Forms.Label();
-			this.label20 = new System.Windows.Forms.Label();
-			this.label21 = new System.Windows.Forms.Label();
-			this.label22 = new System.Windows.Forms.Label();
-			this.iinDateTimePicker = new System.Windows.Forms.DateTimePicker();
-			this.ioutDateTimePicker = new System.Windows.Forms.DateTimePicker();
-			this.ideptTextBox = new System.Windows.Forms.TextBox();
-			this.iinitTextBox = new System.Windows.Forms.TextBox();
-			this.binddteDateTimePicker = new System.Windows.Forms.DateTimePicker();
-			this.frmbindDateTimePicker = new System.Windows.Forms.DateTimePicker();
-			this.label23 = new System.Windows.Forms.Label();
-			this.vendcdTextBox = new System.Windows.Forms.TextBox();
-			this.tape_1CheckBox = new System.Windows.Forms.CheckBox();
-			this.label24 = new System.Windows.Forms.Label();
-			this.label25 = new System.Windows.Forms.Label();
-			this.label26 = new System.Windows.Forms.Label();
-			this.label27 = new System.Windows.Forms.Label();
-			this.rmbtoDateTimePicker = new System.Windows.Forms.DateTimePicker();
-			this.remaketypeComboBox = new System.Windows.Forms.ComboBox();
-			this.rmbfrmDateTimePicker = new System.Windows.Forms.DateTimePicker();
-			this.rmbtotTextBox = new System.Windows.Forms.TextBox();
-			this.oursuppCheckBox = new System.Windows.Forms.CheckBox();
-			this.supplementsCheckBox = new System.Windows.Forms.CheckBox();
-			this.totsigsTextBox = new System.Windows.Forms.TextBox();
-			this.partmemoTextBox = new System.Windows.Forms.TextBox();
-			this.suppdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.suppdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.suppdetailTableAdapter();
+			this.label28 = new System.Windows.Forms.Label();
+			this.button4 = new System.Windows.Forms.Button();
+			this.button3 = new System.Windows.Forms.Button();
 			this.suppdetailDataGridView = new System.Windows.Forms.DataGridView();
 			this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -200,8 +166,97 @@
 			this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
+			this.suppdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.partmemoTextBox = new System.Windows.Forms.TextBox();
+			this.supplBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.totsigsTextBox = new System.Windows.Forms.TextBox();
+			this.supplementsCheckBox = new System.Windows.Forms.CheckBox();
+			this.oursuppCheckBox = new System.Windows.Forms.CheckBox();
+			this.rmbtotTextBox = new System.Windows.Forms.TextBox();
+			this.rmbfrmDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.remaketypeComboBox = new System.Windows.Forms.ComboBox();
+			this.rmbtoDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.label27 = new System.Windows.Forms.Label();
+			this.label26 = new System.Windows.Forms.Label();
+			this.label25 = new System.Windows.Forms.Label();
+			this.label24 = new System.Windows.Forms.Label();
+			this.tape_1CheckBox = new System.Windows.Forms.CheckBox();
+			this.vendcdTextBox = new System.Windows.Forms.TextBox();
+			this.label23 = new System.Windows.Forms.Label();
+			this.frmbindDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.binddteDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.iinitTextBox = new System.Windows.Forms.TextBox();
+			this.ideptTextBox = new System.Windows.Forms.TextBox();
+			this.ioutDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.iinDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.label22 = new System.Windows.Forms.Label();
+			this.label21 = new System.Windows.Forms.Label();
+			this.label20 = new System.Windows.Forms.Label();
+			this.label19 = new System.Windows.Forms.Label();
+			this.label18 = new System.Windows.Forms.Label();
+			this.label17 = new System.Windows.Forms.Label();
+			this.supnoTextBox = new System.Windows.Forms.TextBox();
+			this.button2 = new System.Windows.Forms.Button();
+			this.booktypeLabel1 = new System.Windows.Forms.Label();
+			this.duedateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.recvdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.nocopiesTextBox = new System.Windows.Forms.TextBox();
+			this.nopagesTextBox1 = new System.Windows.Forms.TextBox();
+			this.label15 = new System.Windows.Forms.Label();
+			this.PreFlight = new System.Windows.Forms.TabPage();
+			this.technoteTextBox = new System.Windows.Forms.TextBox();
+			this.preflitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.custquestTextBox = new System.Windows.Forms.TextBox();
+			this.numsentTextBox = new System.Windows.Forms.TextBox();
+			this.groupBox9 = new System.Windows.Forms.GroupBox();
+			this.cmissingCheckBox = new System.Windows.Forms.CheckBox();
+			this.pmissingCheckBox = new System.Windows.Forms.CheckBox();
+			this.dmissingCheckBox = new System.Windows.Forms.CheckBox();
+			this.chaveCheckBox = new System.Windows.Forms.CheckBox();
+			this.phaveCheckBox = new System.Windows.Forms.CheckBox();
+			this.dhavbothCheckBox = new System.Windows.Forms.CheckBox();
+			this.groupBox8 = new System.Windows.Forms.GroupBox();
+			this.cvrrecvCheckBox = new System.Windows.Forms.CheckBox();
+			this.groupBox7 = new System.Windows.Forms.GroupBox();
+			this.imglow2CheckBox = new System.Windows.Forms.CheckBox();
+			this.imglightCheckBox = new System.Windows.Forms.CheckBox();
+			this.imgdarkCheckBox = new System.Windows.Forms.CheckBox();
+			this.imglowCheckBox = new System.Windows.Forms.CheckBox();
+			this.img200CheckBox = new System.Windows.Forms.CheckBox();
+			this.groupBox6 = new System.Windows.Forms.GroupBox();
+			this.dcnocutCheckBox = new System.Windows.Forms.CheckBox();
+			this.dcnotsetCheckBox = new System.Windows.Forms.CheckBox();
+			this.dcokCheckBox = new System.Windows.Forms.CheckBox();
+			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.margfixCheckBox = new System.Windows.Forms.CheckBox();
+			this.margokCheckBox = new System.Windows.Forms.CheckBox();
+			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.freadonlyCheckBox = new System.Windows.Forms.CheckBox();
+			this.fembedCheckBox = new System.Windows.Forms.CheckBox();
+			this.fontsmisCheckBox = new System.Windows.Forms.CheckBox();
+			this.fontsb20CheckBox = new System.Windows.Forms.CheckBox();
+			this.fontsallCheckBox = new System.Windows.Forms.CheckBox();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.embeddCheckBox = new System.Windows.Forms.CheckBox();
+			this.misslinksCheckBox = new System.Windows.Forms.CheckBox();
+			this.alllinksCheckBox = new System.Windows.Forms.CheckBox();
+			this.linksCheckBox = new System.Windows.Forms.CheckBox();
+			this.formatmacCheckBox = new System.Windows.Forms.CheckBox();
+			this.formatpcCheckBox = new System.Windows.Forms.CheckBox();
+			this.prognameComboBox = new System.Windows.Forms.ComboBox();
+			this.initialTextBox = new System.Windows.Forms.TextBox();
+			this.predateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.label30 = new System.Windows.Forms.Label();
+			this.label32 = new System.Windows.Forms.Label();
+			this.custTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.custTableAdapter();
+			this.tableAdapterManager = new Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager();
+			this.produtnTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.produtnTableAdapter();
+			this.quotesTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.quotesTableAdapter();
+			this.endsheetTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.endsheetTableAdapter();
+			this.endsheetdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.endsheetdetailTableAdapter();
+			this.supplTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.supplTableAdapter();
+			this.suppdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.suppdetailTableAdapter();
+			this.preflitTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.preflitTableAdapter();
 			prodnoLabel = new System.Windows.Forms.Label();
 			invnoLabel = new System.Windows.Forms.Label();
 			clr1Label = new System.Windows.Forms.Label();
@@ -237,21 +292,39 @@
 			booktypeLabel = new System.Windows.Forms.Label();
 			totsigsLabel = new System.Windows.Forms.Label();
 			partmemoLabel = new System.Windows.Forms.Label();
+			label29 = new System.Windows.Forms.Label();
+			label31 = new System.Windows.Forms.Label();
+			label33 = new System.Windows.Forms.Label();
+			predateLabel = new System.Windows.Forms.Label();
+			initialLabel = new System.Windows.Forms.Label();
+			prognameLabel = new System.Windows.Forms.Label();
+			numsentLabel = new System.Windows.Forms.Label();
+			custquestLabel = new System.Windows.Forms.Label();
+			technoteLabel = new System.Windows.Forms.Label();
+			((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).BeginInit();
 			this.tbEndSheets.SuspendLayout();
 			this.pgEndSheets.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.endsheetdetailDataGridView)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.endsheetdetailBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
 			this.Supplement.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).BeginInit();
+			this.PreFlight.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).BeginInit();
+			this.groupBox9.SuspendLayout();
+			this.groupBox8.SuspendLayout();
+			this.groupBox7.SuspendLayout();
+			this.groupBox6.SuspendLayout();
+			this.groupBox5.SuspendLayout();
+			this.groupBox4.SuspendLayout();
+			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// prodnoLabel
@@ -497,6 +570,173 @@
 			reasonLabel.TabIndex = 90;
 			reasonLabel.Text = "Reason";
 			// 
+			// label16
+			// 
+			label16.AutoSize = true;
+			label16.Location = new System.Drawing.Point(17, 13);
+			label16.Name = "label16";
+			label16.Size = new System.Drawing.Size(41, 13);
+			label16.TabIndex = 56;
+			label16.Text = "Prod#";
+			// 
+			// nopagesLabel1
+			// 
+			nopagesLabel1.AutoSize = true;
+			nopagesLabel1.Location = new System.Drawing.Point(12, 39);
+			nopagesLabel1.Name = "nopagesLabel1";
+			nopagesLabel1.Size = new System.Drawing.Size(127, 13);
+			nopagesLabel1.TabIndex = 57;
+			nopagesLabel1.Text = "# of Pages Received";
+			// 
+			// nocopiesLabel1
+			// 
+			nocopiesLabel1.AutoSize = true;
+			nocopiesLabel1.Location = new System.Drawing.Point(261, 39);
+			nocopiesLabel1.Name = "nocopiesLabel1";
+			nocopiesLabel1.Size = new System.Drawing.Size(57, 13);
+			nocopiesLabel1.TabIndex = 58;
+			nocopiesLabel1.Text = "# Copies";
+			// 
+			// recvdteLabel
+			// 
+			recvdteLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			recvdteLabel.AutoSize = true;
+			recvdteLabel.Location = new System.Drawing.Point(435, 39);
+			recvdteLabel.Name = "recvdteLabel";
+			recvdteLabel.Size = new System.Drawing.Size(95, 13);
+			recvdteLabel.TabIndex = 59;
+			recvdteLabel.Text = "Recievied Date";
+			// 
+			// duedateLabel
+			// 
+			duedateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			duedateLabel.AutoSize = true;
+			duedateLabel.Location = new System.Drawing.Point(755, 39);
+			duedateLabel.Name = "duedateLabel";
+			duedateLabel.Size = new System.Drawing.Size(61, 13);
+			duedateLabel.TabIndex = 60;
+			duedateLabel.Text = "Due Date";
+			// 
+			// booktypeLabel
+			// 
+			booktypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			booktypeLabel.AutoSize = true;
+			booktypeLabel.Location = new System.Drawing.Point(1038, 13);
+			booktypeLabel.Name = "booktypeLabel";
+			booktypeLabel.Size = new System.Drawing.Size(68, 13);
+			booktypeLabel.TabIndex = 61;
+			booktypeLabel.Text = "Book Type";
+			// 
+			// totsigsLabel
+			// 
+			totsigsLabel.AutoSize = true;
+			totsigsLabel.Location = new System.Drawing.Point(487, 178);
+			totsigsLabel.Name = "totsigsLabel";
+			totsigsLabel.Size = new System.Drawing.Size(43, 13);
+			totsigsLabel.TabIndex = 90;
+			totsigsLabel.Text = "# Sigs";
+			// 
+			// partmemoLabel
+			// 
+			partmemoLabel.AutoSize = true;
+			partmemoLabel.Location = new System.Drawing.Point(127, 204);
+			partmemoLabel.Name = "partmemoLabel";
+			partmemoLabel.Size = new System.Drawing.Size(40, 13);
+			partmemoLabel.TabIndex = 91;
+			partmemoLabel.Text = "Memo";
+			// 
+			// label29
+			// 
+			label29.AutoSize = true;
+			label29.Location = new System.Drawing.Point(150, 13);
+			label29.Name = "label29";
+			label29.Size = new System.Drawing.Size(57, 13);
+			label29.TabIndex = 95;
+			label29.Text = "Invoice#";
+			// 
+			// label31
+			// 
+			label31.AutoSize = true;
+			label31.Location = new System.Drawing.Point(146, 5);
+			label31.Name = "label31";
+			label31.Size = new System.Drawing.Size(57, 13);
+			label31.TabIndex = 99;
+			label31.Text = "Invoice#";
+			// 
+			// label33
+			// 
+			label33.AutoSize = true;
+			label33.Location = new System.Drawing.Point(13, 5);
+			label33.Name = "label33";
+			label33.Size = new System.Drawing.Size(41, 13);
+			label33.TabIndex = 97;
+			label33.Text = "Prod#";
+			// 
+			// predateLabel
+			// 
+			predateLabel.AutoSize = true;
+			predateLabel.Location = new System.Drawing.Point(331, 5);
+			predateLabel.Name = "predateLabel";
+			predateLabel.Size = new System.Drawing.Size(34, 13);
+			predateLabel.TabIndex = 100;
+			predateLabel.Text = "Date";
+			// 
+			// initialLabel
+			// 
+			initialLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			initialLabel.AutoSize = true;
+			initialLabel.Location = new System.Drawing.Point(1117, 5);
+			initialLabel.Name = "initialLabel";
+			initialLabel.Size = new System.Drawing.Size(44, 13);
+			initialLabel.TabIndex = 101;
+			initialLabel.Text = "Initials";
+			// 
+			// prognameLabel
+			// 
+			prognameLabel.AutoSize = true;
+			prognameLabel.Location = new System.Drawing.Point(9, 38);
+			prognameLabel.Name = "prognameLabel";
+			prognameLabel.Size = new System.Drawing.Size(89, 13);
+			prognameLabel.TabIndex = 102;
+			prognameLabel.Text = "Program Name";
+			// 
+			// numsentLabel
+			// 
+			numsentLabel.AutoSize = true;
+			numsentLabel.Location = new System.Drawing.Point(40, 95);
+			numsentLabel.Name = "numsentLabel";
+			numsentLabel.Size = new System.Drawing.Size(92, 13);
+			numsentLabel.TabIndex = 112;
+			numsentLabel.Text = "# Of Files Sent";
+			// 
+			// custquestLabel
+			// 
+			custquestLabel.AutoSize = true;
+			custquestLabel.Location = new System.Drawing.Point(42, 343);
+			custquestLabel.Name = "custquestLabel";
+			custquestLabel.Size = new System.Drawing.Size(141, 13);
+			custquestLabel.TabIndex = 113;
+			custquestLabel.Text = "Questions For Customer";
+			// 
+			// technoteLabel
+			// 
+			technoteLabel.AutoSize = true;
+			technoteLabel.Location = new System.Drawing.Point(31, 457);
+			technoteLabel.Name = "technoteLabel";
+			technoteLabel.Size = new System.Drawing.Size(152, 13);
+			technoteLabel.TabIndex = 114;
+			technoteLabel.Text = "Notes From Tech Support";
+			// 
+			// endsheetBindingSource
+			// 
+			this.endsheetBindingSource.DataMember = "endsheet";
+			this.endsheetBindingSource.DataSource = this.dsEndSheet;
+			// 
+			// dsEndSheet
+			// 
+			this.dsEndSheet.DataSetName = "dsEndSheet";
+			this.dsEndSheet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
 			// tbEndSheets
 			// 
 			this.tbEndSheets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -516,6 +756,7 @@
 			// 
 			this.pgEndSheets.AutoScroll = true;
 			this.pgEndSheets.BackColor = System.Drawing.SystemColors.Control;
+			this.pgEndSheets.Controls.Add(this.reprntdteDateTimePicker);
 			this.pgEndSheets.Controls.Add(this.btnInvoiceSrch);
 			this.pgEndSheets.Controls.Add(this.txtInvoiceNoSrch);
 			this.pgEndSheets.Controls.Add(this.endsheetdetailDataGridView);
@@ -529,7 +770,6 @@
 			this.pgEndSheets.Controls.Add(desorgdteLabel);
 			this.pgEndSheets.Controls.Add(this.desorgdteDateTimePicker);
 			this.pgEndSheets.Controls.Add(reprntdteLabel);
-			this.pgEndSheets.Controls.Add(this.reprntdteDateTimePicker);
 			this.pgEndSheets.Controls.Add(prntsamLabel);
 			this.pgEndSheets.Controls.Add(this.prntsamDateTimePicker);
 			this.pgEndSheets.Controls.Add(this.otdtebkDateTimePicker);
@@ -599,6 +839,17 @@
 			this.pgEndSheets.Size = new System.Drawing.Size(1222, 737);
 			this.pgEndSheets.TabIndex = 0;
 			this.pgEndSheets.Text = "End Sheet";
+			// 
+			// reprntdteDateTimePicker
+			// 
+			this.reprntdteDateTimePicker.CustomFormat = "\'\'";
+			this.reprntdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "reprntdte", true));
+			this.reprntdteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.reprntdteDateTimePicker.Location = new System.Drawing.Point(711, 364);
+			this.reprntdteDateTimePicker.Name = "reprntdteDateTimePicker";
+			this.reprntdteDateTimePicker.Size = new System.Drawing.Size(210, 20);
+			this.reprntdteDateTimePicker.TabIndex = 140;
+			this.reprntdteDateTimePicker.ValueChanged += new System.EventHandler(this.reprntdteDateTimePicker_ValueChanged);
 			// 
 			// btnInvoiceSrch
 			// 
@@ -700,11 +951,6 @@
 			this.endsheetdetailBindingSource.DataMember = "endsheetdetail";
 			this.endsheetdetailBindingSource.DataSource = this.dsEndSheet;
 			// 
-			// dsEndSheet
-			// 
-			this.dsEndSheet.DataSetName = "dsEndSheet";
-			this.dsEndSheet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
 			// reasonTextBox
 			// 
 			this.reasonTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "reason", true));
@@ -713,11 +959,6 @@
 			this.reasonTextBox.Name = "reasonTextBox";
 			this.reasonTextBox.Size = new System.Drawing.Size(229, 38);
 			this.reasonTextBox.TabIndex = 91;
-			// 
-			// endsheetBindingSource
-			// 
-			this.endsheetBindingSource.DataMember = "endsheet";
-			this.endsheetBindingSource.DataSource = this.dsEndSheet;
 			// 
 			// persondestTextBox
 			// 
@@ -759,91 +1000,113 @@
 			// 
 			// desorgdteDateTimePicker
 			// 
+			this.desorgdteDateTimePicker.CustomFormat = "\'\'";
 			this.desorgdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "desorgdte", true));
+			this.desorgdteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.desorgdteDateTimePicker.Location = new System.Drawing.Point(711, 390);
 			this.desorgdteDateTimePicker.Name = "desorgdteDateTimePicker";
 			this.desorgdteDateTimePicker.Size = new System.Drawing.Size(212, 20);
 			this.desorgdteDateTimePicker.TabIndex = 86;
-			// 
-			// reprntdteDateTimePicker
-			// 
-			this.reprntdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "reprntdte", true));
-			this.reprntdteDateTimePicker.Location = new System.Drawing.Point(711, 364);
-			this.reprntdteDateTimePicker.Name = "reprntdteDateTimePicker";
-			this.reprntdteDateTimePicker.Size = new System.Drawing.Size(212, 20);
-			this.reprntdteDateTimePicker.TabIndex = 85;
+			this.desorgdteDateTimePicker.ValueChanged += new System.EventHandler(this.desorgdteDateTimePicker_ValueChanged);
 			// 
 			// prntsamDateTimePicker
 			// 
+			this.prntsamDateTimePicker.CustomFormat = "\'\'";
 			this.prntsamDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "prntsam", true));
+			this.prntsamDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.prntsamDateTimePicker.Location = new System.Drawing.Point(711, 338);
 			this.prntsamDateTimePicker.Name = "prntsamDateTimePicker";
 			this.prntsamDateTimePicker.Size = new System.Drawing.Size(212, 20);
 			this.prntsamDateTimePicker.TabIndex = 84;
+			this.prntsamDateTimePicker.ValueChanged += new System.EventHandler(this.prntsamDateTimePicker_ValueChanged);
 			// 
 			// otdtebkDateTimePicker
 			// 
+			this.otdtebkDateTimePicker.CustomFormat = "\'\'";
 			this.otdtebkDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "otdtebk", true));
+			this.otdtebkDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.otdtebkDateTimePicker.Location = new System.Drawing.Point(360, 408);
 			this.otdtebkDateTimePicker.Name = "otdtebkDateTimePicker";
 			this.otdtebkDateTimePicker.Size = new System.Drawing.Size(213, 20);
 			this.otdtebkDateTimePicker.TabIndex = 82;
+			this.otdtebkDateTimePicker.ValueChanged += new System.EventHandler(this.otdtebkDateTimePicker_ValueChanged);
 			// 
 			// otdtesentDateTimePicker
 			// 
+			this.otdtesentDateTimePicker.CustomFormat = "\'\'";
 			this.otdtesentDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "otdtesent", true));
+			this.otdtesentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.otdtesentDateTimePicker.Location = new System.Drawing.Point(136, 408);
 			this.otdtesentDateTimePicker.Name = "otdtesentDateTimePicker";
 			this.otdtesentDateTimePicker.Size = new System.Drawing.Size(213, 20);
 			this.otdtesentDateTimePicker.TabIndex = 81;
+			this.otdtesentDateTimePicker.ValueChanged += new System.EventHandler(this.otdtesentDateTimePicker_ValueChanged);
 			// 
 			// dcdtebkDateTimePicker
 			// 
+			this.dcdtebkDateTimePicker.CustomFormat = "\'\'";
 			this.dcdtebkDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "dcdtebk", true));
+			this.dcdtebkDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dcdtebkDateTimePicker.Location = new System.Drawing.Point(360, 384);
 			this.dcdtebkDateTimePicker.Name = "dcdtebkDateTimePicker";
 			this.dcdtebkDateTimePicker.Size = new System.Drawing.Size(213, 20);
 			this.dcdtebkDateTimePicker.TabIndex = 80;
+			this.dcdtebkDateTimePicker.ValueChanged += new System.EventHandler(this.dcdtebkDateTimePicker_ValueChanged);
 			// 
 			// dcdtesentDateTimePicker
 			// 
+			this.dcdtesentDateTimePicker.CustomFormat = "\'\'";
 			this.dcdtesentDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "dcdtesent", true));
+			this.dcdtesentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dcdtesentDateTimePicker.Location = new System.Drawing.Point(136, 384);
 			this.dcdtesentDateTimePicker.Name = "dcdtesentDateTimePicker";
 			this.dcdtesentDateTimePicker.Size = new System.Drawing.Size(213, 20);
 			this.dcdtesentDateTimePicker.TabIndex = 79;
+			this.dcdtesentDateTimePicker.ValueChanged += new System.EventHandler(this.dcdtesentDateTimePicker_ValueChanged);
 			// 
 			// lamdtebkDateTimePicker
 			// 
+			this.lamdtebkDateTimePicker.CustomFormat = "\'\'";
 			this.lamdtebkDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "lamdtebk", true));
+			this.lamdtebkDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.lamdtebkDateTimePicker.Location = new System.Drawing.Point(360, 361);
 			this.lamdtebkDateTimePicker.Name = "lamdtebkDateTimePicker";
 			this.lamdtebkDateTimePicker.Size = new System.Drawing.Size(213, 20);
 			this.lamdtebkDateTimePicker.TabIndex = 78;
+			this.lamdtebkDateTimePicker.ValueChanged += new System.EventHandler(this.lamdtebkDateTimePicker_ValueChanged);
 			// 
 			// lamdtesentDateTimePicker
 			// 
+			this.lamdtesentDateTimePicker.CustomFormat = "\'\'";
 			this.lamdtesentDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "lamdtesent", true));
+			this.lamdtesentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.lamdtesentDateTimePicker.Location = new System.Drawing.Point(136, 361);
 			this.lamdtesentDateTimePicker.Name = "lamdtesentDateTimePicker";
 			this.lamdtesentDateTimePicker.Size = new System.Drawing.Size(213, 20);
 			this.lamdtesentDateTimePicker.TabIndex = 77;
+			this.lamdtesentDateTimePicker.ValueChanged += new System.EventHandler(this.lamdtesentDateTimePicker_ValueChanged);
 			// 
 			// prtdtebkDateTimePicker
 			// 
+			this.prtdtebkDateTimePicker.CustomFormat = "\'\'";
 			this.prtdtebkDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "prtdtebk", true));
+			this.prtdtebkDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.prtdtebkDateTimePicker.Location = new System.Drawing.Point(360, 338);
 			this.prtdtebkDateTimePicker.Name = "prtdtebkDateTimePicker";
 			this.prtdtebkDateTimePicker.Size = new System.Drawing.Size(213, 20);
 			this.prtdtebkDateTimePicker.TabIndex = 76;
+			this.prtdtebkDateTimePicker.ValueChanged += new System.EventHandler(this.prtdtebkDateTimePicker_ValueChanged);
 			// 
 			// prtdtesentDateTimePicker
 			// 
+			this.prtdtesentDateTimePicker.CustomFormat = "\'\'";
 			this.prtdtesentDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "prtdtesent", true));
+			this.prtdtesentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.prtdtesentDateTimePicker.Location = new System.Drawing.Point(136, 338);
 			this.prtdtesentDateTimePicker.Name = "prtdtesentDateTimePicker";
 			this.prtdtesentDateTimePicker.Size = new System.Drawing.Size(213, 20);
 			this.prtdtesentDateTimePicker.TabIndex = 75;
+			this.prtdtesentDateTimePicker.ValueChanged += new System.EventHandler(this.prtdtesentDateTimePicker_ValueChanged);
 			// 
 			// othrvendTextBox
 			// 
@@ -1153,11 +1416,14 @@
 			// 
 			// endstrecvDateTimePicker
 			// 
+			this.endstrecvDateTimePicker.CustomFormat = "\'\'";
 			this.endstrecvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "endstrecv", true));
+			this.endstrecvDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.endstrecvDateTimePicker.Location = new System.Drawing.Point(719, 79);
 			this.endstrecvDateTimePicker.Name = "endstrecvDateTimePicker";
 			this.endstrecvDateTimePicker.Size = new System.Drawing.Size(211, 20);
 			this.endstrecvDateTimePicker.TabIndex = 31;
+			this.endstrecvDateTimePicker.ValueChanged += new System.EventHandler(this.endstrecvDateTimePicker_ValueChanged);
 			// 
 			// endshtnoTextBox
 			// 
@@ -1169,19 +1435,25 @@
 			// 
 			// csoffholdDateTimePicker
 			// 
+			this.csoffholdDateTimePicker.CustomFormat = "\'\'";
 			this.csoffholdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "csoffhold", true));
+			this.csoffholdDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.csoffholdDateTimePicker.Location = new System.Drawing.Point(719, 56);
 			this.csoffholdDateTimePicker.Name = "csoffholdDateTimePicker";
 			this.csoffholdDateTimePicker.Size = new System.Drawing.Size(211, 20);
 			this.csoffholdDateTimePicker.TabIndex = 27;
+			this.csoffholdDateTimePicker.ValueChanged += new System.EventHandler(this.csoffholdDateTimePicker_ValueChanged);
 			// 
 			// csonholdDateTimePicker
 			// 
+			this.csonholdDateTimePicker.CustomFormat = "\'\'";
 			this.csonholdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.endsheetBindingSource, "csonhold", true));
+			this.csonholdDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.csonholdDateTimePicker.Location = new System.Drawing.Point(719, 31);
 			this.csonholdDateTimePicker.Name = "csonholdDateTimePicker";
 			this.csonholdDateTimePicker.Size = new System.Drawing.Size(211, 20);
 			this.csonholdDateTimePicker.TabIndex = 25;
+			this.csonholdDateTimePicker.ValueChanged += new System.EventHandler(this.csonholdDateTimePicker_ValueChanged);
 			// 
 			// spotclrTextBox
 			// 
@@ -1260,6 +1532,8 @@
 			// 
 			this.Supplement.AutoScroll = true;
 			this.Supplement.BackColor = System.Drawing.SystemColors.Control;
+			this.Supplement.Controls.Add(this.label28);
+			this.Supplement.Controls.Add(label29);
 			this.Supplement.Controls.Add(this.button4);
 			this.Supplement.Controls.Add(this.button3);
 			this.Supplement.Controls.Add(this.suppdetailDataGridView);
@@ -1314,440 +1588,35 @@
 			this.Supplement.TabIndex = 1;
 			this.Supplement.Text = "Supplement";
 			// 
-			// PreFlight
-			// 
-			this.PreFlight.BackColor = System.Drawing.SystemColors.Control;
-			this.PreFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.PreFlight.Location = new System.Drawing.Point(4, 22);
-			this.PreFlight.Name = "PreFlight";
-			this.PreFlight.Size = new System.Drawing.Size(1222, 737);
-			this.PreFlight.TabIndex = 2;
-			this.PreFlight.Text = "PreFlight";
-			// 
-			// custTableAdapter
-			// 
-			this.custTableAdapter.ClearBeforeFill = true;
-			// 
-			// tableAdapterManager
-			// 
-			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-			this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
-			this.tableAdapterManager.endsheetTableAdapter = null;
-			this.tableAdapterManager.preflitTableAdapter = null;
-			this.tableAdapterManager.produtnTableAdapter = null;
-			this.tableAdapterManager.supplTableAdapter = null;
-			this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-			// 
-			// produtnTableAdapter
-			// 
-			this.produtnTableAdapter.ClearBeforeFill = true;
-			// 
-			// quotesTableAdapter
-			// 
-			this.quotesTableAdapter.ClearBeforeFill = true;
-			// 
-			// endsheetTableAdapter
-			// 
-			this.endsheetTableAdapter.ClearBeforeFill = true;
-			// 
-			// endsheetdetailTableAdapter
-			// 
-			this.endsheetdetailTableAdapter.ClearBeforeFill = true;
-			// 
-			// label15
-			// 
-			this.label15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
-			this.label15.Location = new System.Drawing.Point(64, 13);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(84, 23);
-			this.label15.TabIndex = 57;
-			this.label15.Text = "label7";
-			// 
-			// label16
-			// 
-			label16.AutoSize = true;
-			label16.Location = new System.Drawing.Point(17, 13);
-			label16.Name = "label16";
-			label16.Size = new System.Drawing.Size(41, 13);
-			label16.TabIndex = 56;
-			label16.Text = "Prod#";
-			// 
-			// supplBindingSource
-			// 
-			this.supplBindingSource.DataMember = "suppl";
-			this.supplBindingSource.DataSource = this.dsEndSheet;
-			// 
-			// supplTableAdapter
-			// 
-			this.supplTableAdapter.ClearBeforeFill = true;
-			// 
-			// nopagesLabel1
-			// 
-			nopagesLabel1.AutoSize = true;
-			nopagesLabel1.Location = new System.Drawing.Point(12, 39);
-			nopagesLabel1.Name = "nopagesLabel1";
-			nopagesLabel1.Size = new System.Drawing.Size(127, 13);
-			nopagesLabel1.TabIndex = 57;
-			nopagesLabel1.Text = "# of Pages Received";
-			// 
-			// nopagesTextBox1
-			// 
-			this.nopagesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nopages", true));
-			this.nopagesTextBox1.Location = new System.Drawing.Point(145, 39);
-			this.nopagesTextBox1.Name = "nopagesTextBox1";
-			this.nopagesTextBox1.Size = new System.Drawing.Size(100, 20);
-			this.nopagesTextBox1.TabIndex = 58;
-			// 
-			// nocopiesLabel1
-			// 
-			nocopiesLabel1.AutoSize = true;
-			nocopiesLabel1.Location = new System.Drawing.Point(261, 39);
-			nocopiesLabel1.Name = "nocopiesLabel1";
-			nocopiesLabel1.Size = new System.Drawing.Size(57, 13);
-			nocopiesLabel1.TabIndex = 58;
-			nocopiesLabel1.Text = "# Copies";
-			// 
-			// nocopiesTextBox
-			// 
-			this.nocopiesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nocopies", true));
-			this.nocopiesTextBox.Location = new System.Drawing.Point(324, 39);
-			this.nocopiesTextBox.Name = "nocopiesTextBox";
-			this.nocopiesTextBox.Size = new System.Drawing.Size(100, 20);
-			this.nocopiesTextBox.TabIndex = 59;
-			// 
-			// recvdteLabel
-			// 
-			recvdteLabel.AutoSize = true;
-			recvdteLabel.Location = new System.Drawing.Point(435, 39);
-			recvdteLabel.Name = "recvdteLabel";
-			recvdteLabel.Size = new System.Drawing.Size(95, 13);
-			recvdteLabel.TabIndex = 59;
-			recvdteLabel.Text = "Recievied Date";
-			// 
-			// recvdteDateTimePicker
-			// 
-			this.recvdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "recvdte", true));
-			this.recvdteDateTimePicker.Location = new System.Drawing.Point(530, 39);
-			this.recvdteDateTimePicker.Name = "recvdteDateTimePicker";
-			this.recvdteDateTimePicker.Size = new System.Drawing.Size(218, 20);
-			this.recvdteDateTimePicker.TabIndex = 60;
-			// 
-			// duedateLabel
-			// 
-			duedateLabel.AutoSize = true;
-			duedateLabel.Location = new System.Drawing.Point(755, 39);
-			duedateLabel.Name = "duedateLabel";
-			duedateLabel.Size = new System.Drawing.Size(61, 13);
-			duedateLabel.TabIndex = 60;
-			duedateLabel.Text = "Due Date";
-			// 
-			// duedateDateTimePicker
-			// 
-			this.duedateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "duedate", true));
-			this.duedateDateTimePicker.Location = new System.Drawing.Point(821, 39);
-			this.duedateDateTimePicker.Name = "duedateDateTimePicker";
-			this.duedateDateTimePicker.Size = new System.Drawing.Size(212, 20);
-			this.duedateDateTimePicker.TabIndex = 61;
-			// 
-			// booktypeLabel
-			// 
-			booktypeLabel.AutoSize = true;
-			booktypeLabel.Location = new System.Drawing.Point(1038, 13);
-			booktypeLabel.Name = "booktypeLabel";
-			booktypeLabel.Size = new System.Drawing.Size(68, 13);
-			booktypeLabel.TabIndex = 61;
-			booktypeLabel.Text = "Book Type";
-			// 
-			// booktypeLabel1
-			// 
-			this.booktypeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "booktype", true));
-			this.booktypeLabel1.Location = new System.Drawing.Point(1107, 13);
-			this.booktypeLabel1.Name = "booktypeLabel1";
-			this.booktypeLabel1.Size = new System.Drawing.Size(100, 23);
-			this.booktypeLabel1.TabIndex = 62;
-			this.booktypeLabel1.Text = "label17";
-			// 
-			// button2
-			// 
-			this.button2.Location = new System.Drawing.Point(19, 63);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 63;
-			this.button2.Text = "Suppl #";
-			this.button2.UseVisualStyleBackColor = true;
-			// 
-			// supnoTextBox
-			// 
-			this.supnoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "supno", true));
-			this.supnoTextBox.Location = new System.Drawing.Point(100, 65);
-			this.supnoTextBox.Name = "supnoTextBox";
-			this.supnoTextBox.Size = new System.Drawing.Size(80, 20);
-			this.supnoTextBox.TabIndex = 64;
-			// 
-			// label17
-			// 
-			this.label17.AutoSize = true;
-			this.label17.Location = new System.Drawing.Point(35, 116);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(84, 13);
-			this.label17.TabIndex = 65;
-			this.label17.Text = "Check In/Out";
-			// 
-			// label18
-			// 
-			this.label18.AutoSize = true;
-			this.label18.Location = new System.Drawing.Point(20, 145);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(99, 13);
-			this.label18.TabIndex = 66;
-			this.label18.Text = "Date To Bindery";
-			// 
-			// label19
-			// 
-			this.label19.AutoSize = true;
-			this.label19.Location = new System.Drawing.Point(343, 97);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(27, 13);
-			this.label19.TabIndex = 67;
-			this.label19.Text = "Out";
-			// 
-			// label20
-			// 
-			this.label20.AutoSize = true;
-			this.label20.Location = new System.Drawing.Point(630, 97);
-			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(25, 13);
-			this.label20.TabIndex = 68;
-			this.label20.Text = "Init";
-			// 
-			// label21
-			// 
-			this.label21.AutoSize = true;
-			this.label21.Location = new System.Drawing.Point(559, 97);
-			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(34, 13);
-			this.label21.TabIndex = 69;
-			this.label21.Text = "Dept";
-			// 
-			// label22
-			// 
-			this.label22.AutoSize = true;
-			this.label22.Location = new System.Drawing.Point(125, 97);
-			this.label22.Name = "label22";
-			this.label22.Size = new System.Drawing.Size(18, 13);
-			this.label22.TabIndex = 70;
-			this.label22.Text = "In";
-			this.label22.Click += new System.EventHandler(this.label22_Click);
-			// 
-			// iinDateTimePicker
-			// 
-			this.iinDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "iin", true));
-			this.iinDateTimePicker.Location = new System.Drawing.Point(125, 116);
-			this.iinDateTimePicker.Name = "iinDateTimePicker";
-			this.iinDateTimePicker.Size = new System.Drawing.Size(212, 20);
-			this.iinDateTimePicker.TabIndex = 71;
-			// 
-			// ioutDateTimePicker
-			// 
-			this.ioutDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "iout", true));
-			this.ioutDateTimePicker.Location = new System.Drawing.Point(343, 116);
-			this.ioutDateTimePicker.Name = "ioutDateTimePicker";
-			this.ioutDateTimePicker.Size = new System.Drawing.Size(210, 20);
-			this.ioutDateTimePicker.TabIndex = 72;
-			// 
-			// ideptTextBox
-			// 
-			this.ideptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "idept", true));
-			this.ideptTextBox.Location = new System.Drawing.Point(559, 116);
-			this.ideptTextBox.Name = "ideptTextBox";
-			this.ideptTextBox.Size = new System.Drawing.Size(62, 20);
-			this.ideptTextBox.TabIndex = 73;
-			// 
-			// iinitTextBox
-			// 
-			this.iinitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "iinit", true));
-			this.iinitTextBox.Location = new System.Drawing.Point(630, 116);
-			this.iinitTextBox.Name = "iinitTextBox";
-			this.iinitTextBox.Size = new System.Drawing.Size(49, 20);
-			this.iinitTextBox.TabIndex = 74;
-			// 
-			// binddteDateTimePicker
-			// 
-			this.binddteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "binddte", true));
-			this.binddteDateTimePicker.Location = new System.Drawing.Point(125, 145);
-			this.binddteDateTimePicker.Name = "binddteDateTimePicker";
-			this.binddteDateTimePicker.Size = new System.Drawing.Size(212, 20);
-			this.binddteDateTimePicker.TabIndex = 75;
-			// 
-			// frmbindDateTimePicker
-			// 
-			this.frmbindDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "frmbind", true));
-			this.frmbindDateTimePicker.Location = new System.Drawing.Point(343, 145);
-			this.frmbindDateTimePicker.Name = "frmbindDateTimePicker";
-			this.frmbindDateTimePicker.Size = new System.Drawing.Size(210, 20);
-			this.frmbindDateTimePicker.TabIndex = 76;
-			// 
-			// label23
-			// 
-			this.label23.AutoSize = true;
-			this.label23.Location = new System.Drawing.Point(559, 145);
-			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(77, 13);
-			this.label23.TabIndex = 77;
-			this.label23.Text = "Print Vendor";
-			// 
-			// vendcdTextBox
-			// 
-			this.vendcdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "vendcd", true));
-			this.vendcdTextBox.Location = new System.Drawing.Point(642, 145);
-			this.vendcdTextBox.Name = "vendcdTextBox";
-			this.vendcdTextBox.Size = new System.Drawing.Size(36, 20);
-			this.vendcdTextBox.TabIndex = 78;
-			// 
-			// tape_1CheckBox
-			// 
-			this.tape_1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.supplBindingSource, "tape_1", true));
-			this.tape_1CheckBox.Location = new System.Drawing.Point(125, 171);
-			this.tape_1CheckBox.Name = "tape_1CheckBox";
-			this.tape_1CheckBox.Size = new System.Drawing.Size(63, 24);
-			this.tape_1CheckBox.TabIndex = 80;
-			this.tape_1CheckBox.Text = "Tape";
-			this.tape_1CheckBox.UseVisualStyleBackColor = true;
-			// 
-			// label24
-			// 
-			this.label24.AutoSize = true;
-			this.label24.Location = new System.Drawing.Point(692, 116);
-			this.label24.Name = "label24";
-			this.label24.Size = new System.Drawing.Size(104, 13);
-			this.label24.TabIndex = 81;
-			this.label24.Text = "To book Remake";
-			// 
-			// label25
-			// 
-			this.label25.AutoSize = true;
-			this.label25.Location = new System.Drawing.Point(696, 148);
-			this.label25.Name = "label25";
-			this.label25.Size = new System.Drawing.Size(100, 13);
-			this.label25.TabIndex = 82;
-			this.label25.Text = "Type of Remake";
-			// 
-			// label26
-			// 
-			this.label26.AutoSize = true;
-			this.label26.Location = new System.Drawing.Point(680, 175);
-			this.label26.Name = "label26";
-			this.label26.Size = new System.Drawing.Size(116, 13);
-			this.label26.TabIndex = 83;
-			this.label26.Text = "From book Remake";
-			// 
-			// label27
-			// 
-			this.label27.AutoSize = true;
-			this.label27.Location = new System.Drawing.Point(671, 199);
-			this.label27.Name = "label27";
-			this.label27.Size = new System.Drawing.Size(125, 13);
-			this.label27.TabIndex = 84;
-			this.label27.Text = "Total Book Remakes";
-			// 
-			// rmbtoDateTimePicker
-			// 
-			this.rmbtoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "rmbto", true));
-			this.rmbtoDateTimePicker.Location = new System.Drawing.Point(802, 116);
-			this.rmbtoDateTimePicker.Name = "rmbtoDateTimePicker";
-			this.rmbtoDateTimePicker.Size = new System.Drawing.Size(216, 20);
-			this.rmbtoDateTimePicker.TabIndex = 85;
-			// 
-			// remaketypeComboBox
-			// 
-			this.remaketypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "remaketype", true));
-			this.remaketypeComboBox.FormattingEnabled = true;
-			this.remaketypeComboBox.Location = new System.Drawing.Point(802, 148);
-			this.remaketypeComboBox.Name = "remaketypeComboBox";
-			this.remaketypeComboBox.Size = new System.Drawing.Size(215, 21);
-			this.remaketypeComboBox.TabIndex = 86;
-			// 
-			// rmbfrmDateTimePicker
-			// 
-			this.rmbfrmDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "rmbfrm", true));
-			this.rmbfrmDateTimePicker.Location = new System.Drawing.Point(802, 175);
-			this.rmbfrmDateTimePicker.Name = "rmbfrmDateTimePicker";
-			this.rmbfrmDateTimePicker.Size = new System.Drawing.Size(216, 20);
-			this.rmbfrmDateTimePicker.TabIndex = 87;
-			// 
-			// rmbtotTextBox
-			// 
-			this.rmbtotTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "rmbtot", true));
-			this.rmbtotTextBox.Location = new System.Drawing.Point(802, 199);
-			this.rmbtotTextBox.Name = "rmbtotTextBox";
-			this.rmbtotTextBox.Size = new System.Drawing.Size(100, 20);
-			this.rmbtotTextBox.TabIndex = 88;
-			// 
-			// oursuppCheckBox
-			// 
-			this.oursuppCheckBox.AutoSize = true;
-			this.oursuppCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "oursupp", true));
-			this.oursuppCheckBox.Location = new System.Drawing.Point(188, 175);
-			this.oursuppCheckBox.Name = "oursuppCheckBox";
-			this.oursuppCheckBox.Size = new System.Drawing.Size(149, 17);
-			this.oursuppCheckBox.TabIndex = 89;
-			this.oursuppCheckBox.Text = "Our Story Supplement";
-			this.oursuppCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// supplementsCheckBox
-			// 
-			this.supplementsCheckBox.AutoSize = true;
-			this.supplementsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "supplements", true));
-			this.supplementsCheckBox.Location = new System.Drawing.Point(343, 178);
-			this.supplementsCheckBox.Name = "supplementsCheckBox";
-			this.supplementsCheckBox.Size = new System.Drawing.Size(145, 17);
-			this.supplementsCheckBox.TabIndex = 90;
-			this.supplementsCheckBox.Text = "My Story Supplement";
-			this.supplementsCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// totsigsLabel
-			// 
-			totsigsLabel.AutoSize = true;
-			totsigsLabel.Location = new System.Drawing.Point(487, 178);
-			totsigsLabel.Name = "totsigsLabel";
-			totsigsLabel.Size = new System.Drawing.Size(43, 13);
-			totsigsLabel.TabIndex = 90;
-			totsigsLabel.Text = "# Sigs";
-			// 
-			// totsigsTextBox
-			// 
-			this.totsigsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "totsigs", true));
-			this.totsigsTextBox.Location = new System.Drawing.Point(536, 175);
-			this.totsigsTextBox.Name = "totsigsTextBox";
-			this.totsigsTextBox.Size = new System.Drawing.Size(100, 20);
-			this.totsigsTextBox.TabIndex = 91;
-			// 
-			// partmemoLabel
-			// 
-			partmemoLabel.AutoSize = true;
-			partmemoLabel.Location = new System.Drawing.Point(127, 204);
-			partmemoLabel.Name = "partmemoLabel";
-			partmemoLabel.Size = new System.Drawing.Size(40, 13);
-			partmemoLabel.TabIndex = 91;
-			partmemoLabel.Text = "Memo";
-			// 
-			// partmemoTextBox
-			// 
-			this.partmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "partmemo", true));
-			this.partmemoTextBox.Location = new System.Drawing.Point(174, 201);
-			this.partmemoTextBox.Multiline = true;
-			this.partmemoTextBox.Name = "partmemoTextBox";
-			this.partmemoTextBox.Size = new System.Drawing.Size(481, 64);
-			this.partmemoTextBox.TabIndex = 92;
-			// 
-			// suppdetailBindingSource
-			// 
-			this.suppdetailBindingSource.DataMember = "suppdetail";
-			this.suppdetailBindingSource.DataSource = this.dsEndSheet;
-			// 
-			// suppdetailTableAdapter
-			// 
-			this.suppdetailTableAdapter.ClearBeforeFill = true;
+			// label28
+			// 
+			this.label28.AutoSize = true;
+			this.label28.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "invno", true));
+			this.label28.Location = new System.Drawing.Point(213, 13);
+			this.label28.Name = "label28";
+			this.label28.Size = new System.Drawing.Size(41, 13);
+			this.label28.TabIndex = 96;
+			this.label28.Text = "label7";
+			// 
+			// button4
+			// 
+			this.button4.AutoSize = true;
+			this.button4.Location = new System.Drawing.Point(365, 643);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(146, 23);
+			this.button4.TabIndex = 94;
+			this.button4.Text = "Prod End Sheet Ticket";
+			this.button4.UseVisualStyleBackColor = true;
+			// 
+			// button3
+			// 
+			this.button3.AutoSize = true;
+			this.button3.Location = new System.Drawing.Point(174, 643);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(185, 23);
+			this.button3.TabIndex = 93;
+			this.button3.Text = "Change All Supplement Dates";
+			this.button3.UseVisualStyleBackColor = true;
 			// 
 			// suppdetailDataGridView
 			// 
@@ -1827,25 +1696,917 @@
 			this.dataGridViewTextBoxColumn13.ReadOnly = true;
 			this.dataGridViewTextBoxColumn13.Visible = false;
 			// 
-			// button3
+			// suppdetailBindingSource
 			// 
-			this.button3.AutoSize = true;
-			this.button3.Location = new System.Drawing.Point(174, 643);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(185, 23);
-			this.button3.TabIndex = 93;
-			this.button3.Text = "Change All Supplement Dates";
-			this.button3.UseVisualStyleBackColor = true;
+			this.suppdetailBindingSource.DataMember = "suppdetail";
+			this.suppdetailBindingSource.DataSource = this.dsEndSheet;
 			// 
-			// button4
+			// partmemoTextBox
 			// 
-			this.button4.AutoSize = true;
-			this.button4.Location = new System.Drawing.Point(365, 643);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(146, 23);
-			this.button4.TabIndex = 94;
-			this.button4.Text = "Prod End Sheet Ticket";
-			this.button4.UseVisualStyleBackColor = true;
+			this.partmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "partmemo", true));
+			this.partmemoTextBox.Location = new System.Drawing.Point(174, 201);
+			this.partmemoTextBox.Multiline = true;
+			this.partmemoTextBox.Name = "partmemoTextBox";
+			this.partmemoTextBox.Size = new System.Drawing.Size(481, 64);
+			this.partmemoTextBox.TabIndex = 92;
+			// 
+			// supplBindingSource
+			// 
+			this.supplBindingSource.DataMember = "suppl";
+			this.supplBindingSource.DataSource = this.dsEndSheet;
+			// 
+			// totsigsTextBox
+			// 
+			this.totsigsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "totsigs", true));
+			this.totsigsTextBox.Location = new System.Drawing.Point(536, 175);
+			this.totsigsTextBox.Name = "totsigsTextBox";
+			this.totsigsTextBox.Size = new System.Drawing.Size(100, 20);
+			this.totsigsTextBox.TabIndex = 91;
+			// 
+			// supplementsCheckBox
+			// 
+			this.supplementsCheckBox.AutoSize = true;
+			this.supplementsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "supplements", true));
+			this.supplementsCheckBox.Location = new System.Drawing.Point(343, 178);
+			this.supplementsCheckBox.Name = "supplementsCheckBox";
+			this.supplementsCheckBox.Size = new System.Drawing.Size(145, 17);
+			this.supplementsCheckBox.TabIndex = 90;
+			this.supplementsCheckBox.Text = "My Story Supplement";
+			this.supplementsCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// oursuppCheckBox
+			// 
+			this.oursuppCheckBox.AutoSize = true;
+			this.oursuppCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "oursupp", true));
+			this.oursuppCheckBox.Location = new System.Drawing.Point(188, 175);
+			this.oursuppCheckBox.Name = "oursuppCheckBox";
+			this.oursuppCheckBox.Size = new System.Drawing.Size(149, 17);
+			this.oursuppCheckBox.TabIndex = 89;
+			this.oursuppCheckBox.Text = "Our Story Supplement";
+			this.oursuppCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// rmbtotTextBox
+			// 
+			this.rmbtotTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.rmbtotTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "rmbtot", true));
+			this.rmbtotTextBox.Location = new System.Drawing.Point(802, 199);
+			this.rmbtotTextBox.Name = "rmbtotTextBox";
+			this.rmbtotTextBox.Size = new System.Drawing.Size(100, 20);
+			this.rmbtotTextBox.TabIndex = 88;
+			// 
+			// rmbfrmDateTimePicker
+			// 
+			this.rmbfrmDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.rmbfrmDateTimePicker.CustomFormat = "\'\'";
+			this.rmbfrmDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "rmbfrm", true));
+			this.rmbfrmDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.rmbfrmDateTimePicker.Location = new System.Drawing.Point(802, 175);
+			this.rmbfrmDateTimePicker.Name = "rmbfrmDateTimePicker";
+			this.rmbfrmDateTimePicker.Size = new System.Drawing.Size(216, 20);
+			this.rmbfrmDateTimePicker.TabIndex = 87;
+			this.rmbfrmDateTimePicker.ValueChanged += new System.EventHandler(this.rmbfrmDateTimePicker_ValueChanged);
+			// 
+			// remaketypeComboBox
+			// 
+			this.remaketypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.remaketypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "remaketype", true));
+			this.remaketypeComboBox.FormattingEnabled = true;
+			this.remaketypeComboBox.Location = new System.Drawing.Point(802, 148);
+			this.remaketypeComboBox.Name = "remaketypeComboBox";
+			this.remaketypeComboBox.Size = new System.Drawing.Size(215, 21);
+			this.remaketypeComboBox.TabIndex = 86;
+			this.remaketypeComboBox.SelectedIndexChanged += new System.EventHandler(this.remaketypeComboBox_SelectedIndexChanged);
+			// 
+			// rmbtoDateTimePicker
+			// 
+			this.rmbtoDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.rmbtoDateTimePicker.CustomFormat = "\'\'";
+			this.rmbtoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "rmbto", true));
+			this.rmbtoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.rmbtoDateTimePicker.Location = new System.Drawing.Point(802, 116);
+			this.rmbtoDateTimePicker.Name = "rmbtoDateTimePicker";
+			this.rmbtoDateTimePicker.Size = new System.Drawing.Size(216, 20);
+			this.rmbtoDateTimePicker.TabIndex = 85;
+			this.rmbtoDateTimePicker.ValueChanged += new System.EventHandler(this.rmbtoDateTimePicker_ValueChanged);
+			// 
+			// label27
+			// 
+			this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label27.AutoSize = true;
+			this.label27.Location = new System.Drawing.Point(671, 199);
+			this.label27.Name = "label27";
+			this.label27.Size = new System.Drawing.Size(125, 13);
+			this.label27.TabIndex = 84;
+			this.label27.Text = "Total Book Remakes";
+			// 
+			// label26
+			// 
+			this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label26.AutoSize = true;
+			this.label26.Location = new System.Drawing.Point(680, 175);
+			this.label26.Name = "label26";
+			this.label26.Size = new System.Drawing.Size(116, 13);
+			this.label26.TabIndex = 83;
+			this.label26.Text = "From book Remake";
+			// 
+			// label25
+			// 
+			this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label25.AutoSize = true;
+			this.label25.Location = new System.Drawing.Point(696, 148);
+			this.label25.Name = "label25";
+			this.label25.Size = new System.Drawing.Size(100, 13);
+			this.label25.TabIndex = 82;
+			this.label25.Text = "Type of Remake";
+			// 
+			// label24
+			// 
+			this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label24.AutoSize = true;
+			this.label24.Location = new System.Drawing.Point(692, 116);
+			this.label24.Name = "label24";
+			this.label24.Size = new System.Drawing.Size(104, 13);
+			this.label24.TabIndex = 81;
+			this.label24.Text = "To book Remake";
+			// 
+			// tape_1CheckBox
+			// 
+			this.tape_1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.supplBindingSource, "tape_1", true));
+			this.tape_1CheckBox.Location = new System.Drawing.Point(125, 171);
+			this.tape_1CheckBox.Name = "tape_1CheckBox";
+			this.tape_1CheckBox.Size = new System.Drawing.Size(63, 24);
+			this.tape_1CheckBox.TabIndex = 80;
+			this.tape_1CheckBox.Text = "Tape";
+			this.tape_1CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// vendcdTextBox
+			// 
+			this.vendcdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "vendcd", true));
+			this.vendcdTextBox.Location = new System.Drawing.Point(642, 145);
+			this.vendcdTextBox.Name = "vendcdTextBox";
+			this.vendcdTextBox.Size = new System.Drawing.Size(36, 20);
+			this.vendcdTextBox.TabIndex = 78;
+			// 
+			// label23
+			// 
+			this.label23.AutoSize = true;
+			this.label23.Location = new System.Drawing.Point(559, 145);
+			this.label23.Name = "label23";
+			this.label23.Size = new System.Drawing.Size(77, 13);
+			this.label23.TabIndex = 77;
+			this.label23.Text = "Print Vendor";
+			// 
+			// frmbindDateTimePicker
+			// 
+			this.frmbindDateTimePicker.CustomFormat = "\'\'";
+			this.frmbindDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "frmbind", true));
+			this.frmbindDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.frmbindDateTimePicker.Location = new System.Drawing.Point(343, 145);
+			this.frmbindDateTimePicker.Name = "frmbindDateTimePicker";
+			this.frmbindDateTimePicker.Size = new System.Drawing.Size(210, 20);
+			this.frmbindDateTimePicker.TabIndex = 76;
+			this.frmbindDateTimePicker.ValueChanged += new System.EventHandler(this.frmbindDateTimePicker_ValueChanged);
+			// 
+			// binddteDateTimePicker
+			// 
+			this.binddteDateTimePicker.CustomFormat = "\'\'";
+			this.binddteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "binddte", true));
+			this.binddteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.binddteDateTimePicker.Location = new System.Drawing.Point(125, 145);
+			this.binddteDateTimePicker.Name = "binddteDateTimePicker";
+			this.binddteDateTimePicker.Size = new System.Drawing.Size(212, 20);
+			this.binddteDateTimePicker.TabIndex = 75;
+			this.binddteDateTimePicker.ValueChanged += new System.EventHandler(this.binddteDateTimePicker_ValueChanged);
+			// 
+			// iinitTextBox
+			// 
+			this.iinitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "iinit", true));
+			this.iinitTextBox.Location = new System.Drawing.Point(630, 116);
+			this.iinitTextBox.Name = "iinitTextBox";
+			this.iinitTextBox.Size = new System.Drawing.Size(49, 20);
+			this.iinitTextBox.TabIndex = 74;
+			// 
+			// ideptTextBox
+			// 
+			this.ideptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "idept", true));
+			this.ideptTextBox.Location = new System.Drawing.Point(559, 116);
+			this.ideptTextBox.Name = "ideptTextBox";
+			this.ideptTextBox.Size = new System.Drawing.Size(62, 20);
+			this.ideptTextBox.TabIndex = 73;
+			// 
+			// ioutDateTimePicker
+			// 
+			this.ioutDateTimePicker.CustomFormat = "\'\'";
+			this.ioutDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "iout", true));
+			this.ioutDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.ioutDateTimePicker.Location = new System.Drawing.Point(343, 116);
+			this.ioutDateTimePicker.Name = "ioutDateTimePicker";
+			this.ioutDateTimePicker.Size = new System.Drawing.Size(210, 20);
+			this.ioutDateTimePicker.TabIndex = 72;
+			this.ioutDateTimePicker.ValueChanged += new System.EventHandler(this.ioutDateTimePicker_ValueChanged);
+			// 
+			// iinDateTimePicker
+			// 
+			this.iinDateTimePicker.CustomFormat = "\'\'";
+			this.iinDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "iin", true));
+			this.iinDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.iinDateTimePicker.Location = new System.Drawing.Point(125, 116);
+			this.iinDateTimePicker.Name = "iinDateTimePicker";
+			this.iinDateTimePicker.Size = new System.Drawing.Size(212, 20);
+			this.iinDateTimePicker.TabIndex = 71;
+			this.iinDateTimePicker.ValueChanged += new System.EventHandler(this.iinDateTimePicker_ValueChanged);
+			// 
+			// label22
+			// 
+			this.label22.AutoSize = true;
+			this.label22.Location = new System.Drawing.Point(125, 97);
+			this.label22.Name = "label22";
+			this.label22.Size = new System.Drawing.Size(18, 13);
+			this.label22.TabIndex = 70;
+			this.label22.Text = "In";
+			// 
+			// label21
+			// 
+			this.label21.AutoSize = true;
+			this.label21.Location = new System.Drawing.Point(559, 97);
+			this.label21.Name = "label21";
+			this.label21.Size = new System.Drawing.Size(34, 13);
+			this.label21.TabIndex = 69;
+			this.label21.Text = "Dept";
+			// 
+			// label20
+			// 
+			this.label20.AutoSize = true;
+			this.label20.Location = new System.Drawing.Point(630, 97);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(25, 13);
+			this.label20.TabIndex = 68;
+			this.label20.Text = "Init";
+			// 
+			// label19
+			// 
+			this.label19.AutoSize = true;
+			this.label19.Location = new System.Drawing.Point(343, 97);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(27, 13);
+			this.label19.TabIndex = 67;
+			this.label19.Text = "Out";
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Location = new System.Drawing.Point(20, 145);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(99, 13);
+			this.label18.TabIndex = 66;
+			this.label18.Text = "Date To Bindery";
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Location = new System.Drawing.Point(35, 116);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(84, 13);
+			this.label17.TabIndex = 65;
+			this.label17.Text = "Check In/Out";
+			// 
+			// supnoTextBox
+			// 
+			this.supnoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "supno", true));
+			this.supnoTextBox.Location = new System.Drawing.Point(100, 65);
+			this.supnoTextBox.Name = "supnoTextBox";
+			this.supnoTextBox.Size = new System.Drawing.Size(80, 20);
+			this.supnoTextBox.TabIndex = 64;
+			// 
+			// button2
+			// 
+			this.button2.Location = new System.Drawing.Point(19, 63);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.TabIndex = 63;
+			this.button2.Text = "Suppl #";
+			this.button2.UseVisualStyleBackColor = true;
+			// 
+			// booktypeLabel1
+			// 
+			this.booktypeLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.booktypeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "booktype", true));
+			this.booktypeLabel1.Location = new System.Drawing.Point(1107, 13);
+			this.booktypeLabel1.Name = "booktypeLabel1";
+			this.booktypeLabel1.Size = new System.Drawing.Size(100, 23);
+			this.booktypeLabel1.TabIndex = 62;
+			this.booktypeLabel1.Text = "label17";
+			// 
+			// duedateDateTimePicker
+			// 
+			this.duedateDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.duedateDateTimePicker.CustomFormat = "\'\'";
+			this.duedateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "duedate", true));
+			this.duedateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.duedateDateTimePicker.Location = new System.Drawing.Point(821, 39);
+			this.duedateDateTimePicker.Name = "duedateDateTimePicker";
+			this.duedateDateTimePicker.Size = new System.Drawing.Size(212, 20);
+			this.duedateDateTimePicker.TabIndex = 61;
+			this.duedateDateTimePicker.ValueChanged += new System.EventHandler(this.duedateDateTimePicker_ValueChanged);
+			// 
+			// recvdteDateTimePicker
+			// 
+			this.recvdteDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.recvdteDateTimePicker.CustomFormat = "\'\'";
+			this.recvdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "recvdte", true));
+			this.recvdteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.recvdteDateTimePicker.Location = new System.Drawing.Point(530, 39);
+			this.recvdteDateTimePicker.Name = "recvdteDateTimePicker";
+			this.recvdteDateTimePicker.Size = new System.Drawing.Size(218, 20);
+			this.recvdteDateTimePicker.TabIndex = 60;
+			this.recvdteDateTimePicker.ValueChanged += new System.EventHandler(this.recvdteDateTimePicker_ValueChanged);
+			// 
+			// nocopiesTextBox
+			// 
+			this.nocopiesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nocopies", true));
+			this.nocopiesTextBox.Location = new System.Drawing.Point(324, 39);
+			this.nocopiesTextBox.Name = "nocopiesTextBox";
+			this.nocopiesTextBox.Size = new System.Drawing.Size(100, 20);
+			this.nocopiesTextBox.TabIndex = 59;
+			// 
+			// nopagesTextBox1
+			// 
+			this.nopagesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nopages", true));
+			this.nopagesTextBox1.Location = new System.Drawing.Point(145, 39);
+			this.nopagesTextBox1.Name = "nopagesTextBox1";
+			this.nopagesTextBox1.Size = new System.Drawing.Size(100, 20);
+			this.nopagesTextBox1.TabIndex = 58;
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
+			this.label15.Location = new System.Drawing.Point(64, 13);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(41, 13);
+			this.label15.TabIndex = 57;
+			this.label15.Text = "label7";
+			// 
+			// PreFlight
+			// 
+			this.PreFlight.AutoScroll = true;
+			this.PreFlight.BackColor = System.Drawing.SystemColors.Control;
+			this.PreFlight.Controls.Add(technoteLabel);
+			this.PreFlight.Controls.Add(this.technoteTextBox);
+			this.PreFlight.Controls.Add(custquestLabel);
+			this.PreFlight.Controls.Add(this.custquestTextBox);
+			this.PreFlight.Controls.Add(numsentLabel);
+			this.PreFlight.Controls.Add(this.numsentTextBox);
+			this.PreFlight.Controls.Add(this.groupBox9);
+			this.PreFlight.Controls.Add(this.groupBox8);
+			this.PreFlight.Controls.Add(this.groupBox7);
+			this.PreFlight.Controls.Add(this.groupBox6);
+			this.PreFlight.Controls.Add(this.groupBox5);
+			this.PreFlight.Controls.Add(this.groupBox4);
+			this.PreFlight.Controls.Add(this.groupBox3);
+			this.PreFlight.Controls.Add(this.formatmacCheckBox);
+			this.PreFlight.Controls.Add(this.formatpcCheckBox);
+			this.PreFlight.Controls.Add(prognameLabel);
+			this.PreFlight.Controls.Add(this.prognameComboBox);
+			this.PreFlight.Controls.Add(initialLabel);
+			this.PreFlight.Controls.Add(this.initialTextBox);
+			this.PreFlight.Controls.Add(predateLabel);
+			this.PreFlight.Controls.Add(this.predateDateTimePicker);
+			this.PreFlight.Controls.Add(this.label30);
+			this.PreFlight.Controls.Add(label31);
+			this.PreFlight.Controls.Add(this.label32);
+			this.PreFlight.Controls.Add(label33);
+			this.PreFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.PreFlight.Location = new System.Drawing.Point(4, 22);
+			this.PreFlight.Name = "PreFlight";
+			this.PreFlight.Size = new System.Drawing.Size(1222, 737);
+			this.PreFlight.TabIndex = 2;
+			this.PreFlight.Text = "PreFlight";
+			// 
+			// technoteTextBox
+			// 
+			this.technoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.technoteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "technote", true));
+			this.technoteTextBox.Location = new System.Drawing.Point(190, 457);
+			this.technoteTextBox.Multiline = true;
+			this.technoteTextBox.Name = "technoteTextBox";
+			this.technoteTextBox.Size = new System.Drawing.Size(667, 57);
+			this.technoteTextBox.TabIndex = 115;
+			// 
+			// preflitBindingSource
+			// 
+			this.preflitBindingSource.DataMember = "preflit";
+			this.preflitBindingSource.DataSource = this.dsEndSheet;
+			// 
+			// custquestTextBox
+			// 
+			this.custquestTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.custquestTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "custquest", true));
+			this.custquestTextBox.Location = new System.Drawing.Point(190, 343);
+			this.custquestTextBox.Multiline = true;
+			this.custquestTextBox.Name = "custquestTextBox";
+			this.custquestTextBox.Size = new System.Drawing.Size(667, 93);
+			this.custquestTextBox.TabIndex = 114;
+			// 
+			// numsentTextBox
+			// 
+			this.numsentTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "numsent", true));
+			this.numsentTextBox.Location = new System.Drawing.Point(137, 92);
+			this.numsentTextBox.Name = "numsentTextBox";
+			this.numsentTextBox.Size = new System.Drawing.Size(46, 20);
+			this.numsentTextBox.TabIndex = 113;
+			// 
+			// groupBox9
+			// 
+			this.groupBox9.Controls.Add(this.cmissingCheckBox);
+			this.groupBox9.Controls.Add(this.pmissingCheckBox);
+			this.groupBox9.Controls.Add(this.dmissingCheckBox);
+			this.groupBox9.Controls.Add(this.chaveCheckBox);
+			this.groupBox9.Controls.Add(this.phaveCheckBox);
+			this.groupBox9.Controls.Add(this.dhavbothCheckBox);
+			this.groupBox9.Location = new System.Drawing.Point(40, 232);
+			this.groupBox9.Name = "groupBox9";
+			this.groupBox9.Size = new System.Drawing.Size(375, 77);
+			this.groupBox9.TabIndex = 112;
+			this.groupBox9.TabStop = false;
+			this.groupBox9.Text = "Magic Preflight";
+			// 
+			// cmissingCheckBox
+			// 
+			this.cmissingCheckBox.AutoSize = true;
+			this.cmissingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "cmissing", true));
+			this.cmissingCheckBox.Location = new System.Drawing.Point(165, 49);
+			this.cmissingCheckBox.Name = "cmissingCheckBox";
+			this.cmissingCheckBox.Size = new System.Drawing.Size(117, 17);
+			this.cmissingCheckBox.TabIndex = 8;
+			this.cmissingCheckBox.Text = "Missing Candids";
+			this.cmissingCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// pmissingCheckBox
+			// 
+			this.pmissingCheckBox.AutoSize = true;
+			this.pmissingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "pmissing", true));
+			this.pmissingCheckBox.Location = new System.Drawing.Point(165, 33);
+			this.pmissingCheckBox.Name = "pmissingCheckBox";
+			this.pmissingCheckBox.Size = new System.Drawing.Size(119, 17);
+			this.pmissingCheckBox.TabIndex = 6;
+			this.pmissingCheckBox.Text = "Missing Portraits";
+			this.pmissingCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// dmissingCheckBox
+			// 
+			this.dmissingCheckBox.AutoSize = true;
+			this.dmissingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "dmissing", true));
+			this.dmissingCheckBox.Location = new System.Drawing.Point(165, 18);
+			this.dmissingCheckBox.Name = "dmissingCheckBox";
+			this.dmissingCheckBox.Size = new System.Drawing.Size(205, 17);
+			this.dmissingCheckBox.TabIndex = 5;
+			this.dmissingCheckBox.Text = "Missing One Or More Data Files";
+			this.dmissingCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// chaveCheckBox
+			// 
+			this.chaveCheckBox.AutoSize = true;
+			this.chaveCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "chave", true));
+			this.chaveCheckBox.Location = new System.Drawing.Point(12, 49);
+			this.chaveCheckBox.Name = "chaveCheckBox";
+			this.chaveCheckBox.Size = new System.Drawing.Size(105, 17);
+			this.chaveCheckBox.TabIndex = 4;
+			this.chaveCheckBox.Text = "Have Candids";
+			this.chaveCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// phaveCheckBox
+			// 
+			this.phaveCheckBox.AutoSize = true;
+			this.phaveCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "phave", true));
+			this.phaveCheckBox.Location = new System.Drawing.Point(12, 33);
+			this.phaveCheckBox.Name = "phaveCheckBox";
+			this.phaveCheckBox.Size = new System.Drawing.Size(107, 17);
+			this.phaveCheckBox.TabIndex = 2;
+			this.phaveCheckBox.Text = "Have Portraits";
+			this.phaveCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// dhavbothCheckBox
+			// 
+			this.dhavbothCheckBox.AutoSize = true;
+			this.dhavbothCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "dhavboth", true));
+			this.dhavbothCheckBox.Location = new System.Drawing.Point(12, 18);
+			this.dhavbothCheckBox.Name = "dhavbothCheckBox";
+			this.dhavbothCheckBox.Size = new System.Drawing.Size(147, 17);
+			this.dhavbothCheckBox.TabIndex = 1;
+			this.dhavbothCheckBox.Text = "Have Both Data Files";
+			this.dhavbothCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// groupBox8
+			// 
+			this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox8.Controls.Add(this.cvrrecvCheckBox);
+			this.groupBox8.Location = new System.Drawing.Point(431, 232);
+			this.groupBox8.Name = "groupBox8";
+			this.groupBox8.Size = new System.Drawing.Size(256, 45);
+			this.groupBox8.TabIndex = 111;
+			this.groupBox8.TabStop = false;
+			this.groupBox8.Text = "Cover Received With Book";
+			// 
+			// cvrrecvCheckBox
+			// 
+			this.cvrrecvCheckBox.AutoSize = true;
+			this.cvrrecvCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "cvrrecv", true));
+			this.cvrrecvCheckBox.Location = new System.Drawing.Point(5, 19);
+			this.cvrrecvCheckBox.Name = "cvrrecvCheckBox";
+			this.cvrrecvCheckBox.Size = new System.Drawing.Size(253, 17);
+			this.cvrrecvCheckBox.TabIndex = 1;
+			this.cvrrecvCheckBox.Text = "If YES, split from book and take to Rec.";
+			this.cvrrecvCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// groupBox7
+			// 
+			this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox7.Controls.Add(this.imglow2CheckBox);
+			this.groupBox7.Controls.Add(this.imglightCheckBox);
+			this.groupBox7.Controls.Add(this.imgdarkCheckBox);
+			this.groupBox7.Controls.Add(this.imglowCheckBox);
+			this.groupBox7.Controls.Add(this.img200CheckBox);
+			this.groupBox7.Location = new System.Drawing.Point(628, 122);
+			this.groupBox7.Name = "groupBox7";
+			this.groupBox7.Size = new System.Drawing.Size(204, 107);
+			this.groupBox7.TabIndex = 110;
+			this.groupBox7.TabStop = false;
+			this.groupBox7.Text = "Image Quality";
+			// 
+			// imglow2CheckBox
+			// 
+			this.imglow2CheckBox.AutoSize = true;
+			this.imglow2CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "imglow2", true));
+			this.imglow2CheckBox.Location = new System.Drawing.Point(7, 76);
+			this.imglow2CheckBox.Name = "imglow2CheckBox";
+			this.imglow2CheckBox.Size = new System.Drawing.Size(113, 17);
+			this.imglow2CheckBox.TabIndex = 5;
+			this.imglow2CheckBox.Text = "Low Resolution";
+			this.imglow2CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// imglightCheckBox
+			// 
+			this.imglightCheckBox.AutoSize = true;
+			this.imglightCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "imglight", true));
+			this.imglightCheckBox.Location = new System.Drawing.Point(7, 62);
+			this.imglightCheckBox.Name = "imglightCheckBox";
+			this.imglightCheckBox.Size = new System.Drawing.Size(69, 17);
+			this.imglightCheckBox.TabIndex = 4;
+			this.imglightCheckBox.Text = "to Light";
+			this.imglightCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// imgdarkCheckBox
+			// 
+			this.imgdarkCheckBox.AutoSize = true;
+			this.imgdarkCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "imgdark", true));
+			this.imgdarkCheckBox.Location = new System.Drawing.Point(7, 48);
+			this.imgdarkCheckBox.Name = "imgdarkCheckBox";
+			this.imgdarkCheckBox.Size = new System.Drawing.Size(72, 17);
+			this.imgdarkCheckBox.TabIndex = 3;
+			this.imgdarkCheckBox.Text = "To Dark";
+			this.imgdarkCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// imglowCheckBox
+			// 
+			this.imglowCheckBox.AutoSize = true;
+			this.imglowCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "imglow", true));
+			this.imglowCheckBox.Location = new System.Drawing.Point(7, 34);
+			this.imglowCheckBox.Name = "imglowCheckBox";
+			this.imglowCheckBox.Size = new System.Drawing.Size(193, 17);
+			this.imglowCheckBox.TabIndex = 2;
+			this.imglowCheckBox.Text = "Low Resolution Picture Large";
+			this.imglowCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// img200CheckBox
+			// 
+			this.img200CheckBox.AutoSize = true;
+			this.img200CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "img200", true));
+			this.img200CheckBox.Location = new System.Drawing.Point(7, 20);
+			this.img200CheckBox.Name = "img200CheckBox";
+			this.img200CheckBox.Size = new System.Drawing.Size(151, 17);
+			this.img200CheckBox.TabIndex = 1;
+			this.img200CheckBox.Text = "Resolution Above 200";
+			this.img200CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// groupBox6
+			// 
+			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox6.Controls.Add(this.dcnocutCheckBox);
+			this.groupBox6.Controls.Add(this.dcnotsetCheckBox);
+			this.groupBox6.Controls.Add(this.dcokCheckBox);
+			this.groupBox6.Location = new System.Drawing.Point(856, 122);
+			this.groupBox6.Name = "groupBox6";
+			this.groupBox6.Size = new System.Drawing.Size(153, 73);
+			this.groupBox6.TabIndex = 109;
+			this.groupBox6.TabStop = false;
+			this.groupBox6.Text = "Die Cut";
+			// 
+			// dcnocutCheckBox
+			// 
+			this.dcnocutCheckBox.AutoSize = true;
+			this.dcnocutCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "dcnocut", true));
+			this.dcnocutCheckBox.Location = new System.Drawing.Point(6, 47);
+			this.dcnocutCheckBox.Name = "dcnocutCheckBox";
+			this.dcnocutCheckBox.Size = new System.Drawing.Size(125, 17);
+			this.dcnocutCheckBox.TabIndex = 5;
+			this.dcnocutCheckBox.Text = "No Die Cut Exists";
+			this.dcnocutCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// dcnotsetCheckBox
+			// 
+			this.dcnotsetCheckBox.AutoSize = true;
+			this.dcnotsetCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "dcnotset", true));
+			this.dcnotsetCheckBox.Location = new System.Drawing.Point(6, 33);
+			this.dcnotsetCheckBox.Name = "dcnotsetCheckBox";
+			this.dcnotsetCheckBox.Size = new System.Drawing.Size(143, 17);
+			this.dcnotsetCheckBox.TabIndex = 3;
+			this.dcnotsetCheckBox.Text = "Not Set Up Correctly";
+			this.dcnotsetCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// dcokCheckBox
+			// 
+			this.dcokCheckBox.AutoSize = true;
+			this.dcokCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "dcok", true));
+			this.dcokCheckBox.Location = new System.Drawing.Point(6, 19);
+			this.dcokCheckBox.Name = "dcokCheckBox";
+			this.dcokCheckBox.Size = new System.Drawing.Size(42, 17);
+			this.dcokCheckBox.TabIndex = 1;
+			this.dcokCheckBox.Text = "Ok";
+			this.dcokCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// groupBox5
+			// 
+			this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox5.Controls.Add(this.margfixCheckBox);
+			this.groupBox5.Controls.Add(this.margokCheckBox);
+			this.groupBox5.Location = new System.Drawing.Point(459, 122);
+			this.groupBox5.Name = "groupBox5";
+			this.groupBox5.Size = new System.Drawing.Size(144, 64);
+			this.groupBox5.TabIndex = 108;
+			this.groupBox5.TabStop = false;
+			this.groupBox5.Text = "Margins";
+			// 
+			// margfixCheckBox
+			// 
+			this.margfixCheckBox.AutoSize = true;
+			this.margfixCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "margfix", true));
+			this.margfixCheckBox.Location = new System.Drawing.Point(6, 36);
+			this.margfixCheckBox.Name = "margfixCheckBox";
+			this.margfixCheckBox.Size = new System.Drawing.Size(134, 17);
+			this.margfixCheckBox.TabIndex = 2;
+			this.margfixCheckBox.Text = "Needs To Be Fixed";
+			this.margfixCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// margokCheckBox
+			// 
+			this.margokCheckBox.AutoSize = true;
+			this.margokCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "margok", true));
+			this.margokCheckBox.Location = new System.Drawing.Point(6, 19);
+			this.margokCheckBox.Name = "margokCheckBox";
+			this.margokCheckBox.Size = new System.Drawing.Size(99, 17);
+			this.margokCheckBox.TabIndex = 1;
+			this.margokCheckBox.Text = "Correct As Is";
+			this.margokCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// groupBox4
+			// 
+			this.groupBox4.Controls.Add(this.freadonlyCheckBox);
+			this.groupBox4.Controls.Add(this.fembedCheckBox);
+			this.groupBox4.Controls.Add(this.fontsmisCheckBox);
+			this.groupBox4.Controls.Add(this.fontsb20CheckBox);
+			this.groupBox4.Controls.Add(this.fontsallCheckBox);
+			this.groupBox4.Location = new System.Drawing.Point(273, 122);
+			this.groupBox4.Name = "groupBox4";
+			this.groupBox4.Size = new System.Drawing.Size(145, 109);
+			this.groupBox4.TabIndex = 107;
+			this.groupBox4.TabStop = false;
+			this.groupBox4.Text = "Fonts";
+			// 
+			// freadonlyCheckBox
+			// 
+			this.freadonlyCheckBox.AutoSize = true;
+			this.freadonlyCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "freadonly", true));
+			this.freadonlyCheckBox.Location = new System.Drawing.Point(6, 81);
+			this.freadonlyCheckBox.Name = "freadonlyCheckBox";
+			this.freadonlyCheckBox.Size = new System.Drawing.Size(85, 17);
+			this.freadonlyCheckBox.TabIndex = 9;
+			this.freadonlyCheckBox.Text = "Read Only";
+			this.freadonlyCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// fembedCheckBox
+			// 
+			this.fembedCheckBox.AutoSize = true;
+			this.fembedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "fembed", true));
+			this.fembedCheckBox.Location = new System.Drawing.Point(6, 65);
+			this.fembedCheckBox.Name = "fembedCheckBox";
+			this.fembedCheckBox.Size = new System.Drawing.Size(85, 17);
+			this.fembedCheckBox.TabIndex = 7;
+			this.fembedCheckBox.Text = "Embedded";
+			this.fembedCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// fontsmisCheckBox
+			// 
+			this.fontsmisCheckBox.AutoSize = true;
+			this.fontsmisCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "fontsmis", true));
+			this.fontsmisCheckBox.Location = new System.Drawing.Point(6, 50);
+			this.fontsmisCheckBox.Name = "fontsmisCheckBox";
+			this.fontsmisCheckBox.Size = new System.Drawing.Size(133, 17);
+			this.fontsmisCheckBox.TabIndex = 5;
+			this.fontsmisCheckBox.Text = "Missing (list below)";
+			this.fontsmisCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// fontsb20CheckBox
+			// 
+			this.fontsb20CheckBox.AutoSize = true;
+			this.fontsb20CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "fontsb20", true));
+			this.fontsb20CheckBox.Location = new System.Drawing.Point(6, 34);
+			this.fontsb20CheckBox.Name = "fontsb20CheckBox";
+			this.fontsb20CheckBox.Size = new System.Drawing.Size(82, 17);
+			this.fontsb20CheckBox.TabIndex = 3;
+			this.fontsb20CheckBox.Text = "On B2000";
+			this.fontsb20CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// fontsallCheckBox
+			// 
+			this.fontsallCheckBox.AutoSize = true;
+			this.fontsallCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "fontsall", true));
+			this.fontsallCheckBox.Location = new System.Drawing.Point(6, 18);
+			this.fontsallCheckBox.Name = "fontsallCheckBox";
+			this.fontsallCheckBox.Size = new System.Drawing.Size(93, 17);
+			this.fontsallCheckBox.TabIndex = 1;
+			this.fontsallCheckBox.Text = "All Included";
+			this.fontsallCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// groupBox3
+			// 
+			this.groupBox3.Controls.Add(this.embeddCheckBox);
+			this.groupBox3.Controls.Add(this.misslinksCheckBox);
+			this.groupBox3.Controls.Add(this.alllinksCheckBox);
+			this.groupBox3.Controls.Add(this.linksCheckBox);
+			this.groupBox3.Location = new System.Drawing.Point(40, 122);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(216, 102);
+			this.groupBox3.TabIndex = 106;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "CD Preflight";
+			// 
+			// embeddCheckBox
+			// 
+			this.embeddCheckBox.AutoSize = true;
+			this.embeddCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "embedd", true));
+			this.embeddCheckBox.Location = new System.Drawing.Point(6, 67);
+			this.embeddCheckBox.Name = "embeddCheckBox";
+			this.embeddCheckBox.Size = new System.Drawing.Size(208, 17);
+			this.embeddCheckBox.TabIndex = 4;
+			this.embeddCheckBox.Text = "Embedded (does not have links)";
+			this.embeddCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// misslinksCheckBox
+			// 
+			this.misslinksCheckBox.AutoSize = true;
+			this.misslinksCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "misslinks", true));
+			this.misslinksCheckBox.Location = new System.Drawing.Point(6, 51);
+			this.misslinksCheckBox.Name = "misslinksCheckBox";
+			this.misslinksCheckBox.Size = new System.Drawing.Size(102, 17);
+			this.misslinksCheckBox.TabIndex = 3;
+			this.misslinksCheckBox.Text = "Missing Links";
+			this.misslinksCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// alllinksCheckBox
+			// 
+			this.alllinksCheckBox.AutoSize = true;
+			this.alllinksCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "alllinks", true));
+			this.alllinksCheckBox.Location = new System.Drawing.Point(6, 35);
+			this.alllinksCheckBox.Name = "alllinksCheckBox";
+			this.alllinksCheckBox.Size = new System.Drawing.Size(108, 17);
+			this.alllinksCheckBox.TabIndex = 2;
+			this.alllinksCheckBox.Text = "Have All Links";
+			this.alllinksCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// linksCheckBox
+			// 
+			this.linksCheckBox.AutoSize = true;
+			this.linksCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "links", true));
+			this.linksCheckBox.Location = new System.Drawing.Point(6, 19);
+			this.linksCheckBox.Name = "linksCheckBox";
+			this.linksCheckBox.Size = new System.Drawing.Size(56, 17);
+			this.linksCheckBox.TabIndex = 1;
+			this.linksCheckBox.Text = "Links";
+			this.linksCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// formatmacCheckBox
+			// 
+			this.formatmacCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "formatmac", true));
+			this.formatmacCheckBox.Location = new System.Drawing.Point(396, 38);
+			this.formatmacCheckBox.Name = "formatmacCheckBox";
+			this.formatmacCheckBox.Size = new System.Drawing.Size(104, 24);
+			this.formatmacCheckBox.TabIndex = 105;
+			this.formatmacCheckBox.Text = "MAC Format";
+			this.formatmacCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// formatpcCheckBox
+			// 
+			this.formatpcCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.preflitBindingSource, "formatpc", true));
+			this.formatpcCheckBox.Location = new System.Drawing.Point(296, 38);
+			this.formatpcCheckBox.Name = "formatpcCheckBox";
+			this.formatpcCheckBox.Size = new System.Drawing.Size(104, 24);
+			this.formatpcCheckBox.TabIndex = 104;
+			this.formatpcCheckBox.Text = "PC Format";
+			this.formatpcCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// prognameComboBox
+			// 
+			this.prognameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "progname", true));
+			this.prognameComboBox.FormattingEnabled = true;
+			this.prognameComboBox.Location = new System.Drawing.Point(103, 38);
+			this.prognameComboBox.Name = "prognameComboBox";
+			this.prognameComboBox.Size = new System.Drawing.Size(169, 21);
+			this.prognameComboBox.TabIndex = 103;
+			// 
+			// initialTextBox
+			// 
+			this.initialTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.initialTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "initial", true));
+			this.initialTextBox.Location = new System.Drawing.Point(1164, 5);
+			this.initialTextBox.Name = "initialTextBox";
+			this.initialTextBox.Size = new System.Drawing.Size(44, 20);
+			this.initialTextBox.TabIndex = 102;
+			// 
+			// predateDateTimePicker
+			// 
+			this.predateDateTimePicker.CustomFormat = "\'\'";
+			this.predateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.preflitBindingSource, "predate", true));
+			this.predateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.predateDateTimePicker.Location = new System.Drawing.Point(372, 5);
+			this.predateDateTimePicker.Name = "predateDateTimePicker";
+			this.predateDateTimePicker.Size = new System.Drawing.Size(215, 20);
+			this.predateDateTimePicker.TabIndex = 101;
+			this.predateDateTimePicker.ValueChanged += new System.EventHandler(this.predateDateTimePicker_ValueChanged);
+			// 
+			// label30
+			// 
+			this.label30.AutoSize = true;
+			this.label30.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "invno", true));
+			this.label30.Location = new System.Drawing.Point(209, 5);
+			this.label30.Name = "label30";
+			this.label30.Size = new System.Drawing.Size(41, 13);
+			this.label30.TabIndex = 100;
+			this.label30.Text = "label7";
+			// 
+			// label32
+			// 
+			this.label32.AutoSize = true;
+			this.label32.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
+			this.label32.Location = new System.Drawing.Point(60, 5);
+			this.label32.Name = "label32";
+			this.label32.Size = new System.Drawing.Size(41, 13);
+			this.label32.TabIndex = 98;
+			this.label32.Text = "label7";
+			// 
+			// custTableAdapter
+			// 
+			this.custTableAdapter.ClearBeforeFill = true;
+			// 
+			// tableAdapterManager
+			// 
+			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+			this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
+			this.tableAdapterManager.endsheetTableAdapter = null;
+			this.tableAdapterManager.preflitTableAdapter = null;
+			this.tableAdapterManager.produtnTableAdapter = null;
+			this.tableAdapterManager.supplTableAdapter = null;
+			this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+			// 
+			// produtnTableAdapter
+			// 
+			this.produtnTableAdapter.ClearBeforeFill = true;
+			// 
+			// quotesTableAdapter
+			// 
+			this.quotesTableAdapter.ClearBeforeFill = true;
+			// 
+			// endsheetTableAdapter
+			// 
+			this.endsheetTableAdapter.ClearBeforeFill = true;
+			// 
+			// endsheetdetailTableAdapter
+			// 
+			this.endsheetdetailTableAdapter.ClearBeforeFill = true;
+			// 
+			// supplTableAdapter
+			// 
+			this.supplTableAdapter.ClearBeforeFill = true;
+			// 
+			// suppdetailTableAdapter
+			// 
+			this.suppdetailTableAdapter.ClearBeforeFill = true;
+			// 
+			// preflitTableAdapter
+			// 
+			this.preflitTableAdapter.ClearBeforeFill = true;
 			// 
 			// frmEndSheet
 			// 
@@ -1856,13 +2617,13 @@
 			this.Text = "End Sheet/Supplements/Preflight";
 			this.Load += new System.EventHandler(this.frmEndSheet_Load);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmEndSheet_Paint);
+			((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).EndInit();
 			this.tbEndSheets.ResumeLayout(false);
 			this.pgEndSheets.ResumeLayout(false);
 			this.pgEndSheets.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.endsheetdetailDataGridView)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.endsheetdetailBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
@@ -1872,9 +2633,26 @@
 			((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
 			this.Supplement.ResumeLayout(false);
 			this.Supplement.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).EndInit();
+			this.PreFlight.ResumeLayout(false);
+			this.PreFlight.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).EndInit();
+			this.groupBox9.ResumeLayout(false);
+			this.groupBox9.PerformLayout();
+			this.groupBox8.ResumeLayout(false);
+			this.groupBox8.PerformLayout();
+			this.groupBox7.ResumeLayout(false);
+			this.groupBox7.PerformLayout();
+			this.groupBox6.ResumeLayout(false);
+			this.groupBox6.PerformLayout();
+			this.groupBox5.ResumeLayout(false);
+			this.groupBox5.PerformLayout();
+			this.groupBox4.ResumeLayout(false);
+			this.groupBox4.PerformLayout();
+			this.groupBox3.ResumeLayout(false);
+			this.groupBox3.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -1954,7 +2732,6 @@
 		private System.Windows.Forms.CheckBox acceptdCheckBox;
 		private System.Windows.Forms.CheckBox remakeCheckBox;
 		private System.Windows.Forms.DateTimePicker desorgdteDateTimePicker;
-		private System.Windows.Forms.DateTimePicker reprntdteDateTimePicker;
 		private System.Windows.Forms.DateTimePicker prntsamDateTimePicker;
 		private System.Windows.Forms.BindingSource endsheetdetailBindingSource;
 		private DataSets.dsEndSheetTableAdapters.endsheetdetailTableAdapter endsheetdetailTableAdapter;
@@ -2017,5 +2794,52 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+		private System.Windows.Forms.Label label28;
+		private System.Windows.Forms.Label label30;
+		private System.Windows.Forms.Label label32;
+		private System.Windows.Forms.BindingSource preflitBindingSource;
+		private DataSets.dsEndSheetTableAdapters.preflitTableAdapter preflitTableAdapter;
+		private System.Windows.Forms.TextBox initialTextBox;
+		private System.Windows.Forms.DateTimePicker predateDateTimePicker;
+		private System.Windows.Forms.CheckBox formatmacCheckBox;
+		private System.Windows.Forms.CheckBox formatpcCheckBox;
+		private System.Windows.Forms.ComboBox prognameComboBox;
+		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.CheckBox misslinksCheckBox;
+		private System.Windows.Forms.CheckBox alllinksCheckBox;
+		private System.Windows.Forms.CheckBox linksCheckBox;
+		private System.Windows.Forms.CheckBox embeddCheckBox;
+		private System.Windows.Forms.GroupBox groupBox7;
+		private System.Windows.Forms.GroupBox groupBox6;
+		private System.Windows.Forms.GroupBox groupBox5;
+		private System.Windows.Forms.CheckBox margfixCheckBox;
+		private System.Windows.Forms.CheckBox margokCheckBox;
+		private System.Windows.Forms.GroupBox groupBox4;
+		private System.Windows.Forms.CheckBox freadonlyCheckBox;
+		private System.Windows.Forms.CheckBox fembedCheckBox;
+		private System.Windows.Forms.CheckBox fontsmisCheckBox;
+		private System.Windows.Forms.CheckBox fontsb20CheckBox;
+		private System.Windows.Forms.CheckBox fontsallCheckBox;
+		private System.Windows.Forms.CheckBox imglow2CheckBox;
+		private System.Windows.Forms.CheckBox imglightCheckBox;
+		private System.Windows.Forms.CheckBox imgdarkCheckBox;
+		private System.Windows.Forms.CheckBox imglowCheckBox;
+		private System.Windows.Forms.CheckBox img200CheckBox;
+		private System.Windows.Forms.TextBox technoteTextBox;
+		private System.Windows.Forms.TextBox custquestTextBox;
+		private System.Windows.Forms.TextBox numsentTextBox;
+		private System.Windows.Forms.GroupBox groupBox9;
+		private System.Windows.Forms.CheckBox cmissingCheckBox;
+		private System.Windows.Forms.CheckBox pmissingCheckBox;
+		private System.Windows.Forms.CheckBox dmissingCheckBox;
+		private System.Windows.Forms.CheckBox chaveCheckBox;
+		private System.Windows.Forms.CheckBox phaveCheckBox;
+		private System.Windows.Forms.CheckBox dhavbothCheckBox;
+		private System.Windows.Forms.GroupBox groupBox8;
+		private System.Windows.Forms.CheckBox cvrrecvCheckBox;
+		private System.Windows.Forms.CheckBox dcnocutCheckBox;
+		private System.Windows.Forms.CheckBox dcnotsetCheckBox;
+		private System.Windows.Forms.CheckBox dcokCheckBox;
+		private System.Windows.Forms.DateTimePicker reprntdteDateTimePicker;
 	}
 }
