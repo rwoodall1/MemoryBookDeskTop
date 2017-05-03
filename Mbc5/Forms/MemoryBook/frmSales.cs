@@ -1370,7 +1370,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             return retval;
             }
-        public override void Add() {
+        public override bool Add() {
 			txtModifiedBy.Text = this.ApplicationUser.id;
 			txtModifiedByInv.Text = this.ApplicationUser.id;
 			txtModifiedByInvdetail.Text = this.ApplicationUser.id;
@@ -1392,7 +1392,8 @@ namespace Mbc5.Forms.MemoryBook {
                     break;
 
                 }
-            }
+			return true;
+		}
         public override void Delete() {
 			txtModifiedBy.Text = this.ApplicationUser.id;
 			txtModifiedByInv.Text = this.ApplicationUser.id;

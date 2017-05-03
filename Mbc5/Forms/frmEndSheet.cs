@@ -63,8 +63,64 @@ namespace Mbc5.Forms
 		{
 			Fill();
 		}
+
+
 		#region Methods
-		private bool AddEndSheet()
+
+		public override bool Save()
+		{
+			bool retval = true;
+			switch (tbEndSheets.SelectedIndex)
+			{
+				case 0:
+					SaveEndSheet();
+
+					break;
+				case 1:
+					{
+						
+						break;
+					}
+				case 2:
+					{
+						
+
+						break;
+					}			
+			}
+			return retval;
+
+
+		}
+
+		public bool SaveEndSheet()
+		{
+			bool retval = true;
+			if (dsEndSheet.endsheet.Count > 0)
+			{
+				if (this.ValidateChildren(ValidationConstraints.Enabled))
+				{
+					try
+					{
+						this.endsheetBindingSource.EndEdit();
+						var a = endsheetTableAdapter.Update(dsEndSheet.endsheet);
+						//must refill so we get updated time stamp so concurrency is not thrown
+						endsheetTableAdapter.Fill(dsEndSheet.endsheet, Schcode);
+						retval = true;
+					}					
+					catch (Exception ex)
+					{
+						retval = false;
+						MessageBox.Show("Production record failed to update:" + ex.Message);
+						ex.ToExceptionless()
+					   .SetMessage("Production record failed to update:" + ex.Message)
+					   .Submit();
+					}
+				}				
+			}
+			return retval;
+		}
+		public override bool Add()
 		{
 			var sqlQuery = new SQLQuery();
 			SqlParameter[] parameters = new SqlParameter[] {
@@ -88,6 +144,7 @@ namespace Mbc5.Forms
 					return false;
 				}
 			}
+		
 		
 			
 			parameters = null;
@@ -190,10 +247,30 @@ namespace Mbc5.Forms
 				if (dsEndSheet.endsheet.Count < 1)
 				{
 					DisableControls(this.tbEndSheets.TabPages[0]);
+					
 				}
 				else { EnableAllControls(this.tbEndSheets.TabPages[0]); }
 
+				supplTableAdapter.Fill(dsEndSheet.suppl , Schcode);
+				if (dsEndSheet.suppl.Count < 1)
+				{
+					DisableControls(this.tbEndSheets.TabPages[1]);
+				}
+				else { EnableAllControls(this.tbEndSheets.TabPages[1]); }
+
+				preflitTableAdapter.Fill(dsEndSheet.preflit, Schcode);
+				if (dsEndSheet.preflit.Count < 1)
+				{
+					DisableControls(this.tbEndSheets.TabPages[2]);
+				}
+				else { EnableAllControls(this.tbEndSheets.TabPages[2]); }
+
 			}
+
+
+
+
+
 			if (Invno != 0)
 			{
 				var pos = endsheetBindingSource.Find("invno", this.Invno);
@@ -206,12 +283,15 @@ namespace Mbc5.Forms
 					DialogResult result=MessageBox.Show("End Sheet record was not found. For this invoice number ("+Invno+"), do you want to add one?", "Invoice#", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Stop);
 					if (result == DialogResult.Yes)
 					{
-						if (AddEndSheet())
+						if (Add())
 						{
 							Fill();
 						}
 					}
 				}
+
+
+
 			}
 
 

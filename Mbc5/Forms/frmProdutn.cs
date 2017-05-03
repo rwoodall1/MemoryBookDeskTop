@@ -372,25 +372,10 @@ namespace Mbc5.Forms {
 
             return retval;
             }
-        public override void Add() {
-            //switch (tabSales.SelectedIndex) {
-            //    case 0:
-            //    case 1:
-            //            {
-            //            MessageBox.Show("This function is not available in the sales screen tab. Add a sales record from the customer screen.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            //            break;
-            //            }
-
-
-            //    case 2:
-            //        MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            //        break;
-            //    case 3:
-            //        NewPayment();
-            //        break;
-
-            //    }
-            }
+        public override bool Add() {
+			MessageBox.Show("Add record is not available from the production screen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			return true;
+		}
         public override void Delete() {
             //switch (tabSales.SelectedIndex) {
             //    case 0:

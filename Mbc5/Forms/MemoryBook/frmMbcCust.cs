@@ -251,13 +251,14 @@ namespace Mbc5.Forms.MemoryBook {
 			this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
 			return retval;
         }
-        public override void Add() {
+        public override bool Add() {
 			
 			dsCust.Clear();
             DataRowView newrow = (DataRowView)custBindingSource.AddNew();
             GetSetSchcode();
             txtSchname.ReadOnly = false;
             this.txtModifiedBy.Text = this.ApplicationUser.id;
+			return true;
             }
         public override void Delete() {
 

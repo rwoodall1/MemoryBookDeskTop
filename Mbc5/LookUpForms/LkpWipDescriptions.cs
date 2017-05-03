@@ -42,10 +42,11 @@ namespace Mbc5.LookUpForms
         {
             wipDescriptionsBindingSource.CancelEdit();
         }
-        override public void Add()
+        override public bool Add()
         {
             wipDescriptionsBindingSource.AddNew();
-        }
+			return true;
+		}
         private void wipDescriptionsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             Save();

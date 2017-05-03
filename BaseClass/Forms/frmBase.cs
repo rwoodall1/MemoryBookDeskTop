@@ -217,12 +217,11 @@ namespace BaseClass
 
             }
         [Browsable(true)]
-        public virtual void Add()
+        public virtual bool Add()
         {
-
+			return true;
         }
-       
 
-      
-    }
+
+	}
 }
