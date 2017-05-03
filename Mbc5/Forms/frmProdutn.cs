@@ -316,7 +316,8 @@ namespace Mbc5.Forms {
                        .Submit();
                         }
                     }
-                } else { retval = false; }
+                } else { retval = true;//no records just return
+			}
             return retval;
         }
         private bool SaveWip() {
@@ -679,10 +680,6 @@ namespace Mbc5.Forms {
 
             }
 
-        private void pg2_Click(object sender,EventArgs e) {
-
-            }
-
         private void txtPerfbind_Leave(object sender, EventArgs e)
         {
             var row = (DataRowView)produtnBindingSource.Current;
@@ -733,12 +730,29 @@ namespace Mbc5.Forms {
 
         }
 
-        private void produtnBindingSource_CurrentChanged(object sender,EventArgs e) {
-           
-            }
+       
 
         private void btnProdSrch_Click(object sender,EventArgs e) {
-            var sqlQuery = new SQLQuery();
+			switch (tbProdutn.SelectedIndex)
+			{
+				case 0:
+					if (!SaveProdutn())
+					{
+						var result1 = MessageBox.Show("Production record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (result1 == DialogResult.No)
+						{
+							
+							return;
+						}
+					}
+					break;
+
+				
+			}
+
+
+
+			var sqlQuery = new SQLQuery();
             string query = "Select prodno,invno,schcode from produtn where prodno=@prodno";
             var parameters = new SqlParameter[] { new SqlParameter("@prodno",txtProdNoSrch.Text) };
             var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,query,parameters);
@@ -751,8 +765,24 @@ namespace Mbc5.Forms {
             }
 
         private void btnInvoiceSrch_Click(object sender,EventArgs e) {
-            
-            var sqlQuery = new SQLQuery();
+			switch (tbProdutn.SelectedIndex)
+			{
+				case 0:
+					if (!SaveProdutn())
+					{
+						var result1 = MessageBox.Show("Production record could not be saved. Continue search?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (result1 == DialogResult.No)
+						{
+
+							return;
+						}
+					}
+					break;
+
+			
+			}
+
+			var sqlQuery = new SQLQuery();
             string query = "Select prodno,invno,schcode from produtn where invno=@invno";
             var parameters = new SqlParameter[] { new SqlParameter("@invno",txtInvoiceNoSrch.Text) };
             var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,query,parameters);
@@ -863,15 +893,92 @@ namespace Mbc5.Forms {
                 }
             }
 
-      
-        #region Validation
+		private void frmProdutn_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			switch (tbProdutn.SelectedIndex)
+			{
+				case 0:
+						if (!SaveProdutn())
+						{
+							var result = MessageBox.Show("Production record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+							if (result == DialogResult.No)
+						{
+							e.Cancel = true;
+							return;
+						}
+					}
+					break;
+
+				case 1:
+					if (!SaveWip())
+					{
+						var result = MessageBox.Show("Wip record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (result == DialogResult.No)
+						{
+							e.Cancel = true;
+							return;
+						}
+					}
+					break;
+
+				case 2:
+					if (!SaveCovers())
+					{
+						var result = MessageBox.Show("Cover record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (result == DialogResult.No)
+						{
+							e.Cancel = true;
+							return;
+						}
+					}
+					break;
+				case 4:
+					if (!SavePartBK())
+					{
+						var result = MessageBox.Show("Partial Book(A) could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (result == DialogResult.No)
+						{
+							e.Cancel = true;
+							return;
+						}
+					}
+					break;
+
+				case 5:
+					if (!SavePtBkB())
+					{
+						var result = MessageBox.Show("Photos On CD record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (result == DialogResult.No)
+						{
+							e.Cancel = true;
+							return;
+						}
+					}
+					break;
+
+				case 6:
+					//if (!SavePtBkB())
+					//{
+					//	var result = MessageBox.Show("Photos On CD record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+					//	if (result == DialogResult.No)
+					//	{
+					//		e.Cancel = true;
+					//		return;
+					//	}
+					//}
+					break;
+			}
+		}
 
 
-        #endregion
+		#region Validation
 
-        //nothing below here  
-        }
-    public class BinderyInfo
+
+		#endregion
+
+		//nothing below here  
+	}
+	public class BinderyInfo
     {
         public string Schname { get; set; }
         public string CoverType { get; set; }

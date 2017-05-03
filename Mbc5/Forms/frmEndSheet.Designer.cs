@@ -73,8 +73,8 @@
 			System.Windows.Forms.Label numsentLabel;
 			System.Windows.Forms.Label custquestLabel;
 			System.Windows.Forms.Label technoteLabel;
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.endsheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.dsEndSheet = new Mbc5.DataSets.dsEndSheet();
 			this.tbEndSheets = new System.Windows.Forms.TabControl();
@@ -132,7 +132,6 @@
 			this.bkcopiesTextBox = new System.Windows.Forms.TextBox();
 			this.bldescTextBox = new System.Windows.Forms.TextBox();
 			this.brdescTextBox = new System.Windows.Forms.TextBox();
-			this.button1 = new System.Windows.Forms.Button();
 			this.invnoLabel2 = new System.Windows.Forms.Label();
 			this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -196,7 +195,6 @@
 			this.label18 = new System.Windows.Forms.Label();
 			this.label17 = new System.Windows.Forms.Label();
 			this.supnoTextBox = new System.Windows.Forms.TextBox();
-			this.button2 = new System.Windows.Forms.Button();
 			this.booktypeLabel1 = new System.Windows.Forms.Label();
 			this.duedateDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.recvdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -257,6 +255,12 @@
 			this.supplTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.supplTableAdapter();
 			this.suppdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.suppdetailTableAdapter();
 			this.preflitTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.preflitTableAdapter();
+			this.btnsheetSrch = new System.Windows.Forms.Button();
+			this.txtsheetSrch = new System.Windows.Forms.TextBox();
+			this.label34 = new System.Windows.Forms.Label();
+			this.txtsupllSrch = new System.Windows.Forms.TextBox();
+			this.btnSupplSrch = new System.Windows.Forms.Button();
+			this.label35 = new System.Windows.Forms.Label();
 			prodnoLabel = new System.Windows.Forms.Label();
 			invnoLabel = new System.Windows.Forms.Label();
 			clr1Label = new System.Windows.Forms.Label();
@@ -756,6 +760,9 @@
 			// 
 			this.pgEndSheets.AutoScroll = true;
 			this.pgEndSheets.BackColor = System.Drawing.SystemColors.Control;
+			this.pgEndSheets.Controls.Add(this.label34);
+			this.pgEndSheets.Controls.Add(this.btnsheetSrch);
+			this.pgEndSheets.Controls.Add(this.txtsheetSrch);
 			this.pgEndSheets.Controls.Add(this.reprntdteDateTimePicker);
 			this.pgEndSheets.Controls.Add(this.btnInvoiceSrch);
 			this.pgEndSheets.Controls.Add(this.txtInvoiceNoSrch);
@@ -797,7 +804,6 @@
 			this.pgEndSheets.Controls.Add(this.label7);
 			this.pgEndSheets.Controls.Add(this.groupBox2);
 			this.pgEndSheets.Controls.Add(this.groupBox1);
-			this.pgEndSheets.Controls.Add(this.button1);
 			this.pgEndSheets.Controls.Add(this.invnoLabel2);
 			this.pgEndSheets.Controls.Add(this.prodnoLabel2);
 			this.pgEndSheets.Controls.Add(this.specinstTextBox);
@@ -876,14 +882,14 @@
 			this.endsheetdetailDataGridView.AllowUserToOrderColumns = true;
 			this.endsheetdetailDataGridView.AutoGenerateColumns = false;
 			this.endsheetdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this.endsheetdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.endsheetdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Description,
@@ -970,7 +976,7 @@
 			// 
 			// reprnacpCheckBox
 			// 
-			this.reprnacpCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.endsheetBindingSource, "reprnacp", true));
+			this.reprnacpCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.endsheetBindingSource, "reprnacp)", true));
 			this.reprnacpCheckBox.Location = new System.Drawing.Point(929, 360);
 			this.reprnacpCheckBox.Name = "reprnacpCheckBox";
 			this.reprnacpCheckBox.Size = new System.Drawing.Size(126, 24);
@@ -980,7 +986,7 @@
 			// 
 			// acceptdCheckBox
 			// 
-			this.acceptdCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.endsheetBindingSource, "acceptd", true));
+			this.acceptdCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.endsheetBindingSource, "acceptd", true));
 			this.acceptdCheckBox.Location = new System.Drawing.Point(929, 339);
 			this.acceptdCheckBox.Name = "acceptdCheckBox";
 			this.acceptdCheckBox.Size = new System.Drawing.Size(104, 24);
@@ -1156,7 +1162,7 @@
 			// 
 			// othrCheckBox
 			// 
-			this.othrCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.endsheetBindingSource, "othr", true));
+			this.othrCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.endsheetBindingSource, "othr", true));
 			this.othrCheckBox.Location = new System.Drawing.Point(63, 408);
 			this.othrCheckBox.Name = "othrCheckBox";
 			this.othrCheckBox.Size = new System.Drawing.Size(17, 13);
@@ -1342,15 +1348,6 @@
 			this.brdescTextBox.Size = new System.Drawing.Size(307, 20);
 			this.brdescTextBox.TabIndex = 50;
 			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(21, 56);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(60, 23);
-			this.button1.TabIndex = 57;
-			this.button1.Text = "Sheet #";
-			this.button1.UseVisualStyleBackColor = true;
-			// 
 			// invnoLabel2
 			// 
 			this.invnoLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "invno", true));
@@ -1532,6 +1529,9 @@
 			// 
 			this.Supplement.AutoScroll = true;
 			this.Supplement.BackColor = System.Drawing.SystemColors.Control;
+			this.Supplement.Controls.Add(this.label35);
+			this.Supplement.Controls.Add(this.txtsupllSrch);
+			this.Supplement.Controls.Add(this.btnSupplSrch);
 			this.Supplement.Controls.Add(this.label28);
 			this.Supplement.Controls.Add(label29);
 			this.Supplement.Controls.Add(this.button4);
@@ -1567,7 +1567,6 @@
 			this.Supplement.Controls.Add(this.label18);
 			this.Supplement.Controls.Add(this.label17);
 			this.Supplement.Controls.Add(this.supnoTextBox);
-			this.Supplement.Controls.Add(this.button2);
 			this.Supplement.Controls.Add(booktypeLabel);
 			this.Supplement.Controls.Add(this.booktypeLabel1);
 			this.Supplement.Controls.Add(duedateLabel);
@@ -1626,14 +1625,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.suppdetailDataGridView.AutoGenerateColumns = false;
 			this.suppdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
+			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			this.suppdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.suppdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -1831,7 +1830,7 @@
 			// 
 			// tape_1CheckBox
 			// 
-			this.tape_1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.supplBindingSource, "tape_1", true));
+			this.tape_1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.supplBindingSource, "tape_1", true));
 			this.tape_1CheckBox.Location = new System.Drawing.Point(125, 171);
 			this.tape_1CheckBox.Name = "tape_1CheckBox";
 			this.tape_1CheckBox.Size = new System.Drawing.Size(63, 24);
@@ -1973,19 +1972,10 @@
 			// supnoTextBox
 			// 
 			this.supnoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "supno", true));
-			this.supnoTextBox.Location = new System.Drawing.Point(100, 65);
+			this.supnoTextBox.Location = new System.Drawing.Point(143, 65);
 			this.supnoTextBox.Name = "supnoTextBox";
 			this.supnoTextBox.Size = new System.Drawing.Size(80, 20);
 			this.supnoTextBox.TabIndex = 64;
-			// 
-			// button2
-			// 
-			this.button2.Location = new System.Drawing.Point(19, 63);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 63;
-			this.button2.Text = "Suppl #";
-			this.button2.UseVisualStyleBackColor = true;
 			// 
 			// booktypeLabel1
 			// 
@@ -2608,6 +2598,58 @@
 			// 
 			this.preflitTableAdapter.ClearBeforeFill = true;
 			// 
+			// btnsheetSrch
+			// 
+			this.btnsheetSrch.Location = new System.Drawing.Point(1046, 36);
+			this.btnsheetSrch.Name = "btnsheetSrch";
+			this.btnsheetSrch.Size = new System.Drawing.Size(60, 23);
+			this.btnsheetSrch.TabIndex = 142;
+			this.btnsheetSrch.Text = "Sheet #";
+			this.btnsheetSrch.UseVisualStyleBackColor = true;
+			this.btnsheetSrch.Click += new System.EventHandler(this.btnsheetSrch_Click);
+			// 
+			// txtsheetSrch
+			// 
+			this.txtsheetSrch.Location = new System.Drawing.Point(1111, 36);
+			this.txtsheetSrch.Name = "txtsheetSrch";
+			this.txtsheetSrch.Size = new System.Drawing.Size(67, 20);
+			this.txtsheetSrch.TabIndex = 141;
+			// 
+			// label34
+			// 
+			this.label34.AutoSize = true;
+			this.label34.Location = new System.Drawing.Point(32, 56);
+			this.label34.Name = "label34";
+			this.label34.Size = new System.Drawing.Size(48, 13);
+			this.label34.TabIndex = 143;
+			this.label34.Text = "Sheet#";
+			// 
+			// txtsupllSrch
+			// 
+			this.txtsupllSrch.Location = new System.Drawing.Point(1127, 42);
+			this.txtsupllSrch.Name = "txtsupllSrch";
+			this.txtsupllSrch.Size = new System.Drawing.Size(80, 20);
+			this.txtsupllSrch.TabIndex = 98;
+			// 
+			// btnSupplSrch
+			// 
+			this.btnSupplSrch.Location = new System.Drawing.Point(1046, 40);
+			this.btnSupplSrch.Name = "btnSupplSrch";
+			this.btnSupplSrch.Size = new System.Drawing.Size(75, 23);
+			this.btnSupplSrch.TabIndex = 97;
+			this.btnSupplSrch.Text = "Suppl #";
+			this.btnSupplSrch.UseVisualStyleBackColor = true;
+			this.btnSupplSrch.Click += new System.EventHandler(this.btnSupplSrch_Click);
+			// 
+			// label35
+			// 
+			this.label35.AutoSize = true;
+			this.label35.Location = new System.Drawing.Point(82, 68);
+			this.label35.Name = "label35";
+			this.label35.Size = new System.Drawing.Size(51, 13);
+			this.label35.TabIndex = 99;
+			this.label35.Text = "Suppl #";
+			// 
 			// frmEndSheet
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2700,7 +2742,6 @@
 		private System.Windows.Forms.TextBox bldescTextBox;
 		private System.Windows.Forms.TextBox bkcopiesTextBox;
 		private System.Windows.Forms.TextBox frcopiesTextBox;
-		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Label label11;
@@ -2766,7 +2807,6 @@
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.TextBox supnoTextBox;
-		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.TextBox rmbtotTextBox;
 		private System.Windows.Forms.DateTimePicker rmbfrmDateTimePicker;
 		private System.Windows.Forms.ComboBox remaketypeComboBox;
@@ -2841,5 +2881,11 @@
 		private System.Windows.Forms.CheckBox dcnotsetCheckBox;
 		private System.Windows.Forms.CheckBox dcokCheckBox;
 		private System.Windows.Forms.DateTimePicker reprntdteDateTimePicker;
+		private System.Windows.Forms.Label label34;
+		private System.Windows.Forms.Button btnsheetSrch;
+		private System.Windows.Forms.TextBox txtsheetSrch;
+		private System.Windows.Forms.Label label35;
+		private System.Windows.Forms.TextBox txtsupllSrch;
+		private System.Windows.Forms.Button btnSupplSrch;
 	}
 }
