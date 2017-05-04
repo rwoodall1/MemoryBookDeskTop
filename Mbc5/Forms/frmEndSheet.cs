@@ -49,8 +49,6 @@ namespace Mbc5.Forms
 			}
 			EnableControls(this.txtInvoiceNoSrch);
 			EnableControls(this.btnInvoiceSrch);
-			EnableControls(this.txtsheetSrch);
-			EnableControls(this.btnsheetSrch);
 		}
 		#region Properties
 		public void InvokePropertyChanged(PropertyChangedEventArgs e)
@@ -80,44 +78,21 @@ namespace Mbc5.Forms
 					break;
 				case 1:
 					{
-						SaveSupplement();
+						
 						break;
 					}
 				case 2:
 					{
-						SavePreFlight();
+						
+
 						break;
 					}			
 			}
 			return retval;
+
+
 		}
-		public bool SaveSupplement()
-		{
-			bool retval = true;
-			if (dsEndSheet.suppl.Count > 0)
-			{
-				if (this.ValidateChildren(ValidationConstraints.Enabled))
-				{
-					try
-					{
-						this.supplBindingSource.EndEdit();
-						var a = endsheetTableAdapter.Update(dsEndSheet.endsheet);
-						//must refill so we get updated time stamp so concurrency is not thrown
-						supplTableAdapter.Fill(dsEndSheet.suppl, Schcode);
-						retval = true;
-					}
-					catch (Exception ex)
-					{
-						retval = false;
-						MessageBox.Show("Supplement record failed to update:" + ex.Message);
-						ex.ToExceptionless()
-					   .SetMessage("Supplement record failed to update:" + ex.Message)
-					   .Submit();
-					}
-				}
-			}
-			return retval;
-		}
+
 		public bool SaveEndSheet()
 		{
 			bool retval = true;
@@ -142,33 +117,6 @@ namespace Mbc5.Forms
 					   .Submit();
 					}
 				}				
-			}
-			return retval;
-		}
-		public bool SavePreFlight()
-		{
-			bool retval = true;
-			if (dsEndSheet.preflit.Count > 0)
-			{
-				if (this.ValidateChildren(ValidationConstraints.Enabled))
-				{
-					try
-					{
-						this.preflitBindingSource.EndEdit();
-						var a = preflitTableAdapter.Update(dsEndSheet.preflit);
-						//must refill so we get updated time stamp so concurrency is not thrown
-						preflitTableAdapter.Fill(dsEndSheet.preflit, Schcode);
-						retval = true;
-					}
-					catch (Exception ex)
-					{
-						retval = false;
-						MessageBox.Show("PreFlight record failed to update:" + ex.Message);
-						ex.ToExceptionless()
-					   .SetMessage("PreFlight record failed to update:" + ex.Message)
-					   .Submit();
-					}
-				}
 			}
 			return retval;
 		}
@@ -378,23 +326,6 @@ namespace Mbc5.Forms
 
 		private void btnInvoiceSrch_Click(object sender, EventArgs e)
 		{
-			switch (tbEndSheets.SelectedIndex)
-			{
-				case 0:
-					if (!SaveEndSheet())
-					{
-						var result1 = MessageBox.Show("End sheet record could not be saved. Continue search?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result1 == DialogResult.No)
-						{
-
-							return;
-						}
-					}
-					break;
-
-
-			}
-
 			var sqlQuery = new SQLQuery();
 			string query = "Select invno,schcode from endsheet where invno=@invno";
 			var parameters = new SqlParameter[] { new SqlParameter("@invno", txtInvoiceNoSrch.Text) };
@@ -538,60 +469,8 @@ namespace Mbc5.Forms
 			desorgdteDateTimePicker.Format = DateTimePickerFormat.Long;
 		}
 
-
 		#endregion
 
-		private void btnsheetSrch_Click(object sender, EventArgs e)
-		{
-			
-					if (!SaveEndSheet())
-					{
-						var result1 = MessageBox.Show("End sheet record could not be saved. Continue search?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result1 == DialogResult.No)
-						{
-							return;
-						}
-					}
-
-
-			var sqlQuery = new SQLQuery();
-			string query = "Select endshtno,invno,schcode from endsheet where endshtno=@endshtno";
-			var parameters = new SqlParameter[] { new SqlParameter("@endshtno", txtsheetSrch.Text) };
-			var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, query, parameters);
-			if (result.Rows.Count > 0)
-			{
-				Schcode = result.Rows[0]["schcode"].ToString();
-				Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
-				Fill();
-			}
-			else { MessageBox.Show("Record was not found.", "End sheet Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-		}
-
-		private void btnSupplSrch_Click(object sender, EventArgs e)
-		{
-
-
-			if (!SaveSupplement())
-			{
-				var result1 = MessageBox.Show("Supplement record could not be saved. Continue search?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-				if (result1 == DialogResult.No)
-				{
-					return;
-				}
-			}
-
-
-			var sqlQuery = new SQLQuery();
-			string query = "Select supno,invno,schcode from suppl where supno=@supno";
-			var parameters = new SqlParameter[] { new SqlParameter("@supno",txtsupllSrch.Text) };
-			var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, query, parameters);
-			if (result.Rows.Count > 0)
-			{
-				Schcode = result.Rows[0]["schcode"].ToString();
-				Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
-				Fill();
-			}
-			else { MessageBox.Show("Record was not found.", "Supplement Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-		}
+		
 	}
 }

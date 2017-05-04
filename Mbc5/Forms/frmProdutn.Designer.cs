@@ -208,10 +208,9 @@
 			this.btnProdSrch = new System.Windows.Forms.Button();
 			this.lblShipped = new System.Windows.Forms.Label();
 			this.panel4 = new System.Windows.Forms.Panel();
-			this.modifiedByTextBox = new System.Windows.Forms.TextBox();
+			this.cominitlTextBox = new System.Windows.Forms.TextBox();
 			this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.dsProdutn = new Mbc5.DataSets.dsProdutn();
-			this.cominitlTextBox = new System.Windows.Forms.TextBox();
 			this.comdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.cstsvcdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.btnEmailPw = new System.Windows.Forms.Button();
@@ -543,6 +542,7 @@
 			this.lkpBackGroundTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpBackGroundTableAdapter();
 			this.partBkDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.PartBkDetailTableAdapter();
 			this.prtbkbdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.prtbkbdetailTableAdapter();
+			this.modifiedByTextBox = new System.Windows.Forms.TextBox();
 			companyLabel = new System.Windows.Forms.Label();
 			invnoLabel = new System.Windows.Forms.Label();
 			prodnoLabel = new System.Windows.Forms.Label();
@@ -2473,25 +2473,6 @@
 			this.panel4.Size = new System.Drawing.Size(530, 316);
 			this.panel4.TabIndex = 131;
 			// 
-			// modifiedByTextBox
-			// 
-			this.modifiedByTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ModifiedBy", true));
-			this.modifiedByTextBox.Enabled = false;
-			this.modifiedByTextBox.Location = new System.Drawing.Point(514, 293);
-			this.modifiedByTextBox.Name = "modifiedByTextBox";
-			this.modifiedByTextBox.Size = new System.Drawing.Size(1, 20);
-			this.modifiedByTextBox.TabIndex = 156;
-			// 
-			// produtnBindingSource
-			// 
-			this.produtnBindingSource.DataMember = "produtn";
-			this.produtnBindingSource.DataSource = this.dsProdutn;
-			// 
-			// dsProdutn
-			// 
-			this.dsProdutn.DataSetName = "dsProdutn";
-			this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
 			// cominitlTextBox
 			// 
 			this.cominitlTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "cominitl", true));
@@ -2499,6 +2480,17 @@
 			this.cominitlTextBox.Name = "cominitlTextBox";
 			this.cominitlTextBox.Size = new System.Drawing.Size(100, 20);
 			this.cominitlTextBox.TabIndex = 154;
+			// 
+			// produtnBindingSource
+			// 
+			this.produtnBindingSource.DataMember = "produtn";
+			this.produtnBindingSource.DataSource = this.dsProdutn;
+			this.produtnBindingSource.CurrentChanged += new System.EventHandler(this.produtnBindingSource_CurrentChanged);
+			// 
+			// dsProdutn
+			// 
+			this.dsProdutn.DataSetName = "dsProdutn";
+			this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
 			// comdateDateTimePicker
 			// 
@@ -3701,6 +3693,7 @@
 			this.pg2.Size = new System.Drawing.Size(1220, 705);
 			this.pg2.TabIndex = 2;
 			this.pg2.Text = "WIP";
+			this.pg2.Click += new System.EventHandler(this.pg2_Click);
 			// 
 			// label23
 			// 
@@ -6130,6 +6123,15 @@
 			// 
 			this.prtbkbdetailTableAdapter.ClearBeforeFill = true;
 			// 
+			// modifiedByTextBox
+			// 
+			this.modifiedByTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ModifiedBy", true));
+			this.modifiedByTextBox.Enabled = false;
+			this.modifiedByTextBox.Location = new System.Drawing.Point(514, 293);
+			this.modifiedByTextBox.Name = "modifiedByTextBox";
+			this.modifiedByTextBox.Size = new System.Drawing.Size(1, 20);
+			this.modifiedByTextBox.TabIndex = 156;
+			// 
 			// frmProdutn
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -6139,7 +6141,6 @@
 			this.MinimumSize = new System.Drawing.Size(1250, 770);
 			this.Name = "frmProdutn";
 			this.Text = "Production";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmProdutn_FormClosing);
 			this.Load += new System.EventHandler(this.frmProdutn_Load);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmProdutn_Paint);
 			this.tbProdutn.ResumeLayout(false);

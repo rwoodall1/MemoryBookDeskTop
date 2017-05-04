@@ -57,25 +57,7 @@ namespace Mbc5.Forms.MemoryBook {
             
             }
         private void btnInvSrch_Click(object sender,EventArgs e) {
-
-			switch (tabSales.SelectedIndex)
-			{
-				case 0:
-				case 1:
-					if (!SaveSales())
-					{
-						var msgresult = MessageBox.Show("Sales record could not be saved. Continue search form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (msgresult == DialogResult.No)
-						{
-						
-							return;
-						}
-					}
-					break;
-				
-			}
-
-			var sqlQuery = new SQLQuery();
+            var sqlQuery = new SQLQuery();
             string querystring = "Select schcode,invno from Quotes where Invno=@Invno";
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Invno",txtInvoSrch.Text.Trim())
@@ -97,24 +79,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
         private void btnPoSrch_Click(object sender,EventArgs e) {
-			
-				switch (tabSales.SelectedIndex)
-				{
-					case 0:
-					case 1:
-						if (!SaveSales())
-						{
-							var msgresult = MessageBox.Show("Sales record could not be saved. Continue search form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-							if (msgresult == DialogResult.No)
-							{
-								return;
-							}
-						}
-						break;
-					
-				}
-			
-			var sqlQuery = new SQLQuery();
+            var sqlQuery = new SQLQuery();
             string querystring = "Select schcode,invno from Quotes where PoNum=@PoNum";
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@PoNum",txtPoSrch.Text.Trim())
@@ -726,9 +691,7 @@ namespace Mbc5.Forms.MemoryBook {
                         this.Log.Error(ex,"Record sales record failed to update:" + ex.Message);
                         }
                     } else { retval = false; }
-			}
-			else { retval = true ;//no records to save all okay 
-			}
+                }
             return retval;
             }
         private bool DeleteSale() {
@@ -2849,6 +2812,9 @@ namespace Mbc5.Forms.MemoryBook {
                     }
                 }
             }
+
+
+
         private void btnCancel_Click(object sender,EventArgs e) {
             CancelPayment();
            
@@ -2937,6 +2903,19 @@ namespace Mbc5.Forms.MemoryBook {
                     break;
                 }
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
         //nothing below here  
         }
 }
