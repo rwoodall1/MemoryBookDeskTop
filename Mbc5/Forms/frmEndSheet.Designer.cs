@@ -84,12 +84,15 @@
 			System.Windows.Forms.Label numLabel;
 			System.Windows.Forms.Label label37;
 			System.Windows.Forms.Label label39;
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.Label label34;
 			this.endsheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.dsEndSheet = new Mbc5.DataSets.dsEndSheet();
 			this.tbEndSheets = new System.Windows.Forms.TabControl();
 			this.pgEndSheets = new System.Windows.Forms.TabPage();
+			this.btnsheetSrch = new System.Windows.Forms.Button();
+			this.txtsheetSrch = new System.Windows.Forms.TextBox();
 			this.reprntdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.btnInvoiceSrch = new System.Windows.Forms.Button();
 			this.txtInvoiceNoSrch = new System.Windows.Forms.TextBox();
@@ -288,8 +291,9 @@
 			this.supplTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.supplTableAdapter();
 			this.suppdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.suppdetailTableAdapter();
 			this.preflitTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.preflitTableAdapter();
-			this.btnsheetSrch = new System.Windows.Forms.Button();
-			this.txtsheetSrch = new System.Windows.Forms.TextBox();
+			this.bannerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+			this.bannerTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.bannerTableAdapter();
+			this.textBox2 = new System.Windows.Forms.TextBox();
 			prodnoLabel = new System.Windows.Forms.Label();
 			invnoLabel = new System.Windows.Forms.Label();
 			clr1Label = new System.Windows.Forms.Label();
@@ -345,6 +349,7 @@
 			numLabel = new System.Windows.Forms.Label();
 			label37 = new System.Windows.Forms.Label();
 			label39 = new System.Windows.Forms.Label();
+			label34 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).BeginInit();
 			this.tbEndSheets.SuspendLayout();
@@ -370,6 +375,7 @@
 			this.groupBox4.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.Banner.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.bannerBindingSource1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// prodnoLabel
@@ -776,7 +782,7 @@
 			// 
 			specinstLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			specinstLabel.AutoSize = true;
-			specinstLabel.Location = new System.Drawing.Point(625, 275);
+			specinstLabel.Location = new System.Drawing.Point(1644, 278);
 			specinstLabel.Name = "specinstLabel";
 			specinstLabel.Size = new System.Drawing.Size(119, 13);
 			specinstLabel.TabIndex = 145;
@@ -785,7 +791,7 @@
 			// customdescLabel
 			// 
 			customdescLabel.AutoSize = true;
-			customdescLabel.Location = new System.Drawing.Point(85, 278);
+			customdescLabel.Location = new System.Drawing.Point(88, 281);
 			customdescLabel.Name = "customdescLabel";
 			customdescLabel.Size = new System.Drawing.Size(71, 13);
 			customdescLabel.TabIndex = 143;
@@ -794,7 +800,7 @@
 			// txtcolorLabel
 			// 
 			txtcolorLabel.AutoSize = true;
-			txtcolorLabel.Location = new System.Drawing.Point(91, 218);
+			txtcolorLabel.Location = new System.Drawing.Point(94, 221);
 			txtcolorLabel.Name = "txtcolorLabel";
 			txtcolorLabel.Size = new System.Drawing.Size(65, 13);
 			txtcolorLabel.TabIndex = 140;
@@ -803,7 +809,7 @@
 			// bkcolorLabel
 			// 
 			bkcolorLabel.AutoSize = true;
-			bkcolorLabel.Location = new System.Drawing.Point(48, 191);
+			bkcolorLabel.Location = new System.Drawing.Point(51, 194);
 			bkcolorLabel.Name = "bkcolorLabel";
 			bkcolorLabel.Size = new System.Drawing.Size(108, 13);
 			bkcolorLabel.TabIndex = 138;
@@ -812,7 +818,7 @@
 			// mascotnameLabel
 			// 
 			mascotnameLabel.AutoSize = true;
-			mascotnameLabel.Location = new System.Drawing.Point(108, 137);
+			mascotnameLabel.Location = new System.Drawing.Point(111, 140);
 			mascotnameLabel.Name = "mascotnameLabel";
 			mascotnameLabel.Size = new System.Drawing.Size(48, 13);
 			mascotnameLabel.TabIndex = 135;
@@ -821,7 +827,7 @@
 			// mascotslogLabel
 			// 
 			mascotslogLabel.AutoSize = true;
-			mascotslogLabel.Location = new System.Drawing.Point(74, 111);
+			mascotslogLabel.Location = new System.Drawing.Point(77, 114);
 			mascotslogLabel.Name = "mascotslogLabel";
 			mascotslogLabel.Size = new System.Drawing.Size(82, 13);
 			mascotslogLabel.TabIndex = 133;
@@ -830,7 +836,7 @@
 			// endstrecvLabel1
 			// 
 			endstrecvLabel1.AutoSize = true;
-			endstrecvLabel1.Location = new System.Drawing.Point(404, 58);
+			endstrecvLabel1.Location = new System.Drawing.Point(407, 61);
 			endstrecvLabel1.Name = "endstrecvLabel1";
 			endstrecvLabel1.Size = new System.Drawing.Size(85, 13);
 			endstrecvLabel1.TabIndex = 130;
@@ -839,7 +845,7 @@
 			// qtyLabel
 			// 
 			qtyLabel.AutoSize = true;
-			qtyLabel.Location = new System.Drawing.Point(215, 58);
+			qtyLabel.Location = new System.Drawing.Point(218, 61);
 			qtyLabel.Name = "qtyLabel";
 			qtyLabel.Size = new System.Drawing.Size(54, 13);
 			qtyLabel.TabIndex = 128;
@@ -848,7 +854,7 @@
 			// numLabel
 			// 
 			numLabel.AutoSize = true;
-			numLabel.Location = new System.Drawing.Point(23, 58);
+			numLabel.Location = new System.Drawing.Point(26, 61);
 			numLabel.Name = "numLabel";
 			numLabel.Size = new System.Drawing.Size(59, 13);
 			numLabel.TabIndex = 124;
@@ -857,7 +863,7 @@
 			// label37
 			// 
 			label37.AutoSize = true;
-			label37.Location = new System.Drawing.Point(141, 11);
+			label37.Location = new System.Drawing.Point(144, 14);
 			label37.Name = "label37";
 			label37.Size = new System.Drawing.Size(57, 13);
 			label37.TabIndex = 122;
@@ -866,7 +872,7 @@
 			// label39
 			// 
 			label39.AutoSize = true;
-			label39.Location = new System.Drawing.Point(8, 11);
+			label39.Location = new System.Drawing.Point(11, 14);
 			label39.Name = "label39";
 			label39.Size = new System.Drawing.Size(41, 13);
 			label39.TabIndex = 120;
@@ -897,6 +903,7 @@
 			this.tbEndSheets.SelectedIndex = 0;
 			this.tbEndSheets.Size = new System.Drawing.Size(1230, 763);
 			this.tbEndSheets.TabIndex = 0;
+			this.tbEndSheets.Deselecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tbEndSheets_Deselecting);
 			// 
 			// pgEndSheets
 			// 
@@ -988,6 +995,22 @@
 			this.pgEndSheets.TabIndex = 0;
 			this.pgEndSheets.Text = "End Sheet";
 			// 
+			// btnsheetSrch
+			// 
+			this.btnsheetSrch.Location = new System.Drawing.Point(1046, 34);
+			this.btnsheetSrch.Name = "btnsheetSrch";
+			this.btnsheetSrch.Size = new System.Drawing.Size(60, 23);
+			this.btnsheetSrch.TabIndex = 144;
+			this.btnsheetSrch.Text = "Sheet #";
+			this.btnsheetSrch.UseVisualStyleBackColor = true;
+			// 
+			// txtsheetSrch
+			// 
+			this.txtsheetSrch.Location = new System.Drawing.Point(1111, 34);
+			this.txtsheetSrch.Name = "txtsheetSrch";
+			this.txtsheetSrch.Size = new System.Drawing.Size(67, 20);
+			this.txtsheetSrch.TabIndex = 143;
+			// 
 			// reprntdteDateTimePicker
 			// 
 			this.reprntdteDateTimePicker.CustomFormat = "\'\'";
@@ -1024,14 +1047,14 @@
 			this.endsheetdetailDataGridView.AllowUserToOrderColumns = true;
 			this.endsheetdetailDataGridView.AutoGenerateColumns = false;
 			this.endsheetdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle13.BackColor = System.Drawing.Color.RoyalBlue;
+			dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
 			this.endsheetdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.endsheetdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Description,
@@ -1792,14 +1815,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.suppdetailDataGridView.AutoGenerateColumns = false;
 			this.suppdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle14.BackColor = System.Drawing.Color.RoyalBlue;
+			dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
 			this.suppdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.suppdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -2736,6 +2759,8 @@
 			// 
 			this.Banner.AutoScroll = true;
 			this.Banner.BackColor = System.Drawing.SystemColors.Control;
+			this.Banner.Controls.Add(label34);
+			this.Banner.Controls.Add(this.textBox2);
 			this.Banner.Controls.Add(this.button5);
 			this.Banner.Controls.Add(specinstLabel);
 			this.Banner.Controls.Add(this.specinstTextBox1);
@@ -2774,7 +2799,7 @@
 			// button5
 			// 
 			this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button5.Location = new System.Drawing.Point(1026, 48);
+			this.button5.Location = new System.Drawing.Point(2045, 51);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(180, 23);
 			this.button5.TabIndex = 147;
@@ -2784,7 +2809,7 @@
 			// specinstTextBox1
 			// 
 			this.specinstTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.specinstTextBox1.Location = new System.Drawing.Point(751, 275);
+			this.specinstTextBox1.Location = new System.Drawing.Point(1770, 278);
 			this.specinstTextBox1.Multiline = true;
 			this.specinstTextBox1.Name = "specinstTextBox1";
 			this.specinstTextBox1.Size = new System.Drawing.Size(361, 69);
@@ -2792,6 +2817,7 @@
 			// 
 			// customdescTextBox
 			// 
+			this.customdescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bannerBindingSource1, "customdesc", true));
 			this.customdescTextBox.Location = new System.Drawing.Point(163, 278);
 			this.customdescTextBox.Multiline = true;
 			this.customdescTextBox.Name = "customdescTextBox";
@@ -2801,7 +2827,8 @@
 			// customCheckBox
 			// 
 			this.customCheckBox.AutoSize = true;
-			this.customCheckBox.Location = new System.Drawing.Point(55, 248);
+			this.customCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bannerBindingSource1, "custom", true));
+			this.customCheckBox.Location = new System.Drawing.Point(58, 251);
 			this.customCheckBox.Name = "customCheckBox";
 			this.customCheckBox.Size = new System.Drawing.Size(67, 17);
 			this.customCheckBox.TabIndex = 142;
@@ -2810,6 +2837,7 @@
 			// 
 			// txtcolorComboBox
 			// 
+			this.txtcolorComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bannerBindingSource1, "txtcolor", true));
 			this.txtcolorComboBox.FormattingEnabled = true;
 			this.txtcolorComboBox.Location = new System.Drawing.Point(163, 218);
 			this.txtcolorComboBox.Name = "txtcolorComboBox";
@@ -2818,6 +2846,7 @@
 			// 
 			// bkcolorComboBox
 			// 
+			this.bkcolorComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bannerBindingSource1, "bkcolor", true));
 			this.bkcolorComboBox.FormattingEnabled = true;
 			this.bkcolorComboBox.Location = new System.Drawing.Point(163, 191);
 			this.bkcolorComboBox.Name = "bkcolorComboBox";
@@ -2827,7 +2856,8 @@
 			// yrbksaleCheckBox
 			// 
 			this.yrbksaleCheckBox.AutoSize = true;
-			this.yrbksaleCheckBox.Location = new System.Drawing.Point(55, 167);
+			this.yrbksaleCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bannerBindingSource1, "yrbksale", true));
+			this.yrbksaleCheckBox.Location = new System.Drawing.Point(58, 170);
 			this.yrbksaleCheckBox.Name = "yrbksaleCheckBox";
 			this.yrbksaleCheckBox.Size = new System.Drawing.Size(133, 17);
 			this.yrbksaleCheckBox.TabIndex = 137;
@@ -2836,6 +2866,7 @@
 			// 
 			// mascotnameComboBox
 			// 
+			this.mascotnameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bannerBindingSource1, "mascotname", true));
 			this.mascotnameComboBox.FormattingEnabled = true;
 			this.mascotnameComboBox.Location = new System.Drawing.Point(163, 137);
 			this.mascotnameComboBox.Name = "mascotnameComboBox";
@@ -2844,6 +2875,7 @@
 			// 
 			// mascotslogTextBox
 			// 
+			this.mascotslogTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bannerBindingSource1, "mascotslog", true));
 			this.mascotslogTextBox.Location = new System.Drawing.Point(163, 111);
 			this.mascotslogTextBox.Name = "mascotslogTextBox";
 			this.mascotslogTextBox.Size = new System.Drawing.Size(346, 20);
@@ -2852,7 +2884,8 @@
 			// mascotCheckBox
 			// 
 			this.mascotCheckBox.AutoSize = true;
-			this.mascotCheckBox.Location = new System.Drawing.Point(55, 86);
+			this.mascotCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bannerBindingSource1, "mascot", true));
+			this.mascotCheckBox.Location = new System.Drawing.Point(58, 89);
 			this.mascotCheckBox.Name = "mascotCheckBox";
 			this.mascotCheckBox.Size = new System.Drawing.Size(67, 17);
 			this.mascotCheckBox.TabIndex = 132;
@@ -2861,6 +2894,7 @@
 			// 
 			// endstrecvDateTimePicker1
 			// 
+			this.endstrecvDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bannerBindingSource1, "endstrecv", true));
 			this.endstrecvDateTimePicker1.Location = new System.Drawing.Point(497, 58);
 			this.endstrecvDateTimePicker1.Name = "endstrecvDateTimePicker1";
 			this.endstrecvDateTimePicker1.Size = new System.Drawing.Size(214, 20);
@@ -2868,6 +2902,7 @@
 			// 
 			// qtyTextBox
 			// 
+			this.qtyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bannerBindingSource1, "qty", true));
 			this.qtyTextBox.Location = new System.Drawing.Point(275, 58);
 			this.qtyTextBox.Name = "qtyTextBox";
 			this.qtyTextBox.Size = new System.Drawing.Size(100, 20);
@@ -2876,7 +2911,7 @@
 			// button6
 			// 
 			this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button6.Location = new System.Drawing.Point(1041, 8);
+			this.button6.Location = new System.Drawing.Point(1549, 11);
 			this.button6.Name = "button6";
 			this.button6.Size = new System.Drawing.Size(71, 23);
 			this.button6.TabIndex = 127;
@@ -2886,13 +2921,14 @@
 			// textBox1
 			// 
 			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.Location = new System.Drawing.Point(1122, 8);
+			this.textBox1.Location = new System.Drawing.Point(1630, 11);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(84, 20);
 			this.textBox1.TabIndex = 126;
 			// 
 			// numTextBox
 			// 
+			this.numTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bannerBindingSource1, "num", true));
 			this.numTextBox.Location = new System.Drawing.Point(88, 58);
 			this.numTextBox.Name = "numTextBox";
 			this.numTextBox.Size = new System.Drawing.Size(100, 20);
@@ -2902,7 +2938,7 @@
 			// 
 			this.label36.AutoSize = true;
 			this.label36.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "invno", true));
-			this.label36.Location = new System.Drawing.Point(204, 11);
+			this.label36.Location = new System.Drawing.Point(207, 14);
 			this.label36.Name = "label36";
 			this.label36.Size = new System.Drawing.Size(41, 13);
 			this.label36.TabIndex = 123;
@@ -2912,7 +2948,7 @@
 			// 
 			this.label38.AutoSize = true;
 			this.label38.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
-			this.label38.Location = new System.Drawing.Point(55, 11);
+			this.label38.Location = new System.Drawing.Point(58, 14);
 			this.label38.Name = "label38";
 			this.label38.Size = new System.Drawing.Size(41, 13);
 			this.label38.TabIndex = 121;
@@ -2925,7 +2961,8 @@
 			// tableAdapterManager
 			// 
 			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-		
+			this.tableAdapterManager.bannerdetailTableAdapter = null;
+			this.tableAdapterManager.bannerTableAdapter = null;
 			this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
 			this.tableAdapterManager.endsheetTableAdapter = null;
 			this.tableAdapterManager.preflitTableAdapter = null;
@@ -2961,21 +2998,33 @@
 			// 
 			this.preflitTableAdapter.ClearBeforeFill = true;
 			// 
-			// btnsheetSrch
+			// bannerBindingSource1
 			// 
-			this.btnsheetSrch.Location = new System.Drawing.Point(1046, 34);
-			this.btnsheetSrch.Name = "btnsheetSrch";
-			this.btnsheetSrch.Size = new System.Drawing.Size(60, 23);
-			this.btnsheetSrch.TabIndex = 144;
-			this.btnsheetSrch.Text = "Sheet #";
-			this.btnsheetSrch.UseVisualStyleBackColor = true;
+			this.bannerBindingSource1.DataMember = "banner";
+			this.bannerBindingSource1.DataSource = this.dsEndSheet;
 			// 
-			// txtsheetSrch
+			// bannerTableAdapter
 			// 
-			this.txtsheetSrch.Location = new System.Drawing.Point(1111, 34);
-			this.txtsheetSrch.Name = "txtsheetSrch";
-			this.txtsheetSrch.Size = new System.Drawing.Size(67, 20);
-			this.txtsheetSrch.TabIndex = 143;
+			this.bannerTableAdapter.ClearBeforeFill = true;
+			// 
+			// label34
+			// 
+			label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			label34.AutoSize = true;
+			label34.Location = new System.Drawing.Point(582, 278);
+			label34.Name = "label34";
+			label34.Size = new System.Drawing.Size(119, 13);
+			label34.TabIndex = 148;
+			label34.Text = "Special Instructions";
+			// 
+			// textBox2
+			// 
+			this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox2.Location = new System.Drawing.Point(708, 278);
+			this.textBox2.Multiline = true;
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(361, 69);
+			this.textBox2.TabIndex = 149;
 			// 
 			// frmEndSheet
 			// 
@@ -2984,6 +3033,7 @@
 			this.Controls.Add(this.tbEndSheets);
 			this.Name = "frmEndSheet";
 			this.Text = "End Sheet/Supplements/Preflight";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEndSheet_FormClosing);
 			this.Load += new System.EventHandler(this.frmEndSheet_Load);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmEndSheet_Paint);
 			((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).EndInit();
@@ -3024,6 +3074,7 @@
 			this.groupBox3.PerformLayout();
 			this.Banner.ResumeLayout(false);
 			this.Banner.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.bannerBindingSource1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -3234,5 +3285,9 @@
 		private System.Windows.Forms.Button btnSupplSrch;
 		private System.Windows.Forms.Button btnsheetSrch;
 		private System.Windows.Forms.TextBox txtsheetSrch;
+		private System.Windows.Forms.BindingSource bannerBindingSource;
+		private System.Windows.Forms.BindingSource bannerBindingSource1;
+		private DataSets.dsEndSheetTableAdapters.bannerTableAdapter bannerTableAdapter;
+		private System.Windows.Forms.TextBox textBox2;
 	}
 }

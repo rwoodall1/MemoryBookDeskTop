@@ -88,6 +88,81 @@ namespace Mbc5.Forms
 						SavePreFlight();
 						break;
 					}
+				case 3:
+					{
+						SaveBanner();
+						break;
+					}
+			}
+			return retval;
+		}
+		private bool SaveOrStop()
+		{
+			bool retval = true;
+			switch (tbEndSheets.SelectedIndex)
+			{
+				case 0:
+					if (!SaveEndSheet())
+					{
+						var result = MessageBox.Show("End Sheet record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (result == DialogResult.No)
+						{
+							retval = false;
+
+						}
+					}
+					break;
+
+				case 1:
+					if (!SaveSupplement())
+					{
+						var result = MessageBox.Show("Supplement record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (result == DialogResult.No)
+						{
+							retval = false;
+						}
+					}
+					break;
+
+				case 2:
+					if (!SaveBanner())
+					{
+						var result = MessageBox.Show("Banner record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (result == DialogResult.No)
+						{
+							retval = false; ;
+						}
+					}
+					break;
+			}
+
+			return retval;
+
+		}
+		public bool SaveBanner()
+		{
+			bool retval = true;
+			if (dsEndSheet.banner.Count > 0)
+			{
+				if (this.ValidateChildren(ValidationConstraints.Enabled))
+				{
+					try
+					{
+						this.bannerBindingSource.EndEdit();
+						var a = bannerTableAdapter.Update(dsEndSheet.banner);
+						//must refill so we get updated time stamp so concurrency is not thrown
+						bannerTableAdapter.Fill(dsEndSheet.banner, Schcode);
+						retval = true;
+					}
+					catch (Exception ex)
+					{
+						retval = false;
+						MessageBox.Show("Banner record failed to update:" + ex.Message);
+						ex.ToExceptionless()
+					   .SetMessage("Banner record failed to update:" + ex.Message)
+					   .Submit();
+					}
+				}
 			}
 			return retval;
 		}
@@ -318,6 +393,14 @@ namespace Mbc5.Forms
 				}
 				else { EnableAllControls(this.tbEndSheets.TabPages[2]); }
 
+
+				bannerTableAdapter.Fill(dsEndSheet.banner, Schcode);
+				if (dsEndSheet.banner.Count < 1)
+				{
+					DisableControls(this.tbEndSheets.TabPages[3]);
+				}
+				else { EnableAllControls(this.tbEndSheets.TabPages[3]); }
+
 			}
 
 
@@ -540,10 +623,21 @@ namespace Mbc5.Forms
 		}
 
 
+
+
+
 		#endregion
 
-		
+		private void tbEndSheets_Deselecting(object sender, TabControlCancelEventArgs e)
+		{
 
-		
+		}
+
+		private void frmEndSheet_FormClosing(object sender, FormClosingEventArgs e)
+		{
+
+		}
+
+	
 	}
 }
