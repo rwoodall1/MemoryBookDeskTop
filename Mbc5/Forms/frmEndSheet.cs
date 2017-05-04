@@ -593,18 +593,5 @@ namespace Mbc5.Forms
 			}
 			else { MessageBox.Show("Record was not found.", "Supplement Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
 		}
-
-		private void fillToolStripButton_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				this.bannerTableAdapter.Fill(this.dsEndSheet.banner, schcodeToolStripTextBox.Text);
-			}
-			catch (System.Exception ex)
-			{
-				System.Windows.Forms.MessageBox.Show(ex.Message);
-			}
-
-		}
 	}
 }
