@@ -3006,6 +3006,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnschstate;
             
+            private global::System.Data.DataColumn columnspcinst;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public custDataTable() {
@@ -3153,6 +3155,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn spcinstColumn {
+                get {
+                    return this.columnspcinst;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3188,7 +3198,7 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public custRow AddcustRow(string schcode, string schname, string contryear, string schemail, string contfname, string contlname, string contemail, string bcontfname, string bcontlname, string bcontemail, string ccontfname, string ccontlname, string ccontemail, string schstate) {
+            public custRow AddcustRow(string schcode, string schname, string contryear, string schemail, string contfname, string contlname, string contemail, string bcontfname, string bcontlname, string bcontemail, string ccontfname, string ccontlname, string ccontemail, string schstate, string spcinst) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -3204,7 +3214,8 @@ namespace Mbc5.DataSets {
                         ccontfname,
                         ccontlname,
                         ccontemail,
-                        schstate};
+                        schstate,
+                        spcinst};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -3248,6 +3259,7 @@ namespace Mbc5.DataSets {
                 this.columnccontlname = base.Columns["ccontlname"];
                 this.columnccontemail = base.Columns["ccontemail"];
                 this.columnschstate = base.Columns["schstate"];
+                this.columnspcinst = base.Columns["spcinst"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3281,6 +3293,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnccontemail);
                 this.columnschstate = new global::System.Data.DataColumn("schstate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschstate);
+                this.columnspcinst = new global::System.Data.DataColumn("spcinst", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnspcinst);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columnschcode.AllowDBNull = false;
@@ -3301,6 +3315,7 @@ namespace Mbc5.DataSets {
                 this.columnccontemail.MaxLength = 45;
                 this.columnschstate.AllowDBNull = false;
                 this.columnschstate.MaxLength = 3;
+                this.columnspcinst.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13251,6 +13266,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string spcinst {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.spcinstColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'spcinst\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.spcinstColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
@@ -13379,6 +13410,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetccontemailNull() {
                 this[this.tablecust.ccontemailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsspcinstNull() {
+                return this.IsNull(this.tablecust.spcinstColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetspcinstNull() {
+                this[this.tablecust.spcinstColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21984,6 +22027,7 @@ WHERE          (schcode = @Schcode)";
             tableMapping.ColumnMappings.Add("ccontlname", "ccontlname");
             tableMapping.ColumnMappings.Add("ccontemail", "ccontemail");
             tableMapping.ColumnMappings.Add("schstate", "schstate");
+            tableMapping.ColumnMappings.Add("spcinst", "spcinst");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -22093,9 +22137,9 @@ WHERE          (schcode = @Schcode)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        schcode, schname, contryear, schemail, contfname, contlname, contem" +
-                "ail, bcontfname, bcontlname, bcontemail, ccontfname, ccontlname, ccontemail, sch" +
-                "state\r\nFROM            cust\r\nWHERE        (schcode = @schcode)";
+            this._commandCollection[0].CommandText = "SELECT          schcode, schname, contryear, schemail, contfname, contlname, cont" +
+                "email, bcontfname, bcontlname, bcontemail, ccontfname, ccontlname, ccontemail, s" +
+                "chstate, spcinst\r\nFROM              cust\r\nWHERE          (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
