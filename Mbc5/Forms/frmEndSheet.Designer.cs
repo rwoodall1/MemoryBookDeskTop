@@ -73,6 +73,17 @@
 			System.Windows.Forms.Label numsentLabel;
 			System.Windows.Forms.Label custquestLabel;
 			System.Windows.Forms.Label technoteLabel;
+			System.Windows.Forms.Label specinstLabel;
+			System.Windows.Forms.Label customdescLabel;
+			System.Windows.Forms.Label txtcolorLabel;
+			System.Windows.Forms.Label bkcolorLabel;
+			System.Windows.Forms.Label mascotnameLabel;
+			System.Windows.Forms.Label mascotslogLabel;
+			System.Windows.Forms.Label endstrecvLabel1;
+			System.Windows.Forms.Label qtyLabel;
+			System.Windows.Forms.Label numLabel;
+			System.Windows.Forms.Label label37;
+			System.Windows.Forms.Label label39;
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.endsheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -155,6 +166,8 @@
 			this.clr1TextBox = new System.Windows.Forms.TextBox();
 			this.txtSchname = new System.Windows.Forms.TextBox();
 			this.Supplement = new System.Windows.Forms.TabPage();
+			this.txtsupllSrch = new System.Windows.Forms.TextBox();
+			this.btnSupplSrch = new System.Windows.Forms.Button();
 			this.label28 = new System.Windows.Forms.Label();
 			this.button4 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
@@ -248,6 +261,24 @@
 			this.predateDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.label30 = new System.Windows.Forms.Label();
 			this.label32 = new System.Windows.Forms.Label();
+			this.Banner = new System.Windows.Forms.TabPage();
+			this.button5 = new System.Windows.Forms.Button();
+			this.specinstTextBox1 = new System.Windows.Forms.TextBox();
+			this.customdescTextBox = new System.Windows.Forms.TextBox();
+			this.customCheckBox = new System.Windows.Forms.CheckBox();
+			this.txtcolorComboBox = new System.Windows.Forms.ComboBox();
+			this.bkcolorComboBox = new System.Windows.Forms.ComboBox();
+			this.yrbksaleCheckBox = new System.Windows.Forms.CheckBox();
+			this.mascotnameComboBox = new System.Windows.Forms.ComboBox();
+			this.mascotslogTextBox = new System.Windows.Forms.TextBox();
+			this.mascotCheckBox = new System.Windows.Forms.CheckBox();
+			this.endstrecvDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.qtyTextBox = new System.Windows.Forms.TextBox();
+			this.button6 = new System.Windows.Forms.Button();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.numTextBox = new System.Windows.Forms.TextBox();
+			this.label36 = new System.Windows.Forms.Label();
+			this.label38 = new System.Windows.Forms.Label();
 			this.custTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.custTableAdapter();
 			this.tableAdapterManager = new Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager();
 			this.produtnTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.produtnTableAdapter();
@@ -257,6 +288,8 @@
 			this.supplTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.supplTableAdapter();
 			this.suppdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.suppdetailTableAdapter();
 			this.preflitTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.preflitTableAdapter();
+			this.btnsheetSrch = new System.Windows.Forms.Button();
+			this.txtsheetSrch = new System.Windows.Forms.TextBox();
 			prodnoLabel = new System.Windows.Forms.Label();
 			invnoLabel = new System.Windows.Forms.Label();
 			clr1Label = new System.Windows.Forms.Label();
@@ -301,6 +334,17 @@
 			numsentLabel = new System.Windows.Forms.Label();
 			custquestLabel = new System.Windows.Forms.Label();
 			technoteLabel = new System.Windows.Forms.Label();
+			specinstLabel = new System.Windows.Forms.Label();
+			customdescLabel = new System.Windows.Forms.Label();
+			txtcolorLabel = new System.Windows.Forms.Label();
+			bkcolorLabel = new System.Windows.Forms.Label();
+			mascotnameLabel = new System.Windows.Forms.Label();
+			mascotslogLabel = new System.Windows.Forms.Label();
+			endstrecvLabel1 = new System.Windows.Forms.Label();
+			qtyLabel = new System.Windows.Forms.Label();
+			numLabel = new System.Windows.Forms.Label();
+			label37 = new System.Windows.Forms.Label();
+			label39 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).BeginInit();
 			this.tbEndSheets.SuspendLayout();
@@ -325,6 +369,7 @@
 			this.groupBox5.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.groupBox3.SuspendLayout();
+			this.Banner.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// prodnoLabel
@@ -727,6 +772,106 @@
 			technoteLabel.TabIndex = 114;
 			technoteLabel.Text = "Notes From Tech Support";
 			// 
+			// specinstLabel
+			// 
+			specinstLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			specinstLabel.AutoSize = true;
+			specinstLabel.Location = new System.Drawing.Point(625, 275);
+			specinstLabel.Name = "specinstLabel";
+			specinstLabel.Size = new System.Drawing.Size(119, 13);
+			specinstLabel.TabIndex = 145;
+			specinstLabel.Text = "Special Instructions";
+			// 
+			// customdescLabel
+			// 
+			customdescLabel.AutoSize = true;
+			customdescLabel.Location = new System.Drawing.Point(85, 278);
+			customdescLabel.Name = "customdescLabel";
+			customdescLabel.Size = new System.Drawing.Size(71, 13);
+			customdescLabel.TabIndex = 143;
+			customdescLabel.Text = "Description";
+			// 
+			// txtcolorLabel
+			// 
+			txtcolorLabel.AutoSize = true;
+			txtcolorLabel.Location = new System.Drawing.Point(91, 218);
+			txtcolorLabel.Name = "txtcolorLabel";
+			txtcolorLabel.Size = new System.Drawing.Size(65, 13);
+			txtcolorLabel.TabIndex = 140;
+			txtcolorLabel.Text = "Text Color";
+			// 
+			// bkcolorLabel
+			// 
+			bkcolorLabel.AutoSize = true;
+			bkcolorLabel.Location = new System.Drawing.Point(48, 191);
+			bkcolorLabel.Name = "bkcolorLabel";
+			bkcolorLabel.Size = new System.Drawing.Size(108, 13);
+			bkcolorLabel.TabIndex = 138;
+			bkcolorLabel.Text = "Background Color";
+			// 
+			// mascotnameLabel
+			// 
+			mascotnameLabel.AutoSize = true;
+			mascotnameLabel.Location = new System.Drawing.Point(108, 137);
+			mascotnameLabel.Name = "mascotnameLabel";
+			mascotnameLabel.Size = new System.Drawing.Size(48, 13);
+			mascotnameLabel.TabIndex = 135;
+			mascotnameLabel.Text = "Mascot";
+			// 
+			// mascotslogLabel
+			// 
+			mascotslogLabel.AutoSize = true;
+			mascotslogLabel.Location = new System.Drawing.Point(74, 111);
+			mascotslogLabel.Name = "mascotslogLabel";
+			mascotslogLabel.Size = new System.Drawing.Size(82, 13);
+			mascotslogLabel.TabIndex = 133;
+			mascotslogLabel.Text = "Home Of The";
+			// 
+			// endstrecvLabel1
+			// 
+			endstrecvLabel1.AutoSize = true;
+			endstrecvLabel1.Location = new System.Drawing.Point(404, 58);
+			endstrecvLabel1.Name = "endstrecvLabel1";
+			endstrecvLabel1.Size = new System.Drawing.Size(85, 13);
+			endstrecvLabel1.TabIndex = 130;
+			endstrecvLabel1.Text = "Recieve Date";
+			// 
+			// qtyLabel
+			// 
+			qtyLabel.AutoSize = true;
+			qtyLabel.Location = new System.Drawing.Point(215, 58);
+			qtyLabel.Name = "qtyLabel";
+			qtyLabel.Size = new System.Drawing.Size(54, 13);
+			qtyLabel.TabIndex = 128;
+			qtyLabel.Text = "Qunatity";
+			// 
+			// numLabel
+			// 
+			numLabel.AutoSize = true;
+			numLabel.Location = new System.Drawing.Point(23, 58);
+			numLabel.Name = "numLabel";
+			numLabel.Size = new System.Drawing.Size(59, 13);
+			numLabel.TabIndex = 124;
+			numLabel.Text = "Banner #";
+			// 
+			// label37
+			// 
+			label37.AutoSize = true;
+			label37.Location = new System.Drawing.Point(141, 11);
+			label37.Name = "label37";
+			label37.Size = new System.Drawing.Size(57, 13);
+			label37.TabIndex = 122;
+			label37.Text = "Invoice#";
+			// 
+			// label39
+			// 
+			label39.AutoSize = true;
+			label39.Location = new System.Drawing.Point(8, 11);
+			label39.Name = "label39";
+			label39.Size = new System.Drawing.Size(41, 13);
+			label39.TabIndex = 120;
+			label39.Text = "Prod#";
+			// 
 			// endsheetBindingSource
 			// 
 			this.endsheetBindingSource.DataMember = "endsheet";
@@ -745,6 +890,7 @@
 			this.tbEndSheets.Controls.Add(this.pgEndSheets);
 			this.tbEndSheets.Controls.Add(this.Supplement);
 			this.tbEndSheets.Controls.Add(this.PreFlight);
+			this.tbEndSheets.Controls.Add(this.Banner);
 			this.tbEndSheets.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tbEndSheets.Location = new System.Drawing.Point(0, 0);
 			this.tbEndSheets.Name = "tbEndSheets";
@@ -756,6 +902,8 @@
 			// 
 			this.pgEndSheets.AutoScroll = true;
 			this.pgEndSheets.BackColor = System.Drawing.SystemColors.Control;
+			this.pgEndSheets.Controls.Add(this.btnsheetSrch);
+			this.pgEndSheets.Controls.Add(this.txtsheetSrch);
 			this.pgEndSheets.Controls.Add(this.reprntdteDateTimePicker);
 			this.pgEndSheets.Controls.Add(this.btnInvoiceSrch);
 			this.pgEndSheets.Controls.Add(this.txtInvoiceNoSrch);
@@ -1532,6 +1680,8 @@
 			// 
 			this.Supplement.AutoScroll = true;
 			this.Supplement.BackColor = System.Drawing.SystemColors.Control;
+			this.Supplement.Controls.Add(this.txtsupllSrch);
+			this.Supplement.Controls.Add(this.btnSupplSrch);
 			this.Supplement.Controls.Add(this.label28);
 			this.Supplement.Controls.Add(label29);
 			this.Supplement.Controls.Add(this.button4);
@@ -1587,6 +1737,22 @@
 			this.Supplement.Size = new System.Drawing.Size(1222, 737);
 			this.Supplement.TabIndex = 1;
 			this.Supplement.Text = "Supplement";
+			// 
+			// txtsupllSrch
+			// 
+			this.txtsupllSrch.Location = new System.Drawing.Point(1127, 42);
+			this.txtsupllSrch.Name = "txtsupllSrch";
+			this.txtsupllSrch.Size = new System.Drawing.Size(80, 20);
+			this.txtsupllSrch.TabIndex = 100;
+			// 
+			// btnSupplSrch
+			// 
+			this.btnSupplSrch.Location = new System.Drawing.Point(1046, 40);
+			this.btnSupplSrch.Name = "btnSupplSrch";
+			this.btnSupplSrch.Size = new System.Drawing.Size(75, 23);
+			this.btnSupplSrch.TabIndex = 99;
+			this.btnSupplSrch.Text = "Suppl #";
+			this.btnSupplSrch.UseVisualStyleBackColor = true;
 			// 
 			// label28
 			// 
@@ -2566,6 +2732,192 @@
 			this.label32.TabIndex = 98;
 			this.label32.Text = "label7";
 			// 
+			// Banner
+			// 
+			this.Banner.AutoScroll = true;
+			this.Banner.BackColor = System.Drawing.SystemColors.Control;
+			this.Banner.Controls.Add(this.button5);
+			this.Banner.Controls.Add(specinstLabel);
+			this.Banner.Controls.Add(this.specinstTextBox1);
+			this.Banner.Controls.Add(customdescLabel);
+			this.Banner.Controls.Add(this.customdescTextBox);
+			this.Banner.Controls.Add(this.customCheckBox);
+			this.Banner.Controls.Add(txtcolorLabel);
+			this.Banner.Controls.Add(this.txtcolorComboBox);
+			this.Banner.Controls.Add(bkcolorLabel);
+			this.Banner.Controls.Add(this.bkcolorComboBox);
+			this.Banner.Controls.Add(this.yrbksaleCheckBox);
+			this.Banner.Controls.Add(mascotnameLabel);
+			this.Banner.Controls.Add(this.mascotnameComboBox);
+			this.Banner.Controls.Add(mascotslogLabel);
+			this.Banner.Controls.Add(this.mascotslogTextBox);
+			this.Banner.Controls.Add(this.mascotCheckBox);
+			this.Banner.Controls.Add(endstrecvLabel1);
+			this.Banner.Controls.Add(this.endstrecvDateTimePicker1);
+			this.Banner.Controls.Add(qtyLabel);
+			this.Banner.Controls.Add(this.qtyTextBox);
+			this.Banner.Controls.Add(this.button6);
+			this.Banner.Controls.Add(this.textBox1);
+			this.Banner.Controls.Add(numLabel);
+			this.Banner.Controls.Add(this.numTextBox);
+			this.Banner.Controls.Add(this.label36);
+			this.Banner.Controls.Add(label37);
+			this.Banner.Controls.Add(this.label38);
+			this.Banner.Controls.Add(label39);
+			this.Banner.Location = new System.Drawing.Point(4, 22);
+			this.Banner.Name = "Banner";
+			this.Banner.Padding = new System.Windows.Forms.Padding(3);
+			this.Banner.Size = new System.Drawing.Size(1222, 737);
+			this.Banner.TabIndex = 3;
+			this.Banner.Text = "Banner";
+			// 
+			// button5
+			// 
+			this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button5.Location = new System.Drawing.Point(1026, 48);
+			this.button5.Name = "button5";
+			this.button5.Size = new System.Drawing.Size(180, 23);
+			this.button5.TabIndex = 147;
+			this.button5.Text = "Banner Production Ticket";
+			this.button5.UseVisualStyleBackColor = true;
+			// 
+			// specinstTextBox1
+			// 
+			this.specinstTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.specinstTextBox1.Location = new System.Drawing.Point(751, 275);
+			this.specinstTextBox1.Multiline = true;
+			this.specinstTextBox1.Name = "specinstTextBox1";
+			this.specinstTextBox1.Size = new System.Drawing.Size(361, 69);
+			this.specinstTextBox1.TabIndex = 146;
+			// 
+			// customdescTextBox
+			// 
+			this.customdescTextBox.Location = new System.Drawing.Point(163, 278);
+			this.customdescTextBox.Multiline = true;
+			this.customdescTextBox.Name = "customdescTextBox";
+			this.customdescTextBox.Size = new System.Drawing.Size(361, 60);
+			this.customdescTextBox.TabIndex = 144;
+			// 
+			// customCheckBox
+			// 
+			this.customCheckBox.AutoSize = true;
+			this.customCheckBox.Location = new System.Drawing.Point(55, 248);
+			this.customCheckBox.Name = "customCheckBox";
+			this.customCheckBox.Size = new System.Drawing.Size(67, 17);
+			this.customCheckBox.TabIndex = 142;
+			this.customCheckBox.Text = "Custom";
+			this.customCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// txtcolorComboBox
+			// 
+			this.txtcolorComboBox.FormattingEnabled = true;
+			this.txtcolorComboBox.Location = new System.Drawing.Point(163, 218);
+			this.txtcolorComboBox.Name = "txtcolorComboBox";
+			this.txtcolorComboBox.Size = new System.Drawing.Size(173, 21);
+			this.txtcolorComboBox.TabIndex = 141;
+			// 
+			// bkcolorComboBox
+			// 
+			this.bkcolorComboBox.FormattingEnabled = true;
+			this.bkcolorComboBox.Location = new System.Drawing.Point(163, 191);
+			this.bkcolorComboBox.Name = "bkcolorComboBox";
+			this.bkcolorComboBox.Size = new System.Drawing.Size(173, 21);
+			this.bkcolorComboBox.TabIndex = 139;
+			// 
+			// yrbksaleCheckBox
+			// 
+			this.yrbksaleCheckBox.AutoSize = true;
+			this.yrbksaleCheckBox.Location = new System.Drawing.Point(55, 167);
+			this.yrbksaleCheckBox.Name = "yrbksaleCheckBox";
+			this.yrbksaleCheckBox.Size = new System.Drawing.Size(133, 17);
+			this.yrbksaleCheckBox.TabIndex = 137;
+			this.yrbksaleCheckBox.Text = "Yearbooks on Sale";
+			this.yrbksaleCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// mascotnameComboBox
+			// 
+			this.mascotnameComboBox.FormattingEnabled = true;
+			this.mascotnameComboBox.Location = new System.Drawing.Point(163, 137);
+			this.mascotnameComboBox.Name = "mascotnameComboBox";
+			this.mascotnameComboBox.Size = new System.Drawing.Size(346, 21);
+			this.mascotnameComboBox.TabIndex = 136;
+			// 
+			// mascotslogTextBox
+			// 
+			this.mascotslogTextBox.Location = new System.Drawing.Point(163, 111);
+			this.mascotslogTextBox.Name = "mascotslogTextBox";
+			this.mascotslogTextBox.Size = new System.Drawing.Size(346, 20);
+			this.mascotslogTextBox.TabIndex = 134;
+			// 
+			// mascotCheckBox
+			// 
+			this.mascotCheckBox.AutoSize = true;
+			this.mascotCheckBox.Location = new System.Drawing.Point(55, 86);
+			this.mascotCheckBox.Name = "mascotCheckBox";
+			this.mascotCheckBox.Size = new System.Drawing.Size(67, 17);
+			this.mascotCheckBox.TabIndex = 132;
+			this.mascotCheckBox.Text = "Mascot";
+			this.mascotCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// endstrecvDateTimePicker1
+			// 
+			this.endstrecvDateTimePicker1.Location = new System.Drawing.Point(497, 58);
+			this.endstrecvDateTimePicker1.Name = "endstrecvDateTimePicker1";
+			this.endstrecvDateTimePicker1.Size = new System.Drawing.Size(214, 20);
+			this.endstrecvDateTimePicker1.TabIndex = 131;
+			// 
+			// qtyTextBox
+			// 
+			this.qtyTextBox.Location = new System.Drawing.Point(275, 58);
+			this.qtyTextBox.Name = "qtyTextBox";
+			this.qtyTextBox.Size = new System.Drawing.Size(100, 20);
+			this.qtyTextBox.TabIndex = 129;
+			// 
+			// button6
+			// 
+			this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.button6.Location = new System.Drawing.Point(1041, 8);
+			this.button6.Name = "button6";
+			this.button6.Size = new System.Drawing.Size(71, 23);
+			this.button6.TabIndex = 127;
+			this.button6.Text = "Banner #";
+			this.button6.UseVisualStyleBackColor = true;
+			// 
+			// textBox1
+			// 
+			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox1.Location = new System.Drawing.Point(1122, 8);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(84, 20);
+			this.textBox1.TabIndex = 126;
+			// 
+			// numTextBox
+			// 
+			this.numTextBox.Location = new System.Drawing.Point(88, 58);
+			this.numTextBox.Name = "numTextBox";
+			this.numTextBox.Size = new System.Drawing.Size(100, 20);
+			this.numTextBox.TabIndex = 125;
+			// 
+			// label36
+			// 
+			this.label36.AutoSize = true;
+			this.label36.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "invno", true));
+			this.label36.Location = new System.Drawing.Point(204, 11);
+			this.label36.Name = "label36";
+			this.label36.Size = new System.Drawing.Size(41, 13);
+			this.label36.TabIndex = 123;
+			this.label36.Text = "label7";
+			// 
+			// label38
+			// 
+			this.label38.AutoSize = true;
+			this.label38.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
+			this.label38.Location = new System.Drawing.Point(55, 11);
+			this.label38.Name = "label38";
+			this.label38.Size = new System.Drawing.Size(41, 13);
+			this.label38.TabIndex = 121;
+			this.label38.Text = "label7";
+			// 
 			// custTableAdapter
 			// 
 			this.custTableAdapter.ClearBeforeFill = true;
@@ -2573,6 +2925,7 @@
 			// tableAdapterManager
 			// 
 			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+		
 			this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
 			this.tableAdapterManager.endsheetTableAdapter = null;
 			this.tableAdapterManager.preflitTableAdapter = null;
@@ -2607,6 +2960,22 @@
 			// preflitTableAdapter
 			// 
 			this.preflitTableAdapter.ClearBeforeFill = true;
+			// 
+			// btnsheetSrch
+			// 
+			this.btnsheetSrch.Location = new System.Drawing.Point(1046, 34);
+			this.btnsheetSrch.Name = "btnsheetSrch";
+			this.btnsheetSrch.Size = new System.Drawing.Size(60, 23);
+			this.btnsheetSrch.TabIndex = 144;
+			this.btnsheetSrch.Text = "Sheet #";
+			this.btnsheetSrch.UseVisualStyleBackColor = true;
+			// 
+			// txtsheetSrch
+			// 
+			this.txtsheetSrch.Location = new System.Drawing.Point(1111, 34);
+			this.txtsheetSrch.Name = "txtsheetSrch";
+			this.txtsheetSrch.Size = new System.Drawing.Size(67, 20);
+			this.txtsheetSrch.TabIndex = 143;
 			// 
 			// frmEndSheet
 			// 
@@ -2653,6 +3022,8 @@
 			this.groupBox4.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
+			this.Banner.ResumeLayout(false);
+			this.Banner.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -2841,5 +3212,27 @@
 		private System.Windows.Forms.CheckBox dcnotsetCheckBox;
 		private System.Windows.Forms.CheckBox dcokCheckBox;
 		private System.Windows.Forms.DateTimePicker reprntdteDateTimePicker;
+		private System.Windows.Forms.TabPage Banner;
+		private System.Windows.Forms.Button button5;
+		private System.Windows.Forms.TextBox specinstTextBox1;
+		private System.Windows.Forms.TextBox customdescTextBox;
+		private System.Windows.Forms.CheckBox customCheckBox;
+		private System.Windows.Forms.ComboBox txtcolorComboBox;
+		private System.Windows.Forms.ComboBox bkcolorComboBox;
+		private System.Windows.Forms.CheckBox yrbksaleCheckBox;
+		private System.Windows.Forms.ComboBox mascotnameComboBox;
+		private System.Windows.Forms.TextBox mascotslogTextBox;
+		private System.Windows.Forms.CheckBox mascotCheckBox;
+		private System.Windows.Forms.DateTimePicker endstrecvDateTimePicker1;
+		private System.Windows.Forms.TextBox qtyTextBox;
+		private System.Windows.Forms.Button button6;
+		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox numTextBox;
+		private System.Windows.Forms.Label label36;
+		private System.Windows.Forms.Label label38;
+		private System.Windows.Forms.TextBox txtsupllSrch;
+		private System.Windows.Forms.Button btnSupplSrch;
+		private System.Windows.Forms.Button btnsheetSrch;
+		private System.Windows.Forms.TextBox txtsheetSrch;
 	}
 }

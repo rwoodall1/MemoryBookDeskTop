@@ -19,7 +19,7 @@ using Exceptionless.Models;
 using Outlook = Microsoft.Office.Interop.Outlook;
 namespace Mbc5.Forms
 {
-	public partial class frmEndSheet : BaseClass.frmBase,INotifyPropertyChanged
+	public partial class frmEndSheet : BaseClass.frmBase, INotifyPropertyChanged
 	{
 		private static string _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
 
@@ -49,6 +49,8 @@ namespace Mbc5.Forms
 			}
 			EnableControls(this.txtInvoiceNoSrch);
 			EnableControls(this.btnInvoiceSrch);
+			EnableControls(this.txtsheetSrch);
+			EnableControls(this.btnsheetSrch);
 		}
 		#region Properties
 		public void InvokePropertyChanged(PropertyChangedEventArgs e)
@@ -78,21 +80,44 @@ namespace Mbc5.Forms
 					break;
 				case 1:
 					{
-						
+						SaveSupplement();
 						break;
 					}
 				case 2:
 					{
-						
-
+						SavePreFlight();
 						break;
-					}			
+					}
 			}
 			return retval;
-
-
 		}
-
+		public bool SaveSupplement()
+		{
+			bool retval = true;
+			if (dsEndSheet.suppl.Count > 0)
+			{
+				if (this.ValidateChildren(ValidationConstraints.Enabled))
+				{
+					try
+					{
+						this.supplBindingSource.EndEdit();
+						var a = endsheetTableAdapter.Update(dsEndSheet.endsheet);
+						//must refill so we get updated time stamp so concurrency is not thrown
+						supplTableAdapter.Fill(dsEndSheet.suppl, Schcode);
+						retval = true;
+					}
+					catch (Exception ex)
+					{
+						retval = false;
+						MessageBox.Show("Supplement record failed to update:" + ex.Message);
+						ex.ToExceptionless()
+					   .SetMessage("Supplement record failed to update:" + ex.Message)
+					   .Submit();
+					}
+				}
+			}
+			return retval;
+		}
 		public bool SaveEndSheet()
 		{
 			bool retval = true;
@@ -107,7 +132,7 @@ namespace Mbc5.Forms
 						//must refill so we get updated time stamp so concurrency is not thrown
 						endsheetTableAdapter.Fill(dsEndSheet.endsheet, Schcode);
 						retval = true;
-					}					
+					}
 					catch (Exception ex)
 					{
 						retval = false;
@@ -116,7 +141,34 @@ namespace Mbc5.Forms
 					   .SetMessage("Production record failed to update:" + ex.Message)
 					   .Submit();
 					}
-				}				
+				}
+			}
+			return retval;
+		}
+		public bool SavePreFlight()
+		{
+			bool retval = true;
+			if (dsEndSheet.preflit.Count > 0)
+			{
+				if (this.ValidateChildren(ValidationConstraints.Enabled))
+				{
+					try
+					{
+						this.preflitBindingSource.EndEdit();
+						var a = preflitTableAdapter.Update(dsEndSheet.preflit);
+						//must refill so we get updated time stamp so concurrency is not thrown
+						preflitTableAdapter.Fill(dsEndSheet.preflit, Schcode);
+						retval = true;
+					}
+					catch (Exception ex)
+					{
+						retval = false;
+						MessageBox.Show("PreFlight record failed to update:" + ex.Message);
+						ex.ToExceptionless()
+					   .SetMessage("PreFlight record failed to update:" + ex.Message)
+					   .Submit();
+					}
+				}
 			}
 			return retval;
 		}
@@ -130,8 +182,8 @@ namespace Mbc5.Forms
 			var strQuery = "";
 			var pos = endsheetBindingSource.Find("invno", this.Invno);
 			if (pos == -1)
-			{		
-				 strQuery = "INSERT INTO [dbo].[endsheet](Invno,Schcode)  VALUES (@Invno,@Schcode)";
+			{
+				strQuery = "INSERT INTO [dbo].[endsheet](Invno,Schcode)  VALUES (@Invno,@Schcode)";
 				var endsheetResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
 				if (endsheetResult != 1)
 				{
@@ -144,36 +196,36 @@ namespace Mbc5.Forms
 					return false;
 				}
 			}
-		
-		
-			
+
+
+
 			parameters = null;
 			var pos2 = supplBindingSource.Find("invno", this.Invno);
 			if (pos2 == -1)
 			{
-				 parameters = new SqlParameter[] {
+				parameters = new SqlParameter[] {
 					new SqlParameter("@Invno",this.Invno),
 					 new SqlParameter("@Schcode",this.Schcode),
 
 					};
 				strQuery = "INSERT INTO [dbo].[suppl](Invno,Schcode)  VALUES (@Invno,@Schcode)";
-			var supplResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-			if (supplResult != 1)
-			{
-				ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
-					.AddTags("MemoryBook DestTop")
-					.AddObject("Invoice#:" + Invno)
-					.AddObject("Schcode:" + Schcode)
-					.Submit();
-				MessageBox.Show("Failed to insert supplement record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				var supplResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+				if (supplResult != 1)
+				{
+					ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
+						.AddTags("MemoryBook DestTop")
+						.AddObject("Invoice#:" + Invno)
+						.AddObject("Schcode:" + Schcode)
+						.Submit();
+					MessageBox.Show("Failed to insert supplement record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return false;
 				}
 			}
 			parameters = null;
 			var pos1 = preflitBindingSource.Find("invno", this.Invno);
 			if (pos1 == -1)
-			{                
-		strQuery = "INSERT INTO [dbo].[preflit](Invno,Schcode)  VALUES (@Invno,@Schcode)";
+			{
+				strQuery = "INSERT INTO [dbo].[preflit](Invno,Schcode)  VALUES (@Invno,@Schcode)";
 				parameters = new SqlParameter[] {
 					new SqlParameter("@Invno",this.Invno),
 					 new SqlParameter("@Schcode",this.Schcode),
@@ -181,13 +233,13 @@ namespace Mbc5.Forms
 					};
 				var priResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
 				if (priResult != 1)
-					{
-						ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
-							.AddTags("MemoryBook DestTop")
-							.AddObject("Invoice#:" + Invno)
-							.AddObject("Schcode:" + Schcode)
-							.Submit();
-						MessageBox.Show("Failed to insert priflit record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				{
+					ExceptionlessClient.Default.CreateLog("Failed to insert endsheet record.")
+						.AddTags("MemoryBook DestTop")
+						.AddObject("Invoice#:" + Invno)
+						.AddObject("Schcode:" + Schcode)
+						.Submit();
+					MessageBox.Show("Failed to insert priflit record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return false;
 				}
 			}
@@ -198,7 +250,8 @@ namespace Mbc5.Forms
 			if (Schcode != null)
 			{
 				custTableAdapter.Fill(dsEndSheet.cust, Schcode);
-				if(dsEndSheet.cust.Count < 1){
+				if (dsEndSheet.cust.Count < 1)
+				{
 					//disable all tabs
 					DisableControls(this.tbEndSheets.TabPages[0]);
 					DisableControls(this.tbEndSheets.TabPages[1]);
@@ -238,20 +291,20 @@ namespace Mbc5.Forms
 						DisableControls(tab);
 					}
 					EnableControls(this.txtInvoiceNoSrch);
-					
+
 					EnableControls(this.btnInvoiceSrch);
 				}
 				else { EnableAllControls(this); }
 
-				endsheetTableAdapter.Fill(dsEndSheet.endsheet, Schcode);				
+				endsheetTableAdapter.Fill(dsEndSheet.endsheet, Schcode);
 				if (dsEndSheet.endsheet.Count < 1)
 				{
 					DisableControls(this.tbEndSheets.TabPages[0]);
-					
+
 				}
 				else { EnableAllControls(this.tbEndSheets.TabPages[0]); }
 
-				supplTableAdapter.Fill(dsEndSheet.suppl , Schcode);
+				supplTableAdapter.Fill(dsEndSheet.suppl, Schcode);
 				if (dsEndSheet.suppl.Count < 1)
 				{
 					DisableControls(this.tbEndSheets.TabPages[1]);
@@ -280,7 +333,7 @@ namespace Mbc5.Forms
 				}
 				else
 				{
-					DialogResult result=MessageBox.Show("End Sheet record was not found. For this invoice number ("+Invno+"), do you want to add one?", "Invoice#", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Stop);
+					DialogResult result = MessageBox.Show("End Sheet record was not found. For this invoice number (" + Invno + "), do you want to add one?", "Invoice#", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Stop);
 					if (result == DialogResult.Yes)
 					{
 						if (Add())
@@ -326,6 +379,23 @@ namespace Mbc5.Forms
 
 		private void btnInvoiceSrch_Click(object sender, EventArgs e)
 		{
+			switch (tbEndSheets.SelectedIndex)
+			{
+				case 0:
+					if (!SaveEndSheet())
+					{
+						var result1 = MessageBox.Show("End sheet record could not be saved. Continue search?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (result1 == DialogResult.No)
+						{
+
+							return;
+						}
+					}
+					break;
+
+
+			}
+
 			var sqlQuery = new SQLQuery();
 			string query = "Select invno,schcode from endsheet where invno=@invno";
 			var parameters = new SqlParameter[] { new SqlParameter("@invno", txtInvoiceNoSrch.Text) };
@@ -391,7 +461,7 @@ namespace Mbc5.Forms
 
 		private void remaketypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			
+
 		}
 
 		private void rmbfrmDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -459,7 +529,7 @@ namespace Mbc5.Forms
 			prntsamDateTimePicker.Format = DateTimePickerFormat.Long;
 		}
 
-		
+
 		private void reprntdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
 			reprntdteDateTimePicker.Format = DateTimePickerFormat.Long;
@@ -469,7 +539,10 @@ namespace Mbc5.Forms
 			desorgdteDateTimePicker.Format = DateTimePickerFormat.Long;
 		}
 
+
 		#endregion
+
+		
 
 		
 	}
