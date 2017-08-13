@@ -330,7 +330,6 @@ F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\MySql.Data.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\BaseClass.pdb
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.pdb
-F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.dll.config
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.xml
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.xml
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
@@ -361,3 +360,4 @@ F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.LkpDiscount.resources
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Properties.Resources.resources
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.GenerateResource.Cache
+F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.dll.config

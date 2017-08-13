@@ -293,18 +293,22 @@ namespace Mbc5.Forms
                 int vInvno = GetInvno();
                 string vSchcode = GetSchcode();
 
-                if (vInvno==0) {
-                    MessageBox.Show("This school does not have a sales record to go to. Please search for record from Sales Screen.","Sales",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                if (vInvno == 0)
+                {
+                    MessageBox.Show("This school does not have a sales record to go to. Please search for record from Sales Screen.", "Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmSales frmSales1 = new frmSales(this.ApplicationUser);
                     frmSales1.MdiParent = this;
                     frmSales1.Show();
                     this.Cursor = Cursors.Default;
-                    }
+                }
+                else
+                {
 
-                frmSales frmSales = new frmSales(this.ApplicationUser, vInvno, vSchcode);
-                frmSales.MdiParent = this;
-                frmSales.Show();
-                this.Cursor = Cursors.Default;
+                    frmSales frmSales = new frmSales(this.ApplicationUser, vInvno, vSchcode);
+                    frmSales.MdiParent = this;
+                    frmSales.Show();
+                    this.Cursor = Cursors.Default;
+                }
 
             }
 

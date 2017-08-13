@@ -359,3 +359,6 @@ Error Number:8178,State:1,Class:16
 2017/05/02 16:46:42.732 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
 2017/05/02 16:48:35.011 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
 2017/05/02 16:49:54.923 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/08/10 21:24:04.713 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2017/08/10 21:32:19.333 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2017/08/10 21:38:22.826 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    

@@ -838,16 +838,16 @@ namespace Mbc5.Forms
 				MessageBox.Show("Bindery information was not found.");
 				return;
 			}
-            if (string.IsNullOrEmpty(result[0].Schname))
+            if (string.IsNullOrEmpty(result[0].Schname.Trim()))
             {
                 result[0].Schname = "";
             }
 
-           if (string.IsNullOrEmpty(result[0].CoverType))
+            if (string.IsNullOrEmpty(result[0].CoverType.Trim()))
             {
                 result[0].CoverType = "";
             }
-            if (string.IsNullOrEmpty(result[0].CoilClr))
+            if (string.IsNullOrEmpty(result[0].CoilClr.Trim()))
             {
                 result[0].CoilClr = "";
             }

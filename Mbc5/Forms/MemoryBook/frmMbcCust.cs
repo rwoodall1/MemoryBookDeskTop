@@ -794,19 +794,26 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void btnInterOffice_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
-            frmEmail frmEmail = new frmEmail(this.ApplicationUser,"","Inter Office Memo",inofficeTextBox.Text);
-            frmEmail.MdiParent = this.MdiParent;
-            frmEmail.Show();
+             string body = inofficeTextBox.Text;
+            string subj = "Inter Office Memo";            
+            string email = "";
+            var emailHelper = new EmailHelper();
+            EmailType type = EmailType.Mbc;
+            emailHelper.SendOutLookEmail(subj, email, "", body, type);
             this.Cursor = Cursors.Default;
-            }
+          
+        }
 
         private void btnSchoolEmail_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
-            frmEmail frmEmail = new frmEmail(this.ApplicationUser,txtSchEmail.Text,"","");
-            frmEmail.MdiParent = this.MdiParent;
-            frmEmail.Show();
+            string body = txtSchEmail.Text;
+            string subj = "Inter Office Memo";
+            string email = "";
+            var emailHelper = new EmailHelper();
+            EmailType type = EmailType.Mbc;
+            emailHelper.SendOutLookEmail(subj, email, "", body, type);
             this.Cursor = Cursors.Default;
-            }
+        }
 
         private void btnEmailContact_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
