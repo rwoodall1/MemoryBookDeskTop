@@ -847,9 +847,108 @@ namespace Mbc5.Forms
             {
                 result[0].CoverType = "";
             }
+<<<<<<< HEAD
             if (string.IsNullOrEmpty(result[0].CoilClr))
             {
                 result[0].CoilClr = "";
+=======
+        //General
+        private void SetCodeInvno() {
+            if (dsProdutn.quotes.Count > 0)
+            {
+                DataRowView current = (DataRowView)quotesBindingSource.Current;
+                this.Schcode = current["schcode"].ToString();
+                this.Invno = Convert.ToInt32(current["invno"]);
+            }
+        }
+        private void Fill() {
+            if (Schcode != null) {
+                custTableAdapter.Fill(dsProdutn.cust,Schcode);
+                quotesTableAdapter.Fill(dsProdutn.quotes,Schcode);
+
+                produtnTableAdapter.Fill(dsProdutn.produtn,Schcode);
+                //partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
+                //ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
+                //wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
+                if (dsProdutn.produtn.Count > 0) {
+                    EnableAllControls(this);
+                    FillWithInvno();
+                } else {
+                    DisableControls(this.tbProdutn.TabPages[5]);
+                    DisableControls(this.tbProdutn.TabPages[4]);
+                    DisableControls(this.tbProdutn.TabPages[3]);
+                    DisableControls(this.tbProdutn.TabPages[2]);
+                    DisableControls(this.tbProdutn.TabPages[1]);
+                    DisableControls(this.tbProdutn.TabPages[0]);
+                    EnableControls(btnProdSrch);
+                    EnableControls(txtProdNoSrch);
+                    EnableControls(btnInvoiceSrch);
+                    EnableControls(txtInvoiceNoSrch);
+                   }
+                }
+                
+               
+            
+            if (Invno != 0) {
+                var pos = produtnBindingSource.Find("invno",this.Invno);
+                if (pos > -1) {
+                    produtnBindingSource.Position = pos;
+                    } else {
+                    MessageBox.Show("Production record was not found.","Invoice#",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                    }
+                }
+                
+
+                }
+        private void FillWithInvno() {
+            if (Invno != 0) {
+                //coversTableAdapter.Fill(dsProdutn.covers,Invno);
+                //coverdetailTableAdapter.Fill(dsProdutn.coverdetail, Invno);
+                //if (dsProdutn.covers.Count < 1)
+                //{
+                //    DisableControls(specinstTextBox);                
+                //}
+                //else { EnableAllControls(this.tbProdutn.TabPages[2]); }
+
+
+                wipTableAdapter.Fill(dsProdutn.wip,Invno);
+
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
+                if (dsProdutn.wip.Count < 1)
+                {
+                    var aa = this.tbProdutn.TabPages[3];
+                    DisableControls(this.tbProdutn.TabPages[3]);
+                    
+                }
+                else {
+                      EnableAllControls(this.tbProdutn.TabPages[3]);                    
+                    }
+
+
+            }
+            }
+        public override void  Save() {
+            switch (tbProdutn.SelectedIndex) {
+                case 0:
+                    SaveProdutn();
+                    break;
+                case 1:
+                        {
+                        SaveWip();
+                        break;
+                        }
+
+
+                case 2:
+                    MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    break;
+                case 3:
+                    //SavePayment();
+                    break;
+
+                }
+
+>>>>>>> refs/remotes/origin/develop
             }
             string vshipDate;
             if (result[0].ProjShpDate.Year <1999)
