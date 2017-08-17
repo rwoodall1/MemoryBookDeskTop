@@ -15,7 +15,7 @@ using Mbc5.Dialogs;
 using Exceptionless;
 using Exceptionless.Models;
 using Mbc5.Classes;
-
+using BindingModels;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
            private bool vMktGo = false;
@@ -59,21 +59,30 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
 
         private void frmMbcCust_Load(object sender,EventArgs e) {
-			this.txtModifiedBy.Text = this.ApplicationUser.id;
+            // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
+            this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
+            // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
+            this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
+            // TODO: This line of code loads data into the 'lookUp.lkpMultiYearOptions' table. You can move, or remove it, as needed.
+            this.lkpMultiYearOptionsTableAdapter.Fill(this.lookUp.lkpMultiYearOptions);
+            this.txtModifiedBy.Text = this.ApplicationUser.id;
 
-			var vSchocode = this.Schcode; 
-             this.chkMktComplete.DataBindings.Add("Checked",this,"MktGo",false,DataSourceUpdateMode.OnPropertyChanged);//bind check box to property of form
+            var vSchocode = this.Schcode;
+            this.chkMktComplete.DataBindings.Add("Checked", this, "MktGo", false, DataSourceUpdateMode.OnPropertyChanged);//bind check box to property of form
 
             if (!ApplicationUser.Roles.Contains("MbcCS"))
-                {
+            {
                 TeleGo = true;
                 MktGo = true;
-                }
-           
-             
-            
+            }
+
+
+
             // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
             this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
+            this.lkpPrevPubTableAdapter.Fill(this.lookUp.lkpPrevPub);
+            this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
+            this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
             // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
             this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
             // TODO: This line of code loads data into the 'lookUp.lkpComments' table. You can move, or remove it, as needed.
@@ -81,18 +90,17 @@ namespace Mbc5.Forms.MemoryBook {
             // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
             this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
             // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
-            this.datecontTableAdapter.Fill(this.dsCust.datecont,vSchocode);
+            this.datecontTableAdapter.Fill(this.dsCust.datecont, vSchocode);
             // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
-            this.custTableAdapter.Fill(this.dsCust.cust,vSchocode);
+            this.custTableAdapter.Fill(this.dsCust.cust, vSchocode);
             // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
             this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
             this.statesTableAdapter.Fill(this.lookUp.states);
-            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,vSchocode);
+            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, vSchocode);
             SetInvnoSchCode();
-
-            }
-		private void btnOracleSrch_Click(object sender, EventArgs e)
+        }
+        private void btnOracleSrch_Click(object sender, EventArgs e)
 		{
 			var currentSchool = lblSchcodeVal.Text.Trim();
 			if (DoPhoneLog())
@@ -170,8 +178,20 @@ namespace Mbc5.Forms.MemoryBook {
                 DialogResult result = MessageBox.Show("Record failed to save correct and save again.","Save",MessageBoxButtons.OK,MessageBoxIcon.Warning);
 				return;
                 }
-            var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
-			if (records < 1)
+            //var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
+            var sqlQuery = new SQLQuery();
+           var queryString = @"SELECT schcode, schname,schcity,schstate, schzip FROM cust
+                              WHERE(schname LIKE @schname + '%')
+                              ORDER BY   schcode";
+            SqlParameter[] parameters = new SqlParameter[] {
+               new SqlParameter("@schname",txtSchNamesrch.Text.Trim())
+            };
+            var dataResult = sqlQuery.ExecuteReaderAsync<SchoolNameSearchModel>(CommandType.Text, queryString, parameters);
+            var records = (List<SchoolNameSearchModel>)dataResult;
+         
+
+
+            if (records.Count < 1)
 			{
 				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
 				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
@@ -179,13 +199,14 @@ namespace Mbc5.Forms.MemoryBook {
 				TeleGo = false;
 				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
-			else if (records > 1)
+			else if (records.Count > 1)
 			{
 				//more than one record select which one you want
-				DataTable tmpTable = dsCust.Tables["Cust"];
+				
 				this.Cursor = Cursors.AppStarting;
-				frmSelctCust frmSelectCust = new frmSelctCust(tmpTable);
-				DialogResult result = frmSelectCust.ShowDialog();
+				//frmSelctCust frmSelectCust = new frmSelctCust(tmpTable);
+                frmSelctCust frmSelectCust = new frmSelctCust(records);
+                DialogResult result = frmSelectCust.ShowDialog();
 				this.Cursor = Cursors.Default;
 				if (result != DialogResult.Cancel)
 				{
@@ -197,7 +218,7 @@ namespace Mbc5.Forms.MemoryBook {
 				else
 				{
 					//refill normal
-					this.custTableAdapter.Fill(this.dsCust.cust, Schcode );
+					this.custTableAdapter.Fill(this.dsCust.cust,records[0].schcode );
 					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
 					this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
 					TeleGo = false;
@@ -781,15 +802,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
         #endregion
      
-        private void btnWebsite_Click(object sender,EventArgs e) {
-            try
-                { Process.Start(txtWebsite.Text); }
-            catch (Exception ex)
-                {
-                MessageBox.Show("Url is invalid.");
-                }
-
-            }
+       
 
 
         private void btnInterOffice_Click(object sender,EventArgs e) {
@@ -1091,14 +1104,19 @@ namespace Mbc5.Forms.MemoryBook {
 	
 		}
 
+        private void btnWebsite_Click_1(object sender, EventArgs e)
+        {
+            try
+            { Process.Start(txtWebsite.Text); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Url is invalid.");
+            }
+
+        }
 
 
-
-
-
-
-
-		//Nothing below here
-	}
+        //Nothing below here
+    }
     }
 

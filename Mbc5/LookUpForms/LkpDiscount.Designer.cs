@@ -33,7 +33,7 @@
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lookUp = new Mbc5.DataSets.LookUp();
             this.lkpDdiscntBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lkpDdiscntTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.LkpDdiscntTableAdapter();
+          
             this.tableAdapterManager = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.lkpDdiscntBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -91,18 +91,18 @@
             // 
             // lkpDdiscntTableAdapter
             // 
-            this.lkpDdiscntTableAdapter.ClearBeforeFill = true;
+         
             // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.contpstnTableAdapter = null;
             this.tableAdapterManager.lkpCommentsTableAdapter = null;
-            this.tableAdapterManager.LkpDdiscntTableAdapter = this.lkpDdiscntTableAdapter;
+       
             this.tableAdapterManager.lkpMktReferenceTableAdapter = null;
             this.tableAdapterManager.lkpPromotionsTableAdapter = null;
             this.tableAdapterManager.lkpTypeContTableAdapter = null;
-            this.tableAdapterManager.statesTableAdapter = null;
+        
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // lkpDdiscntBindingNavigator
@@ -263,7 +263,7 @@
             this.MinimumSize = new System.Drawing.Size(16, 39);
             this.Name = "LkpDiscount";
             this.Text = "Discount Items";
-            this.Load += new System.EventHandler(this.LkpDiscount_Load);
+          
             this.Controls.SetChildIndex(this.TopPanel, 0);
             this.Controls.SetChildIndex(this.BottomPanel, 0);
             this.Controls.SetChildIndex(this.lkpDdiscntBindingNavigator, 0);
@@ -286,7 +286,7 @@
         private System.Windows.Forms.Label lblDiscount;
         private DataSets.LookUp lookUp;
         private System.Windows.Forms.BindingSource lkpDdiscntBindingSource;
-        private DataSets.LookUpTableAdapters.LkpDdiscntTableAdapter lkpDdiscntTableAdapter;
+      
         private DataSets.LookUpTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingNavigator lkpDdiscntBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;

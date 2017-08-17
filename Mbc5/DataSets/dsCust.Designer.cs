@@ -8127,37 +8127,39 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oraclecode", global::System.Data.SqlDbType.NVarChar, 7, global::System.Data.ParameterDirection.Input, 0, 0, "oraclecode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +
-                "ecsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookd" +
-                "te, cust.refby, cust.schcode, cust.schname, cust.contryear, \r\n                  " +
-                "       cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust" +
-                ".schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail," +
-                " cust.sprngbrk, cust.schout, cust.contmemo, cust.position, \r\n                   " +
-                "      cust.gender, cust.contfname, cust.contlname, cust.newfname, cust.newlname," +
-                " cust.yb_sth, cust.shiptocont, cust.contaddr, cust.contaddr2, cust.contcity, cus" +
-                "t.contstate, cust.contzip, cust.contphnhom, \r\n                         cust.cont" +
-                "phnwrk, cust.contfax, cust.contemail, cust.vcrsent, cust.sigfopf, cust.envflyer," +
-                " cust.marketing, cust.yearrnd, cust.clrpg_int, cust.shipmemo, cust.schclosed, cu" +
-                "st.inoffice, cust.digintrst, cust.svcode1, \r\n                         cust.svdes" +
-                "c1, cust.svcode2, cust.svdesc2, cust.spcinst, cust.lastcont, cust.nextcont, cust" +
-                ".csrep, cust.cstat, cust.xeldate, cust.allcolor, cust.rbinit, cust.rbdate, cust." +
-                "clspic, cust.magic, cust.extrchg, cust.sprinfo, \r\n                         cust." +
-                "fallinfo, cust.initcont, cust.highsp, cust.slownone, cust.pcmac, cust.junsno, cu" +
-                "st.jobno, cust.advpw, cust.stfpw, cust.bcontfname, cust.bcontlname, cust.bcontad" +
-                "dr, cust.bcontaddr2, cust.bcontcity, \r\n                         cust.bcontstate," +
-                " cust.bcontzip, cust.bcontphnhom, cust.bcontphnwrk, cust.bcontfax, cust.bcontema" +
-                "il, cust.multiyroptions, cust.multiyear, cust.schuploading, cust.website, cust.n" +
-                "omktemail, cust.nodirectmail, \r\n                         cust.bposition, cust.bl" +
-                "kwhite, cust.mbconlinepassword, cust.ccontfname, cust.ccontlname, cust.ccontaddr" +
-                ", cust.ccontaddr2, cust.ccontcity, cust.ccontstate, cust.ccontzip, cust.ccontphn" +
-                "hom, cust.ccontphnwork, \r\n                         cust.ccontfax, cust.ccontemai" +
-                "l, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.schcolors, cust.kee" +
-                "ppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust.leadname, quote" +
-                "s.booktype, \r\n                         quotes.contryear AS Qyear, quotes.invno, " +
-                "produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd\r\nFROM       " +
-                "     cust LEFT OUTER JOIN\r\n                         quotes ON cust.schcode = quo" +
-                "tes.schcode LEFT OUTER JOIN\r\n                         produtn ON quotes.invno = " +
-                "produtn.invno\r\nWHERE        (cust.schname = @schname)\r\nORDER BY Qyear DESC";
+            this._commandCollection[2].CommandText = "SELECT          cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust" +
+                ".secsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.reboo" +
+                "kdte, cust.refby, cust.schcode, \r\n                            cust.schname, cust" +
+                ".contryear, cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2," +
+                " cust.schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.sche" +
+                "mail, \r\n                            cust.sprngbrk, cust.schout, cust.contmemo, c" +
+                "ust.position, cust.gender, cust.contfname, cust.contlname, cust.newfname, cust.n" +
+                "ewlname, cust.yb_sth, cust.shiptocont, cust.contaddr, \r\n                        " +
+                "    cust.contaddr2, cust.contcity, cust.contstate, cust.contzip, cust.contphnhom" +
+                ", cust.contphnwrk, cust.contfax, cust.contemail, cust.vcrsent, cust.sigfopf, cus" +
+                "t.envflyer, cust.marketing, \r\n                            cust.yearrnd, cust.clr" +
+                "pg_int, cust.shipmemo, cust.schclosed, cust.inoffice, cust.digintrst, cust.svcod" +
+                "e1, cust.svdesc1, cust.svcode2, cust.svdesc2, cust.spcinst, cust.lastcont, \r\n   " +
+                "                         cust.nextcont, cust.csrep, cust.cstat, cust.xeldate, cu" +
+                "st.allcolor, cust.rbinit, cust.rbdate, cust.clspic, cust.magic, cust.extrchg, cu" +
+                "st.sprinfo, cust.fallinfo, cust.initcont, cust.highsp, \r\n                       " +
+                "     cust.slownone, cust.pcmac, cust.junsno, cust.jobno, cust.advpw, cust.stfpw," +
+                " cust.bcontfname, cust.bcontlname, cust.bcontaddr, cust.bcontaddr2, cust.bcontci" +
+                "ty, cust.bcontstate, \r\n                            cust.bcontzip, cust.bcontphnh" +
+                "om, cust.bcontphnwrk, cust.bcontfax, cust.bcontemail, cust.multiyroptions, cust." +
+                "multiyear, cust.schuploading, cust.website, cust.nomktemail, \r\n                 " +
+                "           cust.nodirectmail, cust.bposition, cust.blkwhite, cust.mbconlinepassw" +
+                "ord, cust.ccontfname, cust.ccontlname, cust.ccontaddr, cust.ccontaddr2, cust.cco" +
+                "ntcity, cust.ccontstate, cust.ccontzip, \r\n                            cust.ccont" +
+                "phnhom, cust.ccontphnwork, cust.ccontfax, cust.ccontemail, cust.norebookreason, " +
+                "cust.newpublisher, cust.csrep2, cust.schcolors, cust.keeppswd, cust.leadsource, " +
+                "\r\n                            cust.leadsname, cust.prevpublisher, cust.leadname," +
+                " quotes.booktype, quotes.contryear AS Qyear, quotes.invno, produtn.prodno, produ" +
+                "tn.dedayin, produtn.dedayout, \r\n                            produtn.kitrecvd\r\nFR" +
+                "OM              cust LEFT OUTER JOIN\r\n                            quotes ON cust" +
+                ".schcode = quotes.schcode LEFT OUTER JOIN\r\n                            produtn O" +
+                "N quotes.invno = produtn.invno\r\nWHERE          (cust.schname LIKE @schname + \'%\'" +
+                ")\r\nORDER BY   Qyear DESC";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.Char, 34, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -8925,12 +8927,18 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        schcode, schname, schzip, contfname, contlname\r\nFROM            cus" +
                 "t\r\nORDER BY schcode";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT          schcode, schname, schzip, contfname, contlname\r\nFROM             " +
+                " cust\r\nWHERE          (schname LIKE @schname + \'%\')\r\nORDER BY   schcode";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.Char, 34, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8952,6 +8960,42 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual dsCust.custSearchDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            dsCust.custSearchDataTable dataTable = new dsCust.custSearchDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBySchname(dsCust.custSearchDataTable dataTable, string schname) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((schname == null)) {
+                throw new global::System.ArgumentNullException("schname");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schname));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual dsCust.custSearchDataTable GetDataBy(string schname) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((schname == null)) {
+                throw new global::System.ArgumentNullException("schname");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schname));
+            }
             dsCust.custSearchDataTable dataTable = new dsCust.custSearchDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

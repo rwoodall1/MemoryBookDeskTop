@@ -5,7 +5,7 @@ namespace Mbc5.DataSets
 {
 
 
-	public partial class dsCust
-	{
-	}
+    public partial class dsCust
+    {
+    }
 }

@@ -147,11 +147,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsInvoice.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\LookUp.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LookUp.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\frmAddressList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +278,14 @@
     </Compile>
     <Compile Include="Forms\frmUser.Designer.cs">
       <DependentUpon>frmUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\LookUp.cs">
+      <DependentUpon>LookUp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\LookUp.Designer.cs">
+      <DependentUpon>LookUp.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="LookUpForms\LkpWipDescriptions.cs">
       <SubType>Form</SubType>
@@ -507,9 +510,9 @@
       <DependentUpon>LookUp.xsd</DependentUpon>
     </None>
     <None Include="DataSets\LookUp.xsd">
-      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>LookUp.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="DataSets\LookUp.xss">
       <DependentUpon>LookUp.xsd</DependentUpon>
@@ -542,6 +545,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\SystemIcons\" />
+    <Folder Include="gooddataset\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

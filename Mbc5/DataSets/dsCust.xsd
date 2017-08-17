@@ -354,21 +354,23 @@ ORDER BY   Qyear DESC</CommandText>
               <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBySchname" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBySchname" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBySchname">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.secsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookdte, cust.refby, cust.schcode, cust.schname, cust.contryear, 
-                         cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust.schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail, cust.sprngbrk, cust.schout, cust.contmemo, cust.position, 
-                         cust.gender, cust.contfname, cust.contlname, cust.newfname, cust.newlname, cust.yb_sth, cust.shiptocont, cust.contaddr, cust.contaddr2, cust.contcity, cust.contstate, cust.contzip, cust.contphnhom, 
-                         cust.contphnwrk, cust.contfax, cust.contemail, cust.vcrsent, cust.sigfopf, cust.envflyer, cust.marketing, cust.yearrnd, cust.clrpg_int, cust.shipmemo, cust.schclosed, cust.inoffice, cust.digintrst, cust.svcode1, 
-                         cust.svdesc1, cust.svcode2, cust.svdesc2, cust.spcinst, cust.lastcont, cust.nextcont, cust.csrep, cust.cstat, cust.xeldate, cust.allcolor, cust.rbinit, cust.rbdate, cust.clspic, cust.magic, cust.extrchg, cust.sprinfo, 
-                         cust.fallinfo, cust.initcont, cust.highsp, cust.slownone, cust.pcmac, cust.junsno, cust.jobno, cust.advpw, cust.stfpw, cust.bcontfname, cust.bcontlname, cust.bcontaddr, cust.bcontaddr2, cust.bcontcity, 
-                         cust.bcontstate, cust.bcontzip, cust.bcontphnhom, cust.bcontphnwrk, cust.bcontfax, cust.bcontemail, cust.multiyroptions, cust.multiyear, cust.schuploading, cust.website, cust.nomktemail, cust.nodirectmail, 
-                         cust.bposition, cust.blkwhite, cust.mbconlinepassword, cust.ccontfname, cust.ccontlname, cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, cust.ccontstate, cust.ccontzip, cust.ccontphnhom, cust.ccontphnwork, 
-                         cust.ccontfax, cust.ccontemail, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.schcolors, cust.keeppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust.leadname, quotes.booktype, 
-                         quotes.contryear AS Qyear, quotes.invno, produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd
-FROM            cust LEFT OUTER JOIN
-                         quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN
-                         produtn ON quotes.invno = produtn.invno
-WHERE        (cust.schname = @schname)
-ORDER BY Qyear DESC</CommandText>
+                    <CommandText>SELECT          cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.secsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookdte, cust.refby, cust.schcode, 
+                            cust.schname, cust.contryear, cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust.schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail, 
+                            cust.sprngbrk, cust.schout, cust.contmemo, cust.position, cust.gender, cust.contfname, cust.contlname, cust.newfname, cust.newlname, cust.yb_sth, cust.shiptocont, cust.contaddr, 
+                            cust.contaddr2, cust.contcity, cust.contstate, cust.contzip, cust.contphnhom, cust.contphnwrk, cust.contfax, cust.contemail, cust.vcrsent, cust.sigfopf, cust.envflyer, cust.marketing, 
+                            cust.yearrnd, cust.clrpg_int, cust.shipmemo, cust.schclosed, cust.inoffice, cust.digintrst, cust.svcode1, cust.svdesc1, cust.svcode2, cust.svdesc2, cust.spcinst, cust.lastcont, 
+                            cust.nextcont, cust.csrep, cust.cstat, cust.xeldate, cust.allcolor, cust.rbinit, cust.rbdate, cust.clspic, cust.magic, cust.extrchg, cust.sprinfo, cust.fallinfo, cust.initcont, cust.highsp, 
+                            cust.slownone, cust.pcmac, cust.junsno, cust.jobno, cust.advpw, cust.stfpw, cust.bcontfname, cust.bcontlname, cust.bcontaddr, cust.bcontaddr2, cust.bcontcity, cust.bcontstate, 
+                            cust.bcontzip, cust.bcontphnhom, cust.bcontphnwrk, cust.bcontfax, cust.bcontemail, cust.multiyroptions, cust.multiyear, cust.schuploading, cust.website, cust.nomktemail, 
+                            cust.nodirectmail, cust.bposition, cust.blkwhite, cust.mbconlinepassword, cust.ccontfname, cust.ccontlname, cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, cust.ccontstate, cust.ccontzip, 
+                            cust.ccontphnhom, cust.ccontphnwork, cust.ccontfax, cust.ccontemail, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.schcolors, cust.keeppswd, cust.leadsource, 
+                            cust.leadsname, cust.prevpublisher, cust.leadname, quotes.booktype, quotes.contryear AS Qyear, quotes.invno, produtn.prodno, produtn.dedayin, produtn.dedayout, 
+                            produtn.kitrecvd
+FROM              cust LEFT OUTER JOIN
+                            quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN
+                            produtn ON quotes.invno = produtn.invno
+WHERE          (cust.schname LIKE @schname + '%')
+ORDER BY   Qyear DESC</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="schname" ColumnName="schname" DataSourceName="Mbc5.dbo.cust" DataTypeServer="char(34)" DbType="AnsiString" Direction="Input" ParameterName="@schname" Precision="0" ProviderType="Char" Scale="0" Size="34" SourceColumn="schname" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -892,7 +894,21 @@ ORDER BY schcode</CommandText>
               <Mapping SourceColumn="contfname" DataSetColumn="contfname" />
               <Mapping SourceColumn="contlname" DataSetColumn="contlname" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.cust" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBySchname" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBySchname" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBySchname">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT          schcode, schname, schzip, contfname, contlname
+FROM              cust
+WHERE          (schname LIKE @schname + '%')
+ORDER BY   schcode</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="schname" ColumnName="schname" DataSourceName="Mbc5.dbo.cust" DataTypeServer="char(34)" DbType="AnsiString" Direction="Input" ParameterName="@schname" Precision="0" ProviderType="Char" Scale="0" Size="34" SourceColumn="schname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="datecontTableAdapter" GeneratorDataComponentClassName="datecontTableAdapter" Name="datecont" UserDataComponentName="datecontTableAdapter">
             <MainSource>

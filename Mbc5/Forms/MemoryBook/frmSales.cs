@@ -677,6 +677,7 @@ namespace Mbc5.Forms.MemoryBook {
                         quotesTableAdapter.Update(dsSales.quotes);
                         //must refill so we get updated time stamp so concurrency is not thrown
                         this.Fill();
+                        UpdateProductionCopyPages();//updates production with number of copies and pages
                         retval = true;
                         } catch (DBConcurrencyException ex1) {
                         DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsSales.quotesRow)(ex1.Row),ref dsSales);
@@ -1421,7 +1422,35 @@ namespace Mbc5.Forms.MemoryBook {
             invdetailBindingSource.CancelEdit();
             invoiceBindingSource.CancelEdit();
             }
-                    
+         public void UpdateProductionCopyPages()
+        {
+            int numBooks;
+            int freeBooks = 0;
+            var result = int.TryParse(this.txtNocopies.Text,out numBooks);
+            var result1 = int.TryParse(this.txtfreebooks.Text, out freeBooks);
+            if (result)
+            {
+                if (!string.IsNullOrEmpty(txtYear.Text))
+                {
+                    numBooks += 2+freeBooks;
+                }
+                else
+                {
+                    numBooks += 2;
+                }
+
+
+                var sqlQuery = new SQLQuery();
+                SqlParameter[] parameters = new SqlParameter[] {
+                    new SqlParameter("@Invno",this.Invno),
+                     new SqlParameter("@NoCopies",numBooks),
+                     new SqlParameter("@NoPages",this.txtNoPages.Text),
+                    };
+                var strQuery = "Update produtn set NoCopies=@NoCopies, NoPages=@NoPages where Invno=@Invno";
+
+                var updateResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+            }
+        }          
         #endregion
         #region CalcEvents
         private void chkHardBack_Click(object sender, EventArgs e)
@@ -1466,7 +1495,7 @@ namespace Mbc5.Forms.MemoryBook {
            
                 CalculateEach();
                 BookCalc();
-               
+            
 
             }
 
