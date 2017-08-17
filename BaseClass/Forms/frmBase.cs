@@ -16,7 +16,7 @@ namespace BaseClass
     public partial class frmBase : Form
     {
       
-        protected frmBase()
+        public frmBase()
         {
            
             InitializeComponent();
@@ -201,10 +201,11 @@ namespace BaseClass
            
         }
         [Browsable(true)]
-        public virtual void Save()
+        public virtual bool Save()
         {
-
+            return true;
         }
+       
         [Browsable(true)]
         public virtual void Delete()
         {
@@ -216,12 +217,11 @@ namespace BaseClass
 
             }
         [Browsable(true)]
-        public virtual void Add()
+        public virtual bool Add()
         {
-
+			return true;
         }
-       
 
-      
-    }
+
+	}
 }

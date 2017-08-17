@@ -26,11 +26,6 @@ namespace Mbc5.LookUpForms
 
         }
 
-        private void LkpDiscount_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'lookUp.LkpDdiscnt' table. You can move, or remove it, as needed.
-            this.lkpDdiscntTableAdapter.Fill(this.lookUp.LkpDdiscnt);
-
-        }
+       
     }
 }

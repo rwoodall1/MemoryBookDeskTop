@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BindingModels;
 
 namespace Mbc5.Dialogs {
     public partial class frmSelctCust : Form {
-        public frmSelctCust(DataTable dt) {
+        //public frmSelctCust(DataTable dt)
+            public frmSelctCust(List<SchoolNameSearchModel> records)
+        {
             InitializeComponent();
             datagrid.AutoGenerateColumns = false;
-            this.datagrid.DataSource = dt;
+            this.datagrid.DataSource = records;
             }
         public string retval { get; set; }
         private void datagrid_CellDoubleClick(object sender,DataGridViewCellEventArgs e) {

@@ -25,11 +25,12 @@
         private void InitializeComponent() {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.datagrid = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.schcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Zip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,13 +50,25 @@
             this.schcode,
             this.Column1,
             this.City,
-            this.State});
+            this.State,
+            this.Zip});
             this.datagrid.EnableHeadersVisualStyles = false;
             this.datagrid.Location = new System.Drawing.Point(1, 36);
             this.datagrid.Name = "datagrid";
             this.datagrid.Size = new System.Drawing.Size(625, 150);
             this.datagrid.TabIndex = 0;
             this.datagrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_CellDoubleClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(626, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "More than one school with this name was located. Please double click the one you " +
+    "want.";
             // 
             // schcode
             // 
@@ -85,26 +98,23 @@
             this.State.Name = "State";
             this.State.ReadOnly = true;
             // 
-            // label1
+            // Zip
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(626, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "More than one school with this name was located. Please double click the one you " +
-    "want.";
+            this.Zip.DataPropertyName = "schzip";
+            this.Zip.HeaderText = "Zip Code";
+            this.Zip.Name = "Zip";
+            this.Zip.ReadOnly = true;
             // 
             // frmSelctCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 187);
-            this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.datagrid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmSelctCust";
             this.Text = "Select School";
             this.TopMost = true;
@@ -116,10 +126,11 @@
 
         #endregion
         private System.Windows.Forms.DataGridView datagrid;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn schcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn City;
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
-        private System.Windows.Forms.Label label1;
-        }
+        private System.Windows.Forms.DataGridViewTextBoxColumn Zip;
+    }
     }

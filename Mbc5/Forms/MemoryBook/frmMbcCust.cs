@@ -14,8 +14,8 @@ using BaseClass;
 using Mbc5.Dialogs;
 using Exceptionless;
 using Exceptionless.Models;
-using BaseClass.Classes;
-
+using Mbc5.Classes;
+using BindingModels;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
            private bool vMktGo = false;
@@ -59,19 +59,30 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
 
         private void frmMbcCust_Load(object sender,EventArgs e) {
-            var vSchocode = this.Schcode; 
-             this.chkMktComplete.DataBindings.Add("Checked",this,"MktGo",false,DataSourceUpdateMode.OnPropertyChanged);//bind check box to property of form
+            // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
+            this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
+            // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
+            this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
+            // TODO: This line of code loads data into the 'lookUp.lkpMultiYearOptions' table. You can move, or remove it, as needed.
+            this.lkpMultiYearOptionsTableAdapter.Fill(this.lookUp.lkpMultiYearOptions);
+            this.txtModifiedBy.Text = this.ApplicationUser.id;
+
+            var vSchocode = this.Schcode;
+            this.chkMktComplete.DataBindings.Add("Checked", this, "MktGo", false, DataSourceUpdateMode.OnPropertyChanged);//bind check box to property of form
 
             if (!ApplicationUser.Roles.Contains("MbcCS"))
-                {
+            {
                 TeleGo = true;
                 MktGo = true;
-                }
-           
-             
-            
+            }
+
+
+
             // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
             this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
+            this.lkpPrevPubTableAdapter.Fill(this.lookUp.lkpPrevPub);
+            this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
+            this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
             // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
             this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
             // TODO: This line of code loads data into the 'lookUp.lkpComments' table. You can move, or remove it, as needed.
@@ -79,19 +90,53 @@ namespace Mbc5.Forms.MemoryBook {
             // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
             this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
             // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
-            this.datecontTableAdapter.Fill(this.dsCust.datecont,vSchocode);
+            this.datecontTableAdapter.Fill(this.dsCust.datecont, vSchocode);
             // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
-            this.custTableAdapter.Fill(this.dsCust.cust,vSchocode);
+            this.custTableAdapter.Fill(this.dsCust.cust, vSchocode);
             // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
             this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
             this.statesTableAdapter.Fill(this.lookUp.states);
-            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,vSchocode);
+            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, vSchocode);
             SetInvnoSchCode();
+        }
+        private void btnOracleSrch_Click(object sender, EventArgs e)
+		{
+			var currentSchool = lblSchcodeVal.Text.Trim();
+			if (DoPhoneLog())
+			{
+				MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+				return;
+			}
+			if (!this.Save())
+			{
+				DialogResult result = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+				if (result == DialogResult.Cancel)
+				{
+					return;
+				}
+			}
+			var records = this.custTableAdapter.FillByOracleCode(this.dsCust.cust, txtOracleCodeSrch.Text);
+			if (records < 1)
+			{
+				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
+				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+				TeleGo = false;
+			}
+			else
+			{
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+				TeleGo = false;
 
-            }
+			}
+			txtOracleCodeSrch.Text = "";
+			SetInvnoSchCode();
+		}
 
-        private void btnSchoolCode_Click(object sender,EventArgs e) {
+		private void btnSchoolCode_Click(object sender,EventArgs e) {
             var currentSchool = lblSchcodeVal.Text.Trim();
             if (DoPhoneLog())
                 {
@@ -130,142 +175,135 @@ namespace Mbc5.Forms.MemoryBook {
                 return;
                 }
             if (!this.Save()) {
-                DialogResult result = MessageBox.Show("Record failed to save. Hit cancel to correct.","Save",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                if (result == DialogResult.Cancel) {
-                    return;
-                    }
+                DialogResult result = MessageBox.Show("Record failed to save correct and save again.","Save",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+				return;
                 }
-            var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
-            if (records < 1)
-                {
-                this.custTableAdapter.Fill(this.dsCust.cust,currentSchool);
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
-                TeleGo = false;
-                MessageBox.Show("Record was not found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                }else if (records>1) {
-                //more than one record select which one you want
-                DataTable tmpTable = dsCust.Tables["Cust"];
-                this.Cursor = Cursors.AppStarting;
-                frmSelctCust frmSelectCust = new frmSelctCust(tmpTable);
-                DialogResult result=frmSelectCust.ShowDialog();
-                this.Cursor = Cursors.Default;
-               this.custTableAdapter.Fill(this.dsCust.cust,frmSelectCust.retval);
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
-                TeleGo = false;
-                }
-            else
-                {
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
-                TeleGo = false;
-               
-                }
-            txtSchNamesrch.Text = "";
-            SetInvnoSchCode();
+            //var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
+            var sqlQuery = new SQLQuery();
+           var queryString = @"SELECT schcode, schname,schcity,schstate, schzip FROM cust
+                              WHERE(schname LIKE @schname + '%')
+                              ORDER BY   schcode";
+            SqlParameter[] parameters = new SqlParameter[] {
+               new SqlParameter("@schname",txtSchNamesrch.Text.Trim())
+            };
+            var dataResult = sqlQuery.ExecuteReaderAsync<SchoolNameSearchModel>(CommandType.Text, queryString, parameters);
+            var records = (List<SchoolNameSearchModel>)dataResult;
+         
+
+
+            if (records.Count < 1)
+			{
+				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+				TeleGo = false;
+				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else if (records.Count > 1)
+			{
+				//more than one record select which one you want
+				
+				this.Cursor = Cursors.AppStarting;
+				//frmSelctCust frmSelectCust = new frmSelctCust(tmpTable);
+                frmSelctCust frmSelectCust = new frmSelctCust(records);
+                DialogResult result = frmSelectCust.ShowDialog();
+				this.Cursor = Cursors.Default;
+				if (result != DialogResult.Cancel)
+				{
+					this.custTableAdapter.Fill(this.dsCust.cust, frmSelectCust.retval);
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+					TeleGo = false;
+				}
+				else
+				{
+					//refill normal
+					this.custTableAdapter.Fill(this.dsCust.cust,records[0].schcode );
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+					TeleGo = false;
+				}
+			}
+
+			else
+			{
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+				TeleGo = false;
+
+			}
+				txtSchNamesrch.Text = "";
+				SetInvnoSchCode();
+			
             }
         #region CrudOperations
-      public new bool Save() {
+        public override bool Save()
+        {
+			this.txtModifiedBy.Text  = this.ApplicationUser.id;
             bool retval = false;
+		
             txtSchname.ReadOnly = true;
-            if (this.ValidateChildren(ValidationConstraints.Enabled)) {
+
+            if (this.ValidateChildren(ValidationConstraints.Enabled))
+            {
                 this.custBindingSource.EndEdit();
-                try {
+                try
+                {
                     custTableAdapter.Update(dsCust);
                     retval = true;
-                    } catch (DBConcurrencyException dbex) {
-                    DialogResult response = MessageBox.Show(CreateMessage((DataSets.dsCust.custRow)(dbex.Row)),"Concurrency Exception",MessageBoxButtons.YesNo);
-                    ProcessDialogResult(response);
-                    } catch (Exception ex) {
-                    Log.Fatal("Error Updating cust table:" + ex.Message);
-                    MessageBox.Show("An error was thrown while attempting to update the customer table.");
-                    }
                 }
-            return retval;
+                catch (DBConcurrencyException dbex)
+                {
+                    DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsCust.custRow)(dbex.Row), ref dsCust);
+                    if (result == DialogResult.Yes) {
+                        Save();
+                    }
+                    else {
+                        retval = true;
+                    }                  
+                }catch(Exception ex) {
+                    MessageBox.Show("School record failed to update:" + ex.Message);
+                    ex.ToExceptionless()
+                   .SetMessage("School record failed to update:" + ex.Message)
+                   .Submit();
+                    retval = false;
+                    }
             }
-        public override void Add() {
-            dsCust.Clear();
+			this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+			return retval;
+        }
+        public override bool Add() {
+			
+			dsCust.Clear();
             DataRowView newrow = (DataRowView)custBindingSource.AddNew();
             GetSetSchcode();
             txtSchname.ReadOnly = false;
-
+            this.txtModifiedBy.Text = this.ApplicationUser.id;
+			return true;
             }
         public override void Delete() {
-           
-            DialogResult messageResult = MessageBox.Show("This will delete the current customer. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
-            if (messageResult == DialogResult.Yes) {
-                DataRowView current = (DataRowView)custBindingSource.Current;
-                var schcode = current["schcode"];
 
-                var sqlQuery = new SQLQuery();
-                var queryString = "Delete  From  cust where schcode=@schcode ";
-                SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@schcode",schcode)
-            };
-                var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,queryString,parameters);
-                this.custTableAdapter.Fill(this.dsCust.cust,"038752");//set to cs record                
-                }
-          
-            }
+			//should mark as deleted or remove??
+			this.txtModifiedBy.Text = this.ApplicationUser.id;
+			DialogResult messageResult = MessageBox.Show("This will delete the current customer. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+			if (messageResult == DialogResult.Yes)
+			{
+				DataRowView current = (DataRowView)custBindingSource.Current;
+				var schcode = current["schcode"];
+
+				var sqlQuery = new SQLQuery();
+				var queryString = "Delete  From  cust where schcode=@schcode ";
+				SqlParameter[] parameters = new SqlParameter[] {
+				new SqlParameter("@schcode",schcode)
+			};
+				var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
+				this.custTableAdapter.Fill(this.dsCust.cust, "038752");//set to cs record                
+			}
+
+		}
         public override void Cancel() {
             custBindingSource.CancelEdit();
-            }
-        #region ConcurrencyProcs
-        private string CreateMessage(DataSets.dsCust.custRow cr) {
-            return
-                "Database Current Data: " + GetRowData(GetCurrentRowInDB(cr),DataRowVersion.Default) + "\n \n" +
-                "Database Original: " + GetRowData(cr,DataRowVersion.Original) + "\n \n" +
-                "Your Data: " + GetRowData(cr,DataRowVersion.Current) + "\n \n" +
-                "Do you still want to update the database with the proposed value?";
-            }
-
-
-        //--------------------------------------------------------------------------
-        // This method loads a temporary table with current records from the database
-        // and returns the current values from the row that caused the exception.
-        //--------------------------------------------------------------------------
-        private DataSets.dsCust.custDataTable tempCustomersDataTable =
-            new DataSets.dsCust.custDataTable();
-
-        private DataSets.dsCust.custRow GetCurrentRowInDB(DataSets.dsCust.custRow RowWithError) {
-            this.custTableAdapter.Fill(tempCustomersDataTable,RowWithError.schcode);
-
-            DataSets.dsCust.custRow currentRowInDb =
-                tempCustomersDataTable.FindByschcode(RowWithError.schcode);
-
-            return currentRowInDb;
-            }
-
-
-        //--------------------------------------------------------------------------
-        // This method takes a CustomersRow and RowVersion 
-        // and returns a string of column values to display to the user.
-        //--------------------------------------------------------------------------
-        private string GetRowData(DataSets.dsCust.custRow custRow,DataRowVersion RowVersion) {
-            string rowData = "";
-
-            for (int i = 0; i < custRow.ItemArray.Length; i++)
-                {
-                rowData = rowData + custRow[i,RowVersion].ToString().Trim() + " ";
-                }
-            return rowData;
-            }
-        private void ProcessDialogResult(DialogResult response) {
-            switch (response)
-                {
-                case DialogResult.Yes:
-                    dsCust.Merge(tempCustomersDataTable,true,MissingSchemaAction.Ignore);
-                    Save();
-                    break;
-
-                case DialogResult.No:
-                    dsCust.Merge(tempCustomersDataTable);
-                    MessageBox.Show("Update cancelled");
-                    break;
-                }
-            }
-        #endregion
+            }     
         #endregion
 
         #region Validation
@@ -402,9 +440,64 @@ namespace Mbc5.Forms.MemoryBook {
             //}
             //e.Cancel = cancel;
             }
-        #endregion
-        #region Methods
-        private void GoToSales() {
+		#endregion
+#region Methods
+		private void AddSalesRecord()
+		{
+			DialogResult result = MessageBox.Show("Do you wish to add a sales record?", "Add Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (result == DialogResult.Yes)
+			{
+				int InvNum = GetInvno();
+				if (InvNum != 0)
+				{
+					var sqlQuery = new SQLQuery();
+					//useing hard code until function to generate invno is done
+					SqlParameter[] parameters = new SqlParameter[] {
+					new SqlParameter("@Invno",InvNum),
+					 new SqlParameter("@Schcode",lblSchcodeVal.Text),
+					  new SqlParameter("@Contryear", contryearTextBox.Text)
+					};
+					var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear)  VALUES (@Invno,@Schcode,@Contryear)";
+					var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+					if (userResult != 1)
+					{
+						MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+					SqlParameter[] parameters1 = new SqlParameter[] {
+					new SqlParameter("@Invno",InvNum),
+					 new SqlParameter("@Schcode",lblSchcodeVal.Text),
+					 new SqlParameter("@ProdNo",GetProdNo()),
+					  new SqlParameter("@Contryear", contryearTextBox.Text),
+					   new SqlParameter("@Company","MBC")
+					};
+					strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
+					var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
+					if (userResult1 != 1)
+					{
+						MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+					SqlParameter[] parameters2 = new SqlParameter[] {
+					new SqlParameter("@Invno",InvNum),
+					 new SqlParameter("@Schcode",lblSchcodeVal.Text),
+					 new SqlParameter("@Specovr",GetCoverNumber()),
+						 new SqlParameter("@Specinst",GetInstructions() ),
+					   new SqlParameter("@Company","MBC")
+					};
+					strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
+					var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
+					if (userResult2 != 1)
+					{
+						MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+					Save();
+					this.custTableAdapter.Fill(this.dsCust.cust, lblSchcodeVal.Text);
+				};
+			}//not = 0
+		}
+		private void GoToSales() {
 
             
                 this.Cursor = Cursors.AppStarting;
@@ -685,35 +778,55 @@ namespace Mbc5.Forms.MemoryBook {
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
                 this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
                 }
-
-        #endregion
-     
-        private void btnWebsite_Click(object sender,EventArgs e) {
-            try
-                { Process.Start(txtWebsite.Text); }
-            catch (Exception ex)
-                {
-                MessageBox.Show("Url is invalid.");
-                }
+        private string GetInstructions()
+        {
+            string val = "";
+            custBindingSource.MoveFirst();//make sure on first row
+            DataRowView current = (DataRowView)custBindingSource.Current;
+            var invno=current["invno"];
+            var sqlQuery = new SQLQuery();
+          
+            SqlParameter[] parameters = new SqlParameter[] {
+                    new SqlParameter("@Invno",invno),
+                   
+                    };
+            var strQuery = "Select Specinst from Covers Where Invno=@Invno";
+            try { var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+             val = result.Rows[0][0].ToString(); } catch(Exception ex)
+            {
 
             }
+           
+            return val;
+
+        }
+        #endregion
+     
+       
 
 
         private void btnInterOffice_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
-            frmEmail frmEmail = new frmEmail(this.ApplicationUser,"","Inter Office Memo",inofficeTextBox.Text);
-            frmEmail.MdiParent = this.MdiParent;
-            frmEmail.Show();
+             string body = inofficeTextBox.Text;
+            string subj = "Inter Office Memo";            
+            string email = "";
+            var emailHelper = new EmailHelper();
+            EmailType type = EmailType.Mbc;
+            emailHelper.SendOutLookEmail(subj, email, "", body, type);
             this.Cursor = Cursors.Default;
-            }
+          
+        }
 
         private void btnSchoolEmail_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
-            frmEmail frmEmail = new frmEmail(this.ApplicationUser,txtSchEmail.Text,"","");
-            frmEmail.MdiParent = this.MdiParent;
-            frmEmail.Show();
+            string body = txtSchEmail.Text;
+            string subj = "Inter Office Memo";
+            string email = "";
+            var emailHelper = new EmailHelper();
+            EmailType type = EmailType.Mbc;
+            emailHelper.SendOutLookEmail(subj, email, "", body, type);
             this.Cursor = Cursors.Default;
-            }
+        }
 
         private void btnEmailContact_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
@@ -883,49 +996,7 @@ namespace Mbc5.Forms.MemoryBook {
             SetInvnoSchCode();
         }
 
-        private void contdateDateTimePicker_CloseUp(object sender,EventArgs e) {
-           DialogResult result=MessageBox.Show("Do you wish to add a sales record?","Add Record",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                int InvNum = GetInvno();
-                if (InvNum != 0)
-                {
-                    var sqlQuery = new SQLQuery();
-                    //useing hard code until function to generate invno is done
-                    SqlParameter[] parameters = new SqlParameter[] {
-                    new SqlParameter("@Invno",InvNum),
-                     new SqlParameter("@Schcode",lblSchcodeVal.Text),
-                      new SqlParameter("@Contryear", contryearTextBox.Text)
-                    };
-                    var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear)  VALUES (@Invno,@Schcode,@Contryear)";
-                    var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-                    if (userResult != 1)
-                    {
-                        MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    SqlParameter[] parameters1 = new SqlParameter[] {
-                    new SqlParameter("@Invno",InvNum),
-                     new SqlParameter("@Schcode",lblSchcodeVal.Text),
-                     new SqlParameter("@ProdNo",GetProdNo()),
-                      new SqlParameter("@Contryear", contryearTextBox.Text),
-                       new SqlParameter("@CoverNum", GetCoverNumber()),
-                       new SqlParameter("@Company","MBC")
-                    };
-                    strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Speccover,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@CoverNum,@Company)";
-                    var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
-                    if (userResult1 != 1) {
-                        MessageBox.Show("Failed to insert production record.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        return;
-                        }
-
-
-                    Save();
-                    this.custTableAdapter.Fill(this.dsCust.cust, lblSchcodeVal.Text);
-                };
-            }//not = 0
-            
-            }
+       
 
         private void button1_Click_1(object sender,EventArgs e) {
             var a = new ScreenPrinter(this);
@@ -958,13 +1029,94 @@ namespace Mbc5.Forms.MemoryBook {
             GoToSales();
             }
 
+        private void contdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
 
+		private void button2_Click(object sender, EventArgs e)
+		{
 
+		}
 
+		private void txtSchname_MouseClick(object sender, MouseEventArgs e)
+		{
+
+		}
+
+		private void txtSchname_DoubleClick(object sender, EventArgs e)
+		{
+			if (ApplicationUser.IsInRole("SA")|| ApplicationUser.IsInRole("Administrator"))
+			{
+				txtSchname.ReadOnly = false;
+			}
+		}
+
+		private void frmMbcCust_Paint(object sender, PaintEventArgs e)
+		{
+			try { this.Text = "MBC Customers-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+			catch
+			{
+
+			}
+		}
+
+		private void schoutDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			schoutDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void contdateDateTimePicker_ValueChanged_1(object sender, EventArgs e)
+		{
+			
+			contdateDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void initcontDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			initcontDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void sourdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			sourdateDateTimePicker.Format = DateTimePickerFormat.Long;
+		}
+
+		private void btnNewCustomer_Click(object sender, EventArgs e)
+		{
+			this.Cursor = Cursors.AppStarting;
+			string body = txtSchname.Text.Trim() + "<br/>" + txtaddress.Text.Trim() + "<br/>" +  txtCity.Text.Trim() + ", " + cmbState.SelectedValue + ' ' + txtZip.Text.Trim() + "<br/><br/>Congratulations to the Jostens Team...Memory Book just signed the following NEW customer in your territory for the " + contryearTextBox.Text + " school year! ";
+			string subj = Schcode + " " + txtSchname.Text.Trim() + " " + cmbState.SelectedValue + " NEW SCHOOL By Customer Service Rep " + txtCsRep.Text;
+			//string email = "yearbook@memorybook.com;hcantrell@memorybook.com;john.cox@jostens.com;tammy.whitaker@jostens.com";
+			string email = "randy@woodalldevelopment.com";
+			var emailHelper = new EmailHelper();
+			EmailType type = EmailType.Mbc;
+			emailHelper.SendOutLookEmail(subj, email, "", body, type);
+			this.Cursor = Cursors.Default;
+
+			
+		}
+
+		private void contdateDateTimePicker_CloseUp(object sender, EventArgs e)
+		{
+
+			AddSalesRecord();
+	
+		}
+
+        private void btnWebsite_Click_1(object sender, EventArgs e)
+        {
+            try
+            { Process.Start(txtWebsite.Text); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Url is invalid.");
+            }
+
+        }
 
 
         //Nothing below here
-        }
+    }
     }
 

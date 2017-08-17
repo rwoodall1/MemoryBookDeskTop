@@ -336,7 +336,7 @@ namespace Mbc5.Forms.MemoryBook {
                 cmdText = "Update Quotes set invoiced=1 where invno=@invno";
                 command.CommandText = cmdText;
                 command.ExecuteNonQuery();
-                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks)";
+                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks,DateCreated,DateModified,ModifiedBy) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks,GETDATE(),GETDATE(),@ModifiedBy)";
                 //cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each)";
                 command.CommandText = cmdText;
                 command.Parameters.Clear();
@@ -355,12 +355,13 @@ namespace Mbc5.Forms.MemoryBook {
                     new SqlParameter("@contryear",txtYear.Text),
                     new SqlParameter("@allclrck",chkAllClr.Checked),
                     new SqlParameter("@freebooks",txtfreebooks.Text ),
+					new SqlParameter("@ModifiedBy",txtModifiedByInv.Text)
 
-              };
+			  };
                 command.Parameters.AddRange(parameters);
                 command.ExecuteNonQuery();
                 command.Parameters.Clear();
-                cmdText = "Insert Into Invdetail (descr,price,discpercent,invno,schcode) Values(@descr,@price,@discpercent,@invno,@schcode)";
+                cmdText = "Insert Into Invdetail (descr,price,discpercent,invno,schcode,DateCreated,DateModified,ModifiedBy) Values(@descr,@price,@discpercent,@invno,@schcode,GETDATE(),GETDATE(),@ModifiedBy)";
                 var Details = GetDetailRecords(lblInvoice.Text);
                 command.CommandText = cmdText;
                 if (Details.Count > 0) {
@@ -371,7 +372,8 @@ namespace Mbc5.Forms.MemoryBook {
                         command.Parameters.AddWithValue("@discpercent",row.discpercent);
                         command.Parameters.AddWithValue("@invno",row.invno);
                         command.Parameters.AddWithValue("@schcode",row.schoolcode);
-                        try {
+						command.Parameters.AddWithValue("@ModifiedBy",txtModifiedByInvdetail.Text);
+						try {
                             command.ExecuteNonQuery();
 
                             } catch (Exception ex) {
@@ -675,12 +677,15 @@ namespace Mbc5.Forms.MemoryBook {
                         quotesTableAdapter.Update(dsSales.quotes);
                         //must refill so we get updated time stamp so concurrency is not thrown
                         this.Fill();
+                        UpdateProductionCopyPages();//updates production with number of copies and pages
                         retval = true;
                         } catch (DBConcurrencyException ex1) {
-                        retval = false;
-                        string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
-                        this.Log.Error(ex1,ex1.Message);
-                        MessageBox.Show(errmsg);
+                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsSales.quotesRow)(ex1.Row),ref dsSales);
+                        if (result == DialogResult.Yes) {
+                            Save();
+                            } else {
+                            retval = true;
+                            }
                         } catch (Exception ex) {
                         retval = false;
                         MessageBox.Show("Sales record failed to update:" + ex.Message);
@@ -1333,8 +1338,17 @@ namespace Mbc5.Forms.MemoryBook {
             CalculateEach();
             BookCalc();
             SetCodeInvno();
-            }
-        public override void  Save() {
+			txtModifiedBy.Text = this.ApplicationUser.id;
+			txtModifiedByInv.Text= this.ApplicationUser.id;
+			txtModifiedByInvdetail.Text= this.ApplicationUser.id;
+			txtModifiedByPay.Text= this.ApplicationUser.id;
+		}
+        public override bool  Save() {
+			txtModifiedBy.Text = this.ApplicationUser.id;
+			txtModifiedByInv.Text = this.ApplicationUser.id;
+			txtModifiedByInvdetail.Text = this.ApplicationUser.id;
+			txtModifiedByPay.Text = this.ApplicationUser.id;
+			bool retval = true;
             switch (tabSales.SelectedIndex) {
                 case 0:
                 case 1:
@@ -1348,14 +1362,21 @@ namespace Mbc5.Forms.MemoryBook {
                     MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     break;
                 case 3:
+	            txtModifiedByPay.Text = this.ApplicationUser.id;
                     SavePayment();
-                    break;
+					
+				
+					break;
               
                 }
-
+            return retval;
             }
-        public override void Add() {
-            switch (tabSales.SelectedIndex) {
+        public override bool Add() {
+			txtModifiedBy.Text = this.ApplicationUser.id;
+			txtModifiedByInv.Text = this.ApplicationUser.id;
+			txtModifiedByInvdetail.Text = this.ApplicationUser.id;
+			txtModifiedByPay.Text = this.ApplicationUser.id;
+			switch (tabSales.SelectedIndex) {
                 case 0:
                 case 1:
                         {
@@ -1372,9 +1393,14 @@ namespace Mbc5.Forms.MemoryBook {
                     break;
 
                 }
-            }
+			return true;
+		}
         public override void Delete() {
-            switch (tabSales.SelectedIndex) {
+			txtModifiedBy.Text = this.ApplicationUser.id;
+			txtModifiedByInv.Text = this.ApplicationUser.id;
+			txtModifiedByInvdetail.Text = this.ApplicationUser.id;
+			txtModifiedByPay.Text = this.ApplicationUser.id;
+			switch (tabSales.SelectedIndex) {
                 case 0:
                 case 1:
                         {
@@ -1396,7 +1422,35 @@ namespace Mbc5.Forms.MemoryBook {
             invdetailBindingSource.CancelEdit();
             invoiceBindingSource.CancelEdit();
             }
-                    
+         public void UpdateProductionCopyPages()
+        {
+            int numBooks;
+            int freeBooks = 0;
+            var result = int.TryParse(this.txtNocopies.Text,out numBooks);
+            var result1 = int.TryParse(this.txtfreebooks.Text, out freeBooks);
+            if (result)
+            {
+                if (!string.IsNullOrEmpty(txtYear.Text))
+                {
+                    numBooks += 2+freeBooks;
+                }
+                else
+                {
+                    numBooks += 2;
+                }
+
+
+                var sqlQuery = new SQLQuery();
+                SqlParameter[] parameters = new SqlParameter[] {
+                    new SqlParameter("@Invno",this.Invno),
+                     new SqlParameter("@NoCopies",numBooks),
+                     new SqlParameter("@NoPages",this.txtNoPages.Text),
+                    };
+                var strQuery = "Update produtn set NoCopies=@NoCopies, NoPages=@NoPages where Invno=@Invno";
+
+                var updateResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+            }
+        }          
         #endregion
         #region CalcEvents
         private void chkHardBack_Click(object sender, EventArgs e)
@@ -1441,7 +1495,7 @@ namespace Mbc5.Forms.MemoryBook {
            
                 CalculateEach();
                 BookCalc();
-               
+            
 
             }
 
@@ -1896,8 +1950,6 @@ namespace Mbc5.Forms.MemoryBook {
                     }
                 }
             }
-
-       
 
         private void txtFoilTxt_Validating(object sender,CancelEventArgs e) {
             errorProvider1.SetError(txtFoilIcons,"");
@@ -2579,7 +2631,11 @@ namespace Mbc5.Forms.MemoryBook {
                     }
                 
                 } else {
-                CreateInvoice();
+				txtModifiedBy.Text = this.ApplicationUser.id;
+				txtModifiedByInv.Text = this.ApplicationUser.id;
+				txtModifiedByInvdetail.Text = this.ApplicationUser.id;
+				txtModifiedByPay.Text = this.ApplicationUser.id;
+				CreateInvoice();
                 this.Fill();
                 }
             }

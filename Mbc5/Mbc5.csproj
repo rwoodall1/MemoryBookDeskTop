@@ -74,8 +74,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ExceptionHandler.cs" />
     <Compile Include="Classes\OptionPrice.cs" />
     <Compile Include="Classes\Price.cs" />
+    <Compile Include="DataSets\dsBids.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsChangePassword.cs">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </Compile>
@@ -83,6 +89,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsCust.cs">
+      <DependentUpon>dsCust.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsCust.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -93,6 +102,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsDateCont.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsEndSheet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsEndSheet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsMktInfo.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -133,16 +147,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsInvoice.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\LookUp.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LookUp.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\frmAddressList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\frmAddressList.Designer.cs">
       <DependentUpon>frmAddressList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmEditCoverWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditCoverWip.Designer.cs">
+      <DependentUpon>frmEditCoverWip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmEditPartBkWip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditPartBkWip.Designer.cs">
+      <DependentUpon>frmEditPartBkWip.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\frmEditWip.cs">
       <SubType>Form</SubType>
@@ -167,6 +188,12 @@
     </Compile>
     <Compile Include="Forms\frmBarScan.Designer.cs">
       <DependentUpon>frmBarScan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEndSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEndSheet.designer.cs">
+      <DependentUpon>frmEndSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmProdutn.cs">
       <SubType>Form</SubType>
@@ -252,6 +279,14 @@
     <Compile Include="Forms\frmUser.Designer.cs">
       <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\LookUp.cs">
+      <DependentUpon>LookUp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\LookUp.Designer.cs">
+      <DependentUpon>LookUp.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="LookUpForms\LkpWipDescriptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,17 +299,18 @@
     <Compile Include="LookUpForms\LkpDiscount.Designer.cs">
       <DependentUpon>LkpDiscount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mbc5DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Content\MAIL.png" />
     <Content Include="NOTES TODO.txt" />
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">
       <DependentUpon>frmAddressList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditCoverWip.resx">
+      <DependentUpon>frmEditCoverWip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditPartBkWip.resx">
+      <DependentUpon>frmEditPartBkWip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmEditWip.resx">
       <DependentUpon>frmEditWip.cs</DependentUpon>
@@ -287,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBarScan.resx">
       <DependentUpon>frmBarScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEndSheet.resx">
+      <DependentUpon>frmEndSheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProdutn.resx">
       <DependentUpon>frmProdutn.cs</DependentUpon>
@@ -343,6 +382,17 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Report1.rdlc" />
+    <None Include="DataSets\dsBids.xsc">
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsBids.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBids.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsBids.xss">
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\dsChangePassword.xsc">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </None>
@@ -375,6 +425,17 @@
     </None>
     <None Include="DataSets\dsDateCont.xss">
       <DependentUpon>dsDateCont.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsEndSheet.xsc">
+      <DependentUpon>dsEndSheet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsEndSheet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEndSheet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsEndSheet.xss">
+      <DependentUpon>dsEndSheet.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsMktInfo.xsc">
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
@@ -449,23 +510,12 @@
       <DependentUpon>LookUp.xsd</DependentUpon>
     </None>
     <None Include="DataSets\LookUp.xsd">
-      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>LookUp.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="DataSets\LookUp.xss">
       <DependentUpon>LookUp.xsd</DependentUpon>
-    </None>
-    <None Include="Mbc5DataSet.xsc">
-      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Mbc5DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Mbc5DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Mbc5DataSet.xss">
-      <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
     </None>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
@@ -495,6 +545,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\SystemIcons\" />
+    <Folder Include="gooddataset\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

@@ -297,7 +297,7 @@ namespace BaseClass.Classes
                 } else if (TypeEmail == EmailType.System) {
                 brandedHtml = BuildEmailSystem(Body);
                 } else if (TypeEmail == EmailType.Blank) {
-                brandedHtml = "";
+                brandedHtml = Body;
                 } else {
                 return;
                 }

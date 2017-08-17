@@ -26,7 +26,7 @@ namespace Mbc5.Dialogs
         private void frmEditWip_Load(object sender, EventArgs e)
         {
             wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "WIP");
-            wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
+            wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
             var pos = wipDetailBindingSource.Find("id", ID);
             if (pos > -1)
             {

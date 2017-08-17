@@ -333,3 +333,32 @@ The statement has been terminated. CHOME  WDFM\rwoodall
    at Mbc5.Forms.MemoryBook.frmProdutn.SaveProdutn() in F:\New folder\MemoryBookDeskTop\Mbc5\Forms\frmProdutn.cs:line 147
 ClientConnectionId:bc0f703f-055d-4be0-992f-40fdb14d01cb
 Error Number:8178,State:1,Class:16 
+2017/01/27 10:17:38.544 Concurrency violation: the UpdateCommand affected 0 of the expected 1 records. RWCOMPUTER  RWCOMPUTER\randy   System.Data.DBConcurrencyException: Concurrency violation: the UpdateCommand affected 0 of the expected 1 records.
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatusErrors(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.UpdatedRowStatus(RowUpdatedEventArgs rowUpdatedEvent, BatchCommandInfo[] batchCommands, Int32 commandCount)
+   at System.Data.Common.DbDataAdapter.Update(DataRow[] dataRows, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.UpdateFromDataTable(DataTable dataTable, DataTableMapping tableMapping)
+   at System.Data.Common.DbDataAdapter.Update(DataTable dataTable)
+   at Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter.Update(quotesDataTable dataTable) in F:\Mb\MemoryBookDeskTop\Mbc5\DataSets\dsSales.Designer.cs:line 15696
+   at Mbc5.Forms.MemoryBook.frmSales.SaveSales() in F:\Mb\MemoryBookDeskTop\Mbc5\Forms\MemoryBook\frmSales.cs:line 675 
+2017/01/30 08:31:27.036 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2017/01/30 08:31:58.041 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2017/01/30 08:37:22.334 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2017/01/30 08:39:16.869 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2017/01/30 08:40:29.708 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2017/01/30 08:41:51.349 Error running ExecuteNonQueryAsync. RWCOMPUTER  RWCOMPUTER\randy    
+2017/04/28 15:07:03.983 Error running ExecuteReaderAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/05/02 16:17:44.696 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/05/02 16:22:36.188 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/05/02 16:23:03.683 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/05/02 16:24:34.251 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/05/02 16:25:35.600 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/05/02 16:28:47.696 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/05/02 16:39:08.257 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/05/02 16:45:40.796 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/05/02 16:46:42.732 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/05/02 16:48:35.011 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/05/02 16:49:54.923 Error running ExecuteNonQueryAsync. RWCOMPUTER2  RWCOMPUTER2\randy    
+2017/08/10 21:24:04.713 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2017/08/10 21:32:19.333 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2017/08/10 21:38:22.826 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
