@@ -167,7 +167,8 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             txtSchCodesrch.Text = "";
             SetInvnoSchCode();
-            }
+            frmMbcCust_Paint(this, null);
+        }
         private void btnSchoolSearch_Click(object sender,EventArgs e) {
             var currentSchool = lblSchcodeVal.Text.Trim();
             if (DoPhoneLog()){
@@ -234,8 +235,8 @@ namespace Mbc5.Forms.MemoryBook {
 			}
 				txtSchNamesrch.Text = "";
 				SetInvnoSchCode();
-			
-            }
+            frmMbcCust_Paint(this, null);
+        }
         #region CrudOperations
         public override bool Save()
         {
@@ -604,6 +605,7 @@ namespace Mbc5.Forms.MemoryBook {
             {
                 this.Invno = val;
             }
+           
         }
         private string GetCoverNumber() {
             var sqlQuery = new SQLQuery();

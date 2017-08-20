@@ -151,13 +151,14 @@ namespace Mbc5.Forms
 		//General
 		private void SetCodeInvno()
 		{
-			//if (quotesBindingSource.Count > 0) {
-			//    DataRowView current = (DataRowView)quotesBindingSource.Current;
-			//    this.Schcode = current["schcode"].ToString();
-			//    this.Invno = Convert.ToInt32(current["invno"]);
-			//    }
-		}
-		private void Fill()
+            if (quotesBindingSource.Count > 0)
+            {
+                DataRowView current = (DataRowView)quotesBindingSource.Current;
+                this.Schcode = current["schcode"].ToString();
+                this.Invno = Convert.ToInt32(current["invno"]);
+            }
+        }
+        private void Fill()
 		{
 			if (Schcode != null)
 			{
@@ -822,162 +823,93 @@ namespace Mbc5.Forms
 			emailHelper.SendOutLookEmail(subject, AllEmails, "", body, type);
 		}
 
-		private void btnBinderyEmail_Click(object sender, EventArgs e)
-		{
-			var sqlQuery = new SQLQuery();
-			var queryString = " Select cust.Schname,quotes.invno,produtn.ProdNo,produtn.NoPages,covers.reqstdcpy,produtn.CoverType,produtn.Diecut,produtn.CoilClr,produtn.prshpdte As ProjShpDate from cust inner join quotes on cust.schcode = quotes.schcode left join produtn on quotes.invno = produtn.invno left join covers on quotes.invno = covers.invno where cust.schcode = @Schcode and quotes.invno = @Invno";
-			int vInvno=0;
-			int.TryParse(lblInvno.Text, out vInvno);
-			SqlParameter[] parameters = new SqlParameter[] {
-				 new SqlParameter("@Schcode",Schcode),
-				 new SqlParameter("@Invno",vInvno)
-			};
-			List<BinderyInfo> result = (List<BinderyInfo>)sqlQuery.ExecuteReaderAsync<BinderyInfo>(CommandType.Text, queryString, parameters);
-			if (result == null || result.Count < 1)
-			{
-				MessageBox.Show("Bindery information was not found.");
-				return;
-			}
+        private void btnBinderyEmail_Click(object sender, EventArgs e)
+        {
+            var sqlQuery = new SQLQuery();
+            var queryString = " Select cust.Schname,quotes.invno,produtn.ProdNo,produtn.NoPages,covers.reqstdcpy,produtn.CoverType,produtn.Diecut,produtn.CoilClr,produtn.prshpdte As ProjShpDate from cust inner join quotes on cust.schcode = quotes.schcode left join produtn on quotes.invno = produtn.invno left join covers on quotes.invno = covers.invno where cust.schcode = @Schcode and quotes.invno = @Invno";
+            int vInvno = 0;
+            int.TryParse(lblInvno.Text, out vInvno);
+            SqlParameter[] parameters = new SqlParameter[] {
+                 new SqlParameter("@Schcode",Schcode),
+                 new SqlParameter("@Invno",vInvno)
+            };
+            List<BinderyInfo> result = (List<BinderyInfo>)sqlQuery.ExecuteReaderAsync<BinderyInfo>(CommandType.Text, queryString, parameters);
+            if (result == null || result.Count < 1)
+            {
+                MessageBox.Show("Bindery information was not found.");
+                return;
+            }
             if (string.IsNullOrEmpty(result[0].Schname))
             {
                 result[0].Schname = "";
             }
 
-           if (string.IsNullOrEmpty(result[0].CoverType))
+            if (string.IsNullOrEmpty(result[0].CoverType))
             {
                 result[0].CoverType = "";
             }
-<<<<<<< HEAD
+            //<<<<<<< HEAD
             if (string.IsNullOrEmpty(result[0].CoilClr))
             {
                 result[0].CoilClr = "";
-=======
-        //General
-        private void SetCodeInvno() {
-            if (dsProdutn.quotes.Count > 0)
-            {
-                DataRowView current = (DataRowView)quotesBindingSource.Current;
-                this.Schcode = current["schcode"].ToString();
-                this.Invno = Convert.ToInt32(current["invno"]);
+                //=======
+
+                //        private void FillWithInvno() {
+                //            if (Invno != 0) {
+                //                //coversTableAdapter.Fill(dsProdutn.covers,Invno);
+                //                //coverdetailTableAdapter.Fill(dsProdutn.coverdetail, Invno);
+                //                //if (dsProdutn.covers.Count < 1)
+                //                //{
+                //                //    DisableControls(specinstTextBox);                
+                //                //}
+                //                //else { EnableAllControls(this.tbProdutn.TabPages[2]); }
+
+
+                //                wipTableAdapter.Fill(dsProdutn.wip,Invno);
+
+                //                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
+                //                if (dsProdutn.wip.Count < 1)
+                //                {
+                //                    var aa = this.tbProdutn.TabPages[3];
+                //                    DisableControls(this.tbProdutn.TabPages[3]);
+
+                //                }
+                //                else {
+                //                      EnableAllControls(this.tbProdutn.TabPages[3]);                    
+                //                    }
+
+
+                //            }
+                //            }
+
+                string vshipDate;
+                if (result[0].ProjShpDate.Year < 1999)
+                {
+                    vshipDate = "";
+                }
+                else { vshipDate = result[0].ProjShpDate.ToString(); }
+
+
+
+
+
+                var body = "<strong>School Information<strong/><br/><br/>School Name " + result[0].Schname.Trim() + "<br/>Production No. " + result[0].ProdNo.Trim() + "<br/> No. of Pages " + result[0].NoPages + "<br/>Cover Type " + result[0].CoverType.Trim() + "<br/>Die Cut " + result[0].Diecut.ToString() + "<br/>Coil Color " + result[0].CoilClr.Trim() + "<br/>Projected Ship Date " + vshipDate;
+                var subject = "Memory Book company Vendor Information";
+                var emailHelper = new EmailHelper();
+                EmailType type = EmailType.Blank;
+                if (CurrentCompany == "MBC")
+                {
+                    type = EmailType.Mbc;
+                }
+                else if (CurrentCompany == "MER")
+                {
+                    type = EmailType.Meridian;
+                }
+                emailHelper.SendOutLookEmail(subject, "production@memorybook.com", "", body, type);
+
+
             }
         }
-        private void Fill() {
-            if (Schcode != null) {
-                custTableAdapter.Fill(dsProdutn.cust,Schcode);
-                quotesTableAdapter.Fill(dsProdutn.quotes,Schcode);
-
-                produtnTableAdapter.Fill(dsProdutn.produtn,Schcode);
-                //partbkTableAdapter.Fill(dsProdutn.partbk,Schcode);
-                //ptbkbTableAdapter.Fill(dsProdutn.ptbkb,Schcode);
-                //wipgTableAdapter.Fill(dsProdutn.wipg,Schcode);
-                if (dsProdutn.produtn.Count > 0) {
-                    EnableAllControls(this);
-                    FillWithInvno();
-                } else {
-                    DisableControls(this.tbProdutn.TabPages[5]);
-                    DisableControls(this.tbProdutn.TabPages[4]);
-                    DisableControls(this.tbProdutn.TabPages[3]);
-                    DisableControls(this.tbProdutn.TabPages[2]);
-                    DisableControls(this.tbProdutn.TabPages[1]);
-                    DisableControls(this.tbProdutn.TabPages[0]);
-                    EnableControls(btnProdSrch);
-                    EnableControls(txtProdNoSrch);
-                    EnableControls(btnInvoiceSrch);
-                    EnableControls(txtInvoiceNoSrch);
-                   }
-                }
-                
-               
-            
-            if (Invno != 0) {
-                var pos = produtnBindingSource.Find("invno",this.Invno);
-                if (pos > -1) {
-                    produtnBindingSource.Position = pos;
-                    } else {
-                    MessageBox.Show("Production record was not found.","Invoice#",MessageBoxButtons.OK,MessageBoxIcon.Stop);
-                    }
-                }
-                
-
-                }
-        private void FillWithInvno() {
-            if (Invno != 0) {
-                //coversTableAdapter.Fill(dsProdutn.covers,Invno);
-                //coverdetailTableAdapter.Fill(dsProdutn.coverdetail, Invno);
-                //if (dsProdutn.covers.Count < 1)
-                //{
-                //    DisableControls(specinstTextBox);                
-                //}
-                //else { EnableAllControls(this.tbProdutn.TabPages[2]); }
-
-
-                wipTableAdapter.Fill(dsProdutn.wip,Invno);
-
-                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
-                if (dsProdutn.wip.Count < 1)
-                {
-                    var aa = this.tbProdutn.TabPages[3];
-                    DisableControls(this.tbProdutn.TabPages[3]);
-                    
-                }
-                else {
-                      EnableAllControls(this.tbProdutn.TabPages[3]);                    
-                    }
-
-
-            }
-            }
-        public override void  Save() {
-            switch (tbProdutn.SelectedIndex) {
-                case 0:
-                    SaveProdutn();
-                    break;
-                case 1:
-                        {
-                        SaveWip();
-                        break;
-                        }
-
-
-                case 2:
-                    MessageBox.Show("This function is not available in the invoice tab.","Save",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    break;
-                case 3:
-                    //SavePayment();
-                    break;
-
-                }
-
->>>>>>> refs/remotes/origin/develop
-            }
-            string vshipDate;
-            if (result[0].ProjShpDate.Year <1999)
-            {
-             vshipDate = "";
-            }
-            else { vshipDate = result[0].ProjShpDate.ToString(); }
-            
-
-
-
-
-            var body = "<strong>School Information<strong/><br/><br/>School Name " + result[0].Schname.Trim() + "<br/>Production No. " + result[0].ProdNo.Trim() + "<br/> No. of Pages " + result[0].NoPages + "<br/>Cover Type " + result[0].CoverType.Trim()  + "<br/>Die Cut " + result[0].Diecut.ToString() + "<br/>Coil Color " + result[0].CoilClr.Trim() + "<br/>Projected Ship Date " + vshipDate;
-			var subject = "Memory Book company Vendor Information";
-			var emailHelper = new EmailHelper();
-			EmailType type = EmailType.Blank;
-			if (CurrentCompany == "MBC")
-			{
-				type = EmailType.Mbc;
-			}
-			else if (CurrentCompany == "MER")
-			{
-				type = EmailType.Meridian;
-			}
-			emailHelper.SendOutLookEmail(subject, "production@memorybook.com", "", body, type);
-
-
-		}
-
 		private void btnUpdateJob_Click(object sender, EventArgs e)
 		{
 			if (String.IsNullOrEmpty(txtPerfbind.Text))
@@ -1086,8 +1018,9 @@ namespace Mbc5.Forms
 					}
 					break;
 
+                   
 
-			}
+            }
 
 
 
@@ -1102,7 +1035,8 @@ namespace Mbc5.Forms
 				Fill();
 			}
 			else { MessageBox.Show("Record was not found.", "Production Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-		}
+            frmProdutn_Paint(this, null);
+        }
 
 		private void btnInvoiceSrch_Click(object sender, EventArgs e)
 		{
@@ -1134,7 +1068,8 @@ namespace Mbc5.Forms
 				Fill();
 			}
 			else { MessageBox.Show("Record was not found.", "Invoice Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-		}
+            frmProdutn_Paint(this, null);
+        }
 
 		private void wipDetailDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{

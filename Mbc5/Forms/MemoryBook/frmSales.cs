@@ -77,6 +77,7 @@ namespace Mbc5.Forms.MemoryBook {
                     }
                 } else { MessageBox.Show("No records were found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
+            frmSales_Paint(this, null);
             }
         private void btnPoSrch_Click(object sender,EventArgs e) {
             var sqlQuery = new SQLQuery();
@@ -99,7 +100,8 @@ namespace Mbc5.Forms.MemoryBook {
                 } else {
                 MessageBox.Show("No records were found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
-            }
+            frmSales_Paint(this, null);
+        }
 
         #region "Properties"
         public void InvokePropertyChanged(PropertyChangedEventArgs e) {
@@ -2933,6 +2935,15 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
 
+        private void frmSales_Paint(object sender, PaintEventArgs e)
+        {
+            try { this.Text = "Sales-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+            catch
+            {
+
+            }
+        }
+
 
 
 
@@ -2946,6 +2957,6 @@ namespace Mbc5.Forms.MemoryBook {
 
 
         //nothing below here  
-        }
+    }
 }
     
