@@ -17,37 +17,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ApplicationUser = userPrincipal;
             }
-           private UserPrincipal ApplicationUser { get; set; }
+        public frmBids(UserPrincipal userPrincipal,string schcode) : base(new string[] { "SA","Administrator","MbcCS" },userPrincipal) {
+            InitializeComponent();
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.ApplicationUser = userPrincipal;
+            this.Schcode = schcode;
 
-		private void lblSchoolName_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
-		private void bindingNavigatorMoveFirstItem_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void bindingNavigatorMovePreviousItem_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void bindingNavigatorMoveLastItem_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
-		{
-
-		}
+        }
+        private UserPrincipal ApplicationUser { get; set; }
 
 		private void bidsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
 		{
@@ -57,11 +34,22 @@ namespace Mbc5.Forms.MemoryBook {
 
 		}
 
-		private void frmBids_Load(object sender, EventArgs e)
-		{
-			// TODO: This line of code loads data into the 'dsBids.bids' table. You can move, or remove it, as needed.
-			this.bidsTableAdapter.Fill(this.dsBids.bids);
+        private void frmBids_Load(object sender, EventArgs e)
+        {
+            this.bidsTableAdapter.Fill(this.dsBids.bids, this.Schcode);
+        }
 
-		}
-	}
+        private void frmBids_Load_1(object sender, EventArgs e)
+        {
+            this.custTableAdapter.Fill(this.dsBids.cust,this.Schcode);
+            this.bidsTableAdapter.Fill(this.dsBids.bids, this.Schcode);
+        }
+
+        private void txtOtherChrg2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+    
+    }
     }

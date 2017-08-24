@@ -7,6 +7,7 @@ using System.Net.Mail;
 using BaseClass.Classes;
 using Exceptionless.Models;
 using Exceptionless;
+using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 namespace BaseClass.Classes
 {
@@ -163,14 +164,14 @@ namespace BaseClass.Classes
 
             return template;
         }
-        public void SendEmail(string Subject, string ToAddresses, string CCAddresses, string Body,EmailType TypeEmail)
+        public void SendEmail(string Subject, string ToAddresses, string CCAddresses, string Body, EmailType TypeEmail)
 
         {
             var brandedHtml = "";
-            if (TypeEmail==EmailType.Mbc)
+            if (TypeEmail == EmailType.Mbc)
             {
-              brandedHtml = BuildEmailMBC(Body);
-            }else if(TypeEmail == EmailType.Meridian)
+                brandedHtml = BuildEmailMBC(Body);
+            } else if (TypeEmail == EmailType.Meridian)
             {
                 brandedHtml = BuildEmailMeridian(Body);
             }
@@ -180,9 +181,9 @@ namespace BaseClass.Classes
             } else if (TypeEmail == EmailType.System)
             {
                 brandedHtml = BuildEmailSystem(Body);
-             } else if (TypeEmail == EmailType.Blank) {
+            } else if (TypeEmail == EmailType.Blank) {
                 brandedHtml = "";
-                } else
+            } else
             {
                 return;
             }
@@ -194,101 +195,113 @@ namespace BaseClass.Classes
                 Body = brandedHtml,
                 IsBodyHtml = true
             };
-          
+
             mailMessage.To.Add(ToAddresses);
             smtpClient.Send(mailMessage);
         }
 
-        public void SendEmail(string Subject,List<string> ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
+        public void SendEmail(string Subject, List<string> ToAddresses, List<string> CCAddresses, string Body, EmailType TypeEmail) {
             var brandedHtml = "";
             if (TypeEmail == EmailType.Mbc) {
                 brandedHtml = BuildEmailMBC(Body);
-                } else if (TypeEmail == EmailType.Meridian) {
+            } else if (TypeEmail == EmailType.Meridian) {
                 brandedHtml = BuildEmailMeridian(Body);
-                } else if (TypeEmail == EmailType.System) {
+            } else if (TypeEmail == EmailType.System) {
                 brandedHtml = BuildEmailSystem(Body);
-                } else if (TypeEmail == EmailType.Blank) {
+            } else if (TypeEmail == EmailType.Blank) {
                 brandedHtml = "";
-                } else {
+            } else {
                 return;
-                }
-
-            var smtpClient = new SmtpClient();
-            var mailMessage = new MailMessage {
-                Subject = Subject,
-                Body = brandedHtml,
-                IsBodyHtml = true
-                };
-            foreach(var address in ToAddresses) {
-                    mailMessage.To.Add(address);
-                }
-            foreach (var address in CCAddresses) {
-                mailMessage.To.Add(address);
-                }
-
-            smtpClient.Send(mailMessage);
             }
 
-        public void SendEmail(string Subject,List<string> ToAddresses,string CCAddresses,string Body,EmailType TypeEmail) {
-            var brandedHtml = "";
-            if (TypeEmail == EmailType.Mbc) {
-                brandedHtml = BuildEmailMBC(Body);
-                } else if (TypeEmail == EmailType.Meridian) {
-                brandedHtml = BuildEmailMeridian(Body);
-                } else if (TypeEmail == EmailType.System) {
-                brandedHtml = BuildEmailSystem(Body);
-                } else if (TypeEmail == EmailType.Blank) {
-                brandedHtml = "";
-                } else {
-                return;
-                }
-
             var smtpClient = new SmtpClient();
             var mailMessage = new MailMessage {
                 Subject = Subject,
                 Body = brandedHtml,
                 IsBodyHtml = true
-                };
+            };
             foreach (var address in ToAddresses) {
                 mailMessage.To.Add(address);
-                }
-           
-                mailMessage.To.Add(CCAddresses);
-              
-
-            smtpClient.Send(mailMessage);
+            }
+            foreach (var address in CCAddresses) {
+                mailMessage.To.Add(address);
             }
 
-        public void SendEmail(string Subject,string ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
+            smtpClient.Send(mailMessage);
+        }
+
+        public void SendEmail(string Subject, List<string> ToAddresses, string CCAddresses, string Body, EmailType TypeEmail) {
+            if (ToAddresses == null || ToAddresses.Count<0)
+            {
+                MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
             var brandedHtml = "";
             if (TypeEmail == EmailType.Mbc) {
                 brandedHtml = BuildEmailMBC(Body);
-                } else if (TypeEmail == EmailType.Meridian) {
+            } else if (TypeEmail == EmailType.Meridian) {
                 brandedHtml = BuildEmailMeridian(Body);
-                } else if (TypeEmail == EmailType.System) {
+            } else if (TypeEmail == EmailType.System) {
                 brandedHtml = BuildEmailSystem(Body);
-                } else if (TypeEmail == EmailType.Blank) {
+            } else if (TypeEmail == EmailType.Blank) {
                 brandedHtml = "";
-                } else {
+            } else {
                 return;
-                }
+            }
 
             var smtpClient = new SmtpClient();
             var mailMessage = new MailMessage {
                 Subject = Subject,
                 Body = brandedHtml,
                 IsBodyHtml = true
-                };
-             mailMessage.To.Add(ToAddresses);
-            foreach (var address in CCAddresses) {
-                mailMessage.CC.Add(address);
-                }
-            
-            smtpClient.Send(mailMessage);
+            };
+            foreach (var address in ToAddresses) {
+                mailMessage.To.Add(address);
             }
 
-        
-        public void SendOutLookEmail(string Subject,string ToAddresses,string CCAddresses,string Body,EmailType TypeEmail) {
+            mailMessage.To.Add(CCAddresses);
+
+
+            smtpClient.Send(mailMessage);
+        }
+
+        public void SendEmail(string Subject, string ToAddresses, List<string> CCAddresses, string Body, EmailType TypeEmail) {
+            if (ToAddresses == null || ToAddresses == "")
+            {
+                MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            var brandedHtml = "";
+            if (TypeEmail == EmailType.Mbc) {
+                brandedHtml = BuildEmailMBC(Body);
+            } else if (TypeEmail == EmailType.Meridian) {
+                brandedHtml = BuildEmailMeridian(Body);
+            } else if (TypeEmail == EmailType.System) {
+                brandedHtml = BuildEmailSystem(Body);
+            } else if (TypeEmail == EmailType.Blank) {
+                brandedHtml = "";
+            } else {
+                return;
+            }
+
+            var smtpClient = new SmtpClient();
+            var mailMessage = new MailMessage {
+                Subject = Subject,
+                Body = brandedHtml,
+                IsBodyHtml = true
+            };
+            mailMessage.To.Add(ToAddresses);
+            foreach (var address in CCAddresses) {
+                mailMessage.CC.Add(address);
+            }
+
+            smtpClient.Send(mailMessage);
+        }
+
+
+        public void SendOutLookEmail(string Subject, string ToAddresses, string CCAddresses, string Body, EmailType TypeEmail) {
+            if (ToAddresses == null ||ToAddresses=="")
+            {
+                MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
             var brandedHtml = "";
             if (TypeEmail == EmailType.Mbc) {
                 brandedHtml = BuildEmailMBC(Body);
@@ -321,6 +334,10 @@ namespace BaseClass.Classes
                 }
             }
         public void SendOutLookEmail(string Subject,List<string> ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
+            if (ToAddresses == null || ToAddresses.Count < 1)
+            {
+                MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
             var brandedHtml = "";
             if (TypeEmail == EmailType.Mbc) {
                 brandedHtml = BuildEmailMBC(Body);
@@ -360,6 +377,10 @@ namespace BaseClass.Classes
             }
         public void SendOutLookEmail(string Subject,string ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
             var brandedHtml = "";
+            if (ToAddresses == null || ToAddresses =="")
+            {
+                MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
             if (TypeEmail == EmailType.Mbc) {
                 brandedHtml = BuildEmailMBC(Body);
                 } else if (TypeEmail == EmailType.Meridian) {
@@ -395,6 +416,10 @@ namespace BaseClass.Classes
                 }
             }
         public void SendOutLookEmail(string Subject,List<string> ToAddresses,string CCAddresses,string Body,EmailType TypeEmail) {
+            if (ToAddresses == null || ToAddresses.Count < 1)
+            {
+                MessageBox.Show("Email address is empty. Check school and school contacts email addresses.","Empty Email Address",MessageBoxButtons.OK,MessageBoxIcon.Hand);
+            }
             var brandedHtml = "";
             if (TypeEmail == EmailType.Mbc) {
                 brandedHtml = BuildEmailMBC(Body);

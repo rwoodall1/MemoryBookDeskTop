@@ -3241,6 +3241,50 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnschcode;
             
+            private global::System.Data.DataColumn columncstatus;
+            
+            private global::System.Data.DataColumn columnsource;
+            
+            private global::System.Data.DataColumn columnsourdate;
+            
+            private global::System.Data.DataColumn columnsecsource;
+            
+            private global::System.Data.DataColumn columncontdate;
+            
+            private global::System.Data.DataColumn columnorigsour;
+            
+            private global::System.Data.DataColumn columnorigyear;
+            
+            private global::System.Data.DataColumn columnrebook;
+            
+            private global::System.Data.DataColumn columnrebookdte;
+            
+            private global::System.Data.DataColumn columnrefby;
+            
+            private global::System.Data.DataColumn columnenrollment;
+            
+            private global::System.Data.DataColumn columnschaddr;
+            
+            private global::System.Data.DataColumn columnschaddr2;
+            
+            private global::System.Data.DataColumn columnschcity;
+            
+            private global::System.Data.DataColumn columnschstate;
+            
+            private global::System.Data.DataColumn columnschzip;
+            
+            private global::System.Data.DataColumn columnschphone;
+            
+            private global::System.Data.DataColumn columnschfax;
+            
+            private global::System.Data.DataColumn columnschemail;
+            
+            private global::System.Data.DataColumn columncontfname;
+            
+            private global::System.Data.DataColumn columncontlname;
+            
+            private global::System.Data.DataColumn columnextrchg;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public custDataTable() {
@@ -3300,6 +3344,182 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cstatusColumn {
+                get {
+                    return this.columncstatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sourceColumn {
+                get {
+                    return this.columnsource;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sourdateColumn {
+                get {
+                    return this.columnsourdate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn secsourceColumn {
+                get {
+                    return this.columnsecsource;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn contdateColumn {
+                get {
+                    return this.columncontdate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn origsourColumn {
+                get {
+                    return this.columnorigsour;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn origyearColumn {
+                get {
+                    return this.columnorigyear;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn rebookColumn {
+                get {
+                    return this.columnrebook;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn rebookdteColumn {
+                get {
+                    return this.columnrebookdte;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn refbyColumn {
+                get {
+                    return this.columnrefby;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn enrollmentColumn {
+                get {
+                    return this.columnenrollment;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn schaddrColumn {
+                get {
+                    return this.columnschaddr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn schaddr2Column {
+                get {
+                    return this.columnschaddr2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn schcityColumn {
+                get {
+                    return this.columnschcity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn schstateColumn {
+                get {
+                    return this.columnschstate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn schzipColumn {
+                get {
+                    return this.columnschzip;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn schphoneColumn {
+                get {
+                    return this.columnschphone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn schfaxColumn {
+                get {
+                    return this.columnschfax;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn schemailColumn {
+                get {
+                    return this.columnschemail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn contfnameColumn {
+                get {
+                    return this.columncontfname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn contlnameColumn {
+                get {
+                    return this.columncontlname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn extrchgColumn {
+                get {
+                    return this.columnextrchg;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3335,12 +3555,59 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public custRow AddcustRow(string schname, string contryear, string schcode) {
+            public custRow AddcustRow(
+                        string schname, 
+                        string contryear, 
+                        string schcode, 
+                        string cstatus, 
+                        string source, 
+                        System.DateTime sourdate, 
+                        string secsource, 
+                        System.DateTime contdate, 
+                        string origsour, 
+                        string origyear, 
+                        string rebook, 
+                        System.DateTime rebookdte, 
+                        string refby, 
+                        decimal enrollment, 
+                        string schaddr, 
+                        string schaddr2, 
+                        string schcity, 
+                        string schstate, 
+                        string schzip, 
+                        string schphone, 
+                        string schfax, 
+                        string schemail, 
+                        string contfname, 
+                        string contlname, 
+                        string extrchg) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schname,
                         contryear,
-                        schcode};
+                        schcode,
+                        cstatus,
+                        source,
+                        sourdate,
+                        secsource,
+                        contdate,
+                        origsour,
+                        origyear,
+                        rebook,
+                        rebookdte,
+                        refby,
+                        enrollment,
+                        schaddr,
+                        schaddr2,
+                        schcity,
+                        schstate,
+                        schzip,
+                        schphone,
+                        schfax,
+                        schemail,
+                        contfname,
+                        contlname,
+                        extrchg};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -3373,6 +3640,28 @@ namespace Mbc5.DataSets {
                 this.columnschname = base.Columns["schname"];
                 this.columncontryear = base.Columns["contryear"];
                 this.columnschcode = base.Columns["schcode"];
+                this.columncstatus = base.Columns["cstatus"];
+                this.columnsource = base.Columns["source"];
+                this.columnsourdate = base.Columns["sourdate"];
+                this.columnsecsource = base.Columns["secsource"];
+                this.columncontdate = base.Columns["contdate"];
+                this.columnorigsour = base.Columns["origsour"];
+                this.columnorigyear = base.Columns["origyear"];
+                this.columnrebook = base.Columns["rebook"];
+                this.columnrebookdte = base.Columns["rebookdte"];
+                this.columnrefby = base.Columns["refby"];
+                this.columnenrollment = base.Columns["enrollment"];
+                this.columnschaddr = base.Columns["schaddr"];
+                this.columnschaddr2 = base.Columns["schaddr2"];
+                this.columnschcity = base.Columns["schcity"];
+                this.columnschstate = base.Columns["schstate"];
+                this.columnschzip = base.Columns["schzip"];
+                this.columnschphone = base.Columns["schphone"];
+                this.columnschfax = base.Columns["schfax"];
+                this.columnschemail = base.Columns["schemail"];
+                this.columncontfname = base.Columns["contfname"];
+                this.columncontlname = base.Columns["contlname"];
+                this.columnextrchg = base.Columns["extrchg"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3384,6 +3673,50 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columncontryear);
                 this.columnschcode = new global::System.Data.DataColumn("schcode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschcode);
+                this.columncstatus = new global::System.Data.DataColumn("cstatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncstatus);
+                this.columnsource = new global::System.Data.DataColumn("source", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsource);
+                this.columnsourdate = new global::System.Data.DataColumn("sourdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsourdate);
+                this.columnsecsource = new global::System.Data.DataColumn("secsource", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsecsource);
+                this.columncontdate = new global::System.Data.DataColumn("contdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontdate);
+                this.columnorigsour = new global::System.Data.DataColumn("origsour", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnorigsour);
+                this.columnorigyear = new global::System.Data.DataColumn("origyear", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnorigyear);
+                this.columnrebook = new global::System.Data.DataColumn("rebook", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrebook);
+                this.columnrebookdte = new global::System.Data.DataColumn("rebookdte", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrebookdte);
+                this.columnrefby = new global::System.Data.DataColumn("refby", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrefby);
+                this.columnenrollment = new global::System.Data.DataColumn("enrollment", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnenrollment);
+                this.columnschaddr = new global::System.Data.DataColumn("schaddr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschaddr);
+                this.columnschaddr2 = new global::System.Data.DataColumn("schaddr2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschaddr2);
+                this.columnschcity = new global::System.Data.DataColumn("schcity", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschcity);
+                this.columnschstate = new global::System.Data.DataColumn("schstate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschstate);
+                this.columnschzip = new global::System.Data.DataColumn("schzip", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschzip);
+                this.columnschphone = new global::System.Data.DataColumn("schphone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschphone);
+                this.columnschfax = new global::System.Data.DataColumn("schfax", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschfax);
+                this.columnschemail = new global::System.Data.DataColumn("schemail", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschemail);
+                this.columncontfname = new global::System.Data.DataColumn("contfname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontfname);
+                this.columncontlname = new global::System.Data.DataColumn("contlname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontlname);
+                this.columnextrchg = new global::System.Data.DataColumn("extrchg", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnextrchg);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columnschname.AllowDBNull = false;
@@ -3392,6 +3725,28 @@ namespace Mbc5.DataSets {
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.Unique = true;
                 this.columnschcode.MaxLength = 6;
+                this.columncstatus.MaxLength = 40;
+                this.columnsource.MaxLength = 3;
+                this.columnsecsource.MaxLength = 3;
+                this.columnorigsour.MaxLength = 3;
+                this.columnorigyear.MaxLength = 2;
+                this.columnrebook.MaxLength = 1;
+                this.columnrefby.MaxLength = 25;
+                this.columnschaddr.AllowDBNull = false;
+                this.columnschaddr.MaxLength = 35;
+                this.columnschaddr2.MaxLength = 35;
+                this.columnschcity.AllowDBNull = false;
+                this.columnschcity.MaxLength = 50;
+                this.columnschstate.AllowDBNull = false;
+                this.columnschstate.MaxLength = 3;
+                this.columnschzip.AllowDBNull = false;
+                this.columnschzip.MaxLength = 10;
+                this.columnschphone.MaxLength = 25;
+                this.columnschfax.MaxLength = 14;
+                this.columnschemail.MaxLength = 80;
+                this.columncontfname.MaxLength = 20;
+                this.columncontlname.MaxLength = 20;
+                this.columnextrchg.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5424,6 +5779,338 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cstatus {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.cstatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cstatus\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.cstatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string source {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.sourceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'source\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.sourceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime sourdate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablecust.sourdateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sourdate\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.sourdateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string secsource {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.secsourceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'secsource\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.secsourceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime contdate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablecust.contdateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contdate\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.contdateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string origsour {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.origsourColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'origsour\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.origsourColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string origyear {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.origyearColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'origyear\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.origyearColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string rebook {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.rebookColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'rebook\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.rebookColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime rebookdte {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablecust.rebookdteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'rebookdte\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.rebookdteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string refby {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.refbyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'refby\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.refbyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal enrollment {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablecust.enrollmentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'enrollment\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.enrollmentColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string schaddr {
+                get {
+                    return ((string)(this[this.tablecust.schaddrColumn]));
+                }
+                set {
+                    this[this.tablecust.schaddrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string schaddr2 {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.schaddr2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schaddr2\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.schaddr2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string schcity {
+                get {
+                    return ((string)(this[this.tablecust.schcityColumn]));
+                }
+                set {
+                    this[this.tablecust.schcityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string schstate {
+                get {
+                    return ((string)(this[this.tablecust.schstateColumn]));
+                }
+                set {
+                    this[this.tablecust.schstateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string schzip {
+                get {
+                    return ((string)(this[this.tablecust.schzipColumn]));
+                }
+                set {
+                    this[this.tablecust.schzipColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string schphone {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.schphoneColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schphone\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.schphoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string schfax {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.schfaxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schfax\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.schfaxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string schemail {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.schemailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schemail\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.schemailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string contfname {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.contfnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contfname\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.contfnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string contlname {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.contlnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contlname\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.contlnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string extrchg {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.extrchgColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'extrchg\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.extrchgColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
@@ -5432,6 +6119,222 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetcontryearNull() {
                 this[this.tablecust.contryearColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscstatusNull() {
+                return this.IsNull(this.tablecust.cstatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcstatusNull() {
+                this[this.tablecust.cstatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssourceNull() {
+                return this.IsNull(this.tablecust.sourceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsourceNull() {
+                this[this.tablecust.sourceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssourdateNull() {
+                return this.IsNull(this.tablecust.sourdateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsourdateNull() {
+                this[this.tablecust.sourdateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssecsourceNull() {
+                return this.IsNull(this.tablecust.secsourceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsecsourceNull() {
+                this[this.tablecust.secsourceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscontdateNull() {
+                return this.IsNull(this.tablecust.contdateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcontdateNull() {
+                this[this.tablecust.contdateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsorigsourNull() {
+                return this.IsNull(this.tablecust.origsourColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetorigsourNull() {
+                this[this.tablecust.origsourColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsorigyearNull() {
+                return this.IsNull(this.tablecust.origyearColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetorigyearNull() {
+                this[this.tablecust.origyearColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsrebookNull() {
+                return this.IsNull(this.tablecust.rebookColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetrebookNull() {
+                this[this.tablecust.rebookColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsrebookdteNull() {
+                return this.IsNull(this.tablecust.rebookdteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetrebookdteNull() {
+                this[this.tablecust.rebookdteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsrefbyNull() {
+                return this.IsNull(this.tablecust.refbyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetrefbyNull() {
+                this[this.tablecust.refbyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsenrollmentNull() {
+                return this.IsNull(this.tablecust.enrollmentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetenrollmentNull() {
+                this[this.tablecust.enrollmentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isschaddr2Null() {
+                return this.IsNull(this.tablecust.schaddr2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setschaddr2Null() {
+                this[this.tablecust.schaddr2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsschphoneNull() {
+                return this.IsNull(this.tablecust.schphoneColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetschphoneNull() {
+                this[this.tablecust.schphoneColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsschfaxNull() {
+                return this.IsNull(this.tablecust.schfaxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetschfaxNull() {
+                this[this.tablecust.schfaxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsschemailNull() {
+                return this.IsNull(this.tablecust.schemailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetschemailNull() {
+                this[this.tablecust.schemailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscontfnameNull() {
+                return this.IsNull(this.tablecust.contfnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcontfnameNull() {
+                this[this.tablecust.contfnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscontlnameNull() {
+                return this.IsNull(this.tablecust.contlnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcontlnameNull() {
+                this[this.tablecust.contlnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsextrchgNull() {
+                return this.IsNull(this.tablecust.extrchgColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetextrchgNull() {
+                this[this.tablecust.extrchgColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6038,39 +6941,47 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        schname, schcode, booktype, qtedate, contryear, nopages, nocopies, " +
-                "book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, l" +
-                "aminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, \r\n             " +
-                "            spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized," +
-                " misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4," +
-                " disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, \r\n                  " +
-                "       xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, newprice, s" +
-                "chout, allclrck, allclramt, smemo, oa, massmail, inkclr, foiladamt, desc3, desc3" +
-                "tot, desc4, desc4tot, clrpgdesc, clrpgtot, noclrpgr, glspaper, \r\n               " +
-                "          glsamt, acovrde, bpovrde, bpyear, themck, themamt, yirschool, story, s" +
-                "upplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursup" +
-                "p, oursuppamt, ourovrride, dp1desc, ordagryr, myovrride, \r\n                     " +
-                "    hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride, pbov" +
-                "rride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, basicpp, pe" +
-                "rpp, peramount, basicamoun, agreerec, agreedte, \r\n                         onlin" +
-                "ecuto, oprcperbk, oprcperbk2, dorecentry, sdlstich, sdlstichamt, copiesovride, b" +
-                "invno, msstanqty, msstandtot, schbalance, parentpymt, nba, fldtype, isfolder, pr" +
-                "iceovrd, mlaminationamt, mlamination, \r\n                         opinkpers, opfo" +
-                "ilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustom" +
-                "amt, opfoiltxtamt, opfoiltxt, opinktamt, opink, yrdiscount, luvlines, yrdiscount" +
-                "amt, luvlineamt, fullad, fulladamt, \r\n                         halfad, halfadmt," +
-                " quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adja" +
-                "ftr2, desc22tot, halfadamt, prcor, adcuto, webonly, freebooks\r\nFROM            b" +
-                "ids";
+            this._commandCollection[0].CommandText = "SELECT          schname, schcode, booktype, qtedate, contryear, nopages, nocopies" +
+                ", book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn," +
+                " laminate, peyn, perfbind, foilck, \r\n                            foilamt, insck," +
+                " insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, custom" +
+                "ized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3," +
+                " dp4, \r\n                            disc4, cred_etc, adjbef, adjaftr, fbkprc, ft" +
+                "otprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, new" +
+                "price, schout, allclrck, allclramt, smemo, oa, massmail, inkclr, \r\n             " +
+                "               foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot," +
+                " noclrpgr, glspaper, glsamt, acovrde, bpovrde, bpyear, themck, themamt, yirschoo" +
+                "l, story, supplements, yiramt, storyamt, \r\n                            suppamt, " +
+                "persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, ord" +
+                "agryr, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, sp" +
+                "iovrride, \r\n                            pbovrride, yirsovrride, ourstyovrride, l" +
+                "aminateovrride, foilyearovrride, basicpp, perpp, peramount, basicamoun, agreerec" +
+                ", agreedte, onlinecuto, oprcperbk, oprcperbk2, dorecentry, \r\n                   " +
+                "         sdlstich, sdlstichamt, copiesovride, binvno, msstanqty, msstandtot, sch" +
+                "balance, parentpymt, nba, fldtype, isfolder, priceovrd, mlaminationamt, mlaminat" +
+                "ion, opinkpers, opfoilpers, \r\n                            opinkpersamt, opfoilpe" +
+                "rsamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, " +
+                "opinktamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulla" +
+                "damt, \r\n                            halfad, halfadmt, quarterad, quarteradamt, e" +
+                "ighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, halfadamt," +
+                " prcor, adcuto, webonly, freebooks\r\nFROM              bids\r\nWHERE          (schc" +
+                "ode = @schocode)\r\nORDER BY   contryear DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schocode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsBids.bidsDataTable dataTable) {
+        public virtual int Fill(dsBids.bidsDataTable dataTable, string schocode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((schocode == null)) {
+                throw new global::System.ArgumentNullException("schocode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schocode));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -6082,8 +6993,14 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsBids.bidsDataTable GetData() {
+        public virtual dsBids.bidsDataTable GetData(string schocode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((schocode == null)) {
+                throw new global::System.ArgumentNullException("schocode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schocode));
+            }
             dsBids.bidsDataTable dataTable = new dsBids.bidsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6706,29 +7623,201 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             tableMapping.ColumnMappings.Add("schname", "schname");
             tableMapping.ColumnMappings.Add("contryear", "contryear");
             tableMapping.ColumnMappings.Add("schcode", "schcode");
+            tableMapping.ColumnMappings.Add("cstatus", "cstatus");
+            tableMapping.ColumnMappings.Add("source", "source");
+            tableMapping.ColumnMappings.Add("sourdate", "sourdate");
+            tableMapping.ColumnMappings.Add("secsource", "secsource");
+            tableMapping.ColumnMappings.Add("contdate", "contdate");
+            tableMapping.ColumnMappings.Add("origsour", "origsour");
+            tableMapping.ColumnMappings.Add("origyear", "origyear");
+            tableMapping.ColumnMappings.Add("rebook", "rebook");
+            tableMapping.ColumnMappings.Add("rebookdte", "rebookdte");
+            tableMapping.ColumnMappings.Add("refby", "refby");
+            tableMapping.ColumnMappings.Add("enrollment", "enrollment");
+            tableMapping.ColumnMappings.Add("schaddr", "schaddr");
+            tableMapping.ColumnMappings.Add("schaddr2", "schaddr2");
+            tableMapping.ColumnMappings.Add("schcity", "schcity");
+            tableMapping.ColumnMappings.Add("schstate", "schstate");
+            tableMapping.ColumnMappings.Add("schzip", "schzip");
+            tableMapping.ColumnMappings.Add("schphone", "schphone");
+            tableMapping.ColumnMappings.Add("schfax", "schfax");
+            tableMapping.ColumnMappings.Add("schemail", "schemail");
+            tableMapping.ColumnMappings.Add("contfname", "contfname");
+            tableMapping.ColumnMappings.Add("contlname", "contlname");
+            tableMapping.ColumnMappings.Add("extrchg", "extrchg");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [cust] WHERE (([schname] = @Original_schname) AND ((@IsNull_contryear" +
                 " = 1 AND [contryear] IS NULL) OR ([contryear] = @Original_contryear)) AND ([schc" +
-                "ode] = @Original_schcode))";
+                "ode] = @Original_schcode) AND ((@IsNull_cstatus = 1 AND [cstatus] IS NULL) OR ([" +
+                "cstatus] = @Original_cstatus)) AND ((@IsNull_source = 1 AND [source] IS NULL) OR" +
+                " ([source] = @Original_source)) AND ((@IsNull_sourdate = 1 AND [sourdate] IS NUL" +
+                "L) OR ([sourdate] = @Original_sourdate)) AND ((@IsNull_secsource = 1 AND [secsou" +
+                "rce] IS NULL) OR ([secsource] = @Original_secsource)) AND ((@IsNull_contdate = 1" +
+                " AND [contdate] IS NULL) OR ([contdate] = @Original_contdate)) AND ((@IsNull_ori" +
+                "gsour = 1 AND [origsour] IS NULL) OR ([origsour] = @Original_origsour)) AND ((@I" +
+                "sNull_origyear = 1 AND [origyear] IS NULL) OR ([origyear] = @Original_origyear))" +
+                " AND ((@IsNull_rebook = 1 AND [rebook] IS NULL) OR ([rebook] = @Original_rebook)" +
+                ") AND ((@IsNull_rebookdte = 1 AND [rebookdte] IS NULL) OR ([rebookdte] = @Origin" +
+                "al_rebookdte)) AND ((@IsNull_refby = 1 AND [refby] IS NULL) OR ([refby] = @Origi" +
+                "nal_refby)) AND ((@IsNull_enrollment = 1 AND [enrollment] IS NULL) OR ([enrollme" +
+                "nt] = @Original_enrollment)) AND ([schaddr] = @Original_schaddr) AND ((@IsNull_s" +
+                "chaddr2 = 1 AND [schaddr2] IS NULL) OR ([schaddr2] = @Original_schaddr2)) AND ([" +
+                "schcity] = @Original_schcity) AND ([schstate] = @Original_schstate) AND ([schzip" +
+                "] = @Original_schzip) AND ((@IsNull_schphone = 1 AND [schphone] IS NULL) OR ([sc" +
+                "hphone] = @Original_schphone)) AND ((@IsNull_schfax = 1 AND [schfax] IS NULL) OR" +
+                " ([schfax] = @Original_schfax)) AND ((@IsNull_schemail = 1 AND [schemail] IS NUL" +
+                "L) OR ([schemail] = @Original_schemail)) AND ((@IsNull_contfname = 1 AND [contfn" +
+                "ame] IS NULL) OR ([contfname] = @Original_contfname)) AND ((@IsNull_contlname = " +
+                "1 AND [contlname] IS NULL) OR ([contlname] = @Original_contlname)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_contryear", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_contryear", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_cstatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cstatus", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_source", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_source", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_sourdate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "sourdate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_sourdate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "sourdate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_secsource", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "secsource", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_secsource", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "secsource", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_contdate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contdate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_contdate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contdate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_origsour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origsour", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_origsour", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origsour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_origyear", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origyear", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_origyear", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origyear", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_rebook", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebook", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_rebook", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebook", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_rebookdte", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebookdte", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_rebookdte", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebookdte", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_refby", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "refby", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_refby", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "refby", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_enrollment", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "enrollment", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_enrollment", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "enrollment", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schaddr", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schaddr2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr2", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schaddr2", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcity", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schstate", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schstate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schzip", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schzip", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schphone", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schphone", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schphone", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schphone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schfax", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schfax", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schfax", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schfax", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schemail", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schemail", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schemail", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schemail", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_contfname", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contfname", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_contfname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contfname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_contlname", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contlname", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_contlname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contlname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [cust] SET [schname] = @schname, [contryear] = @contryear, [schcode] = @schcode WHERE (([schname] = @Original_schname) AND ((@IsNull_contryear = 1 AND [contryear] IS NULL) OR ([contryear] = @Original_contryear)) AND ([schcode] = @Original_schcode));
-SELECT schname, contryear, schcode FROM cust WHERE (schcode = @schcode)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [cust] SET [schname] = @schname, [contryear] = @contryear, [schcode] = @sc" +
+                "hcode, [cstatus] = @cstatus, [source] = @source, [sourdate] = @sourdate, [secsou" +
+                "rce] = @secsource, [contdate] = @contdate, [origsour] = @origsour, [origyear] = " +
+                "@origyear, [rebook] = @rebook, [rebookdte] = @rebookdte, [refby] = @refby, [enro" +
+                "llment] = @enrollment, [schaddr] = @schaddr, [schaddr2] = @schaddr2, [schcity] =" +
+                " @schcity, [schstate] = @schstate, [schzip] = @schzip, [schphone] = @schphone, [" +
+                "schfax] = @schfax, [schemail] = @schemail, [contfname] = @contfname, [contlname]" +
+                " = @contlname, [extrchg] = @extrchg WHERE (([schname] = @Original_schname) AND (" +
+                "(@IsNull_contryear = 1 AND [contryear] IS NULL) OR ([contryear] = @Original_cont" +
+                "ryear)) AND ([schcode] = @Original_schcode) AND ((@IsNull_cstatus = 1 AND [cstat" +
+                "us] IS NULL) OR ([cstatus] = @Original_cstatus)) AND ((@IsNull_source = 1 AND [s" +
+                "ource] IS NULL) OR ([source] = @Original_source)) AND ((@IsNull_sourdate = 1 AND" +
+                " [sourdate] IS NULL) OR ([sourdate] = @Original_sourdate)) AND ((@IsNull_secsour" +
+                "ce = 1 AND [secsource] IS NULL) OR ([secsource] = @Original_secsource)) AND ((@I" +
+                "sNull_contdate = 1 AND [contdate] IS NULL) OR ([contdate] = @Original_contdate))" +
+                " AND ((@IsNull_origsour = 1 AND [origsour] IS NULL) OR ([origsour] = @Original_o" +
+                "rigsour)) AND ((@IsNull_origyear = 1 AND [origyear] IS NULL) OR ([origyear] = @O" +
+                "riginal_origyear)) AND ((@IsNull_rebook = 1 AND [rebook] IS NULL) OR ([rebook] =" +
+                " @Original_rebook)) AND ((@IsNull_rebookdte = 1 AND [rebookdte] IS NULL) OR ([re" +
+                "bookdte] = @Original_rebookdte)) AND ((@IsNull_refby = 1 AND [refby] IS NULL) OR" +
+                " ([refby] = @Original_refby)) AND ((@IsNull_enrollment = 1 AND [enrollment] IS N" +
+                "ULL) OR ([enrollment] = @Original_enrollment)) AND ([schaddr] = @Original_schadd" +
+                "r) AND ((@IsNull_schaddr2 = 1 AND [schaddr2] IS NULL) OR ([schaddr2] = @Original" +
+                "_schaddr2)) AND ([schcity] = @Original_schcity) AND ([schstate] = @Original_schs" +
+                "tate) AND ([schzip] = @Original_schzip) AND ((@IsNull_schphone = 1 AND [schphone" +
+                "] IS NULL) OR ([schphone] = @Original_schphone)) AND ((@IsNull_schfax = 1 AND [s" +
+                "chfax] IS NULL) OR ([schfax] = @Original_schfax)) AND ((@IsNull_schemail = 1 AND" +
+                " [schemail] IS NULL) OR ([schemail] = @Original_schemail)) AND ((@IsNull_contfna" +
+                "me = 1 AND [contfname] IS NULL) OR ([contfname] = @Original_contfname)) AND ((@I" +
+                "sNull_contlname = 1 AND [contlname] IS NULL) OR ([contlname] = @Original_contlna" +
+                "me)));\r\nSELECT schname, contryear, schcode, cstatus, source, sourdate, secsource" +
+                ", contdate, origsour, origyear, rebook, rebookdte, refby, enrollment, schaddr, s" +
+                "chaddr2, schcity, schstate, schzip, schphone, schfax, schemail, contfname, contl" +
+                "name, extrchg FROM cust WHERE (schcode = @schcode)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contryear", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cstatus", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sourdate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "sourdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@secsource", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "secsource", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contdate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@origsour", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origsour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@origyear", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origyear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebook", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebook", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebookdte", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebookdte", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@refby", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "refby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@enrollment", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "enrollment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schaddr", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schaddr2", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcity", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schstate", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schzip", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schphone", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schphone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schfax", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schemail", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contfname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contlname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrchg", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "extrchg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_contryear", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_contryear", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_cstatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cstatus", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_source", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_source", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_sourdate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "sourdate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_sourdate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "sourdate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_secsource", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "secsource", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_secsource", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "secsource", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_contdate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contdate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_contdate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contdate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_origsour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origsour", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_origsour", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origsour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_origyear", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origyear", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_origyear", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origyear", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_rebook", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebook", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_rebook", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebook", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_rebookdte", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebookdte", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_rebookdte", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebookdte", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_refby", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "refby", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_refby", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "refby", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_enrollment", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "enrollment", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_enrollment", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "enrollment", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schaddr", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schaddr2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr2", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schaddr2", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcity", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schstate", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schstate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schzip", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schzip", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schphone", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schphone", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schphone", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schphone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schfax", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schfax", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schfax", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schfax", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schemail", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schemail", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schemail", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schemail", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_contfname", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contfname", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_contfname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contfname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_contlname", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contlname", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_contlname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contlname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6744,16 +7833,26 @@ SELECT schname, contryear, schcode FROM cust WHERE (schcode = @schcode)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        schname, contryear, schcode\r\nFROM            cust";
+            this._commandCollection[0].CommandText = @"SELECT          schname, contryear, schcode, cstatus, source, sourdate, secsource, contdate, origsour, origyear, rebook, rebookdte, refby, enrollment, schaddr, schaddr2, schcity, schstate, schzip, 
+                            schphone, schfax, schemail, contfname, contlname, extrchg
+FROM              cust
+WHERE          (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsBids.custDataTable dataTable) {
+        public virtual int Fill(dsBids.custDataTable dataTable, string schcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((schcode == null)) {
+                throw new global::System.ArgumentNullException("schcode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schcode));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -6765,8 +7864,14 @@ SELECT schname, contryear, schcode FROM cust WHERE (schcode = @schcode)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsBids.custDataTable GetData() {
+        public virtual dsBids.custDataTable GetData(string schcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((schcode == null)) {
+                throw new global::System.ArgumentNullException("schcode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schcode));
+            }
             dsBids.custDataTable dataTable = new dsBids.custDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6805,7 +7910,31 @@ SELECT schname, contryear, schcode FROM cust WHERE (schcode = @schcode)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_schname, string Original_contryear, string Original_schcode) {
+        public virtual int Delete(
+                    string Original_schname, 
+                    string Original_contryear, 
+                    string Original_schcode, 
+                    string Original_cstatus, 
+                    string Original_source, 
+                    global::System.Nullable<global::System.DateTime> Original_sourdate, 
+                    string Original_secsource, 
+                    global::System.Nullable<global::System.DateTime> Original_contdate, 
+                    string Original_origsour, 
+                    string Original_origyear, 
+                    string Original_rebook, 
+                    global::System.Nullable<global::System.DateTime> Original_rebookdte, 
+                    string Original_refby, 
+                    global::System.Nullable<decimal> Original_enrollment, 
+                    string Original_schaddr, 
+                    string Original_schaddr2, 
+                    string Original_schcity, 
+                    string Original_schstate, 
+                    string Original_schzip, 
+                    string Original_schphone, 
+                    string Original_schfax, 
+                    string Original_schemail, 
+                    string Original_contfname, 
+                    string Original_contlname) {
             if ((Original_schname == null)) {
                 throw new global::System.ArgumentNullException("Original_schname");
             }
@@ -6825,6 +7954,166 @@ SELECT schname, contryear, schcode FROM cust WHERE (schcode = @schcode)";
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_schcode));
+            }
+            if ((Original_cstatus == null)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_cstatus));
+            }
+            if ((Original_source == null)) {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_source));
+            }
+            if ((Original_sourdate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((System.DateTime)(Original_sourdate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((Original_secsource == null)) {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_secsource));
+            }
+            if ((Original_contdate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((System.DateTime)(Original_contdate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((Original_origsour == null)) {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((string)(Original_origsour));
+            }
+            if ((Original_origyear == null)) {
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((string)(Original_origyear));
+            }
+            if ((Original_rebook == null)) {
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((string)(Original_rebook));
+            }
+            if ((Original_rebookdte.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((System.DateTime)(Original_rebookdte.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((Original_refby == null)) {
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((string)(Original_refby));
+            }
+            if ((Original_enrollment.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((decimal)(Original_enrollment.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((Original_schaddr == null)) {
+                throw new global::System.ArgumentNullException("Original_schaddr");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((string)(Original_schaddr));
+            }
+            if ((Original_schaddr2 == null)) {
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((string)(Original_schaddr2));
+            }
+            if ((Original_schcity == null)) {
+                throw new global::System.ArgumentNullException("Original_schcity");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((string)(Original_schcity));
+            }
+            if ((Original_schstate == null)) {
+                throw new global::System.ArgumentNullException("Original_schstate");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((string)(Original_schstate));
+            }
+            if ((Original_schzip == null)) {
+                throw new global::System.ArgumentNullException("Original_schzip");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((string)(Original_schzip));
+            }
+            if ((Original_schphone == null)) {
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[33].Value = ((string)(Original_schphone));
+            }
+            if ((Original_schfax == null)) {
+                this.Adapter.DeleteCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[35].Value = ((string)(Original_schfax));
+            }
+            if ((Original_schemail == null)) {
+                this.Adapter.DeleteCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[37].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[37].Value = ((string)(Original_schemail));
+            }
+            if ((Original_contfname == null)) {
+                this.Adapter.DeleteCommand.Parameters[38].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[39].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[38].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[39].Value = ((string)(Original_contfname));
+            }
+            if ((Original_contlname == null)) {
+                this.Adapter.DeleteCommand.Parameters[40].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[41].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[41].Value = ((string)(Original_contlname));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6846,7 +8135,56 @@ SELECT schname, contryear, schcode FROM cust WHERE (schcode = @schcode)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string schname, string contryear, string schcode, string Original_schname, string Original_contryear, string Original_schcode) {
+        public virtual int Update(
+                    string schname, 
+                    string contryear, 
+                    string schcode, 
+                    string cstatus, 
+                    string source, 
+                    global::System.Nullable<global::System.DateTime> sourdate, 
+                    string secsource, 
+                    global::System.Nullable<global::System.DateTime> contdate, 
+                    string origsour, 
+                    string origyear, 
+                    string rebook, 
+                    global::System.Nullable<global::System.DateTime> rebookdte, 
+                    string refby, 
+                    global::System.Nullable<decimal> enrollment, 
+                    string schaddr, 
+                    string schaddr2, 
+                    string schcity, 
+                    string schstate, 
+                    string schzip, 
+                    string schphone, 
+                    string schfax, 
+                    string schemail, 
+                    string contfname, 
+                    string contlname, 
+                    string extrchg, 
+                    string Original_schname, 
+                    string Original_contryear, 
+                    string Original_schcode, 
+                    string Original_cstatus, 
+                    string Original_source, 
+                    global::System.Nullable<global::System.DateTime> Original_sourdate, 
+                    string Original_secsource, 
+                    global::System.Nullable<global::System.DateTime> Original_contdate, 
+                    string Original_origsour, 
+                    string Original_origyear, 
+                    string Original_rebook, 
+                    global::System.Nullable<global::System.DateTime> Original_rebookdte, 
+                    string Original_refby, 
+                    global::System.Nullable<decimal> Original_enrollment, 
+                    string Original_schaddr, 
+                    string Original_schaddr2, 
+                    string Original_schcity, 
+                    string Original_schstate, 
+                    string Original_schzip, 
+                    string Original_schphone, 
+                    string Original_schfax, 
+                    string Original_schemail, 
+                    string Original_contfname, 
+                    string Original_contlname) {
             if ((schname == null)) {
                 throw new global::System.ArgumentNullException("schname");
             }
@@ -6865,25 +8203,317 @@ SELECT schname, contryear, schcode FROM cust WHERE (schcode = @schcode)";
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(schcode));
             }
+            if ((cstatus == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(cstatus));
+            }
+            if ((source == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(source));
+            }
+            if ((sourdate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(sourdate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((secsource == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(secsource));
+            }
+            if ((contdate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(contdate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((origsour == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(origsour));
+            }
+            if ((origyear == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(origyear));
+            }
+            if ((rebook == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(rebook));
+            }
+            if ((rebookdte.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(rebookdte.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((refby == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(refby));
+            }
+            if ((enrollment.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(enrollment.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((schaddr == null)) {
+                throw new global::System.ArgumentNullException("schaddr");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(schaddr));
+            }
+            if ((schaddr2 == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(schaddr2));
+            }
+            if ((schcity == null)) {
+                throw new global::System.ArgumentNullException("schcity");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(schcity));
+            }
+            if ((schstate == null)) {
+                throw new global::System.ArgumentNullException("schstate");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(schstate));
+            }
+            if ((schzip == null)) {
+                throw new global::System.ArgumentNullException("schzip");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(schzip));
+            }
+            if ((schphone == null)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(schphone));
+            }
+            if ((schfax == null)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(schfax));
+            }
+            if ((schemail == null)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(schemail));
+            }
+            if ((contfname == null)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(contfname));
+            }
+            if ((contlname == null)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(contlname));
+            }
+            if ((extrchg == null)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(extrchg));
+            }
             if ((Original_schname == null)) {
                 throw new global::System.ArgumentNullException("Original_schname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_schname));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_schname));
             }
             if ((Original_contryear == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_contryear));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_contryear));
             }
             if ((Original_schcode == null)) {
                 throw new global::System.ArgumentNullException("Original_schcode");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_schcode));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_schcode));
+            }
+            if ((Original_cstatus == null)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_cstatus));
+            }
+            if ((Original_source == null)) {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_source));
+            }
+            if ((Original_sourdate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((System.DateTime)(Original_sourdate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            if ((Original_secsource == null)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_secsource));
+            }
+            if ((Original_contdate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((System.DateTime)(Original_contdate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((Original_origsour == null)) {
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_origsour));
+            }
+            if ((Original_origyear == null)) {
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_origyear));
+            }
+            if ((Original_rebook == null)) {
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((string)(Original_rebook));
+            }
+            if ((Original_rebookdte.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((System.DateTime)(Original_rebookdte.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
+            }
+            if ((Original_refby == null)) {
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(Original_refby));
+            }
+            if ((Original_enrollment.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((decimal)(Original_enrollment.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
+            }
+            if ((Original_schaddr == null)) {
+                throw new global::System.ArgumentNullException("Original_schaddr");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((string)(Original_schaddr));
+            }
+            if ((Original_schaddr2 == null)) {
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((string)(Original_schaddr2));
+            }
+            if ((Original_schcity == null)) {
+                throw new global::System.ArgumentNullException("Original_schcity");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((string)(Original_schcity));
+            }
+            if ((Original_schstate == null)) {
+                throw new global::System.ArgumentNullException("Original_schstate");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((string)(Original_schstate));
+            }
+            if ((Original_schzip == null)) {
+                throw new global::System.ArgumentNullException("Original_schzip");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((string)(Original_schzip));
+            }
+            if ((Original_schphone == null)) {
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[58].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((string)(Original_schphone));
+            }
+            if ((Original_schfax == null)) {
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[60].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((string)(Original_schfax));
+            }
+            if ((Original_schemail == null)) {
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[62].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((string)(Original_schemail));
+            }
+            if ((Original_contfname == null)) {
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[64].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((string)(Original_contfname));
+            }
+            if ((Original_contlname == null)) {
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[66].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((string)(Original_contlname));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6905,8 +8535,56 @@ SELECT schname, contryear, schcode FROM cust WHERE (schcode = @schcode)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string schname, string contryear, string Original_schname, string Original_contryear, string Original_schcode) {
-            return this.Update(schname, contryear, Original_schcode, Original_schname, Original_contryear, Original_schcode);
+        public virtual int Update(
+                    string schname, 
+                    string contryear, 
+                    string cstatus, 
+                    string source, 
+                    global::System.Nullable<global::System.DateTime> sourdate, 
+                    string secsource, 
+                    global::System.Nullable<global::System.DateTime> contdate, 
+                    string origsour, 
+                    string origyear, 
+                    string rebook, 
+                    global::System.Nullable<global::System.DateTime> rebookdte, 
+                    string refby, 
+                    global::System.Nullable<decimal> enrollment, 
+                    string schaddr, 
+                    string schaddr2, 
+                    string schcity, 
+                    string schstate, 
+                    string schzip, 
+                    string schphone, 
+                    string schfax, 
+                    string schemail, 
+                    string contfname, 
+                    string contlname, 
+                    string extrchg, 
+                    string Original_schname, 
+                    string Original_contryear, 
+                    string Original_schcode, 
+                    string Original_cstatus, 
+                    string Original_source, 
+                    global::System.Nullable<global::System.DateTime> Original_sourdate, 
+                    string Original_secsource, 
+                    global::System.Nullable<global::System.DateTime> Original_contdate, 
+                    string Original_origsour, 
+                    string Original_origyear, 
+                    string Original_rebook, 
+                    global::System.Nullable<global::System.DateTime> Original_rebookdte, 
+                    string Original_refby, 
+                    global::System.Nullable<decimal> Original_enrollment, 
+                    string Original_schaddr, 
+                    string Original_schaddr2, 
+                    string Original_schcity, 
+                    string Original_schstate, 
+                    string Original_schzip, 
+                    string Original_schphone, 
+                    string Original_schfax, 
+                    string Original_schemail, 
+                    string Original_contfname, 
+                    string Original_contlname) {
+            return this.Update(schname, contryear, Original_schcode, cstatus, source, sourdate, secsource, contdate, origsour, origyear, rebook, rebookdte, refby, enrollment, schaddr, schaddr2, schcity, schstate, schzip, schphone, schfax, schemail, contfname, contlname, extrchg, Original_schname, Original_contryear, Original_schcode, Original_cstatus, Original_source, Original_sourdate, Original_secsource, Original_contdate, Original_origsour, Original_origyear, Original_rebook, Original_rebookdte, Original_refby, Original_enrollment, Original_schaddr, Original_schaddr2, Original_schcity, Original_schstate, Original_schzip, Original_schphone, Original_schfax, Original_schemail, Original_contfname, Original_contlname);
         }
     }
     

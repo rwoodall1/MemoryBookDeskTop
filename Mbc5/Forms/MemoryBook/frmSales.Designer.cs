@@ -691,7 +691,7 @@
             invnoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             invnoLabel.AutoSize = true;
             invnoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            invnoLabel.Location = new System.Drawing.Point(985, 36);
+            invnoLabel.Location = new System.Drawing.Point(971, 36);
             invnoLabel.Name = "invnoLabel";
             invnoLabel.Size = new System.Drawing.Size(86, 16);
             invnoLabel.TabIndex = 11;
@@ -1727,7 +1727,7 @@
             this.panel6.Controls.Add(this.btnCreateWIP);
             this.panel6.Controls.Add(this.btnPrntInvoice);
             this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel6.Location = new System.Drawing.Point(890, 515);
+            this.panel6.Location = new System.Drawing.Point(857, 515);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(274, 96);
             this.panel6.TabIndex = 155;
@@ -1768,7 +1768,7 @@
             this.panel5.Controls.Add(this.btnPaymentNotRec);
             this.panel5.Controls.Add(this.btnRemove);
             this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(843, 236);
+            this.panel5.Location = new System.Drawing.Point(810, 236);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(321, 85);
             this.panel5.TabIndex = 154;
@@ -1809,7 +1809,7 @@
             this.txtPOAmt.Location = new System.Drawing.Point(727, 591);
             this.txtPOAmt.Name = "txtPOAmt";
             this.txtPOAmt.ReadOnly = true;
-            this.txtPOAmt.Size = new System.Drawing.Size(30, 20);
+            this.txtPOAmt.Size = new System.Drawing.Size(0, 20);
             this.txtPOAmt.TabIndex = 17;
             // 
             // txtPayments
@@ -1821,14 +1821,14 @@
             this.txtPayments.Location = new System.Drawing.Point(727, 568);
             this.txtPayments.Name = "txtPayments";
             this.txtPayments.ReadOnly = true;
-            this.txtPayments.Size = new System.Drawing.Size(30, 20);
+            this.txtPayments.Size = new System.Drawing.Size(0, 20);
             this.txtPayments.TabIndex = 16;
             // 
             // txtInvoSrch
             // 
             this.txtInvoSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtInvoSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoSrch.Location = new System.Drawing.Point(1048, 63);
+            this.txtInvoSrch.Location = new System.Drawing.Point(1015, 63);
             this.txtInvoSrch.MaxLength = 5;
             this.txtInvoSrch.Name = "txtInvoSrch";
             this.txtInvoSrch.Size = new System.Drawing.Size(106, 20);
@@ -1838,7 +1838,7 @@
             // 
             this.txtPoSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPoSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPoSrch.Location = new System.Drawing.Point(1048, 86);
+            this.txtPoSrch.Location = new System.Drawing.Point(1015, 86);
             this.txtPoSrch.Name = "txtPoSrch";
             this.txtPoSrch.Size = new System.Drawing.Size(106, 20);
             this.txtPoSrch.TabIndex = 11;
@@ -1848,7 +1848,7 @@
             this.btnInvSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInvSrch.AutoSize = true;
             this.btnInvSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvSrch.Location = new System.Drawing.Point(932, 63);
+            this.btnInvSrch.Location = new System.Drawing.Point(899, 63);
             this.btnInvSrch.Name = "btnInvSrch";
             this.btnInvSrch.Size = new System.Drawing.Size(111, 23);
             this.btnInvSrch.TabIndex = 26;
@@ -1861,7 +1861,7 @@
             this.btnPoSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPoSrch.AutoSize = true;
             this.btnPoSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPoSrch.Location = new System.Drawing.Point(957, 86);
+            this.btnPoSrch.Location = new System.Drawing.Point(924, 86);
             this.btnPoSrch.Name = "btnPoSrch";
             this.btnPoSrch.Size = new System.Drawing.Size(86, 23);
             this.btnPoSrch.TabIndex = 28;
@@ -1891,7 +1891,7 @@
             this.dataGridViewTextBoxColumn3});
             this.invHstDataGridView.DataSource = this.invHstBindingSource;
             this.invHstDataGridView.EnableHeadersVisualStyles = false;
-            this.invHstDataGridView.Location = new System.Drawing.Point(843, 117);
+            this.invHstDataGridView.Location = new System.Drawing.Point(810, 117);
             this.invHstDataGridView.Name = "invHstDataGridView";
             this.invHstDataGridView.ReadOnly = true;
             this.invHstDataGridView.Size = new System.Drawing.Size(321, 113);
@@ -1952,7 +1952,7 @@
             this.saletaxTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saletaxTextBox.Location = new System.Drawing.Point(806, 540);
             this.saletaxTextBox.Name = "saletaxTextBox";
-            this.saletaxTextBox.Size = new System.Drawing.Size(30, 20);
+            this.saletaxTextBox.Size = new System.Drawing.Size(0, 20);
             this.saletaxTextBox.TabIndex = 15;
             this.saletaxTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.saletaxTextBox_Validating);
             // 
@@ -1976,7 +1976,7 @@
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(548, 391);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(306, 119);
+            this.panel4.Size = new System.Drawing.Size(273, 119);
             this.panel4.TabIndex = 137;
             // 
             // txtOtherChrg
@@ -1984,7 +1984,7 @@
             this.txtOtherChrg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOtherChrg.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "adjaftr2", true));
             this.txtOtherChrg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOtherChrg.Location = new System.Drawing.Point(217, 56);
+            this.txtOtherChrg.Location = new System.Drawing.Point(184, 56);
             this.txtOtherChrg.Name = "txtOtherChrg";
             this.txtOtherChrg.Size = new System.Drawing.Size(70, 20);
             this.txtOtherChrg.TabIndex = 5;
@@ -2000,7 +2000,7 @@
             this.textBox5.Location = new System.Drawing.Point(88, 56);
             this.textBox5.MaxLength = 40;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(123, 20);
+            this.textBox5.Size = new System.Drawing.Size(90, 20);
             this.textBox5.TabIndex = 4;
             // 
             // txtOtherChrg2
@@ -2008,7 +2008,7 @@
             this.txtOtherChrg2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOtherChrg2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "desc22tot", true));
             this.txtOtherChrg2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOtherChrg2.Location = new System.Drawing.Point(217, 78);
+            this.txtOtherChrg2.Location = new System.Drawing.Point(184, 78);
             this.txtOtherChrg2.Name = "txtOtherChrg2";
             this.txtOtherChrg2.Size = new System.Drawing.Size(70, 20);
             this.txtOtherChrg2.TabIndex = 7;
@@ -2024,7 +2024,7 @@
             this.desc22TextBox.Location = new System.Drawing.Point(88, 78);
             this.desc22TextBox.MaxLength = 40;
             this.desc22TextBox.Name = "desc22TextBox";
-            this.desc22TextBox.Size = new System.Drawing.Size(123, 20);
+            this.desc22TextBox.Size = new System.Drawing.Size(90, 20);
             this.desc22TextBox.TabIndex = 6;
             // 
             // txtCredits2
@@ -2032,7 +2032,7 @@
             this.txtCredits2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCredits2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "adjaftr2", true));
             this.txtCredits2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCredits2.Location = new System.Drawing.Point(217, 33);
+            this.txtCredits2.Location = new System.Drawing.Point(184, 33);
             this.txtCredits2.Name = "txtCredits2";
             this.txtCredits2.Size = new System.Drawing.Size(70, 20);
             this.txtCredits2.TabIndex = 3;
@@ -2048,7 +2048,7 @@
             this.cred_etcTextBox.Location = new System.Drawing.Point(88, 10);
             this.cred_etcTextBox.MaxLength = 40;
             this.cred_etcTextBox.Name = "cred_etcTextBox";
-            this.cred_etcTextBox.Size = new System.Drawing.Size(123, 20);
+            this.cred_etcTextBox.Size = new System.Drawing.Size(90, 20);
             this.cred_etcTextBox.TabIndex = 0;
             // 
             // cred_etcTextBox1
@@ -2060,7 +2060,7 @@
             this.cred_etcTextBox1.Location = new System.Drawing.Point(88, 33);
             this.cred_etcTextBox1.MaxLength = 40;
             this.cred_etcTextBox1.Name = "cred_etcTextBox1";
-            this.cred_etcTextBox1.Size = new System.Drawing.Size(123, 20);
+            this.cred_etcTextBox1.Size = new System.Drawing.Size(90, 20);
             this.cred_etcTextBox1.TabIndex = 2;
             // 
             // txtCredits
@@ -2068,7 +2068,7 @@
             this.txtCredits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCredits.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "adjaftr", true));
             this.txtCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCredits.Location = new System.Drawing.Point(217, 10);
+            this.txtCredits.Location = new System.Drawing.Point(184, 10);
             this.txtCredits.Name = "txtCredits";
             this.txtCredits.Size = new System.Drawing.Size(70, 20);
             this.txtCredits.TabIndex = 1;
@@ -2433,7 +2433,7 @@
             this.pnlMiscDiscCred.Controls.Add(this.txtDesc4);
             this.pnlMiscDiscCred.Location = new System.Drawing.Point(505, 117);
             this.pnlMiscDiscCred.Name = "pnlMiscDiscCred";
-            this.pnlMiscDiscCred.Size = new System.Drawing.Size(325, 175);
+            this.pnlMiscDiscCred.Size = new System.Drawing.Size(292, 175);
             this.pnlMiscDiscCred.TabIndex = 99;
             // 
             // label6
@@ -2456,7 +2456,7 @@
             this.txtClrDesc.Location = new System.Drawing.Point(7, 32);
             this.txtClrDesc.MaxLength = 40;
             this.txtClrDesc.Name = "txtClrDesc";
-            this.txtClrDesc.Size = new System.Drawing.Size(246, 20);
+            this.txtClrDesc.Size = new System.Drawing.Size(213, 20);
             this.txtClrDesc.TabIndex = 0;
             // 
             // txtClrTot
@@ -2465,7 +2465,7 @@
             this.txtClrTot.BackColor = System.Drawing.Color.Aqua;
             this.txtClrTot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "clrpgtot", true));
             this.txtClrTot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClrTot.Location = new System.Drawing.Point(257, 32);
+            this.txtClrTot.Location = new System.Drawing.Point(224, 32);
             this.txtClrTot.Name = "txtClrTot";
             this.txtClrTot.Size = new System.Drawing.Size(53, 20);
             this.txtClrTot.TabIndex = 1;
@@ -2477,7 +2477,7 @@
             this.txtMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMisc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "misc", true));
             this.txtMisc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMisc.Location = new System.Drawing.Point(257, 55);
+            this.txtMisc.Location = new System.Drawing.Point(224, 55);
             this.txtMisc.Name = "txtMisc";
             this.txtMisc.Size = new System.Drawing.Size(53, 20);
             this.txtMisc.TabIndex = 3;
@@ -2493,7 +2493,7 @@
             this.txtMdesc.Location = new System.Drawing.Point(7, 55);
             this.txtMdesc.MaxLength = 40;
             this.txtMdesc.Name = "txtMdesc";
-            this.txtMdesc.Size = new System.Drawing.Size(246, 20);
+            this.txtMdesc.Size = new System.Drawing.Size(213, 20);
             this.txtMdesc.TabIndex = 2;
             // 
             // txtDesc1amt
@@ -2501,7 +2501,7 @@
             this.txtDesc1amt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDesc1amt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "desc1tot", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
             this.txtDesc1amt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesc1amt.Location = new System.Drawing.Point(257, 78);
+            this.txtDesc1amt.Location = new System.Drawing.Point(224, 78);
             this.txtDesc1amt.Name = "txtDesc1amt";
             this.txtDesc1amt.Size = new System.Drawing.Size(53, 20);
             this.txtDesc1amt.TabIndex = 5;
@@ -2517,7 +2517,7 @@
             this.txtDesc1.Location = new System.Drawing.Point(7, 78);
             this.txtDesc1.MaxLength = 40;
             this.txtDesc1.Name = "txtDesc1";
-            this.txtDesc1.Size = new System.Drawing.Size(246, 20);
+            this.txtDesc1.Size = new System.Drawing.Size(213, 20);
             this.txtDesc1.TabIndex = 4;
             // 
             // txtDesc3tot
@@ -2525,7 +2525,7 @@
             this.txtDesc3tot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDesc3tot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "desc3tot", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
             this.txtDesc3tot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesc3tot.Location = new System.Drawing.Point(257, 101);
+            this.txtDesc3tot.Location = new System.Drawing.Point(224, 101);
             this.txtDesc3tot.Name = "txtDesc3tot";
             this.txtDesc3tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc3tot.TabIndex = 7;
@@ -2541,7 +2541,7 @@
             this.txtDesc3.Location = new System.Drawing.Point(7, 101);
             this.txtDesc3.MaxLength = 40;
             this.txtDesc3.Name = "txtDesc3";
-            this.txtDesc3.Size = new System.Drawing.Size(246, 20);
+            this.txtDesc3.Size = new System.Drawing.Size(213, 20);
             this.txtDesc3.TabIndex = 6;
             // 
             // txtDesc4tot
@@ -2549,7 +2549,7 @@
             this.txtDesc4tot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDesc4tot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "desc4tot", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
             this.txtDesc4tot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesc4tot.Location = new System.Drawing.Point(257, 125);
+            this.txtDesc4tot.Location = new System.Drawing.Point(224, 125);
             this.txtDesc4tot.Name = "txtDesc4tot";
             this.txtDesc4tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc4tot.TabIndex = 9;
@@ -2565,7 +2565,7 @@
             this.txtDesc4.Location = new System.Drawing.Point(7, 125);
             this.txtDesc4.MaxLength = 40;
             this.txtDesc4.Name = "txtDesc4";
-            this.txtDesc4.Size = new System.Drawing.Size(246, 20);
+            this.txtDesc4.Size = new System.Drawing.Size(213, 20);
             this.txtDesc4.TabIndex = 8;
             // 
             // panel3
@@ -3060,7 +3060,7 @@
             this.lblInvoice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "invno", true));
             this.lblInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvoice.ForeColor = System.Drawing.Color.Blue;
-            this.lblInvoice.Location = new System.Drawing.Point(1078, 35);
+            this.lblInvoice.Location = new System.Drawing.Point(1064, 35);
             this.lblInvoice.Name = "lblInvoice";
             this.lblInvoice.Size = new System.Drawing.Size(17, 17);
             this.lblInvoice.TabIndex = 12;
@@ -3077,7 +3077,7 @@
             this.txtExtChrg.Multiline = true;
             this.txtExtChrg.Name = "txtExtChrg";
             this.txtExtChrg.ReadOnly = true;
-            this.txtExtChrg.Size = new System.Drawing.Size(256, 40);
+            this.txtExtChrg.Size = new System.Drawing.Size(223, 40);
             this.txtExtChrg.TabIndex = 12;
             // 
             // cmbYrDiscountAmt

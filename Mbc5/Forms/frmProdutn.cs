@@ -65,7 +65,9 @@ namespace Mbc5.Forms
 
 			Fill();
 			SetShipLabel();
-			CurrentProdNo = lblProdNo.Text;
+            SetEmail();
+
+            CurrentProdNo = lblProdNo.Text;
 
 		}
 
@@ -123,6 +125,7 @@ namespace Mbc5.Forms
 		}
 		private void SetEmail()
 		{
+            
 			SchEmail = dsProdutn.cust.Rows[0].IsNull("schemail") ? null : dsProdutn.cust.Rows[0]["schemail"].ToString().Trim();
 			ContactEmail = dsProdutn.cust.Rows[0].IsNull("contemail") ? null : dsProdutn.cust.Rows[0]["contemail"].ToString().Trim();
 			BcontactEmail = dsProdutn.cust.Rows[0].IsNull("bcontemail") ? null : dsProdutn.cust.Rows[0]["bcontemail"].ToString().Trim();
@@ -145,6 +148,7 @@ namespace Mbc5.Forms
 			{
 				vAllEmails.Add(CcontactEmail);
 			}
+            AllEmails = vAllEmails;
 
 		}
 
@@ -820,7 +824,7 @@ namespace Mbc5.Forms
 				type = EmailType.Meridian;
 			}
 
-			emailHelper.SendOutLookEmail(subject, AllEmails, "", body, type);
+			emailHelper.SendOutLookEmail(subject, this.AllEmails, "", body, type);
 		}
 
         private void btnBinderyEmail_Click(object sender, EventArgs e)

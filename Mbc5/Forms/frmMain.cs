@@ -252,11 +252,24 @@ namespace Mbc5.Forms
         private void bidsToolStripMenuItem_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
 
-            frmBids frmBids = new frmBids(this.ApplicationUser);
-            frmBids.MdiParent = this;
-            frmBids.Show();
-            this.Cursor = Cursors.Default;
+            if (this.ActiveMdiChild == null)
+            {
+                frmBids frmBids = new frmBids(this.ApplicationUser);
+                frmBids.MdiParent = this;
+                frmBids.Show();
+                this.Cursor = Cursors.Default;
+
+
             }
+            else
+            {               
+                string vSchcode = GetSchcode();
+                frmBids frmSales = new frmBids(this.ApplicationUser, vSchcode);
+                frmSales.MdiParent = this;
+                frmSales.Show();
+                this.Cursor = Cursors.Default;
+            }
+        }
 
         private void mbidsToolStripMenuItem_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
