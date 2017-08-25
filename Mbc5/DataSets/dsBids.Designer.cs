@@ -653,6 +653,12 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnfreebooks;
             
+            private global::System.Data.DataColumn columnIconCopies;
+            
+            private global::System.Data.DataColumn columnextrchg;
+            
+            private global::System.Data.DataColumn columnIconAmt;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bidsDataTable() {
@@ -2016,6 +2022,30 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IconCopiesColumn {
+                get {
+                    return this.columnIconCopies;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn extrchgColumn {
+                get {
+                    return this.columnextrchg;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IconAmtColumn {
+                get {
+                    return this.columnIconAmt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2217,7 +2247,10 @@ namespace Mbc5.DataSets {
                         decimal prcor, 
                         System.DateTime adcuto, 
                         bool webonly, 
-                        int freebooks) {
+                        int freebooks, 
+                        int IconCopies, 
+                        string extrchg, 
+                        decimal IconAmt) {
                 bidsRow rowbidsRow = ((bidsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schname,
@@ -2385,7 +2418,10 @@ namespace Mbc5.DataSets {
                         prcor,
                         adcuto,
                         webonly,
-                        freebooks};
+                        freebooks,
+                        IconCopies,
+                        extrchg,
+                        IconAmt};
                 if ((parentcustRowBycust_bids != null)) {
                     columnValuesArray[1] = parentcustRowBycust_bids[2];
                 }
@@ -2577,6 +2613,9 @@ namespace Mbc5.DataSets {
                 this.columnadcuto = base.Columns["adcuto"];
                 this.columnwebonly = base.Columns["webonly"];
                 this.columnfreebooks = base.Columns["freebooks"];
+                this.columnIconCopies = base.Columns["IconCopies"];
+                this.columnextrchg = base.Columns["extrchg"];
+                this.columnIconAmt = base.Columns["IconAmt"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2914,6 +2953,12 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnwebonly);
                 this.columnfreebooks = new global::System.Data.DataColumn("freebooks", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfreebooks);
+                this.columnIconCopies = new global::System.Data.DataColumn("IconCopies", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIconCopies);
+                this.columnextrchg = new global::System.Data.DataColumn("extrchg", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnextrchg);
+                this.columnIconAmt = new global::System.Data.DataColumn("IconAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIconAmt);
                 this.columnschname.AllowDBNull = false;
                 this.columnschname.MaxLength = 34;
                 this.columnschcode.AllowDBNull = false;
@@ -3102,6 +3147,7 @@ namespace Mbc5.DataSets {
                 this.columnadcuto.AllowDBNull = false;
                 this.columnwebonly.AllowDBNull = false;
                 this.columnfreebooks.AllowDBNull = false;
+                this.columnextrchg.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5715,6 +5761,54 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int IconCopies {
+                get {
+                    try {
+                        return ((int)(this[this.tablebids.IconCopiesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IconCopies\' in table \'bids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablebids.IconCopiesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string extrchg {
+                get {
+                    try {
+                        return ((string)(this[this.tablebids.extrchgColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'extrchg\' in table \'bids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablebids.extrchgColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal IconAmt {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablebids.IconAmtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IconAmt\' in table \'bids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablebids.IconAmtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public custRow custRow {
                 get {
                     return ((custRow)(this.GetParentRow(this.Table.ParentRelations["cust_bids"])));
@@ -5722,6 +5816,42 @@ namespace Mbc5.DataSets {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["cust_bids"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIconCopiesNull() {
+                return this.IsNull(this.tablebids.IconCopiesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIconCopiesNull() {
+                this[this.tablebids.IconCopiesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsextrchgNull() {
+                return this.IsNull(this.tablebids.extrchgColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetextrchgNull() {
+                this[this.tablebids.extrchgColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIconAmtNull() {
+                return this.IsNull(this.tablebids.IconAmtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIconAmtNull() {
+                this[this.tablebids.IconAmtColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6708,6 +6838,9 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             tableMapping.ColumnMappings.Add("adcuto", "adcuto");
             tableMapping.ColumnMappings.Add("webonly", "webonly");
             tableMapping.ColumnMappings.Add("freebooks", "freebooks");
+            tableMapping.ColumnMappings.Add("IconCopies", "IconCopies");
+            tableMapping.ColumnMappings.Add("extrchg", "extrchg");
+            tableMapping.ColumnMappings.Add("IconAmt", "IconAmt");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -6735,30 +6868,30 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                 "pinktamt], [opink], [yrdiscount], [luvlines], [yrdiscountamt], [luvlineamt], [fu" +
                 "llad], [fulladamt], [halfad], [halfadmt], [quarterad], [quarteradamt], [eighthad" +
                 "], [eighthadamt], [adline], [cred_etc2], [desc22], [adjaftr2], [desc22tot], [hal" +
-                "fadamt], [prcor], [adcuto], [webonly], [freebooks]) VALUES (@schname, @schcode, " +
-                "@booktype, @qtedate, @contryear, @nopages, @nocopies, @book_ea, @book_price, @pr" +
-                "yn, @prof, @coyn, @conven, @specea, @speccvr, @scovrde, @layn, @laminate, @peyn," +
-                " @perfbind, @foilck, @foilamt, @insck, @insamt, @spirck, @spiramt, @hdbky_n, @ha" +
-                "rdback, @casey_n, @caseamt, @customy_n, @customized, @misc, @mdesc, @sbtot, @dc1" +
-                ", @dp1, @disc1, @dc2, @dp2, @disc2, @dp3desc, @dp3, @disc3, @dp4, @disc4, @cred_" +
-                "etc, @adjbef, @adjaftr, @fbkprc, @ftotprc, @source, @xtrabkno, @xtrabkprc, @desc" +
-                "1, @desc1tot, @desc2, @desc2tot, @ponum, @newprice, @schout, @allclrck, @allclra" +
-                "mt, @smemo, @oa, @massmail, @inkclr, @foiladamt, @desc3, @desc3tot, @desc4, @des" +
-                "c4tot, @clrpgdesc, @clrpgtot, @noclrpgr, @glspaper, @glsamt, @acovrde, @bpovrde," +
-                " @bpyear, @themck, @themamt, @yirschool, @story, @supplements, @yiramt, @storyam" +
-                "t, @suppamt, @persamount, @perstotal, @perscopies, @oursupp, @oursuppamt, @ourov" +
-                "rride, @dp1desc, @ordagryr, @myovrride, @hbovrride, @profovrride, @conovrride, @" +
-                "themovrride, @cbovrride, @spiovrride, @pbovrride, @yirsovrride, @ourstyovrride, " +
-                "@laminateovrride, @foilyearovrride, @basicpp, @perpp, @peramount, @basicamoun, @" +
-                "agreerec, @agreedte, @onlinecuto, @oprcperbk, @oprcperbk2, @dorecentry, @sdlstic" +
-                "h, @sdlstichamt, @copiesovride, @binvno, @msstanqty, @msstandtot, @schbalance, @" +
-                "parentpymt, @nba, @fldtype, @isfolder, @priceovrd, @mlaminationamt, @mlamination" +
-                ", @opinkpers, @opfoilpers, @opinkpersamt, @opfoilpersamt, @oppicpers, @oppicpers" +
-                "amt, @opcustom, @opcustomamt, @opfoiltxtamt, @opfoiltxt, @opinktamt, @opink, @yr" +
-                "discount, @luvlines, @yrdiscountamt, @luvlineamt, @fullad, @fulladamt, @halfad, " +
-                "@halfadmt, @quarterad, @quarteradamt, @eighthad, @eighthadamt, @adline, @cred_et" +
-                "c2, @desc22, @adjaftr2, @desc22tot, @halfadamt, @prcor, @adcuto, @webonly, @free" +
-                "books)";
+                "fadamt], [prcor], [adcuto], [webonly], [freebooks], [IconCopies], [extrchg], [Ic" +
+                "onAmt]) VALUES (@schname, @schcode, @booktype, @qtedate, @contryear, @nopages, @" +
+                "nocopies, @book_ea, @book_price, @pryn, @prof, @coyn, @conven, @specea, @speccvr" +
+                ", @scovrde, @layn, @laminate, @peyn, @perfbind, @foilck, @foilamt, @insck, @insa" +
+                "mt, @spirck, @spiramt, @hdbky_n, @hardback, @casey_n, @caseamt, @customy_n, @cus" +
+                "tomized, @misc, @mdesc, @sbtot, @dc1, @dp1, @disc1, @dc2, @dp2, @disc2, @dp3desc" +
+                ", @dp3, @disc3, @dp4, @disc4, @cred_etc, @adjbef, @adjaftr, @fbkprc, @ftotprc, @" +
+                "source, @xtrabkno, @xtrabkprc, @desc1, @desc1tot, @desc2, @desc2tot, @ponum, @ne" +
+                "wprice, @schout, @allclrck, @allclramt, @smemo, @oa, @massmail, @inkclr, @foilad" +
+                "amt, @desc3, @desc3tot, @desc4, @desc4tot, @clrpgdesc, @clrpgtot, @noclrpgr, @gl" +
+                "spaper, @glsamt, @acovrde, @bpovrde, @bpyear, @themck, @themamt, @yirschool, @st" +
+                "ory, @supplements, @yiramt, @storyamt, @suppamt, @persamount, @perstotal, @persc" +
+                "opies, @oursupp, @oursuppamt, @ourovrride, @dp1desc, @ordagryr, @myovrride, @hbo" +
+                "vrride, @profovrride, @conovrride, @themovrride, @cbovrride, @spiovrride, @pbovr" +
+                "ride, @yirsovrride, @ourstyovrride, @laminateovrride, @foilyearovrride, @basicpp" +
+                ", @perpp, @peramount, @basicamoun, @agreerec, @agreedte, @onlinecuto, @oprcperbk" +
+                ", @oprcperbk2, @dorecentry, @sdlstich, @sdlstichamt, @copiesovride, @binvno, @ms" +
+                "stanqty, @msstandtot, @schbalance, @parentpymt, @nba, @fldtype, @isfolder, @pric" +
+                "eovrd, @mlaminationamt, @mlamination, @opinkpers, @opfoilpers, @opinkpersamt, @o" +
+                "pfoilpersamt, @oppicpers, @oppicpersamt, @opcustom, @opcustomamt, @opfoiltxtamt," +
+                " @opfoiltxt, @opinktamt, @opink, @yrdiscount, @luvlines, @yrdiscountamt, @luvlin" +
+                "eamt, @fullad, @fulladamt, @halfad, @halfadmt, @quarterad, @quarteradamt, @eight" +
+                "had, @eighthadamt, @adline, @cred_etc2, @desc22, @adjaftr2, @desc22tot, @halfada" +
+                "mt, @prcor, @adcuto, @webonly, @freebooks, @IconCopies, @extrchg, @IconAmt)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6926,6 +7059,9 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adcuto", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "adcuto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@webonly", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "webonly", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@freebooks", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freebooks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconCopies", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IconCopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrchg", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "extrchg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 9, 2, "IconAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6964,8 +7100,9 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                 "opinktamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulla" +
                 "damt, \r\n                            halfad, halfadmt, quarterad, quarteradamt, e" +
                 "ighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, halfadamt," +
-                " prcor, adcuto, webonly, freebooks\r\nFROM              bids\r\nWHERE          (schc" +
-                "ode = @schocode)\r\nORDER BY   contryear DESC";
+                " prcor, adcuto, webonly, freebooks, IconCopies, extrchg, \r\n                     " +
+                "       IconAmt\r\nFROM              bids\r\nWHERE          (schcode = @schocode)\r\nOR" +
+                "DER BY   contryear DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schocode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -7205,7 +7342,10 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                     decimal prcor, 
                     System.DateTime adcuto, 
                     bool webonly, 
-                    int freebooks) {
+                    int freebooks, 
+                    global::System.Nullable<int> IconCopies, 
+                    string extrchg, 
+                    global::System.Nullable<decimal> IconAmt) {
             if ((schname == null)) {
                 throw new global::System.ArgumentNullException("schname");
             }
@@ -7482,6 +7622,24 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             this.Adapter.InsertCommand.Parameters[163].Value = ((System.DateTime)(adcuto));
             this.Adapter.InsertCommand.Parameters[164].Value = ((bool)(webonly));
             this.Adapter.InsertCommand.Parameters[165].Value = ((int)(freebooks));
+            if ((IconCopies.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[166].Value = ((int)(IconCopies.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[166].Value = global::System.DBNull.Value;
+            }
+            if ((extrchg == null)) {
+                this.Adapter.InsertCommand.Parameters[167].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[167].Value = ((string)(extrchg));
+            }
+            if ((IconAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[168].Value = ((decimal)(IconAmt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[168].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

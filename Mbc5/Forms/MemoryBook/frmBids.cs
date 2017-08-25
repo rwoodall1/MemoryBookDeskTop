@@ -50,6 +50,14 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
 
-    
+        private void chkMsStandard_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOtherChrg_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     }
