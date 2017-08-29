@@ -73,6 +73,68 @@ namespace Mbc5.Classes
         }
         //EndCust
         #endregion
+        #region Bids
+        public static DialogResult CreateMessage(DataSets.dsBids.bidsRow cr1, ref DataSets.dsBids dataset)
+        {
+            string msg = GetRowData(GetCurrentRowInDB(cr1), cr1, DataRowVersion.Default) + "\n \n" +
+              "Do you still want to update the database with the proposed value?";
+            DialogResult response = MessageBox.Show(msg, "Concurrency Exception", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+            if (response == DialogResult.Yes)
+            {
+                //keeps form data
+                dataset.Merge(tempBidsDataTable, true, MissingSchemaAction.Ignore);
+            }
+            else
+            {
+                //keeps data on server
+                dataset.Merge(tempBidsDataTable);
+                MessageBox.Show("Update was canceled.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            return response;
+
+        }
+        public static DataSets.dsBids.bidsDataTable tempBidsDataTable = new DataSets.dsBids.bidsDataTable();
+        private static DataSets.dsBids.bidsRow GetCurrentRowInDB(DataSets.dsBids.bidsRow RowWithError)
+        {
+            DataSets.dsBidsTableAdapters.bidsTableAdapter vTableAdapter = new DataSets.dsBidsTableAdapters.bidsTableAdapter();
+
+            try
+            {
+
+                vTableAdapter.FillById(tempBidsDataTable, RowWithError.Id);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            DataSets.dsBids.bidsRow currentRowInDb =
+              (DataSets.dsBids.bidsRow)tempBidsDataTable.Rows[0];
+
+            return currentRowInDb;
+        }
+        private static string GetRowData(DataSets.dsBids.bidsRow curData, DataSets.dsBids.bidsRow vrow, DataRowVersion RowVersion)
+        {
+            //string rowData = "";
+            string columnDataDefault = "";
+            string columnDataOriginal = "";
+            string columnDataCurrent = "";
+            string badColumns = "";
+            for (int i = 0; i < vrow.ItemArray.Length; i++)
+            {
+                columnDataDefault = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Default].ToString().Trim();
+                columnDataOriginal = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Original].ToString().Trim();
+                columnDataCurrent = tempQuotesDataTable.Columns[i].ColumnName.ToString() + ":" + curData[i, DataRowVersion.Current].ToString().Trim();
+                if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent)
+                {
+                    badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+                }
+
+            }
+
+            return badColumns;
+        }
+
+        #endregion
         #region Quotes
         public static DialogResult CreateMessage(DataSets.dsSales.quotesRow cr1,ref DataSets.dsSales dataset) {
             string msg = GetRowData(GetCurrentRowInDB(cr1),cr1,DataRowVersion.Default) + "\n \n" +

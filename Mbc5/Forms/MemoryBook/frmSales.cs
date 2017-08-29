@@ -791,7 +791,7 @@ namespace Mbc5.Forms.MemoryBook {
                         vFoundPrice = vFoundPrice * vdiscountamount;
                         lblPriceEach.Text = vFoundPrice.ToString("c");
 
-                        if (String.IsNullOrEmpty(txtPriceOverRide.Text) || txtPriceOverRide.Text == "$0.00" || txtPriceOverRide.Text == "$0") {
+                        if (String.IsNullOrEmpty(txtPriceOverRide.Text) || txtPriceOverRide.Text == "0.00" || txtPriceOverRide.Text == "0") {
                             try {
                                 string price = lblPriceEach.Text.Replace("$","");//must strip dollar sign
                                 thePrice = System.Convert.ToDecimal(price);
@@ -1507,8 +1507,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void cmbYrDiscountAmt_Leave(object sender,EventArgs e) {
-            CalculateEach();
-            BookCalc();
+            
             }
 
         private void chkCaseBind_Click(object sender,EventArgs e) {
@@ -2942,6 +2941,12 @@ namespace Mbc5.Forms.MemoryBook {
             {
 
             }
+        }
+
+        private void cmbYrDiscountAmt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CalculateEach();
+            BookCalc();
         }
 
 
