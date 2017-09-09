@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
+using System.Configuration;
 
 namespace Mbc5.Forms.MemoryBook {
     
@@ -87,5 +88,14 @@ namespace Mbc5.Forms.MemoryBook {
 
             e.Graphics.DrawImage(image,destRect,0,0,image.Width,image.Height,System.Drawing.GraphicsUnit.Pixel);
             }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration
+                    (ConfigurationUserLevel.None);
+            config.ConnectionStrings.SectionInformation.ProtectSection(null);
+            config.Save(ConfigurationSaveMode.Full, true);
+
         }
+    }
     }

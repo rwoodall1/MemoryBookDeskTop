@@ -1560,7 +1560,6 @@
             this.txtDesc1amt.Name = "txtDesc1amt";
             this.txtDesc1amt.Size = new System.Drawing.Size(53, 20);
             this.txtDesc1amt.TabIndex = 5;
-          
             this.txtDesc1amt.Leave += new System.EventHandler(this.txtDesc1amt_Leave);
             // 
             // txtDesc1

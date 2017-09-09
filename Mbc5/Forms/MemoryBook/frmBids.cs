@@ -1490,6 +1490,8 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void chkAllClr_CheckedChanged(object sender, EventArgs e)
         {
+            GetBookPricing();
+            CalculateEach();
             BookCalc();
         }
 
@@ -1569,5 +1571,7 @@ namespace Mbc5.Forms.MemoryBook {
             CalculateEach();
             BookCalc();
         }
+
+       
     }
 }
