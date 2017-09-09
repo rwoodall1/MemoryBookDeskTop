@@ -199,6 +199,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.contpstnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -211,7 +212,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.lblSeperator1 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.contpstnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.contphnhomTextBox = new System.Windows.Forms.TextBox();
             this.contlnameTextBox = new System.Windows.Forms.TextBox();
@@ -283,6 +283,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpschtypeTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpschtypeTableAdapter();
             this.custSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custSearchTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custSearchTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -1781,6 +1782,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.pnlHead.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHead.Controls.Add(this.button1);
             this.pnlHead.Controls.Add(this.btnNewCustomer);
             this.pnlHead.Controls.Add(this.btnOracleSrch);
             this.pnlHead.Controls.Add(this.txtOracleCodeSrch);
@@ -2132,6 +2134,11 @@ namespace Mbc5.Forms.MemoryBook {
             this.comboBox3.TabIndex = 20;
             this.comboBox3.ValueMember = "Position";
             // 
+            // contpstnBindingSource
+            // 
+            this.contpstnBindingSource.DataMember = "contpstn";
+            this.contpstnBindingSource.DataSource = this.lookUp;
+            // 
             // comboBox4
             // 
             this.comboBox4.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "bcontstate", true));
@@ -2243,11 +2250,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.comboBox2.Size = new System.Drawing.Size(232, 21);
             this.comboBox2.TabIndex = 9;
             this.comboBox2.ValueMember = "Position";
-            // 
-            // contpstnBindingSource
-            // 
-            this.contpstnBindingSource.DataMember = "contpstn";
-            this.contpstnBindingSource.DataSource = this.lookUp;
             // 
             // comboBox1
             // 
@@ -2860,6 +2862,15 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.custSearchTableAdapter.ClearBeforeFill = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(741, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 66;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3103,5 +3114,6 @@ namespace Mbc5.Forms.MemoryBook {
         private DataSets.LookUpTableAdapters.lkpschtypeTableAdapter lkpschtypeTableAdapter;
         private System.Windows.Forms.BindingSource custSearchBindingSource;
         private DataSets.dsCustTableAdapters.custSearchTableAdapter custSearchTableAdapter;
+        private System.Windows.Forms.Button button1;
     }
 }
