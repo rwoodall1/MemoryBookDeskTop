@@ -361,3 +361,5 @@ F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.LookUpForms.
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Properties.Resources.resources
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.csproj.GenerateResource.Cache
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.dll.config
+F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.cache
+F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\RdlCompile.compiled
