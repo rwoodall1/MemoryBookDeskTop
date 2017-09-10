@@ -199,6 +199,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.contpstnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -211,7 +212,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.lblSeperator1 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.contpstnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.contphnhomTextBox = new System.Windows.Forms.TextBox();
             this.contlnameTextBox = new System.Windows.Forms.TextBox();
@@ -2132,6 +2132,11 @@ namespace Mbc5.Forms.MemoryBook {
             this.comboBox3.TabIndex = 20;
             this.comboBox3.ValueMember = "Position";
             // 
+            // contpstnBindingSource
+            // 
+            this.contpstnBindingSource.DataMember = "contpstn";
+            this.contpstnBindingSource.DataSource = this.lookUp;
+            // 
             // comboBox4
             // 
             this.comboBox4.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "bcontstate", true));
@@ -2243,11 +2248,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.comboBox2.Size = new System.Drawing.Size(232, 21);
             this.comboBox2.TabIndex = 9;
             this.comboBox2.ValueMember = "Position";
-            // 
-            // contpstnBindingSource
-            // 
-            this.contpstnBindingSource.DataMember = "contpstn";
-            this.contpstnBindingSource.DataSource = this.lookUp;
             // 
             // comboBox1
             // 
@@ -2679,7 +2679,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn9.DataPropertyName = "calltime";
             this.dataGridViewTextBoxColumn9.HeaderText = "Call Time";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Width = 69;
+            this.dataGridViewTextBoxColumn9.Width = 75;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -2687,7 +2687,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn7.DataPropertyName = "nxtdays";
             this.dataGridViewTextBoxColumn7.HeaderText = "Contact (Days)";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 94;
+            this.dataGridViewTextBoxColumn7.Width = 102;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -2700,7 +2700,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn8.HeaderText = "Next Date";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Width = 74;
+            this.dataGridViewTextBoxColumn8.Width = 80;
             // 
             // dataGridViewTextBoxColumn5
             // 
