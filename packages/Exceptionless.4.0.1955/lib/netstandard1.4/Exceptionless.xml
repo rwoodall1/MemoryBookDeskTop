@@ -1036,18 +1036,6 @@
             <param name="config">The configuration object you want to apply the attribute settings to.</param>
             <param name="assemblies">A list of assemblies that should be checked for the Exceptionless configuration attributes.</param>
         </member>
-        <member name="M:Exceptionless.ExceptionlessConfigurationExtensions.ReadFromConfigSection(Exceptionless.ExceptionlessConfiguration)">
-            <summary>
-            Reads the Exceptionless configuration from the app.config or web.config files configuration section.
-            </summary>
-            <param name="config">The configuration object you want to apply the attribute settings to.</param>
-        </member>
-        <member name="M:Exceptionless.ExceptionlessConfigurationExtensions.ReadFromAppSettings(Exceptionless.ExceptionlessConfiguration)">
-            <summary>
-            Reads the Exceptionless configuration from the app.config or web.config files app settings.
-            </summary>
-            <param name="config">The configuration object you want to apply the attribute settings to.</param>
-        </member>
         <member name="M:Exceptionless.ExceptionlessConfigurationExtensions.ReadFromEnvironmentalVariables(Exceptionless.ExceptionlessConfiguration)">
             <summary>
             Reads the Exceptionless configuration from Environment Variables.
@@ -1838,70 +1826,6 @@
             <value>
             	<c>true</c> if this <see cref="T:Exceptionless.Json.JsonConverter"/> can write JSON; otherwise, <c>false</c>.
             </value>
-        </member>
-        <member name="T:Exceptionless.Json.Converters.DataSetConverter">
-            <summary>
-            Converts a <see cref="T:System.Data.DataSet"/> to and from JSON.
-            </summary>
-        </member>
-        <member name="M:Exceptionless.Json.Converters.DataSetConverter.WriteJson(Exceptionless.Json.JsonWriter,System.Object,Exceptionless.Json.JsonSerializer)">
-            <summary>
-            Writes the JSON representation of the object.
-            </summary>
-            <param name="writer">The <see cref="T:Exceptionless.Json.JsonWriter"/> to write to.</param>
-            <param name="value">The value.</param>
-            <param name="serializer">The calling serializer.</param>
-        </member>
-        <member name="M:Exceptionless.Json.Converters.DataSetConverter.ReadJson(Exceptionless.Json.JsonReader,System.Type,System.Object,Exceptionless.Json.JsonSerializer)">
-            <summary>
-            Reads the JSON representation of the object.
-            </summary>
-            <param name="reader">The <see cref="T:Exceptionless.Json.JsonReader"/> to read from.</param>
-            <param name="objectType">Type of the object.</param>
-            <param name="existingValue">The existing value of object being read.</param>
-            <param name="serializer">The calling serializer.</param>
-            <returns>The object value.</returns>
-        </member>
-        <member name="M:Exceptionless.Json.Converters.DataSetConverter.CanConvert(System.Type)">
-            <summary>
-            Determines whether this instance can convert the specified value type.
-            </summary>
-            <param name="valueType">Type of the value.</param>
-            <returns>
-            	<c>true</c> if this instance can convert the specified value type; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="T:Exceptionless.Json.Converters.DataTableConverter">
-            <summary>
-            Converts a <see cref="T:System.Data.DataTable"/> to and from JSON.
-            </summary>
-        </member>
-        <member name="M:Exceptionless.Json.Converters.DataTableConverter.WriteJson(Exceptionless.Json.JsonWriter,System.Object,Exceptionless.Json.JsonSerializer)">
-            <summary>
-            Writes the JSON representation of the object.
-            </summary>
-            <param name="writer">The <see cref="T:Exceptionless.Json.JsonWriter"/> to write to.</param>
-            <param name="value">The value.</param>
-            <param name="serializer">The calling serializer.</param>
-        </member>
-        <member name="M:Exceptionless.Json.Converters.DataTableConverter.ReadJson(Exceptionless.Json.JsonReader,System.Type,System.Object,Exceptionless.Json.JsonSerializer)">
-            <summary>
-            Reads the JSON representation of the object.
-            </summary>
-            <param name="reader">The <see cref="T:Exceptionless.Json.JsonReader"/> to read from.</param>
-            <param name="objectType">Type of the object.</param>
-            <param name="existingValue">The existing value of object being read.</param>
-            <param name="serializer">The calling serializer.</param>
-            <returns>The object value.</returns>
-        </member>
-        <member name="M:Exceptionless.Json.Converters.DataTableConverter.CanConvert(System.Type)">
-            <summary>
-            Determines whether this instance can convert the specified value type.
-            </summary>
-            <param name="valueType">Type of the value.</param>
-            <returns>
-            	<c>true</c> if this instance can convert the specified value type; otherwise, <c>false</c>.
-            </returns>
         </member>
         <member name="T:Exceptionless.Json.Converters.DateTimeConverterBase">
             <summary>
@@ -3380,15 +3304,6 @@
             <param name="message">The error message that explains the reason for the exception.</param>
             <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
         </member>
-        <member name="M:Exceptionless.Json.JsonException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Exceptionless.Json.JsonException"/> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.ArgumentNullException">The <paramref name="info"/> parameter is null. </exception>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0). </exception>
-        </member>
         <member name="T:Exceptionless.Json.JsonExtensionDataAttribute">
             <summary>
             Instructs the <see cref="T:Exceptionless.Json.JsonSerializer"/> to deserialize properties with no matching class member into the specified collection
@@ -3866,15 +3781,6 @@
             <param name="message">The error message that explains the reason for the exception.</param>
             <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
         </member>
-        <member name="M:Exceptionless.Json.JsonReaderException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Exceptionless.Json.JsonReaderException"/> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.ArgumentNullException">The <paramref name="info"/> parameter is null. </exception>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0). </exception>
-        </member>
         <member name="T:Exceptionless.Json.JsonRequiredAttribute">
             <summary>
             Instructs the <see cref="T:Exceptionless.Json.JsonSerializer"/> to always serialize the member, and require the member has a value.
@@ -3905,15 +3811,6 @@
             <param name="message">The error message that explains the reason for the exception.</param>
             <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
         </member>
-        <member name="M:Exceptionless.Json.JsonSerializationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Exceptionless.Json.JsonSerializationException"/> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.ArgumentNullException">The <paramref name="info"/> parameter is null. </exception>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0). </exception>
-        </member>
         <member name="T:Exceptionless.Json.JsonSerializer">
             <summary>
             Serializes and deserializes objects into and from the JSON format.
@@ -3932,7 +3829,7 @@
         </member>
         <member name="P:Exceptionless.Json.JsonSerializer.Binder">
             <summary>
-            Gets or sets the <see cref="T:System.Runtime.Serialization.SerializationBinder"/> used by the serializer when resolving type names.
+            Gets or sets the <see cref="T:Exceptionless.Json.SerializationBinder"/> used by the serializer when resolving type names.
             </summary>
         </member>
         <member name="P:Exceptionless.Json.JsonSerializer.TraceWriter">
@@ -4338,7 +4235,7 @@
         </member>
         <member name="P:Exceptionless.Json.JsonSerializerSettings.Binder">
             <summary>
-            Gets or sets the <see cref="T:System.Runtime.Serialization.SerializationBinder"/> used by the serializer when resolving type names.
+            Gets or sets the <see cref="T:Exceptionless.Json.SerializationBinder"/> used by the serializer when resolving type names.
             </summary>
             <value>The binder.</value>
         </member>
@@ -5494,15 +5391,6 @@
             <param name="message">The error message that explains the reason for the exception.</param>
             <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
         </member>
-        <member name="M:Exceptionless.Json.JsonWriterException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Exceptionless.Json.JsonWriterException"/> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.ArgumentNullException">The <paramref name="info"/> parameter is null. </exception>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0). </exception>
-        </member>
         <member name="T:Exceptionless.Json.Linq.CommentHandling">
             <summary>
             Specifies how JSON comments are handled when loading JSON.
@@ -5954,16 +5842,6 @@
             Represents a token that can contain other tokens.
             </summary>
         </member>
-        <member name="E:Exceptionless.Json.Linq.JContainer.ListChanged">
-            <summary>
-            Occurs when the list changes or an item in the list changes.
-            </summary>
-        </member>
-        <member name="E:Exceptionless.Json.Linq.JContainer.AddingNew">
-            <summary>
-            Occurs before an item is added to the collection.
-            </summary>
-        </member>
         <member name="E:Exceptionless.Json.Linq.JContainer.CollectionChanged">
             <summary>
             Occurs when the items list of the collection has changed, or the collection is reset.
@@ -5974,18 +5852,6 @@
             Gets the container's children tokens.
             </summary>
             <value>The container's children tokens.</value>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JContainer.OnAddingNew(System.ComponentModel.AddingNewEventArgs)">
-            <summary>
-            Raises the <see cref="E:Exceptionless.Json.Linq.JContainer.AddingNew"/> event.
-            </summary>
-            <param name="e">The <see cref="T:System.ComponentModel.AddingNewEventArgs"/> instance containing the event data.</param>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JContainer.OnListChanged(System.ComponentModel.ListChangedEventArgs)">
-            <summary>
-            Raises the <see cref="E:Exceptionless.Json.Linq.JContainer.ListChanged"/> event.
-            </summary>
-            <param name="e">The <see cref="T:System.ComponentModel.ListChangedEventArgs"/> instance containing the event data.</param>
         </member>
         <member name="M:Exceptionless.Json.Linq.JContainer.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
             <summary>
@@ -6373,106 +6239,6 @@
             </summary>
             <param name="propertyName">Name of the property.</param>
         </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetProperties">
-            <summary>
-            Returns the properties for this instance of a component.
-            </summary>
-            <returns>
-            A <see cref="T:System.ComponentModel.PropertyDescriptorCollection"/> that represents the properties for this component instance.
-            </returns>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetProperties(System.Attribute[])">
-            <summary>
-            Returns the properties for this instance of a component using the attribute array as a filter.
-            </summary>
-            <param name="attributes">An array of type <see cref="T:System.Attribute"/> that is used as a filter.</param>
-            <returns>
-            A <see cref="T:System.ComponentModel.PropertyDescriptorCollection"/> that represents the filtered properties for this component instance.
-            </returns>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetAttributes">
-            <summary>
-            Returns a collection of custom attributes for this instance of a component.
-            </summary>
-            <returns>
-            An <see cref="T:System.ComponentModel.AttributeCollection"/> containing the attributes for this object.
-            </returns>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetClassName">
-            <summary>
-            Returns the class name of this instance of a component.
-            </summary>
-            <returns>
-            The class name of the object, or null if the class does not have a name.
-            </returns>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetComponentName">
-            <summary>
-            Returns the name of this instance of a component.
-            </summary>
-            <returns>
-            The name of the object, or null if the object does not have a name.
-            </returns>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetConverter">
-            <summary>
-            Returns a type converter for this instance of a component.
-            </summary>
-            <returns>
-            A <see cref="T:System.ComponentModel.TypeConverter"/> that is the converter for this object, or null if there is no <see cref="T:System.ComponentModel.TypeConverter"/> for this object.
-            </returns>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetDefaultEvent">
-            <summary>
-            Returns the default event for this instance of a component.
-            </summary>
-            <returns>
-            An <see cref="T:System.ComponentModel.EventDescriptor"/> that represents the default event for this object, or null if this object does not have events.
-            </returns>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetDefaultProperty">
-            <summary>
-            Returns the default property for this instance of a component.
-            </summary>
-            <returns>
-            A <see cref="T:System.ComponentModel.PropertyDescriptor"/> that represents the default property for this object, or null if this object does not have properties.
-            </returns>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetEditor(System.Type)">
-            <summary>
-            Returns an editor of the specified type for this instance of a component.
-            </summary>
-            <param name="editorBaseType">A <see cref="T:System.Type"/> that represents the editor for this object.</param>
-            <returns>
-            An <see cref="T:System.Object"/> of the specified type that is the editor for this object, or null if the editor cannot be found.
-            </returns>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetEvents(System.Attribute[])">
-            <summary>
-            Returns the events for this instance of a component using the specified attribute array as a filter.
-            </summary>
-            <param name="attributes">An array of type <see cref="T:System.Attribute"/> that is used as a filter.</param>
-            <returns>
-            An <see cref="T:System.ComponentModel.EventDescriptorCollection"/> that represents the filtered events for this component instance.
-            </returns>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetEvents">
-            <summary>
-            Returns the events for this instance of a component.
-            </summary>
-            <returns>
-            An <see cref="T:System.ComponentModel.EventDescriptorCollection"/> that represents the events for this component instance.
-            </returns>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JObject.System#ComponentModel#ICustomTypeDescriptor#GetPropertyOwner(System.ComponentModel.PropertyDescriptor)">
-            <summary>
-            Returns an object that contains the property described by the specified property descriptor.
-            </summary>
-            <param name="pd">A <see cref="T:System.ComponentModel.PropertyDescriptor"/> that represents the property whose owner is to be found.</param>
-            <returns>
-            An <see cref="T:System.Object"/> that represents the owner of the specified property.
-            </returns>
-        </member>
         <member name="M:Exceptionless.Json.Linq.JObject.GetMetaObject(System.Linq.Expressions.Expression)">
             <summary>
             Returns the <see cref="T:System.Dynamic.DynamicMetaObject"/> responsible for binding operations performed on this object.
@@ -6553,95 +6319,6 @@
             <param name="settings">The <see cref="T:Exceptionless.Json.Linq.JsonLoadSettings"/> used to load the JSON.
             If this is null, default load settings will be used.</param>
             <returns>A <see cref="T:Exceptionless.Json.Linq.JProperty"/> that contains the JSON that was read from the specified <see cref="T:Exceptionless.Json.JsonReader"/>.</returns>
-        </member>
-        <member name="T:Exceptionless.Json.Linq.JPropertyDescriptor">
-            <summary>
-            Represents a view of a <see cref="T:Exceptionless.Json.Linq.JProperty"/>.
-            </summary>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JPropertyDescriptor.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Exceptionless.Json.Linq.JPropertyDescriptor"/> class.
-            </summary>
-            <param name="name">The name.</param>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JPropertyDescriptor.CanResetValue(System.Object)">
-            <summary>
-            When overridden in a derived class, returns whether resetting an object changes its value.
-            </summary>
-            <returns>
-            true if resetting the component changes its value; otherwise, false.
-            </returns>
-            <param name="component">The component to test for reset capability. 
-                            </param>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JPropertyDescriptor.GetValue(System.Object)">
-            <summary>
-            When overridden in a derived class, gets the current value of the property on a component.
-            </summary>
-            <returns>
-            The value of a property for a given component.
-            </returns>
-            <param name="component">The component with the property for which to retrieve the value. 
-                            </param>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JPropertyDescriptor.ResetValue(System.Object)">
-            <summary>
-            When overridden in a derived class, resets the value for this property of the component to the default value.
-            </summary>
-            <param name="component">The component with the property value that is to be reset to the default value. 
-                            </param>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JPropertyDescriptor.SetValue(System.Object,System.Object)">
-            <summary>
-            When overridden in a derived class, sets the value of the component to a different value.
-            </summary>
-            <param name="component">The component with the property value that is to be set. 
-                            </param><param name="value">The new value. 
-                            </param>
-        </member>
-        <member name="M:Exceptionless.Json.Linq.JPropertyDescriptor.ShouldSerializeValue(System.Object)">
-            <summary>
-            When overridden in a derived class, determines a value indicating whether the value of this property needs to be persisted.
-            </summary>
-            <returns>
-            true if the property should be persisted; otherwise, false.
-            </returns>
-            <param name="component">The component with the property to be examined for persistence. 
-                            </param>
-        </member>
-        <member name="P:Exceptionless.Json.Linq.JPropertyDescriptor.ComponentType">
-            <summary>
-            When overridden in a derived class, gets the type of the component this property is bound to.
-            </summary>
-            <returns>
-            A <see cref="T:System.Type"/> that represents the type of component this property is bound to. When the <see cref="M:System.ComponentModel.PropertyDescriptor.GetValue(System.Object)"/> or <see cref="M:System.ComponentModel.PropertyDescriptor.SetValue(System.Object,System.Object)"/> methods are invoked, the object specified might be an instance of this type.
-            </returns>
-        </member>
-        <member name="P:Exceptionless.Json.Linq.JPropertyDescriptor.IsReadOnly">
-            <summary>
-            When overridden in a derived class, gets a value indicating whether this property is read-only.
-            </summary>
-            <returns>
-            true if the property is read-only; otherwise, false.
-            </returns>
-        </member>
-        <member name="P:Exceptionless.Json.Linq.JPropertyDescriptor.PropertyType">
-            <summary>
-            When overridden in a derived class, gets the type of the property.
-            </summary>
-            <returns>
-            A <see cref="T:System.Type"/> that represents the type of the property.
-            </returns>
-        </member>
-        <member name="P:Exceptionless.Json.Linq.JPropertyDescriptor.NameHashCode">
-            <summary>
-            Gets the hash code for the name of the member.
-            </summary>
-            <value></value>
-            <returns>
-            The hash code for the name of the member.
-            </returns>
         </member>
         <member name="T:Exceptionless.Json.Linq.JRaw">
             <summary>
@@ -8248,7 +7925,7 @@
         </member>
         <member name="F:Exceptionless.Json.MemberSerialization.OptOut">
             <summary>
-            All public members are serialized by default. Members can be excluded using <see cref="T:Exceptionless.Json.JsonIgnoreAttribute"/> or <see cref="T:System.NonSerializedAttribute"/>.
+            All public members are serialized by default. Members can be excluded using <see cref="T:Exceptionless.Json.JsonIgnoreAttribute"/> or <see cref="!:NonSerializedAttribute"/>.
             This is the default member serialization mode.
             </summary>
         </member>
@@ -8260,8 +7937,8 @@
         </member>
         <member name="F:Exceptionless.Json.MemberSerialization.Fields">
             <summary>
-            All public and private fields are serialized. Members can be excluded using <see cref="T:Exceptionless.Json.JsonIgnoreAttribute"/> or <see cref="T:System.NonSerializedAttribute"/>.
-            This member serialization mode can also be set by marking the class with <see cref="T:System.SerializableAttribute"/>
+            All public and private fields are serialized. Members can be excluded using <see cref="T:Exceptionless.Json.JsonIgnoreAttribute"/> or <see cref="!:NonSerializedAttribute"/>.
+            This member serialization mode can also be set by marking the class with <see cref="!:SerializableAttribute"/>
             and setting IgnoreSerializableAttribute on <see cref="T:Exceptionless.Json.Serialization.DefaultContractResolver"/> to false.
             </summary>
         </member>
@@ -8789,15 +8466,6 @@
             <param name="message">The error message that explains the reason for the exception.</param>
             <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
         </member>
-        <member name="M:Exceptionless.Json.Schema.JsonSchemaException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Exceptionless.Json.Schema.JsonSchemaException"/> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.ArgumentNullException">The <paramref name="info"/> parameter is null. </exception>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0). </exception>
-        </member>
         <member name="T:Exceptionless.Json.Schema.JsonSchemaGenerator">
             <summary>
             <para>
@@ -8997,6 +8665,27 @@
             </note>
             </summary>
         </member>
+        <member name="T:Exceptionless.Json.SerializationBinder">
+            <summary>
+            Allows users to control class loading and mandate what class to load.
+            </summary>
+        </member>
+        <member name="M:Exceptionless.Json.SerializationBinder.BindToType(System.String,System.String)">
+            <summary>
+            When overridden in a derived class, controls the binding of a serialized object to a type.
+            </summary>
+            <param name="assemblyName">Specifies the <see cref="T:System.Reflection.Assembly"/> name of the serialized object.</param>
+            <param name="typeName">Specifies the <see cref="T:System.Type"/> name of the serialized object</param>
+            <returns>The type of the object the formatter creates a new instance of.</returns>
+        </member>
+        <member name="M:Exceptionless.Json.SerializationBinder.BindToName(System.Type,System.String@,System.String@)">
+            <summary>
+            When overridden in a derived class, controls the binding of a serialized object to a type.
+            </summary>
+            <param name="serializedType">The type of the object the formatter creates a new instance of.</param>
+            <param name="assemblyName">Specifies the <see cref="T:System.Reflection.Assembly"/> name of the serialized object.</param>
+            <param name="typeName">Specifies the <see cref="T:System.Type"/> name of the serialized object.</param>
+        </member>
         <member name="T:Exceptionless.Json.Serialization.CamelCasePropertyNamesContractResolver">
             <summary>
             Resolves member mappings for a type, camel casing property names.
@@ -9040,22 +8729,6 @@
             </summary>
             <value>
             	<c>true</c> if serialized compiler generated members; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="P:Exceptionless.Json.Serialization.DefaultContractResolver.IgnoreSerializableInterface">
-            <summary>
-            Gets or sets a value indicating whether to ignore the <see cref="T:System.Runtime.Serialization.ISerializable"/> interface when serializing and deserializing types.
-            </summary>
-            <value>
-            	<c>true</c> if the <see cref="T:System.Runtime.Serialization.ISerializable"/> interface will be ignored when serializing and deserializing types; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="P:Exceptionless.Json.Serialization.DefaultContractResolver.IgnoreSerializableAttribute">
-            <summary>
-            Gets or sets a value indicating whether to ignore the <see cref="T:System.SerializableAttribute"/> attribute when serializing and deserializing types.
-            </summary>
-            <value>
-            	<c>true</c> if the <see cref="T:System.SerializableAttribute"/> attribute will be ignored when serializing and deserializing types; otherwise, <c>false</c>.
             </value>
         </member>
         <member name="M:Exceptionless.Json.Serialization.DefaultContractResolver.#ctor">
@@ -9145,13 +8818,6 @@
             </summary>
             <param name="objectType">Type of the object.</param>
             <returns>A <see cref="T:Exceptionless.Json.Serialization.JsonLinqContract"/> for the given type.</returns>
-        </member>
-        <member name="M:Exceptionless.Json.Serialization.DefaultContractResolver.CreateISerializableContract(System.Type)">
-            <summary>
-            Creates a <see cref="T:Exceptionless.Json.Serialization.JsonISerializableContract"/> for the given type.
-            </summary>
-            <param name="objectType">Type of the object.</param>
-            <returns>A <see cref="T:Exceptionless.Json.Serialization.JsonISerializableContract"/> for the given type.</returns>
         </member>
         <member name="M:Exceptionless.Json.Serialization.DefaultContractResolver.CreateDynamicContract(System.Type)">
             <summary>
@@ -11738,6 +11404,21 @@
         <member name="P:TinyIoC.TinyIoCContainer.Current">
             <summary>
             Lazy created Singleton instance of the container for simple scenarios
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Serialization.Formatters.FormatterAssemblyStyle">
+            <summary>
+            Indicates the method that will be used during deserialization for locating and loading assemblies.
+            </summary>
+        </member>
+        <member name="F:System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple">
+            <summary>
+            In simple mode, the assembly used during deserialization need not match exactly the assembly used during serialization. Specifically, the version numbers need not match as the LoadWithPartialName method is used to load the assembly.
+            </summary>
+        </member>
+        <member name="F:System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Full">
+            <summary>
+            In full mode, the assembly used during deserialization must match exactly the assembly used during serialization. The Load method of the Assembly class is used to load the assembly.
             </summary>
         </member>
     </members>

@@ -3,16 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="smtpServer" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">smtpout.secureserver.net</Value>
+      <Value Profile="(Default)">92.168.1.245</Value>
     </Setting>
     <Setting Name="mailUserName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">randy@woodalldevelopment.com</Value>
+      <Value Profile="(Default)">authnet@memorybook.com"</Value>
     </Setting>
     <Setting Name="mailPassword" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">briggitte</Value>
+      <Value Profile="(Default)">authnet</Value>
     </Setting>
     <Setting Name="passwordResetFromMail" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">randy@woodalldevelopment.com</Value>
+      <Value Profile="(Default)">authnet@memorybook.com</Value>
     </Setting>
     <Setting Name="Mbc5ConnectionString1" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
