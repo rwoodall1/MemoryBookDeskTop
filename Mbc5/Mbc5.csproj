@@ -376,8 +376,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Report1.rdlc" />
+    <None Include="App - Copy.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="AppAlt.config" />
-    <None Include="AppAlt1.config" />
     <None Include="DataSets\dsBids.xsc">
       <DependentUpon>dsBids.xsd</DependentUpon>
     </None>
