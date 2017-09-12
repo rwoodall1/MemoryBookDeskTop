@@ -362,3 +362,41 @@ Error Number:8178,State:1,Class:16
 2017/08/10 21:24:04.713 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
 2017/08/10 21:32:19.333 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
 2017/08/10 21:38:22.826 Error running ExecuteReaderAsync. CHOME  WDFM\rwoodall    
+2017/09/10 20:24:16.626 Record faild to update:Value cannot be null.
+Parameter name: address CHOME  WDFM\rwoodall   System.ArgumentNullException: Value cannot be null.
+Parameter name: address
+   at System.Net.Mail.MailAddress..ctor(String address, String displayName, Encoding displayNameEncoding)
+   at System.Net.Mail.MailAddress..ctor(String address, String displayName)
+   at Mbc5.Forms.frmUser.SendPassword(String passWord) in F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\frmUser.cs:line 106
+   at Mbc5.Forms.frmUser.btnSave_Click(Object sender, EventArgs e) in F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\frmUser.cs:line 170 
+2017/09/10 20:27:40.908 Record faild to update:Column 'id' does not allow nulls. CHOME  WDFM\rwoodall   System.Data.NoNullAllowedException: Column 'id' does not allow nulls.
+   at System.Data.DataColumn.CheckNullable(DataRow row)
+   at System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
+   at System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
+   at System.Data.DataTable.InsertRow(DataRow row, Int64 proposedID, Int32 pos, Boolean fireEvent)
+   at System.Data.DataView.FinishAddNew(Boolean success)
+   at System.Data.DataRowView.EndEdit()
+   at System.Windows.Forms.CurrencyManager.EndCurrentEdit()
+   at System.Windows.Forms.BindingSource.EndEdit()
+   at Mbc5.Forms.frmUser.btnSave_Click(Object sender, EventArgs e) 
+2017/09/10 21:12:45.316 Record faild to update:Value cannot be null.
+Parameter name: address CHOME  WDFM\rwoodall   System.ArgumentNullException: Value cannot be null.
+Parameter name: address
+   at System.Net.Mail.MailAddress..ctor(String address, String displayName, Encoding displayNameEncoding)
+   at System.Net.Mail.MailAddress..ctor(String address, String displayName)
+   at Mbc5.Forms.frmUser.SendPassword(String passWord) in F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\frmUser.cs:line 106
+   at Mbc5.Forms.frmUser.btnSave_Click(Object sender, EventArgs e) in F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\frmUser.cs:line 170 
+2017/09/10 21:19:20.853 Record faild to update:Value cannot be null.
+Parameter name: address CHOME  WDFM\rwoodall   System.ArgumentNullException: Value cannot be null.
+Parameter name: address
+   at System.Net.Mail.MailAddress..ctor(String address, String displayName, Encoding displayNameEncoding)
+   at System.Net.Mail.MailAddress..ctor(String address, String displayName)
+   at Mbc5.Forms.frmUser.SendPassword(String passWord) in F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\frmUser.cs:line 106
+   at Mbc5.Forms.frmUser.btnSave_Click(Object sender, EventArgs e) in F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\frmUser.cs:line 170 
+2017/09/10 21:19:50.956 Record faild to update:Value cannot be null.
+Parameter name: address CHOME  WDFM\rwoodall   System.ArgumentNullException: Value cannot be null.
+Parameter name: address
+   at System.Net.Mail.MailAddress..ctor(String address, String displayName, Encoding displayNameEncoding)
+   at System.Net.Mail.MailAddress..ctor(String address, String displayName)
+   at Mbc5.Forms.frmUser.SendPassword(String passWord) in F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\frmUser.cs:line 106
+   at Mbc5.Forms.frmUser.btnSave_Click(Object sender, EventArgs e) in F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\Forms\frmUser.cs:line 170 

@@ -35,9 +35,9 @@ namespace Mbc5.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("randy@woodalldevelopment.com")]
-        public string mailUserName {
+        public string passwordResetFromEmail {
             get {
-                return ((string)(this["mailUserName"]));
+                return ((string)(this["passwordResetFromEmail"]));
             }
         }
         
@@ -53,9 +53,9 @@ namespace Mbc5.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("randy@woodalldevelopment.com")]
-        public string passwordResetFromMail {
+        public string mailUserName {
             get {
-                return ((string)(this["passwordResetFromMail"]));
+                return ((string)(this["mailUserName"]));
             }
         }
         
@@ -63,16 +63,6 @@ namespace Mbc5.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.101;Initial Catalog=Mbc5;Integrated Security=True")]
-        public string Mbc5ConnectionString1 {
-            get {
-                return ((string)(this["Mbc5ConnectionString1"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.37.32.49;Initial Catalog=Mbc5;Integrated Security=True")]
         public string Mbc5ConnectionString {
             get {
                 return ((string)(this["Mbc5ConnectionString"]));

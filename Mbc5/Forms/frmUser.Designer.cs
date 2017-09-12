@@ -62,6 +62,7 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.rolesTableAdapter = new Mbc5.DataSets.dsRolesTableAdapters.rolesTableAdapter();
             this.mbcUsersTableAdapter = new Mbc5.DataSets.dsUserTableAdapters.mbcUsersTableAdapter();
+            this.idLabel1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsUser)).BeginInit();
@@ -365,10 +366,20 @@
             // 
             this.mbcUsersTableAdapter.ClearBeforeFill = true;
             // 
+            // idLabel1
+            // 
+            this.idLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsUser, "id", true));
+            this.idLabel1.Location = new System.Drawing.Point(9, 262);
+            this.idLabel1.Name = "idLabel1";
+            this.idLabel1.Size = new System.Drawing.Size(1, 1);
+            this.idLabel1.TabIndex = 25;
+            this.idLabel1.Text = "lblId";
+            // 
             // frmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(665, 294);
+            this.Controls.Add(this.idLabel1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.cmbRole);
@@ -399,6 +410,7 @@
             this.Controls.SetChildIndex(this.btnSearch, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
+            this.Controls.SetChildIndex(this.idLabel1, 0);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).EndInit();
@@ -447,5 +459,6 @@
         private DataSets.dsUser dsUser;
         private System.Windows.Forms.BindingSource bsUser;
         private DataSets.dsUserTableAdapters.mbcUsersTableAdapter mbcUsersTableAdapter;
-        }
+        private System.Windows.Forms.Label idLabel1;
+    }
 }

@@ -103,6 +103,7 @@ namespace Mbc5.Forms
 
 
             MailMessage message = new MailMessage();
+            var a = ConfigurationManager.AppSettings["passwordResetFromMail"];
             message.Sender = new MailAddress(ConfigurationManager.AppSettings["passwordResetFromMail"],
                "Memory Book System Administrator");
             message.From = new MailAddress(ConfigurationManager.AppSettings["passwordResetFromMail"],
@@ -149,9 +150,9 @@ namespace Mbc5.Forms
             if (!valCheck)
             { return; }
 
-            setEdit(false);
+            
             this.Validate();
-            this.bsUser.EndEdit();
+          
             try
             {
                 
@@ -168,10 +169,13 @@ namespace Mbc5.Forms
                     //daUser.InsertCommand.Parameters.AddWithValue("@ChangePassword", true);
                     mbcUsersTableAdapter.Insert(viD,txtUserName.Text,pwd,cmbRole.SelectedValue.ToString(),txtEmail.Text,txtFirstName.Text,txtLastName.Text,true);
                     SendPassword(pwd);
+                    setEdit(false);
                     NewUser =false;
                 }
-                else { mbcUsersTableAdapter.Update(dsUser); }
-                NewUser = false;
+                else {
+                    this.bsUser.EndEdit();
+                    mbcUsersTableAdapter.Update(dsUser); }
+                     NewUser = false;
             }
             catch (DBConcurrencyException ex1)
             {
