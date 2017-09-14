@@ -25,24 +25,6 @@ namespace Mbc5.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("92.168.1.245")]
-        public string smtpServer {
-            get {
-                return ((string)(this["smtpServer"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("authnet@memorybook.com\"")]
-        public string mailUserName {
-            get {
-                return ((string)(this["mailUserName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("authnet")]
         public string mailPassword {
             get {
@@ -66,6 +48,24 @@ namespace Mbc5.Properties {
         public string Mbc5ConnectionString {
             get {
                 return ((string)(this["Mbc5ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.245")]
+        public string smtpServer {
+            get {
+                return ((string)(this["smtpServer"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("authnet@memorybook.com")]
+        public string mailUserName {
+            get {
+                return ((string)(this["mailUserName"]));
             }
         }
     }

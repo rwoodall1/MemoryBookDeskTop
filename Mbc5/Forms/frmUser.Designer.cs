@@ -62,6 +62,7 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.rolesTableAdapter = new Mbc5.DataSets.dsRolesTableAdapters.rolesTableAdapter();
             this.mbcUsersTableAdapter = new Mbc5.DataSets.dsUserTableAdapters.mbcUsersTableAdapter();
+            this.lblId = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsUser)).BeginInit();
@@ -87,7 +88,7 @@
             this.panel2.Controls.Add(this.btnEdit);
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Location = new System.Drawing.Point(452, 10);
-            this.panel2.Size = new System.Drawing.Size(213, 284);
+            this.panel2.Size = new System.Drawing.Size(213, 308);
             // 
             // btnSearch
             // 
@@ -274,7 +275,7 @@
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2});
-            this.bnUser.Location = new System.Drawing.Point(0, 255);
+            this.bnUser.Location = new System.Drawing.Point(0, 279);
             this.bnUser.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bnUser.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bnUser.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -365,10 +366,20 @@
             // 
             this.mbcUsersTableAdapter.ClearBeforeFill = true;
             // 
+            // lblId
+            // 
+            this.lblId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsUser, "id", true));
+            this.lblId.Location = new System.Drawing.Point(40, 275);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(1, 1);
+            this.lblId.TabIndex = 25;
+            this.lblId.Text = "label2";
+            // 
             // frmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(665, 294);
+            this.ClientSize = new System.Drawing.Size(665, 318);
+            this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.cmbRole);
@@ -399,6 +410,7 @@
             this.Controls.SetChildIndex(this.btnSearch, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
+            this.Controls.SetChildIndex(this.lblId, 0);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).EndInit();
@@ -447,5 +459,6 @@
         private DataSets.dsUser dsUser;
         private System.Windows.Forms.BindingSource bsUser;
         private DataSets.dsUserTableAdapters.mbcUsersTableAdapter mbcUsersTableAdapter;
-        }
+        private System.Windows.Forms.Label lblId;
+    }
 }

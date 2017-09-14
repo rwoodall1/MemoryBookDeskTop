@@ -144,14 +144,15 @@ namespace Mbc5.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-           
+            lblId.Text= Guid.NewGuid().ToString();
+
             var valCheck = ValidationCheck();
             if (!valCheck)
             { return; }
 
             setEdit(false);
             this.Validate();
-            this.bsUser.EndEdit();
+           
             try
             {
                 
@@ -170,7 +171,9 @@ namespace Mbc5.Forms
                     SendPassword(pwd);
                     NewUser =false;
                 }
-                else { mbcUsersTableAdapter.Update(dsUser); }
+                else {
+                    this.bsUser.EndEdit();
+                    mbcUsersTableAdapter.Update(dsUser); }
                 NewUser = false;
             }
             catch (DBConcurrencyException ex1)
@@ -211,5 +214,7 @@ namespace Mbc5.Forms
             if (e.KeyChar == 13)
             { FindUser(txtSearch.Text); }
         }
+
+      
     }
 }
