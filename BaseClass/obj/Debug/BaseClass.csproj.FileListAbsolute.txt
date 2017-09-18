@@ -269,7 +269,6 @@ F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\BaseClass.pd
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.Windows.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\Microsoft.Build.Tasks.CodeAnalysis.dll
-F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\Microsoft.Build.Utilities.Core.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\Microsoft.Build.Framework.dll
@@ -280,7 +279,6 @@ F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\System.Colle
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.xml
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.Windows.xml
-F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.xml
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csproj.ResolveComReference.cache
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.frmBase.resources

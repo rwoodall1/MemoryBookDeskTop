@@ -325,14 +325,12 @@ F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\BaseClass.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.dll
-F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\MySql.Data.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\BaseClass.pdb
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\BindingModels.pdb
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.xml
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Exceptionless.Windows.xml
-F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\bin\Debug\NLog.xml
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmAddressList.resources
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\obj\Debug\Mbc5.Dialogs.frmEditCoverWip.resources
