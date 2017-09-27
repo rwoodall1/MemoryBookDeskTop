@@ -40,12 +40,14 @@ namespace Mbc5.Forms
         private void SendEmail()
         {
             var smtpClient = new SmtpClient();
+          
             var mailMessage = new MailMessage
             {
                 Subject = txtSubject.Text,
                 Body = txtMsg.Text,
                 IsBodyHtml = true
             };
+       
             if (!string.IsNullOrEmpty(txtCc.Text))
             {
                 mailMessage.CC.Add(new MailAddress(txtCc.Text));
@@ -69,8 +71,8 @@ namespace Mbc5.Forms
 
             }
 
-            mailMessage.From = new MailAddress(txtFrom.Text);
-            mailMessage.To.Add(txtTo.Text);
+            mailMessage.From = new MailAddress(txtFrom.Text.Trim());
+            mailMessage.To.Add(txtTo.Text.Trim());
             try
             {
                 smtpClient.Send(mailMessage);

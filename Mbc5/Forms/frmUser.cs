@@ -11,6 +11,7 @@ using System.Net.Mail;
 using System.Configuration;
 using BaseClass.Classes;
 using NLog;
+using Exceptionless;
 namespace Mbc5.Forms
 {
     public partial class frmUser : BaseClass.Forms.bTopSide
@@ -93,32 +94,34 @@ namespace Mbc5.Forms
             DataRowView newrow = (DataRowView) bsUser.AddNew();
            
         }
-        private void SendPassword(string passWord)
+        private void SendPassword(string passWord,string toEmail)
         {
-            SmtpClient smtp = new SmtpClient(ConfigurationManager.AppSettings["smtpServer"]);
-
-            smtp.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["mailUserName"],
-               ConfigurationManager.AppSettings["mailPassword"]);
-
-
-
-            MailMessage message = new MailMessage();
-            message.Sender = new MailAddress(ConfigurationManager.AppSettings["passwordResetFromMail"],
-               "Memory Book System Administrator");
-            message.From = new MailAddress(ConfigurationManager.AppSettings["passwordResetFromMail"],
+            SmtpClient smtp = new SmtpClient(Properties.Settings.Default.smtpServer);
+               smtp.Credentials = new NetworkCredential(Properties.Settings.Default.mailUserName,
+               Properties.Settings.Default.mailPassword);
+              MailMessage message = new MailMessage();
+              //message.Sender = new MailAddress(Properties.Settings.Default.fromMail,
+              // "Memory Book System Administrator");
+            message.From = new MailAddress(Properties.Settings.Default.fromMail,
                "Memory Book System Administrator");
 
-            message.To.Add(new MailAddress("aperson1@example.com",
-               "Recipient Number 1"));
+            message.To.Add(new MailAddress(toEmail));
 
 
             message.Subject = "Your temporary password.";
             message.Body = "<h1>Your Temporary Password</h1>< p >Login in with your email address as user name and " + passWord + "as your password. Once you are logged in you will be required to change your password.</ p > ";
 
             message.IsBodyHtml = true;
-            try {smtp.Send(message); } catch (Exception ex)
-            { this.Log.Error(ex,"Failed to send password reset email."); }
-            MessageBox.Show("Failed to send password reset email.", "Password", MessageBoxButtons.OK);
+            try {
+                smtp.Send(message);
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless().Submit();
+                this.Log.Error(ex,"Failed to send password email.");
+              MessageBox.Show("Failed to send password  email.", "Password", MessageBoxButtons.OK);
+            }
+          
            }
    
     #endregion
@@ -150,7 +153,7 @@ namespace Mbc5.Forms
             if (!valCheck)
             { return; }
 
-            setEdit(false);
+           
             this.Validate();
            
             try
@@ -168,12 +171,21 @@ namespace Mbc5.Forms
                     //daUser.InsertCommand.Parameters.RemoveAt("@ChangePasword");
                     //daUser.InsertCommand.Parameters.AddWithValue("@ChangePassword", true);
                     mbcUsersTableAdapter.Insert(viD,txtUserName.Text,pwd,cmbRole.SelectedValue.ToString(),txtEmail.Text,txtFirstName.Text,txtLastName.Text,true);
-                    SendPassword(pwd);
+                    try {SendPassword(pwd, txtEmail.Text); }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to send password email:" + ex.Message);
+                        this.Log.Error(ex, "Failed to send password email:" + ex.Message);
+                        return;
+                    }
+                    
+                    setEdit(false);
                     NewUser =false;
                 }
                 else {
                     this.bsUser.EndEdit();
                     mbcUsersTableAdapter.Update(dsUser); }
+                setEdit(false);
                 NewUser = false;
             }
             catch (DBConcurrencyException ex1)

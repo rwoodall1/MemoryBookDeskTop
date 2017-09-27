@@ -10,7 +10,7 @@ using Mbc5.Forms.MemoryBook;
 using Mbc5.Forms.Meridian;
 using BaseClass.Classes;
 using BaseClass.Forms;
-
+using System.Diagnostics;
 using Mbc5.LookUpForms;
 using NLog;
 namespace Mbc5.Forms
@@ -126,26 +126,24 @@ namespace Mbc5.Forms
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
             this.Hide();
+            bool keepLoading = true;
+            for (int i = 0; i < 3; i++)
+            {
+                if (this.Login())
+                {
+                    break;
+                };
+                if (i==2)
+                {
+                    //if 2 tries close 
+                    MessageBox.Show("You do not have the proper credentials. Contact your supervisor.", "Final Login Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    keepLoading = false;
+                    Application.Exit();
+                }
+            }
 
-            frmLogin Login = new frmLogin(this);
-            var _result = Login.ShowDialog();
-            if (_result == DialogResult.Cancel)
+            if (keepLoading)
             {
-                Application.Exit();
-            }
-            else if (_result == DialogResult.No)
-            {
-                MessageBox.Show("Your login is invalid", "Invalid Login", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                Application.Exit();
-            }
-            else if (_result == DialogResult.Abort)
-            {
-                MessageBox.Show("There was a fatal error. Application is closing.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                Application.Exit();
-            }
-            else
-            {
-
                 this.WindowState = FormWindowState.Maximized;
 
 
@@ -168,6 +166,7 @@ namespace Mbc5.Forms
                 mnuMain.Enabled = true;
                 this.WindowState = FormWindowState.Maximized;
             }
+            
 
 
         }
@@ -507,12 +506,48 @@ namespace Mbc5.Forms
 
 
 		#endregion
+        public bool Login()
+        {
+            frmLogin Login = new frmLogin(this);
+            var _result = Login.ShowDialog();
+            if (_result == DialogResult.Cancel)
+            {
+                Application.Exit();
+            }
+            else if (_result == DialogResult.No)
+            {
+                MessageBox.Show("Your password or user name was incorrect.", " Login Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                return false;
+            }
+            else if (_result == DialogResult.Abort)
+            {
+
+                Application.Exit();
+            }
+            
+
+            return true;
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            //localfilePath = root.Replace("StartUpApp", "Mbc5");
+            var localfile = root + "\\Mbc5.exe";
+            var localfileInfo = FileVersionInfo.GetVersionInfo(localfile);
+            string localVersion = localfileInfo.FileVersion;
+            MessageBox.Show("MBC version:" + localVersion, "Version", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
 
 
 
-
-		//nothing below here
-	}
+        //nothing below here
+    }
         }
 

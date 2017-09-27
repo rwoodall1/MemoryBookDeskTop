@@ -114,6 +114,7 @@
             this.cmbRole.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsUser, "roleid", true));
             this.cmbRole.DataSource = this.dsRoles;
             this.cmbRole.DisplayMember = "roles.name";
+            this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRole.Enabled = false;
             this.cmbRole.FormattingEnabled = true;
             this.cmbRole.Location = new System.Drawing.Point(132, 164);

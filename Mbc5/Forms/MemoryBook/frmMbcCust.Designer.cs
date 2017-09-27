@@ -1253,8 +1253,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtCsRep.Name = "txtCsRep";
             this.txtCsRep.Size = new System.Drawing.Size(54, 20);
             this.txtCsRep.TabIndex = 2;
-            this.txtCsRep.Validating += new System.ComponentModel.CancelEventHandler(this.txtCsRep_Validating);
-            this.txtCsRep.Validated += new System.EventHandler(this.txtCsRep_Validated);
             // 
             // lblSchName
             // 
@@ -2444,6 +2442,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.mktinfoDataGridView.AutoGenerateColumns = false;
             this.mktinfoDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.mktinfoDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.mktinfoDataGridView.CausesValidation = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2529,6 +2528,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // txtReason
             // 
+            this.txtReason.CausesValidation = false;
             this.txtReason.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.datecontBindingSource, "reason", true));
             this.txtReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReason.Location = new System.Drawing.Point(372, 60);
@@ -2545,6 +2545,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // commentListBox
             // 
+            this.commentListBox.CausesValidation = false;
             this.commentListBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.lkpCommentsBindingSource, "Comment", true));
             this.commentListBox.DataSource = this.lkpCommentsBindingSource;
             this.commentListBox.DisplayMember = "Comment";
@@ -2572,6 +2573,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.datecontDataGridView.AutoGenerateColumns = false;
             this.datecontDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datecontDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.datecontDataGridView.CausesValidation = false;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2679,7 +2681,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn9.DataPropertyName = "calltime";
             this.dataGridViewTextBoxColumn9.HeaderText = "Call Time";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Width = 75;
+            this.dataGridViewTextBoxColumn9.Width = 69;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -2687,7 +2689,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn7.DataPropertyName = "nxtdays";
             this.dataGridViewTextBoxColumn7.HeaderText = "Contact (Days)";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 102;
+            this.dataGridViewTextBoxColumn7.Width = 94;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -2700,7 +2702,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn8.HeaderText = "Next Date";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Width = 80;
+            this.dataGridViewTextBoxColumn8.Width = 74;
             // 
             // dataGridViewTextBoxColumn5
             // 
