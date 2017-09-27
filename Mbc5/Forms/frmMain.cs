@@ -10,7 +10,7 @@ using Mbc5.Forms.MemoryBook;
 using Mbc5.Forms.Meridian;
 using BaseClass.Classes;
 using BaseClass.Forms;
-
+using System.Diagnostics;
 using Mbc5.LookUpForms;
 using NLog;
 namespace Mbc5.Forms
@@ -529,10 +529,25 @@ namespace Mbc5.Forms
             return true;
         }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            //localfilePath = root.Replace("StartUpApp", "Mbc5");
+            var localfile = root + "\\Mbc5.exe";
+            var localfileInfo = FileVersionInfo.GetVersionInfo(localfile);
+            string localVersion = localfileInfo.FileVersion;
+            MessageBox.Show("MBC version:" + localVersion, "Version", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
 
 
-		//nothing below here
-	}
+
+        //nothing below here
+    }
         }
 

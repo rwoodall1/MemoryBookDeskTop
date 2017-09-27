@@ -295,6 +295,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <Content Include="Content\MAIL.png" />
     <Content Include="NOTES TODO.txt" />
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">

@@ -37,11 +37,10 @@ namespace Mbc5.Dialogs {
         private void btnLogin_Click(object sender, EventArgs e)      
             {
             
-           
             this.pbLoading.Visible = true;
            
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
             
 
             string cPassword = this.txtpassword.Text;

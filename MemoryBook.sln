@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseClass", "BaseClass\Base
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingModels", "BindingModels\BindingModels.csproj", "{5F448496-325E-429A-AE98-18AA1015AD80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartUpApp", "StartUpApp\StartUpApp.csproj", "{8D4B8F3D-EA61-4461-B54B-4397714FC613}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5F448496-325E-429A-AE98-18AA1015AD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F448496-325E-429A-AE98-18AA1015AD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F448496-325E-429A-AE98-18AA1015AD80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D4B8F3D-EA61-4461-B54B-4397714FC613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D4B8F3D-EA61-4461-B54B-4397714FC613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D4B8F3D-EA61-4461-B54B-4397714FC613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D4B8F3D-EA61-4461-B54B-4397714FC613}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
