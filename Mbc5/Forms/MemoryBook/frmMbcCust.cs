@@ -244,13 +244,15 @@ namespace Mbc5.Forms.MemoryBook {
             bool retval = false;
 		
             txtSchname.ReadOnly = true;
-
+       //     var a = this.ValidateChildren(ValidationConstraints.Enabled);
+           //     var b=this.ValidateChildren(ValidationConstraints.ImmediateChildren);
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
                 this.custBindingSource.EndEdit();
                 try
                 {
                     custTableAdapter.Update(dsCust);
+                    this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
                     retval = true;
                 }
                 catch (DBConcurrencyException dbex)
@@ -270,7 +272,7 @@ namespace Mbc5.Forms.MemoryBook {
                     retval = false;
                     }
             }
-			this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+			
 			return retval;
         }
         public override bool Add() {
@@ -374,20 +376,22 @@ namespace Mbc5.Forms.MemoryBook {
             e.Cancel = cancel;
             }
 
-        private void txtCsRep_Validating(object sender,CancelEventArgs e) {
+        private void txtCsRep_Validating(object sender, CancelEventArgs e)
+        {
             bool cancel = false;
             if (string.IsNullOrEmpty(this.txtCsRep.Text.Trim()))
-                {
+            {
                 //This control fails validation: Name cannot be empty.
                 cancel = true;
-                this.errorProvider1.SetError(this.txtCsRep,"Sales rep is required.");
-                }
+                this.errorProvider1.SetError(this.txtCsRep, "Sales rep is required.");
+            }
             e.Cancel = cancel;
             return;
-            }
-        private void txtCsRep_Validated(object sender,EventArgs e) {
-            this.errorProvider1.SetError(this.txtCsRep,string.Empty);
-            }
+        }
+        private void txtCsRep_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider1.SetError(this.txtCsRep, string.Empty);
+        }
         private void txtSchname_Validated(object sender,EventArgs e) {
             this.errorProvider1.SetError(this.txtSchname,string.Empty);
             }
@@ -411,16 +415,16 @@ namespace Mbc5.Forms.MemoryBook {
         private void txtSchPhone_Validated(object sender,EventArgs e) {
             this.errorProvider1.SetError(this.txtSchPhone,string.Empty);
             }
-        private void yb_sthTextBox_Validating(object sender,CancelEventArgs e) {
-            //bool cancel = false;
-            //if (yb_sthTextBox.Text!="Y" || !string.IsNullOrEmpty(this.yb_sthTextBox.Text.Trim()))
-            //{
-            //    //This control fails validation: Name cannot be empty.
-            //    cancel = true;
-            //    this.errorProvider1.SetError(this.yb_sthTextBox, "Value must be empty or Y.");
-            //}
-            //e.Cancel = cancel;
-            }
+        //private void yb_sthTextBox_Validating(object sender,CancelEventArgs e) {
+        //    //bool cancel = false;
+        //    //if (yb_sthTextBox.Text!="Y" || !string.IsNullOrEmpty(this.yb_sthTextBox.Text.Trim()))
+        //    //{
+        //    //    //This control fails validation: Name cannot be empty.
+        //    //    cancel = true;
+        //    //    this.errorProvider1.SetError(this.yb_sthTextBox, "Value must be empty or Y.");
+        //    //}
+        //    //e.Cancel = cancel;
+        //    }
 
         private void yb_sthTextBox_Validated(object sender,EventArgs e) {
             //this.errorProvider1.SetError(this.yb_sthTextBox, string.Empty);
@@ -430,17 +434,17 @@ namespace Mbc5.Forms.MemoryBook {
             //this.errorProvider1.SetError(this.shiptocontTextBox, string.Empty);
             }
 
-        private void shiptocontTextBox_Validating(object sender,CancelEventArgs e) {
-            //bool cancel = false;
-            //var a = !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim());
-            //if (shiptocontTextBox.Text != "Y" || !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim()))
-            //{
-            //    //This control fails validation: Name cannot be empty.
-            //    cancel = true;
-            //    this.errorProvider1.SetError(this.shiptocontTextBox, "Value must be empty or Y.");
-            //}
-            //e.Cancel = cancel;
-            }
+        //private void shiptocontTextBox_Validating(object sender,CancelEventArgs e) {
+        //    //bool cancel = false;
+        //    //var a = !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim());
+        //    //if (shiptocontTextBox.Text != "Y" || !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim()))
+        //    //{
+        //    //    //This control fails validation: Name cannot be empty.
+        //    //    cancel = true;
+        //    //    this.errorProvider1.SetError(this.shiptocontTextBox, "Value must be empty or Y.");
+        //    //}
+        //    //e.Cancel = cancel;
+        //    }
 		#endregion
 #region Methods
 		private void AddSalesRecord()
@@ -727,12 +731,13 @@ namespace Mbc5.Forms.MemoryBook {
                 { MessageBox.Show("You do not have any records to be saved.","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop); }
             }
         private void SaveTeleLog() {
-
-            this.ValidateChildren();
+             datecontBindingSource.EndEdit();
+           var a= this.ValidateChildren(ValidationConstraints.ImmediateChildren);
+           
             DataTable EditedRecs = dsCust.datecont.GetChanges();
             if (EditedRecs != null)
                 {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+                SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
                 string sql = "UPDATE DateCont Set Id=@Id,reason=@reason,contact=@contact,typecont=@typecont, nxtdate=@nxtdate,callcont=@callcont, calltime=@calltime,priority=@priority,techcall=@techcall where id=@id ;";
                 SqlCommand cmd = new SqlCommand(sql,conn);
                 foreach (DataRow row in EditedRecs.Rows)
@@ -874,7 +879,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void btnAddLog_Click(object sender,EventArgs e) {
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString );
             string sql = "INSERT INTO DateCont (Id,schcode,datecont,initial) VALUES(@Id,@schcode,@datecont,@initial);";
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.Parameters.AddWithValue("@Id",Guid.NewGuid().ToString());
@@ -958,14 +963,16 @@ namespace Mbc5.Forms.MemoryBook {
             SaveMktLog();
             }
 
-        private void mktinfoDataGridView_DataError(object sender,DataGridViewDataErrorEventArgs e) {
+        private void mktinfoDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
             //leave
-            }
+        }
 
-        private void datecontDataGridView_DataError(object sender,DataGridViewDataErrorEventArgs e) {
+        private void datecontDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
             //Leave Here;
 
-            }
+        }
 
         private void pg3_Leave(object sender,EventArgs e) {
             //save if user leaves to another tab or form will not affect log check.
