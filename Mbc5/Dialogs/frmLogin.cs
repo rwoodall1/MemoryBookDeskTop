@@ -116,6 +116,7 @@ namespace Mbc5.Dialogs {
             {
                 MessageBox.Show(ex.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.DialogResult = DialogResult.Abort;
+                Application.Exit();
                 return;
 
             }

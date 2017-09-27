@@ -252,6 +252,7 @@ namespace Mbc5.Forms.MemoryBook {
                 try
                 {
                     custTableAdapter.Update(dsCust);
+                    this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
                     retval = true;
                 }
                 catch (DBConcurrencyException dbex)
@@ -271,7 +272,7 @@ namespace Mbc5.Forms.MemoryBook {
                     retval = false;
                     }
             }
-			this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+			
 			return retval;
         }
         public override bool Add() {
@@ -387,9 +388,10 @@ namespace Mbc5.Forms.MemoryBook {
             e.Cancel = cancel;
             return;
         }
-        private void txtCsRep_Validated(object sender,EventArgs e) {
-            this.errorProvider1.SetError(this.txtCsRep,string.Empty);
-            }
+        private void txtCsRep_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider1.SetError(this.txtCsRep, string.Empty);
+        }
         private void txtSchname_Validated(object sender,EventArgs e) {
             this.errorProvider1.SetError(this.txtSchname,string.Empty);
             }
@@ -961,14 +963,16 @@ namespace Mbc5.Forms.MemoryBook {
             SaveMktLog();
             }
 
-        private void mktinfoDataGridView_DataError(object sender,DataGridViewDataErrorEventArgs e) {
+        private void mktinfoDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
             //leave
-            }
+        }
 
-        private void datecontDataGridView_DataError(object sender,DataGridViewDataErrorEventArgs e) {
+        private void datecontDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
             //Leave Here;
 
-            }
+        }
 
         private void pg3_Leave(object sender,EventArgs e) {
             //save if user leaves to another tab or form will not affect log check.
