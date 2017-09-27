@@ -244,8 +244,8 @@ namespace Mbc5.Forms.MemoryBook {
             bool retval = false;
 		
             txtSchname.ReadOnly = true;
-            var a = this.ValidateChildren(ValidationConstraints.Enabled);
-                var b=this.ValidateChildren(ValidationConstraints.ImmediateChildren);
+       //     var a = this.ValidateChildren(ValidationConstraints.Enabled);
+           //     var b=this.ValidateChildren(ValidationConstraints.ImmediateChildren);
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
                 this.custBindingSource.EndEdit();
