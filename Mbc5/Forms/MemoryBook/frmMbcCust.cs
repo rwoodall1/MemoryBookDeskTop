@@ -245,6 +245,7 @@ namespace Mbc5.Forms.MemoryBook {
 		
             txtSchname.ReadOnly = true;
             var a = this.ValidateChildren(ValidationConstraints.Enabled);
+                var b=this.ValidateChildren(ValidationConstraints.ImmediateChildren);
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
                 this.custBindingSource.EndEdit();
@@ -728,8 +729,9 @@ namespace Mbc5.Forms.MemoryBook {
                 { MessageBox.Show("You do not have any records to be saved.","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop); }
             }
         private void SaveTeleLog() {
-
-            this.ValidateChildren();
+             datecontBindingSource.EndEdit();
+           var a= this.ValidateChildren(ValidationConstraints.ImmediateChildren);
+           
             DataTable EditedRecs = dsCust.datecont.GetChanges();
             if (EditedRecs != null)
                 {
