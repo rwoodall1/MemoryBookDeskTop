@@ -38,9 +38,15 @@ namespace Mbc5.Forms
         public void ValidateUserRoles() {
             string[] AvailableRoles = new string[] { "SA","Administrator" };//list all roles when completed
             foreach (string role in AvailableRoles)
-
-                if (this.ApplicationUser.IsInRole(role))
+                try {
+                    if (this.ApplicationUser.IsInRole(role))
                     this.ValidatedUserRoles.Add(role);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                
 
             }
         private int GetInvno()

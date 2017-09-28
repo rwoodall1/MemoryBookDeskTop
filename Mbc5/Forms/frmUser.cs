@@ -96,31 +96,35 @@ namespace Mbc5.Forms
         }
         private void SendPassword(string passWord,string toEmail)
         {
-            SmtpClient smtp = new SmtpClient(Properties.Settings.Default.smtpServer);
-               smtp.Credentials = new NetworkCredential(Properties.Settings.Default.mailUserName,
-               Properties.Settings.Default.mailPassword);
-              MailMessage message = new MailMessage();
-              //message.Sender = new MailAddress(Properties.Settings.Default.fromMail,
-              // "Memory Book System Administrator");
-            message.From = new MailAddress(Properties.Settings.Default.fromMail,
-               "Memory Book System Administrator");
+            var _emailHelper = new EmailHelper();
+            string body ="<h1> Your Temporary Password </h1><p> Login in with your email address as user name and " + passWord + " as your password.Once you are logged in you will be required to change your password.</p> ";
+            _emailHelper.SendEmail("Your temporary password.", toEmail,"", body, EmailType.System);
 
-            message.To.Add(new MailAddress(toEmail));
+            //SmtpClient smtp = new SmtpClient(Properties.Settings.Default.smtpServer);
+            //   smtp.Credentials = new NetworkCredential(Properties.Settings.Default.mailUserName,
+            //   Properties.Settings.Default.mailPassword);
+            //  MailMessage message = new MailMessage();
+            //  //message.Sender = new MailAddress(Properties.Settings.Default.fromMail,
+            //  // "Memory Book System Administrator");
+            //message.From = new MailAddress(Properties.Settings.Default.fromMail,
+            //   "Memory Book System Administrator");
+
+            //message.To.Add(new MailAddress(toEmail));
 
 
-            message.Subject = "Your temporary password.";
-            message.Body = "<h1>Your Temporary Password</h1>< p >Login in with your email address as user name and " + passWord + "as your password. Once you are logged in you will be required to change your password.</ p > ";
+            //message.Subject = "Your temporary password.";
+            //message.Body = "<h1>Your Temporary Password</h1>< p >Login in with your email address as user name and " + passWord + "as your password. Once you are logged in you will be required to change your password.</ p > ";
 
-            message.IsBodyHtml = true;
-            try {
-                smtp.Send(message);
-            }
-            catch (Exception ex)
-            {
-                ex.ToExceptionless().Submit();
-                this.Log.Error(ex,"Failed to send password email.");
-              MessageBox.Show("Failed to send password  email.", "Password", MessageBoxButtons.OK);
-            }
+            //message.IsBodyHtml = true;
+            //try {
+            //    smtp.Send(message);
+            //}
+            //catch (Exception ex)
+            //{
+            //    ex.ToExceptionless().Submit();
+            //    this.Log.Error(ex,"Failed to send password email.");
+            //  MessageBox.Show("Failed to send password  email.", "Password", MessageBoxButtons.OK);
+            //}
           
            }
    
@@ -163,14 +167,7 @@ namespace Mbc5.Forms
                 {
                     string viD = Guid.NewGuid().ToString();
                     string pwd =RandomPasswordGenerator.Generate();//tmp password
-                 
-                    //daUser.InsertCommand.Parameters.RemoveAt("@id");
-                    //daUser.InsertCommand.Parameters.AddWithValue("@id", viD);
-                    //daUser.InsertCommand.Parameters.RemoveAt("@PassWord");
-                    //daUser.InsertCommand.Parameters.AddWithValue("@PassWord", pwd);
-                    //daUser.InsertCommand.Parameters.RemoveAt("@ChangePasword");
-                    //daUser.InsertCommand.Parameters.AddWithValue("@ChangePassword", true);
-                    mbcUsersTableAdapter.Insert(viD,txtUserName.Text,pwd,cmbRole.SelectedValue.ToString(),txtEmail.Text,txtFirstName.Text,txtLastName.Text,true);
+                   mbcUsersTableAdapter.Insert(viD,txtUserName.Text,pwd,cmbRole.SelectedValue.ToString(),txtEmail.Text,txtFirstName.Text,txtLastName.Text,true);
                     try {SendPassword(pwd, txtEmail.Text); }
                     catch (Exception ex)
                     {
@@ -181,12 +178,17 @@ namespace Mbc5.Forms
                     
                     setEdit(false);
                     NewUser =false;
+                    //reload
+                    this.mbcUsersTableAdapter.Fill(this.dsUser.mbcUsers);
                 }
                 else {
                     this.bsUser.EndEdit();
                     mbcUsersTableAdapter.Update(dsUser); }
                 setEdit(false);
                 NewUser = false;
+
+                //reload
+                this.mbcUsersTableAdapter.Fill(this.dsUser.mbcUsers);
             }
             catch (DBConcurrencyException ex1)
             {
