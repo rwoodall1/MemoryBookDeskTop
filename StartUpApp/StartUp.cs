@@ -19,7 +19,7 @@ namespace StartUpApp
             //https://stackoverflow.com/questions/1112981/how-do-i-launch-application-one-from-another-in-c
             string localVersion = "";
             string serverVersion = "";
-           string serverfilePath = @"M:\MbcData\UpdateExe\bin\Debug\";
+           string serverfilePath = @"M:\UpdateExe\bin\Debug\";
             string localfilePath = "";
             try
             {

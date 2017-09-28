@@ -11,7 +11,7 @@ using NLog;
 namespace BaseClass.Classes {
     public class SQLQuery {
         protected Logger Log { get; private set; }
-        private static string _ConnectionString =ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
+        private static string _ConnectionString = Properties.Settings.Default.MBCConnection;
 
         public SQLQuery() {
             Log = LogManager.GetLogger(GetType().FullName);
