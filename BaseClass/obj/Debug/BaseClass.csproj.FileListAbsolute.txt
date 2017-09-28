@@ -341,3 +341,4 @@ F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Pa
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csproj.GenerateResource.Cache
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.dll
 F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.pdb
+F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache

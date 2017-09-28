@@ -46,7 +46,7 @@ namespace BaseClass.Classes
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
-						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='http://www.memorybook.com' alt='Lifeline Services' title='Lifeline Services'><img src='http://www.memorybook.com/images/logos/mem_jost_logo280x70.jpg' alt='Lifeline Services' title='Lifeline Services' style='border:0px' border='0' width='141' height='48'></a></span></td>
+						<td style='background:#fff; color:#FFFFFF;padding:10px'><span style='padding:10px;text-align:left;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;'><a href='http://www.memorybook.com' alt='Lifeline Services' title='Lifeline Services'><img src='http://www.memorybook.com/images/logos/mem_jost_logo280x70.jpg' alt='Memory Book Company' title='Memory Book Company' style='border:0px' border='0' width='141' height='48'></a></span></td>
 						<td style='padding:10px;text-align:right;background:#fff; color:#FFFFFF;vertical-align:bottom;font-size:12px;' width='230'>&nbsp;</td>
 						<td style='background:#fff;width:10px;' width='10'>&nbsp;</td>
 					</tr>
@@ -164,7 +164,7 @@ namespace BaseClass.Classes
 
             return template;
         }
-        public void SendEmail(string Subject, string ToAddresses, string CCAddresses, string Body, EmailType TypeEmail)
+        public bool SendEmail(string Subject, string ToAddresses, string CCAddresses, string Body, EmailType TypeEmail)
 
         {
             var brandedHtml = "";
@@ -185,7 +185,7 @@ namespace BaseClass.Classes
                 brandedHtml = "";
             } else
             {
-                return;
+                return false;
             }
 
             var smtpClient = new SmtpClient();
@@ -197,10 +197,20 @@ namespace BaseClass.Classes
             };
 
             mailMessage.To.Add(ToAddresses);
-            smtpClient.Send(mailMessage);
+            try {
+                smtpClient.Send(mailMessage);
+                return true;
+            }catch(Exception ex)
+            {
+                ex.ToExceptionless()
+                    .Submit();
+                MessageBox.Show("Failed to send email:" + ex.Message);
+                return false;
+            }
+            
         }
 
-        public void SendEmail(string Subject, List<string> ToAddresses, List<string> CCAddresses, string Body, EmailType TypeEmail) {
+        public bool SendEmail(string Subject, List<string> ToAddresses, List<string> CCAddresses, string Body, EmailType TypeEmail) {
             var brandedHtml = "";
             if (TypeEmail == EmailType.Mbc) {
                 brandedHtml = BuildEmailMBC(Body);
@@ -211,7 +221,7 @@ namespace BaseClass.Classes
             } else if (TypeEmail == EmailType.Blank) {
                 brandedHtml = "";
             } else {
-                return;
+                return false;
             }
 
             var smtpClient = new SmtpClient();
@@ -227,10 +237,21 @@ namespace BaseClass.Classes
                 mailMessage.To.Add(address);
             }
 
-            smtpClient.Send(mailMessage);
+            try
+            {
+                smtpClient.Send(mailMessage);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .Submit();
+                MessageBox.Show("Failed to send email:" + ex.Message);
+                return false;
+            }
         }
 
-        public void SendEmail(string Subject, List<string> ToAddresses, string CCAddresses, string Body, EmailType TypeEmail) {
+        public bool SendEmail(string Subject, List<string> ToAddresses, string CCAddresses, string Body, EmailType TypeEmail) {
             if (ToAddresses == null || ToAddresses.Count<0)
             {
                 MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -245,7 +266,7 @@ namespace BaseClass.Classes
             } else if (TypeEmail == EmailType.Blank) {
                 brandedHtml = "";
             } else {
-                return;
+                return false;
             }
 
             var smtpClient = new SmtpClient();
@@ -259,12 +280,21 @@ namespace BaseClass.Classes
             }
 
             mailMessage.To.Add(CCAddresses);
-
-
-            smtpClient.Send(mailMessage);
+            try
+            {
+                smtpClient.Send(mailMessage);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .Submit();
+                MessageBox.Show("Failed to send email:" + ex.Message);
+                return false;
+            }
         }
 
-        public void SendEmail(string Subject, string ToAddresses, List<string> CCAddresses, string Body, EmailType TypeEmail) {
+        public bool SendEmail(string Subject, string ToAddresses, List<string> CCAddresses, string Body, EmailType TypeEmail) {
             if (ToAddresses == null || ToAddresses == "")
             {
                 MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -279,7 +309,7 @@ namespace BaseClass.Classes
             } else if (TypeEmail == EmailType.Blank) {
                 brandedHtml = "";
             } else {
-                return;
+                return false;
             }
 
             var smtpClient = new SmtpClient();
@@ -293,11 +323,22 @@ namespace BaseClass.Classes
                 mailMessage.CC.Add(address);
             }
 
-            smtpClient.Send(mailMessage);
+            try
+            {
+                smtpClient.Send(mailMessage);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .Submit();
+                MessageBox.Show("Failed to send email:" + ex.Message);
+                return false;
+            }
         }
 
 
-        public void SendOutLookEmail(string Subject, string ToAddresses, string CCAddresses, string Body, EmailType TypeEmail) {
+        public bool SendOutLookEmail(string Subject, string ToAddresses, string CCAddresses, string Body, EmailType TypeEmail) {
             if (ToAddresses == null ||ToAddresses=="")
             {
                 MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -312,7 +353,7 @@ namespace BaseClass.Classes
                 } else if (TypeEmail == EmailType.Blank) {
                 brandedHtml = Body;
                 } else {
-                return;
+                return false;
                 }
             try {
                 Outlook.Application outlookApp = new Outlook.Application();
@@ -325,15 +366,17 @@ namespace BaseClass.Classes
                 mailItem.Subject = Subject;
                 mailItem.HTMLBody = brandedHtml;
                 mailItem.Display(true);
+                return true;
                 }catch(Exception ex) {
                 ex.ToExceptionless()
                   .MarkAsCritical()
                   .AddTags("Outlook Error")
                   .Submit();
-                    
+                MessageBox.Show("Failed to send email:" + ex.Message);
+                return false;
                 }
             }
-        public void SendOutLookEmail(string Subject,List<string> ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
+        public bool SendOutLookEmail(string Subject,List<string> ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
             if (ToAddresses == null || ToAddresses.Count < 1)
             {
                 MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -348,7 +391,7 @@ namespace BaseClass.Classes
                 } else if (TypeEmail == EmailType.Blank) {
                 brandedHtml = "";
                 } else {
-                return;
+                return false; ;
                 }
             try {
                 Outlook.Application outlookApp = new Outlook.Application();
@@ -368,14 +411,17 @@ namespace BaseClass.Classes
                 mailItem.Subject = Subject;
                 mailItem.HTMLBody = brandedHtml;
                 mailItem.Display(true);
+                return true;
                 }catch(Exception ex1) {
                 ex1.ToExceptionless()
               .MarkAsCritical()
               .AddTags("Outlook Error")
               .Submit();
+                MessageBox.Show("Failed to send email:" + ex1.Message);
+                return false;
                 }
             }
-        public void SendOutLookEmail(string Subject,string ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
+        public bool SendOutLookEmail(string Subject,string ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
             var brandedHtml = "";
             if (ToAddresses == null || ToAddresses =="")
             {
@@ -390,7 +436,7 @@ namespace BaseClass.Classes
                 } else if (TypeEmail == EmailType.Blank) {
                 brandedHtml = "";
                 } else {
-                return;
+                return false;
                 }
             try {
                 Outlook.Application outlookApp = new Outlook.Application();
@@ -408,14 +454,17 @@ namespace BaseClass.Classes
                 mailItem.Subject = Subject;
                 mailItem.HTMLBody = brandedHtml;
                 mailItem.Display(true);
+                return true;
                 } catch (Exception ex1) {
                 ex1.ToExceptionless()
               .MarkAsCritical()
               .AddTags("Outlook Error")
               .Submit();
+                MessageBox.Show("Failed to send email:" + ex1.Message);
+                return false;
                 }
             }
-        public void SendOutLookEmail(string Subject,List<string> ToAddresses,string CCAddresses,string Body,EmailType TypeEmail) {
+        public bool SendOutLookEmail(string Subject,List<string> ToAddresses,string CCAddresses,string Body,EmailType TypeEmail) {
             if (ToAddresses == null || ToAddresses.Count < 1)
             {
                 MessageBox.Show("Email address is empty. Check school and school contacts email addresses.","Empty Email Address",MessageBoxButtons.OK,MessageBoxIcon.Hand);
@@ -430,7 +479,7 @@ namespace BaseClass.Classes
                 } else if (TypeEmail == EmailType.Blank) {
                 brandedHtml = "";
                 } else {
-                return;
+                return false;
                 }
             try {
                 Outlook.Application outlookApp = new Outlook.Application();
@@ -447,11 +496,14 @@ namespace BaseClass.Classes
                 mailItem.Subject = Subject;
                 mailItem.HTMLBody = brandedHtml;
                 mailItem.Display(true);
+                return true;
                 } catch (Exception ex1) {
                 ex1.ToExceptionless()
               .MarkAsCritical()
               .AddTags("Outlook Error")
               .Submit();
+                MessageBox.Show("Failed to send email:" + ex1.Message);
+                return false;
                 }
             }
 
