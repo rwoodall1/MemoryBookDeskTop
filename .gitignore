@@ -86,3 +86,5 @@ BaseClass/bin/Debug/BaseClass.pdb
 *.rsp
 *.targets
 *.xml
+*.resources
+*.cs
