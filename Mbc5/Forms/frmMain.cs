@@ -178,8 +178,12 @@ namespace Mbc5.Forms
         }
         private void SetMenu()
         {
+            var a = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
+            var aa = this.ValidatedUserRoles.Contains("Administrator") || this.ValidatedUserRoles.Contains("SA");
+            this.systemToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("Administrator") || this.ValidatedUserRoles.Contains("SA"); 
 
-            this.userMaintinanceToolStripMenuItem.Enabled = this.ValidatedUserRoles.Contains("SA");
+            
+            //this.userMaintinanceToolStripMenuItem.Enabled = this.ValidatedUserRoles.Contains("SA");
         }
         public void exitMBCToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -91,10 +91,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration
-                    (ConfigurationUserLevel.None);
-            config.ConnectionStrings.SectionInformation.ProtectSection(null);
-            config.Save(ConfigurationSaveMode.Full, true);
+          
 
         }
     }

@@ -35,7 +35,8 @@ namespace Mbc5.Forms
             string pwd = RandomPasswordGenerator.Generate();
             string msg = "Login with your user name and this password:" + pwd + ". Once you login you will have to change your password.";
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+          
             SqlCommand cmd = new SqlCommand("Select Id,EmailAddress from mbcUsers  where EmailAddress=@EmailAddress", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();

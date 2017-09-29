@@ -21,9 +21,10 @@ namespace Mbc5.Forms
 {
 	public partial class frmEndSheet : BaseClass.frmBase, INotifyPropertyChanged
 	{
-		private static string _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
+        private static string _ConnectionString = Properties.Settings.Default.Mbc5ConnectionString;
 
-		public event PropertyChangedEventHandler PropertyChanged;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
 		public frmEndSheet(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
 		{

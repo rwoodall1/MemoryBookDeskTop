@@ -387,7 +387,6 @@ C:\MemoryBookDeskTop\BaseClass\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
 C:\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.xml
 C:\MemoryBookDeskTop\BaseClass\bin\Debug\Exceptionless.Windows.xml
 C:\MemoryBookDeskTop\BaseClass\bin\Debug\NLog.xml
-C:\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csprojResolveAssemblyReference.cache
 C:\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.csproj.ResolveComReference.cache
 C:\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.frmBase.resources
 C:\MemoryBookDeskTop\BaseClass\obj\Debug\BaseClass.Forms.bTopBottom.resources

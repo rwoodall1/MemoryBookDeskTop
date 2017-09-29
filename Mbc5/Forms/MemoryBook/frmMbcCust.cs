@@ -642,7 +642,7 @@ namespace Mbc5.Forms.MemoryBook {
             return coverNum.ToString();
             }
         private void GetSetSchcode() {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT precode,schcode from codecnt ",conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
@@ -697,7 +697,7 @@ namespace Mbc5.Forms.MemoryBook {
             DataTable EditedRecs = dsMktInfo.mktinfo.GetChanges();
             if (EditedRecs != null)
                 {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+                SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
                 string sql = "UPDATE MktInfo Set note=@note,promo=@promo,refered=@refered where Id=@Id ;";
                 SqlCommand cmd = new SqlCommand(sql,conn);
                 foreach (DataRow row in EditedRecs.Rows)
@@ -904,7 +904,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void btnAddMarketLog_Click(object sender,EventArgs e) {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
             string sql = "INSERT INTO MktInfo (ddate,initial,schcode) VALUES(@ddate,@initial,@schcode);";
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.Parameters.Clear();
