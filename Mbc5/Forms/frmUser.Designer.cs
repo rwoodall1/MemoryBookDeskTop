@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUser));
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.cmbRole = new System.Windows.Forms.ComboBox();
-            this.dsRoles = new Mbc5.DataSets.dsRoles();
             this.bsUser = new System.Windows.Forms.BindingSource(this.components);
             this.dsUser = new Mbc5.DataSets.dsUser();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,7 +48,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.rolesTableAdapter = new Mbc5.DataSets.dsRolesTableAdapters.rolesTableAdapter();
             this.mbcUsersTableAdapter = new Mbc5.DataSets.dsUserTableAdapters.mbcUsersTableAdapter();
             this.lblId = new System.Windows.Forms.Label();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
@@ -63,13 +60,20 @@
             this.bindingNavigatorMoveNextItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.idLabel1 = new System.Windows.Forms.Label();
+            this.tableAdapterManager = new Mbc5.DataSets.dsRolesTableAdapters.TableAdapterManager();
+            this.cmbRole = new System.Windows.Forms.ComboBox();
+            this.dsRoles = new Mbc5.DataSets.dsRoles();
+            this.rolesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.rolesTableAdapter = new Mbc5.DataSets.dsRolesTableAdapters.rolesTableAdapter();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -88,7 +92,7 @@
             this.panel2.Controls.Add(this.btnEdit);
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Location = new System.Drawing.Point(452, 10);
-            this.panel2.Size = new System.Drawing.Size(213, 308);
+            this.panel2.Size = new System.Drawing.Size(213, 215);
             // 
             // btnSearch
             // 
@@ -107,26 +111,6 @@
             this.txtSearch.Size = new System.Drawing.Size(239, 20);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
-            // 
-            // cmbRole
-            // 
-            this.cmbRole.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dsRoles, "roles.name", true));
-            this.cmbRole.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsUser, "roleid", true));
-            this.cmbRole.DataSource = this.dsRoles;
-            this.cmbRole.DisplayMember = "roles.name";
-            this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRole.Enabled = false;
-            this.cmbRole.FormattingEnabled = true;
-            this.cmbRole.Location = new System.Drawing.Point(132, 164);
-            this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(240, 21);
-            this.cmbRole.TabIndex = 6;
-            this.cmbRole.ValueMember = "roles.id";
-            // 
-            // dsRoles
-            // 
-            this.dsRoles.DataSetName = "dsRoles";
-            this.dsRoles.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bsUser
             // 
@@ -264,10 +248,6 @@
             this.errorProvider.BlinkRate = 500;
             this.errorProvider.ContainerControl = this;
             // 
-            // rolesTableAdapter
-            // 
-            this.rolesTableAdapter.ClearBeforeFill = true;
-            // 
             // mbcUsersTableAdapter
             // 
             this.mbcUsersTableAdapter.ClearBeforeFill = true;
@@ -298,7 +278,7 @@
             this.bindingNavigatorMoveNextItem1,
             this.bindingNavigatorMoveLastItem1,
             this.bindingNavigatorSeparator5});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 279);
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 186);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem1;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem1;
@@ -376,14 +356,56 @@
             this.bindingNavigatorSeparator5.Name = "bindingNavigatorSeparator5";
             this.bindingNavigatorSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
+            // idLabel1
+            // 
+            this.idLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsUser, "id", true));
+            this.idLabel1.Location = new System.Drawing.Point(9, 291);
+            this.idLabel1.Name = "idLabel1";
+            this.idLabel1.Size = new System.Drawing.Size(1, 1);
+            this.idLabel1.TabIndex = 26;
+            this.idLabel1.Text = "lblId";
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsRolesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // cmbRole
+            // 
+            this.cmbRole.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsUser, "roleid", true));
+            this.cmbRole.DataSource = this.rolesBindingSource;
+            this.cmbRole.DisplayMember = "name";
+            this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRole.FormattingEnabled = true;
+            this.cmbRole.Location = new System.Drawing.Point(130, 161);
+            this.cmbRole.Name = "cmbRole";
+            this.cmbRole.Size = new System.Drawing.Size(243, 21);
+            this.cmbRole.TabIndex = 32;
+            this.cmbRole.ValueMember = "id";
+            // 
+            // dsRoles
+            // 
+            this.dsRoles.DataSetName = "dsRoles";
+            this.dsRoles.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // rolesBindingSource
+            // 
+            this.rolesBindingSource.DataMember = "roles";
+            this.rolesBindingSource.DataSource = this.dsRoles;
+            // 
+            // rolesTableAdapter
+            // 
+            this.rolesTableAdapter.ClearBeforeFill = true;
+            // 
             // frmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(665, 318);
+            this.ClientSize = new System.Drawing.Size(665, 225);
+            this.Controls.Add(this.cmbRole);
+            this.Controls.Add(this.idLabel1);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.cmbRole);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.label5);
@@ -395,7 +417,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmUser";
-            this.Text = "User";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.frmUser_Load);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtFirstName, 0);
@@ -406,21 +428,23 @@
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.txtUserName, 0);
             this.Controls.SetChildIndex(this.label6, 0);
-            this.Controls.SetChildIndex(this.cmbRole, 0);
             this.Controls.SetChildIndex(this.txtSearch, 0);
             this.Controls.SetChildIndex(this.btnSearch, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.lblId, 0);
+            this.Controls.SetChildIndex(this.idLabel1, 0);
+            this.Controls.SetChildIndex(this.cmbRole, 0);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsRoles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,7 +454,6 @@
 
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.ComboBox cmbRole;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label label5;
@@ -445,8 +468,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private DataSets.dsRoles dsRoles;
-        private DataSets.dsRolesTableAdapters.rolesTableAdapter rolesTableAdapter;
         private DataSets.dsUser dsUser;
         private System.Windows.Forms.BindingSource bsUser;
         private DataSets.dsUserTableAdapters.mbcUsersTableAdapter mbcUsersTableAdapter;
@@ -461,5 +482,11 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem1;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem1;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator5;
+        private System.Windows.Forms.Label idLabel1;
+        private DataSets.dsRolesTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.ComboBox cmbRole;
+        private DataSets.dsRoles dsRoles;
+        private System.Windows.Forms.BindingSource rolesBindingSource;
+        private DataSets.dsRolesTableAdapters.rolesTableAdapter rolesTableAdapter;
     }
 }
