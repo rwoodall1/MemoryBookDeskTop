@@ -113,8 +113,12 @@ namespace Mbc5.Forms
         {
             NewUser = false;
             setEdit(false);
+            this.Cancel();
         }
-
+        public override void Cancel()
+        {
+            bsUser.CancelEdit();
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
            
