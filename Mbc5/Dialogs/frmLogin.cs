@@ -45,11 +45,12 @@ namespace Mbc5.Dialogs {
 
             string cPassword = this.txtpassword.Text;
             string cUser = this.txtusername.Text;
-
-
-
-
-            SqlCommand cmd = new SqlCommand("SELECT dbo.roles.name as RoleName,dbo.mbcUsers.FirstName,dbo.mbcUsers.LastName, dbo.roles.rank, dbo.mbcUsers.id, dbo.mbcUsers.UserName,dbo.mbcUsers.PassWord, dbo.mbcUsers.roleid, dbo.mbcUsers.EmailAddress, dbo.mbcUsers.FirstName, dbo.mbcUsers.LastName, dbo.mbcUsers.ChangePassword FROM dbo.mbcUsers INNER JOIN dbo.user_role ON dbo.mbcUsers.id = dbo.user_role.userid INNER JOIN dbo.roles ON dbo.user_role.roleid = dbo.roles.id WHERE(dbo.mbcUsers.PassWord = @password) AND(dbo.mbcUsers.UserName = @username)", conn);
+            SqlCommand cmd = new SqlCommand(@"SELECT dbo.roles.name as RoleName,dbo.mbcUsers.FirstName,dbo.mbcUsers.LastName,
+                                            dbo.roles.rank, dbo.mbcUsers.id, dbo.mbcUsers.UserName,dbo.mbcUsers.PassWord,
+                                            dbo.mbcUsers.roleid, dbo.mbcUsers.EmailAddress, dbo.mbcUsers.FirstName,
+                                            dbo.mbcUsers.LastName, dbo.mbcUsers.ChangePassword
+                                            FROM dbo.mbcUsers INNER JOIN dbo.roles ON dbo.mbcUsers.roleid = dbo.roles.id 
+                                            WHERE(dbo.mbcUsers.PassWord = @password) AND(dbo.mbcUsers.UserName = @username)", conn);
             cmd.CommandType = CommandType.Text;
             cmd.CommandTimeout = 5;
             cmd.Parameters.Clear();

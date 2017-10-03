@@ -141,7 +141,7 @@ namespace BaseClass.Classes {
                 }
             }
 
-        public async Task<object> ExecuteScalarAsync(CommandType cmdType,string cmdText,params SqlParameter[] commandParameters) {
+        public object ExecuteScalarAsync(CommandType cmdType,string cmdText,params SqlParameter[] commandParameters) {
             object sqlResult=null;
             using (var connection = new SqlConnection(_ConnectionString))
                 {
@@ -154,7 +154,7 @@ namespace BaseClass.Classes {
                         command.Parameters.AddRange(commandParameters);
                         connection.Open();
 
-                         sqlResult = await command.ExecuteScalarAsync();
+                         sqlResult = command.ExecuteScalarAsync();
                      
                         }
                     catch (Exception ex)
