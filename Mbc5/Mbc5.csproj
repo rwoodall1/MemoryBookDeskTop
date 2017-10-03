@@ -128,6 +128,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSales.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsUser.cs">
+      <DependentUpon>dsUser.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsUser.Designer.cs">
       <DependentUpon>dsUser.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -544,7 +547,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\SystemIcons\" />
-    <Folder Include="gooddataset\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

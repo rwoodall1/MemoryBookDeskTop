@@ -82,3 +82,9 @@ BaseClass/bin/Debug/BaseClass.dll
 *.dll
 BaseClass/bin/Debug/BaseClass.pdb
 .vs/MemoryBook/v14/.suo
+*.config
+*.rsp
+*.targets
+*.xml
+*.resources
+*.cs
