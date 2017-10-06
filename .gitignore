@@ -88,3 +88,4 @@ BaseClass/bin/Debug/BaseClass.pdb
 *.xml
 *.resources
 *.cs
+*.ide
