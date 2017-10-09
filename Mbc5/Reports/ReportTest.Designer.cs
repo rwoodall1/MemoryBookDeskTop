@@ -29,18 +29,34 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label contfnameLabel;
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.button1 = new System.Windows.Forms.Button();
             this.dsCust = new Mbc5.DataSets.dsCust();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
+            this.contfnameTextBox = new System.Windows.Forms.TextBox();
+            contfnameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
+            // contfnameLabel
+            // 
+            contfnameLabel.AutoSize = true;
+            contfnameLabel.Location = new System.Drawing.Point(112, 326);
+            contfnameLabel.Name = "contfnameLabel";
+            contfnameLabel.Size = new System.Drawing.Size(60, 13);
+            contfnameLabel.TabIndex = 2;
+            contfnameLabel.Text = "contfname:";
+            // 
             // reportViewer1
             // 
+            reportDataSource1.Name = "rcust";
+            reportDataSource1.Value = this.custBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.Report1.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(12, 12);
             this.reportViewer1.Name = "reportViewer1";
@@ -80,11 +96,21 @@
             this.tableAdapterManager.datecontTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // contfnameTextBox
+            // 
+            this.contfnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "contfname", true));
+            this.contfnameTextBox.Location = new System.Drawing.Point(178, 323);
+            this.contfnameTextBox.Name = "contfnameTextBox";
+            this.contfnameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.contfnameTextBox.TabIndex = 3;
+            // 
             // ReportTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 419);
+            this.Controls.Add(contfnameLabel);
+            this.Controls.Add(this.contfnameTextBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.reportViewer1);
             this.Name = "ReportTest";
@@ -93,6 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -104,5 +131,6 @@
         private System.Windows.Forms.BindingSource custBindingSource;
         private DataSets.dsCustTableAdapters.custTableAdapter custTableAdapter;
         private DataSets.dsCustTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.TextBox contfnameTextBox;
     }
 }
