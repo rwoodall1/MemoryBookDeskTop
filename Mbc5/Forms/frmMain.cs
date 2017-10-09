@@ -13,6 +13,7 @@ using BaseClass.Forms;
 using System.Diagnostics;
 using Mbc5.LookUpForms;
 using NLog;
+using Mbc5.Reports;
 namespace Mbc5.Forms
 {
     public partial class frmMain : BaseClass.ParentForm
@@ -552,6 +553,14 @@ namespace Mbc5.Forms
             var localfileInfo = FileVersionInfo.GetVersionInfo(localfile);
             string localVersion = localfileInfo.FileVersion;
             MessageBox.Show("MBC version:" + localVersion, "Version", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void testFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+          ReportTest test = new ReportTest();
+           
+            test.Show();
+            this.Cursor = Cursors.Default;
         }
 
 

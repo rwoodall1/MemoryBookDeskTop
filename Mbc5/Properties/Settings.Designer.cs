@@ -26,7 +26,7 @@ namespace Mbc5.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.101;Initial Catalog=Mbc5;Integrated Security=true")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.101;Initial Catalog=Mbc5;user id=sa;password=Briggitte1;")]
         public string Mbc5ConnectionString {
             get {
                 return ((string)(this["Mbc5ConnectionString"]));
