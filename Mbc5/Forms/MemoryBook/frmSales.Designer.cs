@@ -123,7 +123,7 @@
             this.pg1 = new System.Windows.Forms.TabPage();
             this.txtModifiedByPay = new System.Windows.Forms.TextBox();
             this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsInvoice = new Mbc5.DataSets.Invoice();
+            this.dsInvoice = new Mbc5.DataSets.dsInvoice();
             this.txtModifiedByInvdetail = new System.Windows.Forms.TextBox();
             this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtModifiedByInv = new System.Windows.Forms.TextBox();
@@ -390,11 +390,11 @@
             this.mnuEditLkUp = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editLookUpItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.custBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tableAdapterManager1 = new Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager();
-            this.invoiceTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invoiceTableAdapter();
-            this.invdetailTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.invdetailTableAdapter();
-            this.paymntTableAdapter = new Mbc5.DataSets.InvoiceTableAdapters.paymntTableAdapter();
-            this.custTableAdapter1 = new Mbc5.DataSets.InvoiceTableAdapters.custTableAdapter();
+            this.tableAdapterManager1 = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
+            this.invoiceTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invoiceTableAdapter();
+            this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
+            this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
+            this.custTableAdapter1 = new Mbc5.DataSets.dsInvoiceTableAdapters.custTableAdapter();
             this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
@@ -4585,7 +4585,7 @@
             this.tableAdapterManager1.invoiceTableAdapter = null;
             this.tableAdapterManager1.paymntTableAdapter = null;
             this.tableAdapterManager1.quotesTableAdapter = null;
-            this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.InvoiceTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // invoiceTableAdapter
             // 
@@ -4833,11 +4833,11 @@
         private System.Windows.Forms.Label lblIconTot;
         private System.Windows.Forms.TextBox txtIconCopies;
         private System.Windows.Forms.TextBox txtIconamt;
-        private DataSets.Invoice dsInvoice;
-        private DataSets.InvoiceTableAdapters.TableAdapterManager tableAdapterManager1;
+        private DataSets.dsInvoice dsInvoice;
+        private DataSets.dsInvoiceTableAdapters.TableAdapterManager tableAdapterManager1;
         //invoice
         private System.Windows.Forms.BindingSource invoiceBindingSource;
-        private DataSets.InvoiceTableAdapters.invoiceTableAdapter invoiceTableAdapter;
+        private DataSets.dsInvoiceTableAdapters.invoiceTableAdapter invoiceTableAdapter;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label book_eaLabel2;
@@ -4861,7 +4861,7 @@
         private System.Windows.Forms.Label invnoLabel2;
         //invdetail
         private System.Windows.Forms.BindingSource invdetailBindingSource;
-        private DataSets.InvoiceTableAdapters.invdetailTableAdapter invdetailTableAdapter;
+        private DataSets.dsInvoiceTableAdapters.invdetailTableAdapter invdetailTableAdapter;
         private System.Windows.Forms.DataGridView invdetailDataGridView;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TabPage pg2;
@@ -4917,10 +4917,10 @@
         private System.Windows.Forms.Button btnDeleteInvoice;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.BindingSource paymntBindingSource;
-        private DataSets.InvoiceTableAdapters.paymntTableAdapter paymntTableAdapter;
+        private DataSets.dsInvoiceTableAdapters.paymntTableAdapter paymntTableAdapter;
         private System.Windows.Forms.DataGridView paymntDataGridView;
         private System.Windows.Forms.BindingSource custBindingSource1;
-        private DataSets.InvoiceTableAdapters.custTableAdapter custTableAdapter1;
+        private DataSets.dsInvoiceTableAdapters.custTableAdapter custTableAdapter1;
         private System.Windows.Forms.TextBox txtCompReason;
         private System.Windows.Forms.TextBox txtCompensation;
         private System.Windows.Forms.TextBox txtAdjustment;

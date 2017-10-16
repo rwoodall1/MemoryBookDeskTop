@@ -422,9 +422,18 @@ namespace Mbc5.Forms.MemoryBook {
             var Details = new List<InvoiceDetailBindingModel>();
             if (true) {
                 //add base alway true
+                string baseDescrip;
+                if (chkAllClr.Checked)
+                {
+                    baseDescrip="color";
+                }
+                else
+                {
+                    baseDescrip = "blackwhite";
+                }       
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
-                    descr = "Base Price",
+                    descr = baseDescrip,
                     discpercent = 0,
                     price = Convert.ToDecimal(lblBookTotal.Text.Replace("$", "")),
                     schoolcode = this.Schcode
@@ -591,6 +600,40 @@ namespace Mbc5.Forms.MemoryBook {
                 Details.Add(rec);
 
             }
+            
+            if ((String.IsNullOrEmpty(txtClrTot.Text) ? 0 : Convert.ToDecimal(txtClrTot.Text)) !=0)
+            {
+                per = String.IsNullOrEmpty(txtClrTot.Text) ? 0 : Convert.ToDecimal(txtClrTot.Text);
+                var rec = new InvoiceDetailBindingModel
+                {
+                    invno = vinvno,
+                    descr = txtClrDesc.Text,
+                    discpercent = per,
+                    price = Convert.ToDecimal(txtClrTot.Text),
+                    schoolcode = this.Schcode
+                };
+
+                Details.Add(rec);
+
+            }
+            if ((String.IsNullOrEmpty(txtMisc.Text) ? 0 : Convert.ToDecimal(txtMisc.Text))!= 0)
+            {
+                per = String.IsNullOrEmpty(txtMisc.Text) ? 0 : Convert.ToDecimal(txtMisc.Text);
+                var rec = new InvoiceDetailBindingModel
+                {
+                    invno = vinvno,
+                    descr = txtMdesc.Text,
+                    discpercent = per,
+                    price = Convert.ToDecimal(txtMisc.Text),
+                    schoolcode = this.Schcode
+                };
+
+                Details.Add(rec);
+
+            }
+
+
+
             if ((String.IsNullOrEmpty(lbldisc1.Text) ? 0 : Convert.ToDecimal(lbldisc1.Text)) > 0) {
                 per = String.IsNullOrEmpty(txtDisc.Text) ? 0 : Convert.ToDecimal(txtDisc.Text);
                 var rec = new InvoiceDetailBindingModel {

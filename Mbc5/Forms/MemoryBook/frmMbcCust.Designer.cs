@@ -102,12 +102,15 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label statusLabel;
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.txtSchname = new System.Windows.Forms.TextBox();
+            this.electronicoptions = new System.Windows.Forms.ComboBox();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
+            this.electronickitCheckBox = new System.Windows.Forms.CheckBox();
+            this.txtSchname = new System.Windows.Forms.TextBox();
             this.cmbState = new System.Windows.Forms.ComboBox();
             this.statesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
@@ -136,8 +139,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpMultiYearOptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clrpg_intTextBox = new System.Windows.Forms.TextBox();
             this.schuploadingCheckBox = new System.Windows.Forms.CheckBox();
-            this.blkwhiteCheckBox = new System.Windows.Forms.CheckBox();
-            this.allcolorCheckBox = new System.Windows.Forms.CheckBox();
             this.sprinfoCheckBox = new System.Windows.Forms.CheckBox();
             this.fallinfoCheckBox = new System.Windows.Forms.CheckBox();
             this.clspicCheckBox = new System.Windows.Forms.CheckBox();
@@ -178,7 +179,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.btnSchoolCode = new System.Windows.Forms.Button();
             this.txtSchCodesrch = new System.Windows.Forms.TextBox();
             this.pg2 = new System.Windows.Forms.TabPage();
-            this.contpstnBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.contpstnBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox6 = new System.Windows.Forms.ComboBox();
@@ -197,6 +197,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.btnEmailCont2 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.contpstnBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.statesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -286,6 +287,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpschtypeTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpschtypeTableAdapter();
             this.custSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custSearchTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custSearchTableAdapter();
+            this.statusComboBox = new System.Windows.Forms.ComboBox();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -352,6 +354,7 @@ namespace Mbc5.Forms.MemoryBook {
             label32 = new System.Windows.Forms.Label();
             label33 = new System.Windows.Forms.Label();
             label34 = new System.Windows.Forms.Label();
+            statusLabel = new System.Windows.Forms.Label();
             this.BottomPanel.SuspendLayout();
             this.CustTab.SuspendLayout();
             this.pg1.SuspendLayout();
@@ -370,9 +373,9 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).BeginInit();
             this.pnlHead.SuspendLayout();
             this.pg2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.contpstnBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contpstnBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contpstnBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contpstnBindingSource)).BeginInit();
             this.pg3.SuspendLayout();
@@ -778,29 +781,29 @@ namespace Mbc5.Forms.MemoryBook {
             // contdateLabel
             // 
             contdateLabel.AutoSize = true;
-            contdateLabel.Location = new System.Drawing.Point(20, 35);
+            contdateLabel.Location = new System.Drawing.Point(8, 35);
             contdateLabel.Name = "contdateLabel";
-            contdateLabel.Size = new System.Drawing.Size(70, 13);
+            contdateLabel.Size = new System.Drawing.Size(75, 13);
             contdateLabel.TabIndex = 96;
-            contdateLabel.Text = "ContactDate:";
+            contdateLabel.Text = "Booking Date:";
             // 
             // sourdateLabel
             // 
             sourdateLabel.AutoSize = true;
             sourdateLabel.Location = new System.Drawing.Point(297, 39);
             sourdateLabel.Name = "sourdateLabel";
-            sourdateLabel.Size = new System.Drawing.Size(42, 13);
+            sourdateLabel.Size = new System.Drawing.Size(92, 13);
             sourdateLabel.TabIndex = 96;
-            sourdateLabel.Text = "Sample";
+            sourdateLabel.Text = "Original Cust Date";
             // 
             // initcontLabel
             // 
             initcontLabel.AutoSize = true;
             initcontLabel.Location = new System.Drawing.Point(19, 61);
             initcontLabel.Name = "initcontLabel";
-            initcontLabel.Size = new System.Drawing.Size(71, 13);
+            initcontLabel.Size = new System.Drawing.Size(64, 13);
             initcontLabel.TabIndex = 97;
-            initcontLabel.Text = "Initial Contact";
+            initcontLabel.Text = "Inquiry Date";
             // 
             // label3
             // 
@@ -1050,6 +1053,10 @@ namespace Mbc5.Forms.MemoryBook {
             // splitContainer.Panel1
             // 
             this.splitContainer.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel1.Controls.Add(statusLabel);
+            this.splitContainer.Panel1.Controls.Add(this.statusComboBox);
+            this.splitContainer.Panel1.Controls.Add(this.electronicoptions);
+            this.splitContainer.Panel1.Controls.Add(this.electronickitCheckBox);
             this.splitContainer.Panel1.Controls.Add(this.txtSchname);
             this.splitContainer.Panel1.Controls.Add(this.cmbState);
             this.splitContainer.Panel1.Controls.Add(this.oraclecodeTextBox);
@@ -1091,8 +1098,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.Panel1.Controls.Add(clrpg_intLabel);
             this.splitContainer.Panel1.Controls.Add(this.clrpg_intTextBox);
             this.splitContainer.Panel1.Controls.Add(this.schuploadingCheckBox);
-            this.splitContainer.Panel1.Controls.Add(this.blkwhiteCheckBox);
-            this.splitContainer.Panel1.Controls.Add(this.allcolorCheckBox);
             this.splitContainer.Panel1.Controls.Add(this.sprinfoCheckBox);
             this.splitContainer.Panel1.Controls.Add(this.fallinfoCheckBox);
             this.splitContainer.Panel1.Controls.Add(this.clspicCheckBox);
@@ -1144,15 +1149,18 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
             // 
-            // txtSchname
+            // electronicoptions
             // 
-            this.txtSchname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schname", true));
-            this.txtSchname.Location = new System.Drawing.Point(92, 92);
-            this.txtSchname.Name = "txtSchname";
-            this.txtSchname.ReadOnly = true;
-            this.txtSchname.Size = new System.Drawing.Size(325, 20);
-            this.txtSchname.TabIndex = 101;
-            this.txtSchname.DoubleClick += new System.EventHandler(this.txtSchname_DoubleClick_1);
+            this.electronicoptions.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "electronickitoptions", true));
+            this.electronicoptions.FormattingEnabled = true;
+            this.electronicoptions.Items.AddRange(new object[] {
+            "2018",
+            "2017",
+            "2016"});
+            this.electronicoptions.Location = new System.Drawing.Point(365, 299);
+            this.electronicoptions.Name = "electronicoptions";
+            this.electronicoptions.Size = new System.Drawing.Size(180, 21);
+            this.electronicoptions.TabIndex = 103;
             // 
             // custBindingSource
             // 
@@ -1164,6 +1172,26 @@ namespace Mbc5.Forms.MemoryBook {
             this.dsCust.DataSetName = "dsCust";
             this.dsCust.EnforceConstraints = false;
             this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // electronickitCheckBox
+            // 
+            this.electronickitCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "electronickit", true));
+            this.electronickitCheckBox.Location = new System.Drawing.Point(277, 299);
+            this.electronickitCheckBox.Name = "electronickitCheckBox";
+            this.electronickitCheckBox.Size = new System.Drawing.Size(134, 24);
+            this.electronickitCheckBox.TabIndex = 102;
+            this.electronickitCheckBox.Text = "Electronic Kit";
+            this.electronickitCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // txtSchname
+            // 
+            this.txtSchname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schname", true));
+            this.txtSchname.Location = new System.Drawing.Point(92, 92);
+            this.txtSchname.Name = "txtSchname";
+            this.txtSchname.ReadOnly = true;
+            this.txtSchname.Size = new System.Drawing.Size(325, 20);
+            this.txtSchname.TabIndex = 101;
+            this.txtSchname.DoubleClick += new System.EventHandler(this.txtSchname_DoubleClick_1);
             // 
             // cmbState
             // 
@@ -1221,7 +1249,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.sourdateDateTimePicker.CustomFormat = "\'\'";
             this.sourdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "sourdate", true));
             this.sourdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.sourdateDateTimePicker.Location = new System.Drawing.Point(354, 35);
+            this.sourdateDateTimePicker.Location = new System.Drawing.Point(396, 35);
             this.sourdateDateTimePicker.Name = "sourdateDateTimePicker";
             this.sourdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.sourdateDateTimePicker.TabIndex = 97;
@@ -1410,40 +1438,18 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.schuploadingCheckBox.AutoSize = true;
             this.schuploadingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "schuploading", true));
-            this.schuploadingCheckBox.Location = new System.Drawing.Point(395, 299);
+            this.schuploadingCheckBox.Location = new System.Drawing.Point(395, 241);
             this.schuploadingCheckBox.Name = "schuploadingCheckBox";
             this.schuploadingCheckBox.Size = new System.Drawing.Size(121, 17);
             this.schuploadingCheckBox.TabIndex = 16;
             this.schuploadingCheckBox.Text = "School Is Uploading";
             this.schuploadingCheckBox.UseVisualStyleBackColor = true;
             // 
-            // blkwhiteCheckBox
-            // 
-            this.blkwhiteCheckBox.AutoSize = true;
-            this.blkwhiteCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "blkwhite", true));
-            this.blkwhiteCheckBox.Location = new System.Drawing.Point(395, 272);
-            this.blkwhiteCheckBox.Name = "blkwhiteCheckBox";
-            this.blkwhiteCheckBox.Size = new System.Drawing.Size(86, 17);
-            this.blkwhiteCheckBox.TabIndex = 14;
-            this.blkwhiteCheckBox.Text = "Black/White";
-            this.blkwhiteCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // allcolorCheckBox
-            // 
-            this.allcolorCheckBox.AutoSize = true;
-            this.allcolorCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "allcolor", true));
-            this.allcolorCheckBox.Location = new System.Drawing.Point(395, 241);
-            this.allcolorCheckBox.Name = "allcolorCheckBox";
-            this.allcolorCheckBox.Size = new System.Drawing.Size(64, 17);
-            this.allcolorCheckBox.TabIndex = 12;
-            this.allcolorCheckBox.Text = "All Color";
-            this.allcolorCheckBox.UseVisualStyleBackColor = true;
-            // 
             // sprinfoCheckBox
             // 
             this.sprinfoCheckBox.AutoSize = true;
             this.sprinfoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "sprinfo", true));
-            this.sprinfoCheckBox.Location = new System.Drawing.Point(279, 299);
+            this.sprinfoCheckBox.Location = new System.Drawing.Point(393, 273);
             this.sprinfoCheckBox.Name = "sprinfoCheckBox";
             this.sprinfoCheckBox.Size = new System.Drawing.Size(71, 17);
             this.sprinfoCheckBox.TabIndex = 18;
@@ -1933,11 +1939,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.pg2.TabIndex = 1;
             this.pg2.Text = "Contacts";
             // 
-            // contpstnBindingSource1
-            // 
-            this.contpstnBindingSource1.DataMember = "contpstn";
-            this.contpstnBindingSource1.DataSource = this.lookUp;
-            // 
             // comboBox5
             // 
             this.comboBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2105,6 +2106,11 @@ namespace Mbc5.Forms.MemoryBook {
             this.comboBox3.Size = new System.Drawing.Size(232, 21);
             this.comboBox3.TabIndex = 108;
             this.comboBox3.ValueMember = "Position";
+            // 
+            // contpstnBindingSource1
+            // 
+            this.contpstnBindingSource1.DataMember = "contpstn";
+            this.contpstnBindingSource1.DataSource = this.lookUp;
             // 
             // comboBox4
             // 
@@ -2883,6 +2889,31 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.custSearchTableAdapter.ClearBeforeFill = true;
             // 
+            // statusLabel
+            // 
+            statusLabel.AutoSize = true;
+            statusLabel.Location = new System.Drawing.Point(349, 69);
+            statusLabel.Name = "statusLabel";
+            statusLabel.Size = new System.Drawing.Size(40, 13);
+            statusLabel.TabIndex = 103;
+            statusLabel.Text = "Status:";
+            // 
+            // statusComboBox
+            // 
+            this.statusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "status", true));
+            this.statusComboBox.FormattingEnabled = true;
+            this.statusComboBox.Items.AddRange(new object[] {
+            "Prospect",
+            "Renewed",
+            "Deleted",
+            "Canceled",
+            "Unrenewed",
+            "New"});
+            this.statusComboBox.Location = new System.Drawing.Point(393, 66);
+            this.statusComboBox.Name = "statusComboBox";
+            this.statusComboBox.Size = new System.Drawing.Size(203, 21);
+            this.statusComboBox.TabIndex = 104;
+            // 
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2920,9 +2951,9 @@ namespace Mbc5.Forms.MemoryBook {
             this.pnlHead.PerformLayout();
             this.pg2.ResumeLayout(false);
             this.pg2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.contpstnBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contpstnBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contpstnBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contpstnBindingSource)).EndInit();
             this.pg3.ResumeLayout(false);
@@ -2999,8 +3030,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.ComboBox multiyearComboBox;
         private System.Windows.Forms.TextBox clrpg_intTextBox;
         private System.Windows.Forms.CheckBox schuploadingCheckBox;
-        private System.Windows.Forms.CheckBox blkwhiteCheckBox;
-        private System.Windows.Forms.CheckBox allcolorCheckBox;
         private System.Windows.Forms.CheckBox sprinfoCheckBox;
         private System.Windows.Forms.CheckBox fallinfoCheckBox;
         private System.Windows.Forms.CheckBox clspicCheckBox;
@@ -3132,5 +3161,8 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.ComboBox electronicoptions;
+        private System.Windows.Forms.CheckBox electronickitCheckBox;
+        private System.Windows.Forms.ComboBox statusComboBox;
     }
 }
