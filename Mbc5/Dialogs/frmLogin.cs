@@ -115,11 +115,11 @@ namespace Mbc5.Dialogs {
           
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
                 this.DialogResult = DialogResult.Abort;
                 Application.Exit();
-                return;
-
+                 return;
+                MessageBox.Show(ex.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
                 cmd.Connection.Close();

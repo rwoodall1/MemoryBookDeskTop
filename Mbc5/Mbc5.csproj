@@ -301,12 +301,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\ReportTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reports\ReportTest.Designer.cs">
-      <DependentUpon>ReportTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs" />
     <Content Include="Content\MAIL.png" />
     <Content Include="NOTES TODO.txt" />
@@ -387,12 +381,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Report1.rdlc" />
-    <EmbeddedResource Include="Reports\Report2.rdlc" />
-    <EmbeddedResource Include="Reports\Report3.rdlc" />
-    <EmbeddedResource Include="Reports\ReportTest.resx">
-      <DependentUpon>ReportTest.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App - Copy.config">
       <SubType>Designer</SubType>
@@ -561,6 +549,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\SystemIcons\" />
+    <Folder Include="Reports\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
