@@ -1212,16 +1212,21 @@ namespace Mbc5.Forms
 
 			}
 		}
-		
-
-		#region Validation
 
 
-		#endregion
 
-		//nothing below here  
-	}
-	public class BinderyInfo
+
+        #region Validation
+        private void laminatedTextBox_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        //nothing below here  
+    }
+    public class BinderyInfo
 	{
 		public string Schname { get; set; }
 		public string CoverType { get; set; }

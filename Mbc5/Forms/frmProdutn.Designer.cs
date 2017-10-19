@@ -51,7 +51,6 @@
             System.Windows.Forms.Label coilclrLabel;
             System.Windows.Forms.Label perfbindLabel;
             System.Windows.Forms.Label laminatedLabel;
-            System.Windows.Forms.Label colorsLabel;
             System.Windows.Forms.Label screcvLabel;
             System.Windows.Forms.Label coverdescLabel;
             System.Windows.Forms.Label covertypeLabel;
@@ -252,7 +251,7 @@
             this.prmsdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.shpdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chkLaminated = new System.Windows.Forms.CheckBox();
+            this.laminatedTextBox = new System.Windows.Forms.TextBox();
             this.cpnumTextBox = new System.Windows.Forms.TextBox();
             this.wipgBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cprecvDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -262,7 +261,6 @@
             this.colorpgsCheckBox = new System.Windows.Forms.CheckBox();
             this.coilclrTextBox = new System.Windows.Forms.TextBox();
             this.txtPerfbind = new System.Windows.Forms.TextBox();
-            this.colorsTextBox = new System.Windows.Forms.TextBox();
             this.screcvDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.coverdescTextBox = new System.Windows.Forms.TextBox();
             this.covertypeTextBox = new System.Windows.Forms.TextBox();
@@ -559,7 +557,6 @@
             coilclrLabel = new System.Windows.Forms.Label();
             perfbindLabel = new System.Windows.Forms.Label();
             laminatedLabel = new System.Windows.Forms.Label();
-            colorsLabel = new System.Windows.Forms.Label();
             screcvLabel = new System.Windows.Forms.Label();
             coverdescLabel = new System.Windows.Forms.Label();
             covertypeLabel = new System.Windows.Forms.Label();
@@ -946,19 +943,9 @@
             laminatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             laminatedLabel.Location = new System.Drawing.Point(89, 108);
             laminatedLabel.Name = "laminatedLabel";
-            laminatedLabel.Size = new System.Drawing.Size(65, 13);
+            laminatedLabel.Size = new System.Drawing.Size(68, 13);
             laminatedLabel.TabIndex = 113;
-            laminatedLabel.Text = "Laminated";
-            // 
-            // colorsLabel
-            // 
-            colorsLabel.AutoSize = true;
-            colorsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            colorsLabel.Location = new System.Drawing.Point(87, 79);
-            colorsLabel.Name = "colorsLabel";
-            colorsLabel.Size = new System.Drawing.Size(69, 13);
-            colorsLabel.TabIndex = 105;
-            colorsLabel.Text = "# of Colors";
+            laminatedLabel.Text = "Lamination";
             // 
             // screcvLabel
             // 
@@ -2952,7 +2939,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.chkLaminated);
+            this.panel1.Controls.Add(this.laminatedTextBox);
             this.panel1.Controls.Add(this.cpnumTextBox);
             this.panel1.Controls.Add(this.cprecvDateTimePicker);
             this.panel1.Controls.Add(ptbrcvdLabel);
@@ -2969,8 +2956,6 @@
             this.panel1.Controls.Add(perfbindLabel);
             this.panel1.Controls.Add(this.txtPerfbind);
             this.panel1.Controls.Add(laminatedLabel);
-            this.panel1.Controls.Add(colorsLabel);
-            this.panel1.Controls.Add(this.colorsTextBox);
             this.panel1.Controls.Add(screcvLabel);
             this.panel1.Controls.Add(this.screcvDateTimePicker);
             this.panel1.Controls.Add(coverdescLabel);
@@ -2982,15 +2967,13 @@
             this.panel1.Size = new System.Drawing.Size(352, 408);
             this.panel1.TabIndex = 128;
             // 
-            // chkLaminated
+            // laminatedTextBox
             // 
-            this.chkLaminated.AutoSize = true;
-            this.chkLaminated.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "laminated", true));
-            this.chkLaminated.Location = new System.Drawing.Point(169, 108);
-            this.chkLaminated.Name = "chkLaminated";
-            this.chkLaminated.Size = new System.Drawing.Size(15, 14);
-            this.chkLaminated.TabIndex = 131;
-            this.chkLaminated.UseVisualStyleBackColor = true;
+            this.laminatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "laminated", true));
+            this.laminatedTextBox.Location = new System.Drawing.Point(167, 105);
+            this.laminatedTextBox.Name = "laminatedTextBox";
+            this.laminatedTextBox.Size = new System.Drawing.Size(35, 20);
+            this.laminatedTextBox.TabIndex = 131;
             // 
             // cpnumTextBox
             // 
@@ -3085,16 +3068,6 @@
             this.txtPerfbind.Size = new System.Drawing.Size(33, 20);
             this.txtPerfbind.TabIndex = 116;
             this.txtPerfbind.Leave += new System.EventHandler(this.txtPerfbind_Leave);
-            // 
-            // colorsTextBox
-            // 
-            this.colorsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "colors", true));
-            this.colorsTextBox.Location = new System.Drawing.Point(168, 79);
-            this.colorsTextBox.Name = "colorsTextBox";
-            this.colorsTextBox.Size = new System.Drawing.Size(33, 20);
-            this.colorsTextBox.TabIndex = 106;
             // 
             // screcvDateTimePicker
             // 
@@ -3406,7 +3379,7 @@
             // 
             this.reccardsentCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "reccardsent", true));
             this.reccardsentCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reccardsentCheckBox.Location = new System.Drawing.Point(210, 627);
+            this.reccardsentCheckBox.Location = new System.Drawing.Point(293, 629);
             this.reccardsentCheckBox.Name = "reccardsentCheckBox";
             this.reccardsentCheckBox.Size = new System.Drawing.Size(143, 21);
             this.reccardsentCheckBox.TabIndex = 105;
@@ -3418,7 +3391,7 @@
             this.btnRecvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecvLabel.Location = new System.Drawing.Point(52, 656);
             this.btnRecvLabel.Name = "btnRecvLabel";
-            this.btnRecvLabel.Size = new System.Drawing.Size(97, 23);
+            this.btnRecvLabel.Size = new System.Drawing.Size(126, 23);
             this.btnRecvLabel.TabIndex = 94;
             this.btnRecvLabel.Text = "Recieving Label";
             this.btnRecvLabel.UseVisualStyleBackColor = true;
@@ -3438,9 +3411,9 @@
             this.btnRcvCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRcvCard.Location = new System.Drawing.Point(108, 627);
             this.btnRcvCard.Name = "btnRcvCard";
-            this.btnRcvCard.Size = new System.Drawing.Size(96, 23);
+            this.btnRcvCard.Size = new System.Drawing.Size(174, 23);
             this.btnRcvCard.TabIndex = 92;
-            this.btnRcvCard.Text = "Recieving Card";
+            this.btnRcvCard.Text = "Recieving Card History";
             this.btnRcvCard.UseVisualStyleBackColor = true;
             // 
             // btnBinderyEmail
@@ -6187,7 +6160,6 @@
         private System.Windows.Forms.CheckBox colorpgsCheckBox;
         private System.Windows.Forms.TextBox coilclrTextBox;
         private System.Windows.Forms.TextBox txtPerfbind;
-        private System.Windows.Forms.TextBox colorsTextBox;
         private System.Windows.Forms.DateTimePicker screcvDateTimePicker;
         private System.Windows.Forms.TextBox coverdescTextBox;
         private System.Windows.Forms.TextBox covertypeTextBox;
@@ -6461,7 +6433,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
-		private System.Windows.Forms.CheckBox chkLaminated;
 		private System.Windows.Forms.TextBox modifiedByTextBox;
+        private System.Windows.Forms.TextBox laminatedTextBox;
     }
 }

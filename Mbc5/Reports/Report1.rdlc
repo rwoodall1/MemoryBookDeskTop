@@ -378,16 +378,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.89782in</Width>
+              <Width>2.77282in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.90323in</Width>
+              <Width>1.77823in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.05489in</Width>
+              <Width>1.23196in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.09073in</Width>
+              <Width>1.16365in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -527,7 +527,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=iif(Fields!descr.Value="Base Price",iif(First(Fields!allclrck.Value, "invoice"),"All Color with","All Black &amp; White with"),Fields!descr.Value)</Value>
+                              <Value>=iif(Fields!descr.Value="Base Price",iif(First(Fields!allclrck.Value , "invoice"),"All Color with "+ First(Fields!nopages.Value, "invoice").ToString() +" pages and "+First(Fields!nocopies.Value, "invoice").ToString()+" books","All Black &amp; White with " + First(Fields!nopages.Value, "invoice").ToString() + " pages and "+ First(Fields!nocopies.Value, "invoice").ToString()+" books"),Fields!descr.Value)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -545,7 +545,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -679,7 +678,7 @@
         <Top>1.46751in</Top>
         <Left>0.04167in</Left>
         <Height>0.5in</Height>
-        <Width>6.94667in</Width>
+        <Width>6.94666in</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -694,7 +693,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!invtot.Value, "invoice")</Value>
+                <Value>=First(Fields!invtot.Value, "invoice")</Value>
                 <Style>
                   <Format>'$'#,0.00</Format>
                 </Style>
@@ -705,7 +704,7 @@
         </Paragraphs>
         <rd:DefaultName>invtot</rd:DefaultName>
         <Top>1.96751in</Top>
-        <Left>5.9675in</Left>
+        <Left>5.95361in</Left>
         <Height>0.25in</Height>
         <Width>1.02083in</Width>
         <ZIndex>11</ZIndex>
@@ -727,7 +726,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!baldue.Value, "invoice")</Value>
+                <Value>=First(Fields!invtot.Value, "invoice")-Sum(Fields!payment.Value, "payment")</Value>
                 <Style>
                   <Format>'$'#,0.00</Format>
                 </Style>
@@ -737,7 +736,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>baldue</rd:DefaultName>
-        <Top>2.16195in</Top>
+        <Top>2.57862in</Top>
         <Left>5.9675in</Left>
         <Height>0.25in</Height>
         <Width>1.02083in</Width>
@@ -753,26 +752,137 @@
           <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
         </Style>
       </Textbox>
-      <Textbox Name="allclrck">
+      <Textbox Name="Textbox15">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!allclrck.Value, "invoice")</Value>
-                <Style />
+                <Value EvaluationMode="Constant">Invoice Total</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>allclrck</rd:DefaultName>
-        <Top>4.25917in</Top>
-        <Left>1.37375in</Left>
+        <rd:DefaultName>Textbox15</rd:DefaultName>
+        <Top>1.96751in</Top>
+        <Left>4.91194in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
         <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox17">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Balance Due</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox17</rd:DefaultName>
+        <Top>2.57862in</Top>
+        <Left>4.91194in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line1">
+        <Top>1.99529in</Top>
+        <Left>4.91194in</Left>
+        <Height>0in</Height>
+        <Width>2.07639in</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="payment">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!payment.Value, "payment")</Value>
+                <Style>
+                  <Format>'$'#,0.00</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>payment</rd:DefaultName>
+        <Top>2.28695in</Top>
+        <Left>5.95361in</Left>
+        <Height>0.25in</Height>
+        <Width>1.02083in</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox19">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Payments</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox19</rd:DefaultName>
+        <Top>2.28695in</Top>
+        <Left>5.15478in</Left>
+        <Height>0.25in</Height>
+        <Width>0.77105in</Width>
+        <ZIndex>17</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1190,6 +1300,106 @@
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
         <rd:TableAdapterName>invdetailTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="payment">
+      <Query>
+        <DataSourceName>dsInvoice</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="code">
+          <DataField>code</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="invno">
+          <DataField>invno</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="pmtdate">
+          <DataField>pmtdate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="checkno">
+          <DataField>checkno</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="poamt">
+          <DataField>poamt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="refund">
+          <DataField>refund</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="method">
+          <DataField>method</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="init_">
+          <DataField>init_</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="adjmnt">
+          <DataField>adjmnt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="compamt">
+          <DataField>compamt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="compreas">
+          <DataField>compreas</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ppfee">
+          <DataField>ppfee</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="transid">
+          <DataField>transid</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="authcode">
+          <DataField>authcode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccnum">
+          <DataField>ccnum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="paytype">
+          <DataField>paytype</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="payment">
+          <DataField>payment</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DateCreated">
+          <DataField>DateCreated</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DateModified">
+          <DataField>DateModified</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ModifiedBy">
+          <DataField>ModifiedBy</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>dsInvoice</rd:DataSetName>
+        <rd:SchemaPath>F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\DataSets\dsInvoice.xsd</rd:SchemaPath>
+        <rd:TableName>paymnt</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>paymntTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

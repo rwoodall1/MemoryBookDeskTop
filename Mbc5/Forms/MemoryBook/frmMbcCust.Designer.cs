@@ -96,19 +96,21 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.Label label32;
             System.Windows.Forms.Label label33;
             System.Windows.Forms.Label label34;
+            System.Windows.Forms.Label statusLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMbcCust));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.Label statusLabel;
+            System.Windows.Forms.Label schcodeLabel;
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.electronicoptions = new System.Windows.Forms.ComboBox();
+            this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
+            this.electronicoptions = new System.Windows.Forms.ComboBox();
             this.electronickitCheckBox = new System.Windows.Forms.CheckBox();
             this.txtSchname = new System.Windows.Forms.TextBox();
             this.cmbState = new System.Windows.Forms.ComboBox();
@@ -287,7 +289,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpschtypeTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpschtypeTableAdapter();
             this.custSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custSearchTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custSearchTableAdapter();
-            this.statusComboBox = new System.Windows.Forms.ComboBox();
+            this.schcodeTextBox = new System.Windows.Forms.TextBox();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -355,6 +357,7 @@ namespace Mbc5.Forms.MemoryBook {
             label33 = new System.Windows.Forms.Label();
             label34 = new System.Windows.Forms.Label();
             statusLabel = new System.Windows.Forms.Label();
+            schcodeLabel = new System.Windows.Forms.Label();
             this.BottomPanel.SuspendLayout();
             this.CustTab.SuspendLayout();
             this.pg1.SuspendLayout();
@@ -1013,6 +1016,15 @@ namespace Mbc5.Forms.MemoryBook {
             label34.TabIndex = 239;
             label34.Text = "Address:";
             // 
+            // statusLabel
+            // 
+            statusLabel.AutoSize = true;
+            statusLabel.Location = new System.Drawing.Point(349, 69);
+            statusLabel.Name = "statusLabel";
+            statusLabel.Size = new System.Drawing.Size(40, 13);
+            statusLabel.TabIndex = 103;
+            statusLabel.Text = "Status:";
+            // 
             // CustTab
             // 
             this.CustTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1149,6 +1161,33 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
             // 
+            // statusComboBox
+            // 
+            this.statusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "status", true));
+            this.statusComboBox.FormattingEnabled = true;
+            this.statusComboBox.Items.AddRange(new object[] {
+            "Prospect",
+            "Renewed",
+            "Deleted",
+            "Canceled",
+            "Unrenewed",
+            "New"});
+            this.statusComboBox.Location = new System.Drawing.Point(393, 66);
+            this.statusComboBox.Name = "statusComboBox";
+            this.statusComboBox.Size = new System.Drawing.Size(203, 21);
+            this.statusComboBox.TabIndex = 104;
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsCust;
+            // 
+            // dsCust
+            // 
+            this.dsCust.DataSetName = "dsCust";
+            this.dsCust.EnforceConstraints = false;
+            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // electronicoptions
             // 
             this.electronicoptions.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "electronickitoptions", true));
@@ -1161,17 +1200,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.electronicoptions.Name = "electronicoptions";
             this.electronicoptions.Size = new System.Drawing.Size(180, 21);
             this.electronicoptions.TabIndex = 103;
-            // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsCust;
-            // 
-            // dsCust
-            // 
-            this.dsCust.DataSetName = "dsCust";
-            this.dsCust.EnforceConstraints = false;
-            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // electronickitCheckBox
             // 
@@ -1774,6 +1802,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.pnlHead.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHead.Controls.Add(schcodeLabel);
+            this.pnlHead.Controls.Add(this.schcodeTextBox);
             this.pnlHead.Controls.Add(this.btnNewCustomer);
             this.pnlHead.Controls.Add(this.btnOracleSrch);
             this.pnlHead.Controls.Add(this.txtOracleCodeSrch);
@@ -2889,30 +2919,22 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.custSearchTableAdapter.ClearBeforeFill = true;
             // 
-            // statusLabel
+            // schcodeLabel
             // 
-            statusLabel.AutoSize = true;
-            statusLabel.Location = new System.Drawing.Point(349, 69);
-            statusLabel.Name = "statusLabel";
-            statusLabel.Size = new System.Drawing.Size(40, 13);
-            statusLabel.TabIndex = 103;
-            statusLabel.Text = "Status:";
+            schcodeLabel.AutoSize = true;
+            schcodeLabel.Location = new System.Drawing.Point(770, 9);
+            schcodeLabel.Name = "schcodeLabel";
+            schcodeLabel.Size = new System.Drawing.Size(51, 13);
+            schcodeLabel.TabIndex = 9;
+            schcodeLabel.Text = "schcode:";
             // 
-            // statusComboBox
+            // schcodeTextBox
             // 
-            this.statusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "status", true));
-            this.statusComboBox.FormattingEnabled = true;
-            this.statusComboBox.Items.AddRange(new object[] {
-            "Prospect",
-            "Renewed",
-            "Deleted",
-            "Canceled",
-            "Unrenewed",
-            "New"});
-            this.statusComboBox.Location = new System.Drawing.Point(393, 66);
-            this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(203, 21);
-            this.statusComboBox.TabIndex = 104;
+            this.schcodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
+            this.schcodeTextBox.Location = new System.Drawing.Point(827, 6);
+            this.schcodeTextBox.Name = "schcodeTextBox";
+            this.schcodeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.schcodeTextBox.TabIndex = 10;
             // 
             // frmMbcCust
             // 
@@ -3164,5 +3186,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.ComboBox electronicoptions;
         private System.Windows.Forms.CheckBox electronickitCheckBox;
         private System.Windows.Forms.ComboBox statusComboBox;
+        private System.Windows.Forms.TextBox schcodeTextBox;
     }
 }

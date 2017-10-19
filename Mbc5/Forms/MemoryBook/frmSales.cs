@@ -55,6 +55,7 @@ namespace Mbc5.Forms.MemoryBook {
             BookCalc();
             txtBYear.Focus();
 
+          
         }
         private void btnInvSrch_Click(object sender, EventArgs e) {
             var sqlQuery = new SQLQuery();
@@ -2995,6 +2996,8 @@ namespace Mbc5.Forms.MemoryBook {
             CalculateEach();
             BookCalc();
         }
+
+       
 
 
 

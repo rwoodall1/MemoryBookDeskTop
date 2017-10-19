@@ -154,6 +154,7 @@ namespace Mbc5.Forms.MemoryBook {
             if (records < 1)
                 {
                 this.custTableAdapter.Fill(this.dsCust.cust,currentSchool);
+                this.Schcode = currentSchool;
                 MessageBox.Show("Record was not found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
                 this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
@@ -161,6 +162,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             else
                 {
+                this.Schcode = txtSchCodesrch.Text;
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
                 this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
                 TeleGo = false;
