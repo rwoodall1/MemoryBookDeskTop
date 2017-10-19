@@ -395,6 +395,10 @@
     <EmbeddedResource Include="Reports\ReportTest.resx">
       <DependentUpon>ReportTest.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="localConnection.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App - Copy.config">
       <SubType>Designer</SubType>
     </None>
