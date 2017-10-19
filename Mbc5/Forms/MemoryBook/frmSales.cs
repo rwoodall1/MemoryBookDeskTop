@@ -18,7 +18,7 @@ using Exceptionless.Models;
 using Outlook= Microsoft.Office.Interop.Outlook;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
-        private static string _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
+        private static string _ConnectionString = Properties.Settings.Default.Mbc5ConnectionString; // ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
         private bool startup = true;
         public frmSales(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal) {
             InitializeComponent();
@@ -1101,7 +1101,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.CurPriceYr = txtBYear.Text;
 
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT * From Pricing where Type=@Type and yr=@Yr order by copies", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
@@ -1224,7 +1224,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void GetBookOptionPricing() {
             this.CurPriceYr = txtBYear.Text;
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT * From BookOptionPricing where yr=@Yr", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
