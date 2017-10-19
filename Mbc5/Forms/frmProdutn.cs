@@ -22,7 +22,7 @@ namespace Mbc5.Forms
 {
 	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
 	{
-		private static string _ConnectionString = Properties.Settings.Default.Mbc5ConnectionString;
+		private static string _ConnectionString =  Properties.Settings.Default.Mbc5ConnectionString;
 		private bool startup = true;
 		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
 		{
@@ -1212,16 +1212,21 @@ namespace Mbc5.Forms
 
 			}
 		}
-		
-
-		#region Validation
 
 
-		#endregion
 
-		//nothing below here  
-	}
-	public class BinderyInfo
+
+        #region Validation
+        private void laminatedTextBox_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        //nothing below here  
+    }
+    public class BinderyInfo
 	{
 		public string Schname { get; set; }
 		public string CoverType { get; set; }
