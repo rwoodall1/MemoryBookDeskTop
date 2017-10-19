@@ -91,7 +91,7 @@ namespace Mbc5.Forms
 
         private void LogEmail()
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
             string sql = "INSERT INTO EmailLogs (Id,ToEmail,FromId,FromEmail,Subject,Msg) VALUES(@Id,@ToEmail,@FromId,@FromEmail,@Subject,@Msg);";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@Id", Guid.NewGuid().ToString());
