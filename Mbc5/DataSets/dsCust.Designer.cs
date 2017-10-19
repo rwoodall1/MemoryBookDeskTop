@@ -613,8 +613,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnschname1;
             
-            private global::System.Data.DataColumn columninvno1;
-            
             private global::System.Data.DataColumn columncontryear;
             
             private global::System.Data.DataColumn columnExpr1;
@@ -626,6 +624,8 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnelectronickitoptions;
             
             private global::System.Data.DataColumn columnstatus;
+            
+            private global::System.Data.DataColumn columnQInvno;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1718,14 +1718,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn invno1Column {
-                get {
-                    return this.columninvno1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn contryearColumn {
                 get {
                     return this.columncontryear;
@@ -1769,6 +1761,14 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn statusColumn {
                 get {
                     return this.columnstatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QInvnoColumn {
+                get {
+                    return this.columnQInvno;
                 }
             }
             
@@ -1942,13 +1942,13 @@ namespace Mbc5.DataSets {
                         string ModifiedBy, 
                         string oraclecode, 
                         string schname1, 
-                        int invno1, 
                         string contryear1, 
                         string Expr1, 
                         System.DateTime DateModified, 
                         bool electronickit, 
                         string electronickitoptions, 
-                        string status) {
+                        string status, 
+                        int QInvno) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cstatus,
@@ -2083,13 +2083,13 @@ namespace Mbc5.DataSets {
                         ModifiedBy,
                         oraclecode,
                         schname1,
-                        invno1,
                         contryear1,
                         Expr1,
                         DateModified,
                         electronickit,
                         electronickitoptions,
-                        status};
+                        status,
+                        QInvno};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -2251,13 +2251,13 @@ namespace Mbc5.DataSets {
                 this.columnModifiedBy = base.Columns["ModifiedBy"];
                 this.columnoraclecode = base.Columns["oraclecode"];
                 this.columnschname1 = base.Columns["schname1"];
-                this.columninvno1 = base.Columns["invno1"];
                 this.columncontryear = base.Columns["contryear"];
                 this.columnExpr1 = base.Columns["Expr1"];
                 this.columnDateModified = base.Columns["DateModified"];
                 this.columnelectronickit = base.Columns["electronickit"];
                 this.columnelectronickitoptions = base.Columns["electronickitoptions"];
                 this.columnstatus = base.Columns["status"];
+                this.columnQInvno = base.Columns["QInvno"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2527,8 +2527,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnoraclecode);
                 this.columnschname1 = new global::System.Data.DataColumn("schname1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschname1);
-                this.columninvno1 = new global::System.Data.DataColumn("invno1", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columninvno1);
                 this.columncontryear = new global::System.Data.DataColumn("contryear", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncontryear);
                 this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2541,6 +2539,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnelectronickitoptions);
                 this.columnstatus = new global::System.Data.DataColumn("status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstatus);
+                this.columnQInvno = new global::System.Data.DataColumn("QInvno", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQInvno);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columncstatus.MaxLength = 40;
@@ -2650,7 +2650,6 @@ namespace Mbc5.DataSets {
                 this.columnoraclecode.MaxLength = 7;
                 this.columnschname1.ReadOnly = true;
                 this.columnschname1.MaxLength = 34;
-                this.columninvno1.Caption = "invno";
                 this.columncontryear.MaxLength = 2;
                 this.columnExpr1.MaxLength = 4;
                 this.columnDateModified.AllowDBNull = false;
@@ -5695,22 +5694,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int invno1 {
-                get {
-                    try {
-                        return ((int)(this[this.tablecust.invno1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'invno1\' in table \'cust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablecust.invno1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string contryear {
                 get {
                     try {
@@ -5797,6 +5780,22 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tablecust.statusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int QInvno {
+                get {
+                    try {
+                        return ((int)(this[this.tablecust.QInvnoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QInvno\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.QInvnoColumn] = value;
                 }
             }
             
@@ -7314,18 +7313,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isinvno1Null() {
-                return this.IsNull(this.tablecust.invno1Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setinvno1Null() {
-                this[this.tablecust.invno1Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
@@ -7382,6 +7369,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetstatusNull() {
                 this[this.tablecust.statusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQInvnoNull() {
+                return this.IsNull(this.tablecust.QInvnoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQInvnoNull() {
+                this[this.tablecust.QInvnoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -8241,7 +8240,6 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             tableMapping.ColumnMappings.Add("ModifiedBy", "ModifiedBy");
             tableMapping.ColumnMappings.Add("oraclecode", "oraclecode");
             tableMapping.ColumnMappings.Add("schname1", "schname1");
-            tableMapping.ColumnMappings.Add("invno", "invno1");
             tableMapping.ColumnMappings.Add("contryear", "contryear");
             tableMapping.ColumnMappings.Add("Expr1", "Expr1");
             tableMapping.ColumnMappings.Add("DateModified", "DateModified");
@@ -8249,6 +8247,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             tableMapping.ColumnMappings.Add("electronickit", "electronickit");
             tableMapping.ColumnMappings.Add("electronickitoptions", "electronickitoptions");
             tableMapping.ColumnMappings.Add("status", "status");
+            tableMapping.ColumnMappings.Add("QInvno", "QInvno");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -8473,14 +8472,14 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 ", cust.ccontemail, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.sch" +
                 "colors, cust.keeppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust" +
                 ".leadname, quotes.booktype, \r\n                         quotes.contryear AS Qyear" +
-                ", quotes.invno, produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitre" +
-                "cvd, cust.TimeStamp, cust.ModifiedBy, cust.oraclecode, cust.contryear, cust.book" +
-                "type AS Expr1, \r\n                         cust.DateModified, cust.cposition, cus" +
-                "t.electronickit, cust.electronickitoptions, cust.status\r\nFROM            cust LE" +
-                "FT OUTER JOIN\r\n                         quotes ON cust.schcode = quotes.schcode " +
-                "LEFT OUTER JOIN\r\n                         produtn ON quotes.invno = produtn.invn" +
-                "o\r\nWHERE        (cust.schcode = @schcode)\r\nORDER BY Qyear DESC, quotes.invno DES" +
-                "C";
+                ", quotes.invno AS QInvno, produtn.prodno, produtn.dedayin, produtn.dedayout, pro" +
+                "dutn.kitrecvd, cust.TimeStamp, cust.ModifiedBy, cust.oraclecode, cust.contryear," +
+                " \r\n                         cust.booktype AS Expr1, cust.DateModified, cust.cpos" +
+                "ition, cust.electronickit, cust.electronickitoptions, cust.status\r\nFROM         " +
+                "   cust LEFT OUTER JOIN\r\n                         quotes ON cust.schcode = quote" +
+                "s.schcode LEFT OUTER JOIN\r\n                         produtn ON quotes.invno = pr" +
+                "odutn.invno\r\nWHERE        (cust.schcode = @schcode)\r\nORDER BY Qyear DESC, QInvno" +
+                " DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -8511,14 +8510,14 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "hom, cust.ccontphnwork, \r\n                         cust.ccontfax, cust.ccontemai" +
                 "l, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.schcolors, cust.kee" +
                 "ppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust.leadname, quote" +
-                "s.booktype, \r\n                         quotes.contryear AS Qyear, quotes.invno, " +
-                "produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, cust.oracle" +
-                "code, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, cust.electronickitopti" +
-                "ons, \r\n                         cust.electronickit, cust.cposition, cust.status\r" +
-                "\nFROM            cust LEFT OUTER JOIN\r\n                         quotes ON cust.s" +
-                "chcode = quotes.schcode LEFT OUTER JOIN\r\n                         produtn ON quo" +
-                "tes.invno = produtn.invno\r\nWHERE        (cust.oraclecode = @oraclecode)\r\nORDER B" +
-                "Y Qyear DESC";
+                "s.booktype, \r\n                         quotes.contryear AS Qyear, quotes.invno A" +
+                "S QInvno, produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, c" +
+                "ust.oraclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, \r\n          " +
+                "               cust.electronickitoptions, cust.electronickit, cust.cposition, cu" +
+                "st.status\r\nFROM            cust LEFT OUTER JOIN\r\n                         quotes" +
+                " ON cust.schcode = quotes.schcode LEFT OUTER JOIN\r\n                         prod" +
+                "utn ON quotes.invno = produtn.invno\r\nWHERE        (cust.oraclecode = @oraclecode" +
+                ")\r\nORDER BY Qyear DESC";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oraclecode", global::System.Data.SqlDbType.NVarChar, 7, global::System.Data.ParameterDirection.Input, 0, 0, "oraclecode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
@@ -8549,14 +8548,14 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "hom, cust.ccontphnwork, \r\n                         cust.ccontfax, cust.ccontemai" +
                 "l, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.schcolors, cust.kee" +
                 "ppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust.leadname, quote" +
-                "s.booktype, \r\n                         quotes.contryear AS Qyear, quotes.invno, " +
-                "produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, cust.oracle" +
-                "code, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, cust.cposition, \r\n    " +
-                "                     cust.electronickit, cust.electronickitoptions, cust.status\r" +
-                "\nFROM            cust LEFT OUTER JOIN\r\n                         quotes ON cust.s" +
-                "chcode = quotes.schcode LEFT OUTER JOIN\r\n                         produtn ON quo" +
-                "tes.invno = produtn.invno\r\nWHERE        (cust.schname LIKE @schname + \'%\')\r\nORDE" +
-                "R BY Qyear DESC";
+                "s.booktype, \r\n                         quotes.contryear AS Qyear, quotes.invno A" +
+                "S QInvno, produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, c" +
+                "ust.oraclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, cust.cpositi" +
+                "on, \r\n                         cust.electronickit, cust.electronickitoptions, cu" +
+                "st.status\r\nFROM            cust LEFT OUTER JOIN\r\n                         quotes" +
+                " ON cust.schcode = quotes.schcode LEFT OUTER JOIN\r\n                         prod" +
+                "utn ON quotes.invno = produtn.invno\r\nWHERE        (cust.schname LIKE @schname + " +
+                "\'%\')\r\nORDER BY Qyear DESC";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

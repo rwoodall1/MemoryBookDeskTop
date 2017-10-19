@@ -97,19 +97,20 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.Label label33;
             System.Windows.Forms.Label label34;
             System.Windows.Forms.Label statusLabel;
+            System.Windows.Forms.Label schcodeLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMbcCust));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.Label schcodeLabel;
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.statusComboBox = new System.Windows.Forms.ComboBox();
+            this.lblSchcodeVal = new System.Windows.Forms.Label();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
+            this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.electronicoptions = new System.Windows.Forms.ComboBox();
             this.electronickitCheckBox = new System.Windows.Forms.CheckBox();
             this.txtSchname = new System.Windows.Forms.TextBox();
@@ -160,10 +161,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.nodirectmailCheckBox = new System.Windows.Forms.CheckBox();
             this.nomktemailCheckBox = new System.Windows.Forms.CheckBox();
             this.custDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn107 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn108 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn111 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtBookType = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.spcinstTextBox = new System.Windows.Forms.TextBox();
@@ -173,6 +170,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.yb_sthTextBox = new System.Windows.Forms.TextBox();
             this.inofficeTextBox = new System.Windows.Forms.TextBox();
             this.pnlHead = new System.Windows.Forms.Panel();
+            this.schcodeTextBox = new System.Windows.Forms.TextBox();
             this.btnNewCustomer = new System.Windows.Forms.Button();
             this.btnOracleSrch = new System.Windows.Forms.Button();
             this.txtOracleCodeSrch = new System.Windows.Forms.TextBox();
@@ -289,7 +287,10 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpschtypeTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpschtypeTableAdapter();
             this.custSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custSearchTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custSearchTableAdapter();
-            this.schcodeTextBox = new System.Windows.Forms.TextBox();
+            this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QInvno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn108 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn111 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -1025,6 +1026,15 @@ namespace Mbc5.Forms.MemoryBook {
             statusLabel.TabIndex = 103;
             statusLabel.Text = "Status:";
             // 
+            // schcodeLabel
+            // 
+            schcodeLabel.AutoSize = true;
+            schcodeLabel.Location = new System.Drawing.Point(770, 9);
+            schcodeLabel.Name = "schcodeLabel";
+            schcodeLabel.Size = new System.Drawing.Size(51, 13);
+            schcodeLabel.TabIndex = 9;
+            schcodeLabel.Text = "schcode:";
+            // 
             // CustTab
             // 
             this.CustTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1064,7 +1074,9 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // splitContainer.Panel1
             // 
+            this.splitContainer.Panel1.AutoScroll = true;
             this.splitContainer.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel1.Controls.Add(this.lblSchcodeVal);
             this.splitContainer.Panel1.Controls.Add(statusLabel);
             this.splitContainer.Panel1.Controls.Add(this.statusComboBox);
             this.splitContainer.Panel1.Controls.Add(this.electronicoptions);
@@ -1132,6 +1144,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // splitContainer.Panel2
             // 
+            this.splitContainer.Panel2.AutoScroll = true;
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.splitContainer.Panel2.Controls.Add(this.dedayoutLabel2);
             this.splitContainer.Panel2.Controls.Add(this.dedayinLabel2);
@@ -1156,10 +1169,31 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.Panel2.Controls.Add(this.btnInterOffice);
             this.splitContainer.Panel2.Controls.Add(this.yb_sthTextBox);
             this.splitContainer.Panel2.Controls.Add(this.inofficeTextBox);
-            this.splitContainer.Size = new System.Drawing.Size(1223, 593);
-            this.splitContainer.SplitterDistance = 599;
+            this.splitContainer.Size = new System.Drawing.Size(1221, 596);
+            this.splitContainer.SplitterDistance = 598;
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
+            // 
+            // lblSchcodeVal
+            // 
+            this.lblSchcodeVal.AutoSize = true;
+            this.lblSchcodeVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
+            this.lblSchcodeVal.Location = new System.Drawing.Point(441, 95);
+            this.lblSchcodeVal.Name = "lblSchcodeVal";
+            this.lblSchcodeVal.Size = new System.Drawing.Size(41, 13);
+            this.lblSchcodeVal.TabIndex = 105;
+            this.lblSchcodeVal.Text = "label29";
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsCust;
+            // 
+            // dsCust
+            // 
+            this.dsCust.DataSetName = "dsCust";
+            this.dsCust.EnforceConstraints = false;
+            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // statusComboBox
             // 
@@ -1176,17 +1210,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(203, 21);
             this.statusComboBox.TabIndex = 104;
-            // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsCust;
-            // 
-            // dsCust
-            // 
-            this.dsCust.DataSetName = "dsCust";
-            this.dsCust.EnforceConstraints = false;
-            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // electronicoptions
             // 
@@ -1609,11 +1632,11 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // lblInvno
             // 
-            this.lblInvno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "invno", true));
+            this.lblInvno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "QInvno", true));
             this.lblInvno.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblInvno.Location = new System.Drawing.Point(24, 336);
+            this.lblInvno.Location = new System.Drawing.Point(25, 323);
             this.lblInvno.Name = "lblInvno";
-            this.lblInvno.Size = new System.Drawing.Size(1, 1);
+            this.lblInvno.Size = new System.Drawing.Size(50, 15);
             this.lblInvno.TabIndex = 15;
             this.lblInvno.Text = "label29";
             this.lblInvno.TextChanged += new System.EventHandler(this.lblInvno_TextChanged);
@@ -1673,7 +1696,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn105,
-            this.dataGridViewTextBoxColumn107,
+            this.QInvno,
             this.dataGridViewTextBoxColumn108,
             this.dataGridViewTextBoxColumn111});
             this.custDataGridView.DataSource = this.custBindingSource;
@@ -1687,34 +1710,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.custDataGridView.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.custDataGridView_RowHeaderMouseDoubleClick);
             this.custDataGridView.Enter += new System.EventHandler(this.custDataGridView_Enter);
             this.custDataGridView.Leave += new System.EventHandler(this.custDataGridView_Leave);
-            // 
-            // dataGridViewTextBoxColumn105
-            // 
-            this.dataGridViewTextBoxColumn105.DataPropertyName = "booktype";
-            this.dataGridViewTextBoxColumn105.HeaderText = "Book Type";
-            this.dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
-            this.dataGridViewTextBoxColumn105.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn107
-            // 
-            this.dataGridViewTextBoxColumn107.DataPropertyName = "invno";
-            this.dataGridViewTextBoxColumn107.HeaderText = "Invoice#";
-            this.dataGridViewTextBoxColumn107.Name = "dataGridViewTextBoxColumn107";
-            this.dataGridViewTextBoxColumn107.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn108
-            // 
-            this.dataGridViewTextBoxColumn108.DataPropertyName = "prodno";
-            this.dataGridViewTextBoxColumn108.HeaderText = "Prod No#";
-            this.dataGridViewTextBoxColumn108.Name = "dataGridViewTextBoxColumn108";
-            this.dataGridViewTextBoxColumn108.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn111
-            // 
-            this.dataGridViewTextBoxColumn111.DataPropertyName = "kitrecvd";
-            this.dataGridViewTextBoxColumn111.HeaderText = "Kit Recvd Date";
-            this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
-            this.dataGridViewTextBoxColumn111.ReadOnly = true;
             // 
             // txtBookType
             // 
@@ -1815,6 +1810,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.pnlHead.Name = "pnlHead";
             this.pnlHead.Size = new System.Drawing.Size(1226, 38);
             this.pnlHead.TabIndex = 64;
+            // 
+            // schcodeTextBox
+            // 
+            this.schcodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
+            this.schcodeTextBox.Location = new System.Drawing.Point(827, 6);
+            this.schcodeTextBox.Name = "schcodeTextBox";
+            this.schcodeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.schcodeTextBox.TabIndex = 10;
             // 
             // btnNewCustomer
             // 
@@ -2919,22 +2922,33 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.custSearchTableAdapter.ClearBeforeFill = true;
             // 
-            // schcodeLabel
+            // dataGridViewTextBoxColumn105
             // 
-            schcodeLabel.AutoSize = true;
-            schcodeLabel.Location = new System.Drawing.Point(770, 9);
-            schcodeLabel.Name = "schcodeLabel";
-            schcodeLabel.Size = new System.Drawing.Size(51, 13);
-            schcodeLabel.TabIndex = 9;
-            schcodeLabel.Text = "schcode:";
+            this.dataGridViewTextBoxColumn105.DataPropertyName = "booktype";
+            this.dataGridViewTextBoxColumn105.HeaderText = "Book Type";
+            this.dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
+            this.dataGridViewTextBoxColumn105.ReadOnly = true;
             // 
-            // schcodeTextBox
+            // QInvno
             // 
-            this.schcodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
-            this.schcodeTextBox.Location = new System.Drawing.Point(827, 6);
-            this.schcodeTextBox.Name = "schcodeTextBox";
-            this.schcodeTextBox.Size = new System.Drawing.Size(100, 20);
-            this.schcodeTextBox.TabIndex = 10;
+            this.QInvno.DataPropertyName = "QInvno";
+            this.QInvno.HeaderText = "Invoice#";
+            this.QInvno.Name = "QInvno";
+            this.QInvno.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn108
+            // 
+            this.dataGridViewTextBoxColumn108.DataPropertyName = "prodno";
+            this.dataGridViewTextBoxColumn108.HeaderText = "Prod No#";
+            this.dataGridViewTextBoxColumn108.Name = "dataGridViewTextBoxColumn108";
+            this.dataGridViewTextBoxColumn108.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn111
+            // 
+            this.dataGridViewTextBoxColumn111.DataPropertyName = "kitrecvd";
+            this.dataGridViewTextBoxColumn111.HeaderText = "Kit Recvd Date";
+            this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
+            this.dataGridViewTextBoxColumn111.ReadOnly = true;
             // 
             // frmMbcCust
             // 
@@ -3134,11 +3148,7 @@ namespace Mbc5.Forms.MemoryBook {
 		private System.Windows.Forms.Label dedayoutLabel2;
 		private System.Windows.Forms.Label dedayinLabel2;
 		private System.Windows.Forms.Button btnNewCustomer;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn106;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn107;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn108;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn111;
 		private System.Windows.Forms.TextBox contryearTextBox;
         private System.Windows.Forms.BindingSource lkpNoRebookBindingSource;
         private DataSets.LookUpTableAdapters.lkpNoRebookTableAdapter lkpNoRebookTableAdapter;
@@ -3187,5 +3197,11 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.CheckBox electronickitCheckBox;
         private System.Windows.Forms.ComboBox statusComboBox;
         private System.Windows.Forms.TextBox schcodeTextBox;
+        private System.Windows.Forms.Label lblSchcodeVal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn107;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QInvno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn108;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn111;
     }
 }

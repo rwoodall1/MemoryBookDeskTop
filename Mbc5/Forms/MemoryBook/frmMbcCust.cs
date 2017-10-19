@@ -156,15 +156,15 @@ namespace Mbc5.Forms.MemoryBook {
                 this.custTableAdapter.Fill(this.dsCust.cust,currentSchool);
                 this.Schcode = currentSchool;
                 MessageBox.Show("Record was not found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
                 this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
                 TeleGo = false;
                 }
             else
                 {
-                this.Schcode = txtSchCodesrch.Text;
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
-                this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+                
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
                 TeleGo = false;
               
                 }
@@ -604,7 +604,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private void SetInvnoSchCode()
         {
-            this.Schcode = this.Schcode;
+            this.Schcode = lblSchcodeVal.Text;
             int val = 0;
             this.Invno = 0;
             bool parsed = Int32.TryParse(lblInvno.Text, out val);
