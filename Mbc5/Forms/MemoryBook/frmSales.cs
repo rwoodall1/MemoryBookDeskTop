@@ -54,8 +54,7 @@ namespace Mbc5.Forms.MemoryBook {
             CalculateEach();
             BookCalc();
             txtBYear.Focus();
-
-          
+            
         }
         private void btnInvSrch_Click(object sender, EventArgs e) {
             var sqlQuery = new SQLQuery();
@@ -2997,7 +2996,21 @@ namespace Mbc5.Forms.MemoryBook {
             BookCalc();
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+
+        }
+
+        private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        {
+            reportViewer1.PrintDialog();
+        }
+
+
+
+
 
 
 
