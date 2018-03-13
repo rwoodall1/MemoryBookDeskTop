@@ -20,6 +20,7 @@ namespace Mbc5.Forms.MemoryBook {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
         private static string _ConnectionString = Properties.Settings.Default.Mbc5ConnectionString; //ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
         private bool startup = true;
+        private string SchoolZipCode { get; set; }
         public frmSales(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal) {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -58,7 +59,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void btnInvSrch_Click(object sender, EventArgs e) {
             var sqlQuery = new SQLQuery();
-            string querystring = "Select schcode,invno from Quotes where Invno=@Invno";
+            string querystring = "Select schcode,invno,cust.schzip from Quotes where Invno=@Invno";
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Invno",txtInvoSrch.Text.Trim())
             };
@@ -68,6 +69,7 @@ namespace Mbc5.Forms.MemoryBook {
                     //only one row so just set variabls
                     this.Invno = Convert.ToInt32(row["invno"]);
                     this.Schcode = row["schcode"].ToString();
+                    
                     this.Fill();
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
 
@@ -81,7 +83,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void btnPoSrch_Click(object sender, EventArgs e) {
             var sqlQuery = new SQLQuery();
-            string querystring = "Select schcode,invno from Quotes where PoNum=@PoNum";
+            string querystring = "Select schcode,invno,cust.schzipcode from Quotes where PoNum=@PoNum";
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@PoNum",txtPoSrch.Text.Trim())
             };
@@ -94,6 +96,7 @@ namespace Mbc5.Forms.MemoryBook {
                     this.Fill();
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
                     this.Invno = current["Invno"] == DBNull.Value ? 0 : (int)current["Invno"];
+                   
                     this.Schcode = current["Code"].ToString();
                     EnableAllControls(this);
                 }
@@ -766,6 +769,8 @@ namespace Mbc5.Forms.MemoryBook {
             return retval;
         }
         private void CalculateEach() {
+
+            this.lblTaxRate.Text = this.GetTaxRate("111111").ToString();
             if (String.IsNullOrEmpty(txtBYear.Text)) {
 
                 lblBookTotal.Text = (0 * 0).ToString("c");
@@ -1371,6 +1376,7 @@ namespace Mbc5.Forms.MemoryBook {
             if (Schcode != null) {
                 custTableAdapter.Fill(dsSales.cust, Schcode);
                 quotesTableAdapter.Fill(dsSales.quotes, Schcode);
+                this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString(); ;
             }
             if (Invno != 0) {
                 var pos = quotesBindingSource.Find("invno", this.Invno);
@@ -3006,6 +3012,35 @@ namespace Mbc5.Forms.MemoryBook {
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
             reportViewer1.PrintDialog();
+        }
+        private decimal GetTaxRate()
+        {
+            if (this.SchoolZipCode == null)
+            {
+                return 0;
+            }
+            decimal val = 0;
+            var sqlQuery = new SQLQuery();
+            string querystring = "SELECT Rate FROM SaleTax where ZipCode=@ZipCode";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Zipcode",this.SchoolZipCode)
+            };
+            var result = sqlQuery.ExecuteScalarAsync(CommandType.Text, querystring, parameters);
+            if (result != null)
+            {
+                val = (decimal)result;
+
+            }
+            return val;
+        }
+        private void donotchargeschoolsalestaxCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pg1_Click(object sender, EventArgs e)
+        {
+
         }
 
 

@@ -1158,6 +1158,11 @@ namespace Mbc5.Forms.MemoryBook {
            
         }
 
+        private void taxexemptionexpirationdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            taxexemptionexpirationdateDateTimePicker.Format = DateTimePickerFormat.Long;
+        }
+
 
         //Nothing below here
     }
