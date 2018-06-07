@@ -317,7 +317,6 @@
     <Compile Include="Reports\ReportTest.Designer.cs">
       <DependentUpon>ReportTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
     <Content Include="Content\MAIL.png" />
     <Content Include="NOTES TODO.txt" />
     <EmbeddedResource Include="Dialogs\frmAddressList.resx">
@@ -402,10 +401,7 @@
     <EmbeddedResource Include="Reports\ReportTest.resx">
       <DependentUpon>ReportTest.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App - Copy.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="AppAlt.config" />
+    <None Include="app.config" />
     <None Include="DataSets\dsBids.xsc">
       <DependentUpon>dsBids.xsd</DependentUpon>
     </None>
@@ -541,9 +537,6 @@
     <None Include="DataSets\LookUp.xss">
       <DependentUpon>LookUp.xsd</DependentUpon>
     </None>
-    <None Include="localConnection.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -566,23 +559,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Content\SystemIcons\" />
     <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BaseClass\BaseClass.csproj">
-      <Project>{d872b75b-b77f-41c3-bd82-84c88690bc82}</Project>
-      <Name>BaseClass</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BindingModels\BindingModels.csproj">
-      <Project>{5f448496-325e-429a-ae98-18aa1015ad80}</Project>
-      <Name>BindingModels</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\MemBook-Jostens Logo.jpg" />
@@ -606,6 +584,16 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseClass\BaseClass.csproj">
+      <Project>{d872b75b-b77f-41c3-bd82-84c88690bc82}</Project>
+      <Name>BaseClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BindingModels\BindingModels.csproj">
+      <Project>{5f448496-325e-429a-ae98-18aa1015ad80}</Project>
+      <Name>BindingModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
