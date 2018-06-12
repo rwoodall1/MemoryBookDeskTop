@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBarScan));
             this.lbl1 = new System.Windows.Forms.Label();
-            this.txtBarCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,7 +39,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtDateTime = new System.Windows.Forms.TextBox();
             this.txtTime = new System.Windows.Forms.TextBox();
-            this.txtIntitials = new System.Windows.Forms.TextBox();
             this.txtInOut = new System.Windows.Forms.TextBox();
             this.txtDept = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -80,6 +78,8 @@
             this.label27 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnDeadLineInfo = new System.Windows.Forms.Button();
+            this.txtIntitials = new System.Windows.Forms.MaskedTextBox();
+            this.txtBarCode1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbl1
@@ -91,13 +91,6 @@
             this.lbl1.Size = new System.Drawing.Size(124, 13);
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "Scan Book Bar code";
-            // 
-            // txtBarCode
-            // 
-            this.txtBarCode.Location = new System.Drawing.Point(187, 19);
-            this.txtBarCode.Name = "txtBarCode";
-            this.txtBarCode.Size = new System.Drawing.Size(116, 20);
-            this.txtBarCode.TabIndex = 1;
             // 
             // label1
             // 
@@ -156,6 +149,7 @@
             this.txtDeptCode.Name = "txtDeptCode";
             this.txtDeptCode.Size = new System.Drawing.Size(116, 20);
             this.txtDeptCode.TabIndex = 7;
+            this.txtDeptCode.Leave += new System.EventHandler(this.txtDeptCode_Leave);
             // 
             // label6
             // 
@@ -180,13 +174,6 @@
             this.txtTime.Name = "txtTime";
             this.txtTime.Size = new System.Drawing.Size(47, 20);
             this.txtTime.TabIndex = 10;
-            // 
-            // txtIntitials
-            // 
-            this.txtIntitials.Location = new System.Drawing.Point(187, 178);
-            this.txtIntitials.Name = "txtIntitials";
-            this.txtIntitials.Size = new System.Drawing.Size(47, 20);
-            this.txtIntitials.TabIndex = 11;
             // 
             // txtInOut
             // 
@@ -341,6 +328,7 @@
             this.btnSave.TabIndex = 30;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -553,10 +541,26 @@
             this.btnDeadLineInfo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDeadLineInfo.UseVisualStyleBackColor = true;
             // 
+            // txtIntitials
+            // 
+            this.txtIntitials.Location = new System.Drawing.Point(187, 177);
+            this.txtIntitials.Name = "txtIntitials";
+            this.txtIntitials.Size = new System.Drawing.Size(47, 20);
+            this.txtIntitials.TabIndex = 152;
+            // 
+            // txtBarCode1
+            // 
+            this.txtBarCode1.Location = new System.Drawing.Point(188, 16);
+            this.txtBarCode1.Name = "txtBarCode1";
+            this.txtBarCode1.Size = new System.Drawing.Size(153, 20);
+            this.txtBarCode1.TabIndex = 1;
+            this.txtBarCode1.TextChanged += new System.EventHandler(this.txtBarCode1_TextChanged);
+            // 
             // frmBarScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.ClientSize = new System.Drawing.Size(904, 555);
+            this.Controls.Add(this.txtIntitials);
             this.Controls.Add(this.btnDeadLineInfo);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label27);
@@ -596,7 +600,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtDept);
             this.Controls.Add(this.txtInOut);
-            this.Controls.Add(this.txtIntitials);
             this.Controls.Add(this.txtTime);
             this.Controls.Add(this.txtDateTime);
             this.Controls.Add(this.label6);
@@ -606,7 +609,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtBarCode);
+            this.Controls.Add(this.txtBarCode1);
             this.Controls.Add(this.lbl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
@@ -620,7 +623,6 @@
         #endregion
 
         private System.Windows.Forms.Label lbl1;
-        private System.Windows.Forms.TextBox txtBarCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -630,7 +632,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDateTime;
         private System.Windows.Forms.TextBox txtTime;
-        private System.Windows.Forms.TextBox txtIntitials;
         private System.Windows.Forms.TextBox txtInOut;
         private System.Windows.Forms.TextBox txtDept;
         private System.Windows.Forms.Label label7;
@@ -670,5 +671,7 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button btnDeadLineInfo;
+        private System.Windows.Forms.MaskedTextBox txtIntitials;
+        private System.Windows.Forms.TextBox txtBarCode1;
     }
 }

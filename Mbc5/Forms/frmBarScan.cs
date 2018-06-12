@@ -24,5 +24,33 @@ namespace Mbc5.Forms
         {
 
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDeptCode_Leave(object sender, EventArgs e)
+        {
+            string trkType = txtBarCode1.Text.Substring(9, 2);
+            switch (trkType)
+            {
+                case "YB":
+
+                    break;
+
+                case "SC":
+
+                    break;
+
+
+
+            }
+        }
+
+        private void txtBarCode1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
