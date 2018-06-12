@@ -21,17 +21,16 @@ VALUES        (,,,,,)</CommandText>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT        cust.schname, cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.secsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookdte, cust.refby, cust.schcode, RTRIM(cust.schname) 
-                         AS schname, cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust.schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail, cust.sprngbrk, cust.schout, cust.contmemo, 
-                         cust.position, cust.gender, cust.contfname, cust.contlname, cust.newfname, cust.newlname, cust.yb_sth, cust.shiptocont, cust.contaddr, cust.contaddr2, cust.contcity, cust.contstate, cust.contzip, cust.contphnhom, 
-                         cust.contphnwrk, cust.contfax, cust.contemail, cust.vcrsent, cust.sigfopf, cust.envflyer, cust.marketing, cust.yearrnd, cust.clrpg_int, cust.shipmemo, cust.schclosed, cust.inoffice, cust.digintrst, cust.svcode1, 
-                         cust.svdesc1, cust.svcode2, cust.svdesc2, cust.spcinst, cust.lastcont, cust.nextcont, cust.csrep, cust.cstat, cust.xeldate, cust.allcolor, cust.rbinit, cust.rbdate, cust.clspic, cust.magic, cust.extrchg, cust.sprinfo, 
-                         cust.fallinfo, cust.initcont, cust.highsp, cust.slownone, cust.pcmac, cust.junsno, cust.jobno, cust.advpw, cust.stfpw, cust.bcontfname, cust.bcontlname, cust.bcontaddr, cust.bcontaddr2, cust.bcontcity, 
-                         cust.bcontstate, cust.bcontzip, cust.bcontphnhom, cust.bcontphnwrk, cust.bcontfax, cust.bcontemail, cust.multiyroptions, cust.multiyear, cust.schuploading, cust.website, cust.nomktemail, cust.nodirectmail, 
-                         cust.bposition, cust.blkwhite, cust.mbconlinepassword, cust.ccontfname, cust.ccontlname, cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, cust.ccontstate, cust.ccontzip, cust.ccontphnhom, cust.ccontphnwork, 
-                         cust.ccontfax, cust.ccontemail, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.schcolors, cust.keeppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust.leadname, quotes.booktype, 
-                         quotes.contryear AS Qyear, quotes.invno AS QInvno, produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, cust.TimeStamp, cust.ModifiedBy, cust.oraclecode, cust.contryear, 
-                         cust.booktype AS Expr1, cust.DateModified, cust.cposition, cust.electronickit, cust.electronickitoptions, cust.status
+                    <CommandText>SELECT        cust.schname, cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.secsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookdte, cust.refby, cust.schcode, RTRIM(cust.schname) AS schname, 
+                         cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust.schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail, cust.sprngbrk, cust.schout, cust.contmemo, cust.position, cust.gender, 
+                         cust.contfname, cust.contlname, cust.newfname, cust.newlname, cust.yb_sth, cust.shiptocont, cust.contaddr, cust.contaddr2, cust.contcity, cust.contstate, cust.contzip, cust.contphnhom, cust.contphnwrk, cust.contfax, 
+                         cust.contemail, cust.vcrsent, cust.sigfopf, cust.envflyer, cust.marketing, cust.yearrnd, cust.clrpg_int, cust.shipmemo, cust.schclosed, cust.inoffice, cust.digintrst, cust.svcode1, cust.svdesc1, cust.svcode2, cust.svdesc2, 
+                         cust.spcinst, cust.lastcont, cust.nextcont, cust.csrep, cust.cstat, cust.xeldate, cust.allcolor, cust.rbinit, cust.rbdate, cust.clspic, cust.magic, cust.extrchg, cust.sprinfo, cust.fallinfo, cust.initcont, cust.highsp, cust.slownone, 
+                         cust.pcmac, cust.junsno, cust.jobno, cust.advpw, cust.stfpw, cust.bcontfname, cust.bcontlname, cust.bcontaddr, cust.bcontaddr2, cust.bcontcity, cust.bcontstate, cust.bcontzip, cust.bcontphnhom, cust.bcontphnwrk, cust.bcontfax, 
+                         cust.bcontemail, cust.multiyroptions, cust.multiyear, cust.schuploading, cust.website, cust.nomktemail, cust.nodirectmail, cust.bposition, cust.blkwhite, cust.mbconlinepassword, cust.ccontfname, cust.ccontlname, 
+                         cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, cust.ccontstate, cust.ccontzip, cust.ccontphnhom, cust.ccontphnwork, cust.ccontfax, cust.ccontemail, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.schcolors, 
+                         cust.keeppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust.leadname, quotes.booktype, quotes.contryear AS Qyear, quotes.invno AS QInvno, produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, 
+                         cust.TimeStamp, cust.ModifiedBy, cust.oraclecode, cust.contryear, cust.booktype AS Expr1, cust.DateModified, cust.cposition, cust.electronickit, cust.electronickitoptions, cust.status, cust.taxexemptionexpirationdate
 FROM            cust LEFT OUTER JOIN
                          quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN
                          produtn ON quotes.invno = produtn.invno
@@ -43,24 +42,23 @@ ORDER BY Qyear DESC, QInvno DESC</CommandText>
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       cust
-SET                cstatus = @cstatus, source = @source, sourdate = @sourdate, secsource = @secsource, contdate = @contdate, origsour = @origsour, origyear = @origyear, rebook = @rebook, rebookdte = @rebookdte, 
-                         refby = @refby, schcode = @schcode, enrollment = @enrollment, grades = @grades, sal = @sal, schaddr = @schaddr, schaddr2 = @schaddr2, schcity = @schcity, schzip = @schzip, schphone = @schphone, 
-                         schfax = @schfax, schemail = @schemail, sprngbrk = @sprngbrk, schout = @schout, contmemo = @contmemo, position = @position, gender = @gender, contfname = @contfname, contlname = @contlname, 
-                         newfname = @newfname, newlname = @newlname, yb_sth = @yb_sth, shiptocont = @shiptocont, contaddr = @contaddr, contaddr2 = @contaddr2, contcity = @contcity, contstate = @contstate, 
-                         contzip = @contzip, contphnhom = @contphnhom, contphnwrk = @contphnwrk, contfax = @contfax, contemail = @contemail, booktype = @booktype, vcrsent = @vcrsent, sigfopf = @sigfopf, envflyer = @envflyer, 
-                         marketing = @marketing, yearrnd = @yearrnd, clrpg_int = @clrpg_int, shipmemo = @shipmemo, schclosed = @schclosed, inoffice = @inoffice, digintrst = @digintrst, svcode1 = @svcode1, svdesc1 = @svdesc1, 
-                         svcode2 = @svcode2, svdesc2 = @svdesc2, spcinst = @spcinst, lastcont = @lastcont, nextcont = @nextcont, csrep = @csrep, cstat = @cstat, xeldate = @xeldate, allcolor = @allcolor, rbinit = @rbinit, 
-                         rbdate = @rbdate, clspic = @clspic, magic = @magic, extrchg = @extrchg, sprinfo = @sprinfo, fallinfo = @fallinfo, initcont = @initcont, highsp = @highsp, slownone = @slownone, pcmac = @pcmac, 
-                         junsno = @junsno, jobno = @jobno, advpw = @advpw, stfpw = @stfpw, bcontfname = @bcontfname, bcontlname = @bcontlname, bcontaddr = @bcontaddr, bcontaddr2 = @bcontaddr2, bcontcity = @bcontcity, 
-                         bcontstate = @bcontstate, bcontzip = @bcontzip, bcontphnhom = @bcontphnhom, bcontphnwrk = @bcontphnwrk, bcontfax = @bcontfax, bcontemail = @bcontemail, multiyroptions = @multiyroptions, 
-                         multiyear = @multiyear, schuploading = @schuploading, website = @website, nomktemail = @nomktemail, nodirectmail = @nodirectmail, bposition = @bposition, blkwhite = @blkwhite, 
-                         mbconlinepassword = @mbconlinepassword, ccontfname = @ccontfname, ccontlname = @ccontlname, ccontaddr = @ccontaddr, ccontaddr2 = @ccontaddr2, ccontcity = @ccontcity, ccontstate = @ccontstate, 
-                         ccontzip = @ccontzip, ccontphnhom = @ccontphnhom, ccontphnwork = @ccontphnwork, ccontfax = @ccontfax, ccontemail = @ccontemail, norebookreason = @norebookreason, newpublisher = @newpublisher, 
-                         csrep2 = @csrep2, schcolors = @schcolors, keeppswd = @keeppswd, leadsource = @leadsource, leadsname = @leadsname, prevpublisher = @prevpublisher, leadname = @leadname, 
-                         DateModified = GETDATE(), photographer = @Photographer, ModifiedBy = @ModifiedBy, schname = @Schname, oraclecode = @oraclecode, contryear = @contryear, schstate = @schstate, cposition = @cposition,
-                          electronickit = @electronickit, electronickitoptions = @electronicoptions, status = @status
+SET                cstatus = @cstatus, source = @source, sourdate = @sourdate, secsource = @secsource, contdate = @contdate, origsour = @origsour, origyear = @origyear, rebook = @rebook, rebookdte = @rebookdte, refby = @refby, 
+                         schcode = @schcode, enrollment = @enrollment, grades = @grades, sal = @sal, schaddr = @schaddr, schaddr2 = @schaddr2, schcity = @schcity, schzip = @schzip, schphone = @schphone, schfax = @schfax, 
+                         schemail = @schemail, sprngbrk = @sprngbrk, schout = @schout, contmemo = @contmemo, position = @position, gender = @gender, contfname = @contfname, contlname = @contlname, newfname = @newfname, 
+                         newlname = @newlname, yb_sth = @yb_sth, shiptocont = @shiptocont, contaddr = @contaddr, contaddr2 = @contaddr2, contcity = @contcity, contstate = @contstate, contzip = @contzip, contphnhom = @contphnhom, 
+                         contphnwrk = @contphnwrk, contfax = @contfax, contemail = @contemail, booktype = @booktype, vcrsent = @vcrsent, sigfopf = @sigfopf, envflyer = @envflyer, marketing = @marketing, yearrnd = @yearrnd, 
+                         clrpg_int = @clrpg_int, shipmemo = @shipmemo, schclosed = @schclosed, inoffice = @inoffice, digintrst = @digintrst, svcode1 = @svcode1, svdesc1 = @svdesc1, svcode2 = @svcode2, svdesc2 = @svdesc2, 
+                         spcinst = @spcinst, lastcont = @lastcont, nextcont = @nextcont, csrep = @csrep, cstat = @cstat, xeldate = @xeldate, allcolor = @allcolor, rbinit = @rbinit, rbdate = @rbdate, clspic = @clspic, magic = @magic, 
+                         extrchg = @extrchg, sprinfo = @sprinfo, fallinfo = @fallinfo, initcont = @initcont, highsp = @highsp, slownone = @slownone, pcmac = @pcmac, junsno = @junsno, jobno = @jobno, advpw = @advpw, stfpw = @stfpw, 
+                         bcontfname = @bcontfname, bcontlname = @bcontlname, bcontaddr = @bcontaddr, bcontaddr2 = @bcontaddr2, bcontcity = @bcontcity, bcontstate = @bcontstate, bcontzip = @bcontzip, bcontphnhom = @bcontphnhom, 
+                         bcontphnwrk = @bcontphnwrk, bcontfax = @bcontfax, bcontemail = @bcontemail, multiyroptions = @multiyroptions, multiyear = @multiyear, schuploading = @schuploading, website = @website, nomktemail = @nomktemail, 
+                         nodirectmail = @nodirectmail, bposition = @bposition, blkwhite = @blkwhite, mbconlinepassword = @mbconlinepassword, ccontfname = @ccontfname, ccontlname = @ccontlname, ccontaddr = @ccontaddr, 
+                         ccontaddr2 = @ccontaddr2, ccontcity = @ccontcity, ccontstate = @ccontstate, ccontzip = @ccontzip, ccontphnhom = @ccontphnhom, ccontphnwork = @ccontphnwork, ccontfax = @ccontfax, ccontemail = @ccontemail, 
+                         norebookreason = @norebookreason, newpublisher = @newpublisher, csrep2 = @csrep2, schcolors = @schcolors, keeppswd = @keeppswd, leadsource = @leadsource, leadsname = @leadsname, 
+                         prevpublisher = @prevpublisher, leadname = @leadname, DateModified = GETDATE(), photographer = @Photographer, ModifiedBy = @ModifiedBy, schname = @Schname, oraclecode = @oraclecode, contryear = @contryear, 
+                         schstate = @schstate, cposition = @cposition, electronickit = @electronickit, electronickitoptions = @electronicoptions, status = @status, taxexemptionexpirationdate =
 WHERE        (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="cstatus" ColumnName="cstatus" DataSourceName="" DataTypeServer="varchar(40)" DbType="AnsiString" Direction="Input" ParameterName="@cstatus" Precision="0" Scale="0" Size="40" SourceColumn="cstatus" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -336,6 +334,7 @@ WHERE        (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)</CommandText
               <Mapping SourceColumn="electronickitoptions" DataSetColumn="electronickitoptions" />
               <Mapping SourceColumn="status" DataSetColumn="status" />
               <Mapping SourceColumn="QInvno" DataSetColumn="QInvno" />
+              <Mapping SourceColumn="taxexemptionexpirationdate" DataSetColumn="taxexemptionexpirationdate" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByOracleCode" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillByOracleCode" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByOracleCode">
@@ -1052,7 +1051,7 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
   <xs:element name="dsCust" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCust" msprop:Generator_UserDSName="dsCust">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_UserTableName="cust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_RowEvArgName="custRowChangeEvent" msprop:Generator_RowClassName="custRow">
+        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_RowClassName="custRow" msprop:Generator_UserTableName="cust" msprop:Generator_RowEvArgName="custRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="cstatus" msprop:Generator_ColumnVarNameInTable="columncstatus" msprop:Generator_ColumnPropNameInRow="cstatus" msprop:Generator_ColumnPropNameInTable="cstatusColumn" msprop:Generator_UserColumnName="cstatus" minOccurs="0">
@@ -1806,10 +1805,11 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
                 </xs:simpleType>
               </xs:element>
               <xs:element name="QInvno" msprop:Generator_ColumnVarNameInTable="columnQInvno" msprop:Generator_ColumnPropNameInRow="QInvno" msprop:Generator_ColumnPropNameInTable="QInvnoColumn" msprop:Generator_UserColumnName="QInvno" type="xs:int" minOccurs="0" />
+              <xs:element name="taxexemptionexpirationdate" msprop:Generator_ColumnVarNameInTable="columntaxexemptionexpirationdate" msprop:Generator_ColumnPropNameInRow="taxexemptionexpirationdate" msprop:Generator_ColumnPropNameInTable="taxexemptionexpirationdateColumn" msprop:Generator_UserColumnName="taxexemptionexpirationdate" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="custSearch" msprop:Generator_TableClassName="custSearchDataTable" msprop:Generator_TableVarName="tablecustSearch" msprop:Generator_RowChangedName="custSearchRowChanged" msprop:Generator_TablePropName="custSearch" msprop:Generator_RowDeletingName="custSearchRowDeleting" msprop:Generator_RowChangingName="custSearchRowChanging" msprop:Generator_RowEvHandlerName="custSearchRowChangeEventHandler" msprop:Generator_RowDeletedName="custSearchRowDeleted" msprop:Generator_RowClassName="custSearchRow" msprop:Generator_UserTableName="custSearch" msprop:Generator_RowEvArgName="custSearchRowChangeEvent">
+        <xs:element name="custSearch" msprop:Generator_TableClassName="custSearchDataTable" msprop:Generator_TableVarName="tablecustSearch" msprop:Generator_TablePropName="custSearch" msprop:Generator_RowDeletingName="custSearchRowDeleting" msprop:Generator_RowChangingName="custSearchRowChanging" msprop:Generator_RowEvHandlerName="custSearchRowChangeEventHandler" msprop:Generator_RowDeletedName="custSearchRowDeleted" msprop:Generator_UserTableName="custSearch" msprop:Generator_RowChangedName="custSearchRowChanged" msprop:Generator_RowEvArgName="custSearchRowChangeEvent" msprop:Generator_RowClassName="custSearchRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -1850,7 +1850,7 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="datecont" msprop:Generator_TableClassName="datecontDataTable" msprop:Generator_TableVarName="tabledatecont" msprop:Generator_TablePropName="datecont" msprop:Generator_RowDeletingName="datecontRowDeleting" msprop:Generator_RowChangingName="datecontRowChanging" msprop:Generator_RowEvHandlerName="datecontRowChangeEventHandler" msprop:Generator_RowDeletedName="datecontRowDeleted" msprop:Generator_UserTableName="datecont" msprop:Generator_RowChangedName="datecontRowChanged" msprop:Generator_RowEvArgName="datecontRowChangeEvent" msprop:Generator_RowClassName="datecontRow">
+        <xs:element name="datecont" msprop:Generator_TableClassName="datecontDataTable" msprop:Generator_TableVarName="tabledatecont" msprop:Generator_RowChangedName="datecontRowChanged" msprop:Generator_TablePropName="datecont" msprop:Generator_RowDeletingName="datecontRowDeleting" msprop:Generator_RowChangingName="datecontRowChanging" msprop:Generator_RowEvHandlerName="datecontRowChangeEventHandler" msprop:Generator_RowDeletedName="datecontRowDeleted" msprop:Generator_RowClassName="datecontRow" msprop:Generator_UserTableName="datecont" msprop:Generator_RowEvArgName="datecontRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
