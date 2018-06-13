@@ -47,7 +47,7 @@ namespace Mbc5.Forms.MemoryBook {
 
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
-           // Fill();
+            Fill();
             if (ApplicationUser.Roles.Contains("SA") || ApplicationUser.Roles.Contains("Administrator")) {
                 this.dp1descComboBox.ContextMenuStrip = this.mnuEditLkUp;
             }
