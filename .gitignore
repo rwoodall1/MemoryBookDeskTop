@@ -90,3 +90,7 @@ BaseClass/bin/Debug/BaseClass.pdb
 
 *.ide
 
+/.vs/MemoryBook/v15/Server/sqlite3/storage.ide-wal
+/.vs/MemoryBook/v15/Server/sqlite3/storage.ide-shm
+/.vs/MemoryBook/v15/Server/sqlite3/db.lock
+/.vs/MemoryBook/DesignTimeBuild/.dtbcache
