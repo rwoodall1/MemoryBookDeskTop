@@ -33,7 +33,7 @@ namespace Mbc5.DataSets {
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public dsBids() {
             this.BeginInit();
             this.InitClass();
@@ -44,7 +44,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected dsBids(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
@@ -83,7 +83,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public bidsDataTable bids {
@@ -93,7 +93,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public custDataTable cust {
@@ -103,7 +103,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -116,7 +116,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public new global::System.Data.DataTableCollection Tables {
             get {
@@ -125,7 +125,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public new global::System.Data.DataRelationCollection Relations {
             get {
@@ -134,7 +134,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override void InitializeDerivedDataSet() {
             this.BeginInit();
             this.InitClass();
@@ -142,7 +142,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public override global::System.Data.DataSet Clone() {
             dsBids cln = ((dsBids)(base.Clone()));
             cln.InitVars();
@@ -151,19 +151,19 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override bool ShouldSerializeTables() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override bool ShouldSerializeRelations() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader) {
             if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 this.Reset();
@@ -191,7 +191,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable() {
             global::System.IO.MemoryStream stream = new global::System.IO.MemoryStream();
             this.WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
@@ -200,13 +200,13 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars() {
             this.InitVars(true);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
             this.tablebids = ((bidsDataTable)(base.Tables["bids"]));
             if ((initTable == true)) {
@@ -224,7 +224,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
             this.DataSetName = "dsBids";
             this.Prefix = "";
@@ -242,19 +242,19 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializebids() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializecust() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -262,7 +262,7 @@ namespace Mbc5.DataSets {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
             dsBids ds = new dsBids();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
@@ -308,10 +308,10 @@ namespace Mbc5.DataSets {
             return type;
         }
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void bidsRowChangeEventHandler(object sender, bidsRowChangeEvent e);
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void custRowChangeEventHandler(object sender, custRowChangeEvent e);
         
         /// <summary>
@@ -661,8 +661,12 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnId;
             
+            private global::System.Data.DataColumn columnschooltax;
+            
+            private global::System.Data.DataColumn columnschooltaxrate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bidsDataTable() {
                 this.TableName = "bids";
                 this.BeginInit();
@@ -671,7 +675,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal bidsDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
@@ -688,14 +692,14 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected bidsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schnameColumn {
                 get {
                     return this.columnschname;
@@ -703,7 +707,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schcodeColumn {
                 get {
                     return this.columnschcode;
@@ -711,7 +715,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn booktypeColumn {
                 get {
                     return this.columnbooktype;
@@ -719,7 +723,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn qtedateColumn {
                 get {
                     return this.columnqtedate;
@@ -727,7 +731,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn contryearColumn {
                 get {
                     return this.columncontryear;
@@ -735,7 +739,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn nopagesColumn {
                 get {
                     return this.columnnopages;
@@ -743,7 +747,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn nocopiesColumn {
                 get {
                     return this.columnnocopies;
@@ -751,7 +755,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn book_eaColumn {
                 get {
                     return this.columnbook_ea;
@@ -759,7 +763,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn book_priceColumn {
                 get {
                     return this.columnbook_price;
@@ -767,7 +771,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn prynColumn {
                 get {
                     return this.columnpryn;
@@ -775,7 +779,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn profColumn {
                 get {
                     return this.columnprof;
@@ -783,7 +787,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn coynColumn {
                 get {
                     return this.columncoyn;
@@ -791,7 +795,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn convenColumn {
                 get {
                     return this.columnconven;
@@ -799,7 +803,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn speceaColumn {
                 get {
                     return this.columnspecea;
@@ -807,7 +811,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn speccvrColumn {
                 get {
                     return this.columnspeccvr;
@@ -815,7 +819,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn scovrdeColumn {
                 get {
                     return this.columnscovrde;
@@ -823,7 +827,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn laynColumn {
                 get {
                     return this.columnlayn;
@@ -831,7 +835,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn laminateColumn {
                 get {
                     return this.columnlaminate;
@@ -839,7 +843,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn peynColumn {
                 get {
                     return this.columnpeyn;
@@ -847,7 +851,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn perfbindColumn {
                 get {
                     return this.columnperfbind;
@@ -855,7 +859,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn foilckColumn {
                 get {
                     return this.columnfoilck;
@@ -863,7 +867,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn foilamtColumn {
                 get {
                     return this.columnfoilamt;
@@ -871,7 +875,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn insckColumn {
                 get {
                     return this.columninsck;
@@ -879,7 +883,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn insamtColumn {
                 get {
                     return this.columninsamt;
@@ -887,7 +891,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn spirckColumn {
                 get {
                     return this.columnspirck;
@@ -895,7 +899,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn spiramtColumn {
                 get {
                     return this.columnspiramt;
@@ -903,7 +907,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn hdbky_nColumn {
                 get {
                     return this.columnhdbky_n;
@@ -911,7 +915,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn hardbackColumn {
                 get {
                     return this.columnhardback;
@@ -919,7 +923,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn casey_nColumn {
                 get {
                     return this.columncasey_n;
@@ -927,7 +931,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn caseamtColumn {
                 get {
                     return this.columncaseamt;
@@ -935,7 +939,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn customy_nColumn {
                 get {
                     return this.columncustomy_n;
@@ -943,7 +947,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn customizedColumn {
                 get {
                     return this.columncustomized;
@@ -951,7 +955,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn miscColumn {
                 get {
                     return this.columnmisc;
@@ -959,7 +963,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn mdescColumn {
                 get {
                     return this.columnmdesc;
@@ -967,7 +971,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn sbtotColumn {
                 get {
                     return this.columnsbtot;
@@ -975,7 +979,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn dc1Column {
                 get {
                     return this.columndc1;
@@ -983,7 +987,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn dp1Column {
                 get {
                     return this.columndp1;
@@ -991,7 +995,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn disc1Column {
                 get {
                     return this.columndisc1;
@@ -999,7 +1003,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn dc2Column {
                 get {
                     return this.columndc2;
@@ -1007,7 +1011,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn dp2Column {
                 get {
                     return this.columndp2;
@@ -1015,7 +1019,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn disc2Column {
                 get {
                     return this.columndisc2;
@@ -1023,7 +1027,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn dp3descColumn {
                 get {
                     return this.columndp3desc;
@@ -1031,7 +1035,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn dp3Column {
                 get {
                     return this.columndp3;
@@ -1039,7 +1043,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn disc3Column {
                 get {
                     return this.columndisc3;
@@ -1047,7 +1051,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn dp4Column {
                 get {
                     return this.columndp4;
@@ -1055,7 +1059,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn disc4Column {
                 get {
                     return this.columndisc4;
@@ -1063,7 +1067,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn cred_etcColumn {
                 get {
                     return this.columncred_etc;
@@ -1071,7 +1075,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn adjbefColumn {
                 get {
                     return this.columnadjbef;
@@ -1079,7 +1083,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn adjaftrColumn {
                 get {
                     return this.columnadjaftr;
@@ -1087,7 +1091,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn fbkprcColumn {
                 get {
                     return this.columnfbkprc;
@@ -1095,7 +1099,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn ftotprcColumn {
                 get {
                     return this.columnftotprc;
@@ -1103,7 +1107,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn sourceColumn {
                 get {
                     return this.columnsource;
@@ -1111,7 +1115,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn xtrabknoColumn {
                 get {
                     return this.columnxtrabkno;
@@ -1119,7 +1123,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn xtrabkprcColumn {
                 get {
                     return this.columnxtrabkprc;
@@ -1127,7 +1131,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn desc1Column {
                 get {
                     return this.columndesc1;
@@ -1135,7 +1139,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn desc1totColumn {
                 get {
                     return this.columndesc1tot;
@@ -1143,7 +1147,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn desc2Column {
                 get {
                     return this.columndesc2;
@@ -1151,7 +1155,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn desc2totColumn {
                 get {
                     return this.columndesc2tot;
@@ -1159,7 +1163,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn ponumColumn {
                 get {
                     return this.columnponum;
@@ -1167,7 +1171,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn newpriceColumn {
                 get {
                     return this.columnnewprice;
@@ -1175,7 +1179,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schoutColumn {
                 get {
                     return this.columnschout;
@@ -1183,7 +1187,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn allclrckColumn {
                 get {
                     return this.columnallclrck;
@@ -1191,7 +1195,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn allclramtColumn {
                 get {
                     return this.columnallclramt;
@@ -1199,7 +1203,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn smemoColumn {
                 get {
                     return this.columnsmemo;
@@ -1207,7 +1211,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn oaColumn {
                 get {
                     return this.columnoa;
@@ -1215,7 +1219,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn massmailColumn {
                 get {
                     return this.columnmassmail;
@@ -1223,7 +1227,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn inkclrColumn {
                 get {
                     return this.columninkclr;
@@ -1231,7 +1235,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn foiladamtColumn {
                 get {
                     return this.columnfoiladamt;
@@ -1239,7 +1243,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn desc3Column {
                 get {
                     return this.columndesc3;
@@ -1247,7 +1251,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn desc3totColumn {
                 get {
                     return this.columndesc3tot;
@@ -1255,7 +1259,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn desc4Column {
                 get {
                     return this.columndesc4;
@@ -1263,7 +1267,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn desc4totColumn {
                 get {
                     return this.columndesc4tot;
@@ -1271,7 +1275,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn clrpgdescColumn {
                 get {
                     return this.columnclrpgdesc;
@@ -1279,7 +1283,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn clrpgtotColumn {
                 get {
                     return this.columnclrpgtot;
@@ -1287,7 +1291,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn noclrpgrColumn {
                 get {
                     return this.columnnoclrpgr;
@@ -1295,7 +1299,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn glspaperColumn {
                 get {
                     return this.columnglspaper;
@@ -1303,7 +1307,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn glsamtColumn {
                 get {
                     return this.columnglsamt;
@@ -1311,7 +1315,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn acovrdeColumn {
                 get {
                     return this.columnacovrde;
@@ -1319,7 +1323,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn bpovrdeColumn {
                 get {
                     return this.columnbpovrde;
@@ -1327,7 +1331,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn bpyearColumn {
                 get {
                     return this.columnbpyear;
@@ -1335,7 +1339,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn themckColumn {
                 get {
                     return this.columnthemck;
@@ -1343,7 +1347,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn themamtColumn {
                 get {
                     return this.columnthemamt;
@@ -1351,7 +1355,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn yirschoolColumn {
                 get {
                     return this.columnyirschool;
@@ -1359,7 +1363,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn storyColumn {
                 get {
                     return this.columnstory;
@@ -1367,7 +1371,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn supplementsColumn {
                 get {
                     return this.columnsupplements;
@@ -1375,7 +1379,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn yiramtColumn {
                 get {
                     return this.columnyiramt;
@@ -1383,7 +1387,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn storyamtColumn {
                 get {
                     return this.columnstoryamt;
@@ -1391,7 +1395,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn suppamtColumn {
                 get {
                     return this.columnsuppamt;
@@ -1399,7 +1403,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn persamountColumn {
                 get {
                     return this.columnpersamount;
@@ -1407,7 +1411,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn perstotalColumn {
                 get {
                     return this.columnperstotal;
@@ -1415,7 +1419,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn perscopiesColumn {
                 get {
                     return this.columnperscopies;
@@ -1423,7 +1427,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn oursuppColumn {
                 get {
                     return this.columnoursupp;
@@ -1431,7 +1435,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn oursuppamtColumn {
                 get {
                     return this.columnoursuppamt;
@@ -1439,7 +1443,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn ourovrrideColumn {
                 get {
                     return this.columnourovrride;
@@ -1447,7 +1451,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn dp1descColumn {
                 get {
                     return this.columndp1desc;
@@ -1455,7 +1459,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn ordagryrColumn {
                 get {
                     return this.columnordagryr;
@@ -1463,7 +1467,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn myovrrideColumn {
                 get {
                     return this.columnmyovrride;
@@ -1471,7 +1475,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn hbovrrideColumn {
                 get {
                     return this.columnhbovrride;
@@ -1479,7 +1483,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn profovrrideColumn {
                 get {
                     return this.columnprofovrride;
@@ -1487,7 +1491,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn conovrrideColumn {
                 get {
                     return this.columnconovrride;
@@ -1495,7 +1499,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn themovrrideColumn {
                 get {
                     return this.columnthemovrride;
@@ -1503,7 +1507,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn cbovrrideColumn {
                 get {
                     return this.columncbovrride;
@@ -1511,7 +1515,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn spiovrrideColumn {
                 get {
                     return this.columnspiovrride;
@@ -1519,7 +1523,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn pbovrrideColumn {
                 get {
                     return this.columnpbovrride;
@@ -1527,7 +1531,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn yirsovrrideColumn {
                 get {
                     return this.columnyirsovrride;
@@ -1535,7 +1539,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn ourstyovrrideColumn {
                 get {
                     return this.columnourstyovrride;
@@ -1543,7 +1547,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn laminateovrrideColumn {
                 get {
                     return this.columnlaminateovrride;
@@ -1551,7 +1555,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn foilyearovrrideColumn {
                 get {
                     return this.columnfoilyearovrride;
@@ -1559,7 +1563,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn basicppColumn {
                 get {
                     return this.columnbasicpp;
@@ -1567,7 +1571,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn perppColumn {
                 get {
                     return this.columnperpp;
@@ -1575,7 +1579,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn peramountColumn {
                 get {
                     return this.columnperamount;
@@ -1583,7 +1587,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn basicamounColumn {
                 get {
                     return this.columnbasicamoun;
@@ -1591,7 +1595,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn agreerecColumn {
                 get {
                     return this.columnagreerec;
@@ -1599,7 +1603,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn agreedteColumn {
                 get {
                     return this.columnagreedte;
@@ -1607,7 +1611,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn onlinecutoColumn {
                 get {
                     return this.columnonlinecuto;
@@ -1615,7 +1619,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn oprcperbkColumn {
                 get {
                     return this.columnoprcperbk;
@@ -1623,7 +1627,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn oprcperbk2Column {
                 get {
                     return this.columnoprcperbk2;
@@ -1631,7 +1635,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn dorecentryColumn {
                 get {
                     return this.columndorecentry;
@@ -1639,7 +1643,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn sdlstichColumn {
                 get {
                     return this.columnsdlstich;
@@ -1647,7 +1651,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn sdlstichamtColumn {
                 get {
                     return this.columnsdlstichamt;
@@ -1655,7 +1659,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn copiesovrideColumn {
                 get {
                     return this.columncopiesovride;
@@ -1663,7 +1667,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn binvnoColumn {
                 get {
                     return this.columnbinvno;
@@ -1671,7 +1675,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn msstanqtyColumn {
                 get {
                     return this.columnmsstanqty;
@@ -1679,7 +1683,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn msstandtotColumn {
                 get {
                     return this.columnmsstandtot;
@@ -1687,7 +1691,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schbalanceColumn {
                 get {
                     return this.columnschbalance;
@@ -1695,7 +1699,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn parentpymtColumn {
                 get {
                     return this.columnparentpymt;
@@ -1703,7 +1707,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn nbaColumn {
                 get {
                     return this.columnnba;
@@ -1711,7 +1715,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn fldtypeColumn {
                 get {
                     return this.columnfldtype;
@@ -1719,7 +1723,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn isfolderColumn {
                 get {
                     return this.columnisfolder;
@@ -1727,7 +1731,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn priceovrdColumn {
                 get {
                     return this.columnpriceovrd;
@@ -1735,7 +1739,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn mlaminationamtColumn {
                 get {
                     return this.columnmlaminationamt;
@@ -1743,7 +1747,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn mlaminationColumn {
                 get {
                     return this.columnmlamination;
@@ -1751,7 +1755,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn opinkpersColumn {
                 get {
                     return this.columnopinkpers;
@@ -1759,7 +1763,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn opfoilpersColumn {
                 get {
                     return this.columnopfoilpers;
@@ -1767,7 +1771,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn opinkpersamtColumn {
                 get {
                     return this.columnopinkpersamt;
@@ -1775,7 +1779,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn opfoilpersamtColumn {
                 get {
                     return this.columnopfoilpersamt;
@@ -1783,7 +1787,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn oppicpersColumn {
                 get {
                     return this.columnoppicpers;
@@ -1791,7 +1795,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn oppicpersamtColumn {
                 get {
                     return this.columnoppicpersamt;
@@ -1799,7 +1803,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn opcustomColumn {
                 get {
                     return this.columnopcustom;
@@ -1807,7 +1811,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn opcustomamtColumn {
                 get {
                     return this.columnopcustomamt;
@@ -1815,7 +1819,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn opfoiltxtamtColumn {
                 get {
                     return this.columnopfoiltxtamt;
@@ -1823,7 +1827,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn opfoiltxtColumn {
                 get {
                     return this.columnopfoiltxt;
@@ -1831,7 +1835,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn opinktamtColumn {
                 get {
                     return this.columnopinktamt;
@@ -1839,7 +1843,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn opinkColumn {
                 get {
                     return this.columnopink;
@@ -1847,7 +1851,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn yrdiscountColumn {
                 get {
                     return this.columnyrdiscount;
@@ -1855,7 +1859,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn luvlinesColumn {
                 get {
                     return this.columnluvlines;
@@ -1863,7 +1867,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn yrdiscountamtColumn {
                 get {
                     return this.columnyrdiscountamt;
@@ -1871,7 +1875,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn luvlineamtColumn {
                 get {
                     return this.columnluvlineamt;
@@ -1879,7 +1883,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn fulladColumn {
                 get {
                     return this.columnfullad;
@@ -1887,7 +1891,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn fulladamtColumn {
                 get {
                     return this.columnfulladamt;
@@ -1895,7 +1899,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn halfadColumn {
                 get {
                     return this.columnhalfad;
@@ -1903,7 +1907,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn halfadmtColumn {
                 get {
                     return this.columnhalfadmt;
@@ -1911,7 +1915,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn quarteradColumn {
                 get {
                     return this.columnquarterad;
@@ -1919,7 +1923,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn quarteradamtColumn {
                 get {
                     return this.columnquarteradamt;
@@ -1927,7 +1931,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn eighthadColumn {
                 get {
                     return this.columneighthad;
@@ -1935,7 +1939,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn eighthadamtColumn {
                 get {
                     return this.columneighthadamt;
@@ -1943,7 +1947,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn adlineColumn {
                 get {
                     return this.columnadline;
@@ -1951,7 +1955,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn cred_etc2Column {
                 get {
                     return this.columncred_etc2;
@@ -1959,7 +1963,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn desc22Column {
                 get {
                     return this.columndesc22;
@@ -1967,7 +1971,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn adjaftr2Column {
                 get {
                     return this.columnadjaftr2;
@@ -1975,7 +1979,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn desc22totColumn {
                 get {
                     return this.columndesc22tot;
@@ -1983,7 +1987,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn halfadamtColumn {
                 get {
                     return this.columnhalfadamt;
@@ -1991,7 +1995,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn prcorColumn {
                 get {
                     return this.columnprcor;
@@ -1999,7 +2003,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn adcutoColumn {
                 get {
                     return this.columnadcuto;
@@ -2007,7 +2011,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn webonlyColumn {
                 get {
                     return this.columnwebonly;
@@ -2015,7 +2019,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn freebooksColumn {
                 get {
                     return this.columnfreebooks;
@@ -2023,7 +2027,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn IconCopiesColumn {
                 get {
                     return this.columnIconCopies;
@@ -2031,7 +2035,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn extrchgColumn {
                 get {
                     return this.columnextrchg;
@@ -2039,7 +2043,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn IconAmtColumn {
                 get {
                     return this.columnIconAmt;
@@ -2047,7 +2051,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn IdColumn {
                 get {
                     return this.columnId;
@@ -2055,7 +2059,23 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn schooltaxColumn {
+                get {
+                    return this.columnschooltax;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn schooltaxrateColumn {
+                get {
+                    return this.columnschooltaxrate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2064,33 +2084,33 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bidsRow this[int index] {
                 get {
                     return ((bidsRow)(this.Rows[index]));
                 }
             }
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public event bidsRowChangeEventHandler bidsRowChanging;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public event bidsRowChangeEventHandler bidsRowChanged;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public event bidsRowChangeEventHandler bidsRowDeleting;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public event bidsRowChangeEventHandler bidsRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void AddbidsRow(bidsRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bidsRow AddbidsRow(
                         string schname, 
                         custRow parentcustRowBycust_bids, 
@@ -2260,7 +2280,9 @@ namespace Mbc5.DataSets {
                         int freebooks, 
                         int IconCopies, 
                         string extrchg, 
-                        decimal IconAmt) {
+                        decimal IconAmt, 
+                        decimal schooltax, 
+                        decimal schooltaxrate) {
                 bidsRow rowbidsRow = ((bidsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schname,
@@ -2432,7 +2454,9 @@ namespace Mbc5.DataSets {
                         IconCopies,
                         extrchg,
                         IconAmt,
-                        null};
+                        null,
+                        schooltax,
+                        schooltaxrate};
                 if ((parentcustRowBycust_bids != null)) {
                     columnValuesArray[1] = parentcustRowBycust_bids[2];
                 }
@@ -2442,14 +2466,14 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bidsRow FindById(int Id) {
                 return ((bidsRow)(this.Rows.Find(new object[] {
                             Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 bidsDataTable cln = ((bidsDataTable)(base.Clone()));
                 cln.InitVars();
@@ -2457,13 +2481,13 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
                 return new bidsDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnschname = base.Columns["schname"];
                 this.columnschcode = base.Columns["schcode"];
@@ -2635,10 +2659,12 @@ namespace Mbc5.DataSets {
                 this.columnextrchg = base.Columns["extrchg"];
                 this.columnIconAmt = base.Columns["IconAmt"];
                 this.columnId = base.Columns["Id"];
+                this.columnschooltax = base.Columns["schooltax"];
+                this.columnschooltaxrate = base.Columns["schooltaxrate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
                 this.columnschname = new global::System.Data.DataColumn("schname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschname);
@@ -2980,6 +3006,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnIconAmt);
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
+                this.columnschooltax = new global::System.Data.DataColumn("schooltax", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschooltax);
+                this.columnschooltaxrate = new global::System.Data.DataColumn("schooltaxrate", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschooltaxrate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnschname.AllowDBNull = false;
@@ -3180,25 +3210,25 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bidsRow NewbidsRow() {
                 return ((bidsRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new bidsRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(bidsRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
                 if ((this.bidsRowChanged != null)) {
@@ -3207,7 +3237,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
                 if ((this.bidsRowChanging != null)) {
@@ -3216,7 +3246,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
                 if ((this.bidsRowDeleted != null)) {
@@ -3225,7 +3255,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
                 if ((this.bidsRowDeleting != null)) {
@@ -3234,13 +3264,13 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void RemovebidsRow(bidsRow row) {
                 this.Rows.Remove(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -3361,7 +3391,7 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnextrchg;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custDataTable() {
                 this.TableName = "cust";
                 this.BeginInit();
@@ -3370,7 +3400,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal custDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
@@ -3387,14 +3417,14 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected custDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schnameColumn {
                 get {
                     return this.columnschname;
@@ -3402,7 +3432,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn contryearColumn {
                 get {
                     return this.columncontryear;
@@ -3410,7 +3440,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schcodeColumn {
                 get {
                     return this.columnschcode;
@@ -3418,7 +3448,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn cstatusColumn {
                 get {
                     return this.columncstatus;
@@ -3426,7 +3456,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn sourceColumn {
                 get {
                     return this.columnsource;
@@ -3434,7 +3464,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn sourdateColumn {
                 get {
                     return this.columnsourdate;
@@ -3442,7 +3472,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn secsourceColumn {
                 get {
                     return this.columnsecsource;
@@ -3450,7 +3480,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn contdateColumn {
                 get {
                     return this.columncontdate;
@@ -3458,7 +3488,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn origsourColumn {
                 get {
                     return this.columnorigsour;
@@ -3466,7 +3496,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn origyearColumn {
                 get {
                     return this.columnorigyear;
@@ -3474,7 +3504,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn rebookColumn {
                 get {
                     return this.columnrebook;
@@ -3482,7 +3512,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn rebookdteColumn {
                 get {
                     return this.columnrebookdte;
@@ -3490,7 +3520,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn refbyColumn {
                 get {
                     return this.columnrefby;
@@ -3498,7 +3528,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn enrollmentColumn {
                 get {
                     return this.columnenrollment;
@@ -3506,7 +3536,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schaddrColumn {
                 get {
                     return this.columnschaddr;
@@ -3514,7 +3544,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schaddr2Column {
                 get {
                     return this.columnschaddr2;
@@ -3522,7 +3552,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schcityColumn {
                 get {
                     return this.columnschcity;
@@ -3530,7 +3560,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schstateColumn {
                 get {
                     return this.columnschstate;
@@ -3538,7 +3568,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schzipColumn {
                 get {
                     return this.columnschzip;
@@ -3546,7 +3576,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schphoneColumn {
                 get {
                     return this.columnschphone;
@@ -3554,7 +3584,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schfaxColumn {
                 get {
                     return this.columnschfax;
@@ -3562,7 +3592,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schemailColumn {
                 get {
                     return this.columnschemail;
@@ -3570,7 +3600,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn contfnameColumn {
                 get {
                     return this.columncontfname;
@@ -3578,7 +3608,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn contlnameColumn {
                 get {
                     return this.columncontlname;
@@ -3586,7 +3616,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn extrchgColumn {
                 get {
                     return this.columnextrchg;
@@ -3594,7 +3624,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3603,33 +3633,33 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custRow this[int index] {
                 get {
                     return ((custRow)(this.Rows[index]));
                 }
             }
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public event custRowChangeEventHandler custRowChanging;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public event custRowChangeEventHandler custRowChanged;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public event custRowChangeEventHandler custRowDeleting;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public event custRowChangeEventHandler custRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void AddcustRow(custRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custRow AddcustRow(
                         string schname, 
                         string contryear, 
@@ -3689,14 +3719,14 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custRow FindByschcode(string schcode) {
                 return ((custRow)(this.Rows.Find(new object[] {
                             schcode})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 custDataTable cln = ((custDataTable)(base.Clone()));
                 cln.InitVars();
@@ -3704,13 +3734,13 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
                 return new custDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnschname = base.Columns["schname"];
                 this.columncontryear = base.Columns["contryear"];
@@ -3740,7 +3770,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
                 this.columnschname = new global::System.Data.DataColumn("schname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschname);
@@ -3825,25 +3855,25 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custRow NewcustRow() {
                 return ((custRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new custRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(custRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
                 if ((this.custRowChanged != null)) {
@@ -3852,7 +3882,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
                 if ((this.custRowChanging != null)) {
@@ -3861,7 +3891,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
                 if ((this.custRowDeleted != null)) {
@@ -3870,7 +3900,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
                 if ((this.custRowDeleting != null)) {
@@ -3879,13 +3909,13 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void RemovecustRow(custRow row) {
                 this.Rows.Remove(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -3956,14 +3986,14 @@ namespace Mbc5.DataSets {
             private bidsDataTable tablebids;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal bidsRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tablebids = ((bidsDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schname {
                 get {
                     return ((string)(this[this.tablebids.schnameColumn]));
@@ -3974,7 +4004,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schcode {
                 get {
                     return ((string)(this[this.tablebids.schcodeColumn]));
@@ -3985,7 +4015,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string booktype {
                 get {
                     return ((string)(this[this.tablebids.booktypeColumn]));
@@ -3996,7 +4026,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime qtedate {
                 get {
                     return ((global::System.DateTime)(this[this.tablebids.qtedateColumn]));
@@ -4007,7 +4037,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string contryear {
                 get {
                     return ((string)(this[this.tablebids.contryearColumn]));
@@ -4018,7 +4048,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal nopages {
                 get {
                     return ((decimal)(this[this.tablebids.nopagesColumn]));
@@ -4029,7 +4059,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal nocopies {
                 get {
                     return ((decimal)(this[this.tablebids.nocopiesColumn]));
@@ -4040,7 +4070,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal book_ea {
                 get {
                     return ((decimal)(this[this.tablebids.book_eaColumn]));
@@ -4051,7 +4081,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal book_price {
                 get {
                     return ((decimal)(this[this.tablebids.book_priceColumn]));
@@ -4062,7 +4092,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool pryn {
                 get {
                     return ((bool)(this[this.tablebids.prynColumn]));
@@ -4073,7 +4103,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal prof {
                 get {
                     return ((decimal)(this[this.tablebids.profColumn]));
@@ -4084,7 +4114,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool coyn {
                 get {
                     return ((bool)(this[this.tablebids.coynColumn]));
@@ -4095,7 +4125,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal conven {
                 get {
                     return ((decimal)(this[this.tablebids.convenColumn]));
@@ -4106,7 +4136,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal specea {
                 get {
                     return ((decimal)(this[this.tablebids.speceaColumn]));
@@ -4117,7 +4147,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal speccvr {
                 get {
                     return ((decimal)(this[this.tablebids.speccvrColumn]));
@@ -4128,7 +4158,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool scovrde {
                 get {
                     return ((bool)(this[this.tablebids.scovrdeColumn]));
@@ -4139,7 +4169,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool layn {
                 get {
                     return ((bool)(this[this.tablebids.laynColumn]));
@@ -4150,7 +4180,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal laminate {
                 get {
                     return ((decimal)(this[this.tablebids.laminateColumn]));
@@ -4161,7 +4191,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool peyn {
                 get {
                     return ((bool)(this[this.tablebids.peynColumn]));
@@ -4172,7 +4202,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal perfbind {
                 get {
                     return ((decimal)(this[this.tablebids.perfbindColumn]));
@@ -4183,7 +4213,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool foilck {
                 get {
                     return ((bool)(this[this.tablebids.foilckColumn]));
@@ -4194,7 +4224,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal foilamt {
                 get {
                     return ((decimal)(this[this.tablebids.foilamtColumn]));
@@ -4205,7 +4235,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool insck {
                 get {
                     return ((bool)(this[this.tablebids.insckColumn]));
@@ -4216,7 +4246,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal insamt {
                 get {
                     return ((decimal)(this[this.tablebids.insamtColumn]));
@@ -4227,7 +4257,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool spirck {
                 get {
                     return ((bool)(this[this.tablebids.spirckColumn]));
@@ -4238,7 +4268,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal spiramt {
                 get {
                     return ((decimal)(this[this.tablebids.spiramtColumn]));
@@ -4249,7 +4279,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool hdbky_n {
                 get {
                     return ((bool)(this[this.tablebids.hdbky_nColumn]));
@@ -4260,7 +4290,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal hardback {
                 get {
                     return ((decimal)(this[this.tablebids.hardbackColumn]));
@@ -4271,7 +4301,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool casey_n {
                 get {
                     return ((bool)(this[this.tablebids.casey_nColumn]));
@@ -4282,7 +4312,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal caseamt {
                 get {
                     return ((decimal)(this[this.tablebids.caseamtColumn]));
@@ -4293,7 +4323,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool customy_n {
                 get {
                     return ((bool)(this[this.tablebids.customy_nColumn]));
@@ -4304,7 +4334,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal customized {
                 get {
                     return ((decimal)(this[this.tablebids.customizedColumn]));
@@ -4315,7 +4345,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal misc {
                 get {
                     return ((decimal)(this[this.tablebids.miscColumn]));
@@ -4326,7 +4356,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string mdesc {
                 get {
                     return ((string)(this[this.tablebids.mdescColumn]));
@@ -4337,7 +4367,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal sbtot {
                 get {
                     return ((decimal)(this[this.tablebids.sbtotColumn]));
@@ -4348,7 +4378,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool dc1 {
                 get {
                     return ((bool)(this[this.tablebids.dc1Column]));
@@ -4359,7 +4389,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal dp1 {
                 get {
                     return ((decimal)(this[this.tablebids.dp1Column]));
@@ -4370,7 +4400,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal disc1 {
                 get {
                     return ((decimal)(this[this.tablebids.disc1Column]));
@@ -4381,7 +4411,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool dc2 {
                 get {
                     return ((bool)(this[this.tablebids.dc2Column]));
@@ -4392,7 +4422,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal dp2 {
                 get {
                     return ((decimal)(this[this.tablebids.dp2Column]));
@@ -4403,7 +4433,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal disc2 {
                 get {
                     return ((decimal)(this[this.tablebids.disc2Column]));
@@ -4414,7 +4444,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string dp3desc {
                 get {
                     return ((string)(this[this.tablebids.dp3descColumn]));
@@ -4425,7 +4455,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal dp3 {
                 get {
                     return ((decimal)(this[this.tablebids.dp3Column]));
@@ -4436,7 +4466,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal disc3 {
                 get {
                     return ((decimal)(this[this.tablebids.disc3Column]));
@@ -4447,7 +4477,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal dp4 {
                 get {
                     return ((decimal)(this[this.tablebids.dp4Column]));
@@ -4458,7 +4488,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal disc4 {
                 get {
                     return ((decimal)(this[this.tablebids.disc4Column]));
@@ -4469,7 +4499,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string cred_etc {
                 get {
                     return ((string)(this[this.tablebids.cred_etcColumn]));
@@ -4480,7 +4510,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal adjbef {
                 get {
                     return ((decimal)(this[this.tablebids.adjbefColumn]));
@@ -4491,7 +4521,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal adjaftr {
                 get {
                     return ((decimal)(this[this.tablebids.adjaftrColumn]));
@@ -4502,7 +4532,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal fbkprc {
                 get {
                     return ((decimal)(this[this.tablebids.fbkprcColumn]));
@@ -4513,7 +4543,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal ftotprc {
                 get {
                     return ((decimal)(this[this.tablebids.ftotprcColumn]));
@@ -4524,7 +4554,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string source {
                 get {
                     return ((string)(this[this.tablebids.sourceColumn]));
@@ -4535,7 +4565,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal xtrabkno {
                 get {
                     return ((decimal)(this[this.tablebids.xtrabknoColumn]));
@@ -4546,7 +4576,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal xtrabkprc {
                 get {
                     return ((decimal)(this[this.tablebids.xtrabkprcColumn]));
@@ -4557,7 +4587,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string desc1 {
                 get {
                     return ((string)(this[this.tablebids.desc1Column]));
@@ -4568,7 +4598,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal desc1tot {
                 get {
                     return ((decimal)(this[this.tablebids.desc1totColumn]));
@@ -4579,7 +4609,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string desc2 {
                 get {
                     return ((string)(this[this.tablebids.desc2Column]));
@@ -4590,7 +4620,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal desc2tot {
                 get {
                     return ((decimal)(this[this.tablebids.desc2totColumn]));
@@ -4601,7 +4631,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string ponum {
                 get {
                     return ((string)(this[this.tablebids.ponumColumn]));
@@ -4612,7 +4642,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool newprice {
                 get {
                     return ((bool)(this[this.tablebids.newpriceColumn]));
@@ -4623,7 +4653,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime schout {
                 get {
                     return ((global::System.DateTime)(this[this.tablebids.schoutColumn]));
@@ -4634,7 +4664,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool allclrck {
                 get {
                     return ((bool)(this[this.tablebids.allclrckColumn]));
@@ -4645,7 +4675,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal allclramt {
                 get {
                     return ((decimal)(this[this.tablebids.allclramtColumn]));
@@ -4656,7 +4686,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string smemo {
                 get {
                     return ((string)(this[this.tablebids.smemoColumn]));
@@ -4667,7 +4697,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool oa {
                 get {
                     return ((bool)(this[this.tablebids.oaColumn]));
@@ -4678,7 +4708,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool massmail {
                 get {
                     return ((bool)(this[this.tablebids.massmailColumn]));
@@ -4689,7 +4719,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string inkclr {
                 get {
                     return ((string)(this[this.tablebids.inkclrColumn]));
@@ -4700,7 +4730,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal foiladamt {
                 get {
                     return ((decimal)(this[this.tablebids.foiladamtColumn]));
@@ -4711,7 +4741,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string desc3 {
                 get {
                     return ((string)(this[this.tablebids.desc3Column]));
@@ -4722,7 +4752,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal desc3tot {
                 get {
                     return ((decimal)(this[this.tablebids.desc3totColumn]));
@@ -4733,7 +4763,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string desc4 {
                 get {
                     return ((string)(this[this.tablebids.desc4Column]));
@@ -4744,7 +4774,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal desc4tot {
                 get {
                     return ((decimal)(this[this.tablebids.desc4totColumn]));
@@ -4755,7 +4785,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string clrpgdesc {
                 get {
                     return ((string)(this[this.tablebids.clrpgdescColumn]));
@@ -4766,7 +4796,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal clrpgtot {
                 get {
                     return ((decimal)(this[this.tablebids.clrpgtotColumn]));
@@ -4777,7 +4807,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal noclrpgr {
                 get {
                     return ((decimal)(this[this.tablebids.noclrpgrColumn]));
@@ -4788,7 +4818,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool glspaper {
                 get {
                     return ((bool)(this[this.tablebids.glspaperColumn]));
@@ -4799,7 +4829,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal glsamt {
                 get {
                     return ((decimal)(this[this.tablebids.glsamtColumn]));
@@ -4810,7 +4840,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool acovrde {
                 get {
                     return ((bool)(this[this.tablebids.acovrdeColumn]));
@@ -4821,7 +4851,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool bpovrde {
                 get {
                     return ((bool)(this[this.tablebids.bpovrdeColumn]));
@@ -4832,7 +4862,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string bpyear {
                 get {
                     return ((string)(this[this.tablebids.bpyearColumn]));
@@ -4843,7 +4873,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool themck {
                 get {
                     return ((bool)(this[this.tablebids.themckColumn]));
@@ -4854,7 +4884,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal themamt {
                 get {
                     return ((decimal)(this[this.tablebids.themamtColumn]));
@@ -4865,7 +4895,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool yirschool {
                 get {
                     return ((bool)(this[this.tablebids.yirschoolColumn]));
@@ -4876,7 +4906,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool story {
                 get {
                     return ((bool)(this[this.tablebids.storyColumn]));
@@ -4887,7 +4917,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool supplements {
                 get {
                     return ((bool)(this[this.tablebids.supplementsColumn]));
@@ -4898,7 +4928,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal yiramt {
                 get {
                     return ((decimal)(this[this.tablebids.yiramtColumn]));
@@ -4909,7 +4939,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal storyamt {
                 get {
                     return ((decimal)(this[this.tablebids.storyamtColumn]));
@@ -4920,7 +4950,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal suppamt {
                 get {
                     return ((decimal)(this[this.tablebids.suppamtColumn]));
@@ -4931,7 +4961,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal persamount {
                 get {
                     return ((decimal)(this[this.tablebids.persamountColumn]));
@@ -4942,7 +4972,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal perstotal {
                 get {
                     return ((decimal)(this[this.tablebids.perstotalColumn]));
@@ -4953,7 +4983,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int perscopies {
                 get {
                     return ((int)(this[this.tablebids.perscopiesColumn]));
@@ -4964,7 +4994,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool oursupp {
                 get {
                     return ((bool)(this[this.tablebids.oursuppColumn]));
@@ -4975,7 +5005,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal oursuppamt {
                 get {
                     return ((decimal)(this[this.tablebids.oursuppamtColumn]));
@@ -4986,7 +5016,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool ourovrride {
                 get {
                     return ((bool)(this[this.tablebids.ourovrrideColumn]));
@@ -4997,7 +5027,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string dp1desc {
                 get {
                     return ((string)(this[this.tablebids.dp1descColumn]));
@@ -5008,7 +5038,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string ordagryr {
                 get {
                     return ((string)(this[this.tablebids.ordagryrColumn]));
@@ -5019,7 +5049,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool myovrride {
                 get {
                     return ((bool)(this[this.tablebids.myovrrideColumn]));
@@ -5030,7 +5060,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool hbovrride {
                 get {
                     return ((bool)(this[this.tablebids.hbovrrideColumn]));
@@ -5041,7 +5071,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool profovrride {
                 get {
                     return ((bool)(this[this.tablebids.profovrrideColumn]));
@@ -5052,7 +5082,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool conovrride {
                 get {
                     return ((bool)(this[this.tablebids.conovrrideColumn]));
@@ -5063,7 +5093,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool themovrride {
                 get {
                     return ((bool)(this[this.tablebids.themovrrideColumn]));
@@ -5074,7 +5104,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool cbovrride {
                 get {
                     return ((bool)(this[this.tablebids.cbovrrideColumn]));
@@ -5085,7 +5115,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool spiovrride {
                 get {
                     return ((bool)(this[this.tablebids.spiovrrideColumn]));
@@ -5096,7 +5126,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool pbovrride {
                 get {
                     return ((bool)(this[this.tablebids.pbovrrideColumn]));
@@ -5107,7 +5137,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool yirsovrride {
                 get {
                     return ((bool)(this[this.tablebids.yirsovrrideColumn]));
@@ -5118,7 +5148,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool ourstyovrride {
                 get {
                     return ((bool)(this[this.tablebids.ourstyovrrideColumn]));
@@ -5129,7 +5159,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool laminateovrride {
                 get {
                     return ((bool)(this[this.tablebids.laminateovrrideColumn]));
@@ -5140,7 +5170,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool foilyearovrride {
                 get {
                     return ((bool)(this[this.tablebids.foilyearovrrideColumn]));
@@ -5151,7 +5181,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool basicpp {
                 get {
                     return ((bool)(this[this.tablebids.basicppColumn]));
@@ -5162,7 +5192,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool perpp {
                 get {
                     return ((bool)(this[this.tablebids.perppColumn]));
@@ -5173,7 +5203,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal peramount {
                 get {
                     return ((decimal)(this[this.tablebids.peramountColumn]));
@@ -5184,7 +5214,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal basicamoun {
                 get {
                     return ((decimal)(this[this.tablebids.basicamounColumn]));
@@ -5195,7 +5225,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool agreerec {
                 get {
                     return ((bool)(this[this.tablebids.agreerecColumn]));
@@ -5206,7 +5236,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime agreedte {
                 get {
                     return ((global::System.DateTime)(this[this.tablebids.agreedteColumn]));
@@ -5217,7 +5247,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime onlinecuto {
                 get {
                     return ((global::System.DateTime)(this[this.tablebids.onlinecutoColumn]));
@@ -5228,7 +5258,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal oprcperbk {
                 get {
                     return ((decimal)(this[this.tablebids.oprcperbkColumn]));
@@ -5239,7 +5269,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal oprcperbk2 {
                 get {
                     return ((decimal)(this[this.tablebids.oprcperbk2Column]));
@@ -5250,7 +5280,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime dorecentry {
                 get {
                     return ((global::System.DateTime)(this[this.tablebids.dorecentryColumn]));
@@ -5261,7 +5291,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool sdlstich {
                 get {
                     return ((bool)(this[this.tablebids.sdlstichColumn]));
@@ -5272,7 +5302,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal sdlstichamt {
                 get {
                     return ((decimal)(this[this.tablebids.sdlstichamtColumn]));
@@ -5283,7 +5313,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool copiesovride {
                 get {
                     return ((bool)(this[this.tablebids.copiesovrideColumn]));
@@ -5294,7 +5324,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal binvno {
                 get {
                     return ((decimal)(this[this.tablebids.binvnoColumn]));
@@ -5305,7 +5335,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal msstanqty {
                 get {
                     return ((decimal)(this[this.tablebids.msstanqtyColumn]));
@@ -5316,7 +5346,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal msstandtot {
                 get {
                     return ((decimal)(this[this.tablebids.msstandtotColumn]));
@@ -5327,7 +5357,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal schbalance {
                 get {
                     return ((decimal)(this[this.tablebids.schbalanceColumn]));
@@ -5338,7 +5368,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal parentpymt {
                 get {
                     return ((decimal)(this[this.tablebids.parentpymtColumn]));
@@ -5349,7 +5379,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool nba {
                 get {
                     return ((bool)(this[this.tablebids.nbaColumn]));
@@ -5360,7 +5390,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string fldtype {
                 get {
                     return ((string)(this[this.tablebids.fldtypeColumn]));
@@ -5371,7 +5401,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool isfolder {
                 get {
                     return ((bool)(this[this.tablebids.isfolderColumn]));
@@ -5382,7 +5412,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal priceovrd {
                 get {
                     return ((decimal)(this[this.tablebids.priceovrdColumn]));
@@ -5393,7 +5423,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal mlaminationamt {
                 get {
                     return ((decimal)(this[this.tablebids.mlaminationamtColumn]));
@@ -5404,7 +5434,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool mlamination {
                 get {
                     return ((bool)(this[this.tablebids.mlaminationColumn]));
@@ -5415,7 +5445,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool opinkpers {
                 get {
                     return ((bool)(this[this.tablebids.opinkpersColumn]));
@@ -5426,7 +5456,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool opfoilpers {
                 get {
                     return ((bool)(this[this.tablebids.opfoilpersColumn]));
@@ -5437,7 +5467,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal opinkpersamt {
                 get {
                     return ((decimal)(this[this.tablebids.opinkpersamtColumn]));
@@ -5448,7 +5478,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal opfoilpersamt {
                 get {
                     return ((decimal)(this[this.tablebids.opfoilpersamtColumn]));
@@ -5459,7 +5489,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool oppicpers {
                 get {
                     return ((bool)(this[this.tablebids.oppicpersColumn]));
@@ -5470,7 +5500,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal oppicpersamt {
                 get {
                     return ((decimal)(this[this.tablebids.oppicpersamtColumn]));
@@ -5481,7 +5511,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool opcustom {
                 get {
                     return ((bool)(this[this.tablebids.opcustomColumn]));
@@ -5492,7 +5522,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal opcustomamt {
                 get {
                     return ((decimal)(this[this.tablebids.opcustomamtColumn]));
@@ -5503,7 +5533,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal opfoiltxtamt {
                 get {
                     return ((decimal)(this[this.tablebids.opfoiltxtamtColumn]));
@@ -5514,7 +5544,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool opfoiltxt {
                 get {
                     return ((bool)(this[this.tablebids.opfoiltxtColumn]));
@@ -5525,7 +5555,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal opinktamt {
                 get {
                     return ((decimal)(this[this.tablebids.opinktamtColumn]));
@@ -5536,7 +5566,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool opink {
                 get {
                     return ((bool)(this[this.tablebids.opinkColumn]));
@@ -5547,7 +5577,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool yrdiscount {
                 get {
                     return ((bool)(this[this.tablebids.yrdiscountColumn]));
@@ -5558,7 +5588,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool luvlines {
                 get {
                     return ((bool)(this[this.tablebids.luvlinesColumn]));
@@ -5569,7 +5599,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal yrdiscountamt {
                 get {
                     return ((decimal)(this[this.tablebids.yrdiscountamtColumn]));
@@ -5580,7 +5610,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal luvlineamt {
                 get {
                     return ((decimal)(this[this.tablebids.luvlineamtColumn]));
@@ -5591,7 +5621,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool fullad {
                 get {
                     return ((bool)(this[this.tablebids.fulladColumn]));
@@ -5602,7 +5632,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal fulladamt {
                 get {
                     return ((decimal)(this[this.tablebids.fulladamtColumn]));
@@ -5613,7 +5643,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool halfad {
                 get {
                     return ((bool)(this[this.tablebids.halfadColumn]));
@@ -5624,7 +5654,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal halfadmt {
                 get {
                     return ((decimal)(this[this.tablebids.halfadmtColumn]));
@@ -5635,7 +5665,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool quarterad {
                 get {
                     return ((bool)(this[this.tablebids.quarteradColumn]));
@@ -5646,7 +5676,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal quarteradamt {
                 get {
                     return ((decimal)(this[this.tablebids.quarteradamtColumn]));
@@ -5657,7 +5687,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool eighthad {
                 get {
                     return ((bool)(this[this.tablebids.eighthadColumn]));
@@ -5668,7 +5698,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal eighthadamt {
                 get {
                     return ((decimal)(this[this.tablebids.eighthadamtColumn]));
@@ -5679,7 +5709,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool adline {
                 get {
                     return ((bool)(this[this.tablebids.adlineColumn]));
@@ -5690,7 +5720,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string cred_etc2 {
                 get {
                     return ((string)(this[this.tablebids.cred_etc2Column]));
@@ -5701,7 +5731,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string desc22 {
                 get {
                     return ((string)(this[this.tablebids.desc22Column]));
@@ -5712,7 +5742,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal adjaftr2 {
                 get {
                     return ((decimal)(this[this.tablebids.adjaftr2Column]));
@@ -5723,7 +5753,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal desc22tot {
                 get {
                     return ((decimal)(this[this.tablebids.desc22totColumn]));
@@ -5734,7 +5764,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal halfadamt {
                 get {
                     return ((decimal)(this[this.tablebids.halfadamtColumn]));
@@ -5745,7 +5775,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal prcor {
                 get {
                     return ((decimal)(this[this.tablebids.prcorColumn]));
@@ -5756,7 +5786,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime adcuto {
                 get {
                     return ((global::System.DateTime)(this[this.tablebids.adcutoColumn]));
@@ -5767,7 +5797,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool webonly {
                 get {
                     return ((bool)(this[this.tablebids.webonlyColumn]));
@@ -5778,7 +5808,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int freebooks {
                 get {
                     return ((int)(this[this.tablebids.freebooksColumn]));
@@ -5789,7 +5819,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int IconCopies {
                 get {
                     try {
@@ -5805,7 +5835,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string extrchg {
                 get {
                     try {
@@ -5821,7 +5851,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal IconAmt {
                 get {
                     try {
@@ -5837,7 +5867,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int Id {
                 get {
                     return ((int)(this[this.tablebids.IdColumn]));
@@ -5848,7 +5878,39 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal schooltax {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablebids.schooltaxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schooltax\' in table \'bids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablebids.schooltaxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal schooltaxrate {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablebids.schooltaxrateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schooltaxrate\' in table \'bids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablebids.schooltaxrateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custRow custRow {
                 get {
                     return ((custRow)(this.GetParentRow(this.Table.ParentRelations["cust_bids"])));
@@ -5859,39 +5921,63 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsIconCopiesNull() {
                 return this.IsNull(this.tablebids.IconCopiesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetIconCopiesNull() {
                 this[this.tablebids.IconCopiesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsextrchgNull() {
                 return this.IsNull(this.tablebids.extrchgColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetextrchgNull() {
                 this[this.tablebids.extrchgColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsIconAmtNull() {
                 return this.IsNull(this.tablebids.IconAmtColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetIconAmtNull() {
                 this[this.tablebids.IconAmtColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschooltaxNull() {
+                return this.IsNull(this.tablebids.schooltaxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschooltaxNull() {
+                this[this.tablebids.schooltaxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschooltaxrateNull() {
+                return this.IsNull(this.tablebids.schooltaxrateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschooltaxrateNull() {
+                this[this.tablebids.schooltaxrateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5903,14 +5989,14 @@ namespace Mbc5.DataSets {
             private custDataTable tablecust;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal custRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tablecust = ((custDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schname {
                 get {
                     return ((string)(this[this.tablecust.schnameColumn]));
@@ -5921,7 +6007,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string contryear {
                 get {
                     try {
@@ -5937,7 +6023,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schcode {
                 get {
                     return ((string)(this[this.tablecust.schcodeColumn]));
@@ -5948,7 +6034,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string cstatus {
                 get {
                     try {
@@ -5964,7 +6050,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string source {
                 get {
                     try {
@@ -5980,7 +6066,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime sourdate {
                 get {
                     try {
@@ -5996,7 +6082,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string secsource {
                 get {
                     try {
@@ -6012,7 +6098,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime contdate {
                 get {
                     try {
@@ -6028,7 +6114,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string origsour {
                 get {
                     try {
@@ -6044,7 +6130,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string origyear {
                 get {
                     try {
@@ -6060,7 +6146,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string rebook {
                 get {
                     try {
@@ -6076,7 +6162,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime rebookdte {
                 get {
                     try {
@@ -6092,7 +6178,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string refby {
                 get {
                     try {
@@ -6108,7 +6194,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal enrollment {
                 get {
                     try {
@@ -6124,7 +6210,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schaddr {
                 get {
                     return ((string)(this[this.tablecust.schaddrColumn]));
@@ -6135,7 +6221,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schaddr2 {
                 get {
                     try {
@@ -6151,7 +6237,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schcity {
                 get {
                     return ((string)(this[this.tablecust.schcityColumn]));
@@ -6162,7 +6248,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schstate {
                 get {
                     return ((string)(this[this.tablecust.schstateColumn]));
@@ -6173,7 +6259,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schzip {
                 get {
                     return ((string)(this[this.tablecust.schzipColumn]));
@@ -6184,7 +6270,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schphone {
                 get {
                     try {
@@ -6200,7 +6286,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schfax {
                 get {
                     try {
@@ -6216,7 +6302,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schemail {
                 get {
                     try {
@@ -6232,7 +6318,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string contfname {
                 get {
                     try {
@@ -6248,7 +6334,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string contlname {
                 get {
                     try {
@@ -6264,7 +6350,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string extrchg {
                 get {
                     try {
@@ -6280,235 +6366,235 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetcontryearNull() {
                 this[this.tablecust.contryearColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscstatusNull() {
                 return this.IsNull(this.tablecust.cstatusColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetcstatusNull() {
                 this[this.tablecust.cstatusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IssourceNull() {
                 return this.IsNull(this.tablecust.sourceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetsourceNull() {
                 this[this.tablecust.sourceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IssourdateNull() {
                 return this.IsNull(this.tablecust.sourdateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetsourdateNull() {
                 this[this.tablecust.sourdateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IssecsourceNull() {
                 return this.IsNull(this.tablecust.secsourceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetsecsourceNull() {
                 this[this.tablecust.secsourceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscontdateNull() {
                 return this.IsNull(this.tablecust.contdateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetcontdateNull() {
                 this[this.tablecust.contdateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsorigsourNull() {
                 return this.IsNull(this.tablecust.origsourColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetorigsourNull() {
                 this[this.tablecust.origsourColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsorigyearNull() {
                 return this.IsNull(this.tablecust.origyearColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetorigyearNull() {
                 this[this.tablecust.origyearColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsrebookNull() {
                 return this.IsNull(this.tablecust.rebookColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetrebookNull() {
                 this[this.tablecust.rebookColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsrebookdteNull() {
                 return this.IsNull(this.tablecust.rebookdteColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetrebookdteNull() {
                 this[this.tablecust.rebookdteColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsrefbyNull() {
                 return this.IsNull(this.tablecust.refbyColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetrefbyNull() {
                 this[this.tablecust.refbyColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsenrollmentNull() {
                 return this.IsNull(this.tablecust.enrollmentColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetenrollmentNull() {
                 this[this.tablecust.enrollmentColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Isschaddr2Null() {
                 return this.IsNull(this.tablecust.schaddr2Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setschaddr2Null() {
                 this[this.tablecust.schaddr2Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsschphoneNull() {
                 return this.IsNull(this.tablecust.schphoneColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetschphoneNull() {
                 this[this.tablecust.schphoneColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsschfaxNull() {
                 return this.IsNull(this.tablecust.schfaxColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetschfaxNull() {
                 this[this.tablecust.schfaxColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsschemailNull() {
                 return this.IsNull(this.tablecust.schemailColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetschemailNull() {
                 this[this.tablecust.schemailColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscontfnameNull() {
                 return this.IsNull(this.tablecust.contfnameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetcontfnameNull() {
                 this[this.tablecust.contfnameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscontlnameNull() {
                 return this.IsNull(this.tablecust.contlnameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetcontlnameNull() {
                 this[this.tablecust.contlnameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsextrchgNull() {
                 return this.IsNull(this.tablecust.extrchgColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetextrchgNull() {
                 this[this.tablecust.extrchgColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bidsRow[] GetbidsRows() {
                 if ((this.Table.ChildRelations["cust_bids"] == null)) {
                     return new bidsRow[0];
@@ -6522,7 +6608,7 @@ namespace Mbc5.DataSets {
         /// <summary>
         ///Row event argument class
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public class bidsRowChangeEvent : global::System.EventArgs {
             
             private bidsRow eventRow;
@@ -6530,14 +6616,14 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bidsRowChangeEvent(bidsRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bidsRow Row {
                 get {
                     return this.eventRow;
@@ -6545,7 +6631,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataRowAction Action {
                 get {
                     return this.eventAction;
@@ -6556,7 +6642,7 @@ namespace Mbc5.DataSets {
         /// <summary>
         ///Row event argument class
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public class custRowChangeEvent : global::System.EventArgs {
             
             private custRow eventRow;
@@ -6564,14 +6650,14 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custRowChangeEvent(custRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custRow Row {
                 get {
                     return this.eventRow;
@@ -6579,7 +6665,7 @@ namespace Mbc5.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataRowAction Action {
                 get {
                     return this.eventAction;
@@ -6613,13 +6699,13 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         private bool _clearBeforeFill;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public bidsTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
             get {
                 if ((this._adapter == null)) {
@@ -6630,7 +6716,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal global::System.Data.SqlClient.SqlConnection Connection {
             get {
                 if ((this._connection == null)) {
@@ -6658,7 +6744,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal global::System.Data.SqlClient.SqlTransaction Transaction {
             get {
                 return this._transaction;
@@ -6684,7 +6770,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
             get {
                 if ((this._commandCollection == null)) {
@@ -6695,7 +6781,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public bool ClearBeforeFill {
             get {
                 return this._clearBeforeFill;
@@ -6706,7 +6792,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
@@ -6882,10 +6968,12 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             tableMapping.ColumnMappings.Add("extrchg", "extrchg");
             tableMapping.ColumnMappings.Add("IconAmt", "IconAmt");
             tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("schooltax", "schooltax");
+            tableMapping.ColumnMappings.Add("schooltaxrate", "schooltaxrate");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM bids\r\nWHERE          (Id = @Id)";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM bids\r\nWHERE        (Id = @Id)";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
@@ -6915,29 +7003,30 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                 "llad], [fulladamt], [halfad], [halfadmt], [quarterad], [quarteradamt], [eighthad" +
                 "], [eighthadamt], [adline], [cred_etc2], [desc22], [adjaftr2], [desc22tot], [hal" +
                 "fadamt], [prcor], [adcuto], [webonly], [freebooks], [IconCopies], [extrchg], [Ic" +
-                "onAmt]) VALUES (@schname, @schcode, @booktype, @qtedate, @contryear, @nopages, @" +
-                "nocopies, @book_ea, @book_price, @pryn, @prof, @coyn, @conven, @specea, @speccvr" +
-                ", @scovrde, @layn, @laminate, @peyn, @perfbind, @foilck, @foilamt, @insck, @insa" +
-                "mt, @spirck, @spiramt, @hdbky_n, @hardback, @casey_n, @caseamt, @customy_n, @cus" +
-                "tomized, @misc, @mdesc, @sbtot, @dc1, @dp1, @disc1, @dc2, @dp2, @disc2, @dp3desc" +
-                ", @dp3, @disc3, @dp4, @disc4, @cred_etc, @adjbef, @adjaftr, @fbkprc, @ftotprc, @" +
-                "source, @xtrabkno, @xtrabkprc, @desc1, @desc1tot, @desc2, @desc2tot, @ponum, @ne" +
-                "wprice, @schout, @allclrck, @allclramt, @smemo, @oa, @massmail, @inkclr, @foilad" +
-                "amt, @desc3, @desc3tot, @desc4, @desc4tot, @clrpgdesc, @clrpgtot, @noclrpgr, @gl" +
-                "spaper, @glsamt, @acovrde, @bpovrde, @bpyear, @themck, @themamt, @yirschool, @st" +
-                "ory, @supplements, @yiramt, @storyamt, @suppamt, @persamount, @perstotal, @persc" +
-                "opies, @oursupp, @oursuppamt, @ourovrride, @dp1desc, @ordagryr, @myovrride, @hbo" +
-                "vrride, @profovrride, @conovrride, @themovrride, @cbovrride, @spiovrride, @pbovr" +
-                "ride, @yirsovrride, @ourstyovrride, @laminateovrride, @foilyearovrride, @basicpp" +
-                ", @perpp, @peramount, @basicamoun, @agreerec, @agreedte, @onlinecuto, @oprcperbk" +
-                ", @oprcperbk2, @dorecentry, @sdlstich, @sdlstichamt, @copiesovride, @binvno, @ms" +
-                "stanqty, @msstandtot, @schbalance, @parentpymt, @nba, @fldtype, @isfolder, @pric" +
-                "eovrd, @mlaminationamt, @mlamination, @opinkpers, @opfoilpers, @opinkpersamt, @o" +
-                "pfoilpersamt, @oppicpers, @oppicpersamt, @opcustom, @opcustomamt, @opfoiltxtamt," +
-                " @opfoiltxt, @opinktamt, @opink, @yrdiscount, @luvlines, @yrdiscountamt, @luvlin" +
-                "eamt, @fullad, @fulladamt, @halfad, @halfadmt, @quarterad, @quarteradamt, @eight" +
-                "had, @eighthadamt, @adline, @cred_etc2, @desc22, @adjaftr2, @desc22tot, @halfada" +
-                "mt, @prcor, @adcuto, @webonly, @freebooks, @IconCopies, @extrchg, @IconAmt)";
+                "onAmt], [schooltax], [schooltaxrate]) VALUES (@schname, @schcode, @booktype, @qt" +
+                "edate, @contryear, @nopages, @nocopies, @book_ea, @book_price, @pryn, @prof, @co" +
+                "yn, @conven, @specea, @speccvr, @scovrde, @layn, @laminate, @peyn, @perfbind, @f" +
+                "oilck, @foilamt, @insck, @insamt, @spirck, @spiramt, @hdbky_n, @hardback, @casey" +
+                "_n, @caseamt, @customy_n, @customized, @misc, @mdesc, @sbtot, @dc1, @dp1, @disc1" +
+                ", @dc2, @dp2, @disc2, @dp3desc, @dp3, @disc3, @dp4, @disc4, @cred_etc, @adjbef, " +
+                "@adjaftr, @fbkprc, @ftotprc, @source, @xtrabkno, @xtrabkprc, @desc1, @desc1tot, " +
+                "@desc2, @desc2tot, @ponum, @newprice, @schout, @allclrck, @allclramt, @smemo, @o" +
+                "a, @massmail, @inkclr, @foiladamt, @desc3, @desc3tot, @desc4, @desc4tot, @clrpgd" +
+                "esc, @clrpgtot, @noclrpgr, @glspaper, @glsamt, @acovrde, @bpovrde, @bpyear, @the" +
+                "mck, @themamt, @yirschool, @story, @supplements, @yiramt, @storyamt, @suppamt, @" +
+                "persamount, @perstotal, @perscopies, @oursupp, @oursuppamt, @ourovrride, @dp1des" +
+                "c, @ordagryr, @myovrride, @hbovrride, @profovrride, @conovrride, @themovrride, @" +
+                "cbovrride, @spiovrride, @pbovrride, @yirsovrride, @ourstyovrride, @laminateovrri" +
+                "de, @foilyearovrride, @basicpp, @perpp, @peramount, @basicamoun, @agreerec, @agr" +
+                "eedte, @onlinecuto, @oprcperbk, @oprcperbk2, @dorecentry, @sdlstich, @sdlsticham" +
+                "t, @copiesovride, @binvno, @msstanqty, @msstandtot, @schbalance, @parentpymt, @n" +
+                "ba, @fldtype, @isfolder, @priceovrd, @mlaminationamt, @mlamination, @opinkpers, " +
+                "@opfoilpers, @opinkpersamt, @opfoilpersamt, @oppicpers, @oppicpersamt, @opcustom" +
+                ", @opcustomamt, @opfoiltxtamt, @opfoiltxt, @opinktamt, @opink, @yrdiscount, @luv" +
+                "lines, @yrdiscountamt, @luvlineamt, @fullad, @fulladamt, @halfad, @halfadmt, @qu" +
+                "arterad, @quarteradamt, @eighthad, @eighthadamt, @adline, @cred_etc2, @desc22, @" +
+                "adjaftr2, @desc22tot, @halfadamt, @prcor, @adcuto, @webonly, @freebooks, @IconCo" +
+                "pies, @extrchg, @IconAmt, @schooltax, @schooltaxrate)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7108,6 +7197,8 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconCopies", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IconCopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrchg", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "extrchg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 9, 2, "IconAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltax", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "schooltax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltaxrate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "schooltaxrate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [bids] SET [schname] = @schname, [schcode] = @schcode, [booktype] = @bookt" +
@@ -7159,89 +7250,92 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                 " @eighthadamt, [adline] = @adline, [cred_etc2] = @cred_etc2, [desc22] = @desc22," +
                 " [adjaftr2] = @adjaftr2, [desc22tot] = @desc22tot, [halfadamt] = @halfadamt, [pr" +
                 "cor] = @prcor, [adcuto] = @adcuto, [webonly] = @webonly, [freebooks] = @freebook" +
-                "s, [IconCopies] = @IconCopies, [extrchg] = @extrchg, [IconAmt] = @IconAmt WHERE " +
-                "(([schname] = @Original_schname) AND ([schcode] = @Original_schcode) AND ([bookt" +
-                "ype] = @Original_booktype) AND ([qtedate] = @Original_qtedate) AND ([contryear] " +
-                "= @Original_contryear) AND ([nopages] = @Original_nopages) AND ([nocopies] = @Or" +
-                "iginal_nocopies) AND ([book_ea] = @Original_book_ea) AND ([book_price] = @Origin" +
-                "al_book_price) AND ([pryn] = @Original_pryn) AND ([prof] = @Original_prof) AND (" +
-                "[coyn] = @Original_coyn) AND ([conven] = @Original_conven) AND ([specea] = @Orig" +
-                "inal_specea) AND ([speccvr] = @Original_speccvr) AND ([scovrde] = @Original_scov" +
-                "rde) AND ([layn] = @Original_layn) AND ([laminate] = @Original_laminate) AND ([p" +
-                "eyn] = @Original_peyn) AND ([perfbind] = @Original_perfbind) AND ([foilck] = @Or" +
-                "iginal_foilck) AND ([foilamt] = @Original_foilamt) AND ([insck] = @Original_insc" +
-                "k) AND ([insamt] = @Original_insamt) AND ([spirck] = @Original_spirck) AND ([spi" +
-                "ramt] = @Original_spiramt) AND ([hdbky_n] = @Original_hdbky_n) AND ([hardback] =" +
-                " @Original_hardback) AND ([casey_n] = @Original_casey_n) AND ([caseamt] = @Origi" +
-                "nal_caseamt) AND ([customy_n] = @Original_customy_n) AND ([customized] = @Origin" +
-                "al_customized) AND ([misc] = @Original_misc) AND ([mdesc] = @Original_mdesc) AND" +
-                " ([sbtot] = @Original_sbtot) AND ([dc1] = @Original_dc1) AND ([dp1] = @Original_" +
-                "dp1) AND ([disc1] = @Original_disc1) AND ([dc2] = @Original_dc2) AND ([dp2] = @O" +
-                "riginal_dp2) AND ([disc2] = @Original_disc2) AND ([dp3desc] = @Original_dp3desc)" +
-                " AND ([dp3] = @Original_dp3) AND ([disc3] = @Original_disc3) AND ([dp4] = @Origi" +
-                "nal_dp4) AND ([disc4] = @Original_disc4) AND ([cred_etc] = @Original_cred_etc) A" +
-                "ND ([adjbef] = @Original_adjbef) AND ([adjaftr] = @Original_adjaftr) AND ([fbkpr" +
-                "c] = @Original_fbkprc) AND ([ftotprc] = @Original_ftotprc) AND ([source] = @Orig" +
-                "inal_source) AND ([xtrabkno] = @Original_xtrabkno) AND ([xtrabkprc] = @Original_" +
-                "xtrabkprc) AND ([desc1] = @Original_desc1) AND ([desc1tot] = @Original_desc1tot)" +
-                " AND ([desc2] = @Original_desc2) AND ([desc2tot] = @Original_desc2tot) AND ([pon" +
-                "um] = @Original_ponum) AND ([newprice] = @Original_newprice) AND ([schout] = @Or" +
-                "iginal_schout) AND ([allclrck] = @Original_allclrck) AND ([allclramt] = @Origina" +
-                "l_allclramt) AND ([oa] = @Original_oa) AND ([massmail] = @Original_massmail) AND" +
-                " ([inkclr] = @Original_inkclr) AND ([foiladamt] = @Original_foiladamt) AND ([des" +
-                "c3] = @Original_desc3) AND ([desc3tot] = @Original_desc3tot) AND ([desc4] = @Ori" +
-                "ginal_desc4) AND ([desc4tot] = @Original_desc4tot) AND ([clrpgdesc] = @Original_" +
-                "clrpgdesc) AND ([clrpgtot] = @Original_clrpgtot) AND ([noclrpgr] = @Original_noc" +
-                "lrpgr) AND ([glspaper] = @Original_glspaper) AND ([glsamt] = @Original_glsamt) A" +
-                "ND ([acovrde] = @Original_acovrde) AND ([bpovrde] = @Original_bpovrde) AND ([bpy" +
-                "ear] = @Original_bpyear) AND ([themck] = @Original_themck) AND ([themamt] = @Ori" +
-                "ginal_themamt) AND ([yirschool] = @Original_yirschool) AND ([story] = @Original_" +
-                "story) AND ([supplements] = @Original_supplements) AND ([yiramt] = @Original_yir" +
-                "amt) AND ([storyamt] = @Original_storyamt) AND ([suppamt] = @Original_suppamt) A" +
-                "ND ([persamount] = @Original_persamount) AND ([perstotal] = @Original_perstotal)" +
-                " AND ([perscopies] = @Original_perscopies) AND ([oursupp] = @Original_oursupp) A" +
-                "ND ([oursuppamt] = @Original_oursuppamt) AND ([ourovrride] = @Original_ourovrrid" +
-                "e) AND ([dp1desc] = @Original_dp1desc) AND ([ordagryr] = @Original_ordagryr) AND" +
-                " ([myovrride] = @Original_myovrride) AND ([hbovrride] = @Original_hbovrride) AND" +
-                " ([profovrride] = @Original_profovrride) AND ([conovrride] = @Original_conovrrid" +
-                "e) AND ([themovrride] = @Original_themovrride) AND ([cbovrride] = @Original_cbov" +
-                "rride) AND ([spiovrride] = @Original_spiovrride) AND ([pbovrride] = @Original_pb" +
-                "ovrride) AND ([yirsovrride] = @Original_yirsovrride) AND ([ourstyovrride] = @Ori" +
-                "ginal_ourstyovrride) AND ([laminateovrride] = @Original_laminateovrride) AND ([f" +
-                "oilyearovrride] = @Original_foilyearovrride) AND ([basicpp] = @Original_basicpp)" +
-                " AND ([perpp] = @Original_perpp) AND ([peramount] = @Original_peramount) AND ([b" +
-                "asicamoun] = @Original_basicamoun) AND ([agreerec] = @Original_agreerec) AND ([a" +
-                "greedte] = @Original_agreedte) AND ([onlinecuto] = @Original_onlinecuto) AND ([o" +
-                "prcperbk] = @Original_oprcperbk) AND ([oprcperbk2] = @Original_oprcperbk2) AND (" +
-                "[dorecentry] = @Original_dorecentry) AND ([sdlstich] = @Original_sdlstich) AND (" +
-                "[sdlstichamt] = @Original_sdlstichamt) AND ([copiesovride] = @Original_copiesovr" +
-                "ide) AND ([binvno] = @Original_binvno) AND ([msstanqty] = @Original_msstanqty) A" +
-                "ND ([msstandtot] = @Original_msstandtot) AND ([schbalance] = @Original_schbalanc" +
-                "e) AND ([parentpymt] = @Original_parentpymt) AND ([nba] = @Original_nba) AND ([f" +
-                "ldtype] = @Original_fldtype) AND ([isfolder] = @Original_isfolder) AND ([priceov" +
-                "rd] = @Original_priceovrd) AND ([mlaminationamt] = @Original_mlaminationamt) AND" +
-                " ([mlamination] = @Original_mlamination) AND ([opinkpers] = @Original_opinkpers)" +
-                " AND ([opfoilpers] = @Original_opfoilpers) AND ([opinkpersamt] = @Original_opink" +
-                "persamt) AND ([opfoilpersamt] = @Original_opfoilpersamt) AND ([oppicpers] = @Ori" +
-                "ginal_oppicpers) AND ([oppicpersamt] = @Original_oppicpersamt) AND ([opcustom] =" +
-                " @Original_opcustom) AND ([opcustomamt] = @Original_opcustomamt) AND ([opfoiltxt" +
-                "amt] = @Original_opfoiltxtamt) AND ([opfoiltxt] = @Original_opfoiltxt) AND ([opi" +
-                "nktamt] = @Original_opinktamt) AND ([opink] = @Original_opink) AND ([yrdiscount]" +
-                " = @Original_yrdiscount) AND ([luvlines] = @Original_luvlines) AND ([yrdiscounta" +
-                "mt] = @Original_yrdiscountamt) AND ([luvlineamt] = @Original_luvlineamt) AND ([f" +
-                "ullad] = @Original_fullad) AND ([fulladamt] = @Original_fulladamt) AND ([halfad]" +
-                " = @Original_halfad) AND ([halfadmt] = @Original_halfadmt) AND ([quarterad] = @O" +
-                "riginal_quarterad) AND ([quarteradamt] = @Original_quarteradamt) AND ([eighthad]" +
-                " = @Original_eighthad) AND ([eighthadamt] = @Original_eighthadamt) AND ([adline]" +
-                " = @Original_adline) AND ([cred_etc2] = @Original_cred_etc2) AND ([desc22] = @Or" +
-                "iginal_desc22) AND ([adjaftr2] = @Original_adjaftr2) AND ([desc22tot] = @Origina" +
-                "l_desc22tot) AND ([halfadamt] = @Original_halfadamt) AND ([prcor] = @Original_pr" +
-                "cor) AND ([adcuto] = @Original_adcuto) AND ([webonly] = @Original_webonly) AND (" +
-                "[freebooks] = @Original_freebooks) AND ((@IsNull_IconCopies = 1 AND [IconCopies]" +
-                " IS NULL) OR ([IconCopies] = @Original_IconCopies)) AND ((@IsNull_extrchg = 1 AN" +
-                "D [extrchg] IS NULL) OR ([extrchg] = @Original_extrchg)) AND ((@IsNull_IconAmt =" +
-                " 1 AND [IconAmt] IS NULL) OR ([IconAmt] = @Original_IconAmt)) AND ([Id] = @Origi" +
-                "nal_Id))";
+                "s, [IconCopies] = @IconCopies, [extrchg] = @extrchg, [IconAmt] = @IconAmt, [scho" +
+                "oltax] = @schooltax, [schooltaxrate] = @schooltaxrate WHERE (([schname] = @Origi" +
+                "nal_schname) AND ([schcode] = @Original_schcode) AND ([booktype] = @Original_boo" +
+                "ktype) AND ([qtedate] = @Original_qtedate) AND ([contryear] = @Original_contryea" +
+                "r) AND ([nopages] = @Original_nopages) AND ([nocopies] = @Original_nocopies) AND" +
+                " ([book_ea] = @Original_book_ea) AND ([book_price] = @Original_book_price) AND (" +
+                "[pryn] = @Original_pryn) AND ([prof] = @Original_prof) AND ([coyn] = @Original_c" +
+                "oyn) AND ([conven] = @Original_conven) AND ([specea] = @Original_specea) AND ([s" +
+                "peccvr] = @Original_speccvr) AND ([scovrde] = @Original_scovrde) AND ([layn] = @" +
+                "Original_layn) AND ([laminate] = @Original_laminate) AND ([peyn] = @Original_pey" +
+                "n) AND ([perfbind] = @Original_perfbind) AND ([foilck] = @Original_foilck) AND (" +
+                "[foilamt] = @Original_foilamt) AND ([insck] = @Original_insck) AND ([insamt] = @" +
+                "Original_insamt) AND ([spirck] = @Original_spirck) AND ([spiramt] = @Original_sp" +
+                "iramt) AND ([hdbky_n] = @Original_hdbky_n) AND ([hardback] = @Original_hardback)" +
+                " AND ([casey_n] = @Original_casey_n) AND ([caseamt] = @Original_caseamt) AND ([c" +
+                "ustomy_n] = @Original_customy_n) AND ([customized] = @Original_customized) AND (" +
+                "[misc] = @Original_misc) AND ([mdesc] = @Original_mdesc) AND ([sbtot] = @Origina" +
+                "l_sbtot) AND ([dc1] = @Original_dc1) AND ([dp1] = @Original_dp1) AND ([disc1] = " +
+                "@Original_disc1) AND ([dc2] = @Original_dc2) AND ([dp2] = @Original_dp2) AND ([d" +
+                "isc2] = @Original_disc2) AND ([dp3desc] = @Original_dp3desc) AND ([dp3] = @Origi" +
+                "nal_dp3) AND ([disc3] = @Original_disc3) AND ([dp4] = @Original_dp4) AND ([disc4" +
+                "] = @Original_disc4) AND ([cred_etc] = @Original_cred_etc) AND ([adjbef] = @Orig" +
+                "inal_adjbef) AND ([adjaftr] = @Original_adjaftr) AND ([fbkprc] = @Original_fbkpr" +
+                "c) AND ([ftotprc] = @Original_ftotprc) AND ([source] = @Original_source) AND ([x" +
+                "trabkno] = @Original_xtrabkno) AND ([xtrabkprc] = @Original_xtrabkprc) AND ([des" +
+                "c1] = @Original_desc1) AND ([desc1tot] = @Original_desc1tot) AND ([desc2] = @Ori" +
+                "ginal_desc2) AND ([desc2tot] = @Original_desc2tot) AND ([ponum] = @Original_ponu" +
+                "m) AND ([newprice] = @Original_newprice) AND ([schout] = @Original_schout) AND (" +
+                "[allclrck] = @Original_allclrck) AND ([allclramt] = @Original_allclramt) AND ([o" +
+                "a] = @Original_oa) AND ([massmail] = @Original_massmail) AND ([inkclr] = @Origin" +
+                "al_inkclr) AND ([foiladamt] = @Original_foiladamt) AND ([desc3] = @Original_desc" +
+                "3) AND ([desc3tot] = @Original_desc3tot) AND ([desc4] = @Original_desc4) AND ([d" +
+                "esc4tot] = @Original_desc4tot) AND ([clrpgdesc] = @Original_clrpgdesc) AND ([clr" +
+                "pgtot] = @Original_clrpgtot) AND ([noclrpgr] = @Original_noclrpgr) AND ([glspape" +
+                "r] = @Original_glspaper) AND ([glsamt] = @Original_glsamt) AND ([acovrde] = @Ori" +
+                "ginal_acovrde) AND ([bpovrde] = @Original_bpovrde) AND ([bpyear] = @Original_bpy" +
+                "ear) AND ([themck] = @Original_themck) AND ([themamt] = @Original_themamt) AND (" +
+                "[yirschool] = @Original_yirschool) AND ([story] = @Original_story) AND ([supplem" +
+                "ents] = @Original_supplements) AND ([yiramt] = @Original_yiramt) AND ([storyamt]" +
+                " = @Original_storyamt) AND ([suppamt] = @Original_suppamt) AND ([persamount] = @" +
+                "Original_persamount) AND ([perstotal] = @Original_perstotal) AND ([perscopies] =" +
+                " @Original_perscopies) AND ([oursupp] = @Original_oursupp) AND ([oursuppamt] = @" +
+                "Original_oursuppamt) AND ([ourovrride] = @Original_ourovrride) AND ([dp1desc] = " +
+                "@Original_dp1desc) AND ([ordagryr] = @Original_ordagryr) AND ([myovrride] = @Ori" +
+                "ginal_myovrride) AND ([hbovrride] = @Original_hbovrride) AND ([profovrride] = @O" +
+                "riginal_profovrride) AND ([conovrride] = @Original_conovrride) AND ([themovrride" +
+                "] = @Original_themovrride) AND ([cbovrride] = @Original_cbovrride) AND ([spiovrr" +
+                "ide] = @Original_spiovrride) AND ([pbovrride] = @Original_pbovrride) AND ([yirso" +
+                "vrride] = @Original_yirsovrride) AND ([ourstyovrride] = @Original_ourstyovrride)" +
+                " AND ([laminateovrride] = @Original_laminateovrride) AND ([foilyearovrride] = @O" +
+                "riginal_foilyearovrride) AND ([basicpp] = @Original_basicpp) AND ([perpp] = @Ori" +
+                "ginal_perpp) AND ([peramount] = @Original_peramount) AND ([basicamoun] = @Origin" +
+                "al_basicamoun) AND ([agreerec] = @Original_agreerec) AND ([agreedte] = @Original" +
+                "_agreedte) AND ([onlinecuto] = @Original_onlinecuto) AND ([oprcperbk] = @Origina" +
+                "l_oprcperbk) AND ([oprcperbk2] = @Original_oprcperbk2) AND ([dorecentry] = @Orig" +
+                "inal_dorecentry) AND ([sdlstich] = @Original_sdlstich) AND ([sdlstichamt] = @Ori" +
+                "ginal_sdlstichamt) AND ([copiesovride] = @Original_copiesovride) AND ([binvno] =" +
+                " @Original_binvno) AND ([msstanqty] = @Original_msstanqty) AND ([msstandtot] = @" +
+                "Original_msstandtot) AND ([schbalance] = @Original_schbalance) AND ([parentpymt]" +
+                " = @Original_parentpymt) AND ([nba] = @Original_nba) AND ([fldtype] = @Original_" +
+                "fldtype) AND ([isfolder] = @Original_isfolder) AND ([priceovrd] = @Original_pric" +
+                "eovrd) AND ([mlaminationamt] = @Original_mlaminationamt) AND ([mlamination] = @O" +
+                "riginal_mlamination) AND ([opinkpers] = @Original_opinkpers) AND ([opfoilpers] =" +
+                " @Original_opfoilpers) AND ([opinkpersamt] = @Original_opinkpersamt) AND ([opfoi" +
+                "lpersamt] = @Original_opfoilpersamt) AND ([oppicpers] = @Original_oppicpers) AND" +
+                " ([oppicpersamt] = @Original_oppicpersamt) AND ([opcustom] = @Original_opcustom)" +
+                " AND ([opcustomamt] = @Original_opcustomamt) AND ([opfoiltxtamt] = @Original_opf" +
+                "oiltxtamt) AND ([opfoiltxt] = @Original_opfoiltxt) AND ([opinktamt] = @Original_" +
+                "opinktamt) AND ([opink] = @Original_opink) AND ([yrdiscount] = @Original_yrdisco" +
+                "unt) AND ([luvlines] = @Original_luvlines) AND ([yrdiscountamt] = @Original_yrdi" +
+                "scountamt) AND ([luvlineamt] = @Original_luvlineamt) AND ([fullad] = @Original_f" +
+                "ullad) AND ([fulladamt] = @Original_fulladamt) AND ([halfad] = @Original_halfad)" +
+                " AND ([halfadmt] = @Original_halfadmt) AND ([quarterad] = @Original_quarterad) A" +
+                "ND ([quarteradamt] = @Original_quarteradamt) AND ([eighthad] = @Original_eightha" +
+                "d) AND ([eighthadamt] = @Original_eighthadamt) AND ([adline] = @Original_adline)" +
+                " AND ([cred_etc2] = @Original_cred_etc2) AND ([desc22] = @Original_desc22) AND (" +
+                "[adjaftr2] = @Original_adjaftr2) AND ([desc22tot] = @Original_desc22tot) AND ([h" +
+                "alfadamt] = @Original_halfadamt) AND ([prcor] = @Original_prcor) AND ([adcuto] =" +
+                " @Original_adcuto) AND ([webonly] = @Original_webonly) AND ([freebooks] = @Origi" +
+                "nal_freebooks) AND ((@IsNull_IconCopies = 1 AND [IconCopies] IS NULL) OR ([IconC" +
+                "opies] = @Original_IconCopies)) AND ((@IsNull_extrchg = 1 AND [extrchg] IS NULL)" +
+                " OR ([extrchg] = @Original_extrchg)) AND ((@IsNull_IconAmt = 1 AND [IconAmt] IS " +
+                "NULL) OR ([IconAmt] = @Original_IconAmt)) AND ([Id] = @Original_Id) AND ((@IsNul" +
+                "l_schooltax = 1 AND [schooltax] IS NULL) OR ([schooltax] = @Original_schooltax))" +
+                " AND ((@IsNull_schooltaxrate = 1 AND [schooltaxrate] IS NULL) OR ([schooltaxrate" +
+                "] = @Original_schooltaxrate)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7412,6 +7506,8 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconCopies", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IconCopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrchg", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "extrchg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 9, 2, "IconAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltax", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "schooltax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltaxrate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "schooltaxrate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_booktype", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -7584,49 +7680,52 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IconAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IconAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IconAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 9, 2, "IconAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schooltax", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schooltax", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schooltax", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "schooltax", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schooltaxrate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schooltaxrate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schooltaxrate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "schooltaxrate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT          schname, schcode, booktype, qtedate, contryear, nopages, nocopies" +
-                ", book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn," +
-                " laminate, peyn, perfbind, foilck, \r\n                            foilamt, insck," +
-                " insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, custom" +
-                "ized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3," +
-                " dp4, \r\n                            disc4, cred_etc, adjbef, adjaftr, fbkprc, ft" +
-                "otprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, new" +
-                "price, schout, allclrck, allclramt, smemo, oa, massmail, inkclr, \r\n             " +
-                "               foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot," +
-                " noclrpgr, glspaper, glsamt, acovrde, bpovrde, bpyear, themck, themamt, yirschoo" +
-                "l, story, supplements, yiramt, storyamt, \r\n                            suppamt, " +
-                "persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, ord" +
-                "agryr, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, sp" +
-                "iovrride, \r\n                            pbovrride, yirsovrride, ourstyovrride, l" +
-                "aminateovrride, foilyearovrride, basicpp, perpp, peramount, basicamoun, agreerec" +
-                ", agreedte, onlinecuto, oprcperbk, oprcperbk2, dorecentry, \r\n                   " +
-                "         sdlstich, sdlstichamt, copiesovride, binvno, msstanqty, msstandtot, sch" +
-                "balance, parentpymt, nba, fldtype, isfolder, priceovrd, mlaminationamt, mlaminat" +
-                "ion, opinkpers, opfoilpers, \r\n                            opinkpersamt, opfoilpe" +
-                "rsamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, " +
-                "opinktamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulla" +
-                "damt, \r\n                            halfad, halfadmt, quarterad, quarteradamt, e" +
-                "ighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, halfadamt," +
-                " prcor, adcuto, webonly, freebooks, IconCopies, extrchg, \r\n                     " +
-                "       IconAmt, Id\r\nFROM              bids\r\nWHERE          (schcode = @schocode)" +
-                "\r\nORDER BY   contryear DESC";
+            this._commandCollection[0].CommandText = "SELECT        schname, schcode, booktype, qtedate, contryear, nopages, nocopies, " +
+                "book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, l" +
+                "aminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, \r\n    " +
+                "                     hdbky_n, hardback, casey_n, caseamt, customy_n, customized," +
+                " misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4," +
+                " disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc," +
+                " desc1, \r\n                         desc1tot, desc2, desc2tot, ponum, newprice, s" +
+                "chout, allclrck, allclramt, smemo, oa, massmail, inkclr, foiladamt, desc3, desc3" +
+                "tot, desc4, desc4tot, clrpgdesc, clrpgtot, noclrpgr, glspaper, glsamt, acovrde, " +
+                "bpovrde, bpyear, themck,\r\n                          themamt, yirschool, story, s" +
+                "upplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursup" +
+                "p, oursuppamt, ourovrride, dp1desc, ordagryr, myovrride, hbovrride, profovrride," +
+                " conovrride, themovrride, \r\n                         cbovrride, spiovrride, pbov" +
+                "rride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, basicpp, pe" +
+                "rpp, peramount, basicamoun, agreerec, agreedte, onlinecuto, oprcperbk, oprcperbk" +
+                "2, dorecentry, sdlstich, sdlstichamt, \r\n                         copiesovride, b" +
+                "invno, msstanqty, msstandtot, schbalance, parentpymt, nba, fldtype, isfolder, pr" +
+                "iceovrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoi" +
+                "lpersamt, oppicpers, oppicpersamt, opcustom, \r\n                         opcustom" +
+                "amt, opfoiltxtamt, opfoiltxt, opinktamt, opink, yrdiscount, luvlines, yrdiscount" +
+                "amt, luvlineamt, fullad, fulladamt, halfad, halfadmt, quarterad, quarteradamt, e" +
+                "ighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, \r\n                   " +
+                "      desc22tot, halfadamt, prcor, adcuto, webonly, freebooks, IconCopies, extrc" +
+                "hg, IconAmt, Id, schooltax, schooltaxrate\r\nFROM            bids\r\nWHERE        (s" +
+                "chcode = @schocode)\r\nORDER BY contryear DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schocode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schocode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT          schname, schcode, booktype, qtedate, contryear, nopages, nocopies" +
@@ -7659,7 +7758,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(dsBids.bidsDataTable dataTable, string schocode) {
@@ -7678,7 +7777,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual dsBids.bidsDataTable GetData(string schocode) {
@@ -7695,7 +7794,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillById(dsBids.bidsDataTable dataTable, int Id) {
@@ -7709,7 +7808,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual dsBids.bidsDataTable GetDataBy(int Id) {
@@ -7721,21 +7820,21 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(dsBids.bidsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(dsBids dataSet) {
             return this.Adapter.Update(dataSet, "bids");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
@@ -7743,14 +7842,14 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(int Id) {
@@ -7772,7 +7871,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
@@ -7942,9 +8041,11 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                     System.DateTime adcuto, 
                     bool webonly, 
                     int freebooks, 
-                    global::System.Nullable<int> IconCopies, 
+                    int IconCopies, 
                     string extrchg, 
-                    global::System.Nullable<decimal> IconAmt) {
+                    decimal IconAmt, 
+                    decimal schooltax, 
+                    decimal schooltaxrate) {
             if ((schname == null)) {
                 throw new global::System.ArgumentNullException("schname");
             }
@@ -8221,24 +8322,16 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             this.Adapter.InsertCommand.Parameters[163].Value = ((System.DateTime)(adcuto));
             this.Adapter.InsertCommand.Parameters[164].Value = ((bool)(webonly));
             this.Adapter.InsertCommand.Parameters[165].Value = ((int)(freebooks));
-            if ((IconCopies.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[166].Value = ((int)(IconCopies.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[166].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[166].Value = ((int)(IconCopies));
             if ((extrchg == null)) {
-                this.Adapter.InsertCommand.Parameters[167].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("extrchg");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[167].Value = ((string)(extrchg));
             }
-            if ((IconAmt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[168].Value = ((decimal)(IconAmt.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[168].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[168].Value = ((decimal)(IconAmt));
+            this.Adapter.InsertCommand.Parameters[169].Value = ((decimal)(schooltax));
+            this.Adapter.InsertCommand.Parameters[170].Value = ((decimal)(schooltaxrate));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8256,7 +8349,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
@@ -8426,9 +8519,11 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                     System.DateTime adcuto, 
                     bool webonly, 
                     int freebooks, 
-                    global::System.Nullable<int> IconCopies, 
+                    int IconCopies, 
                     string extrchg, 
-                    global::System.Nullable<decimal> IconAmt, 
+                    decimal IconAmt, 
+                    decimal schooltax, 
+                    decimal schooltaxrate, 
                     string Original_schname, 
                     string Original_schcode, 
                     string Original_booktype, 
@@ -8594,10 +8689,12 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                     System.DateTime Original_adcuto, 
                     bool Original_webonly, 
                     int Original_freebooks, 
-                    global::System.Nullable<int> Original_IconCopies, 
+                    int Original_IconCopies, 
                     string Original_extrchg, 
-                    global::System.Nullable<decimal> Original_IconAmt, 
-                    int Original_Id) {
+                    decimal Original_IconAmt, 
+                    int Original_Id, 
+                    decimal Original_schooltax, 
+                    decimal Original_schooltaxrate) {
             if ((schname == null)) {
                 throw new global::System.ArgumentNullException("schname");
             }
@@ -8874,319 +8971,302 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             this.Adapter.UpdateCommand.Parameters[163].Value = ((System.DateTime)(adcuto));
             this.Adapter.UpdateCommand.Parameters[164].Value = ((bool)(webonly));
             this.Adapter.UpdateCommand.Parameters[165].Value = ((int)(freebooks));
-            if ((IconCopies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[166].Value = ((int)(IconCopies.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[166].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[166].Value = ((int)(IconCopies));
             if ((extrchg == null)) {
-                this.Adapter.UpdateCommand.Parameters[167].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("extrchg");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[167].Value = ((string)(extrchg));
             }
-            if ((IconAmt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[168].Value = ((decimal)(IconAmt.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[168].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[168].Value = ((decimal)(IconAmt));
+            this.Adapter.UpdateCommand.Parameters[169].Value = ((decimal)(schooltax));
+            this.Adapter.UpdateCommand.Parameters[170].Value = ((decimal)(schooltaxrate));
             if ((Original_schname == null)) {
                 throw new global::System.ArgumentNullException("Original_schname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[169].Value = ((string)(Original_schname));
+                this.Adapter.UpdateCommand.Parameters[171].Value = ((string)(Original_schname));
             }
             if ((Original_schcode == null)) {
                 throw new global::System.ArgumentNullException("Original_schcode");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[170].Value = ((string)(Original_schcode));
+                this.Adapter.UpdateCommand.Parameters[172].Value = ((string)(Original_schcode));
             }
             if ((Original_booktype == null)) {
                 throw new global::System.ArgumentNullException("Original_booktype");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[171].Value = ((string)(Original_booktype));
+                this.Adapter.UpdateCommand.Parameters[173].Value = ((string)(Original_booktype));
             }
-            this.Adapter.UpdateCommand.Parameters[172].Value = ((System.DateTime)(Original_qtedate));
+            this.Adapter.UpdateCommand.Parameters[174].Value = ((System.DateTime)(Original_qtedate));
             if ((Original_contryear == null)) {
                 throw new global::System.ArgumentNullException("Original_contryear");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[173].Value = ((string)(Original_contryear));
+                this.Adapter.UpdateCommand.Parameters[175].Value = ((string)(Original_contryear));
             }
-            this.Adapter.UpdateCommand.Parameters[174].Value = ((decimal)(Original_nopages));
-            this.Adapter.UpdateCommand.Parameters[175].Value = ((decimal)(Original_nocopies));
-            this.Adapter.UpdateCommand.Parameters[176].Value = ((decimal)(Original_book_ea));
-            this.Adapter.UpdateCommand.Parameters[177].Value = ((decimal)(Original_book_price));
-            this.Adapter.UpdateCommand.Parameters[178].Value = ((bool)(Original_pryn));
-            this.Adapter.UpdateCommand.Parameters[179].Value = ((decimal)(Original_prof));
-            this.Adapter.UpdateCommand.Parameters[180].Value = ((bool)(Original_coyn));
-            this.Adapter.UpdateCommand.Parameters[181].Value = ((decimal)(Original_conven));
-            this.Adapter.UpdateCommand.Parameters[182].Value = ((decimal)(Original_specea));
-            this.Adapter.UpdateCommand.Parameters[183].Value = ((decimal)(Original_speccvr));
-            this.Adapter.UpdateCommand.Parameters[184].Value = ((bool)(Original_scovrde));
-            this.Adapter.UpdateCommand.Parameters[185].Value = ((bool)(Original_layn));
-            this.Adapter.UpdateCommand.Parameters[186].Value = ((decimal)(Original_laminate));
-            this.Adapter.UpdateCommand.Parameters[187].Value = ((bool)(Original_peyn));
-            this.Adapter.UpdateCommand.Parameters[188].Value = ((decimal)(Original_perfbind));
-            this.Adapter.UpdateCommand.Parameters[189].Value = ((bool)(Original_foilck));
-            this.Adapter.UpdateCommand.Parameters[190].Value = ((decimal)(Original_foilamt));
-            this.Adapter.UpdateCommand.Parameters[191].Value = ((bool)(Original_insck));
-            this.Adapter.UpdateCommand.Parameters[192].Value = ((decimal)(Original_insamt));
-            this.Adapter.UpdateCommand.Parameters[193].Value = ((bool)(Original_spirck));
-            this.Adapter.UpdateCommand.Parameters[194].Value = ((decimal)(Original_spiramt));
-            this.Adapter.UpdateCommand.Parameters[195].Value = ((bool)(Original_hdbky_n));
-            this.Adapter.UpdateCommand.Parameters[196].Value = ((decimal)(Original_hardback));
-            this.Adapter.UpdateCommand.Parameters[197].Value = ((bool)(Original_casey_n));
-            this.Adapter.UpdateCommand.Parameters[198].Value = ((decimal)(Original_caseamt));
-            this.Adapter.UpdateCommand.Parameters[199].Value = ((bool)(Original_customy_n));
-            this.Adapter.UpdateCommand.Parameters[200].Value = ((decimal)(Original_customized));
-            this.Adapter.UpdateCommand.Parameters[201].Value = ((decimal)(Original_misc));
+            this.Adapter.UpdateCommand.Parameters[176].Value = ((decimal)(Original_nopages));
+            this.Adapter.UpdateCommand.Parameters[177].Value = ((decimal)(Original_nocopies));
+            this.Adapter.UpdateCommand.Parameters[178].Value = ((decimal)(Original_book_ea));
+            this.Adapter.UpdateCommand.Parameters[179].Value = ((decimal)(Original_book_price));
+            this.Adapter.UpdateCommand.Parameters[180].Value = ((bool)(Original_pryn));
+            this.Adapter.UpdateCommand.Parameters[181].Value = ((decimal)(Original_prof));
+            this.Adapter.UpdateCommand.Parameters[182].Value = ((bool)(Original_coyn));
+            this.Adapter.UpdateCommand.Parameters[183].Value = ((decimal)(Original_conven));
+            this.Adapter.UpdateCommand.Parameters[184].Value = ((decimal)(Original_specea));
+            this.Adapter.UpdateCommand.Parameters[185].Value = ((decimal)(Original_speccvr));
+            this.Adapter.UpdateCommand.Parameters[186].Value = ((bool)(Original_scovrde));
+            this.Adapter.UpdateCommand.Parameters[187].Value = ((bool)(Original_layn));
+            this.Adapter.UpdateCommand.Parameters[188].Value = ((decimal)(Original_laminate));
+            this.Adapter.UpdateCommand.Parameters[189].Value = ((bool)(Original_peyn));
+            this.Adapter.UpdateCommand.Parameters[190].Value = ((decimal)(Original_perfbind));
+            this.Adapter.UpdateCommand.Parameters[191].Value = ((bool)(Original_foilck));
+            this.Adapter.UpdateCommand.Parameters[192].Value = ((decimal)(Original_foilamt));
+            this.Adapter.UpdateCommand.Parameters[193].Value = ((bool)(Original_insck));
+            this.Adapter.UpdateCommand.Parameters[194].Value = ((decimal)(Original_insamt));
+            this.Adapter.UpdateCommand.Parameters[195].Value = ((bool)(Original_spirck));
+            this.Adapter.UpdateCommand.Parameters[196].Value = ((decimal)(Original_spiramt));
+            this.Adapter.UpdateCommand.Parameters[197].Value = ((bool)(Original_hdbky_n));
+            this.Adapter.UpdateCommand.Parameters[198].Value = ((decimal)(Original_hardback));
+            this.Adapter.UpdateCommand.Parameters[199].Value = ((bool)(Original_casey_n));
+            this.Adapter.UpdateCommand.Parameters[200].Value = ((decimal)(Original_caseamt));
+            this.Adapter.UpdateCommand.Parameters[201].Value = ((bool)(Original_customy_n));
+            this.Adapter.UpdateCommand.Parameters[202].Value = ((decimal)(Original_customized));
+            this.Adapter.UpdateCommand.Parameters[203].Value = ((decimal)(Original_misc));
             if ((Original_mdesc == null)) {
                 throw new global::System.ArgumentNullException("Original_mdesc");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[202].Value = ((string)(Original_mdesc));
+                this.Adapter.UpdateCommand.Parameters[204].Value = ((string)(Original_mdesc));
             }
-            this.Adapter.UpdateCommand.Parameters[203].Value = ((decimal)(Original_sbtot));
-            this.Adapter.UpdateCommand.Parameters[204].Value = ((bool)(Original_dc1));
-            this.Adapter.UpdateCommand.Parameters[205].Value = ((decimal)(Original_dp1));
-            this.Adapter.UpdateCommand.Parameters[206].Value = ((decimal)(Original_disc1));
-            this.Adapter.UpdateCommand.Parameters[207].Value = ((bool)(Original_dc2));
-            this.Adapter.UpdateCommand.Parameters[208].Value = ((decimal)(Original_dp2));
-            this.Adapter.UpdateCommand.Parameters[209].Value = ((decimal)(Original_disc2));
+            this.Adapter.UpdateCommand.Parameters[205].Value = ((decimal)(Original_sbtot));
+            this.Adapter.UpdateCommand.Parameters[206].Value = ((bool)(Original_dc1));
+            this.Adapter.UpdateCommand.Parameters[207].Value = ((decimal)(Original_dp1));
+            this.Adapter.UpdateCommand.Parameters[208].Value = ((decimal)(Original_disc1));
+            this.Adapter.UpdateCommand.Parameters[209].Value = ((bool)(Original_dc2));
+            this.Adapter.UpdateCommand.Parameters[210].Value = ((decimal)(Original_dp2));
+            this.Adapter.UpdateCommand.Parameters[211].Value = ((decimal)(Original_disc2));
             if ((Original_dp3desc == null)) {
                 throw new global::System.ArgumentNullException("Original_dp3desc");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[210].Value = ((string)(Original_dp3desc));
+                this.Adapter.UpdateCommand.Parameters[212].Value = ((string)(Original_dp3desc));
             }
-            this.Adapter.UpdateCommand.Parameters[211].Value = ((decimal)(Original_dp3));
-            this.Adapter.UpdateCommand.Parameters[212].Value = ((decimal)(Original_disc3));
-            this.Adapter.UpdateCommand.Parameters[213].Value = ((decimal)(Original_dp4));
-            this.Adapter.UpdateCommand.Parameters[214].Value = ((decimal)(Original_disc4));
+            this.Adapter.UpdateCommand.Parameters[213].Value = ((decimal)(Original_dp3));
+            this.Adapter.UpdateCommand.Parameters[214].Value = ((decimal)(Original_disc3));
+            this.Adapter.UpdateCommand.Parameters[215].Value = ((decimal)(Original_dp4));
+            this.Adapter.UpdateCommand.Parameters[216].Value = ((decimal)(Original_disc4));
             if ((Original_cred_etc == null)) {
                 throw new global::System.ArgumentNullException("Original_cred_etc");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[215].Value = ((string)(Original_cred_etc));
+                this.Adapter.UpdateCommand.Parameters[217].Value = ((string)(Original_cred_etc));
             }
-            this.Adapter.UpdateCommand.Parameters[216].Value = ((decimal)(Original_adjbef));
-            this.Adapter.UpdateCommand.Parameters[217].Value = ((decimal)(Original_adjaftr));
-            this.Adapter.UpdateCommand.Parameters[218].Value = ((decimal)(Original_fbkprc));
-            this.Adapter.UpdateCommand.Parameters[219].Value = ((decimal)(Original_ftotprc));
+            this.Adapter.UpdateCommand.Parameters[218].Value = ((decimal)(Original_adjbef));
+            this.Adapter.UpdateCommand.Parameters[219].Value = ((decimal)(Original_adjaftr));
+            this.Adapter.UpdateCommand.Parameters[220].Value = ((decimal)(Original_fbkprc));
+            this.Adapter.UpdateCommand.Parameters[221].Value = ((decimal)(Original_ftotprc));
             if ((Original_source == null)) {
                 throw new global::System.ArgumentNullException("Original_source");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[220].Value = ((string)(Original_source));
+                this.Adapter.UpdateCommand.Parameters[222].Value = ((string)(Original_source));
             }
-            this.Adapter.UpdateCommand.Parameters[221].Value = ((decimal)(Original_xtrabkno));
-            this.Adapter.UpdateCommand.Parameters[222].Value = ((decimal)(Original_xtrabkprc));
+            this.Adapter.UpdateCommand.Parameters[223].Value = ((decimal)(Original_xtrabkno));
+            this.Adapter.UpdateCommand.Parameters[224].Value = ((decimal)(Original_xtrabkprc));
             if ((Original_desc1 == null)) {
                 throw new global::System.ArgumentNullException("Original_desc1");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[223].Value = ((string)(Original_desc1));
+                this.Adapter.UpdateCommand.Parameters[225].Value = ((string)(Original_desc1));
             }
-            this.Adapter.UpdateCommand.Parameters[224].Value = ((decimal)(Original_desc1tot));
+            this.Adapter.UpdateCommand.Parameters[226].Value = ((decimal)(Original_desc1tot));
             if ((Original_desc2 == null)) {
                 throw new global::System.ArgumentNullException("Original_desc2");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[225].Value = ((string)(Original_desc2));
+                this.Adapter.UpdateCommand.Parameters[227].Value = ((string)(Original_desc2));
             }
-            this.Adapter.UpdateCommand.Parameters[226].Value = ((decimal)(Original_desc2tot));
+            this.Adapter.UpdateCommand.Parameters[228].Value = ((decimal)(Original_desc2tot));
             if ((Original_ponum == null)) {
                 throw new global::System.ArgumentNullException("Original_ponum");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[227].Value = ((string)(Original_ponum));
+                this.Adapter.UpdateCommand.Parameters[229].Value = ((string)(Original_ponum));
             }
-            this.Adapter.UpdateCommand.Parameters[228].Value = ((bool)(Original_newprice));
-            this.Adapter.UpdateCommand.Parameters[229].Value = ((System.DateTime)(Original_schout));
-            this.Adapter.UpdateCommand.Parameters[230].Value = ((bool)(Original_allclrck));
-            this.Adapter.UpdateCommand.Parameters[231].Value = ((decimal)(Original_allclramt));
-            this.Adapter.UpdateCommand.Parameters[232].Value = ((bool)(Original_oa));
-            this.Adapter.UpdateCommand.Parameters[233].Value = ((bool)(Original_massmail));
+            this.Adapter.UpdateCommand.Parameters[230].Value = ((bool)(Original_newprice));
+            this.Adapter.UpdateCommand.Parameters[231].Value = ((System.DateTime)(Original_schout));
+            this.Adapter.UpdateCommand.Parameters[232].Value = ((bool)(Original_allclrck));
+            this.Adapter.UpdateCommand.Parameters[233].Value = ((decimal)(Original_allclramt));
+            this.Adapter.UpdateCommand.Parameters[234].Value = ((bool)(Original_oa));
+            this.Adapter.UpdateCommand.Parameters[235].Value = ((bool)(Original_massmail));
             if ((Original_inkclr == null)) {
                 throw new global::System.ArgumentNullException("Original_inkclr");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[234].Value = ((string)(Original_inkclr));
+                this.Adapter.UpdateCommand.Parameters[236].Value = ((string)(Original_inkclr));
             }
-            this.Adapter.UpdateCommand.Parameters[235].Value = ((decimal)(Original_foiladamt));
+            this.Adapter.UpdateCommand.Parameters[237].Value = ((decimal)(Original_foiladamt));
             if ((Original_desc3 == null)) {
                 throw new global::System.ArgumentNullException("Original_desc3");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[236].Value = ((string)(Original_desc3));
+                this.Adapter.UpdateCommand.Parameters[238].Value = ((string)(Original_desc3));
             }
-            this.Adapter.UpdateCommand.Parameters[237].Value = ((decimal)(Original_desc3tot));
+            this.Adapter.UpdateCommand.Parameters[239].Value = ((decimal)(Original_desc3tot));
             if ((Original_desc4 == null)) {
                 throw new global::System.ArgumentNullException("Original_desc4");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[238].Value = ((string)(Original_desc4));
+                this.Adapter.UpdateCommand.Parameters[240].Value = ((string)(Original_desc4));
             }
-            this.Adapter.UpdateCommand.Parameters[239].Value = ((decimal)(Original_desc4tot));
+            this.Adapter.UpdateCommand.Parameters[241].Value = ((decimal)(Original_desc4tot));
             if ((Original_clrpgdesc == null)) {
                 throw new global::System.ArgumentNullException("Original_clrpgdesc");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[240].Value = ((string)(Original_clrpgdesc));
+                this.Adapter.UpdateCommand.Parameters[242].Value = ((string)(Original_clrpgdesc));
             }
-            this.Adapter.UpdateCommand.Parameters[241].Value = ((decimal)(Original_clrpgtot));
-            this.Adapter.UpdateCommand.Parameters[242].Value = ((decimal)(Original_noclrpgr));
-            this.Adapter.UpdateCommand.Parameters[243].Value = ((bool)(Original_glspaper));
-            this.Adapter.UpdateCommand.Parameters[244].Value = ((decimal)(Original_glsamt));
-            this.Adapter.UpdateCommand.Parameters[245].Value = ((bool)(Original_acovrde));
-            this.Adapter.UpdateCommand.Parameters[246].Value = ((bool)(Original_bpovrde));
+            this.Adapter.UpdateCommand.Parameters[243].Value = ((decimal)(Original_clrpgtot));
+            this.Adapter.UpdateCommand.Parameters[244].Value = ((decimal)(Original_noclrpgr));
+            this.Adapter.UpdateCommand.Parameters[245].Value = ((bool)(Original_glspaper));
+            this.Adapter.UpdateCommand.Parameters[246].Value = ((decimal)(Original_glsamt));
+            this.Adapter.UpdateCommand.Parameters[247].Value = ((bool)(Original_acovrde));
+            this.Adapter.UpdateCommand.Parameters[248].Value = ((bool)(Original_bpovrde));
             if ((Original_bpyear == null)) {
                 throw new global::System.ArgumentNullException("Original_bpyear");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[247].Value = ((string)(Original_bpyear));
+                this.Adapter.UpdateCommand.Parameters[249].Value = ((string)(Original_bpyear));
             }
-            this.Adapter.UpdateCommand.Parameters[248].Value = ((bool)(Original_themck));
-            this.Adapter.UpdateCommand.Parameters[249].Value = ((decimal)(Original_themamt));
-            this.Adapter.UpdateCommand.Parameters[250].Value = ((bool)(Original_yirschool));
-            this.Adapter.UpdateCommand.Parameters[251].Value = ((bool)(Original_story));
-            this.Adapter.UpdateCommand.Parameters[252].Value = ((bool)(Original_supplements));
-            this.Adapter.UpdateCommand.Parameters[253].Value = ((decimal)(Original_yiramt));
-            this.Adapter.UpdateCommand.Parameters[254].Value = ((decimal)(Original_storyamt));
-            this.Adapter.UpdateCommand.Parameters[255].Value = ((decimal)(Original_suppamt));
-            this.Adapter.UpdateCommand.Parameters[256].Value = ((decimal)(Original_persamount));
-            this.Adapter.UpdateCommand.Parameters[257].Value = ((decimal)(Original_perstotal));
-            this.Adapter.UpdateCommand.Parameters[258].Value = ((int)(Original_perscopies));
-            this.Adapter.UpdateCommand.Parameters[259].Value = ((bool)(Original_oursupp));
-            this.Adapter.UpdateCommand.Parameters[260].Value = ((decimal)(Original_oursuppamt));
-            this.Adapter.UpdateCommand.Parameters[261].Value = ((bool)(Original_ourovrride));
+            this.Adapter.UpdateCommand.Parameters[250].Value = ((bool)(Original_themck));
+            this.Adapter.UpdateCommand.Parameters[251].Value = ((decimal)(Original_themamt));
+            this.Adapter.UpdateCommand.Parameters[252].Value = ((bool)(Original_yirschool));
+            this.Adapter.UpdateCommand.Parameters[253].Value = ((bool)(Original_story));
+            this.Adapter.UpdateCommand.Parameters[254].Value = ((bool)(Original_supplements));
+            this.Adapter.UpdateCommand.Parameters[255].Value = ((decimal)(Original_yiramt));
+            this.Adapter.UpdateCommand.Parameters[256].Value = ((decimal)(Original_storyamt));
+            this.Adapter.UpdateCommand.Parameters[257].Value = ((decimal)(Original_suppamt));
+            this.Adapter.UpdateCommand.Parameters[258].Value = ((decimal)(Original_persamount));
+            this.Adapter.UpdateCommand.Parameters[259].Value = ((decimal)(Original_perstotal));
+            this.Adapter.UpdateCommand.Parameters[260].Value = ((int)(Original_perscopies));
+            this.Adapter.UpdateCommand.Parameters[261].Value = ((bool)(Original_oursupp));
+            this.Adapter.UpdateCommand.Parameters[262].Value = ((decimal)(Original_oursuppamt));
+            this.Adapter.UpdateCommand.Parameters[263].Value = ((bool)(Original_ourovrride));
             if ((Original_dp1desc == null)) {
                 throw new global::System.ArgumentNullException("Original_dp1desc");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[262].Value = ((string)(Original_dp1desc));
+                this.Adapter.UpdateCommand.Parameters[264].Value = ((string)(Original_dp1desc));
             }
             if ((Original_ordagryr == null)) {
                 throw new global::System.ArgumentNullException("Original_ordagryr");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[263].Value = ((string)(Original_ordagryr));
+                this.Adapter.UpdateCommand.Parameters[265].Value = ((string)(Original_ordagryr));
             }
-            this.Adapter.UpdateCommand.Parameters[264].Value = ((bool)(Original_myovrride));
-            this.Adapter.UpdateCommand.Parameters[265].Value = ((bool)(Original_hbovrride));
-            this.Adapter.UpdateCommand.Parameters[266].Value = ((bool)(Original_profovrride));
-            this.Adapter.UpdateCommand.Parameters[267].Value = ((bool)(Original_conovrride));
-            this.Adapter.UpdateCommand.Parameters[268].Value = ((bool)(Original_themovrride));
-            this.Adapter.UpdateCommand.Parameters[269].Value = ((bool)(Original_cbovrride));
-            this.Adapter.UpdateCommand.Parameters[270].Value = ((bool)(Original_spiovrride));
-            this.Adapter.UpdateCommand.Parameters[271].Value = ((bool)(Original_pbovrride));
-            this.Adapter.UpdateCommand.Parameters[272].Value = ((bool)(Original_yirsovrride));
-            this.Adapter.UpdateCommand.Parameters[273].Value = ((bool)(Original_ourstyovrride));
-            this.Adapter.UpdateCommand.Parameters[274].Value = ((bool)(Original_laminateovrride));
-            this.Adapter.UpdateCommand.Parameters[275].Value = ((bool)(Original_foilyearovrride));
-            this.Adapter.UpdateCommand.Parameters[276].Value = ((bool)(Original_basicpp));
-            this.Adapter.UpdateCommand.Parameters[277].Value = ((bool)(Original_perpp));
-            this.Adapter.UpdateCommand.Parameters[278].Value = ((decimal)(Original_peramount));
-            this.Adapter.UpdateCommand.Parameters[279].Value = ((decimal)(Original_basicamoun));
-            this.Adapter.UpdateCommand.Parameters[280].Value = ((bool)(Original_agreerec));
-            this.Adapter.UpdateCommand.Parameters[281].Value = ((System.DateTime)(Original_agreedte));
-            this.Adapter.UpdateCommand.Parameters[282].Value = ((System.DateTime)(Original_onlinecuto));
-            this.Adapter.UpdateCommand.Parameters[283].Value = ((decimal)(Original_oprcperbk));
-            this.Adapter.UpdateCommand.Parameters[284].Value = ((decimal)(Original_oprcperbk2));
-            this.Adapter.UpdateCommand.Parameters[285].Value = ((System.DateTime)(Original_dorecentry));
-            this.Adapter.UpdateCommand.Parameters[286].Value = ((bool)(Original_sdlstich));
-            this.Adapter.UpdateCommand.Parameters[287].Value = ((decimal)(Original_sdlstichamt));
-            this.Adapter.UpdateCommand.Parameters[288].Value = ((bool)(Original_copiesovride));
-            this.Adapter.UpdateCommand.Parameters[289].Value = ((decimal)(Original_binvno));
-            this.Adapter.UpdateCommand.Parameters[290].Value = ((decimal)(Original_msstanqty));
-            this.Adapter.UpdateCommand.Parameters[291].Value = ((decimal)(Original_msstandtot));
-            this.Adapter.UpdateCommand.Parameters[292].Value = ((decimal)(Original_schbalance));
-            this.Adapter.UpdateCommand.Parameters[293].Value = ((decimal)(Original_parentpymt));
-            this.Adapter.UpdateCommand.Parameters[294].Value = ((bool)(Original_nba));
+            this.Adapter.UpdateCommand.Parameters[266].Value = ((bool)(Original_myovrride));
+            this.Adapter.UpdateCommand.Parameters[267].Value = ((bool)(Original_hbovrride));
+            this.Adapter.UpdateCommand.Parameters[268].Value = ((bool)(Original_profovrride));
+            this.Adapter.UpdateCommand.Parameters[269].Value = ((bool)(Original_conovrride));
+            this.Adapter.UpdateCommand.Parameters[270].Value = ((bool)(Original_themovrride));
+            this.Adapter.UpdateCommand.Parameters[271].Value = ((bool)(Original_cbovrride));
+            this.Adapter.UpdateCommand.Parameters[272].Value = ((bool)(Original_spiovrride));
+            this.Adapter.UpdateCommand.Parameters[273].Value = ((bool)(Original_pbovrride));
+            this.Adapter.UpdateCommand.Parameters[274].Value = ((bool)(Original_yirsovrride));
+            this.Adapter.UpdateCommand.Parameters[275].Value = ((bool)(Original_ourstyovrride));
+            this.Adapter.UpdateCommand.Parameters[276].Value = ((bool)(Original_laminateovrride));
+            this.Adapter.UpdateCommand.Parameters[277].Value = ((bool)(Original_foilyearovrride));
+            this.Adapter.UpdateCommand.Parameters[278].Value = ((bool)(Original_basicpp));
+            this.Adapter.UpdateCommand.Parameters[279].Value = ((bool)(Original_perpp));
+            this.Adapter.UpdateCommand.Parameters[280].Value = ((decimal)(Original_peramount));
+            this.Adapter.UpdateCommand.Parameters[281].Value = ((decimal)(Original_basicamoun));
+            this.Adapter.UpdateCommand.Parameters[282].Value = ((bool)(Original_agreerec));
+            this.Adapter.UpdateCommand.Parameters[283].Value = ((System.DateTime)(Original_agreedte));
+            this.Adapter.UpdateCommand.Parameters[284].Value = ((System.DateTime)(Original_onlinecuto));
+            this.Adapter.UpdateCommand.Parameters[285].Value = ((decimal)(Original_oprcperbk));
+            this.Adapter.UpdateCommand.Parameters[286].Value = ((decimal)(Original_oprcperbk2));
+            this.Adapter.UpdateCommand.Parameters[287].Value = ((System.DateTime)(Original_dorecentry));
+            this.Adapter.UpdateCommand.Parameters[288].Value = ((bool)(Original_sdlstich));
+            this.Adapter.UpdateCommand.Parameters[289].Value = ((decimal)(Original_sdlstichamt));
+            this.Adapter.UpdateCommand.Parameters[290].Value = ((bool)(Original_copiesovride));
+            this.Adapter.UpdateCommand.Parameters[291].Value = ((decimal)(Original_binvno));
+            this.Adapter.UpdateCommand.Parameters[292].Value = ((decimal)(Original_msstanqty));
+            this.Adapter.UpdateCommand.Parameters[293].Value = ((decimal)(Original_msstandtot));
+            this.Adapter.UpdateCommand.Parameters[294].Value = ((decimal)(Original_schbalance));
+            this.Adapter.UpdateCommand.Parameters[295].Value = ((decimal)(Original_parentpymt));
+            this.Adapter.UpdateCommand.Parameters[296].Value = ((bool)(Original_nba));
             if ((Original_fldtype == null)) {
                 throw new global::System.ArgumentNullException("Original_fldtype");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[295].Value = ((string)(Original_fldtype));
+                this.Adapter.UpdateCommand.Parameters[297].Value = ((string)(Original_fldtype));
             }
-            this.Adapter.UpdateCommand.Parameters[296].Value = ((bool)(Original_isfolder));
-            this.Adapter.UpdateCommand.Parameters[297].Value = ((decimal)(Original_priceovrd));
-            this.Adapter.UpdateCommand.Parameters[298].Value = ((decimal)(Original_mlaminationamt));
-            this.Adapter.UpdateCommand.Parameters[299].Value = ((bool)(Original_mlamination));
-            this.Adapter.UpdateCommand.Parameters[300].Value = ((bool)(Original_opinkpers));
-            this.Adapter.UpdateCommand.Parameters[301].Value = ((bool)(Original_opfoilpers));
-            this.Adapter.UpdateCommand.Parameters[302].Value = ((decimal)(Original_opinkpersamt));
-            this.Adapter.UpdateCommand.Parameters[303].Value = ((decimal)(Original_opfoilpersamt));
-            this.Adapter.UpdateCommand.Parameters[304].Value = ((bool)(Original_oppicpers));
-            this.Adapter.UpdateCommand.Parameters[305].Value = ((decimal)(Original_oppicpersamt));
-            this.Adapter.UpdateCommand.Parameters[306].Value = ((bool)(Original_opcustom));
-            this.Adapter.UpdateCommand.Parameters[307].Value = ((decimal)(Original_opcustomamt));
-            this.Adapter.UpdateCommand.Parameters[308].Value = ((decimal)(Original_opfoiltxtamt));
-            this.Adapter.UpdateCommand.Parameters[309].Value = ((bool)(Original_opfoiltxt));
-            this.Adapter.UpdateCommand.Parameters[310].Value = ((decimal)(Original_opinktamt));
-            this.Adapter.UpdateCommand.Parameters[311].Value = ((bool)(Original_opink));
-            this.Adapter.UpdateCommand.Parameters[312].Value = ((bool)(Original_yrdiscount));
-            this.Adapter.UpdateCommand.Parameters[313].Value = ((bool)(Original_luvlines));
-            this.Adapter.UpdateCommand.Parameters[314].Value = ((decimal)(Original_yrdiscountamt));
-            this.Adapter.UpdateCommand.Parameters[315].Value = ((decimal)(Original_luvlineamt));
-            this.Adapter.UpdateCommand.Parameters[316].Value = ((bool)(Original_fullad));
-            this.Adapter.UpdateCommand.Parameters[317].Value = ((decimal)(Original_fulladamt));
-            this.Adapter.UpdateCommand.Parameters[318].Value = ((bool)(Original_halfad));
-            this.Adapter.UpdateCommand.Parameters[319].Value = ((decimal)(Original_halfadmt));
-            this.Adapter.UpdateCommand.Parameters[320].Value = ((bool)(Original_quarterad));
-            this.Adapter.UpdateCommand.Parameters[321].Value = ((decimal)(Original_quarteradamt));
-            this.Adapter.UpdateCommand.Parameters[322].Value = ((bool)(Original_eighthad));
-            this.Adapter.UpdateCommand.Parameters[323].Value = ((decimal)(Original_eighthadamt));
-            this.Adapter.UpdateCommand.Parameters[324].Value = ((bool)(Original_adline));
+            this.Adapter.UpdateCommand.Parameters[298].Value = ((bool)(Original_isfolder));
+            this.Adapter.UpdateCommand.Parameters[299].Value = ((decimal)(Original_priceovrd));
+            this.Adapter.UpdateCommand.Parameters[300].Value = ((decimal)(Original_mlaminationamt));
+            this.Adapter.UpdateCommand.Parameters[301].Value = ((bool)(Original_mlamination));
+            this.Adapter.UpdateCommand.Parameters[302].Value = ((bool)(Original_opinkpers));
+            this.Adapter.UpdateCommand.Parameters[303].Value = ((bool)(Original_opfoilpers));
+            this.Adapter.UpdateCommand.Parameters[304].Value = ((decimal)(Original_opinkpersamt));
+            this.Adapter.UpdateCommand.Parameters[305].Value = ((decimal)(Original_opfoilpersamt));
+            this.Adapter.UpdateCommand.Parameters[306].Value = ((bool)(Original_oppicpers));
+            this.Adapter.UpdateCommand.Parameters[307].Value = ((decimal)(Original_oppicpersamt));
+            this.Adapter.UpdateCommand.Parameters[308].Value = ((bool)(Original_opcustom));
+            this.Adapter.UpdateCommand.Parameters[309].Value = ((decimal)(Original_opcustomamt));
+            this.Adapter.UpdateCommand.Parameters[310].Value = ((decimal)(Original_opfoiltxtamt));
+            this.Adapter.UpdateCommand.Parameters[311].Value = ((bool)(Original_opfoiltxt));
+            this.Adapter.UpdateCommand.Parameters[312].Value = ((decimal)(Original_opinktamt));
+            this.Adapter.UpdateCommand.Parameters[313].Value = ((bool)(Original_opink));
+            this.Adapter.UpdateCommand.Parameters[314].Value = ((bool)(Original_yrdiscount));
+            this.Adapter.UpdateCommand.Parameters[315].Value = ((bool)(Original_luvlines));
+            this.Adapter.UpdateCommand.Parameters[316].Value = ((decimal)(Original_yrdiscountamt));
+            this.Adapter.UpdateCommand.Parameters[317].Value = ((decimal)(Original_luvlineamt));
+            this.Adapter.UpdateCommand.Parameters[318].Value = ((bool)(Original_fullad));
+            this.Adapter.UpdateCommand.Parameters[319].Value = ((decimal)(Original_fulladamt));
+            this.Adapter.UpdateCommand.Parameters[320].Value = ((bool)(Original_halfad));
+            this.Adapter.UpdateCommand.Parameters[321].Value = ((decimal)(Original_halfadmt));
+            this.Adapter.UpdateCommand.Parameters[322].Value = ((bool)(Original_quarterad));
+            this.Adapter.UpdateCommand.Parameters[323].Value = ((decimal)(Original_quarteradamt));
+            this.Adapter.UpdateCommand.Parameters[324].Value = ((bool)(Original_eighthad));
+            this.Adapter.UpdateCommand.Parameters[325].Value = ((decimal)(Original_eighthadamt));
+            this.Adapter.UpdateCommand.Parameters[326].Value = ((bool)(Original_adline));
             if ((Original_cred_etc2 == null)) {
                 throw new global::System.ArgumentNullException("Original_cred_etc2");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[325].Value = ((string)(Original_cred_etc2));
+                this.Adapter.UpdateCommand.Parameters[327].Value = ((string)(Original_cred_etc2));
             }
             if ((Original_desc22 == null)) {
                 throw new global::System.ArgumentNullException("Original_desc22");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[326].Value = ((string)(Original_desc22));
+                this.Adapter.UpdateCommand.Parameters[328].Value = ((string)(Original_desc22));
             }
-            this.Adapter.UpdateCommand.Parameters[327].Value = ((decimal)(Original_adjaftr2));
-            this.Adapter.UpdateCommand.Parameters[328].Value = ((decimal)(Original_desc22tot));
-            this.Adapter.UpdateCommand.Parameters[329].Value = ((decimal)(Original_halfadamt));
-            this.Adapter.UpdateCommand.Parameters[330].Value = ((decimal)(Original_prcor));
-            this.Adapter.UpdateCommand.Parameters[331].Value = ((System.DateTime)(Original_adcuto));
-            this.Adapter.UpdateCommand.Parameters[332].Value = ((bool)(Original_webonly));
-            this.Adapter.UpdateCommand.Parameters[333].Value = ((int)(Original_freebooks));
-            if ((Original_IconCopies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[334].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[335].Value = ((int)(Original_IconCopies.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[334].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[335].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[329].Value = ((decimal)(Original_adjaftr2));
+            this.Adapter.UpdateCommand.Parameters[330].Value = ((decimal)(Original_desc22tot));
+            this.Adapter.UpdateCommand.Parameters[331].Value = ((decimal)(Original_halfadamt));
+            this.Adapter.UpdateCommand.Parameters[332].Value = ((decimal)(Original_prcor));
+            this.Adapter.UpdateCommand.Parameters[333].Value = ((System.DateTime)(Original_adcuto));
+            this.Adapter.UpdateCommand.Parameters[334].Value = ((bool)(Original_webonly));
+            this.Adapter.UpdateCommand.Parameters[335].Value = ((int)(Original_freebooks));
+            this.Adapter.UpdateCommand.Parameters[336].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[337].Value = ((int)(Original_IconCopies));
             if ((Original_extrchg == null)) {
-                this.Adapter.UpdateCommand.Parameters[336].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[337].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_extrchg");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[336].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[337].Value = ((string)(Original_extrchg));
-            }
-            if ((Original_IconAmt.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[338].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[339].Value = ((decimal)(Original_IconAmt.Value));
+                this.Adapter.UpdateCommand.Parameters[339].Value = ((string)(Original_extrchg));
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[338].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[339].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[340].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[340].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[341].Value = ((decimal)(Original_IconAmt));
+            this.Adapter.UpdateCommand.Parameters[342].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[343].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[344].Value = ((decimal)(Original_schooltax));
+            this.Adapter.UpdateCommand.Parameters[345].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[346].Value = ((decimal)(Original_schooltaxrate));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9226,13 +9306,13 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         private bool _clearBeforeFill;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public custTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
             get {
                 if ((this._adapter == null)) {
@@ -9243,7 +9323,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal global::System.Data.SqlClient.SqlConnection Connection {
             get {
                 if ((this._connection == null)) {
@@ -9271,7 +9351,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal global::System.Data.SqlClient.SqlTransaction Transaction {
             get {
                 return this._transaction;
@@ -9297,7 +9377,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
             get {
                 if ((this._commandCollection == null)) {
@@ -9308,7 +9388,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public bool ClearBeforeFill {
             get {
                 return this._clearBeforeFill;
@@ -9319,7 +9399,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
@@ -9526,14 +9606,14 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
@@ -9547,7 +9627,7 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(dsBids.custDataTable dataTable, string schcode) {
@@ -9566,7 +9646,7 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual dsBids.custDataTable GetData(string schcode) {
@@ -9583,21 +9663,21 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(dsBids.custDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(dsBids dataSet) {
             return this.Adapter.Update(dataSet, "cust");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
@@ -9605,14 +9685,14 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(
@@ -9837,7 +9917,7 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
@@ -10237,7 +10317,7 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
@@ -10314,7 +10394,7 @@ WHERE          (schcode = @schcode)";
         private global::System.Data.IDbConnection _connection;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public UpdateOrderOption UpdateOrder {
             get {
                 return this._updateOrder;
@@ -10325,7 +10405,7 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
@@ -10339,7 +10419,7 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
@@ -10353,7 +10433,7 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -10364,7 +10444,7 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         public global::System.Data.IDbConnection Connection {
             get {
@@ -10387,7 +10467,7 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         public int TableAdapterInstanceCount {
             get {
@@ -10406,7 +10486,7 @@ WHERE          (schcode = @schcode)";
         ///Update rows in top-down order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateUpdatedRows(dsBids dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._custTableAdapter != null)) {
@@ -10434,7 +10514,7 @@ WHERE          (schcode = @schcode)";
         ///Insert rows in top-down order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateInsertedRows(dsBids dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._custTableAdapter != null)) {
@@ -10460,7 +10540,7 @@ WHERE          (schcode = @schcode)";
         ///Delete rows in bottom-up order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(dsBids dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._bidsTableAdapter != null)) {
@@ -10486,7 +10566,7 @@ WHERE          (schcode = @schcode)";
         ///Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private global::System.Data.DataRow[] GetRealUpdatedRows(global::System.Data.DataRow[] updatedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             if (((updatedRows == null) 
                         || (updatedRows.Length < 1))) {
@@ -10510,7 +10590,7 @@ WHERE          (schcode = @schcode)";
         ///Update all changes to the dataset.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public virtual int UpdateAll(dsBids dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
@@ -10657,13 +10737,13 @@ WHERE          (schcode = @schcode)";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected virtual void SortSelfReferenceRows(global::System.Data.DataRow[] rows, global::System.Data.DataRelation relation, bool childFirst) {
             global::System.Array.Sort<global::System.Data.DataRow>(rows, new SelfReferenceComparer(relation, childFirst));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected virtual bool MatchTableAdapterConnection(global::System.Data.IDbConnection inputConnection) {
             if ((this._connection != null)) {
                 return true;
@@ -10681,7 +10761,7 @@ WHERE          (schcode = @schcode)";
         /// <summary>
         ///Update Order Option
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public enum UpdateOrderOption {
             
             InsertUpdateDelete = 0,
@@ -10692,7 +10772,7 @@ WHERE          (schcode = @schcode)";
         /// <summary>
         ///Used to sort self-referenced table's rows
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private class SelfReferenceComparer : object, global::System.Collections.Generic.IComparer<global::System.Data.DataRow> {
             
             private global::System.Data.DataRelation _relation;
@@ -10700,7 +10780,7 @@ WHERE          (schcode = @schcode)";
             private int _childFirst;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal SelfReferenceComparer(global::System.Data.DataRelation relation, bool childFirst) {
                 this._relation = relation;
                 if (childFirst) {
@@ -10712,7 +10792,7 @@ WHERE          (schcode = @schcode)";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private global::System.Data.DataRow GetRoot(global::System.Data.DataRow row, out int distance) {
                 global::System.Diagnostics.Debug.Assert((row != null));
                 global::System.Data.DataRow root = row;
@@ -10751,7 +10831,7 @@ WHERE          (schcode = @schcode)";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int Compare(global::System.Data.DataRow row1, global::System.Data.DataRow row2) {
                 if (object.ReferenceEquals(row1, row2)) {
                     return 0;

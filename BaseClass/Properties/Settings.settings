@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="MBCConnection" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=192.168.1.101;Initial Catalog=Mbc5;Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=192.168.1.101;User Id=sa;password=Briggitte1;Initial Catalog=Mbc5;</Value>
     </Setting>
   </Settings>
 </SettingsFile>
