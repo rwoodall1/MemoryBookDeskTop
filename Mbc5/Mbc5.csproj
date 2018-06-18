@@ -537,6 +537,9 @@
     <None Include="DataSets\LookUp.xss">
       <DependentUpon>LookUp.xsd</DependentUpon>
     </None>
+    <None Include="localConnection.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
