@@ -559,6 +559,22 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
         }
 
+        private void barScanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+                this.Cursor = Cursors.AppStarting;
+
+                frmBarScan frmBarScan = new frmBarScan(this.ApplicationUser);
+                frmBarScan.MdiParent = this;
+                frmBarScan.Show();
+                this.Cursor = Cursors.Default;
+
+
+            
+            
+
+        }
+
 
 
 

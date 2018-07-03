@@ -95,7 +95,34 @@ namespace BaseClass.Classes {
 
             return obj;
             }
+        public static T ConvertToObject<T>(DataTable table)
+        {
+            List<DataRow> rows = new List<DataRow>();
 
+            foreach (DataRow row in table.Rows)
+            {
+                rows.Add(row);
+            }
+
+            return ConvertToObject<T>(rows);
+        }
+        public static T ConvertToObject<T>(IList<DataRow> rows)
+        {
+            IList<T> list = null;
+
+            if (rows != null)
+            {
+                list = new List<T>();
+
+                foreach (DataRow row in rows)
+                {
+                    T item = CreateItem<T>(row);
+                    list.Add(item);
+                }
+            }
+
+            return list[0];
+        }
         public static DataTable CreateTable<T>() {
             Type entityType = typeof(T);
             DataTable table = new DataTable(entityType.Name);

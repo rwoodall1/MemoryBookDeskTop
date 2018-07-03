@@ -401,6 +401,9 @@
     <EmbeddedResource Include="Reports\ReportTest.resx">
       <DependentUpon>ReportTest.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="localConnection.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="app.config" />
     <None Include="DataSets\dsBids.xsc">
       <DependentUpon>dsBids.xsd</DependentUpon>
