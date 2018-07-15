@@ -140,8 +140,13 @@ namespace Mbc5.Forms
 
         private void txtBarCode_Leave(object sender, EventArgs e)
         {
-            this.Company = txtBarCode.Text.Substring(0, 3);
-            this.Invno = int.Parse(txtBarCode.Text.Substring(3,6));
+            if (txtBarCode.Text.Length >= 6)
+            {
+                this.Company = txtBarCode.Text.Substring(0, 3);
+                this.Invno = int.Parse(txtBarCode.Text.Substring(3, 6));
+            }
+            else { MessageBox.Show("Invalid scan code");
+                return; }
             var sqlQuery = new SQLCustomClient();
             switch (this.Company)
             {
@@ -199,7 +204,7 @@ namespace Mbc5.Forms
             var sqlClient = new SQLCustomClient();
 
 
-            if (!string.IsNullOrEmpty(txtDeptCode.Text) && string.IsNullOrEmpty(txtDept.Text))
+            if (!string.IsNullOrEmpty(txtDeptCode.Text) && !string.IsNullOrEmpty(txtDept.Text))
             {
                 sqlClient.AddParameter("@Invno", this.Invno);
                 sqlClient.CommandText(@"Select C.Schname,C.Schcode,P.NoPages,P.NoCopies,P.Invno,P.Perfbind,P.VendCd FROM Cust C
@@ -245,7 +250,7 @@ namespace Mbc5.Forms
                                       WAR= @WAR                                
                                     , WIR =
                                       CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                                     ,WTR=@Wtr+WTR
+                                     ,WTR=@Wtr+COALESCE(WTR,0)
                                 WHERE Invno=@Invno AND DescripID=@DescripID ");
                             var result = sqlClient.Update();
                             sqlClient.ClearParamters();
@@ -279,7 +284,7 @@ namespace Mbc5.Forms
                                         CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
                                     , WIR =
                                       CASE When WIR IS NULL THEN @WIR ELSE WIR END
-                                     ,WTR=@Wtr+WTR
+                                     ,WTR=@Wtr+COALESCE(WTR,0)
                                 WHERE Invno=@Invno AND DescripID=@DescripID ");
                             var result=sqlClient.Update();
                             sqlClient.ClearParamters();
@@ -306,24 +311,138 @@ namespace Mbc5.Forms
                             break;
                         }
 
+                }
+
+            }
+           
+           
+            if (trkType == "SC")
+            {
+                switch (vDeptCode)
+                {
+                    //May have to change this id.
+                    //PROD
+                    case 1012:
+                        {
+                            sqlClient.AddParameter("@Invno", this.Invno);
+                            sqlClient.AddParameter("@ToProd", vDateTime);
+                            sqlClient.CommandText(@"Update Produtn SET ToPro=@ToProd Where Invno=@Invno");
+                            sqlClient.Update();
+
+                            break;
+                        }
+                    case 1000:
+                        { //CODE FOR LAM1 OR CASE
+                            //war 41
+                            //war is datetime
+                            //wir is initials
+
+ //                           case alltrim(m.department) == 'LAM1'
+
+ //       replace covers.lamdtesent with date()
+
+ //       IF !EMPTY(ALLTRIM(covers.lamvend))
+
+ //       ncopies = VAL(covers.lamvend)
+
+ //       ELSE
+ //       ncopies = 0
+
+ //       ENDIF
+ //       nval = ncopies + VAL(thisform.txtcopies.Value)
+
+ //       cval = ALLTRIM(STR(nval))
+
+ //       replace covers.lamvend WITH cval && lamvend is now being used as number of copies but is a character field.
+ //* !*replace produtn.laminated WITH thisform.txtlamtype.value
+ //replace covers.laminit WITH thisform.txtinit.value
+
+ //       thisform.txtcopies.Visible =.f.
+ //       thisform.txtcopies.Value = ""
+
+ //       thisform.lblcopies.Visible =.f.
 
 
+        //Case alltrim(m.department)== 'LAM2'
 
+        //replace covers.lamdtebk with date()
 
+        //replace covers.lamvend with substr(m.t_init, 4, 4)
 
+                            sqlClient.AddParameter("@lamdtesent",DateTime.Now);
+                            sqlClient.AddParameter("@init",txtIntitials.Text.Trim());
+                            int vCopies = 0;
+                            int.TryParse(txtCopies.Text, out vCopies);
+                            sqlClient.AddParameter("@lamcopies",vCopies);
 
-
-
+                            sqlClient.AddParameter("@DescripID", vDeptCode);
+                            sqlClient.AddParameter("@WAR", vDateTime);
+                            sqlClient.AddParameter("@WIR", vWIR);
+                            sqlClient.AddParameter("@Wtr", vWtr);
+                            sqlClient.AddParameter("@Schcode", txtSchcode.Text);
+                            sqlClient.CommandText(@"Update Covers SET
+                                     lamdtesent=GETDATE(),
+                                      laminit=@init, 
+                                      lamcopies=COALESCE(lamcopies,0) +@lamcopies
+                                    
+                                WHERE Invno=@Invno AND DescripID=@DescripID ");
+                            var result = sqlClient.Update();
+                            sqlClient.ClearParamters();
+                            sqlClient.ReturnSqlIdentityID(true);
+                            sqlClient.AddParameter("@Invno", this.Invno);
+                            sqlClient.AddParameter("@DescripID", vDeptCode);
+                            sqlClient.AddParameter("@WAR", vDateTime);
+                            sqlClient.AddParameter("@WIR", vWIR);
+                            sqlClient.AddParameter("@Wtr", vWtr);
+                            sqlClient.AddParameter("@Schcode", txtSchcode.Text);
+                            sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO CoverDetail (DescripID,War,Wtr,Wir,Invno,Schcode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@Schcode);
+                                                    END
+                                                    ");
+                            var result1 = sqlClient.Insert();
+                            break;
+                        }
+                    default:
+                        {
+                            //war is datetime
+                            //wir is initials
+                            sqlClient.AddParameter("@Invno", this.Invno);
+                            sqlClient.AddParameter("@DescripID", vDeptCode);
+                            sqlClient.AddParameter("@WAR", vDateTime);
+                            sqlClient.AddParameter("@WIR", vWIR);
+                            sqlClient.AddParameter("@Wtr", vWtr);
+                            sqlClient.AddParameter("@Schcode", txtSchcode.Text);
+                            sqlClient.CommandText(@"Update CoverDetail SET
+                                 WAR=
+                                        CASE When WAR IS NULL THEN @WAR ELSE WAR END                                 
+                                    , WIR =
+                                      CASE When WIR IS NULL THEN @WIR ELSE WIR END
+                                     ,WTR=@Wtr+COALESCE(WTR,0)
+                                WHERE Invno=@Invno AND DescripID=@DescripID ");
+                            var result = sqlClient.Update();
+                            sqlClient.ClearParamters();
+                            sqlClient.ReturnSqlIdentityID(true);
+                            sqlClient.AddParameter("@Invno", this.Invno);
+                            sqlClient.AddParameter("@DescripID", vDeptCode);
+                            sqlClient.AddParameter("@WAR", vDateTime);
+                            sqlClient.AddParameter("@WIR", vWIR);
+                            sqlClient.AddParameter("@Wtr", vWtr);
+                            sqlClient.AddParameter("@Schcode", txtSchcode.Text);
+                            sqlClient.CommandText(@" IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                                    Begin
+                                                    INSERT INTO CoverDetail (DescripID,War,Wtr,Wir,Invno,Schcode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@Schcode);
+                                                    END
+                                                    ");
+                            var result1 = sqlClient.Insert();
+                           
+                            break;
+                        }
 
                 }
 
             }
             if (trkType == "CP")
-            {
-
-            }
-           
-            if (trkType == "SC")
             {
 
             }
