@@ -91,3 +91,4 @@ BaseClass/bin/Debug/BaseClass.pdb
 *.ide
 
 /.vs/MemoryBook/v15/Server/sqlite3
+/.vs/MemoryBook/DesignTimeBuild/.dtbcache
