@@ -59,6 +59,10 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
 
         private void frmMbcCust_Load(object sender,EventArgs e) {
+            // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
+            this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
+            // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.
+            this.lkpLeadNameTableAdapter.Fill(this.dsCust.lkpLeadName);
             // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
             this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
             // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
@@ -1158,10 +1162,7 @@ namespace Mbc5.Forms.MemoryBook {
            
         }
 
-        private void taxexemptionexpirationdateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            taxexemptionexpirationdateDateTimePicker.Format = DateTimePickerFormat.Long;
-        }
+      
 
 
         //Nothing below here
