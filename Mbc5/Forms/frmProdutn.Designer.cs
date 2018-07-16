@@ -4412,7 +4412,7 @@
             // 
             // lamvendTextBox
             // 
-            this.lamvendTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "lamvend", true));
+            this.lamvendTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "lamcopies", true));
             this.lamvendTextBox.Location = new System.Drawing.Point(110, 408);
             this.lamvendTextBox.Name = "lamvendTextBox";
             this.lamvendTextBox.Size = new System.Drawing.Size(49, 20);

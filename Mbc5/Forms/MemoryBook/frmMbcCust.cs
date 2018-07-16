@@ -1162,7 +1162,22 @@ namespace Mbc5.Forms.MemoryBook {
            
         }
 
-      
+        private void firstDaySchoolDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            firstDaySchoolDateTimePicker.Format = DateTimePickerFormat.Long;
+        }
+
+        private void rbdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            rbdateDateTimePicker.Format= DateTimePickerFormat.Long;
+        }
+
+        private void xeldateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            xeldateDateTimePicker.Format= DateTimePickerFormat.Long;
+        }
+
+
 
 
         //Nothing below here

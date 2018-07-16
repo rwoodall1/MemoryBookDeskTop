@@ -100,21 +100,33 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.Label stageLabel;
             System.Windows.Forms.Label leadsourceLabel;
             System.Windows.Forms.Label leadnameLabel;
+            System.Windows.Forms.Label firstDaySchoolLabel;
+            System.Windows.Forms.Label csrep2Label;
+            System.Windows.Forms.Label jobnoLabel;
+            System.Windows.Forms.Label advpwLabel;
+            System.Windows.Forms.Label stfpwLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMbcCust));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label xeldateLabel;
+            System.Windows.Forms.Label rbdateLabel;
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.leadnameComboBox = new System.Windows.Forms.ComboBox();
+            this.stfpwLabel1 = new System.Windows.Forms.Label();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
+            this.advpwLabel1 = new System.Windows.Forms.Label();
+            this.jobnoLabel1 = new System.Windows.Forms.Label();
+            this.firstDaySchoolDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.leadnameComboBox = new System.Windows.Forms.ComboBox();
+            this.lkpLeadNameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.leadsourceComboBox = new System.Windows.Forms.ComboBox();
+            this.lkpLeadSourceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.isTaxExemptCheckBox = new System.Windows.Forms.CheckBox();
-            this.lblSchcodeVal = new System.Windows.Forms.Label();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.electronicoptions = new System.Windows.Forms.ComboBox();
             this.electronickitCheckBox = new System.Windows.Forms.CheckBox();
@@ -160,6 +172,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.btnProdChk = new System.Windows.Forms.Button();
+            this.csrep2TextBox = new System.Windows.Forms.TextBox();
             this.stageComboBox = new System.Windows.Forms.ComboBox();
             this.dedayoutLabel2 = new System.Windows.Forms.Label();
             this.dedayinLabel2 = new System.Windows.Forms.Label();
@@ -186,6 +199,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtOracleCodeSrch = new System.Windows.Forms.TextBox();
             this.btnSchoolSearch = new System.Windows.Forms.Button();
             this.txtSchNamesrch = new System.Windows.Forms.TextBox();
+            this.lblSchcodeVal = new System.Windows.Forms.Label();
             this.btnSchoolCode = new System.Windows.Forms.Button();
             this.txtSchCodesrch = new System.Windows.Forms.TextBox();
             this.pg2 = new System.Windows.Forms.TabPage();
@@ -297,10 +311,10 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpschtypeTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpschtypeTableAdapter();
             this.custSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custSearchTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custSearchTableAdapter();
-            this.lkpLeadNameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lkpLeadNameTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadNameTableAdapter();
-            this.lkpLeadSourceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadSourceTableAdapter();
+            this.xeldateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.rbdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -371,6 +385,13 @@ namespace Mbc5.Forms.MemoryBook {
             stageLabel = new System.Windows.Forms.Label();
             leadsourceLabel = new System.Windows.Forms.Label();
             leadnameLabel = new System.Windows.Forms.Label();
+            firstDaySchoolLabel = new System.Windows.Forms.Label();
+            csrep2Label = new System.Windows.Forms.Label();
+            jobnoLabel = new System.Windows.Forms.Label();
+            advpwLabel = new System.Windows.Forms.Label();
+            stfpwLabel = new System.Windows.Forms.Label();
+            xeldateLabel = new System.Windows.Forms.Label();
+            rbdateLabel = new System.Windows.Forms.Label();
             this.BottomPanel.SuspendLayout();
             this.CustTab.SuspendLayout();
             this.pg1.SuspendLayout();
@@ -380,6 +401,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadNameBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpschtypeBindingSource)).BeginInit();
@@ -408,8 +431,6 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.dsDateCont)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custSearchBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadNameBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -574,7 +595,7 @@ namespace Mbc5.Forms.MemoryBook {
             // schoutLabel
             // 
             schoutLabel.AutoSize = true;
-            schoutLabel.Location = new System.Drawing.Point(343, 333);
+            schoutLabel.Location = new System.Drawing.Point(339, 348);
             schoutLabel.Name = "schoutLabel";
             schoutLabel.Size = new System.Drawing.Size(52, 13);
             schoutLabel.TabIndex = 23;
@@ -601,7 +622,7 @@ namespace Mbc5.Forms.MemoryBook {
             // schcolorsLabel
             // 
             schcolorsLabel.AutoSize = true;
-            schcolorsLabel.Location = new System.Drawing.Point(258, 417);
+            schcolorsLabel.Location = new System.Drawing.Point(258, 429);
             schcolorsLabel.Name = "schcolorsLabel";
             schcolorsLabel.Size = new System.Drawing.Size(75, 13);
             schcolorsLabel.TabIndex = 27;
@@ -610,7 +631,7 @@ namespace Mbc5.Forms.MemoryBook {
             // lblCategory
             // 
             lblCategory.AutoSize = true;
-            lblCategory.Location = new System.Drawing.Point(245, 392);
+            lblCategory.Location = new System.Drawing.Point(245, 404);
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new System.Drawing.Size(88, 13);
             lblCategory.TabIndex = 24;
@@ -655,7 +676,7 @@ namespace Mbc5.Forms.MemoryBook {
             // newpublisherLabel
             // 
             newpublisherLabel.AutoSize = true;
-            newpublisherLabel.Location = new System.Drawing.Point(259, 364);
+            newpublisherLabel.Location = new System.Drawing.Point(259, 376);
             newpublisherLabel.Name = "newpublisherLabel";
             newpublisherLabel.Size = new System.Drawing.Size(74, 13);
             newpublisherLabel.TabIndex = 22;
@@ -664,7 +685,7 @@ namespace Mbc5.Forms.MemoryBook {
             // clrpg_intLabel
             // 
             clrpg_intLabel.AutoSize = true;
-            clrpg_intLabel.Location = new System.Drawing.Point(256, 332);
+            clrpg_intLabel.Location = new System.Drawing.Point(256, 327);
             clrpg_intLabel.Name = "clrpg_intLabel";
             clrpg_intLabel.Size = new System.Drawing.Size(36, 13);
             clrpg_intLabel.TabIndex = 22;
@@ -1061,11 +1082,56 @@ namespace Mbc5.Forms.MemoryBook {
             // leadnameLabel
             // 
             leadnameLabel.AutoSize = true;
-            leadnameLabel.Location = new System.Drawing.Point(268, 451);
+            leadnameLabel.Location = new System.Drawing.Point(268, 457);
             leadnameLabel.Name = "leadnameLabel";
             leadnameLabel.Size = new System.Drawing.Size(65, 13);
             leadnameLabel.TabIndex = 107;
             leadnameLabel.Text = "Lead Name:";
+            // 
+            // firstDaySchoolLabel
+            // 
+            firstDaySchoolLabel.AutoSize = true;
+            firstDaySchoolLabel.Location = new System.Drawing.Point(340, 330);
+            firstDaySchoolLabel.Name = "firstDaySchoolLabel";
+            firstDaySchoolLabel.Size = new System.Drawing.Size(51, 13);
+            firstDaySchoolLabel.TabIndex = 108;
+            firstDaySchoolLabel.Text = "First Day:";
+            // 
+            // csrep2Label
+            // 
+            csrep2Label.AutoSize = true;
+            csrep2Label.Location = new System.Drawing.Point(12, 8);
+            csrep2Label.Name = "csrep2Label";
+            csrep2Label.Size = new System.Drawing.Size(59, 13);
+            csrep2Label.TabIndex = 109;
+            csrep2Label.Text = "Sales Rep:";
+            // 
+            // jobnoLabel
+            // 
+            jobnoLabel.AutoSize = true;
+            jobnoLabel.Location = new System.Drawing.Point(52, 478);
+            jobnoLabel.Name = "jobnoLabel";
+            jobnoLabel.Size = new System.Drawing.Size(47, 13);
+            jobnoLabel.TabIndex = 109;
+            jobnoLabel.Text = "Job No.:";
+            // 
+            // advpwLabel
+            // 
+            advpwLabel.AutoSize = true;
+            advpwLabel.Location = new System.Drawing.Point(5, 501);
+            advpwLabel.Name = "advpwLabel";
+            advpwLabel.Size = new System.Drawing.Size(94, 13);
+            advpwLabel.TabIndex = 110;
+            advpwLabel.Text = "Advisor Password:";
+            // 
+            // stfpwLabel
+            // 
+            stfpwLabel.AutoSize = true;
+            stfpwLabel.Location = new System.Drawing.Point(18, 526);
+            stfpwLabel.Name = "stfpwLabel";
+            stfpwLabel.Size = new System.Drawing.Size(81, 13);
+            stfpwLabel.TabIndex = 111;
+            stfpwLabel.Text = "Staff Password:";
             // 
             // CustTab
             // 
@@ -1108,12 +1174,23 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.splitContainer.Panel1.AutoScroll = true;
             this.splitContainer.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel1.Controls.Add(rbdateLabel);
+            this.splitContainer.Panel1.Controls.Add(this.rbdateDateTimePicker);
+            this.splitContainer.Panel1.Controls.Add(xeldateLabel);
+            this.splitContainer.Panel1.Controls.Add(this.xeldateDateTimePicker);
+            this.splitContainer.Panel1.Controls.Add(stfpwLabel);
+            this.splitContainer.Panel1.Controls.Add(this.stfpwLabel1);
+            this.splitContainer.Panel1.Controls.Add(advpwLabel);
+            this.splitContainer.Panel1.Controls.Add(this.advpwLabel1);
+            this.splitContainer.Panel1.Controls.Add(jobnoLabel);
+            this.splitContainer.Panel1.Controls.Add(this.jobnoLabel1);
+            this.splitContainer.Panel1.Controls.Add(firstDaySchoolLabel);
+            this.splitContainer.Panel1.Controls.Add(this.firstDaySchoolDateTimePicker);
             this.splitContainer.Panel1.Controls.Add(leadnameLabel);
             this.splitContainer.Panel1.Controls.Add(this.leadnameComboBox);
             this.splitContainer.Panel1.Controls.Add(leadsourceLabel);
             this.splitContainer.Panel1.Controls.Add(this.leadsourceComboBox);
             this.splitContainer.Panel1.Controls.Add(this.isTaxExemptCheckBox);
-            this.splitContainer.Panel1.Controls.Add(this.lblSchcodeVal);
             this.splitContainer.Panel1.Controls.Add(statusLabel);
             this.splitContainer.Panel1.Controls.Add(this.statusComboBox);
             this.splitContainer.Panel1.Controls.Add(this.electronicoptions);
@@ -1183,7 +1260,9 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.splitContainer.Panel2.AutoScroll = true;
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel2.Controls.Add(csrep2Label);
             this.splitContainer.Panel2.Controls.Add(this.btnProdChk);
+            this.splitContainer.Panel2.Controls.Add(this.csrep2TextBox);
             this.splitContainer.Panel2.Controls.Add(stageLabel);
             this.splitContainer.Panel2.Controls.Add(this.stageComboBox);
             this.splitContainer.Panel2.Controls.Add(this.dedayoutLabel2);
@@ -1214,18 +1293,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
             // 
-            // leadnameComboBox
+            // stfpwLabel1
             // 
-            this.leadnameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "leadname", true));
-            this.leadnameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "leadname", true));
-            this.leadnameComboBox.DataSource = this.lkpLeadNameBindingSource;
-            this.leadnameComboBox.DisplayMember = "Name";
-            this.leadnameComboBox.FormattingEnabled = true;
-            this.leadnameComboBox.Location = new System.Drawing.Point(335, 448);
-            this.leadnameComboBox.Name = "leadnameComboBox";
-            this.leadnameComboBox.Size = new System.Drawing.Size(184, 21);
-            this.leadnameComboBox.TabIndex = 108;
-            this.leadnameComboBox.ValueMember = "Name";
+            this.stfpwLabel1.AutoSize = true;
+            this.stfpwLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "stfpw", true));
+            this.stfpwLabel1.Location = new System.Drawing.Point(102, 526);
+            this.stfpwLabel1.Name = "stfpwLabel1";
+            this.stfpwLabel1.Size = new System.Drawing.Size(0, 13);
+            this.stfpwLabel1.TabIndex = 112;
             // 
             // custBindingSource
             // 
@@ -1237,6 +1312,53 @@ namespace Mbc5.Forms.MemoryBook {
             this.dsCust.DataSetName = "dsCust";
             this.dsCust.EnforceConstraints = false;
             this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // advpwLabel1
+            // 
+            this.advpwLabel1.AutoSize = true;
+            this.advpwLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "advpw", true));
+            this.advpwLabel1.Location = new System.Drawing.Point(102, 501);
+            this.advpwLabel1.Name = "advpwLabel1";
+            this.advpwLabel1.Size = new System.Drawing.Size(0, 13);
+            this.advpwLabel1.TabIndex = 111;
+            // 
+            // jobnoLabel1
+            // 
+            this.jobnoLabel1.AutoSize = true;
+            this.jobnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "jobno", true));
+            this.jobnoLabel1.Location = new System.Drawing.Point(102, 478);
+            this.jobnoLabel1.Name = "jobnoLabel1";
+            this.jobnoLabel1.Size = new System.Drawing.Size(0, 13);
+            this.jobnoLabel1.TabIndex = 110;
+            // 
+            // firstDaySchoolDateTimePicker
+            // 
+            this.firstDaySchoolDateTimePicker.CustomFormat = "\'\'";
+            this.firstDaySchoolDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "FirstDaySchool", true));
+            this.firstDaySchoolDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.firstDaySchoolDateTimePicker.Location = new System.Drawing.Point(395, 324);
+            this.firstDaySchoolDateTimePicker.Name = "firstDaySchoolDateTimePicker";
+            this.firstDaySchoolDateTimePicker.Size = new System.Drawing.Size(153, 20);
+            this.firstDaySchoolDateTimePicker.TabIndex = 109;
+            this.firstDaySchoolDateTimePicker.ValueChanged += new System.EventHandler(this.firstDaySchoolDateTimePicker_ValueChanged);
+            // 
+            // leadnameComboBox
+            // 
+            this.leadnameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "leadname", true));
+            this.leadnameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "leadname", true));
+            this.leadnameComboBox.DataSource = this.lkpLeadNameBindingSource;
+            this.leadnameComboBox.DisplayMember = "Name";
+            this.leadnameComboBox.FormattingEnabled = true;
+            this.leadnameComboBox.Location = new System.Drawing.Point(335, 454);
+            this.leadnameComboBox.Name = "leadnameComboBox";
+            this.leadnameComboBox.Size = new System.Drawing.Size(197, 21);
+            this.leadnameComboBox.TabIndex = 108;
+            this.leadnameComboBox.ValueMember = "Name";
+            // 
+            // lkpLeadNameBindingSource
+            // 
+            this.lkpLeadNameBindingSource.DataMember = "lkpLeadName";
+            this.lkpLeadNameBindingSource.DataSource = this.dsCust;
             // 
             // leadsourceComboBox
             // 
@@ -1251,6 +1373,11 @@ namespace Mbc5.Forms.MemoryBook {
             this.leadsourceComboBox.TabIndex = 107;
             this.leadsourceComboBox.ValueMember = "Name";
             // 
+            // lkpLeadSourceBindingSource
+            // 
+            this.lkpLeadSourceBindingSource.DataMember = "lkpLeadSource";
+            this.lkpLeadSourceBindingSource.DataSource = this.dsCust;
+            // 
             // isTaxExemptCheckBox
             // 
             this.isTaxExemptCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "IsTaxExempt", true));
@@ -1260,16 +1387,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.isTaxExemptCheckBox.TabIndex = 106;
             this.isTaxExemptCheckBox.Text = "Tax Exempt";
             this.isTaxExemptCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // lblSchcodeVal
-            // 
-            this.lblSchcodeVal.AutoSize = true;
-            this.lblSchcodeVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
-            this.lblSchcodeVal.Location = new System.Drawing.Point(441, 95);
-            this.lblSchcodeVal.Name = "lblSchcodeVal";
-            this.lblSchcodeVal.Size = new System.Drawing.Size(41, 13);
-            this.lblSchcodeVal.TabIndex = 105;
-            this.lblSchcodeVal.Text = "label29";
             // 
             // statusComboBox
             // 
@@ -1406,9 +1523,9 @@ namespace Mbc5.Forms.MemoryBook {
             // txtSchColors
             // 
             this.txtSchColors.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcolors", true));
-            this.txtSchColors.Location = new System.Drawing.Point(335, 417);
+            this.txtSchColors.Location = new System.Drawing.Point(335, 429);
             this.txtSchColors.Name = "txtSchColors";
-            this.txtSchColors.Size = new System.Drawing.Size(182, 20);
+            this.txtSchColors.Size = new System.Drawing.Size(197, 20);
             this.txtSchColors.TabIndex = 28;
             // 
             // txtFax
@@ -1444,9 +1561,9 @@ namespace Mbc5.Forms.MemoryBook {
             this.schoutDateTimePicker.CustomFormat = "\'\'";
             this.schoutDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "schout", true));
             this.schoutDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.schoutDateTimePicker.Location = new System.Drawing.Point(395, 329);
+            this.schoutDateTimePicker.Location = new System.Drawing.Point(395, 348);
             this.schoutDateTimePicker.Name = "schoutDateTimePicker";
-            this.schoutDateTimePicker.Size = new System.Drawing.Size(184, 20);
+            this.schoutDateTimePicker.Size = new System.Drawing.Size(153, 20);
             this.schoutDateTimePicker.TabIndex = 18;
             this.schoutDateTimePicker.ValueChanged += new System.EventHandler(this.schoutDateTimePicker_ValueChanged);
             // 
@@ -1456,9 +1573,9 @@ namespace Mbc5.Forms.MemoryBook {
             this.cmbSchCategory.DataSource = this.lkpschtypeBindingSource;
             this.cmbSchCategory.DisplayMember = "Type";
             this.cmbSchCategory.FormattingEnabled = true;
-            this.cmbSchCategory.Location = new System.Drawing.Point(335, 392);
+            this.cmbSchCategory.Location = new System.Drawing.Point(335, 404);
             this.cmbSchCategory.Name = "cmbSchCategory";
-            this.cmbSchCategory.Size = new System.Drawing.Size(182, 21);
+            this.cmbSchCategory.Size = new System.Drawing.Size(197, 21);
             this.cmbSchCategory.TabIndex = 25;
             // 
             // lkpschtypeBindingSource
@@ -1530,10 +1647,10 @@ namespace Mbc5.Forms.MemoryBook {
             // txtPhotographer
             // 
             this.txtPhotographer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "photographer", true));
-            this.txtPhotographer.Location = new System.Drawing.Point(335, 364);
+            this.txtPhotographer.Location = new System.Drawing.Point(335, 376);
             this.txtPhotographer.MaxLength = 45;
             this.txtPhotographer.Name = "txtPhotographer";
-            this.txtPhotographer.Size = new System.Drawing.Size(182, 20);
+            this.txtPhotographer.Size = new System.Drawing.Size(197, 20);
             this.txtPhotographer.TabIndex = 21;
             // 
             // multiyearComboBox
@@ -1555,7 +1672,7 @@ namespace Mbc5.Forms.MemoryBook {
             // clrpg_intTextBox
             // 
             this.clrpg_intTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "clrpg_int", true));
-            this.clrpg_intTextBox.Location = new System.Drawing.Point(300, 329);
+            this.clrpg_intTextBox.Location = new System.Drawing.Point(300, 327);
             this.clrpg_intTextBox.MaxLength = 1;
             this.clrpg_intTextBox.Name = "clrpg_intTextBox";
             this.clrpg_intTextBox.Size = new System.Drawing.Size(29, 20);
@@ -1697,6 +1814,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.btnProdChk.Text = "Prod Chk List";
             this.btnProdChk.UseVisualStyleBackColor = true;
             // 
+            // csrep2TextBox
+            // 
+            this.csrep2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "csrep2", true));
+            this.csrep2TextBox.Location = new System.Drawing.Point(72, 5);
+            this.csrep2TextBox.Name = "csrep2TextBox";
+            this.csrep2TextBox.Size = new System.Drawing.Size(55, 20);
+            this.csrep2TextBox.TabIndex = 110;
+            // 
             // stageComboBox
             // 
             this.stageComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "stage", true));
@@ -1786,14 +1911,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.custDataGridView.AllowUserToDeleteRows = false;
             this.custDataGridView.AutoGenerateColumns = false;
             this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn105,
@@ -1931,6 +2056,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.pnlHead.Controls.Add(this.txtOracleCodeSrch);
             this.pnlHead.Controls.Add(this.btnSchoolSearch);
             this.pnlHead.Controls.Add(this.txtSchNamesrch);
+            this.pnlHead.Controls.Add(this.lblSchcodeVal);
             this.pnlHead.Controls.Add(this.btnSchoolCode);
             this.pnlHead.Controls.Add(this.txtSchCodesrch);
             this.pnlHead.Location = new System.Drawing.Point(0, 0);
@@ -1987,6 +2113,15 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtSchNamesrch.Name = "txtSchNamesrch";
             this.txtSchNamesrch.Size = new System.Drawing.Size(230, 20);
             this.txtSchNamesrch.TabIndex = 0;
+            // 
+            // lblSchcodeVal
+            // 
+            this.lblSchcodeVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
+            this.lblSchcodeVal.Location = new System.Drawing.Point(980, 6);
+            this.lblSchcodeVal.Name = "lblSchcodeVal";
+            this.lblSchcodeVal.Size = new System.Drawing.Size(1, 10);
+            this.lblSchcodeVal.TabIndex = 105;
+            this.lblSchcodeVal.Text = "label29";
             // 
             // btnSchoolCode
             // 
@@ -2622,14 +2757,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.mktinfoDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.mktinfoDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.mktinfoDataGridView.CausesValidation = false;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.mktinfoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mktinfoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -2753,14 +2888,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.datecontDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datecontDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.datecontDataGridView.CausesValidation = false;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.datecontDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datecontDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn3,
@@ -2839,8 +2974,8 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "reason";
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewTextBoxColumn3.HeaderText = "Reason";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -2874,11 +3009,11 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn8.DataPropertyName = "nxtdate";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.NullValue = " / / ";
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.NullValue = " / / ";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn8.HeaderText = "Next Date";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.Width = 74;
@@ -3041,23 +3176,53 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.custSearchTableAdapter.ClearBeforeFill = true;
             // 
-            // lkpLeadNameBindingSource
-            // 
-            this.lkpLeadNameBindingSource.DataMember = "lkpLeadName";
-            this.lkpLeadNameBindingSource.DataSource = this.dsCust;
-            // 
             // lkpLeadNameTableAdapter
             // 
             this.lkpLeadNameTableAdapter.ClearBeforeFill = true;
             // 
-            // lkpLeadSourceBindingSource
-            // 
-            this.lkpLeadSourceBindingSource.DataMember = "lkpLeadSource";
-            this.lkpLeadSourceBindingSource.DataSource = this.dsCust;
-            // 
             // lkpLeadSourceTableAdapter
             // 
             this.lkpLeadSourceTableAdapter.ClearBeforeFill = true;
+            // 
+            // xeldateLabel
+            // 
+            xeldateLabel.AutoSize = true;
+            xeldateLabel.Location = new System.Drawing.Point(257, 481);
+            xeldateLabel.Name = "xeldateLabel";
+            xeldateLabel.Size = new System.Drawing.Size(69, 13);
+            xeldateLabel.TabIndex = 112;
+            xeldateLabel.Text = "Cancel Date:";
+            // 
+            // xeldateDateTimePicker
+            // 
+            this.xeldateDateTimePicker.CustomFormat = "\'\'";
+            this.xeldateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "xeldate", true));
+            this.xeldateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.xeldateDateTimePicker.Location = new System.Drawing.Point(332, 481);
+            this.xeldateDateTimePicker.Name = "xeldateDateTimePicker";
+            this.xeldateDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.xeldateDateTimePicker.TabIndex = 113;
+            this.xeldateDateTimePicker.ValueChanged += new System.EventHandler(this.xeldateDateTimePicker_ValueChanged);
+            // 
+            // rbdateLabel
+            // 
+            rbdateLabel.AutoSize = true;
+            rbdateLabel.Location = new System.Drawing.Point(225, 507);
+            rbdateLabel.Name = "rbdateLabel";
+            rbdateLabel.Size = new System.Drawing.Size(101, 13);
+            rbdateLabel.TabIndex = 113;
+            rbdateLabel.Text = "Cancel Fee Recv\'d:";
+            // 
+            // rbdateDateTimePicker
+            // 
+            this.rbdateDateTimePicker.CustomFormat = "\'\'";
+            this.rbdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "rbdate", true));
+            this.rbdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.rbdateDateTimePicker.Location = new System.Drawing.Point(332, 507);
+            this.rbdateDateTimePicker.Name = "rbdateDateTimePicker";
+            this.rbdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.rbdateDateTimePicker.TabIndex = 114;
+            this.rbdateDateTimePicker.ValueChanged += new System.EventHandler(this.rbdateDateTimePicker_ValueChanged);
             // 
             // frmMbcCust
             // 
@@ -3085,6 +3250,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadNameBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpschtypeBindingSource)).EndInit();
@@ -3116,8 +3283,6 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.dsDateCont)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custSearchBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadNameBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3322,5 +3487,12 @@ namespace Mbc5.Forms.MemoryBook {
         private DataSets.dsCustTableAdapters.lkpLeadNameTableAdapter lkpLeadNameTableAdapter;
         private System.Windows.Forms.BindingSource lkpLeadSourceBindingSource;
         private DataSets.dsCustTableAdapters.lkpLeadSourceTableAdapter lkpLeadSourceTableAdapter;
+        private System.Windows.Forms.DateTimePicker firstDaySchoolDateTimePicker;
+        private System.Windows.Forms.TextBox csrep2TextBox;
+        private System.Windows.Forms.Label stfpwLabel1;
+        private System.Windows.Forms.Label advpwLabel1;
+        private System.Windows.Forms.Label jobnoLabel1;
+        private System.Windows.Forms.DateTimePicker rbdateDateTimePicker;
+        private System.Windows.Forms.DateTimePicker xeldateDateTimePicker;
     }
 }
