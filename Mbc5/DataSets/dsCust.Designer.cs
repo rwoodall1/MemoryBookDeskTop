@@ -661,10 +661,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnbooktype;
             
-            private global::System.Data.DataColumn columnContryear;
-            
-            private global::System.Data.DataColumn columninvno;
-            
             private global::System.Data.DataColumn columnprodno;
             
             private global::System.Data.DataColumn columndedayin;
@@ -700,6 +696,10 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnIsTaxExempt;
             
             private global::System.Data.DataColumn columnstage;
+            
+            private global::System.Data.DataColumn columnFirstDaySchool;
+            
+            private global::System.Data.DataColumn columnQyear;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1704,22 +1704,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ContryearColumn {
-                get {
-                    return this.columnContryear;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn invnoColumn {
-                get {
-                    return this.columninvno;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn prodnoColumn {
                 get {
                     return this.columnprodno;
@@ -1859,6 +1843,22 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn stageColumn {
                 get {
                     return this.columnstage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FirstDaySchoolColumn {
+                get {
+                    return this.columnFirstDaySchool;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn QyearColumn {
+                get {
+                    return this.columnQyear;
                 }
             }
             
@@ -2021,8 +2021,6 @@ namespace Mbc5.DataSets {
                         string leadname, 
                         string photographer, 
                         string booktype, 
-                        string Contryear, 
-                        decimal invno, 
                         string prodno, 
                         System.DateTime dedayin, 
                         System.DateTime dedayout, 
@@ -2032,7 +2030,7 @@ namespace Mbc5.DataSets {
                         string ModifiedBy, 
                         string oraclecode, 
                         string schname1, 
-                        string contryear1, 
+                        string contryear, 
                         string Expr1, 
                         System.DateTime DateModified, 
                         bool electronickit, 
@@ -2040,7 +2038,9 @@ namespace Mbc5.DataSets {
                         string status, 
                         int QInvno, 
                         bool IsTaxExempt, 
-                        string stage) {
+                        string stage, 
+                        System.DateTime FirstDaySchool, 
+                        string Qyear) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cstatus,
@@ -2164,8 +2164,6 @@ namespace Mbc5.DataSets {
                         leadname,
                         photographer,
                         booktype,
-                        Contryear,
-                        invno,
                         prodno,
                         dedayin,
                         dedayout,
@@ -2175,7 +2173,7 @@ namespace Mbc5.DataSets {
                         ModifiedBy,
                         oraclecode,
                         schname1,
-                        contryear1,
+                        contryear,
                         Expr1,
                         DateModified,
                         electronickit,
@@ -2183,7 +2181,9 @@ namespace Mbc5.DataSets {
                         status,
                         QInvno,
                         IsTaxExempt,
-                        stage};
+                        stage,
+                        FirstDaySchool,
+                        Qyear};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -2334,8 +2334,6 @@ namespace Mbc5.DataSets {
                 this.columnleadname = base.Columns["leadname"];
                 this.columnphotographer = base.Columns["photographer"];
                 this.columnbooktype = base.Columns["booktype"];
-                this.columnContryear = base.Columns["Contryear"];
-                this.columninvno = base.Columns["invno"];
                 this.columnprodno = base.Columns["prodno"];
                 this.columndedayin = base.Columns["dedayin"];
                 this.columndedayout = base.Columns["dedayout"];
@@ -2354,6 +2352,8 @@ namespace Mbc5.DataSets {
                 this.columnQInvno = base.Columns["QInvno"];
                 this.columnIsTaxExempt = base.Columns["IsTaxExempt"];
                 this.columnstage = base.Columns["stage"];
+                this.columnFirstDaySchool = base.Columns["FirstDaySchool"];
+                this.columnQyear = base.Columns["Qyear"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2601,10 +2601,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnphotographer);
                 this.columnbooktype = new global::System.Data.DataColumn("booktype", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbooktype);
-                this.columnContryear = new global::System.Data.DataColumn("Contryear", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnContryear);
-                this.columninvno = new global::System.Data.DataColumn("invno", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columninvno);
                 this.columnprodno = new global::System.Data.DataColumn("prodno", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprodno);
                 this.columndedayin = new global::System.Data.DataColumn("dedayin", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -2641,6 +2637,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnIsTaxExempt);
                 this.columnstage = new global::System.Data.DataColumn("stage", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstage);
+                this.columnFirstDaySchool = new global::System.Data.DataColumn("FirstDaySchool", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFirstDaySchool);
+                this.columnQyear = new global::System.Data.DataColumn("Qyear", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQyear);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columncstatus.MaxLength = 40;
@@ -2741,7 +2741,6 @@ namespace Mbc5.DataSets {
                 this.columnprevpublisher.MaxLength = 25;
                 this.columnleadname.MaxLength = 25;
                 this.columnbooktype.MaxLength = 8;
-                this.columnContryear.MaxLength = 2;
                 this.columnprodno.MaxLength = 12;
                 this.columnTimeStamp.ReadOnly = true;
                 this.columnschname.AllowDBNull = false;
@@ -2756,6 +2755,7 @@ namespace Mbc5.DataSets {
                 this.columnelectronickitoptions.MaxLength = 50;
                 this.columnstatus.MaxLength = 50;
                 this.columnstage.MaxLength = 25;
+                this.columnQyear.MaxLength = 2;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6122,38 +6122,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Contryear {
-                get {
-                    try {
-                        return ((string)(this[this.tablecust.ContryearColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Contryear\' in table \'cust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablecust.ContryearColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal invno {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablecust.invnoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'invno\' in table \'cust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablecust.invnoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string prodno {
                 get {
                     try {
@@ -6427,6 +6395,38 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tablecust.stageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime FirstDaySchool {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablecust.FirstDaySchoolColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FirstDaySchool\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.FirstDaySchoolColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Qyear {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.QyearColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Qyear\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.QyearColumn] = value;
                 }
             }
             
@@ -7824,30 +7824,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsContryearNull() {
-                return this.IsNull(this.tablecust.ContryearColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetContryearNull() {
-                this[this.tablecust.ContryearColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsinvnoNull() {
-                return this.IsNull(this.tablecust.invnoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetinvnoNull() {
-                this[this.tablecust.invnoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsprodnoNull() {
                 return this.IsNull(this.tablecust.prodnoColumn);
             }
@@ -8036,6 +8012,30 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetstageNull() {
                 this[this.tablecust.stageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsFirstDaySchoolNull() {
+                return this.IsNull(this.tablecust.FirstDaySchoolColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetFirstDaySchoolNull() {
+                this[this.tablecust.FirstDaySchoolColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsQyearNull() {
+                return this.IsNull(this.tablecust.QyearColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetQyearNull() {
+                this[this.tablecust.QyearColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -9005,7 +9005,6 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             tableMapping.ColumnMappings.Add("leadname", "leadname");
             tableMapping.ColumnMappings.Add("photographer", "photographer");
             tableMapping.ColumnMappings.Add("booktype", "booktype");
-            tableMapping.ColumnMappings.Add("Qyear", "Contryear");
             tableMapping.ColumnMappings.Add("prodno", "prodno");
             tableMapping.ColumnMappings.Add("dedayin", "dedayin");
             tableMapping.ColumnMappings.Add("dedayout", "dedayout");
@@ -9025,6 +9024,8 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             tableMapping.ColumnMappings.Add("QInvno", "QInvno");
             tableMapping.ColumnMappings.Add("IsTaxExempt", "IsTaxExempt");
             tableMapping.ColumnMappings.Add("stage", "stage");
+            tableMapping.ColumnMappings.Add("FirstDaySchool", "FirstDaySchool");
+            tableMapping.ColumnMappings.Add("Qyear", "Qyear");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -9240,25 +9241,25 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "t.nextcont, cust.csrep, cust.cstat, cust.xeldate, cust.allcolor, cust.rbinit, cu" +
                 "st.rbdate, cust.clspic, cust.magic, cust.extrchg, cust.sprinfo, cust.fallinfo, c" +
                 "ust.initcont, cust.highsp, cust.slownone, \r\n                         cust.pcmac," +
-                " cust.junsno, cust.jobno, cust.advpw, cust.stfpw, cust.bcontfname, cust.bcontlna" +
-                "me, cust.bcontaddr, cust.bcontaddr2, cust.bcontcity, cust.bcontstate, cust.bcont" +
-                "zip, cust.bcontphnhom, cust.bcontphnwrk, cust.bcontfax, \r\n                      " +
-                "   cust.bcontemail, cust.multiyroptions, cust.multiyear, cust.schuploading, cust" +
-                ".website, cust.nomktemail, cust.nodirectmail, cust.bposition, cust.blkwhite, cus" +
-                "t.mbconlinepassword, cust.ccontfname, cust.ccontlname, \r\n                       " +
-                "  cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, cust.ccontstate, cust.ccontzi" +
-                "p, cust.ccontphnhom, cust.ccontphnwork, cust.ccontfax, cust.ccontemail, cust.nor" +
-                "ebookreason, cust.newpublisher, cust.csrep2, cust.schcolors, \r\n                 " +
-                "        cust.keeppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust" +
-                ".leadname, quotes.booktype, quotes.contryear AS Qyear, quotes.invno AS QInvno, p" +
-                "rodutn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, \r\n          " +
-                "               cust.TimeStamp, cust.ModifiedBy, cust.oraclecode, cust.contryear," +
-                " cust.booktype AS Expr1, cust.DateModified, cust.cposition, cust.electronickit, " +
-                "cust.electronickitoptions, cust.status, cust.IsTaxExempt, cust.stage\r\nFROM      " +
-                "      cust LEFT OUTER JOIN\r\n                         quotes ON cust.schcode = qu" +
-                "otes.schcode LEFT OUTER JOIN\r\n                         produtn ON quotes.invno =" +
-                " produtn.invno\r\nWHERE        (cust.schcode = @schcode)\r\nORDER BY Qyear DESC, QIn" +
-                "vno DESC";
+                " cust.junsno, cust.bcontfname, cust.bcontlname, cust.bcontaddr, cust.bcontaddr2," +
+                " cust.bcontcity, cust.bcontstate, cust.bcontzip, cust.bcontphnhom, cust.bcontphn" +
+                "wrk, cust.bcontfax, cust.bcontemail, \r\n                         cust.multiyropti" +
+                "ons, cust.multiyear, cust.schuploading, cust.website, cust.nomktemail, cust.nodi" +
+                "rectmail, cust.bposition, cust.blkwhite, cust.mbconlinepassword, cust.ccontfname" +
+                ", cust.ccontlname, cust.ccontaddr, \r\n                         cust.ccontaddr2, c" +
+                "ust.ccontcity, cust.ccontstate, cust.ccontzip, cust.ccontphnhom, cust.ccontphnwo" +
+                "rk, cust.ccontfax, cust.ccontemail, cust.norebookreason, cust.newpublisher, cust" +
+                ".csrep2, cust.schcolors, cust.keeppswd, \r\n                         cust.leadsour" +
+                "ce, cust.leadsname, cust.prevpublisher, cust.leadname, quotes.booktype, quotes.c" +
+                "ontryear AS Qyear, quotes.invno AS QInvno, produtn.prodno, produtn.dedayin, prod" +
+                "utn.dedayout, produtn.kitrecvd, \r\n                         cust.TimeStamp, cust." +
+                "ModifiedBy, cust.oraclecode, cust.contryear, cust.booktype AS Expr1, cust.DateMo" +
+                "dified, cust.cposition, cust.electronickit, cust.electronickitoptions, cust.stat" +
+                "us, cust.IsTaxExempt, cust.stage, \r\n                         cust.FirstDaySchool" +
+                ", produtn.jobno, produtn.advpw, produtn.stfpw\r\nFROM            cust LEFT OUTER J" +
+                "OIN\r\n                         quotes ON cust.schcode = quotes.schcode LEFT OUTER" +
+                " JOIN\r\n                         produtn ON quotes.invno = produtn.invno\r\nWHERE  " +
+                "      (cust.schcode = @schcode)\r\nORDER BY Qyear DESC, QInvno DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();

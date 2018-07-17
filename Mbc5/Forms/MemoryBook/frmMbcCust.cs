@@ -103,6 +103,7 @@ namespace Mbc5.Forms.MemoryBook {
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
            
             this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, vSchocode);
+            
             SetInvnoSchCode();
         }
         private void btnOracleSrch_Click(object sender, EventArgs e)
@@ -125,6 +126,7 @@ namespace Mbc5.Forms.MemoryBook {
 			if (records < 1)
 			{
 				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
+                this.SetInvnoSchCode();
 				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
 				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
@@ -202,7 +204,8 @@ namespace Mbc5.Forms.MemoryBook {
             if ( records==null || records.Count < 1)
 			{
 				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
-				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+              
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
 				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
 				TeleGo = false;
 				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -260,6 +263,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     custTableAdapter.Update(dsCust);
                     this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+                    this.SetInvnoSchCode();
                     retval = true;
                 }
                 catch (DBConcurrencyException dbex)
@@ -307,8 +311,9 @@ namespace Mbc5.Forms.MemoryBook {
 				new SqlParameter("@schcode",schcode)
 			};
 				var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
-				this.custTableAdapter.Fill(this.dsCust.cust, "038752");//set to cs record                
-			}
+				this.custTableAdapter.Fill(this.dsCust.cust, "038752");//set to cs record   
+                this.SetInvnoSchCode();
+            }
 
 		}
         public override void Cancel() {
@@ -506,12 +511,13 @@ namespace Mbc5.Forms.MemoryBook {
 					}
 					Save();
 					this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
-				};
+                    this.SetInvnoSchCode();
+                };
 			}//not = 0
 		}
 		private void GoToSales() {
 
-            
+            var a = this.lblSchcode.Text;
                 this.Cursor = Cursors.AppStarting;
                      int vInvno = this.Invno;
                     string vSchcode = this.Schcode;
@@ -791,7 +797,8 @@ namespace Mbc5.Forms.MemoryBook {
                 this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,this.Schcode);
                 this.datecontTableAdapter.Fill(this.dsCust.datecont,this.Schcode);
-                }
+            this.SetInvnoSchCode();
+        }
         private string GetInstructions()
         {
             string val = "";
@@ -1028,6 +1035,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void custDataGridView_Enter(object sender,EventArgs e) {
             this.custTableAdapter.Fill(this.dsCust.cust,this.Schcode);
+            SetInvnoSchCode();
             }
 
         private void custDataGridView_RowHeaderMouseDoubleClick(object sender,DataGridViewCellMouseEventArgs e) {
@@ -1162,7 +1170,24 @@ namespace Mbc5.Forms.MemoryBook {
            
         }
 
-      
+        private void firstDaySchoolDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            firstDaySchoolDateTimePicker.Format = DateTimePickerFormat.Long;
+        }
+
+        private void rbdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            rbdateDateTimePicker.Format= DateTimePickerFormat.Long;
+        }
+
+        private void xeldateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            xeldateDateTimePicker.Format= DateTimePickerFormat.Long;
+        }
+
+        
+
+
 
 
         //Nothing below here
