@@ -3679,6 +3679,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnTimeStamp;
             
+            private global::System.Data.DataColumn columnCityStateZip;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custDataTable() {
@@ -4698,6 +4700,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CityStateZipColumn {
+                get {
+                    return this.columnCityStateZip;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4856,7 +4866,8 @@ namespace Mbc5.DataSets {
                         string photographer, 
                         System.DateTime DateCreated, 
                         System.DateTime DateModified, 
-                        byte[] TimeStamp) {
+                        byte[] TimeStamp, 
+                        string CityStateZip) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -4981,7 +4992,8 @@ namespace Mbc5.DataSets {
                         photographer,
                         DateCreated,
                         DateModified,
-                        TimeStamp};
+                        TimeStamp,
+                        CityStateZip};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -5134,6 +5146,7 @@ namespace Mbc5.DataSets {
                 this.columnDateCreated = base.Columns["DateCreated"];
                 this.columnDateModified = base.Columns["DateModified"];
                 this.columnTimeStamp = base.Columns["TimeStamp"];
+                this.columnCityStateZip = base.Columns["CityStateZip"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5385,6 +5398,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnDateModified);
                 this.columnTimeStamp = new global::System.Data.DataColumn("TimeStamp", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTimeStamp);
+                this.columnCityStateZip = new global::System.Data.DataColumn("CityStateZip", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCityStateZip);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columnschcode.AllowDBNull = false;
@@ -5489,6 +5504,8 @@ namespace Mbc5.DataSets {
                 this.columnDateCreated.AllowDBNull = false;
                 this.columnDateModified.AllowDBNull = false;
                 this.columnTimeStamp.ReadOnly = true;
+                this.columnCityStateZip.ReadOnly = true;
+                this.columnCityStateZip.MaxLength = 152;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13081,6 +13098,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CityStateZip {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.CityStateZipColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CityStateZip\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.CityStateZipColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
@@ -14457,6 +14490,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetTimeStampNull() {
                 this[this.tablecust.TimeStampColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCityStateZipNull() {
+                return this.IsNull(this.tablecust.CityStateZipColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCityStateZipNull() {
+                this[this.tablecust.CityStateZipColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18524,6 +18569,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("DateCreated", "DateCreated");
             tableMapping.ColumnMappings.Add("DateModified", "DateModified");
             tableMapping.ColumnMappings.Add("TimeStamp", "TimeStamp");
+            tableMapping.ColumnMappings.Add("CityStateZip", "CityStateZip");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -19610,14 +19656,26 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        schcode, schname, contryear, cstatus, source, sourdate, secsource, contdate, origsour, origyear, rebook, rebookdte, refby, enrollment, grades, sal, schaddr, schaddr2, schcity, schstate, schzip, schphone, schfax, schemail, 
-                         sprngbrk, schout, contmemo, position, gender, contfname, contlname, newfname, newlname, yb_sth, shiptocont, contaddr, contaddr2, contcity, contstate, contzip, contphnhom, contphnwrk, contfax, contemail, booktype, vcrsent, 
-                         sigfopf, envflyer, marketing, yearrnd, clrpg_int, shipmemo, schclosed, inoffice, digintrst, svcode1, svdesc1, svcode2, svdesc2, spcinst, lastcont, nextcont, csrep, cstat, xeldate, allcolor, rbinit, rbdate, clspic, magic, extrchg, 
-                         sprinfo, fallinfo, initcont, highsp, slownone, pcmac, junsno, bcontfname, bcontlname, bcontaddr, bcontaddr2, bcontcity, bcontstate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, bcontemail, multiyroptions, multiyear, 
-                         schuploading, website, nomktemail, nodirectmail, bposition, blkwhite, mbconlinepassword, ccontfname, ccontlname, ccontaddr, ccontaddr2, ccontcity, ccontstate, ccontzip, ccontphnhom, ccontphnwork, ccontfax, ccontemail, 
-                         norebookreason, newpublisher, csrep2, schcolors, keeppswd, leadsource, leadsname, prevpublisher, leadname, isDeleted, photographer, DateCreated, DateModified, TimeStamp
-FROM            cust
-WHERE        (schcode = @schcode)";
+            this._commandCollection[0].CommandText = "SELECT        schcode, schname, contryear, cstatus, source, sourdate, secsource, " +
+                "contdate, origsour, origyear, rebook, rebookdte, refby, enrollment, grades, sal," +
+                " schaddr, schaddr2, schcity, schstate, schzip, schphone, schfax, schemail, \r\n   " +
+                "                      sprngbrk, schout, contmemo, position, gender, contfname, c" +
+                "ontlname, newfname, newlname, yb_sth, shiptocont, contaddr, contaddr2, contcity," +
+                " contstate, contzip, contphnhom, contphnwrk, contfax, contemail, booktype, vcrse" +
+                "nt, \r\n                         sigfopf, envflyer, marketing, yearrnd, clrpg_int," +
+                " shipmemo, schclosed, inoffice, digintrst, svcode1, svdesc1, svcode2, svdesc2, s" +
+                "pcinst, lastcont, nextcont, csrep, cstat, xeldate, allcolor, rbinit, rbdate, cls" +
+                "pic, magic, extrchg, \r\n                         sprinfo, fallinfo, initcont, hig" +
+                "hsp, slownone, pcmac, junsno, bcontfname, bcontlname, bcontaddr, bcontaddr2, bco" +
+                "ntcity, bcontstate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, bcontemail, mu" +
+                "ltiyroptions, multiyear, \r\n                         schuploading, website, nomkt" +
+                "email, nodirectmail, bposition, blkwhite, mbconlinepassword, ccontfname, ccontln" +
+                "ame, ccontaddr, ccontaddr2, ccontcity, ccontstate, ccontzip, ccontphnhom, ccontp" +
+                "hnwork, ccontfax, ccontemail, \r\n                         norebookreason, newpubl" +
+                "isher, csrep2, schcolors, keeppswd, leadsource, leadsname, prevpublisher, leadna" +
+                "me, isDeleted, photographer, DateCreated, DateModified, schcity + \',\' + schstate" +
+                " + \' \' + schzip AS CityStateZip, \r\n                         TimeStamp\r\nFROM     " +
+                "       cust\r\nWHERE        (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
