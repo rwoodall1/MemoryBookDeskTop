@@ -1394,7 +1394,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
         }
         private void Fill() {
-            if (Schcode != null) {
+            if (!string.IsNullOrEmpty(Schcode)) {
                 custTableAdapter.Fill(dsSales.cust, Schcode);
                 quotesTableAdapter.Fill(dsSales.quotes, Schcode);
                 this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim(); ;

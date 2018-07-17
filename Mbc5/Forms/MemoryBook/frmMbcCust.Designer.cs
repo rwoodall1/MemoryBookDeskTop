@@ -105,20 +105,22 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.Label jobnoLabel;
             System.Windows.Forms.Label advpwLabel;
             System.Windows.Forms.Label stfpwLabel;
+            System.Windows.Forms.Label xeldateLabel;
+            System.Windows.Forms.Label rbdateLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMbcCust));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.Label xeldateLabel;
-            System.Windows.Forms.Label rbdateLabel;
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.stfpwLabel1 = new System.Windows.Forms.Label();
+            this.rbdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
+            this.xeldateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.stfpwLabel1 = new System.Windows.Forms.Label();
             this.advpwLabel1 = new System.Windows.Forms.Label();
             this.jobnoLabel1 = new System.Windows.Forms.Label();
             this.firstDaySchoolDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -313,8 +315,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.custSearchTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custSearchTableAdapter();
             this.lkpLeadNameTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadNameTableAdapter();
             this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadSourceTableAdapter();
-            this.xeldateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.rbdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -1133,6 +1133,24 @@ namespace Mbc5.Forms.MemoryBook {
             stfpwLabel.TabIndex = 111;
             stfpwLabel.Text = "Staff Password:";
             // 
+            // xeldateLabel
+            // 
+            xeldateLabel.AutoSize = true;
+            xeldateLabel.Location = new System.Drawing.Point(257, 481);
+            xeldateLabel.Name = "xeldateLabel";
+            xeldateLabel.Size = new System.Drawing.Size(69, 13);
+            xeldateLabel.TabIndex = 112;
+            xeldateLabel.Text = "Cancel Date:";
+            // 
+            // rbdateLabel
+            // 
+            rbdateLabel.AutoSize = true;
+            rbdateLabel.Location = new System.Drawing.Point(225, 507);
+            rbdateLabel.Name = "rbdateLabel";
+            rbdateLabel.Size = new System.Drawing.Size(101, 13);
+            rbdateLabel.TabIndex = 113;
+            rbdateLabel.Text = "Cancel Fee Recv\'d:";
+            // 
             // CustTab
             // 
             this.CustTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1293,14 +1311,16 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
             // 
-            // stfpwLabel1
+            // rbdateDateTimePicker
             // 
-            this.stfpwLabel1.AutoSize = true;
-            this.stfpwLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "stfpw", true));
-            this.stfpwLabel1.Location = new System.Drawing.Point(102, 526);
-            this.stfpwLabel1.Name = "stfpwLabel1";
-            this.stfpwLabel1.Size = new System.Drawing.Size(0, 13);
-            this.stfpwLabel1.TabIndex = 112;
+            this.rbdateDateTimePicker.CustomFormat = "\'\'";
+            this.rbdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "rbdate", true));
+            this.rbdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.rbdateDateTimePicker.Location = new System.Drawing.Point(332, 507);
+            this.rbdateDateTimePicker.Name = "rbdateDateTimePicker";
+            this.rbdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.rbdateDateTimePicker.TabIndex = 114;
+            this.rbdateDateTimePicker.ValueChanged += new System.EventHandler(this.rbdateDateTimePicker_ValueChanged);
             // 
             // custBindingSource
             // 
@@ -1312,6 +1332,26 @@ namespace Mbc5.Forms.MemoryBook {
             this.dsCust.DataSetName = "dsCust";
             this.dsCust.EnforceConstraints = false;
             this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // xeldateDateTimePicker
+            // 
+            this.xeldateDateTimePicker.CustomFormat = "\'\'";
+            this.xeldateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "xeldate", true));
+            this.xeldateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.xeldateDateTimePicker.Location = new System.Drawing.Point(332, 481);
+            this.xeldateDateTimePicker.Name = "xeldateDateTimePicker";
+            this.xeldateDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.xeldateDateTimePicker.TabIndex = 113;
+            this.xeldateDateTimePicker.ValueChanged += new System.EventHandler(this.xeldateDateTimePicker_ValueChanged);
+            // 
+            // stfpwLabel1
+            // 
+            this.stfpwLabel1.AutoSize = true;
+            this.stfpwLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "stfpw", true));
+            this.stfpwLabel1.Location = new System.Drawing.Point(102, 526);
+            this.stfpwLabel1.Name = "stfpwLabel1";
+            this.stfpwLabel1.Size = new System.Drawing.Size(0, 13);
+            this.stfpwLabel1.TabIndex = 112;
             // 
             // advpwLabel1
             // 
@@ -2119,7 +2159,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.lblSchcodeVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
             this.lblSchcodeVal.Location = new System.Drawing.Point(980, 6);
             this.lblSchcodeVal.Name = "lblSchcodeVal";
-            this.lblSchcodeVal.Size = new System.Drawing.Size(1, 10);
+            this.lblSchcodeVal.Size = new System.Drawing.Size(10, 10);
             this.lblSchcodeVal.TabIndex = 105;
             this.lblSchcodeVal.Text = "label29";
             // 
@@ -2707,14 +2747,13 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // lblSchcode
             // 
-            this.lblSchcode.AutoSize = true;
             this.lblSchcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
             this.lblSchcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSchcode.Location = new System.Drawing.Point(8, 0);
+            this.lblSchcode.Location = new System.Drawing.Point(101, 25);
             this.lblSchcode.Name = "lblSchcode";
-            this.lblSchcode.Size = new System.Drawing.Size(16, 24);
+            this.lblSchcode.Size = new System.Drawing.Size(120, 53);
             this.lblSchcode.TabIndex = 8;
-            this.lblSchcode.Text = ".";
+            this.lblSchcode.Text = "test";
             // 
             // btnAddMarketLog
             // 
@@ -3183,46 +3222,6 @@ namespace Mbc5.Forms.MemoryBook {
             // lkpLeadSourceTableAdapter
             // 
             this.lkpLeadSourceTableAdapter.ClearBeforeFill = true;
-            // 
-            // xeldateLabel
-            // 
-            xeldateLabel.AutoSize = true;
-            xeldateLabel.Location = new System.Drawing.Point(257, 481);
-            xeldateLabel.Name = "xeldateLabel";
-            xeldateLabel.Size = new System.Drawing.Size(69, 13);
-            xeldateLabel.TabIndex = 112;
-            xeldateLabel.Text = "Cancel Date:";
-            // 
-            // xeldateDateTimePicker
-            // 
-            this.xeldateDateTimePicker.CustomFormat = "\'\'";
-            this.xeldateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "xeldate", true));
-            this.xeldateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.xeldateDateTimePicker.Location = new System.Drawing.Point(332, 481);
-            this.xeldateDateTimePicker.Name = "xeldateDateTimePicker";
-            this.xeldateDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.xeldateDateTimePicker.TabIndex = 113;
-            this.xeldateDateTimePicker.ValueChanged += new System.EventHandler(this.xeldateDateTimePicker_ValueChanged);
-            // 
-            // rbdateLabel
-            // 
-            rbdateLabel.AutoSize = true;
-            rbdateLabel.Location = new System.Drawing.Point(225, 507);
-            rbdateLabel.Name = "rbdateLabel";
-            rbdateLabel.Size = new System.Drawing.Size(101, 13);
-            rbdateLabel.TabIndex = 113;
-            rbdateLabel.Text = "Cancel Fee Recv\'d:";
-            // 
-            // rbdateDateTimePicker
-            // 
-            this.rbdateDateTimePicker.CustomFormat = "\'\'";
-            this.rbdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "rbdate", true));
-            this.rbdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.rbdateDateTimePicker.Location = new System.Drawing.Point(332, 507);
-            this.rbdateDateTimePicker.Name = "rbdateDateTimePicker";
-            this.rbdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.rbdateDateTimePicker.TabIndex = 114;
-            this.rbdateDateTimePicker.ValueChanged += new System.EventHandler(this.rbdateDateTimePicker_ValueChanged);
             // 
             // frmMbcCust
             // 
