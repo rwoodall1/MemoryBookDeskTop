@@ -86,3 +86,5 @@ BaseClass/bin/Debug/BaseClass.pdb
 /.vs/MemoryBook/v15/Server/sqlite3/storage.ide-shm
 /.vs/MemoryBook/v15/Server/sqlite3/storage.ide
 /.vs/MemoryBook/v15/Server/sqlite3/db.lock
+/BaseClass/bin/Debug
+/Mbc5/bin/Debug
