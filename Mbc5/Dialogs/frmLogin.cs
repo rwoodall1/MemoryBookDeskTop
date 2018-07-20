@@ -34,22 +34,25 @@ namespace Mbc5.Dialogs {
 
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-
-        
+        private void btnLogin_Click(object sender, EventArgs e)      
             {
+            
             this.pbLoading.Visible = true;
            
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+            
+
             string cPassword = this.txtpassword.Text;
             string cUser = this.txtusername.Text;
-
-
-
-
-            SqlCommand cmd = new SqlCommand("SELECT dbo.roles.name as RoleName,dbo.mbcUsers.FirstName,dbo.mbcUsers.LastName, dbo.roles.rank, dbo.mbcUsers.id, dbo.mbcUsers.UserName,dbo.mbcUsers.PassWord, dbo.mbcUsers.roleid, dbo.mbcUsers.EmailAddress, dbo.mbcUsers.FirstName, dbo.mbcUsers.LastName, dbo.mbcUsers.ChangePassword FROM dbo.mbcUsers INNER JOIN dbo.user_role ON dbo.mbcUsers.id = dbo.user_role.userid INNER JOIN dbo.roles ON dbo.user_role.roleid = dbo.roles.id WHERE(dbo.mbcUsers.PassWord = @password) AND(dbo.mbcUsers.UserName = @username)", conn);
+            SqlCommand cmd = new SqlCommand(@"SELECT dbo.roles.name as RoleName,dbo.mbcUsers.FirstName,dbo.mbcUsers.LastName,
+                                            dbo.roles.rank, dbo.mbcUsers.id, dbo.mbcUsers.UserName,dbo.mbcUsers.PassWord,
+                                            dbo.mbcUsers.roleid, dbo.mbcUsers.EmailAddress, dbo.mbcUsers.FirstName,
+                                            dbo.mbcUsers.LastName, dbo.mbcUsers.ChangePassword
+                                            FROM dbo.mbcUsers INNER JOIN dbo.roles ON dbo.mbcUsers.roleid = dbo.roles.id 
+                                            WHERE(dbo.mbcUsers.PassWord = @password) AND(dbo.mbcUsers.UserName = @username)", conn);
             cmd.CommandType = CommandType.Text;
+            cmd.CommandTimeout = 5;
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@username", cUser);
             cmd.Parameters.AddWithValue("@password", cPassword);
@@ -93,6 +96,7 @@ namespace Mbc5.Dialogs {
                 }
                 else
                 {
+                                      
                     this.DialogResult = DialogResult.No;
                     return;
                 };
@@ -111,12 +115,15 @@ namespace Mbc5.Dialogs {
           
             catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.DialogResult = DialogResult.Abort;
+                Application.Exit();
                 return;
 
             }
-            finally { cmd.Connection.Close(); }
+            finally {
+                cmd.Connection.Close();
+            }
             frmMain.WindowState = FormWindowState.Maximized;
             this.DialogResult = DialogResult.OK;
 

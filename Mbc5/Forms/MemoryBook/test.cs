@@ -97,5 +97,11 @@ namespace Mbc5.Forms.MemoryBook {
             config.Save(ConfigurationSaveMode.Full, true);
 
         }
+
+        private void test_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
     }
     }

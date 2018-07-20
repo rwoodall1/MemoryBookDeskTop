@@ -22,7 +22,7 @@ namespace Mbc5.Forms
 {
 	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
 	{
-		private static string _ConnectionString = ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
+		private static string _ConnectionString =  Properties.Settings.Default.Mbc5ConnectionString;
 		private bool startup = true;
 		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
 		{
@@ -125,8 +125,12 @@ namespace Mbc5.Forms
 		}
 		private void SetEmail()
 		{
-            
-			SchEmail = dsProdutn.cust.Rows[0].IsNull("schemail") ? null : dsProdutn.cust.Rows[0]["schemail"].ToString().Trim();
+            var current = (DataRowView)produtnBindingSource.Current;
+            if (current == null)
+            {
+                return;
+            }
+            SchEmail = dsProdutn.cust.Rows[0].IsNull("schemail") ? null : dsProdutn.cust.Rows[0]["schemail"].ToString().Trim();
 			ContactEmail = dsProdutn.cust.Rows[0].IsNull("contemail") ? null : dsProdutn.cust.Rows[0]["contemail"].ToString().Trim();
 			BcontactEmail = dsProdutn.cust.Rows[0].IsNull("bcontemail") ? null : dsProdutn.cust.Rows[0]["bcontemail"].ToString().Trim();
 			CcontactEmail = dsProdutn.cust.Rows[0].IsNull("ccontemail") ? null : dsProdutn.cust.Rows[0]["ccontemail"].ToString().Trim();
@@ -425,6 +429,13 @@ namespace Mbc5.Forms
 						var a = produtnTableAdapter.Update(dsProdutn.produtn);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						produtnTableAdapter.Fill(dsProdutn.produtn, Schcode);
+                        var aa = Invno;
+                        var pos = produtnBindingSource.Find("invno", this.Invno);
+                        if (pos > -1)
+                        {
+                            produtnBindingSource.Position = pos;
+                        }
+                       
 						SetShipLabel();
 						retval = true;
 
@@ -1212,16 +1223,21 @@ namespace Mbc5.Forms
 
 			}
 		}
-		
-
-		#region Validation
 
 
-		#endregion
 
-		//nothing below here  
-	}
-	public class BinderyInfo
+
+        #region Validation
+        private void laminatedTextBox_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        //nothing below here  
+    }
+    public class BinderyInfo
 	{
 		public string Schname { get; set; }
 		public string CoverType { get; set; }

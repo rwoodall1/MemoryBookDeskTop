@@ -82,7 +82,13 @@ BaseClass/bin/Debug/BaseClass.dll
 *.dll
 BaseClass/bin/Debug/BaseClass.pdb
 .vs/MemoryBook/v14/.suo
+*.config
+*.rsp
+*.targets
+*.xml
+*.resources
+
+*.ide
+
 /.vs/MemoryBook/v15/Server/sqlite3
-/BaseClass/bin
-/Mbc5/bin
-/Mbc5/obj/Release
+/.vs/MemoryBook/DesignTimeBuild/.dtbcache

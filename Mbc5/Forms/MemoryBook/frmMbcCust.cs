@@ -59,6 +59,10 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
 
         private void frmMbcCust_Load(object sender,EventArgs e) {
+            // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
+            this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
+            // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.
+            this.lkpLeadNameTableAdapter.Fill(this.dsCust.lkpLeadName);
             // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
             this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
             // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
@@ -76,8 +80,8 @@ namespace Mbc5.Forms.MemoryBook {
                 MktGo = true;
             }
 
-
-
+            this.statesTableAdapter.Fill(this.lookUp.states);
+            this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
             // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
             this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
             this.lkpPrevPubTableAdapter.Fill(this.lookUp.lkpPrevPub);
@@ -88,21 +92,23 @@ namespace Mbc5.Forms.MemoryBook {
             // TODO: This line of code loads data into the 'lookUp.lkpComments' table. You can move, or remove it, as needed.
             this.lkpCommentsTableAdapter.Fill(this.lookUp.lkpComments);
             // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
-            this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
+            
             // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
             this.datecontTableAdapter.Fill(this.dsCust.datecont, vSchocode);
             // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
+
             this.custTableAdapter.Fill(this.dsCust.cust, vSchocode);
             // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
             this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
-            this.statesTableAdapter.Fill(this.lookUp.states);
+           
             this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, vSchocode);
+            
             SetInvnoSchCode();
         }
         private void btnOracleSrch_Click(object sender, EventArgs e)
 		{
-			var currentSchool = lblSchcodeVal.Text.Trim();
+            var currentSchool = this.Schcode;
 			if (DoPhoneLog())
 			{
 				MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -120,15 +126,16 @@ namespace Mbc5.Forms.MemoryBook {
 			if (records < 1)
 			{
 				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
+                this.SetInvnoSchCode();
 				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
-				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
 				TeleGo = false;
 			}
 			else
 			{
-				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
-				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
 				TeleGo = false;
 
 			}
@@ -137,7 +144,7 @@ namespace Mbc5.Forms.MemoryBook {
 		}
 
 		private void btnSchoolCode_Click(object sender,EventArgs e) {
-            var currentSchool = lblSchcodeVal.Text.Trim();
+            var currentSchool = this.Schcode;
             if (DoPhoneLog())
                 {
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
@@ -153,15 +160,17 @@ namespace Mbc5.Forms.MemoryBook {
             if (records < 1)
                 {
                 this.custTableAdapter.Fill(this.dsCust.cust,currentSchool);
+                this.Schcode = currentSchool;
                 MessageBox.Show("Record was not found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
                 TeleGo = false;
                 }
             else
                 {
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
+                
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
                 TeleGo = false;
               
                 }
@@ -170,7 +179,7 @@ namespace Mbc5.Forms.MemoryBook {
             frmMbcCust_Paint(this, null);
         }
         private void btnSchoolSearch_Click(object sender,EventArgs e) {
-            var currentSchool = lblSchcodeVal.Text.Trim();
+            var currentSchool = this.Schcode;
             if (DoPhoneLog()){
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                 return;
@@ -192,11 +201,12 @@ namespace Mbc5.Forms.MemoryBook {
          
 
 
-            if (records.Count < 1)
+            if ( records==null || records.Count < 1)
 			{
 				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
-				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
-				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+              
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
 				TeleGo = false;
 				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
@@ -212,24 +222,24 @@ namespace Mbc5.Forms.MemoryBook {
 				if (result != DialogResult.Cancel)
 				{
 					this.custTableAdapter.Fill(this.dsCust.cust, frmSelectCust.retval);
-					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
-					this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
 					TeleGo = false;
 				}
 				else
 				{
 					//refill normal
 					this.custTableAdapter.Fill(this.dsCust.cust,records[0].schcode );
-					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
-					this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
 					TeleGo = false;
 				}
 			}
 
 			else
 			{
-				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text.Trim());
-				this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text.Trim());
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
 				TeleGo = false;
 
 			}
@@ -244,13 +254,16 @@ namespace Mbc5.Forms.MemoryBook {
             bool retval = false;
 		
             txtSchname.ReadOnly = true;
-
+       //     var a = this.ValidateChildren(ValidationConstraints.Enabled);
+           //     var b=this.ValidateChildren(ValidationConstraints.ImmediateChildren);
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
                 this.custBindingSource.EndEdit();
                 try
                 {
                     custTableAdapter.Update(dsCust);
+                    this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+                    this.SetInvnoSchCode();
                     retval = true;
                 }
                 catch (DBConcurrencyException dbex)
@@ -270,7 +283,7 @@ namespace Mbc5.Forms.MemoryBook {
                     retval = false;
                     }
             }
-			this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+			
 			return retval;
         }
         public override bool Add() {
@@ -298,8 +311,9 @@ namespace Mbc5.Forms.MemoryBook {
 				new SqlParameter("@schcode",schcode)
 			};
 				var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
-				this.custTableAdapter.Fill(this.dsCust.cust, "038752");//set to cs record                
-			}
+				this.custTableAdapter.Fill(this.dsCust.cust, "038752");//set to cs record   
+                this.SetInvnoSchCode();
+            }
 
 		}
         public override void Cancel() {
@@ -374,20 +388,22 @@ namespace Mbc5.Forms.MemoryBook {
             e.Cancel = cancel;
             }
 
-        private void txtCsRep_Validating(object sender,CancelEventArgs e) {
+        private void txtCsRep_Validating(object sender, CancelEventArgs e)
+        {
             bool cancel = false;
             if (string.IsNullOrEmpty(this.txtCsRep.Text.Trim()))
-                {
+            {
                 //This control fails validation: Name cannot be empty.
                 cancel = true;
-                this.errorProvider1.SetError(this.txtCsRep,"Sales rep is required.");
-                }
+                this.errorProvider1.SetError(this.txtCsRep, "Sales rep is required.");
+            }
             e.Cancel = cancel;
             return;
-            }
-        private void txtCsRep_Validated(object sender,EventArgs e) {
-            this.errorProvider1.SetError(this.txtCsRep,string.Empty);
-            }
+        }
+        private void txtCsRep_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider1.SetError(this.txtCsRep, string.Empty);
+        }
         private void txtSchname_Validated(object sender,EventArgs e) {
             this.errorProvider1.SetError(this.txtSchname,string.Empty);
             }
@@ -411,16 +427,16 @@ namespace Mbc5.Forms.MemoryBook {
         private void txtSchPhone_Validated(object sender,EventArgs e) {
             this.errorProvider1.SetError(this.txtSchPhone,string.Empty);
             }
-        private void yb_sthTextBox_Validating(object sender,CancelEventArgs e) {
-            //bool cancel = false;
-            //if (yb_sthTextBox.Text!="Y" || !string.IsNullOrEmpty(this.yb_sthTextBox.Text.Trim()))
-            //{
-            //    //This control fails validation: Name cannot be empty.
-            //    cancel = true;
-            //    this.errorProvider1.SetError(this.yb_sthTextBox, "Value must be empty or Y.");
-            //}
-            //e.Cancel = cancel;
-            }
+        //private void yb_sthTextBox_Validating(object sender,CancelEventArgs e) {
+        //    //bool cancel = false;
+        //    //if (yb_sthTextBox.Text!="Y" || !string.IsNullOrEmpty(this.yb_sthTextBox.Text.Trim()))
+        //    //{
+        //    //    //This control fails validation: Name cannot be empty.
+        //    //    cancel = true;
+        //    //    this.errorProvider1.SetError(this.yb_sthTextBox, "Value must be empty or Y.");
+        //    //}
+        //    //e.Cancel = cancel;
+        //    }
 
         private void yb_sthTextBox_Validated(object sender,EventArgs e) {
             //this.errorProvider1.SetError(this.yb_sthTextBox, string.Empty);
@@ -430,17 +446,17 @@ namespace Mbc5.Forms.MemoryBook {
             //this.errorProvider1.SetError(this.shiptocontTextBox, string.Empty);
             }
 
-        private void shiptocontTextBox_Validating(object sender,CancelEventArgs e) {
-            //bool cancel = false;
-            //var a = !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim());
-            //if (shiptocontTextBox.Text != "Y" || !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim()))
-            //{
-            //    //This control fails validation: Name cannot be empty.
-            //    cancel = true;
-            //    this.errorProvider1.SetError(this.shiptocontTextBox, "Value must be empty or Y.");
-            //}
-            //e.Cancel = cancel;
-            }
+        //private void shiptocontTextBox_Validating(object sender,CancelEventArgs e) {
+        //    //bool cancel = false;
+        //    //var a = !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim());
+        //    //if (shiptocontTextBox.Text != "Y" || !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim()))
+        //    //{
+        //    //    //This control fails validation: Name cannot be empty.
+        //    //    cancel = true;
+        //    //    this.errorProvider1.SetError(this.shiptocontTextBox, "Value must be empty or Y.");
+        //    //}
+        //    //e.Cancel = cancel;
+        //    }
 		#endregion
 #region Methods
 		private void AddSalesRecord()
@@ -455,7 +471,7 @@ namespace Mbc5.Forms.MemoryBook {
 					//useing hard code until function to generate invno is done
 					SqlParameter[] parameters = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
-					 new SqlParameter("@Schcode",lblSchcodeVal.Text),
+					 new SqlParameter("@Schcode",this.Schcode),
 					  new SqlParameter("@Contryear", contryearTextBox.Text)
 					};
 					var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear)  VALUES (@Invno,@Schcode,@Contryear)";
@@ -467,7 +483,7 @@ namespace Mbc5.Forms.MemoryBook {
 					}
 					SqlParameter[] parameters1 = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
-					 new SqlParameter("@Schcode",lblSchcodeVal.Text),
+					 new SqlParameter("@Schcode",this.Schcode),
 					 new SqlParameter("@ProdNo",GetProdNo()),
 					  new SqlParameter("@Contryear", contryearTextBox.Text),
 					   new SqlParameter("@Company","MBC")
@@ -481,7 +497,7 @@ namespace Mbc5.Forms.MemoryBook {
 					}
 					SqlParameter[] parameters2 = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
-					 new SqlParameter("@Schcode",lblSchcodeVal.Text),
+					 new SqlParameter("@Schcode",this.Schcode),
 					 new SqlParameter("@Specovr",GetCoverNumber()),
 						 new SqlParameter("@Specinst",GetInstructions() ),
 					   new SqlParameter("@Company","MBC")
@@ -494,16 +510,17 @@ namespace Mbc5.Forms.MemoryBook {
 						return;
 					}
 					Save();
-					this.custTableAdapter.Fill(this.dsCust.cust, lblSchcodeVal.Text);
-				};
+					this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+                    this.SetInvnoSchCode();
+                };
 			}//not = 0
 		}
 		private void GoToSales() {
 
-            
+            var a = this.lblSchcode.Text;
                 this.Cursor = Cursors.AppStarting;
                      int vInvno = this.Invno;
-                    string vSchcode = lblSchcodeVal.Text;
+                    string vSchcode = this.Schcode;
 
                 frmSales frmSales = new frmSales(this.ApplicationUser,vInvno,vSchcode);
                 frmSales.MdiParent = this.MdiParent;
@@ -521,7 +538,7 @@ namespace Mbc5.Forms.MemoryBook {
                retval= false;
 
                 }
-            if (this.lblSchcodeVal.Text == "038752") {
+            if (this.Schcode == "038752") {
                 retval = false;
 
                 }
@@ -638,7 +655,7 @@ namespace Mbc5.Forms.MemoryBook {
             return coverNum.ToString();
             }
         private void GetSetSchcode() {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT precode,schcode from codecnt ",conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
@@ -664,14 +681,14 @@ namespace Mbc5.Forms.MemoryBook {
                 if (Int32.TryParse(vSchcode,out tmpSchcode))
                     {
                     tmpSchcode += 1;
-                    this.lblSchcodeVal.Text = vPreCode + tmpSchcode.ToString();
+                    this.Schcode = vPreCode + tmpSchcode.ToString();
                     cmd.CommandText = "Update codecnt Set schcode=@schcode";
                     cmd.Parameters.AddWithValue("@schcode",tmpSchcode.ToString());
                     cmd.ExecuteNonQuery();
 
                     }
                 else
-                    { this.lblSchcodeVal.Text = "error"; }
+                    { this.Schcode = "error"; }
 
 
                 }
@@ -693,7 +710,7 @@ namespace Mbc5.Forms.MemoryBook {
             DataTable EditedRecs = dsMktInfo.mktinfo.GetChanges();
             if (EditedRecs != null)
                 {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+                SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
                 string sql = "UPDATE MktInfo Set note=@note,promo=@promo,refered=@refered where Id=@Id ;";
                 SqlCommand cmd = new SqlCommand(sql,conn);
                 foreach (DataRow row in EditedRecs.Rows)
@@ -720,19 +737,20 @@ namespace Mbc5.Forms.MemoryBook {
                         }
                     finally { cmd.Connection.Close(); }
 
-                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,this.Schcode);
                     }
                 }
             else
                 { MessageBox.Show("You do not have any records to be saved.","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop); }
             }
         private void SaveTeleLog() {
-
-            this.ValidateChildren();
+             datecontBindingSource.EndEdit();
+           var a= this.ValidateChildren(ValidationConstraints.ImmediateChildren);
+           
             DataTable EditedRecs = dsCust.datecont.GetChanges();
             if (EditedRecs != null)
                 {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+                SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
                 string sql = "UPDATE DateCont Set Id=@Id,reason=@reason,contact=@contact,typecont=@typecont, nxtdate=@nxtdate,callcont=@callcont, calltime=@calltime,priority=@priority,techcall=@techcall where id=@id ;";
                 SqlCommand cmd = new SqlCommand(sql,conn);
                 foreach (DataRow row in EditedRecs.Rows)
@@ -763,7 +781,7 @@ namespace Mbc5.Forms.MemoryBook {
                         }
                     finally { cmd.Connection.Close(); }
 
-                    this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
                     }
                 }
             else
@@ -776,10 +794,11 @@ namespace Mbc5.Forms.MemoryBook {
             }
         private void DataRefresh() {
             
-                this.custTableAdapter.Fill(this.dsCust.cust,lblSchcodeVal.Text);
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
-                this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text.Trim());
-                }
+                this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,this.Schcode);
+                this.datecontTableAdapter.Fill(this.dsCust.datecont,this.Schcode);
+            this.SetInvnoSchCode();
+        }
         private string GetInstructions()
         {
             string val = "";
@@ -808,15 +827,16 @@ namespace Mbc5.Forms.MemoryBook {
 
 
         private void btnInterOffice_Click(object sender,EventArgs e) {
-            this.Cursor = Cursors.AppStarting;
-             string body = inofficeTextBox.Text;
-            string subj = "Inter Office Memo";            
-            string email = "";
-            var emailHelper = new EmailHelper();
-            EmailType type = EmailType.Mbc;
-            emailHelper.SendOutLookEmail(subj, email, "", body, type);
-            this.Cursor = Cursors.Default;
-          
+         
+                this.Cursor = Cursors.AppStarting;
+                string body = inofficeTextBox.Text;
+                string subj = "Inter Office Memo";
+                string email = "";
+                var emailHelper = new EmailHelper();
+                EmailType type = EmailType.Mbc;
+                emailHelper.SendOutLookEmail(subj, email, "", body, type);
+                this.Cursor = Cursors.Default;
+         
         }
 
         private void btnSchoolEmail_Click(object sender,EventArgs e) {
@@ -831,28 +851,20 @@ namespace Mbc5.Forms.MemoryBook {
         }
 
         private void btnEmailContact_Click(object sender,EventArgs e) {
-            this.Cursor = Cursors.AppStarting;
-            frmEmail frmEmail = new frmEmail(this.ApplicationUser,txtContactEmail.Text,"","");
-            frmEmail.MdiParent = this.MdiParent;
-            frmEmail.Show();
-            this.Cursor = Cursors.Default;
+            if (!String.IsNullOrEmpty(txtContactEmail.Text))
+            {
+                this.errorProvider1.SetError(txtContactEmail, string.Empty);
+                var emailHelper = new EmailHelper();
+            emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
+            }
+            else
+            {
+                this.errorProvider1.SetError(txtContactEmail, "Email address is required.");
+            }
+            
             }
 
-        private void btnEmailCont2_Click(object sender,EventArgs e) {
-            this.Cursor = Cursors.AppStarting;
-            frmEmail frmEmail = new frmEmail(this.ApplicationUser,txtContact2Email.Text,"","");
-            frmEmail.MdiParent = this.MdiParent;
-            frmEmail.Show();
-            this.Cursor = Cursors.Default;
-            }
-
-        private void btnEmailContac3_Click(object sender,EventArgs e) {
-            this.Cursor = Cursors.AppStarting;
-            frmEmail frmEmail = new frmEmail(this.ApplicationUser,txtContact3Email.Text,"","");
-            frmEmail.MdiParent = this.MdiParent;
-            frmEmail.Show();
-            this.Cursor = Cursors.Default;
-            }
+        
 
       
 
@@ -874,7 +886,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void btnAddLog_Click(object sender,EventArgs e) {
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString );
             string sql = "INSERT INTO DateCont (Id,schcode,datecont,initial) VALUES(@Id,@schcode,@datecont,@initial);";
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.Parameters.AddWithValue("@Id",Guid.NewGuid().ToString());
@@ -894,12 +906,12 @@ namespace Mbc5.Forms.MemoryBook {
                 //go on we are not stopping the program for this
                 }
             finally { cmd.Connection.Close(); }
-            this.datecontTableAdapter.Fill(this.dsCust.datecont,lblSchcodeVal.Text);
+            this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
 
             }
 
         private void btnAddMarketLog_Click(object sender,EventArgs e) {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
             string sql = "INSERT INTO MktInfo (ddate,initial,schcode) VALUES(@ddate,@initial,@schcode);";
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.Parameters.Clear();
@@ -919,7 +931,7 @@ namespace Mbc5.Forms.MemoryBook {
                 //go on we are not stopping the program for this
                 }
             finally { cmd.Connection.Close(); }
-            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,lblSchcodeVal.Text.Trim());
+            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,this.Schcode);
             }
 
         private void btnSaveTeleLog_Click(object sender,EventArgs e) {
@@ -958,14 +970,16 @@ namespace Mbc5.Forms.MemoryBook {
             SaveMktLog();
             }
 
-        private void mktinfoDataGridView_DataError(object sender,DataGridViewDataErrorEventArgs e) {
+        private void mktinfoDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
             //leave
-            }
+        }
 
-        private void datecontDataGridView_DataError(object sender,DataGridViewDataErrorEventArgs e) {
+        private void datecontDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
             //Leave Here;
 
-            }
+        }
 
         private void pg3_Leave(object sender,EventArgs e) {
             //save if user leaves to another tab or form will not affect log check.
@@ -1021,6 +1035,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void custDataGridView_Enter(object sender,EventArgs e) {
             this.custTableAdapter.Fill(this.dsCust.cust,this.Schcode);
+            SetInvnoSchCode();
             }
 
         private void custDataGridView_RowHeaderMouseDoubleClick(object sender,DataGridViewCellMouseEventArgs e) {
@@ -1116,6 +1131,63 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         }
+
+        private void txtSchname_DoubleClick_1(object sender, EventArgs e)
+        {
+            if (ApplicationUser.IsInRole("SA") || ApplicationUser.IsInRole("Administrator"))
+            {
+                txtSchname.ReadOnly = false;
+            }
+        }
+
+        private void btnEmailContac3_Click_1(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtContact3Email.Text))
+            {
+                this.errorProvider1.SetError(txtContact3Email, string.Empty);
+                var emailHelper = new EmailHelper();
+                emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
+            }
+            else
+            {
+                this.errorProvider1.SetError(txtContact3Email, "Email address is required.");
+            }
+          
+        }
+
+        private void btnEmailCont2_Click_1(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtContact2Email.Text))
+            {
+                this.errorProvider1.SetError(txtContact2Email, string.Empty);
+                var emailHelper = new EmailHelper();
+                emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
+            }
+            else
+            {
+                this.errorProvider1.SetError(txtContact2Email, "Email address is required.");
+            }
+           
+        }
+
+        private void firstDaySchoolDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            firstDaySchoolDateTimePicker.Format = DateTimePickerFormat.Long;
+        }
+
+        private void rbdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            rbdateDateTimePicker.Format= DateTimePickerFormat.Long;
+        }
+
+        private void xeldateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            xeldateDateTimePicker.Format= DateTimePickerFormat.Long;
+        }
+
+        
+
+
 
 
         //Nothing below here
