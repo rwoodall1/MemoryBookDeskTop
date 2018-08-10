@@ -573,14 +573,14 @@ namespace Mbc5.Forms.MemoryBook {
                         decimal msTot = 0;
                         decimal persTot = 0;
 
-                        vParseResult = decimal.TryParse(lbldisc1.Text, out disc1);
-                        vParseResult = decimal.TryParse(lbldisc2.Text, out disc2);
-                        vParseResult = decimal.TryParse(lblDisc3.Text, out disc3);
+                        vParseResult = decimal.TryParse(lbldisc1amount.Text, out disc1);
+                        vParseResult = decimal.TryParse(lbldisc2amount.Text, out disc2);
+                        vParseResult = decimal.TryParse(otherdiscamt.Text, out disc3);
                         vParseResult = decimal.TryParse(lblMsTot.Text, out msTot);
                         vParseResult = decimal.TryParse(lblperstotal.Text, out persTot);
                         lblFinalTotPrc.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot).ToString("c");
                         txtFinalbookprc.Text = ((SubTotal + disc1 + disc2 + disc3 + msTot + persTot) / numberOfCopies).ToString("c");
-                        //other charges and credies
+                        //other charges and credits
                         decimal credit1 = 0;
                         decimal credit2 = 0;
                         decimal otherchrg1 = 0;
@@ -1346,20 +1346,20 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void saletaxTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(saletaxTextBox.Text))
-            {
+            //if (!String.IsNullOrEmpty(saletaxTextBox.Text))
+            //{
 
-                errorProvider1.SetError(saletaxTextBox, "");
-                decimal numeral;
-                var result = decimal.TryParse(saletaxTextBox.Text, out numeral);
-                //non numeric
-                if (!result)
-                {
-                    errorProvider1.SetError(saletaxTextBox, "Please enter a decimal amount.");
-                    e.Cancel = true;
+            //    errorProvider1.SetError(saletaxTextBox, "");
+            //    decimal numeral;
+            //    var result = decimal.TryParse(saletaxTextBox.Text, out numeral);
+            //    //non numeric
+            //    if (!result)
+            //    {
+            //        errorProvider1.SetError(saletaxTextBox, "Please enter a decimal amount.");
+            //        e.Cancel = true;
 
-                }
-            }
+            //    }
+            //}
         }
 
         private void txtPriceOverRide_Validating(object sender, CancelEventArgs e)
@@ -1552,18 +1552,43 @@ namespace Mbc5.Forms.MemoryBook {
         }
 
         private void txtDisc_Leave(object sender, EventArgs e)
+ 
         {
+            decimal total = 0;
+            decimal discount = 0;
+            decimal.TryParse(this.lblsubtot.Text.Replace("$","").Replace(",",""), out total);
+            decimal.TryParse(this.txtDisc.Text, out discount);
+            this.lbldisc1amount.Text = "-"+(total * discount).ToString("0.00");
             BookCalc();
         }
 
         private void txtDp2_Leave(object sender, EventArgs e)
         {
+            if (chkDc2.Checked)
+            {
+                decimal total = 0;
+                decimal discount = 0;
+                decimal.TryParse(this.lblsubtot.Text.Replace("$", "").Replace(",", ""), out total);
+                decimal.TryParse(this.txtDp2.Text, out discount);
+                this.lbldisc2amount.Text = "-" + (total * discount).ToString("0.00");
+            }
+            else { this.lbldisc2amount.Text = "0"; }
             BookCalc();
         }
 
         private void dp3ComboBox_Leave(object sender, EventArgs e)
         {
-            BookCalc();
+            if (dp3ComboBox.SelectedItem == null) { dp3ComboBox.SelectedItem = ".000"; }
+            decimal discountpercent = 0;
+            decimal subtot = 0;
+            bool vParseResult = decimal.TryParse(dp3ComboBox.SelectedItem.ToString(), out discountpercent);
+            bool vParseResult1 = decimal.TryParse(lblsubtot.Text.Replace("$", ""), out subtot);
+            if (vParseResult && vParseResult1)
+            {
+                var discountprice = (subtot * discountpercent) - ((subtot * discountpercent) * 2);
+                otherdiscamt.Text = discountprice.ToString("0.00");
+                BookCalc();
+            }
         }
 
         private void cmbYrDiscountAmt_SelectedIndexChanged(object sender, EventArgs e)
@@ -1572,6 +1597,131 @@ namespace Mbc5.Forms.MemoryBook {
             BookCalc();
         }
 
-       
+        private void chkDc2_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void chkDc2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDc2.Checked)
+            {
+                decimal total = 0;
+                decimal discount = 0;
+                decimal.TryParse(this.lblsubtot.Text.Replace("$", "").Replace(",", ""), out total);
+                decimal.TryParse(this.txtDp2.Text, out discount);
+                this.lbldisc2amount.Text = "-" + (total * discount).ToString("0.00");
+            }
+            else { this.lbldisc2amount.Text = "0"; }
+            BookCalc();
+        }
+
+        private void chkMsStandard_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkMsStandard.Checked)
+            {
+                decimal amount = 0;
+                int qty = 0;
+                decimal.TryParse(foilamtTextBox.Text, out amount);
+                int.TryParse(txtMsQty.Text, out qty);
+                lblMsTot.Text = (amount * qty).ToString();
+            }
+            else { lblMsTot.Text = "0"; }
+        }
+
+        private void txtMsQty_Leave(object sender, EventArgs e)
+        {
+            if (chkMsStandard.Checked) {
+                decimal amount = 0;
+                    int qty = 0;
+                decimal.TryParse(foilamtTextBox.Text, out amount);
+                int.TryParse(txtMsQty.Text, out qty);
+                lblMsTot.Text = (amount * qty).ToString();
+            } else { lblMsTot.Text = "0"; }
+        }
+
+        private void perscopiesTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void perscopiesTextBox_Leave(object sender, EventArgs e)
+        {
+            int number = 0;
+            int number1 = 0;
+            decimal prc = 0;
+            bool result = int.TryParse(perscopiesTextBox.Text, out number);
+            bool result3 = int.TryParse(txtIconCopies.Text, out number1);
+            bool result2 = decimal.TryParse(persamountTextBox.Text, out prc);
+            if (result && result2)
+            {
+                lblperstotal.Text = (number * prc).ToString("0.00");
+                BookCalc();
+            }
+            else
+            {
+                lblperstotal.Text = "0.00";
+                BookCalc();
+            }
+            txtNumtoPers.Text = (number1 + number).ToString();
+        }
+
+        private void persamountTextBox_Leave(object sender, EventArgs e)
+        {
+            int number = 0;
+            decimal prc = 0;
+            bool result = int.TryParse(perscopiesTextBox.Text, out number);
+            bool result2 = decimal.TryParse(persamountTextBox.Text, out prc);
+            if (result && result2)
+            {
+                lblperstotal.Text = (number * prc).ToString("0.00");
+                BookCalc();
+            }
+            else
+            {
+                lblperstotal.Text = "0.00";
+                BookCalc();
+            }
+        }
+
+        private void txtIconCopies_Leave(object sender, EventArgs e)
+        {
+            int number = 0;
+            int number1 = 0;
+            decimal prc = 0;
+            bool result = int.TryParse(perscopiesTextBox.Text, out number);
+            bool result3 = int.TryParse(txtIconCopies.Text, out number1);
+
+            bool result2 = decimal.TryParse(txtIconamt.Text, out prc);
+            if (result && result2)
+            {
+                lblIconTot.Text = (number * prc).ToString("0.00");
+                BookCalc();
+            }
+            else
+            {
+                lblIconTot.Text = "0.00";
+                BookCalc();
+            }
+            txtNumtoPers.Text = (number1 + number).ToString();
+        }
+
+        private void txtIconamt_Leave(object sender, EventArgs e)
+        {
+            int number = 0;
+            decimal prc = 0;
+            bool result = int.TryParse(txtIconCopies.Text, out number);
+            bool result2 = decimal.TryParse(txtIconamt.Text, out prc);
+            if (result && result2)
+            {
+                lblIconTot.Text = (number * prc).ToString("0.00");
+                BookCalc();
+            }
+            else
+            {
+                lblIconTot.Text = "0.00";
+                BookCalc();
+            }
+        }
     }
 }
