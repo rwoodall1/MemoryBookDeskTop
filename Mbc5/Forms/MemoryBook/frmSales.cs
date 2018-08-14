@@ -779,8 +779,12 @@ namespace Mbc5.Forms.MemoryBook {
             return retval;
         }
         private void CalculateEach() {
-
-          this.TaxRate = this.GetTaxRate();
+            if (!donotchargeschoolsalestaxCheckBox.Checked)
+            {
+                this.TaxRate = this.GetTaxRate();
+            }
+            else { this.TaxRate = 0; }
+         
 
             this.lblTaxRate.Text = this.TaxRate.ToString();
             if (String.IsNullOrEmpty(txtBYear.Text)) {
@@ -1102,14 +1106,26 @@ namespace Mbc5.Forms.MemoryBook {
                         decimal msTot = 0;
                         decimal persTot = 0;
                         decimal iconTot = 0;
+                        decimal vTax = 0;
                         vParseResult = decimal.TryParse(lbldisc1.Text, out disc1);
                         vParseResult = decimal.TryParse(lbldisc2.Text, out disc2);
                         vParseResult = decimal.TryParse(lblDisc3.Text, out disc3);
                         vParseResult = decimal.TryParse(lblMsTot.Text, out msTot);
                         vParseResult = decimal.TryParse(lblperstotal.Text, out persTot);
                         vParseResult = decimal.TryParse(lblIconTot.Text, out iconTot);
-                        lblFinalTotPrc.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot+iconTot).ToString("c");
-                        txtFinalbookprc.Text = ((SubTotal + disc1 + disc2 + disc3 + msTot + persTot) / numberOfCopies).ToString("c");
+                        var a = (disc1 * this.TaxRate);
+                        vBookCalcTax += (disc1 * this.TaxRate);
+                        vBookCalcTax += (disc2 * this.TaxRate);
+                        vBookCalcTax += (disc3 * this.TaxRate);
+                        vBookCalcTax += (msTot * this.TaxRate);
+                        vBookCalcTax += (persTot * this.TaxRate);
+                        vBookCalcTax += (iconTot * this.TaxRate);
+                        this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);
+                        this.lblSalesTax.Text = this.SalesTax.ToString("c");
+                        vParseResult = decimal.TryParse(lblSalesTax.Text.Replace("$",""), out vTax);
+                        SubTotal += (disc1 + disc2 + disc3 + msTot + persTot + iconTot);
+                        lblFinalTotPrc.Text = SubTotal.ToString("0.00");
+                        txtFinalbookprc.Text = ((SubTotal) / numberOfCopies).ToString("c");
                         //other charges and credies
                         decimal credit1 = 0;
                         decimal credit2 = 0;
@@ -1119,7 +1135,7 @@ namespace Mbc5.Forms.MemoryBook {
                         vParseResult = decimal.TryParse(txtCredits2.Text, out credit2);
                         vParseResult = decimal.TryParse(txtOtherChrg.Text, out otherchrg1);
                         vParseResult = decimal.TryParse(txtOtherChrg2.Text, out otherchrg2);
-                        lbladjbef.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + credit1 + credit2 + otherchrg1 + otherchrg2).ToString("c");
+                        lbladjbef.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + credit1 + credit2 + otherchrg1 + otherchrg2 +vTax).ToString("c");
 
                     }
                 }
@@ -3075,7 +3091,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void donotchargeschoolsalestaxCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.CalculateEach();
         }
 
         private void pg1_Click(object sender, EventArgs e)

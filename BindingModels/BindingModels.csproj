@@ -86,6 +86,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BidInvoice.cs" />
     <Compile Include="CustomerBindingModels.cs" />
     <Compile Include="InvoiceDetailBindingModel.cs" />
     <Compile Include="InvoiceDetails.cs" />

@@ -669,6 +669,12 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columndonotchargeschoolsalestax;
             
+            private global::System.Data.DataColumn columnIconTotal;
+            
+            private global::System.Data.DataColumn columnPersTotal;
+            
+            private global::System.Data.DataColumn columnicontotal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bidsDataTable() {
@@ -2096,6 +2102,30 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IconTotalColumn {
+                get {
+                    return this.columnIconTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PersTotalColumn {
+                get {
+                    return this.columnPersTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn icontotalColumn {
+                get {
+                    return this.columnicontotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2304,7 +2334,10 @@ namespace Mbc5.DataSets {
                         decimal schooltax, 
                         decimal schooltaxrate, 
                         decimal subtotal, 
-                        bool donotchargeschoolsalestax) {
+                        bool donotchargeschoolsalestax, 
+                        decimal IconTotal, 
+                        decimal PersTotal1, 
+                        decimal icontotal1) {
                 bidsRow rowbidsRow = ((bidsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schname,
@@ -2480,7 +2513,10 @@ namespace Mbc5.DataSets {
                         schooltax,
                         schooltaxrate,
                         subtotal,
-                        donotchargeschoolsalestax};
+                        donotchargeschoolsalestax,
+                        IconTotal,
+                        PersTotal1,
+                        icontotal1};
                 if ((parentcustRowBycust_bids != null)) {
                     columnValuesArray[1] = parentcustRowBycust_bids[2];
                 }
@@ -2687,6 +2723,9 @@ namespace Mbc5.DataSets {
                 this.columnschooltaxrate = base.Columns["schooltaxrate"];
                 this.columnsubtotal = base.Columns["subtotal"];
                 this.columndonotchargeschoolsalestax = base.Columns["donotchargeschoolsalestax"];
+                this.columnIconTotal = base.Columns["IconTotal"];
+                this.columnPersTotal = base.Columns["PersTotal"];
+                this.columnicontotal = base.Columns["icontotal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3040,6 +3079,12 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnsubtotal);
                 this.columndonotchargeschoolsalestax = new global::System.Data.DataColumn("donotchargeschoolsalestax", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndonotchargeschoolsalestax);
+                this.columnIconTotal = new global::System.Data.DataColumn("IconTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIconTotal);
+                this.columnPersTotal = new global::System.Data.DataColumn("PersTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPersTotal);
+                this.columnicontotal = new global::System.Data.DataColumn("icontotal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnicontotal);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnschname.AllowDBNull = false;
@@ -5973,6 +6018,54 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal IconTotal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablebids.IconTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IconTotal\' in table \'bids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablebids.IconTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal PersTotal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablebids.PersTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PersTotal\' in table \'bids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablebids.PersTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal icontotal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablebids.icontotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'icontotal\' in table \'bids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablebids.icontotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custRow custRow {
                 get {
                     return ((custRow)(this.GetParentRow(this.Table.ParentRelations["cust_bids"])));
@@ -6064,6 +6157,42 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdonotchargeschoolsalestaxNull() {
                 this[this.tablebids.donotchargeschoolsalestaxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsIconTotalNull() {
+                return this.IsNull(this.tablebids.IconTotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetIconTotalNull() {
+                this[this.tablebids.IconTotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPersTotalNull() {
+                return this.IsNull(this.tablebids.PersTotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPersTotalNull() {
+                this[this.tablebids.PersTotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsicontotalNull() {
+                return this.IsNull(this.tablebids.icontotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SeticontotalNull() {
+                this[this.tablebids.icontotalColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7058,12 +7187,13 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             tableMapping.ColumnMappings.Add("schooltaxrate", "schooltaxrate");
             tableMapping.ColumnMappings.Add("subtotal", "subtotal");
             tableMapping.ColumnMappings.Add("donotchargeschoolsalestax", "donotchargeschoolsalestax");
+            tableMapping.ColumnMappings.Add("icontotal", "icontotal");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM bids\r\nWHERE        (Id = @id)";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM bids\r\nWHERE        (Id = @Id)";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [bids] ([schname], [schcode], [booktype], [qtedate], [contryear], [no" +
@@ -7091,31 +7221,31 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                 "llad], [fulladamt], [halfad], [halfadmt], [quarterad], [quarteradamt], [eighthad" +
                 "], [eighthadamt], [adline], [cred_etc2], [desc22], [adjaftr2], [desc22tot], [hal" +
                 "fadamt], [prcor], [adcuto], [webonly], [freebooks], [IconCopies], [extrchg], [Ic" +
-                "onAmt], [schooltax], [schooltaxrate], [subtotal], [donotchargeschoolsalestax]) V" +
-                "ALUES (@schname, @schcode, @booktype, @qtedate, @contryear, @nopages, @nocopies," +
-                " @book_ea, @book_price, @pryn, @prof, @coyn, @conven, @specea, @speccvr, @scovrd" +
-                "e, @layn, @laminate, @peyn, @perfbind, @foilck, @foilamt, @insck, @insamt, @spir" +
-                "ck, @spiramt, @hdbky_n, @hardback, @casey_n, @caseamt, @customy_n, @customized, " +
-                "@misc, @mdesc, @sbtot, @dc1, @dp1, @disc1, @dc2, @dp2, @disc2, @dp3desc, @dp3, @" +
-                "disc3, @dp4, @disc4, @cred_etc, @adjbef, @adjaftr, @fbkprc, @ftotprc, @source, @" +
-                "xtrabkno, @xtrabkprc, @desc1, @desc1tot, @desc2, @desc2tot, @ponum, @newprice, @" +
-                "schout, @allclrck, @allclramt, @smemo, @oa, @massmail, @inkclr, @foiladamt, @des" +
-                "c3, @desc3tot, @desc4, @desc4tot, @clrpgdesc, @clrpgtot, @noclrpgr, @glspaper, @" +
-                "glsamt, @acovrde, @bpovrde, @bpyear, @themck, @themamt, @yirschool, @story, @sup" +
-                "plements, @yiramt, @storyamt, @suppamt, @persamount, @perstotal, @perscopies, @o" +
-                "ursupp, @oursuppamt, @ourovrride, @dp1desc, @ordagryr, @myovrride, @hbovrride, @" +
-                "profovrride, @conovrride, @themovrride, @cbovrride, @spiovrride, @pbovrride, @yi" +
-                "rsovrride, @ourstyovrride, @laminateovrride, @foilyearovrride, @basicpp, @perpp," +
-                " @peramount, @basicamoun, @agreerec, @agreedte, @onlinecuto, @oprcperbk, @oprcpe" +
-                "rbk2, @dorecentry, @sdlstich, @sdlstichamt, @copiesovride, @binvno, @msstanqty, " +
-                "@msstandtot, @schbalance, @parentpymt, @nba, @fldtype, @isfolder, @priceovrd, @m" +
-                "laminationamt, @mlamination, @opinkpers, @opfoilpers, @opinkpersamt, @opfoilpers" +
-                "amt, @oppicpers, @oppicpersamt, @opcustom, @opcustomamt, @opfoiltxtamt, @opfoilt" +
-                "xt, @opinktamt, @opink, @yrdiscount, @luvlines, @yrdiscountamt, @luvlineamt, @fu" +
-                "llad, @fulladamt, @halfad, @halfadmt, @quarterad, @quarteradamt, @eighthad, @eig" +
-                "hthadamt, @adline, @cred_etc2, @desc22, @adjaftr2, @desc22tot, @halfadamt, @prco" +
-                "r, @adcuto, @webonly, @freebooks, @IconCopies, @extrchg, @IconAmt, @schooltax, @" +
-                "schooltaxrate, @subtotal, @donotchargeschoolsalestax)";
+                "onAmt], [schooltax], [schooltaxrate], [subtotal], [donotchargeschoolsalestax], [" +
+                "icontotal]) VALUES (@schname, @schcode, @booktype, @qtedate, @contryear, @nopage" +
+                "s, @nocopies, @book_ea, @book_price, @pryn, @prof, @coyn, @conven, @specea, @spe" +
+                "ccvr, @scovrde, @layn, @laminate, @peyn, @perfbind, @foilck, @foilamt, @insck, @" +
+                "insamt, @spirck, @spiramt, @hdbky_n, @hardback, @casey_n, @caseamt, @customy_n, " +
+                "@customized, @misc, @mdesc, @sbtot, @dc1, @dp1, @disc1, @dc2, @dp2, @disc2, @dp3" +
+                "desc, @dp3, @disc3, @dp4, @disc4, @cred_etc, @adjbef, @adjaftr, @fbkprc, @ftotpr" +
+                "c, @source, @xtrabkno, @xtrabkprc, @desc1, @desc1tot, @desc2, @desc2tot, @ponum," +
+                " @newprice, @schout, @allclrck, @allclramt, @smemo, @oa, @massmail, @inkclr, @fo" +
+                "iladamt, @desc3, @desc3tot, @desc4, @desc4tot, @clrpgdesc, @clrpgtot, @noclrpgr," +
+                " @glspaper, @glsamt, @acovrde, @bpovrde, @bpyear, @themck, @themamt, @yirschool," +
+                " @story, @supplements, @yiramt, @storyamt, @suppamt, @persamount, @perstotal, @p" +
+                "erscopies, @oursupp, @oursuppamt, @ourovrride, @dp1desc, @ordagryr, @myovrride, " +
+                "@hbovrride, @profovrride, @conovrride, @themovrride, @cbovrride, @spiovrride, @p" +
+                "bovrride, @yirsovrride, @ourstyovrride, @laminateovrride, @foilyearovrride, @bas" +
+                "icpp, @perpp, @peramount, @basicamoun, @agreerec, @agreedte, @onlinecuto, @oprcp" +
+                "erbk, @oprcperbk2, @dorecentry, @sdlstich, @sdlstichamt, @copiesovride, @binvno," +
+                " @msstanqty, @msstandtot, @schbalance, @parentpymt, @nba, @fldtype, @isfolder, @" +
+                "priceovrd, @mlaminationamt, @mlamination, @opinkpers, @opfoilpers, @opinkpersamt" +
+                ", @opfoilpersamt, @oppicpers, @oppicpersamt, @opcustom, @opcustomamt, @opfoiltxt" +
+                "amt, @opfoiltxt, @opinktamt, @opink, @yrdiscount, @luvlines, @yrdiscountamt, @lu" +
+                "vlineamt, @fullad, @fulladamt, @halfad, @halfadmt, @quarterad, @quarteradamt, @e" +
+                "ighthad, @eighthadamt, @adline, @cred_etc2, @desc22, @adjaftr2, @desc22tot, @hal" +
+                "fadamt, @prcor, @adcuto, @webonly, @freebooks, @IconCopies, @extrchg, @IconAmt, " +
+                "@schooltax, @schooltaxrate, @subtotal, @donotchargeschoolsalestax, @icontotal)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7290,6 +7420,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltaxrate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "schooltaxrate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@subtotal", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "subtotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@donotchargeschoolsalestax", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "donotchargeschoolsalestax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@icontotal", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "icontotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [bids] SET [schname] = @schname, [schcode] = @schcode, [booktype] = @bookt" +
@@ -7343,94 +7474,95 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                 "cor] = @prcor, [adcuto] = @adcuto, [webonly] = @webonly, [freebooks] = @freebook" +
                 "s, [IconCopies] = @IconCopies, [extrchg] = @extrchg, [IconAmt] = @IconAmt, [scho" +
                 "oltax] = @schooltax, [schooltaxrate] = @schooltaxrate, [subtotal] = @subtotal, [" +
-                "donotchargeschoolsalestax] = @donotchargeschoolsalestax WHERE (([schname] = @Ori" +
-                "ginal_schname) AND ([schcode] = @Original_schcode) AND ([booktype] = @Original_b" +
-                "ooktype) AND ([qtedate] = @Original_qtedate) AND ([contryear] = @Original_contry" +
-                "ear) AND ([nopages] = @Original_nopages) AND ([nocopies] = @Original_nocopies) A" +
-                "ND ([book_ea] = @Original_book_ea) AND ([book_price] = @Original_book_price) AND" +
-                " ([pryn] = @Original_pryn) AND ([prof] = @Original_prof) AND ([coyn] = @Original" +
-                "_coyn) AND ([conven] = @Original_conven) AND ([specea] = @Original_specea) AND (" +
-                "[speccvr] = @Original_speccvr) AND ([scovrde] = @Original_scovrde) AND ([layn] =" +
-                " @Original_layn) AND ([laminate] = @Original_laminate) AND ([peyn] = @Original_p" +
-                "eyn) AND ([perfbind] = @Original_perfbind) AND ([foilck] = @Original_foilck) AND" +
-                " ([foilamt] = @Original_foilamt) AND ([insck] = @Original_insck) AND ([insamt] =" +
-                " @Original_insamt) AND ([spirck] = @Original_spirck) AND ([spiramt] = @Original_" +
-                "spiramt) AND ([hdbky_n] = @Original_hdbky_n) AND ([hardback] = @Original_hardbac" +
-                "k) AND ([casey_n] = @Original_casey_n) AND ([caseamt] = @Original_caseamt) AND (" +
-                "[customy_n] = @Original_customy_n) AND ([customized] = @Original_customized) AND" +
-                " ([misc] = @Original_misc) AND ([mdesc] = @Original_mdesc) AND ([sbtot] = @Origi" +
-                "nal_sbtot) AND ([dc1] = @Original_dc1) AND ([dp1] = @Original_dp1) AND ([disc1] " +
-                "= @Original_disc1) AND ([dc2] = @Original_dc2) AND ([dp2] = @Original_dp2) AND (" +
-                "[disc2] = @Original_disc2) AND ([dp3desc] = @Original_dp3desc) AND ([dp3] = @Ori" +
-                "ginal_dp3) AND ([disc3] = @Original_disc3) AND ([dp4] = @Original_dp4) AND ([dis" +
-                "c4] = @Original_disc4) AND ([cred_etc] = @Original_cred_etc) AND ([adjbef] = @Or" +
-                "iginal_adjbef) AND ([adjaftr] = @Original_adjaftr) AND ([fbkprc] = @Original_fbk" +
-                "prc) AND ([ftotprc] = @Original_ftotprc) AND ([source] = @Original_source) AND (" +
-                "[xtrabkno] = @Original_xtrabkno) AND ([xtrabkprc] = @Original_xtrabkprc) AND ([d" +
-                "esc1] = @Original_desc1) AND ([desc1tot] = @Original_desc1tot) AND ([desc2] = @O" +
-                "riginal_desc2) AND ([desc2tot] = @Original_desc2tot) AND ([ponum] = @Original_po" +
-                "num) AND ([newprice] = @Original_newprice) AND ([schout] = @Original_schout) AND" +
-                " ([allclrck] = @Original_allclrck) AND ([allclramt] = @Original_allclramt) AND (" +
-                "[oa] = @Original_oa) AND ([massmail] = @Original_massmail) AND ([inkclr] = @Orig" +
-                "inal_inkclr) AND ([foiladamt] = @Original_foiladamt) AND ([desc3] = @Original_de" +
-                "sc3) AND ([desc3tot] = @Original_desc3tot) AND ([desc4] = @Original_desc4) AND (" +
-                "[desc4tot] = @Original_desc4tot) AND ([clrpgdesc] = @Original_clrpgdesc) AND ([c" +
-                "lrpgtot] = @Original_clrpgtot) AND ([noclrpgr] = @Original_noclrpgr) AND ([glspa" +
-                "per] = @Original_glspaper) AND ([glsamt] = @Original_glsamt) AND ([acovrde] = @O" +
-                "riginal_acovrde) AND ([bpovrde] = @Original_bpovrde) AND ([bpyear] = @Original_b" +
-                "pyear) AND ([themck] = @Original_themck) AND ([themamt] = @Original_themamt) AND" +
-                " ([yirschool] = @Original_yirschool) AND ([story] = @Original_story) AND ([suppl" +
-                "ements] = @Original_supplements) AND ([yiramt] = @Original_yiramt) AND ([storyam" +
-                "t] = @Original_storyamt) AND ([suppamt] = @Original_suppamt) AND ([persamount] =" +
-                " @Original_persamount) AND ([perstotal] = @Original_perstotal) AND ([perscopies]" +
-                " = @Original_perscopies) AND ([oursupp] = @Original_oursupp) AND ([oursuppamt] =" +
-                " @Original_oursuppamt) AND ([ourovrride] = @Original_ourovrride) AND ([dp1desc] " +
-                "= @Original_dp1desc) AND ([ordagryr] = @Original_ordagryr) AND ([myovrride] = @O" +
-                "riginal_myovrride) AND ([hbovrride] = @Original_hbovrride) AND ([profovrride] = " +
-                "@Original_profovrride) AND ([conovrride] = @Original_conovrride) AND ([themovrri" +
-                "de] = @Original_themovrride) AND ([cbovrride] = @Original_cbovrride) AND ([spiov" +
-                "rride] = @Original_spiovrride) AND ([pbovrride] = @Original_pbovrride) AND ([yir" +
-                "sovrride] = @Original_yirsovrride) AND ([ourstyovrride] = @Original_ourstyovrrid" +
-                "e) AND ([laminateovrride] = @Original_laminateovrride) AND ([foilyearovrride] = " +
-                "@Original_foilyearovrride) AND ([basicpp] = @Original_basicpp) AND ([perpp] = @O" +
-                "riginal_perpp) AND ([peramount] = @Original_peramount) AND ([basicamoun] = @Orig" +
-                "inal_basicamoun) AND ([agreerec] = @Original_agreerec) AND ([agreedte] = @Origin" +
-                "al_agreedte) AND ([onlinecuto] = @Original_onlinecuto) AND ([oprcperbk] = @Origi" +
-                "nal_oprcperbk) AND ([oprcperbk2] = @Original_oprcperbk2) AND ([dorecentry] = @Or" +
-                "iginal_dorecentry) AND ([sdlstich] = @Original_sdlstich) AND ([sdlstichamt] = @O" +
-                "riginal_sdlstichamt) AND ([copiesovride] = @Original_copiesovride) AND ([binvno]" +
-                " = @Original_binvno) AND ([msstanqty] = @Original_msstanqty) AND ([msstandtot] =" +
-                " @Original_msstandtot) AND ([schbalance] = @Original_schbalance) AND ([parentpym" +
-                "t] = @Original_parentpymt) AND ([nba] = @Original_nba) AND ([fldtype] = @Origina" +
-                "l_fldtype) AND ([isfolder] = @Original_isfolder) AND ([priceovrd] = @Original_pr" +
-                "iceovrd) AND ([mlaminationamt] = @Original_mlaminationamt) AND ([mlamination] = " +
-                "@Original_mlamination) AND ([opinkpers] = @Original_opinkpers) AND ([opfoilpers]" +
-                " = @Original_opfoilpers) AND ([opinkpersamt] = @Original_opinkpersamt) AND ([opf" +
-                "oilpersamt] = @Original_opfoilpersamt) AND ([oppicpers] = @Original_oppicpers) A" +
-                "ND ([oppicpersamt] = @Original_oppicpersamt) AND ([opcustom] = @Original_opcusto" +
-                "m) AND ([opcustomamt] = @Original_opcustomamt) AND ([opfoiltxtamt] = @Original_o" +
-                "pfoiltxtamt) AND ([opfoiltxt] = @Original_opfoiltxt) AND ([opinktamt] = @Origina" +
-                "l_opinktamt) AND ([opink] = @Original_opink) AND ([yrdiscount] = @Original_yrdis" +
-                "count) AND ([luvlines] = @Original_luvlines) AND ([yrdiscountamt] = @Original_yr" +
-                "discountamt) AND ([luvlineamt] = @Original_luvlineamt) AND ([fullad] = @Original" +
-                "_fullad) AND ([fulladamt] = @Original_fulladamt) AND ([halfad] = @Original_halfa" +
-                "d) AND ([halfadmt] = @Original_halfadmt) AND ([quarterad] = @Original_quarterad)" +
-                " AND ([quarteradamt] = @Original_quarteradamt) AND ([eighthad] = @Original_eight" +
-                "had) AND ([eighthadamt] = @Original_eighthadamt) AND ([adline] = @Original_adlin" +
-                "e) AND ([cred_etc2] = @Original_cred_etc2) AND ([desc22] = @Original_desc22) AND" +
-                " ([adjaftr2] = @Original_adjaftr2) AND ([desc22tot] = @Original_desc22tot) AND (" +
-                "[halfadamt] = @Original_halfadamt) AND ([prcor] = @Original_prcor) AND ([adcuto]" +
-                " = @Original_adcuto) AND ([webonly] = @Original_webonly) AND ([freebooks] = @Ori" +
-                "ginal_freebooks) AND ((@IsNull_IconCopies = 1 AND [IconCopies] IS NULL) OR ([Ico" +
-                "nCopies] = @Original_IconCopies)) AND ((@IsNull_extrchg = 1 AND [extrchg] IS NUL" +
-                "L) OR ([extrchg] = @Original_extrchg)) AND ((@IsNull_IconAmt = 1 AND [IconAmt] I" +
-                "S NULL) OR ([IconAmt] = @Original_IconAmt)) AND ([Id] = @Original_Id) AND ((@IsN" +
-                "ull_schooltax = 1 AND [schooltax] IS NULL) OR ([schooltax] = @Original_schooltax" +
-                ")) AND ((@IsNull_schooltaxrate = 1 AND [schooltaxrate] IS NULL) OR ([schooltaxra" +
-                "te] = @Original_schooltaxrate)) AND ((@IsNull_subtotal = 1 AND [subtotal] IS NUL" +
-                "L) OR ([subtotal] = @Original_subtotal)) AND ((@IsNull_donotchargeschoolsalestax" +
-                " = 1 AND [donotchargeschoolsalestax] IS NULL) OR ([donotchargeschoolsalestax] = " +
-                "@Original_donotchargeschoolsalestax)))";
+                "donotchargeschoolsalestax] = @donotchargeschoolsalestax, [icontotal] = @icontota" +
+                "l WHERE (([schname] = @Original_schname) AND ([schcode] = @Original_schcode) AND" +
+                " ([booktype] = @Original_booktype) AND ([qtedate] = @Original_qtedate) AND ([con" +
+                "tryear] = @Original_contryear) AND ([nopages] = @Original_nopages) AND ([nocopie" +
+                "s] = @Original_nocopies) AND ([book_ea] = @Original_book_ea) AND ([book_price] =" +
+                " @Original_book_price) AND ([pryn] = @Original_pryn) AND ([prof] = @Original_pro" +
+                "f) AND ([coyn] = @Original_coyn) AND ([conven] = @Original_conven) AND ([specea]" +
+                " = @Original_specea) AND ([speccvr] = @Original_speccvr) AND ([scovrde] = @Origi" +
+                "nal_scovrde) AND ([layn] = @Original_layn) AND ([laminate] = @Original_laminate)" +
+                " AND ([peyn] = @Original_peyn) AND ([perfbind] = @Original_perfbind) AND ([foilc" +
+                "k] = @Original_foilck) AND ([foilamt] = @Original_foilamt) AND ([insck] = @Origi" +
+                "nal_insck) AND ([insamt] = @Original_insamt) AND ([spirck] = @Original_spirck) A" +
+                "ND ([spiramt] = @Original_spiramt) AND ([hdbky_n] = @Original_hdbky_n) AND ([har" +
+                "dback] = @Original_hardback) AND ([casey_n] = @Original_casey_n) AND ([caseamt] " +
+                "= @Original_caseamt) AND ([customy_n] = @Original_customy_n) AND ([customized] =" +
+                " @Original_customized) AND ([misc] = @Original_misc) AND ([mdesc] = @Original_md" +
+                "esc) AND ([sbtot] = @Original_sbtot) AND ([dc1] = @Original_dc1) AND ([dp1] = @O" +
+                "riginal_dp1) AND ([disc1] = @Original_disc1) AND ([dc2] = @Original_dc2) AND ([d" +
+                "p2] = @Original_dp2) AND ([disc2] = @Original_disc2) AND ([dp3desc] = @Original_" +
+                "dp3desc) AND ([dp3] = @Original_dp3) AND ([disc3] = @Original_disc3) AND ([dp4] " +
+                "= @Original_dp4) AND ([disc4] = @Original_disc4) AND ([cred_etc] = @Original_cre" +
+                "d_etc) AND ([adjbef] = @Original_adjbef) AND ([adjaftr] = @Original_adjaftr) AND" +
+                " ([fbkprc] = @Original_fbkprc) AND ([ftotprc] = @Original_ftotprc) AND ([source]" +
+                " = @Original_source) AND ([xtrabkno] = @Original_xtrabkno) AND ([xtrabkprc] = @O" +
+                "riginal_xtrabkprc) AND ([desc1] = @Original_desc1) AND ([desc1tot] = @Original_d" +
+                "esc1tot) AND ([desc2] = @Original_desc2) AND ([desc2tot] = @Original_desc2tot) A" +
+                "ND ([ponum] = @Original_ponum) AND ([newprice] = @Original_newprice) AND ([schou" +
+                "t] = @Original_schout) AND ([allclrck] = @Original_allclrck) AND ([allclramt] = " +
+                "@Original_allclramt) AND ([oa] = @Original_oa) AND ([massmail] = @Original_massm" +
+                "ail) AND ([inkclr] = @Original_inkclr) AND ([foiladamt] = @Original_foiladamt) A" +
+                "ND ([desc3] = @Original_desc3) AND ([desc3tot] = @Original_desc3tot) AND ([desc4" +
+                "] = @Original_desc4) AND ([desc4tot] = @Original_desc4tot) AND ([clrpgdesc] = @O" +
+                "riginal_clrpgdesc) AND ([clrpgtot] = @Original_clrpgtot) AND ([noclrpgr] = @Orig" +
+                "inal_noclrpgr) AND ([glspaper] = @Original_glspaper) AND ([glsamt] = @Original_g" +
+                "lsamt) AND ([acovrde] = @Original_acovrde) AND ([bpovrde] = @Original_bpovrde) A" +
+                "ND ([bpyear] = @Original_bpyear) AND ([themck] = @Original_themck) AND ([themamt" +
+                "] = @Original_themamt) AND ([yirschool] = @Original_yirschool) AND ([story] = @O" +
+                "riginal_story) AND ([supplements] = @Original_supplements) AND ([yiramt] = @Orig" +
+                "inal_yiramt) AND ([storyamt] = @Original_storyamt) AND ([suppamt] = @Original_su" +
+                "ppamt) AND ([persamount] = @Original_persamount) AND ([perstotal] = @Original_pe" +
+                "rstotal) AND ([perscopies] = @Original_perscopies) AND ([oursupp] = @Original_ou" +
+                "rsupp) AND ([oursuppamt] = @Original_oursuppamt) AND ([ourovrride] = @Original_o" +
+                "urovrride) AND ([dp1desc] = @Original_dp1desc) AND ([ordagryr] = @Original_ordag" +
+                "ryr) AND ([myovrride] = @Original_myovrride) AND ([hbovrride] = @Original_hbovrr" +
+                "ide) AND ([profovrride] = @Original_profovrride) AND ([conovrride] = @Original_c" +
+                "onovrride) AND ([themovrride] = @Original_themovrride) AND ([cbovrride] = @Origi" +
+                "nal_cbovrride) AND ([spiovrride] = @Original_spiovrride) AND ([pbovrride] = @Ori" +
+                "ginal_pbovrride) AND ([yirsovrride] = @Original_yirsovrride) AND ([ourstyovrride" +
+                "] = @Original_ourstyovrride) AND ([laminateovrride] = @Original_laminateovrride)" +
+                " AND ([foilyearovrride] = @Original_foilyearovrride) AND ([basicpp] = @Original_" +
+                "basicpp) AND ([perpp] = @Original_perpp) AND ([peramount] = @Original_peramount)" +
+                " AND ([basicamoun] = @Original_basicamoun) AND ([agreerec] = @Original_agreerec)" +
+                " AND ([agreedte] = @Original_agreedte) AND ([onlinecuto] = @Original_onlinecuto)" +
+                " AND ([oprcperbk] = @Original_oprcperbk) AND ([oprcperbk2] = @Original_oprcperbk" +
+                "2) AND ([dorecentry] = @Original_dorecentry) AND ([sdlstich] = @Original_sdlstic" +
+                "h) AND ([sdlstichamt] = @Original_sdlstichamt) AND ([copiesovride] = @Original_c" +
+                "opiesovride) AND ([binvno] = @Original_binvno) AND ([msstanqty] = @Original_msst" +
+                "anqty) AND ([msstandtot] = @Original_msstandtot) AND ([schbalance] = @Original_s" +
+                "chbalance) AND ([parentpymt] = @Original_parentpymt) AND ([nba] = @Original_nba)" +
+                " AND ([fldtype] = @Original_fldtype) AND ([isfolder] = @Original_isfolder) AND (" +
+                "[priceovrd] = @Original_priceovrd) AND ([mlaminationamt] = @Original_mlamination" +
+                "amt) AND ([mlamination] = @Original_mlamination) AND ([opinkpers] = @Original_op" +
+                "inkpers) AND ([opfoilpers] = @Original_opfoilpers) AND ([opinkpersamt] = @Origin" +
+                "al_opinkpersamt) AND ([opfoilpersamt] = @Original_opfoilpersamt) AND ([oppicpers" +
+                "] = @Original_oppicpers) AND ([oppicpersamt] = @Original_oppicpersamt) AND ([opc" +
+                "ustom] = @Original_opcustom) AND ([opcustomamt] = @Original_opcustomamt) AND ([o" +
+                "pfoiltxtamt] = @Original_opfoiltxtamt) AND ([opfoiltxt] = @Original_opfoiltxt) A" +
+                "ND ([opinktamt] = @Original_opinktamt) AND ([opink] = @Original_opink) AND ([yrd" +
+                "iscount] = @Original_yrdiscount) AND ([luvlines] = @Original_luvlines) AND ([yrd" +
+                "iscountamt] = @Original_yrdiscountamt) AND ([luvlineamt] = @Original_luvlineamt)" +
+                " AND ([fullad] = @Original_fullad) AND ([fulladamt] = @Original_fulladamt) AND (" +
+                "[halfad] = @Original_halfad) AND ([halfadmt] = @Original_halfadmt) AND ([quarter" +
+                "ad] = @Original_quarterad) AND ([quarteradamt] = @Original_quarteradamt) AND ([e" +
+                "ighthad] = @Original_eighthad) AND ([eighthadamt] = @Original_eighthadamt) AND (" +
+                "[adline] = @Original_adline) AND ([cred_etc2] = @Original_cred_etc2) AND ([desc2" +
+                "2] = @Original_desc22) AND ([adjaftr2] = @Original_adjaftr2) AND ([desc22tot] = " +
+                "@Original_desc22tot) AND ([halfadamt] = @Original_halfadamt) AND ([prcor] = @Ori" +
+                "ginal_prcor) AND ([adcuto] = @Original_adcuto) AND ([webonly] = @Original_webonl" +
+                "y) AND ([freebooks] = @Original_freebooks) AND ((@IsNull_IconCopies = 1 AND [Ico" +
+                "nCopies] IS NULL) OR ([IconCopies] = @Original_IconCopies)) AND ((@IsNull_extrch" +
+                "g = 1 AND [extrchg] IS NULL) OR ([extrchg] = @Original_extrchg)) AND ((@IsNull_I" +
+                "conAmt = 1 AND [IconAmt] IS NULL) OR ([IconAmt] = @Original_IconAmt)) AND ([Id] " +
+                "= @Original_Id) AND ((@IsNull_schooltax = 1 AND [schooltax] IS NULL) OR ([school" +
+                "tax] = @Original_schooltax)) AND ((@IsNull_schooltaxrate = 1 AND [schooltaxrate]" +
+                " IS NULL) OR ([schooltaxrate] = @Original_schooltaxrate)) AND ((@IsNull_subtotal" +
+                " = 1 AND [subtotal] IS NULL) OR ([subtotal] = @Original_subtotal)) AND ((@IsNull" +
+                "_donotchargeschoolsalestax = 1 AND [donotchargeschoolsalestax] IS NULL) OR ([don" +
+                "otchargeschoolsalestax] = @Original_donotchargeschoolsalestax)) AND ((@IsNull_ic" +
+                "ontotal = 1 AND [icontotal] IS NULL) OR ([icontotal] = @Original_icontotal)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7605,6 +7737,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltaxrate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "schooltaxrate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@subtotal", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "subtotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@donotchargeschoolsalestax", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "donotchargeschoolsalestax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@icontotal", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "icontotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_booktype", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -7785,6 +7918,8 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_subtotal", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "subtotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_donotchargeschoolsalestax", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "donotchargeschoolsalestax", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_donotchargeschoolsalestax", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "donotchargeschoolsalestax", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_icontotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "icontotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_icontotal", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "icontotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7823,9 +7958,9 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                 "amt, luvlineamt, fullad, fulladamt, halfad, halfadmt, quarterad, quarteradamt, e" +
                 "ighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, \r\n                   " +
                 "      desc22tot, halfadamt, prcor, adcuto, webonly, freebooks, IconCopies, extrc" +
-                "hg, IconAmt, Id, schooltax, schooltaxrate, subtotal, donotchargeschoolsalestax\r\n" +
-                "FROM            bids\r\nWHERE        (schcode = @schocode)\r\nORDER BY contryear DES" +
-                "C";
+                "hg, IconAmt, Id, schooltax, schooltaxrate, subtotal, donotchargeschoolsalestax, " +
+                "icontotal\r\nFROM            bids\r\nWHERE        (schcode = @schocode)\r\nORDER BY co" +
+                "ntryear DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schocode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -7839,19 +7974,20 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                 "geschoolsalestax, dorecentry, dp1, dp1desc, dp2, dp3, dp3desc, dp4, eighthad, ei" +
                 "ghthadamt, extrchg, fbkprc, fldtype, foiladamt, foilamt, foilck, foilyearovrride" +
                 ", freebooks, ftotprc, fullad, fulladamt, glsamt, glspaper, halfad, halfadamt, ha" +
-                "lfadmt, hardback, hbovrride, hdbky_n, inkclr, insamt, insck, isfolder, laminate," +
-                " laminateovrride, layn, luvlineamt, luvlines, massmail, mdesc, misc, mlamination" +
-                ", mlaminationamt, msstandtot, msstanqty, myovrride, nba, newprice, noclrpgr, noc" +
-                "opies, nopages, oa, onlinecuto, opcustom, opcustomamt, opfoilpers, opfoilpersamt" +
-                ", opfoiltxt, opfoiltxtamt, opink, opinkpers, opinkpersamt, opinktamt, oppicpers," +
-                " oppicpersamt, oprcperbk, oprcperbk2, ordagryr, ourovrride, ourstyovrride, oursu" +
-                "pp, oursuppamt, parentpymt, pbovrride, peramount, perfbind, perpp, persamount, p" +
-                "erscopies, perstotal, peyn, ponum, prcor, priceovrd, prof, profovrride, pryn, qt" +
-                "edate, quarterad, quarteradamt, sbtot, schbalance, schcode, schname, schooltax, " +
-                "schooltaxrate, schout, scovrde, sdlstich, sdlstichamt, smemo, source, speccvr, s" +
-                "pecea, spiovrride, spiramt, spirck, story, storyamt, subtotal, suppamt, suppleme" +
-                "nts, themamt, themck, themovrride, webonly, xtrabkno, xtrabkprc, yiramt, yirscho" +
-                "ol, yirsovrride, yrdiscount, yrdiscountamt FROM bids WHERE (Id = @Id)";
+                "lfadmt, hardback, hbovrride, hdbky_n, icontotal, inkclr, insamt, insck, isfolder" +
+                ", laminate, laminateovrride, layn, luvlineamt, luvlines, massmail, mdesc, misc, " +
+                "mlamination, mlaminationamt, msstandtot, msstanqty, myovrride, nba, newprice, no" +
+                "clrpgr, nocopies, nopages, oa, onlinecuto, opcustom, opcustomamt, opfoilpers, op" +
+                "foilpersamt, opfoiltxt, opfoiltxtamt, opink, opinkpers, opinkpersamt, opinktamt," +
+                " oppicpers, oppicpersamt, oprcperbk, oprcperbk2, ordagryr, ourovrride, ourstyovr" +
+                "ride, oursupp, oursuppamt, parentpymt, pbovrride, peramount, perfbind, perpp, pe" +
+                "rsamount, perscopies, perstotal, peyn, ponum, prcor, priceovrd, prof, profovrrid" +
+                "e, pryn, qtedate, quarterad, quarteradamt, sbtot, schbalance, schcode, schname, " +
+                "schooltax, schooltaxrate, schout, scovrde, sdlstich, sdlstichamt, smemo, source," +
+                " speccvr, specea, spiovrride, spiramt, spirck, story, storyamt, subtotal, suppam" +
+                "t, supplements, themamt, themck, themovrride, webonly, xtrabkno, xtrabkprc, yira" +
+                "mt, yirschool, yirsovrride, yrdiscount, yrdiscountamt FROM bids WHERE (Id = @Id)" +
+                "";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -7951,8 +8087,8 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int id) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(id));
+        public virtual int Delete(int Id) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8146,7 +8282,8 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                     global::System.Nullable<decimal> schooltax, 
                     global::System.Nullable<decimal> schooltaxrate, 
                     global::System.Nullable<decimal> subtotal, 
-                    global::System.Nullable<bool> donotchargeschoolsalestax) {
+                    global::System.Nullable<bool> donotchargeschoolsalestax, 
+                    global::System.Nullable<decimal> icontotal) {
             if ((schname == null)) {
                 throw new global::System.ArgumentNullException("schname");
             }
@@ -8465,6 +8602,12 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[172].Value = global::System.DBNull.Value;
             }
+            if ((icontotal.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[173].Value = ((decimal)(icontotal.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[173].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8659,6 +8802,7 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                     global::System.Nullable<decimal> schooltaxrate, 
                     global::System.Nullable<decimal> subtotal, 
                     global::System.Nullable<bool> donotchargeschoolsalestax, 
+                    global::System.Nullable<decimal> icontotal, 
                     string Original_schname, 
                     string Original_schcode, 
                     string Original_booktype, 
@@ -8831,7 +8975,8 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
                     global::System.Nullable<decimal> Original_schooltax, 
                     global::System.Nullable<decimal> Original_schooltaxrate, 
                     global::System.Nullable<decimal> Original_subtotal, 
-                    global::System.Nullable<bool> Original_donotchargeschoolsalestax) {
+                    global::System.Nullable<bool> Original_donotchargeschoolsalestax, 
+                    global::System.Nullable<decimal> Original_icontotal) {
             if ((schname == null)) {
                 throw new global::System.ArgumentNullException("schname");
             }
@@ -9150,332 +9295,346 @@ namespace Mbc5.DataSets.dsBidsTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[172].Value = global::System.DBNull.Value;
             }
+            if ((icontotal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[173].Value = ((decimal)(icontotal.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[173].Value = global::System.DBNull.Value;
+            }
             if ((Original_schname == null)) {
                 throw new global::System.ArgumentNullException("Original_schname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[173].Value = ((string)(Original_schname));
+                this.Adapter.UpdateCommand.Parameters[174].Value = ((string)(Original_schname));
             }
             if ((Original_schcode == null)) {
                 throw new global::System.ArgumentNullException("Original_schcode");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[174].Value = ((string)(Original_schcode));
+                this.Adapter.UpdateCommand.Parameters[175].Value = ((string)(Original_schcode));
             }
             if ((Original_booktype == null)) {
                 throw new global::System.ArgumentNullException("Original_booktype");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[175].Value = ((string)(Original_booktype));
+                this.Adapter.UpdateCommand.Parameters[176].Value = ((string)(Original_booktype));
             }
-            this.Adapter.UpdateCommand.Parameters[176].Value = ((System.DateTime)(Original_qtedate));
+            this.Adapter.UpdateCommand.Parameters[177].Value = ((System.DateTime)(Original_qtedate));
             if ((Original_contryear == null)) {
                 throw new global::System.ArgumentNullException("Original_contryear");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[177].Value = ((string)(Original_contryear));
+                this.Adapter.UpdateCommand.Parameters[178].Value = ((string)(Original_contryear));
             }
-            this.Adapter.UpdateCommand.Parameters[178].Value = ((decimal)(Original_nopages));
-            this.Adapter.UpdateCommand.Parameters[179].Value = ((decimal)(Original_nocopies));
-            this.Adapter.UpdateCommand.Parameters[180].Value = ((decimal)(Original_book_ea));
-            this.Adapter.UpdateCommand.Parameters[181].Value = ((decimal)(Original_book_price));
-            this.Adapter.UpdateCommand.Parameters[182].Value = ((bool)(Original_pryn));
-            this.Adapter.UpdateCommand.Parameters[183].Value = ((decimal)(Original_prof));
-            this.Adapter.UpdateCommand.Parameters[184].Value = ((bool)(Original_coyn));
-            this.Adapter.UpdateCommand.Parameters[185].Value = ((decimal)(Original_conven));
-            this.Adapter.UpdateCommand.Parameters[186].Value = ((decimal)(Original_specea));
-            this.Adapter.UpdateCommand.Parameters[187].Value = ((decimal)(Original_speccvr));
-            this.Adapter.UpdateCommand.Parameters[188].Value = ((bool)(Original_scovrde));
-            this.Adapter.UpdateCommand.Parameters[189].Value = ((bool)(Original_layn));
-            this.Adapter.UpdateCommand.Parameters[190].Value = ((decimal)(Original_laminate));
-            this.Adapter.UpdateCommand.Parameters[191].Value = ((bool)(Original_peyn));
-            this.Adapter.UpdateCommand.Parameters[192].Value = ((decimal)(Original_perfbind));
-            this.Adapter.UpdateCommand.Parameters[193].Value = ((bool)(Original_foilck));
-            this.Adapter.UpdateCommand.Parameters[194].Value = ((decimal)(Original_foilamt));
-            this.Adapter.UpdateCommand.Parameters[195].Value = ((bool)(Original_insck));
-            this.Adapter.UpdateCommand.Parameters[196].Value = ((decimal)(Original_insamt));
-            this.Adapter.UpdateCommand.Parameters[197].Value = ((bool)(Original_spirck));
-            this.Adapter.UpdateCommand.Parameters[198].Value = ((decimal)(Original_spiramt));
-            this.Adapter.UpdateCommand.Parameters[199].Value = ((bool)(Original_hdbky_n));
-            this.Adapter.UpdateCommand.Parameters[200].Value = ((decimal)(Original_hardback));
-            this.Adapter.UpdateCommand.Parameters[201].Value = ((bool)(Original_casey_n));
-            this.Adapter.UpdateCommand.Parameters[202].Value = ((decimal)(Original_caseamt));
-            this.Adapter.UpdateCommand.Parameters[203].Value = ((bool)(Original_customy_n));
-            this.Adapter.UpdateCommand.Parameters[204].Value = ((decimal)(Original_customized));
-            this.Adapter.UpdateCommand.Parameters[205].Value = ((decimal)(Original_misc));
+            this.Adapter.UpdateCommand.Parameters[179].Value = ((decimal)(Original_nopages));
+            this.Adapter.UpdateCommand.Parameters[180].Value = ((decimal)(Original_nocopies));
+            this.Adapter.UpdateCommand.Parameters[181].Value = ((decimal)(Original_book_ea));
+            this.Adapter.UpdateCommand.Parameters[182].Value = ((decimal)(Original_book_price));
+            this.Adapter.UpdateCommand.Parameters[183].Value = ((bool)(Original_pryn));
+            this.Adapter.UpdateCommand.Parameters[184].Value = ((decimal)(Original_prof));
+            this.Adapter.UpdateCommand.Parameters[185].Value = ((bool)(Original_coyn));
+            this.Adapter.UpdateCommand.Parameters[186].Value = ((decimal)(Original_conven));
+            this.Adapter.UpdateCommand.Parameters[187].Value = ((decimal)(Original_specea));
+            this.Adapter.UpdateCommand.Parameters[188].Value = ((decimal)(Original_speccvr));
+            this.Adapter.UpdateCommand.Parameters[189].Value = ((bool)(Original_scovrde));
+            this.Adapter.UpdateCommand.Parameters[190].Value = ((bool)(Original_layn));
+            this.Adapter.UpdateCommand.Parameters[191].Value = ((decimal)(Original_laminate));
+            this.Adapter.UpdateCommand.Parameters[192].Value = ((bool)(Original_peyn));
+            this.Adapter.UpdateCommand.Parameters[193].Value = ((decimal)(Original_perfbind));
+            this.Adapter.UpdateCommand.Parameters[194].Value = ((bool)(Original_foilck));
+            this.Adapter.UpdateCommand.Parameters[195].Value = ((decimal)(Original_foilamt));
+            this.Adapter.UpdateCommand.Parameters[196].Value = ((bool)(Original_insck));
+            this.Adapter.UpdateCommand.Parameters[197].Value = ((decimal)(Original_insamt));
+            this.Adapter.UpdateCommand.Parameters[198].Value = ((bool)(Original_spirck));
+            this.Adapter.UpdateCommand.Parameters[199].Value = ((decimal)(Original_spiramt));
+            this.Adapter.UpdateCommand.Parameters[200].Value = ((bool)(Original_hdbky_n));
+            this.Adapter.UpdateCommand.Parameters[201].Value = ((decimal)(Original_hardback));
+            this.Adapter.UpdateCommand.Parameters[202].Value = ((bool)(Original_casey_n));
+            this.Adapter.UpdateCommand.Parameters[203].Value = ((decimal)(Original_caseamt));
+            this.Adapter.UpdateCommand.Parameters[204].Value = ((bool)(Original_customy_n));
+            this.Adapter.UpdateCommand.Parameters[205].Value = ((decimal)(Original_customized));
+            this.Adapter.UpdateCommand.Parameters[206].Value = ((decimal)(Original_misc));
             if ((Original_mdesc == null)) {
                 throw new global::System.ArgumentNullException("Original_mdesc");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[206].Value = ((string)(Original_mdesc));
+                this.Adapter.UpdateCommand.Parameters[207].Value = ((string)(Original_mdesc));
             }
-            this.Adapter.UpdateCommand.Parameters[207].Value = ((decimal)(Original_sbtot));
-            this.Adapter.UpdateCommand.Parameters[208].Value = ((bool)(Original_dc1));
-            this.Adapter.UpdateCommand.Parameters[209].Value = ((decimal)(Original_dp1));
-            this.Adapter.UpdateCommand.Parameters[210].Value = ((decimal)(Original_disc1));
-            this.Adapter.UpdateCommand.Parameters[211].Value = ((bool)(Original_dc2));
-            this.Adapter.UpdateCommand.Parameters[212].Value = ((decimal)(Original_dp2));
-            this.Adapter.UpdateCommand.Parameters[213].Value = ((decimal)(Original_disc2));
+            this.Adapter.UpdateCommand.Parameters[208].Value = ((decimal)(Original_sbtot));
+            this.Adapter.UpdateCommand.Parameters[209].Value = ((bool)(Original_dc1));
+            this.Adapter.UpdateCommand.Parameters[210].Value = ((decimal)(Original_dp1));
+            this.Adapter.UpdateCommand.Parameters[211].Value = ((decimal)(Original_disc1));
+            this.Adapter.UpdateCommand.Parameters[212].Value = ((bool)(Original_dc2));
+            this.Adapter.UpdateCommand.Parameters[213].Value = ((decimal)(Original_dp2));
+            this.Adapter.UpdateCommand.Parameters[214].Value = ((decimal)(Original_disc2));
             if ((Original_dp3desc == null)) {
                 throw new global::System.ArgumentNullException("Original_dp3desc");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[214].Value = ((string)(Original_dp3desc));
+                this.Adapter.UpdateCommand.Parameters[215].Value = ((string)(Original_dp3desc));
             }
-            this.Adapter.UpdateCommand.Parameters[215].Value = ((decimal)(Original_dp3));
-            this.Adapter.UpdateCommand.Parameters[216].Value = ((decimal)(Original_disc3));
-            this.Adapter.UpdateCommand.Parameters[217].Value = ((decimal)(Original_dp4));
-            this.Adapter.UpdateCommand.Parameters[218].Value = ((decimal)(Original_disc4));
+            this.Adapter.UpdateCommand.Parameters[216].Value = ((decimal)(Original_dp3));
+            this.Adapter.UpdateCommand.Parameters[217].Value = ((decimal)(Original_disc3));
+            this.Adapter.UpdateCommand.Parameters[218].Value = ((decimal)(Original_dp4));
+            this.Adapter.UpdateCommand.Parameters[219].Value = ((decimal)(Original_disc4));
             if ((Original_cred_etc == null)) {
                 throw new global::System.ArgumentNullException("Original_cred_etc");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[219].Value = ((string)(Original_cred_etc));
+                this.Adapter.UpdateCommand.Parameters[220].Value = ((string)(Original_cred_etc));
             }
-            this.Adapter.UpdateCommand.Parameters[220].Value = ((decimal)(Original_adjbef));
-            this.Adapter.UpdateCommand.Parameters[221].Value = ((decimal)(Original_adjaftr));
-            this.Adapter.UpdateCommand.Parameters[222].Value = ((decimal)(Original_fbkprc));
-            this.Adapter.UpdateCommand.Parameters[223].Value = ((decimal)(Original_ftotprc));
+            this.Adapter.UpdateCommand.Parameters[221].Value = ((decimal)(Original_adjbef));
+            this.Adapter.UpdateCommand.Parameters[222].Value = ((decimal)(Original_adjaftr));
+            this.Adapter.UpdateCommand.Parameters[223].Value = ((decimal)(Original_fbkprc));
+            this.Adapter.UpdateCommand.Parameters[224].Value = ((decimal)(Original_ftotprc));
             if ((Original_source == null)) {
                 throw new global::System.ArgumentNullException("Original_source");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[224].Value = ((string)(Original_source));
+                this.Adapter.UpdateCommand.Parameters[225].Value = ((string)(Original_source));
             }
-            this.Adapter.UpdateCommand.Parameters[225].Value = ((decimal)(Original_xtrabkno));
-            this.Adapter.UpdateCommand.Parameters[226].Value = ((decimal)(Original_xtrabkprc));
+            this.Adapter.UpdateCommand.Parameters[226].Value = ((decimal)(Original_xtrabkno));
+            this.Adapter.UpdateCommand.Parameters[227].Value = ((decimal)(Original_xtrabkprc));
             if ((Original_desc1 == null)) {
                 throw new global::System.ArgumentNullException("Original_desc1");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[227].Value = ((string)(Original_desc1));
+                this.Adapter.UpdateCommand.Parameters[228].Value = ((string)(Original_desc1));
             }
-            this.Adapter.UpdateCommand.Parameters[228].Value = ((decimal)(Original_desc1tot));
+            this.Adapter.UpdateCommand.Parameters[229].Value = ((decimal)(Original_desc1tot));
             if ((Original_desc2 == null)) {
                 throw new global::System.ArgumentNullException("Original_desc2");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[229].Value = ((string)(Original_desc2));
+                this.Adapter.UpdateCommand.Parameters[230].Value = ((string)(Original_desc2));
             }
-            this.Adapter.UpdateCommand.Parameters[230].Value = ((decimal)(Original_desc2tot));
+            this.Adapter.UpdateCommand.Parameters[231].Value = ((decimal)(Original_desc2tot));
             if ((Original_ponum == null)) {
                 throw new global::System.ArgumentNullException("Original_ponum");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[231].Value = ((string)(Original_ponum));
+                this.Adapter.UpdateCommand.Parameters[232].Value = ((string)(Original_ponum));
             }
-            this.Adapter.UpdateCommand.Parameters[232].Value = ((bool)(Original_newprice));
-            this.Adapter.UpdateCommand.Parameters[233].Value = ((System.DateTime)(Original_schout));
-            this.Adapter.UpdateCommand.Parameters[234].Value = ((bool)(Original_allclrck));
-            this.Adapter.UpdateCommand.Parameters[235].Value = ((decimal)(Original_allclramt));
-            this.Adapter.UpdateCommand.Parameters[236].Value = ((bool)(Original_oa));
-            this.Adapter.UpdateCommand.Parameters[237].Value = ((bool)(Original_massmail));
+            this.Adapter.UpdateCommand.Parameters[233].Value = ((bool)(Original_newprice));
+            this.Adapter.UpdateCommand.Parameters[234].Value = ((System.DateTime)(Original_schout));
+            this.Adapter.UpdateCommand.Parameters[235].Value = ((bool)(Original_allclrck));
+            this.Adapter.UpdateCommand.Parameters[236].Value = ((decimal)(Original_allclramt));
+            this.Adapter.UpdateCommand.Parameters[237].Value = ((bool)(Original_oa));
+            this.Adapter.UpdateCommand.Parameters[238].Value = ((bool)(Original_massmail));
             if ((Original_inkclr == null)) {
                 throw new global::System.ArgumentNullException("Original_inkclr");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[238].Value = ((string)(Original_inkclr));
+                this.Adapter.UpdateCommand.Parameters[239].Value = ((string)(Original_inkclr));
             }
-            this.Adapter.UpdateCommand.Parameters[239].Value = ((decimal)(Original_foiladamt));
+            this.Adapter.UpdateCommand.Parameters[240].Value = ((decimal)(Original_foiladamt));
             if ((Original_desc3 == null)) {
                 throw new global::System.ArgumentNullException("Original_desc3");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[240].Value = ((string)(Original_desc3));
+                this.Adapter.UpdateCommand.Parameters[241].Value = ((string)(Original_desc3));
             }
-            this.Adapter.UpdateCommand.Parameters[241].Value = ((decimal)(Original_desc3tot));
+            this.Adapter.UpdateCommand.Parameters[242].Value = ((decimal)(Original_desc3tot));
             if ((Original_desc4 == null)) {
                 throw new global::System.ArgumentNullException("Original_desc4");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[242].Value = ((string)(Original_desc4));
+                this.Adapter.UpdateCommand.Parameters[243].Value = ((string)(Original_desc4));
             }
-            this.Adapter.UpdateCommand.Parameters[243].Value = ((decimal)(Original_desc4tot));
+            this.Adapter.UpdateCommand.Parameters[244].Value = ((decimal)(Original_desc4tot));
             if ((Original_clrpgdesc == null)) {
                 throw new global::System.ArgumentNullException("Original_clrpgdesc");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[244].Value = ((string)(Original_clrpgdesc));
+                this.Adapter.UpdateCommand.Parameters[245].Value = ((string)(Original_clrpgdesc));
             }
-            this.Adapter.UpdateCommand.Parameters[245].Value = ((decimal)(Original_clrpgtot));
-            this.Adapter.UpdateCommand.Parameters[246].Value = ((decimal)(Original_noclrpgr));
-            this.Adapter.UpdateCommand.Parameters[247].Value = ((bool)(Original_glspaper));
-            this.Adapter.UpdateCommand.Parameters[248].Value = ((decimal)(Original_glsamt));
-            this.Adapter.UpdateCommand.Parameters[249].Value = ((bool)(Original_acovrde));
-            this.Adapter.UpdateCommand.Parameters[250].Value = ((bool)(Original_bpovrde));
+            this.Adapter.UpdateCommand.Parameters[246].Value = ((decimal)(Original_clrpgtot));
+            this.Adapter.UpdateCommand.Parameters[247].Value = ((decimal)(Original_noclrpgr));
+            this.Adapter.UpdateCommand.Parameters[248].Value = ((bool)(Original_glspaper));
+            this.Adapter.UpdateCommand.Parameters[249].Value = ((decimal)(Original_glsamt));
+            this.Adapter.UpdateCommand.Parameters[250].Value = ((bool)(Original_acovrde));
+            this.Adapter.UpdateCommand.Parameters[251].Value = ((bool)(Original_bpovrde));
             if ((Original_bpyear == null)) {
                 throw new global::System.ArgumentNullException("Original_bpyear");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[251].Value = ((string)(Original_bpyear));
+                this.Adapter.UpdateCommand.Parameters[252].Value = ((string)(Original_bpyear));
             }
-            this.Adapter.UpdateCommand.Parameters[252].Value = ((bool)(Original_themck));
-            this.Adapter.UpdateCommand.Parameters[253].Value = ((decimal)(Original_themamt));
-            this.Adapter.UpdateCommand.Parameters[254].Value = ((bool)(Original_yirschool));
-            this.Adapter.UpdateCommand.Parameters[255].Value = ((bool)(Original_story));
-            this.Adapter.UpdateCommand.Parameters[256].Value = ((bool)(Original_supplements));
-            this.Adapter.UpdateCommand.Parameters[257].Value = ((decimal)(Original_yiramt));
-            this.Adapter.UpdateCommand.Parameters[258].Value = ((decimal)(Original_storyamt));
-            this.Adapter.UpdateCommand.Parameters[259].Value = ((decimal)(Original_suppamt));
-            this.Adapter.UpdateCommand.Parameters[260].Value = ((decimal)(Original_persamount));
-            this.Adapter.UpdateCommand.Parameters[261].Value = ((decimal)(Original_perstotal));
-            this.Adapter.UpdateCommand.Parameters[262].Value = ((int)(Original_perscopies));
-            this.Adapter.UpdateCommand.Parameters[263].Value = ((bool)(Original_oursupp));
-            this.Adapter.UpdateCommand.Parameters[264].Value = ((decimal)(Original_oursuppamt));
-            this.Adapter.UpdateCommand.Parameters[265].Value = ((bool)(Original_ourovrride));
+            this.Adapter.UpdateCommand.Parameters[253].Value = ((bool)(Original_themck));
+            this.Adapter.UpdateCommand.Parameters[254].Value = ((decimal)(Original_themamt));
+            this.Adapter.UpdateCommand.Parameters[255].Value = ((bool)(Original_yirschool));
+            this.Adapter.UpdateCommand.Parameters[256].Value = ((bool)(Original_story));
+            this.Adapter.UpdateCommand.Parameters[257].Value = ((bool)(Original_supplements));
+            this.Adapter.UpdateCommand.Parameters[258].Value = ((decimal)(Original_yiramt));
+            this.Adapter.UpdateCommand.Parameters[259].Value = ((decimal)(Original_storyamt));
+            this.Adapter.UpdateCommand.Parameters[260].Value = ((decimal)(Original_suppamt));
+            this.Adapter.UpdateCommand.Parameters[261].Value = ((decimal)(Original_persamount));
+            this.Adapter.UpdateCommand.Parameters[262].Value = ((decimal)(Original_perstotal));
+            this.Adapter.UpdateCommand.Parameters[263].Value = ((int)(Original_perscopies));
+            this.Adapter.UpdateCommand.Parameters[264].Value = ((bool)(Original_oursupp));
+            this.Adapter.UpdateCommand.Parameters[265].Value = ((decimal)(Original_oursuppamt));
+            this.Adapter.UpdateCommand.Parameters[266].Value = ((bool)(Original_ourovrride));
             if ((Original_dp1desc == null)) {
                 throw new global::System.ArgumentNullException("Original_dp1desc");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[266].Value = ((string)(Original_dp1desc));
+                this.Adapter.UpdateCommand.Parameters[267].Value = ((string)(Original_dp1desc));
             }
             if ((Original_ordagryr == null)) {
                 throw new global::System.ArgumentNullException("Original_ordagryr");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[267].Value = ((string)(Original_ordagryr));
+                this.Adapter.UpdateCommand.Parameters[268].Value = ((string)(Original_ordagryr));
             }
-            this.Adapter.UpdateCommand.Parameters[268].Value = ((bool)(Original_myovrride));
-            this.Adapter.UpdateCommand.Parameters[269].Value = ((bool)(Original_hbovrride));
-            this.Adapter.UpdateCommand.Parameters[270].Value = ((bool)(Original_profovrride));
-            this.Adapter.UpdateCommand.Parameters[271].Value = ((bool)(Original_conovrride));
-            this.Adapter.UpdateCommand.Parameters[272].Value = ((bool)(Original_themovrride));
-            this.Adapter.UpdateCommand.Parameters[273].Value = ((bool)(Original_cbovrride));
-            this.Adapter.UpdateCommand.Parameters[274].Value = ((bool)(Original_spiovrride));
-            this.Adapter.UpdateCommand.Parameters[275].Value = ((bool)(Original_pbovrride));
-            this.Adapter.UpdateCommand.Parameters[276].Value = ((bool)(Original_yirsovrride));
-            this.Adapter.UpdateCommand.Parameters[277].Value = ((bool)(Original_ourstyovrride));
-            this.Adapter.UpdateCommand.Parameters[278].Value = ((bool)(Original_laminateovrride));
-            this.Adapter.UpdateCommand.Parameters[279].Value = ((bool)(Original_foilyearovrride));
-            this.Adapter.UpdateCommand.Parameters[280].Value = ((bool)(Original_basicpp));
-            this.Adapter.UpdateCommand.Parameters[281].Value = ((bool)(Original_perpp));
-            this.Adapter.UpdateCommand.Parameters[282].Value = ((decimal)(Original_peramount));
-            this.Adapter.UpdateCommand.Parameters[283].Value = ((decimal)(Original_basicamoun));
-            this.Adapter.UpdateCommand.Parameters[284].Value = ((bool)(Original_agreerec));
-            this.Adapter.UpdateCommand.Parameters[285].Value = ((System.DateTime)(Original_agreedte));
-            this.Adapter.UpdateCommand.Parameters[286].Value = ((System.DateTime)(Original_onlinecuto));
-            this.Adapter.UpdateCommand.Parameters[287].Value = ((decimal)(Original_oprcperbk));
-            this.Adapter.UpdateCommand.Parameters[288].Value = ((decimal)(Original_oprcperbk2));
-            this.Adapter.UpdateCommand.Parameters[289].Value = ((System.DateTime)(Original_dorecentry));
-            this.Adapter.UpdateCommand.Parameters[290].Value = ((bool)(Original_sdlstich));
-            this.Adapter.UpdateCommand.Parameters[291].Value = ((decimal)(Original_sdlstichamt));
-            this.Adapter.UpdateCommand.Parameters[292].Value = ((bool)(Original_copiesovride));
-            this.Adapter.UpdateCommand.Parameters[293].Value = ((decimal)(Original_binvno));
-            this.Adapter.UpdateCommand.Parameters[294].Value = ((decimal)(Original_msstanqty));
-            this.Adapter.UpdateCommand.Parameters[295].Value = ((decimal)(Original_msstandtot));
-            this.Adapter.UpdateCommand.Parameters[296].Value = ((decimal)(Original_schbalance));
-            this.Adapter.UpdateCommand.Parameters[297].Value = ((decimal)(Original_parentpymt));
-            this.Adapter.UpdateCommand.Parameters[298].Value = ((bool)(Original_nba));
+            this.Adapter.UpdateCommand.Parameters[269].Value = ((bool)(Original_myovrride));
+            this.Adapter.UpdateCommand.Parameters[270].Value = ((bool)(Original_hbovrride));
+            this.Adapter.UpdateCommand.Parameters[271].Value = ((bool)(Original_profovrride));
+            this.Adapter.UpdateCommand.Parameters[272].Value = ((bool)(Original_conovrride));
+            this.Adapter.UpdateCommand.Parameters[273].Value = ((bool)(Original_themovrride));
+            this.Adapter.UpdateCommand.Parameters[274].Value = ((bool)(Original_cbovrride));
+            this.Adapter.UpdateCommand.Parameters[275].Value = ((bool)(Original_spiovrride));
+            this.Adapter.UpdateCommand.Parameters[276].Value = ((bool)(Original_pbovrride));
+            this.Adapter.UpdateCommand.Parameters[277].Value = ((bool)(Original_yirsovrride));
+            this.Adapter.UpdateCommand.Parameters[278].Value = ((bool)(Original_ourstyovrride));
+            this.Adapter.UpdateCommand.Parameters[279].Value = ((bool)(Original_laminateovrride));
+            this.Adapter.UpdateCommand.Parameters[280].Value = ((bool)(Original_foilyearovrride));
+            this.Adapter.UpdateCommand.Parameters[281].Value = ((bool)(Original_basicpp));
+            this.Adapter.UpdateCommand.Parameters[282].Value = ((bool)(Original_perpp));
+            this.Adapter.UpdateCommand.Parameters[283].Value = ((decimal)(Original_peramount));
+            this.Adapter.UpdateCommand.Parameters[284].Value = ((decimal)(Original_basicamoun));
+            this.Adapter.UpdateCommand.Parameters[285].Value = ((bool)(Original_agreerec));
+            this.Adapter.UpdateCommand.Parameters[286].Value = ((System.DateTime)(Original_agreedte));
+            this.Adapter.UpdateCommand.Parameters[287].Value = ((System.DateTime)(Original_onlinecuto));
+            this.Adapter.UpdateCommand.Parameters[288].Value = ((decimal)(Original_oprcperbk));
+            this.Adapter.UpdateCommand.Parameters[289].Value = ((decimal)(Original_oprcperbk2));
+            this.Adapter.UpdateCommand.Parameters[290].Value = ((System.DateTime)(Original_dorecentry));
+            this.Adapter.UpdateCommand.Parameters[291].Value = ((bool)(Original_sdlstich));
+            this.Adapter.UpdateCommand.Parameters[292].Value = ((decimal)(Original_sdlstichamt));
+            this.Adapter.UpdateCommand.Parameters[293].Value = ((bool)(Original_copiesovride));
+            this.Adapter.UpdateCommand.Parameters[294].Value = ((decimal)(Original_binvno));
+            this.Adapter.UpdateCommand.Parameters[295].Value = ((decimal)(Original_msstanqty));
+            this.Adapter.UpdateCommand.Parameters[296].Value = ((decimal)(Original_msstandtot));
+            this.Adapter.UpdateCommand.Parameters[297].Value = ((decimal)(Original_schbalance));
+            this.Adapter.UpdateCommand.Parameters[298].Value = ((decimal)(Original_parentpymt));
+            this.Adapter.UpdateCommand.Parameters[299].Value = ((bool)(Original_nba));
             if ((Original_fldtype == null)) {
                 throw new global::System.ArgumentNullException("Original_fldtype");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[299].Value = ((string)(Original_fldtype));
+                this.Adapter.UpdateCommand.Parameters[300].Value = ((string)(Original_fldtype));
             }
-            this.Adapter.UpdateCommand.Parameters[300].Value = ((bool)(Original_isfolder));
-            this.Adapter.UpdateCommand.Parameters[301].Value = ((decimal)(Original_priceovrd));
-            this.Adapter.UpdateCommand.Parameters[302].Value = ((decimal)(Original_mlaminationamt));
-            this.Adapter.UpdateCommand.Parameters[303].Value = ((bool)(Original_mlamination));
-            this.Adapter.UpdateCommand.Parameters[304].Value = ((bool)(Original_opinkpers));
-            this.Adapter.UpdateCommand.Parameters[305].Value = ((bool)(Original_opfoilpers));
-            this.Adapter.UpdateCommand.Parameters[306].Value = ((decimal)(Original_opinkpersamt));
-            this.Adapter.UpdateCommand.Parameters[307].Value = ((decimal)(Original_opfoilpersamt));
-            this.Adapter.UpdateCommand.Parameters[308].Value = ((bool)(Original_oppicpers));
-            this.Adapter.UpdateCommand.Parameters[309].Value = ((decimal)(Original_oppicpersamt));
-            this.Adapter.UpdateCommand.Parameters[310].Value = ((bool)(Original_opcustom));
-            this.Adapter.UpdateCommand.Parameters[311].Value = ((decimal)(Original_opcustomamt));
-            this.Adapter.UpdateCommand.Parameters[312].Value = ((decimal)(Original_opfoiltxtamt));
-            this.Adapter.UpdateCommand.Parameters[313].Value = ((bool)(Original_opfoiltxt));
-            this.Adapter.UpdateCommand.Parameters[314].Value = ((decimal)(Original_opinktamt));
-            this.Adapter.UpdateCommand.Parameters[315].Value = ((bool)(Original_opink));
-            this.Adapter.UpdateCommand.Parameters[316].Value = ((bool)(Original_yrdiscount));
-            this.Adapter.UpdateCommand.Parameters[317].Value = ((bool)(Original_luvlines));
-            this.Adapter.UpdateCommand.Parameters[318].Value = ((decimal)(Original_yrdiscountamt));
-            this.Adapter.UpdateCommand.Parameters[319].Value = ((decimal)(Original_luvlineamt));
-            this.Adapter.UpdateCommand.Parameters[320].Value = ((bool)(Original_fullad));
-            this.Adapter.UpdateCommand.Parameters[321].Value = ((decimal)(Original_fulladamt));
-            this.Adapter.UpdateCommand.Parameters[322].Value = ((bool)(Original_halfad));
-            this.Adapter.UpdateCommand.Parameters[323].Value = ((decimal)(Original_halfadmt));
-            this.Adapter.UpdateCommand.Parameters[324].Value = ((bool)(Original_quarterad));
-            this.Adapter.UpdateCommand.Parameters[325].Value = ((decimal)(Original_quarteradamt));
-            this.Adapter.UpdateCommand.Parameters[326].Value = ((bool)(Original_eighthad));
-            this.Adapter.UpdateCommand.Parameters[327].Value = ((decimal)(Original_eighthadamt));
-            this.Adapter.UpdateCommand.Parameters[328].Value = ((bool)(Original_adline));
+            this.Adapter.UpdateCommand.Parameters[301].Value = ((bool)(Original_isfolder));
+            this.Adapter.UpdateCommand.Parameters[302].Value = ((decimal)(Original_priceovrd));
+            this.Adapter.UpdateCommand.Parameters[303].Value = ((decimal)(Original_mlaminationamt));
+            this.Adapter.UpdateCommand.Parameters[304].Value = ((bool)(Original_mlamination));
+            this.Adapter.UpdateCommand.Parameters[305].Value = ((bool)(Original_opinkpers));
+            this.Adapter.UpdateCommand.Parameters[306].Value = ((bool)(Original_opfoilpers));
+            this.Adapter.UpdateCommand.Parameters[307].Value = ((decimal)(Original_opinkpersamt));
+            this.Adapter.UpdateCommand.Parameters[308].Value = ((decimal)(Original_opfoilpersamt));
+            this.Adapter.UpdateCommand.Parameters[309].Value = ((bool)(Original_oppicpers));
+            this.Adapter.UpdateCommand.Parameters[310].Value = ((decimal)(Original_oppicpersamt));
+            this.Adapter.UpdateCommand.Parameters[311].Value = ((bool)(Original_opcustom));
+            this.Adapter.UpdateCommand.Parameters[312].Value = ((decimal)(Original_opcustomamt));
+            this.Adapter.UpdateCommand.Parameters[313].Value = ((decimal)(Original_opfoiltxtamt));
+            this.Adapter.UpdateCommand.Parameters[314].Value = ((bool)(Original_opfoiltxt));
+            this.Adapter.UpdateCommand.Parameters[315].Value = ((decimal)(Original_opinktamt));
+            this.Adapter.UpdateCommand.Parameters[316].Value = ((bool)(Original_opink));
+            this.Adapter.UpdateCommand.Parameters[317].Value = ((bool)(Original_yrdiscount));
+            this.Adapter.UpdateCommand.Parameters[318].Value = ((bool)(Original_luvlines));
+            this.Adapter.UpdateCommand.Parameters[319].Value = ((decimal)(Original_yrdiscountamt));
+            this.Adapter.UpdateCommand.Parameters[320].Value = ((decimal)(Original_luvlineamt));
+            this.Adapter.UpdateCommand.Parameters[321].Value = ((bool)(Original_fullad));
+            this.Adapter.UpdateCommand.Parameters[322].Value = ((decimal)(Original_fulladamt));
+            this.Adapter.UpdateCommand.Parameters[323].Value = ((bool)(Original_halfad));
+            this.Adapter.UpdateCommand.Parameters[324].Value = ((decimal)(Original_halfadmt));
+            this.Adapter.UpdateCommand.Parameters[325].Value = ((bool)(Original_quarterad));
+            this.Adapter.UpdateCommand.Parameters[326].Value = ((decimal)(Original_quarteradamt));
+            this.Adapter.UpdateCommand.Parameters[327].Value = ((bool)(Original_eighthad));
+            this.Adapter.UpdateCommand.Parameters[328].Value = ((decimal)(Original_eighthadamt));
+            this.Adapter.UpdateCommand.Parameters[329].Value = ((bool)(Original_adline));
             if ((Original_cred_etc2 == null)) {
                 throw new global::System.ArgumentNullException("Original_cred_etc2");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[329].Value = ((string)(Original_cred_etc2));
+                this.Adapter.UpdateCommand.Parameters[330].Value = ((string)(Original_cred_etc2));
             }
             if ((Original_desc22 == null)) {
                 throw new global::System.ArgumentNullException("Original_desc22");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[330].Value = ((string)(Original_desc22));
+                this.Adapter.UpdateCommand.Parameters[331].Value = ((string)(Original_desc22));
             }
-            this.Adapter.UpdateCommand.Parameters[331].Value = ((decimal)(Original_adjaftr2));
-            this.Adapter.UpdateCommand.Parameters[332].Value = ((decimal)(Original_desc22tot));
-            this.Adapter.UpdateCommand.Parameters[333].Value = ((decimal)(Original_halfadamt));
-            this.Adapter.UpdateCommand.Parameters[334].Value = ((decimal)(Original_prcor));
-            this.Adapter.UpdateCommand.Parameters[335].Value = ((System.DateTime)(Original_adcuto));
-            this.Adapter.UpdateCommand.Parameters[336].Value = ((bool)(Original_webonly));
-            this.Adapter.UpdateCommand.Parameters[337].Value = ((int)(Original_freebooks));
+            this.Adapter.UpdateCommand.Parameters[332].Value = ((decimal)(Original_adjaftr2));
+            this.Adapter.UpdateCommand.Parameters[333].Value = ((decimal)(Original_desc22tot));
+            this.Adapter.UpdateCommand.Parameters[334].Value = ((decimal)(Original_halfadamt));
+            this.Adapter.UpdateCommand.Parameters[335].Value = ((decimal)(Original_prcor));
+            this.Adapter.UpdateCommand.Parameters[336].Value = ((System.DateTime)(Original_adcuto));
+            this.Adapter.UpdateCommand.Parameters[337].Value = ((bool)(Original_webonly));
+            this.Adapter.UpdateCommand.Parameters[338].Value = ((int)(Original_freebooks));
             if ((Original_IconCopies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[338].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[339].Value = ((int)(Original_IconCopies.Value));
+                this.Adapter.UpdateCommand.Parameters[339].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[340].Value = ((int)(Original_IconCopies.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[338].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[339].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[339].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[340].Value = global::System.DBNull.Value;
             }
             if ((Original_extrchg == null)) {
-                this.Adapter.UpdateCommand.Parameters[340].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[341].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[341].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[342].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[340].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[341].Value = ((string)(Original_extrchg));
+                this.Adapter.UpdateCommand.Parameters[341].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[342].Value = ((string)(Original_extrchg));
             }
             if ((Original_IconAmt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[342].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[343].Value = ((decimal)(Original_IconAmt.Value));
+                this.Adapter.UpdateCommand.Parameters[343].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[344].Value = ((decimal)(Original_IconAmt.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[342].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[343].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[343].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[344].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[344].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[345].Value = ((int)(Original_Id));
             if ((Original_schooltax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[345].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[346].Value = ((decimal)(Original_schooltax.Value));
+                this.Adapter.UpdateCommand.Parameters[346].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[347].Value = ((decimal)(Original_schooltax.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[345].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[346].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[346].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[347].Value = global::System.DBNull.Value;
             }
             if ((Original_schooltaxrate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[347].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[348].Value = ((decimal)(Original_schooltaxrate.Value));
+                this.Adapter.UpdateCommand.Parameters[348].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[349].Value = ((decimal)(Original_schooltaxrate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[347].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[348].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[348].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[349].Value = global::System.DBNull.Value;
             }
             if ((Original_subtotal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[349].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[350].Value = ((decimal)(Original_subtotal.Value));
+                this.Adapter.UpdateCommand.Parameters[350].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[351].Value = ((decimal)(Original_subtotal.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[349].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[350].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[350].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[351].Value = global::System.DBNull.Value;
             }
             if ((Original_donotchargeschoolsalestax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[351].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[352].Value = ((bool)(Original_donotchargeschoolsalestax.Value));
+                this.Adapter.UpdateCommand.Parameters[352].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[353].Value = ((bool)(Original_donotchargeschoolsalestax.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[351].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[352].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[352].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[353].Value = global::System.DBNull.Value;
+            }
+            if ((Original_icontotal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[354].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[355].Value = ((decimal)(Original_icontotal.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[354].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[355].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 

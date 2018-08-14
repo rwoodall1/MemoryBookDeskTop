@@ -260,10 +260,12 @@ namespace Mbc5.Forms
 
             if (this.ActiveMdiChild == null)
             {
-                frmBids frmBids = new frmBids(this.ApplicationUser);
-                frmBids.MdiParent = this;
-                frmBids.Show();
-                this.Cursor = Cursors.Default;
+                //frmBids frmBids = new frmBids(this.ApplicationUser);
+                //frmBids.MdiParent = this;
+                //frmBids.Show();
+                //this.Cursor = Cursors.Default;
+                MessageBox.Show("Customer screen must be open and on the customer to place bid for.");
+                return;
 
 
             }
