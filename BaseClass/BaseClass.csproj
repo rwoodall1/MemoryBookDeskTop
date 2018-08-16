@@ -75,7 +75,10 @@
     <Compile Include="Classes\CollectionHelper.cs" />
     <Compile Include="Classes\EmailHelper.cs" />
     <Compile Include="Classes\RandomPasswordGenerator.cs" />
+    <Compile Include="Classes\SQLCore.cs" />
+    <Compile Include="Classes\SQLCustomClient.cs" />
     <Compile Include="Classes\SQLQuery.cs" />
+    <Compile Include="Classes\SQLQueryProperties.cs" />
     <Compile Include="Classes\UserIdentity.cs" />
     <Compile Include="Classes\UserPrincipal.cs" />
     <Compile Include="Classes\Utilities.cs" />

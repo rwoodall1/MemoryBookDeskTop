@@ -94,5 +94,11 @@ namespace Mbc5.Forms.MemoryBook {
           
 
         }
+
+        private void test_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
     }
     }

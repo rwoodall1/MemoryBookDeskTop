@@ -155,13 +155,7 @@ SELECT name, rank, id FROM roles WHERE (id = @id)</CommandText>
         <xs:element name="mbcUsers" msprop:Generator_TableClassName="mbcUsersDataTable" msprop:Generator_TableVarName="tablembcUsers" msprop:Generator_RowChangedName="mbcUsersRowChanged" msprop:Generator_TablePropName="mbcUsers" msprop:Generator_RowDeletingName="mbcUsersRowDeleting" msprop:Generator_RowChangingName="mbcUsersRowChanging" msprop:Generator_RowEvHandlerName="mbcUsersRowChangeEventHandler" msprop:Generator_RowDeletedName="mbcUsersRowDeleted" msprop:Generator_RowClassName="mbcUsersRow" msprop:Generator_UserTableName="mbcUsers" msprop:Generator_RowEvArgName="mbcUsersRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="128" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="id" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" />
               <xs:element name="UserName" msprop:Generator_ColumnVarNameInTable="columnUserName" msprop:Generator_ColumnPropNameInRow="UserName" msprop:Generator_ColumnPropNameInTable="UserNameColumn" msprop:Generator_UserColumnName="UserName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
