@@ -70,14 +70,13 @@
             System.Windows.Forms.Label label23;
             System.Windows.Forms.Label sbtotLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBids));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource13 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource14 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource15 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource16 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.bidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bidsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -91,7 +90,6 @@
             this.bidsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pgBids = new System.Windows.Forms.TabPage();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnPrntQuote = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.schooltaxrateLabel1 = new System.Windows.Forms.Label();
@@ -158,6 +156,8 @@
             this.txtDesc4tot = new System.Windows.Forms.TextBox();
             this.txtDesc4 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.allclramtTextBox = new System.Windows.Forms.TextBox();
+            this.dsBids = new Mbc5.DataSets.dsBids();
             this.lblSpeccvrtot = new System.Windows.Forms.Label();
             this.chkAllClr = new System.Windows.Forms.CheckBox();
             this.lblMLaminateAmt = new System.Windows.Forms.Label();
@@ -209,13 +209,13 @@
             this.bidsTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.bidsTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsBidsTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.custTableAdapter();
-            this.dsBids = new Mbc5.DataSets.dsBids();
-            this.bidsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.fillToolStrip = new System.Windows.Forms.ToolStrip();
             this.schocodeToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.schocodeToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.fillToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.allclramtTextBox = new System.Windows.Forms.TextBox();
+            this.bidsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.BidInvoiceDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -260,23 +260,24 @@
             label19 = new System.Windows.Forms.Label();
             label23 = new System.Windows.Forms.Label();
             sbtotLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidsBindingNavigator)).BeginInit();
             this.bidsBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.pgBids.SuspendLayout();
             this.pnlTot.SuspendLayout();
             this.panel4.SuspendLayout();
             this.pnlMiscDiscCred.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsBids)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlHard.SuspendLayout();
             this.tabBids.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsBids)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource1)).BeginInit();
             this.fillToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BidInvoiceDetailBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nopagesLabel
@@ -695,6 +696,17 @@
             sbtotLabel.TabIndex = 117;
             sbtotLabel.Text = "Sub Total";
             // 
+            // bidsBindingSource
+            // 
+            this.bidsBindingSource.AllowNew = true;
+            this.bidsBindingSource.DataMember = "bids";
+            this.bidsBindingSource.DataSource = this.dsBids;
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsBids;
+            // 
             // bidsBindingNavigator
             // 
             this.bidsBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
@@ -895,32 +907,9 @@
             this.pgBids.TabIndex = 0;
             this.pgBids.Text = "Bids";
             // 
-            // reportViewer1
-            // 
-            this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource13.Name = "cust";
-            reportDataSource13.Value = this.custBindingSource;
-            reportDataSource14.Name = "invoice";
-            reportDataSource14.Value = null;
-            reportDataSource15.Name = "invoicedetail";
-            reportDataSource15.Value = null;
-            reportDataSource16.Name = "payment";
-            reportDataSource16.Value = null;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource13);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource14);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource15);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource16);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MemInvoice.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(1168, 618);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(37, 76);
-            this.reportViewer1.TabIndex = 286;
-            this.reportViewer1.Visible = false;
-            // 
             // btnPrntQuote
             // 
-            this.btnPrntQuote.Location = new System.Drawing.Point(884, 110);
+            this.btnPrntQuote.Location = new System.Drawing.Point(1020, 111);
             this.btnPrntQuote.Name = "btnPrntQuote";
             this.btnPrntQuote.Size = new System.Drawing.Size(100, 23);
             this.btnPrntQuote.TabIndex = 285;
@@ -931,7 +920,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(765, 538);
+            this.label10.Location = new System.Drawing.Point(755, 538);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(16, 13);
             this.label10.TabIndex = 284;
@@ -1009,7 +998,7 @@
             this.txtPOAmt.Location = new System.Drawing.Point(125, 667);
             this.txtPOAmt.Name = "txtPOAmt";
             this.txtPOAmt.ReadOnly = true;
-            this.txtPOAmt.Size = new System.Drawing.Size(49, 20);
+            this.txtPOAmt.Size = new System.Drawing.Size(185, 20);
             this.txtPOAmt.TabIndex = 265;
             // 
             // txtPayments
@@ -1021,7 +1010,7 @@
             this.txtPayments.Location = new System.Drawing.Point(125, 644);
             this.txtPayments.Name = "txtPayments";
             this.txtPayments.ReadOnly = true;
-            this.txtPayments.Size = new System.Drawing.Size(49, 20);
+            this.txtPayments.Size = new System.Drawing.Size(185, 20);
             this.txtPayments.TabIndex = 264;
             // 
             // txtExtChrg
@@ -1035,7 +1024,7 @@
             this.txtExtChrg.Multiline = true;
             this.txtExtChrg.Name = "txtExtChrg";
             this.txtExtChrg.ReadOnly = true;
-            this.txtExtChrg.Size = new System.Drawing.Size(275, 40);
+            this.txtExtChrg.Size = new System.Drawing.Size(411, 40);
             this.txtExtChrg.TabIndex = 259;
             // 
             // txtPriceOverRide
@@ -1297,6 +1286,8 @@
             this.dp1descComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "dp1desc", true));
             this.dp1descComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dp1descComboBox.FormattingEnabled = true;
+            this.dp1descComboBox.Items.AddRange(new object[] {
+            "test"});
             this.dp1descComboBox.Location = new System.Drawing.Point(134, 38);
             this.dp1descComboBox.Name = "dp1descComboBox";
             this.dp1descComboBox.Size = new System.Drawing.Size(121, 21);
@@ -1479,7 +1470,7 @@
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(549, 390);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(325, 119);
+            this.panel4.Size = new System.Drawing.Size(461, 119);
             this.panel4.TabIndex = 268;
             // 
             // txtOtherChrg
@@ -1592,7 +1583,7 @@
             this.pnlMiscDiscCred.Controls.Add(this.txtDesc4);
             this.pnlMiscDiscCred.Location = new System.Drawing.Point(520, 111);
             this.pnlMiscDiscCred.Name = "pnlMiscDiscCred";
-            this.pnlMiscDiscCred.Size = new System.Drawing.Size(344, 175);
+            this.pnlMiscDiscCred.Size = new System.Drawing.Size(480, 175);
             this.pnlMiscDiscCred.TabIndex = 261;
             // 
             // label6
@@ -1750,6 +1741,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(201, 262);
             this.panel3.TabIndex = 258;
+            // 
+            // allclramtTextBox
+            // 
+            this.allclramtTextBox.Location = new System.Drawing.Point(121, 14);
+            this.allclramtTextBox.Name = "allclramtTextBox";
+            this.allclramtTextBox.Size = new System.Drawing.Size(55, 20);
+            this.allclramtTextBox.TabIndex = 165;
+            // 
+            // dsBids
+            // 
+            this.dsBids.DataSetName = "dsBids";
+            this.dsBids.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblSpeccvrtot
             // 
@@ -2302,16 +2305,6 @@
             // 
             this.custTableAdapter.ClearBeforeFill = true;
             // 
-            // dsBids
-            // 
-            this.dsBids.DataSetName = "dsBids";
-            this.dsBids.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bidsBindingSource1
-            // 
-            this.bidsBindingSource1.DataMember = "bids";
-            this.bidsBindingSource1.DataSource = this.dsBids;
-            // 
             // fillToolStrip
             // 
             this.fillToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2333,23 +2326,45 @@
             // schocodeToolStripTextBox
             // 
             this.schocodeToolStripTextBox.Name = "schocodeToolStripTextBox";
-            this.schocodeToolStripTextBox.Size = new System.Drawing.Size(100, 23);
+            this.schocodeToolStripTextBox.Size = new System.Drawing.Size(100, 25);
             // 
             // fillToolStripButton
             // 
             this.fillToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.fillToolStripButton.Name = "fillToolStripButton";
-            this.fillToolStripButton.Size = new System.Drawing.Size(26, 19);
+            this.fillToolStripButton.Size = new System.Drawing.Size(26, 22);
             this.fillToolStripButton.Text = "Fill";
             this.fillToolStripButton.Click += new System.EventHandler(this.fillToolStripButton_Click);
             // 
-            // allclramtTextBox
+            // bidsBindingSource1
             // 
-            this.allclramtTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource1, "allclramt", true));
-            this.allclramtTextBox.Location = new System.Drawing.Point(121, 14);
-            this.allclramtTextBox.Name = "allclramtTextBox";
-            this.allclramtTextBox.Size = new System.Drawing.Size(55, 20);
-            this.allclramtTextBox.TabIndex = 165;
+            this.bidsBindingSource1.DataMember = "bids";
+            this.bidsBindingSource1.DataSource = this.dsBids;
+            // 
+            // BidInvoiceDetailBindingSource
+            // 
+            this.BidInvoiceDetailBindingSource.DataSource = typeof(BindingModels.BidInvoiceDetail);
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 59;
+            reportDataSource1.Name = "dsbids";
+            reportDataSource1.Value = this.bidsBindingSource;
+            reportDataSource2.Name = "dsCust";
+            reportDataSource2.Value = this.custBindingSource;
+            reportDataSource3.Name = "dsBidDetail";
+            reportDataSource3.Value = this.BidInvoiceDetailBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuote.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(1105, 538);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(61, 126);
+            this.reportViewer1.TabIndex = 286;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete_1);
             // 
             // frmBids
             // 
@@ -2363,11 +2378,11 @@
             this.Text = "Bids";
             this.Load += new System.EventHandler(this.frmBids_Load_1);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmBids_Paint);
+            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidsBindingNavigator)).EndInit();
             this.bidsBindingNavigator.ResumeLayout(false);
             this.bidsBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.pgBids.ResumeLayout(false);
             this.pgBids.PerformLayout();
@@ -2379,6 +2394,7 @@
             this.pnlMiscDiscCred.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsBids)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -2386,10 +2402,10 @@
             this.pnlHard.ResumeLayout(false);
             this.pnlHard.PerformLayout();
             this.tabBids.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dsBids)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource1)).EndInit();
             this.fillToolStrip.ResumeLayout(false);
             this.fillToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BidInvoiceDetailBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2530,13 +2546,14 @@
         private System.Windows.Forms.Label lbldisc1amount;
         private System.Windows.Forms.Label lblIconTot;
         private System.Windows.Forms.Button btnPrntQuote;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.ToolStrip fillToolStrip;
         private System.Windows.Forms.ToolStripLabel schocodeToolStripLabel;
         private System.Windows.Forms.ToolStripTextBox schocodeToolStripTextBox;
         private System.Windows.Forms.ToolStripButton fillToolStripButton;
         private DataSets.dsBids dsBids;
-        private System.Windows.Forms.BindingSource bidsBindingSource1;
         private System.Windows.Forms.TextBox allclramtTextBox;
+        private System.Windows.Forms.BindingSource BidInvoiceDetailBindingSource;
+        private System.Windows.Forms.BindingSource bidsBindingSource1;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
     }

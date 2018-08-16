@@ -41,6 +41,9 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void frmBids_Load_1(object sender, EventArgs e)
         {
+            
+
+
 
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
@@ -49,9 +52,10 @@ namespace Mbc5.Forms.MemoryBook {
             CalculateEach();
             BookCalc();
             txtBYear.Focus();
+
           
         }
-     
+
 
         #region "Properties"
         public void InvokePropertyChanged(PropertyChangedEventArgs e)
@@ -493,20 +497,20 @@ namespace Mbc5.Forms.MemoryBook {
                             Yir = 0;
                         }
 
-                        //Story
-                        decimal Story = 0;
-                        if (chkStory.Checked)
-                        {
-                            Story = (BookOptionPricing.Story);
-                            vBookCalcTax += (Story * this.TaxRate);
-                            lblStoryAmt.Text = Story.ToString();
+                        ////Story
+                        //decimal Story = 0;
+                        //if (chkStory.Checked)
+                        //{
+                        //    Story = (BookOptionPricing.Story);
+                        //    vBookCalcTax += (Story * this.TaxRate);
+                        //    lblStoryAmt.Text = Story.ToString();
 
-                        }
-                        else
-                        {
-                            lblStoryAmt.Text = "0.00";
-                            Story = 0;
-                        }
+                        //}
+                        //else
+                        //{
+                        //    lblStoryAmt.Text = "0.00";
+                        //    Story = 0;
+                        //}
 
                         //Gloss
                         decimal Gloss = 0;
@@ -591,7 +595,7 @@ namespace Mbc5.Forms.MemoryBook {
                      
 
 
-                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story + Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
+                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir  + Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
                         lblsubtot.Text = SubTotal.ToString("c");
                         this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);
                         this.lblSalesTax.Text = this.SalesTax.ToString("c");
@@ -1830,7 +1834,9 @@ namespace Mbc5.Forms.MemoryBook {
         }
 
         private void btnPrntQuote_Click(object sender, EventArgs e)
+         
        {
+           
             var vBidDetails = new List<BidInvoiceDetail>();
             var vrow = new BidInvoiceDetail();
             if (chkAllClr.Checked)
@@ -1926,18 +1932,7 @@ namespace Mbc5.Forms.MemoryBook {
                 };
                 vBidDetails.Add(vrow);
             }
-            decimal allClrAmt = 0;
-            decimal.TryParse(allclramtTextBox.Text, out allClrAmt);
-            if (chkAllClr.Checked && allClrAmt>0)
-            {
-                vrow = new BidInvoiceDetail()
-                {
-                    Description = "All Color Book",
-                    Price = allclramtTextBox.Text
-
-                };
-                vBidDetails.Add(vrow);
-            }
+           
 
             if (chkGlossLam.Checked)
             {
@@ -2049,7 +2044,7 @@ namespace Mbc5.Forms.MemoryBook {
             {
                 vrow = new BidInvoiceDetail()
                 {
-                    Description = dp1descComboBox.SelectedItem.ToString(),
+                    Description = dp1descComboBox.SelectedItem==null?"": dp1descComboBox.SelectedItem.ToString(),
                     Price = lbldisc1amount.Text,
                     DiscountPercentage= txtDisc.Text
 
@@ -2077,7 +2072,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     Description = "Full pay with submission",
                     Price = txtDp3Desc.Text,
-                    DiscountPercentage = dp3ComboBox.Text
+                    DiscountPercentage = dp3ComboBox.SelectedItem == null ? "0" : dp3ComboBox.SelectedItem.ToString()
 
                 };
                 vBidDetails.Add(vrow);
@@ -2120,17 +2115,67 @@ namespace Mbc5.Forms.MemoryBook {
                 };
                 vBidDetails.Add(vrow);
             }
+            //no tax
+            decimal vCredit = 0;
+            decimal.TryParse(txtCredits.Text, out vCredit);
+            if (vCredit > 0 || vCredit < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = cred_etcTextBox.Text+" (No Tax Calculated)",
+                    Price = txtCredits.Text,
 
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vCredit2 = 0;
+            decimal.TryParse(txtCredits2.Text, out vCredit2);
+            if (vCredit2 > 0 || vCredit2 < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = cred_etcTextBox1.Text + " (No Tax Calculated)",
+                    Price = txtCredits2.Text,
+
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vOtherChrg = 0;
+            decimal.TryParse(txtOtherChrg.Text, out vOtherChrg);
+            if (vOtherChrg > 0 || vOtherChrg < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = textBox5.Text + " (No Tax Calculated)",
+                    Price = txtOtherChrg.Text,
+
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            decimal vOtherChrg2 = 0;
+            decimal.TryParse(txtOtherChrg2.Text, out vOtherChrg2);
+            if (vOtherChrg2 > 0 || vOtherChrg2 < 0)
+            {
+                vrow = new BidInvoiceDetail()
+                {
+                    Description = desc22TextBox.Text + " (No Tax Calculated)",
+                    Price = txtOtherChrg2.Text,
+
+
+                };
+                vBidDetails.Add(vrow);
+            }
+            this.reportViewer1.RefreshReport();
         }
         private void prntBid()
         {
-           this.reportViewer1.RefreshReport();
+           
         }
 
-        private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
-        {
-            reportViewer1.PrintDialog();
-        }
+      
 
         private void fillToolStripButton_Click(object sender, EventArgs e)
         {
@@ -2143,6 +2188,15 @@ namespace Mbc5.Forms.MemoryBook {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
+        }
+
+       
+
+       
+
+        private void reportViewer1_RenderingComplete_1(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        {
+            reportViewer1.PrintDialog();
         }
     }
 }

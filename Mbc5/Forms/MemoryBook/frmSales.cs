@@ -544,7 +544,7 @@ namespace Mbc5.Forms.MemoryBook {
             if (chkYir.Checked) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
-                    descr = "Year In Review Standard",
+                    descr = "Flashbax",
                     discpercent = 0,
                     price = Convert.ToDecimal(lblYir.Text),
                     schoolcode = this.Schcode
@@ -553,18 +553,7 @@ namespace Mbc5.Forms.MemoryBook {
                 Details.Add(rec);
 
             }
-            if (chkStory.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Our Story/My Story Cover",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblStoryAmt.Text),
-                    schoolcode = this.Schcode
-                };
-
-                Details.Add(rec);
-
-            }
+           
             if (chkMLaminate.Checked) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
@@ -1015,17 +1004,7 @@ namespace Mbc5.Forms.MemoryBook {
                             Yir = 0;
                         }
 
-                        //Story
-                        decimal Story = 0;
-                        if (chkStory.Checked) {
-                            Story = (BookOptionPricing.Story);
-                            vBookCalcTax += (Story * this.TaxRate);
-                            lblStoryAmt.Text = Story.ToString();
-
-                        } else {
-                            lblStoryAmt.Text = "0.00";
-                            Story = 0;
-                        }
+                        
 
                         //Gloss
                         decimal Gloss = 0;
@@ -1096,7 +1075,7 @@ namespace Mbc5.Forms.MemoryBook {
                         this.SalesTax =Math.Round(vBookCalcTax,2,MidpointRounding.AwayFromZero);
                         this.lblSalesTax.Text = this.SalesTax.ToString("c");
 
-                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story + Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
+                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir +  Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
 
                         lblsubtot.Text = SubTotal.ToString("c");
                         //calculate after subtotal

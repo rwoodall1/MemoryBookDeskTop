@@ -336,7 +336,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Charges/Credits</Value>
+                    <Value>Credits/Charges</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
