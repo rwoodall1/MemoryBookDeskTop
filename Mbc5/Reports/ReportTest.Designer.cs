@@ -31,25 +31,25 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsInvoice = new Mbc5.DataSets.dsInvoice();
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
             this.invoiceTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invoiceTableAdapter();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
-            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // custBindingSource
@@ -72,6 +72,11 @@
             this.invdetailBindingSource.DataMember = "invdetail";
             this.invdetailBindingSource.DataSource = this.dsInvoice;
             // 
+            // paymntBindingSource
+            // 
+            this.paymntBindingSource.DataMember = "paymnt";
+            this.paymntBindingSource.DataSource = this.dsInvoice;
+            // 
             // custTableAdapter
             // 
             this.custTableAdapter.ClearBeforeFill = true;
@@ -92,21 +97,16 @@
             // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "cust";
-            reportDataSource1.Value = this.custBindingSource;
-            reportDataSource2.Name = "invoice";
-            reportDataSource2.Value = this.invoiceBindingSource;
-            reportDataSource3.Name = "invoicedetail";
-            reportDataSource3.Value = this.invdetailBindingSource;
-            reportDataSource4.Name = "payment";
-            reportDataSource4.Value = this.paymntBindingSource;
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.bindingSource1;
+            reportDataSource2.Name = "DataSet2";
+            reportDataSource2.Value = this.custBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.Report1.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(22, 12);
+            this.reportViewer1.Location = new System.Drawing.Point(12, 30);
             this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(813, 432);
             this.reportViewer1.TabIndex = 6;
             this.reportViewer1.Visible = false;
@@ -115,11 +115,6 @@
             // invdetailTableAdapter
             // 
             this.invdetailTableAdapter.ClearBeforeFill = true;
-            // 
-            // paymntBindingSource
-            // 
-            this.paymntBindingSource.DataMember = "paymnt";
-            this.paymntBindingSource.DataSource = this.dsInvoice;
             // 
             // paymntTableAdapter
             // 
@@ -150,6 +145,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -167,5 +163,6 @@
         private System.Windows.Forms.BindingSource paymntBindingSource;
         private DataSets.dsInvoiceTableAdapters.paymntTableAdapter paymntTableAdapter;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

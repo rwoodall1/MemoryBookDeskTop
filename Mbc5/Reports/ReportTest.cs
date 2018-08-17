@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BindingModels;
 
 namespace Mbc5.Reports
 {
@@ -46,6 +47,13 @@ namespace Mbc5.Reports
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            var a = new BidInvoiceDetail()
+            {
+                Price=50.00M,
+                DiscountPercentage=".05",
+                Description="Test"
+            };
+            bindingSource1.DataSource = a;
 this.reportViewer1.RefreshReport();
         }
 

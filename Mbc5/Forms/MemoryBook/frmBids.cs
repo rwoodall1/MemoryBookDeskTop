@@ -43,8 +43,6 @@ namespace Mbc5.Forms.MemoryBook {
         {
             
 
-
-
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();
@@ -53,7 +51,6 @@ namespace Mbc5.Forms.MemoryBook {
             BookCalc();
             txtBYear.Focus();
 
-          
         }
 
 
@@ -1842,13 +1839,15 @@ namespace Mbc5.Forms.MemoryBook {
             if (chkAllClr.Checked)
             {
                 vrow.Description = "Color book with "+txtNoPages.Text+" Pages "+ txtNocopies.Text+" Copies";
-                vrow.Price = lblPriceEach.Text;
-                
+                vrow.Price = Convert.ToDecimal(lblPriceEach.Text);
+                vrow.DiscountPercentage = "";
+
             }
             else
             {
                 vrow.Description = "Black and White book withBlack and White book with " + txtNoPages.Text + " Pages " + txtNocopies.Text + " Copies";
-                vrow.Price = lblPriceEach.Text;
+                vrow.Price = Convert.ToDecimal(lblPriceEach.Text);
+                vrow.DiscountPercentage = "";
             }
             vBidDetails.Add(vrow);
             if (chkHardBack.Checked)
@@ -1856,7 +1855,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Hard Back (sewn)",
-                    Price = lblHardbackAmt.Text
+                    Price = Convert.ToDecimal(lblHardbackAmt.Text)
                     
                 };
                  vBidDetails.Add(vrow);
@@ -1866,27 +1865,27 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Case Binding (glued)",
-                    Price = lblCaseamt.Text
+                    Price = Convert.ToDecimal(lblCaseamt.Text)
 
                 };
                 vBidDetails.Add(vrow);
             }
-            if (chkSaddlStitch.Checked)
+            if (chkPerfBind.Checked)
             {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Perfect Bind",
-                    Price = lblPerfbindAmt.Text
+                    Price = Convert.ToDecimal(lblPerfbindAmt.Text)
 
                 };
                 vBidDetails.Add(vrow);
             }
-            if (chkSaddlStitch.Checked)
+            if (chkSpiral.Checked)
             {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Spiral Bind",
-                    Price = lblSpiralAmt.Text
+                    Price = Convert.ToDecimal(lblSpiralAmt.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -1896,7 +1895,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Soft Cover Stapled",
-                    Price = lblSaddleAmt.Text
+                    Price = Convert.ToDecimal(lblSaddleAmt.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -1906,7 +1905,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Professional",
-                    Price = lblProfAmt.Text
+                    Price = Convert.ToDecimal(lblProfAmt.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -1917,7 +1916,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Convenient",
-                    Price =lblConvAmt.Text
+                    Price = Convert.ToDecimal(lblConvAmt.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -1927,7 +1926,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Flashbax",
-                    Price = lblYir.Text
+                    Price = Convert.ToDecimal(lblYir.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -1939,7 +1938,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Gloss Laminate",
-                    Price = lblLaminateAmt.Text
+                    Price = Convert.ToDecimal(lblLaminateAmt.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -1949,7 +1948,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Matte Laminate",
-                    Price = lblMLaminateAmt.Text
+                    Price = Convert.ToDecimal(lblMLaminateAmt.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -1961,19 +1960,19 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Special Cover",
-                    Price = lblSpeccvrtot.Text
+                    Price = Convert.ToDecimal(lblSpeccvrtot.Text)
 
                 };
                 vBidDetails.Add(vrow);
             }
             decimal vFoilTotal = 0;
             decimal.TryParse(txtFoilAd.Text, out vFoilTotal);
-            if (vCoverTotal > 0)
+            if (vFoilTotal > 0)
             {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Foil (Additional)",
-                    Price = txtFoilAd.Text
+                    Price = Convert.ToDecimal(txtFoilAd.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -1985,7 +1984,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = txtClrDesc.Text,
-                    Price = txtClrTot.Text
+                    Price = Convert.ToDecimal(txtClrTot.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -1997,7 +1996,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = txtMdesc.Text,
-                    Price = txtMisc.Text
+                    Price = Convert.ToDecimal(txtMisc.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -2009,7 +2008,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = txtDesc1.Text,
-                    Price = txtDesc1amt.Text
+                    Price = Convert.ToDecimal(txtDesc1amt.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -2021,7 +2020,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = textBox5.Text,
-                    Price = txtDesc3tot.Text
+                    Price = Convert.ToDecimal(txtDesc3tot.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -2033,7 +2032,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = txtDesc4.Text,
-                    Price = txtDesc4tot.Text
+                    Price = Convert.ToDecimal(txtDesc4tot.Text)
 
                 };
                 vBidDetails.Add(vrow);
@@ -2045,7 +2044,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = dp1descComboBox.SelectedItem==null?"": dp1descComboBox.SelectedItem.ToString(),
-                    Price = lbldisc1amount.Text,
+                    Price = Convert.ToDecimal(lbldisc1amount.Text),
                     DiscountPercentage= txtDisc.Text
 
                 };
@@ -2058,7 +2057,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Full pay with submission",
-                    Price = lbldisc2amount.Text,
+                    Price = Convert.ToDecimal(lbldisc2amount.Text),
                     DiscountPercentage = txtDp2.Text
 
                 };
@@ -2070,9 +2069,9 @@ namespace Mbc5.Forms.MemoryBook {
             {
                 vrow = new BidInvoiceDetail()
                 {
-                    Description = "Full pay with submission",
-                    Price = txtDp3Desc.Text,
-                    DiscountPercentage = dp3ComboBox.SelectedItem == null ? "0" : dp3ComboBox.SelectedItem.ToString()
+                    Description = txtDp3Desc.Text,
+                    Price = Convert.ToDecimal(otherdiscamt.Text),
+                    DiscountPercentage = dp3ComboBox.SelectedItem == null ? "0" : dp3ComboBox.SelectedItem.ToString().Trim()
 
                 };
                 vBidDetails.Add(vrow);
@@ -2082,9 +2081,9 @@ namespace Mbc5.Forms.MemoryBook {
             {
                 vrow = new BidInvoiceDetail()
                 {
-                    Description = "Full pay with submission",
-                    Price = lblMsTot.Text,
-                    
+                    Description = "My Story With Picture Personalization",
+                    Price = Convert.ToDecimal(lblMsTot.Text),
+                    DiscountPercentage=""
 
                 };
                 vBidDetails.Add(vrow);
@@ -2096,8 +2095,8 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Personalization",
-                    Price = lblperstotal.Text,
-                    
+                    Price = Convert.ToDecimal(lblperstotal.Text),
+                    DiscountPercentage=""
 
                 };
                 vBidDetails.Add(vrow);
@@ -2109,7 +2108,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = "Icons",
-                    Price = lblIconTot.Text,
+                    Price = Convert.ToDecimal(lblIconTot.Text),
 
 
                 };
@@ -2123,7 +2122,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = cred_etcTextBox.Text+" (No Tax Calculated)",
-                    Price = txtCredits.Text,
+                    Price = Convert.ToDecimal(txtCredits.Text),
 
 
                 };
@@ -2136,7 +2135,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = cred_etcTextBox1.Text + " (No Tax Calculated)",
-                    Price = txtCredits2.Text,
+                    Price = Convert.ToDecimal(txtCredits2.Text),
 
 
                 };
@@ -2149,7 +2148,7 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = textBox5.Text + " (No Tax Calculated)",
-                    Price = txtOtherChrg.Text,
+                    Price = Convert.ToDecimal(txtOtherChrg.Text),
 
 
                 };
@@ -2162,12 +2161,17 @@ namespace Mbc5.Forms.MemoryBook {
                 vrow = new BidInvoiceDetail()
                 {
                     Description = desc22TextBox.Text + " (No Tax Calculated)",
-                    Price = txtOtherChrg2.Text,
+                    Price = Convert.ToDecimal(txtOtherChrg2.Text),
 
 
                 };
                 vBidDetails.Add(vrow);
             }
+            
+           
+            BidInvoiceDetailBindingSource.DataSource = vBidDetails;
+     
+
             this.reportViewer1.RefreshReport();
         }
         private void prntBid()
@@ -2175,28 +2179,9 @@ namespace Mbc5.Forms.MemoryBook {
            
         }
 
-      
-
-        private void fillToolStripButton_Click(object sender, EventArgs e)
+        private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
-            try
-            {
-                this.bidsTableAdapter.Fill(this.dsBids.bids, schocodeToolStripTextBox.Text);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-
-       
-
-       
-
-        private void reportViewer1_RenderingComplete_1(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
-        {
-            reportViewer1.PrintDialog();
+            this.reportViewer1.PrintDialog();
         }
     }
 }
