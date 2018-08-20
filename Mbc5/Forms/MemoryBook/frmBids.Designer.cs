@@ -92,8 +92,8 @@
             this.bidsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pgBids = new System.Windows.Forms.TabPage();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnPrntQuote = new System.Windows.Forms.Button();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label10 = new System.Windows.Forms.Label();
             this.schooltaxrateLabel1 = new System.Windows.Forms.Label();
             this.lblfilnalsubtotal = new System.Windows.Forms.Label();
@@ -347,7 +347,7 @@
             // 
             sourceLabel.AutoSize = true;
             sourceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            sourceLabel.Location = new System.Drawing.Point(845, 31);
+            sourceLabel.Location = new System.Drawing.Point(910, 61);
             sourceLabel.Name = "sourceLabel";
             sourceLabel.Size = new System.Drawing.Size(51, 13);
             sourceLabel.TabIndex = 190;
@@ -387,7 +387,7 @@
             // 
             yrdiscountamtLabel.AutoSize = true;
             yrdiscountamtLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            yrdiscountamtLabel.Location = new System.Drawing.Point(807, 60);
+            yrdiscountamtLabel.Location = new System.Drawing.Point(799, 60);
             yrdiscountamtLabel.Name = "yrdiscountamtLabel";
             yrdiscountamtLabel.Size = new System.Drawing.Size(16, 13);
             yrdiscountamtLabel.TabIndex = 209;
@@ -654,7 +654,7 @@
             // idLabel
             // 
             idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(1017, 31);
+            idLabel.Location = new System.Drawing.Point(844, 34);
             idLabel.Name = "idLabel";
             idLabel.Size = new System.Drawing.Size(41, 13);
             idLabel.TabIndex = 273;
@@ -736,7 +736,7 @@
             this.bidsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bidsBindingNavigator.Name = "bidsBindingNavigator";
             this.bidsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.bidsBindingNavigator.Size = new System.Drawing.Size(1264, 25);
+            this.bidsBindingNavigator.Size = new System.Drawing.Size(1121, 25);
             this.bidsBindingNavigator.TabIndex = 1;
             this.bidsBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -842,8 +842,8 @@
             // 
             this.pgBids.AutoScroll = true;
             this.pgBids.BackColor = System.Drawing.SystemColors.Control;
-            this.pgBids.Controls.Add(this.reportViewer1);
             this.pgBids.Controls.Add(this.btnPrntQuote);
+            this.pgBids.Controls.Add(this.reportViewer1);
             this.pgBids.Controls.Add(this.label10);
             this.pgBids.Controls.Add(this.schooltaxrateLabel1);
             this.pgBids.Controls.Add(this.lblfilnalsubtotal);
@@ -905,13 +905,24 @@
             this.pgBids.Location = new System.Drawing.Point(4, 22);
             this.pgBids.Name = "pgBids";
             this.pgBids.Padding = new System.Windows.Forms.Padding(3);
-            this.pgBids.Size = new System.Drawing.Size(1220, 705);
+            this.pgBids.Size = new System.Drawing.Size(1077, 705);
             this.pgBids.TabIndex = 0;
             this.pgBids.Text = "Bids";
             // 
+            // btnPrntQuote
+            // 
+            this.btnPrntQuote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrntQuote.Location = new System.Drawing.Point(821, 111);
+            this.btnPrntQuote.Name = "btnPrntQuote";
+            this.btnPrntQuote.Size = new System.Drawing.Size(100, 23);
+            this.btnPrntQuote.TabIndex = 287;
+            this.btnPrntQuote.Text = "Print Quote";
+            this.btnPrntQuote.UseVisualStyleBackColor = true;
+            this.btnPrntQuote.Click += new System.EventHandler(this.btnPrntQuote_Click);
+            // 
             // reportViewer1
             // 
-            this.reportViewer1.DocumentMapWidth = 98;
+            this.reportViewer1.DocumentMapWidth = 48;
             reportDataSource4.Name = "dsCust";
             reportDataSource4.Value = this.custBindingSource;
             reportDataSource5.Name = "dsBidValues";
@@ -921,24 +932,14 @@
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuoteTest.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(1034, 430);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuote.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(582, 601);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(100, 231);
+            this.reportViewer1.Size = new System.Drawing.Size(68, 82);
             this.reportViewer1.TabIndex = 286;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
-            // 
-            // btnPrntQuote
-            // 
-            this.btnPrntQuote.Location = new System.Drawing.Point(1020, 111);
-            this.btnPrntQuote.Name = "btnPrntQuote";
-            this.btnPrntQuote.Size = new System.Drawing.Size(100, 23);
-            this.btnPrntQuote.TabIndex = 285;
-            this.btnPrntQuote.Text = "Print Quote";
-            this.btnPrntQuote.UseVisualStyleBackColor = true;
-            this.btnPrntQuote.Click += new System.EventHandler(this.btnPrntQuote_Click);
             // 
             // label10
             // 
@@ -997,7 +998,7 @@
             // lblId
             // 
             this.lblId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "Id", true));
-            this.lblId.Location = new System.Drawing.Point(1060, 31);
+            this.lblId.Location = new System.Drawing.Point(887, 34);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(100, 20);
             this.lblId.TabIndex = 274;
@@ -1047,7 +1048,7 @@
             this.txtExtChrg.Multiline = true;
             this.txtExtChrg.Name = "txtExtChrg";
             this.txtExtChrg.ReadOnly = true;
-            this.txtExtChrg.Size = new System.Drawing.Size(172, 40);
+            this.txtExtChrg.Size = new System.Drawing.Size(226, 40);
             this.txtExtChrg.TabIndex = 259;
             // 
             // txtPriceOverRide
@@ -1064,7 +1065,7 @@
             // 
             this.txtSource.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "source", true));
             this.txtSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSource.Location = new System.Drawing.Point(902, 31);
+            this.txtSource.Location = new System.Drawing.Point(967, 61);
             this.txtSource.Name = "txtSource";
             this.txtSource.Size = new System.Drawing.Size(100, 20);
             this.txtSource.TabIndex = 192;
@@ -1494,7 +1495,7 @@
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(549, 390);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(222, 119);
+            this.panel4.Size = new System.Drawing.Size(266, 119);
             this.panel4.TabIndex = 268;
             // 
             // txtOtherChrg
@@ -1502,7 +1503,7 @@
             this.txtOtherChrg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOtherChrg.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "desc2tot", true));
             this.txtOtherChrg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOtherChrg.Location = new System.Drawing.Point(236, 56);
+            this.txtOtherChrg.Location = new System.Drawing.Point(280, 56);
             this.txtOtherChrg.Name = "txtOtherChrg";
             this.txtOtherChrg.Size = new System.Drawing.Size(70, 20);
             this.txtOtherChrg.TabIndex = 5;
@@ -1517,7 +1518,7 @@
             this.textBox5.Location = new System.Drawing.Point(88, 56);
             this.textBox5.MaxLength = 40;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(142, 20);
+            this.textBox5.Size = new System.Drawing.Size(163, 20);
             this.textBox5.TabIndex = 4;
             // 
             // txtOtherChrg2
@@ -1525,7 +1526,7 @@
             this.txtOtherChrg2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOtherChrg2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "desc22tot", true));
             this.txtOtherChrg2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOtherChrg2.Location = new System.Drawing.Point(236, 78);
+            this.txtOtherChrg2.Location = new System.Drawing.Point(280, 78);
             this.txtOtherChrg2.Name = "txtOtherChrg2";
             this.txtOtherChrg2.Size = new System.Drawing.Size(70, 20);
             this.txtOtherChrg2.TabIndex = 7;
@@ -1540,7 +1541,7 @@
             this.desc22TextBox.Location = new System.Drawing.Point(88, 78);
             this.desc22TextBox.MaxLength = 40;
             this.desc22TextBox.Name = "desc22TextBox";
-            this.desc22TextBox.Size = new System.Drawing.Size(142, 20);
+            this.desc22TextBox.Size = new System.Drawing.Size(163, 20);
             this.desc22TextBox.TabIndex = 6;
             // 
             // txtCredits2
@@ -1548,7 +1549,7 @@
             this.txtCredits2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCredits2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "adjaftr2", true));
             this.txtCredits2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCredits2.Location = new System.Drawing.Point(236, 33);
+            this.txtCredits2.Location = new System.Drawing.Point(280, 33);
             this.txtCredits2.Name = "txtCredits2";
             this.txtCredits2.Size = new System.Drawing.Size(70, 20);
             this.txtCredits2.TabIndex = 3;
@@ -1563,7 +1564,7 @@
             this.cred_etcTextBox.Location = new System.Drawing.Point(88, 10);
             this.cred_etcTextBox.MaxLength = 40;
             this.cred_etcTextBox.Name = "cred_etcTextBox";
-            this.cred_etcTextBox.Size = new System.Drawing.Size(142, 20);
+            this.cred_etcTextBox.Size = new System.Drawing.Size(163, 20);
             this.cred_etcTextBox.TabIndex = 0;
             // 
             // cred_etcTextBox1
@@ -1575,7 +1576,7 @@
             this.cred_etcTextBox1.Location = new System.Drawing.Point(88, 33);
             this.cred_etcTextBox1.MaxLength = 40;
             this.cred_etcTextBox1.Name = "cred_etcTextBox1";
-            this.cred_etcTextBox1.Size = new System.Drawing.Size(142, 20);
+            this.cred_etcTextBox1.Size = new System.Drawing.Size(163, 20);
             this.cred_etcTextBox1.TabIndex = 2;
             // 
             // txtCredits
@@ -1583,7 +1584,7 @@
             this.txtCredits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCredits.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "adjaftr", true));
             this.txtCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCredits.Location = new System.Drawing.Point(236, 10);
+            this.txtCredits.Location = new System.Drawing.Point(280, 10);
             this.txtCredits.Name = "txtCredits";
             this.txtCredits.Size = new System.Drawing.Size(70, 20);
             this.txtCredits.TabIndex = 1;
@@ -1607,7 +1608,7 @@
             this.pnlMiscDiscCred.Controls.Add(this.txtDesc4);
             this.pnlMiscDiscCred.Location = new System.Drawing.Point(520, 111);
             this.pnlMiscDiscCred.Name = "pnlMiscDiscCred";
-            this.pnlMiscDiscCred.Size = new System.Drawing.Size(241, 175);
+            this.pnlMiscDiscCred.Size = new System.Drawing.Size(295, 175);
             this.pnlMiscDiscCred.TabIndex = 261;
             // 
             // label6
@@ -1630,7 +1631,7 @@
             this.txtClrDesc.Location = new System.Drawing.Point(7, 32);
             this.txtClrDesc.MaxLength = 40;
             this.txtClrDesc.Name = "txtClrDesc";
-            this.txtClrDesc.Size = new System.Drawing.Size(265, 20);
+            this.txtClrDesc.Size = new System.Drawing.Size(273, 20);
             this.txtClrDesc.TabIndex = 0;
             // 
             // txtClrTot
@@ -1639,7 +1640,7 @@
             this.txtClrTot.BackColor = System.Drawing.Color.Aqua;
             this.txtClrTot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "clrpgtot", true));
             this.txtClrTot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClrTot.Location = new System.Drawing.Point(276, 32);
+            this.txtClrTot.Location = new System.Drawing.Point(330, 32);
             this.txtClrTot.Name = "txtClrTot";
             this.txtClrTot.Size = new System.Drawing.Size(53, 20);
             this.txtClrTot.TabIndex = 1;
@@ -1650,7 +1651,7 @@
             this.txtMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMisc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "misc", true));
             this.txtMisc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMisc.Location = new System.Drawing.Point(276, 55);
+            this.txtMisc.Location = new System.Drawing.Point(330, 55);
             this.txtMisc.Name = "txtMisc";
             this.txtMisc.Size = new System.Drawing.Size(53, 20);
             this.txtMisc.TabIndex = 3;
@@ -1665,7 +1666,7 @@
             this.txtMdesc.Location = new System.Drawing.Point(7, 55);
             this.txtMdesc.MaxLength = 40;
             this.txtMdesc.Name = "txtMdesc";
-            this.txtMdesc.Size = new System.Drawing.Size(265, 20);
+            this.txtMdesc.Size = new System.Drawing.Size(273, 20);
             this.txtMdesc.TabIndex = 2;
             // 
             // txtDesc1amt
@@ -1673,7 +1674,7 @@
             this.txtDesc1amt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDesc1amt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "desc1tot", true));
             this.txtDesc1amt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesc1amt.Location = new System.Drawing.Point(276, 78);
+            this.txtDesc1amt.Location = new System.Drawing.Point(330, 78);
             this.txtDesc1amt.Name = "txtDesc1amt";
             this.txtDesc1amt.Size = new System.Drawing.Size(53, 20);
             this.txtDesc1amt.TabIndex = 5;
@@ -1688,7 +1689,7 @@
             this.txtDesc1.Location = new System.Drawing.Point(7, 78);
             this.txtDesc1.MaxLength = 40;
             this.txtDesc1.Name = "txtDesc1";
-            this.txtDesc1.Size = new System.Drawing.Size(265, 20);
+            this.txtDesc1.Size = new System.Drawing.Size(273, 20);
             this.txtDesc1.TabIndex = 4;
             // 
             // txtDesc3tot
@@ -1696,7 +1697,7 @@
             this.txtDesc3tot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDesc3tot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "desc3tot", true));
             this.txtDesc3tot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesc3tot.Location = new System.Drawing.Point(276, 101);
+            this.txtDesc3tot.Location = new System.Drawing.Point(330, 101);
             this.txtDesc3tot.Name = "txtDesc3tot";
             this.txtDesc3tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc3tot.TabIndex = 7;
@@ -1711,7 +1712,7 @@
             this.txtDesc3.Location = new System.Drawing.Point(7, 101);
             this.txtDesc3.MaxLength = 40;
             this.txtDesc3.Name = "txtDesc3";
-            this.txtDesc3.Size = new System.Drawing.Size(265, 20);
+            this.txtDesc3.Size = new System.Drawing.Size(273, 20);
             this.txtDesc3.TabIndex = 6;
             // 
             // txtDesc4tot
@@ -1719,7 +1720,7 @@
             this.txtDesc4tot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDesc4tot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "desc4tot", true));
             this.txtDesc4tot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesc4tot.Location = new System.Drawing.Point(276, 125);
+            this.txtDesc4tot.Location = new System.Drawing.Point(330, 125);
             this.txtDesc4tot.Name = "txtDesc4tot";
             this.txtDesc4tot.Size = new System.Drawing.Size(53, 20);
             this.txtDesc4tot.TabIndex = 9;
@@ -1734,7 +1735,7 @@
             this.txtDesc4.Location = new System.Drawing.Point(7, 125);
             this.txtDesc4.MaxLength = 40;
             this.txtDesc4.Name = "txtDesc4";
-            this.txtDesc4.Size = new System.Drawing.Size(265, 20);
+            this.txtDesc4.Size = new System.Drawing.Size(273, 20);
             this.txtDesc4.TabIndex = 8;
             // 
             // panel3
@@ -2229,7 +2230,7 @@
             "",
             ".4025",
             ".3920"});
-            this.cmbYrDiscountAmt.Location = new System.Drawing.Point(829, 60);
+            this.cmbYrDiscountAmt.Location = new System.Drawing.Point(821, 60);
             this.cmbYrDiscountAmt.Name = "cmbYrDiscountAmt";
             this.cmbYrDiscountAmt.Size = new System.Drawing.Size(79, 21);
             this.cmbYrDiscountAmt.TabIndex = 187;
@@ -2240,7 +2241,7 @@
             this.chkPromo.AutoSize = true;
             this.chkPromo.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "yrdiscount", true));
             this.chkPromo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPromo.Location = new System.Drawing.Point(748, 60);
+            this.chkPromo.Location = new System.Drawing.Point(740, 60);
             this.chkPromo.Name = "chkPromo";
             this.chkPromo.Size = new System.Drawing.Size(61, 17);
             this.chkPromo.TabIndex = 208;
@@ -2306,7 +2307,7 @@
             this.tabBids.Location = new System.Drawing.Point(0, 0);
             this.tabBids.Name = "tabBids";
             this.tabBids.SelectedIndex = 0;
-            this.tabBids.Size = new System.Drawing.Size(1228, 731);
+            this.tabBids.Size = new System.Drawing.Size(1085, 731);
             this.tabBids.TabIndex = 0;
             // 
             // bidsTableAdapter
@@ -2327,10 +2328,11 @@
             // frmBids
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
-            this.ClientSize = new System.Drawing.Size(1264, 761);
+            this.ClientSize = new System.Drawing.Size(1121, 761);
             this.Controls.Add(this.bidsBindingNavigator);
             this.Controls.Add(this.tabBids);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimumSize = new System.Drawing.Size(1137, 800);
             this.Name = "frmBids";
             this.Text = "Bids";
             this.Load += new System.EventHandler(this.frmBids_Load_1);
@@ -2499,10 +2501,10 @@
         private System.Windows.Forms.Label lbldisc2amount;
         private System.Windows.Forms.Label lbldisc1amount;
         private System.Windows.Forms.Label lblIconTot;
-        private System.Windows.Forms.Button btnPrntQuote;
         private DataSets.dsBids dsBids;
         private System.Windows.Forms.TextBox allclramtTextBox;
         private System.Windows.Forms.BindingSource BidInvoiceDetailBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.Button btnPrntQuote;
     }
     }

@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using Mbc5.Classes;
 using System.Linq;
 using BindingModels;
+
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmBids : BaseClass.frmBase, INotifyPropertyChanged
     {
@@ -41,8 +42,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void frmBids_Load_1(object sender, EventArgs e)
         {
-            
-
+           
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();
@@ -1839,14 +1839,14 @@ namespace Mbc5.Forms.MemoryBook {
             if (chkAllClr.Checked)
             {
                 vrow.Description = "Color book with "+txtNoPages.Text+" Pages "+ txtNocopies.Text+" Copies";
-                vrow.Price = Convert.ToDecimal(lblPriceEach.Text);
+                vrow.Price = Convert.ToDecimal(lblBookTotal.Text);
                 vrow.DiscountPercentage = "";
 
             }
             else
             {
                 vrow.Description = "Black and White book withBlack and White book with " + txtNoPages.Text + " Pages " + txtNocopies.Text + " Copies";
-                vrow.Price = Convert.ToDecimal(lblPriceEach.Text);
+                vrow.Price = Convert.ToDecimal(lblBookTotal.Text);
                 vrow.DiscountPercentage = "";
             }
             vBidDetails.Add(vrow);
@@ -2170,9 +2170,11 @@ namespace Mbc5.Forms.MemoryBook {
             
            
             BidInvoiceDetailBindingSource.DataSource = vBidDetails;
-     
 
+            Cursor.Current = Cursors.WaitCursor;
+           
             this.reportViewer1.RefreshReport();
+             Cursor.Current = Cursors.Arrow;
         }
         private void prntBid()
         {
@@ -2181,7 +2183,10 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             this.reportViewer1.PrintDialog();
+           Cursor.Current = Cursors.Arrow;
+
         }
     }
 }

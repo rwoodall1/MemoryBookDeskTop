@@ -427,7 +427,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
-    <EmbeddedResource Include="Reports\BidQuoteTest.rdlc" />
     <EmbeddedResource Include="Reports\MemInvoice.rdlc" />
     <EmbeddedResource Include="Reports\Report1.rdlc" />
     <EmbeddedResource Include="Reports\ReportTest.resx">
