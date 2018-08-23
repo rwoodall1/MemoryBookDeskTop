@@ -85,7 +85,7 @@ namespace BaseClass.Classes {
                             }                      
                         
                         }
-                    catch
+                    catch(Exception ex)
                         {
                         // You can log something here
                         throw;

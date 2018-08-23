@@ -1185,9 +1185,39 @@ namespace Mbc5.Forms.MemoryBook {
             xeldateDateTimePicker.Format= DateTimePickerFormat.Long;
         }
 
-        
+        private void btnProdTckt_Click(object sender, EventArgs e)
+        {
+            var sqlClient = new SQLCustomClient();
+            string cmdText = @"Select C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.perscopies AS PersonalCopies,Q.allclrck AS AllClrk,Q.contryear as ContractYear,
+             Q.BookType,Q.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies
+             ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNum,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
+                FROM Cust C
+                LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
+				Left JOIN EndSheet ES ON Q.Invno=ES.Invno
+				Left JOIN Recv2 R ON Q.Invno=R.Invno
+                LEFT JOIN Produtn P ON Q.Invno=P.Invno
+            Where Q.Invno=@Invno";
 
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            var dataReturned = sqlClient.Select<ProdutnTicketModel>();
+            var data = (ProdutnTicketModel)dataReturned;
+       
+            ProdutnTicketModelBindingSource.DataSource = data;
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewer1.RefreshReport();
+            Cursor.Current = Cursors.Default;
+           
+        }
 
+        private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewer1.PrintDialog();
+            Cursor.Current = Cursors.Default;
+        }
+
+       
 
 
         //Nothing below here

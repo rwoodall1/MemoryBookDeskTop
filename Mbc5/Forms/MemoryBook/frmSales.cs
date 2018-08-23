@@ -721,7 +721,7 @@ namespace Mbc5.Forms.MemoryBook {
 
                     try {
                         this.quotesBindingSource.EndEdit();
-                        quotesTableAdapter.Update(dsSales.quotes);
+                        var a=quotesTableAdapter.Update(dsSales.quotes);
                         //must refill so we get updated time stamp so concurrency is not thrown
                         this.Fill();
                         UpdateProductionCopyPages();//updates production with number of copies and pages

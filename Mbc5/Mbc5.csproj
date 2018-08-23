@@ -428,6 +428,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
     <EmbeddedResource Include="Reports\MemInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\ProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\Report1.rdlc" />
     <EmbeddedResource Include="Reports\ReportTest.resx">
       <DependentUpon>ReportTest.cs</DependentUpon>
@@ -579,6 +580,7 @@
     </None>
     <None Include="Properties\DataSources\BindingModels.BidInvoiceDetail.datasource" />
     <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
+    <None Include="Properties\DataSources\BindingModels.ProdutnTicketModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

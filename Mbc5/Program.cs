@@ -19,7 +19,14 @@ namespace Mbc5
             //ExceptionlessClient.Default.Register();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            try { Application.Run(new frmMain());
+               } catch(Exception ex)
+            {
+                MessageBox.Show("There was an unhandled error:" + ex.Message);
+
+
+            }
+            
 			
 
 		}

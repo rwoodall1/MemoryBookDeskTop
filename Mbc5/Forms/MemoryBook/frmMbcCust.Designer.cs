@@ -113,6 +113,7 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
@@ -173,6 +174,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtZip = new System.Windows.Forms.TextBox();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
+            this.btnProdTckt = new System.Windows.Forms.Button();
             this.btnProdChk = new System.Windows.Forms.Button();
             this.csrep2TextBox = new System.Windows.Forms.TextBox();
             this.stageComboBox = new System.Windows.Forms.ComboBox();
@@ -315,6 +317,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.custSearchTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custSearchTableAdapter();
             this.lkpLeadNameTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadNameTableAdapter();
             this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadSourceTableAdapter();
+            this.ProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -431,6 +435,7 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.dsDateCont)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custSearchBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProdutnTicketModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -439,6 +444,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // BottomPanel
             // 
+            this.BottomPanel.Controls.Add(this.reportViewer1);
             this.BottomPanel.Controls.Add(this.txtModifiedBy);
             this.BottomPanel.Location = new System.Drawing.Point(0, 693);
             this.BottomPanel.Size = new System.Drawing.Size(1234, 38);
@@ -1278,6 +1284,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.splitContainer.Panel2.AutoScroll = true;
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel2.Controls.Add(this.btnProdTckt);
             this.splitContainer.Panel2.Controls.Add(csrep2Label);
             this.splitContainer.Panel2.Controls.Add(this.btnProdChk);
             this.splitContainer.Panel2.Controls.Add(this.csrep2TextBox);
@@ -1844,6 +1851,16 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(183, 20);
             this.txtCity.TabIndex = 5;
+            // 
+            // btnProdTckt
+            // 
+            this.btnProdTckt.Location = new System.Drawing.Point(487, 286);
+            this.btnProdTckt.Name = "btnProdTckt";
+            this.btnProdTckt.Size = new System.Drawing.Size(123, 23);
+            this.btnProdTckt.TabIndex = 111;
+            this.btnProdTckt.Text = "Production Ticket";
+            this.btnProdTckt.UseVisualStyleBackColor = true;
+            this.btnProdTckt.Click += new System.EventHandler(this.btnProdTckt_Click);
             // 
             // btnProdChk
             // 
@@ -3223,6 +3240,25 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.lkpLeadSourceTableAdapter.ClearBeforeFill = true;
             // 
+            // ProdutnTicketModelBindingSource
+            // 
+            this.ProdutnTicketModelBindingSource.DataSource = typeof(BindingModels.ProdutnTicketModel);
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 48;
+            reportDataSource1.Name = "dsRptProdutn";
+            reportDataSource1.Value = this.ProdutnTicketModelBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.ProdutnTicket.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(583, -22);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(68, 82);
+            this.reportViewer1.TabIndex = 287;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
+            // 
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3282,6 +3318,7 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.dsDateCont)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custSearchBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProdutnTicketModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3493,5 +3530,8 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.Label jobnoLabel1;
         private System.Windows.Forms.DateTimePicker rbdateDateTimePicker;
         private System.Windows.Forms.DateTimePicker xeldateDateTimePicker;
+        private System.Windows.Forms.Button btnProdTckt;
+        private System.Windows.Forms.BindingSource ProdutnTicketModelBindingSource;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }
