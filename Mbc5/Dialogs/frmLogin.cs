@@ -41,7 +41,7 @@ namespace Mbc5.Dialogs {
            
 
             SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
-            
+       
 
             string cPassword = this.txtpassword.Text;
             string cUser = this.txtusername.Text;

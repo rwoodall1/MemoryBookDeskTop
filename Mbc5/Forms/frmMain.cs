@@ -264,10 +264,12 @@ namespace Mbc5.Forms
 
             if (this.ActiveMdiChild == null)
             {
-                frmBids frmBids = new frmBids(this.ApplicationUser);
-                frmBids.MdiParent = this;
-                frmBids.Show();
-                this.Cursor = Cursors.Default;
+                //frmBids frmBids = new frmBids(this.ApplicationUser);
+                //frmBids.MdiParent = this;
+                //frmBids.Show();
+                //this.Cursor = Cursors.Default;
+                MessageBox.Show("Customer screen must be open and on the customer to place bid for.");
+                return;
 
 
             }
@@ -557,10 +559,26 @@ namespace Mbc5.Forms
 
         private void testFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          ReportTest test = new ReportTest();
+          test test = new test();
            
             test.Show();
             this.Cursor = Cursors.Default;
+        }
+
+        private void barScanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+                this.Cursor = Cursors.AppStarting;
+
+                frmBarScan frmBarScan = new frmBarScan(this.ApplicationUser);
+                frmBarScan.MdiParent = this;
+                frmBarScan.Show();
+                this.Cursor = Cursors.Default;
+
+
+            
+            
+
         }
 
 

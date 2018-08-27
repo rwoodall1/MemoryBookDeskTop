@@ -55,7 +55,8 @@ namespace Mbc5.Forms.MemoryBook {
             CalculateEach();
             BookCalc();
             txtBYear.Focus();
-            
+
+           
         }
         private void btnInvSrch_Click(object sender, EventArgs e) {
             var sqlQuery = new SQLQuery();
@@ -343,10 +344,15 @@ namespace Mbc5.Forms.MemoryBook {
                 cmdText = "Update Quotes set invoiced=1 where invno=@invno";
                 command.CommandText = cmdText;
                 command.ExecuteNonQuery();
-                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks,DateCreated,DateModified,ModifiedBy) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks,GETDATE(),GETDATE(),@ModifiedBy)";
+                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks,SalesTax,BeforeTaxTotal,DateCreated,DateModified,ModifiedBy) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks,@SalesTax,@BeforeTaxTotal,GETDATE(),GETDATE(),@ModifiedBy)";
                 //cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each)";
                 command.CommandText = cmdText;
                 command.Parameters.Clear();
+                decimal vtax = 0; 
+                decimal.TryParse(lblSalesTax.Text.Replace("$", "").Replace(",", ""), out vtax);
+                decimal vtotal = 0;
+                decimal.TryParse(lblFinalTotPrc.Text.Replace("$", "").Replace(",", ""), out vtotal);
+                decimal vBeforeTaxTotal = vtotal - vtax;
                 var aa = lblPriceEach.Text.Replace("$", "");
                 SqlParameter[] parameters = new SqlParameter[] {
                     new SqlParameter("@invno",lblInvoice.Text),
@@ -357,6 +363,8 @@ namespace Mbc5.Forms.MemoryBook {
                     new SqlParameter("@book_each",lblPriceEach.Text.Replace("$","").Replace(",","")),
                     new SqlParameter("@source",txtSource.Text ),
                     new SqlParameter("@ponum",txtPoNum.Text),
+                    new SqlParameter("@SalesTax",lblSalesTax.Text.Replace("$","").Replace(",","")),
+                    new SqlParameter("@BeforeTaxTotal",vBeforeTaxTotal),
                     new SqlParameter("@invtot",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
                     new SqlParameter("@baldue",lblFinalTotPrc.Text.Replace("$","").Replace(",","") ),
                     new SqlParameter("@contryear",txtYear.Text),
@@ -536,7 +544,7 @@ namespace Mbc5.Forms.MemoryBook {
             if (chkYir.Checked) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
-                    descr = "Year In Review Standard",
+                    descr = "Flashbax",
                     discpercent = 0,
                     price = Convert.ToDecimal(lblYir.Text),
                     schoolcode = this.Schcode
@@ -545,18 +553,7 @@ namespace Mbc5.Forms.MemoryBook {
                 Details.Add(rec);
 
             }
-            if (chkStory.Checked) {
-                var rec = new InvoiceDetailBindingModel {
-                    invno = vinvno,
-                    descr = "Our Story/My Story Cover",
-                    discpercent = 0,
-                    price = Convert.ToDecimal(lblStoryAmt.Text),
-                    schoolcode = this.Schcode
-                };
-
-                Details.Add(rec);
-
-            }
+           
             if (chkMLaminate.Checked) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
@@ -639,13 +636,13 @@ namespace Mbc5.Forms.MemoryBook {
 
 
 
-            if ((String.IsNullOrEmpty(lbldisc1.Text) ? 0 : Convert.ToDecimal(lbldisc1.Text)) > 0) {
+            if ((String.IsNullOrEmpty(lbldisc1.Text) ? 0 : Convert.ToDecimal(lbldisc1.Text))!= 0) {
                 per = String.IsNullOrEmpty(txtDisc.Text) ? 0 : Convert.ToDecimal(txtDisc.Text);
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
-                    descr = dp1descComboBox.SelectedValue.ToString(),
+                    descr = dp1descComboBox.SelectedValue==null ? "" : dp1descComboBox.SelectedValue.ToString(),
                     discpercent = per,
-                    price = Convert.ToDecimal(txtFoilAd.Text),
+                    price = Convert.ToDecimal(lbldisc1.Text),
                     schoolcode = this.Schcode
                 };
 
@@ -723,8 +720,9 @@ namespace Mbc5.Forms.MemoryBook {
                 if (ValidSales()) {
 
                     try {
+                        this.Validate();
                         this.quotesBindingSource.EndEdit();
-                        quotesTableAdapter.Update(dsSales.quotes);
+                        var a=quotesTableAdapter.Update(dsSales.quotes);
                         //must refill so we get updated time stamp so concurrency is not thrown
                         this.Fill();
                         UpdateProductionCopyPages();//updates production with number of copies and pages
@@ -771,8 +769,12 @@ namespace Mbc5.Forms.MemoryBook {
             return retval;
         }
         private void CalculateEach() {
-
-          this.TaxRate = this.GetTaxRate();
+            if (!donotchargeschoolsalestaxCheckBox.Checked)
+            {
+                this.TaxRate = this.GetTaxRate();
+            }
+            else { this.TaxRate = 0; }
+         
 
             this.lblTaxRate.Text = this.TaxRate.ToString();
             if (String.IsNullOrEmpty(txtBYear.Text)) {
@@ -1003,17 +1005,7 @@ namespace Mbc5.Forms.MemoryBook {
                             Yir = 0;
                         }
 
-                        //Story
-                        decimal Story = 0;
-                        if (chkStory.Checked) {
-                            Story = (BookOptionPricing.Story);
-                            vBookCalcTax += (Story * this.TaxRate);
-                            lblStoryAmt.Text = Story.ToString();
-
-                        } else {
-                            lblStoryAmt.Text = "0.00";
-                            Story = 0;
-                        }
+                        
 
                         //Gloss
                         decimal Gloss = 0;
@@ -1084,7 +1076,7 @@ namespace Mbc5.Forms.MemoryBook {
                         this.SalesTax =Math.Round(vBookCalcTax,2,MidpointRounding.AwayFromZero);
                         this.lblSalesTax.Text = this.SalesTax.ToString("c");
 
-                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story + Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
+                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir +  Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
 
                         lblsubtot.Text = SubTotal.ToString("c");
                         //calculate after subtotal
@@ -1093,14 +1085,27 @@ namespace Mbc5.Forms.MemoryBook {
                         decimal disc3 = 0;
                         decimal msTot = 0;
                         decimal persTot = 0;
-
+                        decimal iconTot = 0;
+                        decimal vTax = 0;
                         vParseResult = decimal.TryParse(lbldisc1.Text, out disc1);
                         vParseResult = decimal.TryParse(lbldisc2.Text, out disc2);
                         vParseResult = decimal.TryParse(lblDisc3.Text, out disc3);
                         vParseResult = decimal.TryParse(lblMsTot.Text, out msTot);
                         vParseResult = decimal.TryParse(lblperstotal.Text, out persTot);
-                        lblFinalTotPrc.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot).ToString("c");
-                        txtFinalbookprc.Text = ((SubTotal + disc1 + disc2 + disc3 + msTot + persTot) / numberOfCopies).ToString("c");
+                        vParseResult = decimal.TryParse(lblIconTot.Text, out iconTot);
+                        var a = (disc1 * this.TaxRate);
+                        vBookCalcTax += (disc1 * this.TaxRate);
+                        vBookCalcTax += (disc2 * this.TaxRate);
+                        vBookCalcTax += (disc3 * this.TaxRate);
+                        vBookCalcTax += (msTot * this.TaxRate);
+                        vBookCalcTax += (persTot * this.TaxRate);
+                        vBookCalcTax += (iconTot * this.TaxRate);
+                        this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);
+                        this.lblSalesTax.Text = this.SalesTax.ToString("c");
+                        vParseResult = decimal.TryParse(lblSalesTax.Text.Replace("$",""), out vTax);
+                        SubTotal += (disc1 + disc2 + disc3 + msTot + persTot + iconTot);
+                        lblFinalTotPrc.Text = SubTotal.ToString("0.00");
+                        txtFinalbookprc.Text = ((SubTotal) / numberOfCopies).ToString("c");
                         //other charges and credies
                         decimal credit1 = 0;
                         decimal credit2 = 0;
@@ -1110,7 +1115,7 @@ namespace Mbc5.Forms.MemoryBook {
                         vParseResult = decimal.TryParse(txtCredits2.Text, out credit2);
                         vParseResult = decimal.TryParse(txtOtherChrg.Text, out otherchrg1);
                         vParseResult = decimal.TryParse(txtOtherChrg2.Text, out otherchrg2);
-                        lbladjbef.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + credit1 + credit2 + otherchrg1 + otherchrg2).ToString("c");
+                        lbladjbef.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + credit1 + credit2 + otherchrg1 + otherchrg2 +vTax).ToString("c");
 
                     }
                 }
@@ -1394,7 +1399,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
         }
         private void Fill() {
-            if (Schcode != null) {
+            if (!string.IsNullOrEmpty(Schcode)) {
                 custTableAdapter.Fill(dsSales.cust, Schcode);
                 quotesTableAdapter.Fill(dsSales.quotes, Schcode);
                 this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim(); ;
@@ -3066,7 +3071,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void donotchargeschoolsalestaxCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.CalculateEach();
         }
 
         private void pg1_Click(object sender, EventArgs e)
@@ -3091,6 +3096,20 @@ namespace Mbc5.Forms.MemoryBook {
                 BookCalc();
             }
         }
+
+        private void txtIconCopies_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPoSrch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
 
 
 

@@ -84,6 +84,7 @@
             this.tsPrint = new System.Windows.Forms.ToolStripButton();
             this.tsEmail = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.barScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -126,7 +127,7 @@
             this.bidsToolStripMenuItem,
             this.onlineFormsToolStripMenuItem});
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
-            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
             // 
             // customerToolStripMenuItem
@@ -164,7 +165,7 @@
             this.mbidsToolStripMenuItem,
             this.onlineFormsToolStripMenuItem1});
             this.meridianToolStripMenuItem.Name = "meridianToolStripMenuItem";
-            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
             // 
             // MerToolStrip
@@ -198,9 +199,10 @@
             // 
             this.productionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.productionWIPToolStripMenuItem,
-            this.endSheetSupplementPreFlightToolStripMenuItem});
+            this.endSheetSupplementPreFlightToolStripMenuItem,
+            this.barScanToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -220,14 +222,14 @@
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
             // 
             // testFormToolStripMenuItem
             // 
             this.testFormToolStripMenuItem.Name = "testFormToolStripMenuItem";
-            this.testFormToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testFormToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.testFormToolStripMenuItem.Text = "TestForm";
             this.testFormToolStripMenuItem.Click += new System.EventHandler(this.testFormToolStripMenuItem_Click);
             // 
@@ -542,6 +544,13 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
+            // barScanToolStripMenuItem
+            // 
+            this.barScanToolStripMenuItem.Name = "barScanToolStripMenuItem";
+            this.barScanToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.barScanToolStripMenuItem.Text = "Bar Scan";
+            this.barScanToolStripMenuItem.Click += new System.EventHandler(this.barScanToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -620,5 +629,6 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem testFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem barScanToolStripMenuItem;
     }
 }

@@ -125,8 +125,12 @@ namespace Mbc5.Forms
 		}
 		private void SetEmail()
 		{
-            
-			SchEmail = dsProdutn.cust.Rows[0].IsNull("schemail") ? null : dsProdutn.cust.Rows[0]["schemail"].ToString().Trim();
+            var current = (DataRowView)produtnBindingSource.Current;
+            if (current == null)
+            {
+                return;
+            }
+            SchEmail = dsProdutn.cust.Rows[0].IsNull("schemail") ? null : dsProdutn.cust.Rows[0]["schemail"].ToString().Trim();
 			ContactEmail = dsProdutn.cust.Rows[0].IsNull("contemail") ? null : dsProdutn.cust.Rows[0]["contemail"].ToString().Trim();
 			BcontactEmail = dsProdutn.cust.Rows[0].IsNull("bcontemail") ? null : dsProdutn.cust.Rows[0]["bcontemail"].ToString().Trim();
 			CcontactEmail = dsProdutn.cust.Rows[0].IsNull("ccontemail") ? null : dsProdutn.cust.Rows[0]["ccontemail"].ToString().Trim();
@@ -221,8 +225,10 @@ namespace Mbc5.Forms
 				if (pos > -1)
 				{
 					produtnBindingSource.Position = pos;
-				}
-				else
+                   
+
+                }
+                else
 				{
 					MessageBox.Show("Production record was not found.", "Invoice#", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 				}
@@ -425,6 +431,14 @@ namespace Mbc5.Forms
 						var a = produtnTableAdapter.Update(dsProdutn.produtn);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						produtnTableAdapter.Fill(dsProdutn.produtn, Schcode);
+                        var aa = Invno;
+                        var pos = produtnBindingSource.Find("invno", this.Invno);
+                        if (pos > -1)
+                        {
+                            produtnBindingSource.Position = pos;
+                          
+                        }
+                       
 						SetShipLabel();
 						retval = true;
 
@@ -916,7 +930,7 @@ namespace Mbc5.Forms
         }
 		private void btnUpdateJob_Click(object sender, EventArgs e)
 		{
-			if (String.IsNullOrEmpty(txtPerfbind.Text))
+			if (String.IsNullOrEmpty(txtPerfbind.Text.Trim()))
 			{
 				MessageBox.Show("Please enter binding information before issueing a job number.");
 				return;
@@ -934,7 +948,13 @@ namespace Mbc5.Forms
 			if (result.Rows.Count > 0)
 			{
 				var oldJobNo = result.Rows[0]["jobno"].ToString();
-				txtjobno.Text = oldJobNo;
+                if (string.IsNullOrEmpty(oldJobNo.Trim()))
+                {
+                    txtjobno.Text = "8" + lblProdNo.Text.Substring(1, 5);
+                }
+                else {txtjobno.Text = oldJobNo; }
+                        
+				
 			}
 			else
 			{
@@ -964,7 +984,7 @@ namespace Mbc5.Forms
 							if (txtPerfbind.Text != vVal)
 							{
 								MessageBox.Show("Your Production Number (Binding) First Digit is not the same as this value... Press andy key to continue...It is being changed!", "Binding Type Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-								if (txtPerfbind.Text == "C" || txtPerfbind.Text == "G" || txtPerfbind.Text == "K" || vVal == "H" || txtPerfbind.Text == "P" || txtPerfbind.Text == "S" || txtPerfbind.Text == "M")
+								if (txtPerfbind.Text == "C" || txtPerfbind.Text == "G" || txtPerfbind.Text == "K" || txtPerfbind.Text == "H" || txtPerfbind.Text == "P" || txtPerfbind.Text == "S" || txtPerfbind.Text == "M")
 								{
 									if (vVal == "C" || vVal == "G" || vVal == "K" || vVal == "H" || vVal == "P" || vVal == "S" || vVal == "M")
 									{
@@ -1220,6 +1240,12 @@ namespace Mbc5.Forms
         private void laminatedTextBox_Validating(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            var a = persnlzCheckBox.Checked;
+            var b = persnlzCheckBox.DataBindings.Control;
         }
 
         #endregion

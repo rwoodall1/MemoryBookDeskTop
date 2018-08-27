@@ -59,6 +59,10 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
 
         private void frmMbcCust_Load(object sender,EventArgs e) {
+            // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
+            this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
+            // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.
+            this.lkpLeadNameTableAdapter.Fill(this.dsCust.lkpLeadName);
             // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
             this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
             // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
@@ -99,6 +103,7 @@ namespace Mbc5.Forms.MemoryBook {
             // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
            
             this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, vSchocode);
+            
             SetInvnoSchCode();
         }
         private void btnOracleSrch_Click(object sender, EventArgs e)
@@ -121,6 +126,7 @@ namespace Mbc5.Forms.MemoryBook {
 			if (records < 1)
 			{
 				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
+                this.SetInvnoSchCode();
 				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
 				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
@@ -198,7 +204,8 @@ namespace Mbc5.Forms.MemoryBook {
             if ( records==null || records.Count < 1)
 			{
 				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
-				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+              
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
 				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
 				TeleGo = false;
 				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -256,6 +263,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     custTableAdapter.Update(dsCust);
                     this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+                    this.SetInvnoSchCode();
                     retval = true;
                 }
                 catch (DBConcurrencyException dbex)
@@ -303,8 +311,9 @@ namespace Mbc5.Forms.MemoryBook {
 				new SqlParameter("@schcode",schcode)
 			};
 				var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
-				this.custTableAdapter.Fill(this.dsCust.cust, "038752");//set to cs record                
-			}
+				this.custTableAdapter.Fill(this.dsCust.cust, "038752");//set to cs record   
+                this.SetInvnoSchCode();
+            }
 
 		}
         public override void Cancel() {
@@ -502,12 +511,13 @@ namespace Mbc5.Forms.MemoryBook {
 					}
 					Save();
 					this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
-				};
+                    this.SetInvnoSchCode();
+                };
 			}//not = 0
 		}
 		private void GoToSales() {
 
-            
+            var a = this.lblSchcode.Text;
                 this.Cursor = Cursors.AppStarting;
                      int vInvno = this.Invno;
                     string vSchcode = this.Schcode;
@@ -787,7 +797,8 @@ namespace Mbc5.Forms.MemoryBook {
                 this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,this.Schcode);
                 this.datecontTableAdapter.Fill(this.dsCust.datecont,this.Schcode);
-                }
+            this.SetInvnoSchCode();
+        }
         private string GetInstructions()
         {
             string val = "";
@@ -1024,6 +1035,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void custDataGridView_Enter(object sender,EventArgs e) {
             this.custTableAdapter.Fill(this.dsCust.cust,this.Schcode);
+            SetInvnoSchCode();
             }
 
         private void custDataGridView_RowHeaderMouseDoubleClick(object sender,DataGridViewCellMouseEventArgs e) {
@@ -1158,10 +1170,59 @@ namespace Mbc5.Forms.MemoryBook {
            
         }
 
-        private void taxexemptionexpirationdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        private void firstDaySchoolDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            taxexemptionexpirationdateDateTimePicker.Format = DateTimePickerFormat.Long;
+            firstDaySchoolDateTimePicker.Format = DateTimePickerFormat.Long;
         }
+
+        private void rbdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            rbdateDateTimePicker.Format= DateTimePickerFormat.Long;
+        }
+
+        private void xeldateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            xeldateDateTimePicker.Format= DateTimePickerFormat.Long;
+        }
+
+        private void btnProdTckt_Click(object sender, EventArgs e)
+        {
+            var sqlClient = new SQLCustomClient();
+            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.perscopies AS PersonalCopies,Q.contryear as ContractYear,
+             Q.BookType,Q.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
+             ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
+                FROM Cust C
+                LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
+				Left JOIN EndSheet ES ON Q.Invno=ES.Invno
+				Left JOIN Recv2 R ON Q.Invno=R.Invno
+                LEFT JOIN Produtn P ON Q.Invno=P.Invno
+            Where Q.Invno=@Invno";
+
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            var dataReturned = sqlClient.Select<ProdutnTicketModel>();
+            var data = (ProdutnTicketModel)dataReturned;
+       
+            ProdutnTicketModelBindingSource.DataSource = data;
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewer1.RefreshReport();
+            Cursor.Current = Cursors.Default;
+           
+        }
+
+        private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewer1.PrintDialog();
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void splitContainer_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
 
 
         //Nothing below here
