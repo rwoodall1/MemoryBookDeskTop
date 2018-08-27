@@ -30,8 +30,6 @@ namespace Mbc5.DataSets {
         
         private InvHstDataTable tableInvHst;
         
-        private global::System.Data.DataRelation relationcust_quotes;
-        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -244,7 +242,6 @@ namespace Mbc5.DataSets {
                     this.tableInvHst.InitVars();
                 }
             }
-            this.relationcust_quotes = this.Relations["cust_quotes"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -261,10 +258,6 @@ namespace Mbc5.DataSets {
             base.Tables.Add(this.tablecust);
             this.tableInvHst = new InvHstDataTable();
             base.Tables.Add(this.tableInvHst);
-            this.relationcust_quotes = new global::System.Data.DataRelation("cust_quotes", new global::System.Data.DataColumn[] {
-                        this.tablecust.schcodeColumn}, new global::System.Data.DataColumn[] {
-                        this.tablequotes.schcodeColumn}, false);
-            this.Relations.Add(this.relationcust_quotes);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -358,8 +351,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columninvno;
             
-            private global::System.Data.DataColumn columnschcode;
-            
             private global::System.Data.DataColumn columnprodno;
             
             private global::System.Data.DataColumn columnbooktype;
@@ -367,10 +358,6 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnqtedate;
             
             private global::System.Data.DataColumn columncontryear;
-            
-            private global::System.Data.DataColumn columnnopages;
-            
-            private global::System.Data.DataColumn columnnocopies;
             
             private global::System.Data.DataColumn columnbook_ea;
             
@@ -724,11 +711,17 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnextrchg;
             
-            private global::System.Data.DataColumn columnschooltax;
-            
             private global::System.Data.DataColumn columnschooltaxrate;
             
+            private global::System.Data.DataColumn columnschcode;
+            
             private global::System.Data.DataColumn columndonotchargeschoolsalestax;
+            
+            private global::System.Data.DataColumn columnnopages;
+            
+            private global::System.Data.DataColumn columnnocopies;
+            
+            private global::System.Data.DataColumn columnschooltax;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -773,14 +766,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn schcodeColumn {
-                get {
-                    return this.columnschcode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn prodnoColumn {
                 get {
                     return this.columnprodno;
@@ -808,22 +793,6 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn contryearColumn {
                 get {
                     return this.columncontryear;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn nopagesColumn {
-                get {
-                    return this.columnnopages;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn nocopiesColumn {
-                get {
-                    return this.columnnocopies;
                 }
             }
             
@@ -2237,14 +2206,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn schooltaxColumn {
-                get {
-                    return this.columnschooltax;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schooltaxrateColumn {
                 get {
                     return this.columnschooltaxrate;
@@ -2253,9 +2214,41 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn schcodeColumn {
+                get {
+                    return this.columnschcode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn donotchargeschoolsalestaxColumn {
                 get {
                     return this.columndonotchargeschoolsalestax;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn nopagesColumn {
+                get {
+                    return this.columnnopages;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn nocopiesColumn {
+                get {
+                    return this.columnnocopies;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn schooltaxColumn {
+                get {
+                    return this.columnschooltax;
                 }
             }
             
@@ -2298,13 +2291,10 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public quotesRow AddquotesRow(
                         int invno, 
-                        custRow parentcustRowBycust_quotes, 
                         string prodno, 
                         string booktype, 
                         System.DateTime qtedate, 
                         string contryear, 
-                        decimal nopages, 
-                        decimal nocopies, 
                         decimal book_ea, 
                         decimal book_price, 
                         bool pryn, 
@@ -2481,19 +2471,19 @@ namespace Mbc5.DataSets {
                         int IconCopies, 
                         decimal IconAmt, 
                         string extrchg, 
-                        decimal schooltax, 
                         decimal schooltaxrate, 
-                        bool donotchargeschoolsalestax) {
+                        string schcode, 
+                        bool donotchargeschoolsalestax, 
+                        int nopages, 
+                        int nocopies, 
+                        decimal schooltax) {
                 quotesRow rowquotesRow = ((quotesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         invno,
-                        null,
                         prodno,
                         booktype,
                         qtedate,
                         contryear,
-                        nopages,
-                        nocopies,
                         book_ea,
                         book_price,
                         pryn,
@@ -2670,12 +2660,12 @@ namespace Mbc5.DataSets {
                         IconCopies,
                         IconAmt,
                         extrchg,
-                        schooltax,
                         schooltaxrate,
-                        donotchargeschoolsalestax};
-                if ((parentcustRowBycust_quotes != null)) {
-                    columnValuesArray[1] = parentcustRowBycust_quotes[0];
-                }
+                        schcode,
+                        donotchargeschoolsalestax,
+                        nopages,
+                        nocopies,
+                        schooltax};
                 rowquotesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowquotesRow);
                 return rowquotesRow;
@@ -2706,13 +2696,10 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columninvno = base.Columns["invno"];
-                this.columnschcode = base.Columns["schcode"];
                 this.columnprodno = base.Columns["prodno"];
                 this.columnbooktype = base.Columns["booktype"];
                 this.columnqtedate = base.Columns["qtedate"];
                 this.columncontryear = base.Columns["contryear"];
-                this.columnnopages = base.Columns["nopages"];
-                this.columnnocopies = base.Columns["nocopies"];
                 this.columnbook_ea = base.Columns["book_ea"];
                 this.columnbook_price = base.Columns["book_price"];
                 this.columnpryn = base.Columns["pryn"];
@@ -2889,9 +2876,12 @@ namespace Mbc5.DataSets {
                 this.columnIconCopies = base.Columns["IconCopies"];
                 this.columnIconAmt = base.Columns["IconAmt"];
                 this.columnextrchg = base.Columns["extrchg"];
-                this.columnschooltax = base.Columns["schooltax"];
                 this.columnschooltaxrate = base.Columns["schooltaxrate"];
+                this.columnschcode = base.Columns["schcode"];
                 this.columndonotchargeschoolsalestax = base.Columns["donotchargeschoolsalestax"];
+                this.columnnopages = base.Columns["nopages"];
+                this.columnnocopies = base.Columns["nocopies"];
+                this.columnschooltax = base.Columns["schooltax"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2899,8 +2889,6 @@ namespace Mbc5.DataSets {
             private void InitClass() {
                 this.columninvno = new global::System.Data.DataColumn("invno", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninvno);
-                this.columnschcode = new global::System.Data.DataColumn("schcode", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnschcode);
                 this.columnprodno = new global::System.Data.DataColumn("prodno", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprodno);
                 this.columnbooktype = new global::System.Data.DataColumn("booktype", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2909,10 +2897,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnqtedate);
                 this.columncontryear = new global::System.Data.DataColumn("contryear", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncontryear);
-                this.columnnopages = new global::System.Data.DataColumn("nopages", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnopages);
-                this.columnnocopies = new global::System.Data.DataColumn("nocopies", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnocopies);
                 this.columnbook_ea = new global::System.Data.DataColumn("book_ea", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbook_ea);
                 this.columnbook_price = new global::System.Data.DataColumn("book_price", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -3265,18 +3249,22 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnIconAmt);
                 this.columnextrchg = new global::System.Data.DataColumn("extrchg", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnextrchg);
-                this.columnschooltax = new global::System.Data.DataColumn("schooltax", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnschooltax);
                 this.columnschooltaxrate = new global::System.Data.DataColumn("schooltaxrate", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschooltaxrate);
+                this.columnschcode = new global::System.Data.DataColumn("schcode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschcode);
                 this.columndonotchargeschoolsalestax = new global::System.Data.DataColumn("donotchargeschoolsalestax", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndonotchargeschoolsalestax);
+                this.columnnopages = new global::System.Data.DataColumn("nopages", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnopages);
+                this.columnnocopies = new global::System.Data.DataColumn("nocopies", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnocopies);
+                this.columnschooltax = new global::System.Data.DataColumn("schooltax", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschooltax);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columninvno.AllowDBNull = false;
                 this.columninvno.Unique = true;
-                this.columnschcode.AllowDBNull = false;
-                this.columnschcode.MaxLength = 6;
                 this.columnprodno.MaxLength = 12;
                 this.columnbooktype.MaxLength = 4;
                 this.columncontryear.MaxLength = 2;
@@ -3300,6 +3288,8 @@ namespace Mbc5.DataSets {
                 this.columnonlinenotes.MaxLength = 2147483647;
                 this.columnModifiedBy.MaxLength = 128;
                 this.columnextrchg.MaxLength = 50;
+                this.columnschcode.AllowDBNull = false;
+                this.columnschcode.MaxLength = 6;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3680,6 +3670,26 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnCityStateZip;
             
             private global::System.Data.DataColumn columnschname;
+            
+            private global::System.Data.DataColumn columnModifiedBy;
+            
+            private global::System.Data.DataColumn columnoraclecode;
+            
+            private global::System.Data.DataColumn columncposition;
+            
+            private global::System.Data.DataColumn columnelectronickit;
+            
+            private global::System.Data.DataColumn columnelectronickitoptions;
+            
+            private global::System.Data.DataColumn columnstatus;
+            
+            private global::System.Data.DataColumn columntaxexemptionexpirationdate;
+            
+            private global::System.Data.DataColumn columnIsTaxExempt;
+            
+            private global::System.Data.DataColumn columnstage;
+            
+            private global::System.Data.DataColumn columnFirstDaySchool;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -4708,6 +4718,86 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ModifiedByColumn {
+                get {
+                    return this.columnModifiedBy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn oraclecodeColumn {
+                get {
+                    return this.columnoraclecode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn cpositionColumn {
+                get {
+                    return this.columncposition;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn electronickitColumn {
+                get {
+                    return this.columnelectronickit;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn electronickitoptionsColumn {
+                get {
+                    return this.columnelectronickitoptions;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn statusColumn {
+                get {
+                    return this.columnstatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn taxexemptionexpirationdateColumn {
+                get {
+                    return this.columntaxexemptionexpirationdate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IsTaxExemptColumn {
+                get {
+                    return this.columnIsTaxExempt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn stageColumn {
+                get {
+                    return this.columnstage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FirstDaySchoolColumn {
+                get {
+                    return this.columnFirstDaySchool;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4867,7 +4957,17 @@ namespace Mbc5.DataSets {
                         System.DateTime DateModified, 
                         byte[] TimeStamp, 
                         string CityStateZip, 
-                        string schname) {
+                        string schname, 
+                        string ModifiedBy, 
+                        string oraclecode, 
+                        string cposition, 
+                        bool electronickit, 
+                        string electronickitoptions, 
+                        string status, 
+                        System.DateTime taxexemptionexpirationdate, 
+                        bool IsTaxExempt, 
+                        string stage, 
+                        System.DateTime FirstDaySchool) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -4993,7 +5093,17 @@ namespace Mbc5.DataSets {
                         DateModified,
                         TimeStamp,
                         CityStateZip,
-                        schname};
+                        schname,
+                        ModifiedBy,
+                        oraclecode,
+                        cposition,
+                        electronickit,
+                        electronickitoptions,
+                        status,
+                        taxexemptionexpirationdate,
+                        IsTaxExempt,
+                        stage,
+                        FirstDaySchool};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -5147,6 +5257,16 @@ namespace Mbc5.DataSets {
                 this.columnTimeStamp = base.Columns["TimeStamp"];
                 this.columnCityStateZip = base.Columns["CityStateZip"];
                 this.columnschname = base.Columns["schname"];
+                this.columnModifiedBy = base.Columns["ModifiedBy"];
+                this.columnoraclecode = base.Columns["oraclecode"];
+                this.columncposition = base.Columns["cposition"];
+                this.columnelectronickit = base.Columns["electronickit"];
+                this.columnelectronickitoptions = base.Columns["electronickitoptions"];
+                this.columnstatus = base.Columns["status"];
+                this.columntaxexemptionexpirationdate = base.Columns["taxexemptionexpirationdate"];
+                this.columnIsTaxExempt = base.Columns["IsTaxExempt"];
+                this.columnstage = base.Columns["stage"];
+                this.columnFirstDaySchool = base.Columns["FirstDaySchool"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5400,6 +5520,26 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnCityStateZip);
                 this.columnschname = new global::System.Data.DataColumn("schname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschname);
+                this.columnModifiedBy = new global::System.Data.DataColumn("ModifiedBy", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnModifiedBy);
+                this.columnoraclecode = new global::System.Data.DataColumn("oraclecode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoraclecode);
+                this.columncposition = new global::System.Data.DataColumn("cposition", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncposition);
+                this.columnelectronickit = new global::System.Data.DataColumn("electronickit", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnelectronickit);
+                this.columnelectronickitoptions = new global::System.Data.DataColumn("electronickitoptions", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnelectronickitoptions);
+                this.columnstatus = new global::System.Data.DataColumn("status", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus);
+                this.columntaxexemptionexpirationdate = new global::System.Data.DataColumn("taxexemptionexpirationdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntaxexemptionexpirationdate);
+                this.columnIsTaxExempt = new global::System.Data.DataColumn("IsTaxExempt", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsTaxExempt);
+                this.columnstage = new global::System.Data.DataColumn("stage", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstage);
+                this.columnFirstDaySchool = new global::System.Data.DataColumn("FirstDaySchool", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFirstDaySchool);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columnschcode.AllowDBNull = false;
@@ -5506,6 +5646,12 @@ namespace Mbc5.DataSets {
                 this.columnCityStateZip.MaxLength = 152;
                 this.columnschname.AllowDBNull = false;
                 this.columnschname.MaxLength = 50;
+                this.columnModifiedBy.MaxLength = 128;
+                this.columnoraclecode.MaxLength = 7;
+                this.columncposition.MaxLength = 50;
+                this.columnelectronickitoptions.MaxLength = 50;
+                this.columnstatus.MaxLength = 50;
+                this.columnstage.MaxLength = 25;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5953,17 +6099,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string schcode {
-                get {
-                    return ((string)(this[this.tablequotes.schcodeColumn]));
-                }
-                set {
-                    this[this.tablequotes.schcodeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string prodno {
                 get {
                     try {
@@ -6023,38 +6158,6 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tablequotes.contryearColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal nopages {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablequotes.nopagesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'nopages\' in table \'quotes\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablequotes.nopagesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal nocopies {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablequotes.nocopiesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'nocopies\' in table \'quotes\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablequotes.nocopiesColumn] = value;
                 }
             }
             
@@ -8876,22 +8979,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal schooltax {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablequotes.schooltaxColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'schooltax\' in table \'quotes\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablequotes.schooltaxColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal schooltaxrate {
                 get {
                     try {
@@ -8903,6 +8990,17 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tablequotes.schooltaxrateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string schcode {
+                get {
+                    return ((string)(this[this.tablequotes.schcodeColumn]));
+                }
+                set {
+                    this[this.tablequotes.schcodeColumn] = value;
                 }
             }
             
@@ -8924,12 +9022,49 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public custRow custRow {
+            public int nopages {
                 get {
-                    return ((custRow)(this.GetParentRow(this.Table.ParentRelations["cust_quotes"])));
+                    try {
+                        return ((int)(this[this.tablequotes.nopagesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nopages\' in table \'quotes\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["cust_quotes"]);
+                    this[this.tablequotes.nopagesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int nocopies {
+                get {
+                    try {
+                        return ((int)(this[this.tablequotes.nocopiesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nocopies\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.nocopiesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal schooltax {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablequotes.schooltaxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schooltax\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.schooltaxColumn] = value;
                 }
             }
             
@@ -8979,30 +9114,6 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetcontryearNull() {
                 this[this.tablequotes.contryearColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsnopagesNull() {
-                return this.IsNull(this.tablequotes.nopagesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetnopagesNull() {
-                this[this.tablequotes.nopagesColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsnocopiesNull() {
-                return this.IsNull(this.tablequotes.nocopiesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetnocopiesNull() {
-                this[this.tablequotes.nocopiesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11119,18 +11230,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsschooltaxNull() {
-                return this.IsNull(this.tablequotes.schooltaxColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetschooltaxNull() {
-                this[this.tablequotes.schooltaxColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsschooltaxrateNull() {
                 return this.IsNull(this.tablequotes.schooltaxrateColumn);
             }
@@ -11151,6 +11250,42 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdonotchargeschoolsalestaxNull() {
                 this[this.tablequotes.donotchargeschoolsalestaxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsnopagesNull() {
+                return this.IsNull(this.tablequotes.nopagesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetnopagesNull() {
+                this[this.tablequotes.nopagesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsnocopiesNull() {
+                return this.IsNull(this.tablequotes.nocopiesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetnocopiesNull() {
+                this[this.tablequotes.nocopiesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschooltaxNull() {
+                return this.IsNull(this.tablequotes.schooltaxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschooltaxNull() {
+                this[this.tablequotes.schooltaxColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -13114,6 +13249,166 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ModifiedBy {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.ModifiedByColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ModifiedBy\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.ModifiedByColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string oraclecode {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.oraclecodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'oraclecode\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.oraclecodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string cposition {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.cpositionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cposition\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.cpositionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool electronickit {
+                get {
+                    try {
+                        return ((bool)(this[this.tablecust.electronickitColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'electronickit\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.electronickitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string electronickitoptions {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.electronickitoptionsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'electronickitoptions\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.electronickitoptionsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string status {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.statusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'status\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.statusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime taxexemptionexpirationdate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablecust.taxexemptionexpirationdateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'taxexemptionexpirationdate\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.taxexemptionexpirationdateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTaxExempt {
+                get {
+                    try {
+                        return ((bool)(this[this.tablecust.IsTaxExemptColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsTaxExempt\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.IsTaxExemptColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string stage {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.stageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'stage\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.stageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime FirstDaySchool {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablecust.FirstDaySchoolColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FirstDaySchool\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.FirstDaySchoolColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
@@ -14506,13 +14801,122 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public quotesRow[] GetquotesRows() {
-                if ((this.Table.ChildRelations["cust_quotes"] == null)) {
-                    return new quotesRow[0];
-                }
-                else {
-                    return ((quotesRow[])(base.GetChildRows(this.Table.ChildRelations["cust_quotes"])));
-                }
+            public bool IsModifiedByNull() {
+                return this.IsNull(this.tablecust.ModifiedByColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetModifiedByNull() {
+                this[this.tablecust.ModifiedByColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsoraclecodeNull() {
+                return this.IsNull(this.tablecust.oraclecodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetoraclecodeNull() {
+                this[this.tablecust.oraclecodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscpositionNull() {
+                return this.IsNull(this.tablecust.cpositionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcpositionNull() {
+                this[this.tablecust.cpositionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IselectronickitNull() {
+                return this.IsNull(this.tablecust.electronickitColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetelectronickitNull() {
+                this[this.tablecust.electronickitColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IselectronickitoptionsNull() {
+                return this.IsNull(this.tablecust.electronickitoptionsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetelectronickitoptionsNull() {
+                this[this.tablecust.electronickitoptionsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsstatusNull() {
+                return this.IsNull(this.tablecust.statusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetstatusNull() {
+                this[this.tablecust.statusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IstaxexemptionexpirationdateNull() {
+                return this.IsNull(this.tablecust.taxexemptionexpirationdateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SettaxexemptionexpirationdateNull() {
+                this[this.tablecust.taxexemptionexpirationdateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsIsTaxExemptNull() {
+                return this.IsNull(this.tablecust.IsTaxExemptColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetIsTaxExemptNull() {
+                this[this.tablecust.IsTaxExemptColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsstageNull() {
+                return this.IsNull(this.tablecust.stageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetstageNull() {
+                this[this.tablecust.stageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsFirstDaySchoolNull() {
+                return this.IsNull(this.tablecust.FirstDaySchoolColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetFirstDaySchoolNull() {
+                this[this.tablecust.FirstDaySchoolColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -14803,13 +15207,10 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "quotes";
             tableMapping.ColumnMappings.Add("invno", "invno");
-            tableMapping.ColumnMappings.Add("schcode", "schcode");
             tableMapping.ColumnMappings.Add("prodno", "prodno");
             tableMapping.ColumnMappings.Add("booktype", "booktype");
             tableMapping.ColumnMappings.Add("qtedate", "qtedate");
             tableMapping.ColumnMappings.Add("contryear", "contryear");
-            tableMapping.ColumnMappings.Add("nopages", "nopages");
-            tableMapping.ColumnMappings.Add("nocopies", "nocopies");
             tableMapping.ColumnMappings.Add("book_ea", "book_ea");
             tableMapping.ColumnMappings.Add("book_price", "book_price");
             tableMapping.ColumnMappings.Add("pryn", "pryn");
@@ -14985,106 +15386,110 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("IconCopies", "IconCopies");
             tableMapping.ColumnMappings.Add("IconAmt", "IconAmt");
             tableMapping.ColumnMappings.Add("extrchg", "extrchg");
-            tableMapping.ColumnMappings.Add("schooltax", "schooltax");
             tableMapping.ColumnMappings.Add("schooltaxrate", "schooltaxrate");
+            tableMapping.ColumnMappings.Add("schcode", "schcode");
             tableMapping.ColumnMappings.Add("donotchargeschoolsalestax", "donotchargeschoolsalestax");
+            tableMapping.ColumnMappings.Add("nopages", "nopages");
+            tableMapping.ColumnMappings.Add("nocopies", "nocopies");
+            tableMapping.ColumnMappings.Add("schooltax", "schooltax");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM quotes\r\nWHERE        (invno = @Invno)";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [quotes] WHERE (([invno] = @Original_invno) AND ((@IsNull_TimeStamp =" +
+                " 1 AND [TimeStamp] IS NULL) OR ([TimeStamp] = @Original_TimeStamp)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TimeStamp", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.Timestamp, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [quotes] ([invno], [schcode], [prodno], [booktype], [qtedate], [contr" +
-                "year], [nopages], [nocopies], [book_ea], [book_price], [pryn], [prof], [coyn], [" +
-                "conven], [specea], [speccvr], [scovrde], [layn], [laminate], [peyn], [perfbind]," +
-                " [foilck], [foilamt], [insck], [insamt], [spirck], [spiramt], [hdbky_n], [hardba" +
-                "ck], [casey_n], [caseamt], [customy_n], [customized], [misc], [mdesc], [sbtot], " +
-                "[dc1], [dp1], [disc1], [dc2], [dp2], [disc2], [dp3desc], [dp3], [disc3], [dp4], " +
-                "[disc4], [cred_etc], [adjbef], [adjaftr], [fbkprc], [ftotprc], [source], [xtrabk" +
-                "no], [xtrabkprc], [desc1], [desc1tot], [desc2], [desc2tot], [ponum], [invoiced]," +
-                " [newprice], [schout], [saletax], [allclrck], [allclramt], [inkclr], [foiladamt]" +
-                ", [desc3], [desc3tot], [desc4], [desc4tot], [clrpgdesc], [clrpgtot], [glspaper]," +
-                " [glsamt], [acovrde], [bpovrde], [holdpmt], [bpyear], [themck], [themamt], [yirs" +
-                "chool], [story], [supplements], [yiramt], [storyamt], [suppamt], [persamount], [" +
-                "perstotal], [perscopies], [oursupp], [oursuppamt], [ourovrride], [dp1desc], [reb" +
-                "ookinvremv], [rebookinvremv1], [rebookinvremv2], [rebookinvremv3], [rebookinvrem" +
-                "v4], [rebookinvremv5], [rebookinvremv6], [norebookletter], [myovrride], [hbovrri" +
-                "de], [profovrride], [conovrride], [themovrride], [cbovrride], [spiovrride], [pbo" +
-                "vrride], [yirsovrride], [ourstyovrride], [laminateovrride], [foilyearovrride], [" +
-                "sdlstich], [sdlstichamt], [copiesovride], [bascicpp], [perpp], [agreerec], [basi" +
-                "camoun], [peramount], [oprcperbk], [oprcperbk2], [agreedte], [onlinecuto], [basi" +
-                "cpp], [msstanqty], [msstandtot], [fldtype], [isfolder], [priceovrd], [mlamsoft]," +
-                " [mlamhrd], [mlaminationamt], [mlamination], [opinkpers], [opfoilpers], [opinkpe" +
-                "rsamt], [opfoilpersamt], [oppicpers], [oppicpersamt], [opcustom], [opcustomamt]," +
-                " [opfoiltxtamt], [opfoiltxt], [opinkamt], [opink], [yrdiscount], [luvlines], [yr" +
-                "discountamt], [luvlineamt], [fullad], [fulladamt], [halfad], [halfadamt], [quart" +
-                "erad], [quarteradamt], [eighthad], [eighthadamt], [adline], [cred_etc2], [desc22" +
-                "], [adjaftr2], [desc22tot], [prcor], [adcuto], [webonly], [totalsoldonline], [to" +
-                "talpersonline], [totaldollarsonline], [freebooks], [totalads], [totallovelines]," +
-                " [onlinenotes], [ModifiedBy], [DateModified], [DateCreated], [IconCopies], [Icon" +
-                "Amt], [extrchg], [schooltax], [schooltaxrate]) VALUES (@invno, @schcode, @prodno" +
-                ", @booktype, @qtedate, @contryear, @nopages, @nocopies, @book_ea, @book_price, @" +
-                "pryn, @prof, @coyn, @conven, @specea, @speccvr, @scovrde, @layn, @laminate, @pey" +
-                "n, @perfbind, @foilck, @foilamt, @insck, @insamt, @spirck, @spiramt, @hdbky_n, @" +
-                "hardback, @casey_n, @caseamt, @customy_n, @customized, @misc, @mdesc, @sbtot, @d" +
-                "c1, @dp1, @disc1, @dc2, @dp2, @disc2, @dp3desc, @dp3, @disc3, @dp4, @disc4, @cre" +
-                "d_etc, @adjbef, @adjaftr, @fbkprc, @ftotprc, @source, @xtrabkno, @xtrabkprc, @de" +
-                "sc1, @desc1tot, @desc2, @desc2tot, @ponum, @invoiced, @newprice, @schout, @salet" +
-                "ax, @allclrck, @allclramt, @inkclr, @foiladamt, @desc3, @desc3tot, @desc4, @desc" +
-                "4tot, @clrpgdesc, @clrpgtot, @glspaper, @glsamt, @acovrde, @bpovrde, @holdpmt, @" +
-                "bpyear, @themck, @themamt, @yirschool, @story, @supplements, @yiramt, @storyamt," +
-                " @suppamt, @persamount, @perstotal, @perscopies, @oursupp, @oursuppamt, @ourovrr" +
-                "ide, @dp1desc, @rebookinvremv, @rebookinvremv1, @rebookinvremv2, @rebookinvremv3" +
-                ", @rebookinvremv4, @rebookinvremv5, @rebookinvremv6, @norebookletter, @myovrride" +
-                ", @hbovrride, @profovrride, @conovrride, @themovrride, @cbovrride, @spiovrride, " +
-                "@pbovrride, @yirsovrride, @ourstyovrride, @laminateovrride, @foilyearovrride, @s" +
-                "dlstich, @sdlstichamt, @copiesovride, @bascicpp, @perpp, @agreerec, @basicamoun," +
-                " @peramount, @oprcperbk, @oprcperbk2, @agreedte, @onlinecuto, @basicpp, @msstanq" +
-                "ty, @msstandtot, @fldtype, @isfolder, @priceovrd, @mlamsoft, @mlamhrd, @mlaminat" +
-                "ionamt, @mlamination, @opinkpers, @opfoilpers, @opinkpersamt, @opfoilpersamt, @o" +
-                "ppicpers, @oppicpersamt, @opcustom, @opcustomamt, @opfoiltxtamt, @opfoiltxt, @op" +
-                "inkamt, @opink, @yrdiscount, @luvlines, @yrdiscountamt, @luvlineamt, @fullad, @f" +
-                "ulladamt, @halfad, @halfadamt, @quarterad, @quarteradamt, @eighthad, @eighthadam" +
-                "t, @adline, @cred_etc2, @desc22, @adjaftr2, @desc22tot, @prcor, @adcuto, @webonl" +
-                "y, @totalsoldonline, @totalpersonline, @totaldollarsonline, @freebooks, @totalad" +
-                "s, @totallovelines, @onlinenotes, @ModifiedBy, @DateModified, @DateCreated, @Ico" +
-                "nCopies, @IconAmt, @extrchg, @schooltax, @schooltaxrate);\r\nSELECT invno, schcode" +
-                ", prodno, booktype, qtedate, contryear, nopages, nocopies, book_ea, book_price, " +
-                "pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbi" +
-                "nd, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n," +
-                " caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, " +
-                "disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotp" +
-                "rc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoic" +
-                "ed, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, de" +
-                "sc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, acovrde, bpovrde" +
-                ", holdpmt, bpyear, themck, themamt, yirschool, story, supplements, yiramt, story" +
-                "amt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride" +
-                ", dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebook" +
-                "invremv4, rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, " +
-                "profovrride, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrr" +
-                "ide, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, cop" +
-                "iesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperb" +
-                "k2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, pri" +
-                "ceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, o" +
-                "pinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfo" +
-                "iltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvli" +
-                "neamt, fullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, " +
-                "eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webo" +
-                "nly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, " +
-                "totallovelines, TimeStamp, onlinenotes, ModifiedBy, DateModified, DateCreated, I" +
-                "conCopies, IconAmt, extrchg, schooltax, schooltaxrate FROM quotes WHERE (invno =" +
-                " @invno)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [quotes] ([invno], [prodno], [booktype], [qtedate], [contryear], [boo" +
+                "k_ea], [book_price], [pryn], [prof], [coyn], [conven], [specea], [speccvr], [sco" +
+                "vrde], [layn], [laminate], [peyn], [perfbind], [foilck], [foilamt], [insck], [in" +
+                "samt], [spirck], [spiramt], [hdbky_n], [hardback], [casey_n], [caseamt], [custom" +
+                "y_n], [customized], [misc], [mdesc], [sbtot], [dc1], [dp1], [disc1], [dc2], [dp2" +
+                "], [disc2], [dp3desc], [dp3], [disc3], [dp4], [disc4], [cred_etc], [adjbef], [ad" +
+                "jaftr], [fbkprc], [ftotprc], [source], [xtrabkno], [xtrabkprc], [desc1], [desc1t" +
+                "ot], [desc2], [desc2tot], [ponum], [invoiced], [newprice], [schout], [saletax], " +
+                "[allclrck], [allclramt], [inkclr], [foiladamt], [desc3], [desc3tot], [desc4], [d" +
+                "esc4tot], [clrpgdesc], [clrpgtot], [glspaper], [glsamt], [acovrde], [bpovrde], [" +
+                "holdpmt], [bpyear], [themck], [themamt], [yirschool], [story], [supplements], [y" +
+                "iramt], [storyamt], [suppamt], [persamount], [perstotal], [perscopies], [oursupp" +
+                "], [oursuppamt], [ourovrride], [dp1desc], [rebookinvremv], [rebookinvremv1], [re" +
+                "bookinvremv2], [rebookinvremv3], [rebookinvremv4], [rebookinvremv5], [rebookinvr" +
+                "emv6], [norebookletter], [myovrride], [hbovrride], [profovrride], [conovrride], " +
+                "[themovrride], [cbovrride], [spiovrride], [pbovrride], [yirsovrride], [ourstyovr" +
+                "ride], [laminateovrride], [foilyearovrride], [sdlstich], [sdlstichamt], [copieso" +
+                "vride], [bascicpp], [perpp], [agreerec], [basicamoun], [peramount], [oprcperbk]," +
+                " [oprcperbk2], [agreedte], [onlinecuto], [basicpp], [msstanqty], [msstandtot], [" +
+                "fldtype], [isfolder], [priceovrd], [mlamsoft], [mlamhrd], [mlaminationamt], [mla" +
+                "mination], [opinkpers], [opfoilpers], [opinkpersamt], [opfoilpersamt], [oppicper" +
+                "s], [oppicpersamt], [opcustom], [opcustomamt], [opfoiltxtamt], [opfoiltxt], [opi" +
+                "nkamt], [opink], [yrdiscount], [luvlines], [yrdiscountamt], [luvlineamt], [fulla" +
+                "d], [fulladamt], [halfad], [halfadamt], [quarterad], [quarteradamt], [eighthad]," +
+                " [eighthadamt], [adline], [cred_etc2], [desc22], [adjaftr2], [desc22tot], [prcor" +
+                "], [adcuto], [webonly], [totalsoldonline], [totalpersonline], [totaldollarsonlin" +
+                "e], [freebooks], [totalads], [totallovelines], [onlinenotes], [ModifiedBy], [Dat" +
+                "eModified], [DateCreated], [IconCopies], [IconAmt], [extrchg], [schooltaxrate], " +
+                "[schcode], [donotchargeschoolsalestax], [nopages], [nocopies], [schooltax]) VALU" +
+                "ES (@invno, @prodno, @booktype, @qtedate, @contryear, @book_ea, @book_price, @pr" +
+                "yn, @prof, @coyn, @conven, @specea, @speccvr, @scovrde, @layn, @laminate, @peyn," +
+                " @perfbind, @foilck, @foilamt, @insck, @insamt, @spirck, @spiramt, @hdbky_n, @ha" +
+                "rdback, @casey_n, @caseamt, @customy_n, @customized, @misc, @mdesc, @sbtot, @dc1" +
+                ", @dp1, @disc1, @dc2, @dp2, @disc2, @dp3desc, @dp3, @disc3, @dp4, @disc4, @cred_" +
+                "etc, @adjbef, @adjaftr, @fbkprc, @ftotprc, @source, @xtrabkno, @xtrabkprc, @desc" +
+                "1, @desc1tot, @desc2, @desc2tot, @ponum, @invoiced, @newprice, @schout, @saletax" +
+                ", @allclrck, @allclramt, @inkclr, @foiladamt, @desc3, @desc3tot, @desc4, @desc4t" +
+                "ot, @clrpgdesc, @clrpgtot, @glspaper, @glsamt, @acovrde, @bpovrde, @holdpmt, @bp" +
+                "year, @themck, @themamt, @yirschool, @story, @supplements, @yiramt, @storyamt, @" +
+                "suppamt, @persamount, @perstotal, @perscopies, @oursupp, @oursuppamt, @ourovrrid" +
+                "e, @dp1desc, @rebookinvremv, @rebookinvremv1, @rebookinvremv2, @rebookinvremv3, " +
+                "@rebookinvremv4, @rebookinvremv5, @rebookinvremv6, @norebookletter, @myovrride, " +
+                "@hbovrride, @profovrride, @conovrride, @themovrride, @cbovrride, @spiovrride, @p" +
+                "bovrride, @yirsovrride, @ourstyovrride, @laminateovrride, @foilyearovrride, @sdl" +
+                "stich, @sdlstichamt, @copiesovride, @bascicpp, @perpp, @agreerec, @basicamoun, @" +
+                "peramount, @oprcperbk, @oprcperbk2, @agreedte, @onlinecuto, @basicpp, @msstanqty" +
+                ", @msstandtot, @fldtype, @isfolder, @priceovrd, @mlamsoft, @mlamhrd, @mlaminatio" +
+                "namt, @mlamination, @opinkpers, @opfoilpers, @opinkpersamt, @opfoilpersamt, @opp" +
+                "icpers, @oppicpersamt, @opcustom, @opcustomamt, @opfoiltxtamt, @opfoiltxt, @opin" +
+                "kamt, @opink, @yrdiscount, @luvlines, @yrdiscountamt, @luvlineamt, @fullad, @ful" +
+                "ladamt, @halfad, @halfadamt, @quarterad, @quarteradamt, @eighthad, @eighthadamt," +
+                " @adline, @cred_etc2, @desc22, @adjaftr2, @desc22tot, @prcor, @adcuto, @webonly," +
+                " @totalsoldonline, @totalpersonline, @totaldollarsonline, @freebooks, @totalads," +
+                " @totallovelines, @onlinenotes, @ModifiedBy, @DateModified, @DateCreated, @IconC" +
+                "opies, @IconAmt, @extrchg, @schooltaxrate, @schcode, @donotchargeschoolsalestax," +
+                " @nopages, @nocopies, @schooltax);\r\nSELECT invno, prodno, booktype, qtedate, con" +
+                "tryear, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde," +
+                " layn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt" +
+                ", hdbky_n, hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot" +
+                ", dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, a" +
+                "djbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, d" +
+                "esc2, desc2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt," +
+                " inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspa" +
+                "per, glsamt, acovrde, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, stor" +
+                "y, supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, ou" +
+                "rsupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinv" +
+                "remv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookl" +
+                "etter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, sp" +
+                "iovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrrid" +
+                "e, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, p" +
+                "eramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, mssta" +
+                "ndtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlaminat" +
+                "ion, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt" +
+                ", opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, l" +
+                "uvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarte" +
+                "rad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, d" +
+                "esc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollars" +
+                "online, freebooks, totalads, totallovelines, TimeStamp, onlinenotes, ModifiedBy," +
+                " DateModified, DateCreated, IconCopies, IconAmt, extrchg, schooltaxrate, schcode" +
+                ", donotchargeschoolsalestax, nopages, nocopies, schooltax FROM quotes WHERE (inv" +
+                "no = @invno)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qtedate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "qtedate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contryear", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nopages", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "nopages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nocopies", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "nocopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@book_ea", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 2, "book_ea", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@book_price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 8, 2, "book_price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pryn", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pryn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -15259,104 +15664,106 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconCopies", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IconCopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 9, 2, "IconAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrchg", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "extrchg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltax", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "schooltax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltaxrate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "schooltaxrate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@donotchargeschoolsalestax", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "donotchargeschoolsalestax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nopages", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nopages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nocopies", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nocopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltax", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "schooltax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE       quotes\r\nSET                invno = @invno, schcode = @schcode, prodn" +
-                "o = @prodno, booktype = @booktype, qtedate = @qtedate, contryear = @contryear, n" +
-                "opages = @nopages, nocopies = @nocopies, book_ea = @book_ea, book_price = @book_" +
-                "price, \r\n                         pryn = @pryn, prof = @prof, coyn = @coyn, conv" +
-                "en = @conven, specea = @specea, speccvr = @speccvr, scovrde = @scovrde, layn = @" +
-                "layn, laminate = @laminate, peyn = @peyn, perfbind = @perfbind, foilck = @foilck" +
-                ", \r\n                         foilamt = @foilamt, insck = @insck, insamt = @insam" +
-                "t, spirck = @spirck, spiramt = @spiramt, hdbky_n = @hdbky_n, hardback = @hardbac" +
-                "k, casey_n = @casey_n, caseamt = @caseamt, customy_n = @customy_n, \r\n           " +
-                "              customized = @customized, misc = @misc, mdesc = @mdesc, sbtot = @s" +
-                "btot, dc1 = @dc1, dp1 = @dp1, disc1 = @disc1, dc2 = @dc2, dp2 = @dp2, disc2 = @d" +
-                "isc2, dp3desc = @dp3desc, dp3 = @dp3, disc3 = @disc3, \r\n                        " +
-                " dp4 = @dp4, disc4 = @disc4, cred_etc = @cred_etc, adjbef = @adjbef, adjaftr = @" +
-                "adjaftr, fbkprc = @fbkprc, ftotprc = @ftotprc, source = @source, xtrabkno = @xtr" +
-                "abkno, xtrabkprc = @xtrabkprc, desc1 = @desc1, \r\n                         desc1t" +
-                "ot = @desc1tot, desc2 = @desc2, desc2tot = @desc2tot, ponum = @ponum, invoiced =" +
-                " @invoiced, newprice = @newprice, schout = @schout, saletax = @saletax, allclrck" +
-                " = @allclrck, allclramt = @allclramt, \r\n                         inkclr = @inkcl" +
-                "r, foiladamt = @foiladamt, desc3 = @desc3, desc3tot = @desc3tot, desc4 = @desc4," +
-                " desc4tot = @desc4tot, clrpgdesc = @clrpgdesc, clrpgtot = @clrpgtot, glspaper = " +
-                "@glspaper, glsamt = @glsamt, \r\n                         acovrde = @acovrde, bpov" +
-                "rde = @bpovrde, holdpmt = @holdpmt, bpyear = @bpyear, themck = @themck, themamt " +
-                "= @themamt, yirschool = @yirschool, story = @story, supplements = @supplements, " +
-                "yiramt = @yiramt, \r\n                         storyamt = @storyamt, suppamt = @su" +
-                "ppamt, persamount = @persamount, perstotal = @perstotal, perscopies = @perscopie" +
-                "s, oursupp = @oursupp, oursuppamt = @oursuppamt, ourovrride = @ourovrride, \r\n   " +
-                "                      dp1desc = @dp1desc, rebookinvremv = @rebookinvremv, rebook" +
-                "invremv1 = @rebookinvremv1, rebookinvremv2 = @rebookinvremv2, rebookinvremv3 = @" +
-                "rebookinvremv3, rebookinvremv4 = @rebookinvremv4, \r\n                         reb" +
-                "ookinvremv5 = @rebookinvremv5, rebookinvremv6 = @rebookinvremv6, norebookletter " +
-                "= @norebookletter, myovrride = @myovrride, hbovrride = @hbovrride, profovrride =" +
-                " @profovrride, conovrride = @conovrride, \r\n                         themovrride " +
-                "= @themovrride, cbovrride = @cbovrride, spiovrride = @spiovrride, pbovrride = @p" +
-                "bovrride, yirsovrride = @yirsovrride, ourstyovrride = @ourstyovrride, laminateov" +
-                "rride = @laminateovrride, \r\n                         foilyearovrride = @foilyear" +
-                "ovrride, sdlstich = @sdlstich, sdlstichamt = @sdlstichamt, copiesovride = @copie" +
-                "sovride, bascicpp = @bascicpp, perpp = @perpp, agreerec = @agreerec, basicamoun " +
-                "= @basicamoun, \r\n                         peramount = @peramount, oprcperbk = @o" +
-                "prcperbk, oprcperbk2 = @oprcperbk2, agreedte = @agreedte, onlinecuto = @onlinecu" +
-                "to, basicpp = @basicpp, msstanqty = @msstanqty, msstandtot = @msstandtot, fldtyp" +
-                "e = @fldtype, \r\n                         isfolder = @isfolder, priceovrd = @pric" +
-                "eovrd, mlamsoft = @mlamsoft, mlamhrd = @mlamhrd, mlaminationamt = @mlaminationam" +
-                "t, mlamination = @mlamination, opinkpers = @opinkpers, opfoilpers = @opfoilpers," +
-                " \r\n                         opinkpersamt = @opinkpersamt, opfoilpersamt = @opfoi" +
-                "lpersamt, oppicpers = @oppicpers, oppicpersamt = @oppicpersamt, opcustom = @opcu" +
-                "stom, opcustomamt = @opcustomamt, opfoiltxtamt = @opfoiltxtamt, \r\n              " +
-                "           opfoiltxt = @opfoiltxt, opinkamt = @opinkamt, opink = @opink, yrdisco" +
-                "unt = @yrdiscount, luvlines = @luvlines, yrdiscountamt = @yrdiscountamt, luvline" +
-                "amt = @luvlineamt, fullad = @fullad, fulladamt = @fulladamt, \r\n                 " +
-                "        halfad = @halfad, halfadamt = @halfadamt, quarterad = @quarterad, quarte" +
-                "radamt = @quarteradamt, eighthad = @eighthad, eighthadamt = @eighthadamt, adline" +
-                " = @adline, cred_etc2 = @cred_etc2, desc22 = @desc22, \r\n                        " +
-                " adjaftr2 = @adjaftr2, desc22tot = @desc22tot, prcor = @prcor, adcuto = @adcuto," +
-                " webonly = @webonly, totalsoldonline = @totalsoldonline, totalpersonline = @tota" +
-                "lpersonline, totaldollarsonline = @totaldollarsonline, \r\n                       " +
-                "  freebooks = @freebooks, totalads = @totalads, totallovelines = @totallovelines" +
-                ", onlinenotes = @onlinenotes, ModifiedBy = @ModifiedBy, DateModified = @DateModi" +
-                "fied, DateCreated = @DateCreated, \r\n                         IconCopies = @IconC" +
-                "opies, IconAmt = @IconAmt, extrchg = @extrchg, schooltax = @schooltax, schooltax" +
-                "rate = @schooltaxrate\r\nWHERE        (invno = @Original_invno) AND (TimeStamp = @" +
-                "Original_TimeStamp);    \r\nSELECT invno, schcode, prodno, booktype, qtedate, cont" +
-                "ryear, nopages, nocopies, book_ea, book_price, pryn, prof, coyn, conven, specea," +
-                " speccvr, scovrde, layn, laminate, peyn, perfbind, foilck, foilamt, insck, insam" +
-                "t, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized, " +
-                "misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, " +
-                "disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, " +
-                "desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newprice, schout, saletax, al" +
-                "lclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdes" +
-                "c, clrpgtot, glspaper, glsamt, acovrde, bpovrde, holdpmt, bpyear, themck, themam" +
-                "t, yirschool, story, supplements, yiramt, storyamt, suppamt, persamount, perstot" +
-                "al, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebooki" +
-                "nvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebooki" +
-                "nvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, themovrr" +
-                "ide, cbovrride, spiovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrri" +
-                "de, foilyearovrride, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agree" +
-                "rec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp" +
-                ", msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlamin" +
-                "ationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppic" +
-                "pers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, op" +
-                "ink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad," +
-                " halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, d" +
-                "esc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totalsoldonline, totalperson" +
-                "line, totaldollarsonline, freebooks, totalads, totallovelines, TimeStamp, online" +
-                "notes, ModifiedBy, DateModified, DateCreated, IconCopies, IconAmt, extrchg, scho" +
-                "oltax, schooltaxrate FROM quotes WHERE (invno = @invno)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE       quotes\r\nSET                invno = @invno, prodno = @prodno, booktyp" +
+                "e = @booktype, qtedate = @qtedate, contryear = @contryear, book_ea = @book_ea, b" +
+                "ook_price = @book_price, pryn = @pryn, prof = @prof, coyn = @coyn, conven = @con" +
+                "ven, \r\n                         specea = @specea, speccvr = @speccvr, scovrde = " +
+                "@scovrde, layn = @layn, laminate = @laminate, peyn = @peyn, perfbind = @perfbind" +
+                ", foilck = @foilck, foilamt = @foilamt, insck = @insck, insamt = @insamt, \r\n    " +
+                "                     spirck = @spirck, spiramt = @spiramt, hdbky_n = @hdbky_n, h" +
+                "ardback = @hardback, casey_n = @casey_n, caseamt = @caseamt, customy_n = @custom" +
+                "y_n, customized = @customized, misc = @misc, mdesc = @mdesc, \r\n                 " +
+                "        sbtot = @sbtot, dc1 = @dc1, dp1 = @dp1, disc1 = @disc1, dc2 = @dc2, dp2 " +
+                "= @dp2, disc2 = @disc2, dp3desc = @dp3desc, dp3 = @dp3, disc3 = @disc3, dp4 = @d" +
+                "p4, disc4 = @disc4, cred_etc = @cred_etc, adjbef = @adjbef, \r\n                  " +
+                "       adjaftr = @adjaftr, fbkprc = @fbkprc, ftotprc = @ftotprc, source = @sourc" +
+                "e, xtrabkno = @xtrabkno, xtrabkprc = @xtrabkprc, desc1 = @desc1, desc1tot = @des" +
+                "c1tot, desc2 = @desc2, desc2tot = @desc2tot, ponum = @ponum, \r\n                 " +
+                "        invoiced = @invoiced, newprice = @newprice, schout = @schout, saletax = " +
+                "@saletax, allclrck = @allclrck, allclramt = @allclramt, inkclr = @inkclr, foilad" +
+                "amt = @foiladamt, desc3 = @desc3, desc3tot = @desc3tot, \r\n                      " +
+                "   desc4 = @desc4, desc4tot = @desc4tot, clrpgdesc = @clrpgdesc, clrpgtot = @clr" +
+                "pgtot, glspaper = @glspaper, glsamt = @glsamt, acovrde = @acovrde, bpovrde = @bp" +
+                "ovrde, holdpmt = @holdpmt, bpyear = @bpyear, \r\n                         themck =" +
+                " @themck, themamt = @themamt, yirschool = @yirschool, story = @story, supplement" +
+                "s = @supplements, yiramt = @yiramt, storyamt = @storyamt, suppamt = @suppamt, pe" +
+                "rsamount = @persamount, \r\n                         perstotal = @perstotal, persc" +
+                "opies = @perscopies, oursupp = @oursupp, oursuppamt = @oursuppamt, ourovrride = " +
+                "@ourovrride, dp1desc = @dp1desc, rebookinvremv = @rebookinvremv, rebookinvremv1 " +
+                "= @rebookinvremv1, \r\n                         rebookinvremv2 = @rebookinvremv2, " +
+                "rebookinvremv3 = @rebookinvremv3, rebookinvremv4 = @rebookinvremv4, rebookinvrem" +
+                "v5 = @rebookinvremv5, rebookinvremv6 = @rebookinvremv6, norebookletter = @norebo" +
+                "okletter, \r\n                         myovrride = @myovrride, hbovrride = @hbovrr" +
+                "ide, profovrride = @profovrride, conovrride = @conovrride, themovrride = @themov" +
+                "rride, cbovrride = @cbovrride, spiovrride = @spiovrride, pbovrride = @pbovrride," +
+                " \r\n                         yirsovrride = @yirsovrride, ourstyovrride = @ourstyo" +
+                "vrride, laminateovrride = @laminateovrride, foilyearovrride = @foilyearovrride, " +
+                "sdlstich = @sdlstich, sdlstichamt = @sdlstichamt, copiesovride = @copiesovride, " +
+                "\r\n                         bascicpp = @bascicpp, perpp = @perpp, agreerec = @agr" +
+                "eerec, basicamoun = @basicamoun, peramount = @peramount, oprcperbk = @oprcperbk," +
+                " oprcperbk2 = @oprcperbk2, agreedte = @agreedte, onlinecuto = @onlinecuto, \r\n   " +
+                "                      basicpp = @basicpp, msstanqty = @msstanqty, msstandtot = @" +
+                "msstandtot, fldtype = @fldtype, isfolder = @isfolder, priceovrd = @priceovrd, ml" +
+                "amsoft = @mlamsoft, mlamhrd = @mlamhrd, mlaminationamt = @mlaminationamt, \r\n    " +
+                "                     mlamination = @mlamination, opinkpers = @opinkpers, opfoilp" +
+                "ers = @opfoilpers, opinkpersamt = @opinkpersamt, opfoilpersamt = @opfoilpersamt," +
+                " oppicpers = @oppicpers, oppicpersamt = @oppicpersamt, \r\n                       " +
+                "  opcustom = @opcustom, opcustomamt = @opcustomamt, opfoiltxtamt = @opfoiltxtamt" +
+                ", opfoiltxt = @opfoiltxt, opinkamt = @opinkamt, opink = @opink, yrdiscount = @yr" +
+                "discount, luvlines = @luvlines, \r\n                         yrdiscountamt = @yrdi" +
+                "scountamt, luvlineamt = @luvlineamt, fullad = @fullad, fulladamt = @fulladamt, h" +
+                "alfad = @halfad, halfadamt = @halfadamt, quarterad = @quarterad, quarteradamt = " +
+                "@quarteradamt, eighthad = @eighthad, \r\n                         eighthadamt = @e" +
+                "ighthadamt, adline = @adline, cred_etc2 = @cred_etc2, desc22 = @desc22, adjaftr2" +
+                " = @adjaftr2, desc22tot = @desc22tot, prcor = @prcor, adcuto = @adcuto, webonly " +
+                "= @webonly, \r\n                         totalsoldonline = @totalsoldonline, total" +
+                "personline = @totalpersonline, totaldollarsonline = @totaldollarsonline, freeboo" +
+                "ks = @freebooks, totalads = @totalads, totallovelines = @totallovelines, onlinen" +
+                "otes = @onlinenotes, \r\n                         ModifiedBy = @ModifiedBy, DateMo" +
+                "dified = @DateModified, DateCreated = @DateCreated, IconCopies = @IconCopies, Ic" +
+                "onAmt = @IconAmt, extrchg = @extrchg, schooltaxrate = @schooltaxrate, schcode = " +
+                "@schcode, \r\n                         donotchargeschoolsalestax = @donotchargesch" +
+                "oolsalestax, nopages = @nopages, nocopies = @nocopies, schooltax = @schooltax\r\nW" +
+                "HERE        (invno = @Original_invno) AND (TimeStamp = @Original_TimeStamp); \r\nS" +
+                "ELECT invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, pr" +
+                "of, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foil" +
+                "ck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt" +
+                ", customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, d" +
+                "p3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, sour" +
+                "ce, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newp" +
+                "rice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, " +
+                "desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, acovrde, bpovrde, holdpm" +
+                "t, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, sup" +
+                "pamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1des" +
+                "c, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4" +
+                ", rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrr" +
+                "ide, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, our" +
+                "styovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovrid" +
+                "e, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agre" +
+                "edte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, " +
+                "mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpers" +
+                "amt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt" +
+                ", opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, f" +
+                "ullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthad" +
+                "amt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, tot" +
+                "alsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallov" +
+                "elines, TimeStamp, onlinenotes, ModifiedBy, DateModified, DateCreated, IconCopie" +
+                "s, IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages," +
+                " nocopies, schooltax FROM quotes WHERE (invno = @invno)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.Char, 12, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.Char, 4, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qtedate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "qtedate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contryear", global::System.Data.SqlDbType.Char, 2, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nopages", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nopages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nocopies", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nocopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@book_ea", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "book_ea", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@book_price", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "book_price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pryn", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "pryn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -15531,8 +15938,12 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconCopies", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IconCopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconAmt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "IconAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrchg", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "extrchg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltax", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "schooltax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltaxrate", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "schooltaxrate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@donotchargeschoolsalestax", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "donotchargeschoolsalestax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nopages", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nopages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nocopies", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nocopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltax", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "schooltax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -15550,33 +15961,37 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT invno, schcode, prodno, booktype, qtedate, contryear, nopages, nocopies, b" +
-                "ook_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, la" +
-                "minate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n" +
-                ", hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp" +
-                "1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, ad" +
-                "jaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, des" +
-                "c2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt, inkclr, " +
-                "foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsa" +
-                "mt, acovrde, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story, supple" +
-                "ments, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursupp, ou" +
-                "rsuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, re" +
-                "bookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookletter, my" +
-                "ovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride," +
-                " pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, sdlsti" +
-                "ch, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, peramount," +
-                " oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fl" +
-                "dtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opin" +
-                "kpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcusto" +
-                "m, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, " +
-                "yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarterad, quar" +
-                "teradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot," +
-                " prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarsonline, f" +
-                "reebooks, totalads, totallovelines, TimeStamp, onlinenotes, ModifiedBy, DateModi" +
-                "fied, DateCreated, IconCopies, IconAmt, extrchg, schooltax, schooltaxrate, donot" +
-                "chargeschoolsalestax FROM quotes WHERE (schcode = @schcode)";
+            this._commandCollection[0].CommandText = "SELECT        invno, prodno, booktype, qtedate, contryear, book_ea, book_price, p" +
+                "ryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbin" +
+                "d, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, " +
+                "\r\n                         caseamt, customy_n, customized, misc, mdesc, sbtot, d" +
+                "c1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjb" +
+                "ef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc" +
+                "2, desc2tot, \r\n                         ponum, invoiced, newprice, schout, salet" +
+                "ax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, cl" +
+                "rpgdesc, clrpgtot, glspaper, glsamt, acovrde, bpovrde, holdpmt, bpyear, themck, " +
+                "themamt, yirschool, story, \r\n                         supplements, yiramt, story" +
+                "amt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride" +
+                ", dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebook" +
+                "invremv4, rebookinvremv5, \r\n                         rebookinvremv6, norebooklet" +
+                "ter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spio" +
+                "vrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride," +
+                " sdlstich, sdlstichamt, copiesovride, \r\n                         bascicpp, perpp" +
+                ", agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, " +
+                "basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd," +
+                " mlaminationamt, mlamination, opinkpers, \r\n                         opfoilpers, " +
+                "opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opf" +
+                "oiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvl" +
+                "ineamt, fullad, fulladamt, halfad, halfadamt, quarterad, \r\n                     " +
+                "    quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, de" +
+                "sc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarso" +
+                "nline, freebooks, totalads, totallovelines, TimeStamp, onlinenotes, \r\n          " +
+                "               ModifiedBy, DateModified, DateCreated, IconCopies, IconAmt, extrc" +
+                "hg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages, nocopies, school" +
+                "tax\r\nFROM            quotes\r\nWHERE        (schcode = @schcode)\r\nORDER BY qtedate" +
+                " DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT DateCreated, DateModified, IconAmt, IconCopies, ModifiedBy, TimeStamp, aco" +
@@ -15585,25 +16000,25 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 " bpyear, caseamt, casey_n, cbovrride, clrpgdesc, clrpgtot, conovrride, contryear" +
                 ", conven, copiesovride, coyn, cred_etc, cred_etc2, customized, customy_n, dc1, d" +
                 "c2, desc1, desc1tot, desc2, desc22, desc22tot, desc2tot, desc3, desc3tot, desc4," +
-                " desc4tot, disc1, disc2, disc3, disc4, dp1, dp1desc, dp2, dp3, dp3desc, dp4, eig" +
-                "hthad, eighthadamt, extrchg, fbkprc, fldtype, foiladamt, foilamt, foilck, foilye" +
-                "arovrride, freebooks, ftotprc, fullad, fulladamt, glsamt, glspaper, halfad, half" +
-                "adamt, hardback, hbovrride, hdbky_n, holdpmt, inkclr, insamt, insck, invno, invo" +
-                "iced, isfolder, laminate, laminateovrride, layn, luvlineamt, luvlines, mdesc, mi" +
-                "sc, mlamhrd, mlamination, mlaminationamt, mlamsoft, msstandtot, msstanqty, myovr" +
-                "ride, newprice, nocopies, nopages, norebookletter, onlinecuto, onlinenotes, opcu" +
-                "stom, opcustomamt, opfoilpers, opfoilpersamt, opfoiltxt, opfoiltxtamt, opink, op" +
-                "inkamt, opinkpers, opinkpersamt, oppicpers, oppicpersamt, oprcperbk, oprcperbk2," +
-                " ourovrride, ourstyovrride, oursupp, oursuppamt, pbovrride, peramount, perfbind," +
-                " perpp, persamount, perscopies, perstotal, peyn, ponum, prcor, priceovrd, prodno" +
-                ", prof, profovrride, pryn, qtedate, quarterad, quarteradamt, rebookinvremv, rebo" +
-                "okinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebo" +
-                "okinvremv6, saletax, sbtot, schcode, schout, scovrde, sdlstich, sdlstichamt, sou" +
-                "rce, speccvr, specea, spiovrride, spiramt, spirck, story, storyamt, suppamt, sup" +
-                "plements, themamt, themck, themovrride, totalads, totaldollarsonline, totallovel" +
-                "ines, totalpersonline, totalsoldonline, webonly, xtrabkno, xtrabkprc, yiramt, yi" +
-                "rschool, yirsovrride, yrdiscount, yrdiscountamt FROM quotes WHERE (invno = @invn" +
-                "o)";
+                " desc4tot, disc1, disc2, disc3, disc4, donotchargeschoolsalestax, dp1, dp1desc, " +
+                "dp2, dp3, dp3desc, dp4, eighthad, eighthadamt, extrchg, fbkprc, fldtype, foilada" +
+                "mt, foilamt, foilck, foilyearovrride, freebooks, ftotprc, fullad, fulladamt, gls" +
+                "amt, glspaper, halfad, halfadamt, hardback, hbovrride, hdbky_n, holdpmt, inkclr," +
+                " insamt, insck, invno, invoiced, isfolder, laminate, laminateovrride, layn, luvl" +
+                "ineamt, luvlines, mdesc, misc, mlamhrd, mlamination, mlaminationamt, mlamsoft, m" +
+                "sstandtot, msstanqty, myovrride, newprice, nocopies, nopages, norebookletter, on" +
+                "linecuto, onlinenotes, opcustom, opcustomamt, opfoilpers, opfoilpersamt, opfoilt" +
+                "xt, opfoiltxtamt, opink, opinkamt, opinkpers, opinkpersamt, oppicpers, oppicpers" +
+                "amt, oprcperbk, oprcperbk2, ourovrride, ourstyovrride, oursupp, oursuppamt, pbov" +
+                "rride, peramount, perfbind, perpp, persamount, perscopies, perstotal, peyn, ponu" +
+                "m, prcor, priceovrd, prodno, prof, profovrride, pryn, qtedate, quarterad, quarte" +
+                "radamt, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinv" +
+                "remv4, rebookinvremv5, rebookinvremv6, saletax, sbtot, schcode, schooltax, schoo" +
+                "ltaxrate, schout, scovrde, sdlstich, sdlstichamt, source, speccvr, specea, spiov" +
+                "rride, spiramt, spirck, story, storyamt, suppamt, supplements, themamt, themck, " +
+                "themovrride, totalads, totaldollarsonline, totallovelines, totalpersonline, tota" +
+                "lsoldonline, webonly, xtrabkno, xtrabkprc, yiramt, yirschool, yirsovrride, yrdis" +
+                "count, yrdiscountamt FROM quotes WHERE (invno = @invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -15703,8 +16118,16 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Invno) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Invno));
+        public virtual int Delete(int Original_invno, byte[] Original_TimeStamp) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_invno));
+            if ((Original_TimeStamp == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((byte[])(Original_TimeStamp));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -15727,488 +16150,1295 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
                     int invno, 
-                    string schcode, 
                     string prodno, 
                     string booktype, 
-                    System.DateTime qtedate, 
+                    global::System.Nullable<global::System.DateTime> qtedate, 
                     string contryear, 
-                    decimal nopages, 
-                    decimal nocopies, 
-                    decimal book_ea, 
-                    decimal book_price, 
-                    bool pryn, 
-                    decimal prof, 
-                    bool coyn, 
-                    decimal conven, 
-                    decimal specea, 
-                    decimal speccvr, 
-                    bool scovrde, 
-                    bool layn, 
-                    decimal laminate, 
-                    bool peyn, 
-                    decimal perfbind, 
-                    bool foilck, 
-                    decimal foilamt, 
-                    bool insck, 
-                    decimal insamt, 
-                    bool spirck, 
-                    decimal spiramt, 
-                    bool hdbky_n, 
-                    decimal hardback, 
-                    bool casey_n, 
-                    decimal caseamt, 
-                    bool customy_n, 
-                    decimal customized, 
-                    decimal misc, 
+                    global::System.Nullable<decimal> book_ea, 
+                    global::System.Nullable<decimal> book_price, 
+                    global::System.Nullable<bool> pryn, 
+                    global::System.Nullable<decimal> prof, 
+                    global::System.Nullable<bool> coyn, 
+                    global::System.Nullable<decimal> conven, 
+                    global::System.Nullable<decimal> specea, 
+                    global::System.Nullable<decimal> speccvr, 
+                    global::System.Nullable<bool> scovrde, 
+                    global::System.Nullable<bool> layn, 
+                    global::System.Nullable<decimal> laminate, 
+                    global::System.Nullable<bool> peyn, 
+                    global::System.Nullable<decimal> perfbind, 
+                    global::System.Nullable<bool> foilck, 
+                    global::System.Nullable<decimal> foilamt, 
+                    global::System.Nullable<bool> insck, 
+                    global::System.Nullable<decimal> insamt, 
+                    global::System.Nullable<bool> spirck, 
+                    global::System.Nullable<decimal> spiramt, 
+                    global::System.Nullable<bool> hdbky_n, 
+                    global::System.Nullable<decimal> hardback, 
+                    global::System.Nullable<bool> casey_n, 
+                    global::System.Nullable<decimal> caseamt, 
+                    global::System.Nullable<bool> customy_n, 
+                    global::System.Nullable<decimal> customized, 
+                    global::System.Nullable<decimal> misc, 
                     string mdesc, 
-                    decimal sbtot, 
-                    bool dc1, 
-                    decimal dp1, 
-                    decimal disc1, 
-                    bool dc2, 
-                    decimal dp2, 
-                    decimal disc2, 
+                    global::System.Nullable<decimal> sbtot, 
+                    global::System.Nullable<bool> dc1, 
+                    global::System.Nullable<decimal> dp1, 
+                    global::System.Nullable<decimal> disc1, 
+                    global::System.Nullable<bool> dc2, 
+                    global::System.Nullable<decimal> dp2, 
+                    global::System.Nullable<decimal> disc2, 
                     string dp3desc, 
-                    decimal dp3, 
-                    decimal disc3, 
-                    decimal dp4, 
-                    decimal disc4, 
+                    global::System.Nullable<decimal> dp3, 
+                    global::System.Nullable<decimal> disc3, 
+                    global::System.Nullable<decimal> dp4, 
+                    global::System.Nullable<decimal> disc4, 
                     string cred_etc, 
-                    decimal adjbef, 
-                    decimal adjaftr, 
-                    decimal fbkprc, 
-                    decimal ftotprc, 
+                    global::System.Nullable<decimal> adjbef, 
+                    global::System.Nullable<decimal> adjaftr, 
+                    global::System.Nullable<decimal> fbkprc, 
+                    global::System.Nullable<decimal> ftotprc, 
                     string source, 
-                    decimal xtrabkno, 
-                    decimal xtrabkprc, 
+                    global::System.Nullable<decimal> xtrabkno, 
+                    global::System.Nullable<decimal> xtrabkprc, 
                     string desc1, 
-                    decimal desc1tot, 
+                    global::System.Nullable<decimal> desc1tot, 
                     string desc2, 
-                    decimal desc2tot, 
+                    global::System.Nullable<decimal> desc2tot, 
                     string ponum, 
-                    bool invoiced, 
-                    bool newprice, 
-                    System.DateTime schout, 
-                    decimal saletax, 
-                    bool allclrck, 
-                    decimal allclramt, 
+                    global::System.Nullable<bool> invoiced, 
+                    global::System.Nullable<bool> newprice, 
+                    global::System.Nullable<global::System.DateTime> schout, 
+                    global::System.Nullable<decimal> saletax, 
+                    global::System.Nullable<bool> allclrck, 
+                    global::System.Nullable<decimal> allclramt, 
                     string inkclr, 
-                    decimal foiladamt, 
+                    global::System.Nullable<decimal> foiladamt, 
                     string desc3, 
-                    decimal desc3tot, 
+                    global::System.Nullable<decimal> desc3tot, 
                     string desc4, 
-                    decimal desc4tot, 
+                    global::System.Nullable<decimal> desc4tot, 
                     string clrpgdesc, 
-                    decimal clrpgtot, 
-                    bool glspaper, 
-                    decimal glsamt, 
-                    bool acovrde, 
-                    bool bpovrde, 
-                    bool holdpmt, 
+                    global::System.Nullable<decimal> clrpgtot, 
+                    global::System.Nullable<bool> glspaper, 
+                    global::System.Nullable<decimal> glsamt, 
+                    global::System.Nullable<bool> acovrde, 
+                    global::System.Nullable<bool> bpovrde, 
+                    global::System.Nullable<bool> holdpmt, 
                     string bpyear, 
-                    bool themck, 
-                    decimal themamt, 
-                    bool yirschool, 
-                    bool story, 
-                    bool supplements, 
-                    decimal yiramt, 
-                    decimal storyamt, 
-                    decimal suppamt, 
-                    decimal persamount, 
-                    decimal perstotal, 
-                    int perscopies, 
-                    bool oursupp, 
-                    decimal oursuppamt, 
-                    bool ourovrride, 
+                    global::System.Nullable<bool> themck, 
+                    global::System.Nullable<decimal> themamt, 
+                    global::System.Nullable<bool> yirschool, 
+                    global::System.Nullable<bool> story, 
+                    global::System.Nullable<bool> supplements, 
+                    global::System.Nullable<decimal> yiramt, 
+                    global::System.Nullable<decimal> storyamt, 
+                    global::System.Nullable<decimal> suppamt, 
+                    global::System.Nullable<decimal> persamount, 
+                    global::System.Nullable<decimal> perstotal, 
+                    global::System.Nullable<int> perscopies, 
+                    global::System.Nullable<bool> oursupp, 
+                    global::System.Nullable<decimal> oursuppamt, 
+                    global::System.Nullable<bool> ourovrride, 
                     string dp1desc, 
-                    bool rebookinvremv, 
-                    bool rebookinvremv1, 
-                    bool rebookinvremv2, 
-                    bool rebookinvremv3, 
-                    bool rebookinvremv4, 
-                    bool rebookinvremv5, 
-                    bool rebookinvremv6, 
-                    bool norebookletter, 
-                    bool myovrride, 
-                    bool hbovrride, 
-                    bool profovrride, 
-                    bool conovrride, 
-                    bool themovrride, 
-                    bool cbovrride, 
-                    bool spiovrride, 
-                    bool pbovrride, 
-                    bool yirsovrride, 
-                    bool ourstyovrride, 
-                    bool laminateovrride, 
-                    bool foilyearovrride, 
-                    bool sdlstich, 
-                    decimal sdlstichamt, 
-                    bool copiesovride, 
-                    bool bascicpp, 
-                    bool perpp, 
-                    bool agreerec, 
-                    decimal basicamoun, 
-                    decimal peramount, 
-                    decimal oprcperbk, 
-                    decimal oprcperbk2, 
-                    System.DateTime agreedte, 
-                    System.DateTime onlinecuto, 
-                    bool basicpp, 
-                    decimal msstanqty, 
-                    decimal msstandtot, 
+                    global::System.Nullable<bool> rebookinvremv, 
+                    global::System.Nullable<bool> rebookinvremv1, 
+                    global::System.Nullable<bool> rebookinvremv2, 
+                    global::System.Nullable<bool> rebookinvremv3, 
+                    global::System.Nullable<bool> rebookinvremv4, 
+                    global::System.Nullable<bool> rebookinvremv5, 
+                    global::System.Nullable<bool> rebookinvremv6, 
+                    global::System.Nullable<bool> norebookletter, 
+                    global::System.Nullable<bool> myovrride, 
+                    global::System.Nullable<bool> hbovrride, 
+                    global::System.Nullable<bool> profovrride, 
+                    global::System.Nullable<bool> conovrride, 
+                    global::System.Nullable<bool> themovrride, 
+                    global::System.Nullable<bool> cbovrride, 
+                    global::System.Nullable<bool> spiovrride, 
+                    global::System.Nullable<bool> pbovrride, 
+                    global::System.Nullable<bool> yirsovrride, 
+                    global::System.Nullable<bool> ourstyovrride, 
+                    global::System.Nullable<bool> laminateovrride, 
+                    global::System.Nullable<bool> foilyearovrride, 
+                    global::System.Nullable<bool> sdlstich, 
+                    global::System.Nullable<decimal> sdlstichamt, 
+                    global::System.Nullable<bool> copiesovride, 
+                    global::System.Nullable<bool> bascicpp, 
+                    global::System.Nullable<bool> perpp, 
+                    global::System.Nullable<bool> agreerec, 
+                    global::System.Nullable<decimal> basicamoun, 
+                    global::System.Nullable<decimal> peramount, 
+                    global::System.Nullable<decimal> oprcperbk, 
+                    global::System.Nullable<decimal> oprcperbk2, 
+                    global::System.Nullable<global::System.DateTime> agreedte, 
+                    global::System.Nullable<global::System.DateTime> onlinecuto, 
+                    global::System.Nullable<bool> basicpp, 
+                    global::System.Nullable<decimal> msstanqty, 
+                    global::System.Nullable<decimal> msstandtot, 
                     string fldtype, 
-                    bool isfolder, 
-                    decimal priceovrd, 
-                    decimal mlamsoft, 
-                    decimal mlamhrd, 
-                    decimal mlaminationamt, 
-                    bool mlamination, 
-                    bool opinkpers, 
-                    bool opfoilpers, 
-                    decimal opinkpersamt, 
-                    decimal opfoilpersamt, 
-                    bool oppicpers, 
-                    decimal oppicpersamt, 
-                    bool opcustom, 
-                    decimal opcustomamt, 
-                    decimal opfoiltxtamt, 
-                    bool opfoiltxt, 
-                    decimal opinkamt, 
-                    bool opink, 
-                    bool yrdiscount, 
-                    bool luvlines, 
-                    decimal yrdiscountamt, 
-                    decimal luvlineamt, 
-                    bool fullad, 
-                    decimal fulladamt, 
-                    bool halfad, 
-                    decimal halfadamt, 
-                    bool quarterad, 
-                    decimal quarteradamt, 
-                    bool eighthad, 
-                    decimal eighthadamt, 
-                    bool adline, 
+                    global::System.Nullable<bool> isfolder, 
+                    global::System.Nullable<decimal> priceovrd, 
+                    global::System.Nullable<decimal> mlamsoft, 
+                    global::System.Nullable<decimal> mlamhrd, 
+                    global::System.Nullable<decimal> mlaminationamt, 
+                    global::System.Nullable<bool> mlamination, 
+                    global::System.Nullable<bool> opinkpers, 
+                    global::System.Nullable<bool> opfoilpers, 
+                    global::System.Nullable<decimal> opinkpersamt, 
+                    global::System.Nullable<decimal> opfoilpersamt, 
+                    global::System.Nullable<bool> oppicpers, 
+                    global::System.Nullable<decimal> oppicpersamt, 
+                    global::System.Nullable<bool> opcustom, 
+                    global::System.Nullable<decimal> opcustomamt, 
+                    global::System.Nullable<decimal> opfoiltxtamt, 
+                    global::System.Nullable<bool> opfoiltxt, 
+                    global::System.Nullable<decimal> opinkamt, 
+                    global::System.Nullable<bool> opink, 
+                    global::System.Nullable<bool> yrdiscount, 
+                    global::System.Nullable<bool> luvlines, 
+                    global::System.Nullable<decimal> yrdiscountamt, 
+                    global::System.Nullable<decimal> luvlineamt, 
+                    global::System.Nullable<bool> fullad, 
+                    global::System.Nullable<decimal> fulladamt, 
+                    global::System.Nullable<bool> halfad, 
+                    global::System.Nullable<decimal> halfadamt, 
+                    global::System.Nullable<bool> quarterad, 
+                    global::System.Nullable<decimal> quarteradamt, 
+                    global::System.Nullable<bool> eighthad, 
+                    global::System.Nullable<decimal> eighthadamt, 
+                    global::System.Nullable<bool> adline, 
                     string cred_etc2, 
                     string desc22, 
-                    decimal adjaftr2, 
-                    decimal desc22tot, 
-                    decimal prcor, 
-                    System.DateTime adcuto, 
-                    bool webonly, 
-                    int totalsoldonline, 
-                    int totalpersonline, 
-                    decimal totaldollarsonline, 
-                    int freebooks, 
-                    int totalads, 
-                    int totallovelines, 
+                    global::System.Nullable<decimal> adjaftr2, 
+                    global::System.Nullable<decimal> desc22tot, 
+                    global::System.Nullable<decimal> prcor, 
+                    global::System.Nullable<global::System.DateTime> adcuto, 
+                    global::System.Nullable<bool> webonly, 
+                    global::System.Nullable<int> totalsoldonline, 
+                    global::System.Nullable<int> totalpersonline, 
+                    global::System.Nullable<decimal> totaldollarsonline, 
+                    global::System.Nullable<int> freebooks, 
+                    global::System.Nullable<int> totalads, 
+                    global::System.Nullable<int> totallovelines, 
                     string onlinenotes, 
                     string ModifiedBy, 
-                    System.DateTime DateModified, 
-                    System.DateTime DateCreated, 
-                    int IconCopies, 
-                    decimal IconAmt, 
+                    global::System.Nullable<global::System.DateTime> DateModified, 
+                    global::System.Nullable<global::System.DateTime> DateCreated, 
+                    global::System.Nullable<int> IconCopies, 
+                    global::System.Nullable<decimal> IconAmt, 
                     string extrchg, 
-                    decimal schooltax, 
-                    decimal schooltaxrate) {
+                    global::System.Nullable<decimal> schooltaxrate, 
+                    string schcode, 
+                    global::System.Nullable<bool> donotchargeschoolsalestax, 
+                    global::System.Nullable<int> nopages, 
+                    global::System.Nullable<int> nocopies, 
+                    global::System.Nullable<decimal> schooltax) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(invno));
+            if ((prodno == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(prodno));
+            }
+            if ((booktype == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(booktype));
+            }
+            if ((qtedate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(qtedate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((contryear == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(contryear));
+            }
+            if ((book_ea.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(book_ea.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((book_price.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(book_price.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((pryn.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(pryn.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((prof.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(prof.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((coyn.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((bool)(coyn.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((conven.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(conven.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((specea.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(specea.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((speccvr.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((decimal)(speccvr.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((scovrde.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((bool)(scovrde.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((layn.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((bool)(layn.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((laminate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((decimal)(laminate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((peyn.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((bool)(peyn.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((perfbind.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[17].Value = ((decimal)(perfbind.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((foilck.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[18].Value = ((bool)(foilck.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((foilamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = ((decimal)(foilamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((insck.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[20].Value = ((bool)(insck.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((insamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[21].Value = ((decimal)(insamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((spirck.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[22].Value = ((bool)(spirck.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((spiramt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[23].Value = ((decimal)(spiramt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((hdbky_n.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[24].Value = ((bool)(hdbky_n.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            if ((hardback.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[25].Value = ((decimal)(hardback.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((casey_n.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[26].Value = ((bool)(casey_n.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((caseamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[27].Value = ((decimal)(caseamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((customy_n.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[28].Value = ((bool)(customy_n.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            if ((customized.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[29].Value = ((decimal)(customized.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            if ((misc.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[30].Value = ((decimal)(misc.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            if ((mdesc == null)) {
+                this.Adapter.InsertCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[31].Value = ((string)(mdesc));
+            }
+            if ((sbtot.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[32].Value = ((decimal)(sbtot.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            if ((dc1.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[33].Value = ((bool)(dc1.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            if ((dp1.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[34].Value = ((decimal)(dp1.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            if ((disc1.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[35].Value = ((decimal)(disc1.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            if ((dc2.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[36].Value = ((bool)(dc2.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            if ((dp2.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[37].Value = ((decimal)(dp2.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[37].Value = global::System.DBNull.Value;
+            }
+            if ((disc2.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[38].Value = ((decimal)(disc2.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((dp3desc == null)) {
+                this.Adapter.InsertCommand.Parameters[39].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[39].Value = ((string)(dp3desc));
+            }
+            if ((dp3.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[40].Value = ((decimal)(dp3.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[40].Value = global::System.DBNull.Value;
+            }
+            if ((disc3.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[41].Value = ((decimal)(disc3.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[41].Value = global::System.DBNull.Value;
+            }
+            if ((dp4.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[42].Value = ((decimal)(dp4.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[42].Value = global::System.DBNull.Value;
+            }
+            if ((disc4.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[43].Value = ((decimal)(disc4.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[43].Value = global::System.DBNull.Value;
+            }
+            if ((cred_etc == null)) {
+                this.Adapter.InsertCommand.Parameters[44].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[44].Value = ((string)(cred_etc));
+            }
+            if ((adjbef.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[45].Value = ((decimal)(adjbef.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[45].Value = global::System.DBNull.Value;
+            }
+            if ((adjaftr.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[46].Value = ((decimal)(adjaftr.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[46].Value = global::System.DBNull.Value;
+            }
+            if ((fbkprc.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[47].Value = ((decimal)(fbkprc.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[47].Value = global::System.DBNull.Value;
+            }
+            if ((ftotprc.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[48].Value = ((decimal)(ftotprc.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[48].Value = global::System.DBNull.Value;
+            }
+            if ((source == null)) {
+                this.Adapter.InsertCommand.Parameters[49].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[49].Value = ((string)(source));
+            }
+            if ((xtrabkno.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[50].Value = ((decimal)(xtrabkno.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[50].Value = global::System.DBNull.Value;
+            }
+            if ((xtrabkprc.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[51].Value = ((decimal)(xtrabkprc.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[51].Value = global::System.DBNull.Value;
+            }
+            if ((desc1 == null)) {
+                this.Adapter.InsertCommand.Parameters[52].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[52].Value = ((string)(desc1));
+            }
+            if ((desc1tot.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[53].Value = ((decimal)(desc1tot.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[53].Value = global::System.DBNull.Value;
+            }
+            if ((desc2 == null)) {
+                this.Adapter.InsertCommand.Parameters[54].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[54].Value = ((string)(desc2));
+            }
+            if ((desc2tot.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[55].Value = ((decimal)(desc2tot.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[55].Value = global::System.DBNull.Value;
+            }
+            if ((ponum == null)) {
+                this.Adapter.InsertCommand.Parameters[56].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[56].Value = ((string)(ponum));
+            }
+            if ((invoiced.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[57].Value = ((bool)(invoiced.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[57].Value = global::System.DBNull.Value;
+            }
+            if ((newprice.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[58].Value = ((bool)(newprice.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[58].Value = global::System.DBNull.Value;
+            }
+            if ((schout.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[59].Value = ((System.DateTime)(schout.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[59].Value = global::System.DBNull.Value;
+            }
+            if ((saletax.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[60].Value = ((decimal)(saletax.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[60].Value = global::System.DBNull.Value;
+            }
+            if ((allclrck.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[61].Value = ((bool)(allclrck.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[61].Value = global::System.DBNull.Value;
+            }
+            if ((allclramt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[62].Value = ((decimal)(allclramt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[62].Value = global::System.DBNull.Value;
+            }
+            if ((inkclr == null)) {
+                this.Adapter.InsertCommand.Parameters[63].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[63].Value = ((string)(inkclr));
+            }
+            if ((foiladamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[64].Value = ((decimal)(foiladamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[64].Value = global::System.DBNull.Value;
+            }
+            if ((desc3 == null)) {
+                this.Adapter.InsertCommand.Parameters[65].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[65].Value = ((string)(desc3));
+            }
+            if ((desc3tot.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[66].Value = ((decimal)(desc3tot.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[66].Value = global::System.DBNull.Value;
+            }
+            if ((desc4 == null)) {
+                this.Adapter.InsertCommand.Parameters[67].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[67].Value = ((string)(desc4));
+            }
+            if ((desc4tot.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[68].Value = ((decimal)(desc4tot.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[68].Value = global::System.DBNull.Value;
+            }
+            if ((clrpgdesc == null)) {
+                this.Adapter.InsertCommand.Parameters[69].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[69].Value = ((string)(clrpgdesc));
+            }
+            if ((clrpgtot.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[70].Value = ((decimal)(clrpgtot.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[70].Value = global::System.DBNull.Value;
+            }
+            if ((glspaper.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[71].Value = ((bool)(glspaper.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[71].Value = global::System.DBNull.Value;
+            }
+            if ((glsamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[72].Value = ((decimal)(glsamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[72].Value = global::System.DBNull.Value;
+            }
+            if ((acovrde.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[73].Value = ((bool)(acovrde.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[73].Value = global::System.DBNull.Value;
+            }
+            if ((bpovrde.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[74].Value = ((bool)(bpovrde.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[74].Value = global::System.DBNull.Value;
+            }
+            if ((holdpmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[75].Value = ((bool)(holdpmt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[75].Value = global::System.DBNull.Value;
+            }
+            if ((bpyear == null)) {
+                this.Adapter.InsertCommand.Parameters[76].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[76].Value = ((string)(bpyear));
+            }
+            if ((themck.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[77].Value = ((bool)(themck.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[77].Value = global::System.DBNull.Value;
+            }
+            if ((themamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[78].Value = ((decimal)(themamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[78].Value = global::System.DBNull.Value;
+            }
+            if ((yirschool.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[79].Value = ((bool)(yirschool.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[79].Value = global::System.DBNull.Value;
+            }
+            if ((story.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[80].Value = ((bool)(story.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[80].Value = global::System.DBNull.Value;
+            }
+            if ((supplements.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[81].Value = ((bool)(supplements.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[81].Value = global::System.DBNull.Value;
+            }
+            if ((yiramt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[82].Value = ((decimal)(yiramt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[82].Value = global::System.DBNull.Value;
+            }
+            if ((storyamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[83].Value = ((decimal)(storyamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[83].Value = global::System.DBNull.Value;
+            }
+            if ((suppamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[84].Value = ((decimal)(suppamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[84].Value = global::System.DBNull.Value;
+            }
+            if ((persamount.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[85].Value = ((decimal)(persamount.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[85].Value = global::System.DBNull.Value;
+            }
+            if ((perstotal.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[86].Value = ((decimal)(perstotal.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[86].Value = global::System.DBNull.Value;
+            }
+            if ((perscopies.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[87].Value = ((int)(perscopies.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[87].Value = global::System.DBNull.Value;
+            }
+            if ((oursupp.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[88].Value = ((bool)(oursupp.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[88].Value = global::System.DBNull.Value;
+            }
+            if ((oursuppamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[89].Value = ((decimal)(oursuppamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[89].Value = global::System.DBNull.Value;
+            }
+            if ((ourovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[90].Value = ((bool)(ourovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[90].Value = global::System.DBNull.Value;
+            }
+            if ((dp1desc == null)) {
+                this.Adapter.InsertCommand.Parameters[91].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[91].Value = ((string)(dp1desc));
+            }
+            if ((rebookinvremv.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[92].Value = ((bool)(rebookinvremv.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[92].Value = global::System.DBNull.Value;
+            }
+            if ((rebookinvremv1.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[93].Value = ((bool)(rebookinvremv1.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[93].Value = global::System.DBNull.Value;
+            }
+            if ((rebookinvremv2.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[94].Value = ((bool)(rebookinvremv2.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[94].Value = global::System.DBNull.Value;
+            }
+            if ((rebookinvremv3.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[95].Value = ((bool)(rebookinvremv3.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[95].Value = global::System.DBNull.Value;
+            }
+            if ((rebookinvremv4.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[96].Value = ((bool)(rebookinvremv4.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[96].Value = global::System.DBNull.Value;
+            }
+            if ((rebookinvremv5.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[97].Value = ((bool)(rebookinvremv5.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[97].Value = global::System.DBNull.Value;
+            }
+            if ((rebookinvremv6.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[98].Value = ((bool)(rebookinvremv6.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[98].Value = global::System.DBNull.Value;
+            }
+            if ((norebookletter.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[99].Value = ((bool)(norebookletter.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[99].Value = global::System.DBNull.Value;
+            }
+            if ((myovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[100].Value = ((bool)(myovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[100].Value = global::System.DBNull.Value;
+            }
+            if ((hbovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[101].Value = ((bool)(hbovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[101].Value = global::System.DBNull.Value;
+            }
+            if ((profovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[102].Value = ((bool)(profovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[102].Value = global::System.DBNull.Value;
+            }
+            if ((conovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[103].Value = ((bool)(conovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[103].Value = global::System.DBNull.Value;
+            }
+            if ((themovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[104].Value = ((bool)(themovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[104].Value = global::System.DBNull.Value;
+            }
+            if ((cbovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[105].Value = ((bool)(cbovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[105].Value = global::System.DBNull.Value;
+            }
+            if ((spiovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[106].Value = ((bool)(spiovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[106].Value = global::System.DBNull.Value;
+            }
+            if ((pbovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[107].Value = ((bool)(pbovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[107].Value = global::System.DBNull.Value;
+            }
+            if ((yirsovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[108].Value = ((bool)(yirsovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[108].Value = global::System.DBNull.Value;
+            }
+            if ((ourstyovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[109].Value = ((bool)(ourstyovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[109].Value = global::System.DBNull.Value;
+            }
+            if ((laminateovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[110].Value = ((bool)(laminateovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[110].Value = global::System.DBNull.Value;
+            }
+            if ((foilyearovrride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[111].Value = ((bool)(foilyearovrride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[111].Value = global::System.DBNull.Value;
+            }
+            if ((sdlstich.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[112].Value = ((bool)(sdlstich.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[112].Value = global::System.DBNull.Value;
+            }
+            if ((sdlstichamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[113].Value = ((decimal)(sdlstichamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[113].Value = global::System.DBNull.Value;
+            }
+            if ((copiesovride.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[114].Value = ((bool)(copiesovride.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[114].Value = global::System.DBNull.Value;
+            }
+            if ((bascicpp.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[115].Value = ((bool)(bascicpp.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[115].Value = global::System.DBNull.Value;
+            }
+            if ((perpp.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[116].Value = ((bool)(perpp.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[116].Value = global::System.DBNull.Value;
+            }
+            if ((agreerec.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[117].Value = ((bool)(agreerec.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[117].Value = global::System.DBNull.Value;
+            }
+            if ((basicamoun.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[118].Value = ((decimal)(basicamoun.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[118].Value = global::System.DBNull.Value;
+            }
+            if ((peramount.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[119].Value = ((decimal)(peramount.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[119].Value = global::System.DBNull.Value;
+            }
+            if ((oprcperbk.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[120].Value = ((decimal)(oprcperbk.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[120].Value = global::System.DBNull.Value;
+            }
+            if ((oprcperbk2.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[121].Value = ((decimal)(oprcperbk2.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[121].Value = global::System.DBNull.Value;
+            }
+            if ((agreedte.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[122].Value = ((System.DateTime)(agreedte.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[122].Value = global::System.DBNull.Value;
+            }
+            if ((onlinecuto.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[123].Value = ((System.DateTime)(onlinecuto.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[123].Value = global::System.DBNull.Value;
+            }
+            if ((basicpp.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[124].Value = ((bool)(basicpp.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[124].Value = global::System.DBNull.Value;
+            }
+            if ((msstanqty.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[125].Value = ((decimal)(msstanqty.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[125].Value = global::System.DBNull.Value;
+            }
+            if ((msstandtot.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[126].Value = ((decimal)(msstandtot.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[126].Value = global::System.DBNull.Value;
+            }
+            if ((fldtype == null)) {
+                this.Adapter.InsertCommand.Parameters[127].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[127].Value = ((string)(fldtype));
+            }
+            if ((isfolder.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[128].Value = ((bool)(isfolder.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[128].Value = global::System.DBNull.Value;
+            }
+            if ((priceovrd.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[129].Value = ((decimal)(priceovrd.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[129].Value = global::System.DBNull.Value;
+            }
+            if ((mlamsoft.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[130].Value = ((decimal)(mlamsoft.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[130].Value = global::System.DBNull.Value;
+            }
+            if ((mlamhrd.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[131].Value = ((decimal)(mlamhrd.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[131].Value = global::System.DBNull.Value;
+            }
+            if ((mlaminationamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[132].Value = ((decimal)(mlaminationamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[132].Value = global::System.DBNull.Value;
+            }
+            if ((mlamination.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[133].Value = ((bool)(mlamination.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[133].Value = global::System.DBNull.Value;
+            }
+            if ((opinkpers.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[134].Value = ((bool)(opinkpers.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[134].Value = global::System.DBNull.Value;
+            }
+            if ((opfoilpers.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[135].Value = ((bool)(opfoilpers.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[135].Value = global::System.DBNull.Value;
+            }
+            if ((opinkpersamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[136].Value = ((decimal)(opinkpersamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[136].Value = global::System.DBNull.Value;
+            }
+            if ((opfoilpersamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[137].Value = ((decimal)(opfoilpersamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[137].Value = global::System.DBNull.Value;
+            }
+            if ((oppicpers.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[138].Value = ((bool)(oppicpers.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[138].Value = global::System.DBNull.Value;
+            }
+            if ((oppicpersamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[139].Value = ((decimal)(oppicpersamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[139].Value = global::System.DBNull.Value;
+            }
+            if ((opcustom.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[140].Value = ((bool)(opcustom.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[140].Value = global::System.DBNull.Value;
+            }
+            if ((opcustomamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[141].Value = ((decimal)(opcustomamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[141].Value = global::System.DBNull.Value;
+            }
+            if ((opfoiltxtamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[142].Value = ((decimal)(opfoiltxtamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[142].Value = global::System.DBNull.Value;
+            }
+            if ((opfoiltxt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[143].Value = ((bool)(opfoiltxt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[143].Value = global::System.DBNull.Value;
+            }
+            if ((opinkamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[144].Value = ((decimal)(opinkamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[144].Value = global::System.DBNull.Value;
+            }
+            if ((opink.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[145].Value = ((bool)(opink.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[145].Value = global::System.DBNull.Value;
+            }
+            if ((yrdiscount.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[146].Value = ((bool)(yrdiscount.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[146].Value = global::System.DBNull.Value;
+            }
+            if ((luvlines.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[147].Value = ((bool)(luvlines.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[147].Value = global::System.DBNull.Value;
+            }
+            if ((yrdiscountamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[148].Value = ((decimal)(yrdiscountamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[148].Value = global::System.DBNull.Value;
+            }
+            if ((luvlineamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[149].Value = ((decimal)(luvlineamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[149].Value = global::System.DBNull.Value;
+            }
+            if ((fullad.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[150].Value = ((bool)(fullad.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[150].Value = global::System.DBNull.Value;
+            }
+            if ((fulladamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[151].Value = ((decimal)(fulladamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[151].Value = global::System.DBNull.Value;
+            }
+            if ((halfad.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[152].Value = ((bool)(halfad.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[152].Value = global::System.DBNull.Value;
+            }
+            if ((halfadamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[153].Value = ((decimal)(halfadamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[153].Value = global::System.DBNull.Value;
+            }
+            if ((quarterad.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[154].Value = ((bool)(quarterad.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[154].Value = global::System.DBNull.Value;
+            }
+            if ((quarteradamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[155].Value = ((decimal)(quarteradamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[155].Value = global::System.DBNull.Value;
+            }
+            if ((eighthad.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[156].Value = ((bool)(eighthad.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[156].Value = global::System.DBNull.Value;
+            }
+            if ((eighthadamt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[157].Value = ((decimal)(eighthadamt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[157].Value = global::System.DBNull.Value;
+            }
+            if ((adline.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[158].Value = ((bool)(adline.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[158].Value = global::System.DBNull.Value;
+            }
+            if ((cred_etc2 == null)) {
+                this.Adapter.InsertCommand.Parameters[159].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[159].Value = ((string)(cred_etc2));
+            }
+            if ((desc22 == null)) {
+                this.Adapter.InsertCommand.Parameters[160].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[160].Value = ((string)(desc22));
+            }
+            if ((adjaftr2.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[161].Value = ((decimal)(adjaftr2.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[161].Value = global::System.DBNull.Value;
+            }
+            if ((desc22tot.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[162].Value = ((decimal)(desc22tot.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[162].Value = global::System.DBNull.Value;
+            }
+            if ((prcor.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[163].Value = ((decimal)(prcor.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[163].Value = global::System.DBNull.Value;
+            }
+            if ((adcuto.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[164].Value = ((System.DateTime)(adcuto.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[164].Value = global::System.DBNull.Value;
+            }
+            if ((webonly.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[165].Value = ((bool)(webonly.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[165].Value = global::System.DBNull.Value;
+            }
+            if ((totalsoldonline.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[166].Value = ((int)(totalsoldonline.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[166].Value = global::System.DBNull.Value;
+            }
+            if ((totalpersonline.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[167].Value = ((int)(totalpersonline.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[167].Value = global::System.DBNull.Value;
+            }
+            if ((totaldollarsonline.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[168].Value = ((decimal)(totaldollarsonline.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[168].Value = global::System.DBNull.Value;
+            }
+            if ((freebooks.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[169].Value = ((int)(freebooks.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[169].Value = global::System.DBNull.Value;
+            }
+            if ((totalads.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[170].Value = ((int)(totalads.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[170].Value = global::System.DBNull.Value;
+            }
+            if ((totallovelines.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[171].Value = ((int)(totallovelines.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[171].Value = global::System.DBNull.Value;
+            }
+            if ((onlinenotes == null)) {
+                this.Adapter.InsertCommand.Parameters[172].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[172].Value = ((string)(onlinenotes));
+            }
+            if ((ModifiedBy == null)) {
+                this.Adapter.InsertCommand.Parameters[173].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[173].Value = ((string)(ModifiedBy));
+            }
+            if ((DateModified.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[174].Value = ((System.DateTime)(DateModified.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[174].Value = global::System.DBNull.Value;
+            }
+            if ((DateCreated.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[175].Value = ((System.DateTime)(DateCreated.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[175].Value = global::System.DBNull.Value;
+            }
+            if ((IconCopies.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[176].Value = ((int)(IconCopies.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[176].Value = global::System.DBNull.Value;
+            }
+            if ((IconAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[177].Value = ((decimal)(IconAmt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[177].Value = global::System.DBNull.Value;
+            }
+            if ((extrchg == null)) {
+                this.Adapter.InsertCommand.Parameters[178].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[178].Value = ((string)(extrchg));
+            }
+            if ((schooltaxrate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[179].Value = ((decimal)(schooltaxrate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[179].Value = global::System.DBNull.Value;
+            }
             if ((schcode == null)) {
                 throw new global::System.ArgumentNullException("schcode");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(schcode));
+                this.Adapter.InsertCommand.Parameters[180].Value = ((string)(schcode));
             }
-            if ((prodno == null)) {
-                throw new global::System.ArgumentNullException("prodno");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(prodno));
-            }
-            if ((booktype == null)) {
-                throw new global::System.ArgumentNullException("booktype");
+            if ((donotchargeschoolsalestax.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[181].Value = ((bool)(donotchargeschoolsalestax.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(booktype));
+                this.Adapter.InsertCommand.Parameters[181].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(qtedate));
-            if ((contryear == null)) {
-                throw new global::System.ArgumentNullException("contryear");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(contryear));
-            }
-            this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(nopages));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((decimal)(nocopies));
-            this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(book_ea));
-            this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(book_price));
-            this.Adapter.InsertCommand.Parameters[10].Value = ((bool)(pryn));
-            this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(prof));
-            this.Adapter.InsertCommand.Parameters[12].Value = ((bool)(coyn));
-            this.Adapter.InsertCommand.Parameters[13].Value = ((decimal)(conven));
-            this.Adapter.InsertCommand.Parameters[14].Value = ((decimal)(specea));
-            this.Adapter.InsertCommand.Parameters[15].Value = ((decimal)(speccvr));
-            this.Adapter.InsertCommand.Parameters[16].Value = ((bool)(scovrde));
-            this.Adapter.InsertCommand.Parameters[17].Value = ((bool)(layn));
-            this.Adapter.InsertCommand.Parameters[18].Value = ((decimal)(laminate));
-            this.Adapter.InsertCommand.Parameters[19].Value = ((bool)(peyn));
-            this.Adapter.InsertCommand.Parameters[20].Value = ((decimal)(perfbind));
-            this.Adapter.InsertCommand.Parameters[21].Value = ((bool)(foilck));
-            this.Adapter.InsertCommand.Parameters[22].Value = ((decimal)(foilamt));
-            this.Adapter.InsertCommand.Parameters[23].Value = ((bool)(insck));
-            this.Adapter.InsertCommand.Parameters[24].Value = ((decimal)(insamt));
-            this.Adapter.InsertCommand.Parameters[25].Value = ((bool)(spirck));
-            this.Adapter.InsertCommand.Parameters[26].Value = ((decimal)(spiramt));
-            this.Adapter.InsertCommand.Parameters[27].Value = ((bool)(hdbky_n));
-            this.Adapter.InsertCommand.Parameters[28].Value = ((decimal)(hardback));
-            this.Adapter.InsertCommand.Parameters[29].Value = ((bool)(casey_n));
-            this.Adapter.InsertCommand.Parameters[30].Value = ((decimal)(caseamt));
-            this.Adapter.InsertCommand.Parameters[31].Value = ((bool)(customy_n));
-            this.Adapter.InsertCommand.Parameters[32].Value = ((decimal)(customized));
-            this.Adapter.InsertCommand.Parameters[33].Value = ((decimal)(misc));
-            if ((mdesc == null)) {
-                throw new global::System.ArgumentNullException("mdesc");
+            if ((nopages.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[182].Value = ((int)(nopages.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[34].Value = ((string)(mdesc));
+                this.Adapter.InsertCommand.Parameters[182].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[35].Value = ((decimal)(sbtot));
-            this.Adapter.InsertCommand.Parameters[36].Value = ((bool)(dc1));
-            this.Adapter.InsertCommand.Parameters[37].Value = ((decimal)(dp1));
-            this.Adapter.InsertCommand.Parameters[38].Value = ((decimal)(disc1));
-            this.Adapter.InsertCommand.Parameters[39].Value = ((bool)(dc2));
-            this.Adapter.InsertCommand.Parameters[40].Value = ((decimal)(dp2));
-            this.Adapter.InsertCommand.Parameters[41].Value = ((decimal)(disc2));
-            if ((dp3desc == null)) {
-                throw new global::System.ArgumentNullException("dp3desc");
+            if ((nocopies.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[183].Value = ((int)(nocopies.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[42].Value = ((string)(dp3desc));
+                this.Adapter.InsertCommand.Parameters[183].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[43].Value = ((decimal)(dp3));
-            this.Adapter.InsertCommand.Parameters[44].Value = ((decimal)(disc3));
-            this.Adapter.InsertCommand.Parameters[45].Value = ((decimal)(dp4));
-            this.Adapter.InsertCommand.Parameters[46].Value = ((decimal)(disc4));
-            if ((cred_etc == null)) {
-                throw new global::System.ArgumentNullException("cred_etc");
+            if ((schooltax.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[184].Value = ((decimal)(schooltax.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[47].Value = ((string)(cred_etc));
+                this.Adapter.InsertCommand.Parameters[184].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[48].Value = ((decimal)(adjbef));
-            this.Adapter.InsertCommand.Parameters[49].Value = ((decimal)(adjaftr));
-            this.Adapter.InsertCommand.Parameters[50].Value = ((decimal)(fbkprc));
-            this.Adapter.InsertCommand.Parameters[51].Value = ((decimal)(ftotprc));
-            if ((source == null)) {
-                throw new global::System.ArgumentNullException("source");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[52].Value = ((string)(source));
-            }
-            this.Adapter.InsertCommand.Parameters[53].Value = ((decimal)(xtrabkno));
-            this.Adapter.InsertCommand.Parameters[54].Value = ((decimal)(xtrabkprc));
-            if ((desc1 == null)) {
-                throw new global::System.ArgumentNullException("desc1");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[55].Value = ((string)(desc1));
-            }
-            this.Adapter.InsertCommand.Parameters[56].Value = ((decimal)(desc1tot));
-            if ((desc2 == null)) {
-                throw new global::System.ArgumentNullException("desc2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[57].Value = ((string)(desc2));
-            }
-            this.Adapter.InsertCommand.Parameters[58].Value = ((decimal)(desc2tot));
-            if ((ponum == null)) {
-                throw new global::System.ArgumentNullException("ponum");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[59].Value = ((string)(ponum));
-            }
-            this.Adapter.InsertCommand.Parameters[60].Value = ((bool)(invoiced));
-            this.Adapter.InsertCommand.Parameters[61].Value = ((bool)(newprice));
-            this.Adapter.InsertCommand.Parameters[62].Value = ((System.DateTime)(schout));
-            this.Adapter.InsertCommand.Parameters[63].Value = ((decimal)(saletax));
-            this.Adapter.InsertCommand.Parameters[64].Value = ((bool)(allclrck));
-            this.Adapter.InsertCommand.Parameters[65].Value = ((decimal)(allclramt));
-            if ((inkclr == null)) {
-                throw new global::System.ArgumentNullException("inkclr");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[66].Value = ((string)(inkclr));
-            }
-            this.Adapter.InsertCommand.Parameters[67].Value = ((decimal)(foiladamt));
-            if ((desc3 == null)) {
-                throw new global::System.ArgumentNullException("desc3");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[68].Value = ((string)(desc3));
-            }
-            this.Adapter.InsertCommand.Parameters[69].Value = ((decimal)(desc3tot));
-            if ((desc4 == null)) {
-                throw new global::System.ArgumentNullException("desc4");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[70].Value = ((string)(desc4));
-            }
-            this.Adapter.InsertCommand.Parameters[71].Value = ((decimal)(desc4tot));
-            if ((clrpgdesc == null)) {
-                throw new global::System.ArgumentNullException("clrpgdesc");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[72].Value = ((string)(clrpgdesc));
-            }
-            this.Adapter.InsertCommand.Parameters[73].Value = ((decimal)(clrpgtot));
-            this.Adapter.InsertCommand.Parameters[74].Value = ((bool)(glspaper));
-            this.Adapter.InsertCommand.Parameters[75].Value = ((decimal)(glsamt));
-            this.Adapter.InsertCommand.Parameters[76].Value = ((bool)(acovrde));
-            this.Adapter.InsertCommand.Parameters[77].Value = ((bool)(bpovrde));
-            this.Adapter.InsertCommand.Parameters[78].Value = ((bool)(holdpmt));
-            if ((bpyear == null)) {
-                throw new global::System.ArgumentNullException("bpyear");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[79].Value = ((string)(bpyear));
-            }
-            this.Adapter.InsertCommand.Parameters[80].Value = ((bool)(themck));
-            this.Adapter.InsertCommand.Parameters[81].Value = ((decimal)(themamt));
-            this.Adapter.InsertCommand.Parameters[82].Value = ((bool)(yirschool));
-            this.Adapter.InsertCommand.Parameters[83].Value = ((bool)(story));
-            this.Adapter.InsertCommand.Parameters[84].Value = ((bool)(supplements));
-            this.Adapter.InsertCommand.Parameters[85].Value = ((decimal)(yiramt));
-            this.Adapter.InsertCommand.Parameters[86].Value = ((decimal)(storyamt));
-            this.Adapter.InsertCommand.Parameters[87].Value = ((decimal)(suppamt));
-            this.Adapter.InsertCommand.Parameters[88].Value = ((decimal)(persamount));
-            this.Adapter.InsertCommand.Parameters[89].Value = ((decimal)(perstotal));
-            this.Adapter.InsertCommand.Parameters[90].Value = ((int)(perscopies));
-            this.Adapter.InsertCommand.Parameters[91].Value = ((bool)(oursupp));
-            this.Adapter.InsertCommand.Parameters[92].Value = ((decimal)(oursuppamt));
-            this.Adapter.InsertCommand.Parameters[93].Value = ((bool)(ourovrride));
-            if ((dp1desc == null)) {
-                throw new global::System.ArgumentNullException("dp1desc");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[94].Value = ((string)(dp1desc));
-            }
-            this.Adapter.InsertCommand.Parameters[95].Value = ((bool)(rebookinvremv));
-            this.Adapter.InsertCommand.Parameters[96].Value = ((bool)(rebookinvremv1));
-            this.Adapter.InsertCommand.Parameters[97].Value = ((bool)(rebookinvremv2));
-            this.Adapter.InsertCommand.Parameters[98].Value = ((bool)(rebookinvremv3));
-            this.Adapter.InsertCommand.Parameters[99].Value = ((bool)(rebookinvremv4));
-            this.Adapter.InsertCommand.Parameters[100].Value = ((bool)(rebookinvremv5));
-            this.Adapter.InsertCommand.Parameters[101].Value = ((bool)(rebookinvremv6));
-            this.Adapter.InsertCommand.Parameters[102].Value = ((bool)(norebookletter));
-            this.Adapter.InsertCommand.Parameters[103].Value = ((bool)(myovrride));
-            this.Adapter.InsertCommand.Parameters[104].Value = ((bool)(hbovrride));
-            this.Adapter.InsertCommand.Parameters[105].Value = ((bool)(profovrride));
-            this.Adapter.InsertCommand.Parameters[106].Value = ((bool)(conovrride));
-            this.Adapter.InsertCommand.Parameters[107].Value = ((bool)(themovrride));
-            this.Adapter.InsertCommand.Parameters[108].Value = ((bool)(cbovrride));
-            this.Adapter.InsertCommand.Parameters[109].Value = ((bool)(spiovrride));
-            this.Adapter.InsertCommand.Parameters[110].Value = ((bool)(pbovrride));
-            this.Adapter.InsertCommand.Parameters[111].Value = ((bool)(yirsovrride));
-            this.Adapter.InsertCommand.Parameters[112].Value = ((bool)(ourstyovrride));
-            this.Adapter.InsertCommand.Parameters[113].Value = ((bool)(laminateovrride));
-            this.Adapter.InsertCommand.Parameters[114].Value = ((bool)(foilyearovrride));
-            this.Adapter.InsertCommand.Parameters[115].Value = ((bool)(sdlstich));
-            this.Adapter.InsertCommand.Parameters[116].Value = ((decimal)(sdlstichamt));
-            this.Adapter.InsertCommand.Parameters[117].Value = ((bool)(copiesovride));
-            this.Adapter.InsertCommand.Parameters[118].Value = ((bool)(bascicpp));
-            this.Adapter.InsertCommand.Parameters[119].Value = ((bool)(perpp));
-            this.Adapter.InsertCommand.Parameters[120].Value = ((bool)(agreerec));
-            this.Adapter.InsertCommand.Parameters[121].Value = ((decimal)(basicamoun));
-            this.Adapter.InsertCommand.Parameters[122].Value = ((decimal)(peramount));
-            this.Adapter.InsertCommand.Parameters[123].Value = ((decimal)(oprcperbk));
-            this.Adapter.InsertCommand.Parameters[124].Value = ((decimal)(oprcperbk2));
-            this.Adapter.InsertCommand.Parameters[125].Value = ((System.DateTime)(agreedte));
-            this.Adapter.InsertCommand.Parameters[126].Value = ((System.DateTime)(onlinecuto));
-            this.Adapter.InsertCommand.Parameters[127].Value = ((bool)(basicpp));
-            this.Adapter.InsertCommand.Parameters[128].Value = ((decimal)(msstanqty));
-            this.Adapter.InsertCommand.Parameters[129].Value = ((decimal)(msstandtot));
-            if ((fldtype == null)) {
-                throw new global::System.ArgumentNullException("fldtype");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[130].Value = ((string)(fldtype));
-            }
-            this.Adapter.InsertCommand.Parameters[131].Value = ((bool)(isfolder));
-            this.Adapter.InsertCommand.Parameters[132].Value = ((decimal)(priceovrd));
-            this.Adapter.InsertCommand.Parameters[133].Value = ((decimal)(mlamsoft));
-            this.Adapter.InsertCommand.Parameters[134].Value = ((decimal)(mlamhrd));
-            this.Adapter.InsertCommand.Parameters[135].Value = ((decimal)(mlaminationamt));
-            this.Adapter.InsertCommand.Parameters[136].Value = ((bool)(mlamination));
-            this.Adapter.InsertCommand.Parameters[137].Value = ((bool)(opinkpers));
-            this.Adapter.InsertCommand.Parameters[138].Value = ((bool)(opfoilpers));
-            this.Adapter.InsertCommand.Parameters[139].Value = ((decimal)(opinkpersamt));
-            this.Adapter.InsertCommand.Parameters[140].Value = ((decimal)(opfoilpersamt));
-            this.Adapter.InsertCommand.Parameters[141].Value = ((bool)(oppicpers));
-            this.Adapter.InsertCommand.Parameters[142].Value = ((decimal)(oppicpersamt));
-            this.Adapter.InsertCommand.Parameters[143].Value = ((bool)(opcustom));
-            this.Adapter.InsertCommand.Parameters[144].Value = ((decimal)(opcustomamt));
-            this.Adapter.InsertCommand.Parameters[145].Value = ((decimal)(opfoiltxtamt));
-            this.Adapter.InsertCommand.Parameters[146].Value = ((bool)(opfoiltxt));
-            this.Adapter.InsertCommand.Parameters[147].Value = ((decimal)(opinkamt));
-            this.Adapter.InsertCommand.Parameters[148].Value = ((bool)(opink));
-            this.Adapter.InsertCommand.Parameters[149].Value = ((bool)(yrdiscount));
-            this.Adapter.InsertCommand.Parameters[150].Value = ((bool)(luvlines));
-            this.Adapter.InsertCommand.Parameters[151].Value = ((decimal)(yrdiscountamt));
-            this.Adapter.InsertCommand.Parameters[152].Value = ((decimal)(luvlineamt));
-            this.Adapter.InsertCommand.Parameters[153].Value = ((bool)(fullad));
-            this.Adapter.InsertCommand.Parameters[154].Value = ((decimal)(fulladamt));
-            this.Adapter.InsertCommand.Parameters[155].Value = ((bool)(halfad));
-            this.Adapter.InsertCommand.Parameters[156].Value = ((decimal)(halfadamt));
-            this.Adapter.InsertCommand.Parameters[157].Value = ((bool)(quarterad));
-            this.Adapter.InsertCommand.Parameters[158].Value = ((decimal)(quarteradamt));
-            this.Adapter.InsertCommand.Parameters[159].Value = ((bool)(eighthad));
-            this.Adapter.InsertCommand.Parameters[160].Value = ((decimal)(eighthadamt));
-            this.Adapter.InsertCommand.Parameters[161].Value = ((bool)(adline));
-            if ((cred_etc2 == null)) {
-                throw new global::System.ArgumentNullException("cred_etc2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[162].Value = ((string)(cred_etc2));
-            }
-            if ((desc22 == null)) {
-                throw new global::System.ArgumentNullException("desc22");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[163].Value = ((string)(desc22));
-            }
-            this.Adapter.InsertCommand.Parameters[164].Value = ((decimal)(adjaftr2));
-            this.Adapter.InsertCommand.Parameters[165].Value = ((decimal)(desc22tot));
-            this.Adapter.InsertCommand.Parameters[166].Value = ((decimal)(prcor));
-            this.Adapter.InsertCommand.Parameters[167].Value = ((System.DateTime)(adcuto));
-            this.Adapter.InsertCommand.Parameters[168].Value = ((bool)(webonly));
-            this.Adapter.InsertCommand.Parameters[169].Value = ((int)(totalsoldonline));
-            this.Adapter.InsertCommand.Parameters[170].Value = ((int)(totalpersonline));
-            this.Adapter.InsertCommand.Parameters[171].Value = ((decimal)(totaldollarsonline));
-            this.Adapter.InsertCommand.Parameters[172].Value = ((int)(freebooks));
-            this.Adapter.InsertCommand.Parameters[173].Value = ((int)(totalads));
-            this.Adapter.InsertCommand.Parameters[174].Value = ((int)(totallovelines));
-            if ((onlinenotes == null)) {
-                throw new global::System.ArgumentNullException("onlinenotes");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[175].Value = ((string)(onlinenotes));
-            }
-            if ((ModifiedBy == null)) {
-                throw new global::System.ArgumentNullException("ModifiedBy");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[176].Value = ((string)(ModifiedBy));
-            }
-            this.Adapter.InsertCommand.Parameters[177].Value = ((System.DateTime)(DateModified));
-            this.Adapter.InsertCommand.Parameters[178].Value = ((System.DateTime)(DateCreated));
-            this.Adapter.InsertCommand.Parameters[179].Value = ((int)(IconCopies));
-            this.Adapter.InsertCommand.Parameters[180].Value = ((decimal)(IconAmt));
-            if ((extrchg == null)) {
-                throw new global::System.ArgumentNullException("extrchg");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[181].Value = ((string)(extrchg));
-            }
-            this.Adapter.InsertCommand.Parameters[182].Value = ((decimal)(schooltax));
-            this.Adapter.InsertCommand.Parameters[183].Value = ((decimal)(schooltaxrate));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -16231,13 +17461,10 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     int invno, 
-                    string schcode, 
                     string prodno, 
                     string booktype, 
                     global::System.Nullable<global::System.DateTime> qtedate, 
                     string contryear, 
-                    global::System.Nullable<int> nopages, 
-                    global::System.Nullable<int> nocopies, 
                     global::System.Nullable<decimal> book_ea, 
                     global::System.Nullable<decimal> book_price, 
                     global::System.Nullable<bool> pryn, 
@@ -16412,1115 +17639,1125 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<int> IconCopies, 
                     global::System.Nullable<decimal> IconAmt, 
                     string extrchg, 
-                    global::System.Nullable<decimal> schooltax, 
                     global::System.Nullable<decimal> schooltaxrate, 
+                    string schcode, 
+                    global::System.Nullable<bool> donotchargeschoolsalestax, 
+                    global::System.Nullable<int> nopages, 
+                    global::System.Nullable<int> nocopies, 
+                    global::System.Nullable<decimal> schooltax, 
                     int Original_invno, 
                     byte[] Original_TimeStamp) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(invno));
-            if ((schcode == null)) {
-                throw new global::System.ArgumentNullException("schcode");
+            if ((prodno == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(schcode));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(prodno));
             }
-            if ((prodno == null)) {
+            if ((booktype == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(prodno));
-            }
-            if ((booktype == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(booktype));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(booktype));
             }
             if ((qtedate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(qtedate.Value));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(qtedate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((contryear == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(contryear));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(contryear));
             }
-            if ((nopages.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(nopages.Value));
+            if ((book_ea.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(book_ea.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((book_price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(book_price.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((nocopies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(nocopies.Value));
+            if ((pryn.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(pryn.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((book_ea.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(book_ea.Value));
+            if ((prof.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(prof.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((book_price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(book_price.Value));
+            if ((coyn.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((bool)(coyn.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((pryn.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(pryn.Value));
+            if ((conven.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(conven.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((prof.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(prof.Value));
+            if ((specea.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(specea.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((coyn.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(coyn.Value));
+            if ((speccvr.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(speccvr.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((conven.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(conven.Value));
+            if ((scovrde.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(scovrde.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((specea.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(specea.Value));
+            if ((layn.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((bool)(layn.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((speccvr.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(speccvr.Value));
+            if ((laminate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(laminate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            if ((scovrde.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((bool)(scovrde.Value));
+            if ((peyn.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((bool)(peyn.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((layn.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((bool)(layn.Value));
+            if ((perfbind.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((decimal)(perfbind.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((laminate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((decimal)(laminate.Value));
+            if ((foilck.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((bool)(foilck.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            if ((peyn.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((bool)(peyn.Value));
+            if ((foilamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((decimal)(foilamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
-            if ((perfbind.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((decimal)(perfbind.Value));
+            if ((insck.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((bool)(insck.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            if ((foilck.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((bool)(foilck.Value));
+            if ((insamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((decimal)(insamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
-            if ((foilamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((decimal)(foilamt.Value));
+            if ((spirck.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((bool)(spirck.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            if ((insck.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((bool)(insck.Value));
+            if ((spiramt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((decimal)(spiramt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            if ((insamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((decimal)(insamt.Value));
+            if ((hdbky_n.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((bool)(hdbky_n.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            if ((spirck.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((bool)(spirck.Value));
+            if ((hardback.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((decimal)(hardback.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
-            if ((spiramt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(spiramt.Value));
+            if ((casey_n.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((bool)(casey_n.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
-            if ((hdbky_n.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((bool)(hdbky_n.Value));
+            if ((caseamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((decimal)(caseamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
-            if ((hardback.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((decimal)(hardback.Value));
+            if ((customy_n.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((bool)(customy_n.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
-            if ((casey_n.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((bool)(casey_n.Value));
+            if ((customized.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((decimal)(customized.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
-            if ((caseamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((decimal)(caseamt.Value));
+            if ((misc.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((decimal)(misc.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
-            if ((customy_n.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((bool)(customy_n.Value));
-            }
-            else {
+            if ((mdesc == null)) {
                 this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
-            if ((customized.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((decimal)(customized.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(mdesc));
+            }
+            if ((sbtot.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((decimal)(sbtot.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
-            if ((misc.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((decimal)(misc.Value));
+            if ((dc1.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((bool)(dc1.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
-            if ((mdesc == null)) {
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+            if ((dp1.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((decimal)(dp1.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(mdesc));
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
-            if ((sbtot.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((decimal)(sbtot.Value));
+            if ((disc1.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((decimal)(disc1.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
-            if ((dc1.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((bool)(dc1.Value));
+            if ((dc2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((bool)(dc2.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
-            if ((dp1.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((decimal)(dp1.Value));
+            if ((dp2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((decimal)(dp2.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
-            if ((disc1.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((decimal)(disc1.Value));
+            if ((disc2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((decimal)(disc2.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
-            if ((dc2.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((bool)(dc2.Value));
-            }
-            else {
+            if ((dp3desc == null)) {
                 this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
-            if ((dp2.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((decimal)(dp2.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((string)(dp3desc));
+            }
+            if ((dp3.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((decimal)(dp3.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
-            if ((disc2.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((decimal)(disc2.Value));
+            if ((disc3.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((decimal)(disc3.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
-            if ((dp3desc == null)) {
-                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+            if ((dp4.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((decimal)(dp4.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(dp3desc));
+                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
-            if ((dp3.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((decimal)(dp3.Value));
+            if ((disc4.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((decimal)(disc4.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
-            if ((disc3.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((decimal)(disc3.Value));
-            }
-            else {
+            if ((cred_etc == null)) {
                 this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
             }
-            if ((dp4.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((decimal)(dp4.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((string)(cred_etc));
+            }
+            if ((adjbef.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((decimal)(adjbef.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
             }
-            if ((disc4.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((decimal)(disc4.Value));
+            if ((adjaftr.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((decimal)(adjaftr.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
             }
-            if ((cred_etc == null)) {
-                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
+            if ((fbkprc.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((decimal)(fbkprc.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((string)(cred_etc));
+                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
             }
-            if ((adjbef.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((decimal)(adjbef.Value));
+            if ((ftotprc.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((decimal)(ftotprc.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
             }
-            if ((adjaftr.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((decimal)(adjaftr.Value));
-            }
-            else {
+            if ((source == null)) {
                 this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
             }
-            if ((fbkprc.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((decimal)(fbkprc.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((string)(source));
+            }
+            if ((xtrabkno.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((decimal)(xtrabkno.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
             }
-            if ((ftotprc.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((decimal)(ftotprc.Value));
+            if ((xtrabkprc.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((decimal)(xtrabkprc.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
             }
-            if ((source == null)) {
+            if ((desc1 == null)) {
                 this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((string)(source));
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((string)(desc1));
             }
-            if ((xtrabkno.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[53].Value = ((decimal)(xtrabkno.Value));
+            if ((desc1tot.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((decimal)(desc1tot.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
             }
-            if ((xtrabkprc.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((decimal)(xtrabkprc.Value));
-            }
-            else {
+            if ((desc2 == null)) {
                 this.Adapter.UpdateCommand.Parameters[54].Value = global::System.DBNull.Value;
             }
-            if ((desc1 == null)) {
-                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[55].Value = ((string)(desc1));
-            }
-            if ((desc1tot.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[56].Value = ((decimal)(desc1tot.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[56].Value = global::System.DBNull.Value;
-            }
-            if ((desc2 == null)) {
-                this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[57].Value = ((string)(desc2));
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((string)(desc2));
             }
             if ((desc2tot.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((decimal)(desc2tot.Value));
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((decimal)(desc2tot.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
+            }
+            if ((ponum == null)) {
+                this.Adapter.UpdateCommand.Parameters[56].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((string)(ponum));
+            }
+            if ((invoiced.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((bool)(invoiced.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
+            }
+            if ((newprice.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((bool)(newprice.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[58].Value = global::System.DBNull.Value;
             }
-            if ((ponum == null)) {
-                this.Adapter.UpdateCommand.Parameters[59].Value = global::System.DBNull.Value;
+            if ((schout.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((System.DateTime)(schout.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((string)(ponum));
+                this.Adapter.UpdateCommand.Parameters[59].Value = global::System.DBNull.Value;
             }
-            if ((invoiced.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((bool)(invoiced.Value));
+            if ((saletax.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((decimal)(saletax.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[60].Value = global::System.DBNull.Value;
             }
-            if ((newprice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[61].Value = ((bool)(newprice.Value));
+            if ((allclrck.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((bool)(allclrck.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[61].Value = global::System.DBNull.Value;
             }
-            if ((schout.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[62].Value = ((System.DateTime)(schout.Value));
+            if ((allclramt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((decimal)(allclramt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[62].Value = global::System.DBNull.Value;
             }
-            if ((saletax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[63].Value = ((decimal)(saletax.Value));
-            }
-            else {
+            if ((inkclr == null)) {
                 this.Adapter.UpdateCommand.Parameters[63].Value = global::System.DBNull.Value;
             }
-            if ((allclrck.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[64].Value = ((bool)(allclrck.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((string)(inkclr));
+            }
+            if ((foiladamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((decimal)(foiladamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[64].Value = global::System.DBNull.Value;
             }
-            if ((allclramt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[65].Value = ((decimal)(allclramt.Value));
-            }
-            else {
+            if ((desc3 == null)) {
                 this.Adapter.UpdateCommand.Parameters[65].Value = global::System.DBNull.Value;
             }
-            if ((inkclr == null)) {
-                this.Adapter.UpdateCommand.Parameters[66].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[66].Value = ((string)(inkclr));
-            }
-            if ((foiladamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[67].Value = ((decimal)(foiladamt.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[67].Value = global::System.DBNull.Value;
-            }
-            if ((desc3 == null)) {
-                this.Adapter.UpdateCommand.Parameters[68].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[68].Value = ((string)(desc3));
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((string)(desc3));
             }
             if ((desc3tot.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[69].Value = ((decimal)(desc3tot.Value));
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((decimal)(desc3tot.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[69].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[66].Value = global::System.DBNull.Value;
             }
             if ((desc4 == null)) {
-                this.Adapter.UpdateCommand.Parameters[70].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[67].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[70].Value = ((string)(desc4));
+                this.Adapter.UpdateCommand.Parameters[67].Value = ((string)(desc4));
             }
             if ((desc4tot.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[71].Value = ((decimal)(desc4tot.Value));
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((decimal)(desc4tot.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[68].Value = global::System.DBNull.Value;
+            }
+            if ((clrpgdesc == null)) {
+                this.Adapter.UpdateCommand.Parameters[69].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[69].Value = ((string)(clrpgdesc));
+            }
+            if ((clrpgtot.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((decimal)(clrpgtot.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[70].Value = global::System.DBNull.Value;
+            }
+            if ((glspaper.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((bool)(glspaper.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[71].Value = global::System.DBNull.Value;
             }
-            if ((clrpgdesc == null)) {
-                this.Adapter.UpdateCommand.Parameters[72].Value = global::System.DBNull.Value;
+            if ((glsamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((decimal)(glsamt.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[72].Value = ((string)(clrpgdesc));
+                this.Adapter.UpdateCommand.Parameters[72].Value = global::System.DBNull.Value;
             }
-            if ((clrpgtot.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[73].Value = ((decimal)(clrpgtot.Value));
+            if ((acovrde.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((bool)(acovrde.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[73].Value = global::System.DBNull.Value;
             }
-            if ((glspaper.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((bool)(glspaper.Value));
+            if ((bpovrde.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((bool)(bpovrde.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[74].Value = global::System.DBNull.Value;
             }
-            if ((glsamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[75].Value = ((decimal)(glsamt.Value));
+            if ((holdpmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((bool)(holdpmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[75].Value = global::System.DBNull.Value;
             }
-            if ((acovrde.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((bool)(acovrde.Value));
-            }
-            else {
+            if ((bpyear == null)) {
                 this.Adapter.UpdateCommand.Parameters[76].Value = global::System.DBNull.Value;
             }
-            if ((bpovrde.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[77].Value = ((bool)(bpovrde.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((string)(bpyear));
+            }
+            if ((themck.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[77].Value = ((bool)(themck.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[77].Value = global::System.DBNull.Value;
             }
-            if ((holdpmt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[78].Value = ((bool)(holdpmt.Value));
+            if ((themamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((decimal)(themamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[78].Value = global::System.DBNull.Value;
             }
-            if ((bpyear == null)) {
-                this.Adapter.UpdateCommand.Parameters[79].Value = global::System.DBNull.Value;
+            if ((yirschool.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[79].Value = ((bool)(yirschool.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[79].Value = ((string)(bpyear));
+                this.Adapter.UpdateCommand.Parameters[79].Value = global::System.DBNull.Value;
             }
-            if ((themck.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[80].Value = ((bool)(themck.Value));
+            if ((story.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((bool)(story.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[80].Value = global::System.DBNull.Value;
             }
-            if ((themamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[81].Value = ((decimal)(themamt.Value));
+            if ((supplements.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((bool)(supplements.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[81].Value = global::System.DBNull.Value;
             }
-            if ((yirschool.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[82].Value = ((bool)(yirschool.Value));
+            if ((yiramt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((decimal)(yiramt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[82].Value = global::System.DBNull.Value;
             }
-            if ((story.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[83].Value = ((bool)(story.Value));
+            if ((storyamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[83].Value = ((decimal)(storyamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[83].Value = global::System.DBNull.Value;
             }
-            if ((supplements.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[84].Value = ((bool)(supplements.Value));
+            if ((suppamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((decimal)(suppamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[84].Value = global::System.DBNull.Value;
             }
-            if ((yiramt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[85].Value = ((decimal)(yiramt.Value));
+            if ((persamount.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((decimal)(persamount.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[85].Value = global::System.DBNull.Value;
             }
-            if ((storyamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[86].Value = ((decimal)(storyamt.Value));
+            if ((perstotal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[86].Value = ((decimal)(perstotal.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[86].Value = global::System.DBNull.Value;
             }
-            if ((suppamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[87].Value = ((decimal)(suppamt.Value));
+            if ((perscopies.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[87].Value = ((int)(perscopies.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[87].Value = global::System.DBNull.Value;
             }
-            if ((persamount.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[88].Value = ((decimal)(persamount.Value));
+            if ((oursupp.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((bool)(oursupp.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[88].Value = global::System.DBNull.Value;
             }
-            if ((perstotal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[89].Value = ((decimal)(perstotal.Value));
+            if ((oursuppamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((decimal)(oursuppamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[89].Value = global::System.DBNull.Value;
             }
-            if ((perscopies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[90].Value = ((int)(perscopies.Value));
+            if ((ourovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((bool)(ourovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[90].Value = global::System.DBNull.Value;
             }
-            if ((oursupp.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[91].Value = ((bool)(oursupp.Value));
-            }
-            else {
+            if ((dp1desc == null)) {
                 this.Adapter.UpdateCommand.Parameters[91].Value = global::System.DBNull.Value;
             }
-            if ((oursuppamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[92].Value = ((decimal)(oursuppamt.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((string)(dp1desc));
+            }
+            if ((rebookinvremv.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[92].Value = ((bool)(rebookinvremv.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[92].Value = global::System.DBNull.Value;
             }
-            if ((ourovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[93].Value = ((bool)(ourovrride.Value));
+            if ((rebookinvremv1.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[93].Value = ((bool)(rebookinvremv1.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[93].Value = global::System.DBNull.Value;
             }
-            if ((dp1desc == null)) {
-                this.Adapter.UpdateCommand.Parameters[94].Value = global::System.DBNull.Value;
+            if ((rebookinvremv2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[94].Value = ((bool)(rebookinvremv2.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[94].Value = ((string)(dp1desc));
+                this.Adapter.UpdateCommand.Parameters[94].Value = global::System.DBNull.Value;
             }
-            if ((rebookinvremv.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[95].Value = ((bool)(rebookinvremv.Value));
+            if ((rebookinvremv3.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[95].Value = ((bool)(rebookinvremv3.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[95].Value = global::System.DBNull.Value;
             }
-            if ((rebookinvremv1.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[96].Value = ((bool)(rebookinvremv1.Value));
+            if ((rebookinvremv4.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[96].Value = ((bool)(rebookinvremv4.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[96].Value = global::System.DBNull.Value;
             }
-            if ((rebookinvremv2.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[97].Value = ((bool)(rebookinvremv2.Value));
+            if ((rebookinvremv5.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[97].Value = ((bool)(rebookinvremv5.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[97].Value = global::System.DBNull.Value;
             }
-            if ((rebookinvremv3.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[98].Value = ((bool)(rebookinvremv3.Value));
+            if ((rebookinvremv6.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[98].Value = ((bool)(rebookinvremv6.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[98].Value = global::System.DBNull.Value;
             }
-            if ((rebookinvremv4.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[99].Value = ((bool)(rebookinvremv4.Value));
+            if ((norebookletter.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[99].Value = ((bool)(norebookletter.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[99].Value = global::System.DBNull.Value;
             }
-            if ((rebookinvremv5.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[100].Value = ((bool)(rebookinvremv5.Value));
+            if ((myovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[100].Value = ((bool)(myovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[100].Value = global::System.DBNull.Value;
             }
-            if ((rebookinvremv6.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[101].Value = ((bool)(rebookinvremv6.Value));
+            if ((hbovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[101].Value = ((bool)(hbovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[101].Value = global::System.DBNull.Value;
             }
-            if ((norebookletter.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[102].Value = ((bool)(norebookletter.Value));
+            if ((profovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[102].Value = ((bool)(profovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[102].Value = global::System.DBNull.Value;
             }
-            if ((myovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[103].Value = ((bool)(myovrride.Value));
+            if ((conovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[103].Value = ((bool)(conovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[103].Value = global::System.DBNull.Value;
             }
-            if ((hbovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[104].Value = ((bool)(hbovrride.Value));
+            if ((themovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[104].Value = ((bool)(themovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[104].Value = global::System.DBNull.Value;
             }
-            if ((profovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[105].Value = ((bool)(profovrride.Value));
+            if ((cbovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[105].Value = ((bool)(cbovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[105].Value = global::System.DBNull.Value;
             }
-            if ((conovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[106].Value = ((bool)(conovrride.Value));
+            if ((spiovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[106].Value = ((bool)(spiovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[106].Value = global::System.DBNull.Value;
             }
-            if ((themovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[107].Value = ((bool)(themovrride.Value));
+            if ((pbovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[107].Value = ((bool)(pbovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[107].Value = global::System.DBNull.Value;
             }
-            if ((cbovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[108].Value = ((bool)(cbovrride.Value));
+            if ((yirsovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[108].Value = ((bool)(yirsovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[108].Value = global::System.DBNull.Value;
             }
-            if ((spiovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[109].Value = ((bool)(spiovrride.Value));
+            if ((ourstyovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[109].Value = ((bool)(ourstyovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[109].Value = global::System.DBNull.Value;
             }
-            if ((pbovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[110].Value = ((bool)(pbovrride.Value));
+            if ((laminateovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[110].Value = ((bool)(laminateovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[110].Value = global::System.DBNull.Value;
             }
-            if ((yirsovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[111].Value = ((bool)(yirsovrride.Value));
+            if ((foilyearovrride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[111].Value = ((bool)(foilyearovrride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[111].Value = global::System.DBNull.Value;
             }
-            if ((ourstyovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[112].Value = ((bool)(ourstyovrride.Value));
+            if ((sdlstich.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[112].Value = ((bool)(sdlstich.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[112].Value = global::System.DBNull.Value;
             }
-            if ((laminateovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[113].Value = ((bool)(laminateovrride.Value));
+            if ((sdlstichamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[113].Value = ((decimal)(sdlstichamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[113].Value = global::System.DBNull.Value;
             }
-            if ((foilyearovrride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[114].Value = ((bool)(foilyearovrride.Value));
+            if ((copiesovride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[114].Value = ((bool)(copiesovride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[114].Value = global::System.DBNull.Value;
             }
-            if ((sdlstich.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[115].Value = ((bool)(sdlstich.Value));
+            if ((bascicpp.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[115].Value = ((bool)(bascicpp.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[115].Value = global::System.DBNull.Value;
             }
-            if ((sdlstichamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[116].Value = ((decimal)(sdlstichamt.Value));
+            if ((perpp.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[116].Value = ((bool)(perpp.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[116].Value = global::System.DBNull.Value;
             }
-            if ((copiesovride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[117].Value = ((bool)(copiesovride.Value));
+            if ((agreerec.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[117].Value = ((bool)(agreerec.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[117].Value = global::System.DBNull.Value;
             }
-            if ((bascicpp.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[118].Value = ((bool)(bascicpp.Value));
+            if ((basicamoun.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[118].Value = ((decimal)(basicamoun.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[118].Value = global::System.DBNull.Value;
             }
-            if ((perpp.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[119].Value = ((bool)(perpp.Value));
+            if ((peramount.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[119].Value = ((decimal)(peramount.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[119].Value = global::System.DBNull.Value;
             }
-            if ((agreerec.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[120].Value = ((bool)(agreerec.Value));
+            if ((oprcperbk.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[120].Value = ((decimal)(oprcperbk.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[120].Value = global::System.DBNull.Value;
             }
-            if ((basicamoun.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[121].Value = ((decimal)(basicamoun.Value));
+            if ((oprcperbk2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[121].Value = ((decimal)(oprcperbk2.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[121].Value = global::System.DBNull.Value;
             }
-            if ((peramount.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[122].Value = ((decimal)(peramount.Value));
+            if ((agreedte.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[122].Value = ((System.DateTime)(agreedte.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[122].Value = global::System.DBNull.Value;
             }
-            if ((oprcperbk.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[123].Value = ((decimal)(oprcperbk.Value));
+            if ((onlinecuto.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[123].Value = ((System.DateTime)(onlinecuto.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[123].Value = global::System.DBNull.Value;
             }
-            if ((oprcperbk2.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[124].Value = ((decimal)(oprcperbk2.Value));
+            if ((basicpp.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[124].Value = ((bool)(basicpp.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[124].Value = global::System.DBNull.Value;
             }
-            if ((agreedte.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[125].Value = ((System.DateTime)(agreedte.Value));
+            if ((msstanqty.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[125].Value = ((decimal)(msstanqty.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[125].Value = global::System.DBNull.Value;
             }
-            if ((onlinecuto.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[126].Value = ((System.DateTime)(onlinecuto.Value));
+            if ((msstandtot.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[126].Value = ((decimal)(msstandtot.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[126].Value = global::System.DBNull.Value;
             }
-            if ((basicpp.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[127].Value = ((bool)(basicpp.Value));
-            }
-            else {
+            if ((fldtype == null)) {
                 this.Adapter.UpdateCommand.Parameters[127].Value = global::System.DBNull.Value;
             }
-            if ((msstanqty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[128].Value = ((decimal)(msstanqty.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[127].Value = ((string)(fldtype));
+            }
+            if ((isfolder.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[128].Value = ((bool)(isfolder.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[128].Value = global::System.DBNull.Value;
             }
-            if ((msstandtot.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[129].Value = ((decimal)(msstandtot.Value));
+            if ((priceovrd.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[129].Value = ((decimal)(priceovrd.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[129].Value = global::System.DBNull.Value;
             }
-            if ((fldtype == null)) {
-                this.Adapter.UpdateCommand.Parameters[130].Value = global::System.DBNull.Value;
+            if ((mlamsoft.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[130].Value = ((decimal)(mlamsoft.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[130].Value = ((string)(fldtype));
+                this.Adapter.UpdateCommand.Parameters[130].Value = global::System.DBNull.Value;
             }
-            if ((isfolder.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[131].Value = ((bool)(isfolder.Value));
+            if ((mlamhrd.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[131].Value = ((decimal)(mlamhrd.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[131].Value = global::System.DBNull.Value;
             }
-            if ((priceovrd.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[132].Value = ((decimal)(priceovrd.Value));
+            if ((mlaminationamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[132].Value = ((decimal)(mlaminationamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[132].Value = global::System.DBNull.Value;
             }
-            if ((mlamsoft.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[133].Value = ((decimal)(mlamsoft.Value));
+            if ((mlamination.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[133].Value = ((bool)(mlamination.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[133].Value = global::System.DBNull.Value;
             }
-            if ((mlamhrd.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[134].Value = ((decimal)(mlamhrd.Value));
+            if ((opinkpers.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[134].Value = ((bool)(opinkpers.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[134].Value = global::System.DBNull.Value;
             }
-            if ((mlaminationamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[135].Value = ((decimal)(mlaminationamt.Value));
+            if ((opfoilpers.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[135].Value = ((bool)(opfoilpers.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[135].Value = global::System.DBNull.Value;
             }
-            if ((mlamination.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[136].Value = ((bool)(mlamination.Value));
+            if ((opinkpersamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[136].Value = ((decimal)(opinkpersamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[136].Value = global::System.DBNull.Value;
             }
-            if ((opinkpers.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[137].Value = ((bool)(opinkpers.Value));
+            if ((opfoilpersamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[137].Value = ((decimal)(opfoilpersamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[137].Value = global::System.DBNull.Value;
             }
-            if ((opfoilpers.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[138].Value = ((bool)(opfoilpers.Value));
+            if ((oppicpers.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[138].Value = ((bool)(oppicpers.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[138].Value = global::System.DBNull.Value;
             }
-            if ((opinkpersamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[139].Value = ((decimal)(opinkpersamt.Value));
+            if ((oppicpersamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[139].Value = ((decimal)(oppicpersamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[139].Value = global::System.DBNull.Value;
             }
-            if ((opfoilpersamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[140].Value = ((decimal)(opfoilpersamt.Value));
+            if ((opcustom.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[140].Value = ((bool)(opcustom.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[140].Value = global::System.DBNull.Value;
             }
-            if ((oppicpers.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[141].Value = ((bool)(oppicpers.Value));
+            if ((opcustomamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[141].Value = ((decimal)(opcustomamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[141].Value = global::System.DBNull.Value;
             }
-            if ((oppicpersamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[142].Value = ((decimal)(oppicpersamt.Value));
+            if ((opfoiltxtamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[142].Value = ((decimal)(opfoiltxtamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[142].Value = global::System.DBNull.Value;
             }
-            if ((opcustom.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[143].Value = ((bool)(opcustom.Value));
+            if ((opfoiltxt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[143].Value = ((bool)(opfoiltxt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[143].Value = global::System.DBNull.Value;
             }
-            if ((opcustomamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[144].Value = ((decimal)(opcustomamt.Value));
+            if ((opinkamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[144].Value = ((decimal)(opinkamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[144].Value = global::System.DBNull.Value;
             }
-            if ((opfoiltxtamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[145].Value = ((decimal)(opfoiltxtamt.Value));
+            if ((opink.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[145].Value = ((bool)(opink.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[145].Value = global::System.DBNull.Value;
             }
-            if ((opfoiltxt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[146].Value = ((bool)(opfoiltxt.Value));
+            if ((yrdiscount.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[146].Value = ((bool)(yrdiscount.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[146].Value = global::System.DBNull.Value;
             }
-            if ((opinkamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[147].Value = ((decimal)(opinkamt.Value));
+            if ((luvlines.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[147].Value = ((bool)(luvlines.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[147].Value = global::System.DBNull.Value;
             }
-            if ((opink.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[148].Value = ((bool)(opink.Value));
+            if ((yrdiscountamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[148].Value = ((decimal)(yrdiscountamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[148].Value = global::System.DBNull.Value;
             }
-            if ((yrdiscount.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[149].Value = ((bool)(yrdiscount.Value));
+            if ((luvlineamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[149].Value = ((decimal)(luvlineamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[149].Value = global::System.DBNull.Value;
             }
-            if ((luvlines.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[150].Value = ((bool)(luvlines.Value));
+            if ((fullad.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[150].Value = ((bool)(fullad.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[150].Value = global::System.DBNull.Value;
             }
-            if ((yrdiscountamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[151].Value = ((decimal)(yrdiscountamt.Value));
+            if ((fulladamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[151].Value = ((decimal)(fulladamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[151].Value = global::System.DBNull.Value;
             }
-            if ((luvlineamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[152].Value = ((decimal)(luvlineamt.Value));
+            if ((halfad.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[152].Value = ((bool)(halfad.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[152].Value = global::System.DBNull.Value;
             }
-            if ((fullad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[153].Value = ((bool)(fullad.Value));
+            if ((halfadamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[153].Value = ((decimal)(halfadamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[153].Value = global::System.DBNull.Value;
             }
-            if ((fulladamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[154].Value = ((decimal)(fulladamt.Value));
+            if ((quarterad.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[154].Value = ((bool)(quarterad.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[154].Value = global::System.DBNull.Value;
             }
-            if ((halfad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[155].Value = ((bool)(halfad.Value));
+            if ((quarteradamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[155].Value = ((decimal)(quarteradamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[155].Value = global::System.DBNull.Value;
             }
-            if ((halfadamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[156].Value = ((decimal)(halfadamt.Value));
+            if ((eighthad.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[156].Value = ((bool)(eighthad.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[156].Value = global::System.DBNull.Value;
             }
-            if ((quarterad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[157].Value = ((bool)(quarterad.Value));
+            if ((eighthadamt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[157].Value = ((decimal)(eighthadamt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[157].Value = global::System.DBNull.Value;
             }
-            if ((quarteradamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[158].Value = ((decimal)(quarteradamt.Value));
+            if ((adline.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[158].Value = ((bool)(adline.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[158].Value = global::System.DBNull.Value;
             }
-            if ((eighthad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[159].Value = ((bool)(eighthad.Value));
-            }
-            else {
+            if ((cred_etc2 == null)) {
                 this.Adapter.UpdateCommand.Parameters[159].Value = global::System.DBNull.Value;
             }
-            if ((eighthadamt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[160].Value = ((decimal)(eighthadamt.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[159].Value = ((string)(cred_etc2));
+            }
+            if ((desc22 == null)) {
                 this.Adapter.UpdateCommand.Parameters[160].Value = global::System.DBNull.Value;
             }
-            if ((adline.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[161].Value = ((bool)(adline.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[160].Value = ((string)(desc22));
+            }
+            if ((adjaftr2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[161].Value = ((decimal)(adjaftr2.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[161].Value = global::System.DBNull.Value;
             }
-            if ((cred_etc2 == null)) {
+            if ((desc22tot.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[162].Value = ((decimal)(desc22tot.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[162].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[162].Value = ((string)(cred_etc2));
+            if ((prcor.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[163].Value = ((decimal)(prcor.Value));
             }
-            if ((desc22 == null)) {
+            else {
                 this.Adapter.UpdateCommand.Parameters[163].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[163].Value = ((string)(desc22));
-            }
-            if ((adjaftr2.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[164].Value = ((decimal)(adjaftr2.Value));
+            if ((adcuto.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[164].Value = ((System.DateTime)(adcuto.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[164].Value = global::System.DBNull.Value;
             }
-            if ((desc22tot.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[165].Value = ((decimal)(desc22tot.Value));
+            if ((webonly.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[165].Value = ((bool)(webonly.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[165].Value = global::System.DBNull.Value;
             }
-            if ((prcor.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[166].Value = ((decimal)(prcor.Value));
+            if ((totalsoldonline.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[166].Value = ((int)(totalsoldonline.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[166].Value = global::System.DBNull.Value;
             }
-            if ((adcuto.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[167].Value = ((System.DateTime)(adcuto.Value));
+            if ((totalpersonline.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[167].Value = ((int)(totalpersonline.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[167].Value = global::System.DBNull.Value;
             }
-            if ((webonly.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[168].Value = ((bool)(webonly.Value));
+            if ((totaldollarsonline.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[168].Value = ((decimal)(totaldollarsonline.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[168].Value = global::System.DBNull.Value;
             }
-            if ((totalsoldonline.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[169].Value = ((int)(totalsoldonline.Value));
+            if ((freebooks.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[169].Value = ((int)(freebooks.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[169].Value = global::System.DBNull.Value;
             }
-            if ((totalpersonline.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[170].Value = ((int)(totalpersonline.Value));
+            if ((totalads.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[170].Value = ((int)(totalads.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[170].Value = global::System.DBNull.Value;
             }
-            if ((totaldollarsonline.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[171].Value = ((decimal)(totaldollarsonline.Value));
+            if ((totallovelines.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[171].Value = ((int)(totallovelines.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[171].Value = global::System.DBNull.Value;
             }
-            if ((freebooks.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[172].Value = ((int)(freebooks.Value));
-            }
-            else {
+            if ((onlinenotes == null)) {
                 this.Adapter.UpdateCommand.Parameters[172].Value = global::System.DBNull.Value;
             }
-            if ((totalads.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[173].Value = ((int)(totalads.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[172].Value = ((string)(onlinenotes));
+            }
+            if ((ModifiedBy == null)) {
                 this.Adapter.UpdateCommand.Parameters[173].Value = global::System.DBNull.Value;
             }
-            if ((totallovelines.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[174].Value = ((int)(totallovelines.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[173].Value = ((string)(ModifiedBy));
+            }
+            if ((DateModified.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[174].Value = ((System.DateTime)(DateModified.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[174].Value = global::System.DBNull.Value;
             }
-            if ((onlinenotes == null)) {
+            if ((DateCreated.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[175].Value = ((System.DateTime)(DateCreated.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[175].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[175].Value = ((string)(onlinenotes));
+            if ((IconCopies.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[176].Value = ((int)(IconCopies.Value));
             }
-            if ((ModifiedBy == null)) {
+            else {
                 this.Adapter.UpdateCommand.Parameters[176].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[176].Value = ((string)(ModifiedBy));
-            }
-            if ((DateModified.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[177].Value = ((System.DateTime)(DateModified.Value));
+            if ((IconAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[177].Value = ((decimal)(IconAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[177].Value = global::System.DBNull.Value;
             }
-            if ((DateCreated.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[178].Value = ((System.DateTime)(DateCreated.Value));
-            }
-            else {
+            if ((extrchg == null)) {
                 this.Adapter.UpdateCommand.Parameters[178].Value = global::System.DBNull.Value;
             }
-            if ((IconCopies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[179].Value = ((int)(IconCopies.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[178].Value = ((string)(extrchg));
+            }
+            if ((schooltaxrate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[179].Value = ((decimal)(schooltaxrate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[179].Value = global::System.DBNull.Value;
             }
-            if ((IconAmt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[180].Value = ((decimal)(IconAmt.Value));
+            if ((schcode == null)) {
+                throw new global::System.ArgumentNullException("schcode");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[180].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[180].Value = ((string)(schcode));
             }
-            if ((extrchg == null)) {
+            if ((donotchargeschoolsalestax.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[181].Value = ((bool)(donotchargeschoolsalestax.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[181].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[181].Value = ((string)(extrchg));
-            }
-            if ((schooltax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[182].Value = ((decimal)(schooltax.Value));
+            if ((nopages.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[182].Value = ((int)(nopages.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[182].Value = global::System.DBNull.Value;
             }
-            if ((schooltaxrate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[183].Value = ((decimal)(schooltaxrate.Value));
+            if ((nocopies.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[183].Value = ((int)(nocopies.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[183].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[184].Value = ((int)(Original_invno));
-            if ((Original_TimeStamp == null)) {
-                this.Adapter.UpdateCommand.Parameters[185].Value = global::System.DBNull.Value;
+            if ((schooltax.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[184].Value = ((decimal)(schooltax.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[185].Value = ((byte[])(Original_TimeStamp));
+                this.Adapter.UpdateCommand.Parameters[184].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[185].Value = ((int)(Original_invno));
+            if ((Original_TimeStamp == null)) {
+                this.Adapter.UpdateCommand.Parameters[186].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[186].Value = ((byte[])(Original_TimeStamp));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -17543,13 +18780,10 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    string schcode, 
                     string prodno, 
                     string booktype, 
                     global::System.Nullable<global::System.DateTime> qtedate, 
                     string contryear, 
-                    global::System.Nullable<int> nopages, 
-                    global::System.Nullable<int> nocopies, 
                     global::System.Nullable<decimal> book_ea, 
                     global::System.Nullable<decimal> book_price, 
                     global::System.Nullable<bool> pryn, 
@@ -17724,11 +18958,15 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<int> IconCopies, 
                     global::System.Nullable<decimal> IconAmt, 
                     string extrchg, 
-                    global::System.Nullable<decimal> schooltax, 
                     global::System.Nullable<decimal> schooltaxrate, 
+                    string schcode, 
+                    global::System.Nullable<bool> donotchargeschoolsalestax, 
+                    global::System.Nullable<int> nopages, 
+                    global::System.Nullable<int> nocopies, 
+                    global::System.Nullable<decimal> schooltax, 
                     int Original_invno, 
                     byte[] Original_TimeStamp) {
-            return this.Update(Original_invno, schcode, prodno, booktype, qtedate, contryear, nopages, nocopies, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, acovrde, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallovelines, onlinenotes, ModifiedBy, DateModified, DateCreated, IconCopies, IconAmt, extrchg, schooltax, schooltaxrate, Original_invno, Original_TimeStamp);
+            return this.Update(Original_invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, acovrde, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallovelines, onlinenotes, ModifiedBy, DateModified, DateCreated, IconCopies, IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages, nocopies, schooltax, Original_invno, Original_TimeStamp);
         }
     }
     
@@ -17977,6 +19215,16 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("TimeStamp", "TimeStamp");
             tableMapping.ColumnMappings.Add("CityStateZip", "CityStateZip");
             tableMapping.ColumnMappings.Add("schname", "schname");
+            tableMapping.ColumnMappings.Add("ModifiedBy", "ModifiedBy");
+            tableMapping.ColumnMappings.Add("oraclecode", "oraclecode");
+            tableMapping.ColumnMappings.Add("cposition", "cposition");
+            tableMapping.ColumnMappings.Add("electronickit", "electronickit");
+            tableMapping.ColumnMappings.Add("electronickitoptions", "electronickitoptions");
+            tableMapping.ColumnMappings.Add("status", "status");
+            tableMapping.ColumnMappings.Add("taxexemptionexpirationdate", "taxexemptionexpirationdate");
+            tableMapping.ColumnMappings.Add("IsTaxExempt", "IsTaxExempt");
+            tableMapping.ColumnMappings.Add("stage", "stage");
+            tableMapping.ColumnMappings.Add("FirstDaySchool", "FirstDaySchool");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -18005,42 +19253,48 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "contlname], [ccontaddr], [ccontaddr2], [ccontcity], [ccontstate], [ccontzip], [c" +
                 "contphnhom], [ccontphnwork], [ccontfax], [ccontemail], [norebookreason], [newpub" +
                 "lisher], [csrep2], [schcolors], [keeppswd], [leadsource], [leadsname], [prevpubl" +
-                "isher], [leadname], [isDeleted], [photographer], [DateCreated], [DateModified]) " +
-                "VALUES (@schcode, @contryear, @cstatus, @source, @sourdate, @secsource, @contdat" +
-                "e, @origsour, @origyear, @rebook, @rebookdte, @refby, @enrollment, @grades, @sal" +
-                ", @schaddr, @schaddr2, @schcity, @schstate, @schzip, @schphone, @schfax, @schema" +
-                "il, @sprngbrk, @schout, @contmemo, @position, @gender, @contfname, @contlname, @" +
-                "newfname, @newlname, @yb_sth, @shiptocont, @contaddr, @contaddr2, @contcity, @co" +
-                "ntstate, @contzip, @contphnhom, @contphnwrk, @contfax, @contemail, @booktype, @v" +
-                "crsent, @sigfopf, @envflyer, @marketing, @yearrnd, @clrpg_int, @shipmemo, @schcl" +
-                "osed, @inoffice, @digintrst, @svcode1, @svdesc1, @svcode2, @svdesc2, @spcinst, @" +
-                "lastcont, @nextcont, @csrep, @cstat, @xeldate, @allcolor, @rbinit, @rbdate, @cls" +
-                "pic, @magic, @extrchg, @sprinfo, @fallinfo, @initcont, @highsp, @slownone, @pcma" +
-                "c, @junsno, @bcontfname, @bcontlname, @bcontaddr, @bcontaddr2, @bcontcity, @bcon" +
-                "tstate, @bcontzip, @bcontphnhom, @bcontphnwrk, @bcontfax, @bcontemail, @multiyro" +
-                "ptions, @multiyear, @schuploading, @website, @nomktemail, @nodirectmail, @bposit" +
-                "ion, @blkwhite, @mbconlinepassword, @ccontfname, @ccontlname, @ccontaddr, @ccont" +
-                "addr2, @ccontcity, @ccontstate, @ccontzip, @ccontphnhom, @ccontphnwork, @ccontfa" +
-                "x, @ccontemail, @norebookreason, @newpublisher, @csrep2, @schcolors, @keeppswd, " +
-                "@leadsource, @leadsname, @prevpublisher, @leadname, @isDeleted, @photographer, @" +
-                "DateCreated, @DateModified);\r\nSELECT schcode, contryear, cstatus, source, sourda" +
-                "te, secsource, contdate, origsour, origyear, rebook, rebookdte, refby, enrollmen" +
-                "t, grades, sal, schaddr, schaddr2, schcity, schstate, schzip, schphone, schfax, " +
-                "schemail, sprngbrk, schout, contmemo, position, gender, contfname, contlname, ne" +
-                "wfname, newlname, yb_sth, shiptocont, contaddr, contaddr2, contcity, contstate, " +
-                "contzip, contphnhom, contphnwrk, contfax, contemail, booktype, vcrsent, sigfopf," +
-                " envflyer, marketing, yearrnd, clrpg_int, shipmemo, schclosed, inoffice, digintr" +
-                "st, svcode1, svdesc1, svcode2, svdesc2, spcinst, lastcont, nextcont, csrep, csta" +
-                "t, xeldate, allcolor, rbinit, rbdate, clspic, magic, extrchg, sprinfo, fallinfo," +
-                " initcont, highsp, slownone, pcmac, junsno, bcontfname, bcontlname, bcontaddr, b" +
-                "contaddr2, bcontcity, bcontstate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, " +
-                "bcontemail, multiyroptions, multiyear, schuploading, website, nomktemail, nodire" +
-                "ctmail, bposition, blkwhite, mbconlinepassword, ccontfname, ccontlname, ccontadd" +
-                "r, ccontaddr2, ccontcity, ccontstate, ccontzip, ccontphnhom, ccontphnwork, ccont" +
-                "fax, ccontemail, norebookreason, newpublisher, csrep2, schcolors, keeppswd, lead" +
-                "source, leadsname, prevpublisher, leadname, isDeleted, photographer, DateCreated" +
-                ", DateModified, schcity + \',\' + schstate + \' \' + schzip AS CityStateZip, TimeSta" +
-                "mp FROM cust WHERE (schcode = @schcode)";
+                "isher], [leadname], [isDeleted], [photographer], [DateCreated], [DateModified], " +
+                "[schname], [ModifiedBy], [oraclecode], [cposition], [electronickit], [electronic" +
+                "kitoptions], [status], [taxexemptionexpirationdate], [IsTaxExempt], [stage], [Fi" +
+                "rstDaySchool]) VALUES (@schcode, @contryear, @cstatus, @source, @sourdate, @secs" +
+                "ource, @contdate, @origsour, @origyear, @rebook, @rebookdte, @refby, @enrollment" +
+                ", @grades, @sal, @schaddr, @schaddr2, @schcity, @schstate, @schzip, @schphone, @" +
+                "schfax, @schemail, @sprngbrk, @schout, @contmemo, @position, @gender, @contfname" +
+                ", @contlname, @newfname, @newlname, @yb_sth, @shiptocont, @contaddr, @contaddr2," +
+                " @contcity, @contstate, @contzip, @contphnhom, @contphnwrk, @contfax, @contemail" +
+                ", @booktype, @vcrsent, @sigfopf, @envflyer, @marketing, @yearrnd, @clrpg_int, @s" +
+                "hipmemo, @schclosed, @inoffice, @digintrst, @svcode1, @svdesc1, @svcode2, @svdes" +
+                "c2, @spcinst, @lastcont, @nextcont, @csrep, @cstat, @xeldate, @allcolor, @rbinit" +
+                ", @rbdate, @clspic, @magic, @extrchg, @sprinfo, @fallinfo, @initcont, @highsp, @" +
+                "slownone, @pcmac, @junsno, @bcontfname, @bcontlname, @bcontaddr, @bcontaddr2, @b" +
+                "contcity, @bcontstate, @bcontzip, @bcontphnhom, @bcontphnwrk, @bcontfax, @bconte" +
+                "mail, @multiyroptions, @multiyear, @schuploading, @website, @nomktemail, @nodire" +
+                "ctmail, @bposition, @blkwhite, @mbconlinepassword, @ccontfname, @ccontlname, @cc" +
+                "ontaddr, @ccontaddr2, @ccontcity, @ccontstate, @ccontzip, @ccontphnhom, @ccontph" +
+                "nwork, @ccontfax, @ccontemail, @norebookreason, @newpublisher, @csrep2, @schcolo" +
+                "rs, @keeppswd, @leadsource, @leadsname, @prevpublisher, @leadname, @isDeleted, @" +
+                "photographer, @DateCreated, @DateModified, @schname, @ModifiedBy, @oraclecode, @" +
+                "cposition, @electronickit, @electronickitoptions, @status, @taxexemptionexpirati" +
+                "ondate, @IsTaxExempt, @stage, @FirstDaySchool);\r\nSELECT schcode, contryear, csta" +
+                "tus, source, sourdate, secsource, contdate, origsour, origyear, rebook, rebookdt" +
+                "e, refby, enrollment, grades, sal, schaddr, schaddr2, schcity, schstate, schzip," +
+                " schphone, schfax, schemail, sprngbrk, schout, contmemo, position, gender, contf" +
+                "name, contlname, newfname, newlname, yb_sth, shiptocont, contaddr, contaddr2, co" +
+                "ntcity, contstate, contzip, contphnhom, contphnwrk, contfax, contemail, booktype" +
+                ", vcrsent, sigfopf, envflyer, marketing, yearrnd, clrpg_int, shipmemo, schclosed" +
+                ", inoffice, digintrst, svcode1, svdesc1, svcode2, svdesc2, spcinst, lastcont, ne" +
+                "xtcont, csrep, cstat, xeldate, allcolor, rbinit, rbdate, clspic, magic, extrchg," +
+                " sprinfo, fallinfo, initcont, highsp, slownone, pcmac, junsno, bcontfname, bcont" +
+                "lname, bcontaddr, bcontaddr2, bcontcity, bcontstate, bcontzip, bcontphnhom, bcon" +
+                "tphnwrk, bcontfax, bcontemail, multiyroptions, multiyear, schuploading, website," +
+                " nomktemail, nodirectmail, bposition, blkwhite, mbconlinepassword, ccontfname, c" +
+                "contlname, ccontaddr, ccontaddr2, ccontcity, ccontstate, ccontzip, ccontphnhom, " +
+                "ccontphnwork, ccontfax, ccontemail, norebookreason, newpublisher, csrep2, schcol" +
+                "ors, keeppswd, leadsource, leadsname, prevpublisher, leadname, isDeleted, photog" +
+                "rapher, DateCreated, DateModified, schcity + \',\' + schstate + \' \' + schzip AS Ci" +
+                "tyStateZip, TimeStamp, schname, ModifiedBy, oraclecode, cposition, electronickit" +
+                ", electronickitoptions, status, taxexemptionexpirationdate, IsTaxExempt, stage, " +
+                "FirstDaySchool FROM cust WHERE (schcode = @schcode)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contryear", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -18163,190 +19417,219 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@photographer", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "photographer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateModified", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateModified", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ModifiedBy", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedBy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oraclecode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "oraclecode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cposition", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cposition", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@electronickit", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "electronickit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@electronickitoptions", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "electronickitoptions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@taxexemptionexpirationdate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "taxexemptionexpirationdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsTaxExempt", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsTaxExempt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@stage", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "stage", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstDaySchool", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstDaySchool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [cust] SET [schcode] = @schcode, [contryear] = @contryear, [cstatus] = @cs" +
-                "tatus, [source] = @source, [sourdate] = @sourdate, [secsource] = @secsource, [co" +
-                "ntdate] = @contdate, [origsour] = @origsour, [origyear] = @origyear, [rebook] = " +
-                "@rebook, [rebookdte] = @rebookdte, [refby] = @refby, [enrollment] = @enrollment," +
-                " [grades] = @grades, [sal] = @sal, [schaddr] = @schaddr, [schaddr2] = @schaddr2," +
-                " [schcity] = @schcity, [schstate] = @schstate, [schzip] = @schzip, [schphone] = " +
-                "@schphone, [schfax] = @schfax, [schemail] = @schemail, [sprngbrk] = @sprngbrk, [" +
-                "schout] = @schout, [contmemo] = @contmemo, [position] = @position, [gender] = @g" +
-                "ender, [contfname] = @contfname, [contlname] = @contlname, [newfname] = @newfnam" +
-                "e, [newlname] = @newlname, [yb_sth] = @yb_sth, [shiptocont] = @shiptocont, [cont" +
-                "addr] = @contaddr, [contaddr2] = @contaddr2, [contcity] = @contcity, [contstate]" +
-                " = @contstate, [contzip] = @contzip, [contphnhom] = @contphnhom, [contphnwrk] = " +
-                "@contphnwrk, [contfax] = @contfax, [contemail] = @contemail, [booktype] = @bookt" +
-                "ype, [vcrsent] = @vcrsent, [sigfopf] = @sigfopf, [envflyer] = @envflyer, [market" +
-                "ing] = @marketing, [yearrnd] = @yearrnd, [clrpg_int] = @clrpg_int, [shipmemo] = " +
-                "@shipmemo, [schclosed] = @schclosed, [inoffice] = @inoffice, [digintrst] = @digi" +
-                "ntrst, [svcode1] = @svcode1, [svdesc1] = @svdesc1, [svcode2] = @svcode2, [svdesc" +
-                "2] = @svdesc2, [spcinst] = @spcinst, [lastcont] = @lastcont, [nextcont] = @nextc" +
-                "ont, [csrep] = @csrep, [cstat] = @cstat, [xeldate] = @xeldate, [allcolor] = @all" +
-                "color, [rbinit] = @rbinit, [rbdate] = @rbdate, [clspic] = @clspic, [magic] = @ma" +
-                "gic, [extrchg] = @extrchg, [sprinfo] = @sprinfo, [fallinfo] = @fallinfo, [initco" +
-                "nt] = @initcont, [highsp] = @highsp, [slownone] = @slownone, [pcmac] = @pcmac, [" +
-                "junsno] = @junsno, [bcontfname] = @bcontfname, [bcontlname] = @bcontlname, [bcon" +
-                "taddr] = @bcontaddr, [bcontaddr2] = @bcontaddr2, [bcontcity] = @bcontcity, [bcon" +
-                "tstate] = @bcontstate, [bcontzip] = @bcontzip, [bcontphnhom] = @bcontphnhom, [bc" +
-                "ontphnwrk] = @bcontphnwrk, [bcontfax] = @bcontfax, [bcontemail] = @bcontemail, [" +
-                "multiyroptions] = @multiyroptions, [multiyear] = @multiyear, [schuploading] = @s" +
-                "chuploading, [website] = @website, [nomktemail] = @nomktemail, [nodirectmail] = " +
-                "@nodirectmail, [bposition] = @bposition, [blkwhite] = @blkwhite, [mbconlinepassw" +
-                "ord] = @mbconlinepassword, [ccontfname] = @ccontfname, [ccontlname] = @ccontlnam" +
-                "e, [ccontaddr] = @ccontaddr, [ccontaddr2] = @ccontaddr2, [ccontcity] = @ccontcit" +
-                "y, [ccontstate] = @ccontstate, [ccontzip] = @ccontzip, [ccontphnhom] = @ccontphn" +
-                "hom, [ccontphnwork] = @ccontphnwork, [ccontfax] = @ccontfax, [ccontemail] = @cco" +
-                "ntemail, [norebookreason] = @norebookreason, [newpublisher] = @newpublisher, [cs" +
-                "rep2] = @csrep2, [schcolors] = @schcolors, [keeppswd] = @keeppswd, [leadsource] " +
-                "= @leadsource, [leadsname] = @leadsname, [prevpublisher] = @prevpublisher, [lead" +
-                "name] = @leadname, [isDeleted] = @isDeleted, [photographer] = @photographer, [Da" +
-                "teCreated] = @DateCreated, [DateModified] = @DateModified, [schname] = @schname " +
-                "WHERE (([schcode] = @Original_schcode) AND ([TimeStamp] = @Original_TimeStamp));" +
-                "\r\nSELECT schcode, contryear, cstatus, source, sourdate, secsource, contdate, ori" +
-                "gsour, origyear, rebook, rebookdte, refby, enrollment, grades, sal, schaddr, sch" +
-                "addr2, schcity, schstate, schzip, schphone, schfax, schemail, sprngbrk, schout, " +
-                "contmemo, position, gender, contfname, contlname, newfname, newlname, yb_sth, sh" +
-                "iptocont, contaddr, contaddr2, contcity, contstate, contzip, contphnhom, contphn" +
-                "wrk, contfax, contemail, booktype, vcrsent, sigfopf, envflyer, marketing, yearrn" +
-                "d, clrpg_int, shipmemo, schclosed, inoffice, digintrst, svcode1, svdesc1, svcode" +
-                "2, svdesc2, spcinst, lastcont, nextcont, csrep, cstat, xeldate, allcolor, rbinit" +
-                ", rbdate, clspic, magic, extrchg, sprinfo, fallinfo, initcont, highsp, slownone," +
-                " pcmac, junsno, bcontfname, bcontlname, bcontaddr, bcontaddr2, bcontcity, bconts" +
-                "tate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, bcontemail, multiyroptions, " +
-                "multiyear, schuploading, website, nomktemail, nodirectmail, bposition, blkwhite," +
-                " mbconlinepassword, ccontfname, ccontlname, ccontaddr, ccontaddr2, ccontcity, cc" +
-                "ontstate, ccontzip, ccontphnhom, ccontphnwork, ccontfax, ccontemail, norebookrea" +
-                "son, newpublisher, csrep2, schcolors, keeppswd, leadsource, leadsname, prevpubli" +
-                "sher, leadname, isDeleted, photographer, DateCreated, DateModified, schcity + \'," +
-                "\' + schstate + \' \' + schzip AS CityStateZip, TimeStamp, schname FROM cust WHERE " +
-                "(schcode = @schcode)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE       cust\r\nSET                schcode = @schcode, contryear = @contryear," +
+                " cstatus = @cstatus, source = @source, sourdate = @sourdate, secsource = @secsou" +
+                "rce, contdate = @contdate, origsour = @origsour, origyear = @origyear, rebook = " +
+                "@rebook, \r\n                         rebookdte = @rebookdte, refby = @refby, enro" +
+                "llment = @enrollment, grades = @grades, sal = @sal, schaddr = @schaddr, schaddr2" +
+                " = @schaddr2, schcity = @schcity, schstate = @schstate, schzip = @schzip, \r\n    " +
+                "                     schphone = @schphone, schfax = @schfax, schemail = @schemai" +
+                "l, sprngbrk = @sprngbrk, schout = @schout, contmemo = @contmemo, position = @pos" +
+                "ition, gender = @gender, contfname = @contfname, \r\n                         cont" +
+                "lname = @contlname, newfname = @newfname, newlname = @newlname, yb_sth = @yb_sth" +
+                ", shiptocont = @shiptocont, contaddr = @contaddr, contaddr2 = @contaddr2, contci" +
+                "ty = @contcity, contstate = @contstate, \r\n                         contzip = @co" +
+                "ntzip, contphnhom = @contphnhom, contphnwrk = @contphnwrk, contfax = @contfax, c" +
+                "ontemail = @contemail, booktype = @booktype, vcrsent = @vcrsent, sigfopf = @sigf" +
+                "opf, envflyer = @envflyer, \r\n                         marketing = @marketing, ye" +
+                "arrnd = @yearrnd, clrpg_int = @clrpg_int, shipmemo = @shipmemo, schclosed = @sch" +
+                "closed, inoffice = @inoffice, digintrst = @digintrst, svcode1 = @svcode1, svdesc" +
+                "1 = @svdesc1, \r\n                         svcode2 = @svcode2, svdesc2 = @svdesc2," +
+                " spcinst = @spcinst, lastcont = @lastcont, nextcont = @nextcont, csrep = @csrep," +
+                " cstat = @cstat, xeldate = @xeldate, allcolor = @allcolor, rbinit = @rbinit, rbd" +
+                "ate = @rbdate, \r\n                         clspic = @clspic, magic = @magic, extr" +
+                "chg = @extrchg, sprinfo = @sprinfo, fallinfo = @fallinfo, initcont = @initcont, " +
+                "highsp = @highsp, slownone = @slownone, pcmac = @pcmac, junsno = @junsno, bcontf" +
+                "name = @bcontfname, \r\n                         bcontlname = @bcontlname, bcontad" +
+                "dr = @bcontaddr, bcontaddr2 = @bcontaddr2, bcontcity = @bcontcity, bcontstate = " +
+                "@bcontstate, bcontzip = @bcontzip, bcontphnhom = @bcontphnhom, bcontphnwrk = @bc" +
+                "ontphnwrk, \r\n                         bcontfax = @bcontfax, bcontemail = @bconte" +
+                "mail, multiyroptions = @multiyroptions, multiyear = @multiyear, schuploading = @" +
+                "schuploading, website = @website, nomktemail = @nomktemail, nodirectmail = @nodi" +
+                "rectmail, \r\n                         bposition = @bposition, blkwhite = @blkwhit" +
+                "e, mbconlinepassword = @mbconlinepassword, ccontfname = @ccontfname, ccontlname " +
+                "= @ccontlname, ccontaddr = @ccontaddr, ccontaddr2 = @ccontaddr2, ccontcity = @cc" +
+                "ontcity, \r\n                         ccontstate = @ccontstate, ccontzip = @ccontz" +
+                "ip, ccontphnhom = @ccontphnhom, ccontphnwork = @ccontphnwork, ccontfax = @ccontf" +
+                "ax, ccontemail = @ccontemail, norebookreason = @norebookreason, \r\n              " +
+                "           newpublisher = @newpublisher, csrep2 = @csrep2, schcolors = @schcolor" +
+                "s, keeppswd = @keeppswd, leadsource = @leadsource, leadsname = @leadsname, prevp" +
+                "ublisher = @prevpublisher, leadname = @leadname, \r\n                         isDe" +
+                "leted = @isDeleted, photographer = @photographer, DateCreated = @DateCreated, Da" +
+                "teModified = @DateModified, schname = @schname, ModifiedBy = @ModifiedBy, oracle" +
+                "code = @oraclecode, cposition = @cposition, \r\n                         electroni" +
+                "ckit = @electronickit, electronickitoptions = @electronickitoptions, status = @s" +
+                "tatus, taxexemptionexpirationdate = @taxexemptionexpirationdate, IsTaxExempt = @" +
+                "IsTaxExempt, stage = @stage, \r\n                         FirstDaySchool = @FirstD" +
+                "aySchool\r\nWHERE        (schcode = @Original_schcode) AND (TimeStamp = @Original_" +
+                "TimeStamp); \r\nSELECT schcode, contryear, cstatus, source, sourdate, secsource, c" +
+                "ontdate, origsour, origyear, rebook, rebookdte, refby, enrollment, grades, sal, " +
+                "schaddr, schaddr2, schcity, schstate, schzip, schphone, schfax, schemail, sprngb" +
+                "rk, schout, contmemo, position, gender, contfname, contlname, newfname, newlname" +
+                ", yb_sth, shiptocont, contaddr, contaddr2, contcity, contstate, contzip, contphn" +
+                "hom, contphnwrk, contfax, contemail, booktype, vcrsent, sigfopf, envflyer, marke" +
+                "ting, yearrnd, clrpg_int, shipmemo, schclosed, inoffice, digintrst, svcode1, svd" +
+                "esc1, svcode2, svdesc2, spcinst, lastcont, nextcont, csrep, cstat, xeldate, allc" +
+                "olor, rbinit, rbdate, clspic, magic, extrchg, sprinfo, fallinfo, initcont, highs" +
+                "p, slownone, pcmac, junsno, bcontfname, bcontlname, bcontaddr, bcontaddr2, bcont" +
+                "city, bcontstate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, bcontemail, mult" +
+                "iyroptions, multiyear, schuploading, website, nomktemail, nodirectmail, bpositio" +
+                "n, blkwhite, mbconlinepassword, ccontfname, ccontlname, ccontaddr, ccontaddr2, c" +
+                "contcity, ccontstate, ccontzip, ccontphnhom, ccontphnwork, ccontfax, ccontemail," +
+                " norebookreason, newpublisher, csrep2, schcolors, keeppswd, leadsource, leadsnam" +
+                "e, prevpublisher, leadname, isDeleted, photographer, DateCreated, DateModified, " +
+                "schcity + \',\' + schstate + \' \' + schzip AS CityStateZip, TimeStamp, schname, Mod" +
+                "ifiedBy, oraclecode, cposition, electronickit, electronickitoptions, status, tax" +
+                "exemptionexpirationdate, IsTaxExempt, stage, FirstDaySchool FROM cust WHERE (sch" +
+                "code = @schcode)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contryear", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cstatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sourdate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "sourdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@secsource", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "secsource", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contdate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@origsour", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origsour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@origyear", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "origyear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebook", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebook", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebookdte", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rebookdte", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@refby", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "refby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@enrollment", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 0, "enrollment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@grades", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "grades", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sal", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "sal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schaddr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schaddr2", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcity", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schstate", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schzip", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schphone", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schphone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schfax", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schemail", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sprngbrk", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "sprngbrk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schout", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schout", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contmemo", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contmemo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@position", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "position", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@gender", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "gender", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contfname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contlname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newfname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "newfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newlname", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "newlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@yb_sth", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "yb_sth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shiptocont", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "shiptocont", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contaddr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contaddr2", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contcity", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contstate", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contzip", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contphnhom", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contphnhom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contphnwrk", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contphnwrk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contfax", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contemail", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vcrsent", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vcrsent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sigfopf", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "sigfopf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@envflyer", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "envflyer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@marketing", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "marketing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@yearrnd", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "yearrnd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clrpg_int", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "clrpg_int", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shipmemo", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "shipmemo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schclosed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schclosed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@inoffice", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inoffice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@digintrst", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "digintrst", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@svcode1", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "svcode1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@svdesc1", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "svdesc1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@svcode2", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "svcode2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@svdesc2", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "svdesc2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@spcinst", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "spcinst", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastcont", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastcont", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nextcont", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nextcont", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@csrep", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "csrep", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cstat", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cstat", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@xeldate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "xeldate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@allcolor", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "allcolor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rbinit", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rbinit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rbdate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rbdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clspic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "clspic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@magic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "magic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrchg", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "extrchg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sprinfo", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "sprinfo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fallinfo", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fallinfo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@initcont", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "initcont", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@highsp", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "highsp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@slownone", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "slownone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pcmac", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pcmac", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@junsno", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "junsno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontfname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bcontfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontlname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bcontlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontaddr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bcontaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontaddr2", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bcontaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontcity", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bcontcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontstate", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bcontstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontzip", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bcontzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontphnhom", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bcontphnhom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontphnwrk", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bcontphnwrk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontfax", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bcontfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontemail", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bcontemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@multiyroptions", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "multiyroptions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@multiyear", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "multiyear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schuploading", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schuploading", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@website", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "website", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomktemail", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomktemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nodirectmail", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nodirectmail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bposition", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bposition", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@blkwhite", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "blkwhite", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mbconlinepassword", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "mbconlinepassword", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontfname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontlname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontaddr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontaddr2", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontcity", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontstate", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontzip", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontphnhom", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontphnhom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontphnwork", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontphnwork", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontfax", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontemail", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ccontemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@norebookreason", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "norebookreason", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newpublisher", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "newpublisher", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@csrep2", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "csrep2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcolors", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcolors", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keeppswd", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keeppswd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leadsource", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "leadsource", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leadsname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "leadsname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prevpublisher", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prevpublisher", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leadname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "leadname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isDeleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isDeleted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@photographer", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "photographer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateModified", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateModified", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcode", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.Timestamp, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contryear", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contryear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cstatus", global::System.Data.SqlDbType.VarChar, 40, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sourdate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "sourdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@secsource", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "secsource", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contdate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "contdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@origsour", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "origsour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@origyear", global::System.Data.SqlDbType.VarChar, 2, global::System.Data.ParameterDirection.Input, 0, 0, "origyear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebook", global::System.Data.SqlDbType.VarChar, 1, global::System.Data.ParameterDirection.Input, 0, 0, "rebook", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebookdte", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "rebookdte", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@refby", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "refby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@enrollment", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 5, 0, "enrollment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@grades", global::System.Data.SqlDbType.VarChar, 16, global::System.Data.ParameterDirection.Input, 0, 0, "grades", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sal", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "sal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schaddr", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schaddr2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcity", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schstate", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schzip", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schphone", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schphone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schfax", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schemail", global::System.Data.SqlDbType.VarChar, 80, global::System.Data.ParameterDirection.Input, 0, 0, "schemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sprngbrk", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "sprngbrk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schout", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "schout", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contmemo", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "contmemo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@position", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "position", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@gender", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "gender", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contfname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contlname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newfname", global::System.Data.SqlDbType.Char, 20, global::System.Data.ParameterDirection.Input, 0, 0, "newfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newlname", global::System.Data.SqlDbType.Char, 20, global::System.Data.ParameterDirection.Input, 0, 0, "newlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@yb_sth", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "yb_sth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shiptocont", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "shiptocont", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contaddr", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contaddr2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contcity", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contstate", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contzip", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contphnhom", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contphnhom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contphnwrk", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contphnwrk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contfax", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contemail", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.VarChar, 4, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vcrsent", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "vcrsent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sigfopf", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "sigfopf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@envflyer", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "envflyer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@marketing", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "marketing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@yearrnd", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "yearrnd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clrpg_int", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "clrpg_int", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shipmemo", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "shipmemo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schclosed", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "schclosed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@inoffice", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "inoffice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@digintrst", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "digintrst", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@svcode1", global::System.Data.SqlDbType.Char, 2, global::System.Data.ParameterDirection.Input, 0, 0, "svcode1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@svdesc1", global::System.Data.SqlDbType.Char, 21, global::System.Data.ParameterDirection.Input, 0, 0, "svdesc1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@svcode2", global::System.Data.SqlDbType.Char, 2, global::System.Data.ParameterDirection.Input, 0, 0, "svcode2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@svdesc2", global::System.Data.SqlDbType.VarChar, 21, global::System.Data.ParameterDirection.Input, 0, 0, "svdesc2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@spcinst", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "spcinst", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastcont", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "lastcont", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nextcont", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "nextcont", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@csrep", global::System.Data.SqlDbType.Char, 2, global::System.Data.ParameterDirection.Input, 0, 0, "csrep", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cstat", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "cstat", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@xeldate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "xeldate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@allcolor", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "allcolor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rbinit", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "rbinit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rbdate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "rbdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clspic", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "clspic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@magic", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "magic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@extrchg", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "extrchg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sprinfo", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "sprinfo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fallinfo", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "fallinfo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@initcont", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "initcont", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@highsp", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "highsp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@slownone", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "slownone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pcmac", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "pcmac", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@junsno", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "junsno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontfname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "bcontfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontlname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "bcontlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontaddr", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "bcontaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontaddr2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "bcontaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontcity", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "bcontcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontstate", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "bcontstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontzip", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "bcontzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontphnhom", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "bcontphnhom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontphnwrk", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "bcontphnwrk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontfax", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "bcontfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bcontemail", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "bcontemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@multiyroptions", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "multiyroptions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@multiyear", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "multiyear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schuploading", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "schuploading", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@website", global::System.Data.SqlDbType.VarChar, 60, global::System.Data.ParameterDirection.Input, 0, 0, "website", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomktemail", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "nomktemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nodirectmail", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "nodirectmail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bposition", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "bposition", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@blkwhite", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "blkwhite", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mbconlinepassword", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "mbconlinepassword", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontfname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontlname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontaddr", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontaddr2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontcity", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontstate", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontzip", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontphnhom", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontphnhom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontphnwork", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontphnwork", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontfax", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontemail", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@norebookreason", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "norebookreason", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newpublisher", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "newpublisher", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@csrep2", global::System.Data.SqlDbType.Char, 2, global::System.Data.ParameterDirection.Input, 0, 0, "csrep2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcolors", global::System.Data.SqlDbType.VarChar, 45, global::System.Data.ParameterDirection.Input, 0, 0, "schcolors", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keeppswd", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "keeppswd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leadsource", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "leadsource", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leadsname", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "leadsname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prevpublisher", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "prevpublisher", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@leadname", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "leadname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isDeleted", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "isDeleted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@photographer", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "photographer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateModified", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateModified", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ModifiedBy", global::System.Data.SqlDbType.NVarChar, 128, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedBy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oraclecode", global::System.Data.SqlDbType.NVarChar, 7, global::System.Data.ParameterDirection.Input, 0, 0, "oraclecode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cposition", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "cposition", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@electronickit", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "electronickit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@electronickitoptions", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "electronickitoptions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@taxexemptionexpirationdate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "taxexemptionexpirationdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsTaxExempt", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "IsTaxExempt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@stage", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "stage", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstDaySchool", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "FirstDaySchool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18380,8 +19663,10 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "contfax, ccontemail, norebookreason, \r\n                         newpublisher, cs" +
                 "rep2, schcolors, keeppswd, leadsource, leadsname, prevpublisher, leadname, isDel" +
                 "eted, photographer, DateCreated, DateModified, schcity + \',\' + schstate + \' \' + " +
-                "schzip AS CityStateZip, TimeStamp, \r\n                         schname\r\nFROM     " +
-                "       cust\r\nWHERE        (schcode = @schcode)";
+                "schzip AS CityStateZip, TimeStamp, schname, \r\n                         ModifiedB" +
+                "y, oraclecode, cposition, electronickit, electronickitoptions, status, taxexempt" +
+                "ionexpirationdate, IsTaxExempt, stage, FirstDaySchool\r\nFROM            cust\r\nWHE" +
+                "RE        (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -18609,7 +19894,18 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<bool> isDeleted, 
                     string photographer, 
                     System.DateTime DateCreated, 
-                    System.DateTime DateModified) {
+                    System.DateTime DateModified, 
+                    string schname, 
+                    string ModifiedBy, 
+                    string oraclecode, 
+                    string cposition, 
+                    global::System.Nullable<bool> electronickit, 
+                    string electronickitoptions, 
+                    string status, 
+                    global::System.Nullable<global::System.DateTime> taxexemptionexpirationdate, 
+                    global::System.Nullable<bool> IsTaxExempt, 
+                    string stage, 
+                    global::System.Nullable<global::System.DateTime> FirstDaySchool) {
             if ((schcode == null)) {
                 throw new global::System.ArgumentNullException("schcode");
             }
@@ -19326,6 +20622,72 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             }
             this.Adapter.InsertCommand.Parameters[119].Value = ((System.DateTime)(DateCreated));
             this.Adapter.InsertCommand.Parameters[120].Value = ((System.DateTime)(DateModified));
+            if ((schname == null)) {
+                throw new global::System.ArgumentNullException("schname");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[121].Value = ((string)(schname));
+            }
+            if ((ModifiedBy == null)) {
+                this.Adapter.InsertCommand.Parameters[122].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[122].Value = ((string)(ModifiedBy));
+            }
+            if ((oraclecode == null)) {
+                this.Adapter.InsertCommand.Parameters[123].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[123].Value = ((string)(oraclecode));
+            }
+            if ((cposition == null)) {
+                this.Adapter.InsertCommand.Parameters[124].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[124].Value = ((string)(cposition));
+            }
+            if ((electronickit.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[125].Value = ((bool)(electronickit.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[125].Value = global::System.DBNull.Value;
+            }
+            if ((electronickitoptions == null)) {
+                this.Adapter.InsertCommand.Parameters[126].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[126].Value = ((string)(electronickitoptions));
+            }
+            if ((status == null)) {
+                this.Adapter.InsertCommand.Parameters[127].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[127].Value = ((string)(status));
+            }
+            if ((taxexemptionexpirationdate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[128].Value = ((System.DateTime)(taxexemptionexpirationdate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[128].Value = global::System.DBNull.Value;
+            }
+            if ((IsTaxExempt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[129].Value = ((bool)(IsTaxExempt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[129].Value = global::System.DBNull.Value;
+            }
+            if ((stage == null)) {
+                this.Adapter.InsertCommand.Parameters[130].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[130].Value = ((string)(stage));
+            }
+            if ((FirstDaySchool.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[131].Value = ((System.DateTime)(FirstDaySchool.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[131].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -19469,6 +20831,16 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     System.DateTime DateCreated, 
                     System.DateTime DateModified, 
                     string schname, 
+                    string ModifiedBy, 
+                    string oraclecode, 
+                    string cposition, 
+                    global::System.Nullable<bool> electronickit, 
+                    string electronickitoptions, 
+                    string status, 
+                    global::System.Nullable<global::System.DateTime> taxexemptionexpirationdate, 
+                    global::System.Nullable<bool> IsTaxExempt, 
+                    string stage, 
+                    global::System.Nullable<global::System.DateTime> FirstDaySchool, 
                     string Original_schcode, 
                     byte[] Original_TimeStamp) {
             if ((schcode == null)) {
@@ -20193,17 +21565,77 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[121].Value = ((string)(schname));
             }
+            if ((ModifiedBy == null)) {
+                this.Adapter.UpdateCommand.Parameters[122].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[122].Value = ((string)(ModifiedBy));
+            }
+            if ((oraclecode == null)) {
+                this.Adapter.UpdateCommand.Parameters[123].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[123].Value = ((string)(oraclecode));
+            }
+            if ((cposition == null)) {
+                this.Adapter.UpdateCommand.Parameters[124].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[124].Value = ((string)(cposition));
+            }
+            if ((electronickit.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[125].Value = ((bool)(electronickit.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[125].Value = global::System.DBNull.Value;
+            }
+            if ((electronickitoptions == null)) {
+                this.Adapter.UpdateCommand.Parameters[126].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[126].Value = ((string)(electronickitoptions));
+            }
+            if ((status == null)) {
+                this.Adapter.UpdateCommand.Parameters[127].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[127].Value = ((string)(status));
+            }
+            if ((taxexemptionexpirationdate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[128].Value = ((System.DateTime)(taxexemptionexpirationdate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[128].Value = global::System.DBNull.Value;
+            }
+            if ((IsTaxExempt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[129].Value = ((bool)(IsTaxExempt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[129].Value = global::System.DBNull.Value;
+            }
+            if ((stage == null)) {
+                this.Adapter.UpdateCommand.Parameters[130].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[130].Value = ((string)(stage));
+            }
+            if ((FirstDaySchool.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[131].Value = ((System.DateTime)(FirstDaySchool.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[131].Value = global::System.DBNull.Value;
+            }
             if ((Original_schcode == null)) {
                 throw new global::System.ArgumentNullException("Original_schcode");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[122].Value = ((string)(Original_schcode));
+                this.Adapter.UpdateCommand.Parameters[132].Value = ((string)(Original_schcode));
             }
             if ((Original_TimeStamp == null)) {
                 throw new global::System.ArgumentNullException("Original_TimeStamp");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[123].Value = ((byte[])(Original_TimeStamp));
+                this.Adapter.UpdateCommand.Parameters[133].Value = ((byte[])(Original_TimeStamp));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -20347,9 +21779,19 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     System.DateTime DateCreated, 
                     System.DateTime DateModified, 
                     string schname, 
+                    string ModifiedBy, 
+                    string oraclecode, 
+                    string cposition, 
+                    global::System.Nullable<bool> electronickit, 
+                    string electronickitoptions, 
+                    string status, 
+                    global::System.Nullable<global::System.DateTime> taxexemptionexpirationdate, 
+                    global::System.Nullable<bool> IsTaxExempt, 
+                    string stage, 
+                    global::System.Nullable<global::System.DateTime> FirstDaySchool, 
                     string Original_schcode, 
                     byte[] Original_TimeStamp) {
-            return this.Update(Original_schcode, contryear, cstatus, source, sourdate, secsource, contdate, origsour, origyear, rebook, rebookdte, refby, enrollment, grades, sal, schaddr, schaddr2, schcity, schstate, schzip, schphone, schfax, schemail, sprngbrk, schout, contmemo, position, gender, contfname, contlname, newfname, newlname, yb_sth, shiptocont, contaddr, contaddr2, contcity, contstate, contzip, contphnhom, contphnwrk, contfax, contemail, booktype, vcrsent, sigfopf, envflyer, marketing, yearrnd, clrpg_int, shipmemo, schclosed, inoffice, digintrst, svcode1, svdesc1, svcode2, svdesc2, spcinst, lastcont, nextcont, csrep, cstat, xeldate, allcolor, rbinit, rbdate, clspic, magic, extrchg, sprinfo, fallinfo, initcont, highsp, slownone, pcmac, junsno, bcontfname, bcontlname, bcontaddr, bcontaddr2, bcontcity, bcontstate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, bcontemail, multiyroptions, multiyear, schuploading, website, nomktemail, nodirectmail, bposition, blkwhite, mbconlinepassword, ccontfname, ccontlname, ccontaddr, ccontaddr2, ccontcity, ccontstate, ccontzip, ccontphnhom, ccontphnwork, ccontfax, ccontemail, norebookreason, newpublisher, csrep2, schcolors, keeppswd, leadsource, leadsname, prevpublisher, leadname, isDeleted, photographer, DateCreated, DateModified, schname, Original_schcode, Original_TimeStamp);
+            return this.Update(Original_schcode, contryear, cstatus, source, sourdate, secsource, contdate, origsour, origyear, rebook, rebookdte, refby, enrollment, grades, sal, schaddr, schaddr2, schcity, schstate, schzip, schphone, schfax, schemail, sprngbrk, schout, contmemo, position, gender, contfname, contlname, newfname, newlname, yb_sth, shiptocont, contaddr, contaddr2, contcity, contstate, contzip, contphnhom, contphnwrk, contfax, contemail, booktype, vcrsent, sigfopf, envflyer, marketing, yearrnd, clrpg_int, shipmemo, schclosed, inoffice, digintrst, svcode1, svdesc1, svcode2, svdesc2, spcinst, lastcont, nextcont, csrep, cstat, xeldate, allcolor, rbinit, rbdate, clspic, magic, extrchg, sprinfo, fallinfo, initcont, highsp, slownone, pcmac, junsno, bcontfname, bcontlname, bcontaddr, bcontaddr2, bcontcity, bcontstate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, bcontemail, multiyroptions, multiyear, schuploading, website, nomktemail, nodirectmail, bposition, blkwhite, mbconlinepassword, ccontfname, ccontlname, ccontaddr, ccontaddr2, ccontcity, ccontstate, ccontzip, ccontphnhom, ccontphnwork, ccontfax, ccontemail, norebookreason, newpublisher, csrep2, schcolors, keeppswd, leadsource, leadsname, prevpublisher, leadname, isDeleted, photographer, DateCreated, DateModified, schname, ModifiedBy, oraclecode, cposition, electronickit, electronickitoptions, status, taxexemptionexpirationdate, IsTaxExempt, stage, FirstDaySchool, Original_schcode, Original_TimeStamp);
         }
     }
     
@@ -20863,21 +22305,21 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateUpdatedRows(dsSales dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._custTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.cust.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._custTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._quotesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.quotes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._quotesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._custTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.cust.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._custTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -20900,19 +22342,19 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateInsertedRows(dsSales dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._custTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.cust.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._custTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._quotesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.quotes.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._quotesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._custTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.cust.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._custTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -20942,19 +22384,19 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._quotesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.quotes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._quotesTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._custTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.cust.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._custTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._quotesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.quotes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._quotesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

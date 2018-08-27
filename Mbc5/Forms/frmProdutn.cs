@@ -225,8 +225,10 @@ namespace Mbc5.Forms
 				if (pos > -1)
 				{
 					produtnBindingSource.Position = pos;
-				}
-				else
+                   
+
+                }
+                else
 				{
 					MessageBox.Show("Production record was not found.", "Invoice#", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 				}
@@ -434,6 +436,7 @@ namespace Mbc5.Forms
                         if (pos > -1)
                         {
                             produtnBindingSource.Position = pos;
+                          
                         }
                        
 						SetShipLabel();
@@ -927,7 +930,7 @@ namespace Mbc5.Forms
         }
 		private void btnUpdateJob_Click(object sender, EventArgs e)
 		{
-			if (String.IsNullOrEmpty(txtPerfbind.Text))
+			if (String.IsNullOrEmpty(txtPerfbind.Text.Trim()))
 			{
 				MessageBox.Show("Please enter binding information before issueing a job number.");
 				return;
@@ -945,7 +948,13 @@ namespace Mbc5.Forms
 			if (result.Rows.Count > 0)
 			{
 				var oldJobNo = result.Rows[0]["jobno"].ToString();
-				txtjobno.Text = oldJobNo;
+                if (string.IsNullOrEmpty(oldJobNo.Trim()))
+                {
+                    txtjobno.Text = "8" + lblProdNo.Text.Substring(1, 5);
+                }
+                else {txtjobno.Text = oldJobNo; }
+                        
+				
 			}
 			else
 			{
@@ -975,7 +984,7 @@ namespace Mbc5.Forms
 							if (txtPerfbind.Text != vVal)
 							{
 								MessageBox.Show("Your Production Number (Binding) First Digit is not the same as this value... Press andy key to continue...It is being changed!", "Binding Type Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-								if (txtPerfbind.Text == "C" || txtPerfbind.Text == "G" || txtPerfbind.Text == "K" || vVal == "H" || txtPerfbind.Text == "P" || txtPerfbind.Text == "S" || txtPerfbind.Text == "M")
+								if (txtPerfbind.Text == "C" || txtPerfbind.Text == "G" || txtPerfbind.Text == "K" || txtPerfbind.Text == "H" || txtPerfbind.Text == "P" || txtPerfbind.Text == "S" || txtPerfbind.Text == "M")
 								{
 									if (vVal == "C" || vVal == "G" || vVal == "K" || vVal == "H" || vVal == "P" || vVal == "S" || vVal == "M")
 									{
@@ -1231,6 +1240,12 @@ namespace Mbc5.Forms
         private void laminatedTextBox_Validating(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            var a = persnlzCheckBox.Checked;
+            var b = persnlzCheckBox.DataBindings.Control;
         }
 
         #endregion

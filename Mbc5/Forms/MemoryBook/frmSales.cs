@@ -720,6 +720,7 @@ namespace Mbc5.Forms.MemoryBook {
                 if (ValidSales()) {
 
                     try {
+                        this.Validate();
                         this.quotesBindingSource.EndEdit();
                         var a=quotesTableAdapter.Update(dsSales.quotes);
                         //must refill so we get updated time stamp so concurrency is not thrown
@@ -3100,6 +3101,15 @@ namespace Mbc5.Forms.MemoryBook {
         {
 
         }
+
+        private void txtPoSrch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
 
 
 

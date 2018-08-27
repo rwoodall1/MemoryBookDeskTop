@@ -1188,9 +1188,9 @@ namespace Mbc5.Forms.MemoryBook {
         private void btnProdTckt_Click(object sender, EventArgs e)
         {
             var sqlClient = new SQLCustomClient();
-            string cmdText = @"Select C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.perscopies AS PersonalCopies,Q.allclrck AS AllClrk,Q.contryear as ContractYear,
-             Q.BookType,Q.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies
-             ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNum,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
+            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.perscopies AS PersonalCopies,Q.contryear as ContractYear,
+             Q.BookType,Q.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
+             ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
                 FROM Cust C
                 LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
 				Left JOIN EndSheet ES ON Q.Invno=ES.Invno
@@ -1217,7 +1217,12 @@ namespace Mbc5.Forms.MemoryBook {
             Cursor.Current = Cursors.Default;
         }
 
-       
+        private void splitContainer_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
 
 
         //Nothing below here

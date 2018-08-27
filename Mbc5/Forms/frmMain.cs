@@ -555,7 +555,7 @@ namespace Mbc5.Forms
 
         private void testFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          ReportTest test = new ReportTest();
+          test test = new test();
            
             test.Show();
             this.Cursor = Cursors.Default;

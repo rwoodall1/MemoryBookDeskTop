@@ -113,7 +113,9 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.ProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
@@ -317,7 +319,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.custSearchTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custSearchTableAdapter();
             this.lkpLeadNameTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadNameTableAdapter();
             this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadSourceTableAdapter();
-            this.ProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
@@ -397,6 +398,7 @@ namespace Mbc5.Forms.MemoryBook {
             xeldateLabel = new System.Windows.Forms.Label();
             rbdateLabel = new System.Windows.Forms.Label();
             this.BottomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProdutnTicketModelBindingSource)).BeginInit();
             this.CustTab.SuspendLayout();
             this.pg1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -435,7 +437,6 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.dsDateCont)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custSearchBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProdutnTicketModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -1157,6 +1158,10 @@ namespace Mbc5.Forms.MemoryBook {
             rbdateLabel.TabIndex = 113;
             rbdateLabel.Text = "Cancel Fee Recv\'d:";
             // 
+            // ProdutnTicketModelBindingSource
+            // 
+            this.ProdutnTicketModelBindingSource.DataSource = typeof(BindingModels.ProdutnTicketModel);
+            // 
             // CustTab
             // 
             this.CustTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1279,6 +1284,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.Panel1.Controls.Add(schaddr2Label);
             this.splitContainer.Panel1.Controls.Add(schcityLabel);
             this.splitContainer.Panel1.Controls.Add(this.txtCity);
+            this.splitContainer.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer_Panel1_Paint);
             // 
             // splitContainer.Panel2
             // 
@@ -2018,6 +2024,8 @@ namespace Mbc5.Forms.MemoryBook {
             // dataGridViewTextBoxColumn111
             // 
             this.dataGridViewTextBoxColumn111.DataPropertyName = "kitrecvd";
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn111.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn111.HeaderText = "Kit Recvd Date";
             this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
             this.dataGridViewTextBoxColumn111.ReadOnly = true;
@@ -2813,14 +2821,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.mktinfoDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.mktinfoDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.mktinfoDataGridView.CausesValidation = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.mktinfoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mktinfoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -2944,14 +2952,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.datecontDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datecontDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.datecontDataGridView.CausesValidation = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.datecontDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datecontDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn3,
@@ -3030,8 +3038,8 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "reason";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn3.HeaderText = "Reason";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -3065,11 +3073,11 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn8.DataPropertyName = "nxtdate";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.NullValue = " / / ";
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.NullValue = " / / ";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumn8.HeaderText = "Next Date";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.Width = 74;
@@ -3240,10 +3248,6 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.lkpLeadSourceTableAdapter.ClearBeforeFill = true;
             // 
-            // ProdutnTicketModelBindingSource
-            // 
-            this.ProdutnTicketModelBindingSource.DataSource = typeof(BindingModels.ProdutnTicketModel);
-            // 
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 48;
@@ -3275,6 +3279,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.Controls.SetChildIndex(this.BottomPanel, 0);
             this.BottomPanel.ResumeLayout(false);
             this.BottomPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProdutnTicketModelBindingSource)).EndInit();
             this.CustTab.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.splitContainer.Panel1.ResumeLayout(false);
@@ -3318,7 +3323,6 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.dsDateCont)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custSearchBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProdutnTicketModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3510,10 +3514,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.ComboBox statusComboBox;
         private System.Windows.Forms.Label lblSchcodeVal;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn107;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QInvno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn108;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn111;
         private System.Windows.Forms.CheckBox isTaxExemptCheckBox;
         private System.Windows.Forms.ComboBox stageComboBox;
         private System.Windows.Forms.ComboBox leadnameComboBox;
@@ -3533,5 +3533,9 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.Button btnProdTckt;
         private System.Windows.Forms.BindingSource ProdutnTicketModelBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QInvno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn108;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn111;
     }
 }

@@ -38,11 +38,11 @@ namespace BindingModels
         public string CoilClr { get; set; }
         public string Theme { get; set; }
         public string State { get; set; }
-        public decimal PerfBind { get; set; }
+        public bool PerfBind { get; set; }
         public bool Insck { get; set; }
         public bool YirSchool { get; set; }
-        public int ColorPageNum { get; set; }
-        public int EndsheetNum{ get; set; }
+        public string ColorPageNum { get; set; }
+        public string EndsheetNum{ get; set; }
         public string TypeStyle { get; set; }
         public string SpecialInstructions { get; set; }
         public int PersonalCopies { get; set; }
