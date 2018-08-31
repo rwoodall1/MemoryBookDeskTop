@@ -1222,6 +1222,11 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
 
+        private void frmMbcCust_Shown(object sender, EventArgs e)
+        {
+            CustTab.Visible = true;
+        }
+
 
 
 

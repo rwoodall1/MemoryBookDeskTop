@@ -3107,6 +3107,11 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
 
+        private void frmSales_Shown(object sender, EventArgs e)
+        {
+            tabSales.Visible = true;
+        }
+
 
 
 

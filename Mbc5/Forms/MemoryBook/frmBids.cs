@@ -2188,5 +2188,10 @@ namespace Mbc5.Forms.MemoryBook {
            Cursor.Current = Cursors.Arrow;
 
         }
+
+        private void frmBids_Shown(object sender, EventArgs e)
+        {
+            tabBids.Visible = true;
+        }
     }
 }
