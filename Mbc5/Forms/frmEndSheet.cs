@@ -638,6 +638,9 @@ namespace Mbc5.Forms
 
 		}
 
-	
-	}
+        private void frmEndSheet_Shown(object sender, EventArgs e)
+        {
+            tbEndSheets.Visible = true;
+        }
+    }
 }

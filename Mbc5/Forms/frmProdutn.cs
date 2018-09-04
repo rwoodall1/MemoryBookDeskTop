@@ -57,19 +57,23 @@ namespace Mbc5.Forms
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
 
+            try
+            {
 
+                this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
+                //LookUp Data
+                this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
 
-			this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
-			//LookUp Data
-			this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
+                Fill();
+                SetShipLabel();
+                SetEmail();
+                CurrentProdNo = lblProdNo.Text;
+            }catch(Exception ex)
+            {
 
-			Fill();
-			SetShipLabel();
-            SetEmail();
+            }
 
-            CurrentProdNo = lblProdNo.Text;
-
-		}
+        }
 
 		#region "Properties"
 		public void InvokePropertyChanged(PropertyChangedEventArgs e)
@@ -118,11 +122,13 @@ namespace Mbc5.Forms
 			var current = (DataRowView)produtnBindingSource.Current;
 			if (current != null)
 			{
-				var shipdate = current["shpdate"].ToString();
-				lblShipped.Visible = !String.IsNullOrEmpty(shipdate);
-			}
 
-		}
+
+                var shipdate = current["shpdate"].ToString();
+                lblShipped.Visible = !String.IsNullOrEmpty(shipdate);
+            }
+
+        }
 		private void SetEmail()
 		{
             var current = (DataRowView)produtnBindingSource.Current;
@@ -173,69 +179,68 @@ namespace Mbc5.Forms
 				custTableAdapter.Fill(dsProdutn.cust, Schcode);
 				quotesTableAdapter.Fill(dsProdutn.quotes, Schcode);
 
-				produtnTableAdapter.Fill(dsProdutn.produtn, Schcode);
-				if (dsProdutn.produtn.Count < 1)
-				{
-					DisableControls(this.tbProdutn.TabPages[0]);
-					foreach (TabPage tab in tbProdutn.TabPages)
-					{
-						DisableControls(tab);
-					}
-					EnableControls(this.txtInvoiceNoSrch);
-					EnableControls(this.txtProdNoSrch);
-					EnableControls(this.btnProdSrch);
-					EnableControls(this.btnInvoiceSrch);
-				}
-				else { EnableAllControls(this); }
-				coversTableAdapter.Fill(dsProdutn.covers, Schcode);
-				coverdetailTableAdapter.Fill(dsProdutn.coverdetail, Schcode);
-				if (dsProdutn.covers.Count < 1)
-				{
-					DisableControls(this.tbProdutn.TabPages[2]);
-				}
-				else { EnableAllControls(this.tbProdutn.TabPages[2]); }
-				wipTableAdapter.Fill(dsProdutn.wip, Schcode);
-				wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Schcode);
-				if (dsProdutn.wip.Count < 1)
-				{
-					DisableControls(this.tbProdutn.TabPages[1]);
-				}
-				else { EnableAllControls(this.tbProdutn.TabPages[1]); }
-				this.partbkTableAdapter.Fill(this.dsProdutn.partbk, Schcode);
-				this.partBkDetailTableAdapter.Fill(this.dsProdutn.PartBkDetail, Schcode);
-				if (dsProdutn.partbk.Count < 1)
-				{
-					DisableControls(this.tbProdutn.TabPages[4]);
-				}
-				else { EnableAllControls(this.tbProdutn.TabPages[4]); }
+				produtnTableAdapter.Fill(dsProdutn.produtn,Schcode);
 
-				ptbkbTableAdapter.Fill(dsProdutn.ptbkb, Schcode);
-				prtbkbdetailTableAdapter.Fill(dsProdutn.prtbkbdetail, Schcode);
-				if (dsProdutn.ptbkb.Count < 1)
-				{
-					DisableControls(this.tbProdutn.TabPages[5]);
-				}
-				else { EnableAllControls(this.tbProdutn.TabPages[5]); }
-
-
-			}
-			if (Invno != 0)
-			{
-				var pos = produtnBindingSource.Find("invno", this.Invno);
-				if (pos > -1)
-				{
-					produtnBindingSource.Position = pos;
-                   
-
+                if (dsProdutn.produtn.Count < 1)
+                {
+                    DisableControls(this.tbProdutn.TabPages[0]);
+                    foreach (TabPage tab in tbProdutn.TabPages)
+                    {
+                        DisableControls(tab);
+                    }
+                    EnableControls(this.txtInvoiceNoSrch);
+                    EnableControls(this.txtProdNoSrch);
+                    EnableControls(this.btnProdSrch);
+                    EnableControls(this.btnInvoiceSrch);
                 }
+                else { EnableAllControls(this); }
+                coversTableAdapter.Fill(dsProdutn.covers, Schcode);
+                coverdetailTableAdapter.Fill(dsProdutn.coverdetail, Schcode);
+                if (dsProdutn.covers.Count < 1)
+                {
+                    DisableControls(this.tbProdutn.TabPages[2]);
+                }
+                else { EnableAllControls(this.tbProdutn.TabPages[2]); }
+                wipTableAdapter.Fill(dsProdutn.wip, Schcode);
+                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Schcode);
+                if (dsProdutn.wip.Count < 1)
+                {
+                    DisableControls(this.tbProdutn.TabPages[1]);
+                }
+                else { EnableAllControls(this.tbProdutn.TabPages[1]); }
+                this.partbkTableAdapter.Fill(this.dsProdutn.partbk, Schcode);
+                this.partBkDetailTableAdapter.Fill(this.dsProdutn.PartBkDetail, Schcode);
+                if (dsProdutn.partbk.Count < 1)
+                {
+                    DisableControls(this.tbProdutn.TabPages[4]);
+                }
+                else { EnableAllControls(this.tbProdutn.TabPages[4]); }
+
+                ptbkbTableAdapter.Fill(dsProdutn.ptbkb, Schcode);
+                prtbkbdetailTableAdapter.Fill(dsProdutn.prtbkbdetail, Schcode);
+                if (dsProdutn.ptbkb.Count < 1)
+                {
+                    DisableControls(this.tbProdutn.TabPages[5]);
+                }
+                else { EnableAllControls(this.tbProdutn.TabPages[5]); }
+
+
+            }
+            
+            if (Invno != 0)
+            {
+                var pos = produtnBindingSource.Find("invno", this.Invno);
+                if (pos > -1)
+                {
+                    produtnBindingSource.Position = pos;
+                 }
                 else
-				{
-					MessageBox.Show("Production record was not found.", "Invoice#", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-				}
-			}
-
-
-		}
+                {
+                    MessageBox.Show("Production record was not found.", "Invoice#", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+            }
+ 
+        }
 
 		public override bool Save()
 		{
@@ -755,7 +760,8 @@ namespace Mbc5.Forms
 		#endregion
 		private void frmProdutn_Paint(object sender, PaintEventArgs e)
 		{
-			try { this.Text = "Production-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+           
+            try { this.Text = "Production-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
 			catch
 			{
 
@@ -1242,11 +1248,16 @@ namespace Mbc5.Forms
 
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void frmProdutn_Shown(object sender, EventArgs e)
         {
-            var a = persnlzCheckBox.Checked;
-            var b = persnlzCheckBox.DataBindings.Control;
+            //Leave here. This is put in to give dataset time to fill
+            //ctrl are not bound until they are shown in tab https://stackoverflow.com/questions/3670694/loading-windows-form-with-over-200-controls
+            this.tbProdutn.Visible = true;
         }
+
+
+
+
 
         #endregion
 

@@ -2309,6 +2309,7 @@
             this.tabBids.SelectedIndex = 0;
             this.tabBids.Size = new System.Drawing.Size(1085, 731);
             this.tabBids.TabIndex = 0;
+            this.tabBids.Visible = false;
             // 
             // bidsTableAdapter
             // 
@@ -2336,6 +2337,7 @@
             this.Name = "frmBids";
             this.Text = "Bids";
             this.Load += new System.EventHandler(this.frmBids_Load_1);
+            this.Shown += new System.EventHandler(this.frmBids_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmBids_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsBids)).EndInit();

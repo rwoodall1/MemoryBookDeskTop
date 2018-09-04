@@ -3273,6 +3273,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.Text = "MBC Customers";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMbcCust_FormClosing);
             this.Load += new System.EventHandler(this.frmMbcCust_Load);
+            this.Shown += new System.EventHandler(this.frmMbcCust_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmMbcCust_Paint);
             this.Controls.SetChildIndex(this.CustTab, 0);
             this.Controls.SetChildIndex(this.TopPanel, 0);

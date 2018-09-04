@@ -60,7 +60,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void btnInvSrch_Click(object sender, EventArgs e) {
             var sqlQuery = new SQLQuery();
-            string querystring = "Select schcode,invno,cust.schzip from Quotes where Invno=@Invno";
+            string querystring = "Select schcode,invno from Quotes where Invno=@Invno";
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Invno",txtInvoSrch.Text.Trim())
             };
@@ -84,7 +84,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void btnPoSrch_Click(object sender, EventArgs e) {
             var sqlQuery = new SQLQuery();
-            string querystring = "Select schcode,invno,cust.schzipcode from Quotes where PoNum=@PoNum";
+            string querystring = "Select schcode,invno from Quotes where PoNum=@PoNum";
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@PoNum",txtPoSrch.Text.Trim())
             };
@@ -98,8 +98,7 @@ namespace Mbc5.Forms.MemoryBook {
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
                     this.Invno = current["Invno"] == DBNull.Value ? 0 : (int)current["Invno"];
                    
-                    this.Schcode = current["Code"].ToString();
-                    EnableAllControls(this);
+                            EnableAllControls(this);
                 }
             } else {
                 MessageBox.Show("No records were found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -3105,6 +3104,11 @@ namespace Mbc5.Forms.MemoryBook {
         private void txtPoSrch_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmSales_Shown(object sender, EventArgs e)
+        {
+            tabSales.Visible = true;
         }
 
 

@@ -1034,6 +1034,10 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnProdNoPages;
             
+            private global::System.Data.DataColumn columnProdNoCopies1;
+            
+            private global::System.Data.DataColumn columnProdNoPages1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public produtnDataTable() {
@@ -2101,6 +2105,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ProdNoCopies1Column {
+                get {
+                    return this.columnProdNoCopies1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ProdNoPages1Column {
+                get {
+                    return this.columnProdNoPages1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2265,7 +2285,9 @@ namespace Mbc5.DataSets {
                         System.DateTime DateModified, 
                         string ModifiedBy, 
                         decimal ProdNoCopies, 
-                        decimal ProdNoPages) {
+                        decimal ProdNoPages, 
+                        int ProdNoCopies1, 
+                        int ProdNoPages1) {
                 produtnRow rowprodutnRow = ((produtnRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2396,7 +2418,9 @@ namespace Mbc5.DataSets {
                         DateModified,
                         ModifiedBy,
                         ProdNoCopies,
-                        ProdNoPages};
+                        ProdNoPages,
+                        ProdNoCopies1,
+                        ProdNoPages1};
                 if ((parentquotesRowByquotes_produtn != null)) {
                     columnValuesArray[0] = parentquotesRowByquotes_produtn[0];
                 }
@@ -2558,6 +2582,8 @@ namespace Mbc5.DataSets {
                 this.columnModifiedBy = base.Columns["ModifiedBy"];
                 this.columnProdNoCopies = base.Columns["ProdNoCopies"];
                 this.columnProdNoPages = base.Columns["ProdNoPages"];
+                this.columnProdNoCopies1 = base.Columns["ProdNoCopies1"];
+                this.columnProdNoPages1 = base.Columns["ProdNoPages1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2821,6 +2847,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnProdNoCopies);
                 this.columnProdNoPages = new global::System.Data.DataColumn("ProdNoPages", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProdNoPages);
+                this.columnProdNoCopies1 = new global::System.Data.DataColumn("ProdNoCopies1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProdNoCopies1);
+                this.columnProdNoPages1 = new global::System.Data.DataColumn("ProdNoPages1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProdNoPages1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columninvno.AllowDBNull = false;
@@ -2875,6 +2905,8 @@ namespace Mbc5.DataSets {
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
                 this.columnModifiedBy.MaxLength = 128;
+                this.columnProdNoCopies1.Caption = "ProdNoCopies";
+                this.columnProdNoPages1.Caption = "ProdNoPages";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11546,6 +11578,38 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ProdNoCopies1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableprodutn.ProdNoCopies1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProdNoCopies1\' in table \'produtn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutn.ProdNoCopies1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ProdNoPages1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableprodutn.ProdNoPages1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProdNoPages1\' in table \'produtn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutn.ProdNoPages1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public quotesRow quotesRow {
                 get {
                     return ((quotesRow)(this.GetParentRow(this.Table.ParentRelations["quotes_produtn"])));
@@ -13053,6 +13117,30 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetProdNoPagesNull() {
                 this[this.tableprodutn.ProdNoPagesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsProdNoCopies1Null() {
+                return this.IsNull(this.tableprodutn.ProdNoCopies1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetProdNoCopies1Null() {
+                this[this.tableprodutn.ProdNoCopies1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsProdNoPages1Null() {
+                return this.IsNull(this.tableprodutn.ProdNoPages1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetProdNoPages1Null() {
+                this[this.tableprodutn.ProdNoPages1Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19523,8 +19611,8 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             tableMapping.ColumnMappings.Add("DateCreated", "DateCreated");
             tableMapping.ColumnMappings.Add("DateModified", "DateModified");
             tableMapping.ColumnMappings.Add("ModifiedBy", "ModifiedBy");
-            tableMapping.ColumnMappings.Add("ProdNoCopies", "ProdNoCopies");
-            tableMapping.ColumnMappings.Add("ProdNoPages", "ProdNoPages");
+            tableMapping.ColumnMappings.Add("ProdNoCopies", "ProdNoCopies1");
+            tableMapping.ColumnMappings.Add("ProdNoPages", "ProdNoPages1");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -19881,28 +19969,26 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT          invno, prodno, contrecvd, deadlinein, typestyle, dedayin, dedayout, dedmade, covertype, coverdesc, speccover, colors, diecut, perfbind, coilclr, colorpgs, laminated, screcv, scprod, 
-                            kitrecvd, vendcd, tovend, toprod, warndate, prshpdte, shpdate, prmsdate, retpstupdt, hardcost, voucherno, ptrecvd, ptnopgs, ptbrcvd, ptbnopgs, bknopgs, bkstd, bk9, bk10, bk11, bk12, 
-                            bkhard, bkcoil, bkmixed, ovride, allclrck, foilck, bktype2, bledpgchk, bledpgno, ugrnd, u3day, u2ndday, ustdon, uprion, fgrnd, f2ndday, fstdon, fprion, cstsvcdte, comdate, cominitl, rbinit, 
-                            cstat, rbdate, x5252, dcdesc1, dcdesc2, bkgrnd, bindvend, magirdate, magirtrn, magiregis, regto, pcmac, usersw, webinar, prfreq, l400, m400, noplates, theme, jobno, advpw, stfpw, 
-                            persnlz, foiling, foilclr, onlineyr, remaketype, fullremake, shortremak, indivremak, scname, indivname, indivpic, yr, icon_, mk, wipremaketype, numtopersonalize, schpic, reccardsent, se, 
-                            te, dura, titlep, hallp, vinyl, company, schname, contryear, pemailed, listrecd, hcproof, finalized, finalcpycnt, pdfsent, reorder, milled, adduploaddate, TimeStamp, schcode, DateCreated, 
-                            DateModified, ModifiedBy, nocopies AS ProdNoCopies, nopages AS ProdNoPages
-FROM              produtn
-WHERE          (schcode = @Schcode)";
+            this._commandCollection[0].CommandText = @"SELECT        invno, prodno, contrecvd, deadlinein, typestyle, dedayin, dedayout, dedmade, covertype, coverdesc, speccover, colors, diecut, perfbind, coilclr, colorpgs, laminated, screcv, scprod, kitrecvd, vendcd, tovend, toprod, warndate, 
+                         prshpdte, shpdate, prmsdate, retpstupdt, hardcost, voucherno, ptrecvd, ptnopgs, ptbrcvd, ptbnopgs, bknopgs, bkstd, bk9, bk10, bk11, bk12, bkhard, bkcoil, bkmixed, ovride, allclrck, foilck, bktype2, bledpgchk, bledpgno, ugrnd, 
+                         u3day, u2ndday, ustdon, uprion, fgrnd, f2ndday, fstdon, fprion, cstsvcdte, comdate, cominitl, rbinit, cstat, rbdate, x5252, dcdesc1, dcdesc2, bkgrnd, bindvend, magirdate, magirtrn, magiregis, regto, pcmac, usersw, webinar, 
+                         prfreq, l400, m400, noplates, theme, jobno, advpw, stfpw, persnlz, foiling, foilclr, onlineyr, remaketype, fullremake, shortremak, indivremak, scname, indivname, indivpic, yr, icon_, mk, wipremaketype, numtopersonalize, schpic, 
+                         reccardsent, se, te, dura, titlep, hallp, vinyl, company, schname, contryear, pemailed, listrecd, hcproof, finalized, finalcpycnt, pdfsent, reorder, milled, adduploaddate, TimeStamp, schcode, DateCreated, DateModified, 
+                         ModifiedBy, nocopies AS ProdNoCopies, nopages AS ProdNoPages
+FROM            produtn
+WHERE        (schcode = @Schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT          DateCreated, DateModified, ModifiedBy, TimeStamp, adduploaddate, advpw, allclrck, bindvend, bk10, bk11, bk12, bk9, bkcoil, bkgrnd, bkhard, bkmixed, bknopgs, bkstd, bktype2, 
-                            bledpgchk, bledpgno, coilclr, colorpgs, colors, comdate, cominitl, company, contrecvd, contryear, coverdesc, covertype, cstat, cstsvcdte, dcdesc1, dcdesc2, deadlinein, dedayin, dedayout, 
-                            dedmade, diecut, dura, f2ndday, fgrnd, finalcpycnt, finalized, foilck, foilclr, foiling, fprion, fstdon, fullremake, hallp, hardcost, hcproof, icon_, indivname, indivpic, indivremak, invno, jobno, 
-                            kitrecvd, l400, laminated, listrecd, m400, magirdate, magiregis, magirtrn, milled, mk, noplates, numtopersonalize, onlineyr, ovride, pcmac, pdfsent, pemailed, perfbind, persnlz, prfreq, 
-                            prmsdate, prodno, prshpdte, ptbnopgs, ptbrcvd, ptnopgs, ptrecvd, rbdate, rbinit, reccardsent, regto, remaketype, reorder, retpstupdt, schcode, schname, schpic, scname, scprod, screcv, 
-                            se, shortremak, shpdate, speccover, stfpw, te, theme, titlep, toprod, tovend, typestyle, u2ndday, u3day, ugrnd, uprion, usersw, ustdon, vendcd, vinyl, voucherno, warndate, webinar, 
-                            wipremaketype, x5252, yr, nopages AS ProdNoPages, nocopies AS ProdNoCopies
-FROM              produtn
-WHERE          (invno = @invno)";
+            this._commandCollection[1].CommandText = @"SELECT        DateCreated, DateModified, ModifiedBy, TimeStamp, adduploaddate, advpw, allclrck, bindvend, bk10, bk11, bk12, bk9, bkcoil, bkgrnd, bkhard, bkmixed, bknopgs, bkstd, bktype2, bledpgchk, bledpgno, coilclr, colorpgs, colors, 
+                         comdate, cominitl, company, contrecvd, contryear, coverdesc, covertype, cstat, cstsvcdte, dcdesc1, dcdesc2, deadlinein, dedayin, dedayout, dedmade, diecut, dura, f2ndday, fgrnd, finalcpycnt, finalized, foilck, foilclr, foiling, 
+                         fprion, fstdon, fullremake, hallp, hardcost, hcproof, icon_, indivname, indivpic, indivremak, invno, jobno, kitrecvd, l400, laminated, listrecd, m400, magirdate, magiregis, magirtrn, milled, mk, noplates, numtopersonalize, onlineyr, 
+                         ovride, pcmac, pdfsent, pemailed, perfbind, persnlz, prfreq, prmsdate, prodno, prshpdte, ptbnopgs, ptbrcvd, ptnopgs, ptrecvd, rbdate, rbinit, reccardsent, regto, remaketype, reorder, retpstupdt, schcode, schname, schpic, 
+                         scname, scprod, screcv, se, shortremak, shpdate, speccover, stfpw, te, theme, titlep, toprod, tovend, typestyle, u2ndday, u3day, ugrnd, uprion, usersw, ustdon, vendcd, vinyl, voucherno, warndate, webinar, wipremaketype, 
+                         x5252, yr, nopages AS ProdNoPages, nocopies AS ProdNoCopies
+FROM            produtn
+WHERE        (invno = @invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
