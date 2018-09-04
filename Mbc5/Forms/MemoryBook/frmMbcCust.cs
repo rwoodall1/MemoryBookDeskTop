@@ -104,7 +104,7 @@ namespace Mbc5.Forms.MemoryBook {
            
             this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, vSchocode);
             
-            SetInvnoSchCode();
+           
         }
         private void btnOracleSrch_Click(object sender, EventArgs e)
 		{
@@ -1188,7 +1188,7 @@ namespace Mbc5.Forms.MemoryBook {
         private void btnProdTckt_Click(object sender, EventArgs e)
         {
             var sqlClient = new SQLCustomClient();
-            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.perscopies AS PersonalCopies,Q.contryear as ContractYear,
+            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.contryear as ContractYear,
              Q.BookType,Q.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
              ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
                 FROM Cust C
@@ -1225,6 +1225,7 @@ namespace Mbc5.Forms.MemoryBook {
         private void frmMbcCust_Shown(object sender, EventArgs e)
         {
             CustTab.Visible = true;
+            SetInvnoSchCode();
         }
 
 

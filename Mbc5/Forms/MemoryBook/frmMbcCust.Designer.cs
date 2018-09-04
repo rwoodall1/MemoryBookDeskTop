@@ -1175,7 +1175,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.CustTab.SelectedIndex = 0;
             this.CustTab.Size = new System.Drawing.Size(1234, 670);
             this.CustTab.TabIndex = 0;
-            this.CustTab.Visible = false;
             // 
             // pg1
             // 
