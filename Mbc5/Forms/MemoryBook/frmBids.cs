@@ -28,8 +28,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ApplicationUser = userPrincipal;
             this.Schcode = schcode;
-
-        }
+            }
        
 
 		private void bidsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -42,7 +41,9 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void frmBids_Load_1(object sender, EventArgs e)
         {
-           
+            frmMain frmMain =(frmMain) this.MdiParent;
+            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.bidsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();

@@ -96,10 +96,18 @@ namespace Mbc5.Forms
            
         }
 
-    #endregion
-
+        #endregion
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+            this.rolesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.mbcUsersTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+         
+            
+        }
         private void frmUser_Load(object sender, EventArgs e)
         {
+            this.SetConnectionString();
             // TODO: This line of code loads data into the 'dsRoles.roles' table. You can move, or remove it, as needed.
             this.rolesTableAdapter.Fill(this.dsRoles.roles);
 

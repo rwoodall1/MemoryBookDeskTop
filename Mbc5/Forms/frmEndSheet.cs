@@ -60,10 +60,23 @@ namespace Mbc5.Forms
 				handler(this, e);
 		}
 		private UserPrincipal ApplicationUser { get; set; }
-		#endregion
-		private void frmEndSheet_Load(object sender, EventArgs e)
+        #endregion
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.bannerTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.endsheetdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.endsheetTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.suppdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.preflitTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+        }
+        private void frmEndSheet_Load(object sender, EventArgs e)
 		{
-			Fill();
+            this.SetConnectionString();
+            Fill();
 		}
 
 

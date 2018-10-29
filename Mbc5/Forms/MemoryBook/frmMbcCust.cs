@@ -57,8 +57,32 @@ namespace Mbc5.Forms.MemoryBook {
      
 
         #endregion
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpLeadSourceTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
+            this.lkpLeadNameTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.custSearchTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+         
+            this.lkpMultiYearOptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpTypeContTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpPromotionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpPrevPubTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpNoRebookTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpschtypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpMktReferenceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpCommentsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.datecontTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+           
+            this.contpstnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.mktinfoTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 
+
+        }
         private void frmMbcCust_Load(object sender,EventArgs e) {
+            SetConnectionString();
             // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
             this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
             // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.
@@ -1189,7 +1213,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
             var sqlClient = new SQLCustomClient();
             string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.contryear as ContractYear,
-             Q.BookType,Q.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
+             Q.BookType,P.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
              ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
                 FROM Cust C
                 LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
@@ -1226,6 +1250,47 @@ namespace Mbc5.Forms.MemoryBook {
         {
             CustTab.Visible = true;
             SetInvnoSchCode();
+        }
+
+        private void btnProdChk_Click(object sender, EventArgs e)
+        {
+
+//m.newfname = cust.newfname
+//m.newlname = cust.newlname
+
+//m.spec1 = ''
+
+            var sqlClient = new SQLCustomClient();
+            string cmdText = @"
+                        Select  C.Schname,C.Schcode,C.SchState,C.SchCity,C.SchAddr,C.SchZip,C.SchPhone,C.Vcrsent,C.Spcinst,C.magic,
+                        C.Enrollment,C.AllColor,C.ContFname,C.ContLname,C.ContAddr,C.ContAddr2,C.ContCity,C.ContState,C.ContZip,C.ShipToCont,C.Contphnhom,
+                        C.Sal,C.ShipMemo,Q.NoPages,Q.NoCopies,Q.Glspaper,Q.Insck,Q.Dc1,Q.BookType,Q.Allclrck,P.Invno,P.Prodno,P.Covertype,P.Diecut,
+                        P.Laminated,P.Contrecvd,P.Perfbind,P.Screcv,P.Speccover,P.Kitrecvd,P.Dedayin,P.Dedayout,P.Shpdate,P.Coilclr,
+                        P.Cstat,I.Invtot,I.Payments,I.BalDue,R.Hndred,R.Schout
+                        FROM Cust C
+                            LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
+                            Left JOIN Invoice I ON Q.Invno=I.Invno
+                            Left JOIN Recv2 R ON Q.Invno=R.Invno
+                            LEFT JOIN Produtn P ON Q.Invno=P.Invno
+                        Where Q.Invno=@Invno";
+
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            var dataReturned = sqlClient.Select<ProductionCheckList>();
+            var data = (ProductionCheckList)dataReturned;
+
+            ProductionCheckListBindingSource.DataSource = data;
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewerCheckList.RefreshReport();
+            Cursor.Current = Cursors.Default;
+
+        }
+
+        private void reportViewerCheckList_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewerCheckList.PrintDialog();
+            Cursor.Current = Cursors.Default;
         }
 
 

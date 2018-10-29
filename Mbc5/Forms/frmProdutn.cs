@@ -54,9 +54,28 @@ namespace Mbc5.Forms
 			EnableControls(this.btnInvoiceSrch);
 
 		}
-		private void frmProdutn_Load(object sender, EventArgs e)
-		{
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.ptbkbTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.wipgTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.wipTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.wipDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.coverdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.coversTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkTypeDataTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpBackGroundTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.prtbkbdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 
+        }
+        private void frmProdutn_Load(object sender, EventArgs e)
+		{
+            this.SetConnectionString();
             try
             {
 

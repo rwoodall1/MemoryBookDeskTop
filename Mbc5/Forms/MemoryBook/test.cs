@@ -17,70 +17,19 @@ namespace Mbc5.Forms.MemoryBook
             InitializeComponent();
         }
 
-        private void quotesBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.quotesBindingSource.EndEdit();
-         var a= quotesTableAdapter.Update(dsSales.quotes);
-          
-        }
 
-        private void fillToolStripButton_Click(object sender, EventArgs e)
-        {
-            
-
-        }
 
         private void test_Load(object sender, EventArgs e)
         {
-            try
+            foreach (Control C in this.Controls)
             {
-                this.quotesTableAdapter.Fill(this.dsSales.quotes,"038752");
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-            
-                var pos = quotesBindingSource.Find("invno", "81512");
-                if (pos > -1)
+                if (C.GetType() == typeof(IDataAdapter))
                 {
-                    quotesBindingSource.Position = pos;
+                    var a = C;
+
+
                 }
-                else
-                {
-                    MessageBox.Show("Invoice number was not found.", "Invoice#", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.quotesBindingSource.EndEdit();
-            var a = quotesTableAdapter.Update(dsSales.quotes);
-        }
-
-        private void quotesBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.quotesBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dsSales);
-
-        }
-
-        private void fillToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                this.quotesTableAdapter.Fill(this.dsSales.quotes, schcodeToolStripTextBox.Text);
             }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
         }
     }
 }

@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 using Exceptionless;
 using Exceptionless.Models;
+using System.Configuration;
+using Mbc5.Classes;
 namespace Mbc5.LookUpForms
 {
     public partial class LkpWipDescriptions : BaseClass.Forms.bTopBottom
@@ -52,10 +54,24 @@ namespace Mbc5.LookUpForms
             Save();
 
         }
+        private void SetConnectionString()
+        {
+            string AppConnectionString = "";
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            if (Environment == "DEV")
+            {
+                AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; Integrated Security=True;User Id=sa;password=Briggitte1; Connect Timeout=5";
+            }
+            else if (Environment == "PROD")
+            {
+                AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;Integrated Security=True;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5";
+            }
+            wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
+        }
 
         private void LkpWipDescriptions_Load(object sender, EventArgs e)
         {
-            
+            this.SetConnectionString();
             wipDescriptionsTableAdapter.FillAll(dsProdutn.WipDescriptions);
         }
 

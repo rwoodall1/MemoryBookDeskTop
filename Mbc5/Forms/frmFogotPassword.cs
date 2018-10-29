@@ -31,11 +31,19 @@ namespace Mbc5.Forms
 
         private void btnSendPassword_Click(object sender, EventArgs e)
         {
+            string AppConnectionString = "";
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            if (Environment == "DEV")
+            {
+               AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; Integrated Security=True;User Id=sa;password=Briggitte1; Connect Timeout=5";
+            }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;Integrated Security=True;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+
             EmailHelper vEmail = new EmailHelper();
             string pwd = RandomPasswordGenerator.Generate();
             string msg = "Login with your user name and this password:" + pwd + ". Once you login you will have to change your password.";
 
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+            SqlConnection conn = new SqlConnection(AppConnectionString);
             SqlCommand cmd = new SqlCommand("Select Id,EmailAddress from mbcUsers  where UserName=@UserName", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();

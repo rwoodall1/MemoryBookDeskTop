@@ -428,6 +428,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
     <EmbeddedResource Include="Reports\MemInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\ProdCheckList.rdlc" />
     <EmbeddedResource Include="Reports\ProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\Report1.rdlc" />
     <EmbeddedResource Include="Reports\ReportTest.resx">
@@ -465,7 +466,6 @@
     <None Include="DataSets\dsCust.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsCust.Designer.cs</LastGenOutput>
     </None>
     <None Include="DataSets\dsCust.xss">
       <DependentUpon>dsCust.xsd</DependentUpon>
@@ -580,6 +580,7 @@
     </None>
     <None Include="Properties\DataSources\BindingModels.BidInvoiceDetail.datasource" />
     <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
+    <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProdutnTicketModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Configuration;
 namespace Mbc5.Forms
 {
     public partial class frmChangePassword : Form
@@ -57,7 +57,11 @@ namespace Mbc5.Forms
 
         private void frmChangePassword_Load(object sender, EventArgs e)
         {
-            
+          
+
+             this.conn.ConnectionString = frmMain.AppConnectionString;
+               
+
             daPassWord.SelectCommand.Parameters.Clear();
             daPassWord.SelectCommand.Parameters.AddWithValue("@id",frmMain.ApplicationUser.id);//this.userId
             daPassWord.Fill(dsChangePassword);

@@ -38,7 +38,7 @@ namespace BindingModels
         public string CoilClr { get; set; }
         public string Theme { get; set; }
         public string State { get; set; }
-        public bool PerfBind { get; set; }
+        public string PerfBind { get; set; }
         public bool Insck { get; set; }
         public bool YirSchool { get; set; }
         public string ColorPageNum { get; set; }
@@ -56,5 +56,59 @@ namespace BindingModels
         public DateTime Prshpdte { get; set; }
         public string SchColors { get; set; }
         public int NumPgs { get; set; }
+    }
+    public class ProductionCheckList
+    {
+        public string Schname { get; set; }
+        public string Schcode { get; set; }
+        public string SchState { get; set; }
+        public string SchCity { get; set; }
+        public string SchAddr { get; set; }
+        public string SchZip { get; set; }
+        public string SchPhone { get; set; }
+        public bool Vcrsent { get; set; }
+        public string Spcinst { get; set; }
+        public bool Magic { get; set; }
+        public int Enrollment { get; set; }
+        public bool AllColor { get; set; }
+        public string ContFname { get; set; }
+        public string ContLname { get; set; }
+        public string ContAddr { get; set; }
+        public string ContAddr2{ get; set; }
+        public string ContCity { get; set; }
+        public string ContState { get; set; }
+        public string ContZip { get; set; }
+        public string ShipToCont { get; set; }
+        public string Sal { get; set; }
+        public string ShipMemo { get; set; }
+        public int NoPages { get; set; }
+        public int NoCopies { get; set; }
+        public string Contphnhom { get; set; }
+        public bool Glspaper { get; set; }
+        public bool Insck { get; set; }
+        public bool Dc1 { get; set; }
+        public string BookType { get; set; }
+        public bool Allclrck { get; set; }
+        public int Invno { get; set; }
+        public string Prodno { get; set; }
+        public string Covertype { get; set; }
+        public bool Diecut { get; set; }
+        public bool Laminated { get; set; }
+        public bool Contrecvd { get; set; }
+        public DateTime Screcv { get; set; }
+        public string Perfbind { get; set; }
+        public bool Speccover { get; set; }
+        public DateTime Kitrecvd { get; set; }
+        public DateTime Dedayin { get; set; }
+        public DateTime Dedayout { get; set; }
+        public DateTime Shpdate { get; set; }
+        public string Coilclr { get; set; }
+        public string Cstat { get; set; }
+        public decimal Invtot { get; set; }
+        public decimal Payments { get; set; }
+        public decimal BalDue { get; set; }
+        public string Hndred { get; set; }
+        public DateTime Schout { get; set; }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,7 @@ namespace Mbc5.Forms
         #region "Properties"
 
         public bool ForcePasswordChange { get; set; }
-
+        public string AppConnectionString { get; set; }
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
         #region "Methods"
@@ -129,6 +130,14 @@ namespace Mbc5.Forms
         #endregion
         private void frmMain_Load(object sender, EventArgs e)
         {
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            if (Environment == "DEV")
+            {
+                this.AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; Integrated Security=True;User Id=sa;password=Briggitte1; Connect Timeout=5";
+            }
+            else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;Integrated Security=True;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+            
+
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
