@@ -40,7 +40,7 @@ namespace Mbc5.Dialogs {
             this.pbLoading.Visible = true;
            
 
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Mbc"].ToString());
        
 
             string cPassword = this.txtpassword.Text;

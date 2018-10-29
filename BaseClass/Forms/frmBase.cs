@@ -23,6 +23,7 @@ namespace BaseClass
         }
         protected Logger Log { get; private set; } 
         #region "Properties" 
+
         [Browsable(true)]
         //protected Logger Log { get; private set; }
         private bool CloseForm { get; set; }

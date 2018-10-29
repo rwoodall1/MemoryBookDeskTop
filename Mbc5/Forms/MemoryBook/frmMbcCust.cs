@@ -57,8 +57,32 @@ namespace Mbc5.Forms.MemoryBook {
      
 
         #endregion
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpLeadSourceTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
+            this.lkpLeadNameTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.custSearchTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+         
+            this.lkpMultiYearOptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpTypeContTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpPromotionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpPrevPubTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpNoRebookTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpschtypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpMktReferenceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpCommentsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.datecontTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+           
+            this.contpstnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.mktinfoTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 
+
+        }
         private void frmMbcCust_Load(object sender,EventArgs e) {
+            SetConnectionString();
             // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
             this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
             // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.

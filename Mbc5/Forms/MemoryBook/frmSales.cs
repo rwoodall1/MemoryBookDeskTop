@@ -42,9 +42,21 @@ namespace Mbc5.Forms.MemoryBook {
             this.Schcode = null;
 
         }
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.paymntTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.custTableAdapter1.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.invHstTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+          
+        }
         private void frmSales_Load(object sender, EventArgs e) {
 
-
+            this.SetConnectionString();
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();

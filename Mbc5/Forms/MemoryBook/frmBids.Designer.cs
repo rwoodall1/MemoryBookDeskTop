@@ -70,9 +70,9 @@
             System.Windows.Forms.Label label23;
             System.Windows.Forms.Label sbtotLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBids));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsBids = new Mbc5.DataSets.dsBids();
             this.bidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -923,15 +923,15 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 48;
-            reportDataSource4.Name = "dsCust";
-            reportDataSource4.Value = this.custBindingSource;
-            reportDataSource5.Name = "dsBidValues";
-            reportDataSource5.Value = this.bidsBindingSource;
-            reportDataSource6.Name = "detailbid";
-            reportDataSource6.Value = this.BidInvoiceDetailBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
+            reportDataSource1.Name = "dsCust";
+            reportDataSource1.Value = this.custBindingSource;
+            reportDataSource2.Name = "dsBidValues";
+            reportDataSource2.Value = this.bidsBindingSource;
+            reportDataSource3.Name = "detailbid";
+            reportDataSource3.Value = this.BidInvoiceDetailBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuote.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(582, 601);
             this.reportViewer1.Name = "reportViewer1";

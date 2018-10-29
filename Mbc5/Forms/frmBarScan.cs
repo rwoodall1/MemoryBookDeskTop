@@ -16,7 +16,11 @@ namespace Mbc5.Forms
             InitializeComponent();
         }
         string Company { get; set; }
-
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+           
+        }
         private void label3_Click(object sender, EventArgs e)
         {
 
