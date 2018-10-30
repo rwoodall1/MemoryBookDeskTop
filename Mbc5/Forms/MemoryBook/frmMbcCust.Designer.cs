@@ -1487,7 +1487,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.AddLeadSource.Name = "AddLeadSource";
             this.AddLeadSource.Size = new System.Drawing.Size(180, 22);
             this.AddLeadSource.Text = "Add Item";
-            this.AddLeadSource.Click += new System.EventHandler(this.AddLeadSource_Click);
+           
             // 
             // lkpLeadSourceBindingSource
             // 

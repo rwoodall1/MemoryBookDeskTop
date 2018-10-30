@@ -1309,19 +1309,15 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void leadnameComboBox_MouseClick(object sender, MouseEventArgs e)
         {
-            addItemMenu.Items["AddLeadName"].Visible = false;
-            addItemMenu.Items["AddLeadSource"].Visible =true;
-            addItemMenu.Show(this, new Point(e.X, e.Y));
+            if (e.Button == MouseButtons.Right)
+            {
+                addItemMenu.Items["AddLeadName"].Visible = false;
+                addItemMenu.Items["AddLeadSource"].Visible = true;
+                addItemMenu.Show(this, new Point(e.X, e.Y));
+            }
         }
 
-        private void AddLeadSource_Click(object sender, EventArgs e)
-        {
-            LkpLeadSource frmLkpLeadSource = new LkpLeadSource(this.ApplicationUser);
-            this.Cursor = Cursors.AppStarting;
-            frmLkpLeadSource.MdiParent = this.ParentForm;
-            frmLkpLeadSource.Show();
-            this.Cursor = Cursors.Default;
-        }
+     
 
         private void AddLeadName_Click(object sender, EventArgs e)
         {
