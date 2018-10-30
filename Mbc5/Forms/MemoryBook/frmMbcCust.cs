@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using BaseClass;
 using Mbc5.Dialogs;
+using Mbc5.LookUpForms;
 using Exceptionless;
 using Exceptionless.Models;
 using Mbc5.Classes;
@@ -1291,6 +1292,44 @@ namespace Mbc5.Forms.MemoryBook {
             Cursor.Current = Cursors.WaitCursor;
             reportViewerCheckList.PrintDialog();
             Cursor.Current = Cursors.Default;
+        }
+
+       
+
+        private void leadsourceComboBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            var a = 1;
+           if(e.Button==MouseButtons.Right)
+            {
+                addItemMenu.Items["AddLeadSource"].Visible = false;
+                addItemMenu.Items["AddLeadName"].Visible = true;
+                addItemMenu.Show(this, new Point(e.X, e.Y));      
+            }
+        }
+
+        private void leadnameComboBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            addItemMenu.Items["AddLeadName"].Visible = false;
+            addItemMenu.Items["AddLeadSource"].Visible =true;
+            addItemMenu.Show(this, new Point(e.X, e.Y));
+        }
+
+        private void AddLeadSource_Click(object sender, EventArgs e)
+        {
+            LkpLeadSource frmLkpLeadSource = new LkpLeadSource(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpLeadSource.MdiParent = this.ParentForm;
+            frmLkpLeadSource.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void AddLeadName_Click(object sender, EventArgs e)
+        {
+            LkpLeadName frmLkpLeadName = new LkpLeadName(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpLeadName.MdiParent = this.ParentForm;
+            frmLkpLeadName.Show();
+            this.Cursor = Cursors.Default;
         }
 
 

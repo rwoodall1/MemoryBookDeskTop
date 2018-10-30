@@ -312,6 +312,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="LookUpForms\LkpLeadName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpLeadName.Designer.cs">
+      <DependentUpon>LkpLeadName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpLeadSource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpLeadSource.Designer.cs">
+      <DependentUpon>LkpLeadSource.cs</DependentUpon>
+    </Compile>
     <Compile Include="LookUpForms\LkpWipDescriptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -414,6 +426,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpLeadName.resx">
+      <DependentUpon>LkpLeadName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpLeadSource.resx">
+      <DependentUpon>LkpLeadSource.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpWipDescriptions.resx">
       <DependentUpon>LkpWipDescriptions.cs</DependentUpon>

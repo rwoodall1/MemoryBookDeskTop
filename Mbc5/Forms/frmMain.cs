@@ -133,9 +133,9 @@ namespace Mbc5.Forms
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
             if (Environment == "DEV")
             {
-                this.AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; Integrated Security=True;User Id=sa;password=Briggitte1; Connect Timeout=5";
+                this.AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
             }
-            else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;Integrated Security=True;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+            else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
             
 
             List<string> roles = new List<string>();
@@ -580,10 +580,24 @@ namespace Mbc5.Forms
                 frmBarScan.Show();
                 this.Cursor = Cursors.Default;
 
+        }
 
-            
-            
+        private void leadSourceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LkpLeadSource frmLkpLeadSource = new LkpLeadSource(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpLeadSource.MdiParent = this;
+            frmLkpLeadSource.Show();
+            this.Cursor = Cursors.Default;
+        }
 
+        private void leadNamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LkpLeadName frmLkpLeadName = new LkpLeadName(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpLeadName.MdiParent = this;
+            frmLkpLeadName.Show();
+            this.Cursor = Cursors.Default;
         }
 
 

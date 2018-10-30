@@ -135,6 +135,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.leadnameComboBox = new System.Windows.Forms.ComboBox();
             this.lkpLeadNameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.leadsourceComboBox = new System.Windows.Forms.ComboBox();
+            this.addItemMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.AddLeadSource = new System.Windows.Forms.ToolStripMenuItem();
             this.lkpLeadSourceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.isTaxExemptCheckBox = new System.Windows.Forms.CheckBox();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
@@ -329,6 +331,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadSourceTableAdapter();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.reportViewerCheckList = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.AddLeadName = new System.Windows.Forms.ToolStripMenuItem();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -421,6 +424,7 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpLeadNameBindingSource)).BeginInit();
+            this.addItemMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
@@ -1448,6 +1452,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.leadnameComboBox.Size = new System.Drawing.Size(197, 21);
             this.leadnameComboBox.TabIndex = 108;
             this.leadnameComboBox.ValueMember = "Name";
+            this.leadnameComboBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.leadnameComboBox_MouseClick);
             // 
             // lkpLeadNameBindingSource
             // 
@@ -1456,6 +1461,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // leadsourceComboBox
             // 
+            this.leadsourceComboBox.ContextMenuStrip = this.addItemMenu;
             this.leadsourceComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "leadsource", true));
             this.leadsourceComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "leadsource", true));
             this.leadsourceComboBox.DataSource = this.lkpLeadSourceBindingSource;
@@ -1466,6 +1472,22 @@ namespace Mbc5.Forms.MemoryBook {
             this.leadsourceComboBox.Size = new System.Drawing.Size(157, 21);
             this.leadsourceComboBox.TabIndex = 107;
             this.leadsourceComboBox.ValueMember = "Name";
+            this.leadsourceComboBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.leadsourceComboBox_MouseClick);
+            // 
+            // addItemMenu
+            // 
+            this.addItemMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddLeadSource,
+            this.AddLeadName});
+            this.addItemMenu.Name = "addItemMenu";
+            this.addItemMenu.Size = new System.Drawing.Size(181, 70);
+            // 
+            // AddLeadSource
+            // 
+            this.AddLeadSource.Name = "AddLeadSource";
+            this.AddLeadSource.Size = new System.Drawing.Size(180, 22);
+            this.AddLeadSource.Text = "Add Item";
+            this.AddLeadSource.Click += new System.EventHandler(this.AddLeadSource_Click);
             // 
             // lkpLeadSourceBindingSource
             // 
@@ -3217,6 +3239,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.tableAdapterManager1.contpstnTableAdapter = null;
             this.tableAdapterManager1.lkpBackGroundTableAdapter = null;
             this.tableAdapterManager1.lkpCommentsTableAdapter = null;
+            this.tableAdapterManager1.lkpLeadNameTableAdapter = null;
+            this.tableAdapterManager1.lkpLeadSourceTableAdapter = null;
             this.tableAdapterManager1.lkpMktReferenceTableAdapter = null;
             this.tableAdapterManager1.lkpMultiYearOptionsTableAdapter = null;
             this.tableAdapterManager1.lkpNoRebookTableAdapter = null;
@@ -3350,6 +3374,13 @@ namespace Mbc5.Forms.MemoryBook {
             this.reportViewerCheckList.Visible = false;
             this.reportViewerCheckList.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewerCheckList_RenderingComplete);
             // 
+            // AddLeadName
+            // 
+            this.AddLeadName.Name = "AddLeadName";
+            this.AddLeadName.Size = new System.Drawing.Size(180, 22);
+            this.AddLeadName.Text = "Add Item";
+            this.AddLeadName.Click += new System.EventHandler(this.AddLeadName_Click);
+            // 
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3380,6 +3411,7 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpLeadNameBindingSource)).EndInit();
+            this.addItemMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
@@ -3631,5 +3663,8 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.TextBox ccontcityTextBox;
         private System.Windows.Forms.TextBox bcontcityTextBox;
         private System.Windows.Forms.TextBox contcityTextBox;
+        private System.Windows.Forms.ContextMenuStrip addItemMenu;
+        private System.Windows.Forms.ToolStripMenuItem AddLeadSource;
+        private System.Windows.Forms.ToolStripMenuItem AddLeadName;
     }
 }

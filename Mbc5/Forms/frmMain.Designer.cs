@@ -44,6 +44,7 @@
             this.productionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endSheetSupplementPreFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.barScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMBCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +69,7 @@
             this.lookUpMaintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scanDescriptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.leadSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMain = new System.Windows.Forms.ToolStrip();
@@ -84,7 +86,7 @@
             this.tsPrint = new System.Windows.Forms.ToolStripButton();
             this.tsEmail = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.barScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.leadNamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -127,7 +129,7 @@
             this.bidsToolStripMenuItem,
             this.onlineFormsToolStripMenuItem});
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
-            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
             // 
             // customerToolStripMenuItem
@@ -165,7 +167,7 @@
             this.mbidsToolStripMenuItem,
             this.onlineFormsToolStripMenuItem1});
             this.meridianToolStripMenuItem.Name = "meridianToolStripMenuItem";
-            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
             // 
             // MerToolStrip
@@ -202,7 +204,7 @@
             this.endSheetSupplementPreFlightToolStripMenuItem,
             this.barScanToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -219,17 +221,24 @@
             this.endSheetSupplementPreFlightToolStripMenuItem.Text = "End Sheet/Supplement/PreFlight";
             this.endSheetSupplementPreFlightToolStripMenuItem.Click += new System.EventHandler(this.endSheetSupplementPreFlightToolStripMenuItem_Click);
             // 
+            // barScanToolStripMenuItem
+            // 
+            this.barScanToolStripMenuItem.Name = "barScanToolStripMenuItem";
+            this.barScanToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.barScanToolStripMenuItem.Text = "Bar Scan";
+            this.barScanToolStripMenuItem.Click += new System.EventHandler(this.barScanToolStripMenuItem_Click);
+            // 
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
             // 
             // testFormToolStripMenuItem
             // 
             this.testFormToolStripMenuItem.Name = "testFormToolStripMenuItem";
-            this.testFormToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testFormToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.testFormToolStripMenuItem.Text = "TestForm";
             this.testFormToolStripMenuItem.Click += new System.EventHandler(this.testFormToolStripMenuItem_Click);
             // 
@@ -384,6 +393,8 @@
             // 
             this.lookUpMaintenanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.discountToolStripMenuItem,
+            this.leadNamesToolStripMenuItem,
+            this.leadSourceToolStripMenuItem,
             this.scanDescriptionsToolStripMenuItem});
             this.lookUpMaintenanceToolStripMenuItem.Name = "lookUpMaintenanceToolStripMenuItem";
             this.lookUpMaintenanceToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
@@ -392,16 +403,23 @@
             // discountToolStripMenuItem
             // 
             this.discountToolStripMenuItem.Name = "discountToolStripMenuItem";
-            this.discountToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.discountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.discountToolStripMenuItem.Text = "Discount";
             this.discountToolStripMenuItem.Click += new System.EventHandler(this.discountToolStripMenuItem_Click);
             // 
             // scanDescriptionsToolStripMenuItem
             // 
             this.scanDescriptionsToolStripMenuItem.Name = "scanDescriptionsToolStripMenuItem";
-            this.scanDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.scanDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.scanDescriptionsToolStripMenuItem.Text = "Scan Descriptions";
             this.scanDescriptionsToolStripMenuItem.Click += new System.EventHandler(this.scanDescriptionsToolStripMenuItem_Click);
+            // 
+            // leadSourceToolStripMenuItem
+            // 
+            this.leadSourceToolStripMenuItem.Name = "leadSourceToolStripMenuItem";
+            this.leadSourceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.leadSourceToolStripMenuItem.Text = "Lead Source";
+            this.leadSourceToolStripMenuItem.Click += new System.EventHandler(this.leadSourceToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -544,12 +562,12 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // barScanToolStripMenuItem
+            // leadNamesToolStripMenuItem
             // 
-            this.barScanToolStripMenuItem.Name = "barScanToolStripMenuItem";
-            this.barScanToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.barScanToolStripMenuItem.Text = "Bar Scan";
-            this.barScanToolStripMenuItem.Click += new System.EventHandler(this.barScanToolStripMenuItem_Click);
+            this.leadNamesToolStripMenuItem.Name = "leadNamesToolStripMenuItem";
+            this.leadNamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.leadNamesToolStripMenuItem.Text = "Lead Names";
+            this.leadNamesToolStripMenuItem.Click += new System.EventHandler(this.leadNamesToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -630,5 +648,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem testFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem barScanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem leadSourceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem leadNamesToolStripMenuItem;
     }
 }
