@@ -600,6 +600,15 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
         }
 
+        private void typeStylesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LkpTypeStyle frmLkpTypeStyle = new LkpTypeStyle(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpTypeStyle.MdiParent = this;
+            frmLkpTypeStyle.Show();
+            this.Cursor = Cursors.Default;
+        }
+
 
 
 

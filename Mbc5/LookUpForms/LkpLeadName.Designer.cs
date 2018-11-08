@@ -34,8 +34,8 @@
             this.lblLeadName = new System.Windows.Forms.Label();
             this.lookUp = new Mbc5.DataSets.LookUp();
             this.lkpDdiscntDataGridView = new System.Windows.Forms.DataGridView();
-            this.tableAdapterManager = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.lkpLeadNameBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableAdapterManager = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.lkpLeadNameTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpLeadNameTableAdapter();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -112,14 +112,18 @@
             this.lkpDdiscntDataGridView.Size = new System.Drawing.Size(485, 515);
             this.lkpDdiscntDataGridView.TabIndex = 3;
             // 
+            // lkpLeadNameBindingSource
+            // 
+            this.lkpLeadNameBindingSource.DataMember = "lkpLeadName";
+            this.lkpLeadNameBindingSource.DataSource = this.lookUp;
+            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.contpstnTableAdapter = null;
             this.tableAdapterManager.lkpBackGroundTableAdapter = null;
             this.tableAdapterManager.lkpCommentsTableAdapter = null;
-            this.tableAdapterManager.lkpLeadNameTableAdapter = null;
+            this.tableAdapterManager.lkpLeadNameTableAdapter = this.lkpLeadNameTableAdapter;
             this.tableAdapterManager.lkpLeadSourceTableAdapter = null;
             this.tableAdapterManager.lkpMktReferenceTableAdapter = null;
             this.tableAdapterManager.lkpMultiYearOptionsTableAdapter = null;
@@ -130,11 +134,6 @@
             this.tableAdapterManager.lkpTypeContTableAdapter = null;
             this.tableAdapterManager.lkTypeDataTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // lkpLeadNameBindingSource
-            // 
-            this.lkpLeadNameBindingSource.DataMember = "lkpLeadName";
-            this.lkpLeadNameBindingSource.DataSource = this.lookUp;
             // 
             // lkpLeadNameTableAdapter
             // 
@@ -279,6 +278,7 @@
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // LkpLeadName
             // 

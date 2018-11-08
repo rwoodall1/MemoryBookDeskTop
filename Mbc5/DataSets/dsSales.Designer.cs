@@ -3433,6 +3433,10 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnsourdate;
             
+            private global::System.Data.DataColumn columnTimeStamp;
+            
+            private global::System.Data.DataColumn columnschname;
+            
             private global::System.Data.DataColumn columnsecsource;
             
             private global::System.Data.DataColumn columncontdate;
@@ -3665,12 +3669,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnDateModified;
             
-            private global::System.Data.DataColumn columnTimeStamp;
-            
-            private global::System.Data.DataColumn columnCityStateZip;
-            
-            private global::System.Data.DataColumn columnschname;
-            
             private global::System.Data.DataColumn columnModifiedBy;
             
             private global::System.Data.DataColumn columnoraclecode;
@@ -3683,13 +3681,13 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnstatus;
             
-            private global::System.Data.DataColumn columntaxexemptionexpirationdate;
-            
-            private global::System.Data.DataColumn columnIsTaxExempt;
+            private global::System.Data.DataColumn columnFirstDaySchool;
             
             private global::System.Data.DataColumn columnstage;
             
-            private global::System.Data.DataColumn columnFirstDaySchool;
+            private global::System.Data.DataColumn columnIsTaxExempt;
+            
+            private global::System.Data.DataColumn columntaxexemptionexpirationdate;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -3761,6 +3759,22 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn sourdateColumn {
                 get {
                     return this.columnsourdate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TimeStampColumn {
+                get {
+                    return this.columnTimeStamp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn schnameColumn {
+                get {
+                    return this.columnschname;
                 }
             }
             
@@ -4694,30 +4708,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn TimeStampColumn {
-                get {
-                    return this.columnTimeStamp;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn CityStateZipColumn {
-                get {
-                    return this.columnCityStateZip;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn schnameColumn {
-                get {
-                    return this.columnschname;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn ModifiedByColumn {
                 get {
                     return this.columnModifiedBy;
@@ -4766,17 +4756,9 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn taxexemptionexpirationdateColumn {
+            public global::System.Data.DataColumn FirstDaySchoolColumn {
                 get {
-                    return this.columntaxexemptionexpirationdate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn IsTaxExemptColumn {
-                get {
-                    return this.columnIsTaxExempt;
+                    return this.columnFirstDaySchool;
                 }
             }
             
@@ -4790,9 +4772,17 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn FirstDaySchoolColumn {
+            public global::System.Data.DataColumn IsTaxExemptColumn {
                 get {
-                    return this.columnFirstDaySchool;
+                    return this.columnIsTaxExempt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn taxexemptionexpirationdateColumn {
+                get {
+                    return this.columntaxexemptionexpirationdate;
                 }
             }
             
@@ -4839,6 +4829,8 @@ namespace Mbc5.DataSets {
                         string cstatus, 
                         string source, 
                         System.DateTime sourdate, 
+                        byte[] TimeStamp, 
+                        string schname, 
                         string secsource, 
                         System.DateTime contdate, 
                         string origsour, 
@@ -4955,19 +4947,16 @@ namespace Mbc5.DataSets {
                         string photographer, 
                         System.DateTime DateCreated, 
                         System.DateTime DateModified, 
-                        byte[] TimeStamp, 
-                        string CityStateZip, 
-                        string schname, 
                         string ModifiedBy, 
                         string oraclecode, 
                         string cposition, 
                         bool electronickit, 
                         string electronickitoptions, 
                         string status, 
-                        System.DateTime taxexemptionexpirationdate, 
-                        bool IsTaxExempt, 
+                        System.DateTime FirstDaySchool, 
                         string stage, 
-                        System.DateTime FirstDaySchool) {
+                        bool IsTaxExempt, 
+                        System.DateTime taxexemptionexpirationdate) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -4975,6 +4964,8 @@ namespace Mbc5.DataSets {
                         cstatus,
                         source,
                         sourdate,
+                        TimeStamp,
+                        schname,
                         secsource,
                         contdate,
                         origsour,
@@ -5091,19 +5082,16 @@ namespace Mbc5.DataSets {
                         photographer,
                         DateCreated,
                         DateModified,
-                        TimeStamp,
-                        CityStateZip,
-                        schname,
                         ModifiedBy,
                         oraclecode,
                         cposition,
                         electronickit,
                         electronickitoptions,
                         status,
-                        taxexemptionexpirationdate,
-                        IsTaxExempt,
+                        FirstDaySchool,
                         stage,
-                        FirstDaySchool};
+                        IsTaxExempt,
+                        taxexemptionexpirationdate};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -5138,6 +5126,8 @@ namespace Mbc5.DataSets {
                 this.columncstatus = base.Columns["cstatus"];
                 this.columnsource = base.Columns["source"];
                 this.columnsourdate = base.Columns["sourdate"];
+                this.columnTimeStamp = base.Columns["TimeStamp"];
+                this.columnschname = base.Columns["schname"];
                 this.columnsecsource = base.Columns["secsource"];
                 this.columncontdate = base.Columns["contdate"];
                 this.columnorigsour = base.Columns["origsour"];
@@ -5254,19 +5244,16 @@ namespace Mbc5.DataSets {
                 this.columnphotographer = base.Columns["photographer"];
                 this.columnDateCreated = base.Columns["DateCreated"];
                 this.columnDateModified = base.Columns["DateModified"];
-                this.columnTimeStamp = base.Columns["TimeStamp"];
-                this.columnCityStateZip = base.Columns["CityStateZip"];
-                this.columnschname = base.Columns["schname"];
                 this.columnModifiedBy = base.Columns["ModifiedBy"];
                 this.columnoraclecode = base.Columns["oraclecode"];
                 this.columncposition = base.Columns["cposition"];
                 this.columnelectronickit = base.Columns["electronickit"];
                 this.columnelectronickitoptions = base.Columns["electronickitoptions"];
                 this.columnstatus = base.Columns["status"];
-                this.columntaxexemptionexpirationdate = base.Columns["taxexemptionexpirationdate"];
-                this.columnIsTaxExempt = base.Columns["IsTaxExempt"];
-                this.columnstage = base.Columns["stage"];
                 this.columnFirstDaySchool = base.Columns["FirstDaySchool"];
+                this.columnstage = base.Columns["stage"];
+                this.columnIsTaxExempt = base.Columns["IsTaxExempt"];
+                this.columntaxexemptionexpirationdate = base.Columns["taxexemptionexpirationdate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5282,6 +5269,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnsource);
                 this.columnsourdate = new global::System.Data.DataColumn("sourdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsourdate);
+                this.columnTimeStamp = new global::System.Data.DataColumn("TimeStamp", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTimeStamp);
+                this.columnschname = new global::System.Data.DataColumn("schname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschname);
                 this.columnsecsource = new global::System.Data.DataColumn("secsource", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsecsource);
                 this.columncontdate = new global::System.Data.DataColumn("contdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -5514,12 +5505,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnDateCreated);
                 this.columnDateModified = new global::System.Data.DataColumn("DateModified", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateModified);
-                this.columnTimeStamp = new global::System.Data.DataColumn("TimeStamp", typeof(byte[]), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTimeStamp);
-                this.columnCityStateZip = new global::System.Data.DataColumn("CityStateZip", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCityStateZip);
-                this.columnschname = new global::System.Data.DataColumn("schname", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnschname);
                 this.columnModifiedBy = new global::System.Data.DataColumn("ModifiedBy", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnModifiedBy);
                 this.columnoraclecode = new global::System.Data.DataColumn("oraclecode", typeof(string), null, global::System.Data.MappingType.Element);
@@ -5532,14 +5517,14 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnelectronickitoptions);
                 this.columnstatus = new global::System.Data.DataColumn("status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstatus);
-                this.columntaxexemptionexpirationdate = new global::System.Data.DataColumn("taxexemptionexpirationdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntaxexemptionexpirationdate);
-                this.columnIsTaxExempt = new global::System.Data.DataColumn("IsTaxExempt", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIsTaxExempt);
-                this.columnstage = new global::System.Data.DataColumn("stage", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstage);
                 this.columnFirstDaySchool = new global::System.Data.DataColumn("FirstDaySchool", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFirstDaySchool);
+                this.columnstage = new global::System.Data.DataColumn("stage", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstage);
+                this.columnIsTaxExempt = new global::System.Data.DataColumn("IsTaxExempt", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsTaxExempt);
+                this.columntaxexemptionexpirationdate = new global::System.Data.DataColumn("taxexemptionexpirationdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntaxexemptionexpirationdate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columnschcode.AllowDBNull = false;
@@ -5548,7 +5533,10 @@ namespace Mbc5.DataSets {
                 this.columncontryear.MaxLength = 2;
                 this.columncstatus.MaxLength = 40;
                 this.columnsource.MaxLength = 3;
-                this.columnsecsource.MaxLength = 3;
+                this.columnTimeStamp.ReadOnly = true;
+                this.columnschname.AllowDBNull = false;
+                this.columnschname.MaxLength = 50;
+                this.columnsecsource.MaxLength = 50;
                 this.columnorigsour.MaxLength = 3;
                 this.columnorigyear.MaxLength = 2;
                 this.columnrebook.MaxLength = 1;
@@ -5556,36 +5544,36 @@ namespace Mbc5.DataSets {
                 this.columngrades.MaxLength = 16;
                 this.columnsal.MaxLength = 25;
                 this.columnschaddr.AllowDBNull = false;
-                this.columnschaddr.MaxLength = 35;
-                this.columnschaddr2.MaxLength = 35;
+                this.columnschaddr.MaxLength = 50;
+                this.columnschaddr2.MaxLength = 50;
                 this.columnschcity.AllowDBNull = false;
-                this.columnschcity.MaxLength = 21;
+                this.columnschcity.MaxLength = 50;
                 this.columnschstate.AllowDBNull = false;
-                this.columnschstate.MaxLength = 3;
+                this.columnschstate.MaxLength = 50;
                 this.columnschzip.AllowDBNull = false;
-                this.columnschzip.MaxLength = 10;
-                this.columnschphone.MaxLength = 25;
-                this.columnschfax.MaxLength = 14;
+                this.columnschzip.MaxLength = 50;
+                this.columnschphone.MaxLength = 50;
+                this.columnschfax.MaxLength = 50;
                 this.columnschemail.MaxLength = 80;
                 this.columnsprngbrk.MaxLength = 25;
                 this.columncontmemo.MaxLength = 2147483647;
                 this.columnposition.MaxLength = 20;
                 this.columngender.MaxLength = 1;
-                this.columncontfname.MaxLength = 20;
-                this.columncontlname.MaxLength = 20;
+                this.columncontfname.MaxLength = 50;
+                this.columncontlname.MaxLength = 50;
                 this.columnnewfname.MaxLength = 20;
                 this.columnnewlname.MaxLength = 20;
                 this.columnyb_sth.MaxLength = 1;
                 this.columnshiptocont.MaxLength = 1;
-                this.columncontaddr.MaxLength = 30;
-                this.columncontaddr2.MaxLength = 30;
-                this.columncontcity.MaxLength = 21;
-                this.columncontstate.MaxLength = 3;
-                this.columncontzip.MaxLength = 10;
-                this.columncontphnhom.MaxLength = 14;
-                this.columncontphnwrk.MaxLength = 25;
-                this.columncontfax.MaxLength = 14;
-                this.columncontemail.MaxLength = 45;
+                this.columncontaddr.MaxLength = 50;
+                this.columncontaddr2.MaxLength = 50;
+                this.columncontcity.MaxLength = 50;
+                this.columncontstate.MaxLength = 50;
+                this.columncontzip.MaxLength = 50;
+                this.columncontphnhom.MaxLength = 50;
+                this.columncontphnwrk.MaxLength = 50;
+                this.columncontfax.MaxLength = 50;
+                this.columncontemail.MaxLength = 50;
                 this.columnbooktype.MaxLength = 4;
                 this.columnsigfopf.MaxLength = 1;
                 this.columnenvflyer.MaxLength = 6;
@@ -5604,32 +5592,32 @@ namespace Mbc5.DataSets {
                 this.columnextrchg.MaxLength = 2147483647;
                 this.columnpcmac.MaxLength = 10;
                 this.columnjunsno.MaxLength = 10;
-                this.columnbcontfname.MaxLength = 20;
-                this.columnbcontlname.MaxLength = 20;
-                this.columnbcontaddr.MaxLength = 30;
-                this.columnbcontaddr2.MaxLength = 30;
-                this.columnbcontcity.MaxLength = 21;
-                this.columnbcontstate.MaxLength = 3;
-                this.columnbcontzip.MaxLength = 10;
-                this.columnbcontphnhom.MaxLength = 14;
-                this.columnbcontphnwrk.MaxLength = 14;
-                this.columnbcontfax.MaxLength = 14;
-                this.columnbcontemail.MaxLength = 45;
-                this.columnmultiyroptions.MaxLength = 30;
+                this.columnbcontfname.MaxLength = 50;
+                this.columnbcontlname.MaxLength = 50;
+                this.columnbcontaddr.MaxLength = 50;
+                this.columnbcontaddr2.MaxLength = 50;
+                this.columnbcontcity.MaxLength = 50;
+                this.columnbcontstate.MaxLength = 50;
+                this.columnbcontzip.MaxLength = 50;
+                this.columnbcontphnhom.MaxLength = 50;
+                this.columnbcontphnwrk.MaxLength = 50;
+                this.columnbcontfax.MaxLength = 50;
+                this.columnbcontemail.MaxLength = 50;
+                this.columnmultiyroptions.MaxLength = 50;
                 this.columnwebsite.MaxLength = 60;
                 this.columnbposition.MaxLength = 20;
-                this.columnmbconlinepassword.MaxLength = 45;
-                this.columnccontfname.MaxLength = 20;
-                this.columnccontlname.MaxLength = 20;
-                this.columnccontaddr.MaxLength = 30;
-                this.columnccontaddr2.MaxLength = 30;
-                this.columnccontcity.MaxLength = 21;
-                this.columnccontstate.MaxLength = 3;
-                this.columnccontzip.MaxLength = 10;
-                this.columnccontphnhom.MaxLength = 14;
-                this.columnccontphnwork.MaxLength = 14;
-                this.columnccontfax.MaxLength = 14;
-                this.columnccontemail.MaxLength = 45;
+                this.columnmbconlinepassword.MaxLength = 20;
+                this.columnccontfname.MaxLength = 50;
+                this.columnccontlname.MaxLength = 50;
+                this.columnccontaddr.MaxLength = 50;
+                this.columnccontaddr2.MaxLength = 50;
+                this.columnccontcity.MaxLength = 50;
+                this.columnccontstate.MaxLength = 50;
+                this.columnccontzip.MaxLength = 50;
+                this.columnccontphnhom.MaxLength = 50;
+                this.columnccontphnwork.MaxLength = 50;
+                this.columnccontfax.MaxLength = 50;
+                this.columnccontemail.MaxLength = 50;
                 this.columnnorebookreason.MaxLength = 25;
                 this.columnnewpublisher.MaxLength = 25;
                 this.columncsrep2.MaxLength = 2;
@@ -5638,14 +5626,9 @@ namespace Mbc5.DataSets {
                 this.columnleadsname.MaxLength = 25;
                 this.columnprevpublisher.MaxLength = 25;
                 this.columnleadname.MaxLength = 25;
-                this.columnphotographer.MaxLength = 45;
+                this.columnphotographer.MaxLength = 50;
                 this.columnDateCreated.AllowDBNull = false;
                 this.columnDateModified.AllowDBNull = false;
-                this.columnTimeStamp.ReadOnly = true;
-                this.columnCityStateZip.ReadOnly = true;
-                this.columnCityStateZip.MaxLength = 152;
-                this.columnschname.AllowDBNull = false;
-                this.columnschname.MaxLength = 50;
                 this.columnModifiedBy.MaxLength = 128;
                 this.columnoraclecode.MaxLength = 7;
                 this.columncposition.MaxLength = 50;
@@ -11380,6 +11363,33 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public byte[] TimeStamp {
+                get {
+                    try {
+                        return ((byte[])(this[this.tablecust.TimeStampColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TimeStamp\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.TimeStampColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string schname {
+                get {
+                    return ((string)(this[this.tablecust.schnameColumn]));
+                }
+                set {
+                    this[this.tablecust.schnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string secsource {
                 get {
                     try {
@@ -13206,49 +13216,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public byte[] TimeStamp {
-                get {
-                    try {
-                        return ((byte[])(this[this.tablecust.TimeStampColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TimeStamp\' in table \'cust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablecust.TimeStampColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string CityStateZip {
-                get {
-                    try {
-                        return ((string)(this[this.tablecust.CityStateZipColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CityStateZip\' in table \'cust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablecust.CityStateZipColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string schname {
-                get {
-                    return ((string)(this[this.tablecust.schnameColumn]));
-                }
-                set {
-                    this[this.tablecust.schnameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string ModifiedBy {
                 get {
                     try {
@@ -13345,33 +13312,17 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime taxexemptionexpirationdate {
+            public System.DateTime FirstDaySchool {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tablecust.taxexemptionexpirationdateColumn]));
+                        return ((global::System.DateTime)(this[this.tablecust.FirstDaySchoolColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'taxexemptionexpirationdate\' in table \'cust\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'FirstDaySchool\' in table \'cust\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablecust.taxexemptionexpirationdateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsTaxExempt {
-                get {
-                    try {
-                        return ((bool)(this[this.tablecust.IsTaxExemptColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'IsTaxExempt\' in table \'cust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablecust.IsTaxExemptColumn] = value;
+                    this[this.tablecust.FirstDaySchoolColumn] = value;
                 }
             }
             
@@ -13393,17 +13344,33 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime FirstDaySchool {
+            public bool IsTaxExempt {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tablecust.FirstDaySchoolColumn]));
+                        return ((bool)(this[this.tablecust.IsTaxExemptColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FirstDaySchool\' in table \'cust\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsTaxExempt\' in table \'cust\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablecust.FirstDaySchoolColumn] = value;
+                    this[this.tablecust.IsTaxExemptColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime taxexemptionexpirationdate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablecust.taxexemptionexpirationdateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'taxexemptionexpirationdate\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.taxexemptionexpirationdateColumn] = value;
                 }
             }
             
@@ -13453,6 +13420,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetsourdateNull() {
                 this[this.tablecust.sourdateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTimeStampNull() {
+                return this.IsNull(this.tablecust.TimeStampColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTimeStampNull() {
+                this[this.tablecust.TimeStampColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14777,30 +14756,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsTimeStampNull() {
-                return this.IsNull(this.tablecust.TimeStampColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetTimeStampNull() {
-                this[this.tablecust.TimeStampColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsCityStateZipNull() {
-                return this.IsNull(this.tablecust.CityStateZipColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetCityStateZipNull() {
-                this[this.tablecust.CityStateZipColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsModifiedByNull() {
                 return this.IsNull(this.tablecust.ModifiedByColumn);
             }
@@ -14873,26 +14828,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IstaxexemptionexpirationdateNull() {
-                return this.IsNull(this.tablecust.taxexemptionexpirationdateColumn);
+            public bool IsFirstDaySchoolNull() {
+                return this.IsNull(this.tablecust.FirstDaySchoolColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SettaxexemptionexpirationdateNull() {
-                this[this.tablecust.taxexemptionexpirationdateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsIsTaxExemptNull() {
-                return this.IsNull(this.tablecust.IsTaxExemptColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetIsTaxExemptNull() {
-                this[this.tablecust.IsTaxExemptColumn] = global::System.Convert.DBNull;
+            public void SetFirstDaySchoolNull() {
+                this[this.tablecust.FirstDaySchoolColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14909,14 +14852,26 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsFirstDaySchoolNull() {
-                return this.IsNull(this.tablecust.FirstDaySchoolColumn);
+            public bool IsIsTaxExemptNull() {
+                return this.IsNull(this.tablecust.IsTaxExemptColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetFirstDaySchoolNull() {
-                this[this.tablecust.FirstDaySchoolColumn] = global::System.Convert.DBNull;
+            public void SetIsTaxExemptNull() {
+                this[this.tablecust.IsTaxExemptColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IstaxexemptionexpirationdateNull() {
+                return this.IsNull(this.tablecust.taxexemptionexpirationdateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SettaxexemptionexpirationdateNull() {
+                this[this.tablecust.taxexemptionexpirationdateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -19096,6 +19051,8 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("cstatus", "cstatus");
             tableMapping.ColumnMappings.Add("source", "source");
             tableMapping.ColumnMappings.Add("sourdate", "sourdate");
+            tableMapping.ColumnMappings.Add("TimeStamp", "TimeStamp");
+            tableMapping.ColumnMappings.Add("schname", "schname");
             tableMapping.ColumnMappings.Add("secsource", "secsource");
             tableMapping.ColumnMappings.Add("contdate", "contdate");
             tableMapping.ColumnMappings.Add("origsour", "origsour");
@@ -19212,19 +19169,16 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("photographer", "photographer");
             tableMapping.ColumnMappings.Add("DateCreated", "DateCreated");
             tableMapping.ColumnMappings.Add("DateModified", "DateModified");
-            tableMapping.ColumnMappings.Add("TimeStamp", "TimeStamp");
-            tableMapping.ColumnMappings.Add("CityStateZip", "CityStateZip");
-            tableMapping.ColumnMappings.Add("schname", "schname");
             tableMapping.ColumnMappings.Add("ModifiedBy", "ModifiedBy");
             tableMapping.ColumnMappings.Add("oraclecode", "oraclecode");
             tableMapping.ColumnMappings.Add("cposition", "cposition");
             tableMapping.ColumnMappings.Add("electronickit", "electronickit");
             tableMapping.ColumnMappings.Add("electronickitoptions", "electronickitoptions");
             tableMapping.ColumnMappings.Add("status", "status");
-            tableMapping.ColumnMappings.Add("taxexemptionexpirationdate", "taxexemptionexpirationdate");
-            tableMapping.ColumnMappings.Add("IsTaxExempt", "IsTaxExempt");
-            tableMapping.ColumnMappings.Add("stage", "stage");
             tableMapping.ColumnMappings.Add("FirstDaySchool", "FirstDaySchool");
+            tableMapping.ColumnMappings.Add("stage", "stage");
+            tableMapping.ColumnMappings.Add("IsTaxExempt", "IsTaxExempt");
+            tableMapping.ColumnMappings.Add("taxexemptionexpirationdate", "taxexemptionexpirationdate");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -19645,28 +19599,27 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        schcode, contryear, cstatus, source, sourdate, secsource, contdate," +
-                " origsour, origyear, rebook, rebookdte, refby, enrollment, grades, sal, schaddr," +
-                " schaddr2, schcity, schstate, schzip, schphone, schfax, schemail, sprngbrk, \r\n  " +
-                "                       schout, contmemo, position, gender, contfname, contlname," +
-                " newfname, newlname, yb_sth, shiptocont, contaddr, contaddr2, contcity, contstat" +
-                "e, contzip, contphnhom, contphnwrk, contfax, contemail, booktype, vcrsent, sigfo" +
-                "pf, \r\n                         envflyer, marketing, yearrnd, clrpg_int, shipmemo" +
-                ", schclosed, inoffice, digintrst, svcode1, svdesc1, svcode2, svdesc2, spcinst, l" +
-                "astcont, nextcont, csrep, cstat, xeldate, allcolor, rbinit, rbdate, clspic, magi" +
-                "c, extrchg, sprinfo, \r\n                         fallinfo, initcont, highsp, slow" +
-                "none, pcmac, junsno, bcontfname, bcontlname, bcontaddr, bcontaddr2, bcontcity, b" +
-                "contstate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, bcontemail, multiyropti" +
-                "ons, multiyear, schuploading, \r\n                         website, nomktemail, no" +
-                "directmail, bposition, blkwhite, mbconlinepassword, ccontfname, ccontlname, ccon" +
-                "taddr, ccontaddr2, ccontcity, ccontstate, ccontzip, ccontphnhom, ccontphnwork, c" +
-                "contfax, ccontemail, norebookreason, \r\n                         newpublisher, cs" +
-                "rep2, schcolors, keeppswd, leadsource, leadsname, prevpublisher, leadname, isDel" +
-                "eted, photographer, DateCreated, DateModified, schcity + \',\' + schstate + \' \' + " +
-                "schzip AS CityStateZip, TimeStamp, schname, \r\n                         ModifiedB" +
-                "y, oraclecode, cposition, electronickit, electronickitoptions, status, taxexempt" +
-                "ionexpirationdate, IsTaxExempt, stage, FirstDaySchool\r\nFROM            cust\r\nWHE" +
-                "RE        (schcode = @schcode)";
+            this._commandCollection[0].CommandText = "SELECT        schcode, contryear, cstatus, source, sourdate, schname, TimeStamp, " +
+                "secsource, contdate, origsour, origyear, rebook, rebookdte, refby, enrollment, g" +
+                "rades, sal, schaddr, schaddr2, schcity, schstate, schzip, schphone, schfax, \r\n  " +
+                "                       schemail, sprngbrk, schout, contmemo, position, gender, c" +
+                "ontfname, contlname, newfname, newlname, yb_sth, shiptocont, contaddr, contaddr2" +
+                ", contcity, contstate, contzip, contphnhom, contphnwrk, contfax, contemail, book" +
+                "type, \r\n                         vcrsent, sigfopf, envflyer, marketing, yearrnd," +
+                " clrpg_int, shipmemo, schclosed, inoffice, digintrst, svcode1, svdesc1, svcode2," +
+                " svdesc2, spcinst, lastcont, nextcont, csrep, cstat, xeldate, allcolor, rbinit, " +
+                "rbdate, clspic, magic, \r\n                         extrchg, sprinfo, fallinfo, in" +
+                "itcont, highsp, slownone, pcmac, junsno, bcontfname, bcontlname, bcontaddr, bcon" +
+                "taddr2, bcontcity, bcontstate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, bco" +
+                "ntemail, multiyroptions, multiyear, \r\n                         schuploading, web" +
+                "site, nomktemail, nodirectmail, bposition, blkwhite, mbconlinepassword, ccontfna" +
+                "me, ccontlname, ccontaddr, ccontaddr2, ccontcity, ccontstate, ccontzip, ccontphn" +
+                "hom, ccontphnwork, ccontfax, ccontemail, \r\n                         norebookreas" +
+                "on, newpublisher, csrep2, schcolors, keeppswd, leadsource, leadsname, prevpublis" +
+                "her, leadname, isDeleted, photographer, DateCreated, DateModified, ModifiedBy, o" +
+                "raclecode, cposition, electronickit, \r\n                         electronickitopt" +
+                "ions, status, FirstDaySchool, stage, IsTaxExempt, taxexemptionexpirationdate\r\nFR" +
+                "OM            cust\r\nWHERE        (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -19894,7 +19847,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<bool> isDeleted, 
                     string photographer, 
                     System.DateTime DateCreated, 
-                    System.DateTime DateModified, 
+                    global::System.Nullable<global::System.DateTime> DateModified, 
                     string schname, 
                     string ModifiedBy, 
                     string oraclecode, 
@@ -19997,7 +19950,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 this.Adapter.InsertCommand.Parameters[14].Value = ((string)(sal));
             }
             if ((schaddr == null)) {
-                throw new global::System.ArgumentNullException("schaddr");
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[15].Value = ((string)(schaddr));
@@ -20009,19 +19962,19 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 this.Adapter.InsertCommand.Parameters[16].Value = ((string)(schaddr2));
             }
             if ((schcity == null)) {
-                throw new global::System.ArgumentNullException("schcity");
+                this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[17].Value = ((string)(schcity));
             }
             if ((schstate == null)) {
-                throw new global::System.ArgumentNullException("schstate");
+                this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[18].Value = ((string)(schstate));
             }
             if ((schzip == null)) {
-                throw new global::System.ArgumentNullException("schzip");
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[19].Value = ((string)(schzip));
@@ -20621,7 +20574,12 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 this.Adapter.InsertCommand.Parameters[118].Value = ((string)(photographer));
             }
             this.Adapter.InsertCommand.Parameters[119].Value = ((System.DateTime)(DateCreated));
-            this.Adapter.InsertCommand.Parameters[120].Value = ((System.DateTime)(DateModified));
+            if ((DateModified.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[120].Value = ((System.DateTime)(DateModified.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[120].Value = global::System.DBNull.Value;
+            }
             if ((schname == null)) {
                 throw new global::System.ArgumentNullException("schname");
             }
@@ -20829,7 +20787,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<bool> isDeleted, 
                     string photographer, 
                     System.DateTime DateCreated, 
-                    System.DateTime DateModified, 
+                    global::System.Nullable<global::System.DateTime> DateModified, 
                     string schname, 
                     string ModifiedBy, 
                     string oraclecode, 
@@ -20934,7 +20892,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(sal));
             }
             if ((schaddr == null)) {
-                throw new global::System.ArgumentNullException("schaddr");
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(schaddr));
@@ -20946,19 +20904,19 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(schaddr2));
             }
             if ((schcity == null)) {
-                throw new global::System.ArgumentNullException("schcity");
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(schcity));
             }
             if ((schstate == null)) {
-                throw new global::System.ArgumentNullException("schstate");
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(schstate));
             }
             if ((schzip == null)) {
-                throw new global::System.ArgumentNullException("schzip");
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(schzip));
@@ -21558,7 +21516,12 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[118].Value = ((string)(photographer));
             }
             this.Adapter.UpdateCommand.Parameters[119].Value = ((System.DateTime)(DateCreated));
-            this.Adapter.UpdateCommand.Parameters[120].Value = ((System.DateTime)(DateModified));
+            if ((DateModified.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[120].Value = ((System.DateTime)(DateModified.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[120].Value = global::System.DBNull.Value;
+            }
             if ((schname == null)) {
                 throw new global::System.ArgumentNullException("schname");
             }
@@ -21777,7 +21740,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<bool> isDeleted, 
                     string photographer, 
                     System.DateTime DateCreated, 
-                    System.DateTime DateModified, 
+                    global::System.Nullable<global::System.DateTime> DateModified, 
                     string schname, 
                     string ModifiedBy, 
                     string oraclecode, 

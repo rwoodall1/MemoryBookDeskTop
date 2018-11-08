@@ -89,7 +89,7 @@ namespace Mbc5.Forms
                 CurrentProdNo = lblProdNo.Text;
             }catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error");
             }
 
         }
@@ -1272,6 +1272,107 @@ namespace Mbc5.Forms
             //Leave here. This is put in to give dataset time to fill
             //ctrl are not bound until they are shown in tab https://stackoverflow.com/questions/3670694/loading-windows-form-with-over-200-controls
             this.tbProdutn.Visible = true;
+        }
+
+        private void mnCust_Click(object sender, EventArgs e)
+        {
+           LkpCustType frmLkpCust = new LkpCustType(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpCust.MdiParent = this.ParentForm;
+            frmLkpCust.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void mnBackGround_Click(object sender, EventArgs e)
+        {
+           LkpBackGround frmLkpBackGround = new LkpBackGround(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpBackGround.MdiParent = this.ParentForm;
+            frmLkpBackGround.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void mnType_Click(object sender, EventArgs e)
+        {
+            LkpTypeStyle frmLkpTypeStyle = new LkpTypeStyle(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpTypeStyle.MdiParent = this.ParentForm;
+            frmLkpTypeStyle.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void vendcdComboBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    addItemMenu.Items["mnType"].Visible = true;
+                    addItemMenu.Items["mnCust"].Visible = false;
+                    addItemMenu.Items["mnBackGround"].Visible = false;
+                    addItemMenu.Show(this, new Point(e.X, e.Y));
+                }
+            }
+        }
+
+        private void cstatComboBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    addItemMenu.Items["mnType"].Visible = false;
+                    addItemMenu.Items["mnCust"].Visible = true;
+                    addItemMenu.Items["mnBackGround"].Visible = false;
+                    addItemMenu.Show(this, new Point(e.X, e.Y));
+                }
+            }
+        }
+
+        private void bkgrndComboBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    addItemMenu.Items["mnType"].Visible = false;
+                    addItemMenu.Items["mnCust"].Visible = false;
+                    addItemMenu.Items["mnBackGround"].Visible = true;
+                    addItemMenu.Show(this, new Point(e.X, e.Y));
+                }
+            }
+        }
+
+        private void nopagesTextBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+                {
+                    this.nopagesTextBox.ReadOnly = false;
+                }
+            }
+        }
+
+        private void nopagesTextBox_Leave(object sender, EventArgs e)
+        {
+            this.nopagesTextBox.ReadOnly = true;
+        }
+
+        private void nocopiesTextBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+                {
+                    this.nocopiesTextBox.ReadOnly = false;
+                }
+            }
+        }
+
+        private void nocopiesTextBox_Leave(object sender, EventArgs e)
+        {
+            this.nocopiesTextBox.ReadOnly =true;
         }
 
 
