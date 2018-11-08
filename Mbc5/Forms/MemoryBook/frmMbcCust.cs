@@ -827,23 +827,11 @@ namespace Mbc5.Forms.MemoryBook {
         private string GetInstructions()
         {
             string val = "";
-            custBindingSource.MoveFirst();//make sure on first row
+            //custBindingSource.MoveFirst();//make sure on first row
             DataRowView current = (DataRowView)custBindingSource.Current;
-            var invno=current["invno"];
-            var sqlQuery = new SQLQuery();
-          
-            SqlParameter[] parameters = new SqlParameter[] {
-                    new SqlParameter("@Invno",invno),
-                   
-                    };
-            var strQuery = "Select Specinst from Covers Where Invno=@Invno";
-            try { var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-             val = result.Rows[0][0].ToString(); } catch(Exception ex)
-            {
-
-            }
-           
-            return val;
+            string instructions=current["spcinst"].ToString();
+            
+            return instructions;
 
         }
         #endregion
@@ -1294,30 +1282,7 @@ namespace Mbc5.Forms.MemoryBook {
             Cursor.Current = Cursors.Default;
         }
 
-       
-
-        private void leadsourceComboBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            var a = 1;
-           if(e.Button==MouseButtons.Right)
-            {
-                addItemMenu.Items["AddLeadSource"].Visible = false;
-                addItemMenu.Items["AddLeadName"].Visible = true;
-                addItemMenu.Show(this, new Point(e.X, e.Y));      
-            }
-        }
-
-        private void leadnameComboBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                addItemMenu.Items["AddLeadName"].Visible = false;
-                addItemMenu.Items["AddLeadSource"].Visible = true;
-                addItemMenu.Show(this, new Point(e.X, e.Y));
-            }
-        }
-
-     
+         
 
         private void AddLeadName_Click(object sender, EventArgs e)
         {
@@ -1325,6 +1290,40 @@ namespace Mbc5.Forms.MemoryBook {
             this.Cursor = Cursors.AppStarting;
             frmLkpLeadName.MdiParent = this.ParentForm;
             frmLkpLeadName.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void leadsourceComboBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.IsInRole("Administrator")|| ApplicationUser.IsInRole("SA"))
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    addItemMenu.Items["AddLeadSource"].Visible = true;
+                    addItemMenu.Items["AddLeadName"].Visible = false;
+                    addItemMenu.Show(this, new Point(e.X, e.Y));
+                }
+            }
+        }
+
+        private void leadnameComboBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA")) {
+                if (e.Button == MouseButtons.Right)
+                {
+                    addItemMenu.Items["AddLeadName"].Visible = true;
+                    addItemMenu.Items["AddLeadSource"].Visible = false;
+                    addItemMenu.Show(this, new Point(e.X, e.Y));
+                }
+            }
+        }
+
+        private void AddLeadSource_Click(object sender, EventArgs e)
+        {
+            LkpLeadSource frmLkpLeadSource = new LkpLeadSource(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpLeadSource.MdiParent = this.ParentForm;
+            frmLkpLeadSource.Show();
             this.Cursor = Cursors.Default;
         }
 

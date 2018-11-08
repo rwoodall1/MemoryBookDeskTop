@@ -31,5 +31,81 @@ namespace Mbc5.Forms.MemoryBook
                 }
             }
         }
+
+        private void fillToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.custTableAdapter.Fill(this.dsSales.cust, schcodeToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void custBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.custBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dsSales);
+
+        }
+
+        private void fillToolStripButton_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.custTableAdapter.Fill(this.dsSales.cust, schcodeToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void custBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.custBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dsSales);
+
+        }
+
+        private void fillToolStripButton_Click_2(object sender, EventArgs e)
+        {
+            try
+            {
+                this.custTableAdapter.Fill(this.dsSales.cust, schcodeToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void custBindingNavigatorSaveItem_Click_2(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.custBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dsSales);
+
+        }
+
+        private void fillToolStripButton_Click_3(object sender, EventArgs e)
+        {
+            try
+            {
+                this.custTableAdapter.Fill(this.dsSales.cust, schcodeToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }

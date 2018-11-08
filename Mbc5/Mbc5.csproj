@@ -318,6 +318,24 @@
     <Compile Include="LookUpForms\LkpLeadName.Designer.cs">
       <DependentUpon>LkpLeadName.cs</DependentUpon>
     </Compile>
+    <Compile Include="LookUpForms\LkpCustType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpCustType.Designer.cs">
+      <DependentUpon>LkpCustType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpBackGround.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpBackGround.Designer.cs">
+      <DependentUpon>LkpBackGround.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpTypeStyle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpTypeStyle.Designer.cs">
+      <DependentUpon>LkpTypeStyle.cs</DependentUpon>
+    </Compile>
     <Compile Include="LookUpForms\LkpLeadSource.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -429,6 +447,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpLeadName.resx">
       <DependentUpon>LkpLeadName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpCustType.resx">
+      <DependentUpon>LkpCustType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpBackGround.resx">
+      <DependentUpon>LkpBackGround.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpTypeStyle.resx">
+      <DependentUpon>LkpTypeStyle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpLeadSource.resx">
       <DependentUpon>LkpLeadSource.cs</DependentUpon>

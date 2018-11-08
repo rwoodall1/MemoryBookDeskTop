@@ -16,5 +16,26 @@ namespace Mbc5.Forms
         {
             InitializeComponent();
         }
+
+        private void custBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.custBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dsSales);
+
+        }
+
+        private void fillToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.custTableAdapter.Fill(this.dsSales.cust, schcodeToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }
