@@ -57,5 +57,24 @@ namespace Mbc5.LookUpForms
         {
             this.Save();
         }
+
+        private void LkpBackGround_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.lkpBackGroundBindingSource.EndEdit();
+            if (this.lookUp.HasChanges())
+            {
+                DialogResult val = MessageBox.Show("Do you want to save your changes?", "Save", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+                if (val == DialogResult.Yes)
+                {
+                    this.Save();
+                }else if (val == DialogResult.No)
+                {
+                   //do nothing close
+                }else if (val == DialogResult.Cancel)
+                {
+                    e.Cancel = true;//stay on form
+                }
+            }
+        }
     }
 }

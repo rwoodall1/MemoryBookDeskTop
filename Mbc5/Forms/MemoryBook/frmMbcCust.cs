@@ -1051,9 +1051,7 @@ namespace Mbc5.Forms.MemoryBook {
             SetInvnoSchCode();
             }
 
-        private void custDataGridView_RowHeaderMouseDoubleClick(object sender,DataGridViewCellMouseEventArgs e) {
-            GoToSales();
-            }
+       
 
         private void custDataGridView_CellDoubleClick(object sender,DataGridViewCellEventArgs e) {
             GoToSales();

@@ -35,6 +35,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LkpCustType));
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lkpDdiscntDataGridView = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lkpCustTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lookUp = new Mbc5.DataSets.LookUp();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -48,18 +52,14 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSave = new System.Windows.Forms.ToolStripButton();
-            this.lkpCustTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lookUp = new Mbc5.DataSets.LookUp();
             this.tableAdapterManager = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.lkpCustTypeTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpCustTypeTableAdapter();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
-            this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpCustTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -123,6 +123,31 @@
             this.lkpDdiscntDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.lkpDdiscntDataGridView.Size = new System.Drawing.Size(417, 539);
             this.lkpDdiscntDataGridView.TabIndex = 3;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // lkpCustTypeBindingSource
+            // 
+            this.lkpCustTypeBindingSource.DataMember = "lkpCustType";
+            this.lkpCustTypeBindingSource.DataSource = this.lookUp;
+            // 
+            // lookUp
+            // 
+            this.lookUp.DataSetName = "LookUp";
+            this.lookUp.EnforceConstraints = false;
+            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigator1
             // 
@@ -251,17 +276,6 @@
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // lkpCustTypeBindingSource
-            // 
-            this.lkpCustTypeBindingSource.DataMember = "lkpCustType";
-            this.lkpCustTypeBindingSource.DataSource = this.lookUp;
-            // 
-            // lookUp
-            // 
-            this.lookUp.DataSetName = "LookUp";
-            this.lookUp.EnforceConstraints = false;
-            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
@@ -286,20 +300,6 @@
             // 
             this.lkpCustTypeTableAdapter.ClearBeforeFill = true;
             // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
             // LkpCustType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,6 +311,7 @@
             this.MinimumSize = new System.Drawing.Size(16, 39);
             this.Name = "LkpCustType";
             this.Text = "Lead Source Items";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LkpCustType_FormClosing);
             this.Load += new System.EventHandler(this.LkpLeadSource_Load);
             this.Controls.SetChildIndex(this.TopPanel, 0);
             this.Controls.SetChildIndex(this.BottomPanel, 0);
@@ -319,11 +320,11 @@
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpCustTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpCustTypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
