@@ -63,11 +63,11 @@ namespace Mbc5.Forms.MemoryBook {
             if (ApplicationUser.Roles.Contains("SA") || ApplicationUser.Roles.Contains("Administrator")) {
                 this.dp1descComboBox.ContextMenuStrip = this.mnuEditLkUp;
             }
-            startup = false;
+       
             CalculateEach();
             BookCalc();
             txtBYear.Focus();
-
+         startup = false;
            
         }
         private void btnInvSrch_Click(object sender, EventArgs e) {
@@ -1951,27 +1951,33 @@ namespace Mbc5.Forms.MemoryBook {
         private bool ValidateCopies() {
 
             bool retval = true;
+            if (!startup)
+            {
+                errorProvider1.SetError(txtNocopies, "");
+                int count;
+                var result = int.TryParse(txtNocopies.Text, out count);
+                //non numeric
+                if (!result || count == 0)
+                {
+                    errorProvider1.SetError(txtNocopies, "Please enter a number.");
+                    retval = false;
+                }
+                if (count > 1800)
+                {
+                    errorProvider1.SetError(txtNocopies, "Number exceeds maximun quantity. Contact your supervisor.");
+                    retval = false;
+                }
+                if (retval == false)
+                {
+                    lblBookTotal.Text = (0 * 0).ToString("c");
+                    lblProftotalPrc.Text = (0 * 0).ToString("c");
+                    lblPriceEach.Text = (0 * 0).ToString("c");
+                    lblprofprice.Text = 0.ToString("c");
+                }
 
-            errorProvider1.SetError(txtNocopies, "");
-            int count;
-            var result = int.TryParse(txtNocopies.Text, out count);
-            //non numeric
-            if (!result || count == 0) {
-                errorProvider1.SetError(txtNocopies, "Please enter a number.");
-                retval = false;
-            }
-            if (count > 1800) {
-                errorProvider1.SetError(txtNocopies, "Number exceeds maximun quantity. Contact your supervisor.");
-                retval = false;
-            }
-            if (retval == false) {
-                lblBookTotal.Text = (0 * 0).ToString("c");
-                lblProftotalPrc.Text = (0 * 0).ToString("c");
-                lblPriceEach.Text = (0 * 0).ToString("c");
-                lblprofprice.Text = 0.ToString("c");
             }
             return retval;
-
+           
         }
         private bool ValidSales() {
             bool retval = true;
@@ -3123,24 +3129,7 @@ namespace Mbc5.Forms.MemoryBook {
             tabSales.Visible = true;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
         //nothing below here  

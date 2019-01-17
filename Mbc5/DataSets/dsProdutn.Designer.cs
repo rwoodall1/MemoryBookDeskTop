@@ -19951,23 +19951,23 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
                 "hpic, reccardsent = @reccardsent, company = @company, schname = @schname, contry" +
                 "ear = @contryear, \r\n                         pemailed = @pemailed, listrecd = @l" +
                 "istrecd, finalized = @finalized, reorder = @reorder, milled = @milled, DateCreat" +
-                "ed = @DateCreated, DateModified = @DateModified, usersw = @usersw, stfpw = @stfp" +
-                "w, \r\n                         bkmixed = @bkmixed, bkcoil = @bkcoil, ovride = @ov" +
-                "ride, allclrck = @allclrck, foilck = @foilck, bktype2 = @bktype2, bledpgchk = @b" +
-                "ledpgchk, bledpgno = @bledpgno, ugrnd = @ugrnd, u3day = @u3day, u2ndday = @u2ndd" +
-                "ay, \r\n                         ustdon = @ustdon, uprion = @uprion, fgrnd = @fgrn" +
-                "d, f2ndday = @f2ndday, fstdon = @fstdon, fprion = @fprion, rbinit = @rbinit, rbd" +
-                "ate = @rbdate, x5252 = @x5252, dcdesc1 = @dcdesc1, dcdesc2 = @dcdesc2, \r\n       " +
-                "                  bkgrnd = @bkgrnd, bindvend = @bindvend, magirdate = @magirdate" +
-                ", magirtrn = @magirtrn, magiregis = @magiregis, regto = @regto, pcmac = @pcmac, " +
-                "webinar = @webinar, prfreq = @prfreq, l400 = @l400, m400 = @m400, \r\n            " +
-                "             noplates = @noplates, theme = @theme, mk = @mk, se = @se, te = @te," +
-                " dura = @dura, hallp = @hallp, titlep = @titlep, vinyl = @vinyl, finalcpycnt = @" +
-                "finalcpycnt, pdfsent = @pdfsent, adduploaddate = @adduploaddate, \r\n             " +
-                "            ModifiedBy = @ModifiedBy, nocopies = @NoCopies, nopages = @NoPages\r\n" +
-                "WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam" +
-                "p IS NULL) OR\r\n                         (invno = @Original_invno) AND (TimeStamp" +
-                " = @Original_TimeStamp)";
+                "ed = @DateCreated, DateModified = GETDATE(), usersw = @usersw, stfpw = @stfpw, b" +
+                "kmixed = @bkmixed, \r\n                         bkcoil = @bkcoil, ovride = @ovride" +
+                ", allclrck = @allclrck, foilck = @foilck, bktype2 = @bktype2, bledpgchk = @bledp" +
+                "gchk, bledpgno = @bledpgno, ugrnd = @ugrnd, u3day = @u3day, u2ndday = @u2ndday, " +
+                "ustdon = @ustdon, \r\n                         uprion = @uprion, fgrnd = @fgrnd, f" +
+                "2ndday = @f2ndday, fstdon = @fstdon, fprion = @fprion, rbinit = @rbinit, rbdate " +
+                "= @rbdate, x5252 = @x5252, dcdesc1 = @dcdesc1, dcdesc2 = @dcdesc2, bkgrnd = @bkg" +
+                "rnd, \r\n                         bindvend = @bindvend, magirdate = @magirdate, ma" +
+                "girtrn = @magirtrn, magiregis = @magiregis, regto = @regto, pcmac = @pcmac, webi" +
+                "nar = @webinar, prfreq = @prfreq, l400 = @l400, m400 = @m400, noplates = @noplat" +
+                "es, \r\n                         theme = @theme, mk = @mk, se = @se, te = @te, dur" +
+                "a = @dura, hallp = @hallp, titlep = @titlep, vinyl = @vinyl, finalcpycnt = @fina" +
+                "lcpycnt, pdfsent = @pdfsent, adduploaddate = @adduploaddate, ModifiedBy = @Modif" +
+                "iedBy, \r\n                         nocopies = @NoCopies, nopages = @NoPages\r\nWHER" +
+                "E        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStamp IS" +
+                " NULL) OR\r\n                         (invno = @Original_invno) AND (TimeStamp = @" +
+                "Original_TimeStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -20043,7 +20043,6 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@reorder", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "reorder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@milled", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "milled", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateModified", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateModified", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@usersw", global::System.Data.SqlDbType.Char, 20, global::System.Data.ParameterDirection.Input, 0, 0, "usersw", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@stfpw", global::System.Data.SqlDbType.Char, 5, global::System.Data.ParameterDirection.Input, 0, 0, "stfpw", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bkmixed", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "bkmixed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -21251,7 +21250,6 @@ WHERE        (schcode = @Schcode)";
                     global::System.Nullable<bool> reorder, 
                     global::System.Nullable<bool> milled, 
                     global::System.Nullable<global::System.DateTime> DateCreated, 
-                    global::System.Nullable<global::System.DateTime> DateModified, 
                     string usersw, 
                     string stfpw, 
                     global::System.Nullable<bool> bkmixed, 
@@ -21743,320 +21741,314 @@ WHERE        (schcode = @Schcode)";
             else {
                 this.Adapter.UpdateCommand.Parameters[73].Value = global::System.DBNull.Value;
             }
-            if ((DateModified.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((System.DateTime)(DateModified.Value));
-            }
-            else {
+            if ((usersw == null)) {
                 this.Adapter.UpdateCommand.Parameters[74].Value = global::System.DBNull.Value;
             }
-            if ((usersw == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((string)(usersw));
+            }
+            if ((stfpw == null)) {
                 this.Adapter.UpdateCommand.Parameters[75].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[75].Value = ((string)(usersw));
-            }
-            if ((stfpw == null)) {
-                this.Adapter.UpdateCommand.Parameters[76].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((string)(stfpw));
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((string)(stfpw));
             }
             if ((bkmixed.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[77].Value = ((bool)(bkmixed.Value));
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((bool)(bkmixed.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[76].Value = global::System.DBNull.Value;
+            }
+            if ((bkcoil.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[77].Value = ((bool)(bkcoil.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[77].Value = global::System.DBNull.Value;
             }
-            if ((bkcoil.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[78].Value = ((bool)(bkcoil.Value));
+            if ((ovride.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((bool)(ovride.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[78].Value = global::System.DBNull.Value;
             }
-            if ((ovride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[79].Value = ((bool)(ovride.Value));
+            if ((allclrck.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[79].Value = ((bool)(allclrck.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[79].Value = global::System.DBNull.Value;
             }
-            if ((allclrck.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[80].Value = ((bool)(allclrck.Value));
+            if ((foilck.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((bool)(foilck.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[80].Value = global::System.DBNull.Value;
             }
-            if ((foilck.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[81].Value = ((bool)(foilck.Value));
-            }
-            else {
+            if ((bktype2 == null)) {
                 this.Adapter.UpdateCommand.Parameters[81].Value = global::System.DBNull.Value;
             }
-            if ((bktype2 == null)) {
-                this.Adapter.UpdateCommand.Parameters[82].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[82].Value = ((string)(bktype2));
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((string)(bktype2));
             }
             if ((bledpgchk.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[83].Value = ((bool)(bledpgchk.Value));
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((bool)(bledpgchk.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[82].Value = global::System.DBNull.Value;
+            }
+            if ((bledpgno.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[83].Value = ((decimal)(bledpgno.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[83].Value = global::System.DBNull.Value;
             }
-            if ((bledpgno.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[84].Value = ((decimal)(bledpgno.Value));
+            if ((ugrnd.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((bool)(ugrnd.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[84].Value = global::System.DBNull.Value;
             }
-            if ((ugrnd.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[85].Value = ((bool)(ugrnd.Value));
+            if ((u3day.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((bool)(u3day.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[85].Value = global::System.DBNull.Value;
             }
-            if ((u3day.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[86].Value = ((bool)(u3day.Value));
+            if ((u2ndday.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[86].Value = ((bool)(u2ndday.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[86].Value = global::System.DBNull.Value;
             }
-            if ((u2ndday.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[87].Value = ((bool)(u2ndday.Value));
+            if ((ustdon.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[87].Value = ((bool)(ustdon.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[87].Value = global::System.DBNull.Value;
             }
-            if ((ustdon.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[88].Value = ((bool)(ustdon.Value));
+            if ((uprion.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((bool)(uprion.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[88].Value = global::System.DBNull.Value;
             }
-            if ((uprion.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[89].Value = ((bool)(uprion.Value));
+            if ((fgrnd.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((bool)(fgrnd.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[89].Value = global::System.DBNull.Value;
             }
-            if ((fgrnd.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[90].Value = ((bool)(fgrnd.Value));
+            if ((f2ndday.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((bool)(f2ndday.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[90].Value = global::System.DBNull.Value;
             }
-            if ((f2ndday.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[91].Value = ((bool)(f2ndday.Value));
+            if ((fstdon.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((bool)(fstdon.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[91].Value = global::System.DBNull.Value;
             }
-            if ((fstdon.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[92].Value = ((bool)(fstdon.Value));
+            if ((fprion.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[92].Value = ((bool)(fprion.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[92].Value = global::System.DBNull.Value;
             }
-            if ((fprion.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[93].Value = ((bool)(fprion.Value));
-            }
-            else {
+            if ((rbinit == null)) {
                 this.Adapter.UpdateCommand.Parameters[93].Value = global::System.DBNull.Value;
             }
-            if ((rbinit == null)) {
-                this.Adapter.UpdateCommand.Parameters[94].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[94].Value = ((string)(rbinit));
+                this.Adapter.UpdateCommand.Parameters[93].Value = ((string)(rbinit));
             }
             if ((rbdate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[95].Value = ((System.DateTime)(rbdate.Value));
+                this.Adapter.UpdateCommand.Parameters[94].Value = ((System.DateTime)(rbdate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[94].Value = global::System.DBNull.Value;
+            }
+            if ((x5252.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[95].Value = ((bool)(x5252.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[95].Value = global::System.DBNull.Value;
             }
-            if ((x5252.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[96].Value = ((bool)(x5252.Value));
-            }
-            else {
+            if ((dcdesc1 == null)) {
                 this.Adapter.UpdateCommand.Parameters[96].Value = global::System.DBNull.Value;
             }
-            if ((dcdesc1 == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[96].Value = ((string)(dcdesc1));
+            }
+            if ((dcdesc2 == null)) {
                 this.Adapter.UpdateCommand.Parameters[97].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[97].Value = ((string)(dcdesc1));
+                this.Adapter.UpdateCommand.Parameters[97].Value = ((string)(dcdesc2));
             }
-            if ((dcdesc2 == null)) {
+            if ((bkgrnd == null)) {
                 this.Adapter.UpdateCommand.Parameters[98].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[98].Value = ((string)(dcdesc2));
+                this.Adapter.UpdateCommand.Parameters[98].Value = ((string)(bkgrnd));
             }
-            if ((bkgrnd == null)) {
+            if ((bindvend == null)) {
                 this.Adapter.UpdateCommand.Parameters[99].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[99].Value = ((string)(bkgrnd));
-            }
-            if ((bindvend == null)) {
-                this.Adapter.UpdateCommand.Parameters[100].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[100].Value = ((string)(bindvend));
+                this.Adapter.UpdateCommand.Parameters[99].Value = ((string)(bindvend));
             }
             if ((magirdate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[101].Value = ((System.DateTime)(magirdate.Value));
+                this.Adapter.UpdateCommand.Parameters[100].Value = ((System.DateTime)(magirdate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[100].Value = global::System.DBNull.Value;
+            }
+            if ((magirtrn.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[101].Value = ((System.DateTime)(magirtrn.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[101].Value = global::System.DBNull.Value;
             }
-            if ((magirtrn.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[102].Value = ((System.DateTime)(magirtrn.Value));
-            }
-            else {
+            if ((magiregis == null)) {
                 this.Adapter.UpdateCommand.Parameters[102].Value = global::System.DBNull.Value;
             }
-            if ((magiregis == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[102].Value = ((string)(magiregis));
+            }
+            if ((regto == null)) {
                 this.Adapter.UpdateCommand.Parameters[103].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[103].Value = ((string)(magiregis));
+                this.Adapter.UpdateCommand.Parameters[103].Value = ((string)(regto));
             }
-            if ((regto == null)) {
+            if ((pcmac == null)) {
                 this.Adapter.UpdateCommand.Parameters[104].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[104].Value = ((string)(regto));
-            }
-            if ((pcmac == null)) {
-                this.Adapter.UpdateCommand.Parameters[105].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[105].Value = ((string)(pcmac));
+                this.Adapter.UpdateCommand.Parameters[104].Value = ((string)(pcmac));
             }
             if ((webinar.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[106].Value = ((bool)(webinar.Value));
+                this.Adapter.UpdateCommand.Parameters[105].Value = ((bool)(webinar.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[105].Value = global::System.DBNull.Value;
+            }
+            if ((prfreq.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[106].Value = ((bool)(prfreq.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[106].Value = global::System.DBNull.Value;
             }
-            if ((prfreq.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[107].Value = ((bool)(prfreq.Value));
+            if ((l400.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[107].Value = ((bool)(l400.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[107].Value = global::System.DBNull.Value;
             }
-            if ((l400.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[108].Value = ((bool)(l400.Value));
+            if ((m400.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[108].Value = ((bool)(m400.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[108].Value = global::System.DBNull.Value;
             }
-            if ((m400.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[109].Value = ((bool)(m400.Value));
+            if ((noplates.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[109].Value = ((int)(noplates.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[109].Value = global::System.DBNull.Value;
             }
-            if ((noplates.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[110].Value = ((int)(noplates.Value));
-            }
-            else {
+            if ((theme == null)) {
                 this.Adapter.UpdateCommand.Parameters[110].Value = global::System.DBNull.Value;
             }
-            if ((theme == null)) {
-                this.Adapter.UpdateCommand.Parameters[111].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[111].Value = ((string)(theme));
+                this.Adapter.UpdateCommand.Parameters[110].Value = ((string)(theme));
             }
             if ((mk.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[112].Value = ((bool)(mk.Value));
+                this.Adapter.UpdateCommand.Parameters[111].Value = ((bool)(mk.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[111].Value = global::System.DBNull.Value;
+            }
+            if ((se.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[112].Value = ((decimal)(se.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[112].Value = global::System.DBNull.Value;
             }
-            if ((se.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[113].Value = ((decimal)(se.Value));
+            if ((te.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[113].Value = ((decimal)(te.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[113].Value = global::System.DBNull.Value;
             }
-            if ((te.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[114].Value = ((decimal)(te.Value));
-            }
-            else {
+            if ((dura == null)) {
                 this.Adapter.UpdateCommand.Parameters[114].Value = global::System.DBNull.Value;
             }
-            if ((dura == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[114].Value = ((string)(dura));
+            }
+            if ((hallp == null)) {
                 this.Adapter.UpdateCommand.Parameters[115].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[115].Value = ((string)(dura));
+                this.Adapter.UpdateCommand.Parameters[115].Value = ((string)(hallp));
             }
-            if ((hallp == null)) {
+            if ((titlep == null)) {
                 this.Adapter.UpdateCommand.Parameters[116].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[116].Value = ((string)(hallp));
+                this.Adapter.UpdateCommand.Parameters[116].Value = ((string)(titlep));
             }
-            if ((titlep == null)) {
+            if ((vinyl == null)) {
                 this.Adapter.UpdateCommand.Parameters[117].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[117].Value = ((string)(titlep));
-            }
-            if ((vinyl == null)) {
-                this.Adapter.UpdateCommand.Parameters[118].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[118].Value = ((string)(vinyl));
+                this.Adapter.UpdateCommand.Parameters[117].Value = ((string)(vinyl));
             }
             if ((finalcpycnt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[119].Value = ((decimal)(finalcpycnt.Value));
+                this.Adapter.UpdateCommand.Parameters[118].Value = ((decimal)(finalcpycnt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[118].Value = global::System.DBNull.Value;
+            }
+            if ((pdfsent.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[119].Value = ((bool)(pdfsent.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[119].Value = global::System.DBNull.Value;
             }
-            if ((pdfsent.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[120].Value = ((bool)(pdfsent.Value));
+            if ((adduploaddate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[120].Value = ((System.DateTime)(adduploaddate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[120].Value = global::System.DBNull.Value;
             }
-            if ((adduploaddate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[121].Value = ((System.DateTime)(adduploaddate.Value));
-            }
-            else {
+            if ((ModifiedBy == null)) {
                 this.Adapter.UpdateCommand.Parameters[121].Value = global::System.DBNull.Value;
             }
-            if ((ModifiedBy == null)) {
-                this.Adapter.UpdateCommand.Parameters[122].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[122].Value = ((string)(ModifiedBy));
+                this.Adapter.UpdateCommand.Parameters[121].Value = ((string)(ModifiedBy));
             }
             if ((NoCopies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[123].Value = ((int)(NoCopies.Value));
+                this.Adapter.UpdateCommand.Parameters[122].Value = ((int)(NoCopies.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[122].Value = global::System.DBNull.Value;
+            }
+            if ((NoPages.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[123].Value = ((int)(NoPages.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[123].Value = global::System.DBNull.Value;
             }
-            if ((NoPages.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[124].Value = ((int)(NoPages.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[124].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[125].Value = ((int)(Original_invno));
+            this.Adapter.UpdateCommand.Parameters[124].Value = ((int)(Original_invno));
             if ((Original_TimeStamp == null)) {
-                this.Adapter.UpdateCommand.Parameters[126].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[127].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[125].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[126].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[126].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[127].Value = ((byte[])(Original_TimeStamp));
+                this.Adapter.UpdateCommand.Parameters[125].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[126].Value = ((byte[])(Original_TimeStamp));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -22152,7 +22144,6 @@ WHERE        (schcode = @Schcode)";
                     global::System.Nullable<bool> reorder, 
                     global::System.Nullable<bool> milled, 
                     global::System.Nullable<global::System.DateTime> DateCreated, 
-                    global::System.Nullable<global::System.DateTime> DateModified, 
                     string usersw, 
                     string stfpw, 
                     global::System.Nullable<bool> bkmixed, 
@@ -22205,7 +22196,7 @@ WHERE        (schcode = @Schcode)";
                     global::System.Nullable<int> NoPages, 
                     int Original_invno, 
                     byte[] Original_TimeStamp) {
-            return this.Update(Original_invno, schcode, prodno, contrecvd, deadlinein, typestyle, dedayin, dedayout, dedmade, covertype, coverdesc, speccover, colors, diecut, perfbind, coilclr, laminated, colorpgs, screcv, scprod, kitrecvd, vendcd, tovend, toprod, warndate, prshpdte, shpdate, prmsdate, retpstupdt, hardcost, voucherno, ptrecvd, ptnopgs, ptbrcvd, ptbnopgs, bknopgs, bkstd, bk9, bk10, bk11, bk12, bkhard, cominitl, comdate, cstsvcdte, cstat, jobno, advpw, persnlz, foiling, foilclr, onlineyr, remaketype, fullremake, shortremak, indivremak, scname, indivname, indivpic, yr, icon_, wipremaketype, numtopersonalize, schpic, reccardsent, company, schname, contryear, pemailed, listrecd, finalized, reorder, milled, DateCreated, DateModified, usersw, stfpw, bkmixed, bkcoil, ovride, allclrck, foilck, bktype2, bledpgchk, bledpgno, ugrnd, u3day, u2ndday, ustdon, uprion, fgrnd, f2ndday, fstdon, fprion, rbinit, rbdate, x5252, dcdesc1, dcdesc2, bkgrnd, bindvend, magirdate, magirtrn, magiregis, regto, pcmac, webinar, prfreq, l400, m400, noplates, theme, mk, se, te, dura, hallp, titlep, vinyl, finalcpycnt, pdfsent, adduploaddate, ModifiedBy, NoCopies, NoPages, Original_invno, Original_TimeStamp);
+            return this.Update(Original_invno, schcode, prodno, contrecvd, deadlinein, typestyle, dedayin, dedayout, dedmade, covertype, coverdesc, speccover, colors, diecut, perfbind, coilclr, laminated, colorpgs, screcv, scprod, kitrecvd, vendcd, tovend, toprod, warndate, prshpdte, shpdate, prmsdate, retpstupdt, hardcost, voucherno, ptrecvd, ptnopgs, ptbrcvd, ptbnopgs, bknopgs, bkstd, bk9, bk10, bk11, bk12, bkhard, cominitl, comdate, cstsvcdte, cstat, jobno, advpw, persnlz, foiling, foilclr, onlineyr, remaketype, fullremake, shortremak, indivremak, scname, indivname, indivpic, yr, icon_, wipremaketype, numtopersonalize, schpic, reccardsent, company, schname, contryear, pemailed, listrecd, finalized, reorder, milled, DateCreated, usersw, stfpw, bkmixed, bkcoil, ovride, allclrck, foilck, bktype2, bledpgchk, bledpgno, ugrnd, u3day, u2ndday, ustdon, uprion, fgrnd, f2ndday, fstdon, fprion, rbinit, rbdate, x5252, dcdesc1, dcdesc2, bkgrnd, bindvend, magirdate, magirtrn, magiregis, regto, pcmac, webinar, prfreq, l400, m400, noplates, theme, mk, se, te, dura, hallp, titlep, vinyl, finalcpycnt, pdfsent, adduploaddate, ModifiedBy, NoCopies, NoPages, Original_invno, Original_TimeStamp);
         }
     }
     

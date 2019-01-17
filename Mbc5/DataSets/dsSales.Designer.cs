@@ -15683,36 +15683,36 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "personline = @totalpersonline, totaldollarsonline = @totaldollarsonline, freeboo" +
                 "ks = @freebooks, totalads = @totalads, totallovelines = @totallovelines, onlinen" +
                 "otes = @onlinenotes, \r\n                         ModifiedBy = @ModifiedBy, DateMo" +
-                "dified = @DateModified, DateCreated = @DateCreated, IconCopies = @IconCopies, Ic" +
-                "onAmt = @IconAmt, extrchg = @extrchg, schooltaxrate = @schooltaxrate, schcode = " +
-                "@schcode, \r\n                         donotchargeschoolsalestax = @donotchargesch" +
-                "oolsalestax, nopages = @nopages, nocopies = @nocopies, schooltax = @schooltax\r\nW" +
-                "HERE        (invno = @Original_invno) AND (TimeStamp = @Original_TimeStamp); \r\nS" +
-                "ELECT invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, pr" +
-                "of, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foil" +
-                "ck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt" +
-                ", customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, d" +
-                "p3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, sour" +
-                "ce, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newp" +
-                "rice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, " +
-                "desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, acovrde, bpovrde, holdpm" +
-                "t, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, sup" +
-                "pamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1des" +
-                "c, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4" +
-                ", rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrr" +
-                "ide, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, our" +
-                "styovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovrid" +
-                "e, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agre" +
-                "edte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, " +
-                "mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpers" +
-                "amt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt" +
-                ", opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, f" +
-                "ullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthad" +
-                "amt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, tot" +
-                "alsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallov" +
-                "elines, TimeStamp, onlinenotes, ModifiedBy, DateModified, DateCreated, IconCopie" +
-                "s, IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages," +
-                " nocopies, schooltax FROM quotes WHERE (invno = @invno)";
+                "dified = GETDATE(), DateCreated = @DateCreated, IconCopies = @IconCopies, IconAm" +
+                "t = @IconAmt, extrchg = @extrchg, schooltaxrate = @schooltaxrate, schcode = @sch" +
+                "code, \r\n                         donotchargeschoolsalestax = @donotchargeschools" +
+                "alestax, nopages = @nopages, nocopies = @nocopies, schooltax = @schooltax\r\nWHERE" +
+                "        (invno = @Original_invno) AND (TimeStamp = @Original_TimeStamp);  \r\nSELE" +
+                "CT invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, prof," +
+                " coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foilck," +
+                " foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, c" +
+                "ustomy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3d" +
+                "esc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source," +
+                " xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newpric" +
+                "e, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, des" +
+                "c4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, acovrde, bpovrde, holdpmt, " +
+                "bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, suppam" +
+                "t, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, " +
+                "rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, r" +
+                "ebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride" +
+                ", conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, oursty" +
+                "ovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovride, " +
+                "bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedt" +
+                "e, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mla" +
+                "msoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt" +
+                ", opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, o" +
+                "pfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, full" +
+                "ad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt" +
+                ", adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totals" +
+                "oldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totalloveli" +
+                "nes, TimeStamp, onlinenotes, ModifiedBy, DateModified, DateCreated, IconCopies, " +
+                "IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages, no" +
+                "copies, schooltax FROM quotes WHERE (invno = @invno)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.Char, 12, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -15731,7 +15731,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@layn", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "layn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@laminate", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "laminate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@peyn", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "peyn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@perfbind", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "perfbind", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@perfbind", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "perfbind", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@foilck", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "foilck", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@foilamt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 8, 2, "foilamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@insck", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "insck", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -15888,7 +15888,6 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@totallovelines", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "totallovelines", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@onlinenotes", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "onlinenotes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ModifiedBy", global::System.Data.SqlDbType.NVarChar, 128, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedBy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateModified", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateModified", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconCopies", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IconCopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IconAmt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "IconAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -17432,7 +17431,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<bool> layn, 
                     global::System.Nullable<decimal> laminate, 
                     global::System.Nullable<bool> peyn, 
-                    global::System.Nullable<decimal> perfbind, 
+                    global::System.Nullable<bool> perfbind, 
                     global::System.Nullable<bool> foilck, 
                     global::System.Nullable<decimal> foilamt, 
                     global::System.Nullable<bool> insck, 
@@ -17589,7 +17588,6 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<int> totallovelines, 
                     string onlinenotes, 
                     string ModifiedBy, 
-                    global::System.Nullable<global::System.DateTime> DateModified, 
                     global::System.Nullable<global::System.DateTime> DateCreated, 
                     global::System.Nullable<int> IconCopies, 
                     global::System.Nullable<decimal> IconAmt, 
@@ -17700,7 +17698,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             if ((perfbind.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((decimal)(perfbind.Value));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((bool)(perfbind.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
@@ -18641,78 +18639,72 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[173].Value = ((string)(ModifiedBy));
             }
-            if ((DateModified.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[174].Value = ((System.DateTime)(DateModified.Value));
+            if ((DateCreated.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[174].Value = ((System.DateTime)(DateCreated.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[174].Value = global::System.DBNull.Value;
             }
-            if ((DateCreated.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[175].Value = ((System.DateTime)(DateCreated.Value));
+            if ((IconCopies.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[175].Value = ((int)(IconCopies.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[175].Value = global::System.DBNull.Value;
             }
-            if ((IconCopies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[176].Value = ((int)(IconCopies.Value));
+            if ((IconAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[176].Value = ((decimal)(IconAmt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[176].Value = global::System.DBNull.Value;
             }
-            if ((IconAmt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[177].Value = ((decimal)(IconAmt.Value));
-            }
-            else {
+            if ((extrchg == null)) {
                 this.Adapter.UpdateCommand.Parameters[177].Value = global::System.DBNull.Value;
             }
-            if ((extrchg == null)) {
-                this.Adapter.UpdateCommand.Parameters[178].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[178].Value = ((string)(extrchg));
+                this.Adapter.UpdateCommand.Parameters[177].Value = ((string)(extrchg));
             }
             if ((schooltaxrate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[179].Value = ((decimal)(schooltaxrate.Value));
+                this.Adapter.UpdateCommand.Parameters[178].Value = ((decimal)(schooltaxrate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[179].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[178].Value = global::System.DBNull.Value;
             }
             if ((schcode == null)) {
                 throw new global::System.ArgumentNullException("schcode");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[180].Value = ((string)(schcode));
+                this.Adapter.UpdateCommand.Parameters[179].Value = ((string)(schcode));
             }
             if ((donotchargeschoolsalestax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[181].Value = ((bool)(donotchargeschoolsalestax.Value));
+                this.Adapter.UpdateCommand.Parameters[180].Value = ((bool)(donotchargeschoolsalestax.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[180].Value = global::System.DBNull.Value;
+            }
+            if ((nopages.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[181].Value = ((int)(nopages.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[181].Value = global::System.DBNull.Value;
             }
-            if ((nopages.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[182].Value = ((int)(nopages.Value));
+            if ((nocopies.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[182].Value = ((int)(nocopies.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[182].Value = global::System.DBNull.Value;
             }
-            if ((nocopies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[183].Value = ((int)(nocopies.Value));
+            if ((schooltax.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[183].Value = ((decimal)(schooltax.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[183].Value = global::System.DBNull.Value;
             }
-            if ((schooltax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[184].Value = ((decimal)(schooltax.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[184].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[185].Value = ((int)(Original_invno));
+            this.Adapter.UpdateCommand.Parameters[184].Value = ((int)(Original_invno));
             if ((Original_TimeStamp == null)) {
-                this.Adapter.UpdateCommand.Parameters[186].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[185].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[186].Value = ((byte[])(Original_TimeStamp));
+                this.Adapter.UpdateCommand.Parameters[185].Value = ((byte[])(Original_TimeStamp));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -18751,7 +18743,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<bool> layn, 
                     global::System.Nullable<decimal> laminate, 
                     global::System.Nullable<bool> peyn, 
-                    global::System.Nullable<decimal> perfbind, 
+                    global::System.Nullable<bool> perfbind, 
                     global::System.Nullable<bool> foilck, 
                     global::System.Nullable<decimal> foilamt, 
                     global::System.Nullable<bool> insck, 
@@ -18908,7 +18900,6 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<int> totallovelines, 
                     string onlinenotes, 
                     string ModifiedBy, 
-                    global::System.Nullable<global::System.DateTime> DateModified, 
                     global::System.Nullable<global::System.DateTime> DateCreated, 
                     global::System.Nullable<int> IconCopies, 
                     global::System.Nullable<decimal> IconAmt, 
@@ -18921,7 +18912,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<decimal> schooltax, 
                     int Original_invno, 
                     byte[] Original_TimeStamp) {
-            return this.Update(Original_invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, acovrde, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallovelines, onlinenotes, ModifiedBy, DateModified, DateCreated, IconCopies, IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages, nocopies, schooltax, Original_invno, Original_TimeStamp);
+            return this.Update(Original_invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, acovrde, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallovelines, onlinenotes, ModifiedBy, DateCreated, IconCopies, IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages, nocopies, schooltax, Original_invno, Original_TimeStamp);
         }
     }
     
