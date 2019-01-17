@@ -33,6 +33,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LkpBackGround));
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lkpDdiscntDataGridView = new System.Windows.Forms.DataGridView();
+            this.bkgrndNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lkpBackGroundBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lookUp = new Mbc5.DataSets.LookUp();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -46,18 +50,14 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSave = new System.Windows.Forms.ToolStripButton();
-            this.lkpBackGroundBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lookUp = new Mbc5.DataSets.LookUp();
             this.tableAdapterManager = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.lkpBackGroundTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpBackGroundTableAdapter();
-            this.bkgrndNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
-            this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpBackGroundBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -105,6 +105,31 @@
             this.lkpDdiscntDataGridView.Name = "lkpDdiscntDataGridView";
             this.lkpDdiscntDataGridView.Size = new System.Drawing.Size(509, 520);
             this.lkpDdiscntDataGridView.TabIndex = 3;
+            // 
+            // bkgrndNameDataGridViewTextBoxColumn
+            // 
+            this.bkgrndNameDataGridViewTextBoxColumn.DataPropertyName = "BkgrndName";
+            this.bkgrndNameDataGridViewTextBoxColumn.HeaderText = "BkgrndName";
+            this.bkgrndNameDataGridViewTextBoxColumn.Name = "bkgrndNameDataGridViewTextBoxColumn";
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // lkpBackGroundBindingSource
+            // 
+            this.lkpBackGroundBindingSource.DataMember = "lkpBackGround";
+            this.lkpBackGroundBindingSource.DataSource = this.lookUp;
+            // 
+            // lookUp
+            // 
+            this.lookUp.DataSetName = "LookUp";
+            this.lookUp.EnforceConstraints = false;
+            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigator1
             // 
@@ -233,17 +258,6 @@
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // lkpBackGroundBindingSource
-            // 
-            this.lkpBackGroundBindingSource.DataMember = "lkpBackGround";
-            this.lkpBackGroundBindingSource.DataSource = this.lookUp;
-            // 
-            // lookUp
-            // 
-            this.lookUp.DataSetName = "LookUp";
-            this.lookUp.EnforceConstraints = false;
-            this.lookUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
@@ -268,20 +282,6 @@
             // 
             this.lkpBackGroundTableAdapter.ClearBeforeFill = true;
             // 
-            // bkgrndNameDataGridViewTextBoxColumn
-            // 
-            this.bkgrndNameDataGridViewTextBoxColumn.DataPropertyName = "BkgrndName";
-            this.bkgrndNameDataGridViewTextBoxColumn.HeaderText = "BkgrndName";
-            this.bkgrndNameDataGridViewTextBoxColumn.Name = "bkgrndNameDataGridViewTextBoxColumn";
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
             // LkpBackGround
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,6 +293,7 @@
             this.MinimumSize = new System.Drawing.Size(16, 39);
             this.Name = "LkpBackGround";
             this.Text = "Lead Source Items";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LkpBackGround_FormClosing);
             this.Load += new System.EventHandler(this.LkpLeadSource_Load);
             this.Controls.SetChildIndex(this.TopPanel, 0);
             this.Controls.SetChildIndex(this.BottomPanel, 0);
@@ -301,11 +302,11 @@
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpDdiscntDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpBackGroundBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpBackGroundBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

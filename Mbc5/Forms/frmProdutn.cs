@@ -75,6 +75,7 @@ namespace Mbc5.Forms
         }
         private void frmProdutn_Load(object sender, EventArgs e)
 		{
+           
             this.SetConnectionString();
             try
             {
@@ -87,11 +88,13 @@ namespace Mbc5.Forms
                 SetShipLabel();
                 SetEmail();
                 CurrentProdNo = lblProdNo.Text;
-            }catch(Exception ex)
+                
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error");
             }
-
+           
         }
 
 		#region "Properties"
@@ -1373,6 +1376,11 @@ namespace Mbc5.Forms
         private void nocopiesTextBox_Leave(object sender, EventArgs e)
         {
             this.nocopiesTextBox.ReadOnly =true;
+        }
+
+        private void lblModifiedBy_Paint(object sender, PaintEventArgs e)
+        {
+            lblModifiedBy.Text = ApplicationUser.id;
         }
 
 
