@@ -609,6 +609,16 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
         }
 
+        private void invoicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+
+            frmInvoicInq frmInvoice = new frmInvoicInq(this.ApplicationUser);
+            frmInvoice.MdiParent = this;
+            frmInvoice.Show();
+            this.Cursor = Cursors.Default;
+        }
+
 
 
 

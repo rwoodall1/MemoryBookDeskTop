@@ -234,7 +234,7 @@ namespace BaseClass.Classes
                 mailMessage.To.Add(address);
             }
             foreach (var address in CCAddresses) {
-                mailMessage.To.Add(address);
+                mailMessage.CC.Add(address);
             }
 
             try
