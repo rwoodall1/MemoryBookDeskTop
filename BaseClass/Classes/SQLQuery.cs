@@ -11,12 +11,23 @@ using NLog;
 namespace BaseClass.Classes {
     public class SQLQuery {
         protected Logger Log { get; private set; }
-        private static string _ConnectionString = Properties.Settings.Default.MBCConnection;
-
-        public SQLQuery() {
+        private string _ConnectionString;
+       
+public SQLQuery() {
             Log = LogManager.GetLogger(GetType().FullName);
+            _ConnectionString =SetConnectionString();
         }
-      
+      private string SetConnectionString()
+{
+            string vConnectionString = "";
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            if (Environment == "DEV")
+            {
+                vConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5;User Id=sa;password=Briggitte1; Connect Timeout=5";
+            }
+            else if (Environment == "PROD") { vConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+            return vConnectionString;
+        }
         public int ExecuteNonQueryAsync(CommandType cmdType,string cmdText,params SqlParameter[] commandParameters) {
             int retval = 0;
 

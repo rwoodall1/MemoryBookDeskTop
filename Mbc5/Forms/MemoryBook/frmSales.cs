@@ -49,12 +49,13 @@ namespace Mbc5.Forms.MemoryBook {
             this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.paymntTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.custTableAdapter1.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.invCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invHstTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
           
         }
         private void frmSales_Load(object sender, EventArgs e) {
+           
 
             this.SetConnectionString();
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
@@ -212,7 +213,7 @@ namespace Mbc5.Forms.MemoryBook {
                     try {
                         this.paymntBindingSource.EndEdit();
                         this.paymntTableAdapter.Update(dsInvoice.paymnt);
-                        this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToDecimal(lblInvoice.Text));
+                        this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToInt32(lblInvoice.Text));
                         this.CalculatePayments();
                         txtPaypoamt.Enabled = false;
                         txtInitials.Enabled = false;
@@ -253,7 +254,7 @@ namespace Mbc5.Forms.MemoryBook {
                 new SqlParameter("@Id",Id)
             };
                 var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
-                this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToDecimal(lblInvoice.Text));
+                this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToInt32(lblInvoice.Text));
 
                 if (result == 0) { retval = false; }
                 SetCrudButtons();
@@ -301,7 +302,7 @@ namespace Mbc5.Forms.MemoryBook {
                 new SqlParameter("@Invno",lblInvoice.Text),
                 new SqlParameter("@payments",paymentTotals)};
                 var a = SqlQuery.ExecuteNonQueryAsync(CommandType.Text, cmdText, parameters1);
-                this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToDecimal(lblInvoice.Text));
+                this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToInt32(lblInvoice.Text));
             } catch (Exception ex) {
 
             }
@@ -326,14 +327,10 @@ namespace Mbc5.Forms.MemoryBook {
                 var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters1);
                 if (result1 == 0 || result == 0) { retval = false; }
 
-                this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToDecimal(lblInvoice.Text));
-                this.invdetailTableAdapter.Fill(dsInvoice.invdetail, Convert.ToDecimal(lblInvoice.Text));
-                // var sqlQuery = new SQLQuery();
-                queryString = "Update Invoice set invno=0 where Invno=@Invno ";
-                SqlParameter[] parameters2 = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text)
-            };
-                var result2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters2);
+                this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToInt32(lblInvoice.Text));
+                this.invdetailTableAdapter.Fill(dsInvoice.invdetail, Convert.ToInt32(lblInvoice.Text));
+              
+               
                 this.Fill();
             }
             return retval;
@@ -355,7 +352,7 @@ namespace Mbc5.Forms.MemoryBook {
                 cmdText = "Update Quotes set invoiced=1 where invno=@invno";
                 command.CommandText = cmdText;
                 command.ExecuteNonQuery();
-                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks,SalesTax,BeforeTaxTotal,DateCreated,DateModified,ModifiedBy) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks,@SalesTax,@BeforeTaxTotal,GETDATE(),GETDATE(),@ModifiedBy)";
+                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks,SalesTax,BeforeTaxTotal,Schname,Schaddr,Schaddr2,schcity,Schstate,Schzip,DateCreated,DateModified,ModifiedBy) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks,@SalesTax,@BeforeTaxTotal,@Schname,@Schaddr,@Schaddr2,@Schcity,@Schstate,@Schzip,GETDATE(),GETDATE(),@ModifiedBy)";
                 //cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each)";
                 command.CommandText = cmdText;
                 command.Parameters.Clear();
@@ -381,8 +378,13 @@ namespace Mbc5.Forms.MemoryBook {
                     new SqlParameter("@contryear",txtYear.Text),
                     new SqlParameter("@allclrck",chkAllClr.Checked),
                     new SqlParameter("@freebooks",txtfreebooks.Text ),
-                    new SqlParameter("@ModifiedBy",txtModifiedByInv.Text)
-
+                    new SqlParameter("@ModifiedBy",txtModifiedByInv.Text),
+                    new SqlParameter("@Schname", ((DataRowView)this.custBindingSource.Current).Row["schname"].ToString().Trim()),
+                    new SqlParameter("@Schaddr",((DataRowView)this.custBindingSource.Current).Row["schaddr"].ToString().Trim() ),
+                    new SqlParameter("@Schaddr2",((DataRowView)this.custBindingSource.Current).Row["schaddr2"].ToString().Trim()),
+                    new SqlParameter("@Schcity",((DataRowView)this.custBindingSource.Current).Row["schcity"].ToString().Trim()),
+                    new SqlParameter("@Schstate",((DataRowView)this.custBindingSource.Current).Row["schstate"].ToString().Trim() ),
+                    new SqlParameter("@Schzip",((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim())
               };
                 command.Parameters.AddRange(parameters);
                 command.ExecuteNonQuery();
@@ -1413,7 +1415,7 @@ namespace Mbc5.Forms.MemoryBook {
             if (!string.IsNullOrEmpty(Schcode)) {
                 custTableAdapter.Fill(dsSales.cust, Schcode);
                 quotesTableAdapter.Fill(dsSales.quotes, Schcode);
-                this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim(); ;
+                this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim(); 
             }
             if (Invno != 0) {
                 var pos = quotesBindingSource.Find("invno", this.Invno);
@@ -2728,6 +2730,7 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 
             } else {
+              
                 txtModifiedBy.Text = this.ApplicationUser.id;
                 txtModifiedByInv.Text = this.ApplicationUser.id;
                 txtModifiedByInvdetail.Text = this.ApplicationUser.id;
@@ -2968,13 +2971,15 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void pg4_Enter(object sender,EventArgs e) {
-            this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToDecimal(lblInvoice.Text));
+            this.paymntTableAdapter.Fill(dsInvoice.paymnt,Convert.ToInt32(lblInvoice.Text));
             SetCrudButtons();
             }
 
         private void pg3_Enter(object sender,EventArgs e) {
-            this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToDecimal(lblInvoice.Text));
-            this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToDecimal(lblInvoice.Text));
+         this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToInt32(lblInvoice.Text));
+        this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToInt32(lblInvoice.Text));
+  
+         
             }
 
        
@@ -3130,6 +3135,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
 
         
+
 
 
         //nothing below here  
