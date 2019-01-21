@@ -582,7 +582,7 @@ WHERE          (Id = @Id)</CommandText>
               <xs:element name="nopages" msprop:Generator_ColumnVarNameInTable="columnnopages" msprop:Generator_ColumnPropNameInRow="nopages" msprop:Generator_ColumnPropNameInTable="nopagesColumn" msprop:Generator_UserColumnName="nopages" type="xs:decimal" minOccurs="0" />
               <xs:element name="nocopies" msprop:Generator_ColumnVarNameInTable="columnnocopies" msprop:Generator_ColumnPropNameInRow="nocopies" msprop:Generator_ColumnPropNameInTable="nocopiesColumn" msprop:Generator_UserColumnName="nocopies" type="xs:decimal" minOccurs="0" />
               <xs:element name="book_ea" msprop:Generator_ColumnVarNameInTable="columnbook_ea" msprop:Generator_ColumnPropNameInRow="book_ea" msprop:Generator_ColumnPropNameInTable="book_eaColumn" msprop:Generator_UserColumnName="book_ea" type="xs:decimal" minOccurs="0" />
-              <xs:element name="source" msprop:Generator_ColumnVarNameInTable="columnsource" msprop:Generator_ColumnPropNameInRow="source" msprop:Generator_ColumnPropNameInTable="sourceColumn" msprop:Generator_UserColumnName="source" minOccurs="0">
+              <xs:element name="source" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="source" msprop:Generator_ColumnVarNameInTable="columnsource" msprop:Generator_ColumnPropNameInTable="sourceColumn" msprop:Generator_UserColumnName="source" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2" />
@@ -616,28 +616,28 @@ WHERE          (Id = @Id)</CommandText>
               <xs:element name="schname" msprop:Generator_ColumnVarNameInTable="columnschname" msprop:Generator_ColumnPropNameInRow="schname" msprop:Generator_ColumnPropNameInTable="schnameColumn" msprop:Generator_UserColumnName="schname" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="34" />
+                    <xs:maxLength value="36" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="schaddr" msprop:Generator_ColumnVarNameInTable="columnschaddr" msprop:Generator_ColumnPropNameInRow="schaddr" msprop:Generator_ColumnPropNameInTable="schaddrColumn" msprop:Generator_UserColumnName="schaddr" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
+                    <xs:maxLength value="80" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="schaddr2" msprop:Generator_ColumnVarNameInTable="columnschaddr2" msprop:Generator_ColumnPropNameInRow="schaddr2" msprop:Generator_ColumnPropNameInTable="schaddr2Column" msprop:Generator_UserColumnName="schaddr2" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
+                    <xs:maxLength value="80" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="schcity" msprop:Generator_ColumnVarNameInTable="columnschcity" msprop:Generator_ColumnPropNameInRow="schcity" msprop:Generator_ColumnPropNameInTable="schcityColumn" msprop:Generator_UserColumnName="schcity" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="16" />
+                    <xs:maxLength value="80" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -651,7 +651,7 @@ WHERE          (Id = @Id)</CommandText>
               <xs:element name="schzip" msprop:Generator_ColumnVarNameInTable="columnschzip" msprop:Generator_ColumnPropNameInRow="schzip" msprop:Generator_ColumnPropNameInTable="schzipColumn" msprop:Generator_UserColumnName="schzip" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
+                    <xs:maxLength value="12" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -685,6 +685,7 @@ WHERE          (Id = @Id)</CommandText>
               </xs:element>
               <xs:element name="SalesTax" msprop:Generator_ColumnVarNameInTable="columnSalesTax" msprop:Generator_ColumnPropNameInRow="SalesTax" msprop:Generator_ColumnPropNameInTable="SalesTaxColumn" msprop:Generator_UserColumnName="SalesTax" type="xs:decimal" minOccurs="0" />
               <xs:element name="BeforeTaxTotal" msprop:Generator_ColumnVarNameInTable="columnBeforeTaxTotal" msprop:Generator_ColumnPropNameInRow="BeforeTaxTotal" msprop:Generator_ColumnPropNameInTable="BeforeTaxTotalColumn" msprop:Generator_UserColumnName="BeforeTaxTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="citystatezip" msdata:ReadOnly="true" msdata:Expression="TRIM(schcity)+','+TRIM(schstate)+' '+TRIM(schzip)" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="citystatezip" msprop:Generator_ColumnVarNameInTable="columncitystatezip" msprop:Generator_ColumnPropNameInTable="citystatezipColumn" msprop:Generator_UserColumnName="citystatezip" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -318,7 +318,7 @@ namespace Mbc5.DataSets {
             this.Namespace = "http://tempuri.org/Invoice.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableinvoice = new invoiceDataTable();
+            this.tableinvoice = new invoiceDataTable(false);
             base.Tables.Add(this.tableinvoice);
             this.tableinvdetail = new invdetailDataTable();
             base.Tables.Add(this.tableinvdetail);
@@ -434,6 +434,7 @@ namespace Mbc5.DataSets {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitExpressions() {
+            this.invoice.citystatezipColumn.Expression = "TRIM(schcity)+\',\'+TRIM(schstate)+\' \'+TRIM(schzip)";
             this.cust.fullnameColumn.Expression = "TRIM(contfname)+\' \' + TRIM(contlname)";
             this.cust.citystatezipColumn.Expression = "TRIM(schcity)+\',\'+TRIM(schstate)+\' \'+TRIM(schzip)";
             this.cust.namecodeColumn.Expression = "TRIM(schname)+\' (\' + TRIM(schcode)+\')\'";
@@ -523,12 +524,23 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnBeforeTaxTotal;
             
+            private global::System.Data.DataColumn columncitystatezip;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public invoiceDataTable() {
+            public invoiceDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public invoiceDataTable(bool initExpressions) {
                 this.TableName = "invoice";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -806,6 +818,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn citystatezipColumn {
+                get {
+                    return this.columncitystatezip;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -837,6 +857,83 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void AddinvoiceRow(invoiceRow row) {
                 this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public invoiceRow AddinvoiceRow(
+                        string schcode, 
+                        quotesRow parentquotesRowByquotes_invoice, 
+                        System.DateTime qtedate, 
+                        decimal nopages, 
+                        decimal nocopies, 
+                        decimal book_ea, 
+                        string source, 
+                        string ponum, 
+                        decimal invtot, 
+                        decimal payments, 
+                        decimal baldue, 
+                        string contfname, 
+                        string contlname, 
+                        string schname, 
+                        string schaddr, 
+                        string schaddr2, 
+                        string schcity, 
+                        string schstate, 
+                        string schzip, 
+                        string contryear, 
+                        decimal poamt, 
+                        bool dc2, 
+                        bool allclrck, 
+                        bool laminate, 
+                        string fldtype, 
+                        int freebooks, 
+                        System.DateTime DateCreated, 
+                        System.DateTime DateModified, 
+                        string ModifiedBy, 
+                        decimal SalesTax, 
+                        decimal BeforeTaxTotal, 
+                        string citystatezip) {
+                invoiceRow rowinvoiceRow = ((invoiceRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        schcode,
+                        null,
+                        qtedate,
+                        nopages,
+                        nocopies,
+                        book_ea,
+                        source,
+                        ponum,
+                        invtot,
+                        payments,
+                        baldue,
+                        contfname,
+                        contlname,
+                        schname,
+                        schaddr,
+                        schaddr2,
+                        schcity,
+                        schstate,
+                        schzip,
+                        contryear,
+                        poamt,
+                        dc2,
+                        allclrck,
+                        laminate,
+                        fldtype,
+                        freebooks,
+                        DateCreated,
+                        DateModified,
+                        ModifiedBy,
+                        SalesTax,
+                        BeforeTaxTotal,
+                        citystatezip};
+                if ((parentquotesRowByquotes_invoice != null)) {
+                    columnValuesArray[1] = parentquotesRowByquotes_invoice[0];
+                }
+                rowinvoiceRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowinvoiceRow);
+                return rowinvoiceRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -905,7 +1002,8 @@ namespace Mbc5.DataSets {
                         DateModified,
                         ModifiedBy,
                         SalesTax,
-                        BeforeTaxTotal};
+                        BeforeTaxTotal,
+                        null};
                 if ((parentquotesRowByquotes_invoice != null)) {
                     columnValuesArray[1] = parentquotesRowByquotes_invoice[0];
                 }
@@ -969,6 +1067,7 @@ namespace Mbc5.DataSets {
                 this.columnModifiedBy = base.Columns["ModifiedBy"];
                 this.columnSalesTax = base.Columns["SalesTax"];
                 this.columnBeforeTaxTotal = base.Columns["BeforeTaxTotal"];
+                this.columncitystatezip = base.Columns["citystatezip"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1036,6 +1135,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnSalesTax);
                 this.columnBeforeTaxTotal = new global::System.Data.DataColumn("BeforeTaxTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBeforeTaxTotal);
+                this.columncitystatezip = new global::System.Data.DataColumn("citystatezip", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncitystatezip);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columnschcode.AllowDBNull = false;
@@ -1046,15 +1147,16 @@ namespace Mbc5.DataSets {
                 this.columnponum.MaxLength = 25;
                 this.columncontfname.MaxLength = 20;
                 this.columncontlname.MaxLength = 20;
-                this.columnschname.MaxLength = 34;
-                this.columnschaddr.MaxLength = 30;
-                this.columnschaddr2.MaxLength = 30;
-                this.columnschcity.MaxLength = 16;
+                this.columnschname.MaxLength = 36;
+                this.columnschaddr.MaxLength = 80;
+                this.columnschaddr2.MaxLength = 80;
+                this.columnschcity.MaxLength = 80;
                 this.columnschstate.MaxLength = 3;
-                this.columnschzip.MaxLength = 10;
+                this.columnschzip.MaxLength = 12;
                 this.columncontryear.MaxLength = 2;
                 this.columnfldtype.MaxLength = 12;
                 this.columnModifiedBy.MaxLength = 128;
+                this.columncitystatezip.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1073,6 +1175,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(invoiceRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitExpressions() {
+                this.citystatezipColumn.Expression = "TRIM(schcity)+\',\'+TRIM(schstate)+\' \'+TRIM(schzip)";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3022,11 +3130,11 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string source {
                 get {
-                    try {
-                        return ((string)(this[this.tableinvoice.sourceColumn]));
+                    if (this.IssourceNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'source\' in table \'invoice\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableinvoice.sourceColumn]));
                     }
                 }
                 set {
@@ -3420,6 +3528,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string citystatezip {
+                get {
+                    if (this.IscitystatezipNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableinvoice.citystatezipColumn]));
+                    }
+                }
+                set {
+                    this[this.tableinvoice.citystatezipColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public quotesRow quotesRow {
                 get {
                     return ((quotesRow)(this.GetParentRow(this.Table.ParentRelations["quotes_invoice"])));
@@ -3775,6 +3899,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetBeforeTaxTotalNull() {
                 this[this.tableinvoice.BeforeTaxTotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscitystatezipNull() {
+                return this.IsNull(this.tableinvoice.citystatezipColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcitystatezipNull() {
+                this[this.tableinvoice.citystatezipColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5637,7 +5773,7 @@ WHERE        (invno = @invno)";
         public virtual dsInvoice.invoiceDataTable GetData(decimal invno) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(invno));
-            dsInvoice.invoiceDataTable dataTable = new dsInvoice.invoiceDataTable();
+            dsInvoice.invoiceDataTable dataTable = new dsInvoice.invoiceDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
