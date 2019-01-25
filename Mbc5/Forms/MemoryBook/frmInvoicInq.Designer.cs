@@ -35,6 +35,12 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsCust = new Mbc5.DataSets.dsCust();
+            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsInvoice = new Mbc5.DataSets.dsInvoice();
+            this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblShipdate = new System.Windows.Forms.Label();
             this.dtShipDate = new System.Windows.Forms.DateTimePicker();
@@ -51,15 +57,9 @@
             this.dgInvoices = new System.Windows.Forms.DataGridView();
             this.bsInvoices = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dsCust = new Mbc5.DataSets.dsCust();
             this.tableAdapterManager1 = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
             this.dsSales = new Mbc5.DataSets.dsSales();
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
-            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsInvoice = new Mbc5.DataSets.dsInvoice();
-            this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoiceTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invoiceTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
@@ -74,18 +74,18 @@
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             this.pnlError.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAddressErrors)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgInvoices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsInvoices)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -102,6 +102,37 @@
             this.BottomPanel.Controls.Add(this.btnSearch);
             this.BottomPanel.Location = new System.Drawing.Point(0, 578);
             this.BottomPanel.Size = new System.Drawing.Size(1344, 75);
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsCust;
+            // 
+            // dsCust
+            // 
+            this.dsCust.DataSetName = "dsCust";
+            this.dsCust.EnforceConstraints = false;
+            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invoiceBindingSource
+            // 
+            this.invoiceBindingSource.DataMember = "invoice";
+            this.invoiceBindingSource.DataSource = this.dsInvoice;
+            // 
+            // dsInvoice
+            // 
+            this.dsInvoice.DataSetName = "dsInvoice";
+            this.dsInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invdetailBindingSource
+            // 
+            this.invdetailBindingSource.DataMember = "invdetail";
+            this.invdetailBindingSource.DataSource = this.dsInvoice;
+            // 
+            // paymntBindingSource
+            // 
+            this.paymntBindingSource.DataMember = "paymnt";
+            this.paymntBindingSource.DataSource = this.dsInvoice;
             // 
             // lblTitle
             // 
@@ -315,12 +346,6 @@
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             this.reportViewer1.ReportError += new Microsoft.Reporting.WinForms.ReportErrorEventHandler(this.reportViewer1_reportError);
             // 
-            // dsCust
-            // 
-            this.dsCust.DataSetName = "dsCust";
-            this.dsCust.EnforceConstraints = false;
-            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // tableAdapterManager1
             // 
             this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
@@ -335,34 +360,9 @@
             this.dsSales.DataSetName = "dsSales";
             this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsCust;
-            // 
             // custTableAdapter
             // 
             this.custTableAdapter.ClearBeforeFill = true;
-            // 
-            // invoiceBindingSource
-            // 
-            this.invoiceBindingSource.DataMember = "invoice";
-            this.invoiceBindingSource.DataSource = this.dsInvoice;
-            // 
-            // dsInvoice
-            // 
-            this.dsInvoice.DataSetName = "dsInvoice";
-            this.dsInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // invdetailBindingSource
-            // 
-            this.invdetailBindingSource.DataMember = "invdetail";
-            this.invdetailBindingSource.DataSource = this.dsInvoice;
-            // 
-            // paymntBindingSource
-            // 
-            this.paymntBindingSource.DataMember = "paymnt";
-            this.paymntBindingSource.DataSource = this.dsInvoice;
             // 
             // invoiceTableAdapter
             // 
@@ -459,6 +459,12 @@
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.BottomPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             this.pnlError.ResumeLayout(false);
             this.pnlError.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAddressErrors)).EndInit();
@@ -466,13 +472,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgInvoices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsInvoices)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

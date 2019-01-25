@@ -16,7 +16,7 @@ using Microsoft.ReportingServices.ReportRendering;
 
 namespace Mbc5.Classes
 {
-    public class DirectPrint
+    public class DirectPrint : IDisposable
     {
         private IList<Stream> m_streams;
         private int m_currentPageIndex;
@@ -29,9 +29,20 @@ namespace Mbc5.Classes
             m_streams.Add(stream);
             return stream;
         }
-
+        public void Dispose()
+        {
+            if (m_streams != null)
+            {
+                foreach (Stream stream in m_streams)
+                    stream.Close();
+                m_streams = null;
+            }
+        }
         public void Export(LocalReport report)
         {
+            report.DataSources.RemoveAt(1);
+            report.DataSources.RemoveAt(1);
+            report.DataSources.RemoveAt(1);
             //string deviceInfo =
             //"" +
             //" EMF" +
@@ -56,12 +67,16 @@ namespace Mbc5.Classes
             m_streams = new List<Stream>();
             try { report.Render("Image", deviceInfo, CreateStream,
             out warnings); }catch(Exception ex) { };
-           
-           
+
+
             foreach (Stream stream in m_streams)
+            {
                 stream.Position = 0;
-            m_currentPageIndex = 0;
+                m_currentPageIndex = 0;
+            }
+
             Print();
+            Dispose();
         }
         
 

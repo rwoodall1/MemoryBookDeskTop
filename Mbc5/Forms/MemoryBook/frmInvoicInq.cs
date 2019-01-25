@@ -149,7 +149,7 @@ namespace Mbc5.Forms.MemoryBook
         private void button3_Click(object sender, EventArgs e)
         {
             // var a = this.Invoices;
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 2; i++)
             {
                 var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invoices[0].Invno);
                 var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invoices[0].Invno);
