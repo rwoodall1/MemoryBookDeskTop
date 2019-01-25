@@ -680,7 +680,7 @@ namespace Mbc5.Forms.MemoryBook {
             return coverNum.ToString();
             }
         private void GetSetSchcode() {
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+            SqlConnection conn = new SqlConnection(FormConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT precode,schcode from codecnt ",conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
@@ -735,7 +735,7 @@ namespace Mbc5.Forms.MemoryBook {
             DataTable EditedRecs = dsMktInfo.mktinfo.GetChanges();
             if (EditedRecs != null)
                 {
-                SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+                SqlConnection conn = new SqlConnection(FormConnectionString);
                 string sql = "UPDATE MktInfo Set note=@note,promo=@promo,refered=@refered where Id=@Id ;";
                 SqlCommand cmd = new SqlCommand(sql,conn);
                 foreach (DataRow row in EditedRecs.Rows)
@@ -775,7 +775,7 @@ namespace Mbc5.Forms.MemoryBook {
             DataTable EditedRecs = dsCust.datecont.GetChanges();
             if (EditedRecs != null)
                 {
-                SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+                SqlConnection conn = new SqlConnection(FormConnectionString);
                 string sql = "UPDATE DateCont Set Id=@Id,reason=@reason,contact=@contact,typecont=@typecont, nxtdate=@nxtdate,callcont=@callcont, calltime=@calltime,priority=@priority,techcall=@techcall where id=@id ;";
                 SqlCommand cmd = new SqlCommand(sql,conn);
                 foreach (DataRow row in EditedRecs.Rows)
@@ -899,7 +899,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void btnAddLog_Click(object sender,EventArgs e) {
 
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString );
+            SqlConnection conn = new SqlConnection(FormConnectionString);
             string sql = "INSERT INTO DateCont (Id,schcode,datecont,initial) VALUES(@Id,@schcode,@datecont,@initial);";
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.Parameters.AddWithValue("@Id",Guid.NewGuid().ToString());
@@ -924,7 +924,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void btnAddMarketLog_Click(object sender,EventArgs e) {
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+            SqlConnection conn = new SqlConnection(FormConnectionString);
             string sql = "INSERT INTO MktInfo (ddate,initial,schcode) VALUES(@ddate,@initial,@schcode);";
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.Parameters.Clear();

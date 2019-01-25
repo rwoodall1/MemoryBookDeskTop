@@ -29,9 +29,16 @@ namespace Mbc5.Forms.MemoryBook {
             this.ApplicationUser = userPrincipal;
             this.Schcode = schcode;
             }
-       
 
-		private void bidsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+            this.FormConnectionString = frmMain.AppConnectionString;
+            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+           
+
+        }
+        private void bidsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
 		{
 			this.Validate();
 			this.bidsBindingSource.EndEdit();
@@ -42,8 +49,9 @@ namespace Mbc5.Forms.MemoryBook {
         private void frmBids_Load_1(object sender, EventArgs e)
         {
             frmMain frmMain =(frmMain) this.MdiParent;
-            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.bidsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.SetConnectionString();
+            //this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            //this.bidsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
             lblPCTotal.DataBindings.Add("Text", this, "PrcTot", false, DataSourceUpdateMode.OnPropertyChanged);//bind
             Fill();
@@ -654,7 +662,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.CurPriceYr = txtBYear.Text;
 
 
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+            SqlConnection conn = new SqlConnection(FormConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT * From Pricing where Type=@Type and yr=@Yr order by copies", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
@@ -786,7 +794,7 @@ namespace Mbc5.Forms.MemoryBook {
         private void GetBookOptionPricing()
         {
             this.CurPriceYr = txtBYear.Text;
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+            SqlConnection conn = new SqlConnection(FormConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT * From BookOptionPricing where yr=@Yr", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();

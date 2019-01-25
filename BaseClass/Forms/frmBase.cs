@@ -36,6 +36,7 @@ namespace BaseClass
             ShowWithOwner
         }
         public virtual string Schcode { get; set; }
+        public virtual string FormConnectionString { get; set; }
         public virtual int Invno { get; set; }
         public event EventHandler UserIsAllowed;
         public event EventHandler UserIsDenied;

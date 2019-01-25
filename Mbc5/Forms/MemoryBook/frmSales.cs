@@ -23,7 +23,7 @@ namespace Mbc5.Forms.MemoryBook {
         
         private bool startup = true;
         private string SchoolZipCode { get; set; }
-        private string FormConnectionString { get; set; }
+        
         public frmSales(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal) {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -56,7 +56,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.invCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invHstTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-
+           
         }
         private void frmSales_Load(object sender, EventArgs e) {
 
@@ -1284,7 +1284,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void GetBookOptionPricing() {
             this.CurPriceYr = txtBYear.Text;
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+            SqlConnection conn = new SqlConnection(FormConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT * From BookOptionPricing where yr=@Yr", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
