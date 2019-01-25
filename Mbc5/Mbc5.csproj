@@ -96,6 +96,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DirectPrint.cs" />
     <Compile Include="Classes\ExceptionHandler.cs" />
     <Compile Include="Classes\OptionPrice.cs" />
     <Compile Include="Classes\Price.cs" />
@@ -481,6 +482,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
+    <EmbeddedResource Include="Reports\InvoiceTest.rdlc" />
+    <EmbeddedResource Include="Reports\MultiMemInvoice .rdlc" />
     <EmbeddedResource Include="Reports\MemInvoice.rdlc" />
     <EmbeddedResource Include="Reports\ProdCheckList.rdlc" />
     <EmbeddedResource Include="Reports\ProdutnTicket.rdlc" />
@@ -633,6 +636,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\BindingModels.BidInvoiceDetail.datasource" />
+    <None Include="Properties\DataSources\BindingModels.Invoice.datasource" />
     <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProdutnTicketModel.datasource" />

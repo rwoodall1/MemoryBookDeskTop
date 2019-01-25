@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Reporting.WinForms;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ using BindingModels;
 using Exceptionless;
 using Exceptionless.Models;
 using Outlook= Microsoft.Office.Interop.Outlook;
+using System.IO;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
         private static string _ConnectionString = Properties.Settings.Default.Mbc5ConnectionString; //ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
@@ -52,10 +54,10 @@ namespace Mbc5.Forms.MemoryBook {
             this.invCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invHstTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-          
+
         }
         private void frmSales_Load(object sender, EventArgs e) {
-           
+
 
             this.SetConnectionString();
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 
@@ -64,12 +66,12 @@ namespace Mbc5.Forms.MemoryBook {
             if (ApplicationUser.Roles.Contains("SA") || ApplicationUser.Roles.Contains("Administrator")) {
                 this.dp1descComboBox.ContextMenuStrip = this.mnuEditLkUp;
             }
-       
+
             CalculateEach();
             BookCalc();
             txtBYear.Focus();
-         startup = false;
-           
+            startup = false;
+
         }
         private void btnInvSrch_Click(object sender, EventArgs e) {
             var sqlQuery = new SQLQuery();
@@ -83,7 +85,7 @@ namespace Mbc5.Forms.MemoryBook {
                     //only one row so just set variabls
                     this.Invno = Convert.ToInt32(row["invno"]);
                     this.Schcode = row["schcode"].ToString();
-                    
+
                     this.Fill();
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
 
@@ -110,8 +112,8 @@ namespace Mbc5.Forms.MemoryBook {
                     this.Fill();
                     DataRowView current = (DataRowView)quotesBindingSource.Current;
                     this.Invno = current["Invno"] == DBNull.Value ? 0 : (int)current["Invno"];
-                   
-                            EnableAllControls(this);
+
+                    EnableAllControls(this);
                 }
             } else {
                 MessageBox.Show("No records were found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -254,6 +256,7 @@ namespace Mbc5.Forms.MemoryBook {
                 new SqlParameter("@Id",Id)
             };
                 var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
+                CalculatePayments();
                 this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToInt32(lblInvoice.Text));
 
                 if (result == 0) { retval = false; }
@@ -289,24 +292,35 @@ namespace Mbc5.Forms.MemoryBook {
             txtCompReason.Enabled = true;
 
         }
-        private void CalculatePayments() {
-            decimal paymentTotals = 0;
+
+            private bool CalculatePayments() {
+            bool retval = false;
+            decimal? paymentTotals = 0;
+            if (string.IsNullOrEmpty(lblInvoice.Text))
+            {
+                return retval;
+            }
             var SqlQuery = new SQLQuery();
-            var cmdText = "SELECT        SUM(ISNULL(payment, 0) + ISNULL(refund, 0) + ISNULL(adjmnt, 0) + ISNULL(compamt, 0)) AS paymentresult FROM paymnt where Invno=@Invno";
+            var cmdText = @"SELECT ISNULL(SUM(ISNULL(payment, 0) + ISNULL(refund, 0) + ISNULL(adjmnt, 0)),0) AS paymentresult
+                         FROM paymnt where Invno=@Invno";
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Invno",lblInvoice.Text) };
-            var result = SqlQuery.ExecuteReaderAsync(CommandType.Text, cmdText, parameters);
-            try { paymentTotals = (decimal)result.Rows[0]["paymentresult"];
-                cmdText = "Update invoice set payments=@payments,baldue=baldue-@payments  where Invno=@Invno ";
+           var result = SqlQuery.ExecuteReaderAsync(CommandType.Text, cmdText, parameters);
+          //paymentTotals =(decimal)this.paymntTableAdapter.SumPayment(Convert.ToInt32(lblInvoice.Text));
+            try {
+             
+                paymentTotals = (decimal)result.Rows[0]["paymentresult"];
+             cmdText =@"Update invoice set payments=@payments,baldue=invtot-@payments  where Invno=@Invno ";
                 SqlParameter[] parameters1 = new SqlParameter[] {
                 new SqlParameter("@Invno",lblInvoice.Text),
                 new SqlParameter("@payments",paymentTotals)};
                 var a = SqlQuery.ExecuteNonQueryAsync(CommandType.Text, cmdText, parameters1);
                 this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToInt32(lblInvoice.Text));
+                retval = true;
             } catch (Exception ex) {
 
             }
-
+            return retval;
         }
         //Invoice
         private bool DeleteInvoice() {
@@ -423,6 +437,7 @@ namespace Mbc5.Forms.MemoryBook {
                     command.Transaction.Commit();
                     MessageBox.Show("Invoice has been created.", "Invoice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                CalculatePayments();
 
             } catch (Exception ex) {
                 ex.ToExceptionless()
@@ -1414,8 +1429,9 @@ namespace Mbc5.Forms.MemoryBook {
         private void Fill() {
             if (!string.IsNullOrEmpty(Schcode)) {
                 custTableAdapter.Fill(dsSales.cust, Schcode);
+               
                 quotesTableAdapter.Fill(dsSales.quotes, Schcode);
-                this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim(); 
+               this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim(); 
             }
             if (Invno != 0) {
                 var pos = quotesBindingSource.Find("invno", this.Invno);
@@ -2977,10 +2993,12 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void pg3_Enter(object sender,EventArgs e) {
          this.invoiceTableAdapter.Fill(dsInvoice.invoice,Convert.ToInt32(lblInvoice.Text));
-        this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToInt32(lblInvoice.Text));
-  
-         
-            }
+            this.invdetailTableAdapter.Fill(dsInvoice.invdetail,Convert.ToInt32(lblInvoice.Text));
+            //this.invdetailTableAdapter.Fill(dsInvoice.invdetail, 81517);
+            lblPayments.Text=this.paymntTableAdapter.SumPayment(Convert.ToInt32(lblInvoice.Text)).ToString();
+
+
+        }
 
        
 
@@ -3067,6 +3085,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
+       
             reportViewer1.PrintDialog();
         }
         private decimal GetTaxRate()
@@ -3134,7 +3153,9 @@ namespace Mbc5.Forms.MemoryBook {
             tabSales.Visible = true;
         }
 
-        
+      
+
+
 
 
 

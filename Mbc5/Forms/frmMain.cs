@@ -234,21 +234,24 @@ namespace Mbc5.Forms
                 this.Cursor = Cursors.AppStarting;
                 string vSchcode = GetSchcode();
 
-                if (String.IsNullOrEmpty(vSchcode) ) {
-                    this.Cursor = Cursors.AppStarting;
+                    if (String.IsNullOrEmpty(vSchcode) ) {
+                        this.Cursor = Cursors.AppStarting;
 
-                    frmMbcCust frmCust1 = new frmMbcCust(this.ApplicationUser);
-                    frmCust1.MdiParent = this;
-                    frmCust1.Show();
-                    this.Cursor = Cursors.Default;
+                        frmMbcCust frmCust1 = new frmMbcCust(this.ApplicationUser);
+                        frmCust1.MdiParent = this;
+                        frmCust1.Show();
+                        this.Cursor = Cursors.Default;
                     }
+                    else
+                    {
+                        this.Cursor = Cursors.AppStarting;
 
-                this.Cursor = Cursors.AppStarting;
+                        frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser,vSchcode);
+                        frmCust.MdiParent = this;
+                        frmCust.Show();
+                        this.Cursor = Cursors.Default;
 
-                frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser,vSchcode);
-                frmCust.MdiParent = this;
-                frmCust.Show();
-                this.Cursor = Cursors.Default;
+                    }
 
                 }
 

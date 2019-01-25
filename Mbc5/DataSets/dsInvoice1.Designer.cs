@@ -2887,8 +2887,12 @@ namespace Mbc5.DataSets {
                 this.columncode.MaxLength = 6;
                 this.columninvno.AllowDBNull = false;
                 this.columncheckno.MaxLength = 10;
+                this.columnpoamt.DefaultValue = ((decimal)(0m));
+                this.columnrefund.DefaultValue = ((decimal)(0m));
                 this.columnmethod.MaxLength = 10;
                 this.columninit_.MaxLength = 3;
+                this.columnadjmnt.DefaultValue = ((decimal)(0m));
+                this.columncompamt.DefaultValue = ((decimal)(0m));
                 this.columncompreas.MaxLength = 400;
                 this.columntransid.MaxLength = 20;
                 this.columnauthcode.MaxLength = 20;
@@ -2899,6 +2903,7 @@ namespace Mbc5.DataSets {
                 this.columnId.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
                 this.columnpaytype.MaxLength = 3;
+                this.columnpayment.DefaultValue = ((decimal)(0m));
                 this.columnModifiedBy.MaxLength = 128;
             }
             
@@ -8356,7 +8361,7 @@ WHERE          (Id = @Id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT          code, invno, pmtdate, checkno, poamt, refund, method, init_, adjmnt, compamt, compreas, ppfee, transid, authcode, ccnum, Id, paytype, payment, DateCreated, DateModified, 
@@ -8365,6 +8370,12 @@ FROM              paymnt
 WHERE          (invno = @invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        ISNULL(SUM(ISNULL(payment, 0) + ISNULL(refund, 0) + ISNULL(adjmnt, " +
+                "0)), 0) AS paymentresult\r\nFROM            paymnt\r\nWHERE        (invno = @Invno)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8705,6 +8716,35 @@ WHERE          (invno = @invno)";
                 if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<decimal> SumPayment(decimal Invno) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((decimal)(Invno));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<decimal>();
+            }
+            else {
+                return new global::System.Nullable<decimal>(((decimal)(returnValue)));
             }
         }
     }
