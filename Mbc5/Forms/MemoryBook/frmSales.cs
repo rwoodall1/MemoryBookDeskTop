@@ -20,9 +20,10 @@ using Outlook= Microsoft.Office.Interop.Outlook;
 using System.IO;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
-        private static string _ConnectionString = Properties.Settings.Default.Mbc5ConnectionString; //ConfigurationManager.ConnectionStrings["Mbc"].ConnectionString;
+        
         private bool startup = true;
         private string SchoolZipCode { get; set; }
+        private string FormConnectionString { get; set; }
         public frmSales(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal) {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -47,6 +48,7 @@ namespace Mbc5.Forms.MemoryBook {
         private void SetConnectionString()
         {
             frmMain frmMain = (frmMain)this.MdiParent;
+            this.FormConnectionString= frmMain.AppConnectionString;
             this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.paymntTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -351,7 +353,7 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private bool CreateInvoice() {
             bool retval = true;
-            var connection = new SqlConnection(_ConnectionString);
+            var connection = new SqlConnection(this.FormConnectionString);
             string cmdText = "";
             var command = new SqlCommand(cmdText, connection);
 
@@ -1159,7 +1161,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.CurPriceYr = txtBYear.Text;
 
 
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.Mbc5ConnectionString);
+            SqlConnection conn = new SqlConnection(this.FormConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT * From Pricing where Type=@Type and yr=@Yr order by copies", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
@@ -3153,7 +3155,12 @@ namespace Mbc5.Forms.MemoryBook {
             tabSales.Visible = true;
         }
 
-      
+        private void chkHardBack_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
 
 
 
