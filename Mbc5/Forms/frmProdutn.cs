@@ -50,7 +50,7 @@ namespace Mbc5.Forms
 			{
 				DisableControls(tab);
 			}
-			EnableControls(this.txtInvoiceNoSrch);
+			EnableControls(this.txtSchCode);
 			EnableControls(this.txtProdNoSrch);
 			EnableControls(this.btnProdSrch);
 			EnableControls(this.btnInvoiceSrch);
@@ -212,7 +212,7 @@ namespace Mbc5.Forms
 					{
 						DisableControls(tab);
 					}
-					EnableControls(this.txtInvoiceNoSrch);
+					EnableControls(this.txtSchCode);
 					EnableControls(this.txtProdNoSrch);
 					EnableControls(this.btnProdSrch);
 					EnableControls(this.btnInvoiceSrch);
@@ -286,7 +286,7 @@ namespace Mbc5.Forms
 				case 1:
 					{
 						SaveWip();
-						SaveProdutn();//some produtn fiels are on covers tab so save
+						SaveProdutn();//some produtn fiels are on wip tab so save
 						break;
 					}
 				case 2:
@@ -400,7 +400,7 @@ namespace Mbc5.Forms
 						this.partbkBindingSource.EndEdit();
 						var a = partbkTableAdapter.Update(dsProdutn.partbk);
 						//must refill so we get updated time stamp so concurrency is not thrown
-						partbkTableAdapter.Fill(dsProdutn.partbk, Schcode);
+						partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
 						retval = true;
 					}
 					catch (DBConcurrencyException dbex)
@@ -433,7 +433,7 @@ namespace Mbc5.Forms
 						this.ptbkbBindingSource.EndEdit();
 						var a = ptbkbTableAdapter.Update(dsProdutn.ptbkb);
 						//must refill so we get updated time stamp so concurrency is not thrown
-						ptbkbTableAdapter.Fill(dsProdutn.ptbkb, Schcode);
+						ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
 						retval = true;
 					}
 					catch (DBConcurrencyException dbex)
@@ -467,7 +467,7 @@ namespace Mbc5.Forms
 						this.produtnBindingSource.EndEdit();
 						var a = produtnTableAdapter.Update(dsProdutn.produtn);
 						//must refill so we get updated time stamp so concurrency is not thrown
-						produtnTableAdapter.Fill(dsProdutn.produtn, Schcode);
+						produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
 						var aa = Invno;
 						var pos = produtnBindingSource.Find("invno", this.Invno);
 						if (pos > -1)
@@ -513,7 +513,7 @@ namespace Mbc5.Forms
 					this.wipBindingSource.EndEdit();
 					var a = wipTableAdapter.Update(dsProdutn.wip);
 					//must refill so we get updated time stamp so concurrency is not thrown
-					wipTableAdapter.Fill(dsProdutn.wip, Schcode);
+					wipTableAdapter.FillByInvno(dsProdutn.wip,Invno);
 					retval = true;
 				}
 				catch (DBConcurrencyException ex1)
@@ -549,7 +549,7 @@ namespace Mbc5.Forms
 						this.coversBindingSource1.EndEdit();
 						var a = coversTableAdapter.Update(dsProdutn.covers);
 						//must refill so we get updated time stamp so concurrency is not thrown
-						coversTableAdapter.Fill(dsProdutn.covers, Schcode);
+						coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
 						retval = true;
 					}
 					catch (DBConcurrencyException dbex)
@@ -1101,38 +1101,7 @@ namespace Mbc5.Forms
 			frmProdutn_Paint(this, null);
 		}
 
-		private void btnInvoiceSrch_Click(object sender, EventArgs e)
-		{
-			switch (tbProdutn.SelectedIndex)
-			{
-				case 0:
-					if (!SaveProdutn())
-					{
-						var result1 = MessageBox.Show("Production record could not be saved. Continue search?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result1 == DialogResult.No)
-						{
-
-							return;
-						}
-					}
-					break;
-
-
-			}
-
-			var sqlQuery = new SQLQuery();
-			string query = "Select prodno,invno,schcode from produtn where invno=@invno";
-			var parameters = new SqlParameter[] { new SqlParameter("@invno", txtInvoiceNoSrch.Text) };
-			var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, query, parameters);
-			if (result.Rows.Count > 0)
-			{
-				Schcode = result.Rows[0]["schcode"].ToString();
-				Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
-				Fill();
-			}
-			else { MessageBox.Show("Record was not found.", "Invoice Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-			frmProdutn_Paint(this, null);
-		}
+	
 
 		private void wipDetailDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
@@ -1143,7 +1112,7 @@ namespace Mbc5.Forms
 			var result = frmeditWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Schcode);
+				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
 			}
 		}
 
@@ -1232,7 +1201,7 @@ namespace Mbc5.Forms
 			var result = frmeditCoverWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Schcode);
+				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
 			}
 		}
 
@@ -1245,13 +1214,9 @@ namespace Mbc5.Forms
 			var result = frmeditCoverWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Schcode);
+				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
 			}
 		}
-
-
-
-
 
 		private void frmProdutn_FormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -1272,8 +1237,111 @@ namespace Mbc5.Forms
 			}
 		}
 
+		
+		public async Task<ApiProcessingResult<bool>> UpdateWipDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
+		{
+			var processingResult = new ApiProcessingResult<bool>();
+			bool isUpdate = true;
+			if (vWdr == null)
+			{
+				isUpdate = false;
+			}
+			var sqlClient = new SQLCustomClient();
+			sqlClient.ClearParameters();
+			sqlClient.AddParameter("@DescripID", vDescripId);
+			sqlClient.AddParameter("@wdr", vWdr);
+			sqlClient.AddParameter("@invno", vInvno);
+			sqlClient.AddParameter("@Schcode", this.Schcode);
+			var commandText = "";
+			if (isUpdate)
+			{
+				commandText = @"
+                         	IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                Begin
+                                INSERT INTO WipDetail (DescripID,Invno,Wdr,Schcode) VALUES(@DescripID,@Invno,@wdr,@Schcode);
+                                END
+							ELSE
+								BEGIN
+									UPDATE WipDetail SET wdr=@wdr  WHERE Invno=@Invno AND DescripID=@DescripID
+								END ";
+			}
+			else
+			{
+				//commandText=@"IF EXISTS(Select tmp.Invno, tmp.DescripID from WipDetail tmp WHERE tmp.Invno = @Invno and tmp.DescripID = @DescripID)
+				//				Begin
+				//			     UPDATE WipDetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = @DescripID
+				//				END";
+				commandText = @"
+						Delete FROM WipDetail  WHERE Invno = @Invno AND DescripID = @DescripID
+							";
+			}
+
+			sqlClient.CommandText(commandText);
+			var wipResult = sqlClient.Update();
+			if (wipResult.IsError)
+			{
+				processingResult.IsError = true;
+				processingResult.Data = false;
+				return processingResult;
+
+			}
 
 
+			processingResult.IsError = false;
+			processingResult.Data = true;
+			return processingResult;
+		}
+		private void btnSchoolSearch_Click(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(txtSchNamesrch.Text.Trim()))
+			{
+				return;
+			}    
+			
+				//var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
+				var sqlQuery = new SQLQuery();
+				var queryString = @"SELECT P.ProdNo,P.Invno, C.Schcode, C.Schname,C.Schcity,C.Schstate,C.Schzip 
+							 FROM Cust C
+								Left Join Quotes Q ON C.Schcode=Q.Schcode
+								Left Join Produtn P On Q.Invno=P.Invno
+                              WHERE P.Invno IS NOT NULL AND (C.Schname LIKE @Schname + '%')
+                              ORDER BY Schname,Invno";
+				SqlParameter[] parameters = new SqlParameter[] {
+			   new SqlParameter("@Schname",txtSchNamesrch.Text.Trim())
+			};
+				var dataResult = sqlQuery.ExecuteReaderAsync<ProdutnSchoolNameSearchModel>(CommandType.Text, queryString, parameters);
+				var records = (List<ProdutnSchoolNameSearchModel>)dataResult;
+			if (records == null || records.Count < 1)
+				{
+				
+
+					MessageBox.Show("No Records were found with this criteria.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+				else if (records.Count > 1)
+				{
+			
+					//more than one record select which one you want
+
+					this.Cursor = Cursors.AppStarting;
+					
+					frmProdutnSelctCust frmProdutnSelectCust = new frmProdutnSelctCust(records);
+					DialogResult result = frmProdutnSelectCust.ShowDialog();
+					this.Cursor = Cursors.Default;
+					if (result != DialogResult.Cancel)
+					{
+					if (frmProdutnSelectCust.retval==0)
+					{
+						return;
+					}
+					this.Invno = frmProdutnSelectCust.retval;
+					this.Fill();
+					}
+					
+				}
+				txtSchNamesrch.Text = "";
+			    frmProdutn_Paint(this, null);
+			
+		}
 
 		#region Validation
 		private void laminatedTextBox_Validating(object sender, CancelEventArgs e)
@@ -2874,62 +2942,6 @@ namespace Mbc5.Forms
 			return processingResult;
 
 		}
-
-		public async Task<ApiProcessingResult<bool>> UpdateWipDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
-		{
-			var processingResult = new ApiProcessingResult<bool>();
-			bool isUpdate = true;
-			if (vWdr == null)
-			{
-				isUpdate = false;
-			}
-			var sqlClient = new SQLCustomClient();
-			sqlClient.ClearParameters();
-			sqlClient.AddParameter("@DescripID", vDescripId);
-			sqlClient.AddParameter("@wdr", vWdr);
-			sqlClient.AddParameter("@invno", vInvno);
-			sqlClient.AddParameter("@Schcode", this.Schcode);
-			var commandText = "";
-			if (isUpdate)
-			{
-				commandText = @"
-                         	IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-                                Begin
-                                INSERT INTO WipDetail (DescripID,Invno,Wdr,Schcode) VALUES(@DescripID,@Invno,@wdr,@Schcode);
-                                END
-							ELSE
-								BEGIN
-									UPDATE WipDetail SET wdr=@wdr  WHERE Invno=@Invno AND DescripID=@DescripID
-								END ";
-			}
-			else
-			{
-				//commandText=@"IF EXISTS(Select tmp.Invno, tmp.DescripID from WipDetail tmp WHERE tmp.Invno = @Invno and tmp.DescripID = @DescripID)
-				//				Begin
-				//			     UPDATE WipDetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = @DescripID
-				//				END";
-				commandText = @"
-						Delete FROM WipDetail  WHERE Invno = @Invno AND DescripID = @DescripID
-							";
-			}
-
-			sqlClient.CommandText(commandText);
-			var wipResult = sqlClient.Update();
-			if (wipResult.IsError)
-			{
-				processingResult.IsError = true;
-				processingResult.Data = false;
-				return processingResult;
-
-			}
-
-
-			processingResult.IsError = false;
-			processingResult.Data = true;
-			return processingResult;
-		}
-
-
 		private void dpCustomerServiceDate_Leave(object sender, EventArgs e)
 		{
 			WipUpdate();
@@ -2942,6 +2954,77 @@ namespace Mbc5.Forms
 				laminatedTextBox.Focus();
 			}
 		}
+
+		private void txtSchNamesrch_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (e.KeyChar == 13)
+			{
+				btnSchoolSearch_Click(sender, null);
+			}
+			
+		}
+
+		private void btnInvoiceSrch_Click(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(txtSchCode.Text.Trim()))
+			{
+				return;
+			}
+
+			//var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
+			var sqlQuery = new SQLQuery();
+			var queryString = @"SELECT P.ProdNo,P.Invno, C.Schcode, C.Schname,C.Schcity,C.Schstate,C.Schzip 
+							 FROM Cust C
+								Left Join Quotes Q ON C.Schcode=Q.Schcode
+								Left Join Produtn P On Q.Invno=P.Invno
+                              WHERE P.Invno IS NOT NULL AND (C.Schcode LIKE @Schcode + '%')
+                              ORDER BY Schname,Invno";
+			SqlParameter[] parameters = new SqlParameter[] {
+			   new SqlParameter("@Schcode",txtSchCode.Text.Trim())
+			};
+			var dataResult = sqlQuery.ExecuteReaderAsync<ProdutnSchoolNameSearchModel>(CommandType.Text, queryString, parameters);
+			var records = (List<ProdutnSchoolNameSearchModel>)dataResult;
+			if (records == null || records.Count < 1)
+			{
+
+
+				MessageBox.Show("No Records were found with this criteria.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else if (records.Count >= 1)
+			{
+
+				//more than one record select which one you want
+
+				this.Cursor = Cursors.AppStarting;
+
+				frmProdutnSelctCust frmProdutnSelectCust = new frmProdutnSelctCust(records);
+				DialogResult result = frmProdutnSelectCust.ShowDialog();
+				this.Cursor = Cursors.Default;
+				if (result != DialogResult.Cancel)
+				{
+					if (frmProdutnSelectCust.retval == 0)
+					{
+						return;
+					}
+					this.Invno = frmProdutnSelectCust.retval;
+					this.Fill();
+				}
+
+			}
+			txtSchNamesrch.Text = "";
+			frmProdutn_Paint(this, null);
+
+		}
+
+		private void txtSchCode_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (e.KeyChar == 13)
+			{
+				btnInvoiceSrch_Click(sender, null);
+			}
+		}
+
+
 
 
 		#endregion

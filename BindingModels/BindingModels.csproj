@@ -98,6 +98,7 @@
     <Compile Include="Invoice.cs" />
     <Compile Include="InvoiceDetails.cs" />
     <Compile Include="MiscBindingModels.cs" />
+    <Compile Include="ProdutnBindingModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WipBindingModels.cs" />
   </ItemGroup>
