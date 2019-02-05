@@ -82,6 +82,8 @@
     <Compile Include="Classes\UserIdentity.cs" />
     <Compile Include="Classes\UserPrincipal.cs" />
     <Compile Include="Classes\Utilities.cs" />
+    <Compile Include="Core\ApiProcessingError.cs" />
+    <Compile Include="Core\ApiProcessingResult.cs" />
     <Compile Include="Forms\frmBase.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -111,4 +111,12 @@ namespace BindingModels
         public DateTime Schout { get; set; }
 
     }
+	public class WipUpdateCheck
+	{
+		public int QuoteInvno { get; set; }
+		public string Schcode { get; set; }
+		public int? ProdutnInvno { get; set; }
+		public int? CoversInvno { get; set; }
+		public int? WipInvno { get; set; }
+	}
 }

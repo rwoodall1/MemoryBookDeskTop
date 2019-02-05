@@ -53,7 +53,13 @@ namespace Mbc5.Forms.MemoryBook
                 ORDER BY I.Schname
                 ");
             var result = sqlClient.SelectMany<InvoiceCheck>();
-            var badRecords = (List<InvoiceCheck>)result;
+            if (result.IsError)
+            {
+                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var badRecords = (List<InvoiceCheck>)result.Data;
+
             if (badRecords != null && badRecords.Count > 0)
             {
                 var errorList = new BindingList<InvoiceCheck>(badRecords);
@@ -64,7 +70,7 @@ namespace Mbc5.Forms.MemoryBook
             }
             else { pnlError.Visible = false; }
 
-            sqlClient.ClearParamters();
+            sqlClient.ClearParameters();
             sqlClient.CommandText(@"
                    
                 SELECT P.ShpDate, I.Schname, I.Schcode, I.Baldue,
@@ -77,7 +83,12 @@ namespace Mbc5.Forms.MemoryBook
                 ORDER BY I.Schname
                 ");
             var invoiceResult = sqlClient.SelectMany<Invoice>();
-            var vInvoices = (List<Invoice>)invoiceResult;
+            if (invoiceResult.IsError)
+            {
+                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var vInvoices = (List<Invoice>)invoiceResult.Data;
 
             if (vInvoices != null && vInvoices.Count > 0)
             {
@@ -148,6 +159,8 @@ namespace Mbc5.Forms.MemoryBook
 
         private void button3_Click(object sender, EventArgs e)
         {
+   
+
             // var a = this.Invoices;
             for (int i = 0; i < 2; i++)
             {
@@ -170,9 +183,7 @@ namespace Mbc5.Forms.MemoryBook
             DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
             
             dp.Export(reportViewer1.LocalReport);
-            //reportViewer1;
-            //reportViewer1.Clear();
-            //reportViewer1.LocalReport.ReleaseSandboxAppDomain();
+               // reportViewer1.Print;
         }
 
         private void reportViewer1_reportError(object sender, ReportErrorEventArgs e)

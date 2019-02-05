@@ -69,10 +69,11 @@
             System.Windows.Forms.Label label19;
             System.Windows.Forms.Label label23;
             System.Windows.Forms.Label sbtotLabel;
+            System.Windows.Forms.Label ordagryrLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBids));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsBids = new Mbc5.DataSets.dsBids();
             this.bidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -92,6 +93,11 @@
             this.bidsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pgBids = new System.Windows.Forms.TabPage();
+            this.ordagryrTextBox = new System.Windows.Forms.TextBox();
+            this.nbaCheckBox = new System.Windows.Forms.CheckBox();
+            this.oaCheckBox = new System.Windows.Forms.CheckBox();
+            this.btnCopyToSales = new System.Windows.Forms.Button();
+            this.btnCopyToNewBid = new System.Windows.Forms.Button();
             this.btnPrntQuote = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label10 = new System.Windows.Forms.Label();
@@ -211,6 +217,10 @@
             this.bidsTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.bidsTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsBidsTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.custTableAdapter();
+            this.dsSales = new Mbc5.DataSets.dsSales();
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
+            this.tableAdapterManager1 = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -255,6 +265,7 @@
             label19 = new System.Windows.Forms.Label();
             label23 = new System.Windows.Forms.Label();
             sbtotLabel = new System.Windows.Forms.Label();
+            ordagryrLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsBids)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource)).BeginInit();
@@ -271,6 +282,8 @@
             this.panel1.SuspendLayout();
             this.pnlHard.SuspendLayout();
             this.tabBids.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nopagesLabel
@@ -689,6 +702,15 @@
             sbtotLabel.TabIndex = 117;
             sbtotLabel.Text = "Sub Total";
             // 
+            // ordagryrLabel
+            // 
+            ordagryrLabel.AutoSize = true;
+            ordagryrLabel.Location = new System.Drawing.Point(825, 106);
+            ordagryrLabel.Name = "ordagryrLabel";
+            ordagryrLabel.Size = new System.Drawing.Size(154, 13);
+            ordagryrLabel.TabIndex = 292;
+            ordagryrLabel.Text = "Order Agreement For Year";
+            // 
             // custBindingSource
             // 
             this.custBindingSource.DataMember = "cust";
@@ -842,6 +864,12 @@
             // 
             this.pgBids.AutoScroll = true;
             this.pgBids.BackColor = System.Drawing.SystemColors.Control;
+            this.pgBids.Controls.Add(ordagryrLabel);
+            this.pgBids.Controls.Add(this.ordagryrTextBox);
+            this.pgBids.Controls.Add(this.nbaCheckBox);
+            this.pgBids.Controls.Add(this.oaCheckBox);
+            this.pgBids.Controls.Add(this.btnCopyToSales);
+            this.pgBids.Controls.Add(this.btnCopyToNewBid);
             this.pgBids.Controls.Add(this.btnPrntQuote);
             this.pgBids.Controls.Add(this.reportViewer1);
             this.pgBids.Controls.Add(this.label10);
@@ -909,10 +937,62 @@
             this.pgBids.TabIndex = 0;
             this.pgBids.Text = "Bids";
             // 
+            // ordagryrTextBox
+            // 
+            this.ordagryrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "ordagryr", true));
+            this.ordagryrTextBox.Location = new System.Drawing.Point(985, 106);
+            this.ordagryrTextBox.Name = "ordagryrTextBox";
+            this.ordagryrTextBox.Size = new System.Drawing.Size(38, 20);
+            this.ordagryrTextBox.TabIndex = 293;
+            // 
+            // nbaCheckBox
+            // 
+            this.nbaCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nbaCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "nba", true));
+            this.nbaCheckBox.Location = new System.Drawing.Point(821, 82);
+            this.nbaCheckBox.Name = "nbaCheckBox";
+            this.nbaCheckBox.Size = new System.Drawing.Size(56, 24);
+            this.nbaCheckBox.TabIndex = 292;
+            this.nbaCheckBox.Text = "NBA";
+            this.nbaCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // oaCheckBox
+            // 
+            this.oaCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.oaCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "oa", true));
+            this.oaCheckBox.Location = new System.Drawing.Point(883, 82);
+            this.oaCheckBox.Name = "oaCheckBox";
+            this.oaCheckBox.Size = new System.Drawing.Size(90, 24);
+            this.oaCheckBox.TabIndex = 291;
+            this.oaCheckBox.Text = "Current Bid";
+            this.oaCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // btnCopyToSales
+            // 
+            this.btnCopyToSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopyToSales.Location = new System.Drawing.Point(822, 164);
+            this.btnCopyToSales.Name = "btnCopyToSales";
+            this.btnCopyToSales.Size = new System.Drawing.Size(99, 31);
+            this.btnCopyToSales.TabIndex = 290;
+            this.btnCopyToSales.Text = "Copy To Sales";
+            this.btnCopyToSales.UseVisualStyleBackColor = true;
+            this.btnCopyToSales.Click += new System.EventHandler(this.btnCopyToSales_Click);
+            // 
+            // btnCopyToNewBid
+            // 
+            this.btnCopyToNewBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopyToNewBid.Location = new System.Drawing.Point(822, 196);
+            this.btnCopyToNewBid.Name = "btnCopyToNewBid";
+            this.btnCopyToNewBid.Size = new System.Drawing.Size(136, 30);
+            this.btnCopyToNewBid.TabIndex = 289;
+            this.btnCopyToNewBid.Text = "Copy To New Bid";
+            this.btnCopyToNewBid.UseVisualStyleBackColor = true;
+            this.btnCopyToNewBid.Click += new System.EventHandler(this.btnCopyToNewBid_Click);
+            // 
             // btnPrntQuote
             // 
             this.btnPrntQuote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrntQuote.Location = new System.Drawing.Point(821, 111);
+            this.btnPrntQuote.Location = new System.Drawing.Point(822, 137);
             this.btnPrntQuote.Name = "btnPrntQuote";
             this.btnPrntQuote.Size = new System.Drawing.Size(100, 23);
             this.btnPrntQuote.TabIndex = 287;
@@ -923,15 +1003,15 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 48;
-            reportDataSource1.Name = "dsCust";
-            reportDataSource1.Value = this.custBindingSource;
-            reportDataSource2.Name = "dsBidValues";
-            reportDataSource2.Value = this.bidsBindingSource;
-            reportDataSource3.Name = "detailbid";
-            reportDataSource3.Value = this.BidInvoiceDetailBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource4.Name = "dsCust";
+            reportDataSource4.Value = this.custBindingSource;
+            reportDataSource5.Name = "dsBidValues";
+            reportDataSource5.Value = this.bidsBindingSource;
+            reportDataSource6.Name = "detailbid";
+            reportDataSource6.Value = this.BidInvoiceDetailBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuote.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(582, 601);
             this.reportViewer1.Name = "reportViewer1";
@@ -2326,6 +2406,28 @@
             // 
             this.custTableAdapter.ClearBeforeFill = true;
             // 
+            // dsSales
+            // 
+            this.dsSales.DataSetName = "dsSales";
+            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsSales;
+            // 
+            // quotesTableAdapter
+            // 
+            this.quotesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.custTableAdapter = null;
+            this.tableAdapterManager1.InvHstTableAdapter = null;
+            this.tableAdapterManager1.quotesTableAdapter = this.quotesTableAdapter;
+            this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // frmBids
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -2364,6 +2466,8 @@
             this.pnlHard.ResumeLayout(false);
             this.pnlHard.PerformLayout();
             this.tabBids.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2508,5 +2612,14 @@
         private System.Windows.Forms.BindingSource BidInvoiceDetailBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.Button btnPrntQuote;
+        private System.Windows.Forms.Button btnCopyToNewBid;
+        private System.Windows.Forms.Button btnCopyToSales;
+        private System.Windows.Forms.CheckBox nbaCheckBox;
+        private System.Windows.Forms.CheckBox oaCheckBox;
+        private System.Windows.Forms.TextBox ordagryrTextBox;
+        private DataSets.dsSales dsSales;
+        private System.Windows.Forms.BindingSource quotesBindingSource;
+        private DataSets.dsSalesTableAdapters.quotesTableAdapter quotesTableAdapter;
+        private DataSets.dsSalesTableAdapters.TableAdapterManager tableAdapterManager1;
     }
     }

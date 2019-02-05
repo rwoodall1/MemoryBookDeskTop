@@ -55,6 +55,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkPrint = new System.Windows.Forms.CheckBox();
             this.dgInvoices = new System.Windows.Forms.DataGridView();
+            this.Collections = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.InvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SchName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Schcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Schemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContactEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsInvoices = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tableAdapterManager1 = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
@@ -64,14 +72,7 @@
             this.tableAdapterManager = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
-            this.Collections = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.InvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Shpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SchName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Schcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Schemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContactEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
@@ -95,6 +96,7 @@
             // 
             // BottomPanel
             // 
+            this.BottomPanel.Controls.Add(this.crystalReportViewer1);
             this.BottomPanel.Controls.Add(this.reportViewer1);
             this.BottomPanel.Controls.Add(this.button4);
             this.BottomPanel.Controls.Add(this.button3);
@@ -317,9 +319,55 @@
             this.dgInvoices.Size = new System.Drawing.Size(1096, 382);
             this.dgInvoices.TabIndex = 0;
             // 
-            // bsInvoices
+            // Collections
             // 
-            this.bsInvoices.DataSource = typeof(BindingModels.Invoice);
+            this.Collections.DataPropertyName = "Holdpmt";
+            this.Collections.HeaderText = "Collections";
+            this.Collections.Name = "Collections";
+            // 
+            // InvoiceNo
+            // 
+            this.InvoiceNo.DataPropertyName = "Invno";
+            this.InvoiceNo.HeaderText = "Invoice #";
+            this.InvoiceNo.Name = "InvoiceNo";
+            this.InvoiceNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.InvoiceNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Shpdate
+            // 
+            this.Shpdate.DataPropertyName = "ShpDate";
+            this.Shpdate.HeaderText = "Ship Date";
+            this.Shpdate.Name = "Shpdate";
+            // 
+            // SchName
+            // 
+            this.SchName.DataPropertyName = "Schname";
+            this.SchName.HeaderText = "School Name";
+            this.SchName.Name = "SchName";
+            // 
+            // Schcode
+            // 
+            this.Schcode.DataPropertyName = "Schname";
+            this.Schcode.HeaderText = "School Code";
+            this.Schcode.Name = "Schcode";
+            // 
+            // Schemail
+            // 
+            this.Schemail.DataPropertyName = "Schemail";
+            this.Schemail.HeaderText = "School Email";
+            this.Schemail.Name = "Schemail";
+            // 
+            // ContactEmail
+            // 
+            this.ContactEmail.DataPropertyName = "Contemail";
+            this.ContactEmail.HeaderText = "Contact Email";
+            this.ContactEmail.Name = "ContactEmail";
+            // 
+            // Balance
+            // 
+            this.Balance.DataPropertyName = "Baldue";
+            this.Balance.HeaderText = "Balance";
+            this.Balance.Name = "Balance";
             // 
             // reportViewer1
             // 
@@ -386,55 +434,15 @@
             // 
             this.paymntTableAdapter.ClearBeforeFill = true;
             // 
-            // Collections
+            // crystalReportViewer1
             // 
-            this.Collections.DataPropertyName = "Holdpmt";
-            this.Collections.HeaderText = "Collections";
-            this.Collections.Name = "Collections";
-            // 
-            // InvoiceNo
-            // 
-            this.InvoiceNo.DataPropertyName = "Invno";
-            this.InvoiceNo.HeaderText = "Invoice #";
-            this.InvoiceNo.Name = "InvoiceNo";
-            this.InvoiceNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.InvoiceNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Shpdate
-            // 
-            this.Shpdate.DataPropertyName = "ShpDate";
-            this.Shpdate.HeaderText = "Ship Date";
-            this.Shpdate.Name = "Shpdate";
-            // 
-            // SchName
-            // 
-            this.SchName.DataPropertyName = "Schname";
-            this.SchName.HeaderText = "School Name";
-            this.SchName.Name = "SchName";
-            // 
-            // Schcode
-            // 
-            this.Schcode.DataPropertyName = "Schname";
-            this.Schcode.HeaderText = "School Code";
-            this.Schcode.Name = "Schcode";
-            // 
-            // Schemail
-            // 
-            this.Schemail.DataPropertyName = "Schemail";
-            this.Schemail.HeaderText = "School Email";
-            this.Schemail.Name = "Schemail";
-            // 
-            // ContactEmail
-            // 
-            this.ContactEmail.DataPropertyName = "Contemail";
-            this.ContactEmail.HeaderText = "Contact Email";
-            this.ContactEmail.Name = "ContactEmail";
-            // 
-            // Balance
-            // 
-            this.Balance.DataPropertyName = "Baldue";
-            this.Balance.HeaderText = "Balance";
-            this.Balance.Name = "Balance";
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(949, 19);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(150, 150);
+            this.crystalReportViewer1.TabIndex = 17;
             // 
             // frmInvoicInq
             // 
@@ -517,5 +525,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Schemail;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContactEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }

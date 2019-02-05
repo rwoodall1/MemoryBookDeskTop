@@ -55,7 +55,7 @@ namespace Mbc5.Forms.MemoryBook {
         private bool TeleGo { get; set; } = false;
         private bool TeleLogAdded { get; set; } = false;
         public override string Schcode { get; set; } = "038752";
-     
+        public frmMain frmMain { get; set; }
 
         #endregion
         private void SetConnectionString()
@@ -83,6 +83,8 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
         private void frmMbcCust_Load(object sender,EventArgs e) {
+            this.frmMain = (frmMain)this.MdiParent;
+
             SetConnectionString();
             // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
             this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
@@ -489,11 +491,13 @@ namespace Mbc5.Forms.MemoryBook {
 			DialogResult result = MessageBox.Show("Do you wish to add a sales record?", "Add Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 			if (result == DialogResult.Yes)
 			{
-				int InvNum = GetInvno();
+                int InvNum = this.frmMain.GetNewInvno();
+                    //old function GetInvno();
+                  
 				if (InvNum != 0)
 				{
 					var sqlQuery = new SQLQuery();
-					//useing hard code until function to generate invno is done
+					
 					SqlParameter[] parameters = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
 					 new SqlParameter("@Schcode",this.Schcode),
@@ -509,7 +513,7 @@ namespace Mbc5.Forms.MemoryBook {
 					SqlParameter[] parameters1 = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
 					 new SqlParameter("@Schcode",this.Schcode),
-					 new SqlParameter("@ProdNo",GetProdNo()),
+					 new SqlParameter("@ProdNo",this.frmMain.GetProdNo()),
 					  new SqlParameter("@Contryear", contryearTextBox.Text),
 					   new SqlParameter("@Company","MBC")
 					};
@@ -523,7 +527,7 @@ namespace Mbc5.Forms.MemoryBook {
 					SqlParameter[] parameters2 = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
 					 new SqlParameter("@Schcode",this.Schcode),
-					 new SqlParameter("@Specovr",GetCoverNumber()),
+					 new SqlParameter("@Specovr",frmMain.GetCoverNumber()),
 						 new SqlParameter("@Specinst",GetInstructions() ),
 					   new SqlParameter("@Company","MBC")
 					};
@@ -534,6 +538,23 @@ namespace Mbc5.Forms.MemoryBook {
 						MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 						return;
 					}
+
+					SqlParameter[] parameters3 = new SqlParameter[] {
+					new SqlParameter("@Invno",InvNum),
+					 new SqlParameter("@Schcode",this.Schcode),
+					
+					   new SqlParameter("@Company","MBC")
+					};
+					strQuery = "Insert into Wip (schcode,invno) Values(@Schcode,@Invno)";
+					var Result3 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters3);
+					if (Result3 != 1)
+					{
+						MessageBox.Show("Failed to insert wip record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+
+
+
 					Save();
 					this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
                     this.SetInvnoSchCode();
@@ -573,70 +594,72 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             return retval;
              }
-        private int GetInvno()
-        {
+        //private int GetInvno()
+        //{
+        //No longer in use
            
-            var sqlQuery = new BaseClass.Classes.SQLQuery();
+        //    var sqlQuery = new BaseClass.Classes.SQLQuery();
 
-            SqlParameter[] parameters = new SqlParameter[] {
+        //    SqlParameter[] parameters = new SqlParameter[] {
 
-                    };
-            var strQuery = "SELECT Invno FROM Invcnum";
-            try
-            {
-                DataTable userResult = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-                DataRow dr = userResult.Rows[0];
-                int Invno =(int) dr["Invno"];
-                int newInvno = Invno + 1;
-                strQuery = "Update Invcnum Set invno=@newInvno";
-                SqlParameter[] parameters1 = new SqlParameter[] {
-                      new SqlParameter("@newInvno",newInvno),
-                    };
-                sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
+        //            };
+        //    var strQuery = "SELECT Invno FROM Invcnum";
+        //    try
+        //    {
+        //        DataTable userResult = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+        //        DataRow dr = userResult.Rows[0];
+        //        int Invno =(int) dr["Invno"];
+        //        int newInvno = Invno + 1;
+        //        strQuery = "Update Invcnum Set invno=@newInvno";
+        //        SqlParameter[] parameters1 = new SqlParameter[] {
+        //              new SqlParameter("@newInvno",newInvno),
+        //            };
+        //        sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
 
-                return Invno;
+        //        return Invno;
 
-            }catch(Exception ex)
-            {
-                Log.Error("Failed to get invoice number for a new record:" + ex.Message);
-                MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 0;
+        //    }catch(Exception ex)
+        //    {
+        //        Log.Error("Failed to get invoice number for a new record:" + ex.Message);
+        //        MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return 0;
 
-            }
+        //    }
            
-        }
-        private string GetProdNo() {
-            var sqlQuery = new SQLQuery();
-            //useing hard code until function to generate invno is done
-            SqlParameter[] parameters = new SqlParameter[] { };
-            var strQuery = "Select * from prodnum";
-            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,strQuery,parameters);
-            int? prodNum = null;
-            try {
-                prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
-                strQuery = "Update Prodnum Set lstprodno=@lstprodno";
-                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno",(prodNum + 1)) };
-                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
-                if (result1 != 1) {
-                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
-                         .AddTags("New prod number error.")
-                         .Submit();
+        //}
+        //private string GetProdNo() {
+        //    No longer in user
+        //    var sqlQuery = new SQLQuery();
+        //    //useing hard code until function to generate invno is done
+        //    SqlParameter[] parameters = new SqlParameter[] { };
+        //    var strQuery = "Select * from prodnum";
+        //    var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,strQuery,parameters);
+        //    int? prodNum = null;
+        //    try {
+        //        prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
+        //        strQuery = "Update Prodnum Set lstprodno=@lstprodno";
+        //        SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno",(prodNum + 1)) };
+        //        var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
+        //        if (result1 != 1) {
+        //            ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
+        //                 .AddTags("New prod number error.")
+        //                 .Submit();
 
-                    }
+        //            }
 
-                } catch (Exception ex) {
-                MessageBox.Show("There was an error getting the production number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+        //        } catch (Exception ex) {
+        //        MessageBox.Show("There was an error getting the production number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
 
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting production number.")
-                  .Submit();
+        //        ex.ToExceptionless()
+        //          .AddTags("MBCWindows")
+        //          .SetMessage("Error getting production number.")
+        //          .Submit();
 
-                }
+        //        }
 
-            return prodNum.ToString();
+        //    return prodNum.ToString();
 
-            }
+        //    }
         private void SetInvnoSchCode()
         {
             this.Schcode = lblSchcodeVal.Text;
@@ -649,36 +672,37 @@ namespace Mbc5.Forms.MemoryBook {
             }
            
         }
-        private string GetCoverNumber() {
-            var sqlQuery = new SQLQuery();
-            //useing hard code until function to generate invno is done
-            SqlParameter[] parameters = new SqlParameter[] {};
-            var strQuery = "Select * from Spcover";
-            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,strQuery,parameters);
-            int? coverNum=null;
-            try {
-                   coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
-                  strQuery = "Update Spcover set speccvno=@speccvno";
-                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno",(coverNum+1)) };
-                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
-                if (result1 != 1) {
-                    ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
-                         .AddTags("New cover number error.")
-                         .Submit();
+        //private string GetCoverNumber() {
+        //    No longer in user
+        //    var sqlQuery = new SQLQuery();
+        //    //useing hard code until function to generate invno is done
+        //    SqlParameter[] parameters = new SqlParameter[] {};
+        //    var strQuery = "Select * from Spcover";
+        //    var result = sqlQuery.ExecuteReaderAsync(CommandType.Text,strQuery,parameters);
+        //    int? coverNum=null;
+        //    try {
+        //           coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
+        //          strQuery = "Update Spcover set speccvno=@speccvno";
+        //        SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno",(coverNum+1)) };
+        //        var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text,strQuery,parameters1);
+        //        if (result1 != 1) {
+        //            ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
+        //                 .AddTags("New cover number error.")
+        //                 .Submit();
                          
-                    }
+        //            }
 
-                } catch(Exception ex){
-                MessageBox.Show("There was an error getting the cover number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                ex.ToExceptionless()
-                  .AddTags("MBCWindows")
-                  .SetMessage("Error getting cover number.")
-                  .Submit();
+        //        } catch(Exception ex){
+        //        MessageBox.Show("There was an error getting the cover number.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+        //        ex.ToExceptionless()
+        //          .AddTags("MBCWindows")
+        //          .SetMessage("Error getting cover number.")
+        //          .Submit();
 
-                }
+        //        }
 
-            return coverNum.ToString();
-            }
+        //    return coverNum.ToString();
+        //    }
         private void GetSetSchcode() {
             SqlConnection conn = new SqlConnection(FormConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT precode,schcode from codecnt ",conn);
@@ -826,17 +850,18 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private string GetInstructions()
         {
+
             string val = "";
             //custBindingSource.MoveFirst();//make sure on first row
             DataRowView current = (DataRowView)custBindingSource.Current;
-            string instructions=current["spcinst"].ToString();
-            
+            string instructions = current["spcinst"].ToString();
+
             return instructions;
 
         }
         #endregion
-     
-       
+
+
 
 
         private void btnInterOffice_Click(object sender,EventArgs e) {
@@ -1212,8 +1237,13 @@ namespace Mbc5.Forms.MemoryBook {
             sqlClient.CommandText(cmdText);
             sqlClient.AddParameter("@Invno", this.Invno);
             var dataReturned = sqlClient.Select<ProdutnTicketModel>();
-            var data = (ProdutnTicketModel)dataReturned;
-       
+            if (dataReturned.IsError)
+            {
+                MessageBox.Show(dataReturned.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var data = (ProdutnTicketModel)dataReturned.Data;
+            
             ProdutnTicketModelBindingSource.DataSource = data;
             Cursor.Current = Cursors.WaitCursor;
             reportViewer1.RefreshReport();
@@ -1263,8 +1293,13 @@ namespace Mbc5.Forms.MemoryBook {
 
             sqlClient.CommandText(cmdText);
             sqlClient.AddParameter("@Invno", this.Invno);
-            var dataReturned = sqlClient.Select<ProductionCheckList>();
-            var data = (ProductionCheckList)dataReturned;
+            var dataReturnedResult = sqlClient.Select<ProductionCheckList>();
+            if (dataReturnedResult.IsError)
+            {
+                MessageBox.Show(dataReturnedResult.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            var data = (ProductionCheckList)dataReturnedResult.Data;
 
             ProductionCheckListBindingSource.DataSource = data;
             Cursor.Current = Cursors.WaitCursor;

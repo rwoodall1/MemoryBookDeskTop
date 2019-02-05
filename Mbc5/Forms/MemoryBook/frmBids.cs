@@ -29,10 +29,10 @@ namespace Mbc5.Forms.MemoryBook {
             this.ApplicationUser = userPrincipal;
             this.Schcode = schcode;
             }
-
+       
         private void SetConnectionString()
         {
-            frmMain frmMain = (frmMain)this.MdiParent;
+            
             this.FormConnectionString = frmMain.AppConnectionString;
             this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
            
@@ -45,10 +45,11 @@ namespace Mbc5.Forms.MemoryBook {
 			this.tableAdapterManager.UpdateAll(this.dsBids);
 
 		}
+        public frmMain frmMain { get; set; }
 
         private void frmBids_Load_1(object sender, EventArgs e)
         {
-            frmMain frmMain =(frmMain) this.MdiParent;
+           this.frmMain =(frmMain) this.MdiParent;
             this.SetConnectionString();
             //this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             //this.bidsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -2202,5 +2203,212 @@ namespace Mbc5.Forms.MemoryBook {
         {
             tabBids.Visible = true;
         }
+
+      
+
+  
+
+        private void btnCopyToSales_Click(object sender, EventArgs e)
+        {
+          
+             int InvNum = this.frmMain.GetNewInvno();
+            if (InvNum<1)
+            {
+                MessageBox.Show("There was an error getting an new invoice number", "Copy To Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+             DataRowView drview = (DataRowView)this.bidsBindingSource.Current;
+            int vId =(int) drview["id"];
+            var sqlclient = new SQLCustomClient();
+            sqlclient.AddParameter("@id",vId);
+            sqlclient.AddParameter("@Invno", InvNum);
+          
+            string cmdText = @"INSERT INTO [dbo].[quotes]
+                            ([invno],[schcode],[booktype],[qtedate],[contryear],[nopages],[nocopies],[book_ea]
+
+                            ,[book_price],[pryn],[prof],[coyn],[conven],[specea],[speccvr],[scovrde],[layn],[laminate]
+
+                            ,[peyn],[perfbind],[foilck],[foilamt],[insck],[insamt],[spirck],[spiramt],[hdbky_n],[hardback]
+
+                            ,[casey_n],[caseamt],[customy_n],[customized],[misc],[mdesc],[sbtot],[dc1],[dp1],[disc1],[dc2],[dp2]
+
+                            ,[disc2],[dp3desc],[dp3],[disc3],[dp4],[disc4],[cred_etc],[adjbef],[adjaftr],[fbkprc],[ftotprc]
+
+                            ,[source],[xtrabkno],[xtrabkprc],[desc1],[desc1tot],[desc2],[desc2tot],[ponum],[newprice],[schout]
+
+                             ,[allclrck],[allclramt],[inkclr],[foiladamt],[desc3],[desc3tot],[desc4],[desc4tot],[clrpgdesc]
+							 ,[clrpgtot],[glspaper],[glsamt] ,[acovrde],[bpovrde],[bpyear],[themck],[themamt],[yirschool],[story],[supplements]
+							 
+				,[yiramt],[storyamt],[suppamt],[persamount],[perstotal],[perscopies],[oursupp],[oursuppamt],[ourovrride]
+
+                            ,[dp1desc] ,[myovrride],[profovrride],[conovrride],[themovrride],[cbovrride],[spiovrride],[pbovrride]
+
+                            ,[yirsovrride],[ourstyovrride],[laminateovrride],[foilyearovrride],[sdlstich],[sdlstichamt],[copiesovride]
+
+                            ,[perpp],[agreerec],[basicamoun],[peramount],[oprcperbk],[oprcperbk2],[agreedte],[onlinecuto],[msstanqty]
+
+                            ,[msstandtot],[fldtype],[isfolder],[priceovrd],[mlaminationamt],[mlamination],[opinkpers],[opfoilpers]
+
+                            ,[opinkpersamt],[opfoilpersamt],[oppicpers],[oppicpersamt],[opcustom],[opcustomamt],[opfoiltxtamt],[opfoiltxt]
+
+                            ,[opink] ,[yrdiscount] ,[luvlines],[yrdiscountamt],[luvlineamt],[fullad],[fulladamt],[halfad],[halfadamt]
+
+                            ,[quarterad] ,[quarteradamt],[eighthad],[eighthadamt],[adline],[cred_etc2],[desc22],[adjaftr2],[desc22tot]
+
+
+                            ,[prcor] ,[adcuto],[webonly],[freebooks] ,[basicpp],[IconCopies],[IconAmt] ,[extrchg],[schooltax]
+
+
+                            ,[schooltaxrate],[donotchargeschoolsalestax]
+                            
+                           )
+                   Select @Invno AS Invno,[schcode],[booktype],[qtedate],[contryear],[nopages],[nocopies],[book_ea],
+
+                            [book_price],[pryn],[prof],[coyn],[conven],[specea],[speccvr] ,[scovrde],[layn],[laminate]
+
+                           ,[peyn],[perfbind],[foilck],[foilamt],[insck],[insamt],[spirck],[spiramt],[hdbky_n],[hardback]
+
+                            ,[casey_n],[caseamt],[customy_n],[customized],[misc],[mdesc],[sbtot],[dc1],[dp1],[disc1],[dc2],[dp2]
+
+                            ,[disc2],[dp3desc],[dp3],[disc3],[dp4],[disc4],[cred_etc],[adjbef],[adjaftr],[fbkprc],[ftotprc]
+
+                            ,[source],[xtrabkno],[xtrabkprc],[desc1],[desc1tot],[desc2],[desc2tot],[ponum],[newprice],[schout]
+
+                            ,[allclrck],[allclramt],[inkclr],[foiladamt],[desc3],[desc3tot] ,[desc4],[desc4tot],[clrpgdesc]
+							,[clrpgtot],[glspaper],[glsamt],[acovrde],[bpovrde],[bpyear],[themck],[themamt],[yirschool],[story],[supplements]
+							,[yiramt],[storyamt],[suppamt],[persamount] ,[perstotal],[perscopies],[oursupp],[oursuppamt],[ourovrride]
+                           ,[dp1desc],[myovrride],[profovrride],[conovrride],[themovrride],[cbovrride],[spiovrride],[pbovrride]                     
+
+                            ,[yirsovrride],[ourstyovrride],[laminateovrride],[foilyearovrride],[sdlstich],[sdlstichamt],[copiesovride]
+                            
+                            ,[perpp],[agreerec],[basicamoun],[peramount],[oprcperbk],[oprcperbk2],[agreedte],[onlinecuto],[msstanqty]
+
+
+                            ,[msstandtot],[fldtype],[isfolder],[priceovrd],[mlaminationamt],[mlamination],[opinkpers],[opfoilpers]
+
+
+                            ,[opinkpersamt],[opfoilpersamt],[oppicpers],[oppicpersamt],[opcustom],[opcustomamt],[opfoiltxtamt],[opfoiltxt] 
+
+                            ,[opink],[yrdiscount],[luvlines],[yrdiscountamt],[luvlineamt],[fullad] ,[fulladamt],[halfad],[halfadamt]
+
+
+                           ,[quarterad],[quarteradamt],[eighthad],[eighthadamt],[adline],[cred_etc2],[desc22],[adjaftr2],[desc22tot]
+
+
+                            ,[prcor],[adcuto],[webonly],[freebooks],[basicpp],[IconCopies],[IconAmt],[extrchg],[schooltax],[schooltaxrate]      
+							
+							 ,[donotchargeschoolsalestax]
+                        FROM [Mbc5].[dbo].[bids] where id=@id";
+            sqlclient.CommandText(cmdText);
+            string quoteInsert;
+                try
+                {
+                   var quoteInsertResult=sqlclient.Insert();
+                if (quoteInsertResult.IsError )
+                {
+                    MessageBox.Show("There was an error creating a the sales record.", "Bid To Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                }catch (Exception ex)
+                {
+
+                   MessageBox.Show("There was an error creating a the sales record.", "Bid To Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            };
+          
+            sqlclient.ClearParameters();
+        
+            string vProdNo = frmMain.GetProdNo();
+
+            ;
+            if (string.IsNullOrEmpty(vProdNo))
+            {
+                MessageBox.Show("Failed to get a production number", "Copy To Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            sqlclient.AddParameter("@Invno", InvNum);
+            sqlclient.AddParameter("@Schcode", this.Schcode);
+            sqlclient.AddParameter("@ProdNo", vProdNo);
+            sqlclient.AddParameter("@Contryear", txtBYear.Text);
+            sqlclient.AddParameter("@Company", "MBC");
+            
+          string  strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
+            sqlclient.CommandText(strQuery);
+            try
+            {
+               var prodResult = sqlclient.Insert();
+                if (prodResult.IsError)
+                {
+                    MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
+            sqlclient.ClearParameters();
+          
+            var vCoverNumber = frmMain.GetCoverNumber();
+            var vInstructions = GetInstructions();
+            sqlclient.AddParameter("@Invno", InvNum);
+            sqlclient.AddParameter("@Schcode", this.Schcode);
+            sqlclient.AddParameter("@Specovr", vCoverNumber);
+            sqlclient.AddParameter("@Specinst",vInstructions);
+            sqlclient.AddParameter("@Company", "MBC");
+            strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
+            sqlclient.CommandText(strQuery);
+          
+            try {
+               var coverinsertResult = sqlclient.Insert();
+                    if (coverinsertResult.IsError)
+                    {
+                    MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                    }
+                } catch (Exception ex)
+            {
+                MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            MessageBox.Show("A sales record with Invoice# "+InvNum +" has been created.", "Sales Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    private string GetInstructions()
+    {
+        string val = "";
+   
+        DataRowView current = (DataRowView)custBindingSource.Current;
+        string instructions = current["spcinst"].ToString();
+
+        return instructions;
+
+    }
+
+    private void btnCopyToNewBid_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var dt = dsBids.Tables["bids"];
+                DataRowView drview = (DataRowView)this.bidsBindingSource.Current;
+                DataRow dr = drview.Row;
+                DataRow newRow = dt.NewRow();
+                newRow.ItemArray = dr.ItemArray.ToArray();
+                newRow["Id"] = 1;
+
+                dt.Rows.Add(newRow);
+                SaveBid();
+              bidsBindingSource.Position = bidsBindingSource.Count - 1;
+                MessageBox.Show("You are now on a copy of the bid you were previously on.","Bid Copy",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+            }catch(Exception ex)
+            {
+                
+                MessageBox.Show("There was an error creating a copy of the current bid.", "Bid Copy", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+   
+        }
+
     }
 }

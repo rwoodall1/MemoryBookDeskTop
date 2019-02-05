@@ -40,9 +40,8 @@ namespace Mbc5.Classes
         }
         public void Export(LocalReport report)
         {
-            report.DataSources.RemoveAt(1);
-            report.DataSources.RemoveAt(1);
-            report.DataSources.RemoveAt(1);
+            
+           
             //string deviceInfo =
             //"" +
             //" EMF" +

@@ -168,7 +168,11 @@ namespace Mbc5.Forms
                         sqlQuery.CommandText(cmdText);
                         sqlQuery.AddParameter("@Invno", Invno);
                         var result = sqlQuery.Select<MbcBarScanModel>();
-                        var model = (MbcBarScanModel)result;
+                        if (result.IsError)
+                        {
+                            MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        var model = (MbcBarScanModel)result.Data;
 
                         if (result == null)
                         {
@@ -268,8 +272,8 @@ namespace Mbc5.Forms
                                      ,WTR=@Wtr+COALESCE(WTR,0)
                                 WHERE Invno=@Invno AND DescripID=@DescripID ");
                                 var result = sqlClient.Update();
-                                sqlClient.ClearParamters();
-                                sqlClient.ReturnSqlIdentityID(true);
+                                sqlClient.ClearParameters();
+                                sqlClient.ReturnSqlIdentityId(true);
                                 sqlClient.AddParameter("@Invno", this.Invno);
                                 sqlClient.AddParameter("@DescripID", vDeptCode);
                                 sqlClient.AddParameter("@WAR", vDateTime);
@@ -302,8 +306,8 @@ namespace Mbc5.Forms
                                      ,WTR=@Wtr+COALESCE(WTR,0)
                                 WHERE Invno=@Invno AND DescripID=@DescripID ");
                                 try { var result = sqlClient.Update(); } catch (Exception ex) { MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                                sqlClient.ClearParamters();
-                                sqlClient.ReturnSqlIdentityID(true);
+                                sqlClient.ClearParameters();
+                                sqlClient.ReturnSqlIdentityId(true);
                                 sqlClient.AddParameter("@Invno", this.Invno);
                                 sqlClient.AddParameter("@DescripID", vDeptCode);
                                 sqlClient.AddParameter("@WAR", vDateTime);
@@ -315,7 +319,12 @@ namespace Mbc5.Forms
                                                     INSERT INTO WipDetail (DescripID,War,Wtr,Wir,Invno,Schcode) VALUES(@DescripID,@WAR,@Wtr,@WIR,@Invno,@Schcode);
                                                     END
                                                     ");
-                                try { var result1 = sqlClient.Insert(); } catch (Exception ex) { MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                              
+                                    var result1 = sqlClient.Insert();
+                                    if (result1.IsError)
+                                    {
+                                        MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                                    }
 
                                 if (vDeptCode == 555)
                                 {
@@ -683,8 +692,8 @@ namespace Mbc5.Forms
                                     MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
 
-                                sqlClient.ClearParamters();
-                                sqlClient.ReturnSqlIdentityID(true);
+                                sqlClient.ClearParameters();
+                                sqlClient.ReturnSqlIdentityId(true);
                                 sqlClient.AddParameter("@Invno", this.Invno);
                                 sqlClient.AddParameter("@DescripID", vDeptCode);
                                 sqlClient.AddParameter("@WAR", vDateTime);
@@ -790,8 +799,8 @@ namespace Mbc5.Forms
                     MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                sqlClient.ClearParamters();
-                sqlClient.ReturnSqlIdentityID(true);
+                sqlClient.ClearParameters();
+                sqlClient.ReturnSqlIdentityId(true);
                 sqlClient.AddParameter("@Invno", this.Invno);
                 sqlClient.AddParameter("@DescripID", vDeptCode);
                 sqlClient.AddParameter("@WAR", vDateTime);
@@ -832,8 +841,9 @@ namespace Mbc5.Forms
                     MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                sqlClient.ClearParamters();
-                sqlClient.ReturnSqlIdentityID(true);
+                sqlClient.ClearParameters();
+                sqlClient.ReturnSqlIdentityId(true);
+            
                 sqlClient.AddParameter("@Invno", this.Invno);
                 sqlClient.AddParameter("@DescripID", vDeptCode);
                 sqlClient.AddParameter("@WAR", vDateTime);
@@ -877,8 +887,8 @@ namespace Mbc5.Forms
                         MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    sqlClient.ClearParamters();
-                    sqlClient.ReturnSqlIdentityID(true);
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
                     sqlClient.AddParameter("@Invno", this.Invno);
                     sqlClient.AddParameter("@DescripID", vDeptCode);
                     sqlClient.AddParameter("@WAR", vDateTime);
@@ -993,8 +1003,8 @@ namespace Mbc5.Forms
                                      ,WTR=@Wtr+COALESCE(WTR,0)
                                 WHERE Invno=@Invno AND DescripID=@DescripID ");
                                 try { var result = sqlClient.Update(); } catch (Exception ex) { MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                                sqlClient.ClearParamters();
-                                sqlClient.ReturnSqlIdentityID(true);
+                                sqlClient.ClearParameters();
+                                sqlClient.ReturnSqlIdentityId(true);
                                 sqlClient.AddParameter("@Invno", this.Invno);
                                 sqlClient.AddParameter("@DescripID", vDeptCode);
                                 sqlClient.AddParameter("@WAR", vDateTime);
@@ -1084,8 +1094,8 @@ namespace Mbc5.Forms
                                      ,WTR=@Wtr+COALESCE(WTR,0)
                                 WHERE Invno=@Invno AND DescripID=@DescripID ");
                                 try { var result = sqlClient.Update(); } catch (Exception ex) { MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                                sqlClient.ClearParamters();
-                                sqlClient.ReturnSqlIdentityID(true);
+                                sqlClient.ClearParameters();
+                                sqlClient.ReturnSqlIdentityId(true);
                                 sqlClient.AddParameter("@Invno", this.Invno);
                                 sqlClient.AddParameter("@DescripID", vDeptCode);
                                 sqlClient.AddParameter("@WAR", vDateTime);
@@ -1179,8 +1189,8 @@ namespace Mbc5.Forms
                                      ,WTR=@Wtr+COALESCE(WTR,0)
                                 WHERE Invno=@Invno AND DescripID=@DescripID ");
                     try { var result = sqlClient.Update(); } catch (Exception ex) { MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                    sqlClient.ClearParamters();
-                    sqlClient.ReturnSqlIdentityID(true);
+                    sqlClient.ClearParameters();
+                    sqlClient.ReturnSqlIdentityId(true);
                     sqlClient.AddParameter("@Invno", this.Invno);
                     sqlClient.AddParameter("@DescripID", vDeptCode);
                     sqlClient.AddParameter("@WAR", vDateTime);

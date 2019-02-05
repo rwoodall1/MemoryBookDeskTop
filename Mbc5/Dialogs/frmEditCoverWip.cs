@@ -37,7 +37,7 @@ namespace Mbc5.Dialogs
             this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
             this.coverdetailTableAdapter.Connection.ConnectionString = AppConnectionString;
             wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "Covers");
-            coverdetailTableAdapter.FillBy(dsProdutn.coverdetail, Invno);
+            coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
             var pos =coverdetailBindingSource.Find("id", ID);
             if (pos > -1)
             {

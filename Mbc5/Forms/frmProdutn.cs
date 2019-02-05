@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ using System.Data.Sql;
 using Mbc5.Dialogs;
 using System.Data.SqlClient;
 using Mbc5.Classes;
+using BaseClass.Core;
 using Mbc5.LookUpForms;
 using BindingModels;
 using Exceptionless;
@@ -22,7 +24,7 @@ namespace Mbc5.Forms
 {
 	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
 	{
-		
+
 		private bool startup = true;
 		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
 		{
@@ -54,48 +56,48 @@ namespace Mbc5.Forms
 			EnableControls(this.btnInvoiceSrch);
 
 		}
-        private void SetConnectionString()
-        {
-            frmMain frmMain = (frmMain)this.MdiParent;
-            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.ptbkbTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.wipgTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.wipTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.wipDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.coverdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.coversTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkTypeDataTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpBackGroundTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.prtbkbdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-
-        }
-        private void frmProdutn_Load(object sender, EventArgs e)
+		private void SetConnectionString()
 		{
-           
-            this.SetConnectionString();
-            try
-            {
+			frmMain frmMain = (frmMain)this.MdiParent;
+			this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.ptbkbTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.wipgTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.wipTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.wipDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.coverdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.coversTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.lkTypeDataTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.lkpBackGroundTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.prtbkbdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 
-                this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
-                //LookUp Data
-                this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
+		}
+		private void frmProdutn_Load(object sender, EventArgs e)
+		{
 
-                Fill();
-                SetShipLabel();
-                SetEmail();
-                CurrentProdNo = lblProdNo.Text;
-                
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-            }
-           
-        }
+			this.SetConnectionString();
+			try
+			{
+
+				this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
+				//LookUp Data
+				this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
+
+				Fill();
+				SetShipLabel();
+				SetEmail();
+				CurrentProdNo = lblProdNo.Text;
+
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error");
+			}
+
+		}
 
 		#region "Properties"
 		public void InvokePropertyChanged(PropertyChangedEventArgs e)
@@ -146,19 +148,19 @@ namespace Mbc5.Forms
 			{
 
 
-                var shipdate = current["shpdate"].ToString();
-                lblShipped.Visible = !String.IsNullOrEmpty(shipdate);
-            }
+				var shipdate = current["shpdate"].ToString();
+				lblShipped.Visible = !String.IsNullOrEmpty(shipdate);
+			}
 
-        }
+		}
 		private void SetEmail()
 		{
-            var current = (DataRowView)produtnBindingSource.Current;
-            if (current == null)
-            {
-                return;
-            }
-            SchEmail = dsProdutn.cust.Rows[0].IsNull("schemail") ? null : dsProdutn.cust.Rows[0]["schemail"].ToString().Trim();
+			var current = (DataRowView)produtnBindingSource.Current;
+			if (current == null)
+			{
+				return;
+			}
+			SchEmail = dsProdutn.cust.Rows[0].IsNull("schemail") ? null : dsProdutn.cust.Rows[0]["schemail"].ToString().Trim();
 			ContactEmail = dsProdutn.cust.Rows[0].IsNull("contemail") ? null : dsProdutn.cust.Rows[0]["contemail"].ToString().Trim();
 			BcontactEmail = dsProdutn.cust.Rows[0].IsNull("bcontemail") ? null : dsProdutn.cust.Rows[0]["bcontemail"].ToString().Trim();
 			CcontactEmail = dsProdutn.cust.Rows[0].IsNull("ccontemail") ? null : dsProdutn.cust.Rows[0]["ccontemail"].ToString().Trim();
@@ -180,89 +182,97 @@ namespace Mbc5.Forms
 			{
 				vAllEmails.Add(CcontactEmail);
 			}
-            AllEmails = vAllEmails;
+			AllEmails = vAllEmails;
 
 		}
 
 		//General
 		private void SetCodeInvno()
 		{
-            if (quotesBindingSource.Count > 0)
-            {
-                DataRowView current = (DataRowView)quotesBindingSource.Current;
-                this.Schcode = current["schcode"].ToString();
-                this.Invno = Convert.ToInt32(current["invno"]);
-            }
-        }
-        private void Fill()
+			if (quotesBindingSource.Count > 0)
+			{
+				DataRowView current = (DataRowView)quotesBindingSource.Current;
+				this.Schcode = current["schcode"].ToString();
+				this.Invno = Convert.ToInt32(current["invno"]);
+			}
+		}
+		private void Fill()
 		{
 			if (Schcode != null)
 			{
 				custTableAdapter.Fill(dsProdutn.cust, Schcode);
-				quotesTableAdapter.Fill(dsProdutn.quotes, Schcode);
+				quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
 
-				produtnTableAdapter.Fill(dsProdutn.produtn,Schcode);
+				produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
 
-                if (dsProdutn.produtn.Count < 1)
-                {
-                    DisableControls(this.tbProdutn.TabPages[0]);
-                    foreach (TabPage tab in tbProdutn.TabPages)
-                    {
-                        DisableControls(tab);
-                    }
-                    EnableControls(this.txtInvoiceNoSrch);
-                    EnableControls(this.txtProdNoSrch);
-                    EnableControls(this.btnProdSrch);
-                    EnableControls(this.btnInvoiceSrch);
-                }
-                else { EnableAllControls(this); }
-                coversTableAdapter.Fill(dsProdutn.covers, Schcode);
-                coverdetailTableAdapter.Fill(dsProdutn.coverdetail, Schcode);
-                if (dsProdutn.covers.Count < 1)
-                {
-                    DisableControls(this.tbProdutn.TabPages[2]);
-                }
-                else { EnableAllControls(this.tbProdutn.TabPages[2]); }
-                wipTableAdapter.Fill(dsProdutn.wip, Schcode);
-                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Schcode);
-                if (dsProdutn.wip.Count < 1)
-                {
-                    DisableControls(this.tbProdutn.TabPages[1]);
-                }
-                else { EnableAllControls(this.tbProdutn.TabPages[1]); }
-                this.partbkTableAdapter.Fill(this.dsProdutn.partbk, Schcode);
-                this.partBkDetailTableAdapter.Fill(this.dsProdutn.PartBkDetail, Schcode);
-                if (dsProdutn.partbk.Count < 1)
-                {
-                    DisableControls(this.tbProdutn.TabPages[4]);
-                }
-                else { EnableAllControls(this.tbProdutn.TabPages[4]); }
+				if (dsProdutn.produtn.Count < 1)
+				{
+					DisableControls(this.tbProdutn.TabPages[0]);
+					foreach (TabPage tab in tbProdutn.TabPages)
+					{
+						DisableControls(tab);
+					}
+					EnableControls(this.txtInvoiceNoSrch);
+					EnableControls(this.txtProdNoSrch);
+					EnableControls(this.btnProdSrch);
+					EnableControls(this.btnInvoiceSrch);
+				}
+				else { EnableAllControls(this); }
+				coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
+				//coversTableAdapter.Fill(dsProdutn.covers, this.Schcode);
+				coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
 
-                ptbkbTableAdapter.Fill(dsProdutn.ptbkb, Schcode);
-                prtbkbdetailTableAdapter.Fill(dsProdutn.prtbkbdetail, Schcode);
-                if (dsProdutn.ptbkb.Count < 1)
-                {
-                    DisableControls(this.tbProdutn.TabPages[5]);
-                }
-                else { EnableAllControls(this.tbProdutn.TabPages[5]); }
+				var row = (DataRowView)coversBindingSource1.Current;
+				var a = row["specinst"].ToString();
+				if (dsProdutn.covers.Count < 1)
+				{
+					DisableControls(this.tbProdutn.TabPages[2]);
+				}
+				else { EnableAllControls(this.tbProdutn.TabPages[2]); }
+				wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
+				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+				if (dsProdutn.wip.Count < 1)
+				{
+					DisableControls(this.tbProdutn.TabPages[1]);
+				}
+				else { EnableAllControls(this.tbProdutn.TabPages[1]); }
+				this.partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
+				this.partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
+				if (dsProdutn.partbk.Count < 1)
+				{
+					DisableControls(this.tbProdutn.TabPages[4]);
+				}
+				else { EnableAllControls(this.tbProdutn.TabPages[4]); }
+
+				ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
+				prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
+				if (dsProdutn.ptbkb.Count < 1)
+				{
+					DisableControls(this.tbProdutn.TabPages[5]);
+				}
+				else { EnableAllControls(this.tbProdutn.TabPages[5]); }
 
 
-            }
-            
-            if (Invno != 0)
-            {
-                var pos = produtnBindingSource.Find("invno", this.Invno);
-                if (pos > -1)
-                {
-                    produtnBindingSource.Position = pos;
-                 }
-                else
-                {
-                    MessageBox.Show("Production record was not found.", "Invoice#", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
-            }
- 
-        }
+			}
+
+			//        if (Invno != 0)
+			//        {
+			////var pos = produtnBindingSource.Find("invno", this.Invno);
+			//var pos = quotesBindingSource.Find("invno", this.Invno);
+			//var pos1 = produtnBindingSource.Find("invno", this.Invno);
+			//if (pos > -1)
+			//            {
+			//                quotesBindingSource.Position = pos;
+			//	produtnBindingSource.Position = pos1;
+
+			// }
+			//            else
+			//            {
+			//                MessageBox.Show("Production record was not found.", "Invoice#", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+			//            }
+			//        }
+
+		}
 
 		public override bool Save()
 		{
@@ -458,14 +468,14 @@ namespace Mbc5.Forms
 						var a = produtnTableAdapter.Update(dsProdutn.produtn);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						produtnTableAdapter.Fill(dsProdutn.produtn, Schcode);
-                        var aa = Invno;
-                        var pos = produtnBindingSource.Find("invno", this.Invno);
-                        if (pos > -1)
-                        {
-                            produtnBindingSource.Position = pos;
-                          
-                        }
-                       
+						var aa = Invno;
+						var pos = produtnBindingSource.Find("invno", this.Invno);
+						if (pos > -1)
+						{
+							produtnBindingSource.Position = pos;
+
+						}
+
 						SetShipLabel();
 						retval = true;
 
@@ -772,7 +782,8 @@ namespace Mbc5.Forms
 
 		private void cstsvcdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			cstsvcdteDateTimePicker.Format = DateTimePickerFormat.Long;
+			dpCustomerServiceDate.Format = DateTimePickerFormat.Long;
+
 		}
 
 		private void comdateDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -782,8 +793,8 @@ namespace Mbc5.Forms
 		#endregion
 		private void frmProdutn_Paint(object sender, PaintEventArgs e)
 		{
-           
-            try { this.Text = "Production-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+
+			try { this.Text = "Production-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
 			catch
 			{
 
@@ -798,10 +809,10 @@ namespace Mbc5.Forms
 				int days = 0;
 				int.TryParse(txtWeeks.Text, out wks);
 				int.TryParse(txtDays.Text, out days);
-				var BusinessDay = new BusinessDays();
+
 
 				var numDays = (wks * 5) + (days);
-				var result = BusinessDay.BusDaySubtract(dedayoutDateTimePicker.Value, numDays);
+				var result = CalulateBusinessDay.BusDaySubtract(dedayoutDateTimePicker.Value, numDays);
 				if (result != null)
 				{
 					dedayinDateTimePicker.Value = result;
@@ -820,10 +831,10 @@ namespace Mbc5.Forms
 				int days = 0;
 				int.TryParse(txtWeeks.Text, out wks);
 				int.TryParse(txtDays.Text, out days);
-				var BusinessDay = new BusinessDays();
+
 
 				var numDays = (wks * 5) + (days);
-				var result = BusinessDay.BusDayAdd(kitrecvdDateTimePicker.Value, numDays);
+				var result = CalulateBusinessDay.BusDayAdd(kitrecvdDateTimePicker.Value, numDays);
 				if (result != null)
 				{
 					dedayinDateTimePicker.Value = result;
@@ -869,93 +880,93 @@ namespace Mbc5.Forms
 			emailHelper.SendOutLookEmail(subject, this.AllEmails, "", body, type);
 		}
 
-        private void btnBinderyEmail_Click(object sender, EventArgs e)
-        {
-            var sqlQuery = new SQLQuery();
-            var queryString = " Select cust.Schname,quotes.invno,produtn.ProdNo,produtn.NoPages,covers.reqstdcpy,produtn.CoverType,produtn.Diecut,produtn.CoilClr,produtn.prshpdte As ProjShpDate from cust inner join quotes on cust.schcode = quotes.schcode left join produtn on quotes.invno = produtn.invno left join covers on quotes.invno = covers.invno where cust.schcode = @Schcode and quotes.invno = @Invno";
-            int vInvno = 0;
-            int.TryParse(lblInvno.Text, out vInvno);
-            SqlParameter[] parameters = new SqlParameter[] {
-                 new SqlParameter("@Schcode",Schcode),
-                 new SqlParameter("@Invno",vInvno)
-            };
-            List<BinderyInfo> result = (List<BinderyInfo>)sqlQuery.ExecuteReaderAsync<BinderyInfo>(CommandType.Text, queryString, parameters);
-            if (result == null || result.Count < 1)
-            {
-                MessageBox.Show("Bindery information was not found.");
-                return;
-            }
-            if (string.IsNullOrEmpty(result[0].Schname))
-            {
-                result[0].Schname = "";
-            }
+		private void btnBinderyEmail_Click(object sender, EventArgs e)
+		{
+			var sqlQuery = new SQLQuery();
+			var queryString = " Select cust.Schname,quotes.invno,produtn.ProdNo,produtn.NoPages,covers.reqstdcpy,produtn.CoverType,produtn.Diecut,produtn.CoilClr,produtn.prshpdte As ProjShpDate from cust inner join quotes on cust.schcode = quotes.schcode left join produtn on quotes.invno = produtn.invno left join covers on quotes.invno = covers.invno where cust.schcode = @Schcode and quotes.invno = @Invno";
+			int vInvno = 0;
+			int.TryParse(lblInvno.Text, out vInvno);
+			SqlParameter[] parameters = new SqlParameter[] {
+				 new SqlParameter("@Schcode",Schcode),
+				 new SqlParameter("@Invno",vInvno)
+			};
+			List<BinderyInfo> result = (List<BinderyInfo>)sqlQuery.ExecuteReaderAsync<BinderyInfo>(CommandType.Text, queryString, parameters);
+			if (result == null || result.Count < 1)
+			{
+				MessageBox.Show("Bindery information was not found.");
+				return;
+			}
+			if (string.IsNullOrEmpty(result[0].Schname))
+			{
+				result[0].Schname = "";
+			}
 
-            if (string.IsNullOrEmpty(result[0].CoverType))
-            {
-                result[0].CoverType = "";
-            }
-            //<<<<<<< HEAD
-            if (string.IsNullOrEmpty(result[0].CoilClr))
-            {
-                result[0].CoilClr = "";
-                //=======
+			if (string.IsNullOrEmpty(result[0].CoverType))
+			{
+				result[0].CoverType = "";
+			}
+			//<<<<<<< HEAD
+			if (string.IsNullOrEmpty(result[0].CoilClr))
+			{
+				result[0].CoilClr = "";
+				//=======
 
-                //        private void FillWithInvno() {
-                //            if (Invno != 0) {
-                //                //coversTableAdapter.Fill(dsProdutn.covers,Invno);
-                //                //coverdetailTableAdapter.Fill(dsProdutn.coverdetail, Invno);
-                //                //if (dsProdutn.covers.Count < 1)
-                //                //{
-                //                //    DisableControls(specinstTextBox);                
-                //                //}
-                //                //else { EnableAllControls(this.tbProdutn.TabPages[2]); }
-
-
-                //                wipTableAdapter.Fill(dsProdutn.wip,Invno);
-
-                //                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
-                //                if (dsProdutn.wip.Count < 1)
-                //                {
-                //                    var aa = this.tbProdutn.TabPages[3];
-                //                    DisableControls(this.tbProdutn.TabPages[3]);
-
-                //                }
-                //                else {
-                //                      EnableAllControls(this.tbProdutn.TabPages[3]);                    
-                //                    }
+				//        private void FillWithInvno() {
+				//            if (Invno != 0) {
+				//                //coversTableAdapter.Fill(dsProdutn.covers,Invno);
+				//                //coverdetailTableAdapter.Fill(dsProdutn.coverdetail, Invno);
+				//                //if (dsProdutn.covers.Count < 1)
+				//                //{
+				//                //    DisableControls(specinstTextBox);                
+				//                //}
+				//                //else { EnableAllControls(this.tbProdutn.TabPages[2]); }
 
 
-                //            }
-                //            }
+				//                wipTableAdapter.Fill(dsProdutn.wip,Invno);
 
-                string vshipDate;
-                if (result[0].ProjShpDate.Year < 1999)
-                {
-                    vshipDate = "";
-                }
-                else { vshipDate = result[0].ProjShpDate.ToString(); }
+				//                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
+				//                if (dsProdutn.wip.Count < 1)
+				//                {
+				//                    var aa = this.tbProdutn.TabPages[3];
+				//                    DisableControls(this.tbProdutn.TabPages[3]);
+
+				//                }
+				//                else {
+				//                      EnableAllControls(this.tbProdutn.TabPages[3]);                    
+				//                    }
 
 
+				//            }
+				//            }
+
+				string vshipDate;
+				if (result[0].ProjShpDate.Year < 1999)
+				{
+					vshipDate = "";
+				}
+				else { vshipDate = result[0].ProjShpDate.ToString(); }
 
 
 
-                var body = "<strong>School Information<strong/><br/><br/>School Name " + result[0].Schname.Trim() + "<br/>Production No. " + result[0].ProdNo.Trim() + "<br/> No. of Pages " + result[0].NoPages + "<br/>Cover Type " + result[0].CoverType.Trim() + "<br/>Die Cut " + result[0].Diecut.ToString() + "<br/>Coil Color " + result[0].CoilClr.Trim() + "<br/>Projected Ship Date " + vshipDate;
-                var subject = "Memory Book company Vendor Information";
-                var emailHelper = new EmailHelper();
-                EmailType type = EmailType.Blank;
-                if (CurrentCompany == "MBC")
-                {
-                    type = EmailType.Mbc;
-                }
-                else if (CurrentCompany == "MER")
-                {
-                    type = EmailType.Meridian;
-                }
-                emailHelper.SendOutLookEmail(subject, "production@memorybook.com", "", body, type);
 
 
-            }
-        }
+				var body = "<strong>School Information<strong/><br/><br/>School Name " + result[0].Schname.Trim() + "<br/>Production No. " + result[0].ProdNo.Trim() + "<br/> No. of Pages " + result[0].NoPages + "<br/>Cover Type " + result[0].CoverType.Trim() + "<br/>Die Cut " + result[0].Diecut.ToString() + "<br/>Coil Color " + result[0].CoilClr.Trim() + "<br/>Projected Ship Date " + vshipDate;
+				var subject = "Memory Book company Vendor Information";
+				var emailHelper = new EmailHelper();
+				EmailType type = EmailType.Blank;
+				if (CurrentCompany == "MBC")
+				{
+					type = EmailType.Mbc;
+				}
+				else if (CurrentCompany == "MER")
+				{
+					type = EmailType.Meridian;
+				}
+				emailHelper.SendOutLookEmail(subject, "production@memorybook.com", "", body, type);
+
+
+			}
+		}
 		private void btnUpdateJob_Click(object sender, EventArgs e)
 		{
 			if (String.IsNullOrEmpty(txtPerfbind.Text.Trim()))
@@ -976,13 +987,13 @@ namespace Mbc5.Forms
 			if (result.Rows.Count > 0)
 			{
 				var oldJobNo = result.Rows[0]["jobno"].ToString();
-                if (string.IsNullOrEmpty(oldJobNo.Trim()))
-                {
-                    txtjobno.Text = "8" + lblProdNo.Text.Substring(1, 5);
-                }
-                else {txtjobno.Text = oldJobNo; }
-                        
-				
+				if (string.IsNullOrEmpty(oldJobNo.Trim()))
+				{
+					txtjobno.Text = "8" + lblProdNo.Text.Substring(1, 5);
+				}
+				else { txtjobno.Text = oldJobNo; }
+
+
 			}
 			else
 			{
@@ -1070,9 +1081,9 @@ namespace Mbc5.Forms
 					}
 					break;
 
-                   
 
-            }
+
+			}
 
 
 
@@ -1087,8 +1098,8 @@ namespace Mbc5.Forms
 				Fill();
 			}
 			else { MessageBox.Show("Record was not found.", "Production Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-            frmProdutn_Paint(this, null);
-        }
+			frmProdutn_Paint(this, null);
+		}
 
 		private void btnInvoiceSrch_Click(object sender, EventArgs e)
 		{
@@ -1120,8 +1131,8 @@ namespace Mbc5.Forms
 				Fill();
 			}
 			else { MessageBox.Show("Record was not found.", "Invoice Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-            frmProdutn_Paint(this, null);
-        }
+			frmProdutn_Paint(this, null);
+		}
 
 		private void wipDetailDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
@@ -1238,10 +1249,10 @@ namespace Mbc5.Forms
 			}
 		}
 
-		
 
 
-		
+
+
 		private void frmProdutn_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			if (!SaveOrStop())
@@ -1264,134 +1275,1680 @@ namespace Mbc5.Forms
 
 
 
-        #region Validation
-        private void laminatedTextBox_Validating(object sender, CancelEventArgs e)
-        {
+		#region Validation
+		private void laminatedTextBox_Validating(object sender, CancelEventArgs e)
+		{
 
-        }
+		}
 
-        private void frmProdutn_Shown(object sender, EventArgs e)
-        {
-            //Leave here. This is put in to give dataset time to fill
-            //ctrl are not bound until they are shown in tab https://stackoverflow.com/questions/3670694/loading-windows-form-with-over-200-controls
-            this.tbProdutn.Visible = true;
-        }
+		private void frmProdutn_Shown(object sender, EventArgs e)
+		{
+			//Leave here. This is put in to give dataset time to fill
+			//ctrl are not bound until they are shown in tab https://stackoverflow.com/questions/3670694/loading-windows-form-with-over-200-controls
+			this.tbProdutn.Visible = true;
+		}
 
-        private void mnCust_Click(object sender, EventArgs e)
-        {
-           LkpCustType frmLkpCust = new LkpCustType(this.ApplicationUser);
-            this.Cursor = Cursors.AppStarting;
-            frmLkpCust.MdiParent = this.ParentForm;
-            frmLkpCust.Show();
-            this.Cursor = Cursors.Default;
-        }
+		private void mnCust_Click(object sender, EventArgs e)
+		{
+			LkpCustType frmLkpCust = new LkpCustType(this.ApplicationUser);
+			this.Cursor = Cursors.AppStarting;
+			frmLkpCust.MdiParent = this.ParentForm;
+			frmLkpCust.Show();
+			this.Cursor = Cursors.Default;
+		}
 
-        private void mnBackGround_Click(object sender, EventArgs e)
-        {
-           LkpBackGround frmLkpBackGround = new LkpBackGround(this.ApplicationUser);
-            this.Cursor = Cursors.AppStarting;
-            frmLkpBackGround.MdiParent = this.ParentForm;
-            frmLkpBackGround.Show();
-            this.Cursor = Cursors.Default;
-        }
+		private void mnBackGround_Click(object sender, EventArgs e)
+		{
+			LkpBackGround frmLkpBackGround = new LkpBackGround(this.ApplicationUser);
+			this.Cursor = Cursors.AppStarting;
+			frmLkpBackGround.MdiParent = this.ParentForm;
+			frmLkpBackGround.Show();
+			this.Cursor = Cursors.Default;
+		}
 
-        private void mnType_Click(object sender, EventArgs e)
-        {
-            LkpTypeStyle frmLkpTypeStyle = new LkpTypeStyle(this.ApplicationUser);
-            this.Cursor = Cursors.AppStarting;
-            frmLkpTypeStyle.MdiParent = this.ParentForm;
-            frmLkpTypeStyle.Show();
-            this.Cursor = Cursors.Default;
-        }
+		private void mnType_Click(object sender, EventArgs e)
+		{
+			LkpTypeStyle frmLkpTypeStyle = new LkpTypeStyle(this.ApplicationUser);
+			this.Cursor = Cursors.AppStarting;
+			frmLkpTypeStyle.MdiParent = this.ParentForm;
+			frmLkpTypeStyle.Show();
+			this.Cursor = Cursors.Default;
+		}
 
-        private void vendcdComboBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
-            {
-                if (e.Button == MouseButtons.Right)
-                {
-                    addItemMenu.Items["mnType"].Visible = true;
-                    addItemMenu.Items["mnCust"].Visible = false;
-                    addItemMenu.Items["mnBackGround"].Visible = false;
-                    addItemMenu.Show(this, new Point(e.X, e.Y));
-                }
-            }
-        }
+		private void vendcdComboBox_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+			{
+				if (e.Button == MouseButtons.Right)
+				{
+					addItemMenu.Items["mnType"].Visible = true;
+					addItemMenu.Items["mnCust"].Visible = false;
+					addItemMenu.Items["mnBackGround"].Visible = false;
+					addItemMenu.Show(this, new Point(e.X, e.Y));
+				}
+			}
+		}
 
-        private void cstatComboBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
-            {
-                if (e.Button == MouseButtons.Right)
-                {
-                    addItemMenu.Items["mnType"].Visible = false;
-                    addItemMenu.Items["mnCust"].Visible = true;
-                    addItemMenu.Items["mnBackGround"].Visible = false;
-                    addItemMenu.Show(this, new Point(e.X, e.Y));
-                }
-            }
-        }
+		private void cstatComboBox_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+			{
+				if (e.Button == MouseButtons.Right)
+				{
+					addItemMenu.Items["mnType"].Visible = false;
+					addItemMenu.Items["mnCust"].Visible = true;
+					addItemMenu.Items["mnBackGround"].Visible = false;
+					addItemMenu.Show(this, new Point(e.X, e.Y));
+				}
+			}
+		}
 
-        private void bkgrndComboBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
-            {
-                if (e.Button == MouseButtons.Right)
-                {
-                    addItemMenu.Items["mnType"].Visible = false;
-                    addItemMenu.Items["mnCust"].Visible = false;
-                    addItemMenu.Items["mnBackGround"].Visible = true;
-                    addItemMenu.Show(this, new Point(e.X, e.Y));
-                }
-            }
-        }
+		private void bkgrndComboBox_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+			{
+				if (e.Button == MouseButtons.Right)
+				{
+					addItemMenu.Items["mnType"].Visible = false;
+					addItemMenu.Items["mnCust"].Visible = false;
+					addItemMenu.Items["mnBackGround"].Visible = true;
+					addItemMenu.Show(this, new Point(e.X, e.Y));
+				}
+			}
+		}
 
-        private void nopagesTextBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
-                {
-                    this.nopagesTextBox.ReadOnly = false;
-                }
-            }
-        }
+		private void nopagesTextBox_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Right)
+			{
+				if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+				{
+					this.nopagesTextBox.ReadOnly = false;
+				}
+			}
+		}
 
-        private void nopagesTextBox_Leave(object sender, EventArgs e)
-        {
-            this.nopagesTextBox.ReadOnly = true;
-        }
+		private void nopagesTextBox_Leave(object sender, EventArgs e)
+		{
+			this.nopagesTextBox.ReadOnly = true;
+		}
 
-        private void nocopiesTextBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
-                {
-                    this.nocopiesTextBox.ReadOnly = false;
-                }
-            }
-        }
+		private void nocopiesTextBox_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Right)
+			{
+				if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+				{
+					this.nocopiesTextBox.ReadOnly = false;
+				}
+			}
+		}
 
-        private void nocopiesTextBox_Leave(object sender, EventArgs e)
-        {
-            this.nocopiesTextBox.ReadOnly =true;
-        }
+		private void nocopiesTextBox_Leave(object sender, EventArgs e)
+		{
+			this.nocopiesTextBox.ReadOnly = true;
+		}
 
-        private void lblModifiedBy_Paint(object sender, PaintEventArgs e)
-        {
-            lblModifiedBy.Text = ApplicationUser.id;
-        }
+		private void lblModifiedBy_Paint(object sender, PaintEventArgs e)
+		{
+			lblModifiedBy.Text = ApplicationUser.id;
+		}
+
+		private async Task<ApiProcessingResult<string>> WipUpdate()
+		{
+			this.Save();
+			var processingResult = new ApiProcessingResult<string>();
+			if (string.IsNullOrEmpty(dpCustomerServiceDate.Text))
+			{
+				processingResult.IsError = true;
+				return processingResult;
+
+			}
+			var sqlClient = new SQLCustomClient();
+			string commandText = "";
+			if (bkStd.Checked)
+			{
+				commandText = @" Select * FROM WipDats Order BY bktype
+                                ";
+
+			} else if (bk9.Checked)
+			{
+				commandText = @" Select * FROM WipDat9 Order BY bktype
+                                ";
+			}
+			else if (bk10.Checked)
+			{
+				commandText = @" Select * FROM WipDat10 Order BY bktype
+                                ";
+			}
+			else if (bk11.Checked)
+			{
+				commandText = @" Select * FROM WipDat11 Order BY bktype";
+			}
+			else if (bk12.Checked)
+			{
+				commandText = @"Select * FROM WipDat12 Order BY bktype";
+			}
+			else if (bkHard.Checked)
+			{
+				commandText = @"Select * FROM WipDath Order BY bktype";
+			}
+			else if (bkCoil.Checked)
+			{
+				commandText = @"Select * FROM WipDatc Order BY bktype";
+			}
+			else if (bkAllClr.Checked)
+			{
+				commandText = @" Select * FROM WipDatal Order BY bktype";
+			}
+			else if (bkMilled.Checked)
+			{
+				commandText = @" Select * FROM WipDatmilled Order BY bktype";
+			}
+			else
+			{
+				commandText = @"Select * FROM WipDats Order BY bktype";
+			};
+
+			decimal[] wCalc = new decimal[50];
+			sqlClient.CommandText(commandText);
+			var result = sqlClient.SelectMany<WipDats>();
+			if (result.IsError)
+			{
+				MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				processingResult.IsError = true;
+				return processingResult;
+			}
+			if (result.Data == null)
+			{
+				processingResult.IsError = true;
+				return processingResult;
+			}
+			var vWipsDats = (List<WipDats>)result.Data;
+			string vBooktype = txtBookType.Text.Trim();
+
+			WipDats vWhipDates = new WipDats();
+			foreach (WipDats dat in vWipsDats)
+			{
+				if (dat.bktype == vBooktype)
+				{
+					vWhipDates = dat;
+					break;
+				}
+			}
+			DateTime custSvcDate = dpCustomerServiceDate.Value;
+			if (vWhipDates.prmsdte != 0)
+			{
+
+				sqlClient.ClearParameters();
+				sqlClient.AddParameter("@prmsdate", CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prmsdte));
+				sqlClient.AddParameter("@invno", lblInvno.Text);
+				commandText = @"
+                        Update produtn Set prmsdate=@prmsdate WHERE invno=@invno
+                        ";
+				sqlClient.CommandText(commandText);
+				var promiseDateResult = sqlClient.Update();
+				if (promiseDateResult.IsError)
+				{
+					MessageBox.Show("Failed to update the promise date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+			else
+			{
+
+				sqlClient.ClearParameters();
+
+				sqlClient.AddParameter("@invno", lblInvno.Text);
+				commandText = @"
+                        Update produtn Set prmsdate=null WHERE invno=@invno
+                        ";
+				sqlClient.CommandText(commandText);
+				var promiseDateResult = sqlClient.Update();
+				if (promiseDateResult.IsError)
+				{
+					MessageBox.Show("Failed to update the promise date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+
+			if (vWhipDates.l_dtoprod != 0) {
+				sqlClient.ClearParameters();
+				sqlClient.AddParameter("@dtoprod", CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.l_dtoprod));
+				sqlClient.AddParameter("@invno", lblInvno.Text);
+				commandText = @"
+                        Update WIP Set dtoprod=@dtoprod WHERE invno=@invno
+                        ";
+				sqlClient.CommandText(commandText);
+				var toProdResult = sqlClient.Update();
+				if (toProdResult.IsError)
+				{
+					MessageBox.Show("Failed to update wip To production date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				sqlClient.ClearParameters();
+
+				sqlClient.AddParameter("@invno", lblInvno.Text);
+				commandText = @"
+                        Update WIP Set dtoprod=null WHERE invno=@invno
+                        ";
+				sqlClient.CommandText(commandText);
+				var toProdResult = sqlClient.Update();
+				if (toProdResult.IsError)
+				{
+					MessageBox.Show("Failed to update wip To production date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+			if (vWhipDates.prshpdte != 0)
+			{
+				sqlClient.ClearParameters();
+				sqlClient.AddParameter("@prshpdte", CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte));
+				sqlClient.AddParameter("@invno", lblInvno.Text);
+				commandText = @"
+                        Update Produtn Set prshpdte=@prshpdte WHERE invno=@invno
+                        ";
+				sqlClient.CommandText(commandText);
+				var preShipDateResult = sqlClient.Update();
+				if (preShipDateResult.IsError)
+				{
+					MessageBox.Show("Failed to update the projected Ship Date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+
+				var updateResult = await UpdateWipDetailCall(50, CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte), lblInvno.Text);
+
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #50a", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+
+			}
+			else
+			{
+				sqlClient.ClearParameters();
+				sqlClient.ClearParameters();
+				sqlClient.AddParameter("@prshpdte", CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte));
+				sqlClient.AddParameter("@invno", lblInvno.Text);
+
+				commandText = @"
+                         Update Produtn Set prshpdte=null WHERE invno=@invno
+                        ";
+				sqlClient.CommandText(commandText);
+				var promiseDateResult = sqlClient.Update();
+				if (promiseDateResult.IsError)
+				{
+					MessageBox.Show("Failed to update the Projected Ship Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
 
 
 
+				var updateResult = await UpdateWipDetailCall(50, CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte), lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Database error. #50a", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.wrndte != 0)
+			{
+				sqlClient.ClearParameters();
+				sqlClient.AddParameter("@warndate", CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte));
+				sqlClient.AddParameter("@invno", lblInvno.Text);
+
+				commandText = @"
+                        Update Produtn Set warndate =@warndate  WHERE invno=@invno
+                        ";
+				sqlClient.CommandText(commandText);
+				var preShipDateResult = sqlClient.Update();
+				if (preShipDateResult.IsError)
+				{
+					MessageBox.Show("Failed to update the Production Pre Ship Date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+			else
+			{
+				sqlClient.ClearParameters();
+
+				sqlClient.AddParameter("@invno", lblInvno.Text);
+				commandText = @"
+                         Update Produtn Set warndate =null WHERE invno=@invno
+                        ";
+				sqlClient.CommandText(commandText);
+				var promiseDateResult = sqlClient.Update();
+				if (promiseDateResult.IsError)
+				{
+					MessageBox.Show("Failed to update the wip Pre Ship Date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			DateTime? ProductionShipDate = CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte);
+			if (ProductionShipDate == null)
+			{
+				processingResult.IsError = true;
+				return processingResult;
+			}
+			wCalc[49] = vWhipDates.l_wdr49 + vWhipDates.prmsdte;
+
+			if (vWhipDates.l_wdr49 != 0)
+			{
+				wCalc[48] = vWhipDates.l_wdr49 + wCalc[49];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[49], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(49, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #49", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[48] = vWhipDates.l_wdr49 + wCalc[49];
+
+				var updateResult = await UpdateWipDetailCall(49, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #49", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+
+			if (vWhipDates.l_wdr48 != 0)
+			{
+				wCalc[47] = vWhipDates.l_wdr48 + wCalc[48];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[48], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(48, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #48", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[47] = vWhipDates.l_wdr48 + wCalc[48];
+
+				var updateResult = await UpdateWipDetailCall(48, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #48", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+			if (vWhipDates.l_wdr47 != 0)
+			{
+				wCalc[46] = vWhipDates.l_wdr47 + wCalc[47];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[47], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(47, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #47", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[46] = vWhipDates.l_wdr47 + wCalc[47];
+
+				var updateResult = await UpdateWipDetailCall(47, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #47", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+
+			if (vWhipDates.l_wdr46 != 0)
+			{
+				wCalc[45] = vWhipDates.l_wdr46 + wCalc[46];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[46], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(46, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #46", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[45] = vWhipDates.l_wdr46 + wCalc[46];
+
+				var updateResult = await UpdateWipDetailCall(46, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #46", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+			if (vWhipDates.l_wdr45 != 0)
+			{
+				wCalc[44] = vWhipDates.l_wdr45 + wCalc[45];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[45], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(45, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #45", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[44] = vWhipDates.l_wdr45 + wCalc[45];
+
+				var updateResult = await UpdateWipDetailCall(45, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #45", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+			if (vWhipDates.l_wdr44 != 0)
+			{
+				wCalc[43] = vWhipDates.l_wdr44 + wCalc[4];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[44], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(44, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #44", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[43] = vWhipDates.l_wdr44 + wCalc[44];
+
+				var updateResult = await UpdateWipDetailCall(44, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #44", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+
+			if (vWhipDates.l_wdr43 != 0)
+			{
+				wCalc[42] = vWhipDates.l_wdr43 + wCalc[4];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[43], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(43, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #43", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[42] = vWhipDates.l_wdr43 + wCalc[43];
+
+				var updateResult = await UpdateWipDetailCall(43, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #43", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+			if (vWhipDates.l_wdr42 != 0)
+			{
+				wCalc[41] = vWhipDates.l_wdr42 + wCalc[4];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[42], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(42, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #42", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[41] = vWhipDates.l_wdr42 + wCalc[42];
+
+				var updateResult = await UpdateWipDetailCall(42, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #42", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+
+			if (vWhipDates.l_wdr41 != 0)
+			{
+				wCalc[40] = vWhipDates.l_wdr41 + wCalc[41];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[41], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(41, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #41", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[40] = vWhipDates.l_wdr41 + wCalc[41];
+
+				var updateResult = await UpdateWipDetailCall(41, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #41", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+
+			}
+
+			if (vWhipDates.l_wdr40 != 0)
+			{
+				wCalc[39] = vWhipDates.l_wdr40 + wCalc[40];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[40], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(40, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[39] = vWhipDates.l_wdr40 + wCalc[40];
+
+				var updateResult = await UpdateWipDetailCall(40, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #40", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr39 != 0)
+			{
+				wCalc[38] = vWhipDates.l_wdr39 + wCalc[39];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[39], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(39, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #39", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[38] = vWhipDates.l_wdr39 + wCalc[39];
+
+				var updateResult = await UpdateWipDetailCall(39, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #39", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr38 != 0)
+			{
+				wCalc[37] = vWhipDates.l_wdr38 + wCalc[38];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[38], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(38, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #38", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[37] = vWhipDates.l_wdr38 + wCalc[38];
+
+				var updateResult = await UpdateWipDetailCall(38, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #38", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr37 != 0)
+			{
+				wCalc[36] = vWhipDates.l_wdr37 + wCalc[37];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[37], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(37, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #37", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[36] = vWhipDates.l_wdr37 + wCalc[37];
+
+				var updateResult = await UpdateWipDetailCall(37, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #37", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr36 != 0)
+			{
+				wCalc[35] = vWhipDates.l_wdr36 + wCalc[36];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[36], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(36, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #36", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[35] = vWhipDates.l_wdr36 + wCalc[36];
+
+				var updateResult = await UpdateWipDetailCall(36, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #36", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr35 != 0)
+			{
+				wCalc[34] = vWhipDates.l_wdr35 + wCalc[35];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[35], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(35, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #35", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[34] = vWhipDates.l_wdr35 + wCalc[35];
+
+				var updateResult = await UpdateWipDetailCall(35, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #35", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr34 != 0)
+			{
+				wCalc[33] = vWhipDates.l_wdr34 + wCalc[34];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[34], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(34, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #34", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[33] = vWhipDates.l_wdr34 + wCalc[34];
+
+				var updateResult = await UpdateWipDetailCall(34, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #34", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr33 != 0)
+			{
+				wCalc[32] = vWhipDates.l_wdr33 + wCalc[33];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[33], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(33, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #33", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[32] = vWhipDates.l_wdr33 + wCalc[33];
+
+				var updateResult = await UpdateWipDetailCall(33, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #33", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr32 != 0)
+			{
+				wCalc[31] = vWhipDates.l_wdr32 + wCalc[32];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[32], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(32, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #32", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[31] = vWhipDates.l_wdr32 + wCalc[32];
+
+				var updateResult = await UpdateWipDetailCall(32, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #32", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr31 != 0)
+			{
+				wCalc[30] = vWhipDates.l_wdr31 + wCalc[31];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[31], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(31, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #31", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[30] = vWhipDates.l_wdr31 + wCalc[31];
+
+				var updateResult = await UpdateWipDetailCall(31, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #31", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr30 != 0)
+			{
+				wCalc[29] = vWhipDates.l_wdr30 + wCalc[30];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[30], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(30, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #30", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[29] = vWhipDates.l_wdr30 + wCalc[30];
+
+				var updateResult = await UpdateWipDetailCall(30, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #30", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr29 != 0)
+			{
+				wCalc[28] = vWhipDates.l_wdr29 + wCalc[29];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[29], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(29, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #29", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[28] = vWhipDates.l_wdr29 + wCalc[29];
+
+				var updateResult = await UpdateWipDetailCall(29, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #29", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr28 != 0)
+			{
+				wCalc[27] = vWhipDates.l_wdr28 + wCalc[28];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[28], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(28, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #28", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[27] = vWhipDates.l_wdr28 + wCalc[28];
+
+				var updateResult = await UpdateWipDetailCall(28, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #28", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr27 != 0)
+			{
+				wCalc[26] = vWhipDates.l_wdr27 + wCalc[27];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[27], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(27, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #27", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[26] = vWhipDates.l_wdr27 + wCalc[27];
+
+				var updateResult = await UpdateWipDetailCall(27, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #27", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr26 != 0)
+			{
+				wCalc[25] = vWhipDates.l_wdr26 + wCalc[26];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[26], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(26, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #26", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[25] = vWhipDates.l_wdr26 + wCalc[26];
+
+				var updateResult = await UpdateWipDetailCall(26, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #26", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr25 != 0)
+			{
+				wCalc[24] = vWhipDates.l_wdr25 + wCalc[25];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[25], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(25, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #25", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[24] = vWhipDates.l_wdr25 + wCalc[25];
+
+				var updateResult = await UpdateWipDetailCall(25, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #25", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr24 != 0)
+			{
+				wCalc[23] = vWhipDates.l_wdr24 + wCalc[24];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[24], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(24, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #24", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[23] = vWhipDates.l_wdr24 + wCalc[24];
+
+				var updateResult = await UpdateWipDetailCall(24, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #24", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr23 != 0)
+			{
+				wCalc[22] = vWhipDates.l_wdr23 + wCalc[23];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[23], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(23, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #23", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[22] = vWhipDates.l_wdr23 + wCalc[23];
+
+				var updateResult = await UpdateWipDetailCall(23, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #23", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr22 != 0)
+			{
+				wCalc[21] = vWhipDates.l_wdr22 + wCalc[22];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[22], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(22, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #22", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[21] = vWhipDates.l_wdr22 + wCalc[22];
+
+				var updateResult = await UpdateWipDetailCall(22, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #22", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr21 != 0)
+			{
+				wCalc[20] = vWhipDates.l_wdr21 + wCalc[21];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[21], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(21, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #21", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[20] = vWhipDates.l_wdr21 + wCalc[21];
+
+				var updateResult = await UpdateWipDetailCall(21, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #21", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr20 != 0)
+			{
+				wCalc[19] = vWhipDates.l_wdr20 + wCalc[20];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[20], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(20, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[19] = vWhipDates.l_wdr20 + wCalc[20];
+
+				var updateResult = await UpdateWipDetailCall(20, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr19 != 0)
+			{
+				wCalc[18] = vWhipDates.l_wdr19 + wCalc[19];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[19], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(19, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #19", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[18] = vWhipDates.l_wdr19 + wCalc[19];
+
+				var updateResult = await UpdateWipDetailCall(19, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #19", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr18 != 0)
+			{
+				wCalc[17] = vWhipDates.l_wdr18 + wCalc[18];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[18], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(18, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #18", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[17] = vWhipDates.l_wdr18 + wCalc[18];
+
+				var updateResult = await UpdateWipDetailCall(18, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #18", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr17 != 0)
+			{
+				wCalc[16] = vWhipDates.l_wdr17 + wCalc[17];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[17], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(17, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #17", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[16] = vWhipDates.l_wdr17 + wCalc[17];
+
+				var updateResult = await UpdateWipDetailCall(17, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #17", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr16 != 0)
+			{
+				wCalc[15] = vWhipDates.l_wdr16 + wCalc[16];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[16], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(16, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #16", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[15] = vWhipDates.l_wdr16 + wCalc[16];
+
+				var updateResult = await UpdateWipDetailCall(16, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #16", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr15 != 0)
+			{
+				wCalc[14] = vWhipDates.l_wdr15 + wCalc[15];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[15], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(15, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #15", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[15] = vWhipDates.l_wdr15 + wCalc[15];
+
+				var updateResult = await UpdateWipDetailCall(15, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #15", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr14 != 0)
+			{
+				wCalc[13] = vWhipDates.l_wdr14 + wCalc[14];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[14], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(14, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #14", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[13] = vWhipDates.l_wdr14 + wCalc[14];
+
+				var updateResult = await UpdateWipDetailCall(14, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #14", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr13 != 0)
+			{
+				wCalc[12] = vWhipDates.l_wdr13 + wCalc[13];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[13], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(13, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #13", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[12] = vWhipDates.l_wdr13 + wCalc[13];
+
+				var updateResult = await UpdateWipDetailCall(13, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #13", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			if (vWhipDates.l_wdr12 != 0)
+			{
+				wCalc[11] = vWhipDates.l_wdr12 + wCalc[12];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[12], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(12, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #12", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[11] = vWhipDates.l_wdr12 + wCalc[12];
+
+				var updateResult = await UpdateWipDetailCall(12, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #12", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr11 != 0)
+			{
+				wCalc[10] = vWhipDates.l_wdr11 + wCalc[11];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[11], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(11, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #11", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[10] = vWhipDates.l_wdr11 + wCalc[11];
+
+				var updateResult = await UpdateWipDetailCall(11, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #11", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr10 != 0)
+			{
+				wCalc[9] = vWhipDates.l_wdr10 + wCalc[10];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[10], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(10, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #10", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[10] = vWhipDates.l_wdr10 + wCalc[10];
+
+				var updateResult = await UpdateWipDetailCall(10, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #10", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr9 != 0)
+			{
+				wCalc[8] = vWhipDates.l_wdr9 + wCalc[9];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[9], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(9, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #9", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[8] = vWhipDates.l_wdr9 + wCalc[9];
+
+				var updateResult = await UpdateWipDetailCall(9, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #9", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr8 != 0)
+			{
+				wCalc[7] = vWhipDates.l_wdr8 + wCalc[8];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[8], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(8, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #8", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[7] = vWhipDates.l_wdr8 + wCalc[8];
+
+				var updateResult = await UpdateWipDetailCall(8, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #8", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr7 != 0)
+			{
+				wCalc[6] = vWhipDates.l_wdr7 + wCalc[7];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[7], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(7, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #7", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[6] = vWhipDates.l_wdr7 + wCalc[7];
+
+				var updateResult = await UpdateWipDetailCall(7, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #7", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr6 != 0)
+			{
+				wCalc[5] = vWhipDates.l_wdr6 + wCalc[6];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[6], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(6, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #6", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[6] = vWhipDates.l_wdr6 + wCalc[6];
+
+				var updateResult = await UpdateWipDetailCall(6, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #6", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr5 != 0)
+			{
+				wCalc[4] = vWhipDates.l_wdr5 + wCalc[5];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[5], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(5, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #5", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[4] = vWhipDates.l_wdr5 + wCalc[5];
+
+				var updateResult = await UpdateWipDetailCall(5, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #5", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr4 != 0)
+			{
+				wCalc[3] = vWhipDates.l_wdr4 + wCalc[4];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[4], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(4, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #4", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[3] = vWhipDates.l_wdr4 + wCalc[4];
+
+				var updateResult = await UpdateWipDetailCall(4, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #4", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr3 != 0)
+			{
+				wCalc[2] = vWhipDates.l_wdr3 + wCalc[3];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[3], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(3, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #3", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[2] = vWhipDates.l_wdr3 + wCalc[3];
+
+				var updateResult = await UpdateWipDetailCall(3, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #3", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_wdr2 != 0)
+			{
+				wCalc[1] = vWhipDates.l_wdr2 + wCalc[2];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[2], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(2, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[1] = vWhipDates.l_wdr2 + wCalc[2];
+
+				var updateResult = await UpdateWipDetailCall(2, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			if (vWhipDates.l_dwdr1 != 0)
+			{
+				wCalc[0] = vWhipDates.l_dwdr1 + wCalc[1];
+				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[1], MidpointRounding.ToEven)));
+				var updateResult = await UpdateWipDetailCall(1, vWdr, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+			else
+			{
+				wCalc[0] = vWhipDates.l_dwdr1 + wCalc[1];
+
+				var updateResult = await UpdateWipDetailCall(1, null, lblInvno.Text);
+				if (updateResult.IsError)
+				{
+					MessageBox.Show("Datbase error. #1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					processingResult.IsError = true;
+					return processingResult;
+				}
+			}
+
+			this.Fill();
+			processingResult.IsError = false;
+			return processingResult;
+
+		}
+
+		public async Task<ApiProcessingResult<bool>> UpdateWipDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
+		{
+			var processingResult = new ApiProcessingResult<bool>();
+			bool isUpdate = true;
+			if (vWdr == null)
+			{
+				isUpdate = false;
+			}
+			var sqlClient = new SQLCustomClient();
+			sqlClient.ClearParameters();
+			sqlClient.AddParameter("@DescripID", vDescripId);
+			sqlClient.AddParameter("@wdr", vWdr);
+			sqlClient.AddParameter("@invno", vInvno);
+			sqlClient.AddParameter("@Schcode", this.Schcode);
+			var commandText = "";
+			if (isUpdate)
+			{
+				commandText = @"
+                         	IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                Begin
+                                INSERT INTO WipDetail (DescripID,Invno,Wdr,Schcode) VALUES(@DescripID,@Invno,@wdr,@Schcode);
+                                END
+							ELSE
+								BEGIN
+									UPDATE WipDetail SET wdr=@wdr  WHERE Invno=@Invno AND DescripID=@DescripID
+								END ";
+			}
+			else
+			{
+				//commandText=@"IF EXISTS(Select tmp.Invno, tmp.DescripID from WipDetail tmp WHERE tmp.Invno = @Invno and tmp.DescripID = @DescripID)
+				//				Begin
+				//			     UPDATE WipDetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = @DescripID
+				//				END";
+				commandText = @"
+						Delete FROM WipDetail  WHERE Invno = @Invno AND DescripID = @DescripID
+							";
+			}
+
+			sqlClient.CommandText(commandText);
+			var wipResult = sqlClient.Update();
+			if (wipResult.IsError)
+			{
+				processingResult.IsError = true;
+				processingResult.Data = false;
+				return processingResult;
+
+			}
 
 
-        #endregion
+			processingResult.IsError = false;
+			processingResult.Data = true;
+			return processingResult;
+		}
 
-        //nothing below here  
-    }
-    public class BinderyInfo
+
+		private void dpCustomerServiceDate_Leave(object sender, EventArgs e)
+		{
+			WipUpdate();
+		}
+
+		private void laminatedTextBox_Leave(object sender, EventArgs e)
+		{
+			if (laminatedTextBox.Text != "M" && laminatedTextBox.Text != "N" && laminatedTextBox.Text != "G"&& laminatedTextBox.Text != "")
+			{
+				laminatedTextBox.Focus();
+			}
+		}
+
+
+		#endregion
+
+		//nothing below here  
+	}
+	public class BinderyInfo
 	{
 		public string Schname { get; set; }
 		public string CoverType { get; set; }

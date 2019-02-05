@@ -2227,7 +2227,7 @@ namespace Mbc5.Forms.MemoryBook {
             // txtOracleCodeSrch
             // 
             this.txtOracleCodeSrch.Location = new System.Drawing.Point(582, 7);
-            this.txtOracleCodeSrch.MaxLength = 6;
+            this.txtOracleCodeSrch.MaxLength = 7;
             this.txtOracleCodeSrch.Name = "txtOracleCodeSrch";
             this.txtOracleCodeSrch.Size = new System.Drawing.Size(82, 20);
             this.txtOracleCodeSrch.TabIndex = 7;

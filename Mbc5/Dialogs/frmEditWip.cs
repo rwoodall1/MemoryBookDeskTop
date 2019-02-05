@@ -94,8 +94,9 @@ namespace Mbc5.Dialogs
             var result=MessageBox.Show("This will permentaly remove the record. Continue?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
-                wipDetailTableAdapter.Delete(ID);
-                wipDetailBindingSource.RemoveCurrent();
+               
+				wipDetailTableAdapter.DeleteQuery(ID);
+				wipDetailBindingSource.RemoveCurrent();
                 Refill = true;
             }
      

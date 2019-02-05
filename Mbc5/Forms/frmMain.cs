@@ -15,6 +15,10 @@ using System.Diagnostics;
 using Mbc5.LookUpForms;
 using NLog;
 using Mbc5.Reports;
+using Mbc5.Classes;
+using System.Data.SqlClient;
+using Exceptionless;
+using Exceptionless.Models;
 namespace Mbc5.Forms
 {
     public partial class frmMain : BaseClass.ParentForm
@@ -51,6 +55,7 @@ namespace Mbc5.Forms
                 
 
             }
+       
         private int GetInvno()
         {
           
@@ -622,8 +627,113 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
         }
 
+        public int GetNewInvno()
+        {
 
+            var sqlQuery = new BaseClass.Classes.SQLQuery();
 
+            SqlParameter[] parameters = new SqlParameter[] {
+
+                    };
+            var strQuery = "SELECT Invno FROM Invcnum";
+            try
+            {
+                DataTable userResult = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+                DataRow dr = userResult.Rows[0];
+                int Invno = (int)dr["Invno"];
+                int newInvno = Invno + 1;
+                strQuery = "Update Invcnum Set invno=@newInvno";
+                SqlParameter[] parameters1 = new SqlParameter[] {
+                      new SqlParameter("@newInvno",newInvno),
+                    };
+                sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
+
+                return Invno;
+
+            }
+            catch (Exception ex)
+            {
+             ex.ToExceptionless()
+                    .SetMessage("Failed to get invoice number for a new record");
+                    
+                MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+
+            }
+
+        }
+        public string GetProdNo()
+        {
+            var sqlQuery = new SQLQuery();
+            //useing hard code until function to generate invno is done
+            SqlParameter[] parameters = new SqlParameter[] { };
+            var strQuery = "Select * from prodnum";
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+            int? prodNum = null;
+            try
+            {
+                prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
+                strQuery = "Update Prodnum Set lstprodno=@lstprodno";
+                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno", (prodNum + 1)) };
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
+                if (result1 != 1)
+                {
+                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
+                         .AddTags("New prod number error.")
+                         .Submit();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error getting the production number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                ex.ToExceptionless()
+                  .AddTags("MBCWindows")
+                  .SetMessage("Error getting production number.")
+                  .Submit();
+
+            }
+
+            return prodNum.ToString();
+
+        }
+        public string GetCoverNumber()
+        {
+            var sqlQuery = new SQLQuery();
+            //useing hard code until function to generate invno is done
+            SqlParameter[] parameters = new SqlParameter[] { };
+            var strQuery = "Select * from Spcover";
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+            int? coverNum = null;
+            try
+            {
+                coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
+                strQuery = "Update Spcover set speccvno=@speccvno";
+                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno", (coverNum + 1)) };
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
+                if (result1 != 1)
+                {
+                    ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
+                         .AddTags("New cover number error.")
+                         .Submit();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error getting the cover number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ex.ToExceptionless()
+                  .AddTags("MBCWindows")
+                  .SetMessage("Error getting cover number.")
+                  .Submit();
+
+            }
+
+            return coverNum.ToString();
+        }
 
         //nothing below here
     }

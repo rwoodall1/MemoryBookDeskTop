@@ -45,9 +45,10 @@ namespace Mbc5.Forms.MemoryBook {
             this.Schcode = null;
 
         }
+		public frmMain frmMain { get; set; }
         private void SetConnectionString()
         {
-            frmMain frmMain = (frmMain)this.MdiParent;
+           this.frmMain = (frmMain)this.MdiParent;
             this.FormConnectionString= frmMain.AppConnectionString;
             this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -3160,13 +3161,98 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
 
+		private void btnCreateWIP_Click(object sender, EventArgs e)
+		{
+			var sqlClient = new SQLCustomClient();
+			sqlClient.CommandText(@"
+			Select Q.Invno AS QuoteInvno,Q.Schcode,P.Invno AS ProdutnInvno,C.Invno AS CoversInvno,W.Invno AS WipInvno 
+			From Quotes Q
+				LEFT JOIN Produtn P ON Q.Invno=P.Invno
+				Left Join Covers C ON Q.Invno=C.Invno
+				Left Join Wip W On Q.Invno=W.Invno
+			Where Q.Invno=@Invno
+			");
+			sqlClient.AddParameter("@Invno", this.Invno);
+			var checkResult = sqlClient.Select<WipUpdateCheck>();
+			if (checkResult.IsError)
+			{
+				MessageBox.Show("Database error, failed to update wip.","Database Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+			var resultData = (WipUpdateCheck)checkResult.Data;
+			var strQuery = "";
+			var sqlQuery = new SQLQuery();
+			if (resultData.ProdutnInvno==null)
+			{
+				SqlParameter[] parameters = new SqlParameter[] {
+					new SqlParameter("@Invno",this.Invno),
+					 new SqlParameter("@Schcode",this.Schcode),
+					 new SqlParameter("@ProdNo",this.frmMain.GetProdNo()),
+					  new SqlParameter("@Contryear", txtYear.Text),
+					   new SqlParameter("@Company","MBC")
+					};
+				 strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
+				var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+				if (userResult1 != 1)
+				{
+					MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+
+			}
+			if (resultData.CoversInvno == null)
+			{
+				string val = "";
+				//custBindingSource.MoveFirst();//make sure on first row
+				DataRowView current = (DataRowView)custBindingSource.Current;
+				string instructions = current["spcinst"].ToString();
+
+				
+				SqlParameter[] parameters2 = new SqlParameter[] {
+					new SqlParameter("@Invno",this.Invno),
+					 new SqlParameter("@Schcode",this.Schcode),
+					 new SqlParameter("@Specovr",frmMain.GetCoverNumber()),
+						 new SqlParameter("@Specinst",instructions),
+					   new SqlParameter("@Company","MBC")
+					};
+				strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
+				var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
+				if (userResult2 != 1)
+				{
+					MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+
+
+			}
+			if (resultData.WipInvno == null)
+			{
+				SqlParameter[] parameters3 = new SqlParameter[] {
+					new SqlParameter("@Invno",this.Invno),
+					 new SqlParameter("@Schcode",this.Schcode),
+
+					};
+				strQuery = "Insert into Wip (schcode,invno) Values(@Schcode,@Invno)";
+				var Result3 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters3);
+				if (Result3 != 1)
+				{
+					MessageBox.Show("Failed to insert wip record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+
+
+			}
+			MessageBox.Show("WIP records updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+		}
 
 
 
 
 
 
-        //nothing below here  
-    }
+
+		//nothing below here  
+	}
 }
     
