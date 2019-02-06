@@ -1267,13 +1267,12 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				//commandText=@"IF EXISTS(Select tmp.Invno, tmp.DescripID from WipDetail tmp WHERE tmp.Invno = @Invno and tmp.DescripID = @DescripID)
-				//				Begin
-				//			     UPDATE WipDetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = @DescripID
-				//				END";
 				commandText = @"
-						Delete FROM WipDetail  WHERE Invno = @Invno AND DescripID = @DescripID
-							";
+							     UPDATE WipDetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = @DescripID
+								";
+				//commandText = @"
+				//		Delete FROM WipDetail  WHERE Invno = @Invno AND DescripID = @DescripID
+				//			";
 			}
 
 			sqlClient.CommandText(commandText);
