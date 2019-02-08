@@ -1138,7 +1138,7 @@
 			invnoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			invnoLabel.Location = new System.Drawing.Point(1127, 14);
 			invnoLabel.Name = "invnoLabel";
-			invnoLabel.Size = new System.Drawing.Size(90, 16);
+			invnoLabel.Size = new System.Drawing.Size(86, 16);
 			invnoLabel.TabIndex = 11;
 			invnoLabel.Text = "Invoice No.";
 			// 
@@ -4070,12 +4070,11 @@
 			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
 			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
 			this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MemInvoice.rdlc";
-			this.reportViewer1.Location = new System.Drawing.Point(15, 411);
+			this.reportViewer1.Location = new System.Drawing.Point(194, 199);
 			this.reportViewer1.Name = "reportViewer1";
 			this.reportViewer1.ServerReport.BearerToken = null;
-			this.reportViewer1.Size = new System.Drawing.Size(37, 76);
+			this.reportViewer1.Size = new System.Drawing.Size(767, 265);
 			this.reportViewer1.TabIndex = 15;
-			this.reportViewer1.Visible = false;
 			this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
 			// 
 			// label34

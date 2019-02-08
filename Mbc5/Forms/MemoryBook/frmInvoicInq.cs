@@ -26,9 +26,8 @@ namespace Mbc5.Forms.MemoryBook
         public List<Invoice> Invoices { get; set; }
         private void frmInvoicInq_Load(object sender, EventArgs e)
         {
-            
-
-            dgInvoices.AutoGenerateColumns = false;
+			reportViewer1.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SetSubDataSource);
+			dgInvoices.AutoGenerateColumns = false;
         }
         private void dtShipDate_ValueChanged(object sender, EventArgs e)
         {
@@ -102,9 +101,10 @@ namespace Mbc5.Forms.MemoryBook
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var vInvoices = new BindingList<Invoice>();
+			this.print();
+            //var vInvoices = new BindingList<Invoice>();
 
-            bsInvoices.DataSource = vInvoices;
+            //bsInvoices.DataSource = vInvoices;
         }
 
         private void chkPrint_CheckedChanged(object sender, EventArgs e)
@@ -164,34 +164,55 @@ namespace Mbc5.Forms.MemoryBook
             // var a = this.Invoices;
             for (int i = 0; i < 2; i++)
             {
-                var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invoices[0].Invno);
-                var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invoices[0].Invno);
+				invoiceTableAdapter.ClearBeforeFill = false;
+				invdetailTableAdapter.ClearBeforeFill = false;
+                var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invoices[i].Invno);
+                var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invoices[i].Invno);
                 var aaaa = this.custTableAdapter.Fill(dsCust.cust, "038752");
-                this.print();
+                var a = dsInvoice.invoice.Rows.Count;
+				var b = bsTest.Count;
+
             }
 
             //this.reportViewer1.RefreshReport();
         }
         private void print()
         {
-            this.reportViewer1.RefreshReport();
+	
+			this.reportViewer1.RefreshReport();
+	
         }
-        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+		public void SetSubDataSource(object sender, SubreportProcessingEventArgs e)
+
+		{
+			
+			e.DataSources.Add(new ReportDataSource("invoicedetail",
+
+						  "dsInvoice.invdetail"));
+
+		}
+		private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
 
-            
-            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
-            
-            dp.Export(reportViewer1.LocalReport);
-               // reportViewer1.Print;
-        }
+			//DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
-        private void reportViewer1_reportError(object sender, ReportErrorEventArgs e)
+			//var result = dp.Export(reportViewer1.LocalReport,"");
+
+			//if (result.IsError)
+			//{
+			//	var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage + " Do you wish to continue printing?", "Printing Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+			//	if (errorResult == DialogResult.No)
+			//	{
+			//		//StopPrinting = true;
+			//	}
+			//}
+			
+		}
+
+		private void reportViewer1_reportError(object sender, ReportErrorEventArgs e)
         {
             var a = 1;
         }
-
-    
-    }
+	}
   
 }

@@ -619,12 +619,12 @@ namespace Mbc5.Forms
 
         private void invoicesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.AppStarting;
+            //this.Cursor = Cursors.AppStarting;
 
-            frmInvoicInq frmInvoice = new frmInvoicInq(this.ApplicationUser);
-            frmInvoice.MdiParent = this;
-            frmInvoice.Show();
-            this.Cursor = Cursors.Default;
+            //frmInvoicInq frmInvoice = new frmInvoicInq(this.ApplicationUser);
+            //frmInvoice.MdiParent = this;
+            //frmInvoice.Show();
+            //this.Cursor = Cursors.Default;
         }
 
         public int GetNewInvno()

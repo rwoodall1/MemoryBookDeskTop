@@ -9,7 +9,8 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-
+using BaseClass.Core;
+using System.Threading.Tasks;
 using Microsoft.Reporting.WinForms;
 using Microsoft.ReportingServices.DataExtensions;
 using Microsoft.ReportingServices.ReportRendering;
@@ -19,17 +20,23 @@ namespace Mbc5.Classes
     public class DirectPrint : IDisposable
     {
         private IList<Stream> m_streams;
-        private int m_currentPageIndex;
-        // Export the given report as an EMF (Enhanced Metafile) file.
-        // Routine to provide to the report renderer, in order to
-        //    save an image for each page of the report.
-        private Stream CreateStream(string name, string fileNameExtension, Encoding encoding, string mimeType, bool willSeek)
-        {
-            Stream stream = new FileStream(@"..\..\" + name + "." + fileNameExtension, FileMode.Create);
-            m_streams.Add(stream);
-            return stream;
-        }
-        public void Dispose()
+        private int m_currentPageIndex=0;
+		// Export the given report as an EMF (Enhanced Metafile) file.
+		// Routine to provide to the report renderer, in order to
+		//    save an image for each page of the report.
+		private Stream CreateStream(string name, string fileNameExtension, Encoding encoding, string mimeType, bool willSeek)
+		{
+			Stream stream = new FileStream(@"..\..\" + name + "." + fileNameExtension, FileMode.Create);
+			m_streams.Add(stream);
+			return stream;
+		}
+		//private Stream CreateStream(string name,string fileNameExtension, Encoding encoding,string mimeType, bool willSeek)
+		//{
+		//	Stream stream = new MemoryStream();
+		//	m_streams.Add(stream);
+		//	return stream;
+		//}
+		public void Dispose()
         {
             if (m_streams != null)
             {
@@ -38,22 +45,11 @@ namespace Mbc5.Classes
                 m_streams = null;
             }
         }
-        public void Export(LocalReport report)
+        public ApiProcessingResult Export(LocalReport report, string _printer)
         {
-            
-           
-            //string deviceInfo =
-            //"" +
-            //" EMF" +
-            //" 8.5in" +
-            //" 11in" +
-            //" 0.25in" +
-            //" 0.25in" +
-            //" 0.25in" +
-            //" 0.25in" +
-            //"";
+			var processingResult = new ApiProcessingResult();
             string deviceInfo =
-          @"<DeviceInfo>
+		  @"<DeviceInfo>
                 <OutputFormat>EMF</OutputFormat>
                 <PageWidth>8.5in</PageWidth>
                 <PageHeight>11in</PageHeight>
@@ -64,32 +60,53 @@ namespace Mbc5.Classes
             </DeviceInfo>";
             Warning[] warnings;
             m_streams = new List<Stream>();
-            try { report.Render("Image", deviceInfo, CreateStream,
-            out warnings); }catch(Exception ex) { };
+            try {
+				report.Render("Image", deviceInfo, CreateStream,out warnings);
+			} catch(Exception ex) {
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
+				return processingResult;
+			};
 
 
             foreach (Stream stream in m_streams)
             {
                 stream.Position = 0;
-                m_currentPageIndex = 0;
+                
             }
 
-            Print();
-            Dispose();
+			
+			var printResult = Print(_printer);
+			Dispose();
+			return printResult;
+
         }
         
 
         // Then I modified the Print method to use the default printer instead of the hardcoded 'Microsoft Office Document....' printer.
 
 
-        private void Print()
+        private ApiProcessingResult Print(string _printer)
         {
-            PrinterSettings settings = new PrinterSettings(); //set printer settings
-            string printerName = settings.PrinterName; //use default printer name
+			var processingResult = new ApiProcessingResult();
+			string printerName;
+			if (!string.IsNullOrEmpty(_printer))
+			{
+				printerName = _printer;
+			}
+			else
+			{
+				PrinterSettings settings = new PrinterSettings(); //set printer settings
+				 printerName = settings.PrinterName; //use default printer name
+			}
+           
 
             if (m_streams == null ||m_streams.Count == 0)
             {
-                return;
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError("Report stream is not present.", "Report stream is not present.", ""));
+				return processingResult;
+			
             }
             
 
@@ -100,13 +117,15 @@ namespace Mbc5.Classes
                 string msg = String.Format(
                 "Can't find printer \"{0}\".", printerName);
                 MessageBox.Show(msg, "Print Error");
-                return;
-            }
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError(msg, msg, ""));
+				return processingResult;
+			}
 
             printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
             printDoc.Print();
-
-        }
+			return processingResult;
+		}
         private void PrintPage(object sender, PrintPageEventArgs ev)
         {
             Metafile pageImage = new Metafile(m_streams[m_currentPageIndex]);
@@ -114,8 +133,8 @@ namespace Mbc5.Classes
             m_currentPageIndex++;
             ev.HasMorePages = (m_currentPageIndex < m_streams.Count);
         }
-
-    }
+		//
+	}
 }
 //call with this
 //directPrint dp = new directPrint(); //this is the name of the class added from MSDN

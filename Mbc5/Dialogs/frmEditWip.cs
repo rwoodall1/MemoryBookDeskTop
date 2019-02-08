@@ -57,9 +57,22 @@ namespace Mbc5.Dialogs
             this.wipDetailBindingSource.EndEdit();
             DataRowView row = (DataRowView)wipDetailBindingSource.Current;           
             int descid = (int)cmbDescription.SelectedValue;
-           DateTime war = (DateTime)row["War"];
-          DateTime wdr = (DateTime)row["Wdr"];
-            decimal wtr = (decimal)row["Wtr"];
+			DateTime war=DateTime.Now;
+			if (row["War"]!=null)
+			{
+				try
+				{war =(DateTime)row["War"]  ; }catch(Exception ec)
+				{
+					return;
+				}
+				
+			}
+			
+			
+			
+
+           DateTime? wdr =  row["Wdr"]!=null?(DateTime?)row["Wdr"]:null;
+           decimal wtr = (decimal)row["Wtr"];
            string wir = row["Wir"].ToString();
             int invno = (int)row["Invno"];
             int id = (int)row["id"];
