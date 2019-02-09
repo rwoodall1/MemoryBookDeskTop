@@ -73,7 +73,7 @@ namespace Mbc5.Forms
 			this.lkpBackGroundTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.prtbkbdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-
+			partBkDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 		}
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
@@ -611,184 +611,184 @@ namespace Mbc5.Forms
 		private void prntsamDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
 
-			prntsamDateTimePicker.Format = DateTimePickerFormat.Long;
+			prntsamDateTimePicker.Format = DateTimePickerFormat.Short;
 
 		}
 
 		private void prtdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			prtdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+			prtdtesentDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void prtdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			prtdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+			prtdtebkDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void dcdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dcdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+			dcdtesentDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void dcdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dcdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+			dcdtebkDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void otdtesentDateTimePicker1_ValueChanged(object sender, EventArgs e)
 		{
-			otdtesentDateTimePicker1.Format = DateTimePickerFormat.Long;
+			otdtesentDateTimePicker1.Format = DateTimePickerFormat.Short;
 		}
 
 		private void otdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			otdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+			otdtebkDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void perslistdateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			perslistdateDateTimePicker.Format = DateTimePickerFormat.Long;
+			perslistdateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void lamdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			lamdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+			lamdtesentDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void reprntdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			reprntdteDateTimePicker.Format = DateTimePickerFormat.Long;
+			reprntdteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void desorgdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			desorgdteDateTimePicker.Format = DateTimePickerFormat.Long;
+			desorgdteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void screcvDateTimePicker1_ValueChanged(object sender, EventArgs e)
 		{
-			screcvDateTimePicker1.Format = DateTimePickerFormat.Long;
+			screcvDateTimePicker1.Format = DateTimePickerFormat.Short;
 		}
 		private void rmbfrmDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			rmbfrmDateTimePicker.Format = DateTimePickerFormat.Long;
+			rmbfrmDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void rmbtoDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			rmbtoDateTimePicker.Format = DateTimePickerFormat.Long;
+			rmbtoDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void ioutDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			ioutDateTimePicker.Format = DateTimePickerFormat.Long;
+			ioutDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void frmbindDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			frmbindDateTimePicker.Format = DateTimePickerFormat.Long;
+			frmbindDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void iinDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			iinDateTimePicker.Format = DateTimePickerFormat.Long;
+			iinDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void binddteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			binddteDateTimePicker.Format = DateTimePickerFormat.Long;
+			binddteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void rmptoDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			rmptoDateTimePicker.Format = DateTimePickerFormat.Long;
+			rmptoDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void rmpfrmDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			rmpfrmDateTimePicker.Format = DateTimePickerFormat.Long;
+			rmpfrmDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void adduploaddateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			adduploaddateDateTimePicker.Format = DateTimePickerFormat.Long;
+			adduploaddateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void dedayinDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dedayinDateTimePicker.Format = DateTimePickerFormat.Long;
+			dedayinDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void dedayoutDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dedayoutDateTimePicker.Format = DateTimePickerFormat.Long;
+			dedayoutDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void screcvDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			screcvDateTimePicker.Format = DateTimePickerFormat.Long;
+			screcvDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void cprecvDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			cprecvDateTimePicker.Format = DateTimePickerFormat.Long;
+			cprecvDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void ptrecvdDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			ptrecvdDateTimePicker.Format = DateTimePickerFormat.Long;
+			ptrecvdDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void ptbrcvdDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			ptbrcvdDateTimePicker.Format = DateTimePickerFormat.Long;
+			ptbrcvdDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void kitrecvdDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			kitrecvdDateTimePicker.Format = DateTimePickerFormat.Long;
+			kitrecvdDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void toprodDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			toprodDateTimePicker.Format = DateTimePickerFormat.Long;
+			toprodDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void tovendDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			tovendDateTimePicker.Format = DateTimePickerFormat.Long;
+			tovendDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void warndateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			warndateDateTimePicker.Format = DateTimePickerFormat.Long;
+			warndateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void prshpdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			prshpdteDateTimePicker.Format = DateTimePickerFormat.Long;
+			prshpdteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void prmsdateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			prmsdateDateTimePicker.Format = DateTimePickerFormat.Long;
+			prmsdateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void shpdateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			shpdateDateTimePicker.Format = DateTimePickerFormat.Long;
+			shpdateDateTimePicker.Format = DateTimePickerFormat.Short;
 
 		}
 
 		private void cstsvcdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dpCustomerServiceDate.Format = DateTimePickerFormat.Long;
+			dpCustomerServiceDate.Format = DateTimePickerFormat.Short;
 
 		}
 
 		private void comdateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			comdateDateTimePicker.Format = DateTimePickerFormat.Long;
+			comdateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 		#endregion
 		private void frmProdutn_Paint(object sender, PaintEventArgs e)

@@ -134,6 +134,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCust.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsCust1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCust.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsDateCont.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -549,6 +554,7 @@
     <None Include="DataSets\dsCust.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCust1.Designer.cs</LastGenOutput>
     </None>
     <None Include="DataSets\dsCust.xss">
       <DependentUpon>dsCust.xsd</DependentUpon>

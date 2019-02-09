@@ -31,7 +31,7 @@ namespace Mbc5.Forms.MemoryBook
         }
         private void dtShipDate_ValueChanged(object sender, EventArgs e)
         {
-            dtShipDate.Format = DateTimePickerFormat.Long;
+            dtShipDate.Format = DateTimePickerFormat.Short;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
