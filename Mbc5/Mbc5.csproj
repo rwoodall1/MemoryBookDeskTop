@@ -129,15 +129,8 @@
     <Compile Include="DataSets\dsCust.cs">
       <DependentUpon>dsCust.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\dsCust.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsCust.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSets\dsCust1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsCust.xsd</DependentUpon>
+    <Compile Include="DataSets\dsCust.designer.cs">
+      <DependentUpon>dsCust.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsDateCont.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -522,6 +515,13 @@
     <EmbeddedResource Include="Reports\ReportTest.resx">
       <DependentUpon>ReportTest.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataSets\dsCust.xsc">
+      <DependentUpon>dsCust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsCust.xsd" />
+    <None Include="DataSets\dsCust.xss">
+      <DependentUpon>dsCust.xsd</DependentUpon>
+    </None>
     <None Include="localConnection.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -547,17 +547,6 @@
     </None>
     <None Include="DataSets\dsChangePassword.xss">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
-    </None>
-    <None Include="DataSets\dsCust.xsc">
-      <DependentUpon>dsCust.xsd</DependentUpon>
-    </None>
-    <None Include="DataSets\dsCust.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsCust1.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSets\dsCust.xss">
-      <DependentUpon>dsCust.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsDateCont.xsc">
       <DependentUpon>dsDateCont.xsd</DependentUpon>
