@@ -37,5 +37,18 @@ namespace Mbc5.Forms
             }
 
         }
-    }
+
+		private void fillToolStripButton1_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				this.custTableAdapter1.Fill(this.dsCust.cust, schcodeToolStripTextBox1.Text);
+			}
+			catch (System.Exception ex)
+			{
+				System.Windows.Forms.MessageBox.Show(ex.Message);
+			}
+
+		}
+	}
 }

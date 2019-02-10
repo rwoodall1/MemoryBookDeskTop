@@ -1360,10 +1360,12 @@ namespace Mbc5.Forms.MemoryBook {
             this.Cursor = Cursors.Default;
         }
 
+		
 
 
 
-        //Nothing below here
-    }
+
+		//Nothing below here
+	}
     }
 

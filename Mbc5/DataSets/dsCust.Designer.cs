@@ -701,6 +701,10 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnQyear;
             
+            private global::System.Data.DataColumn columnTaxExemptionReceived;
+            
+            private global::System.Data.DataColumn columnNotTaxExempt;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custDataTable() {
@@ -1864,6 +1868,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TaxExemptionReceivedColumn {
+                get {
+                    return this.columnTaxExemptionReceived;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NotTaxExemptColumn {
+                get {
+                    return this.columnNotTaxExempt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2040,7 +2060,9 @@ namespace Mbc5.DataSets {
                         bool IsTaxExempt, 
                         string stage, 
                         System.DateTime FirstDaySchool, 
-                        string Qyear) {
+                        string Qyear, 
+                        System.DateTime TaxExemptionReceived, 
+                        bool NotTaxExempt) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cstatus,
@@ -2183,7 +2205,9 @@ namespace Mbc5.DataSets {
                         IsTaxExempt,
                         stage,
                         FirstDaySchool,
-                        Qyear};
+                        Qyear,
+                        TaxExemptionReceived,
+                        NotTaxExempt};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -2354,6 +2378,8 @@ namespace Mbc5.DataSets {
                 this.columnstage = base.Columns["stage"];
                 this.columnFirstDaySchool = base.Columns["FirstDaySchool"];
                 this.columnQyear = base.Columns["Qyear"];
+                this.columnTaxExemptionReceived = base.Columns["TaxExemptionReceived"];
+                this.columnNotTaxExempt = base.Columns["NotTaxExempt"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2641,6 +2667,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnFirstDaySchool);
                 this.columnQyear = new global::System.Data.DataColumn("Qyear", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQyear);
+                this.columnTaxExemptionReceived = new global::System.Data.DataColumn("TaxExemptionReceived", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTaxExemptionReceived);
+                this.columnNotTaxExempt = new global::System.Data.DataColumn("NotTaxExempt", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNotTaxExempt);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columncstatus.MaxLength = 40;
@@ -6432,6 +6462,38 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime TaxExemptionReceived {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablecust.TaxExemptionReceivedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TaxExemptionReceived\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.TaxExemptionReceivedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool NotTaxExempt {
+                get {
+                    try {
+                        return ((bool)(this[this.tablecust.NotTaxExemptColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NotTaxExempt\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.NotTaxExemptColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscstatusNull() {
                 return this.IsNull(this.tablecust.cstatusColumn);
             }
@@ -8037,6 +8099,30 @@ namespace Mbc5.DataSets {
             public void SetQyearNull() {
                 this[this.tablecust.QyearColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTaxExemptionReceivedNull() {
+                return this.IsNull(this.tablecust.TaxExemptionReceivedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTaxExemptionReceivedNull() {
+                this[this.tablecust.TaxExemptionReceivedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsNotTaxExemptNull() {
+                return this.IsNull(this.tablecust.NotTaxExemptColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetNotTaxExemptNull() {
+                this[this.tablecust.NotTaxExemptColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -9026,6 +9112,8 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             tableMapping.ColumnMappings.Add("stage", "stage");
             tableMapping.ColumnMappings.Add("FirstDaySchool", "FirstDaySchool");
             tableMapping.ColumnMappings.Add("Qyear", "Qyear");
+            tableMapping.ColumnMappings.Add("TaxExemptionReceived", "TaxExemptionReceived");
+            tableMapping.ColumnMappings.Add("NotTaxExempt", "NotTaxExempt");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -9075,8 +9163,10 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "pher, ModifiedBy = @ModifiedBy, schname = @Schname, oraclecode = @oraclecode, co" +
                 "ntryear = @contryear, schstate = @schstate, cposition = @cposition, \r\n          " +
                 "               electronickit = @electronickit, electronickitoptions = @electroni" +
-                "coptions, status = @status, IsTaxExempt = @IsTaxExempt, stage = @Stage\r\nWHERE   " +
-                "     (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)";
+                "coptions, status = @status, IsTaxExempt = @IsTaxExempt, stage = @Stage, TaxExemp" +
+                "tionReceived = @TaxExemptionReceived, \r\n                         FirstDaySchool " +
+                "= @FirstDaySchool, NotTaxExempt = @NotTaxExempt\r\nWHERE        (schcode = @schcod" +
+                "e) AND (TimeStamp = @Orig_TimeStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cstatus", global::System.Data.SqlDbType.VarChar, 40, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9205,6 +9295,9 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsTaxExempt", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "IsTaxExempt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Stage", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "stage", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxExemptionReceived", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TaxExemptionReceived", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstDaySchool", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "FirstDaySchool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NotTaxExempt", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "NotTaxExempt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Orig_TimeStamp", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -9212,7 +9305,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5ConnectionString;
+            this._connection.ConnectionString = global::Mbc5.Properties.Settings.Default.Mbc5ConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9252,12 +9345,13 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "ModifiedBy, cust.oraclecode, cust.contryear, cust.booktype AS Expr1, cust.DateMo" +
                 "dified, cust.cposition, cust.electronickit, cust.electronickitoptions, cust.stat" +
                 "us, cust.IsTaxExempt, cust.stage, \r\n                         cust.FirstDaySchool" +
-                ", produtn.jobno, produtn.advpw, produtn.stfpw\r\nFROM            cust LEFT OUTER J" +
-                "OIN\r\n                         quotes ON cust.schcode = quotes.schcode LEFT OUTER" +
-                " JOIN\r\n                         produtn ON quotes.invno = produtn.invno\r\nWHERE  " +
-                "      (cust.schcode = @schcode)\r\nORDER BY Qyear DESC, QInvno DESC";
+                ", produtn.jobno, produtn.advpw, produtn.stfpw, cust.TaxExemptionReceived, cust.N" +
+                "otTaxExempt\r\nFROM            cust LEFT OUTER JOIN\r\n                         quot" +
+                "es ON cust.schcode = quotes.schcode LEFT OUTER JOIN\r\n                         pr" +
+                "odutn ON quotes.invno = produtn.invno\r\nWHERE        (cust.schcode = @schcode)\r\nO" +
+                "RDER BY Qyear DESC, QInvno DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +

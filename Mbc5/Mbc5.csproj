@@ -126,11 +126,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\dsCust.cs">
+    <Compile Include="DataSets\dsCust.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>dsCust.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSets\dsCust.designer.cs">
-      <DependentUpon>dsCust.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsDateCont.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -518,7 +517,11 @@
     <None Include="DataSets\dsCust.xsc">
       <DependentUpon>dsCust.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\dsCust.xsd" />
+    <None Include="DataSets\dsCust.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCust.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataSets\dsCust.xss">
       <DependentUpon>dsCust.xsd</DependentUpon>
     </None>
