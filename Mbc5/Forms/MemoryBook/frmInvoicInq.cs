@@ -129,33 +129,33 @@ namespace Mbc5.Forms.MemoryBook
             var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invoices[0].Invno);
 
             paymntTableAdapter.Fill(dsInvoice.paymnt, this.Invoices[0].Invno);
-            //https://stackoverflow.com/questions/2684221/creating-a-pdf-from-a-rdlc-report-in-the-background
-            //    reportViewer1.LocalReport.Render
-            //Warning[] warnings;
-            //string[] streamIds;
-            //string mimeType = string.Empty;
-            //string encoding = string.Empty;
-            //string extension = string.Empty;
-            ////string HIJRA_TODAY = "01/10/1435";
-            //// ReportParameter[] param = new ReportParameter[3];
-            ////param[0] = new ReportParameter("CUSTOMER_NUM", CUSTOMER_NUMTBX.Text);
-            ////param[1] = new ReportParameter("REF_CD", REF_CDTB.Text);
-            ////param[2] = new ReportParameter("HIJRA_TODAY", HIJRA_TODAY);
+			//https://stackoverflow.com/questions/2684221/creating-a-pdf-from-a-rdlc-report-in-the-background
+	
+			 Warning[] warnings;
+			string[] streamIds;
+			string mimeType = string.Empty;
+			string encoding = string.Empty;
+			string extension = string.Empty;
+			//string HIJRA_TODAY = "01/10/1435";
+			// ReportParameter[] param = new ReportParameter[3];
+			//param[0] = new ReportParameter("CUSTOMER_NUM", CUSTOMER_NUMTBX.Text);
+			//param[1] = new ReportParameter("REF_CD", REF_CDTB.Text);
+			//param[2] = new ReportParameter("HIJRA_TODAY", HIJRA_TODAY);
 
-            //byte[] bytes = this.reportViewer1.LocalReport.Render(
-            //    "PDF",
-            //    null,
-            //    out mimeType,
-            //    out encoding,
-            //    out extension,
-            //    out streamIds,
-            //    out warnings);
+			byte[] bytes = this.reportViewer1.LocalReport.Render(
+				"PDF",
+				null,
+				out mimeType,
+				out encoding,
+				out extension,
+				out streamIds,
+				out warnings);
 
-            //using (FileStream fs = new FileStream("F:\\output.pdf", FileMode.Create))
-            //{
-            //    fs.Write(bytes, 0, bytes.Length);
-            //}
-        }
+			using (FileStream fs = new FileStream("F:\\output.pdf", FileMode.Create))
+			{
+				fs.Write(bytes, 0, bytes.Length);
+			}
+		}
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -194,7 +194,7 @@ namespace Mbc5.Forms.MemoryBook
 		private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
 
-			//DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+			DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
 			//var result = dp.Export(reportViewer1.LocalReport,"");
 

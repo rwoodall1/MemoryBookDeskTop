@@ -30,14 +30,14 @@
         {
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.dsCust = new Mbc5.DataSets.dsCust();
 			this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -56,26 +56,6 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.dgAddressErrors = new System.Windows.Forms.DataGridView();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.chkPrint = new System.Windows.Forms.CheckBox();
-			this.dgInvoices = new System.Windows.Forms.DataGridView();
-			this.Collections = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-			this.InvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Shpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SchName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Schcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Schemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ContactEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.bsInvoices = new System.Windows.Forms.BindingSource(this.components);
-			this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-			this.tableAdapterManager1 = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
-			this.dsSales = new Mbc5.DataSets.dsSales();
-			this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
-			this.invoiceTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invoiceTableAdapter();
-			this.tableAdapterManager = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
-			this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
-			this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
-			this.bsTest = new System.Windows.Forms.BindingSource(this.components);
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.schcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.invnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,6 +89,26 @@
 			this.salesTaxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.beforeTaxTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.citystatezipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.bsTest = new System.Windows.Forms.BindingSource(this.components);
+			this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+			this.chkPrint = new System.Windows.Forms.CheckBox();
+			this.dgInvoices = new System.Windows.Forms.DataGridView();
+			this.Collections = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+			this.InvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Shpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SchName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Schcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Schemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ContactEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.bsInvoices = new System.Windows.Forms.BindingSource(this.components);
+			this.tableAdapterManager1 = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
+			this.dsSales = new Mbc5.DataSets.dsSales();
+			this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
+			this.invoiceTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invoiceTableAdapter();
+			this.tableAdapterManager = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
+			this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
+			this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
 			this.TopPanel.SuspendLayout();
 			this.BottomPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
@@ -120,11 +120,11 @@
 			this.pnlError.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgAddressErrors)).BeginInit();
 			this.panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.bsTest)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgInvoices)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bsInvoices)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bsTest)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// TopPanel
@@ -311,170 +311,6 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(1342, 482);
 			this.panel1.TabIndex = 9;
-			// 
-			// chkPrint
-			// 
-			this.chkPrint.AutoSize = true;
-			this.chkPrint.Checked = true;
-			this.chkPrint.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.chkPrint.Location = new System.Drawing.Point(16, 5);
-			this.chkPrint.Name = "chkPrint";
-			this.chkPrint.Size = new System.Drawing.Size(131, 17);
-			this.chkPrint.TabIndex = 1;
-			this.chkPrint.Text = "Check/UnCheck Print";
-			this.chkPrint.UseVisualStyleBackColor = true;
-			this.chkPrint.CheckedChanged += new System.EventHandler(this.chkPrint_CheckedChanged);
-			// 
-			// dgInvoices
-			// 
-			this.dgInvoices.AllowUserToAddRows = false;
-			this.dgInvoices.AllowUserToDeleteRows = false;
-			this.dgInvoices.AutoGenerateColumns = false;
-			this.dgInvoices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
-			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-			this.dgInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Collections,
-            this.InvoiceNo,
-            this.Shpdate,
-            this.SchName,
-            this.Schcode,
-            this.Schemail,
-            this.ContactEmail,
-            this.Balance});
-			this.dgInvoices.DataSource = this.bsInvoices;
-			this.dgInvoices.EnableHeadersVisualStyles = false;
-			this.dgInvoices.Location = new System.Drawing.Point(10, 27);
-			this.dgInvoices.Name = "dgInvoices";
-			this.dgInvoices.RowHeadersVisible = false;
-			this.dgInvoices.Size = new System.Drawing.Size(1096, 245);
-			this.dgInvoices.TabIndex = 0;
-			// 
-			// Collections
-			// 
-			this.Collections.DataPropertyName = "Holdpmt";
-			this.Collections.HeaderText = "Collections";
-			this.Collections.Name = "Collections";
-			// 
-			// InvoiceNo
-			// 
-			this.InvoiceNo.DataPropertyName = "Invno";
-			this.InvoiceNo.HeaderText = "Invoice #";
-			this.InvoiceNo.Name = "InvoiceNo";
-			this.InvoiceNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			this.InvoiceNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-			// 
-			// Shpdate
-			// 
-			this.Shpdate.DataPropertyName = "ShpDate";
-			this.Shpdate.HeaderText = "Ship Date";
-			this.Shpdate.Name = "Shpdate";
-			// 
-			// SchName
-			// 
-			this.SchName.DataPropertyName = "Schname";
-			this.SchName.HeaderText = "School Name";
-			this.SchName.Name = "SchName";
-			// 
-			// Schcode
-			// 
-			this.Schcode.DataPropertyName = "Schname";
-			this.Schcode.HeaderText = "School Code";
-			this.Schcode.Name = "Schcode";
-			// 
-			// Schemail
-			// 
-			this.Schemail.DataPropertyName = "Schemail";
-			this.Schemail.HeaderText = "School Email";
-			this.Schemail.Name = "Schemail";
-			// 
-			// ContactEmail
-			// 
-			this.ContactEmail.DataPropertyName = "Contemail";
-			this.ContactEmail.HeaderText = "Contact Email";
-			this.ContactEmail.Name = "ContactEmail";
-			// 
-			// Balance
-			// 
-			this.Balance.DataPropertyName = "Baldue";
-			this.Balance.HeaderText = "Balance";
-			this.Balance.Name = "Balance";
-			// 
-			// reportViewer1
-			// 
-			this.reportViewer1.DocumentMapWidth = 35;
-			reportDataSource1.Name = "cust";
-			reportDataSource1.Value = this.custBindingSource;
-			reportDataSource2.Name = "invoice";
-			reportDataSource2.Value = this.invoiceBindingSource;
-			reportDataSource3.Name = "invoicedetail";
-			reportDataSource3.Value = this.invdetailBindingSource;
-			reportDataSource4.Name = "payment";
-			reportDataSource4.Value = this.paymntBindingSource;
-			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
-			this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MultiMemInvoice.rdlc";
-			this.reportViewer1.Location = new System.Drawing.Point(73, 27);
-			this.reportViewer1.Name = "reportViewer1";
-			this.reportViewer1.ServerReport.BearerToken = null;
-			this.reportViewer1.Size = new System.Drawing.Size(919, 308);
-			this.reportViewer1.TabIndex = 16;
-			this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
-			this.reportViewer1.ReportError += new Microsoft.Reporting.WinForms.ReportErrorEventHandler(this.reportViewer1_reportError);
-			// 
-			// tableAdapterManager1
-			// 
-			this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-			this.tableAdapterManager1.Connection = null;
-			this.tableAdapterManager1.custSearchTableAdapter = null;
-			this.tableAdapterManager1.custTableAdapter = null;
-			this.tableAdapterManager1.datecontTableAdapter = null;
-			this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-			// 
-			// dsSales
-			// 
-			this.dsSales.DataSetName = "dsSales";
-			this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
-			// custTableAdapter
-			// 
-			this.custTableAdapter.ClearBeforeFill = false;
-			// 
-			// invoiceTableAdapter
-			// 
-			this.invoiceTableAdapter.ClearBeforeFill = false;
-			// 
-			// tableAdapterManager
-			// 
-			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-			this.tableAdapterManager.custTableAdapter = null;
-			this.tableAdapterManager.invdetailTableAdapter = this.invdetailTableAdapter;
-			this.tableAdapterManager.invoiceTableAdapter = this.invoiceTableAdapter;
-			this.tableAdapterManager.paymntTableAdapter = this.paymntTableAdapter;
-			this.tableAdapterManager.quotesTableAdapter = null;
-			this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-			// 
-			// invdetailTableAdapter
-			// 
-			this.invdetailTableAdapter.ClearBeforeFill = false;
-			// 
-			// paymntTableAdapter
-			// 
-			this.paymntTableAdapter.ClearBeforeFill = true;
-			// 
-			// bsTest
-			// 
-			this.bsTest.DataMember = "invoice";
-			this.bsTest.DataSource = this.dsInvoice;
 			// 
 			// dataGridView1
 			// 
@@ -736,6 +572,170 @@
 			this.citystatezipDataGridViewTextBoxColumn.Name = "citystatezipDataGridViewTextBoxColumn";
 			this.citystatezipDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
+			// bsTest
+			// 
+			this.bsTest.DataMember = "invoice";
+			this.bsTest.DataSource = this.dsInvoice;
+			// 
+			// reportViewer1
+			// 
+			this.reportViewer1.DocumentMapWidth = 35;
+			reportDataSource1.Name = "cust";
+			reportDataSource1.Value = this.custBindingSource;
+			reportDataSource2.Name = "invoice";
+			reportDataSource2.Value = this.invoiceBindingSource;
+			reportDataSource3.Name = "invoicedetail";
+			reportDataSource3.Value = this.invdetailBindingSource;
+			reportDataSource4.Name = "payment";
+			reportDataSource4.Value = this.paymntBindingSource;
+			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+			this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MultiMemInvoice.rdlc";
+			this.reportViewer1.Location = new System.Drawing.Point(73, 27);
+			this.reportViewer1.Name = "reportViewer1";
+			this.reportViewer1.ServerReport.BearerToken = null;
+			this.reportViewer1.Size = new System.Drawing.Size(919, 308);
+			this.reportViewer1.TabIndex = 16;
+			this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
+			this.reportViewer1.ReportError += new Microsoft.Reporting.WinForms.ReportErrorEventHandler(this.reportViewer1_reportError);
+			// 
+			// chkPrint
+			// 
+			this.chkPrint.AutoSize = true;
+			this.chkPrint.Checked = true;
+			this.chkPrint.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.chkPrint.Location = new System.Drawing.Point(16, 5);
+			this.chkPrint.Name = "chkPrint";
+			this.chkPrint.Size = new System.Drawing.Size(131, 17);
+			this.chkPrint.TabIndex = 1;
+			this.chkPrint.Text = "Check/UnCheck Print";
+			this.chkPrint.UseVisualStyleBackColor = true;
+			this.chkPrint.CheckedChanged += new System.EventHandler(this.chkPrint_CheckedChanged);
+			// 
+			// dgInvoices
+			// 
+			this.dgInvoices.AllowUserToAddRows = false;
+			this.dgInvoices.AllowUserToDeleteRows = false;
+			this.dgInvoices.AutoGenerateColumns = false;
+			this.dgInvoices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
+			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			this.dgInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Collections,
+            this.InvoiceNo,
+            this.Shpdate,
+            this.SchName,
+            this.Schcode,
+            this.Schemail,
+            this.ContactEmail,
+            this.Balance});
+			this.dgInvoices.DataSource = this.bsInvoices;
+			this.dgInvoices.EnableHeadersVisualStyles = false;
+			this.dgInvoices.Location = new System.Drawing.Point(10, 27);
+			this.dgInvoices.Name = "dgInvoices";
+			this.dgInvoices.RowHeadersVisible = false;
+			this.dgInvoices.Size = new System.Drawing.Size(1096, 245);
+			this.dgInvoices.TabIndex = 0;
+			// 
+			// Collections
+			// 
+			this.Collections.DataPropertyName = "Holdpmt";
+			this.Collections.HeaderText = "Collections";
+			this.Collections.Name = "Collections";
+			// 
+			// InvoiceNo
+			// 
+			this.InvoiceNo.DataPropertyName = "Invno";
+			this.InvoiceNo.HeaderText = "Invoice #";
+			this.InvoiceNo.Name = "InvoiceNo";
+			this.InvoiceNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.InvoiceNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			// 
+			// Shpdate
+			// 
+			this.Shpdate.DataPropertyName = "ShpDate";
+			this.Shpdate.HeaderText = "Ship Date";
+			this.Shpdate.Name = "Shpdate";
+			// 
+			// SchName
+			// 
+			this.SchName.DataPropertyName = "Schname";
+			this.SchName.HeaderText = "School Name";
+			this.SchName.Name = "SchName";
+			// 
+			// Schcode
+			// 
+			this.Schcode.DataPropertyName = "Schname";
+			this.Schcode.HeaderText = "School Code";
+			this.Schcode.Name = "Schcode";
+			// 
+			// Schemail
+			// 
+			this.Schemail.DataPropertyName = "Schemail";
+			this.Schemail.HeaderText = "School Email";
+			this.Schemail.Name = "Schemail";
+			// 
+			// ContactEmail
+			// 
+			this.ContactEmail.DataPropertyName = "Contemail";
+			this.ContactEmail.HeaderText = "Contact Email";
+			this.ContactEmail.Name = "ContactEmail";
+			// 
+			// Balance
+			// 
+			this.Balance.DataPropertyName = "Baldue";
+			this.Balance.HeaderText = "Balance";
+			this.Balance.Name = "Balance";
+			// 
+			// tableAdapterManager1
+			// 
+			this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+			this.tableAdapterManager1.Connection = null;
+			this.tableAdapterManager1.custSearchTableAdapter = null;
+			this.tableAdapterManager1.custTableAdapter = null;
+			this.tableAdapterManager1.datecontTableAdapter = null;
+			this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+			// 
+			// dsSales
+			// 
+			this.dsSales.DataSetName = "dsSales";
+			this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// custTableAdapter
+			// 
+			this.custTableAdapter.ClearBeforeFill = false;
+			// 
+			// invoiceTableAdapter
+			// 
+			this.invoiceTableAdapter.ClearBeforeFill = false;
+			// 
+			// tableAdapterManager
+			// 
+			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+			this.tableAdapterManager.custTableAdapter = null;
+			this.tableAdapterManager.invdetailTableAdapter = this.invdetailTableAdapter;
+			this.tableAdapterManager.invoiceTableAdapter = this.invoiceTableAdapter;
+			this.tableAdapterManager.paymntTableAdapter = this.paymntTableAdapter;
+			this.tableAdapterManager.quotesTableAdapter = null;
+			this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+			// 
+			// invdetailTableAdapter
+			// 
+			this.invdetailTableAdapter.ClearBeforeFill = false;
+			// 
+			// paymntTableAdapter
+			// 
+			this.paymntTableAdapter.ClearBeforeFill = true;
+			// 
 			// frmInvoicInq
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -770,11 +770,11 @@
 			((System.ComponentModel.ISupportInitialize)(this.dgAddressErrors)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.bsTest)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgInvoices)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bsInvoices)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bsTest)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

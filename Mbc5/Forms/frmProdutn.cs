@@ -19,13 +19,22 @@ using BindingModels;
 using Exceptionless;
 using Exceptionless.Models;
 using Outlook = Microsoft.Office.Interop.Outlook;
-
+using Microsoft.Reporting.WinForms;
+using System.IO;
+using System.Reflection;
 namespace Mbc5.Forms
 {
 	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
 	{
 
-		private bool startup = true;
+		//Some time use this code to make textboxes tab on enter key
+		//	 if (e.KeyCode == Keys.Enter) {
+  //      SendKeys.Send("{tab}");
+  //      e.SuppressKeyPress = true;
+    
+
+
+	private bool startup = true;
 		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
 		{
 			InitializeComponent();
@@ -56,9 +65,13 @@ namespace Mbc5.Forms
 			EnableControls(this.btnInvoiceSrch);
 
 		}
+		public List<CoverDescriptions> CoverDescriptions { get; set; }
 		private void SetConnectionString()
 		{
 			frmMain frmMain = (frmMain)this.MdiParent;
+			this.invoiceCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -117,6 +130,76 @@ namespace Mbc5.Forms
 		private string CurrentProdNo { get; set; }
 		#endregion
 		#region "Methods"
+		private void ShippingEmail()
+		{
+			var cMainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+			var cPdfPath = cMainPath.Substring(0, cMainPath.IndexOf("Mbc5") + 4) + "\\tmp\\" + this.Invno.ToString() + ".pdf";
+			try
+			{
+				var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invno);
+				var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invno);
+				this.paymntTableAdapter.Fill(dsInvoice.paymnt,this.Invno);
+				var aaaa = this.invoiceCustTableAdapter.Fill(dsCust.cust, this.Schcode);
+				
+				Warning[] warnings;
+				string[] streamIds;
+				string mimeType = string.Empty;
+				string encoding = string.Empty;
+				string extension = string.Empty;
+				//string HIJRA_TODAY = "01/10/1435";
+				// ReportParameter[] param = new ReportParameter[3];
+				//param[0] = new ReportParameter("CUSTOMER_NUM", CUSTOMER_NUMTBX.Text);
+				//param[1] = new ReportParameter("REF_CD", REF_CDTB.Text);
+				//param[2] = new ReportParameter("HIJRA_TODAY", HIJRA_TODAY);
+
+				byte[] bytes = this.reportViewer1.LocalReport.Render(
+					"PDF",
+					null,
+					out mimeType,
+					out encoding,
+					out extension,
+					out streamIds,
+					out warnings);
+
+				using (FileStream fs = new FileStream(cPdfPath, FileMode.Create))
+				{
+					fs.Write(bytes, 0, bytes.Length);
+				}
+
+
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Failed to create invoice pdf.");
+			}
+
+			this.Cursor = Cursors.AppStarting;
+			string body = @"<p>Your yearbooks have shipped so be looking for them shortly. 
+							Thanks for a being a great customer and we look forward to working with you again next year.
+							If you have already rebooked for next year, thank you! <p/><p>If you are not already rebooked, please 
+							contact your Sales Consultant today at 1 - 800 - 247 - 1526. We appreciate your business and look
+							forward to working with you next year to preserve your school's memories.<p/><p>  An invoice is attached for you.
+						   If you are interested, we may have extra books available for you to purchase at your original cost per book, plus $12 for shipping. The shipping is a
+							flat fee whether you order one extra book or all of them.<p/><p>		
+							Please do not reply to this email.  If you have questions, please contact your Customer Service Representative.	<p/>
+
+							<p>www.memorybook.com / <p>";
+
+
+
+
+			string subj = "Your Planners have shipped!";
+			var row =(DataRowView) custBindingSource.Current;
+			string email =row["schemail"].ToString();
+			var emailHelper = new EmailHelper();
+			EmailType type = EmailType.Mbc;
+			List<OutlookAttachemt> attachment = new List<OutlookAttachemt>();
+			OutlookAttachemt att = new OutlookAttachemt() { Path = cPdfPath, Name = Invno.ToString()+".pdf" };
+			attachment.Add(att);
+
+			emailHelper.SendOutLookEmail(subj, email,"", body, type,attachment);
+			this.Cursor = Cursors.Default;
+		}
 		private void DisableControls(Control con)
 		{
 			foreach (Control c in con.Controls)
@@ -778,6 +861,7 @@ namespace Mbc5.Forms
 		{
 			shpdateDateTimePicker.Format = DateTimePickerFormat.Short;
 
+			
 		}
 
 		private void cstsvcdteDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -1067,6 +1151,10 @@ namespace Mbc5.Forms
 
 		private void btnProdSrch_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(txtProdNoSrch.Text))
+			{
+				return;
+			}
 			switch (tbProdutn.SelectedIndex)
 			{
 				case 0:
@@ -1084,8 +1172,6 @@ namespace Mbc5.Forms
 
 
 			}
-
-
 
 			var sqlQuery = new SQLQuery();
 			string query = "Select prodno,invno,schcode from produtn where prodno=@prodno";
@@ -3023,8 +3109,109 @@ namespace Mbc5.Forms
 			}
 		}
 
+		private void btnMbo_Click(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(txtMbo.Text))
+			{
+				return;
+			}
+			switch (tbProdutn.SelectedIndex)
+			{
+				case 0:
+					if (!SaveProdutn())
+					{
+						var result1 = MessageBox.Show("Production record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (result1 == DialogResult.No)
+						{
 
+							return;
+						}
+					}
+					break;
 
+			}
+
+			var sqlQuery = new SQLQuery();
+			string query = "Select prodno,invno,schcode from produtn where jobno=@jobno";
+			var parameters = new SqlParameter[] { new SqlParameter("@jobno", txtMbo.Text) };
+			var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, query, parameters);
+			if (result.Rows.Count > 0)
+			{
+				Schcode = result.Rows[0]["schcode"].ToString();
+				Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
+				Fill();
+			}
+			else
+			{ MessageBox.Show("Record was not found.", "Production MBO Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+			frmProdutn_Paint(this, null);
+		}
+
+		private void btnPrntMbOnline_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void shpdateDateTimePicker_Leave(object sender, EventArgs e)
+		{
+			ShippingEmail();
+		}
+
+		private void covertypeTextBox_Leave(object sender, EventArgs e)
+		{
+			string vDescription = "";
+			if (CoverDescriptions == null || CoverDescriptions.Count == 0)
+			{
+				if (!GetCoverDescriptions())
+				{
+					MessageBox.Show("Could not retrieve Cover Descriptions.");
+					return;
+				}
+			}
+				int vIndex = CoverDescriptions.FindIndex(s=>s.CoverType.ToUpper()==txtCoverType.Text.ToUpper());
+			if (vIndex > 0)
+			{
+				vDescription = CoverDescriptions[vIndex].CoverDescription;
+			}
+				switch (txtCoverType.Text.ToUpper())
+				{
+					case "":
+						{
+							txtCoverDescription.Text = "";
+							break;
+						}
+					case "SPE":
+						{
+							txtCoverDescription.Text = "Special Cover";
+							break;
+						}
+					case "MSOS":
+						{ txtCoverDescription.Text = "My Story/Our Story";
+						break;
+						}
+						
+					default:
+						{
+							txtCoverDescription.Text = vDescription;
+							break;
+						}		
+
+				}
+		}
+		private bool GetCoverDescriptions()
+		{
+			var sqlClient = new SQLCustomClient();
+			sqlClient.CommandText(@"Select CoverType,CoverDescription FROM CoverDescriptions Order By CoverType ");
+			var result = sqlClient.SelectMany<CoverDescriptions>();
+			if (result.IsError)
+			{ return false; }
+			else
+			{
+				CoverDescriptions = (List<CoverDescriptions>)result.Data;
+
+				return true;
+			}
+
+		}
 
 		#endregion
 

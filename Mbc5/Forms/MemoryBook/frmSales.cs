@@ -18,6 +18,7 @@ using Exceptionless;
 using Exceptionless.Models;
 using Outlook= Microsoft.Office.Interop.Outlook;
 using System.IO;
+using System.Reflection;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
         
@@ -584,8 +585,22 @@ namespace Mbc5.Forms.MemoryBook {
                 Details.Add(rec);
 
             }
-           
-            if (chkMLaminate.Checked) {
+			if (chkStory.Checked)
+			{
+				var rec = new InvoiceDetailBindingModel
+				{
+					invno = vinvno,
+					descr = "Our Story",
+					discpercent = 0,
+					price = Convert.ToDecimal(lblStoryAmount.Text),
+					schoolcode = this.Schcode
+				};
+
+				Details.Add(rec);
+
+			}
+
+			if (chkMLaminate.Checked) {
                 var rec = new InvoiceDetailBindingModel {
                     invno = vinvno,
                     descr = "Matte Laminate",
@@ -1035,11 +1050,23 @@ namespace Mbc5.Forms.MemoryBook {
                             lblYir.Text = "0.00";
                             Yir = 0;
                         }
+						//our story
+						decimal Story = 0;
+						if (chkStory.Checked)
+						{
+							Story = (BookOptionPricing.Story * numberOfCopies);
+							vBookCalcTax += (Story * this.TaxRate);
+							lblStoryAmount.Text = Story.ToString();
+						}
+						else
+						{
+							lblStoryAmount.Text = "0.00";
+							Story = 0;
+						}
 
-                        
 
-                        //Gloss
-                        decimal Gloss = 0;
+						//Gloss
+						decimal Gloss = 0;
                         if (chkGlossLam.Checked) {
                             if (chkHardBack.Checked || chkCaseBind.Checked) {
                                 lblLaminateAmt.Text = "0.00";
@@ -1107,7 +1134,7 @@ namespace Mbc5.Forms.MemoryBook {
                         this.SalesTax =Math.Round(vBookCalcTax,2,MidpointRounding.AwayFromZero);
                         this.lblSalesTax.Text = this.SalesTax.ToString("c");
 
-                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir +  Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
+                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story+  Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
 
                         lblsubtot.Text = SubTotal.ToString("c");
                         //calculate after subtotal
@@ -3081,11 +3108,35 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void button1_Click(object sender, EventArgs e)
         {
-		
-			
-            this.reportViewer1.RefreshReport();
+			//var cMainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+			//var cPdfPath = cMainPath.Substring(0, cMainPath.IndexOf("Mbc5") + 4) + "\\tmp\\" + this.Invno.ToString() + ".pdf";
+			//Warning[] warnings;
+			//string[] streamIds;
+			//string mimeType = string.Empty;
+			//string encoding = string.Empty;
+			//string extension = string.Empty;
+			////string HIJRA_TODAY = "01/10/1435";
+			//// ReportParameter[] param = new ReportParameter[3];
+			////param[0] = new ReportParameter("CUSTOMER_NUM", CUSTOMER_NUMTBX.Text);
+			////param[1] = new ReportParameter("REF_CD", REF_CDTB.Text);
+			////param[2] = new ReportParameter("HIJRA_TODAY", HIJRA_TODAY);
 
-        }
+			//byte[] bytes = this.reportViewer1.LocalReport.Render(
+			//	"PDF",
+			//	null,
+			//	out mimeType,
+			//	out encoding,
+			//	out extension,
+			//	out streamIds,
+			//	out warnings);
+
+			//using (FileStream fs = new FileStream(cPdfPath, FileMode.Create))
+			//{
+			//	fs.Write(bytes, 0, bytes.Length);
+			//}
+			this.reportViewer1.RefreshReport();
+
+		}
 
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
@@ -3245,6 +3296,11 @@ namespace Mbc5.Forms.MemoryBook {
 			}
 			MessageBox.Show("WIP records updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+		}
+
+		private void chkStory_Click_1(object sender, EventArgs e)
+		{
+			BookCalc();
 		}
 
 

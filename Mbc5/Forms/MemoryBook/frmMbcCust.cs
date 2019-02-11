@@ -135,7 +135,11 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void btnOracleSrch_Click(object sender, EventArgs e)
 		{
-            var currentSchool = this.Schcode;
+			if (string.IsNullOrEmpty(txtOracleCodeSrch.Text))
+			{
+				return;
+			}
+			var currentSchool = this.Schcode;
 			if (DoPhoneLog())
 			{
 				MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -171,7 +175,11 @@ namespace Mbc5.Forms.MemoryBook {
 		}
 
 		private void btnSchoolCode_Click(object sender,EventArgs e) {
-            var currentSchool = this.Schcode;
+			if (string.IsNullOrEmpty(txtSchCodesrch.Text))
+			{
+				return;
+			}
+			var currentSchool = this.Schcode;
             if (DoPhoneLog())
                 {
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
@@ -206,6 +214,9 @@ namespace Mbc5.Forms.MemoryBook {
             frmMbcCust_Paint(this, null);
         }
         private void btnSchoolSearch_Click(object sender,EventArgs e) {
+			if (string.IsNullOrEmpty(txtSchNamesrch.Text)){
+				return;
+			}
             var currentSchool = this.Schcode;
             if (DoPhoneLog()){
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
@@ -1116,23 +1127,23 @@ namespace Mbc5.Forms.MemoryBook {
 
 		private void schoutDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			schoutDateTimePicker.Format = DateTimePickerFormat.Long;
+			schoutDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void contdateDateTimePicker_ValueChanged_1(object sender, EventArgs e)
 		{
 			
-			contdateDateTimePicker.Format = DateTimePickerFormat.Long;
+			contdateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void initcontDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			initcontDateTimePicker.Format = DateTimePickerFormat.Long;
+			initcontDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void sourdateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			sourdateDateTimePicker.Format = DateTimePickerFormat.Long;
+			sourdateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void btnNewCustomer_Click(object sender, EventArgs e)
@@ -1208,17 +1219,17 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void firstDaySchoolDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            firstDaySchoolDateTimePicker.Format = DateTimePickerFormat.Long;
+            firstDaySchoolDateTimePicker.Format = DateTimePickerFormat.Short;
         }
 
         private void rbdateDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            rbdateDateTimePicker.Format= DateTimePickerFormat.Long;
+            rbdateDateTimePicker.Format= DateTimePickerFormat.Short;
         }
 
         private void xeldateDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            xeldateDateTimePicker.Format= DateTimePickerFormat.Long;
+            xeldateDateTimePicker.Format= DateTimePickerFormat.Short;
         }
 
         private void btnProdTckt_Click(object sender, EventArgs e)
@@ -1360,10 +1371,10 @@ namespace Mbc5.Forms.MemoryBook {
             this.Cursor = Cursors.Default;
         }
 
-		
-
-
-
+		private void taxExemptionReceivedDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			taxExemptionReceivedDateTimePicker.Format = DateTimePickerFormat.Short;
+		}
 
 		//Nothing below here
 	}

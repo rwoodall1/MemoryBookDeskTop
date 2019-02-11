@@ -235,6 +235,7 @@
 			this.txtSpecCvrEa = new System.Windows.Forms.TextBox();
 			this.txtFoilAd = new System.Windows.Forms.TextBox();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.lblStoryAmount = new System.Windows.Forms.Label();
 			this.chkStory = new System.Windows.Forms.CheckBox();
 			this.lblYir = new System.Windows.Forms.Label();
 			this.lblConvAmt = new System.Windows.Forms.Label();
@@ -1138,7 +1139,7 @@
 			invnoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			invnoLabel.Location = new System.Drawing.Point(1127, 14);
 			invnoLabel.Name = "invnoLabel";
-			invnoLabel.Size = new System.Drawing.Size(86, 16);
+			invnoLabel.Size = new System.Drawing.Size(90, 16);
 			invnoLabel.TabIndex = 11;
 			invnoLabel.Text = "Invoice No.";
 			// 
@@ -1267,7 +1268,7 @@
 			label15.Name = "label15";
 			label15.Size = new System.Drawing.Size(94, 13);
 			label15.TabIndex = 30;
-			label15.Text = "#to persoanlize";
+			label15.Text = "#to personalize";
 			// 
 			// label11
 			// 
@@ -1563,7 +1564,7 @@
 			this.lblSalesTax.Name = "lblSalesTax";
 			this.lblSalesTax.Size = new System.Drawing.Size(49, 13);
 			this.lblSalesTax.TabIndex = 187;
-			this.lblSalesTax.Text = "salestax";
+			this.lblSalesTax.Text = "0.00";
 			// 
 			// quotesBindingSource
 			// 
@@ -1577,7 +1578,7 @@
 			this.schooltaxrateLabel1.Name = "schooltaxrateLabel1";
 			this.schooltaxrateLabel1.Size = new System.Drawing.Size(38, 13);
 			this.schooltaxrateLabel1.TabIndex = 183;
-			this.schooltaxrateLabel1.Text = "label37";
+			this.schooltaxrateLabel1.Text = "0";
 			// 
 			// lblTaxRate
 			// 
@@ -2744,6 +2745,7 @@
 			// panel2
 			// 
 			this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel2.Controls.Add(this.lblStoryAmount);
 			this.panel2.Controls.Add(this.chkStory);
 			this.panel2.Controls.Add(this.lblYir);
 			this.panel2.Controls.Add(this.lblConvAmt);
@@ -2754,8 +2756,19 @@
 			this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.panel2.Location = new System.Drawing.Point(11, 259);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(245, 102);
+			this.panel2.Size = new System.Drawing.Size(343, 124);
 			this.panel2.TabIndex = 97;
+			// 
+			// lblStoryAmount
+			// 
+			this.lblStoryAmount.AutoSize = true;
+			this.lblStoryAmount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "storyamt", true));
+			this.lblStoryAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblStoryAmount.Location = new System.Drawing.Point(154, 78);
+			this.lblStoryAmount.Name = "lblStoryAmount";
+			this.lblStoryAmount.Size = new System.Drawing.Size(28, 13);
+			this.lblStoryAmount.TabIndex = 162;
+			this.lblStoryAmount.Text = "0.00";
 			// 
 			// chkStory
 			// 
@@ -2767,6 +2780,7 @@
 			this.chkStory.TabIndex = 161;
 			this.chkStory.Text = "Our Story";
 			this.chkStory.UseVisualStyleBackColor = true;
+			this.chkStory.Click += new System.EventHandler(this.chkStory_Click_1);
 			// 
 			// lblYir
 			// 
@@ -4070,11 +4084,12 @@
 			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
 			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
 			this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MemInvoice.rdlc";
-			this.reportViewer1.Location = new System.Drawing.Point(194, 199);
+			this.reportViewer1.Location = new System.Drawing.Point(71, 401);
 			this.reportViewer1.Name = "reportViewer1";
 			this.reportViewer1.ServerReport.BearerToken = null;
-			this.reportViewer1.Size = new System.Drawing.Size(767, 265);
+			this.reportViewer1.Size = new System.Drawing.Size(84, 91);
 			this.reportViewer1.TabIndex = 15;
+			this.reportViewer1.Visible = false;
 			this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
 			// 
 			// label34
@@ -5128,5 +5143,6 @@
         private System.Windows.Forms.Button btnInvoice;
         private System.Windows.Forms.Button btnCreateWIP;
         private System.Windows.Forms.Button btnPrntInvoice;
-    }
+		private System.Windows.Forms.Label lblStoryAmount;
+	}
     }

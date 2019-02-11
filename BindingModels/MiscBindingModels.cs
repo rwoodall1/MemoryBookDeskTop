@@ -119,4 +119,14 @@ namespace BindingModels
 		public int? CoversInvno { get; set; }
 		public int? WipInvno { get; set; }
 	}
+	public class OutlookAttachemt
+	{
+		public string Path { get; set; }
+		public string Name { get; set; }
+	}
+	public class CoverDescriptions
+	{
+		public string CoverType { get; set; }
+		public string CoverDescription { get; set; }
+	}
 }
