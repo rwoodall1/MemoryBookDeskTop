@@ -22,6 +22,7 @@ using Outlook = Microsoft.Office.Interop.Outlook;
 using Microsoft.Reporting.WinForms;
 using System.IO;
 using System.Reflection;
+using BaseClass;
 namespace Mbc5.Forms
 {
 	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
@@ -87,9 +88,12 @@ namespace Mbc5.Forms
 			this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.prtbkbdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			partBkDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			vendorTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 		}
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
+			// TODO: This line of code loads data into the 'dsProdutn.vendor' table. You can move, or remove it, as needed.
+			this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
 
 			this.SetConnectionString();
 			try
@@ -98,7 +102,11 @@ namespace Mbc5.Forms
 				this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
 				//LookUp Data
 				this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
-
+				vendorTableAdapter.Fill(dsProdutn.vendor);
+				DataTable BindingVendorList = dsProdutn.Tables["vendor"].Copy();
+				cmbBindingVendor.DataSource = BindingVendorList;
+				cmbBindingVendor.DisplayMember = "vendcd";
+				cmbBindingVendor.ValueMember = "vendcd";
 				Fill();
 				SetShipLabel();
 				SetEmail();
@@ -283,10 +291,13 @@ namespace Mbc5.Forms
 		{
 			if (Schcode != null)
 			{
+				try {
 				custTableAdapter.Fill(dsProdutn.cust, Schcode);
 				quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
-
 				produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
+				}catch(Exception ex) {
+					MbcMessageBox.Error(ex.Message, "");
+				}
 
 				if (dsProdutn.produtn.Count < 1)
 				{
@@ -301,9 +312,16 @@ namespace Mbc5.Forms
 					EnableControls(this.btnInvoiceSrch);
 				}
 				else { EnableAllControls(this); }
-				coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
-				//coversTableAdapter.Fill(dsProdutn.covers, this.Schcode);
-				coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
+				try {
+					coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
+					//coversTableAdapter.Fill(dsProdutn.covers, this.Schcode);
+					coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
+				} catch(Exception ex) {
+
+					MbcMessageBox.Error(ex.Message, "");
+					return;
+				};
+		
 
 				var row = (DataRowView)coversBindingSource1.Current;
 				var a = row["specinst"].ToString();
@@ -312,23 +330,41 @@ namespace Mbc5.Forms
 					DisableControls(this.tbProdutn.TabPages[2]);
 				}
 				else { EnableAllControls(this.tbProdutn.TabPages[2]); }
-				wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
-				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+				try {
+					wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
+					wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+				} catch(Exception ex) {
+
+					MbcMessageBox.Error(ex.Message, "");
+					return;
+				}
+				
 				if (dsProdutn.wip.Count < 1)
 				{
 					DisableControls(this.tbProdutn.TabPages[1]);
 				}
 				else { EnableAllControls(this.tbProdutn.TabPages[1]); }
-				this.partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
-				this.partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
+				try {
+					this.partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
+					this.partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
+				}catch(Exception ex) {
+					MbcMessageBox.Error(ex.Message, "");
+					return;
+				}
+				
 				if (dsProdutn.partbk.Count < 1)
 				{
 					DisableControls(this.tbProdutn.TabPages[4]);
 				}
 				else { EnableAllControls(this.tbProdutn.TabPages[4]); }
-
-				ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
-				prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
+				try {
+					ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
+					prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
+				} catch (Exception ex) {
+					MbcMessageBox.Error(ex.Message, "");
+					return;
+				}
+				
 				if (dsProdutn.ptbkb.Count < 1)
 				{
 					DisableControls(this.tbProdutn.TabPages[5]);
@@ -3211,6 +3247,82 @@ namespace Mbc5.Forms
 				return true;
 			}
 
+		}
+
+		private void endstrecvDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			endstrecvDateTimePicker.Format = DateTimePickerFormat.Short;
+		}
+
+		private void btnspCoverEmail_Click(object sender, EventArgs e)
+		{
+			var emailList = new List<string>();
+			DataRowView row =(DataRowView) custBindingSource.Current;
+			string vState = row["schstate"].ToString().Trim();
+			string vcontEmail = row["contemail"] != null ? row["contemail"].ToString().Trim() : "";
+			string vBcontEmail = row["bcontemail"] != null ? row["bcontemail"].ToString().Trim() : "";
+			string vCcontEmail = row["ccontemail"] != null ? row["ccontemail"].ToString().Trim() : "";
+			if (!string.IsNullOrEmpty(vcontEmail))
+			{
+				emailList.Add(vcontEmail);
+			}
+			if (!string.IsNullOrEmpty(vBcontEmail))
+			{
+				emailList.Add(vBcontEmail);
+			}
+			if (!string.IsNullOrEmpty(vCcontEmail))
+			{
+				emailList.Add(vCcontEmail);
+			}
+			var emailHelper = new EmailHelper();
+			string subject = "Cover upload Site (account available the following business day by noon central time)";
+			string body = @"Submission is easy: Go to the website https://ftp.memorybook.com <br /><br />
+							<strong>Login:</strong>  <br />User Name: " + Schcode + @"m <br />
+							Password:" + vState + @"65301<br /><br /><br />
+			           Once logged in, drag and drop your files into the window. Please be sure to include a word document if you have additional instructions for your cover.";
+
+		
+			emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
+		}
+
+		private void btnStandarCoverEmail_Click(object sender, EventArgs e)
+		{
+			var emailList = new List<string>();
+			DataRowView custRow = (DataRowView)custBindingSource.Current;
+			DataRowView prodRow = (DataRowView)produtnBindingSource.Current;
+			string vSchname = custRow["schname"].ToString().Trim();
+			string vJobNo= prodRow["jobno"]!=null ?prodRow["jobno"].ToString().Trim():"";
+			string vcontEmail = custRow["contemail"]!=null?custRow["contemail"].ToString().Trim():"";
+			string vBcontEmail = custRow["bcontemail"]!=null?custRow["bcontemail"].ToString().Trim():"";
+			string vCcontEmail= custRow["ccontemail"]!=null? custRow["ccontemail"].ToString().Trim():"";
+			if (!string.IsNullOrEmpty(vcontEmail))
+			{
+				emailList.Add(vcontEmail);
+			}
+			if (!string.IsNullOrEmpty(vBcontEmail))
+			{
+				emailList.Add(vBcontEmail);
+			}
+			if (!string.IsNullOrEmpty(vCcontEmail))
+			{
+				emailList.Add(vCcontEmail);
+			}
+			var emailHelper = new EmailHelper();
+			string subject = Schcode + " " + vSchname + " Center Login Information https://coverorders.memorybook.com/login";
+			string body = @"Order Center Login (Online account available the following business day by noon central time)<br /><br /> 
+						Ordering is easy:  Go to the website https://coverorders.memorybook.com/login <br /><br /> 
+						<strong>Login:</strong>  <br />User Name: "+ vJobNo +@"<br />
+						Password: Adviser  <br /><br />
+						<strong>Ordering your cover:</strong> <br /> &nbsp;&nbsp;•Select Yearbook covers  <br />&nbsp;&nbsp; •Choose cover type <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a. Standard cover  
+						<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b. Customizable Standard covers (11 covers you can choose <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors and add a mascot)<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c. NEW Mascot Standard Covers, customizable with color <br/>  
+						<br />Overprinting is available at no charge on standard covers with regular text size, color and font if information is submitted by November 15th.  Other modifications will be an additional charge. <br /><br />  
+						<strong>Ordering Yearbook Promotional Materials </strong><br />Please note there are 4 customizable options: you can customize take home envelopes, hall posters and last chance fliers. If you are signed up for online parent pay you can create your fliers.<br />  
+						&nbsp;&nbsp;•Select the yearbook promotional materials option<br />&nbsp;&nbsp;•Select the materials you would like to order<br />&nbsp;&nbsp;•Select the quantity and add to cart<br />  
+						&nbsp;&nbsp;•Proceed to checkout <br /><br />
+						Step by step instructions for all of the Order Center options can be found at http://www.memorybook.com/documents/standard_covers_online.pdf ";
+
+			
+			emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
 		}
 
 		#endregion

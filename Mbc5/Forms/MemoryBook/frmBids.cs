@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using Mbc5.Classes;
 using System.Linq;
 using BindingModels;
+using BaseClass;
 
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmBids : BaseClass.frmBase, INotifyPropertyChanged
@@ -107,12 +108,15 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (Schcode != null)
             {
-                this.custTableAdapter.Fill(this.dsBids.cust, this.Schcode);
-                this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
-                this.bidsTableAdapter.Fill(this.dsBids.bids, this.Schcode);
-                DataRowView current = (DataRowView)bidsBindingSource.Current;
-                this.Schname = current["schname"].ToString();
-
+				try {
+					this.custTableAdapter.Fill(this.dsBids.cust, this.Schcode);
+					this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
+					this.bidsTableAdapter.Fill(this.dsBids.bids, this.Schcode);
+					DataRowView current = (DataRowView)bidsBindingSource.Current;
+					this.Schname = current["schname"].ToString();
+				}catch(Exception ex) {
+					MbcMessageBox.Error(ex.Message, "");
+				}
             }
             
             CalculateEach();
@@ -858,11 +862,15 @@ namespace Mbc5.Forms.MemoryBook {
                 case 0:
             
                     {
-                        bidsBindingSource.EndEdit();
-                        bidsTableAdapter.Update(dsBids.bids);
-                        break;
+						try {
+							bidsBindingSource.EndEdit();
+							bidsTableAdapter.Update(dsBids.bids);
+						
+						}catch(Exception ex) {
+							MbcMessageBox.Error(ex.Message,""):
+						}
                     }
-
+					break;
 
 
             }
@@ -936,6 +944,7 @@ namespace Mbc5.Forms.MemoryBook {
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Zipcode",this.SchoolZipCode)
             };
+			
             var result = sqlQuery.ExecuteReaderAsync<TaxRate>(CommandType.Text, querystring, parameters);
             if (result != null)
             {

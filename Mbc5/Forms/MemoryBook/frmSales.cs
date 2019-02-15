@@ -19,6 +19,7 @@ using Exceptionless.Models;
 using Outlook= Microsoft.Office.Interop.Outlook;
 using System.IO;
 using System.Reflection;
+using BaseClass;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged {
         
@@ -341,13 +342,16 @@ namespace Mbc5.Forms.MemoryBook {
                 SqlParameter[] parameters1 = new SqlParameter[] {
                 new SqlParameter("@Invno",lblInvoice.Text)
             };
-                //use same parameter
-                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters1);
-                if (result1 == 0 || result == 0) { retval = false; }
+				try {
+					//use same parameter
+					var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters1);
+					if (result1 == 0 || result == 0) { retval = false; }
 
-                this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToInt32(lblInvoice.Text));
-                this.invdetailTableAdapter.Fill(dsInvoice.invdetail, Convert.ToInt32(lblInvoice.Text));
-              
+					this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToInt32(lblInvoice.Text));
+					this.invdetailTableAdapter.Fill(dsInvoice.invdetail, Convert.ToInt32(lblInvoice.Text));
+				}catch(Exception ex) {
+					MbcMessageBox.Error(ex.Message,"");
+				}
                
                 this.Fill();
             }
@@ -1458,10 +1462,15 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void Fill() {
             if (!string.IsNullOrEmpty(Schcode)) {
-                custTableAdapter.Fill(dsSales.cust, Schcode);
+				try {
+					custTableAdapter.Fill(dsSales.cust, Schcode);
+
+					quotesTableAdapter.Fill(dsSales.quotes, Schcode);
+					this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
+				} catch(Exception ex {
+					MbcMessageBox.Error(ex.Message, "");
+				}
                
-                quotesTableAdapter.Fill(dsSales.quotes, Schcode);
-               this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim(); 
             }
             if (Invno != 0) {
                 var pos = quotesBindingSource.Find("invno", this.Invno);

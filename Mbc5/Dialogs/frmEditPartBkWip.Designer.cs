@@ -90,7 +90,7 @@
             this.tableAdapterManager.coversTableAdapter = null;
             this.tableAdapterManager.custTableAdapter = null;
             this.tableAdapterManager.PartBkDetailTableAdapter = this.partBkDetailTableAdapter;
-            this.tableAdapterManager.produtnTableAdapter = null;
+            
             this.tableAdapterManager.quotesTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.WipDescriptionsTableAdapter = this.wipDescriptionsTableAdapter;

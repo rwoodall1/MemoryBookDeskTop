@@ -106,30 +106,33 @@ namespace Mbc5.Forms.MemoryBook {
                 TeleGo = true;
                 MktGo = true;
             }
+			try {
+				this.statesTableAdapter.Fill(this.lookUp.states);
+				this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
+				// TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
+				this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
+				this.lkpPrevPubTableAdapter.Fill(this.lookUp.lkpPrevPub);
+				this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
+				this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
+				// TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
+				this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
+				// TODO: This line of code loads data into the 'lookUp.lkpComments' table. You can move, or remove it, as needed.
+				this.lkpCommentsTableAdapter.Fill(this.lookUp.lkpComments);
+				// TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
 
-            this.statesTableAdapter.Fill(this.lookUp.states);
-            this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
-            // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
-            this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
-            this.lkpPrevPubTableAdapter.Fill(this.lookUp.lkpPrevPub);
-            this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
-            this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
-            // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
-            this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
-            // TODO: This line of code loads data into the 'lookUp.lkpComments' table. You can move, or remove it, as needed.
-            this.lkpCommentsTableAdapter.Fill(this.lookUp.lkpComments);
-            // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
-            
-            // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
-            this.datecontTableAdapter.Fill(this.dsCust.datecont, vSchocode);
-            // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
+				// TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
+				this.datecontTableAdapter.Fill(this.dsCust.datecont, vSchocode);
+				// TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
 
-            this.custTableAdapter.Fill(this.dsCust.cust, vSchocode);
-            // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
-            this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
-            // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
-           
-            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, vSchocode);
+				this.custTableAdapter.Fill(this.dsCust.cust, vSchocode);
+				// TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
+				this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
+				// TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
+
+				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, vSchocode);
+			}catch(Exception ex) {
+				MbcMessageBox.Error(ex.Message, "");
+			}
             
            
         }
@@ -153,21 +156,57 @@ namespace Mbc5.Forms.MemoryBook {
 					return;
 				}
 			}
-			var records = this.custTableAdapter.FillByOracleCode(this.dsCust.cust, txtOracleCodeSrch.Text);
+			int records = 0;
+			try
+			{
+		
+				records = this.custTableAdapter.FillByOracleCode(this.dsCust.cust, txtOracleCodeSrch.Text);
+			}
+			catch(Exception ex)
+			{
+				MbcMessageBox.Error(ex.Message, "Error");
+				return;
+			}
+			
 			if (records < 1)
 			{
-				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
+				try
+				{ this.custTableAdapter.Fill(this.dsCust.cust, currentSchool); }
+				catch (Exception ex)
+				{
+					MbcMessageBox.Error(ex.Message, "Error");
+					return;
+				}
+				
                 this.SetInvnoSchCode();
 				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
-				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-				TeleGo = false;
+
+				try
+				{
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+					TeleGo = false;
+				}
+				catch (Exception ex)
+				{
+					MbcMessageBox.Error(ex.Message, "Error");
+					return;
+				}
 			}
 			else
 			{
-				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
-				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-				TeleGo = false;
+				try
+				{
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+					TeleGo = false;
+				}
+				catch (Exception ex)
+				{
+					MbcMessageBox.Error(ex.Message, "Error");
+					return;
+				}
+				
 
 			}
 			txtOracleCodeSrch.Text = "";
@@ -191,22 +230,47 @@ namespace Mbc5.Forms.MemoryBook {
                     return;
                     }
                 }
-            var records = this.custTableAdapter.Fill(this.dsCust.cust,txtSchCodesrch.Text);
+			int records = 0;
+			try
+			{
+				 records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+			}
+			catch(Exception ex)
+			{
+				MbcMessageBox.Error(ex.Message, "Error");
+				return;
+
+			}
+          
             if (records < 1)
                 {
-                this.custTableAdapter.Fill(this.dsCust.cust,currentSchool);
-                this.Schcode = currentSchool;
-                MessageBox.Show("Record was not found.","Search",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
-                this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-                TeleGo = false;
+				try
+				{
+					this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
+					this.Schcode = currentSchool;
+					MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+					TeleGo = false;
+				}
+				catch (Exception ex)
+				{
+					MbcMessageBox.Error(ex.Message, "Error");
+				}
+               
                 }
             else
                 {
+				try
+				{
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+					TeleGo = false;
+				}catch(Exception ex)
+				{
+					MbcMessageBox.Error(ex.Message, "Error");
+				}
                 
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
-                this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
-                TeleGo = false;
               
                 }
             txtSchCodesrch.Text = "";
@@ -227,26 +291,34 @@ namespace Mbc5.Forms.MemoryBook {
 				return;
                 }
             //var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
-            var sqlQuery = new SQLQuery();
-           var queryString = @"SELECT schcode, schname,schcity,schstate, schzip FROM cust
+            var sqlQuery = new SQLCustomClient();
+            sqlQuery.CommandText( @"SELECT schcode, schname,schcity,schstate, schzip FROM cust
                               WHERE(schname LIKE @schname + '%')
-                              ORDER BY   schcode";
-            SqlParameter[] parameters = new SqlParameter[] {
-               new SqlParameter("@schname",txtSchNamesrch.Text.Trim())
-            };
-            var dataResult = sqlQuery.ExecuteReaderAsync<SchoolNameSearchModel>(CommandType.Text, queryString, parameters);
-            var records = (List<SchoolNameSearchModel>)dataResult;
+                              ORDER BY   schcode");
+			sqlQuery.AddParameter("@schname",txtSchNamesrch.Text.Trim());
+
+			var dataResult = sqlQuery.SelectMany<SchoolNameSearchModel>();
+			if (dataResult.IsError) {
+				MbcMessageBox.Error(dataResult.Errors[0].ErrorMessage, "Error");
+				return;
+			}
+            var records = (List<SchoolNameSearchModel>)dataResult.Data;
          
 
 
             if ( records==null || records.Count < 1)
 			{
-				this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
+				try {
+					this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
               
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
-				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-				TeleGo = false;
-				MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+					TeleGo = false;
+					MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}catch(Exception ex) {
+					MbcMessageBox.Error(ex.Message, "");
+				}
+				
 			}
 			else if (records.Count > 1)
 			{
@@ -259,26 +331,41 @@ namespace Mbc5.Forms.MemoryBook {
 				this.Cursor = Cursors.Default;
 				if (result != DialogResult.Cancel)
 				{
-					this.custTableAdapter.Fill(this.dsCust.cust, frmSelectCust.retval);
-					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
-					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-					TeleGo = false;
+					try {
+						this.custTableAdapter.Fill(this.dsCust.cust, frmSelectCust.retval);
+						this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+						this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+						TeleGo = false;
+					} catch (Exception ex) {
+						MbcMessageBox.Error(ex.Message, "");
+					}
+					
 				}
 				else
 				{
-					//refill normal
-					this.custTableAdapter.Fill(this.dsCust.cust,records[0].schcode );
-					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
-					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-					TeleGo = false;
+					try {
+						//refill normal
+						this.custTableAdapter.Fill(this.dsCust.cust, records[0].schcode);
+						this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+						this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+						TeleGo = false;
+					} catch (Exception ex) {
+						MbcMessageBox.Error(ex.Message, "");
+					}
+					
 				}
 			}
 
 			else
 			{
-				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
-				this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-				TeleGo = false;
+				try {
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+					TeleGo = false;
+				}catch(Exception ex) {
+					MbcMessageBox.Error(ex.Message, "");
+				}
+				
 
 			}
 				txtSchNamesrch.Text = "";
@@ -348,9 +435,14 @@ namespace Mbc5.Forms.MemoryBook {
 				SqlParameter[] parameters = new SqlParameter[] {
 				new SqlParameter("@schcode",schcode)
 			};
+				try {
 				var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
 				this.custTableAdapter.Fill(this.dsCust.cust, "038752");//set to cs record   
                 this.SetInvnoSchCode();
+				} catch (Exception ex) {
+					MbcMessageBox.Error(ex.Message, "");
+				}
+				
             }
 
 		}
@@ -567,7 +659,12 @@ namespace Mbc5.Forms.MemoryBook {
 
 
 					Save();
-					this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+					try {
+						this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+					}catch(Exception ex){
+						MbcMessageBox.Error(ex.Message, "");
+					}
+					
                     this.SetInvnoSchCode();
                 };
 			}//not = 0
@@ -832,7 +929,8 @@ namespace Mbc5.Forms.MemoryBook {
                         cmd.ExecuteNonQuery();
                         TeleLogAdded = false;
                         TeleGo = true;
-                        }
+					
+					}
                     catch (Exception ex)
                         {
                         MessageBox.Show("Failed to update telephone log record.");
@@ -840,8 +938,12 @@ namespace Mbc5.Forms.MemoryBook {
                         //go on we are not stopping the program for this
                         }
                     finally { cmd.Connection.Close(); }
-
-                    this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+					try {
+						this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+					}catch(Exception ex) {
+						MbcMessageBox.Error(ex.Message, "");
+					}
+                    
                     }
                 }
             else
@@ -853,11 +955,15 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
         private void DataRefresh() {
-            
-                this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+			try {
+					this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,this.Schcode);
                 this.datecontTableAdapter.Fill(this.dsCust.datecont,this.Schcode);
-            this.SetInvnoSchCode();
+				this.SetInvnoSchCode();
+			}catch(Exception ex) {
+				MbcMessageBox.Error(ex.Message, "");
+			}
+               
         }
         private string GetInstructions()
         {
@@ -1083,8 +1189,13 @@ namespace Mbc5.Forms.MemoryBook {
             }
 
         private void custDataGridView_Enter(object sender,EventArgs e) {
-            this.custTableAdapter.Fill(this.dsCust.cust,this.Schcode);
-            SetInvnoSchCode();
+			try {
+				this.custTableAdapter.Fill(this.dsCust.cust,this.Schcode);
+				SetInvnoSchCode();
+			} catch (Exception ex) {
+				MbcMessageBox.Error(ex.Message, "");
+			}
+            
             }
 
        

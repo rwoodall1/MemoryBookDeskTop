@@ -7,21 +7,22 @@
 <DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="True" ViewPortX="-42" ViewPortY="-47" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:produtn" ZOrder="1" X="414" Y="-24" Height="343" Width="226" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="254" />
-    <Shape ID="DesignTable:cust" ZOrder="9" X="-19" Y="351" Height="305" Width="168" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="254" />
-    <Shape ID="DesignTable:quotes" ZOrder="4" X="154" Y="2" Height="132" Width="227" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="140" SplitterPosition="24" />
-    <Shape ID="DesignTable:partbk" ZOrder="6" X="425" Y="174" Height="94" Width="183" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="216" SplitterPosition="25" />
-    <Shape ID="DesignTable:ptbkb" ZOrder="23" X="863" Y="164" Height="94" Width="179" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
-    <Shape ID="DesignTable:wip" ZOrder="18" X="215" Y="513" Height="208" Width="165" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
-    <Shape ID="DesignTable:wipg" ZOrder="15" X="1251" Y="120" Height="75" Width="173" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="45" OldDataTableHeight="121" SplitterPosition="25" />
-    <Shape ID="DesignTable:covers" ZOrder="2" X="667" Y="141" Height="763" Width="182" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="24" SplitterPosition="693" />
-    <Shape ID="DesignTable:WipDetail" ZOrder="21" X="171" Y="243" Height="54" Width="202" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="64" OldDataTableHeight="216" SplitterPosition="24" />
-    <Shape ID="DesignTable:WipDescriptions" ZOrder="20" X="961" Y="751" Height="54" Width="240" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="84" OldDataTableHeight="83" SplitterPosition="24" />
-    <Shape ID="DesignTable:coverdetail" ZOrder="3" X="646" Y="271" Height="135" Width="209" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="27" OldDataTableHeight="227" SplitterPosition="27" />
-    <Shape ID="DesignTable:PartBkDetail" ZOrder="5" X="417" Y="352" Height="55" Width="217" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="82" OldDataTableHeight="197" SplitterPosition="25" />
-    <Shape ID="DesignTable:prtbkbdetail" ZOrder="11" X="1098" Y="380" Height="287" Width="217" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
+    <Shape ID="DesignTable:cust" ZOrder="10" X="-19" Y="351" Height="305" Width="168" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="254" />
+    <Shape ID="DesignTable:quotes" ZOrder="5" X="154" Y="2" Height="132" Width="227" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="140" SplitterPosition="24" />
+    <Shape ID="DesignTable:partbk" ZOrder="7" X="425" Y="174" Height="94" Width="183" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="216" SplitterPosition="25" />
+    <Shape ID="DesignTable:ptbkb" ZOrder="24" X="863" Y="164" Height="94" Width="179" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
+    <Shape ID="DesignTable:wip" ZOrder="19" X="215" Y="513" Height="208" Width="165" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
+    <Shape ID="DesignTable:wipg" ZOrder="16" X="1251" Y="120" Height="75" Width="173" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="45" OldDataTableHeight="121" SplitterPosition="25" />
+    <Shape ID="DesignTable:covers" ZOrder="3" X="667" Y="141" Height="763" Width="182" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="24" SplitterPosition="693" />
+    <Shape ID="DesignTable:WipDetail" ZOrder="22" X="171" Y="243" Height="54" Width="202" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="64" OldDataTableHeight="216" SplitterPosition="24" />
+    <Shape ID="DesignTable:WipDescriptions" ZOrder="21" X="961" Y="751" Height="54" Width="240" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="84" OldDataTableHeight="83" SplitterPosition="24" />
+    <Shape ID="DesignTable:coverdetail" ZOrder="4" X="646" Y="271" Height="135" Width="209" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="27" OldDataTableHeight="227" SplitterPosition="27" />
+    <Shape ID="DesignTable:PartBkDetail" ZOrder="6" X="417" Y="352" Height="55" Width="217" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="82" OldDataTableHeight="197" SplitterPosition="25" />
+    <Shape ID="DesignTable:prtbkbdetail" ZOrder="12" X="1098" Y="380" Height="287" Width="217" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
+    <Shape ID="DesignTable:vendor" ZOrder="2" X="0" Y="0" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:quotes_produtn" ZOrder="24" LineWidth="11">
+    <Connector ID="DesignRelation:quotes_produtn" ZOrder="25" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>381</X>
@@ -33,7 +34,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:produtn_wip" ZOrder="7" LineWidth="11">
+    <Connector ID="DesignRelation:produtn_wip" ZOrder="8" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>431</X>
@@ -49,7 +50,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:wip_WipDetail" ZOrder="22" LineWidth="11">
+    <Connector ID="DesignRelation:wip_WipDetail" ZOrder="23" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>215</X>
@@ -65,7 +66,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:produtn_covers" ZOrder="19" LineWidth="11">
+    <Connector ID="DesignRelation:produtn_covers" ZOrder="20" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>592</X>
@@ -73,15 +74,15 @@
         </Point>
         <Point>
           <X>592</X>
-          <Y>327</Y>
+          <Y>441</Y>
         </Point>
         <Point>
           <X>667</X>
-          <Y>327</Y>
+          <Y>441</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:covers_coverdetail" ZOrder="17" LineWidth="11">
+    <Connector ID="DesignRelation:covers_coverdetail" ZOrder="18" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>821</X>
@@ -101,7 +102,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:produtn_wipg" ZOrder="16" LineWidth="11">
+    <Connector ID="DesignRelation:produtn_wipg" ZOrder="17" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>640</X>
@@ -113,7 +114,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:produtn_partbk" ZOrder="14" LineWidth="11">
+    <Connector ID="DesignRelation:produtn_partbk" ZOrder="15" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>640</X>
@@ -133,7 +134,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:partbk_PartBkDetail" ZOrder="13" LineWidth="11">
+    <Connector ID="DesignRelation:partbk_PartBkDetail" ZOrder="14" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>600</X>
@@ -153,7 +154,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:produtn_ptbkb" ZOrder="12" LineWidth="11">
+    <Connector ID="DesignRelation:produtn_ptbkb" ZOrder="13" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>640</X>
@@ -165,7 +166,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:ptbkb_prtbkbdetail" ZOrder="10" LineWidth="11">
+    <Connector ID="DesignRelation:ptbkb_prtbkbdetail" ZOrder="11" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>1025</X>
@@ -181,7 +182,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:cust_quotes" ZOrder="8" LineWidth="11">
+    <Connector ID="DesignRelation:cust_quotes" ZOrder="9" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>132</X>

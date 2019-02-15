@@ -701,7 +701,7 @@
 			this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
 			this.tableAdapterManager1.Connection = null;
 			this.tableAdapterManager1.custSearchTableAdapter = null;
-			this.tableAdapterManager1.custTableAdapter = null;
+		
 			this.tableAdapterManager1.datecontTableAdapter = null;
 			this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
 			// 
