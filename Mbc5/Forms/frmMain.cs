@@ -14,7 +14,7 @@ using BaseClass.Forms;
 using System.Diagnostics;
 using Mbc5.LookUpForms;
 using NLog;
-using Mbc5.Reports;
+//using Mbc5.Reports;
 using Mbc5.Classes;
 using System.Data.SqlClient;
 using Exceptionless;
@@ -619,13 +619,13 @@ namespace Mbc5.Forms
 
         private void invoicesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //this.Cursor = Cursors.AppStarting;
+			this.Cursor = Cursors.AppStarting;
 
-            //frmInvoicInq frmInvoice = new frmInvoicInq(this.ApplicationUser);
-            //frmInvoice.MdiParent = this;
-            //frmInvoice.Show();
-            //this.Cursor = Cursors.Default;
-        }
+			frmInvoicInq frmInvoice = new frmInvoicInq(this.ApplicationUser);
+			frmInvoice.MdiParent = this;
+			frmInvoice.Show();
+			this.Cursor = Cursors.Default;
+		}
 
         public int GetNewInvno()
         {

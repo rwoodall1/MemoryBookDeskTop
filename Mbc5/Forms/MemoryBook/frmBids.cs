@@ -867,7 +867,7 @@ namespace Mbc5.Forms.MemoryBook {
 							bidsTableAdapter.Update(dsBids.bids);
 						
 						}catch(Exception ex) {
-							MbcMessageBox.Error(ex.Message,""):
+							MbcMessageBox.Error(ex.Message, "");
 						}
                     }
 					break;

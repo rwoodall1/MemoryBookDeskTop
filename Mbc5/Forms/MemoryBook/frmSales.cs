@@ -766,7 +766,9 @@ namespace Mbc5.Forms.MemoryBook {
         //Sales
         private bool SaveSales() {
             bool retval = false;
-            if (quotesBindingSource.Count > 0) {
+			this.quotesBindingSource.EndEdit();
+
+			if (quotesBindingSource.Count > 0) {
                 if (ValidSales()) {
 
                     try {
@@ -1467,7 +1469,7 @@ namespace Mbc5.Forms.MemoryBook {
 
 					quotesTableAdapter.Fill(dsSales.quotes, Schcode);
 					this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
-				} catch(Exception ex {
+				} catch(Exception ex){
 					MbcMessageBox.Error(ex.Message, "");
 				}
                
@@ -2309,15 +2311,16 @@ namespace Mbc5.Forms.MemoryBook {
 
         //end online sales
         private void txtInitials_Validating(object sender, CancelEventArgs e) {
-            if (this.tabSales.SelectedIndex == 3 && txtInitials.Enabled == true) {
-                errorProvider1.SetError(txtInitials, "");
-                if (String.IsNullOrEmpty(txtInitials.Text)) {
-                    errorProvider1.SetError(txtInitials, "Please enter your initials.");
-                    e.Cancel = true;
+		
+			if (this.tabSales.SelectedIndex == 3 && txtInitials.Enabled == true) {
+				errorProvider1.SetError(txtInitials, "");
+				if (String.IsNullOrEmpty(txtInitials.Text)) {
+					errorProvider1.SetError(txtInitials, "Please enter your initials.");
+					e.Cancel = true;
 
-                }
-            }
-        }
+				}
+			}
+		}
         private void txtBYear_Validating(object sender, CancelEventArgs e)
         {
 
@@ -2635,7 +2638,9 @@ namespace Mbc5.Forms.MemoryBook {
                     e.Cancel = true;
 
                 }
-            }
+			} else {
+				txtCredits.Text = "0.00";
+			}
         }
 
         private void txtCredits2_Validating(object sender, CancelEventArgs e)
@@ -3310,6 +3315,10 @@ namespace Mbc5.Forms.MemoryBook {
 		private void chkStory_Click_1(object sender, EventArgs e)
 		{
 			BookCalc();
+		}
+
+		private void cred_etcTextBox_Validating(object sender, CancelEventArgs e) {
+
 		}
 
 

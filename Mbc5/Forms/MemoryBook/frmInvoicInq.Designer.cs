@@ -30,14 +30,9 @@
         {
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.dsCust = new Mbc5.DataSets.dsCust();
 			this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -56,40 +51,6 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.dgAddressErrors = new System.Windows.Forms.DataGridView();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.schcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.invnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.qtedateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.nopagesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.nocopiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.bookeaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.sourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ponumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.invtotDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.paymentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.baldueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.contfnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.contlnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.schnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.schaddrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.schaddr2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.schcityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.schstateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.schzipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.contryearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.poamtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dc2DataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-			this.allclrckDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-			this.laminateDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-			this.fldtypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.freebooksDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dateCreatedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dateModifiedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.modifiedByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.salesTaxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.beforeTaxTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.citystatezipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.bsTest = new System.Windows.Forms.BindingSource(this.components);
 			this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
 			this.chkPrint = new System.Windows.Forms.CheckBox();
 			this.dgInvoices = new System.Windows.Forms.DataGridView();
@@ -102,6 +63,7 @@
 			this.ContactEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.bsInvoices = new System.Windows.Forms.BindingSource(this.components);
+			this.bsTest = new System.Windows.Forms.BindingSource(this.components);
 			this.tableAdapterManager1 = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
 			this.dsSales = new Mbc5.DataSets.dsSales();
 			this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
@@ -111,6 +73,7 @@
 			this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
 			this.TopPanel.SuspendLayout();
 			this.BottomPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
@@ -120,10 +83,9 @@
 			this.pnlError.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgAddressErrors)).BeginInit();
 			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bsTest)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgInvoices)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bsInvoices)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.bsTest)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -140,6 +102,10 @@
 			this.BottomPanel.Controls.Add(this.btnSearch);
 			this.BottomPanel.Location = new System.Drawing.Point(0, 578);
 			this.BottomPanel.Size = new System.Drawing.Size(1344, 75);
+			// 
+			// FullInvoiceBindingSource
+			// 
+			this.FullInvoiceBindingSource.DataSource = typeof(BindingModels.FullInvoice);
 			// 
 			// custBindingSource
 			// 
@@ -302,7 +268,6 @@
 			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.panel1.Controls.Add(this.dataGridView1);
 			this.panel1.Controls.Add(this.reportViewer1);
 			this.panel1.Controls.Add(this.chkPrint);
 			this.panel1.Controls.Add(this.dgInvoices);
@@ -312,292 +277,19 @@
 			this.panel1.Size = new System.Drawing.Size(1342, 482);
 			this.panel1.TabIndex = 9;
 			// 
-			// dataGridView1
-			// 
-			this.dataGridView1.AutoGenerateColumns = false;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.schcodeDataGridViewTextBoxColumn,
-            this.invnoDataGridViewTextBoxColumn,
-            this.qtedateDataGridViewTextBoxColumn,
-            this.nopagesDataGridViewTextBoxColumn,
-            this.nocopiesDataGridViewTextBoxColumn,
-            this.bookeaDataGridViewTextBoxColumn,
-            this.sourceDataGridViewTextBoxColumn,
-            this.ponumDataGridViewTextBoxColumn,
-            this.invtotDataGridViewTextBoxColumn,
-            this.paymentsDataGridViewTextBoxColumn,
-            this.baldueDataGridViewTextBoxColumn,
-            this.contfnameDataGridViewTextBoxColumn,
-            this.contlnameDataGridViewTextBoxColumn,
-            this.schnameDataGridViewTextBoxColumn,
-            this.schaddrDataGridViewTextBoxColumn,
-            this.schaddr2DataGridViewTextBoxColumn,
-            this.schcityDataGridViewTextBoxColumn,
-            this.schstateDataGridViewTextBoxColumn,
-            this.schzipDataGridViewTextBoxColumn,
-            this.contryearDataGridViewTextBoxColumn,
-            this.poamtDataGridViewTextBoxColumn,
-            this.dc2DataGridViewCheckBoxColumn,
-            this.allclrckDataGridViewCheckBoxColumn,
-            this.laminateDataGridViewCheckBoxColumn,
-            this.fldtypeDataGridViewTextBoxColumn,
-            this.freebooksDataGridViewTextBoxColumn,
-            this.dateCreatedDataGridViewTextBoxColumn,
-            this.dateModifiedDataGridViewTextBoxColumn,
-            this.modifiedByDataGridViewTextBoxColumn,
-            this.salesTaxDataGridViewTextBoxColumn,
-            this.beforeTaxTotalDataGridViewTextBoxColumn,
-            this.citystatezipDataGridViewTextBoxColumn});
-			this.dataGridView1.DataSource = this.bsTest;
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-			this.dataGridView1.Location = new System.Drawing.Point(250, 357);
-			this.dataGridView1.Name = "dataGridView1";
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-			this.dataGridView1.Size = new System.Drawing.Size(540, 150);
-			this.dataGridView1.TabIndex = 17;
-			// 
-			// schcodeDataGridViewTextBoxColumn
-			// 
-			this.schcodeDataGridViewTextBoxColumn.DataPropertyName = "schcode";
-			this.schcodeDataGridViewTextBoxColumn.HeaderText = "schcode";
-			this.schcodeDataGridViewTextBoxColumn.Name = "schcodeDataGridViewTextBoxColumn";
-			// 
-			// invnoDataGridViewTextBoxColumn
-			// 
-			this.invnoDataGridViewTextBoxColumn.DataPropertyName = "invno";
-			this.invnoDataGridViewTextBoxColumn.HeaderText = "invno";
-			this.invnoDataGridViewTextBoxColumn.Name = "invnoDataGridViewTextBoxColumn";
-			// 
-			// qtedateDataGridViewTextBoxColumn
-			// 
-			this.qtedateDataGridViewTextBoxColumn.DataPropertyName = "qtedate";
-			this.qtedateDataGridViewTextBoxColumn.HeaderText = "qtedate";
-			this.qtedateDataGridViewTextBoxColumn.Name = "qtedateDataGridViewTextBoxColumn";
-			// 
-			// nopagesDataGridViewTextBoxColumn
-			// 
-			this.nopagesDataGridViewTextBoxColumn.DataPropertyName = "nopages";
-			this.nopagesDataGridViewTextBoxColumn.HeaderText = "nopages";
-			this.nopagesDataGridViewTextBoxColumn.Name = "nopagesDataGridViewTextBoxColumn";
-			// 
-			// nocopiesDataGridViewTextBoxColumn
-			// 
-			this.nocopiesDataGridViewTextBoxColumn.DataPropertyName = "nocopies";
-			this.nocopiesDataGridViewTextBoxColumn.HeaderText = "nocopies";
-			this.nocopiesDataGridViewTextBoxColumn.Name = "nocopiesDataGridViewTextBoxColumn";
-			// 
-			// bookeaDataGridViewTextBoxColumn
-			// 
-			this.bookeaDataGridViewTextBoxColumn.DataPropertyName = "book_ea";
-			this.bookeaDataGridViewTextBoxColumn.HeaderText = "book_ea";
-			this.bookeaDataGridViewTextBoxColumn.Name = "bookeaDataGridViewTextBoxColumn";
-			// 
-			// sourceDataGridViewTextBoxColumn
-			// 
-			this.sourceDataGridViewTextBoxColumn.DataPropertyName = "source";
-			this.sourceDataGridViewTextBoxColumn.HeaderText = "source";
-			this.sourceDataGridViewTextBoxColumn.Name = "sourceDataGridViewTextBoxColumn";
-			// 
-			// ponumDataGridViewTextBoxColumn
-			// 
-			this.ponumDataGridViewTextBoxColumn.DataPropertyName = "ponum";
-			this.ponumDataGridViewTextBoxColumn.HeaderText = "ponum";
-			this.ponumDataGridViewTextBoxColumn.Name = "ponumDataGridViewTextBoxColumn";
-			// 
-			// invtotDataGridViewTextBoxColumn
-			// 
-			this.invtotDataGridViewTextBoxColumn.DataPropertyName = "invtot";
-			this.invtotDataGridViewTextBoxColumn.HeaderText = "invtot";
-			this.invtotDataGridViewTextBoxColumn.Name = "invtotDataGridViewTextBoxColumn";
-			// 
-			// paymentsDataGridViewTextBoxColumn
-			// 
-			this.paymentsDataGridViewTextBoxColumn.DataPropertyName = "payments";
-			this.paymentsDataGridViewTextBoxColumn.HeaderText = "payments";
-			this.paymentsDataGridViewTextBoxColumn.Name = "paymentsDataGridViewTextBoxColumn";
-			// 
-			// baldueDataGridViewTextBoxColumn
-			// 
-			this.baldueDataGridViewTextBoxColumn.DataPropertyName = "baldue";
-			this.baldueDataGridViewTextBoxColumn.HeaderText = "baldue";
-			this.baldueDataGridViewTextBoxColumn.Name = "baldueDataGridViewTextBoxColumn";
-			// 
-			// contfnameDataGridViewTextBoxColumn
-			// 
-			this.contfnameDataGridViewTextBoxColumn.DataPropertyName = "contfname";
-			this.contfnameDataGridViewTextBoxColumn.HeaderText = "contfname";
-			this.contfnameDataGridViewTextBoxColumn.Name = "contfnameDataGridViewTextBoxColumn";
-			// 
-			// contlnameDataGridViewTextBoxColumn
-			// 
-			this.contlnameDataGridViewTextBoxColumn.DataPropertyName = "contlname";
-			this.contlnameDataGridViewTextBoxColumn.HeaderText = "contlname";
-			this.contlnameDataGridViewTextBoxColumn.Name = "contlnameDataGridViewTextBoxColumn";
-			// 
-			// schnameDataGridViewTextBoxColumn
-			// 
-			this.schnameDataGridViewTextBoxColumn.DataPropertyName = "schname";
-			this.schnameDataGridViewTextBoxColumn.HeaderText = "schname";
-			this.schnameDataGridViewTextBoxColumn.Name = "schnameDataGridViewTextBoxColumn";
-			// 
-			// schaddrDataGridViewTextBoxColumn
-			// 
-			this.schaddrDataGridViewTextBoxColumn.DataPropertyName = "schaddr";
-			this.schaddrDataGridViewTextBoxColumn.HeaderText = "schaddr";
-			this.schaddrDataGridViewTextBoxColumn.Name = "schaddrDataGridViewTextBoxColumn";
-			// 
-			// schaddr2DataGridViewTextBoxColumn
-			// 
-			this.schaddr2DataGridViewTextBoxColumn.DataPropertyName = "schaddr2";
-			this.schaddr2DataGridViewTextBoxColumn.HeaderText = "schaddr2";
-			this.schaddr2DataGridViewTextBoxColumn.Name = "schaddr2DataGridViewTextBoxColumn";
-			// 
-			// schcityDataGridViewTextBoxColumn
-			// 
-			this.schcityDataGridViewTextBoxColumn.DataPropertyName = "schcity";
-			this.schcityDataGridViewTextBoxColumn.HeaderText = "schcity";
-			this.schcityDataGridViewTextBoxColumn.Name = "schcityDataGridViewTextBoxColumn";
-			// 
-			// schstateDataGridViewTextBoxColumn
-			// 
-			this.schstateDataGridViewTextBoxColumn.DataPropertyName = "schstate";
-			this.schstateDataGridViewTextBoxColumn.HeaderText = "schstate";
-			this.schstateDataGridViewTextBoxColumn.Name = "schstateDataGridViewTextBoxColumn";
-			// 
-			// schzipDataGridViewTextBoxColumn
-			// 
-			this.schzipDataGridViewTextBoxColumn.DataPropertyName = "schzip";
-			this.schzipDataGridViewTextBoxColumn.HeaderText = "schzip";
-			this.schzipDataGridViewTextBoxColumn.Name = "schzipDataGridViewTextBoxColumn";
-			// 
-			// contryearDataGridViewTextBoxColumn
-			// 
-			this.contryearDataGridViewTextBoxColumn.DataPropertyName = "contryear";
-			this.contryearDataGridViewTextBoxColumn.HeaderText = "contryear";
-			this.contryearDataGridViewTextBoxColumn.Name = "contryearDataGridViewTextBoxColumn";
-			// 
-			// poamtDataGridViewTextBoxColumn
-			// 
-			this.poamtDataGridViewTextBoxColumn.DataPropertyName = "poamt";
-			this.poamtDataGridViewTextBoxColumn.HeaderText = "poamt";
-			this.poamtDataGridViewTextBoxColumn.Name = "poamtDataGridViewTextBoxColumn";
-			// 
-			// dc2DataGridViewCheckBoxColumn
-			// 
-			this.dc2DataGridViewCheckBoxColumn.DataPropertyName = "dc2";
-			this.dc2DataGridViewCheckBoxColumn.HeaderText = "dc2";
-			this.dc2DataGridViewCheckBoxColumn.Name = "dc2DataGridViewCheckBoxColumn";
-			// 
-			// allclrckDataGridViewCheckBoxColumn
-			// 
-			this.allclrckDataGridViewCheckBoxColumn.DataPropertyName = "allclrck";
-			this.allclrckDataGridViewCheckBoxColumn.HeaderText = "allclrck";
-			this.allclrckDataGridViewCheckBoxColumn.Name = "allclrckDataGridViewCheckBoxColumn";
-			// 
-			// laminateDataGridViewCheckBoxColumn
-			// 
-			this.laminateDataGridViewCheckBoxColumn.DataPropertyName = "laminate";
-			this.laminateDataGridViewCheckBoxColumn.HeaderText = "laminate";
-			this.laminateDataGridViewCheckBoxColumn.Name = "laminateDataGridViewCheckBoxColumn";
-			// 
-			// fldtypeDataGridViewTextBoxColumn
-			// 
-			this.fldtypeDataGridViewTextBoxColumn.DataPropertyName = "fldtype";
-			this.fldtypeDataGridViewTextBoxColumn.HeaderText = "fldtype";
-			this.fldtypeDataGridViewTextBoxColumn.Name = "fldtypeDataGridViewTextBoxColumn";
-			// 
-			// freebooksDataGridViewTextBoxColumn
-			// 
-			this.freebooksDataGridViewTextBoxColumn.DataPropertyName = "freebooks";
-			this.freebooksDataGridViewTextBoxColumn.HeaderText = "freebooks";
-			this.freebooksDataGridViewTextBoxColumn.Name = "freebooksDataGridViewTextBoxColumn";
-			// 
-			// dateCreatedDataGridViewTextBoxColumn
-			// 
-			this.dateCreatedDataGridViewTextBoxColumn.DataPropertyName = "DateCreated";
-			this.dateCreatedDataGridViewTextBoxColumn.HeaderText = "DateCreated";
-			this.dateCreatedDataGridViewTextBoxColumn.Name = "dateCreatedDataGridViewTextBoxColumn";
-			// 
-			// dateModifiedDataGridViewTextBoxColumn
-			// 
-			this.dateModifiedDataGridViewTextBoxColumn.DataPropertyName = "DateModified";
-			this.dateModifiedDataGridViewTextBoxColumn.HeaderText = "DateModified";
-			this.dateModifiedDataGridViewTextBoxColumn.Name = "dateModifiedDataGridViewTextBoxColumn";
-			// 
-			// modifiedByDataGridViewTextBoxColumn
-			// 
-			this.modifiedByDataGridViewTextBoxColumn.DataPropertyName = "ModifiedBy";
-			this.modifiedByDataGridViewTextBoxColumn.HeaderText = "ModifiedBy";
-			this.modifiedByDataGridViewTextBoxColumn.Name = "modifiedByDataGridViewTextBoxColumn";
-			// 
-			// salesTaxDataGridViewTextBoxColumn
-			// 
-			this.salesTaxDataGridViewTextBoxColumn.DataPropertyName = "SalesTax";
-			this.salesTaxDataGridViewTextBoxColumn.HeaderText = "SalesTax";
-			this.salesTaxDataGridViewTextBoxColumn.Name = "salesTaxDataGridViewTextBoxColumn";
-			// 
-			// beforeTaxTotalDataGridViewTextBoxColumn
-			// 
-			this.beforeTaxTotalDataGridViewTextBoxColumn.DataPropertyName = "BeforeTaxTotal";
-			this.beforeTaxTotalDataGridViewTextBoxColumn.HeaderText = "BeforeTaxTotal";
-			this.beforeTaxTotalDataGridViewTextBoxColumn.Name = "beforeTaxTotalDataGridViewTextBoxColumn";
-			// 
-			// citystatezipDataGridViewTextBoxColumn
-			// 
-			this.citystatezipDataGridViewTextBoxColumn.DataPropertyName = "citystatezip";
-			this.citystatezipDataGridViewTextBoxColumn.HeaderText = "citystatezip";
-			this.citystatezipDataGridViewTextBoxColumn.Name = "citystatezipDataGridViewTextBoxColumn";
-			this.citystatezipDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// bsTest
-			// 
-			this.bsTest.DataMember = "invoice";
-			this.bsTest.DataSource = this.dsInvoice;
-			// 
 			// reportViewer1
 			// 
 			this.reportViewer1.DocumentMapWidth = 35;
-			reportDataSource1.Name = "cust";
-			reportDataSource1.Value = this.custBindingSource;
-			reportDataSource2.Name = "invoice";
-			reportDataSource2.Value = this.invoiceBindingSource;
-			reportDataSource3.Name = "invoicedetail";
-			reportDataSource3.Value = this.invdetailBindingSource;
-			reportDataSource4.Name = "payment";
-			reportDataSource4.Value = this.paymntBindingSource;
+			reportDataSource1.Name = "DataSet1";
+			reportDataSource1.Value = this.FullInvoiceBindingSource;
 			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
 			this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MultiMemInvoice.rdlc";
-			this.reportViewer1.Location = new System.Drawing.Point(73, 27);
+			this.reportViewer1.Location = new System.Drawing.Point(120, 5);
 			this.reportViewer1.Name = "reportViewer1";
 			this.reportViewer1.ServerReport.BearerToken = null;
-			this.reportViewer1.Size = new System.Drawing.Size(919, 308);
+			this.reportViewer1.Size = new System.Drawing.Size(890, 413);
 			this.reportViewer1.TabIndex = 16;
+			this.reportViewer1.ReportRefresh += new System.ComponentModel.CancelEventHandler(this.reportViewer1_ReportRefresh);
 			this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
 			this.reportViewer1.ReportError += new Microsoft.Reporting.WinForms.ReportErrorEventHandler(this.reportViewer1_reportError);
 			// 
@@ -620,14 +312,14 @@
 			this.dgInvoices.AllowUserToDeleteRows = false;
 			this.dgInvoices.AutoGenerateColumns = false;
 			this.dgInvoices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
-			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Collections,
@@ -696,12 +388,17 @@
 			this.Balance.HeaderText = "Balance";
 			this.Balance.Name = "Balance";
 			// 
+			// bsTest
+			// 
+			this.bsTest.DataMember = "invoice";
+			this.bsTest.DataSource = this.dsInvoice;
+			// 
 			// tableAdapterManager1
 			// 
 			this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
 			this.tableAdapterManager1.Connection = null;
 			this.tableAdapterManager1.custSearchTableAdapter = null;
-		
+			this.tableAdapterManager1.custTableAdapter = null;
 			this.tableAdapterManager1.datecontTableAdapter = null;
 			this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
 			// 
@@ -712,11 +409,11 @@
 			// 
 			// custTableAdapter
 			// 
-			this.custTableAdapter.ClearBeforeFill = false;
+			this.custTableAdapter.ClearBeforeFill = true;
 			// 
 			// invoiceTableAdapter
 			// 
-			this.invoiceTableAdapter.ClearBeforeFill = false;
+			this.invoiceTableAdapter.ClearBeforeFill = true;
 			// 
 			// tableAdapterManager
 			// 
@@ -730,7 +427,7 @@
 			// 
 			// invdetailTableAdapter
 			// 
-			this.invdetailTableAdapter.ClearBeforeFill = false;
+			this.invdetailTableAdapter.ClearBeforeFill = true;
 			// 
 			// paymntTableAdapter
 			// 
@@ -759,6 +456,7 @@
 			this.TopPanel.ResumeLayout(false);
 			this.TopPanel.PerformLayout();
 			this.BottomPanel.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
@@ -770,10 +468,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.dgAddressErrors)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bsTest)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgInvoices)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bsInvoices)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.bsTest)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -820,38 +517,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ContactEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
 		private System.Windows.Forms.BindingSource bsTest;
-		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.DataGridViewTextBoxColumn schcodeDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn invnoDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn qtedateDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn nopagesDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn nocopiesDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn bookeaDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn sourceDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ponumDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn invtotDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn paymentsDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn baldueDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn contfnameDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn contlnameDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn schnameDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn schaddrDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn schaddr2DataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn schcityDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn schstateDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn schzipDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn contryearDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn poamtDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewCheckBoxColumn dc2DataGridViewCheckBoxColumn;
-		private System.Windows.Forms.DataGridViewCheckBoxColumn allclrckDataGridViewCheckBoxColumn;
-		private System.Windows.Forms.DataGridViewCheckBoxColumn laminateDataGridViewCheckBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn fldtypeDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn freebooksDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dateCreatedDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dateModifiedDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn modifiedByDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn salesTaxDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn beforeTaxTotalDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn citystatezipDataGridViewTextBoxColumn;
+		private System.Windows.Forms.BindingSource FullInvoiceBindingSource;
 	}
 }

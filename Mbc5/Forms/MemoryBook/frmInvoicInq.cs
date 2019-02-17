@@ -26,6 +26,7 @@ namespace Mbc5.Forms.MemoryBook
         public List<Invoice> Invoices { get; set; }
         private void frmInvoicInq_Load(object sender, EventArgs e)
         {
+			
 			reportViewer1.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SetSubDataSource);
 			dgInvoices.AutoGenerateColumns = false;
         }
@@ -159,23 +160,41 @@ namespace Mbc5.Forms.MemoryBook
 
         private void button3_Click(object sender, EventArgs e)
         {
-   
+			var sqlClient = new SQLCustomClient();
+			sqlClient.CommandText(@"
+				SELECT C.SchName,C.SchCode,C.schaddr AS SchAddress,C.SchCity,C.SchZip As ZipCode,C.ContFName AS ContactFirstName,
+				C.ContLname AS ContactLastName,I.nocopies AS NumberCopies,I.nopages AS NumberPages,
+				I.Freebooks,I.Laminate,I.allclrck AS AllColor,I.contryear AS ContractYear,I.Payments,I.Ponum As PoNumber,
+				I.Invno,I.Baldue,I.BeforeTaxTotal,I.SalesTax,I.Invtot,qtedate AS QuoteDate,ID.Descr As Description,ID.Price,ID.DiscPercent
+				FROM Invoice I
+				LEFT JOIN Cust C ON I.Schcode=C.Schcode
+				LEFT JOIN Invdetail ID ON I.Invno=ID.Invno
+				Where I.Invno=81551 OR I.Invno=81552
+				
+				");
+			var result = sqlClient.SelectMany<FullInvoice>();
+			if (result.IsError) {
+				return;
+			}
+			var InvoiceData = result.Data;
+			FullInvoiceBindingSource.DataSource = InvoiceData;
+			reportViewer1.RefreshReport();
 
-            // var a = this.Invoices;
-            for (int i = 0; i < 2; i++)
-            {
-				invoiceTableAdapter.ClearBeforeFill = false;
-				invdetailTableAdapter.ClearBeforeFill = false;
-                var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invoices[i].Invno);
-                var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invoices[i].Invno);
-                var aaaa = this.custTableAdapter.Fill(dsCust.cust, "038752");
-                var a = dsInvoice.invoice.Rows.Count;
-				var b = bsTest.Count;
+			// var a = this.Invoices;
+			//         for (int i = 0; i < 2; i++)
+			//         {
+			//	dsInvoice.invoice.Clear();
+			//             var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invoices[0].Invno);
+			//             var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invoices[0].Invno);
+			//             var aaaa = this.custTableAdapter.Fill(dsCust.cust, "038752");
+			//             var a = dsInvoice.invoice.Rows.Count;
+			//	var b = bsTest.Count;
 
-            }
 
-            //this.reportViewer1.RefreshReport();
-        }
+			//}
+			//print();
+			//this.reportViewer1.RefreshReport();
+		}
         private void print()
         {
 	
@@ -194,7 +213,7 @@ namespace Mbc5.Forms.MemoryBook
 		private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
 
-			DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+			//DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
 			//var result = dp.Export(reportViewer1.LocalReport,"");
 
@@ -213,6 +232,10 @@ namespace Mbc5.Forms.MemoryBook
         {
             var a = 1;
         }
+
+		private void reportViewer1_ReportRefresh(object sender, CancelEventArgs e) {
+			var a = 4;
+		}
 	}
   
 }
