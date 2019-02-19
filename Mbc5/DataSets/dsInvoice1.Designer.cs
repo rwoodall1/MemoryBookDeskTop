@@ -1537,7 +1537,7 @@ namespace Mbc5.DataSets {
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
                 this.columninvno.AllowDBNull = false;
-                this.columndescr.MaxLength = 40;
+                this.columndescr.MaxLength = 100;
                 this.columndiscpercent.MaxLength = 14;
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
