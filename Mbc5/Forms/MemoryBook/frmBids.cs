@@ -13,7 +13,7 @@ using Mbc5.Classes;
 using System.Linq;
 using BindingModels;
 using BaseClass;
-
+using BaseClass.Core;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmBids : BaseClass.frmBase, INotifyPropertyChanged
     {
@@ -852,11 +852,10 @@ namespace Mbc5.Forms.MemoryBook {
       
 
         //General
-        public override bool Save()
+        public override ApiProcessingResult<bool> Save()
         {
-            //txtModifiedBy.Text = this.ApplicationUser.id;
-           
-            bool retval = true;
+          var processingResult=new ApiProcessingResult<bool>();
+          
             switch (tabBids.SelectedIndex)
             {
                 case 0:
@@ -865,16 +864,17 @@ namespace Mbc5.Forms.MemoryBook {
 						try {
 							bidsBindingSource.EndEdit();
 							bidsTableAdapter.Update(dsBids.bids);
-						
+							MbcMessageBox.Exclamation("Bid record saved.", "Success");
 						}catch(Exception ex) {
 							MbcMessageBox.Error(ex.Message, "");
+							processingResult.IsError = true;
 						}
                     }
 					break;
 
 
             }
-            return retval;
+            return processingResult;
         }
         public override bool Add()
         {
@@ -914,7 +914,8 @@ namespace Mbc5.Forms.MemoryBook {
                             var result = int.TryParse(lblId.Text, out vid);
                             if (result)
                             {
-                                bidsTableAdapter.Delete(vid);
+								try {bidsTableAdapter.Delete(vid); } catch (Exception ex) { MbcMessageBox.Error("Failed to delete record:" + ex.Message, ""); }
+                                
                             }
                             
 
@@ -944,14 +945,19 @@ namespace Mbc5.Forms.MemoryBook {
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Zipcode",this.SchoolZipCode)
             };
-			
-            var result = sqlQuery.ExecuteReaderAsync<TaxRate>(CommandType.Text, querystring, parameters);
-            if (result != null)
-            {
-                var vRateList = (List<TaxRate>)result;
-                val = vRateList[0].Rate;
+			try {
+				var result = sqlQuery.ExecuteReaderAsync<TaxRate>(CommandType.Text, querystring, parameters);
+				if (result != null) {
+					var vRateList = (List<TaxRate>)result;
+					val = vRateList[0].Rate;
 
-            }
+				}
+			} catch(Exception ex) {
+				MbcMessageBox.Error(ex.Message, "");
+
+			}
+           
+            
             return val;
         }
 

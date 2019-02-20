@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BaseClass.FormHandler;
 using System.Security.Principal;
 using BaseClass.Classes;
+using BaseClass.Core;
 using NLog;
 namespace BaseClass
 {
@@ -203,9 +204,9 @@ namespace BaseClass
            
         }
         [Browsable(true)]
-        public virtual bool Save()
+        public virtual ApiProcessingResult<bool> Save()
         {
-            return true;
+			return new ApiProcessingResult<bool>();
         }
        
         [Browsable(true)]

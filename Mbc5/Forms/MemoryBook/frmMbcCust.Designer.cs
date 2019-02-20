@@ -114,13 +114,13 @@ namespace Mbc5.Forms.MemoryBook {
 			System.Windows.Forms.Label enrollmentLabel1;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMbcCust));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.ProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.ProductionCheckListBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.CustTab = new System.Windows.Forms.TabControl();
@@ -202,6 +202,11 @@ namespace Mbc5.Forms.MemoryBook {
 			this.nodirectmailCheckBox = new System.Windows.Forms.CheckBox();
 			this.nomktemailCheckBox = new System.Windows.Forms.CheckBox();
 			this.custDataGridView = new System.Windows.Forms.DataGridView();
+			this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.qcontractyear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.QInvno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn108 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn111 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.txtBookType = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.spcinstTextBox = new System.Windows.Forms.TextBox();
@@ -335,11 +340,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadSourceTableAdapter();
 			this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
 			this.reportViewerCheckList = new Microsoft.Reporting.WinForms.ReportViewer();
-			this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.qcontractyear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.QInvno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn108 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn111 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			contryearLabel = new System.Windows.Forms.Label();
 			csrepLabel = new System.Windows.Forms.Label();
 			junsnoLabel = new System.Windows.Forms.Label();
@@ -1434,7 +1434,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// 
 			// blkwhiteCheckBox
 			// 
-			this.blkwhiteCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "blkwhite", true));
+			this.blkwhiteCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "blkwhite", true));
 			this.blkwhiteCheckBox.Location = new System.Drawing.Point(393, 282);
 			this.blkwhiteCheckBox.Name = "blkwhiteCheckBox";
 			this.blkwhiteCheckBox.Size = new System.Drawing.Size(104, 21);
@@ -1445,7 +1445,7 @@ namespace Mbc5.Forms.MemoryBook {
 			// allcolorCheckBox
 			// 
 			this.allcolorCheckBox.AutoSize = true;
-			this.allcolorCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.custBindingSource, "allcolor", true));
+			this.allcolorCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "allcolor", true));
 			this.allcolorCheckBox.Location = new System.Drawing.Point(393, 267);
 			this.allcolorCheckBox.Name = "allcolorCheckBox";
 			this.allcolorCheckBox.Size = new System.Drawing.Size(70, 17);
@@ -2157,6 +2157,44 @@ namespace Mbc5.Forms.MemoryBook {
 			this.custDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGridView_CellDoubleClick);
 			this.custDataGridView.Enter += new System.EventHandler(this.custDataGridView_Enter);
 			this.custDataGridView.Leave += new System.EventHandler(this.custDataGridView_Leave);
+			// 
+			// dataGridViewTextBoxColumn105
+			// 
+			this.dataGridViewTextBoxColumn105.DataPropertyName = "booktype";
+			this.dataGridViewTextBoxColumn105.HeaderText = "Book Type";
+			this.dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
+			this.dataGridViewTextBoxColumn105.ReadOnly = true;
+			// 
+			// qcontractyear
+			// 
+			this.qcontractyear.DataPropertyName = "Qyear";
+			this.qcontractyear.HeaderText = "Year";
+			this.qcontractyear.Name = "qcontractyear";
+			this.qcontractyear.ReadOnly = true;
+			// 
+			// QInvno
+			// 
+			this.QInvno.DataPropertyName = "QInvno";
+			this.QInvno.HeaderText = "Invoice#";
+			this.QInvno.Name = "QInvno";
+			this.QInvno.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn108
+			// 
+			this.dataGridViewTextBoxColumn108.DataPropertyName = "prodno";
+			this.dataGridViewTextBoxColumn108.HeaderText = "Prod No#";
+			this.dataGridViewTextBoxColumn108.Name = "dataGridViewTextBoxColumn108";
+			this.dataGridViewTextBoxColumn108.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn111
+			// 
+			this.dataGridViewTextBoxColumn111.DataPropertyName = "kitrecvd";
+			dataGridViewCellStyle2.Format = "d";
+			dataGridViewCellStyle2.NullValue = null;
+			this.dataGridViewTextBoxColumn111.DefaultCellStyle = dataGridViewCellStyle2;
+			this.dataGridViewTextBoxColumn111.HeaderText = "Kit Recvd Date";
+			this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
+			this.dataGridViewTextBoxColumn111.ReadOnly = true;
 			// 
 			// txtBookType
 			// 
@@ -3438,44 +3476,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.reportViewerCheckList.TabIndex = 288;
 			this.reportViewerCheckList.Visible = false;
 			this.reportViewerCheckList.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewerCheckList_RenderingComplete);
-			// 
-			// dataGridViewTextBoxColumn105
-			// 
-			this.dataGridViewTextBoxColumn105.DataPropertyName = "booktype";
-			this.dataGridViewTextBoxColumn105.HeaderText = "Book Type";
-			this.dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
-			this.dataGridViewTextBoxColumn105.ReadOnly = true;
-			// 
-			// qcontractyear
-			// 
-			this.qcontractyear.DataPropertyName = "Qyear";
-			this.qcontractyear.HeaderText = "Year";
-			this.qcontractyear.Name = "qcontractyear";
-			this.qcontractyear.ReadOnly = true;
-			// 
-			// QInvno
-			// 
-			this.QInvno.DataPropertyName = "QInvno";
-			this.QInvno.HeaderText = "Invoice#";
-			this.QInvno.Name = "QInvno";
-			this.QInvno.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn108
-			// 
-			this.dataGridViewTextBoxColumn108.DataPropertyName = "prodno";
-			this.dataGridViewTextBoxColumn108.HeaderText = "Prod No#";
-			this.dataGridViewTextBoxColumn108.Name = "dataGridViewTextBoxColumn108";
-			this.dataGridViewTextBoxColumn108.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn111
-			// 
-			this.dataGridViewTextBoxColumn111.DataPropertyName = "kitrecvd";
-			dataGridViewCellStyle2.Format = "d";
-			dataGridViewCellStyle2.NullValue = null;
-			this.dataGridViewTextBoxColumn111.DefaultCellStyle = dataGridViewCellStyle2;
-			this.dataGridViewTextBoxColumn111.HeaderText = "Kit Recvd Date";
-			this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
-			this.dataGridViewTextBoxColumn111.ReadOnly = true;
 			// 
 			// frmMbcCust
 			// 

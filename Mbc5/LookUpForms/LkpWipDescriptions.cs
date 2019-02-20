@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BaseClass.Classes;
+using BaseClass;
+using BaseClass.Core;
 using Exceptionless;
 using Exceptionless.Models;
 using System.Configuration;
@@ -19,9 +21,9 @@ namespace Mbc5.LookUpForms
             InitializeComponent();
         }
         public DataTable TableVals { get; set; }
-         override public bool Save()          
+         override public ApiProcessingResult<bool> Save()          
         {
-            bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
            this.Validate();
             this.wipDescriptionsBindingSource.EndEdit();
             try
@@ -32,9 +34,11 @@ namespace Mbc5.LookUpForms
                 ex.ToExceptionless()
                     .AddTags("Save Error")
                     .Submit();
-                MessageBox.Show("Error saving record. The record was not saved.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error saving record:"+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError("Error saving record:" + ex.Message, "Error saving record:" + ex.Message,""));
             }
-            return retval;
+            return processingResult;
         }
         public override void Delete()
         {
@@ -72,7 +76,8 @@ namespace Mbc5.LookUpForms
         private void LkpWipDescriptions_Load(object sender, EventArgs e)
         {
             this.SetConnectionString();
-            wipDescriptionsTableAdapter.FillAll(dsProdutn.WipDescriptions);
+			try {wipDescriptionsTableAdapter.FillAll(dsProdutn.WipDescriptions); }catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+            
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)

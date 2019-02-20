@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using Microsoft.Reporting.WinForms;
 using Microsoft.ReportingServices.DataExtensions;
 using Microsoft.ReportingServices.ReportRendering;
-
+using BaseClass;
 namespace Mbc5.Classes
 {
     public class DirectPrint : IDisposable
@@ -123,7 +123,13 @@ namespace Mbc5.Classes
 			}
 
             printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
-            printDoc.Print();
+			try {
+				printDoc.Print();
+			}catch(Exception ex) {
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
+			}
+           
 			return processingResult;
 		}
         private void PrintPage(object sender, PrintPageEventArgs ev)

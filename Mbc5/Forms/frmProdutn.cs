@@ -23,6 +23,8 @@ using Microsoft.Reporting.WinForms;
 using System.IO;
 using System.Reflection;
 using BaseClass;
+using BaseClass;
+using BaseClass.Core;
 namespace Mbc5.Forms
 {
 	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
@@ -393,26 +395,49 @@ namespace Mbc5.Forms
 
 		}
 
-		public override bool Save()
+		public override ApiProcessingResult<bool> Save()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
 			switch (tbProdutn.SelectedIndex)
 			{
 				case 0:
-					SaveProdutn();
+					var produtnResult = SaveProdutn();
+					if (produtnResult.IsError) {
+						MbcMessageBox.Error(produtnResult.Errors[0].ErrorMessage, "");
+						processingResult = produtnResult;
+					}
 
-					break;
+						break;
 				case 1:
 					{
-						SaveWip();
-						SaveProdutn();//some produtn fiels are on wip tab so save
+						var wipResult = SaveWip();
+						
+						if (wipResult.IsError) {
+							MbcMessageBox.Error(wipResult.Errors[0].ErrorMessage, "");
+							processingResult = wipResult;
+						}
+
+						var produtnResult1 = SaveProdutn();
+						if (produtnResult1.IsError) {
+							MbcMessageBox.Error(produtnResult1.Errors[0].ErrorMessage, "");
+							processingResult = produtnResult1;
+						}
 						break;
 					}
 				case 2:
 					{
-						SaveCovers();
-						SaveProdutn();//some produtn fiels are on covers tab so save
+						var coverResult = SaveCovers();
+						
+						if (coverResult.IsError) {
+							MbcMessageBox.Error(coverResult.Errors[0].ErrorMessage, "");
+							processingResult = coverResult;
+						}
 
+						var produtnResult2 = SaveProdutn();
+						if (produtnResult2.IsError) {
+							MbcMessageBox.Error(produtnResult2.Errors[0].ErrorMessage, "");
+							processingResult = produtnResult2;
+						}
 						break;
 					}
 
@@ -420,16 +445,39 @@ namespace Mbc5.Forms
 
 					break;
 				case 4:
-					SavePartBK();
-					SaveProdutn();
+					var partBkResult = SavePartBK();
+				
+					if (partBkResult.IsError) {
+						MbcMessageBox.Error(partBkResult.Errors[0].ErrorMessage, "");
+						processingResult = partBkResult;
+					}
+
+					var produtnResult3 = SaveProdutn();
+					if (produtnResult3.IsError) {
+						MbcMessageBox.Error(produtnResult3.Errors[0].ErrorMessage, "");
+						processingResult = produtnResult3;
+					}
+				
+				
 					break;
 				case 5:
-					SavePtBkB();
-					SaveProdutn();
+					var ptBkBResult = SavePtBkB();
+					
+					if (ptBkBResult.IsError) {
+						MbcMessageBox.Error(ptBkBResult.Errors[0].ErrorMessage, "");
+						processingResult = ptBkBResult;
+					}
+
+					var produtnResult4 = SaveProdutn();
+					if (produtnResult4.IsError) {
+						MbcMessageBox.Error(produtnResult4.Errors[0].ErrorMessage, "");
+						processingResult = produtnResult4;
+					}
+			
 					break;
 
 			}
-			return retval;
+			return processingResult;
 		}
 		private bool SaveOrStop()
 		{
@@ -437,9 +485,10 @@ namespace Mbc5.Forms
 			switch (tbProdutn.SelectedIndex)
 			{
 				case 0:
-					if (!SaveProdutn())
+					var produtnResult = SaveProdutn();
+					if (produtnResult.IsError)
 					{
-						var result = MessageBox.Show("Production record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result = MessageBox.Show("Production record could not be saved"+produtnResult.Errors[0].ErrorMessage+" Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result == DialogResult.No)
 						{
 							retval = false;
@@ -449,9 +498,10 @@ namespace Mbc5.Forms
 					break;
 
 				case 1:
-					if (!SaveWip())
+					var wipResult = SaveWip();
+					if (wipResult.IsError)
 					{
-						var result = MessageBox.Show("Wip record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result = MessageBox.Show("Wip record could not be saved:"+ wipResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result == DialogResult.No)
 						{
 							retval = false;
@@ -460,9 +510,10 @@ namespace Mbc5.Forms
 					break;
 
 				case 2:
-					if (!SaveCovers())
+					var coverResult = SaveCovers();
+					if (coverResult.IsError)
 					{
-						var result = MessageBox.Show("Cover record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result = MessageBox.Show("Cover record could not be saved:" + coverResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result == DialogResult.No)
 						{
 							retval = false; ;
@@ -470,9 +521,10 @@ namespace Mbc5.Forms
 					}
 					break;
 				case 4:
-					if (!SavePartBK())
+					var partBkResult = SavePartBK();
+					if (partBkResult.IsError)
 					{
-						var result = MessageBox.Show("Partial Book(A) could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result = MessageBox.Show("Partial Book(A) could not be saved:" + partBkResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result == DialogResult.No)
 						{
 							retval = false;
@@ -481,9 +533,10 @@ namespace Mbc5.Forms
 					break;
 
 				case 5:
-					if (!SavePtBkB())
+					var ptBkBResult = SavePtBkB();
+					if (ptBkBResult.IsError)
 					{
-						var result = MessageBox.Show("Photos On CD record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result = MessageBox.Show("Photos On CD record could not be saved:" + ptBkBResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result == DialogResult.No)
 						{
 							retval = false;
@@ -492,24 +545,16 @@ namespace Mbc5.Forms
 					break;
 
 				case 6:
-					//if (!SavePtBkB())
-					//{
-					//	var result = MessageBox.Show("Photos On CD record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-					//	if (result == DialogResult.No)
-					//	{
-					//		e.Cancel = true;
-					//		return;
-					//	}
-					//}
+					
 					break;
 			}
 
 			return retval;
 
 		}
-		private bool SavePartBK()
+		private ApiProcessingResult<bool> SavePartBK()
 		{
-			bool retval = false;
+			var processintResult = new ApiProcessingResult<bool>();
 			if (dsProdutn.partbk.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -520,7 +565,7 @@ namespace Mbc5.Forms
 						var a = partbkTableAdapter.Update(dsProdutn.partbk);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
-						retval = true;
+						
 					}
 					catch (DBConcurrencyException dbex)
 					{
@@ -532,17 +577,20 @@ namespace Mbc5.Forms
 						ex.ToExceptionless()
 					   .SetMessage("Partial Book A record failed to update:" + ex.Message)
 					   .Submit();
-						retval = false;
-					}
+						processintResult.IsError = true;
+						processintResult.Errors.Add(new ApiProcessingError("Partial Book A record failed to update:" + ex.Message, "Partial Book A record failed to update:" + ex.Message,""))
+;					}
 				}
 			}
-			else { retval = false; }
+			else {
+				processintResult.IsError = true;
+				processintResult.Errors.Add(new ApiProcessingError("PartBk record failed to update.", "PartBk record failed to update.", "")); }
 
-			return retval;
+			return processintResult;
 		}
-		private bool SavePtBkB()
+		private ApiProcessingResult<bool> SavePtBkB()
 		{
-			bool retval = false;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsProdutn.ptbkb.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -553,7 +601,7 @@ namespace Mbc5.Forms
 						var a = ptbkbTableAdapter.Update(dsProdutn.ptbkb);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
-						retval = true;
+					
 					}
 					catch (DBConcurrencyException dbex)
 					{
@@ -565,24 +613,27 @@ namespace Mbc5.Forms
 						ex.ToExceptionless()
 					   .SetMessage("Photos On CD record failed to update:" + ex.Message)
 					   .Submit();
-						retval = false;
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("Photos On CD record failed to update:" + ex.Message, "Photos On CD record failed to update:" + ex.Message,""));
 					}
 				}
 			}
-			else { retval = false; }
+			else {
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError("Photos On CD record failed to validate.", "Photos On CD record failed to validate.", ""));
+			}
 
-			return retval;
+			return processingResult;
 		}
-		private bool SaveProdutn()
+		private ApiProcessingResult<bool> SaveProdutn()
 		{
-			bool retval = false;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsProdutn.produtn.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
 				{
 					try
 					{
-
 						this.produtnBindingSource.EndEdit();
 						var a = produtnTableAdapter.Update(dsProdutn.produtn);
 						//must refill so we get updated time stamp so concurrency is not thrown
@@ -596,7 +647,7 @@ namespace Mbc5.Forms
 						}
 
 						SetShipLabel();
-						retval = true;
+					
 
 					}
 					catch (DBConcurrencyException dbex)
@@ -606,23 +657,25 @@ namespace Mbc5.Forms
 					}
 					catch (Exception ex)
 					{
-						retval = false;
-						MessageBox.Show("Production record failed to update:" + ex.Message);
+						
+						
 						ex.ToExceptionless()
 					   .SetMessage("Production record failed to update:" + ex.Message)
 					   .Submit();
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("Production record failed to update:" + ex.Message, "Production record failed to update:" + ex.Message,""));
 					}
+				} else {
+					processingResult.IsError = true;
+					processingResult.Errors.Add(new ApiProcessingError("Production record failed to validate.", "Production record failed to validate.",""));
 				}
 			}
-			else
-			{
-				retval = true;//no records just return
-			}
-			return retval;
+			
+			return processingResult;
 		}
-		private bool SaveWip()
+		private ApiProcessingResult<bool> SaveWip()
 		{
-			bool retval = false;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsProdutn.wip.Count > 0)
 			{
 
@@ -633,7 +686,7 @@ namespace Mbc5.Forms
 					var a = wipTableAdapter.Update(dsProdutn.wip);
 					//must refill so we get updated time stamp so concurrency is not thrown
 					wipTableAdapter.FillByInvno(dsProdutn.wip,Invno);
-					retval = true;
+					
 				}
 				catch (DBConcurrencyException ex1)
 				{
@@ -645,20 +698,23 @@ namespace Mbc5.Forms
 					ex.ToExceptionless()
 				   .SetMessage("WIP record failed to update:" + ex.Message)
 				   .Submit();
-					retval = false;
-					MessageBox.Show("Wip record failed to update:" + ex.Message);
-					;
+					processingResult.IsError = true;
+					processingResult.Errors.Add(new ApiProcessingError("Wip record failed to update:" + ex.Message, "Wip record failed to update:" + ex.Message, ""));
+					
 				}
 				// }
 			}
-			else { retval = false; }
+			else {
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError("Wip Record failed to validate.", "Wip Record failed to validate.", ""));
+			}
 
-			return retval;
+			return processingResult;
 
 		}
-		private bool SaveCovers()
+		private ApiProcessingResult<bool> SaveCovers()
 		{
-			bool retval = false;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsProdutn.covers.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -669,7 +725,7 @@ namespace Mbc5.Forms
 						var a = coversTableAdapter.Update(dsProdutn.covers);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
-						retval = true;
+						
 					}
 					catch (DBConcurrencyException dbex)
 					{
@@ -681,13 +737,17 @@ namespace Mbc5.Forms
 						ex.ToExceptionless()
 					   .SetMessage("Covers record failed to update:" + ex.Message)
 					   .Submit();
-						retval = false;
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError(ex.Message,ex.Message,""));
 					}
 				}
 			}
-			else { retval = false; }
+			else {
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError("Cover record failed to validate", "Cover record failed to validate", ""));
+			}
 
-			return retval;
+			return processingResult;
 		}
 		public override bool Add()
 		{
@@ -1194,9 +1254,10 @@ namespace Mbc5.Forms
 			switch (tbProdutn.SelectedIndex)
 			{
 				case 0:
-					if (!SaveProdutn())
+					var produtnResult = SaveProdutn();
+					if (produtnResult.IsError)
 					{
-						var result1 = MessageBox.Show("Production record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result1 = MessageBox.Show("Production record could not be saved:"+produtnResult.Errors[0].ErrorMessage+" Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result1 == DialogResult.No)
 						{
 
@@ -3154,14 +3215,15 @@ namespace Mbc5.Forms
 			switch (tbProdutn.SelectedIndex)
 			{
 				case 0:
-					if (!SaveProdutn())
+					var produtnResult = SaveProdutn();
+					if (produtnResult.IsError)
 					{
-						var result1 = MessageBox.Show("Production record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result1 == DialogResult.No)
-						{
+						var result1 = MessageBox.Show("Production record could not be saved:"+produtnResult.Errors[0].ErrorMessage+ " Continue?", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						if (result1 == DialogResult.No) {
 
 							return;
 						}
+					
 					}
 					break;
 

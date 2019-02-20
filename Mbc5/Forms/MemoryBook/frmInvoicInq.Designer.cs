@@ -92,7 +92,7 @@
 			// TopPanel
 			// 
 			this.TopPanel.Controls.Add(this.lblTitle);
-			this.TopPanel.Size = new System.Drawing.Size(1344, 48);
+			this.TopPanel.Size = new System.Drawing.Size(1127, 48);
 			// 
 			// BottomPanel
 			// 
@@ -101,7 +101,7 @@
 			this.BottomPanel.Controls.Add(this.button2);
 			this.BottomPanel.Controls.Add(this.btnSearch);
 			this.BottomPanel.Location = new System.Drawing.Point(0, 578);
-			this.BottomPanel.Size = new System.Drawing.Size(1344, 75);
+			this.BottomPanel.Size = new System.Drawing.Size(1127, 75);
 			// 
 			// FullInvoiceBindingSource
 			// 
@@ -229,7 +229,7 @@
 			this.pnlError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.pnlError.Location = new System.Drawing.Point(164, 107);
 			this.pnlError.Name = "pnlError";
-			this.pnlError.Size = new System.Drawing.Size(874, 189);
+			this.pnlError.Size = new System.Drawing.Size(657, 189);
 			this.pnlError.TabIndex = 8;
 			this.pnlError.Visible = false;
 			// 
@@ -274,7 +274,7 @@
 			this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.panel1.Location = new System.Drawing.Point(2, 90);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(1342, 482);
+			this.panel1.Size = new System.Drawing.Size(1125, 482);
 			this.panel1.TabIndex = 9;
 			// 
 			// reportViewer1
@@ -284,11 +284,12 @@
 			reportDataSource1.Value = this.FullInvoiceBindingSource;
 			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
 			this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MultiMemInvoice.rdlc";
-			this.reportViewer1.Location = new System.Drawing.Point(120, 5);
+			this.reportViewer1.Location = new System.Drawing.Point(16, 349);
 			this.reportViewer1.Name = "reportViewer1";
 			this.reportViewer1.ServerReport.BearerToken = null;
-			this.reportViewer1.Size = new System.Drawing.Size(890, 413);
+			this.reportViewer1.Size = new System.Drawing.Size(186, 119);
 			this.reportViewer1.TabIndex = 16;
+			this.reportViewer1.Visible = false;
 			this.reportViewer1.ReportRefresh += new System.ComponentModel.CancelEventHandler(this.reportViewer1_ReportRefresh);
 			this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
 			this.reportViewer1.ReportError += new Microsoft.Reporting.WinForms.ReportErrorEventHandler(this.reportViewer1_reportError);
@@ -436,7 +437,7 @@
 			// frmInvoicInq
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.ClientSize = new System.Drawing.Size(1344, 653);
+			this.ClientSize = new System.Drawing.Size(1127, 653);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.pnlError);
 			this.Controls.Add(this.label1);

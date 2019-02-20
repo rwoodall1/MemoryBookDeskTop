@@ -17,6 +17,8 @@ using BindingModels;
 using Exceptionless;
 using Exceptionless.Models;
 using Outlook = Microsoft.Office.Interop.Outlook;
+using BaseClass.Core;
+using BaseClass;
 namespace Mbc5.Forms
 {
 	public partial class frmEndSheet : BaseClass.frmBase, INotifyPropertyChanged
@@ -82,32 +84,59 @@ namespace Mbc5.Forms
 
 		#region Methods
 
-		public override bool Save()
+		public override ApiProcessingResult<bool> Save()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
 			switch (tbEndSheets.SelectedIndex)
 			{
 				case 0:
-					SaveEndSheet();
+					var endSheetResult=SaveEndSheet();
+					if (endSheetResult.IsError) {
+						MbcMessageBox.Error(endSheetResult.Errors[0].ErrorMessage, "");
+						processingResult.IsError = true;
+					} else {
+						MbcMessageBox.Exclamation("End sheet saved.", "Success");
+					}
 
 					break;
 				case 1:
 					{
-						SaveSupplement();
+						var supplementResult = SaveSupplement();
+						if (supplementResult.IsError) {
+							MbcMessageBox.Error(supplementResult.Errors[0].ErrorMessage, "");
+							processingResult.IsError = true;
+						} else {
+							MbcMessageBox.Exclamation("Supplement saved.", "Success");
+						}
+						
 						break;
 					}
 				case 2:
 					{
-						SavePreFlight();
+						var preFlightResult = SavePreFlight();
+						if (preFlightResult.IsError) {
+							MbcMessageBox.Error(preFlightResult.Errors[0].ErrorMessage, "");
+							processingResult.IsError = true;
+						} else {
+							MbcMessageBox.Exclamation("PreFlight saved.", "Success");
+						}
+						
 						break;
 					}
 				case 3:
 					{
-						SaveBanner();
+						var bannerResult = SaveBanner();
+						if (bannerResult.IsError) {
+							MbcMessageBox.Error(bannerResult.Errors[0].ErrorMessage, "");
+							processingResult.IsError = true;
+						} else {
+							MbcMessageBox.Exclamation("Banner saved.", "Success");
+						}
+					
 						break;
 					}
 			}
-			return retval;
+			return processingResult;
 		}
 		private bool SaveOrStop()
 		{
@@ -115,10 +144,11 @@ namespace Mbc5.Forms
 			switch (tbEndSheets.SelectedIndex)
 			{
 				case 0:
-					if (!SaveEndSheet())
+					var result = SaveEndSheet();
+					if (result.IsError)
 					{
-						var result = MessageBox.Show("End Sheet record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result == DialogResult.No)
+						var dialogResult = MessageBox.Show("End Sheet record could not be saved:"+ result.Errors[0].ErrorMessage+" Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (dialogResult == DialogResult.No)
 						{
 							retval = false;
 
@@ -127,10 +157,11 @@ namespace Mbc5.Forms
 					break;
 
 				case 1:
-					if (!SaveSupplement())
+					var supplementResult = SaveSupplement();
+					if (supplementResult.IsError)
 					{
-						var result = MessageBox.Show("Supplement record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result == DialogResult.No)
+						var dialogResult1 = MessageBox.Show("Supplement record could not be saved:" + supplementResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (dialogResult1 == DialogResult.No)
 						{
 							retval = false;
 						}
@@ -138,10 +169,11 @@ namespace Mbc5.Forms
 					break;
 
 				case 2:
-					if (!SaveBanner())
+					var bannerResult = SaveBanner();
+					if (bannerResult.IsError)
 					{
-						var result = MessageBox.Show("Banner record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result == DialogResult.No)
+						var dialogResult2 = MessageBox.Show("Banner record could not be saved:" + bannerResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (dialogResult2 == DialogResult.No)
 						{
 							retval = false; ;
 						}
@@ -152,9 +184,9 @@ namespace Mbc5.Forms
 			return retval;
 
 		}
-		public bool SaveBanner()
+		public ApiProcessingResult<bool> SaveBanner()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsEndSheet.banner.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -165,23 +197,24 @@ namespace Mbc5.Forms
 						var a = bannerTableAdapter.Update(dsEndSheet.banner);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						bannerTableAdapter.Fill(dsEndSheet.banner, Schcode);
-						retval = true;
+						
 					}
 					catch (Exception ex)
 					{
-						retval = false;
-						MessageBox.Show("Banner record failed to update:" + ex.Message);
+						
 						ex.ToExceptionless()
 					   .SetMessage("Banner record failed to update:" + ex.Message)
 					   .Submit();
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("Banner record failed to update:" + ex.Message, "Banner record failed to update:" + ex.Message, ""));
 					}
 				}
 			}
-			return retval;
+			return processingResult;
 		}
-		public bool SaveSupplement()
+		public ApiProcessingResult<bool> SaveSupplement()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsEndSheet.suppl.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -192,23 +225,25 @@ namespace Mbc5.Forms
 						var a = endsheetTableAdapter.Update(dsEndSheet.endsheet);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						supplTableAdapter.Fill(dsEndSheet.suppl, Schcode);
-						retval = true;
+						
 					}
 					catch (Exception ex)
 					{
-						retval = false;
-						MessageBox.Show("Supplement record failed to update:" + ex.Message);
+						
 						ex.ToExceptionless()
 					   .SetMessage("Supplement record failed to update:" + ex.Message)
 					   .Submit();
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("Supplement record failed to update:" + ex.Message, "Supplement record failed to update:" + ex.Message, ""));
 					}
 				}
 			}
-			return retval;
+			return processingResult;
 		}
-		public bool SaveEndSheet()
+		public ApiProcessingResult<bool> SaveEndSheet()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
+	
 			if (dsEndSheet.endsheet.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -219,23 +254,25 @@ namespace Mbc5.Forms
 						var a = endsheetTableAdapter.Update(dsEndSheet.endsheet);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						endsheetTableAdapter.Fill(dsEndSheet.endsheet, Schcode);
-						retval = true;
+						
 					}
 					catch (Exception ex)
 					{
-						retval = false;
-						MessageBox.Show("Production record failed to update:" + ex.Message);
+								
 						ex.ToExceptionless()
 					   .SetMessage("Production record failed to update:" + ex.Message)
 					   .Submit();
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("Production record failed to update: " + ex.Message,"Production record failed to update: " + ex.Message,""));
 					}
 				}
 			}
-			return retval;
+			return processingResult;
 		}
-		public bool SavePreFlight()
+		public ApiProcessingResult<bool> SavePreFlight()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
+		
 			if (dsEndSheet.preflit.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -246,19 +283,21 @@ namespace Mbc5.Forms
 						var a = preflitTableAdapter.Update(dsEndSheet.preflit);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						preflitTableAdapter.Fill(dsEndSheet.preflit, Schcode);
-						retval = true;
+					
 					}
 					catch (Exception ex)
 					{
-						retval = false;
-						MessageBox.Show("PreFlight record failed to update:" + ex.Message);
+					
+						
 						ex.ToExceptionless()
 					   .SetMessage("PreFlight record failed to update:" + ex.Message)
 					   .Submit();
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("PreFlight record failed to update:" + ex.Message, "PreFlight record failed to update:" + ex.Message, ""));
 					}
 				}
 			}
-			return retval;
+			return processingResult;
 		}
 		public override bool Add()
 		{
@@ -478,9 +517,10 @@ namespace Mbc5.Forms
 			switch (tbEndSheets.SelectedIndex)
 			{
 				case 0:
-					if (!SaveEndSheet())
+					var endSheetResult = SaveEndSheet();
+					if (endSheetResult.IsError)
 					{
-						var result1 = MessageBox.Show("End sheet record could not be saved. Continue search?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result1 = MessageBox.Show("End sheet record could not be saved:"+endSheetResult.Errors[0].ErrorMessage+" Continue search?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result1 == DialogResult.No)
 						{
 

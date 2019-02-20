@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BaseClass.Classes;
+using BaseClass;
+using BaseClass.Core;
 using NLog;
 namespace Mbc5.LookUpForms
 {
@@ -30,9 +32,9 @@ namespace Mbc5.LookUpForms
             this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
            
         }
-        public override bool Save()
+        public override ApiProcessingResult<bool> Save()
         {
-            bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
             this.Validate();
             this.lkTypeDataBindingSource.EndEdit();
             try
@@ -45,9 +47,11 @@ namespace Mbc5.LookUpForms
                 //ex.ToExceptionless()
                 //    .AddTags("Save Error")
                 //    .Submit();
-                MessageBox.Show("Error saving record. The record was not saved.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error saving record:"+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError("Error saving record:" + ex.Message, "Error saving record:" + ex.Message,""));
             }
-            return retval;
+            return processingResult;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

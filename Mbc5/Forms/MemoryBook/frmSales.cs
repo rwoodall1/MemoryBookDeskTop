@@ -1587,7 +1587,7 @@ namespace Mbc5.Forms.MemoryBook {
             txtModifiedByInvdetail.Text = this.ApplicationUser.id;
             txtModifiedByPay.Text = this.ApplicationUser.id;
         }
-		public  ApiProcessingResult<bool> Save() {
+		public  override ApiProcessingResult<bool> Save() {
 			return Save(true);
 		}
 

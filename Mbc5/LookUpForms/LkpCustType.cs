@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BaseClass.Classes;
+using BaseClass.Core;
+using BaseClass;
 using NLog;
 namespace Mbc5.LookUpForms
 {
@@ -21,13 +23,16 @@ namespace Mbc5.LookUpForms
      
         private void LkpLeadSource_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'lookUp.lkpCustType' table. You can move, or remove it, as needed.
-            this.lkpCustTypeTableAdapter.Fill(this.lookUp.lkpCustType);
-          
-           
+			// TODO: This line of code loads data into the 'lookUp.lkpCustType' table. You can move, or remove it, as needed.
+			try {
+				this.lkpCustTypeTableAdapter.Fill(this.lookUp.lkpCustType);
+			}catch(Exception ex) {
+				MbcMessageBox.Error(ex.Message, "");
+			}
         }
-        public override bool Save()
+        public override ApiProcessingResult<bool> Save()
         {
+			var processngResult = new ApiProcessingResult<bool>();
             bool retval = true;
             this.Validate();
             this.lkpCustTypeBindingSource.EndEdit();
@@ -41,9 +46,11 @@ namespace Mbc5.LookUpForms
                 //ex.ToExceptionless()
                 //    .AddTags("Save Error")
                 //    .Submit();
-                MessageBox.Show("Error saving record. The record was not saved.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error saving record:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				processngResult.IsError = true;
+				processngResult.Errors.Add(new ApiProcessingError("Error saving record:"+ex.Message, "Error saving record:" + ex.Message,""));
             }
-            return retval;
+            return processngResult;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

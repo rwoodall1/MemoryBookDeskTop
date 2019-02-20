@@ -17,6 +17,8 @@ using Exceptionless;
 using Exceptionless.Models;
 using Mbc5.Classes;
 using BindingModels;
+using BaseClass;
+using BaseClass.Core;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
            private bool vMktGo = false;
@@ -148,7 +150,8 @@ namespace Mbc5.Forms.MemoryBook {
 				MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 				return;
 			}
-			if (!this.Save())
+			var custSaveResult = Save();
+			if (custSaveResult.IsError)
 			{
 				DialogResult result = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 				if (result == DialogResult.Cancel)
@@ -224,8 +227,9 @@ namespace Mbc5.Forms.MemoryBook {
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                 return;
                 }
-            if (!this.Save()) {
-                DialogResult result = MessageBox.Show("Record failed to save. Hit cancel to correct.","Save",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+			var custSaveResult = Save();
+			if (custSaveResult.IsError) {
+				DialogResult result = MessageBox.Show("Record failed to save. Hit cancel to correct.","Save",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
                 if (result == DialogResult.Cancel) {
                     return;
                     }
@@ -286,8 +290,9 @@ namespace Mbc5.Forms.MemoryBook {
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                 return;
                 }
-            if (!this.Save()) {
-                DialogResult result = MessageBox.Show("Record failed to save correct and save again.","Save",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+			var custSaveResult = Save();
+			if (custSaveResult.IsError) {
+				DialogResult result = MessageBox.Show("Record failed to save correct and save again.","Save",MessageBoxButtons.OK,MessageBoxIcon.Warning);
 				return;
                 }
             //var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
@@ -373,8 +378,9 @@ namespace Mbc5.Forms.MemoryBook {
             frmMbcCust_Paint(this, null);
         }
         #region CrudOperations
-        public override bool Save()
+        public override ApiProcessingResult<bool> Save()
         {
+			var processingResult = new ApiProcessingResult<bool>();
 			this.txtModifiedBy.Text  = this.ApplicationUser.id;
             bool retval = false;
 		
@@ -397,19 +403,18 @@ namespace Mbc5.Forms.MemoryBook {
                     if (result == DialogResult.Yes) {
                         Save();
                     }
-                    else {
-                        retval = true;
-                    }                  
+                                 
                 }catch(Exception ex) {
                     MessageBox.Show("School record failed to update:" + ex.Message);
                     ex.ToExceptionless()
                    .SetMessage("School record failed to update:" + ex.Message)
                    .Submit();
-                    retval = false;
+					processingResult.IsError = true;
+					processingResult.Errors.Add(new ApiProcessingError("Record not save:"+ex.Message, "Record not save:" + ex.Message,""));
                     }
             }
 			
-			return retval;
+			return processingResult;
         }
         public override bool Add() {
 			
@@ -600,62 +605,62 @@ namespace Mbc5.Forms.MemoryBook {
 				if (InvNum != 0)
 				{
 					var sqlQuery = new SQLQuery();
-					
-					SqlParameter[] parameters = new SqlParameter[] {
+					try {
+						SqlParameter[] parameters = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
 					 new SqlParameter("@Schcode",this.Schcode),
 					  new SqlParameter("@Contryear", contryearTextBox.Text)
 					};
-					var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear)  VALUES (@Invno,@Schcode,@Contryear)";
-					var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
-					if (userResult != 1)
-					{
-						MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					SqlParameter[] parameters1 = new SqlParameter[] {
+						var strQuery = "INSERT INTO [dbo].[Quotes](Invno,Schcode,Contryear)  VALUES (@Invno,@Schcode,@Contryear)";
+
+						var userResult = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters);
+						if (userResult != 1) {
+							MessageBox.Show("Failed to insert sales record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+							return;
+						}
+						SqlParameter[] parameters1 = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
 					 new SqlParameter("@Schcode",this.Schcode),
 					 new SqlParameter("@ProdNo",this.frmMain.GetProdNo()),
 					  new SqlParameter("@Contryear", contryearTextBox.Text),
 					   new SqlParameter("@Company","MBC")
 					};
-					strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
-					var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
-					if (userResult1 != 1)
-					{
-						MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
-					SqlParameter[] parameters2 = new SqlParameter[] {
+						strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
+						var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
+						if (userResult1 != 1) {
+							MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+							return;
+						}
+						SqlParameter[] parameters2 = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
 					 new SqlParameter("@Schcode",this.Schcode),
 					 new SqlParameter("@Specovr",frmMain.GetCoverNumber()),
 						 new SqlParameter("@Specinst",GetInstructions() ),
 					   new SqlParameter("@Company","MBC")
 					};
-					strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
-					var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
-					if (userResult2 != 1)
-					{
-						MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
+						strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
+						var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
+						if (userResult2 != 1) {
+							MessageBox.Show("Failed to insert covers record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+							return;
+						}
 
-					SqlParameter[] parameters3 = new SqlParameter[] {
+						SqlParameter[] parameters3 = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
 					 new SqlParameter("@Schcode",this.Schcode),
-					
+
 					   new SqlParameter("@Company","MBC")
 					};
-					strQuery = "Insert into Wip (schcode,invno) Values(@Schcode,@Invno)";
-					var Result3 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters3);
-					if (Result3 != 1)
-					{
-						MessageBox.Show("Failed to insert wip record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						strQuery = "Insert into Wip (schcode,invno) Values(@Schcode,@Invno)";
+						var Result3 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters3);
+						if (Result3 != 1) {
+							MessageBox.Show("Failed to insert wip record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+							return;
+						}
+					}catch(Exception ex) {
+						MbcMessageBox.Error(ex.Message, "");
 						return;
 					}
-
 
 
 					Save();
@@ -1102,8 +1107,9 @@ namespace Mbc5.Forms.MemoryBook {
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                 return;
                 }
-            if (!this.Save()) {
-                DialogResult result=MessageBox.Show("Record failed to save. Continue closeing?","Save",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+			var custSaveResult = Save();
+			if (custSaveResult.IsError) {
+				DialogResult result=MessageBox.Show("Record failed to save. Continue closeing?","Save",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
                 if (result == DialogResult.No) {
                     e.Cancel = true;
                     return;
