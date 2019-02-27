@@ -389,7 +389,7 @@ namespace BaseClass.Classes
                 return false;
                 }
             }
-        public bool SendOutLookEmail(string Subject,List<string> ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
+        public bool SendOutLookEmail(string Subject,List<string> ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail, List<OutlookAttachemt> attachments = null) {
             if (ToAddresses == null || ToAddresses.Count < 1)
             {
                 MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -412,7 +412,7 @@ namespace BaseClass.Classes
                 var vToAddresses = "";
                 var vCCAddresses = "";
                 foreach (var address in ToAddresses) {
-                    vToAddresses = vToAddresses + address + "'";
+                    vToAddresses = vToAddresses + address + ";";
                    
                     }
                     mailItem.To = vToAddresses;
@@ -420,7 +420,11 @@ namespace BaseClass.Classes
                     vCCAddresses = vCCAddresses + address + ";";
                     
                     }
-                 mailItem.CC =vCCAddresses;
+				if (attachments != null && attachments.Count > 0)
+					foreach (OutlookAttachemt attachement in attachments) {
+						mailItem.Attachments.Add(attachement.Path, Outlook.OlAttachmentType.olByValue, 1, attachement.Name);
+					}
+				mailItem.CC =vCCAddresses;
                 mailItem.Subject = Subject;
                 mailItem.HTMLBody = brandedHtml;
                 mailItem.Display(true);

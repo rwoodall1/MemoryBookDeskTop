@@ -40,8 +40,6 @@
 			this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.lblTitle = new System.Windows.Forms.Label();
-			this.lblShipdate = new System.Windows.Forms.Label();
-			this.dtShipDate = new System.Windows.Forms.DateTimePicker();
 			this.label1 = new System.Windows.Forms.Label();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
@@ -54,6 +52,7 @@
 			this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
 			this.chkPrint = new System.Windows.Forms.CheckBox();
 			this.dgInvoices = new System.Windows.Forms.DataGridView();
+			this.ToPrint = new System.Windows.Forms.DataGridViewCheckBoxColumn();
 			this.Collections = new System.Windows.Forms.DataGridViewCheckBoxColumn();
 			this.InvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Shpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,8 +99,8 @@
 			this.BottomPanel.Controls.Add(this.button3);
 			this.BottomPanel.Controls.Add(this.button2);
 			this.BottomPanel.Controls.Add(this.btnSearch);
-			this.BottomPanel.Location = new System.Drawing.Point(0, 578);
-			this.BottomPanel.Size = new System.Drawing.Size(1127, 75);
+			this.BottomPanel.Location = new System.Drawing.Point(0, 422);
+			this.BottomPanel.Size = new System.Drawing.Size(1127, 66);
 			// 
 			// FullInvoiceBindingSource
 			// 
@@ -150,31 +149,12 @@
 			this.lblTitle.TabIndex = 0;
 			this.lblTitle.Text = "Invoices";
 			// 
-			// lblShipdate
-			// 
-			this.lblShipdate.AutoSize = true;
-			this.lblShipdate.Location = new System.Drawing.Point(15, 64);
-			this.lblShipdate.Name = "lblShipdate";
-			this.lblShipdate.Size = new System.Drawing.Size(54, 13);
-			this.lblShipdate.TabIndex = 2;
-			this.lblShipdate.Text = "Ship Date";
-			// 
-			// dtShipDate
-			// 
-			this.dtShipDate.CustomFormat = "\'\'";
-			this.dtShipDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtShipDate.Location = new System.Drawing.Point(75, 64);
-			this.dtShipDate.Name = "dtShipDate";
-			this.dtShipDate.Size = new System.Drawing.Size(200, 20);
-			this.dtShipDate.TabIndex = 3;
-			this.dtShipDate.ValueChanged += new System.EventHandler(this.dtShipDate_ValueChanged);
-			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.Color.Red;
-			this.label1.Location = new System.Drawing.Point(281, 64);
+			this.label1.Location = new System.Drawing.Point(15, 62);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(228, 13);
 			this.label1.TabIndex = 4;
@@ -218,7 +198,7 @@
 			this.button4.TabIndex = 3;
 			this.button4.Text = "Email Invoices";
 			this.button4.UseVisualStyleBackColor = true;
-			this.button4.Click += new System.EventHandler(this.button4_Click);
+			this.button4.Click += new System.EventHandler(this.button4_ClickAsync);
 			// 
 			// pnlError
 			// 
@@ -274,7 +254,7 @@
 			this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.panel1.Location = new System.Drawing.Point(2, 90);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(1125, 482);
+			this.panel1.Size = new System.Drawing.Size(1125, 326);
 			this.panel1.TabIndex = 9;
 			// 
 			// reportViewer1
@@ -284,10 +264,10 @@
 			reportDataSource1.Value = this.FullInvoiceBindingSource;
 			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
 			this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MultiMemInvoice.rdlc";
-			this.reportViewer1.Location = new System.Drawing.Point(16, 349);
+			this.reportViewer1.Location = new System.Drawing.Point(10, 390);
 			this.reportViewer1.Name = "reportViewer1";
 			this.reportViewer1.ServerReport.BearerToken = null;
-			this.reportViewer1.Size = new System.Drawing.Size(186, 119);
+			this.reportViewer1.Size = new System.Drawing.Size(51, 49);
 			this.reportViewer1.TabIndex = 16;
 			this.reportViewer1.Visible = false;
 			this.reportViewer1.ReportRefresh += new System.ComponentModel.CancelEventHandler(this.reportViewer1_ReportRefresh);
@@ -323,6 +303,7 @@
 			this.dgInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ToPrint,
             this.Collections,
             this.InvoiceNo,
             this.Shpdate,
@@ -338,6 +319,12 @@
 			this.dgInvoices.RowHeadersVisible = false;
 			this.dgInvoices.Size = new System.Drawing.Size(1096, 245);
 			this.dgInvoices.TabIndex = 0;
+			// 
+			// ToPrint
+			// 
+			this.ToPrint.DataPropertyName = "ToPrint";
+			this.ToPrint.HeaderText = "Print";
+			this.ToPrint.Name = "ToPrint";
 			// 
 			// Collections
 			// 
@@ -437,20 +424,16 @@
 			// frmInvoicInq
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.ClientSize = new System.Drawing.Size(1127, 653);
+			this.ClientSize = new System.Drawing.Size(1127, 488);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.pnlError);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.dtShipDate);
-			this.Controls.Add(this.lblShipdate);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Name = "frmInvoicInq";
 			this.Text = "Print MBC Invoice\'s";
 			this.Load += new System.EventHandler(this.frmInvoicInq_Load);
 			this.Controls.SetChildIndex(this.TopPanel, 0);
 			this.Controls.SetChildIndex(this.BottomPanel, 0);
-			this.Controls.SetChildIndex(this.lblShipdate, 0);
-			this.Controls.SetChildIndex(this.dtShipDate, 0);
 			this.Controls.SetChildIndex(this.label1, 0);
 			this.Controls.SetChildIndex(this.pnlError, 0);
 			this.Controls.SetChildIndex(this.panel1, 0);
@@ -481,8 +464,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblShipdate;
-        private System.Windows.Forms.DateTimePicker dtShipDate;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -509,15 +490,16 @@
         private DataSets.dsSales dsSales;
         private System.Windows.Forms.BindingSource custBindingSource;
         private DataSets.dsCustTableAdapters.custTableAdapter custTableAdapter;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Collections;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Shpdate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SchName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Schcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Schemail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContactEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
 		private System.Windows.Forms.BindingSource bsTest;
 		private System.Windows.Forms.BindingSource FullInvoiceBindingSource;
+		private System.Windows.Forms.DataGridViewCheckBoxColumn ToPrint;
+		private System.Windows.Forms.DataGridViewCheckBoxColumn Collections;
+		private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceNo;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Shpdate;
+		private System.Windows.Forms.DataGridViewTextBoxColumn SchName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Schcode;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Schemail;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ContactEmail;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
 	}
 }

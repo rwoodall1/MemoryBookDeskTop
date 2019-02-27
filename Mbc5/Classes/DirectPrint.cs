@@ -15,6 +15,7 @@ using Microsoft.Reporting.WinForms;
 using Microsoft.ReportingServices.DataExtensions;
 using Microsoft.ReportingServices.ReportRendering;
 using BaseClass;
+
 namespace Mbc5.Classes
 {
     public class DirectPrint : IDisposable

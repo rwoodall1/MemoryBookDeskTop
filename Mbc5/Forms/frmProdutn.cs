@@ -3387,6 +3387,10 @@ namespace Mbc5.Forms
 			emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
 		}
 
+		private void btnRecvHistory_Click(object sender, EventArgs e) {
+
+		}
+
 		#endregion
 
 		//nothing below here  

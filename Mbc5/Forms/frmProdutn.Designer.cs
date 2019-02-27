@@ -186,6 +186,8 @@
 			System.Windows.Forms.Label rmptotLabel1;
 			System.Windows.Forms.Label rmbtotLabel1;
 			System.Windows.Forms.Label invnoLabel7;
+			System.Windows.Forms.Label endstrecvLabel;
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
@@ -200,8 +202,6 @@
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.Label endstrecvLabel;
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
 			this.invoiceCustBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.dsCust = new Mbc5.DataSets.dsCust();
 			this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -210,6 +210,8 @@
 			this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tbProdutn = new System.Windows.Forms.TabControl();
 			this.pg1 = new System.Windows.Forms.TabPage();
+			this.btnStandarCoverEmail = new System.Windows.Forms.Button();
+			this.btnspCoverEmail = new System.Windows.Forms.Button();
 			this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
 			this.btnSchoolSearch = new System.Windows.Forms.Button();
 			this.txtSchNamesrch = new System.Windows.Forms.TextBox();
@@ -269,6 +271,7 @@
 			this.prmsdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.shpdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.endstrecvDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.coilclrTextBox = new System.Windows.Forms.TextBox();
 			this.laminatedTextBox = new System.Windows.Forms.TextBox();
 			this.cpnumTextBox = new System.Windows.Forms.TextBox();
@@ -561,9 +564,6 @@
 			this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
 			this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
 			this.vendorTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.vendorTableAdapter();
-			this.endstrecvDateTimePicker = new System.Windows.Forms.DateTimePicker();
-			this.btnspCoverEmail = new System.Windows.Forms.Button();
-			this.btnStandarCoverEmail = new System.Windows.Forms.Button();
 			companyLabel = new System.Windows.Forms.Label();
 			invnoLabel = new System.Windows.Forms.Label();
 			prodnoLabel = new System.Windows.Forms.Label();
@@ -2365,6 +2365,16 @@
 			this.paymntBindingSource.DataMember = "paymnt";
 			this.paymntBindingSource.DataSource = this.dsInvoice;
 			// 
+			// endstrecvLabel
+			// 
+			endstrecvLabel.AutoSize = true;
+			endstrecvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			endstrecvLabel.Location = new System.Drawing.Point(28, 318);
+			endstrecvLabel.Name = "endstrecvLabel";
+			endstrecvLabel.Size = new System.Drawing.Size(135, 13);
+			endstrecvLabel.TabIndex = 132;
+			endstrecvLabel.Text = "End Sheet Recv Date:";
+			// 
 			// tbProdutn
 			// 
 			this.tbProdutn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2429,6 +2439,36 @@
 			this.pg1.Size = new System.Drawing.Size(1220, 705);
 			this.pg1.TabIndex = 0;
 			this.pg1.Text = " Production";
+			// 
+			// btnStandarCoverEmail
+			// 
+			this.btnStandarCoverEmail.AutoSize = true;
+			this.btnStandarCoverEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnStandarCoverEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnStandarCoverEmail.Image")));
+			this.btnStandarCoverEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.btnStandarCoverEmail.Location = new System.Drawing.Point(293, 529);
+			this.btnStandarCoverEmail.Name = "btnStandarCoverEmail";
+			this.btnStandarCoverEmail.Size = new System.Drawing.Size(125, 38);
+			this.btnStandarCoverEmail.TabIndex = 159;
+			this.btnStandarCoverEmail.Text = "Standard Cvr Email";
+			this.btnStandarCoverEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnStandarCoverEmail.UseVisualStyleBackColor = true;
+			this.btnStandarCoverEmail.Click += new System.EventHandler(this.btnStandarCoverEmail_Click);
+			// 
+			// btnspCoverEmail
+			// 
+			this.btnspCoverEmail.AutoSize = true;
+			this.btnspCoverEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnspCoverEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnspCoverEmail.Image")));
+			this.btnspCoverEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.btnspCoverEmail.Location = new System.Drawing.Point(174, 529);
+			this.btnspCoverEmail.Name = "btnspCoverEmail";
+			this.btnspCoverEmail.Size = new System.Drawing.Size(116, 38);
+			this.btnspCoverEmail.TabIndex = 158;
+			this.btnspCoverEmail.Text = "Special Cvr Email";
+			this.btnspCoverEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btnspCoverEmail.UseVisualStyleBackColor = true;
+			this.btnspCoverEmail.Click += new System.EventHandler(this.btnspCoverEmail_Click);
 			// 
 			// reportViewer1
 			// 
@@ -3136,6 +3176,17 @@
 			this.panel1.Size = new System.Drawing.Size(290, 400);
 			this.panel1.TabIndex = 128;
 			// 
+			// endstrecvDateTimePicker
+			// 
+			this.endstrecvDateTimePicker.CustomFormat = "\'\'";
+			this.endstrecvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "endstrecv", true));
+			this.endstrecvDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.endstrecvDateTimePicker.Location = new System.Drawing.Point(172, 318);
+			this.endstrecvDateTimePicker.Name = "endstrecvDateTimePicker";
+			this.endstrecvDateTimePicker.Size = new System.Drawing.Size(85, 20);
+			this.endstrecvDateTimePicker.TabIndex = 133;
+			this.endstrecvDateTimePicker.ValueChanged += new System.EventHandler(this.endstrecvDateTimePicker_ValueChanged);
+			// 
 			// coilclrTextBox
 			// 
 			this.coilclrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coilclr", true));
@@ -3621,6 +3672,7 @@
 			this.btnRecvHistory.TabIndex = 93;
 			this.btnRecvHistory.Text = "Rcv. Card Hist";
 			this.btnRecvHistory.UseVisualStyleBackColor = true;
+			this.btnRecvHistory.Click += new System.EventHandler(this.btnRecvHistory_Click);
 			// 
 			// btnRcvCard
 			// 
@@ -6258,57 +6310,6 @@
 			// vendorTableAdapter
 			// 
 			this.vendorTableAdapter.ClearBeforeFill = true;
-			// 
-			// endstrecvLabel
-			// 
-			endstrecvLabel.AutoSize = true;
-			endstrecvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			endstrecvLabel.Location = new System.Drawing.Point(28, 318);
-			endstrecvLabel.Name = "endstrecvLabel";
-			endstrecvLabel.Size = new System.Drawing.Size(135, 13);
-			endstrecvLabel.TabIndex = 132;
-			endstrecvLabel.Text = "End Sheet Recv Date:";
-			// 
-			// endstrecvDateTimePicker
-			// 
-			this.endstrecvDateTimePicker.CustomFormat = "\'\'";
-			this.endstrecvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "endstrecv", true));
-			this.endstrecvDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.endstrecvDateTimePicker.Location = new System.Drawing.Point(172, 318);
-			this.endstrecvDateTimePicker.Name = "endstrecvDateTimePicker";
-			this.endstrecvDateTimePicker.Size = new System.Drawing.Size(85, 20);
-			this.endstrecvDateTimePicker.TabIndex = 133;
-			this.endstrecvDateTimePicker.ValueChanged += new System.EventHandler(this.endstrecvDateTimePicker_ValueChanged);
-			// 
-			// btnspCoverEmail
-			// 
-			this.btnspCoverEmail.AutoSize = true;
-			this.btnspCoverEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnspCoverEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnspCoverEmail.Image")));
-			this.btnspCoverEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.btnspCoverEmail.Location = new System.Drawing.Point(174, 529);
-			this.btnspCoverEmail.Name = "btnspCoverEmail";
-			this.btnspCoverEmail.Size = new System.Drawing.Size(116, 38);
-			this.btnspCoverEmail.TabIndex = 158;
-			this.btnspCoverEmail.Text = "Special Cvr Email";
-			this.btnspCoverEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnspCoverEmail.UseVisualStyleBackColor = true;
-			this.btnspCoverEmail.Click += new System.EventHandler(this.btnspCoverEmail_Click);
-			// 
-			// btnStandarCoverEmail
-			// 
-			this.btnStandarCoverEmail.AutoSize = true;
-			this.btnStandarCoverEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnStandarCoverEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnStandarCoverEmail.Image")));
-			this.btnStandarCoverEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.btnStandarCoverEmail.Location = new System.Drawing.Point(293, 529);
-			this.btnStandarCoverEmail.Name = "btnStandarCoverEmail";
-			this.btnStandarCoverEmail.Size = new System.Drawing.Size(125, 38);
-			this.btnStandarCoverEmail.TabIndex = 159;
-			this.btnStandarCoverEmail.Text = "Standard Cvr Email";
-			this.btnStandarCoverEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnStandarCoverEmail.UseVisualStyleBackColor = true;
-			this.btnStandarCoverEmail.Click += new System.EventHandler(this.btnStandarCoverEmail_Click);
 			// 
 			// frmProdutn
 			// 
