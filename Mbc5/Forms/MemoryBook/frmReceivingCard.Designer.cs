@@ -1,0 +1,936 @@
+﻿namespace Mbc5.Forms.MemoryBook {
+	partial class frmReceivingCard {
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
+
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing) {
+			if (disposing && (components != null)) {
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		#region Windows Form Designer generated code
+
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent() {
+			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.Label kitReceivedDateLabel;
+			System.Windows.Forms.Label guardteLabel;
+			System.Windows.Forms.Label label1;
+			System.Windows.Forms.Label label2;
+			System.Windows.Forms.Label label3;
+			System.Windows.Forms.Label totalSoldoLabel;
+			System.Windows.Forms.Label label4;
+			System.Windows.Forms.Label label5;
+			System.Windows.Forms.Label label6;
+			System.Windows.Forms.Label freebooksLabel;
+			System.Windows.Forms.Label label7;
+			System.Windows.Forms.Label label8;
+			this.schnameLabel1 = new System.Windows.Forms.Label();
+			this.rCardBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.dsRcard = new Mbc5.DataSets.dsRcard();
+			this.kitReceivedDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.ck1CheckBox = new System.Windows.Forms.CheckBox();
+			this.ck2CheckBox = new System.Windows.Forms.CheckBox();
+			this.guardteDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.deadlineDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.estdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.totalSoldoTextBox = new System.Windows.Forms.TextBox();
+			this.totalDollarTextBox = new System.Windows.Forms.TextBox();
+			this.ck3CheckBox = new System.Windows.Forms.CheckBox();
+			this.paymentsTextBox = new System.Windows.Forms.TextBox();
+			this.ck4CheckBox = new System.Windows.Forms.CheckBox();
+			this.baldueTextBox = new System.Windows.Forms.TextBox();
+			this.ck4bCheckBox = new System.Windows.Forms.CheckBox();
+			this.ck4cCheckBox = new System.Windows.Forms.CheckBox();
+			this.ck4aCheckBox = new System.Windows.Forms.CheckBox();
+			this.ck7CheckBox = new System.Windows.Forms.CheckBox();
+			this.noPagesTextBox = new System.Windows.Forms.TextBox();
+			this.noCopiesTextBox = new System.Windows.Forms.TextBox();
+			this.freebooksTextBox = new System.Windows.Forms.TextBox();
+			this.ck8CheckBox = new System.Windows.Forms.CheckBox();
+			this.rCardTableAdapter = new Mbc5.DataSets.dsRcardTableAdapters.RCardTableAdapter();
+			this.tableAdapterManager = new Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager();
+			this.coverDescTextBox = new System.Windows.Forms.TextBox();
+			this.hdbky_nCheckBox = new System.Windows.Forms.CheckBox();
+			this.casey_nCheckBox = new System.Windows.Forms.CheckBox();
+			this.spirckCheckBox = new System.Windows.Forms.CheckBox();
+			this.perfBindCheckBox = new System.Windows.Forms.CheckBox();
+			this.sdlStichCheckBox = new System.Windows.Forms.CheckBox();
+			this.allClrckCheckBox = new System.Windows.Forms.CheckBox();
+			this.clrpgckCheckBox = new System.Windows.Forms.CheckBox();
+			this.appCheckBox = new System.Windows.Forms.CheckBox();
+			this.foilingCheckBox = new System.Windows.Forms.CheckBox();
+			this.mkCheckBox = new System.Windows.Forms.CheckBox();
+			this.indivPicCheckBox = new System.Windows.Forms.CheckBox();
+			this.insckCheckBox = new System.Windows.Forms.CheckBox();
+			this.mlaminationCheckBox = new System.Windows.Forms.CheckBox();
+			this.gLaminationCheckBox = new System.Windows.Forms.CheckBox();
+			this.comckCheckBox = new System.Windows.Forms.CheckBox();
+			this.commentTextBox = new System.Windows.Forms.TextBox();
+			this.nameTextBox = new System.Windows.Forms.TextBox();
+			this.attnTextBox = new System.Windows.Forms.TextBox();
+			this.add1TextBox = new System.Windows.Forms.TextBox();
+			this.add2TextBox = new System.Windows.Forms.TextBox();
+			this.cityTextBox = new System.Windows.Forms.TextBox();
+			this.stateTextBox = new System.Windows.Forms.TextBox();
+			this.zipTextBox = new System.Windows.Forms.TextBox();
+			this.noPayRecvTextBox = new System.Windows.Forms.TextBox();
+			this.btnSave = new System.Windows.Forms.Button();
+			this.btnEmail = new System.Windows.Forms.Button();
+			this.btnPrint = new System.Windows.Forms.Button();
+			kitReceivedDateLabel = new System.Windows.Forms.Label();
+			guardteLabel = new System.Windows.Forms.Label();
+			label1 = new System.Windows.Forms.Label();
+			label2 = new System.Windows.Forms.Label();
+			label3 = new System.Windows.Forms.Label();
+			totalSoldoLabel = new System.Windows.Forms.Label();
+			label4 = new System.Windows.Forms.Label();
+			label5 = new System.Windows.Forms.Label();
+			label6 = new System.Windows.Forms.Label();
+			freebooksLabel = new System.Windows.Forms.Label();
+			label7 = new System.Windows.Forms.Label();
+			label8 = new System.Windows.Forms.Label();
+			this.TopPanel.SuspendLayout();
+			this.BottomPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.rCardBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dsRcard)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// TopPanel
+			// 
+			this.TopPanel.Controls.Add(this.schnameLabel1);
+			this.TopPanel.Size = new System.Drawing.Size(621, 46);
+			// 
+			// BottomPanel
+			// 
+			this.BottomPanel.Controls.Add(this.btnPrint);
+			this.BottomPanel.Controls.Add(this.btnEmail);
+			this.BottomPanel.Controls.Add(this.btnSave);
+			this.BottomPanel.Location = new System.Drawing.Point(0, 737);
+			this.BottomPanel.Size = new System.Drawing.Size(621, 47);
+			// 
+			// kitReceivedDateLabel
+			// 
+			kitReceivedDateLabel.AutoSize = true;
+			kitReceivedDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			kitReceivedDateLabel.Location = new System.Drawing.Point(23, 62);
+			kitReceivedDateLabel.Name = "kitReceivedDateLabel";
+			kitReceivedDateLabel.Size = new System.Drawing.Size(150, 13);
+			kitReceivedDateLabel.TabIndex = 2;
+			kitReceivedDateLabel.Text = "We receive your yearbook on ";
+			// 
+			// guardteLabel
+			// 
+			guardteLabel.AutoSize = true;
+			guardteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			guardteLabel.Location = new System.Drawing.Point(226, 92);
+			guardteLabel.Name = "guardteLabel";
+			guardteLabel.Size = new System.Drawing.Size(159, 13);
+			guardteLabel.TabIndex = 5;
+			guardteLabel.Text = "Your guaranteed delivery date is";
+			// 
+			// label1
+			// 
+			label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label1.Location = new System.Drawing.Point(234, 116);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(279, 18);
+			label1.TabIndex = 10;
+			label1.Text = "You missed your deadline so this will alter your delivery. ";
+			// 
+			// label2
+			// 
+			label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label2.Location = new System.Drawing.Point(23, 141);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(252, 18);
+			label2.TabIndex = 11;
+			label2.Text = " Your ESTIMATED (not guaranteed) delivery date is";
+			// 
+			// label3
+			// 
+			label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label3.Location = new System.Drawing.Point(23, 167);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(528, 36);
+			label3.TabIndex = 16;
+			label3.Text = "Should the school require less than the published production schedules, the order" +
+    " is subject to an expediting/overtime fee if production time is available.  ";
+			// 
+			// totalSoldoLabel
+			// 
+			totalSoldoLabel.AutoSize = true;
+			totalSoldoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			totalSoldoLabel.Location = new System.Drawing.Point(23, 207);
+			totalSoldoLabel.Name = "totalSoldoLabel";
+			totalSoldoLabel.Size = new System.Drawing.Size(121, 13);
+			totalSoldoLabel.TabIndex = 16;
+			totalSoldoLabel.Text = "Total Books Sold Online";
+			// 
+			// label4
+			// 
+			label4.AutoSize = true;
+			label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label4.Location = new System.Drawing.Point(279, 207);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(144, 13);
+			label4.TabIndex = 19;
+			label4.Text = "Total Online Dollars Colected";
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label5.Location = new System.Drawing.Point(257, 313);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(92, 13);
+			label5.TabIndex = 30;
+			label5.Text = "page book with a ";
+			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label6.Location = new System.Drawing.Point(402, 313);
+			label6.Name = "label6";
+			label6.Size = new System.Drawing.Size(38, 13);
+			label6.TabIndex = 31;
+			label6.Text = "copies";
+			// 
+			// freebooksLabel
+			// 
+			freebooksLabel.AutoSize = true;
+			freebooksLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			freebooksLabel.Location = new System.Drawing.Point(74, 337);
+			freebooksLabel.Name = "freebooksLabel";
+			freebooksLabel.Size = new System.Drawing.Size(110, 13);
+			freebooksLabel.TabIndex = 31;
+			freebooksLabel.Text = "Free Additional Books";
+			// 
+			// label7
+			// 
+			label7.AutoSize = true;
+			label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label7.Location = new System.Drawing.Point(23, 390);
+			label7.Name = "label7";
+			label7.Size = new System.Drawing.Size(187, 13);
+			label7.TabIndex = 35;
+			label7.Text = "You also chose these custom features";
+			// 
+			// label8
+			// 
+			label8.AutoSize = true;
+			label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label8.Location = new System.Drawing.Point(23, 555);
+			label8.Name = "label8";
+			label8.Size = new System.Drawing.Size(142, 13);
+			label8.TabIndex = 64;
+			label8.Text = "Year Book Shipping Address";
+			// 
+			// schnameLabel1
+			// 
+			this.schnameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Schname", true));
+			this.schnameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.schnameLabel1.Location = new System.Drawing.Point(252, 14);
+			this.schnameLabel1.Name = "schnameLabel1";
+			this.schnameLabel1.Size = new System.Drawing.Size(117, 23);
+			this.schnameLabel1.TabIndex = 1;
+			this.schnameLabel1.Text = "Schname";
+			// 
+			// rCardBindingSource
+			// 
+			this.rCardBindingSource.DataMember = "RCard";
+			this.rCardBindingSource.DataSource = this.dsRcard;
+			// 
+			// dsRcard
+			// 
+			this.dsRcard.DataSetName = "dsRcard";
+			this.dsRcard.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// kitReceivedDateDateTimePicker
+			// 
+			this.kitReceivedDateDateTimePicker.CustomFormat = "\'\'";
+			this.kitReceivedDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.rCardBindingSource, "KitReceivedDate", true));
+			this.kitReceivedDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.kitReceivedDateDateTimePicker.Location = new System.Drawing.Point(174, 62);
+			this.kitReceivedDateDateTimePicker.Name = "kitReceivedDateDateTimePicker";
+			this.kitReceivedDateDateTimePicker.Size = new System.Drawing.Size(85, 20);
+			this.kitReceivedDateDateTimePicker.TabIndex = 3;
+			this.kitReceivedDateDateTimePicker.ValueChanged += new System.EventHandler(this.kitReceivedDateDateTimePicker_ValueChanged);
+			// 
+			// ck1CheckBox
+			// 
+			this.ck1CheckBox.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+			this.ck1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck1", true));
+			this.ck1CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ck1CheckBox.Location = new System.Drawing.Point(23, 90);
+			this.ck1CheckBox.Name = "ck1CheckBox";
+			this.ck1CheckBox.Size = new System.Drawing.Size(193, 16);
+			this.ck1CheckBox.TabIndex = 5;
+			this.ck1CheckBox.Text = "Your yearbook arrived on schedule ";
+			this.ck1CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ck2CheckBox
+			// 
+			this.ck2CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck2", true));
+			this.ck2CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ck2CheckBox.Location = new System.Drawing.Point(23, 115);
+			this.ck2CheckBox.Name = "ck2CheckBox";
+			this.ck2CheckBox.Size = new System.Drawing.Size(121, 20);
+			this.ck2CheckBox.TabIndex = 8;
+			this.ck2CheckBox.Text = "Your deadline was";
+			this.ck2CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// guardteDateTimePicker
+			// 
+			this.guardteDateTimePicker.CustomFormat = "\'\'";
+			this.guardteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.rCardBindingSource, "Guardte", true));
+			this.guardteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.guardteDateTimePicker.Location = new System.Drawing.Point(391, 88);
+			this.guardteDateTimePicker.Name = "guardteDateTimePicker";
+			this.guardteDateTimePicker.Size = new System.Drawing.Size(85, 20);
+			this.guardteDateTimePicker.TabIndex = 13;
+			this.guardteDateTimePicker.ValueChanged += new System.EventHandler(this.guardteDateTimePicker_ValueChanged);
+			// 
+			// deadlineDateTimePicker
+			// 
+			this.deadlineDateTimePicker.CustomFormat = "\'\'";
+			this.deadlineDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.rCardBindingSource, "Deadline", true));
+			this.deadlineDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.deadlineDateTimePicker.Location = new System.Drawing.Point(135, 115);
+			this.deadlineDateTimePicker.Name = "deadlineDateTimePicker";
+			this.deadlineDateTimePicker.Size = new System.Drawing.Size(85, 20);
+			this.deadlineDateTimePicker.TabIndex = 14;
+			this.deadlineDateTimePicker.ValueChanged += new System.EventHandler(this.deadlineDateTimePicker_ValueChanged);
+			// 
+			// estdateDateTimePicker
+			// 
+			this.estdateDateTimePicker.CustomFormat = "\'\'";
+			this.estdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.rCardBindingSource, "Estdate", true));
+			this.estdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.estdateDateTimePicker.Location = new System.Drawing.Point(282, 141);
+			this.estdateDateTimePicker.Name = "estdateDateTimePicker";
+			this.estdateDateTimePicker.Size = new System.Drawing.Size(85, 20);
+			this.estdateDateTimePicker.TabIndex = 15;
+			this.estdateDateTimePicker.ValueChanged += new System.EventHandler(this.estdateDateTimePicker_ValueChanged);
+			// 
+			// totalSoldoTextBox
+			// 
+			this.totalSoldoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "TotalSoldo", true));
+			this.totalSoldoTextBox.Location = new System.Drawing.Point(151, 203);
+			this.totalSoldoTextBox.Name = "totalSoldoTextBox";
+			this.totalSoldoTextBox.Size = new System.Drawing.Size(100, 20);
+			this.totalSoldoTextBox.TabIndex = 17;
+			// 
+			// totalDollarTextBox
+			// 
+			this.totalDollarTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "TotalDollar", true));
+			this.totalDollarTextBox.Location = new System.Drawing.Point(425, 203);
+			this.totalDollarTextBox.Name = "totalDollarTextBox";
+			this.totalDollarTextBox.Size = new System.Drawing.Size(100, 20);
+			this.totalDollarTextBox.TabIndex = 18;
+			// 
+			// ck3CheckBox
+			// 
+			this.ck3CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck3", true));
+			this.ck3CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ck3CheckBox.Location = new System.Drawing.Point(23, 230);
+			this.ck3CheckBox.Name = "ck3CheckBox";
+			this.ck3CheckBox.Size = new System.Drawing.Size(148, 20);
+			this.ck3CheckBox.TabIndex = 20;
+			this.ck3CheckBox.Text = "We received payment of";
+			this.ck3CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// paymentsTextBox
+			// 
+			this.paymentsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Payments", true));
+			this.paymentsTextBox.Location = new System.Drawing.Point(169, 230);
+			this.paymentsTextBox.Name = "paymentsTextBox";
+			this.paymentsTextBox.Size = new System.Drawing.Size(77, 20);
+			this.paymentsTextBox.TabIndex = 21;
+			// 
+			// ck4CheckBox
+			// 
+			this.ck4CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck4", true));
+			this.ck4CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ck4CheckBox.Location = new System.Drawing.Point(23, 255);
+			this.ck4CheckBox.Name = "ck4CheckBox";
+			this.ck4CheckBox.Size = new System.Drawing.Size(104, 15);
+			this.ck4CheckBox.TabIndex = 22;
+			this.ck4CheckBox.Text = "Your balance is";
+			this.ck4CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// baldueTextBox
+			// 
+			this.baldueTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Baldue", true));
+			this.baldueTextBox.Location = new System.Drawing.Point(128, 252);
+			this.baldueTextBox.Name = "baldueTextBox";
+			this.baldueTextBox.Size = new System.Drawing.Size(75, 20);
+			this.baldueTextBox.TabIndex = 23;
+			// 
+			// ck4bCheckBox
+			// 
+			this.ck4bCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck4b", true));
+			this.ck4bCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ck4bCheckBox.Location = new System.Drawing.Point(41, 275);
+			this.ck4bCheckBox.Name = "ck4bCheckBox";
+			this.ck4bCheckBox.Size = new System.Drawing.Size(154, 15);
+			this.ck4bCheckBox.TabIndex = 24;
+			this.ck4bCheckBox.Text = "Due upon reeipt of books";
+			this.ck4bCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ck4cCheckBox
+			// 
+			this.ck4cCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck4c", true));
+			this.ck4cCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ck4cCheckBox.Location = new System.Drawing.Point(221, 290);
+			this.ck4cCheckBox.Name = "ck4cCheckBox";
+			this.ck4cCheckBox.Size = new System.Drawing.Size(179, 20);
+			this.ck4cCheckBox.TabIndex = 25;
+			this.ck4cCheckBox.Text = "No Payment Received";
+			this.ck4cCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ck4aCheckBox
+			// 
+			this.ck4aCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck4a", true));
+			this.ck4aCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ck4aCheckBox.Location = new System.Drawing.Point(41, 290);
+			this.ck4aCheckBox.Name = "ck4aCheckBox";
+			this.ck4aCheckBox.Size = new System.Drawing.Size(179, 20);
+			this.ck4aCheckBox.TabIndex = 26;
+			this.ck4aCheckBox.Text = "Due upon receipt of this notice";
+			this.ck4aCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ck7CheckBox
+			// 
+			this.ck7CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck7", true));
+			this.ck7CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ck7CheckBox.Location = new System.Drawing.Point(23, 311);
+			this.ck7CheckBox.Name = "ck7CheckBox";
+			this.ck7CheckBox.Size = new System.Drawing.Size(188, 16);
+			this.ck7CheckBox.TabIndex = 27;
+			this.ck7CheckBox.Text = "Our records show you ordered a";
+			this.ck7CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// noPagesTextBox
+			// 
+			this.noPagesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "NoPages", true));
+			this.noPagesTextBox.Location = new System.Drawing.Point(204, 309);
+			this.noPagesTextBox.Name = "noPagesTextBox";
+			this.noPagesTextBox.Size = new System.Drawing.Size(47, 20);
+			this.noPagesTextBox.TabIndex = 28;
+			// 
+			// noCopiesTextBox
+			// 
+			this.noCopiesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "NoCopies", true));
+			this.noCopiesTextBox.Location = new System.Drawing.Point(349, 309);
+			this.noCopiesTextBox.Name = "noCopiesTextBox";
+			this.noCopiesTextBox.Size = new System.Drawing.Size(47, 20);
+			this.noCopiesTextBox.TabIndex = 29;
+			// 
+			// freebooksTextBox
+			// 
+			this.freebooksTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Freebooks", true));
+			this.freebooksTextBox.Location = new System.Drawing.Point(23, 333);
+			this.freebooksTextBox.Name = "freebooksTextBox";
+			this.freebooksTextBox.Size = new System.Drawing.Size(41, 20);
+			this.freebooksTextBox.TabIndex = 32;
+			// 
+			// ck8CheckBox
+			// 
+			this.ck8CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck8", true));
+			this.ck8CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ck8CheckBox.Location = new System.Drawing.Point(23, 359);
+			this.ck8CheckBox.Name = "ck8CheckBox";
+			this.ck8CheckBox.Size = new System.Drawing.Size(183, 19);
+			this.ck8CheckBox.TabIndex = 33;
+			this.ck8CheckBox.Text = "The cover option you chose was ";
+			this.ck8CheckBox.UseVisualStyleBackColor = true;
+			// 
+			// rCardTableAdapter
+			// 
+			this.rCardTableAdapter.ClearBeforeFill = true;
+			// 
+			// tableAdapterManager
+			// 
+			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+			this.tableAdapterManager.RCardTableAdapter = this.rCardTableAdapter;
+			this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+			// 
+			// coverDescTextBox
+			// 
+			this.coverDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "CoverDesc", true));
+			this.coverDescTextBox.Location = new System.Drawing.Point(204, 358);
+			this.coverDescTextBox.Name = "coverDescTextBox";
+			this.coverDescTextBox.Size = new System.Drawing.Size(320, 20);
+			this.coverDescTextBox.TabIndex = 34;
+			// 
+			// hdbky_nCheckBox
+			// 
+			this.hdbky_nCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Hdbky_n", true));
+			this.hdbky_nCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.hdbky_nCheckBox.Location = new System.Drawing.Point(23, 406);
+			this.hdbky_nCheckBox.Name = "hdbky_nCheckBox";
+			this.hdbky_nCheckBox.Size = new System.Drawing.Size(104, 24);
+			this.hdbky_nCheckBox.TabIndex = 36;
+			this.hdbky_nCheckBox.Text = "Hardback";
+			this.hdbky_nCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// casey_nCheckBox
+			// 
+			this.casey_nCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Casey_n", true));
+			this.casey_nCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.casey_nCheckBox.Location = new System.Drawing.Point(23, 427);
+			this.casey_nCheckBox.Name = "casey_nCheckBox";
+			this.casey_nCheckBox.Size = new System.Drawing.Size(104, 19);
+			this.casey_nCheckBox.TabIndex = 37;
+			this.casey_nCheckBox.Text = "Case Bind";
+			this.casey_nCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// spirckCheckBox
+			// 
+			this.spirckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Spirck", true));
+			this.spirckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.spirckCheckBox.Location = new System.Drawing.Point(23, 446);
+			this.spirckCheckBox.Name = "spirckCheckBox";
+			this.spirckCheckBox.Size = new System.Drawing.Size(104, 19);
+			this.spirckCheckBox.TabIndex = 39;
+			this.spirckCheckBox.Text = "Spiral";
+			this.spirckCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// perfBindCheckBox
+			// 
+			this.perfBindCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "PerfBind", true));
+			this.perfBindCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.perfBindCheckBox.Location = new System.Drawing.Point(23, 463);
+			this.perfBindCheckBox.Name = "perfBindCheckBox";
+			this.perfBindCheckBox.Size = new System.Drawing.Size(104, 24);
+			this.perfBindCheckBox.TabIndex = 41;
+			this.perfBindCheckBox.Text = "Perfect Binding";
+			this.perfBindCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// sdlStichCheckBox
+			// 
+			this.sdlStichCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "SdlStich", true));
+			this.sdlStichCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.sdlStichCheckBox.Location = new System.Drawing.Point(149, 406);
+			this.sdlStichCheckBox.Name = "sdlStichCheckBox";
+			this.sdlStichCheckBox.Size = new System.Drawing.Size(104, 24);
+			this.sdlStichCheckBox.TabIndex = 43;
+			this.sdlStichCheckBox.Text = "Saddle Stitch";
+			this.sdlStichCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// allClrckCheckBox
+			// 
+			this.allClrckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "AllClrck", true));
+			this.allClrckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.allClrckCheckBox.Location = new System.Drawing.Point(149, 427);
+			this.allClrckCheckBox.Name = "allClrckCheckBox";
+			this.allClrckCheckBox.Size = new System.Drawing.Size(104, 19);
+			this.allClrckCheckBox.TabIndex = 45;
+			this.allClrckCheckBox.Text = "All Color Book";
+			this.allClrckCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// clrpgckCheckBox
+			// 
+			this.clrpgckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Clrpgck", true));
+			this.clrpgckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.clrpgckCheckBox.Location = new System.Drawing.Point(149, 446);
+			this.clrpgckCheckBox.Name = "clrpgckCheckBox";
+			this.clrpgckCheckBox.Size = new System.Drawing.Size(104, 19);
+			this.clrpgckCheckBox.TabIndex = 47;
+			this.clrpgckCheckBox.Text = "Color Pages";
+			this.clrpgckCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// appCheckBox
+			// 
+			this.appCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "App", true));
+			this.appCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.appCheckBox.Location = new System.Drawing.Point(149, 466);
+			this.appCheckBox.Name = "appCheckBox";
+			this.appCheckBox.Size = new System.Drawing.Size(104, 19);
+			this.appCheckBox.TabIndex = 49;
+			this.appCheckBox.Text = "Premium Cover";
+			this.appCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// foilingCheckBox
+			// 
+			this.foilingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Foiling", true));
+			this.foilingCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.foilingCheckBox.Location = new System.Drawing.Point(279, 406);
+			this.foilingCheckBox.Name = "foilingCheckBox";
+			this.foilingCheckBox.Size = new System.Drawing.Size(104, 24);
+			this.foilingCheckBox.TabIndex = 51;
+			this.foilingCheckBox.Text = "Foil Individual Name";
+			this.foilingCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// mkCheckBox
+			// 
+			this.mkCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Mk", true));
+			this.mkCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.mkCheckBox.Location = new System.Drawing.Point(279, 427);
+			this.mkCheckBox.Name = "mkCheckBox";
+			this.mkCheckBox.Size = new System.Drawing.Size(104, 19);
+			this.mkCheckBox.TabIndex = 53;
+			this.mkCheckBox.Text = "Ink Individual Name";
+			this.mkCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// indivPicCheckBox
+			// 
+			this.indivPicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "IndivPic", true));
+			this.indivPicCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.indivPicCheckBox.Location = new System.Drawing.Point(279, 446);
+			this.indivPicCheckBox.Name = "indivPicCheckBox";
+			this.indivPicCheckBox.Size = new System.Drawing.Size(104, 19);
+			this.indivPicCheckBox.TabIndex = 55;
+			this.indivPicCheckBox.Text = "Photo Individual";
+			this.indivPicCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// insckCheckBox
+			// 
+			this.insckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Insck", true));
+			this.insckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.insckCheckBox.Location = new System.Drawing.Point(403, 406);
+			this.insckCheckBox.Name = "insckCheckBox";
+			this.insckCheckBox.Size = new System.Drawing.Size(104, 24);
+			this.insckCheckBox.TabIndex = 57;
+			this.insckCheckBox.Text = "Flash bax";
+			this.insckCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// mlaminationCheckBox
+			// 
+			this.mlaminationCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Mlamination", true));
+			this.mlaminationCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.mlaminationCheckBox.Location = new System.Drawing.Point(403, 427);
+			this.mlaminationCheckBox.Name = "mlaminationCheckBox";
+			this.mlaminationCheckBox.Size = new System.Drawing.Size(104, 19);
+			this.mlaminationCheckBox.TabIndex = 59;
+			this.mlaminationCheckBox.Text = "Matte Lamination";
+			this.mlaminationCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// gLaminationCheckBox
+			// 
+			this.gLaminationCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "GLamination", true));
+			this.gLaminationCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.gLaminationCheckBox.Location = new System.Drawing.Point(403, 446);
+			this.gLaminationCheckBox.Name = "gLaminationCheckBox";
+			this.gLaminationCheckBox.Size = new System.Drawing.Size(104, 19);
+			this.gLaminationCheckBox.TabIndex = 61;
+			this.gLaminationCheckBox.Text = "Gloss Lamination";
+			this.gLaminationCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// comckCheckBox
+			// 
+			this.comckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Comck", true));
+			this.comckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.comckCheckBox.Location = new System.Drawing.Point(23, 489);
+			this.comckCheckBox.Name = "comckCheckBox";
+			this.comckCheckBox.Size = new System.Drawing.Size(76, 24);
+			this.comckCheckBox.TabIndex = 62;
+			this.comckCheckBox.Text = "Comments";
+			this.comckCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// commentTextBox
+			// 
+			this.commentTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Comment", true));
+			this.commentTextBox.Location = new System.Drawing.Point(97, 493);
+			this.commentTextBox.Multiline = true;
+			this.commentTextBox.Name = "commentTextBox";
+			this.commentTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.commentTextBox.Size = new System.Drawing.Size(410, 54);
+			this.commentTextBox.TabIndex = 63;
+			// 
+			// nameTextBox
+			// 
+			this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Name", true));
+			this.nameTextBox.Location = new System.Drawing.Point(159, 555);
+			this.nameTextBox.Name = "nameTextBox";
+			this.nameTextBox.Size = new System.Drawing.Size(226, 20);
+			this.nameTextBox.TabIndex = 65;
+			// 
+			// attnTextBox
+			// 
+			this.attnTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Attn", true));
+			this.attnTextBox.Location = new System.Drawing.Point(159, 578);
+			this.attnTextBox.Name = "attnTextBox";
+			this.attnTextBox.Size = new System.Drawing.Size(226, 20);
+			this.attnTextBox.TabIndex = 66;
+			// 
+			// add1TextBox
+			// 
+			this.add1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Add1", true));
+			this.add1TextBox.Location = new System.Drawing.Point(159, 598);
+			this.add1TextBox.Name = "add1TextBox";
+			this.add1TextBox.Size = new System.Drawing.Size(226, 20);
+			this.add1TextBox.TabIndex = 67;
+			// 
+			// add2TextBox
+			// 
+			this.add2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Add2", true));
+			this.add2TextBox.Location = new System.Drawing.Point(159, 622);
+			this.add2TextBox.Name = "add2TextBox";
+			this.add2TextBox.Size = new System.Drawing.Size(226, 20);
+			this.add2TextBox.TabIndex = 68;
+			// 
+			// cityTextBox
+			// 
+			this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "City", true));
+			this.cityTextBox.Location = new System.Drawing.Point(159, 647);
+			this.cityTextBox.Name = "cityTextBox";
+			this.cityTextBox.Size = new System.Drawing.Size(77, 20);
+			this.cityTextBox.TabIndex = 69;
+			// 
+			// stateTextBox
+			// 
+			this.stateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "State", true));
+			this.stateTextBox.Location = new System.Drawing.Point(242, 648);
+			this.stateTextBox.Name = "stateTextBox";
+			this.stateTextBox.Size = new System.Drawing.Size(32, 20);
+			this.stateTextBox.TabIndex = 70;
+			// 
+			// zipTextBox
+			// 
+			this.zipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Zip", true));
+			this.zipTextBox.Location = new System.Drawing.Point(280, 647);
+			this.zipTextBox.Name = "zipTextBox";
+			this.zipTextBox.Size = new System.Drawing.Size(77, 20);
+			this.zipTextBox.TabIndex = 71;
+			// 
+			// noPayRecvTextBox
+			// 
+			this.noPayRecvTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "NoPayRecv", true));
+			this.noPayRecvTextBox.Location = new System.Drawing.Point(23, 674);
+			this.noPayRecvTextBox.Multiline = true;
+			this.noPayRecvTextBox.Name = "noPayRecvTextBox";
+			this.noPayRecvTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.noPayRecvTextBox.Size = new System.Drawing.Size(516, 55);
+			this.noPayRecvTextBox.TabIndex = 72;
+			// 
+			// btnSave
+			// 
+			this.btnSave.Location = new System.Drawing.Point(184, 12);
+			this.btnSave.Name = "btnSave";
+			this.btnSave.Size = new System.Drawing.Size(75, 23);
+			this.btnSave.TabIndex = 0;
+			this.btnSave.Text = "Save";
+			this.btnSave.UseVisualStyleBackColor = true;
+			// 
+			// btnEmail
+			// 
+			this.btnEmail.Location = new System.Drawing.Point(279, 12);
+			this.btnEmail.Name = "btnEmail";
+			this.btnEmail.Size = new System.Drawing.Size(75, 23);
+			this.btnEmail.TabIndex = 1;
+			this.btnEmail.Text = "Email";
+			this.btnEmail.UseVisualStyleBackColor = true;
+			// 
+			// btnPrint
+			// 
+			this.btnPrint.Location = new System.Drawing.Point(391, 12);
+			this.btnPrint.Name = "btnPrint";
+			this.btnPrint.Size = new System.Drawing.Size(75, 23);
+			this.btnPrint.TabIndex = 2;
+			this.btnPrint.Text = "Print";
+			this.btnPrint.UseVisualStyleBackColor = true;
+			// 
+			// frmReceivingCard
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+			this.ClientSize = new System.Drawing.Size(621, 784);
+			this.Controls.Add(this.noPayRecvTextBox);
+			this.Controls.Add(this.zipTextBox);
+			this.Controls.Add(this.stateTextBox);
+			this.Controls.Add(this.cityTextBox);
+			this.Controls.Add(this.add2TextBox);
+			this.Controls.Add(this.add1TextBox);
+			this.Controls.Add(this.attnTextBox);
+			this.Controls.Add(this.nameTextBox);
+			this.Controls.Add(label8);
+			this.Controls.Add(this.commentTextBox);
+			this.Controls.Add(this.comckCheckBox);
+			this.Controls.Add(this.gLaminationCheckBox);
+			this.Controls.Add(this.mlaminationCheckBox);
+			this.Controls.Add(this.insckCheckBox);
+			this.Controls.Add(this.indivPicCheckBox);
+			this.Controls.Add(this.mkCheckBox);
+			this.Controls.Add(this.foilingCheckBox);
+			this.Controls.Add(this.appCheckBox);
+			this.Controls.Add(this.clrpgckCheckBox);
+			this.Controls.Add(this.allClrckCheckBox);
+			this.Controls.Add(this.sdlStichCheckBox);
+			this.Controls.Add(this.perfBindCheckBox);
+			this.Controls.Add(this.spirckCheckBox);
+			this.Controls.Add(this.casey_nCheckBox);
+			this.Controls.Add(this.hdbky_nCheckBox);
+			this.Controls.Add(label7);
+			this.Controls.Add(this.coverDescTextBox);
+			this.Controls.Add(this.ck8CheckBox);
+			this.Controls.Add(freebooksLabel);
+			this.Controls.Add(this.freebooksTextBox);
+			this.Controls.Add(label6);
+			this.Controls.Add(label5);
+			this.Controls.Add(this.noCopiesTextBox);
+			this.Controls.Add(this.noPagesTextBox);
+			this.Controls.Add(this.ck7CheckBox);
+			this.Controls.Add(this.ck4aCheckBox);
+			this.Controls.Add(this.ck4cCheckBox);
+			this.Controls.Add(this.ck4bCheckBox);
+			this.Controls.Add(this.baldueTextBox);
+			this.Controls.Add(this.ck4CheckBox);
+			this.Controls.Add(this.paymentsTextBox);
+			this.Controls.Add(this.ck3CheckBox);
+			this.Controls.Add(label4);
+			this.Controls.Add(this.totalDollarTextBox);
+			this.Controls.Add(totalSoldoLabel);
+			this.Controls.Add(this.totalSoldoTextBox);
+			this.Controls.Add(label3);
+			this.Controls.Add(this.estdateDateTimePicker);
+			this.Controls.Add(this.deadlineDateTimePicker);
+			this.Controls.Add(this.guardteDateTimePicker);
+			this.Controls.Add(label2);
+			this.Controls.Add(label1);
+			this.Controls.Add(this.ck2CheckBox);
+			this.Controls.Add(guardteLabel);
+			this.Controls.Add(this.ck1CheckBox);
+			this.Controls.Add(kitReceivedDateLabel);
+			this.Controls.Add(this.kitReceivedDateDateTimePicker);
+			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Name = "frmReceivingCard";
+			this.Text = "Receiving Card";
+			this.Load += new System.EventHandler(this.frmReceivingCard_Load);
+			this.Controls.SetChildIndex(this.TopPanel, 0);
+			this.Controls.SetChildIndex(this.BottomPanel, 0);
+			this.Controls.SetChildIndex(this.kitReceivedDateDateTimePicker, 0);
+			this.Controls.SetChildIndex(kitReceivedDateLabel, 0);
+			this.Controls.SetChildIndex(this.ck1CheckBox, 0);
+			this.Controls.SetChildIndex(guardteLabel, 0);
+			this.Controls.SetChildIndex(this.ck2CheckBox, 0);
+			this.Controls.SetChildIndex(label1, 0);
+			this.Controls.SetChildIndex(label2, 0);
+			this.Controls.SetChildIndex(this.guardteDateTimePicker, 0);
+			this.Controls.SetChildIndex(this.deadlineDateTimePicker, 0);
+			this.Controls.SetChildIndex(this.estdateDateTimePicker, 0);
+			this.Controls.SetChildIndex(label3, 0);
+			this.Controls.SetChildIndex(this.totalSoldoTextBox, 0);
+			this.Controls.SetChildIndex(totalSoldoLabel, 0);
+			this.Controls.SetChildIndex(this.totalDollarTextBox, 0);
+			this.Controls.SetChildIndex(label4, 0);
+			this.Controls.SetChildIndex(this.ck3CheckBox, 0);
+			this.Controls.SetChildIndex(this.paymentsTextBox, 0);
+			this.Controls.SetChildIndex(this.ck4CheckBox, 0);
+			this.Controls.SetChildIndex(this.baldueTextBox, 0);
+			this.Controls.SetChildIndex(this.ck4bCheckBox, 0);
+			this.Controls.SetChildIndex(this.ck4cCheckBox, 0);
+			this.Controls.SetChildIndex(this.ck4aCheckBox, 0);
+			this.Controls.SetChildIndex(this.ck7CheckBox, 0);
+			this.Controls.SetChildIndex(this.noPagesTextBox, 0);
+			this.Controls.SetChildIndex(this.noCopiesTextBox, 0);
+			this.Controls.SetChildIndex(label5, 0);
+			this.Controls.SetChildIndex(label6, 0);
+			this.Controls.SetChildIndex(this.freebooksTextBox, 0);
+			this.Controls.SetChildIndex(freebooksLabel, 0);
+			this.Controls.SetChildIndex(this.ck8CheckBox, 0);
+			this.Controls.SetChildIndex(this.coverDescTextBox, 0);
+			this.Controls.SetChildIndex(label7, 0);
+			this.Controls.SetChildIndex(this.hdbky_nCheckBox, 0);
+			this.Controls.SetChildIndex(this.casey_nCheckBox, 0);
+			this.Controls.SetChildIndex(this.spirckCheckBox, 0);
+			this.Controls.SetChildIndex(this.perfBindCheckBox, 0);
+			this.Controls.SetChildIndex(this.sdlStichCheckBox, 0);
+			this.Controls.SetChildIndex(this.allClrckCheckBox, 0);
+			this.Controls.SetChildIndex(this.clrpgckCheckBox, 0);
+			this.Controls.SetChildIndex(this.appCheckBox, 0);
+			this.Controls.SetChildIndex(this.foilingCheckBox, 0);
+			this.Controls.SetChildIndex(this.mkCheckBox, 0);
+			this.Controls.SetChildIndex(this.indivPicCheckBox, 0);
+			this.Controls.SetChildIndex(this.insckCheckBox, 0);
+			this.Controls.SetChildIndex(this.mlaminationCheckBox, 0);
+			this.Controls.SetChildIndex(this.gLaminationCheckBox, 0);
+			this.Controls.SetChildIndex(this.comckCheckBox, 0);
+			this.Controls.SetChildIndex(this.commentTextBox, 0);
+			this.Controls.SetChildIndex(label8, 0);
+			this.Controls.SetChildIndex(this.nameTextBox, 0);
+			this.Controls.SetChildIndex(this.attnTextBox, 0);
+			this.Controls.SetChildIndex(this.add1TextBox, 0);
+			this.Controls.SetChildIndex(this.add2TextBox, 0);
+			this.Controls.SetChildIndex(this.cityTextBox, 0);
+			this.Controls.SetChildIndex(this.stateTextBox, 0);
+			this.Controls.SetChildIndex(this.zipTextBox, 0);
+			this.Controls.SetChildIndex(this.noPayRecvTextBox, 0);
+			this.TopPanel.ResumeLayout(false);
+			this.BottomPanel.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.rCardBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dsRcard)).EndInit();
+			this.ResumeLayout(false);
+			this.PerformLayout();
+
+		}
+
+		#endregion
+
+		private DataSets.dsRcard dsRcard;
+		private System.Windows.Forms.BindingSource rCardBindingSource;
+		private DataSets.dsRcardTableAdapters.RCardTableAdapter rCardTableAdapter;
+		private DataSets.dsRcardTableAdapters.TableAdapterManager tableAdapterManager;
+		private System.Windows.Forms.Label schnameLabel1;
+		private System.Windows.Forms.DateTimePicker kitReceivedDateDateTimePicker;
+		private System.Windows.Forms.CheckBox ck1CheckBox;
+		private System.Windows.Forms.CheckBox ck2CheckBox;
+		private System.Windows.Forms.DateTimePicker guardteDateTimePicker;
+		private System.Windows.Forms.DateTimePicker deadlineDateTimePicker;
+		private System.Windows.Forms.DateTimePicker estdateDateTimePicker;
+		private System.Windows.Forms.TextBox totalSoldoTextBox;
+		private System.Windows.Forms.TextBox totalDollarTextBox;
+		private System.Windows.Forms.CheckBox ck3CheckBox;
+		private System.Windows.Forms.TextBox paymentsTextBox;
+		private System.Windows.Forms.CheckBox ck4CheckBox;
+		private System.Windows.Forms.TextBox baldueTextBox;
+		private System.Windows.Forms.CheckBox ck4bCheckBox;
+		private System.Windows.Forms.CheckBox ck4cCheckBox;
+		private System.Windows.Forms.CheckBox ck4aCheckBox;
+		private System.Windows.Forms.CheckBox ck7CheckBox;
+		private System.Windows.Forms.TextBox noPagesTextBox;
+		private System.Windows.Forms.TextBox noCopiesTextBox;
+		private System.Windows.Forms.TextBox freebooksTextBox;
+		private System.Windows.Forms.CheckBox ck8CheckBox;
+		private System.Windows.Forms.TextBox coverDescTextBox;
+		private System.Windows.Forms.CheckBox hdbky_nCheckBox;
+		private System.Windows.Forms.CheckBox casey_nCheckBox;
+		private System.Windows.Forms.CheckBox spirckCheckBox;
+		private System.Windows.Forms.CheckBox perfBindCheckBox;
+		private System.Windows.Forms.CheckBox sdlStichCheckBox;
+		private System.Windows.Forms.CheckBox allClrckCheckBox;
+		private System.Windows.Forms.CheckBox clrpgckCheckBox;
+		private System.Windows.Forms.CheckBox appCheckBox;
+		private System.Windows.Forms.CheckBox foilingCheckBox;
+		private System.Windows.Forms.CheckBox mkCheckBox;
+		private System.Windows.Forms.CheckBox indivPicCheckBox;
+		private System.Windows.Forms.CheckBox insckCheckBox;
+		private System.Windows.Forms.CheckBox mlaminationCheckBox;
+		private System.Windows.Forms.CheckBox gLaminationCheckBox;
+		private System.Windows.Forms.CheckBox comckCheckBox;
+		private System.Windows.Forms.TextBox commentTextBox;
+		private System.Windows.Forms.TextBox nameTextBox;
+		private System.Windows.Forms.TextBox attnTextBox;
+		private System.Windows.Forms.TextBox add1TextBox;
+		private System.Windows.Forms.TextBox add2TextBox;
+		private System.Windows.Forms.TextBox cityTextBox;
+		private System.Windows.Forms.TextBox stateTextBox;
+		private System.Windows.Forms.TextBox zipTextBox;
+		private System.Windows.Forms.TextBox noPayRecvTextBox;
+		private System.Windows.Forms.Button btnPrint;
+		private System.Windows.Forms.Button btnEmail;
+		private System.Windows.Forms.Button btnSave;
+	}
+}
