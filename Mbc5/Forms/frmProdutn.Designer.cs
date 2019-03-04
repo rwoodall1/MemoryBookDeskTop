@@ -50,7 +50,6 @@
 			System.Windows.Forms.Label diecutLabel2;
 			System.Windows.Forms.Label coilclrLabel;
 			System.Windows.Forms.Label perfbindLabel;
-			System.Windows.Forms.Label laminatedLabel;
 			System.Windows.Forms.Label screcvLabel;
 			System.Windows.Forms.Label coverdescLabel;
 			System.Windows.Forms.Label covertypeLabel;
@@ -187,6 +186,11 @@
 			System.Windows.Forms.Label rmbtotLabel1;
 			System.Windows.Forms.Label invnoLabel7;
 			System.Windows.Forms.Label endstrecvLabel;
+			System.Windows.Forms.Label speccoverLabel;
+			System.Windows.Forms.Label colorsLabel;
+			System.Windows.Forms.Label dcdesc1Label;
+			System.Windows.Forms.Label dcdesc2Label;
+			System.Windows.Forms.Label laminatedLabel;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
 			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
@@ -271,9 +275,14 @@
 			this.prmsdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.shpdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.laminatedTextBox = new System.Windows.Forms.TextBox();
+			this.dcdesc2TextBox = new System.Windows.Forms.TextBox();
+			this.dcdesc1TextBox = new System.Windows.Forms.TextBox();
+			this.diecutCheckBox = new System.Windows.Forms.CheckBox();
+			this.colorsTextBox = new System.Windows.Forms.TextBox();
+			this.speccoverTextBox = new System.Windows.Forms.TextBox();
 			this.endstrecvDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.coilclrTextBox = new System.Windows.Forms.TextBox();
-			this.laminatedTextBox = new System.Windows.Forms.TextBox();
 			this.cpnumTextBox = new System.Windows.Forms.TextBox();
 			this.wipgBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.cprecvDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -315,7 +324,6 @@
 			this.reccardsentCheckBox = new System.Windows.Forms.CheckBox();
 			this.btnRecvLabel = new System.Windows.Forms.Button();
 			this.btnRecvHistory = new System.Windows.Forms.Button();
-			this.btnRcvCard = new System.Windows.Forms.Button();
 			this.btnEmailProdForm = new System.Windows.Forms.Button();
 			this.bkmixedCheckBox = new System.Windows.Forms.CheckBox();
 			this.txtBookType = new System.Windows.Forms.TextBox();
@@ -585,7 +593,6 @@
 			diecutLabel2 = new System.Windows.Forms.Label();
 			coilclrLabel = new System.Windows.Forms.Label();
 			perfbindLabel = new System.Windows.Forms.Label();
-			laminatedLabel = new System.Windows.Forms.Label();
 			screcvLabel = new System.Windows.Forms.Label();
 			coverdescLabel = new System.Windows.Forms.Label();
 			covertypeLabel = new System.Windows.Forms.Label();
@@ -722,6 +729,11 @@
 			rmbtotLabel1 = new System.Windows.Forms.Label();
 			invnoLabel7 = new System.Windows.Forms.Label();
 			endstrecvLabel = new System.Windows.Forms.Label();
+			speccoverLabel = new System.Windows.Forms.Label();
+			colorsLabel = new System.Windows.Forms.Label();
+			dcdesc1Label = new System.Windows.Forms.Label();
+			dcdesc2Label = new System.Windows.Forms.Label();
+			laminatedLabel = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
@@ -910,7 +922,7 @@
 			// 
 			ptbrcvdLabel.AutoSize = true;
 			ptbrcvdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			ptbrcvdLabel.Location = new System.Drawing.Point(-3, 292);
+			ptbrcvdLabel.Location = new System.Drawing.Point(4, 387);
 			ptbrcvdLabel.Name = "ptbrcvdLabel";
 			ptbrcvdLabel.Size = new System.Drawing.Size(169, 13);
 			ptbrcvdLabel.TabIndex = 126;
@@ -920,7 +932,7 @@
 			// 
 			ptnopgsLabel.AutoSize = true;
 			ptnopgsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			ptnopgsLabel.Location = new System.Drawing.Point(38, 270);
+			ptnopgsLabel.Location = new System.Drawing.Point(44, 365);
 			ptnopgsLabel.Name = "ptnopgsLabel";
 			ptnopgsLabel.Size = new System.Drawing.Size(129, 13);
 			ptnopgsLabel.TabIndex = 124;
@@ -930,7 +942,7 @@
 			// 
 			ptrecvdLabel.AutoSize = true;
 			ptrecvdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			ptrecvdLabel.Location = new System.Drawing.Point(21, 244);
+			ptrecvdLabel.Location = new System.Drawing.Point(26, 339);
 			ptrecvdLabel.Name = "ptrecvdLabel";
 			ptrecvdLabel.Size = new System.Drawing.Size(147, 13);
 			ptrecvdLabel.TabIndex = 122;
@@ -940,7 +952,7 @@
 			// 
 			label3.AutoSize = true;
 			label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			label3.Location = new System.Drawing.Point(43, 216);
+			label3.Location = new System.Drawing.Point(46, 311);
 			label3.Name = "label3";
 			label3.Size = new System.Drawing.Size(127, 13);
 			label3.TabIndex = 121;
@@ -950,7 +962,7 @@
 			// 
 			diecutLabel2.AutoSize = true;
 			diecutLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			diecutLabel2.Location = new System.Drawing.Point(78, 193);
+			diecutLabel2.Location = new System.Drawing.Point(92, 288);
 			diecutLabel2.Name = "diecutLabel2";
 			diecutLabel2.Size = new System.Drawing.Size(81, 13);
 			diecutLabel2.TabIndex = 120;
@@ -960,7 +972,7 @@
 			// 
 			coilclrLabel.AutoSize = true;
 			coilclrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			coilclrLabel.Location = new System.Drawing.Point(94, 148);
+			coilclrLabel.Location = new System.Drawing.Point(112, 243);
 			coilclrLabel.Name = "coilclrLabel";
 			coilclrLabel.Size = new System.Drawing.Size(61, 13);
 			coilclrLabel.TabIndex = 117;
@@ -970,27 +982,17 @@
 			// 
 			perfbindLabel.AutoSize = true;
 			perfbindLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			perfbindLabel.Location = new System.Drawing.Point(37, 126);
+			perfbindLabel.Location = new System.Drawing.Point(45, 221);
 			perfbindLabel.Name = "perfbindLabel";
 			perfbindLabel.Size = new System.Drawing.Size(128, 13);
 			perfbindLabel.TabIndex = 115;
 			perfbindLabel.Text = "Binding(C,H,K,P,S,M)";
 			// 
-			// laminatedLabel
-			// 
-			laminatedLabel.AutoSize = true;
-			laminatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			laminatedLabel.Location = new System.Drawing.Point(89, 108);
-			laminatedLabel.Name = "laminatedLabel";
-			laminatedLabel.Size = new System.Drawing.Size(68, 13);
-			laminatedLabel.TabIndex = 113;
-			laminatedLabel.Text = "Lamination";
-			// 
 			// screcvLabel
 			// 
 			screcvLabel.AutoSize = true;
 			screcvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			screcvLabel.Location = new System.Drawing.Point(49, 61);
+			screcvLabel.Location = new System.Drawing.Point(60, 61);
 			screcvLabel.Name = "screcvLabel";
 			screcvLabel.Size = new System.Drawing.Size(113, 13);
 			screcvLabel.TabIndex = 103;
@@ -1000,7 +1002,7 @@
 			// 
 			coverdescLabel.AutoSize = true;
 			coverdescLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			coverdescLabel.Location = new System.Drawing.Point(54, 37);
+			coverdescLabel.Location = new System.Drawing.Point(65, 37);
 			coverdescLabel.Name = "coverdescLabel";
 			coverdescLabel.Size = new System.Drawing.Size(108, 13);
 			coverdescLabel.TabIndex = 101;
@@ -1010,7 +1012,7 @@
 			// 
 			covertypeLabel.AutoSize = true;
 			covertypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			covertypeLabel.Location = new System.Drawing.Point(83, 15);
+			covertypeLabel.Location = new System.Drawing.Point(101, 15);
 			covertypeLabel.Name = "covertypeLabel";
 			covertypeLabel.Size = new System.Drawing.Size(72, 13);
 			covertypeLabel.TabIndex = 99;
@@ -2334,6 +2336,56 @@
 			invnoLabel7.TabIndex = 132;
 			invnoLabel7.Text = "invno:";
 			// 
+			// endstrecvLabel
+			// 
+			endstrecvLabel.AutoSize = true;
+			endstrecvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			endstrecvLabel.Location = new System.Drawing.Point(38, 413);
+			endstrecvLabel.Name = "endstrecvLabel";
+			endstrecvLabel.Size = new System.Drawing.Size(135, 13);
+			endstrecvLabel.TabIndex = 132;
+			endstrecvLabel.Text = "End Sheet Recv Date:";
+			// 
+			// speccoverLabel
+			// 
+			speccoverLabel.AutoSize = true;
+			speccoverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			speccoverLabel.Location = new System.Drawing.Point(125, 85);
+			speccoverLabel.Name = "speccoverLabel";
+			speccoverLabel.Size = new System.Drawing.Size(48, 13);
+			speccoverLabel.TabIndex = 133;
+			speccoverLabel.Text = "Cover#";
+			// 
+			// colorsLabel
+			// 
+			colorsLabel.AutoSize = true;
+			colorsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			colorsLabel.Location = new System.Drawing.Point(104, 108);
+			colorsLabel.Name = "colorsLabel";
+			colorsLabel.Size = new System.Drawing.Size(69, 13);
+			colorsLabel.TabIndex = 134;
+			colorsLabel.Text = "# of Colors";
+			// 
+			// dcdesc1Label
+			// 
+			dcdesc1Label.AutoSize = true;
+			dcdesc1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dcdesc1Label.Location = new System.Drawing.Point(142, 154);
+			dcdesc1Label.Name = "dcdesc1Label";
+			dcdesc1Label.Size = new System.Drawing.Size(31, 13);
+			dcdesc1Label.TabIndex = 137;
+			dcdesc1Label.Text = "DC1";
+			// 
+			// dcdesc2Label
+			// 
+			dcdesc2Label.AutoSize = true;
+			dcdesc2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dcdesc2Label.Location = new System.Drawing.Point(142, 176);
+			dcdesc2Label.Name = "dcdesc2Label";
+			dcdesc2Label.Size = new System.Drawing.Size(31, 13);
+			dcdesc2Label.TabIndex = 138;
+			dcdesc2Label.Text = "DC2";
+			// 
 			// invoiceCustBindingSource
 			// 
 			this.invoiceCustBindingSource.DataMember = "cust";
@@ -2365,15 +2417,15 @@
 			this.paymntBindingSource.DataMember = "paymnt";
 			this.paymntBindingSource.DataSource = this.dsInvoice;
 			// 
-			// endstrecvLabel
+			// laminatedLabel
 			// 
-			endstrecvLabel.AutoSize = true;
-			endstrecvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			endstrecvLabel.Location = new System.Drawing.Point(28, 318);
-			endstrecvLabel.Name = "endstrecvLabel";
-			endstrecvLabel.Size = new System.Drawing.Size(135, 13);
-			endstrecvLabel.TabIndex = 132;
-			endstrecvLabel.Text = "End Sheet Recv Date:";
+			laminatedLabel.AutoSize = true;
+			laminatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			laminatedLabel.Location = new System.Drawing.Point(115, 195);
+			laminatedLabel.Name = "laminatedLabel";
+			laminatedLabel.Size = new System.Drawing.Size(58, 13);
+			laminatedLabel.TabIndex = 139;
+			laminatedLabel.Text = "Laminate";
 			// 
 			// tbProdutn
 			// 
@@ -2417,7 +2469,6 @@
 			this.pg1.Controls.Add(this.reccardsentCheckBox);
 			this.pg1.Controls.Add(this.btnRecvLabel);
 			this.pg1.Controls.Add(this.btnRecvHistory);
-			this.pg1.Controls.Add(this.btnRcvCard);
 			this.pg1.Controls.Add(this.btnEmailProdForm);
 			this.pg1.Controls.Add(this.bkmixedCheckBox);
 			this.pg1.Controls.Add(this.txtBookType);
@@ -3146,10 +3197,20 @@
 			// 
 			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel1.Controls.Add(laminatedLabel);
+			this.panel1.Controls.Add(this.laminatedTextBox);
+			this.panel1.Controls.Add(dcdesc2Label);
+			this.panel1.Controls.Add(this.dcdesc2TextBox);
+			this.panel1.Controls.Add(dcdesc1Label);
+			this.panel1.Controls.Add(this.dcdesc1TextBox);
+			this.panel1.Controls.Add(this.diecutCheckBox);
+			this.panel1.Controls.Add(colorsLabel);
+			this.panel1.Controls.Add(this.colorsTextBox);
+			this.panel1.Controls.Add(speccoverLabel);
+			this.panel1.Controls.Add(this.speccoverTextBox);
 			this.panel1.Controls.Add(endstrecvLabel);
 			this.panel1.Controls.Add(this.endstrecvDateTimePicker);
 			this.panel1.Controls.Add(this.coilclrTextBox);
-			this.panel1.Controls.Add(this.laminatedTextBox);
 			this.panel1.Controls.Add(this.cpnumTextBox);
 			this.panel1.Controls.Add(this.cprecvDateTimePicker);
 			this.panel1.Controls.Add(ptbrcvdLabel);
@@ -3164,24 +3225,77 @@
 			this.panel1.Controls.Add(coilclrLabel);
 			this.panel1.Controls.Add(perfbindLabel);
 			this.panel1.Controls.Add(this.txtPerfbind);
-			this.panel1.Controls.Add(laminatedLabel);
 			this.panel1.Controls.Add(screcvLabel);
 			this.panel1.Controls.Add(this.screcvDateTimePicker);
 			this.panel1.Controls.Add(coverdescLabel);
 			this.panel1.Controls.Add(this.txtCoverDescription);
 			this.panel1.Controls.Add(covertypeLabel);
 			this.panel1.Controls.Add(this.txtCoverType);
-			this.panel1.Location = new System.Drawing.Point(293, 80);
+			this.panel1.Location = new System.Drawing.Point(281, 80);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(290, 400);
+			this.panel1.Size = new System.Drawing.Size(319, 443);
 			this.panel1.TabIndex = 128;
+			// 
+			// laminatedTextBox
+			// 
+			this.laminatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "laminated", true));
+			this.laminatedTextBox.Location = new System.Drawing.Point(176, 195);
+			this.laminatedTextBox.MaxLength = 1;
+			this.laminatedTextBox.Name = "laminatedTextBox";
+			this.laminatedTextBox.Size = new System.Drawing.Size(33, 20);
+			this.laminatedTextBox.TabIndex = 140;
+			this.laminatedTextBox.Leave += new System.EventHandler(this.laminatedTextBox_Leave);
+			// 
+			// dcdesc2TextBox
+			// 
+			this.dcdesc2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "dcdesc2", true));
+			this.dcdesc2TextBox.Location = new System.Drawing.Point(176, 173);
+			this.dcdesc2TextBox.Name = "dcdesc2TextBox";
+			this.dcdesc2TextBox.Size = new System.Drawing.Size(140, 20);
+			this.dcdesc2TextBox.TabIndex = 139;
+			// 
+			// dcdesc1TextBox
+			// 
+			this.dcdesc1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "dcdesc1", true));
+			this.dcdesc1TextBox.Location = new System.Drawing.Point(176, 151);
+			this.dcdesc1TextBox.Name = "dcdesc1TextBox";
+			this.dcdesc1TextBox.Size = new System.Drawing.Size(140, 20);
+			this.dcdesc1TextBox.TabIndex = 138;
+			// 
+			// diecutCheckBox
+			// 
+			this.diecutCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "diecut", true));
+			this.diecutCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.diecutCheckBox.Location = new System.Drawing.Point(176, 126);
+			this.diecutCheckBox.Name = "diecutCheckBox";
+			this.diecutCheckBox.Size = new System.Drawing.Size(104, 24);
+			this.diecutCheckBox.TabIndex = 136;
+			this.diecutCheckBox.Text = "Die Cut";
+			this.diecutCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// colorsTextBox
+			// 
+			this.colorsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "colors", true));
+			this.colorsTextBox.Location = new System.Drawing.Point(176, 105);
+			this.colorsTextBox.Name = "colorsTextBox";
+			this.colorsTextBox.Size = new System.Drawing.Size(97, 20);
+			this.colorsTextBox.TabIndex = 135;
+			// 
+			// speccoverTextBox
+			// 
+			this.speccoverTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "speccover", true));
+			this.speccoverTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.speccoverTextBox.Location = new System.Drawing.Point(176, 82);
+			this.speccoverTextBox.Name = "speccoverTextBox";
+			this.speccoverTextBox.Size = new System.Drawing.Size(96, 20);
+			this.speccoverTextBox.TabIndex = 134;
 			// 
 			// endstrecvDateTimePicker
 			// 
 			this.endstrecvDateTimePicker.CustomFormat = "\'\'";
 			this.endstrecvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "endstrecv", true));
 			this.endstrecvDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.endstrecvDateTimePicker.Location = new System.Drawing.Point(172, 318);
+			this.endstrecvDateTimePicker.Location = new System.Drawing.Point(176, 413);
 			this.endstrecvDateTimePicker.Name = "endstrecvDateTimePicker";
 			this.endstrecvDateTimePicker.Size = new System.Drawing.Size(85, 20);
 			this.endstrecvDateTimePicker.TabIndex = 133;
@@ -3190,26 +3304,16 @@
 			// coilclrTextBox
 			// 
 			this.coilclrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coilclr", true));
-			this.coilclrTextBox.Location = new System.Drawing.Point(172, 151);
+			this.coilclrTextBox.Location = new System.Drawing.Point(176, 246);
 			this.coilclrTextBox.Name = "coilclrTextBox";
 			this.coilclrTextBox.Size = new System.Drawing.Size(99, 20);
 			this.coilclrTextBox.TabIndex = 132;
 			this.coilclrTextBox.WordWrap = false;
 			// 
-			// laminatedTextBox
-			// 
-			this.laminatedTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.laminatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "laminated", true));
-			this.laminatedTextBox.Location = new System.Drawing.Point(172, 105);
-			this.laminatedTextBox.Name = "laminatedTextBox";
-			this.laminatedTextBox.Size = new System.Drawing.Size(35, 20);
-			this.laminatedTextBox.TabIndex = 131;
-			this.laminatedTextBox.Leave += new System.EventHandler(this.laminatedTextBox_Leave);
-			// 
 			// cpnumTextBox
 			// 
 			this.cpnumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "cpnum", true));
-			this.cpnumTextBox.Location = new System.Drawing.Point(172, 193);
+			this.cpnumTextBox.Location = new System.Drawing.Point(176, 288);
 			this.cpnumTextBox.Name = "cpnumTextBox";
 			this.cpnumTextBox.Size = new System.Drawing.Size(50, 20);
 			this.cpnumTextBox.TabIndex = 130;
@@ -3224,7 +3328,7 @@
 			this.cprecvDateTimePicker.CustomFormat = "\'\'";
 			this.cprecvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.wipgBindingSource, "cprecv", true));
 			this.cprecvDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.cprecvDateTimePicker.Location = new System.Drawing.Point(172, 216);
+			this.cprecvDateTimePicker.Location = new System.Drawing.Point(176, 311);
 			this.cprecvDateTimePicker.Name = "cprecvDateTimePicker";
 			this.cprecvDateTimePicker.Size = new System.Drawing.Size(85, 20);
 			this.cprecvDateTimePicker.TabIndex = 129;
@@ -3237,9 +3341,9 @@
 			this.ptbrcvdDateTimePicker.CustomFormat = "\'\'";
 			this.ptbrcvdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "ptbrcvd", true));
 			this.ptbrcvdDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.ptbrcvdDateTimePicker.Location = new System.Drawing.Point(172, 292);
+			this.ptbrcvdDateTimePicker.Location = new System.Drawing.Point(176, 387);
 			this.ptbrcvdDateTimePicker.Name = "ptbrcvdDateTimePicker";
-			this.ptbrcvdDateTimePicker.Size = new System.Drawing.Size(96, 20);
+			this.ptbrcvdDateTimePicker.Size = new System.Drawing.Size(125, 20);
 			this.ptbrcvdDateTimePicker.TabIndex = 127;
 			this.ptbrcvdDateTimePicker.ValueChanged += new System.EventHandler(this.ptbrcvdDateTimePicker_ValueChanged);
 			// 
@@ -3248,9 +3352,9 @@
 			this.ptnopgsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.ptnopgsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ptnopgs", true));
-			this.ptnopgsTextBox.Location = new System.Drawing.Point(172, 267);
+			this.ptnopgsTextBox.Location = new System.Drawing.Point(176, 362);
 			this.ptnopgsTextBox.Name = "ptnopgsTextBox";
-			this.ptnopgsTextBox.Size = new System.Drawing.Size(59, 20);
+			this.ptnopgsTextBox.Size = new System.Drawing.Size(88, 20);
 			this.ptnopgsTextBox.TabIndex = 125;
 			// 
 			// ptrecvdDateTimePicker
@@ -3260,17 +3364,17 @@
 			this.ptrecvdDateTimePicker.CustomFormat = "\'\'";
 			this.ptrecvdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "ptrecvd", true));
 			this.ptrecvdDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.ptrecvdDateTimePicker.Location = new System.Drawing.Point(172, 244);
+			this.ptrecvdDateTimePicker.Location = new System.Drawing.Point(176, 339);
 			this.ptrecvdDateTimePicker.Name = "ptrecvdDateTimePicker";
-			this.ptrecvdDateTimePicker.Size = new System.Drawing.Size(96, 20);
+			this.ptrecvdDateTimePicker.Size = new System.Drawing.Size(125, 20);
 			this.ptrecvdDateTimePicker.TabIndex = 123;
 			this.ptrecvdDateTimePicker.ValueChanged += new System.EventHandler(this.ptrecvdDateTimePicker_ValueChanged);
 			// 
 			// colorpgsCheckBox
 			// 
-			this.colorpgsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.wipgBindingSource, "cpnum", true));
+			this.colorpgsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "colorpgs", true));
 			this.colorpgsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.colorpgsCheckBox.Location = new System.Drawing.Point(172, 171);
+			this.colorpgsCheckBox.Location = new System.Drawing.Point(176, 266);
 			this.colorpgsCheckBox.Name = "colorpgsCheckBox";
 			this.colorpgsCheckBox.Size = new System.Drawing.Size(104, 24);
 			this.colorpgsCheckBox.TabIndex = 119;
@@ -3283,10 +3387,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtPerfbind.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtPerfbind.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "perfbind", true));
-			this.txtPerfbind.Location = new System.Drawing.Point(172, 126);
+			this.txtPerfbind.Location = new System.Drawing.Point(176, 221);
 			this.txtPerfbind.MaxLength = 1;
 			this.txtPerfbind.Name = "txtPerfbind";
-			this.txtPerfbind.Size = new System.Drawing.Size(45, 20);
+			this.txtPerfbind.Size = new System.Drawing.Size(74, 20);
 			this.txtPerfbind.TabIndex = 116;
 			this.txtPerfbind.Leave += new System.EventHandler(this.txtPerfbind_Leave);
 			// 
@@ -3297,9 +3401,9 @@
 			this.screcvDateTimePicker.CustomFormat = "\'\'";
 			this.screcvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "screcv", true));
 			this.screcvDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.screcvDateTimePicker.Location = new System.Drawing.Point(172, 56);
+			this.screcvDateTimePicker.Location = new System.Drawing.Point(176, 56);
 			this.screcvDateTimePicker.Name = "screcvDateTimePicker";
-			this.screcvDateTimePicker.Size = new System.Drawing.Size(96, 20);
+			this.screcvDateTimePicker.Size = new System.Drawing.Size(125, 20);
 			this.screcvDateTimePicker.TabIndex = 104;
 			this.screcvDateTimePicker.ValueChanged += new System.EventHandler(this.screcvDateTimePicker_ValueChanged);
 			// 
@@ -3308,9 +3412,9 @@
 			this.txtCoverDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtCoverDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coverdesc", true));
-			this.txtCoverDescription.Location = new System.Drawing.Point(172, 34);
+			this.txtCoverDescription.Location = new System.Drawing.Point(176, 34);
 			this.txtCoverDescription.Name = "txtCoverDescription";
-			this.txtCoverDescription.Size = new System.Drawing.Size(96, 20);
+			this.txtCoverDescription.Size = new System.Drawing.Size(125, 20);
 			this.txtCoverDescription.TabIndex = 102;
 			// 
 			// txtCoverType
@@ -3319,10 +3423,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtCoverType.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtCoverType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "covertype", true));
-			this.txtCoverType.Location = new System.Drawing.Point(172, 12);
+			this.txtCoverType.Location = new System.Drawing.Point(176, 12);
 			this.txtCoverType.MaxLength = 4;
 			this.txtCoverType.Name = "txtCoverType";
-			this.txtCoverType.Size = new System.Drawing.Size(96, 20);
+			this.txtCoverType.Size = new System.Drawing.Size(125, 20);
 			this.txtCoverType.TabIndex = 100;
 			this.txtCoverType.Leave += new System.EventHandler(this.covertypeTextBox_Leave);
 			// 
@@ -3646,7 +3750,7 @@
 			// 
 			this.reccardsentCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "reccardsent", true));
 			this.reccardsentCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.reccardsentCheckBox.Location = new System.Drawing.Point(293, 595);
+			this.reccardsentCheckBox.Location = new System.Drawing.Point(114, 595);
 			this.reccardsentCheckBox.Name = "reccardsentCheckBox";
 			this.reccardsentCheckBox.Size = new System.Drawing.Size(143, 21);
 			this.reccardsentCheckBox.TabIndex = 105;
@@ -3673,16 +3777,6 @@
 			this.btnRecvHistory.Text = "Rcv. Card Hist";
 			this.btnRecvHistory.UseVisualStyleBackColor = true;
 			this.btnRecvHistory.Click += new System.EventHandler(this.btnRecvHistory_Click);
-			// 
-			// btnRcvCard
-			// 
-			this.btnRcvCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnRcvCard.Location = new System.Drawing.Point(108, 593);
-			this.btnRcvCard.Name = "btnRcvCard";
-			this.btnRcvCard.Size = new System.Drawing.Size(174, 23);
-			this.btnRcvCard.TabIndex = 92;
-			this.btnRcvCard.Text = "Recieving Card History";
-			this.btnRcvCard.UseVisualStyleBackColor = true;
 			// 
 			// btnEmailProdForm
 			// 
@@ -6409,7 +6503,6 @@
         private System.Windows.Forms.Button btnEmailProdForm;
         private System.Windows.Forms.Button btnRecvLabel;
         private System.Windows.Forms.Button btnRecvHistory;
-        private System.Windows.Forms.Button btnRcvCard;
         private System.Windows.Forms.CheckBox reccardsentCheckBox;
         private System.Windows.Forms.Panel pnl11;
         private System.Windows.Forms.Label label2;
@@ -6713,7 +6806,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
-        private System.Windows.Forms.TextBox laminatedTextBox;
         private System.Windows.Forms.TextBox coilclrTextBox;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.CheckBox persnlzCheckBox1;
@@ -6747,5 +6839,11 @@
 		private System.Windows.Forms.DateTimePicker endstrecvDateTimePicker;
 		private System.Windows.Forms.Button btnStandarCoverEmail;
 		private System.Windows.Forms.Button btnspCoverEmail;
+		private System.Windows.Forms.TextBox colorsTextBox;
+		private System.Windows.Forms.TextBox speccoverTextBox;
+		private System.Windows.Forms.CheckBox diecutCheckBox;
+		private System.Windows.Forms.TextBox dcdesc2TextBox;
+		private System.Windows.Forms.TextBox dcdesc1TextBox;
+		private System.Windows.Forms.TextBox laminatedTextBox;
 	}
 }

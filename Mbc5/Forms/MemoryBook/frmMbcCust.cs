@@ -17,7 +17,6 @@ using Exceptionless;
 using Exceptionless.Models;
 using Mbc5.Classes;
 using BindingModels;
-using BaseClass;
 using BaseClass.Core;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {

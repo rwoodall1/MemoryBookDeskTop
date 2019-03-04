@@ -23,8 +23,7 @@ using Microsoft.Reporting.WinForms;
 using System.IO;
 using System.Reflection;
 using BaseClass;
-using BaseClass;
-using BaseClass.Core;
+using Mbc5.Forms.MemoryBook;
 namespace Mbc5.Forms
 {
 	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
@@ -3129,13 +3128,7 @@ namespace Mbc5.Forms
 			WipUpdate();
 		}
 
-		private void laminatedTextBox_Leave(object sender, EventArgs e)
-		{
-			if (laminatedTextBox.Text != "M" && laminatedTextBox.Text != "N" && laminatedTextBox.Text != "G"&& laminatedTextBox.Text != "")
-			{
-				laminatedTextBox.Focus();
-			}
-		}
+		
 
 		private void txtSchNamesrch_KeyPress(object sender, KeyPressEventArgs e)
 		{
@@ -3388,7 +3381,19 @@ namespace Mbc5.Forms
 		}
 
 		private void btnRecvHistory_Click(object sender, EventArgs e) {
+			
+				this.Cursor = Cursors.AppStarting;
+				frmReceivingCard frmReceivingCard = new frmReceivingCard(this.ApplicationUser,this.Schcode,this.Invno);
+				frmReceivingCard.MdiParent = this.MdiParent;
+				frmReceivingCard.Show();
+				this.Cursor = Cursors.Default;
+			
+		}
 
+		private void laminatedTextBox_Leave(object sender, EventArgs e) {
+			if (laminatedTextBox.Text != "M" && laminatedTextBox.Text != "N" && laminatedTextBox.Text != "G" && laminatedTextBox.Text != "") {
+				laminatedTextBox.Focus();
+			}
 		}
 
 		#endregion

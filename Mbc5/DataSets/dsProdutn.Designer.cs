@@ -2175,7 +2175,7 @@ namespace Mbc5.DataSets {
                         string coverdesc, 
                         string speccover, 
                         string colors, 
-                        string diecut, 
+                        bool diecut, 
                         string perfbind, 
                         string coilclr, 
                         string laminated, 
@@ -2611,7 +2611,7 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnspeccover);
                 this.columncolors = new global::System.Data.DataColumn("colors", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncolors);
-                this.columndiecut = new global::System.Data.DataColumn("diecut", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columndiecut = new global::System.Data.DataColumn("diecut", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndiecut);
                 this.columnperfbind = new global::System.Data.DataColumn("perfbind", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnperfbind);
@@ -2858,9 +2858,9 @@ namespace Mbc5.DataSets {
                 this.columncoverdesc.MaxLength = 25;
                 this.columnspeccover.MaxLength = 5;
                 this.columncolors.MaxLength = 20;
-                this.columndiecut.MaxLength = 1;
                 this.columnperfbind.MaxLength = 1;
                 this.columncoilclr.MaxLength = 20;
+                this.columnlaminated.MaxLength = 1;
                 this.columnvendcd.MaxLength = 3;
                 this.columnvoucherno.MaxLength = 8;
                 this.columnTimeStamp.ReadOnly = true;
@@ -10156,10 +10156,10 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string diecut {
+            public bool diecut {
                 get {
                     try {
-                        return ((string)(this[this.tableprodutn.diecutColumn]));
+                        return ((bool)(this[this.tableprodutn.diecutColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'diecut\' in table \'produtn\' is DBNull.", e);
@@ -20264,43 +20264,43 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE       produtn\r\nSET                invno = @invno, schcode = @schcode, hcpr" +
                 "oof = @hcproof, prodno = @prodno, contrecvd = @contrecvd, deadlinein = @deadline" +
-                "in, typestyle = @typestyle, nopages = @ProdNoPages, nocopies = @ProdNoCopies, \r\n" +
-                "                         dedayin = @dedayin, dedayout = @dedayout, dedmade = @de" +
-                "dmade, covertype = @covertype, coverdesc = @coverdesc, speccover = @speccover, c" +
-                "olors = @colors, diecut = @diecut, perfbind = @perfbind, coilclr = @coilclr, \r\n " +
-                "                        laminated = @laminated, colorpgs = @colorpgs, screcv = @" +
-                "screcv, scprod = @scprod, kitrecvd = @kitrecvd, vendcd = @vendcd, tovend = @tove" +
-                "nd, toprod = @toprod, warndate = @warndate, prshpdte = @prshpdte, \r\n            " +
-                "             shpdate = @shpdate, prmsdate = @prmsdate, retpstupdt = @retpstupdt," +
-                " hardcost = @hardcost, voucherno = @voucherno, ptrecvd = @ptrecvd, ptnopgs = @pt" +
-                "nopgs, ptbrcvd = @ptbrcvd, ptbnopgs = @ptbnopgs, \r\n                         bkno" +
-                "pgs = @bknopgs, bkstd = @bkstd, bk9 = @bk9, bk10 = @bk10, bk11 = @bk11, bk12 = @" +
-                "bk12, bkhard = @bkhard, cominitl = @cominitl, comdate = @comdate, cstsvcdte = @c" +
-                "stsvcdte, cstat = @cstat, jobno = @jobno, \r\n                         advpw = @ad" +
-                "vpw, persnlz = @persnlz, foiling = @foiling, foilclr = @foilclr, onlineyr = @onl" +
-                "ineyr, remaketype = @remaketype, fullremake = @fullremake, shortremak = @shortre" +
-                "mak, indivremak = @indivremak, \r\n                         scname = @scname, indi" +
-                "vname = @indivname, indivpic = @indivpic, yr = @yr, icon_ = @icon_, wipremaketyp" +
-                "e = @wipremaketype, numtopersonalize = @numtopersonalize, schpic = @schpic, recc" +
-                "ardsent = @reccardsent, \r\n                         company = @company, schname =" +
-                " @schname, contryear = @contryear, pemailed = @pemailed, listrecd = @listrecd, f" +
-                "inalized = @finalized, reorder = @reorder, milled = @milled, DateCreated = @Date" +
-                "Created, \r\n                         DateModified = @DateModified, usersw = @user" +
-                "sw, stfpw = @stfpw, bkmixed = @bkmixed, bkcoil = @bkcoil, ovride = @ovride, allc" +
-                "lrck = @allclrck, foilck = @foilck, bktype2 = @bktype2, bledpgchk = @bledpgchk, " +
-                "\r\n                         bledpgno = @bledpgno, ugrnd = @ugrnd, u3day = @u3day," +
-                " u2ndday = @u2ndday, ustdon = @ustdon, uprion = @uprion, fgrnd = @fgrnd, f2ndday" +
-                " = @f2ndday, fstdon = @fstdon, fprion = @fprion, rbinit = @rbinit, \r\n           " +
-                "              rbdate = @rbdate, x5252 = @x5252, dcdesc1 = @dcdesc1, dcdesc2 = @d" +
-                "cdesc2, bkgrnd = @bkgrnd, bindvend = @bindvend, magirdate = @magirdate, magirtrn" +
-                " = @magirtrn, magiregis = @magiregis, regto = @regto, \r\n                        " +
-                " pcmac = @pcmac, webinar = @webinar, prfreq = @prfreq, l400 = @l400, m400 = @m40" +
-                "0, noplates = @noplates, theme = @theme, mk = @mk, se = @se, te = @te, dura = @d" +
-                "ura, hallp = @hallp, titlep = @titlep, vinyl = @vinyl, \r\n                       " +
-                "  finalcpycnt = @finalcpycnt, pdfsent = @pdfsent, adduploaddate = @adduploaddate" +
-                ", ModifiedBy = @ModifiedBy\r\nWHERE        (invno = @Original_invno) AND (@IsNull_" +
-                "TimeStamp = 1) AND (TimeStamp IS NULL) OR\r\n                         (invno = @Or" +
-                "iginal_invno) AND (TimeStamp = @Original_TimeStamp)";
+                "in, typestyle = @typestyle, dedayin = @dedayin, dedayout = @dedayout, dedmade = " +
+                "@dedmade, \r\n                         covertype = @covertype, coverdesc = @coverd" +
+                "esc, speccover = @speccover, colors = @colors, diecut = @diecut, perfbind = @per" +
+                "fbind, coilclr = @coilclr, laminated = @laminated, colorpgs = @colorpgs, screcv " +
+                "= @screcv, \r\n                         scprod = @scprod, kitrecvd = @kitrecvd, ve" +
+                "ndcd = @vendcd, tovend = @tovend, toprod = @toprod, warndate = @warndate, prshpd" +
+                "te = @prshpdte, shpdate = @shpdate, prmsdate = @prmsdate, retpstupdt = @retpstup" +
+                "dt, \r\n                         hardcost = @hardcost, voucherno = @voucherno, ptr" +
+                "ecvd = @ptrecvd, ptnopgs = @ptnopgs, ptbrcvd = @ptbrcvd, ptbnopgs = @ptbnopgs, b" +
+                "knopgs = @bknopgs, bkstd = @bkstd, bk9 = @bk9, bk10 = @bk10, bk11 = @bk11, \r\n   " +
+                "                      bk12 = @bk12, bkhard = @bkhard, cominitl = @cominitl, comd" +
+                "ate = @comdate, cstsvcdte = @cstsvcdte, cstat = @cstat, jobno = @jobno, advpw = " +
+                "@advpw, persnlz = @persnlz, foiling = @foiling, foilclr = @foilclr, \r\n          " +
+                "               onlineyr = @onlineyr, remaketype = @remaketype, fullremake = @ful" +
+                "lremake, shortremak = @shortremak, indivremak = @indivremak, scname = @scname, i" +
+                "ndivname = @indivname, indivpic = @indivpic, yr = @yr, \r\n                       " +
+                "  icon_ = @icon_, wipremaketype = @wipremaketype, numtopersonalize = @numtoperso" +
+                "nalize, schpic = @schpic, reccardsent = @reccardsent, company = @company, schnam" +
+                "e = @schname, contryear = @contryear, \r\n                         pemailed = @pem" +
+                "ailed, listrecd = @listrecd, finalized = @finalized, reorder = @reorder, milled " +
+                "= @milled, DateCreated = @DateCreated, DateModified = @DateModified, usersw = @u" +
+                "sersw, stfpw = @stfpw, \r\n                         bkmixed = @bkmixed, bkcoil = @" +
+                "bkcoil, ovride = @ovride, allclrck = @allclrck, foilck = @foilck, bktype2 = @bkt" +
+                "ype2, bledpgchk = @bledpgchk, bledpgno = @bledpgno, ugrnd = @ugrnd, u3day = @u3d" +
+                "ay, u2ndday = @u2ndday, \r\n                         ustdon = @ustdon, uprion = @u" +
+                "prion, fgrnd = @fgrnd, f2ndday = @f2ndday, fstdon = @fstdon, fprion = @fprion, r" +
+                "binit = @rbinit, rbdate = @rbdate, x5252 = @x5252, dcdesc1 = @dcdesc1, dcdesc2 =" +
+                " @dcdesc2, \r\n                         bkgrnd = @bkgrnd, bindvend = @bindvend, ma" +
+                "girdate = @magirdate, magirtrn = @magirtrn, magiregis = @magiregis, regto = @reg" +
+                "to, pcmac = @pcmac, webinar = @webinar, prfreq = @prfreq, l400 = @l400, m400 = @" +
+                "m400, \r\n                         noplates = @noplates, theme = @theme, mk = @mk," +
+                " se = @se, te = @te, dura = @dura, hallp = @hallp, titlep = @titlep, vinyl = @vi" +
+                "nyl, finalcpycnt = @finalcpycnt, pdfsent = @pdfsent, adduploaddate = @adduploadd" +
+                "ate, \r\n                         ModifiedBy = @ModifiedBy, nopages = @nopages, no" +
+                "copies = @nocopies\r\nWHERE        (invno = @Original_invno) AND (@IsNull_TimeStam" +
+                "p = 1) AND (TimeStamp IS NULL) OR\r\n                         (invno = @Original_i" +
+                "nvno) AND (TimeStamp = @Original_TimeStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -20309,8 +20309,6 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contrecvd", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "contrecvd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@deadlinein", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "deadlinein", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@typestyle", global::System.Data.SqlDbType.Char, 20, global::System.Data.ParameterDirection.Input, 0, 0, "typestyle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProdNoPages", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nopages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProdNoCopies", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nocopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dedayin", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "dedayin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dedayout", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "dedayout", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dedmade", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "dedmade", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -20428,6 +20426,8 @@ namespace Mbc5.DataSets.dsProdutnTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pdfsent", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "pdfsent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adduploaddate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "adduploaddate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ModifiedBy", global::System.Data.SqlDbType.NVarChar, 128, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedBy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nopages", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ProdNoPages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nocopies", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ProdNoCopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TimeStamp", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));

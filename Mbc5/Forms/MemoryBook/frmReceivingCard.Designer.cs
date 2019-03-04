@@ -36,6 +36,10 @@
 			System.Windows.Forms.Label freebooksLabel;
 			System.Windows.Forms.Label label7;
 			System.Windows.Forms.Label label8;
+			System.Windows.Forms.Label idLabel;
+			System.Windows.Forms.Label dateCreatedLabel;
+			System.Windows.Forms.Label contractYearLabel;
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceivingCard));
 			this.schnameLabel1 = new System.Windows.Forms.Label();
 			this.rCardBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.dsRcard = new Mbc5.DataSets.dsRcard();
@@ -59,8 +63,6 @@
 			this.noCopiesTextBox = new System.Windows.Forms.TextBox();
 			this.freebooksTextBox = new System.Windows.Forms.TextBox();
 			this.ck8CheckBox = new System.Windows.Forms.CheckBox();
-			this.rCardTableAdapter = new Mbc5.DataSets.dsRcardTableAdapters.RCardTableAdapter();
-			this.tableAdapterManager = new Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager();
 			this.coverDescTextBox = new System.Windows.Forms.TextBox();
 			this.hdbky_nCheckBox = new System.Windows.Forms.CheckBox();
 			this.casey_nCheckBox = new System.Windows.Forms.CheckBox();
@@ -86,9 +88,26 @@
 			this.stateTextBox = new System.Windows.Forms.TextBox();
 			this.zipTextBox = new System.Windows.Forms.TextBox();
 			this.noPayRecvTextBox = new System.Windows.Forms.TextBox();
-			this.btnSave = new System.Windows.Forms.Button();
-			this.btnEmail = new System.Windows.Forms.Button();
-			this.btnPrint = new System.Windows.Forms.Button();
+			this.idLabel1 = new System.Windows.Forms.Label();
+			this.dateCreatedLabel1 = new System.Windows.Forms.Label();
+			this.bnRcard = new System.Windows.Forms.BindingNavigator(this.components);
+			this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+			this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+			this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+			this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+			this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+			this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+			this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+			this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+			this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.contractYearLabel1 = new System.Windows.Forms.Label();
+			this.rCardTableAdapter = new Mbc5.DataSets.dsRcardTableAdapters.RCardTableAdapter();
+			this.tableAdapterManager = new Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager();
 			kitReceivedDateLabel = new System.Windows.Forms.Label();
 			guardteLabel = new System.Windows.Forms.Label();
 			label1 = new System.Windows.Forms.Label();
@@ -101,24 +120,31 @@
 			freebooksLabel = new System.Windows.Forms.Label();
 			label7 = new System.Windows.Forms.Label();
 			label8 = new System.Windows.Forms.Label();
+			idLabel = new System.Windows.Forms.Label();
+			dateCreatedLabel = new System.Windows.Forms.Label();
+			contractYearLabel = new System.Windows.Forms.Label();
 			this.TopPanel.SuspendLayout();
-			this.BottomPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.rCardBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dsRcard)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.bnRcard)).BeginInit();
+			this.bnRcard.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// TopPanel
 			// 
+			this.TopPanel.Controls.Add(contractYearLabel);
+			this.TopPanel.Controls.Add(this.contractYearLabel1);
+			this.TopPanel.Controls.Add(dateCreatedLabel);
+			this.TopPanel.Controls.Add(this.dateCreatedLabel1);
+			this.TopPanel.Controls.Add(idLabel);
+			this.TopPanel.Controls.Add(this.idLabel1);
 			this.TopPanel.Controls.Add(this.schnameLabel1);
-			this.TopPanel.Size = new System.Drawing.Size(621, 46);
+			this.TopPanel.Size = new System.Drawing.Size(729, 56);
 			// 
 			// BottomPanel
 			// 
-			this.BottomPanel.Controls.Add(this.btnPrint);
-			this.BottomPanel.Controls.Add(this.btnEmail);
-			this.BottomPanel.Controls.Add(this.btnSave);
-			this.BottomPanel.Location = new System.Drawing.Point(0, 737);
-			this.BottomPanel.Size = new System.Drawing.Size(621, 47);
+			this.BottomPanel.Location = new System.Drawing.Point(0, 774);
+			this.BottomPanel.Size = new System.Drawing.Size(729, 10);
 			// 
 			// kitReceivedDateLabel
 			// 
@@ -238,11 +264,38 @@
 			label8.TabIndex = 64;
 			label8.Text = "Year Book Shipping Address";
 			// 
+			// idLabel
+			// 
+			idLabel.AutoSize = true;
+			idLabel.Location = new System.Drawing.Point(555, 9);
+			idLabel.Name = "idLabel";
+			idLabel.Size = new System.Drawing.Size(57, 13);
+			idLabel.TabIndex = 1;
+			idLabel.Text = "Card No.";
+			// 
+			// dateCreatedLabel
+			// 
+			dateCreatedLabel.AutoSize = true;
+			dateCreatedLabel.Location = new System.Drawing.Point(527, 33);
+			dateCreatedLabel.Name = "dateCreatedLabel";
+			dateCreatedLabel.Size = new System.Drawing.Size(86, 13);
+			dateCreatedLabel.TabIndex = 3;
+			dateCreatedLabel.Text = "Date Created:";
+			// 
+			// contractYearLabel
+			// 
+			contractYearLabel.AutoSize = true;
+			contractYearLabel.Location = new System.Drawing.Point(18, 9);
+			contractYearLabel.Name = "contractYearLabel";
+			contractYearLabel.Size = new System.Drawing.Size(33, 13);
+			contractYearLabel.TabIndex = 5;
+			contractYearLabel.Text = "Year";
+			// 
 			// schnameLabel1
 			// 
 			this.schnameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Schname", true));
 			this.schnameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.schnameLabel1.Location = new System.Drawing.Point(252, 14);
+			this.schnameLabel1.Location = new System.Drawing.Point(169, 23);
 			this.schnameLabel1.Name = "schnameLabel1";
 			this.schnameLabel1.Size = new System.Drawing.Size(117, 23);
 			this.schnameLabel1.TabIndex = 1;
@@ -265,14 +318,14 @@
 			this.kitReceivedDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.kitReceivedDateDateTimePicker.Location = new System.Drawing.Point(174, 62);
 			this.kitReceivedDateDateTimePicker.Name = "kitReceivedDateDateTimePicker";
-			this.kitReceivedDateDateTimePicker.Size = new System.Drawing.Size(85, 20);
+			this.kitReceivedDateDateTimePicker.Size = new System.Drawing.Size(90, 20);
 			this.kitReceivedDateDateTimePicker.TabIndex = 3;
 			this.kitReceivedDateDateTimePicker.ValueChanged += new System.EventHandler(this.kitReceivedDateDateTimePicker_ValueChanged);
 			// 
 			// ck1CheckBox
 			// 
 			this.ck1CheckBox.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-			this.ck1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck1", true));
+			this.ck1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Ck1", true));
 			this.ck1CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ck1CheckBox.Location = new System.Drawing.Point(23, 90);
 			this.ck1CheckBox.Name = "ck1CheckBox";
@@ -283,7 +336,7 @@
 			// 
 			// ck2CheckBox
 			// 
-			this.ck2CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck2", true));
+			this.ck2CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Ck2", true));
 			this.ck2CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ck2CheckBox.Location = new System.Drawing.Point(23, 115);
 			this.ck2CheckBox.Name = "ck2CheckBox";
@@ -299,7 +352,7 @@
 			this.guardteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.guardteDateTimePicker.Location = new System.Drawing.Point(391, 88);
 			this.guardteDateTimePicker.Name = "guardteDateTimePicker";
-			this.guardteDateTimePicker.Size = new System.Drawing.Size(85, 20);
+			this.guardteDateTimePicker.Size = new System.Drawing.Size(90, 20);
 			this.guardteDateTimePicker.TabIndex = 13;
 			this.guardteDateTimePicker.ValueChanged += new System.EventHandler(this.guardteDateTimePicker_ValueChanged);
 			// 
@@ -310,7 +363,7 @@
 			this.deadlineDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.deadlineDateTimePicker.Location = new System.Drawing.Point(135, 115);
 			this.deadlineDateTimePicker.Name = "deadlineDateTimePicker";
-			this.deadlineDateTimePicker.Size = new System.Drawing.Size(85, 20);
+			this.deadlineDateTimePicker.Size = new System.Drawing.Size(90, 20);
 			this.deadlineDateTimePicker.TabIndex = 14;
 			this.deadlineDateTimePicker.ValueChanged += new System.EventHandler(this.deadlineDateTimePicker_ValueChanged);
 			// 
@@ -321,13 +374,13 @@
 			this.estdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.estdateDateTimePicker.Location = new System.Drawing.Point(282, 141);
 			this.estdateDateTimePicker.Name = "estdateDateTimePicker";
-			this.estdateDateTimePicker.Size = new System.Drawing.Size(85, 20);
+			this.estdateDateTimePicker.Size = new System.Drawing.Size(90, 20);
 			this.estdateDateTimePicker.TabIndex = 15;
 			this.estdateDateTimePicker.ValueChanged += new System.EventHandler(this.estdateDateTimePicker_ValueChanged);
 			// 
 			// totalSoldoTextBox
 			// 
-			this.totalSoldoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "TotalSoldo", true));
+			this.totalSoldoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "TotalSoldOnline", true));
 			this.totalSoldoTextBox.Location = new System.Drawing.Point(151, 203);
 			this.totalSoldoTextBox.Name = "totalSoldoTextBox";
 			this.totalSoldoTextBox.Size = new System.Drawing.Size(100, 20);
@@ -335,7 +388,7 @@
 			// 
 			// totalDollarTextBox
 			// 
-			this.totalDollarTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "TotalDollar", true));
+			this.totalDollarTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "TotalDollarsOnline", true));
 			this.totalDollarTextBox.Location = new System.Drawing.Point(425, 203);
 			this.totalDollarTextBox.Name = "totalDollarTextBox";
 			this.totalDollarTextBox.Size = new System.Drawing.Size(100, 20);
@@ -343,7 +396,7 @@
 			// 
 			// ck3CheckBox
 			// 
-			this.ck3CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck3", true));
+			this.ck3CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Ck3", true));
 			this.ck3CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ck3CheckBox.Location = new System.Drawing.Point(23, 230);
 			this.ck3CheckBox.Name = "ck3CheckBox";
@@ -362,7 +415,7 @@
 			// 
 			// ck4CheckBox
 			// 
-			this.ck4CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck4", true));
+			this.ck4CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Ck4", true));
 			this.ck4CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ck4CheckBox.Location = new System.Drawing.Point(23, 255);
 			this.ck4CheckBox.Name = "ck4CheckBox";
@@ -381,7 +434,7 @@
 			// 
 			// ck4bCheckBox
 			// 
-			this.ck4bCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck4b", true));
+			this.ck4bCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Ck4b", true));
 			this.ck4bCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ck4bCheckBox.Location = new System.Drawing.Point(41, 275);
 			this.ck4bCheckBox.Name = "ck4bCheckBox";
@@ -392,7 +445,7 @@
 			// 
 			// ck4cCheckBox
 			// 
-			this.ck4cCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck4c", true));
+			this.ck4cCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Ck4c", true));
 			this.ck4cCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ck4cCheckBox.Location = new System.Drawing.Point(221, 290);
 			this.ck4cCheckBox.Name = "ck4cCheckBox";
@@ -403,7 +456,7 @@
 			// 
 			// ck4aCheckBox
 			// 
-			this.ck4aCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck4a", true));
+			this.ck4aCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Ck4a", true));
 			this.ck4aCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ck4aCheckBox.Location = new System.Drawing.Point(41, 290);
 			this.ck4aCheckBox.Name = "ck4aCheckBox";
@@ -414,7 +467,7 @@
 			// 
 			// ck7CheckBox
 			// 
-			this.ck7CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck7", true));
+			this.ck7CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Ck7", true));
 			this.ck7CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ck7CheckBox.Location = new System.Drawing.Point(23, 311);
 			this.ck7CheckBox.Name = "ck7CheckBox";
@@ -449,7 +502,7 @@
 			// 
 			// ck8CheckBox
 			// 
-			this.ck8CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Ck8", true));
+			this.ck8CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Ck8", true));
 			this.ck8CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ck8CheckBox.Location = new System.Drawing.Point(23, 359);
 			this.ck8CheckBox.Name = "ck8CheckBox";
@@ -457,16 +510,6 @@
 			this.ck8CheckBox.TabIndex = 33;
 			this.ck8CheckBox.Text = "The cover option you chose was ";
 			this.ck8CheckBox.UseVisualStyleBackColor = true;
-			// 
-			// rCardTableAdapter
-			// 
-			this.rCardTableAdapter.ClearBeforeFill = true;
-			// 
-			// tableAdapterManager
-			// 
-			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-			this.tableAdapterManager.RCardTableAdapter = this.rCardTableAdapter;
-			this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
 			// 
 			// coverDescTextBox
 			// 
@@ -478,7 +521,7 @@
 			// 
 			// hdbky_nCheckBox
 			// 
-			this.hdbky_nCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Hdbky_n", true));
+			this.hdbky_nCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Hdbky_n", true));
 			this.hdbky_nCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.hdbky_nCheckBox.Location = new System.Drawing.Point(23, 406);
 			this.hdbky_nCheckBox.Name = "hdbky_nCheckBox";
@@ -489,7 +532,7 @@
 			// 
 			// casey_nCheckBox
 			// 
-			this.casey_nCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Casey_n", true));
+			this.casey_nCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Casey_n", true));
 			this.casey_nCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.casey_nCheckBox.Location = new System.Drawing.Point(23, 427);
 			this.casey_nCheckBox.Name = "casey_nCheckBox";
@@ -500,7 +543,7 @@
 			// 
 			// spirckCheckBox
 			// 
-			this.spirckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Spirck", true));
+			this.spirckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Spirck", true));
 			this.spirckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.spirckCheckBox.Location = new System.Drawing.Point(23, 446);
 			this.spirckCheckBox.Name = "spirckCheckBox";
@@ -511,7 +554,7 @@
 			// 
 			// perfBindCheckBox
 			// 
-			this.perfBindCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "PerfBind", true));
+			this.perfBindCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "peyn", true));
 			this.perfBindCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.perfBindCheckBox.Location = new System.Drawing.Point(23, 463);
 			this.perfBindCheckBox.Name = "perfBindCheckBox";
@@ -522,7 +565,7 @@
 			// 
 			// sdlStichCheckBox
 			// 
-			this.sdlStichCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "SdlStich", true));
+			this.sdlStichCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "SdlStich", true));
 			this.sdlStichCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.sdlStichCheckBox.Location = new System.Drawing.Point(149, 406);
 			this.sdlStichCheckBox.Name = "sdlStichCheckBox";
@@ -533,7 +576,7 @@
 			// 
 			// allClrckCheckBox
 			// 
-			this.allClrckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "AllClrck", true));
+			this.allClrckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "AllClrck", true));
 			this.allClrckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.allClrckCheckBox.Location = new System.Drawing.Point(149, 427);
 			this.allClrckCheckBox.Name = "allClrckCheckBox";
@@ -544,7 +587,7 @@
 			// 
 			// clrpgckCheckBox
 			// 
-			this.clrpgckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Clrpgck", true));
+			this.clrpgckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Clrpgck", true));
 			this.clrpgckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.clrpgckCheckBox.Location = new System.Drawing.Point(149, 446);
 			this.clrpgckCheckBox.Name = "clrpgckCheckBox";
@@ -555,7 +598,7 @@
 			// 
 			// appCheckBox
 			// 
-			this.appCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "App", true));
+			this.appCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "App", true));
 			this.appCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.appCheckBox.Location = new System.Drawing.Point(149, 466);
 			this.appCheckBox.Name = "appCheckBox";
@@ -566,18 +609,18 @@
 			// 
 			// foilingCheckBox
 			// 
-			this.foilingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Foiling", true));
+			this.foilingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Foiling", true));
 			this.foilingCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.foilingCheckBox.Location = new System.Drawing.Point(279, 406);
+			this.foilingCheckBox.Location = new System.Drawing.Point(279, 410);
 			this.foilingCheckBox.Name = "foilingCheckBox";
-			this.foilingCheckBox.Size = new System.Drawing.Size(104, 24);
+			this.foilingCheckBox.Size = new System.Drawing.Size(104, 15);
 			this.foilingCheckBox.TabIndex = 51;
 			this.foilingCheckBox.Text = "Foil Individual Name";
 			this.foilingCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// mkCheckBox
 			// 
-			this.mkCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Mk", true));
+			this.mkCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Mk", true));
 			this.mkCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.mkCheckBox.Location = new System.Drawing.Point(279, 427);
 			this.mkCheckBox.Name = "mkCheckBox";
@@ -588,7 +631,7 @@
 			// 
 			// indivPicCheckBox
 			// 
-			this.indivPicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "IndivPic", true));
+			this.indivPicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "IndivPic", true));
 			this.indivPicCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.indivPicCheckBox.Location = new System.Drawing.Point(279, 446);
 			this.indivPicCheckBox.Name = "indivPicCheckBox";
@@ -599,7 +642,7 @@
 			// 
 			// insckCheckBox
 			// 
-			this.insckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Insck", true));
+			this.insckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Insck", true));
 			this.insckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.insckCheckBox.Location = new System.Drawing.Point(403, 406);
 			this.insckCheckBox.Name = "insckCheckBox";
@@ -610,7 +653,7 @@
 			// 
 			// mlaminationCheckBox
 			// 
-			this.mlaminationCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Mlamination", true));
+			this.mlaminationCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Mlamination", true));
 			this.mlaminationCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.mlaminationCheckBox.Location = new System.Drawing.Point(403, 427);
 			this.mlaminationCheckBox.Name = "mlaminationCheckBox";
@@ -621,7 +664,7 @@
 			// 
 			// gLaminationCheckBox
 			// 
-			this.gLaminationCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "GLamination", true));
+			this.gLaminationCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "GLamination", true));
 			this.gLaminationCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.gLaminationCheckBox.Location = new System.Drawing.Point(403, 446);
 			this.gLaminationCheckBox.Name = "gLaminationCheckBox";
@@ -632,7 +675,7 @@
 			// 
 			// comckCheckBox
 			// 
-			this.comckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.rCardBindingSource, "Comck", true));
+			this.comckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.rCardBindingSource, "Comck", true));
 			this.comckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.comckCheckBox.Location = new System.Drawing.Point(23, 489);
 			this.comckCheckBox.Name = "comckCheckBox";
@@ -717,37 +760,199 @@
 			this.noPayRecvTextBox.Size = new System.Drawing.Size(516, 55);
 			this.noPayRecvTextBox.TabIndex = 72;
 			// 
-			// btnSave
+			// idLabel1
 			// 
-			this.btnSave.Location = new System.Drawing.Point(184, 12);
-			this.btnSave.Name = "btnSave";
-			this.btnSave.Size = new System.Drawing.Size(75, 23);
-			this.btnSave.TabIndex = 0;
-			this.btnSave.Text = "Save";
-			this.btnSave.UseVisualStyleBackColor = true;
+			this.idLabel1.AutoSize = true;
+			this.idLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Id", true));
+			this.idLabel1.Location = new System.Drawing.Point(615, 9);
+			this.idLabel1.Name = "idLabel1";
+			this.idLabel1.Size = new System.Drawing.Size(17, 13);
+			this.idLabel1.TabIndex = 2;
+			this.idLabel1.Text = "id";
 			// 
-			// btnEmail
+			// dateCreatedLabel1
 			// 
-			this.btnEmail.Location = new System.Drawing.Point(279, 12);
-			this.btnEmail.Name = "btnEmail";
-			this.btnEmail.Size = new System.Drawing.Size(75, 23);
-			this.btnEmail.TabIndex = 1;
-			this.btnEmail.Text = "Email";
-			this.btnEmail.UseVisualStyleBackColor = true;
+			this.dateCreatedLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "DateCreated", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
+			this.dateCreatedLabel1.Location = new System.Drawing.Point(619, 33);
+			this.dateCreatedLabel1.Name = "dateCreatedLabel1";
+			this.dateCreatedLabel1.Size = new System.Drawing.Size(100, 13);
+			this.dateCreatedLabel1.TabIndex = 4;
+			this.dateCreatedLabel1.Text = "datecreated";
 			// 
-			// btnPrint
+			// bnRcard
 			// 
-			this.btnPrint.Location = new System.Drawing.Point(391, 12);
-			this.btnPrint.Name = "btnPrint";
-			this.btnPrint.Size = new System.Drawing.Size(75, 23);
-			this.btnPrint.TabIndex = 2;
-			this.btnPrint.Text = "Print";
-			this.btnPrint.UseVisualStyleBackColor = true;
+			this.bnRcard.AddNewItem = null;
+			this.bnRcard.BindingSource = this.rCardBindingSource;
+			this.bnRcard.CountItem = this.bindingNavigatorCountItem;
+			this.bnRcard.DeleteItem = this.bindingNavigatorDeleteItem;
+			this.bnRcard.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.bnRcard.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.toolStripButton4,
+            this.toolStripButton2,
+            this.bindingNavigatorDeleteItem,
+            this.toolStripButton3,
+            this.toolStripButton1});
+			this.bnRcard.Location = new System.Drawing.Point(0, 749);
+			this.bnRcard.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+			this.bnRcard.MoveLastItem = this.bindingNavigatorMoveLastItem;
+			this.bnRcard.MoveNextItem = this.bindingNavigatorMoveNextItem;
+			this.bnRcard.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+			this.bnRcard.Name = "bnRcard";
+			this.bnRcard.PositionItem = this.bindingNavigatorPositionItem;
+			this.bnRcard.Size = new System.Drawing.Size(729, 25);
+			this.bnRcard.TabIndex = 73;
+			this.bnRcard.Text = "bindingNavigator1";
+			
+			// 
+			// bindingNavigatorCountItem
+			// 
+			this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+			this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+			this.bindingNavigatorCountItem.Text = "of {0}";
+			this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+			// 
+			// bindingNavigatorDeleteItem
+			// 
+			this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+			this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+			this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+			this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+			this.bindingNavigatorDeleteItem.Text = "Delete";
+			this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
+			// 
+			// bindingNavigatorMoveFirstItem
+			// 
+			this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+			this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+			this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+			this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+			this.bindingNavigatorMoveFirstItem.Text = "Move first";
+			// 
+			// bindingNavigatorMovePreviousItem
+			// 
+			this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+			this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+			this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+			this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+			this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+			// 
+			// bindingNavigatorSeparator
+			// 
+			this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+			this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+			// 
+			// bindingNavigatorPositionItem
+			// 
+			this.bindingNavigatorPositionItem.AccessibleName = "Position";
+			this.bindingNavigatorPositionItem.AutoSize = false;
+			this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+			this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+			this.bindingNavigatorPositionItem.Text = "0";
+			this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+			// 
+			// bindingNavigatorSeparator1
+			// 
+			this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+			this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+			// 
+			// bindingNavigatorMoveNextItem
+			// 
+			this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+			this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+			this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+			this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+			this.bindingNavigatorMoveNextItem.Text = "Move next";
+			// 
+			// bindingNavigatorMoveLastItem
+			// 
+			this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+			this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+			this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+			this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+			this.bindingNavigatorMoveLastItem.Text = "Move last";
+			// 
+			// bindingNavigatorSeparator2
+			// 
+			this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+			this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+			// 
+			// toolStripButton4
+			// 
+			this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+			this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton4.Name = "toolStripButton4";
+			this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton4.Text = "toolStripButton4";
+			this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+			// 
+			// toolStripButton2
+			// 
+			this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+			this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton2.Name = "toolStripButton2";
+			this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton2.Text = "toolStripButton2";
+			// 
+			// toolStripButton3
+			// 
+			this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+			this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton3.Name = "toolStripButton3";
+			this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton3.Text = "toolStripButton3";
+			this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+			// 
+			// toolStripButton1
+			// 
+			this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton1.Name = "toolStripButton1";
+			this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton1.Text = "toolStripButton1";
+			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+			// 
+			// contractYearLabel1
+			// 
+			this.contractYearLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "ContractYear", true));
+			this.contractYearLabel1.Location = new System.Drawing.Point(52, 9);
+			this.contractYearLabel1.Name = "contractYearLabel1";
+			this.contractYearLabel1.Size = new System.Drawing.Size(42, 13);
+			this.contractYearLabel1.TabIndex = 6;
+			this.contractYearLabel1.Text = "label9";
+			// 
+			// rCardTableAdapter
+			// 
+			this.rCardTableAdapter.ClearBeforeFill = true;
+			// 
+			// tableAdapterManager
+			// 
+			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+			this.tableAdapterManager.RCardTableAdapter = this.rCardTableAdapter;
+			this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
 			// 
 			// frmReceivingCard
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
-			this.ClientSize = new System.Drawing.Size(621, 784);
+			this.ClientSize = new System.Drawing.Size(729, 784);
+			this.Controls.Add(this.bnRcard);
 			this.Controls.Add(this.noPayRecvTextBox);
 			this.Controls.Add(this.zipTextBox);
 			this.Controls.Add(this.stateTextBox);
@@ -809,8 +1014,6 @@
 			this.Name = "frmReceivingCard";
 			this.Text = "Receiving Card";
 			this.Load += new System.EventHandler(this.frmReceivingCard_Load);
-			this.Controls.SetChildIndex(this.TopPanel, 0);
-			this.Controls.SetChildIndex(this.BottomPanel, 0);
 			this.Controls.SetChildIndex(this.kitReceivedDateDateTimePicker, 0);
 			this.Controls.SetChildIndex(kitReceivedDateLabel, 0);
 			this.Controls.SetChildIndex(this.ck1CheckBox, 0);
@@ -868,10 +1071,16 @@
 			this.Controls.SetChildIndex(this.stateTextBox, 0);
 			this.Controls.SetChildIndex(this.zipTextBox, 0);
 			this.Controls.SetChildIndex(this.noPayRecvTextBox, 0);
+			this.Controls.SetChildIndex(this.TopPanel, 0);
+			this.Controls.SetChildIndex(this.BottomPanel, 0);
+			this.Controls.SetChildIndex(this.bnRcard, 0);
 			this.TopPanel.ResumeLayout(false);
-			this.BottomPanel.ResumeLayout(false);
+			this.TopPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.rCardBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dsRcard)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.bnRcard)).EndInit();
+			this.bnRcard.ResumeLayout(false);
+			this.bnRcard.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -929,8 +1138,23 @@
 		private System.Windows.Forms.TextBox stateTextBox;
 		private System.Windows.Forms.TextBox zipTextBox;
 		private System.Windows.Forms.TextBox noPayRecvTextBox;
-		private System.Windows.Forms.Button btnPrint;
-		private System.Windows.Forms.Button btnEmail;
-		private System.Windows.Forms.Button btnSave;
+		private System.Windows.Forms.Label idLabel1;
+		private System.Windows.Forms.Label dateCreatedLabel1;
+		private System.Windows.Forms.BindingNavigator bnRcard;
+		private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+		private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+		private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+		private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+		private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+		private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+		private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+		private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+		private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+		private System.Windows.Forms.ToolStripButton toolStripButton4;
+		private System.Windows.Forms.ToolStripButton toolStripButton2;
+		private System.Windows.Forms.ToolStripButton toolStripButton3;
+		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.Label contractYearLabel1;
+		private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
 	}
 }
