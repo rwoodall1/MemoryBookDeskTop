@@ -926,7 +926,6 @@
                         </Border>
                       </Style>
                     </Rectangle>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -1040,7 +1039,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>3131 W. Main </Value>
+                  <Value>304 Curry Drive </Value>
                   <Style />
                 </TextRun>
               </TextRuns>

@@ -403,6 +403,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Mbc5DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mbc5DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
@@ -538,6 +543,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
     <EmbeddedResource Include="Reports\InvoiceDetails.rdlc" />
     <EmbeddedResource Include="Reports\InvoiceTest.rdlc" />
@@ -706,6 +712,17 @@
     </None>
     <None Include="Mbc5DataSet.xss">
       <DependentUpon>Mbc5DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Mbc5DataSet1.xsc">
+      <DependentUpon>Mbc5DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Mbc5DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Mbc5DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Mbc5DataSet1.xss">
+      <DependentUpon>Mbc5DataSet1.xsd</DependentUpon>
     </None>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>

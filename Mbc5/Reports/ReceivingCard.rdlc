@@ -2,28 +2,26 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Textbox Name="Textbox12">
+      <Textbox Name="Schname">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Invoice Date</Value>
+                <Value>=First(Fields!Schname.Value, "dsReceivingCard")</Value>
                 <Style>
+                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
+            <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>0.06944in</Top>
-        <Left>6.47333in</Left>
-        <Height>0.22222in</Height>
+        <rd:DefaultName>Schname</rd:DefaultName>
+        <Left>2.82906in</Left>
+        <Height>0.25347in</Height>
         <Width>1in</Width>
         <Style>
           <Border>
@@ -31,33 +29,29 @@
           </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>1pt</PaddingTop>
-          <PaddingBottom>1pt</PaddingBottom>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox13">
+      <Textbox Name="Textbox3">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Invoice No.</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
+                <Value>Your yearbook arrived on schedule</Value>
+                <Style />
               </TextRun>
             </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
+            <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>0.04167in</Top>
-        <Left>5.22333in</Left>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>0.56646in</Top>
+        <Left>0.36806in</Left>
         <Height>0.25in</Height>
-        <Width>1in</Width>
+        <Width>2.16667in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -69,31 +63,27 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="schname">
+      <Textbox Name="Textbox4">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!contfname.Value.ToString().Trim() +" "
-+Fields!contlname.Value.ToString().Trim()
-+Environment.NewLine
-+Fields!schname.Value.ToString().Trim()
-+Environment.NewLine
-+Fields!schaddr.Value.ToString().Trim() + " "+ Fields!schaddr2.Value.ToString().Trim()
-+Environment.NewLine
-+Fields!schcity.Value.ToString().Trim() + " " + Fields!schstate.Value + " "
-+Fields!schzip.Value, "cust")</Value>
-                <Style />
+                <Value>=First("Your guranteed delivery date is " + FormatDateTime(Fields!Guardte.Value,DateFormat.ShortDate), "dsReceivingCard")</Value>
+                <Style>
+                  <Format>MM/dd/yyyy</Format>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>schname</rd:DefaultName>
-        <Height>0.625in</Height>
-        <Width>3.36458in</Width>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>0.56646in</Top>
+        <Left>2.79781in</Left>
+        <Height>0.25in</Height>
+        <Width>3.65625in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -105,186 +95,127 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="invno">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!invno.Value, "invoice")</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>invno</rd:DefaultName>
-        <Top>0.23611in</Top>
-        <Left>5.22333in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
+      <Image Name="checkImage2">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>0.9566in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
         <ZIndex>3</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-        </Style>
-      </Textbox>
-      <Textbox Name="qtedate">
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!qtedate.Value, "invoice")</Value>
-                <Style>
-                  <Format>MM/dd/yyyy</Format>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>qtedate</rd:DefaultName>
-        <Top>0.23611in</Top>
-        <Left>6.47333in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>4</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-        </Style>
-      </Textbox>
-      <Textbox Name="schcode">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!schcode.Value, "cust")</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>schcode</rd:DefaultName>
-        <Top>0.42534in</Top>
-        <Left>6.39979in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>5</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox14">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Customer Number</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>0.42534in</Top>
-        <Left>5.00396in</Left>
-        <Height>0.25in</Height>
-        <Width>1.39583in</Width>
-        <ZIndex>6</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="txtponum">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>PO Number</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>0.42534in</Top>
-        <Left>0.34312in</Left>
-        <Height>0.25in</Height>
-        <Width>1.39583in</Width>
-        <ZIndex>7</ZIndex>
         <Visibility>
-          <Hidden>=IIf(First(Fields!ponum.Value , "invoice")= Nothing ,true,false)</Hidden>
+          <Hidden>=First(Fields!Ck2.Value = False, "dsReceivingCard")</Hidden>
         </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
-      </Textbox>
-      <Textbox Name="ponum">
+      </Image>
+      <Image Name="uncheckImage2">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>0.98785in</Top>
+        <Left>0.13542in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.17708in</Width>
+        <ZIndex>4</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck2.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage3">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>0.62847in</Top>
+        <Left>0.13542in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.17708in</Width>
+        <ZIndex>5</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck1.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage3">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>0.63889in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>6</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck1.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Deadline">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!ponum.Value, "invoice")</Value>
+                <Value>=First("Your deadline was "+FormatDateTime(Fields!Deadline.Value,DateFormat.ShortDate), "dsReceivingCard")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>ponum</rd:DefaultName>
-        <Top>0.43923in</Top>
-        <Left>1.73895in</Left>
+        <rd:DefaultName>Deadline</rd:DefaultName>
+        <Top>0.89458in</Top>
+        <Left>0.36806in</Left>
         <Height>0.25in</Height>
-        <Width>1in</Width>
+        <Width>2.12847in</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox7">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>You missed your deadline so this will alter your</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox7</rd:DefaultName>
+        <Top>0.89458in</Top>
+        <Left>2.79781in</Left>
+        <Height>0.25in</Height>
+        <Width>2.98958in</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -296,106 +227,57 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Rectangle Name="Rectangle1">
-        <ReportItems>
-          <Textbox Name="Textbox5">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Description</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>0.07292in</Top>
-            <Left>0.26042in</Left>
-            <Height>0.25in</Height>
-            <Width>0.94792in</Width>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox6">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Credits/Charges</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>0.06597in</Top>
-            <Left>6.00459in</Left>
-            <Height>0.25in</Height>
-            <Width>1.18166in</Width>
-            <ZIndex>1</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-        </ReportItems>
-        <KeepTogether>true</KeepTogether>
-        <Top>0.82118in</Top>
-        <Left>0.08854in</Left>
-        <Height>0.32292in</Height>
-        <Width>7.20708in</Width>
-        <ZIndex>9</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-            <Width>1.25pt</Width>
-          </Border>
-        </Style>
-      </Rectangle>
-      <Textbox Name="invtot">
+      <Textbox Name="Estdate">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!invtot.Value, "invoice")</Value>
+                <Value>=First("delivery. our ESTIMATED (not guaranteed) delivery date is "+FormatDateTime(Fields!Estdate.Value,DateFormat.ShortDate), "dsReceivingCard")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Estdate</rd:DefaultName>
+        <Top>1.21403in</Top>
+        <Left>0.36806in</Left>
+        <Height>0.25in</Height>
+        <Width>5.31864in</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox11">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Should the school require less than the published production schedules the order is subject to an expediting /overtime fee if roduction time is available.</Value>
                 <Style>
-                  <Format>'$'#,0.00</Format>
+                  <FontStyle>Italic</FontStyle>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>invtot</rd:DefaultName>
-        <Top>2.36633in</Top>
-        <Left>6.27479in</Left>
-        <Height>0.25in</Height>
-        <Width>1.02083in</Width>
+        <rd:DefaultName>Textbox11</rd:DefaultName>
+        <Top>1.53347in</Top>
+        <Left>0.36806in</Left>
+        <Height>0.40625in</Height>
+        <Width>5.31864in</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -405,30 +287,28 @@
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
-          <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
         </Style>
       </Textbox>
-      <Textbox Name="baldue">
+      <Textbox Name="TotalSoldOnline">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!invtot.Value, "invoice")-Sum(Fields!payment.Value, "payment")</Value>
-                <Style>
-                  <Format>'$'#,0.00</Format>
-                </Style>
+                <Value>=First("Total Books Sold Online &lt;b&gt;"+Str(Fields!TotalSoldOnline.Value)+"&lt;/b&gt;&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp Total Online Dollars Collected &lt;b&gt;"+FormatCurrency(Str(Fields!TotalDollarsOnline.Value),2)+"&lt;/b&gt;", "dsReceivingCard")</Value>
+                <MarkupType>HTML</MarkupType>
+                <Style />
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>baldue</rd:DefaultName>
-        <Top>2.99132in</Top>
-        <Left>6.27479in</Left>
+        <rd:DefaultName>TotalSoldOnline</rd:DefaultName>
+        <Top>2.00917in</Top>
+        <Left>0.36806in</Left>
         <Height>0.25in</Height>
-        <Width>1.02083in</Width>
+        <Width>5.52083in</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <Border>
@@ -438,89 +318,116 @@
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
-          <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox15">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>SubTotal</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>1.82466in</Top>
-        <Left>5.21923in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
+      <Image Name="checkImage4">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>2.34895in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
         <ZIndex>12</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck3.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
-      </Textbox>
-      <Textbox Name="Textbox17">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Balance Due</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>2.99132in</Top>
-        <Left>5.21923in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
+      </Image>
+      <Image Name="uncheckImage4">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>2.3802in</Top>
+        <Left>0.13542in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.17708in</Width>
         <ZIndex>13</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck3.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
-      </Textbox>
-      <Line Name="Line1">
-        <Top>1.71355in</Top>
-        <Left>5.21923in</Left>
-        <Height>0in</Height>
-        <Width>2.07639in</Width>
+      </Image>
+      <Image Name="checkImage5">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>2.69618in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
         <ZIndex>14</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck4.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
         <Style>
           <Border>
-            <Style>Solid</Style>
+            <Style>None</Style>
           </Border>
         </Style>
-      </Line>
+      </Image>
+      <Image Name="uncheckImage5">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>2.71701in</Top>
+        <Left>0.13542in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.17708in</Width>
+        <ZIndex>15</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck4.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage6">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.24826in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>16</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Spirck.Value=False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage6">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.24826in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>17</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Spirck.Value=True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
       <Textbox Name="Textbox19">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -528,123 +435,19 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Payments</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox19</rd:DefaultName>
-        <Top>2.69966in</Top>
-        <Left>5.44818in</Left>
-        <Height>0.25in</Height>
-        <Width>0.77105in</Width>
-        <ZIndex>15</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="BeforeTaxTotal">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Sum(Fields!BeforeTaxTotal.Value, "invoice")</Value>
-                <Style>
-                  <Format>'$'0.00;('$'0.00)</Format>
-                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                </Style>
+                <Value>=First("We received your yearbook on &lt;b&gt;" + FormatDateTime(Fields!KitReceivedDate.Value,DateFormat.ShortDate)+"&lt;/b&gt;", "dsReceivingCard")</Value>
+                <MarkupType>HTML</MarkupType>
+                <Style />
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>BeforeTaxTotal</rd:DefaultName>
-        <Top>1.81077in</Top>
-        <Left>6.2609in</Left>
+        <rd:DefaultName>Textbox19</rd:DefaultName>
+        <Top>0.30903in</Top>
+        <Left>0.07042in</Left>
         <Height>0.25in</Height>
-        <Width>1.02083in</Width>
-        <ZIndex>16</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox18">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Invoice Total</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>2.38021in</Top>
-        <Left>5.21923in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>17</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox20">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Tax</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>2.08855in</Top>
-        <Left>5.84423in</Left>
-        <Height>0.25in</Height>
-        <Width>0.375in</Width>
+        <Width>5.12767in</Width>
         <ZIndex>18</ZIndex>
         <Style>
           <Border>
@@ -656,28 +459,28 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="SalesTax">
+      <Textbox Name="Textbox22">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!SalesTax.Value, "invoice")</Value>
-                <Style>
-                  <Format>'$'0.00;('$'0.00)</Format>
-                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                </Style>
+                <Value>=First("Your balance is &lt;b&gt;"+FormatCurrency(Str(Fields!Baldue.Value),2)+"&lt;/b&gt;", "dsReceivingCard")</Value>
+                <MarkupType>HTML</MarkupType>
+                <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>SalesTax</rd:DefaultName>
-        <Top>2.08855in</Top>
-        <Left>6.24701in</Left>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>2.69618in</Top>
+        <Left>0.36806in</Left>
         <Height>0.25in</Height>
-        <Width>1.02778in</Width>
+        <Width>3.74181in</Width>
         <ZIndex>19</ZIndex>
         <Style>
           <Border>
@@ -689,25 +492,28 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="payments">
+      <Textbox Name="Textbox23">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!payments.Value, "invoice")</Value>
+                <Value>=First("We received payment of &lt;b&gt;"+FormatCurrency(Str(Fields!Payments.Value),2)+"&lt;/b&gt;", "dsReceivingCard")</Value>
+                <MarkupType>HTML</MarkupType>
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>payments</rd:DefaultName>
-        <Top>2.69966in</Top>
-        <Left>6.29562in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
+        <rd:DefaultName>Textbox23</rd:DefaultName>
+        <Top>2.32861in</Top>
+        <Left>0.36806in</Left>
+        <Height>0.29813in</Height>
+        <Width>3.75223in</Width>
         <ZIndex>20</ZIndex>
         <Style>
           <Border>
@@ -719,330 +525,783 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Tablix Name="Tablix2">
-        <TablixBody>
-          <TablixColumns>
-            <TablixColumn>
-              <Width>3.49417in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.11417in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.29707in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.22876in</Width>
-            </TablixColumn>
-          </TablixColumns>
-          <TablixRows>
-            <TablixRow>
-              <Height>0.25in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox38">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>descr</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox38</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox11">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>discpercent</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox11</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>price</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox1</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox16">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>price</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox16</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
-              <Height>0.25in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="descr1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!descr.Value</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>descr1</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="discpercent1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!discpercent.Value</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>discpercent1</rd:DefaultName>
-                      <Visibility>
-                        <Hidden>=Fields!discpercent.Value ="" Or First(Fields!discpercent.Value, "invoicedetail")="0"</Hidden>
-                      </Visibility>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="price1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!price.Value</Value>
-                              <Style>
-                                <Format>'$'#,0.00</Format>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>price1</rd:DefaultName>
-                      <Visibility>
-                        <Hidden>=Fields!price.Value&gt;=0</Hidden>
-                      </Visibility>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                        <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="price">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!price.Value</Value>
-                              <Style>
-                                <Format>'$'#,0.00</Format>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>price</rd:DefaultName>
-                      <Visibility>
-                        <Hidden>=Fields!price.Value&lt;=0</Hidden>
-                      </Visibility>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                        <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-          </TablixRows>
-        </TablixBody>
-        <TablixColumnHierarchy>
-          <TablixMembers>
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-          </TablixMembers>
-        </TablixColumnHierarchy>
-        <TablixRowHierarchy>
-          <TablixMembers>
-            <TablixMember>
-              <Visibility>
-                <Hidden>true</Hidden>
-              </Visibility>
-              <KeepWithGroup>After</KeepWithGroup>
-            </TablixMember>
-            <TablixMember>
-              <Group Name="Details" />
-            </TablixMember>
-          </TablixMembers>
-        </TablixRowHierarchy>
-        <DataSetName>invoicedetail</DataSetName>
-        <Top>1.20834in</Top>
-        <Left>0.14062in</Left>
-        <Height>0.5in</Height>
-        <Width>7.13417in</Width>
+      <Image Name="checkImage7">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>3.2934in</Top>
+        <Left>2.98833in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
         <ZIndex>21</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck4c.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
-      </Tablix>
+      </Image>
+      <Image Name="uncheckImage7">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>3.2934in</Top>
+        <Left>2.99875in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.17708in</Width>
+        <ZIndex>22</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck4c.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage8">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>3.32118in</Top>
+        <Left>0.39931in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>23</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck4a.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage8">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>3.3316in</Top>
+        <Left>0.40973in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.17708in</Width>
+        <ZIndex>24</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck4a.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage9">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>2.98785in</Top>
+        <Left>0.39931in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>25</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck4b.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage9">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>2.98785in</Top>
+        <Left>0.40973in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.17708in</Width>
+        <ZIndex>26</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck4b.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Textbox24">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Due upon receipt of books.</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox24</rd:DefaultName>
+        <Top>2.98785in</Top>
+        <Left>0.62848in</Left>
+        <Height>0.25in</Height>
+        <Width>1.67708in</Width>
+        <ZIndex>27</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox25">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Due upon receipt of this notice.</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox25</rd:DefaultName>
+        <Top>3.2934in</Top>
+        <Left>0.62848in</Left>
+        <Height>0.25in</Height>
+        <Width>2.04167in</Width>
+        <ZIndex>28</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox26">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>No payment received</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox25</rd:DefaultName>
+        <Top>3.2934in</Top>
+        <Left>3.2175in</Left>
+        <Height>0.25in</Height>
+        <Width>1.4375in</Width>
+        <ZIndex>29</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Freebooks">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First("Additional Books Free of Charge &lt;b&gt;"+Str(Fields!Freebooks.Value)+"&lt;/b&gt;", "dsReceivingCard")</Value>
+                <MarkupType>HTML</MarkupType>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Freebooks</rd:DefaultName>
+        <Top>2.98785in</Top>
+        <Left>2.99875in</Left>
+        <Height>0.25in</Height>
+        <Width>3.27083in</Width>
+        <ZIndex>30</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Image Name="checkImage10">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>3.64062in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>31</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck7.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage10">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>3.64062in</Top>
+        <Left>0.13542in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.17708in</Width>
+        <ZIndex>32</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck7.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Textbox28">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First("Our records show you ordered a &lt;b&gt;"+Str(Fields!NoPages.Value)+"&lt;/b&gt; page book with &lt;b&gt;"+Str(Fields!NoCopies.Value)+"&lt;/b&gt; copies.", "dsReceivingCard")</Value>
+                <MarkupType>HTML</MarkupType>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>3.64062in</Top>
+        <Left>0.36806in</Left>
+        <Height>0.25in</Height>
+        <Width>5.79042in</Width>
+        <ZIndex>33</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Image Name="checkImage11">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>3.96007in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>34</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck8.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage11">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>3.96007in</Top>
+        <Left>0.13542in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.17708in</Width>
+        <ZIndex>35</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck8.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Textbox29">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First("The cover option you chose was &lt;b&gt;"+Fields!CoverDesc.Value+"&lt;/b&gt;", "dsReceivingCard")</Value>
+                <MarkupType>HTML</MarkupType>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox29</rd:DefaultName>
+        <Top>3.96007in</Top>
+        <Left>0.36806in</Left>
+        <Height>0.25in</Height>
+        <Width>5.79042in</Width>
+        <ZIndex>36</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox30">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>You also chose the custom features that are checked below</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox30</rd:DefaultName>
+        <Top>4.27951in</Top>
+        <Left>0.40973in</Left>
+        <Height>0.25in</Height>
+        <Width>3.73958in</Width>
+        <ZIndex>37</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Image Name="checkImage12">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>4.97395in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>38</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Casey_n.Value=False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage12">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>4.97395in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>39</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Casey_n.Value=True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage13">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>4.65451in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>40</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Hdbky_n.Value=False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage13">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>4.65451in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>41</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Hdbky_n.Value=True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage14">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.53992in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>42</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Peyn.Value=False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage14">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.53992in</Top>
+        <Left>0.125in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>43</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Peyn.Value=True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage15">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.24826in</Top>
+        <Left>2.11806in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>44</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck3.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage15">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.37326in</Top>
+        <Left>2.12848in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>45</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck3.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage16">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.24826in</Top>
+        <Left>2.78739in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>46</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck3.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage16">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.37326in</Top>
+        <Left>2.79781in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>47</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck3.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage17">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.24826in</Top>
+        <Left>3.31313in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>48</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck3.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage17">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.37326in</Top>
+        <Left>3.32355in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>49</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck3.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="checkImage18">
+        <Source>Embedded</Source>
+        <Value>checkbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.24826in</Top>
+        <Left>3.96181in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>50</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck3.Value = False, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Image Name="uncheckImage18">
+        <Source>Embedded</Source>
+        <Value>uncheckbx</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>5.37326in</Top>
+        <Left>3.97223in</Left>
+        <Height>0.16667in</Height>
+        <Width>0.1875in</Width>
+        <ZIndex>51</ZIndex>
+        <Visibility>
+          <Hidden>=First(Fields!Ck3.Value = True, "dsReceivingCard")</Hidden>
+        </Visibility>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Textbox31">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Hard Back</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox31</rd:DefaultName>
+        <Top>4.65451in</Top>
+        <Left>0.3611in</Left>
+        <Height>0.27083in</Height>
+        <Width>0.70833in</Width>
+        <ZIndex>52</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox32">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Case Bind</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox32</rd:DefaultName>
+        <Top>4.97395in</Top>
+        <Left>0.3611in</Left>
+        <Height>0.25in</Height>
+        <Width>0.70833in</Width>
+        <ZIndex>53</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox33">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Spiral</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>5.24826in</Top>
+        <Left>0.3611in</Left>
+        <Height>0.25in</Height>
+        <Width>0.5in</Width>
+        <ZIndex>54</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox34">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Perfect Binding</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox34</rd:DefaultName>
+        <Top>5.53992in</Top>
+        <Left>0.3611in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>55</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>3.66667in</Height>
+    <Height>6.76041in</Height>
     <Style>
       <Border>
         <Style>None</Style>
       </Border>
     </Style>
   </Body>
-  <Width>8.34772in</Width>
+  <Width>6.78125in</Width>
   <Page>
     <PageHeader>
-      <Height>1.10417in</Height>
+      <Height>0.72396in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1050,6 +1309,8 @@
           <Source>Embedded</Source>
           <Value>MemBookJostensLogo</Value>
           <Sizing>FitProportional</Sizing>
+          <Top>0.02257in</Top>
+          <Left>0.07042in</Left>
           <Height>0.60417in</Height>
           <Width>2.16667in</Width>
           <Style>
@@ -1062,15 +1323,6 @@
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>Make checks payable to : Memory Book Company</Value>
-                  <Style />
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
             <Paragraph>
               <TextRuns>
                 <TextRun>
@@ -1100,55 +1352,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox9</rd:DefaultName>
-          <Left>4.16542in</Left>
-          <Height>0.75in</Height>
+          <Top>0.02257in</Top>
+          <Left>3.31313in</Left>
+          <Height>0.5816in</Height>
           <Width>3.32291in</Width>
           <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox8">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>***Invoice***</Value>
-                  <Style>
-                    <FontSize>16pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value />
-                  <Style>
-                    <FontSize>16pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>0.67361in</Top>
-          <Left>0.04167in</Left>
-          <Height>0.36458in</Height>
-          <Width>1.52083in</Width>
-          <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1166,386 +1374,435 @@
         </Border>
       </Style>
     </PageHeader>
-    <PageWidth>8in</PageWidth>
-    <LeftMargin>0.25in</LeftMargin>
-    <RightMargin>0.25in</RightMargin>
-    <TopMargin>0.25in</TopMargin>
-    <BottomMargin>0.25in</BottomMargin>
+    <PageFooter>
+      <Height>0.53125in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="dsInvoice">
+    <DataSource Name="Mbc5DataSet1">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>44bef89b-89c1-4bca-a76d-309d28477b21</rd:DataSourceID>
+      <rd:DataSourceID>4e440afc-19b1-40ed-a352-fc7739c3d22c</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="cust">
+    <DataSet Name="dsReceivingCard">
       <Query>
-        <DataSourceName>dsInvoice</DataSourceName>
+        <DataSourceName>Mbc5DataSet1</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="schcode">
-          <DataField>schcode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schname">
-          <DataField>schname</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="contryear">
-          <DataField>contryear</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schaddr">
-          <DataField>schaddr</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schaddr2">
-          <DataField>schaddr2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schcity">
-          <DataField>schcity</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schstate">
-          <DataField>schstate</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schzip">
-          <DataField>schzip</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="contfname">
-          <DataField>contfname</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="contlname">
-          <DataField>contlname</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="csrep">
-          <DataField>csrep</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="fullname">
-          <DataField>fullname</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="citystatezip">
-          <DataField>citystatezip</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="namecode">
-          <DataField>namecode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>dsInvoice</rd:DataSetName>
-        <rd:SchemaPath>F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\DataSets\dsInvoice.xsd</rd:SchemaPath>
-        <rd:TableName>cust</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>custTableAdapter</rd:TableAdapterName>
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="invoice">
-      <Query>
-        <DataSourceName>dsInvoice</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="schcode">
-          <DataField>schcode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="invno">
-          <DataField>invno</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="qtedate">
-          <DataField>qtedate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="nopages">
-          <DataField>nopages</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="nocopies">
-          <DataField>nocopies</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="book_ea">
-          <DataField>book_ea</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="source">
-          <DataField>source</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ponum">
-          <DataField>ponum</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="invtot">
-          <DataField>invtot</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="payments">
-          <DataField>payments</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="baldue">
-          <DataField>baldue</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="contfname">
-          <DataField>contfname</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="contlname">
-          <DataField>contlname</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schname">
-          <DataField>schname</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schaddr">
-          <DataField>schaddr</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schaddr2">
-          <DataField>schaddr2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schcity">
-          <DataField>schcity</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schstate">
-          <DataField>schstate</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="schzip">
-          <DataField>schzip</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="contryear">
-          <DataField>contryear</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="poamt">
-          <DataField>poamt</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="dc2">
-          <DataField>dc2</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="allclrck">
-          <DataField>allclrck</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="laminate">
-          <DataField>laminate</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="fldtype">
-          <DataField>fldtype</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="freebooks">
-          <DataField>freebooks</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="DateCreated">
-          <DataField>DateCreated</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="DateModified">
-          <DataField>DateModified</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="ModifiedBy">
-          <DataField>ModifiedBy</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="SalesTax">
-          <DataField>SalesTax</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="BeforeTaxTotal">
-          <DataField>BeforeTaxTotal</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>dsInvoice</rd:DataSetName>
-        <rd:SchemaPath>F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\DataSets\dsInvoice.xsd</rd:SchemaPath>
-        <rd:TableName>invoice</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>invoiceTableAdapter</rd:TableAdapterName>
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="invoicedetail">
-      <Query>
-        <DataSourceName>dsInvoice</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="schcode">
-          <DataField>schcode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="invno">
-          <DataField>invno</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="descr">
-          <DataField>descr</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="price">
-          <DataField>price</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="discpercent">
-          <DataField>discpercent</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="id">
-          <DataField>id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="DateCreated">
-          <DataField>DateCreated</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="DateModified">
-          <DataField>DateModified</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="ModifiedBy">
-          <DataField>ModifiedBy</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>dsInvoice</rd:DataSetName>
-        <rd:SchemaPath>F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\DataSets\dsInvoice.xsd</rd:SchemaPath>
-        <rd:TableName>invdetail</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>invdetailTableAdapter</rd:TableAdapterName>
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="payment">
-      <Query>
-        <DataSourceName>dsInvoice</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="code">
-          <DataField>code</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="invno">
-          <DataField>invno</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="pmtdate">
-          <DataField>pmtdate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="checkno">
-          <DataField>checkno</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="poamt">
-          <DataField>poamt</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="refund">
-          <DataField>refund</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="method">
-          <DataField>method</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="init_">
-          <DataField>init_</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="adjmnt">
-          <DataField>adjmnt</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="compamt">
-          <DataField>compamt</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="compreas">
-          <DataField>compreas</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ppfee">
-          <DataField>ppfee</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="transid">
-          <DataField>transid</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="authcode">
-          <DataField>authcode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ccnum">
-          <DataField>ccnum</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Id">
           <DataField>Id</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="paytype">
-          <DataField>paytype</DataField>
+        <Field Name="Schcode">
+          <DataField>Schcode</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="payment">
-          <DataField>payment</DataField>
+        <Field Name="Schname">
+          <DataField>Schname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Prodno">
+          <DataField>Prodno</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Invno">
+          <DataField>Invno</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="KitReceivedDate">
+          <DataField>KitReceivedDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Ck1">
+          <DataField>Ck1</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Ck2">
+          <DataField>Ck2</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Deadline">
+          <DataField>Deadline</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Estdate">
+          <DataField>Estdate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Ck3">
+          <DataField>Ck3</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Payments">
+          <DataField>Payments</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Ck4">
+          <DataField>Ck4</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Baldue">
+          <DataField>Baldue</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Ck4a">
+          <DataField>Ck4a</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Ck4b">
+          <DataField>Ck4b</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Ck4c">
+          <DataField>Ck4c</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Ck5">
+          <DataField>Ck5</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Ck6">
+          <DataField>Ck6</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Ck7">
+          <DataField>Ck7</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="NoPages">
+          <DataField>NoPages</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NoCopies">
+          <DataField>NoCopies</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CoverType">
+          <DataField>CoverType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Ck8">
+          <DataField>Ck8</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="GLamination">
+          <DataField>GLamination</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DieCut">
+          <DataField>DieCut</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="PerfBind">
+          <DataField>PerfBind</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Insck">
+          <DataField>Insck</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Hdbky_n">
+          <DataField>Hdbky_n</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Casey_n">
+          <DataField>Casey_n</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Foilck">
+          <DataField>Foilck</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Spirck">
+          <DataField>Spirck</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Guardte">
+          <DataField>Guardte</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="AllClrck">
+          <DataField>AllClrck</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Clrpgck">
+          <DataField>Clrpgck</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Comck">
+          <DataField>Comck</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Comment">
+          <DataField>Comment</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CvrWarn">
+          <DataField>CvrWarn</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Warnck">
+          <DataField>Warnck</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Attn">
+          <DataField>Attn</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Add1">
+          <DataField>Add1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Add2">
+          <DataField>Add2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="City">
+          <DataField>City</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="State">
+          <DataField>State</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Zip">
+          <DataField>Zip</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DcDesc1">
+          <DataField>DcDesc1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DcDesc2">
+          <DataField>DcDesc2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NoPayRecv">
+          <DataField>NoPayRecv</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Story">
+          <DataField>Story</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Supplement">
+          <DataField>Supplement</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="OurSupp">
+          <DataField>OurSupp</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Persnlz">
+          <DataField>Persnlz</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="YirSchool">
+          <DataField>YirSchool</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Schemail">
+          <DataField>Schemail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Contemail">
+          <DataField>Contemail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Bcontemail">
+          <DataField>Bcontemail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ContFname">
+          <DataField>ContFname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ContLname">
+          <DataField>ContLname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BContLname">
+          <DataField>BContLname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BContFname">
+          <DataField>BContFname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="QtyStud">
+          <DataField>QtyStud</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="QtyTeacher">
+          <DataField>QtyTeacher</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HallPass">
+          <DataField>HallPass</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="BookMark">
+          <DataField>BookMark</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="VPA">
+          <DataField>VPA</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="VPB">
+          <DataField>VPB</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IdPouch">
+          <DataField>IdPouch</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="StdPg">
+          <DataField>StdPg</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DuraGlz">
+          <DataField>DuraGlz</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Wallch">
+          <DataField>Wallch</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="TeacherEdtion">
+          <DataField>TeacherEdtion</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="TypeSet">
+          <DataField>TypeSet</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="ImpGuides">
+          <DataField>ImpGuides</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="SchType">
+          <DataField>SchType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Mlamination">
+          <DataField>Mlamination</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Freebooks">
+          <DataField>Freebooks</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Frontcvr">
+          <DataField>Frontcvr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Frontcvr2">
+          <DataField>Frontcvr2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FrontCvin">
+          <DataField>FrontCvin</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BackCvrin">
+          <DataField>BackCvrin</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Back">
+          <DataField>Back</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IsFrontCvr">
+          <DataField>IsFrontCvr</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IsInside">
+          <DataField>IsInside</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IsInsbkcvr">
+          <DataField>IsInsbkcvr</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IsBack">
+          <DataField>IsBack</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Foiling">
+          <DataField>Foiling</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Mk">
+          <DataField>Mk</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="App">
+          <DataField>App</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="SdlStich">
+          <DataField>SdlStich</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IndivPic">
+          <DataField>IndivPic</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Peyn">
+          <DataField>Peyn</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="TotalSoldOnline">
+          <DataField>TotalSoldOnline</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalDollarsOnline">
+          <DataField>TotalDollarsOnline</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CoverDesc">
+          <DataField>CoverDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="DateCreated">
           <DataField>DateCreated</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="DateModified">
-          <DataField>DateModified</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="ModifiedBy">
-          <DataField>ModifiedBy</DataField>
+        <Field Name="ContractYear">
+          <DataField>ContractYear</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsInvoice</rd:DataSetName>
-        <rd:SchemaPath>F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\DataSets\dsInvoice.xsd</rd:SchemaPath>
-        <rd:TableName>paymnt</rd:TableName>
+        <rd:DataSetName>Mbc5DataSet1</rd:DataSetName>
+        <rd:SchemaPath>F:\InetPub\wwwroot\MemoryBook\MemoryBookDeskTop\Mbc5\Mbc5DataSet1.xsd</rd:SchemaPath>
+        <rd:TableName>RCard</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>paymntTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>RCardTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -1605,8 +1862,17 @@ jv4keNfi142a2mi0691eKOO3sLh4TDHetGzSyT3EIwYjJMUQgNsLKjJ+oFFTHMMQoezU3b+uu43QpuXM
 YzLKJB/ywXOKw/jX/wAHTPwT/ZR8KXHgf9lT4I2VxpVnJILa9nsIvC/h9XOMXENlCnnzBscrKtq5x1r8RPil8VvFHxy8d3ninxt4k17xf4l1ABbjVdZv5b68lVeFQyyMzbFHCqDtUcAAcVgUo5T7R82Lm5vtsvuIlj+VctCPKvxPsT9qr/gvj+1Z+1xJcwat8UtS8G6JcMWGj+CVOg28YPBTzomN46EcFZbh1PPHJr47l/f3k9xIWkuLqRpZpXO6SZ2OWZmPLMTySckmiivUo4enSVqcUvQ4qlapPWbbDFGKKK2MgxRiiigAxRiiigD+xb/glB/yi0/Zq/7JX4X/APTRa179X8sHwU/4O2v2jv2XPg14R+GXh/wV8ErzQfh1otn4Y02fUNH1SS8ntrKBLaJ5mTUERpCkSliqKpYnCqOB0/8AxGn/ALU3/Qg/AH/wSav/APLOvzOdCXMz7KMtD+niiv5h/wDiNP8A2pv+hB+AP/gk1f8A+WdH/Eaf+1N/0IPwB/8ABJq//wAs6n2Eirn9PFFfzD/8Rp/7U3/Qg/AH/wAEmr//ACzo/wCI0/8Aam/6EH4A/wDgk1f/AOWdHsZBc/p4or+Yf/iNP/am/wChB+AP/gk1f/5Z0f8AEaf+1N/0IPwB/wDBJq//AMs6PYyC5/TxRX8w/wDxGn/tTf8AQg/AH/wSav8A/LOj/iNP/am/6EH4A/8Agk1f/wCWdHsJBc/p4or+Yf8A4jT/ANqb/oQfgD/4JNX/APlnR/xGn/tTf9CD8Af/AASav/8ALOj2Eguf08UV/MP/AMRp/wC1N/0IPwB/8Emr/wDyzo/4jT/2pv8AoQfgD/4JNX/+WdHsZBc/p4or+Yf/AIjT/wBqb/oQfgD/AOCTV/8A5Z0f8Rp/7U3/AEIPwB/8Emr/APyzo9jILn9PFFfzD/8AEaf+1N/0IPwB/wDBJq//AMs6P+I0/wDam/6EH4A/+CTV/wD5Z0ewkFz+niiv5h/+
 I0/9qb/oQfgD/wCCTV//AJZ0f8Rp/wC1N/0IPwB/8Emr/wDyzo9hILn9PFfzEf8AB1Z/yl41T/sTtG/nc0n/ABGn/tTf9CD8Af8AwSav/wDLOvjr9tL/AIKG+NP+CoHx2uPit4+0rwto/iKawt9Ge38P29xb2Zit9xRts80z7z5rAnfg4GAOc+1kNNxxV32f6HBmL/cv5HlFNkiWYYZVYehGadRX2h88AGBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH/2Q==</ImageData>
     </EmbeddedImage>
+    <EmbeddedImage Name="checkbx">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAAPABADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6y/bh/b1+IH7KP7QPjHxZ4q8XfG3TvgNpPxMXwX4g17wdBoFxZ/DS2k0DQrqzubizudIuru5invNQuVeVZlEQRFVZJZIYZez/AOCV/wC2h8Uf2mvjZ4F1zxLN8V9H+HvxQ8M+L9a8LaV48bQmvtY03Tb3w3Hp2shNO060e1+0
+R6pe5gkeZSscckbyRvHK0X7Yn/BKLxl+0b+1JdeJdb8D+B/ih8PdP8fn4gaZ4X1n4m3ug6Tq922h6TpajVtNTQ7xLr7M+nSSQkXCqUupo5EeOSSN97/gmF/wS78YfsRfGbSJG0nRvDHwz8L2HioaJo0XxIvfGE2mSa3e6JcfYLX7RpFibbT7f+y53CNJPI8t4zs7szsQD//Z</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="uncheckbx">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAAPABADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9Uvh14O+IH7QX7QPx0Zvjl8TfCOk+C/G8OgaTo+h2WgNZ29t/YGj3pybvTLiZnaa9nJJlxgqABjnS8Lx+NPgv+314F8F6l8WPG/jzw74y8CeJ9ZmsvENpo0YtrvTr/wAPxQPC1jYWr8x6lchg7OD8pAGM1Hp/gn48/Ar40/Fr
+UvBXgX4UeM/DvxE8VQeJbWfWPiBf6Fe2gGj6ZpzwyQR6NdocPYM4YTHKyAbQRze+Hvw2+MXxD/bK8K/ET4h+Ffht4N0Xwb4Q13QbeHw74yvPEF1qU+pXejzKZBNpVksUcSaZJnDyFmmTgbSaAP/Z</ImageData>
+    </EmbeddedImage>
   </EmbeddedImages>
-  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>924c9a6a-3e34-479a-91ab-8fb0a300ec4e</rd:ReportID>
+  <rd:ReportID>b484878d-e33a-4f07-b1b4-7b71ed0b98e9</rd:ReportID>
 </Report>

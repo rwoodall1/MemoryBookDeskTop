@@ -22,14 +22,14 @@ namespace Mbc5.Forms.MemoryBook {
 		private void frmReceivingCard_Load(object sender, EventArgs e) {
 			try {
 				//data is sorted descending by datecreated, then Invno descending
-				rCardTableAdapter.Fill(dsRcard.RCard,this.Schcode);
-				if (rCardBindingSource.Count != 0 && Invno!=0) {
-					var pos=rCardBindingSource.Find("Invno", Invno);
-					if (pos > -1) {
+				rCardTableAdapter.Fill(dsRcard.RCard,this.Invno);
+				//if (rCardBindingSource.Count != 0 && Invno!=0) {
+				//	var pos=rCardBindingSource.Find("Invno", Invno);
+				//	if (pos > -1) {
 						
-						rCardBindingSource.Position = pos;
-					}
-				}
+				//		rCardBindingSource.Position = pos;
+				//	}
+				//}
 				if (rCardBindingSource.Count == 0) {
 					DisableControls(this);
 				}
@@ -101,7 +101,7 @@ namespace Mbc5.Forms.MemoryBook {
 			}
 			try {
 				//data is sorted descending by datecreated, then Invno descending
-				rCardTableAdapter.Fill(dsRcard.RCard, this.Schcode);
+				rCardTableAdapter.Fill(dsRcard.RCard, Invno);
 				EnableControls(this);
 
 			} catch (Exception ex) {
@@ -120,6 +120,7 @@ namespace Mbc5.Forms.MemoryBook {
 
 		private void toolStripButton1_Click(object sender, EventArgs e) {
 			//print
+			this.reportViewer1.RefreshReport();
 		}
 
 		private void DisableControls(Control con) {
@@ -159,6 +160,22 @@ namespace Mbc5.Forms.MemoryBook {
 							}
 				}catch (Exception ex) { MbcMessageBox.Error(ex.Message,""); }
 		
+		}
+
+		private void toolStripButton2_Click(object sender, EventArgs e) {
+			try {
+				rCardBindingSource.EndEdit();
+				var a=rCardTableAdapter.Update(dsRcard);
+				
+			} catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+		}
+
+		private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e) {
+			try {
+				//reportViewer1.PrintDialog();
+			} catch (Exception ex) {
+
+			}
 		}
 	}
 }

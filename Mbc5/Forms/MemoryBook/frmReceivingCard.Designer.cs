@@ -40,6 +40,7 @@
 			System.Windows.Forms.Label dateCreatedLabel;
 			System.Windows.Forms.Label contractYearLabel;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceivingCard));
+			Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
 			this.schnameLabel1 = new System.Windows.Forms.Label();
 			this.rCardBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.dsRcard = new Mbc5.DataSets.dsRcard();
@@ -108,6 +109,9 @@
 			this.contractYearLabel1 = new System.Windows.Forms.Label();
 			this.rCardTableAdapter = new Mbc5.DataSets.dsRcardTableAdapters.RCardTableAdapter();
 			this.tableAdapterManager = new Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager();
+			this.invnoLabel1 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
+			this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
 			kitReceivedDateLabel = new System.Windows.Forms.Label();
 			guardteLabel = new System.Windows.Forms.Label();
 			label1 = new System.Windows.Forms.Label();
@@ -132,6 +136,8 @@
 			// 
 			// TopPanel
 			// 
+			this.TopPanel.Controls.Add(this.label9);
+			this.TopPanel.Controls.Add(this.invnoLabel1);
 			this.TopPanel.Controls.Add(contractYearLabel);
 			this.TopPanel.Controls.Add(this.contractYearLabel1);
 			this.TopPanel.Controls.Add(dateCreatedLabel);
@@ -139,12 +145,12 @@
 			this.TopPanel.Controls.Add(idLabel);
 			this.TopPanel.Controls.Add(this.idLabel1);
 			this.TopPanel.Controls.Add(this.schnameLabel1);
-			this.TopPanel.Size = new System.Drawing.Size(729, 56);
+			this.TopPanel.Size = new System.Drawing.Size(739, 56);
 			// 
 			// BottomPanel
 			// 
 			this.BottomPanel.Location = new System.Drawing.Point(0, 774);
-			this.BottomPanel.Size = new System.Drawing.Size(729, 10);
+			this.BottomPanel.Size = new System.Drawing.Size(739, 10);
 			// 
 			// kitReceivedDateLabel
 			// 
@@ -293,11 +299,12 @@
 			// 
 			// schnameLabel1
 			// 
+			this.schnameLabel1.AutoSize = true;
 			this.schnameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Schname", true));
 			this.schnameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.schnameLabel1.Location = new System.Drawing.Point(169, 23);
+			this.schnameLabel1.Location = new System.Drawing.Point(256, 23);
 			this.schnameLabel1.Name = "schnameLabel1";
-			this.schnameLabel1.Size = new System.Drawing.Size(117, 23);
+			this.schnameLabel1.Size = new System.Drawing.Size(105, 26);
 			this.schnameLabel1.TabIndex = 1;
 			this.schnameLabel1.Text = "Schname";
 			// 
@@ -764,15 +771,17 @@
 			// 
 			this.idLabel1.AutoSize = true;
 			this.idLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Id", true));
+			this.idLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.idLabel1.Location = new System.Drawing.Point(615, 9);
 			this.idLabel1.Name = "idLabel1";
-			this.idLabel1.Size = new System.Drawing.Size(17, 13);
+			this.idLabel1.Size = new System.Drawing.Size(15, 13);
 			this.idLabel1.TabIndex = 2;
 			this.idLabel1.Text = "id";
 			// 
 			// dateCreatedLabel1
 			// 
 			this.dateCreatedLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "DateCreated", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
+			this.dateCreatedLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.dateCreatedLabel1.Location = new System.Drawing.Point(619, 33);
 			this.dateCreatedLabel1.Name = "dateCreatedLabel1";
 			this.dateCreatedLabel1.Size = new System.Drawing.Size(100, 13);
@@ -808,10 +817,9 @@
 			this.bnRcard.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
 			this.bnRcard.Name = "bnRcard";
 			this.bnRcard.PositionItem = this.bindingNavigatorPositionItem;
-			this.bnRcard.Size = new System.Drawing.Size(729, 25);
+			this.bnRcard.Size = new System.Drawing.Size(739, 25);
 			this.bnRcard.TabIndex = 73;
 			this.bnRcard.Text = "bindingNavigator1";
-			
 			// 
 			// bindingNavigatorCountItem
 			// 
@@ -908,6 +916,7 @@
 			this.toolStripButton2.Name = "toolStripButton2";
 			this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
 			this.toolStripButton2.Text = "toolStripButton2";
+			this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
 			// 
 			// toolStripButton3
 			// 
@@ -932,7 +941,8 @@
 			// contractYearLabel1
 			// 
 			this.contractYearLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "ContractYear", true));
-			this.contractYearLabel1.Location = new System.Drawing.Point(52, 9);
+			this.contractYearLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.contractYearLabel1.Location = new System.Drawing.Point(49, 9);
 			this.contractYearLabel1.Name = "contractYearLabel1";
 			this.contractYearLabel1.Size = new System.Drawing.Size(42, 13);
 			this.contractYearLabel1.TabIndex = 6;
@@ -948,10 +958,45 @@
 			this.tableAdapterManager.RCardTableAdapter = this.rCardTableAdapter;
 			this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsRcardTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
 			// 
+			// invnoLabel1
+			// 
+			this.invnoLabel1.AutoSize = true;
+			this.invnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rCardBindingSource, "Invno", true));
+			this.invnoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.invnoLabel1.Location = new System.Drawing.Point(74, 33);
+			this.invnoLabel1.Name = "invnoLabel1";
+			this.invnoLabel1.Size = new System.Drawing.Size(35, 13);
+			this.invnoLabel1.TabIndex = 8;
+			this.invnoLabel1.Text = "label9";
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(18, 32);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(57, 13);
+			this.label9.TabIndex = 9;
+			this.label9.Text = "Invoice#";
+			// 
+			// reportViewer1
+			// 
+			this.reportViewer1.DocumentMapWidth = 35;
+			reportDataSource1.Name = "dsReceivingCard";
+			reportDataSource1.Value = this.rCardBindingSource;
+			this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+			this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.ReceivingCard.rdlc";
+			this.reportViewer1.Location = new System.Drawing.Point(21, 141);
+			this.reportViewer1.Name = "reportViewer1";
+			this.reportViewer1.ServerReport.BearerToken = null;
+			this.reportViewer1.Size = new System.Drawing.Size(604, 492);
+			this.reportViewer1.TabIndex = 74;
+			this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
+			// 
 			// frmReceivingCard
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
-			this.ClientSize = new System.Drawing.Size(729, 784);
+			this.ClientSize = new System.Drawing.Size(739, 784);
+			this.Controls.Add(this.reportViewer1);
 			this.Controls.Add(this.bnRcard);
 			this.Controls.Add(this.noPayRecvTextBox);
 			this.Controls.Add(this.zipTextBox);
@@ -1074,6 +1119,7 @@
 			this.Controls.SetChildIndex(this.TopPanel, 0);
 			this.Controls.SetChildIndex(this.BottomPanel, 0);
 			this.Controls.SetChildIndex(this.bnRcard, 0);
+			this.Controls.SetChildIndex(this.reportViewer1, 0);
 			this.TopPanel.ResumeLayout(false);
 			this.TopPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.rCardBindingSource)).EndInit();
@@ -1156,5 +1202,8 @@
 		private System.Windows.Forms.ToolStripButton toolStripButton1;
 		private System.Windows.Forms.Label contractYearLabel1;
 		private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+		private System.Windows.Forms.Label invnoLabel1;
+		private System.Windows.Forms.Label label9;
+		private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
 	}
 }
