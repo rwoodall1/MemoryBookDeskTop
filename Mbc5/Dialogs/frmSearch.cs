@@ -47,7 +47,7 @@ namespace Mbc5.Forms.MemoryBook
 							cmdtext = @"Select Schcode,Schname,Contryear From Cust Order By Schcode";
 							break;
 						default:
-						    Me
+						    
 							break;
 
 					}
