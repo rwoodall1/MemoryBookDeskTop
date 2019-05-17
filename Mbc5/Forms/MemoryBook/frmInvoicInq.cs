@@ -10,6 +10,15 @@ using BaseClass.Classes;
 using System.IO;
 using Microsoft.Reporting.WinForms;
 using Mbc5.Classes;
+using BaseClass;
+using System.Collections;
+using PdfSharp;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
+using BaseClass.Core;
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace Mbc5.Forms.MemoryBook
 {
     public partial class frmInvoicInq : BaseClass.Forms.bTopBottom
@@ -26,13 +35,11 @@ namespace Mbc5.Forms.MemoryBook
         public List<Invoice> Invoices { get; set; }
         private void frmInvoicInq_Load(object sender, EventArgs e)
         {
-			reportViewer1.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SetSubDataSource);
+		
+
 			dgInvoices.AutoGenerateColumns = false;
         }
-        private void dtShipDate_ValueChanged(object sender, EventArgs e)
-        {
-            dtShipDate.Format = DateTimePickerFormat.Long;
-        }
+       
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -99,13 +106,7 @@ namespace Mbc5.Forms.MemoryBook
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-			this.print();
-            //var vInvoices = new BindingList<Invoice>();
-
-            //bsInvoices.DataSource = vInvoices;
-        }
+      
 
         private void chkPrint_CheckedChanged(object sender, EventArgs e)
         {
@@ -119,100 +120,191 @@ namespace Mbc5.Forms.MemoryBook
             this.Invoices = vInvoices;
             bsInvoices.DataSource = vInvoices;
         }
+		private async Task<ApiProcessingResult<string>>CreatekPdf(string vInvno) {
+			var processingResult = new ApiProcessingResult<string>();
+			if (Invoices == null || this.Invoices.Count == 0) {
+				
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError("There are no invoices to print.", "There are no invoices to print.",""));
+				return processingResult;
+			}
 
-        private void button4_Click(object sender, EventArgs e)
-        {
+			var sqlClient = new SQLCustomClient();
+			sqlClient.CommandText(@"
+				SELECT C.SchName,C.SchCode,C.schaddr AS SchAddress,C.SchCity,C.SchZip As ZipCode,C.ContFName AS ContactFirstName,
+				C.ContLname AS ContactLastName,I.nocopies AS NumberCopies,I.nopages AS NumberPages,
+				I.Freebooks,I.Laminate,I.allclrck AS AllColor,I.contryear AS ContractYear,I.Payments,I.Ponum As PoNumber,
+				I.Invno,I.Baldue,I.BeforeTaxTotal,I.SalesTax,I.Invtot,qtedate AS QuoteDate,ID.Descr As Description,ID.Price,ID.DiscPercent
+				FROM Invoice I
+				LEFT JOIN Cust C ON I.Schcode=C.Schcode
+				LEFT JOIN Invdetail ID ON I.Invno=ID.Invno
+				Where I.Invno =@Invno
+				
+				");
+			sqlClient.ClearParameters();
+			sqlClient.AddParameter("@Invno", vInvno);
+			var result = sqlClient.SelectMany<FullInvoice>();
+			if (result.IsError) {
+				
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError(result.Errors[0].ErrorMessage, result.Errors[0].ErrorMessage,""));
+				return processingResult;
+			}
+			var InvoiceData = result.Data;
+			FullInvoiceBindingSource.DataSource = InvoiceData;
+			//https://stackoverflow.com/questions/2684221/creating-a-pdf-from-a-rdlc-report-in-the-background
 
-            var a = this.Invoices;
+			Warning[] warnings;
+			string[] streamIds;
+			string mimeType = string.Empty;
+			string encoding = string.Empty;
+			string extension = string.Empty;
+			//string HIJRA_TODAY = "01/10/1435";
+			// ReportParameter[] param = new ReportParameter[3];
+			//param[0] = new ReportParameter("CUSTOMER_NUM", CUSTOMER_NUMTBX.Text);
+			//param[1] = new ReportParameter("REF_CD", REF_CDTB.Text);
+			//param[2] = new ReportParameter("HIJRA_TODAY", HIJRA_TODAY);
+			try {
+					this.reportViewer1.LocalReport.Refresh();
+					byte[] bytes = this.reportViewer1.LocalReport.Render(
+					"PDF",
+					null,
+					out mimeType,
+					out encoding,
+					out extension,
+					out streamIds,
+					out warnings);
+				var vPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+				var newPath = vPath.Substring(0, vPath.IndexOf("Mbc5") + 4) + "\\tmp\\"+ vInvno + ".pdf";
+				using (FileStream fs = new FileStream(newPath, FileMode.Create)) {
+						fs.Write(bytes, 0, bytes.Length);
+						fs.Dispose();
+					}
+				processingResult.Data = newPath;
+			}catch(Exception ex) {
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError(ex.Message,ex.Message, ""));
+			}
+			return processingResult;
+		}
+		private async void button4_ClickAsync(object sender, EventArgs e) {
 
-            var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invoices[0].Invno);
-            var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invoices[0].Invno);
+			if (Invoices == null || this.Invoices.Count == 0) {
+				MbcMessageBox.Information("There are no invoices to print or email.", "Invoices");
+				return;
+			}
+			var badEmails = new List<string>();
 
-            paymntTableAdapter.Fill(dsInvoice.paymnt, this.Invoices[0].Invno);
-            //https://stackoverflow.com/questions/2684221/creating-a-pdf-from-a-rdlc-report-in-the-background
-            //    reportViewer1.LocalReport.Render
-            //Warning[] warnings;
-            //string[] streamIds;
-            //string mimeType = string.Empty;
-            //string encoding = string.Empty;
-            //string extension = string.Empty;
-            ////string HIJRA_TODAY = "01/10/1435";
-            //// ReportParameter[] param = new ReportParameter[3];
-            ////param[0] = new ReportParameter("CUSTOMER_NUM", CUSTOMER_NUMTBX.Text);
-            ////param[1] = new ReportParameter("REF_CD", REF_CDTB.Text);
-            ////param[2] = new ReportParameter("HIJRA_TODAY", HIJRA_TODAY);
+			bool hasBadEmail = false;
+			foreach (var rec in Invoices) {
+				var result = await CreatekPdf(rec.Invno.ToString());
+				if (result.IsError) {
+					DialogResult dresult = MessageBox.Show("Invoice " + rec.Invno.ToString() + " Error:" + result.Errors[0].ErrorMessage + " Do you wish to continue?", "Invoices", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+					if (dresult == DialogResult.No) {
+						return;
+					}
+				}
+				var emailHelper = new EmailHelper();
+				string subject = "Memory Book Invoice # " + rec.Invno.ToString();
+				;
+				string body = "If you would like to pay online please go to https://online-pay.memorybook.com/school </br></br>If you do not have Adobe Reader to view your invoice you can download it here. http://get.adobe.com/reader/";
+				List<string> addresses = new List<string>();
 
-            //byte[] bytes = this.reportViewer1.LocalReport.Render(
-            //    "PDF",
-            //    null,
-            //    out mimeType,
-            //    out encoding,
-            //    out extension,
-            //    out streamIds,
-            //    out warnings);
+				if (!string.IsNullOrEmpty(rec.Schemail)) {
+					addresses.Add(rec.Schemail.Trim());
+				}
+				if (!string.IsNullOrEmpty(rec.Contemail)) {
+					addresses.Add(rec.Contemail.Trim());
+				}
+				if (!string.IsNullOrEmpty(rec.Bcontemail.Trim())) {
+					addresses.Add(rec.Bcontemail);
+				}
+				var attachments = new List<OutlookAttachemt>();
+				var attachment = new OutlookAttachemt() {
+					Path = result.Data,
+					Name = rec.Invno.ToString() + "pdf"
+				};
+				attachments.Add(attachment);
+				var emailResult = emailHelper.SendOutLookEmail(subject, addresses, new List<string>(), body, EmailType.Mbc, attachments);
+				if (!emailResult) {
+					hasBadEmail = true;
+					badEmails.Add(rec.Invno.ToString());
+				}
+			}
 
-            //using (FileStream fs = new FileStream("F:\\output.pdf", FileMode.Create))
-            //{
-            //    fs.Write(bytes, 0, bytes.Length);
-            //}
-        }
-
+			if (hasBadEmail) {
+				var msg = "The following invoice numbers failed to be emailed out:" + string.Join(",", badEmails);
+				MbcMessageBox.Information(msg, "Failed Invoice Emails");
+			}
+		}
         private void button3_Click(object sender, EventArgs e)
         {
-   
-
-            // var a = this.Invoices;
-            for (int i = 0; i < 2; i++)
-            {
-				invoiceTableAdapter.ClearBeforeFill = false;
-				invdetailTableAdapter.ClearBeforeFill = false;
-                var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invoices[i].Invno);
-                var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invoices[i].Invno);
-                var aaaa = this.custTableAdapter.Fill(dsCust.cust, "038752");
-                var a = dsInvoice.invoice.Rows.Count;
-				var b = bsTest.Count;
-
-            }
-
-            //this.reportViewer1.RefreshReport();
-        }
-        private void print()
-        {
-	
-			this.reportViewer1.RefreshReport();
-	
-        }
-		public void SetSubDataSource(object sender, SubreportProcessingEventArgs e)
-
-		{
+			var vInvoiceNoList = new List<string>();
+			if (Invoices==null||this.Invoices.Count == 0) {
+				MbcMessageBox.Information("There are no invoices to print.", "Invoices");
+				return;
+			} else {
+				foreach (Invoice record in Invoices) {
+					if (record.ToPrint) {
+						vInvoiceNoList.Add(record.Invno.ToString());
+					}
+				}
+				if (vInvoiceNoList ==null||vInvoiceNoList.Count==0) {
+					MbcMessageBox.Information("There are no invoices to print.", "Invoices");
+					return;
+				}
+			}
+			var sqlClient = new SQLCustomClient();
+			sqlClient.CommandText(@"
+				SELECT C.SchName,C.SchCode,C.schaddr AS SchAddress,C.SchCity,C.SchZip As ZipCode,C.ContFName AS ContactFirstName,
+				C.ContLname AS ContactLastName,I.nocopies AS NumberCopies,I.nopages AS NumberPages,
+				I.Freebooks,I.Laminate,I.allclrck AS AllColor,I.contryear AS ContractYear,I.Payments,I.Ponum As PoNumber,
+				I.Invno,I.Baldue,I.BeforeTaxTotal,I.SalesTax,I.Invtot,qtedate AS QuoteDate,ID.Descr As Description,ID.Price,ID.DiscPercent
+				FROM Invoice I
+				LEFT JOIN Cust C ON I.Schcode=C.Schcode
+				LEFT JOIN Invdetail ID ON I.Invno=ID.Invno
+				Where I.Invno IN (SELECT Item FROM @InvoiceList)
+				
+				");
 			
-			e.DataSources.Add(new ReportDataSource("invoicedetail",
-
-						  "dsInvoice.invdetail"));
+			
+			sqlClient.AddParameter("@InvoiceList", vInvoiceNoList);
+			var result = sqlClient.SelectMany<FullInvoice>();
+			if (result.IsError) {
+				MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+				return;
+			}
+			var InvoiceData = result.Data;
+			FullInvoiceBindingSource.DataSource = InvoiceData;
+			reportViewer1.RefreshReport();
 
 		}
+        
+		
 		private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
 
-			//DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+			DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
 
-			//var result = dp.Export(reportViewer1.LocalReport,"");
+			var result = dp.Export(reportViewer1.LocalReport, "");
 
-			//if (result.IsError)
-			//{
-			//	var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage + " Do you wish to continue printing?", "Printing Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-			//	if (errorResult == DialogResult.No)
-			//	{
-			//		//StopPrinting = true;
-			//	}
-			//}
-			
+			if (result.IsError) {
+				var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage , "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				
+			}
+
 		}
 
 		private void reportViewer1_reportError(object sender, ReportErrorEventArgs e)
         {
-            var a = 1;
+            
         }
+
+		private void reportViewer1_ReportRefresh(object sender, CancelEventArgs e) {
+		
+		}
+
+		
 	}
   
 }

@@ -12,7 +12,8 @@ using System.Data.SqlClient;
 using Mbc5.Classes;
 using System.Linq;
 using BindingModels;
-
+using BaseClass;
+using BaseClass.Core;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmBids : BaseClass.frmBase, INotifyPropertyChanged
     {
@@ -107,12 +108,15 @@ namespace Mbc5.Forms.MemoryBook {
         {
             if (Schcode != null)
             {
-                this.custTableAdapter.Fill(this.dsBids.cust, this.Schcode);
-                this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
-                this.bidsTableAdapter.Fill(this.dsBids.bids, this.Schcode);
-                DataRowView current = (DataRowView)bidsBindingSource.Current;
-                this.Schname = current["schname"].ToString();
-
+				try {
+					this.custTableAdapter.Fill(this.dsBids.cust, this.Schcode);
+					this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
+					this.bidsTableAdapter.Fill(this.dsBids.bids, this.Schcode);
+					DataRowView current = (DataRowView)bidsBindingSource.Current;
+					this.Schname = current["schname"].ToString();
+				}catch(Exception ex) {
+					MbcMessageBox.Error(ex.Message, "");
+				}
             }
             
             CalculateEach();
@@ -504,23 +508,23 @@ namespace Mbc5.Forms.MemoryBook {
                             Yir = 0;
                         }
 
-                        ////Story
-                        //decimal Story = 0;
-                        //if (chkStory.Checked)
-                        //{
-                        //    Story = (BookOptionPricing.Story);
-                        //    vBookCalcTax += (Story * this.TaxRate);
-                        //    lblStoryAmt.Text = Story.ToString();
+						//Story
+						decimal Story = 0;
+						if (chkStory.Checked)
+						{
+							Story = (BookOptionPricing.Story);
+							vBookCalcTax += (Story * this.TaxRate);
+							lblStoryAmount.Text = Story.ToString();
 
-                        //}
-                        //else
-                        //{
-                        //    lblStoryAmt.Text = "0.00";
-                        //    Story = 0;
-                        //}
+						}
+						else
+						{
+							lblStoryAmount.Text = "0.00";
+							Story = 0;
+						}
 
-                        //Gloss
-                        decimal Gloss = 0;
+						//Gloss
+						decimal Gloss = 0;
                         if (chkGlossLam.Checked)
                         {
                             if (chkHardBack.Checked || chkCaseBind.Checked)
@@ -602,7 +606,7 @@ namespace Mbc5.Forms.MemoryBook {
                      
 
 
-                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir  + Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
+                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story + Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
                         lblsubtot.Text = SubTotal.ToString("c");
                         this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);
                         this.lblSalesTax.Text = this.SalesTax.ToString("c");
@@ -848,25 +852,29 @@ namespace Mbc5.Forms.MemoryBook {
       
 
         //General
-        public override bool Save()
+        public override ApiProcessingResult<bool> Save()
         {
-            //txtModifiedBy.Text = this.ApplicationUser.id;
-           
-            bool retval = true;
+          var processingResult=new ApiProcessingResult<bool>();
+          
             switch (tabBids.SelectedIndex)
             {
                 case 0:
             
                     {
-                        bidsBindingSource.EndEdit();
-                        bidsTableAdapter.Update(dsBids.bids);
-                        break;
+						try {
+							bidsBindingSource.EndEdit();
+							bidsTableAdapter.Update(dsBids.bids);
+							MbcMessageBox.Exclamation("Bid record saved.", "Success");
+						}catch(Exception ex) {
+							MbcMessageBox.Error(ex.Message, "");
+							processingResult.IsError = true;
+						}
                     }
-
+					break;
 
 
             }
-            return retval;
+            return processingResult;
         }
         public override bool Add()
         {
@@ -906,7 +914,8 @@ namespace Mbc5.Forms.MemoryBook {
                             var result = int.TryParse(lblId.Text, out vid);
                             if (result)
                             {
-                                bidsTableAdapter.Delete(vid);
+								try {bidsTableAdapter.Delete(vid); } catch (Exception ex) { MbcMessageBox.Error("Failed to delete record:" + ex.Message, ""); }
+                                
                             }
                             
 
@@ -936,13 +945,19 @@ namespace Mbc5.Forms.MemoryBook {
             SqlParameter[] parameters = new SqlParameter[] {
                 new SqlParameter("@Zipcode",this.SchoolZipCode)
             };
-            var result = sqlQuery.ExecuteReaderAsync<TaxRate>(CommandType.Text, querystring, parameters);
-            if (result != null)
-            {
-                var vRateList = (List<TaxRate>)result;
-                val = vRateList[0].Rate;
+			try {
+				var result = sqlQuery.ExecuteReaderAsync<TaxRate>(CommandType.Text, querystring, parameters);
+				if (result != null) {
+					var vRateList = (List<TaxRate>)result;
+					val = vRateList[0].Rate;
 
-            }
+				}
+			} catch(Exception ex) {
+				MbcMessageBox.Error(ex.Message, "");
+
+			}
+           
+            
             return val;
         }
 

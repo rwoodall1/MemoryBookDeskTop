@@ -19,13 +19,24 @@ using BindingModels;
 using Exceptionless;
 using Exceptionless.Models;
 using Outlook = Microsoft.Office.Interop.Outlook;
-
+using Microsoft.Reporting.WinForms;
+using System.IO;
+using System.Reflection;
+using BaseClass;
+using Mbc5.Forms.MemoryBook;
 namespace Mbc5.Forms
 {
 	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
 	{
 
-		private bool startup = true;
+		//Some time use this code to make textboxes tab on enter key
+		//	 if (e.KeyCode == Keys.Enter) {
+  //      SendKeys.Send("{tab}");
+  //      e.SuppressKeyPress = true;
+    
+
+
+	private bool startup = true;
 		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
 		{
 			InitializeComponent();
@@ -56,9 +67,13 @@ namespace Mbc5.Forms
 			EnableControls(this.btnInvoiceSrch);
 
 		}
+		public List<CoverDescriptions> CoverDescriptions { get; set; }
 		private void SetConnectionString()
 		{
 			frmMain frmMain = (frmMain)this.MdiParent;
+			this.invoiceCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -73,10 +88,13 @@ namespace Mbc5.Forms
 			this.lkpBackGroundTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.partbkTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 			this.prtbkbdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-
+			partBkDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+			vendorTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 		}
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
+			// TODO: This line of code loads data into the 'dsProdutn.vendor' table. You can move, or remove it, as needed.
+			this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
 
 			this.SetConnectionString();
 			try
@@ -85,7 +103,11 @@ namespace Mbc5.Forms
 				this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
 				//LookUp Data
 				this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
-
+				vendorTableAdapter.Fill(dsProdutn.vendor);
+				DataTable BindingVendorList = dsProdutn.Tables["vendor"].Copy();
+				cmbBindingVendor.DataSource = BindingVendorList;
+				cmbBindingVendor.DisplayMember = "vendcd";
+				cmbBindingVendor.ValueMember = "vendcd";
 				Fill();
 				SetShipLabel();
 				SetEmail();
@@ -117,6 +139,76 @@ namespace Mbc5.Forms
 		private string CurrentProdNo { get; set; }
 		#endregion
 		#region "Methods"
+		private void ShippingEmail()
+		{
+			var cMainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+			var cPdfPath = cMainPath.Substring(0, cMainPath.IndexOf("Mbc5") + 4) + "\\tmp\\" + this.Invno.ToString() + ".pdf";
+			try
+			{
+				var aa = this.invoiceTableAdapter.Fill(dsInvoice.invoice, this.Invno);
+				var rr = this.invdetailTableAdapter.Fill(dsInvoice.invdetail, this.Invno);
+				this.paymntTableAdapter.Fill(dsInvoice.paymnt,this.Invno);
+				var aaaa = this.invoiceCustTableAdapter.Fill(dsCust.cust, this.Schcode);
+				
+				Warning[] warnings;
+				string[] streamIds;
+				string mimeType = string.Empty;
+				string encoding = string.Empty;
+				string extension = string.Empty;
+				//string HIJRA_TODAY = "01/10/1435";
+				// ReportParameter[] param = new ReportParameter[3];
+				//param[0] = new ReportParameter("CUSTOMER_NUM", CUSTOMER_NUMTBX.Text);
+				//param[1] = new ReportParameter("REF_CD", REF_CDTB.Text);
+				//param[2] = new ReportParameter("HIJRA_TODAY", HIJRA_TODAY);
+
+				byte[] bytes = this.reportViewer1.LocalReport.Render(
+					"PDF",
+					null,
+					out mimeType,
+					out encoding,
+					out extension,
+					out streamIds,
+					out warnings);
+
+				using (FileStream fs = new FileStream(cPdfPath, FileMode.Create))
+				{
+					fs.Write(bytes, 0, bytes.Length);
+				}
+
+
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Failed to create invoice pdf.");
+			}
+
+			this.Cursor = Cursors.AppStarting;
+			string body = @"<p>Your yearbooks have shipped so be looking for them shortly. 
+							Thanks for a being a great customer and we look forward to working with you again next year.
+							If you have already rebooked for next year, thank you! <p/><p>If you are not already rebooked, please 
+							contact your Sales Consultant today at 1 - 800 - 247 - 1526. We appreciate your business and look
+							forward to working with you next year to preserve your school's memories.<p/><p>  An invoice is attached for you.
+						   If you are interested, we may have extra books available for you to purchase at your original cost per book, plus $12 for shipping. The shipping is a
+							flat fee whether you order one extra book or all of them.<p/><p>		
+							Please do not reply to this email.  If you have questions, please contact your Customer Service Representative.	<p/>
+
+							<p>www.memorybook.com / <p>";
+
+
+
+
+			string subj = "Your Planners have shipped!";
+			var row =(DataRowView) custBindingSource.Current;
+			string email =row["schemail"].ToString();
+			var emailHelper = new EmailHelper();
+			EmailType type = EmailType.Mbc;
+			List<OutlookAttachemt> attachment = new List<OutlookAttachemt>();
+			OutlookAttachemt att = new OutlookAttachemt() { Path = cPdfPath, Name = Invno.ToString()+".pdf" };
+			attachment.Add(att);
+
+			emailHelper.SendOutLookEmail(subj, email,"", body, type,attachment);
+			this.Cursor = Cursors.Default;
+		}
 		private void DisableControls(Control con)
 		{
 			foreach (Control c in con.Controls)
@@ -200,10 +292,13 @@ namespace Mbc5.Forms
 		{
 			if (Schcode != null)
 			{
+				try {
 				custTableAdapter.Fill(dsProdutn.cust, Schcode);
 				quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
-
 				produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
+				}catch(Exception ex) {
+					MbcMessageBox.Error(ex.Message, "");
+				}
 
 				if (dsProdutn.produtn.Count < 1)
 				{
@@ -218,9 +313,16 @@ namespace Mbc5.Forms
 					EnableControls(this.btnInvoiceSrch);
 				}
 				else { EnableAllControls(this); }
-				coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
-				//coversTableAdapter.Fill(dsProdutn.covers, this.Schcode);
-				coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
+				try {
+					coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
+					//coversTableAdapter.Fill(dsProdutn.covers, this.Schcode);
+					coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
+				} catch(Exception ex) {
+
+					MbcMessageBox.Error(ex.Message, "");
+					return;
+				};
+		
 
 				var row = (DataRowView)coversBindingSource1.Current;
 				var a = row["specinst"].ToString();
@@ -229,23 +331,41 @@ namespace Mbc5.Forms
 					DisableControls(this.tbProdutn.TabPages[2]);
 				}
 				else { EnableAllControls(this.tbProdutn.TabPages[2]); }
-				wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
-				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+				try {
+					wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
+					wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+				} catch(Exception ex) {
+
+					MbcMessageBox.Error(ex.Message, "");
+					return;
+				}
+				
 				if (dsProdutn.wip.Count < 1)
 				{
 					DisableControls(this.tbProdutn.TabPages[1]);
 				}
 				else { EnableAllControls(this.tbProdutn.TabPages[1]); }
-				this.partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
-				this.partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
+				try {
+					this.partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
+					this.partBkDetailTableAdapter.FillBy(dsProdutn.PartBkDetail, Invno);
+				}catch(Exception ex) {
+					MbcMessageBox.Error(ex.Message, "");
+					return;
+				}
+				
 				if (dsProdutn.partbk.Count < 1)
 				{
 					DisableControls(this.tbProdutn.TabPages[4]);
 				}
 				else { EnableAllControls(this.tbProdutn.TabPages[4]); }
-
-				ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
-				prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
+				try {
+					ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
+					prtbkbdetailTableAdapter.FillBy(dsProdutn.prtbkbdetail, Invno);
+				} catch (Exception ex) {
+					MbcMessageBox.Error(ex.Message, "");
+					return;
+				}
+				
 				if (dsProdutn.ptbkb.Count < 1)
 				{
 					DisableControls(this.tbProdutn.TabPages[5]);
@@ -274,26 +394,49 @@ namespace Mbc5.Forms
 
 		}
 
-		public override bool Save()
+		public override ApiProcessingResult<bool> Save()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
 			switch (tbProdutn.SelectedIndex)
 			{
 				case 0:
-					SaveProdutn();
+					var produtnResult = SaveProdutn();
+					if (produtnResult.IsError) {
+						MbcMessageBox.Error(produtnResult.Errors[0].ErrorMessage, "");
+						processingResult = produtnResult;
+					}
 
-					break;
+						break;
 				case 1:
 					{
-						SaveWip();
-						SaveProdutn();//some produtn fiels are on wip tab so save
+						var wipResult = SaveWip();
+						
+						if (wipResult.IsError) {
+							MbcMessageBox.Error(wipResult.Errors[0].ErrorMessage, "");
+							processingResult = wipResult;
+						}
+
+						var produtnResult1 = SaveProdutn();
+						if (produtnResult1.IsError) {
+							MbcMessageBox.Error(produtnResult1.Errors[0].ErrorMessage, "");
+							processingResult = produtnResult1;
+						}
 						break;
 					}
 				case 2:
 					{
-						SaveCovers();
-						SaveProdutn();//some produtn fiels are on covers tab so save
+						var coverResult = SaveCovers();
+						
+						if (coverResult.IsError) {
+							MbcMessageBox.Error(coverResult.Errors[0].ErrorMessage, "");
+							processingResult = coverResult;
+						}
 
+						var produtnResult2 = SaveProdutn();
+						if (produtnResult2.IsError) {
+							MbcMessageBox.Error(produtnResult2.Errors[0].ErrorMessage, "");
+							processingResult = produtnResult2;
+						}
 						break;
 					}
 
@@ -301,16 +444,39 @@ namespace Mbc5.Forms
 
 					break;
 				case 4:
-					SavePartBK();
-					SaveProdutn();
+					var partBkResult = SavePartBK();
+				
+					if (partBkResult.IsError) {
+						MbcMessageBox.Error(partBkResult.Errors[0].ErrorMessage, "");
+						processingResult = partBkResult;
+					}
+
+					var produtnResult3 = SaveProdutn();
+					if (produtnResult3.IsError) {
+						MbcMessageBox.Error(produtnResult3.Errors[0].ErrorMessage, "");
+						processingResult = produtnResult3;
+					}
+				
+				
 					break;
 				case 5:
-					SavePtBkB();
-					SaveProdutn();
+					var ptBkBResult = SavePtBkB();
+					
+					if (ptBkBResult.IsError) {
+						MbcMessageBox.Error(ptBkBResult.Errors[0].ErrorMessage, "");
+						processingResult = ptBkBResult;
+					}
+
+					var produtnResult4 = SaveProdutn();
+					if (produtnResult4.IsError) {
+						MbcMessageBox.Error(produtnResult4.Errors[0].ErrorMessage, "");
+						processingResult = produtnResult4;
+					}
+			
 					break;
 
 			}
-			return retval;
+			return processingResult;
 		}
 		private bool SaveOrStop()
 		{
@@ -318,9 +484,10 @@ namespace Mbc5.Forms
 			switch (tbProdutn.SelectedIndex)
 			{
 				case 0:
-					if (!SaveProdutn())
+					var produtnResult = SaveProdutn();
+					if (produtnResult.IsError)
 					{
-						var result = MessageBox.Show("Production record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result = MessageBox.Show("Production record could not be saved"+produtnResult.Errors[0].ErrorMessage+" Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result == DialogResult.No)
 						{
 							retval = false;
@@ -330,9 +497,10 @@ namespace Mbc5.Forms
 					break;
 
 				case 1:
-					if (!SaveWip())
+					var wipResult = SaveWip();
+					if (wipResult.IsError)
 					{
-						var result = MessageBox.Show("Wip record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result = MessageBox.Show("Wip record could not be saved:"+ wipResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result == DialogResult.No)
 						{
 							retval = false;
@@ -341,9 +509,10 @@ namespace Mbc5.Forms
 					break;
 
 				case 2:
-					if (!SaveCovers())
+					var coverResult = SaveCovers();
+					if (coverResult.IsError)
 					{
-						var result = MessageBox.Show("Cover record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result = MessageBox.Show("Cover record could not be saved:" + coverResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result == DialogResult.No)
 						{
 							retval = false; ;
@@ -351,9 +520,10 @@ namespace Mbc5.Forms
 					}
 					break;
 				case 4:
-					if (!SavePartBK())
+					var partBkResult = SavePartBK();
+					if (partBkResult.IsError)
 					{
-						var result = MessageBox.Show("Partial Book(A) could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result = MessageBox.Show("Partial Book(A) could not be saved:" + partBkResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result == DialogResult.No)
 						{
 							retval = false;
@@ -362,9 +532,10 @@ namespace Mbc5.Forms
 					break;
 
 				case 5:
-					if (!SavePtBkB())
+					var ptBkBResult = SavePtBkB();
+					if (ptBkBResult.IsError)
 					{
-						var result = MessageBox.Show("Photos On CD record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result = MessageBox.Show("Photos On CD record could not be saved:" + ptBkBResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result == DialogResult.No)
 						{
 							retval = false;
@@ -373,24 +544,16 @@ namespace Mbc5.Forms
 					break;
 
 				case 6:
-					//if (!SavePtBkB())
-					//{
-					//	var result = MessageBox.Show("Photos On CD record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-					//	if (result == DialogResult.No)
-					//	{
-					//		e.Cancel = true;
-					//		return;
-					//	}
-					//}
+					
 					break;
 			}
 
 			return retval;
 
 		}
-		private bool SavePartBK()
+		private ApiProcessingResult<bool> SavePartBK()
 		{
-			bool retval = false;
+			var processintResult = new ApiProcessingResult<bool>();
 			if (dsProdutn.partbk.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -401,7 +564,7 @@ namespace Mbc5.Forms
 						var a = partbkTableAdapter.Update(dsProdutn.partbk);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						partbkTableAdapter.FillBy(dsProdutn.partbk, Invno);
-						retval = true;
+						
 					}
 					catch (DBConcurrencyException dbex)
 					{
@@ -413,17 +576,20 @@ namespace Mbc5.Forms
 						ex.ToExceptionless()
 					   .SetMessage("Partial Book A record failed to update:" + ex.Message)
 					   .Submit();
-						retval = false;
-					}
+						processintResult.IsError = true;
+						processintResult.Errors.Add(new ApiProcessingError("Partial Book A record failed to update:" + ex.Message, "Partial Book A record failed to update:" + ex.Message,""))
+;					}
 				}
 			}
-			else { retval = false; }
+			else {
+				processintResult.IsError = true;
+				processintResult.Errors.Add(new ApiProcessingError("PartBk record failed to update.", "PartBk record failed to update.", "")); }
 
-			return retval;
+			return processintResult;
 		}
-		private bool SavePtBkB()
+		private ApiProcessingResult<bool> SavePtBkB()
 		{
-			bool retval = false;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsProdutn.ptbkb.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -434,7 +600,7 @@ namespace Mbc5.Forms
 						var a = ptbkbTableAdapter.Update(dsProdutn.ptbkb);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						ptbkbTableAdapter.FillBy(dsProdutn.ptbkb, Invno);
-						retval = true;
+					
 					}
 					catch (DBConcurrencyException dbex)
 					{
@@ -446,24 +612,27 @@ namespace Mbc5.Forms
 						ex.ToExceptionless()
 					   .SetMessage("Photos On CD record failed to update:" + ex.Message)
 					   .Submit();
-						retval = false;
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("Photos On CD record failed to update:" + ex.Message, "Photos On CD record failed to update:" + ex.Message,""));
 					}
 				}
 			}
-			else { retval = false; }
+			else {
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError("Photos On CD record failed to validate.", "Photos On CD record failed to validate.", ""));
+			}
 
-			return retval;
+			return processingResult;
 		}
-		private bool SaveProdutn()
+		private ApiProcessingResult<bool> SaveProdutn()
 		{
-			bool retval = false;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsProdutn.produtn.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
 				{
 					try
 					{
-
 						this.produtnBindingSource.EndEdit();
 						var a = produtnTableAdapter.Update(dsProdutn.produtn);
 						//must refill so we get updated time stamp so concurrency is not thrown
@@ -477,7 +646,7 @@ namespace Mbc5.Forms
 						}
 
 						SetShipLabel();
-						retval = true;
+					
 
 					}
 					catch (DBConcurrencyException dbex)
@@ -487,23 +656,25 @@ namespace Mbc5.Forms
 					}
 					catch (Exception ex)
 					{
-						retval = false;
-						MessageBox.Show("Production record failed to update:" + ex.Message);
+						
+						
 						ex.ToExceptionless()
 					   .SetMessage("Production record failed to update:" + ex.Message)
 					   .Submit();
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("Production record failed to update:" + ex.Message, "Production record failed to update:" + ex.Message,""));
 					}
+				} else {
+					processingResult.IsError = true;
+					processingResult.Errors.Add(new ApiProcessingError("Production record failed to validate.", "Production record failed to validate.",""));
 				}
 			}
-			else
-			{
-				retval = true;//no records just return
-			}
-			return retval;
+			
+			return processingResult;
 		}
-		private bool SaveWip()
+		private ApiProcessingResult<bool> SaveWip()
 		{
-			bool retval = false;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsProdutn.wip.Count > 0)
 			{
 
@@ -514,7 +685,7 @@ namespace Mbc5.Forms
 					var a = wipTableAdapter.Update(dsProdutn.wip);
 					//must refill so we get updated time stamp so concurrency is not thrown
 					wipTableAdapter.FillByInvno(dsProdutn.wip,Invno);
-					retval = true;
+					
 				}
 				catch (DBConcurrencyException ex1)
 				{
@@ -526,20 +697,23 @@ namespace Mbc5.Forms
 					ex.ToExceptionless()
 				   .SetMessage("WIP record failed to update:" + ex.Message)
 				   .Submit();
-					retval = false;
-					MessageBox.Show("Wip record failed to update:" + ex.Message);
-					;
+					processingResult.IsError = true;
+					processingResult.Errors.Add(new ApiProcessingError("Wip record failed to update:" + ex.Message, "Wip record failed to update:" + ex.Message, ""));
+					
 				}
 				// }
 			}
-			else { retval = false; }
+			else {
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError("Wip Record failed to validate.", "Wip Record failed to validate.", ""));
+			}
 
-			return retval;
+			return processingResult;
 
 		}
-		private bool SaveCovers()
+		private ApiProcessingResult<bool> SaveCovers()
 		{
-			bool retval = false;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsProdutn.covers.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -550,7 +724,7 @@ namespace Mbc5.Forms
 						var a = coversTableAdapter.Update(dsProdutn.covers);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						coversTableAdapter.FillByInvno(dsProdutn.covers, Invno);
-						retval = true;
+						
 					}
 					catch (DBConcurrencyException dbex)
 					{
@@ -562,13 +736,17 @@ namespace Mbc5.Forms
 						ex.ToExceptionless()
 					   .SetMessage("Covers record failed to update:" + ex.Message)
 					   .Submit();
-						retval = false;
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError(ex.Message,ex.Message,""));
 					}
 				}
 			}
-			else { retval = false; }
+			else {
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError("Cover record failed to validate", "Cover record failed to validate", ""));
+			}
 
-			return retval;
+			return processingResult;
 		}
 		public override bool Add()
 		{
@@ -611,184 +789,185 @@ namespace Mbc5.Forms
 		private void prntsamDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
 
-			prntsamDateTimePicker.Format = DateTimePickerFormat.Long;
+			prntsamDateTimePicker.Format = DateTimePickerFormat.Short;
 
 		}
 
 		private void prtdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			prtdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+			prtdtesentDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void prtdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			prtdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+			prtdtebkDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void dcdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dcdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+			dcdtesentDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void dcdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dcdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+			dcdtebkDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void otdtesentDateTimePicker1_ValueChanged(object sender, EventArgs e)
 		{
-			otdtesentDateTimePicker1.Format = DateTimePickerFormat.Long;
+			otdtesentDateTimePicker1.Format = DateTimePickerFormat.Short;
 		}
 
 		private void otdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			otdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+			otdtebkDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void perslistdateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			perslistdateDateTimePicker.Format = DateTimePickerFormat.Long;
+			perslistdateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void lamdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			lamdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+			lamdtesentDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void reprntdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			reprntdteDateTimePicker.Format = DateTimePickerFormat.Long;
+			reprntdteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void desorgdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			desorgdteDateTimePicker.Format = DateTimePickerFormat.Long;
+			desorgdteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void screcvDateTimePicker1_ValueChanged(object sender, EventArgs e)
 		{
-			screcvDateTimePicker1.Format = DateTimePickerFormat.Long;
+			screcvDateTimePicker1.Format = DateTimePickerFormat.Short;
 		}
 		private void rmbfrmDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			rmbfrmDateTimePicker.Format = DateTimePickerFormat.Long;
+			rmbfrmDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void rmbtoDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			rmbtoDateTimePicker.Format = DateTimePickerFormat.Long;
+			rmbtoDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void ioutDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			ioutDateTimePicker.Format = DateTimePickerFormat.Long;
+			ioutDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void frmbindDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			frmbindDateTimePicker.Format = DateTimePickerFormat.Long;
+			frmbindDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void iinDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			iinDateTimePicker.Format = DateTimePickerFormat.Long;
+			iinDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void binddteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			binddteDateTimePicker.Format = DateTimePickerFormat.Long;
+			binddteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void rmptoDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			rmptoDateTimePicker.Format = DateTimePickerFormat.Long;
+			rmptoDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void rmpfrmDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			rmpfrmDateTimePicker.Format = DateTimePickerFormat.Long;
+			rmpfrmDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void adduploaddateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			adduploaddateDateTimePicker.Format = DateTimePickerFormat.Long;
+			adduploaddateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void dedayinDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dedayinDateTimePicker.Format = DateTimePickerFormat.Long;
+			dedayinDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void dedayoutDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dedayoutDateTimePicker.Format = DateTimePickerFormat.Long;
+			dedayoutDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void screcvDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			screcvDateTimePicker.Format = DateTimePickerFormat.Long;
+			screcvDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void cprecvDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			cprecvDateTimePicker.Format = DateTimePickerFormat.Long;
+			cprecvDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void ptrecvdDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			ptrecvdDateTimePicker.Format = DateTimePickerFormat.Long;
+			ptrecvdDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void ptbrcvdDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			ptbrcvdDateTimePicker.Format = DateTimePickerFormat.Long;
+			ptbrcvdDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void kitrecvdDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			kitrecvdDateTimePicker.Format = DateTimePickerFormat.Long;
+			kitrecvdDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void toprodDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			toprodDateTimePicker.Format = DateTimePickerFormat.Long;
+			toprodDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void tovendDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			tovendDateTimePicker.Format = DateTimePickerFormat.Long;
+			tovendDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void warndateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			warndateDateTimePicker.Format = DateTimePickerFormat.Long;
+			warndateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void prshpdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			prshpdteDateTimePicker.Format = DateTimePickerFormat.Long;
+			prshpdteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void prmsdateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			prmsdateDateTimePicker.Format = DateTimePickerFormat.Long;
+			prmsdateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void shpdateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			shpdateDateTimePicker.Format = DateTimePickerFormat.Long;
+			shpdateDateTimePicker.Format = DateTimePickerFormat.Short;
 
+			
 		}
 
 		private void cstsvcdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dpCustomerServiceDate.Format = DateTimePickerFormat.Long;
+			dpCustomerServiceDate.Format = DateTimePickerFormat.Short;
 
 		}
 
 		private void comdateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			comdateDateTimePicker.Format = DateTimePickerFormat.Long;
+			comdateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 		#endregion
 		private void frmProdutn_Paint(object sender, PaintEventArgs e)
@@ -1067,12 +1246,17 @@ namespace Mbc5.Forms
 
 		private void btnProdSrch_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(txtProdNoSrch.Text))
+			{
+				return;
+			}
 			switch (tbProdutn.SelectedIndex)
 			{
 				case 0:
-					if (!SaveProdutn())
+					var produtnResult = SaveProdutn();
+					if (produtnResult.IsError)
 					{
-						var result1 = MessageBox.Show("Production record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						var result1 = MessageBox.Show("Production record could not be saved:"+produtnResult.Errors[0].ErrorMessage+" Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						if (result1 == DialogResult.No)
 						{
 
@@ -1084,8 +1268,6 @@ namespace Mbc5.Forms
 
 
 			}
-
-
 
 			var sqlQuery = new SQLQuery();
 			string query = "Select prodno,invno,schcode from produtn where prodno=@prodno";
@@ -2946,13 +3128,7 @@ namespace Mbc5.Forms
 			WipUpdate();
 		}
 
-		private void laminatedTextBox_Leave(object sender, EventArgs e)
-		{
-			if (laminatedTextBox.Text != "M" && laminatedTextBox.Text != "N" && laminatedTextBox.Text != "G"&& laminatedTextBox.Text != "")
-			{
-				laminatedTextBox.Focus();
-			}
-		}
+		
 
 		private void txtSchNamesrch_KeyPress(object sender, KeyPressEventArgs e)
 		{
@@ -3023,8 +3199,202 @@ namespace Mbc5.Forms
 			}
 		}
 
+		private void btnMbo_Click(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(txtMbo.Text))
+			{
+				return;
+			}
+			switch (tbProdutn.SelectedIndex)
+			{
+				case 0:
+					var produtnResult = SaveProdutn();
+					if (produtnResult.IsError)
+					{
+						var result1 = MessageBox.Show("Production record could not be saved:"+produtnResult.Errors[0].ErrorMessage+ " Continue?", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						if (result1 == DialogResult.No) {
 
+							return;
+						}
+					
+					}
+					break;
 
+			}
+
+			var sqlQuery = new SQLQuery();
+			string query = "Select prodno,invno,schcode from produtn where jobno=@jobno";
+			var parameters = new SqlParameter[] { new SqlParameter("@jobno", txtMbo.Text) };
+			var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, query, parameters);
+			if (result.Rows.Count > 0)
+			{
+				Schcode = result.Rows[0]["schcode"].ToString();
+				Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
+				Fill();
+			}
+			else
+			{ MessageBox.Show("Record was not found.", "Production MBO Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+			frmProdutn_Paint(this, null);
+		}
+
+		private void btnPrntMbOnline_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void shpdateDateTimePicker_Leave(object sender, EventArgs e)
+		{
+			ShippingEmail();
+		}
+
+		private void covertypeTextBox_Leave(object sender, EventArgs e)
+		{
+			string vDescription = "";
+			if (CoverDescriptions == null || CoverDescriptions.Count == 0)
+			{
+				if (!GetCoverDescriptions())
+				{
+					MessageBox.Show("Could not retrieve Cover Descriptions.");
+					return;
+				}
+			}
+				int vIndex = CoverDescriptions.FindIndex(s=>s.CoverType.ToUpper()==txtCoverType.Text.ToUpper());
+			if (vIndex > 0)
+			{
+				vDescription = CoverDescriptions[vIndex].CoverDescription;
+			}
+				switch (txtCoverType.Text.ToUpper())
+				{
+					case "":
+						{
+							txtCoverDescription.Text = "";
+							break;
+						}
+					case "SPE":
+						{
+							txtCoverDescription.Text = "Special Cover";
+							break;
+						}
+					case "MSOS":
+						{ txtCoverDescription.Text = "My Story/Our Story";
+						break;
+						}
+						
+					default:
+						{
+							txtCoverDescription.Text = vDescription;
+							break;
+						}		
+
+				}
+		}
+		private bool GetCoverDescriptions()
+		{
+			var sqlClient = new SQLCustomClient();
+			sqlClient.CommandText(@"Select CoverType,CoverDescription FROM CoverDescriptions Order By CoverType ");
+			var result = sqlClient.SelectMany<CoverDescriptions>();
+			if (result.IsError)
+			{ return false; }
+			else
+			{
+				CoverDescriptions = (List<CoverDescriptions>)result.Data;
+
+				return true;
+			}
+
+		}
+
+		private void endstrecvDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			endstrecvDateTimePicker.Format = DateTimePickerFormat.Short;
+		}
+
+		private void btnspCoverEmail_Click(object sender, EventArgs e)
+		{
+			var emailList = new List<string>();
+			DataRowView row =(DataRowView) custBindingSource.Current;
+			string vState = row["schstate"].ToString().Trim();
+			string vcontEmail = row["contemail"] != null ? row["contemail"].ToString().Trim() : "";
+			string vBcontEmail = row["bcontemail"] != null ? row["bcontemail"].ToString().Trim() : "";
+			string vCcontEmail = row["ccontemail"] != null ? row["ccontemail"].ToString().Trim() : "";
+			if (!string.IsNullOrEmpty(vcontEmail))
+			{
+				emailList.Add(vcontEmail);
+			}
+			if (!string.IsNullOrEmpty(vBcontEmail))
+			{
+				emailList.Add(vBcontEmail);
+			}
+			if (!string.IsNullOrEmpty(vCcontEmail))
+			{
+				emailList.Add(vCcontEmail);
+			}
+			var emailHelper = new EmailHelper();
+			string subject = "Cover upload Site (account available the following business day by noon central time)";
+			string body = @"Submission is easy: Go to the website https://ftp.memorybook.com <br /><br />
+							<strong>Login:</strong>  <br />User Name: " + Schcode + @"m <br />
+							Password:" + vState + @"65301<br /><br /><br />
+			           Once logged in, drag and drop your files into the window. Please be sure to include a word document if you have additional instructions for your cover.";
+
+		
+			emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
+		}
+
+		private void btnStandarCoverEmail_Click(object sender, EventArgs e)
+		{
+			var emailList = new List<string>();
+			DataRowView custRow = (DataRowView)custBindingSource.Current;
+			DataRowView prodRow = (DataRowView)produtnBindingSource.Current;
+			string vSchname = custRow["schname"].ToString().Trim();
+			string vJobNo= prodRow["jobno"]!=null ?prodRow["jobno"].ToString().Trim():"";
+			string vcontEmail = custRow["contemail"]!=null?custRow["contemail"].ToString().Trim():"";
+			string vBcontEmail = custRow["bcontemail"]!=null?custRow["bcontemail"].ToString().Trim():"";
+			string vCcontEmail= custRow["ccontemail"]!=null? custRow["ccontemail"].ToString().Trim():"";
+			if (!string.IsNullOrEmpty(vcontEmail))
+			{
+				emailList.Add(vcontEmail);
+			}
+			if (!string.IsNullOrEmpty(vBcontEmail))
+			{
+				emailList.Add(vBcontEmail);
+			}
+			if (!string.IsNullOrEmpty(vCcontEmail))
+			{
+				emailList.Add(vCcontEmail);
+			}
+			var emailHelper = new EmailHelper();
+			string subject = Schcode + " " + vSchname + " Center Login Information https://coverorders.memorybook.com/login";
+			string body = @"Order Center Login (Online account available the following business day by noon central time)<br /><br /> 
+						Ordering is easy:  Go to the website https://coverorders.memorybook.com/login <br /><br /> 
+						<strong>Login:</strong>  <br />User Name: "+ vJobNo +@"<br />
+						Password: Adviser  <br /><br />
+						<strong>Ordering your cover:</strong> <br /> &nbsp;&nbsp;•Select Yearbook covers  <br />&nbsp;&nbsp; •Choose cover type <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a. Standard cover  
+						<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b. Customizable Standard covers (11 covers you can choose <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors and add a mascot)<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c. NEW Mascot Standard Covers, customizable with color <br/>  
+						<br />Overprinting is available at no charge on standard covers with regular text size, color and font if information is submitted by November 15th.  Other modifications will be an additional charge. <br /><br />  
+						<strong>Ordering Yearbook Promotional Materials </strong><br />Please note there are 4 customizable options: you can customize take home envelopes, hall posters and last chance fliers. If you are signed up for online parent pay you can create your fliers.<br />  
+						&nbsp;&nbsp;•Select the yearbook promotional materials option<br />&nbsp;&nbsp;•Select the materials you would like to order<br />&nbsp;&nbsp;•Select the quantity and add to cart<br />  
+						&nbsp;&nbsp;•Proceed to checkout <br /><br />
+						Step by step instructions for all of the Order Center options can be found at http://www.memorybook.com/documents/standard_covers_online.pdf ";
+
+			
+			emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
+		}
+
+		private void btnRecvHistory_Click(object sender, EventArgs e) {
+			
+				this.Cursor = Cursors.AppStarting;
+				frmReceivingCard frmReceivingCard = new frmReceivingCard(this.ApplicationUser,this.Schcode,this.Invno);
+				frmReceivingCard.MdiParent = this.MdiParent;
+				frmReceivingCard.Show();
+				this.Cursor = Cursors.Default;
+			
+		}
+
+		private void laminatedTextBox_Leave(object sender, EventArgs e) {
+			if (laminatedTextBox.Text != "M" && laminatedTextBox.Text != "N" && laminatedTextBox.Text != "G" && laminatedTextBox.Text != "") {
+				laminatedTextBox.Focus();
+			}
+		}
 
 		#endregion
 

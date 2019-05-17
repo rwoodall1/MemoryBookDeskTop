@@ -94,9 +94,7 @@
   <ItemGroup>
     <Compile Include="BidInvoice.cs" />
     <Compile Include="CustomerBindingModels.cs" />
-    <Compile Include="InvoiceDetailBindingModel.cs" />
     <Compile Include="Invoice.cs" />
-    <Compile Include="InvoiceDetails.cs" />
     <Compile Include="MiscBindingModels.cs" />
     <Compile Include="ProdutnBindingModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
