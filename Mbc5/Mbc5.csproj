@@ -240,6 +240,18 @@
     <Compile Include="Dialogs\frmSelctCust.Designer.cs">
       <DependentUpon>frmSelctCust.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\frmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmSearch.Designer.cs">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmBarScan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -461,6 +473,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmSelctCust.resx">
       <DependentUpon>frmSelctCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmSearch.resx">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBarScan.resx">
       <DependentUpon>frmBarScan.cs</DependentUpon>
