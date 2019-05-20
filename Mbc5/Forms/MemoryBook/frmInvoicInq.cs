@@ -12,9 +12,7 @@ using Microsoft.Reporting.WinForms;
 using Mbc5.Classes;
 using BaseClass;
 using System.Collections;
-using PdfSharp;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
+
 using BaseClass.Core;
 using System.Threading;
 using System.Threading.Tasks;

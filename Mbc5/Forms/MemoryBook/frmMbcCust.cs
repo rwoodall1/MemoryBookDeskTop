@@ -216,10 +216,10 @@ namespace Mbc5.Forms.MemoryBook {
 		}
 
 		private void btnSchoolCode_Click(object sender,EventArgs e) {
-			if (string.IsNullOrEmpty(txtSchCodesrch.Text))
-			{
-				return;
-			}
+			//if (string.IsNullOrEmpty(txtSchCodesrch.Text))
+			//{
+			//	return;
+			//}
 			var currentSchool = this.Schcode;
             if (DoPhoneLog())
                 {
@@ -228,62 +228,41 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 			var custSaveResult = Save();
 			if (custSaveResult.IsError) {
-				DialogResult result = MessageBox.Show("Record failed to save. Hit cancel to correct.","Save",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                if (result == DialogResult.Cancel) {
+				DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.","Save",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                if (result1 == DialogResult.Cancel) {
                     return;
                     }
                 }
-			int records = 0;
-			try
-			{
-				 records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
-			}
-			catch(Exception ex)
-			{
-				MbcMessageBox.Error(ex.Message, "Error");
-				return;
 
-			}
-          
-            if (records < 1)
-                {
-				try
-				{
-					this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
-					this.Schcode = currentSchool;
-					MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
-					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-					TeleGo = false;
-				}
-				catch (Exception ex)
-				{
+			frmSearch frmSearch = new frmSearch("Schcode","Cust",Schcode);
+			
+			var result=frmSearch.ShowDialog();
+			if (result == DialogResult.OK) {
+				string retSchcode = frmSearch.ReturnValue;            //values preserved after close
+				int records = 0;
+				try {
+					records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+					//records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+				} catch (Exception ex) {
 					MbcMessageBox.Error(ex.Message, "Error");
+					return;
+
 				}
-               
-                }
-            else
-                {
-				try
-				{
+				try {
 					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
 					this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
 					TeleGo = false;
-				}catch(Exception ex)
-				{
+				} catch (Exception ex) {
 					MbcMessageBox.Error(ex.Message, "Error");
 				}
-                
-              
-                }
-            txtSchCodesrch.Text = "";
+					this.Cursor = Cursors.Default;
+			} else { return; }
+
             SetInvnoSchCode();
             frmMbcCust_Paint(this, null);
         }
         private void btnSchoolSearch_Click(object sender,EventArgs e) {
-			if (string.IsNullOrEmpty(txtSchNamesrch.Text)){
-				return;
-			}
+			
             var currentSchool = this.Schcode;
             if (DoPhoneLog()){
                 MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
@@ -291,91 +270,39 @@ namespace Mbc5.Forms.MemoryBook {
                 }
 			var custSaveResult = Save();
 			if (custSaveResult.IsError) {
-				DialogResult result = MessageBox.Show("Record failed to save correct and save again.","Save",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+				DialogResult result1 = MessageBox.Show("Record failed to save correct and save again.","Save",MessageBoxButtons.OK,MessageBoxIcon.Warning);
 				return;
                 }
-            //var records = this.custTableAdapter.FillBySchname(this.dsCust.cust,txtSchNamesrch.Text);
-            var sqlQuery = new SQLCustomClient();
-            sqlQuery.CommandText( @"SELECT schcode, schname,schcity,schstate, schzip FROM cust
-                              WHERE(schname LIKE @schname + '%')
-                              ORDER BY   schcode");
-			sqlQuery.AddParameter("@schname",txtSchNamesrch.Text.Trim());
+			
 
-			var dataResult = sqlQuery.SelectMany<SchoolNameSearchModel>();
-			if (dataResult.IsError) {
-				MbcMessageBox.Error(dataResult.Errors[0].ErrorMessage, "Error");
-				return;
-			}
-            var records = (List<SchoolNameSearchModel>)dataResult.Data;
-         
+			frmSearch frmSearch = new frmSearch("Schname", "Cust", txtSchname.Text.Trim());
 
-
-            if ( records==null || records.Count < 1)
-			{
+			var result = frmSearch.ShowDialog();
+			if (result == DialogResult.OK) {
+				string retSchcode = frmSearch.ReturnValue;            //values preserved after close
+				int records = 0;
 				try {
-					this.custTableAdapter.Fill(this.dsCust.cust, currentSchool);
-              
-					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
-					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-					TeleGo = false;
-					MessageBox.Show("Record was not found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				}catch(Exception ex) {
-					MbcMessageBox.Error(ex.Message, "");
+					records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+					//records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+				} catch (Exception ex) {
+					MbcMessageBox.Error(ex.Message, "Error");
+					return;
+
 				}
-				
-			}
-			else if (records.Count > 1)
-			{
-				//more than one record select which one you want
-				
-				this.Cursor = Cursors.AppStarting;
-				//frmSelctCust frmSelectCust = new frmSelctCust(tmpTable);
-                frmSelctCust frmSelectCust = new frmSelctCust(records);
-                DialogResult result = frmSelectCust.ShowDialog();
+				try {
+					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+					this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+					TeleGo = false;
+				} catch (Exception ex) {
+					MbcMessageBox.Error(ex.Message, "Error");
+				}
 				this.Cursor = Cursors.Default;
-				if (result != DialogResult.Cancel)
-				{
-					try {
-						this.custTableAdapter.Fill(this.dsCust.cust, frmSelectCust.retval);
-						this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
-						this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-						TeleGo = false;
-					} catch (Exception ex) {
-						MbcMessageBox.Error(ex.Message, "");
-					}
-					
-				}
-				else
-				{
-					try {
-						//refill normal
-						this.custTableAdapter.Fill(this.dsCust.cust, records[0].schcode);
-						this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
-						this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-						TeleGo = false;
-					} catch (Exception ex) {
-						MbcMessageBox.Error(ex.Message, "");
-					}
-					
-				}
-			}
+			} else { return; }
 
-			else
-			{
-				try {
-					this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, this.Schcode);
-					this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
-					TeleGo = false;
-				}catch(Exception ex) {
-					MbcMessageBox.Error(ex.Message, "");
-				}
-				
+			SetInvnoSchCode();
+			frmMbcCust_Paint(this, null);
 
-			}
-				txtSchNamesrch.Text = "";
-				SetInvnoSchCode();
-            frmMbcCust_Paint(this, null);
-        }
+		}
         #region CrudOperations
         public override ApiProcessingResult<bool> Save()
         {

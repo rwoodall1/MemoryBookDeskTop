@@ -223,7 +223,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.txtSchNamesrch = new System.Windows.Forms.TextBox();
 			this.lblSchcodeVal = new System.Windows.Forms.Label();
 			this.btnSchoolCode = new System.Windows.Forms.Button();
-			this.txtSchCodesrch = new System.Windows.Forms.TextBox();
 			this.pg2 = new System.Windows.Forms.TabPage();
 			this.ccontcityTextBox = new System.Windows.Forms.TextBox();
 			this.bcontcityTextBox = new System.Windows.Forms.TextBox();
@@ -2289,7 +2288,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.pnlHead.Controls.Add(this.txtSchNamesrch);
 			this.pnlHead.Controls.Add(this.lblSchcodeVal);
 			this.pnlHead.Controls.Add(this.btnSchoolCode);
-			this.pnlHead.Controls.Add(this.txtSchCodesrch);
 			this.pnlHead.Location = new System.Drawing.Point(0, 0);
 			this.pnlHead.Name = "pnlHead";
 			this.pnlHead.Size = new System.Drawing.Size(1226, 38);
@@ -2363,14 +2361,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.btnSchoolCode.Text = "Code";
 			this.btnSchoolCode.UseVisualStyleBackColor = true;
 			this.btnSchoolCode.Click += new System.EventHandler(this.btnSchoolCode_Click);
-			// 
-			// txtSchCodesrch
-			// 
-			this.txtSchCodesrch.Location = new System.Drawing.Point(414, 8);
-			this.txtSchCodesrch.MaxLength = 6;
-			this.txtSchCodesrch.Name = "txtSchCodesrch";
-			this.txtSchCodesrch.Size = new System.Drawing.Size(69, 20);
-			this.txtSchCodesrch.TabIndex = 1;
 			// 
 			// pg2
 			// 
@@ -3557,7 +3547,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.Button btnSchoolSearch;
         private System.Windows.Forms.TextBox txtSchNamesrch;
         private System.Windows.Forms.Button btnSchoolCode;
-        private System.Windows.Forms.TextBox txtSchCodesrch;
         private DataSets.dsCustTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox junsnoTextBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
