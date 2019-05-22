@@ -49,7 +49,7 @@ namespace Mbc5.Forms.MemoryBook {
 							var result = sqlclient.SelectMany<SchcodeSearch>();
 							var Cust = (List<SchcodeSearch>)result.Data;
 							this.CustCode = Cust;
-							dgSearch.DataSource = this.CustCode;
+							bsData.DataSource = this.CustCode;
 							break;
 						case "SALES":
 							cmdtext = @"Select Q.Schcode,C.Schname,Q.Invno,C.SchZip,C.SchState From QUOTES Q LEFT JOIN Cust C On Q.Schcode=C.Schcode Order By Schcode";
