@@ -483,7 +483,7 @@ namespace Mbc5.Forms
                 activeform.Cancel();
 
                 } catch (Exception ex) {
-                MessageBox.Show("Add record is not implemented for this form.","Add",MessageBoxButtons.OK,MessageBoxIcon.Hand);
+               
                 }
             }
 
@@ -695,7 +695,8 @@ namespace Mbc5.Forms
                   .Submit();
 
             }
-
+			string vprodNum = prodNum.ToString();
+			vprodNum = " " + vprodNum;
             return prodNum.ToString();
 
         }
@@ -735,7 +736,51 @@ namespace Mbc5.Forms
             return coverNum.ToString();
         }
 
-        //nothing below here
-    }
+		private void tsSchcodeSearch_Click(object sender, EventArgs e) {
+			try {
+				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+			   activeform.SchCodeSearch();
+
+			} catch (Exception ex) {
+
+			}
+		}
+
+		private void tsSchnameSearch_Click(object sender, EventArgs e) {
+			try {
+				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+				activeform.SchnameSearch();
+
+			} catch (Exception ex) {
+
+			}
+		}
+
+		private void tsProdutnNumberSearch_Click(object sender, EventArgs e) {
+			try {
+				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+				activeform.ProdutnNoSearch();
+
+			} catch (Exception ex) {
+
+			}
+		}
+
+		private void tsOracleCodeSearch_Click(object sender, EventArgs e) {
+			try {
+				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+				activeform.OracleCodeSearch();
+
+			} catch (Exception ex) {
+
+			}
+		}
+
+
+
+
+
+		//nothing below here
+	}
         }
 

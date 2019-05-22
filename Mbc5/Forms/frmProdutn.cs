@@ -1215,8 +1215,8 @@ namespace Mbc5.Forms
 									{
 										//adding binding
 
-										lblProdNo.Text = txtPerfbind.Text + lblProdNo.Text.Trim();
-										//need to replace quote prono at some time.
+										lblProdNo.Text = txtPerfbind.Text + (lblProdNo.Text.Trim());
+									
 
 
 									}

@@ -30,6 +30,8 @@ namespace Mbc5.Forms.MemoryBook {
 		private string ReturnForm { get; set; }
 		private List<SchcodeSearch> CustCode { get; set; }
 		private List<SchnameSearch> CustName { get; set; }
+		private List<OracleCodeSearch> OracleCodeList { get; set; }
+		private List<ProdNoSearch> ProdutnNoList { get; set; }
 		public string ReturnValue { get; set; }
 
 		private string currentSearchValue;
@@ -44,12 +46,18 @@ namespace Mbc5.Forms.MemoryBook {
 					this.Text = "School code Search";
 					switch (ReturnForm) {
 						case "CUST":
-							cmdtext = @"Select C.Schcode,C.Schname,C.Contryear,C.SchZip,C.SchState From Cust C Order By Schcode";
+							cmdtext = @"Select C.Schcode,C.Schname,C.OracleCode,C.Contryear,C.SchZip,C.SchState From Cust C Order By Schcode";
 							sqlclient.CommandText(cmdtext);
 							var result = sqlclient.SelectMany<SchcodeSearch>();
+							if (result.IsError) {
+								MbcMessageBox.Error(result.Errors[0].ErrorMessage, "Error");
+								return;
+							}
 							var Cust = (List<SchcodeSearch>)result.Data;
 							this.CustCode = Cust;
 							bsData.DataSource = this.CustCode;
+							dgSearch.DataSource = bsData;
+							txtSearch.Select();
 							break;
 						case "SALES":
 							cmdtext = @"Select Q.Schcode,C.Schname,Q.Invno,C.SchZip,C.SchState From QUOTES Q LEFT JOIN Cust C On Q.Schcode=C.Schcode Order By Schcode";
@@ -62,9 +70,7 @@ namespace Mbc5.Forms.MemoryBook {
 							break;
 						default:
 							MbcMessageBox.Hand("Search is not implemented here.", "");
-
 							break;
-
 					}
 					break;
 				case "SCHNAME":
@@ -74,12 +80,42 @@ namespace Mbc5.Forms.MemoryBook {
 							cmdtext = @"Select C.Schname,C.Schcode,C.Contryear,C.SchZip,C.SchState From Cust C Order By Schname";
 							sqlclient.CommandText(cmdtext);
 							var result = sqlclient.SelectMany<SchnameSearch>();
+							if (result.IsError) {
+								MbcMessageBox.Error(result.Errors[0].ErrorMessage, "Error");
+								return;
+							}
 							var Cust = (List<SchnameSearch>)result.Data;
 							this.CustName = Cust;
-							dgSearch.DataSource = this.CustName;
-							dgSearch.Select();
+						    bsData.DataSource = this.CustName;
+							dgSearch.DataSource = bsData;
 							txtSearch.Select();
+							break;
+						case "SALES":
+							break;
+						case "PRODUCTION":
+							break;
+						case "BIDS":
+						break;
+					}
+					break;
+				case "ORACLECODE":
+					this.Text = "Oracle Code Search";
+					switch (ReturnForm) {
+						case "CUST":
+							cmdtext = @"Select C.OracleCode,C.Schname,C.Schcode,C.Contryear,C.SchZip,C.SchState From Cust C Order By OracleCode";
+							sqlclient.CommandText(cmdtext);
+							var result = sqlclient.SelectMany<OracleCodeSearch>();
+							if (result.IsError) {
+								MbcMessageBox.Error(result.Errors[0].ErrorMessage, "Error");
+								return;
+							}
+							var lRetRecs = (List<OracleCodeSearch>)result.Data;
+							this.OracleCodeList = lRetRecs;
+							bsData.DataSource = this.OracleCodeList;
 
+							dgSearch.DataSource = bsData.DataSource;
+							
+							txtSearch.Select();
 							break;
 						case "SALES":
 							break;
@@ -87,8 +123,8 @@ namespace Mbc5.Forms.MemoryBook {
 							break;
 						case "BIDS":
 							break;
-
 					}
+					
 					break;
 				case "JOBNO":
 					this.Text = "Job # Search";
@@ -99,8 +135,6 @@ namespace Mbc5.Forms.MemoryBook {
 							break;
 						case "PRODUCTION":
 							break;
-
-
 					}
 					break;
 				case "INVOICE":
@@ -112,12 +146,27 @@ namespace Mbc5.Forms.MemoryBook {
 							break;
 						case "PRODUCTION":
 							break;
-
 					}
 					break;
-				case "PRODUCTION":
+				case "PRODUTNNO":
 					switch (ReturnForm) {
 						case "CUST":
+							cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
+							sqlclient.CommandText(cmdtext);
+							var result = sqlclient.SelectMany<ProdNoSearch>();
+							if (result.IsError) {
+								MbcMessageBox.Error(result.Errors[0].ErrorMessage, "Error");
+								return;
+							}
+							var lRetRecs = (List<ProdNoSearch>)result.Data;
+							this.ProdutnNoList = lRetRecs;
+							bsData.DataSource = this.ProdutnNoList;
+
+							dgSearch.DataSource = bsData.DataSource;
+
+							txtSearch.Select();
+
+
 							break;
 						case "SALES":
 							break;
@@ -125,30 +174,26 @@ namespace Mbc5.Forms.MemoryBook {
 							break;
 						case "COVERS":
 							break;
-
-
 					}
 					break;
 
 
 			}
 			this.Cursor = Cursors.Default;
-
-			//txtSearch.Text = currentSearchValue;
-
-
-			//Search(currentSearchValue);
-
+			txtSearch.Text = currentSearchValue;
+			Search(currentSearchValue);
 		}
 		private void Search(string value) {
 			int vIndex;
 			switch (SearchType) {
 
 				case "SCHCODE":
-					vIndex = this.CustCode.FindIndex(vcust => vcust.Schcode.ToString().Trim().ToUpper().StartsWith(value.ToUpper()));
+					
 					try {
+						vIndex = this.CustCode.FindIndex(vcust => vcust.Schcode.ToString().Trim().ToUpper().StartsWith(value.ToUpper()));
 						if (vIndex != -1) {
-
+							dgSearch.ClearSelection();
+							bsData.Position = vIndex;
 							dgSearch.Rows[vIndex].Selected = true;
 							dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
 
@@ -161,10 +206,12 @@ namespace Mbc5.Forms.MemoryBook {
 
 					break;
 				case "SCHNAME":
-					vIndex = this.CustName.FindIndex(vcust => vcust.Schname.ToString().Trim().ToUpper().StartsWith(value.ToUpper()));
+					
 					try {
+						vIndex = this.CustName.FindIndex(vcust => vcust.Schname.ToString().Trim().ToUpper().StartsWith(value.ToUpper()));
 						if (vIndex != -1) {
-
+							dgSearch.ClearSelection();
+							bsData.Position = vIndex;
 							dgSearch.Rows[vIndex].Selected = true;
 							dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
 
@@ -175,7 +222,44 @@ namespace Mbc5.Forms.MemoryBook {
 
 					}
 					break;
+				case "ORACLECODE":
+					
+				
+					try {
+					
+						 var vIndex1 = this.OracleCodeList.FindIndex(vcust =>vcust.OracleCode!=null && vcust.OracleCode.ToString().Trim().ToUpper().StartsWith(value.ToUpper()));
+						if (vIndex1 != -1) {
+							dgSearch.ClearSelection();
+							bsData.Position = vIndex1;
+							dgSearch.Rows[vIndex1].Selected = true;
+							dgSearch.FirstDisplayedScrollingRowIndex = vIndex1;
 
+							CurrentIndex = vIndex1;
+
+						}
+					} catch (Exception ex) {
+
+					}
+					break;
+				case "PRODUTNNO":
+
+					try {
+						//value is trimmed to 5 spaces, binding is took out
+						vIndex = this.ProdutnNoList.FindIndex(vcust => vcust.ProdNo != null && vcust.ProdNo.Substring(1).ToUpper().StartsWith(value.ToUpper()));
+						if (vIndex != -1) {
+							dgSearch.ClearSelection();
+							bsData.Position = vIndex;
+							dgSearch.Rows[vIndex].Selected = true;
+							dgSearch.FirstDisplayedScrollingRowIndex = vIndex;
+
+							CurrentIndex = vIndex;
+
+						}
+					} catch (Exception ex) {
+
+					}
+
+					break;
 
 			}
 
@@ -192,17 +276,22 @@ namespace Mbc5.Forms.MemoryBook {
 		private void txtSearch_KeyPress(object sender, KeyPressEventArgs e) {
 			if (e.KeyChar == 13) {
 				this.DialogResult = DialogResult.OK;
+				//cust form
 				if (SearchType == "SCHCODE" && ReturnForm == "CUST") {
 					this.ReturnValue = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
 				} else if (SearchType == "SCHNAME" && ReturnForm == "CUST") {
 					//search on schname return code though
 					this.ReturnValue = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
 
+				}else if (SearchType == "ORACLECODE" && ReturnForm == "CUST") {
+					//search on schname return code though
+					this.ReturnValue = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
+				}else if (SearchType == "PRODNO" && ReturnForm == "CUST") {
+					//search on schname return code though
+					this.ReturnValue = dgSearch.Rows[CurrentIndex].Cells[3].Value.ToString();
 				}
 
-
-
-
+				//
 
 				this.Close();
 
@@ -211,41 +300,66 @@ namespace Mbc5.Forms.MemoryBook {
 		}
 
 		private void dgSearch_RowEnter(object sender, DataGridViewCellEventArgs e) {
-			txtSearch.Text = dgSearch.Rows[e.RowIndex].Cells[0].Value.ToString();
+			
+			txtSearch.SelectionStart = txtSearch.Text.Length;
+			
 			CurrentIndex = e.RowIndex;
 		}
-
+		private void txtSearch_Enter(object sender, EventArgs e) {
+			try {
+				txtSearch.Text = dgSearch.Rows[CurrentIndex].Cells[0].Value == null ? "": dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+			}catch(Exception ex) {
+				txtSearch.Text = "";
+			}
+			txtSearch.SelectionStart = txtSearch.Text.Length;
+		}
 		private void dgSearch_KeyPress(object sender, KeyPressEventArgs e) {
 			//tabs 1 row so take row back off
-			//if (e.KeyChar == 13) {
-			//	this.DialogResult = DialogResult.OK;
+			if (e.KeyChar == 13) {
+				txtSearch_KeyPress(sender, e);
+				//this.DialogResult = DialogResult.OK;
 
-			//	this.ReturnValue = dgSearch.Rows[CurrentIndex - 1].Cells[0].Value.ToString();
+				//this.ReturnValue = dgSearch.Rows[CurrentIndex - 1].Cells[0].Value.ToString();
 
-			//	this.Close();
+				//this.Close();
 
-			//}
+			}
 		}
-	
-		private void txtSearch_KeyDown(object sender, KeyEventArgs e){
-			//		if (e.KeyCode == Keys.Down) {
-			//var a = CurrentIndex;
-			//			dgSearch.Select();
 
-			//			dgSearch.SelectedRows[a].Selected = true;
-			//		}
-			//	}
-		}
+
 		public class SchcodeSearch {
 			public string Schcode { get; set; }
+			public string OracleCode { get; set; }
 			public string Schname { get; set; }
 			public string Contryear { get; set; }
+			public string SchZip {get;set;}
+			public string SchState { get; set; }
 		}
 		public class SchnameSearch {
 			public string Schname { get; set; }
 			public string Schcode { get; set; }
-
+			public string OracleCode { get; set; }
 			public string Contryear { get; set; }
+			public string SchZip { get; set; }
+			public string SchState { get; set; }
 		}
+		public class OracleCodeSearch {
+			public string OracleCode { get; set; }
+			public string Schcode { get; set; }
+			public string Schname { get; set; }
+			public string Contryear { get; set; }
+			public string SchZip { get; set; }
+			public string SchState { get; set; }
+		}
+		public class ProdNoSearch {
+				public string ProdNo { get; set; }
+				public int Invno { get; set; }
+				public string Schname { get; set; }
+				public string Schcode { get; set; }
+				public string Contryear { get; set; }
+		}
+
+
+
 	}
 }

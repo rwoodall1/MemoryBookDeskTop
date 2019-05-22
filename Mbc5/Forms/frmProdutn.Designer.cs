@@ -2386,6 +2386,16 @@
 			dcdesc2Label.TabIndex = 138;
 			dcdesc2Label.Text = "DC2";
 			// 
+			// laminatedLabel
+			// 
+			laminatedLabel.AutoSize = true;
+			laminatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			laminatedLabel.Location = new System.Drawing.Point(115, 195);
+			laminatedLabel.Name = "laminatedLabel";
+			laminatedLabel.Size = new System.Drawing.Size(58, 13);
+			laminatedLabel.TabIndex = 139;
+			laminatedLabel.Text = "Laminate";
+			// 
 			// invoiceCustBindingSource
 			// 
 			this.invoiceCustBindingSource.DataMember = "cust";
@@ -2416,16 +2426,6 @@
 			// 
 			this.paymntBindingSource.DataMember = "paymnt";
 			this.paymntBindingSource.DataSource = this.dsInvoice;
-			// 
-			// laminatedLabel
-			// 
-			laminatedLabel.AutoSize = true;
-			laminatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			laminatedLabel.Location = new System.Drawing.Point(115, 195);
-			laminatedLabel.Name = "laminatedLabel";
-			laminatedLabel.Size = new System.Drawing.Size(58, 13);
-			laminatedLabel.TabIndex = 139;
-			laminatedLabel.Text = "Laminate";
 			// 
 			// tbProdutn
 			// 
@@ -3390,7 +3390,7 @@
 			this.txtPerfbind.Location = new System.Drawing.Point(176, 221);
 			this.txtPerfbind.MaxLength = 1;
 			this.txtPerfbind.Name = "txtPerfbind";
-			this.txtPerfbind.Size = new System.Drawing.Size(74, 20);
+			this.txtPerfbind.Size = new System.Drawing.Size(50, 20);
 			this.txtPerfbind.TabIndex = 116;
 			this.txtPerfbind.Leave += new System.EventHandler(this.txtPerfbind_Leave);
 			// 
@@ -3592,26 +3592,26 @@
             this.mnCust,
             this.mnBackGround});
 			this.addItemMenu.Name = "addItemMenu";
-			this.addItemMenu.Size = new System.Drawing.Size(180, 70);
+			this.addItemMenu.Size = new System.Drawing.Size(181, 70);
 			// 
 			// mnType
 			// 
 			this.mnType.Name = "mnType";
-			this.mnType.Size = new System.Drawing.Size(179, 22);
+			this.mnType.Size = new System.Drawing.Size(180, 22);
 			this.mnType.Text = "Add Type Style";
 			this.mnType.Click += new System.EventHandler(this.mnType_Click);
 			// 
 			// mnCust
 			// 
 			this.mnCust.Name = "mnCust";
-			this.mnCust.Size = new System.Drawing.Size(179, 22);
+			this.mnCust.Size = new System.Drawing.Size(180, 22);
 			this.mnCust.Text = "Add Customer Type";
 			this.mnCust.Click += new System.EventHandler(this.mnCust_Click);
 			// 
 			// mnBackGround
 			// 
 			this.mnBackGround.Name = "mnBackGround";
-			this.mnBackGround.Size = new System.Drawing.Size(179, 22);
+			this.mnBackGround.Size = new System.Drawing.Size(180, 22);
 			this.mnBackGround.Text = "Add Back Ground";
 			this.mnBackGround.Click += new System.EventHandler(this.mnBackGround_Click);
 			// 

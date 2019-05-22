@@ -217,12 +217,7 @@ namespace Mbc5.Forms.MemoryBook {
 			this.inofficeTextBox = new System.Windows.Forms.TextBox();
 			this.pnlHead = new System.Windows.Forms.Panel();
 			this.btnNewCustomer = new System.Windows.Forms.Button();
-			this.btnOracleSrch = new System.Windows.Forms.Button();
-			this.txtOracleCodeSrch = new System.Windows.Forms.TextBox();
-			this.btnSchoolSearch = new System.Windows.Forms.Button();
-			this.txtSchNamesrch = new System.Windows.Forms.TextBox();
 			this.lblSchcodeVal = new System.Windows.Forms.Label();
-			this.btnSchoolCode = new System.Windows.Forms.Button();
 			this.pg2 = new System.Windows.Forms.TabPage();
 			this.ccontcityTextBox = new System.Windows.Forms.TextBox();
 			this.bcontcityTextBox = new System.Windows.Forms.TextBox();
@@ -2282,15 +2277,10 @@ namespace Mbc5.Forms.MemoryBook {
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pnlHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnlHead.Controls.Add(this.btnNewCustomer);
-			this.pnlHead.Controls.Add(this.btnOracleSrch);
-			this.pnlHead.Controls.Add(this.txtOracleCodeSrch);
-			this.pnlHead.Controls.Add(this.btnSchoolSearch);
-			this.pnlHead.Controls.Add(this.txtSchNamesrch);
 			this.pnlHead.Controls.Add(this.lblSchcodeVal);
-			this.pnlHead.Controls.Add(this.btnSchoolCode);
 			this.pnlHead.Location = new System.Drawing.Point(0, 0);
 			this.pnlHead.Name = "pnlHead";
-			this.pnlHead.Size = new System.Drawing.Size(1226, 38);
+			this.pnlHead.Size = new System.Drawing.Size(1226, 30);
 			this.pnlHead.TabIndex = 64;
 			// 
 			// btnNewCustomer
@@ -2298,7 +2288,7 @@ namespace Mbc5.Forms.MemoryBook {
 			this.btnNewCustomer.AutoSize = true;
 			this.btnNewCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnNewCustomer.Image")));
 			this.btnNewCustomer.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-			this.btnNewCustomer.Location = new System.Drawing.Point(1060, 6);
+			this.btnNewCustomer.Location = new System.Drawing.Point(1060, 3);
 			this.btnNewCustomer.Name = "btnNewCustomer";
 			this.btnNewCustomer.Size = new System.Drawing.Size(159, 23);
 			this.btnNewCustomer.TabIndex = 9;
@@ -2306,42 +2296,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.btnNewCustomer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.btnNewCustomer.UseVisualStyleBackColor = true;
 			this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
-			// 
-			// btnOracleSrch
-			// 
-			this.btnOracleSrch.Location = new System.Drawing.Point(501, 7);
-			this.btnOracleSrch.Name = "btnOracleSrch";
-			this.btnOracleSrch.Size = new System.Drawing.Size(75, 23);
-			this.btnOracleSrch.TabIndex = 8;
-			this.btnOracleSrch.Text = "Oracle Code ";
-			this.btnOracleSrch.UseVisualStyleBackColor = true;
-			this.btnOracleSrch.Click += new System.EventHandler(this.btnOracleSrch_Click);
-			// 
-			// txtOracleCodeSrch
-			// 
-			this.txtOracleCodeSrch.Location = new System.Drawing.Point(582, 7);
-			this.txtOracleCodeSrch.MaxLength = 7;
-			this.txtOracleCodeSrch.Name = "txtOracleCodeSrch";
-			this.txtOracleCodeSrch.Size = new System.Drawing.Size(82, 20);
-			this.txtOracleCodeSrch.TabIndex = 7;
-			// 
-			// btnSchoolSearch
-			// 
-			this.btnSchoolSearch.Location = new System.Drawing.Point(3, 8);
-			this.btnSchoolSearch.Name = "btnSchoolSearch";
-			this.btnSchoolSearch.Size = new System.Drawing.Size(75, 23);
-			this.btnSchoolSearch.TabIndex = 0;
-			this.btnSchoolSearch.Text = "School";
-			this.btnSchoolSearch.UseVisualStyleBackColor = true;
-			this.btnSchoolSearch.Click += new System.EventHandler(this.btnSchoolSearch_Click);
-			// 
-			// txtSchNamesrch
-			// 
-			this.txtSchNamesrch.Location = new System.Drawing.Point(84, 8);
-			this.txtSchNamesrch.MaxLength = 34;
-			this.txtSchNamesrch.Name = "txtSchNamesrch";
-			this.txtSchNamesrch.Size = new System.Drawing.Size(230, 20);
-			this.txtSchNamesrch.TabIndex = 0;
 			// 
 			// lblSchcodeVal
 			// 
@@ -2351,16 +2305,6 @@ namespace Mbc5.Forms.MemoryBook {
 			this.lblSchcodeVal.Size = new System.Drawing.Size(1, 1);
 			this.lblSchcodeVal.TabIndex = 105;
 			this.lblSchcodeVal.Text = "label29";
-			// 
-			// btnSchoolCode
-			// 
-			this.btnSchoolCode.Location = new System.Drawing.Point(333, 8);
-			this.btnSchoolCode.Name = "btnSchoolCode";
-			this.btnSchoolCode.Size = new System.Drawing.Size(75, 23);
-			this.btnSchoolCode.TabIndex = 2;
-			this.btnSchoolCode.Text = "Code";
-			this.btnSchoolCode.UseVisualStyleBackColor = true;
-			this.btnSchoolCode.Click += new System.EventHandler(this.btnSchoolCode_Click);
 			// 
 			// pg2
 			// 
@@ -3544,9 +3488,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.BindingSource custBindingSource;
         private System.Windows.Forms.Panel pnlHead;
         private System.Windows.Forms.TextBox txtCsRep;
-        private System.Windows.Forms.Button btnSchoolSearch;
-        private System.Windows.Forms.TextBox txtSchNamesrch;
-        private System.Windows.Forms.Button btnSchoolCode;
         private DataSets.dsCustTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox junsnoTextBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
@@ -3663,8 +3604,6 @@ namespace Mbc5.Forms.MemoryBook {
 		private System.Windows.Forms.DateTimePicker initcontDateTimePicker;
 		private System.Windows.Forms.DateTimePicker sourdateDateTimePicker;
 		private System.Windows.Forms.DateTimePicker contdateDateTimePicker;
-		private System.Windows.Forms.Button btnOracleSrch;
-		private System.Windows.Forms.TextBox txtOracleCodeSrch;
 		private System.Windows.Forms.Label dedayoutLabel2;
 		private System.Windows.Forms.Label dedayinLabel2;
 		private System.Windows.Forms.Button btnNewCustomer;

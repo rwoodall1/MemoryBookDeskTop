@@ -210,7 +210,23 @@ namespace BaseClass
         }
        
         [Browsable(true)]
-        public virtual void Delete()
+		public virtual void SchCodeSearch() {
+
+		}
+		public virtual void SchnameSearch() {
+
+		}
+		public virtual void OracleCodeSearch() {
+
+		}
+		public virtual void ProdutnNoSearch() {
+
+		}
+		public virtual void InvoiceNumberSearch() {
+
+		}
+
+		public virtual void Delete()
         {
 
         }
