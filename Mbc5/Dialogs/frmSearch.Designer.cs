@@ -23,84 +23,85 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
-			this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
-			this.dgSearch = new System.Windows.Forms.DataGridView();
-			this.bsData = new System.Windows.Forms.BindingSource(this.components);
-			this.txtSearch = new System.Windows.Forms.TextBox();
-			((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dgSearch)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bsData)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// custTableAdapter
-			// 
-			this.custTableAdapter.ClearBeforeFill = true;
-			// 
-			// tableAdapterManager
-			// 
-			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-			this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
-			this.tableAdapterManager.InvHstTableAdapter = null;
-			this.tableAdapterManager.quotesTableAdapter = null;
-			this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-			// 
-			// dgSearch
-			// 
-			this.dgSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
+            this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
+            this.dgSearch = new System.Windows.Forms.DataGridView();
+            this.bsData = new System.Windows.Forms.BindingSource(this.components);
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsData)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // custTableAdapter
+            // 
+            this.custTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
+            this.tableAdapterManager.InvHstTableAdapter = null;
+            this.tableAdapterManager.quotesTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // dgSearch
+            // 
+            this.dgSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dgSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this.dgSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgSearch.EnableHeadersVisualStyles = false;
-			this.dgSearch.Location = new System.Drawing.Point(0, 21);
-			this.dgSearch.Name = "dgSearch";
-			this.dgSearch.ReadOnly = true;
-			this.dgSearch.Size = new System.Drawing.Size(409, 216);
-			this.dgSearch.TabIndex = 1;
-			this.dgSearch.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSearch_RowEnter);
-			this.dgSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgSearch_KeyPress);
-			// 
-			// txtSearch
-			// 
-			this.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.txtSearch.Location = new System.Drawing.Point(0, 0);
-			this.txtSearch.Name = "txtSearch";
-			this.txtSearch.Size = new System.Drawing.Size(241, 20);
-			this.txtSearch.TabIndex = 1;
-			this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-			this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
-			
-			this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
-			// 
-			// frmSearch
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(415, 241);
-			this.Controls.Add(this.txtSearch);
-			this.Controls.Add(this.dgSearch);
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "frmSearch";
-			this.Text = "Search";
-			this.Load += new System.EventHandler(this.frmSearch_Load);
-			((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dgSearch)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bsData)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+            this.dgSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSearch.EnableHeadersVisualStyles = false;
+            this.dgSearch.Location = new System.Drawing.Point(0, 21);
+            this.dgSearch.Name = "dgSearch";
+            this.dgSearch.ReadOnly = true;
+            this.dgSearch.RowHeadersVisible = false;
+            this.dgSearch.Size = new System.Drawing.Size(409, 216);
+            this.dgSearch.TabIndex = 1;
+            this.dgSearch.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSearch_CellDoubleClick);
+            this.dgSearch.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSearch_RowEnter);
+            this.dgSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgSearch_KeyPress);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSearch.Location = new System.Drawing.Point(0, 0);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(241, 20);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+            // 
+            // frmSearch
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(415, 241);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.dgSearch);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmSearch";
+            this.Text = "Search";
+            this.Load += new System.EventHandler(this.frmSearch_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsData)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 

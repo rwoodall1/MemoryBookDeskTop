@@ -80,30 +80,30 @@ namespace Mbc5.Forms.MemoryBook {
             startup = false;
 
         }
-        private void btnInvSrch_Click(object sender, EventArgs e) {
-            var sqlQuery = new SQLQuery();
-            string querystring = "Select schcode,invno from Quotes where Invno=@Invno";
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Invno",txtInvoSrch.Text.Trim())
-            };
-            DataTable result = sqlQuery.ExecuteReaderAsync(CommandType.Text, querystring, parameters);
-            if (result.Rows.Count > 0) {
-                foreach (DataRow row in result.Rows) {
-                    //only one row so just set variabls
-                    this.Invno = Convert.ToInt32(row["invno"]);
-                    this.Schcode = row["schcode"].ToString();
+        //private void btnInvSrch_Click(object sender, EventArgs e) {
+        //    var sqlQuery = new SQLQuery();
+        //    string querystring = "Select schcode,invno from Quotes where Invno=@Invno";
+        //    SqlParameter[] parameters = new SqlParameter[] {
+        //        new SqlParameter("@Invno",txtInvoSrch.Text.Trim())
+        //    };
+        //    DataTable result = sqlQuery.ExecuteReaderAsync(CommandType.Text, querystring, parameters);
+        //    if (result.Rows.Count > 0) {
+        //        foreach (DataRow row in result.Rows) {
+        //            //only one row so just set variabls
+        //            this.Invno = Convert.ToInt32(row["invno"]);
+        //            this.Schcode = row["schcode"].ToString();
 
-                    this.Fill();
-                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+        //            this.Fill();
+        //            DataRowView current = (DataRowView)quotesBindingSource.Current;
 
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
-                    EnableAllControls(this);
-                }
-            } else { MessageBox.Show("No records were found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            frmSales_Paint(this, null);
-        }
+        //            this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+        //            this.Schcode = current["Schcode"].ToString();
+        //            EnableAllControls(this);
+        //        }
+        //    } else { MessageBox.Show("No records were found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //    frmSales_Paint(this, null);
+        //}
         private void btnPoSrch_Click(object sender, EventArgs e) {
             var sqlQuery = new SQLQuery();
             string querystring = "Select schcode,invno from Quotes where PoNum=@PoNum";
@@ -3526,13 +3526,274 @@ namespace Mbc5.Forms.MemoryBook {
 			}
 		}
 
+        private void frmSales_Activated(object sender, EventArgs e)
+        {
+            try { frmMain.ShowSearchButtons(this.Name); } catch { }
+        }
+
+        private void frmSales_Deactivate(object sender, EventArgs e)
+        {
+            try { frmMain.HideSearchButtons(); } catch { }
+        }
+
+        public override void OracleCodeSearch()
+        {
+
+            frmSearch frmSearch = new frmSearch("OracleCode", "Sales", "");
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                           //values preserved after close
+               
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+
+
+                this.Cursor = Cursors.Default;
+
+                            
+            }
+
+            frmSales_Paint(this, null);
+        }
+        //public override void SchnameSearch()
+        //{
+        //    var currentSchool = this.Schcode;
+        //    if (DoPhoneLog())
+        //    {
+        //        MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        //        return;
+        //    }
+        //    var custSaveResult = Save();
+        //    if (custSaveResult.IsError)
+        //    {
+        //        DialogResult result1 = MessageBox.Show("Record failed to save correct and save again.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+
+
+        //    frmSearch frmSearch = new frmSearch("Schname", "Cust", txtSchname.Text.Trim());
+
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        string retSchcode = frmSearch.ReturnValue;            //values preserved after close
+        //        if (string.IsNullOrEmpty(retSchcode))
+        //        {
+        //            MbcMessageBox.Hand("A search value was not returned", "Error");
+        //        }
+        //        int records = 0;
+        //        try
+        //        {
+        //            records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+        //            //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //            return;
+
+        //        }
+        //        try
+        //        {
+        //            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+        //            this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+        //            TeleGo = false;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //        }
+        //        this.Cursor = Cursors.Default;
+        //    }
+        //    else { return; }
+
+        //    SetInvnoSchCode();
+        //    frmMbcCust_Paint(this, null);
+        //}
+        public override void SchCodeSearch()
+        {
+            var currentSchool = this.Schcode;
+            frmSearch frmSearch = new frmSearch("Schcode", "SALES", Schcode);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+
+
+                this.Cursor = Cursors.Default;
+            }
+        //public override void ProdutnNoSearch()
+        //{
+        //    var currentSchool = this.Schcode;
+        //    if (DoPhoneLog())
+        //    {
+        //        MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        //        return;
+        //    }
+        //    var custSaveResult = Save();
+        //    if (custSaveResult.IsError)
+        //    {
+        //        DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+        //        if (result1 == DialogResult.Cancel)
+        //        {
+        //            return;
+        //        }
+        //    }
+        //    DataRowView current = (DataRowView)custBindingSource.Current;
+        //    string vProdNo = current["Prodno"].ToString().Substring(1, 5);
+
+        //    frmSearch frmSearch = new frmSearch("PRODUTNNO", "Cust", vProdNo);
+
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        string retSchcode = frmSearch.ReturnValue;            //values preserved after close
+        //        if (string.IsNullOrEmpty(retSchcode))
+        //        {
+        //            MbcMessageBox.Hand("A search value was not returned", "Error");
+        //        }
+        //        int records = 0;
+        //        try
+        //        {
+        //            records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+        //            //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //            return;
+
+        //        }
+        //        try
+        //        {
+        //            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+        //            this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+        //            TeleGo = false;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //        }
+        //        this.Cursor = Cursors.Default;
+        //    }
+        //    else { return; }
+
+        //    SetInvnoSchCode();
+        //    frmMbcCust_Paint(this, null);
+
+        //}
+        //public override void InvoiceNumberSearch()
+        //{
+        //    var currentSchool = this.Schcode;
+        //    if (DoPhoneLog())
+        //    {
+        //        MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        //        return;
+        //    }
+        //    var custSaveResult = Save();
+        //    if (custSaveResult.IsError)
+        //    {
+        //        DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+        //        if (result1 == DialogResult.Cancel)
+        //        {
+        //            return;
+        //        }
+        //    }
+
+        //    frmSearch frmSearch = new frmSearch("Invno", "Cust", this.Invno.ToString());
+
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        string retSchcode = frmSearch.ReturnValue;            //values preserved after close
+        //        if (string.IsNullOrEmpty(retSchcode))
+        //        {
+        //            MbcMessageBox.Hand("A search value was not returned", "Error");
+        //        }
+        //        int records = 0;
+        //        try
+        //        {
+        //            records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+        //            //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //            return;
+
+        //        }
+        //        try
+        //        {
+        //            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+        //            this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+        //            TeleGo = false;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //        }
+        //        this.Cursor = Cursors.Default;
+        //    }
+        //    else { return; }
+
+        //    SetInvnoSchCode();
+        //    frmMbcCust_Paint(this, null);
+
+        //}
 
 
 
 
 
-
-		//nothing below here  
-	}
+      //  nothing below here
+    }
 }
     

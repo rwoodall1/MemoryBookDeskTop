@@ -36,6 +36,43 @@ namespace Mbc5.Forms
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
         #region "Methods"
+        public  void ShowSearchButtons(string formName)
+        {
+            tsSchcodeSearch.Visible = true;
+            tsSchnameSearch.Visible = true;
+            tsInvno.Visible = true;
+            tsProdutnNumberSearch.Visible = true;
+            tsOracleCodeSearch.Visible = true;
+
+            if (formName == "frmMbcCust")
+            {
+                tsFirstNameSearch.Visible = true;
+                tsLastNameSearch.Visible = true;
+                tsZipCodeSearch.Visible = true;
+                tsEmailSearch.Visible = true;
+            }
+            else
+            {
+                tsFirstNameSearch.Visible = false;
+                tsLastNameSearch.Visible = false;
+                tsZipCodeSearch.Visible = false;
+                tsEmailSearch.Visible = false;
+            }
+
+        }
+        public  void HideSearchButtons()
+        {
+            tsSchcodeSearch.Visible = false;
+            tsSchnameSearch.Visible = false;
+            tsInvno.Visible = false;
+            tsProdutnNumberSearch.Visible = false;
+            tsOracleCodeSearch.Visible = false;
+            tsFirstNameSearch.Visible = false;
+            tsLastNameSearch.Visible = false;
+            tsZipCodeSearch.Visible = false;
+            tsEmailSearch.Visible = false;
+
+        }
         public void PrintScreen() {
             ScreenPrinter vScreenPrinter = new ScreenPrinter(this);
            vScreenPrinter.PrintScreen();
@@ -776,11 +813,81 @@ namespace Mbc5.Forms
 			}
 		}
 
+        private void tsInvno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.InvoiceNumberSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void tsFirstNameSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.FirstNameSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void tsLastNameSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.LastNameSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void tsZipCodeSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.ZipCodeSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void tsEmailSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.EmailSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
 
 
 
 
-		//nothing below here
-	}
+
+        //nothing below here
+    }
         }
 

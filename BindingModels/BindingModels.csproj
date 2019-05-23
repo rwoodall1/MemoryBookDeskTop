@@ -98,6 +98,7 @@
     <Compile Include="MiscBindingModels.cs" />
     <Compile Include="ProdutnBindingModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchBindingModels.cs" />
     <Compile Include="WipBindingModels.cs" />
   </ItemGroup>
   <PropertyGroup>

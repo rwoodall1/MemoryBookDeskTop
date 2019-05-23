@@ -68,7 +68,8 @@ namespace Mbc5.Forms
 
 		}
 		public List<CoverDescriptions> CoverDescriptions { get; set; }
-		private void SetConnectionString()
+        public new frmMain frmMain { get; set; }
+        private void SetConnectionString()
 		{
 			frmMain frmMain = (frmMain)this.MdiParent;
 			this.invoiceCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -93,8 +94,9 @@ namespace Mbc5.Forms
 		}
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
-			// TODO: This line of code loads data into the 'dsProdutn.vendor' table. You can move, or remove it, as needed.
-			this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
+            this.frmMain = (frmMain)this.MdiParent;
+            // TODO: This line of code loads data into the 'dsProdutn.vendor' table. You can move, or remove it, as needed.
+            this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
 
 			this.SetConnectionString();
 			try
@@ -3396,11 +3398,21 @@ namespace Mbc5.Forms
 			}
 		}
 
-		#endregion
+        private void frmProdutn_Activated(object sender, EventArgs e)
+        {
+            try { frmMain.ShowSearchButtons(this.Name); } catch { }
+        }
 
-		//nothing below here  
-	}
-	public class BinderyInfo
+        private void frmProdutn_Deactivate(object sender, EventArgs e)
+        {
+            try { frmMain.HideSearchButtons(); } catch { }
+        }
+
+        #endregion
+
+        //nothing below here  
+    }
+    public class BinderyInfo
 	{
 		public string Schname { get; set; }
 		public string CoverType { get; set; }

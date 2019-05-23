@@ -225,8 +225,24 @@ namespace BaseClass
 		public virtual void InvoiceNumberSearch() {
 
 		}
+        public virtual void FirstNameSearch()
+        {
 
-		public virtual void Delete()
+        }
+        public virtual void LastNameSearch()
+        {
+
+        }
+        public virtual void ZipCodeSearch()
+        {
+
+        }
+        public virtual void EmailSearch()
+        {
+
+        }
+
+        public virtual void Delete()
         {
 
         }

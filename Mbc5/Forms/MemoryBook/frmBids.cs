@@ -2425,5 +2425,14 @@ namespace Mbc5.Forms.MemoryBook {
    
         }
 
+        private void frmBids_Activated(object sender, EventArgs e)
+        {
+            try { frmMain.ShowSearchButtons(this.Name); } catch { }
+        }
+
+        private void frmBids_Deactivate(object sender, EventArgs e)
+        {
+            try { frmMain.HideSearchButtons(); } catch { }
+        }
     }
 }

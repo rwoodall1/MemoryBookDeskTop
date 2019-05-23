@@ -43,7 +43,8 @@ namespace Mbc5.Forms.MemoryBook {
                 handler(this,e);
             }
         private UserPrincipal ApplicationUser { get; set; }
-      public event PropertyChangedEventHandler PropertyChanged;
+        public new frmMain frmMain { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
         #region "Properties"
         public bool MktGo {
             get { return vMktGo; }
@@ -56,7 +57,7 @@ namespace Mbc5.Forms.MemoryBook {
         private bool TeleGo { get; set; } = false;
         private bool TeleLogAdded { get; set; } = false;
         public override string Schcode { get; set; } = "038752";
-        public frmMain frmMain { get; set; }
+       
 
         #endregion
         private void SetConnectionString()
@@ -107,38 +108,39 @@ namespace Mbc5.Forms.MemoryBook {
                 TeleGo = true;
                 MktGo = true;
             }
-			try {
-				this.statesTableAdapter.Fill(this.lookUp.states);
-				this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
-				// TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
-				this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
-				this.lkpPrevPubTableAdapter.Fill(this.lookUp.lkpPrevPub);
-				this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
-				this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
-				// TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
-				this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
-				// TODO: This line of code loads data into the 'lookUp.lkpComments' table. You can move, or remove it, as needed.
-				this.lkpCommentsTableAdapter.Fill(this.lookUp.lkpComments);
-				// TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
+            try
+            {
+                this.statesTableAdapter.Fill(this.lookUp.states);
+                this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
+                // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
+                this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
+                this.lkpPrevPubTableAdapter.Fill(this.lookUp.lkpPrevPub);
+                this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
+                this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
+                // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
+                this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
+                // TODO: This line of code loads data into the 'lookUp.lkpComments' table. You can move, or remove it, as needed.
+                this.lkpCommentsTableAdapter.Fill(this.lookUp.lkpComments);
+                // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
 
-				// TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
-				this.datecontTableAdapter.Fill(this.dsCust.datecont, vSchocode);
-				// TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
+                // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
+                this.datecontTableAdapter.Fill(this.dsCust.datecont, vSchocode);
+                // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
 
-				this.custTableAdapter.Fill(this.dsCust.cust, vSchocode);
-				// TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
-				this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
-				// TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
+                this.custTableAdapter.Fill(this.dsCust.cust, vSchocode);
+                // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
+                this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
+                // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
 
-				this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, vSchocode);
-			}catch(Exception ex) {
-				MbcMessageBox.Error(ex.Message, "");
-			}
-            
-           
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, vSchocode);
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "");
+            }
         }
-       
-    
+
+
         #region CrudOperations
         public override ApiProcessingResult<bool> Save()
         {
@@ -373,7 +375,7 @@ namespace Mbc5.Forms.MemoryBook {
 
 			var result = frmSearch.ShowDialog();
 			if (result == DialogResult.OK) {
-				string retSchcode = frmSearch.ReturnValue;            //values preserved after close
+				string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
 				int records = 0;
 				try {
 					records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
@@ -413,7 +415,10 @@ namespace Mbc5.Forms.MemoryBook {
 
 			var result = frmSearch.ShowDialog();
 			if (result == DialogResult.OK) {
-				string retSchcode = frmSearch.ReturnValue;            //values preserved after close
+				string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+				if (string.IsNullOrEmpty(retSchcode)) {
+					MbcMessageBox.Hand("A search value was not returned", "Error");
+				}
 				int records = 0;
 				try {
 					records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
@@ -454,7 +459,10 @@ namespace Mbc5.Forms.MemoryBook {
 
 			var result = frmSearch.ShowDialog();
 			if (result == DialogResult.OK) {
-				string retSchcode = frmSearch.ReturnValue;            //values preserved after close
+				string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+				if (string.IsNullOrEmpty(retSchcode)) {
+					MbcMessageBox.Hand("A search value was not returned", "Error");
+				}
 				int records = 0;
 				try {
 					records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
@@ -497,7 +505,10 @@ namespace Mbc5.Forms.MemoryBook {
 
 			var result = frmSearch.ShowDialog();
 			if (result == DialogResult.OK) {
-				string retSchcode = frmSearch.ReturnValue;            //values preserved after close
+				string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+				if (string.IsNullOrEmpty(retSchcode)) {
+					MbcMessageBox.Hand("A search value was not returned","Error");
+				}
 				int records = 0;
 				try {
 					records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
@@ -521,7 +532,297 @@ namespace Mbc5.Forms.MemoryBook {
 			frmMbcCust_Paint(this, null);
 
 		}
-		private void AddSalesRecord()
+        public override void InvoiceNumberSearch()
+        {
+            var currentSchool = this.Schcode;
+            if (DoPhoneLog())
+            {
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
+            frmSearch frmSearch = new frmSearch("Invno", "Cust", this.Invno.ToString());
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                if (string.IsNullOrEmpty(retSchcode))
+                {
+                    MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                int records = 0;
+                try
+                {
+                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                try
+                {
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+                    TeleGo = false;
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                }
+                this.Cursor = Cursors.Default;
+            }
+            else { return; }
+
+            SetInvnoSchCode();
+            frmMbcCust_Paint(this, null);
+
+        }
+        public override void FirstNameSearch()
+        {
+            var currentSchool = this.Schcode;
+            if (DoPhoneLog())
+            {
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
+            frmSearch frmSearch = new frmSearch("FirstName", "Cust","");
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                if (string.IsNullOrEmpty(retSchcode))
+                {
+                    MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                int records = 0;
+                try
+                {
+                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                try
+                {
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+                    TeleGo = false;
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                }
+                this.Cursor = Cursors.Default;
+            }
+            else { return; }
+
+            SetInvnoSchCode();
+            frmMbcCust_Paint(this, null);
+
+        }
+        public override void LastNameSearch()
+        {
+            var currentSchool = this.Schcode;
+            if (DoPhoneLog())
+            {
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
+            frmSearch frmSearch = new frmSearch("LastName", "Cust", "");
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                if (string.IsNullOrEmpty(retSchcode))
+                {
+                    MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                int records = 0;
+                try
+                {
+                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                try
+                {
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+                    TeleGo = false;
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                }
+                this.Cursor = Cursors.Default;
+            }
+            else { return; }
+
+            SetInvnoSchCode();
+            frmMbcCust_Paint(this, null);
+
+        }
+        public override void ZipCodeSearch()
+        {
+            var currentSchool = this.Schcode;
+            if (DoPhoneLog())
+            {
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
+            frmSearch frmSearch = new frmSearch("ZipCode", "Cust", "");
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                if (string.IsNullOrEmpty(retSchcode))
+                {
+                    MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                int records = 0;
+                try
+                {
+                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                try
+                {
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+                    TeleGo = false;
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                }
+                this.Cursor = Cursors.Default;
+            }
+            else { return; }
+
+            SetInvnoSchCode();
+            frmMbcCust_Paint(this, null);
+
+        }
+        public override void EmailSearch()
+        {
+            var currentSchool = this.Schcode;
+            if (DoPhoneLog())
+            {
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
+            frmSearch frmSearch = new frmSearch("Email", "Cust", "");
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                if (string.IsNullOrEmpty(retSchcode))
+                {
+                    MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                int records = 0;
+                try
+                {
+                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                try
+                {
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+                    TeleGo = false;
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                }
+                this.Cursor = Cursors.Default;
+            }
+            else { return; }
+
+            SetInvnoSchCode();
+            frmMbcCust_Paint(this, null);
+
+        }
+        private void AddSalesRecord()
 		{
 			DialogResult result = MessageBox.Show("Do you wish to add a sales record?", "Add Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 			if (result == DialogResult.Yes)
@@ -910,9 +1211,6 @@ namespace Mbc5.Forms.MemoryBook {
         }
         #endregion
 
-
-
-
         private void btnInterOffice_Click(object sender,EventArgs e) {
          
                 this.Cursor = Cursors.AppStarting;
@@ -1036,9 +1334,10 @@ namespace Mbc5.Forms.MemoryBook {
                     e.Cancel = true;
                     return;
                     }
-                
-                }
+               
             }
+          
+        }
 
         private void datecontDataGridView_CellDoubleClick(object sender,DataGridViewCellEventArgs e) {
             if (e.ColumnIndex == 9)
@@ -1415,7 +1714,22 @@ namespace Mbc5.Forms.MemoryBook {
 			taxExemptionReceivedDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
-		//Nothing below here
-	}
+        private void frmMbcCust_Activated(object sender, EventArgs e)
+        {
+
+            try { frmMain.ShowSearchButtons(this.Name ); } catch { }
+        }
+
+        private void frmMbcCust_Deactivate(object sender, EventArgs e)
+        {
+            try { frmMain.HideSearchButtons(); } catch { }
+            
+        }
+
+        
+
+
+        //Nothing below here
+    }
     }
 
