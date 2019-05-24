@@ -1243,9 +1243,6 @@ namespace Mbc5.Forms
 			}
 
 		}
-
-
-
 		private void btnProdSrch_Click(object sender, EventArgs e)
 		{
 			if (string.IsNullOrEmpty(txtProdNoSrch.Text))
@@ -1284,10 +1281,7 @@ namespace Mbc5.Forms
 			else { MessageBox.Show("Record was not found.", "Production Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
 			frmProdutn_Paint(this, null);
 		}
-
-	
-
-		private void wipDetailDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void wipDetailDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
 			DataRowView row = (DataRowView)wipDetailBindingSource.Current;
 			int id = (int)row["id"];
@@ -1299,7 +1293,6 @@ namespace Mbc5.Forms
 				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
 			}
 		}
-
 		private void nocopiesTextBox1_Validating(object sender, CancelEventArgs e)
 		{
 			this.errorProvider1.SetError(nocopiesTextBox, "");
@@ -1420,9 +1413,7 @@ namespace Mbc5.Forms
 
 			}
 		}
-
-		
-		public async Task<ApiProcessingResult<bool>> UpdateWipDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
+        public async Task<ApiProcessingResult<bool>> UpdateWipDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
 		{
 			var processingResult = new ApiProcessingResult<bool>();
 			bool isUpdate = true;
@@ -3130,8 +3121,6 @@ namespace Mbc5.Forms
 			WipUpdate();
 		}
 
-		
-
 		private void txtSchNamesrch_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (e.KeyChar == 13)
@@ -3409,6 +3398,287 @@ namespace Mbc5.Forms
         }
 
         #endregion
+        public override void OracleCodeSearch()
+        {
+            var currentOracleCode = oraclecodeTextBox.Text;
+            if (DoPhoneLog())
+            {
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result1 = MessageBox.Show("Record failed to save correct and save again.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            frmSearch frmSearch = new frmSearch("OracleCode", "Cust", currentOracleCode);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                int records = 0;
+                try
+                {
+                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                try
+                {
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+                    TeleGo = false;
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                }
+                this.Cursor = Cursors.Default;
+            }
+            else { return; }
+
+            SetInvnoSchCode();
+            frmMbcCust_Paint(this, null);
+        }
+        public override void SchnameSearch()
+        {
+            var currentSchool = this.Schcode;
+            if (DoPhoneLog())
+            {
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result1 = MessageBox.Show("Record failed to save correct and save again.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            frmSearch frmSearch = new frmSearch("Schname", "Cust", txtSchname.Text.Trim());
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                if (string.IsNullOrEmpty(retSchcode))
+                {
+                    MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                int records = 0;
+                try
+                {
+                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                try
+                {
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+                    TeleGo = false;
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                }
+                this.Cursor = Cursors.Default;
+            }
+            else { return; }
+
+            SetInvnoSchCode();
+            frmMbcCust_Paint(this, null);
+        }
+        public override void SchCodeSearch()
+        {
+            var currentSchool = this.Schcode;
+            if (DoPhoneLog())
+            {
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
+            frmSearch frmSearch = new frmSearch("Schcode", "Cust", Schcode);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                if (string.IsNullOrEmpty(retSchcode))
+                {
+                    MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                int records = 0;
+                try
+                {
+                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                try
+                {
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+                    TeleGo = false;
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                }
+                this.Cursor = Cursors.Default;
+            }
+            else { return; }
+
+            SetInvnoSchCode();
+            frmMbcCust_Paint(this, null);
+        }
+        public override void ProdutnNoSearch()
+        {
+            var currentSchool = this.Schcode;
+            if (DoPhoneLog())
+            {
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+            DataRowView current = (DataRowView)custBindingSource.Current;
+            string vProdNo = current["Prodno"].ToString().Substring(1, 5);
+
+            frmSearch frmSearch = new frmSearch("PRODUTNNO", "Cust", vProdNo);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                if (string.IsNullOrEmpty(retSchcode))
+                {
+                    MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                int records = 0;
+                try
+                {
+                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                try
+                {
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+                    TeleGo = false;
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                }
+                this.Cursor = Cursors.Default;
+            }
+            else { return; }
+
+            SetInvnoSchCode();
+            frmMbcCust_Paint(this, null);
+
+        }
+        public override void InvoiceNumberSearch()
+        {
+            var currentSchool = this.Schcode;
+            if (DoPhoneLog())
+            {
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
+            frmSearch frmSearch = new frmSearch("Invno", "Cust", this.Invno.ToString());
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                if (string.IsNullOrEmpty(retSchcode))
+                {
+                    MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                int records = 0;
+                try
+                {
+                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                try
+                {
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+                    TeleGo = false;
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                }
+                this.Cursor = Cursors.Default;
+            }
+            else { return; }
+
+            SetInvnoSchCode();
+            frmMbcCust_Paint(this, null);
+
+        }
 
         //nothing below here  
     }

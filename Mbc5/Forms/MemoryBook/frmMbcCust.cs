@@ -1394,8 +1394,6 @@ namespace Mbc5.Forms.MemoryBook {
             SetInvnoSchCode();
         }
 
-       
-
         private void button1_Click_1(object sender,EventArgs e) {
             var a = new ScreenPrinter(this);
             a.PrintScreen();
@@ -1424,8 +1422,6 @@ namespace Mbc5.Forms.MemoryBook {
 			}
             
             }
-
-       
 
         private void custDataGridView_CellDoubleClick(object sender,DataGridViewCellEventArgs e) {
             GoToSales();

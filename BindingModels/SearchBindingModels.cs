@@ -69,6 +69,7 @@ namespace BindingModels
         public string SchState { get; set; }
 
     }
+  
     public class SchcodeSearch
     {
         public string Schcode { get; set; }
@@ -111,6 +112,16 @@ namespace BindingModels
         public string Schcode { get; set; }
         public int Invoice { get; set; }
         public string Schname { get; set; }
+        public string OracleCode { get; set; }
+        public string Contryear { get; set; }
+        public string SchZip { get; set; }
+        public string SchState { get; set; }
+    }
+    public class SchnameSalesSearch
+    {
+        public string Schname { get; set; }
+        public int Invoice { get; set; }
+        public string Schcode { get; set; }
         public string OracleCode { get; set; }
         public string Contryear { get; set; }
         public string SchZip { get; set; }

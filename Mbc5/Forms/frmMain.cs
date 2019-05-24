@@ -50,6 +50,9 @@ namespace Mbc5.Forms
                 tsLastNameSearch.Visible = true;
                 tsZipCodeSearch.Visible = true;
                 tsEmailSearch.Visible = true;
+            }else if (formName == "frmSales")
+            {
+                tsProdutnNumberSearch.Visible = false;
             }
             else
             {
