@@ -79,7 +79,16 @@ namespace BindingModels
         public string SchZip { get; set; }
         public string SchState { get; set; }
     }
-
+    public class JobNoSearch
+    {
+        public string JobNo { get; set; }
+        public string Schcode { get; set; }
+        public string Schname { get; set; }
+        public string OracleCode { get; set; }
+        public string Contryear { get; set; }
+        public string SchZip { get; set; }
+        public string SchState { get; set; }
+    }
     public class SchnameSearch
     {
         public string Schname { get; set; }
@@ -136,6 +145,53 @@ namespace BindingModels
         public string Contryear { get; set; }
         public string SchZip { get; set; }
         public string SchState { get; set; }
+    }
+    public class SalesJobCode
+    {
+        public string JobNo { get; set; }
+        public string Schcode { get; set; }
+        public string Schname { get; set; }
+        public string Invoice { get; set; }
+        public string Contryear { get; set; }
+        
+    }
+    //Produtn
+    public class ProdutnSchcodeSearch
+    {
+        public string Schcode { get; set; }
+        public string Schname { get; set; }
+        public int Invoice { get; set; }
+        public string ProdNo { get; set; }
+       
+        
+    }
+    public class ProdutnSchnameSearch
+    {
+        public string Schname { get; set; }   
+        public string Schcode { get; set; }
+        public int Invoice { get; set; }
+        public string ProdNo { get; set; }
+        public string Contryear { get; set; }
+
+    }
+    public class ProdutnOracleCodeSearch
+    {
+        public string OracleCode { get; set; }
+        public string Schcode { get; set; }
+        public string Schname { get; set; }
+        public int Invoice { get; set; }
+        public string ProdNo { get; set; }
+        
+    }
+    public class ProdutnInvnoSearch
+    {
+        public int Invno { get; set; }
+        public string Schname { get; set; }
+        public string Schcode { get; set; }
+        public string OracleCode { get; set; }
+        public string ProdNo { get; set; }
+        public string Contryear { get; set; }
+        
     }
 
 }

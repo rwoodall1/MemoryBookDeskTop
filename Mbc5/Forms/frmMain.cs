@@ -886,6 +886,22 @@ namespace Mbc5.Forms
             }
         }
 
+        private void tsJobNo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.JobNoSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+
 
 
 

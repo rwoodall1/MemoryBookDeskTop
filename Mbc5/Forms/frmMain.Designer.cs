@@ -94,6 +94,7 @@
             this.tsLastNameSearch = new System.Windows.Forms.ToolStripButton();
             this.tsZipCodeSearch = new System.Windows.Forms.ToolStripButton();
             this.tsEmailSearch = new System.Windows.Forms.ToolStripButton();
+            this.tsJobNo = new System.Windows.Forms.ToolStripButton();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -485,7 +486,8 @@
             this.tsFirstNameSearch,
             this.tsLastNameSearch,
             this.tsZipCodeSearch,
-            this.tsEmailSearch});
+            this.tsEmailSearch,
+            this.tsJobNo});
             this.tsMain.Location = new System.Drawing.Point(0, 24);
             this.tsMain.Name = "tsMain";
             this.tsMain.Size = new System.Drawing.Size(1181, 25);
@@ -669,6 +671,17 @@
             this.tsEmailSearch.Visible = false;
             this.tsEmailSearch.Click += new System.EventHandler(this.tsEmailSearch_Click);
             // 
+            // tsJobNo
+            // 
+            this.tsJobNo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsJobNo.Image = ((System.Drawing.Image)(resources.GetObject("tsJobNo.Image")));
+            this.tsJobNo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsJobNo.Name = "tsJobNo";
+            this.tsJobNo.Size = new System.Drawing.Size(23, 22);
+            this.tsJobNo.Text = "J";
+            this.tsJobNo.ToolTipText = "JobNo";
+            this.tsJobNo.Click += new System.EventHandler(this.tsJobNo_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -757,5 +770,6 @@
 		private System.Windows.Forms.ToolStripButton tsOracleCodeSearch;
         private System.Windows.Forms.ToolStripButton tsInvno;
         private System.Windows.Forms.ToolStripButton tsEmailSearch;
+        private System.Windows.Forms.ToolStripButton tsJobNo;
     }
 }

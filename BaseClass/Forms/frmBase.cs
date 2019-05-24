@@ -241,6 +241,10 @@ namespace BaseClass
         {
 
         }
+        public virtual void JobNoSearch()
+        {
+
+        }
 
         public virtual void Delete()
         {

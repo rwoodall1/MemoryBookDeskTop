@@ -501,7 +501,7 @@ namespace Mbc5.Forms.MemoryBook {
 			DataRowView current = (DataRowView)custBindingSource.Current;
 			string vProdNo = current["Prodno"].ToString().Substring(1,5);
 
-			frmSearch frmSearch = new frmSearch("PRODUTNNO", "Cust", vProdNo);
+			frmSearch frmSearch = new frmSearch("PRODNO", "Cust", vProdNo);
 
 			var result = frmSearch.ShowDialog();
 			if (result == DialogResult.OK) {
@@ -821,6 +821,64 @@ namespace Mbc5.Forms.MemoryBook {
             SetInvnoSchCode();
             frmMbcCust_Paint(this, null);
 
+        }
+        public override void JobNoSearch()
+        {
+            DataRowView currentrow = (DataRowView)custBindingSource.Current;
+            var jobno = currentrow["jobno"].ToString();
+            if (DoPhoneLog())
+            {
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
+            frmSearch frmSearch = new frmSearch("JobNo", "Cust", jobno);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
+                if (string.IsNullOrEmpty(retSchcode))
+                {
+                    MbcMessageBox.Hand("A search value was not returned", "Error");
+                }
+                int records = 0;
+                try
+                {
+                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
+                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                try
+                {
+                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
+                    TeleGo = false;
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                }
+                this.Cursor = Cursors.Default;
+            }
+            else { return; }
+
+            SetInvnoSchCode();
+            frmMbcCust_Paint(this, null);
         }
         private void AddSalesRecord()
 		{

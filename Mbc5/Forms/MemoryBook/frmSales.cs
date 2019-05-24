@@ -4024,6 +4024,14 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void SchCodeSearch()
         {
+            var saveResult = this.Save();
+                if(saveResult.IsError)
+                {
+                
+                return;
+                }
+           
+
             var currentSchool = this.Schcode;
             frmSearch frmSearch = new frmSearch("Schcode", "SALES", Schcode);
 
@@ -4062,6 +4070,12 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void SchnameSearch()
         {
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+                
+                return;
+            }
             DataRowView currentrow = (DataRowView)custBindingSource.Current;
             var schname = currentrow["schname"].ToString();
             
@@ -4105,6 +4119,12 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void OracleCodeSearch()
         {
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+               
+                return;
+            }
             DataRowView currentrow = (DataRowView)custBindingSource.Current;
             var oraclecode = currentrow["oraclecode"].ToString();
 
@@ -4145,6 +4165,12 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void InvoiceNumberSearch()
         {
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+                
+                return;
+            }
             DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
             var invno = currentrow["invno"].ToString();
 

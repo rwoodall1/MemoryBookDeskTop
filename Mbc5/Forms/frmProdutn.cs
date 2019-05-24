@@ -95,14 +95,14 @@ namespace Mbc5.Forms
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
             this.frmMain = (frmMain)this.MdiParent;
-            // TODO: This line of code loads data into the 'dsProdutn.vendor' table. You can move, or remove it, as needed.
-            this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
+ 
+           
 
 			this.SetConnectionString();
 			try
 			{
-
-				this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
+                this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
+                this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
 				//LookUp Data
 				this.lkTypeDataTableAdapter.Fill(this.lookUp.lkTypeData);
 				vendorTableAdapter.Fill(dsProdutn.vendor);
@@ -324,15 +324,17 @@ namespace Mbc5.Forms
 					MbcMessageBox.Error(ex.Message, "");
 					return;
 				};
-		
 
-				var row = (DataRowView)coversBindingSource1.Current;
-				var a = row["specinst"].ToString();
-				if (dsProdutn.covers.Count < 1)
-				{
-					DisableControls(this.tbProdutn.TabPages[2]);
-				}
-				else { EnableAllControls(this.tbProdutn.TabPages[2]); }
+                if ((DataRowView)coversBindingSource1.Current != null)
+                {
+                    var row = (DataRowView)coversBindingSource1.Current;
+                    var a = row["specinst"].ToString();
+                    if (dsProdutn.covers.Count < 1)
+                    {
+                        DisableControls(this.tbProdutn.TabPages[2]);
+                    }
+                    else { EnableAllControls(this.tbProdutn.TabPages[2]); }
+                }
 				try {
 					wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
 					wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
@@ -3398,288 +3400,275 @@ namespace Mbc5.Forms
         }
 
         #endregion
-        public override void OracleCodeSearch()
+        public override void SchCodeSearch()
         {
-            var currentOracleCode = oraclecodeTextBox.Text;
-            if (DoPhoneLog())
+
+            var produtnResult = SaveProdutn();
+            if (produtnResult.IsError)
             {
-                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
-            var custSaveResult = Save();
-            if (custSaveResult.IsError)
-            {
-                DialogResult result1 = MessageBox.Show("Record failed to save correct and save again.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.No)
+                {
+
+                    return;
+                }
             }
 
 
-            frmSearch frmSearch = new frmSearch("OracleCode", "Cust", currentOracleCode);
+
+            var currentSchool = this.Schcode;
+           
+            frmSearch frmSearch = new frmSearch("Schcode", "PRODUCTION", Schcode);
 
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
             {
-                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
-                int records = 0;
+                //values preserved after close
+
                 try
                 {
-                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
-                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    
+                    Fill();
+                    DataRowView current = (DataRowView)produtnBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
                 }
+			
                 catch (Exception ex)
                 {
                     MbcMessageBox.Error(ex.Message, "Error");
                     return;
 
                 }
-                try
-                {
-                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
-                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
-                    TeleGo = false;
-                }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error(ex.Message, "Error");
-                }
-                this.Cursor = Cursors.Default;
+             this.Cursor = Cursors.Default;
+            frmProdutn_Paint(this, null);
+            
             }
-            else { return; }
 
-            SetInvnoSchCode();
-            frmMbcCust_Paint(this, null);
         }
         public override void SchnameSearch()
         {
-            var currentSchool = this.Schcode;
-            if (DoPhoneLog())
+            var produtnResult = SaveProdutn();
+            if (produtnResult.IsError)
             {
-                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
-            var custSaveResult = Save();
-            if (custSaveResult.IsError)
-            {
-                DialogResult result1 = MessageBox.Show("Record failed to save correct and save again.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.No)
+                {
+
+                    return;
+                }
             }
 
-
-            frmSearch frmSearch = new frmSearch("Schname", "Cust", txtSchname.Text.Trim());
+            DataRowView currentrow = (DataRowView)custBindingSource.Current;
+            var Schname = currentrow["schname"].ToString();
+            frmSearch frmSearch = new frmSearch("Schname", "PRODUCTION", Schname);
 
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
             {
-                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
-                if (string.IsNullOrEmpty(retSchcode))
-                {
-                    MbcMessageBox.Hand("A search value was not returned", "Error");
-                }
-                int records = 0;
+                //values preserved after close
+
                 try
                 {
-                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
-                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+
+                    Fill();
+                    DataRowView current = (DataRowView)produtnBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
                 }
+
                 catch (Exception ex)
                 {
                     MbcMessageBox.Error(ex.Message, "Error");
                     return;
 
                 }
-                try
-                {
-                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
-                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
-                    TeleGo = false;
-                }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error(ex.Message, "Error");
-                }
                 this.Cursor = Cursors.Default;
-            }
-            else { return; }
+                frmProdutn_Paint(this, null);
 
-            SetInvnoSchCode();
-            frmMbcCust_Paint(this, null);
+            }
         }
-        public override void SchCodeSearch()
+        public override void OracleCodeSearch()
         {
-            var currentSchool = this.Schcode;
-            if (DoPhoneLog())
+           
+            var produtnResult = SaveProdutn();
+            if (produtnResult.IsError)
             {
-                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
-            var custSaveResult = Save();
-            if (custSaveResult.IsError)
-            {
-                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (result1 == DialogResult.Cancel)
+                var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.No)
                 {
+
                     return;
                 }
             }
 
-            frmSearch frmSearch = new frmSearch("Schcode", "Cust", Schcode);
+            DataRowView currentrow = (DataRowView)custBindingSource.Current;
+            var oraclecode = currentrow["oraclecode"].ToString();
+
+            frmSearch frmSearch = new frmSearch("OracleCode", "PRODUCTION", oraclecode);
 
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
             {
-                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
-                if (string.IsNullOrEmpty(retSchcode))
-                {
-                    MbcMessageBox.Hand("A search value was not returned", "Error");
-                }
-                int records = 0;
+                //values preserved after close
+
                 try
                 {
-                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
-                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+
+                    Fill();
+                    DataRowView current = (DataRowView)produtnBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
                 }
+
                 catch (Exception ex)
                 {
                     MbcMessageBox.Error(ex.Message, "Error");
                     return;
 
-                }
-                try
-                {
-                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
-                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
-                    TeleGo = false;
-                }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error(ex.Message, "Error");
                 }
                 this.Cursor = Cursors.Default;
+                frmProdutn_Paint(this, null);
+
             }
-            else { return; }
 
-            SetInvnoSchCode();
-            frmMbcCust_Paint(this, null);
-        }
-        public override void ProdutnNoSearch()
-        {
-            var currentSchool = this.Schcode;
-            if (DoPhoneLog())
-            {
-                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
-            var custSaveResult = Save();
-            if (custSaveResult.IsError)
-            {
-                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (result1 == DialogResult.Cancel)
-                {
-                    return;
-                }
-            }
-            DataRowView current = (DataRowView)custBindingSource.Current;
-            string vProdNo = current["Prodno"].ToString().Substring(1, 5);
 
-            frmSearch frmSearch = new frmSearch("PRODUTNNO", "Cust", vProdNo);
-
-            var result = frmSearch.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
-                if (string.IsNullOrEmpty(retSchcode))
-                {
-                    MbcMessageBox.Hand("A search value was not returned", "Error");
-                }
-                int records = 0;
-                try
-                {
-                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
-                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
-                }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error(ex.Message, "Error");
-                    return;
-
-                }
-                try
-                {
-                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
-                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
-                    TeleGo = false;
-                }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error(ex.Message, "Error");
-                }
-                this.Cursor = Cursors.Default;
-            }
-            else { return; }
-
-            SetInvnoSchCode();
-            frmMbcCust_Paint(this, null);
 
         }
         public override void InvoiceNumberSearch()
         {
-            var currentSchool = this.Schcode;
-            if (DoPhoneLog())
+
+            var produtnResult = SaveProdutn();
+            if (produtnResult.IsError)
             {
-                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
-            var custSaveResult = Save();
-            if (custSaveResult.IsError)
-            {
-                DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (result1 == DialogResult.Cancel)
+                var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.No)
                 {
+
                     return;
                 }
             }
 
-            frmSearch frmSearch = new frmSearch("Invno", "Cust", this.Invno.ToString());
+            DataRowView currentrow = (DataRowView)produtnBindingSource.Current;
+            var invno = currentrow["invno"].ToString();
+
+            frmSearch frmSearch = new frmSearch("INVNO", "PRODUCTION", invno);
 
             var result = frmSearch.ShowDialog();
             if (result == DialogResult.OK)
             {
-                string retSchcode = frmSearch.ReturnValue.Schcode;            //values preserved after close
-                if (string.IsNullOrEmpty(retSchcode))
-                {
-                    MbcMessageBox.Hand("A search value was not returned", "Error");
-                }
-                int records = 0;
+                //values preserved after close
+
                 try
                 {
-                    records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
-                    //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+
+                    Fill();
+                    DataRowView current = (DataRowView)produtnBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
                 }
+
                 catch (Exception ex)
                 {
                     MbcMessageBox.Error(ex.Message, "Error");
                     return;
 
                 }
+                this.Cursor = Cursors.Default;
+                frmProdutn_Paint(this, null);
+
+            }
+
+
+
+        }
+        public override void ProdutnNoSearch()
+        {
+
+            var produtnResult = SaveProdutn();
+            if (produtnResult.IsError)
+            {
+                var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.No)
+                {
+
+                    return;
+                }
+            }
+
+            DataRowView currentrow = (DataRowView)produtnBindingSource.Current;
+            var prodno = currentrow["prodno"].ToString();
+
+            frmSearch frmSearch = new frmSearch("PRODNO", "PRODUCTION", prodno);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
                 try
                 {
-                    this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
-                    this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
-                    TeleGo = false;
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+
+                    Fill();
+                    DataRowView current = (DataRowView)produtnBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
                 }
+
                 catch (Exception ex)
                 {
                     MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
                 }
                 this.Cursor = Cursors.Default;
-            }
-            else { return; }
+                frmProdutn_Paint(this, null);
 
-            SetInvnoSchCode();
-            frmMbcCust_Paint(this, null);
+            }
+
+
 
         }
-
         //nothing below here  
     }
     public class BinderyInfo
