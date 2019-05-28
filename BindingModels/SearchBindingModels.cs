@@ -60,7 +60,7 @@ namespace BindingModels
 
     public class InvnoSearch
     {
-        public int Invno { get; set; }
+        public int Invoice { get; set; }
         public string Schname { get; set; }
         public string Schcode { get; set; }
         public string OracleCode { get; set; }
@@ -110,7 +110,7 @@ namespace BindingModels
     public class ProdNoSearch
     {
         public string ProdNo { get; set; }
-        public int Invno { get; set; }
+        public int Invoice { get; set; }
         public string Schname { get; set; }
         public string Schcode { get; set; }
         public string Contryear { get; set; }
@@ -186,7 +186,7 @@ namespace BindingModels
     }
     public class ProdutnInvnoSearch
     {
-        public int Invno { get; set; }
+        public int Invoice { get; set; }
         public string Schname { get; set; }
         public string Schcode { get; set; }
         public string OracleCode { get; set; }
@@ -194,5 +194,49 @@ namespace BindingModels
         public string Contryear { get; set; }
         
     }
-
+    //EndSheet
+    
+ public class EndSheetSchcodeSearch
+    {
+        public string Schcode { get; set; }
+        public string Schname { get; set; }
+        public int Invoice { get; set; }
+        public string EndSheetNo { get; set; }
+        public string Contryear { get; set; }
+    }
+    public class EndSheetSchNameSearch
+    {
+        public string Schname { get; set; }
+        public string Schcode { get; set; }
+        public int Invoice { get; set; }
+        public string EndSheetNo { get; set; }
+        public string Contryear { get; set; }
+    }
+    public class EndSheetOracleCodeSearch
+    {
+        public string OracleCode { get; set; }
+        public string Schname { get; set; }
+        public string Schcode { get; set; }
+        public int Invoice { get; set; }
+        public string EndSheetNo { get; set; }
+        public string Contryear { get; set; }
+    }
+    public class EndSheetJobNoSearch
+    {
+        public string JobNo { get; set; }
+        public string Schname { get; set; }
+        public string Schcode { get; set; }
+        public int Invoice { get; set; }
+        public string EndSheetNo { get; set; }
+        public string Contryear { get; set; }
+    }
+    public class EndSheetInvnoSearch
+    {
+       public int Invoice { get; set; }
+        public string Schname { get; set; }
+        public string Schcode { get; set; }
+       
+        public string EndSheetNo { get; set; }
+        public string Contryear { get; set; }
+    }
 }

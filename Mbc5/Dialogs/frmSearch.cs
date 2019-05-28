@@ -50,8 +50,12 @@ namespace Mbc5.Dialogs {
         private List<JobNoSearch> CustJobCodeList { get; set; }
         private List<SalesJobCode> SalesJobCodeList { get; set; }
 		private List<SalesJobCode> ProdJobCodeList { get; set; }
-		
-		public ReturnValues ReturnValue { get; set; } = new ReturnValues();
+		private List<EndSheetSchcodeSearch> EndSheetSchoolCodeList { get; set; }
+        private List<EndSheetSchNameSearch> EndSheetSchoolNameList { get; set; }
+        private List<EndSheetOracleCodeSearch> EndSheetOracleCodeList { get; set; }
+        private List<EndSheetJobNoSearch> EndSheetJobNoList { get; set; }
+        private List<EndSheetInvnoSearch> EndSheetInvnoList { get; set; }
+        public ReturnValues ReturnValue { get; set; } = new ReturnValues();
 
         private string currentSearchValue;
 
@@ -117,6 +121,24 @@ namespace Mbc5.Dialogs {
                         case "BIDS":
                             
                             break;
+                        case "ENDSHEET":
+                            cmdtext = @"Select C.Schcode,C.Schname,E.Invno AS Invoice,E.endshtno AS EndSheetNo,C.Contryear From Cust C 
+                                        Inner JOIN Quotes Q  ON C.Schcode=Q.Schcode
+                                        Left Join EndSheet E On Q.Invno=E.Invno
+                                        Order By Schcode";
+                            sqlclient.CommandText(cmdtext);
+                            var endsheetresult = sqlclient.SelectMany<EndSheetSchcodeSearch>();
+                            if (endsheetresult.IsError)
+                            {
+                                MbcMessageBox.Error(endsheetresult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var retVal3 = (List<EndSheetSchcodeSearch>)endsheetresult.Data;
+                            this.EndSheetSchoolCodeList = retVal3;
+                            bsData.DataSource = this.EndSheetSchoolCodeList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
+                            break;
                         default:
                             MbcMessageBox.Hand("Search is not implemented here.", "");
                             break;
@@ -173,6 +195,24 @@ namespace Mbc5.Dialogs {
                             break;
                         case "BIDS":
                             break;
+                        case "ENDSHEET":
+                            cmdtext = @"Select C.Schname,C.Schcode,E.Invno AS Invoice,E.endshtno AS EndSheetNo,C.Contryear From Cust C 
+                                        Inner JOIN Quotes Q  ON C.Schcode=Q.Schcode
+                                        Left Join EndSheet E On Q.Invno=E.Invno
+                                        Order By Schcode";
+                            sqlclient.CommandText(cmdtext);
+                            var endsheetresult = sqlclient.SelectMany<EndSheetSchNameSearch>();
+                            if (endsheetresult.IsError)
+                            {
+                                MbcMessageBox.Error(endsheetresult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var retVal4 = (List<EndSheetSchNameSearch>)endsheetresult.Data;
+                            this.EndSheetSchoolNameList = retVal4;
+                            bsData.DataSource = this.EndSheetSchoolNameList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
+                            break;
                     }
                     break;
                 case "ORACLECODE":
@@ -199,7 +239,7 @@ namespace Mbc5.Dialogs {
                                 break;
                             
                         case "SALES":
-                            cmdtext = @"Select COALESCE(C.OracleCode,''),C.Schname,C.Schcode,Q.Invno As InvoiceNo,C.Contryear,C.SchZip,C.SchState From Quotes Q  Inner Join Cust C On Q.Schcode=C.Schcode WHERE C.OracleCode !='' Order By OracleCode";
+                            cmdtext = @"Select COALESCE(C.OracleCode,''),C.Schname,C.Schcode,Q.Invno As Invoice,C.Contryear,C.SchZip,C.SchState From Quotes Q  Inner Join Cust C On Q.Schcode=C.Schcode WHERE C.OracleCode !='' Order By OracleCode";
                             sqlclient.CommandText(cmdtext);
                             var oracleCodeResult = sqlclient.SelectMany<OracleSalesSearch>();
                             if (oracleCodeResult.IsError)
@@ -215,6 +255,24 @@ namespace Mbc5.Dialogs {
 
                             txtSearch.Select();
 
+                            break;
+                        case "ENDSHEET":
+                            cmdtext = @"Select C.OracleCode,C.Schname,C.Schcode,E.Invno AS Invoice,E.endshtno as EndSheetNo,C.Contryear From Cust C 
+                                        Inner JOIN Quotes Q  ON C.Schcode=Q.Schcode
+                                        Left Join EndSheet E On Q.Invno=E.Invno
+                                        Order By Schcode";
+                            sqlclient.CommandText(cmdtext);
+                            var endsheetresult = sqlclient.SelectMany<EndSheetOracleCodeSearch>();
+                            if (endsheetresult.IsError)
+                            {
+                                MbcMessageBox.Error(endsheetresult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var retVal4 = (List<EndSheetOracleCodeSearch>)endsheetresult.Data;
+                            this.EndSheetOracleCodeList = retVal4;
+                            bsData.DataSource = this.EndSheetOracleCodeList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
                             break;
                         case "PRODUCTION":
                             cmdtext = @"Select COALESCE(C.OracleCode,'',C.Schname,C.Schcode,P.Invno As Invoice,P.ProdNo,C.Contryear From Produtn P Inner Join Cust C On P.Schcode=C.Schcode WHERE C.OracleCode !='' Order By OracleCode";
@@ -274,6 +332,24 @@ namespace Mbc5.Dialogs {
                             dgSearch.DataSource = bsData;
                             txtSearch.Select();
                             break;
+                        case "ENDSHEET":
+                            cmdtext = @"Select C.JobNo,C.Schname,C.Schcode,E.Invno AS Invoice,E.endshtno as EndSheetNo,C.Contryear From Cust C 
+                                        Inner JOIN Quotes Q  ON C.Schcode=Q.Schcode
+                                        Left Join EndSheet E On Q.Invno=E.Invno
+                                        Order By Schcode";
+                            sqlclient.CommandText(cmdtext);
+                            var endsheetresult = sqlclient.SelectMany<EndSheetJobNoSearch>();
+                            if (endsheetresult.IsError)
+                            {
+                                MbcMessageBox.Error(endsheetresult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var retVal4 = (List<EndSheetJobNoSearch>)endsheetresult.Data;
+                            this.EndSheetJobNoList = retVal4;
+                            bsData.DataSource = this.EndSheetJobNoList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
+                            break;
                         case "PRODUCTION":
 							cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno AS Invoice,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.invno Where P.JobNo !='' Order By Jobno";
 							sqlclient.CommandText(cmdtext);
@@ -295,7 +371,7 @@ namespace Mbc5.Dialogs {
                     switch (ReturnForm)
                     {
                         case "CUST":
-                            cmdtext = @"Select Q.Invno,C.Schname,C.Schcode,C.OracleCode,C.Contryear,C.SchZip,C.SchState From Quotes Q Left JOIN Cust C On Q.Schcode=C.Schcode Order By Invno";
+                            cmdtext = @"Select Q.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear,C.SchZip,C.SchState From Quotes Q Left JOIN Cust C On Q.Schcode=C.Schcode Order By Invno";
                             sqlclient.CommandText(cmdtext);
                             var result = sqlclient.SelectMany<InvnoSearch>();
                             if (result.IsError)
@@ -312,7 +388,7 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "SALES":
-                            cmdtext = @"Select Q.Invno,C.Schname,C.Schcode,C.OracleCode,C.Contryear,C.SchZip,C.SchState From Quotes Q Left JOIN Cust C On Q.Schcode=C.Schcode Order By Invno";
+                            cmdtext = @"Select Q.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear,C.SchZip,C.SchState From Quotes Q Left JOIN Cust C On Q.Schcode=C.Schcode Order By Invno";
                             sqlclient.CommandText(cmdtext);
                             var result1 = sqlclient.SelectMany<InvnoSearch>();
                             if (result1.IsError)
@@ -329,7 +405,7 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "PRODUCTION":
-                            cmdtext = @"Select P.Invno,C.Schname,C.Schcode,C.OracleCode,C.Contryear From Produtn P Inner JOIN Cust C On P.Schcode=C.Schcode Order By Invno";
+                            cmdtext = @"Select P.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear From Produtn P Inner JOIN Cust C On P.Schcode=C.Schcode Order By Invoice";
                             sqlclient.CommandText(cmdtext);
                             var result4 = sqlclient.SelectMany<ProdutnInvnoSearch>();
                             if (result4.IsError)
@@ -346,13 +422,31 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
 
                             break;
+                        case "ENDSHEET":
+                            cmdtext = @"Select E.Invno AS Invoice,C.Schname,C.Schcode,E.endshtno As EndSheetNo,C.Contryear From EndSheet E  
+                                        Inner JOIN Quotes Q  ON E.Invno=Q.Invno
+                                        Left Join Cust C On Q.Schcode=C.Schcode
+                                        Order By Invoice";
+                            sqlclient.CommandText(cmdtext);
+                            var endsheetresult = sqlclient.SelectMany<EndSheetInvnoSearch>();
+                            if (endsheetresult.IsError)
+                            {
+                                MbcMessageBox.Error(endsheetresult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var retVal4 = (List<EndSheetInvnoSearch>)endsheetresult.Data;
+                            this.EndSheetInvnoList = retVal4;
+                            bsData.DataSource = this.EndSheetInvnoList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
+                            break;
                     }
                     break;
                 case "PRODNO":
                     switch (ReturnForm)
                     {
                         case "CUST":
-                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
+                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno AS Invoice,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
                             sqlclient.CommandText(cmdtext);
                             var result = sqlclient.SelectMany<ProdNoSearch>();
                             if (result.IsError)
@@ -371,7 +465,7 @@ namespace Mbc5.Dialogs {
 
                             break;
                         case "SALES":
-							cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
+							cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno as Invoice,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
 							sqlclient.CommandText(cmdtext);
 							var result1 = sqlclient.SelectMany<ProdNoSearch>();
 							if (result1.IsError) {
@@ -388,7 +482,7 @@ namespace Mbc5.Dialogs {
 							break;
 					
                         case "PRODUCTION":
-                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
+                            cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno AS Invoice,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
                             sqlclient.CommandText(cmdtext);
                             var result2 = sqlclient.SelectMany<ProdNoSearch>();
                             if (result2.IsError)
@@ -636,7 +730,7 @@ namespace Mbc5.Dialogs {
             Search(txtSearch.Text);
         }
         private void Search(string value)
-        {
+     {
 
             int vIndex;
             switch (SearchType)
@@ -654,6 +748,9 @@ namespace Mbc5.Dialogs {
                     }else if (ReturnForm == "PRODUCTION")
                     {
                         vList=this.ProdutnSchoolCodeList.Select(x => x.Schcode).ToList();
+                    }else if (ReturnForm == "ENDSHEET")
+                    {
+                        vList = this.EndSheetSchoolCodeList.Select(x => x.Schcode).ToList();
                     }
                         
     
@@ -690,6 +787,10 @@ namespace Mbc5.Dialogs {
                     {
                         vListName = this.ProdutnSchnameList.Select(x => x.Schname).ToList();
                     }
+                    else if (ReturnForm == "ENDSHEET")
+                    {
+                        vListName = this.EndSheetSchoolNameList.Select(x => x.Schname).ToList();
+                    }
                     try
                     {
                         vIndex = vListName.FindIndex(vcust => vcust.ToString().Trim().ToUpper().StartsWith(value.ToUpper()));
@@ -722,6 +823,10 @@ namespace Mbc5.Dialogs {
                     {
 						vJobList = this.ProdJobCodeList.Select(x => x.JobNo).ToList();
 					}
+                    else if (ReturnForm == "ENDSHEET")
+                    {
+                        vJobList = this.EndSheetJobNoList.Select(x => x.JobNo).ToList();
+                    }
 
                     try
                     {
@@ -757,6 +862,10 @@ namespace Mbc5.Dialogs {
                     }else if (ReturnForm == "PRODUCTION")
                     {
                         vOracleList = this.ProdutnOracleCodeList.Select(x => x.OracleCode).ToList();
+                    }
+                    else if (ReturnForm == "ENDSHEET")
+                    {
+                        vOracleList = this.EndSheetOracleCodeList.Select(x => x.OracleCode).ToList();
                     }
 
                     try
@@ -815,12 +924,16 @@ namespace Mbc5.Dialogs {
                     List<string> vInvnoList = new List<string>();
                     if (ReturnForm == "CUST"|| ReturnForm == "SALES")
                     {
-                        vInvnoList = this.InvnoList.Select(x => x.Invno.ToString()).ToList();
+                        vInvnoList = this.InvnoList.Select(x => x.Invoice.ToString()).ToList();
                     }else if (ReturnForm == "PRODUCTION")
                     {
-                        vInvnoList = this.ProdutnInvnoList.Select(x => x.Invno.ToString()).ToList();
+                        vInvnoList = this.ProdutnInvnoList.Select(x => x.Invoice.ToString()).ToList();
                     }
-                    
+                    else if (ReturnForm == "ENDSHEET")
+                    {
+                        vInvnoList = this.EndSheetInvnoList.Select(x => x.Invoice.ToString()).ToList();
+                    }
+
                     try
                     {
                         //value is trimmed to 5 spaces, binding is took out
@@ -960,6 +1073,10 @@ namespace Mbc5.Dialogs {
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
+                }else if (SearchType == "SCHCODE" && ReturnForm == "ENDSHEET")
+                {
+                    this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+                    this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
                 }
                 else if (SearchType == "SCHNAME" && ReturnForm == "CUST")
 
@@ -976,7 +1093,13 @@ namespace Mbc5.Dialogs {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
 
-                } else if (SearchType == "JobNo" && ReturnForm == "CUST") {
+                }
+                else if (SearchType == "SCHNAME" && ReturnForm == "ENDSHEET")
+                {
+                    this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+                    this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
+                }
+                else if (SearchType == "JobNo" && ReturnForm == "CUST") {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
 
@@ -987,6 +1110,12 @@ namespace Mbc5.Dialogs {
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[3].Value;
 
                 }
+                else if (SearchType == "JOBNO" && ReturnForm == "ENDSHEET")
+                {
+                    this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+                    this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
+                }
+
                 else if (SearchType == "ORACLECODE" && ReturnForm == "CUST")
 
                 {
@@ -1018,6 +1147,11 @@ namespace Mbc5.Dialogs {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[2].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[0].Value;
                 } else if (SearchType == "INVNO" && ReturnForm == "PRODUCTION")
+                {
+                    this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[2].Value.ToString();
+                    this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[0].Value;
+                }
+                else if (SearchType == "INVNO" && ReturnForm == "ENDSHEET")
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[2].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[0].Value;

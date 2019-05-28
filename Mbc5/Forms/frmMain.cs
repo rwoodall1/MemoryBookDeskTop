@@ -534,9 +534,9 @@ namespace Mbc5.Forms
 		{
 			if (this.ActiveMdiChild == null)
 			{
-				frmEndSheet frmProdutn = new frmEndSheet(this.ApplicationUser);
-				frmProdutn.MdiParent = this;
-				frmProdutn.Show();
+				frmEndSheet frmEndSheet = new frmEndSheet(this.ApplicationUser);
+                frmEndSheet.MdiParent = this;
+                frmEndSheet.Show();
 				this.Cursor = Cursors.Default;
 
 
