@@ -49,7 +49,9 @@ namespace Mbc5.Forms.MemoryBook {
         private List<OracleSalesSearch> OracleSalesCodeList { get; set; }
         private List<JobNoSearch> CustJobCodeList { get; set; }
         private List<SalesJobCode> SalesJobCodeList { get; set; }
-        public ReturnValues ReturnValue { get; set; } = new ReturnValues();
+		private List<SalesJobCode> ProdJobCodeList { get; set; }
+		
+		public ReturnValues ReturnValue { get; set; } = new ReturnValues();
 
         private string currentSearchValue;
 
@@ -258,7 +260,7 @@ namespace Mbc5.Forms.MemoryBook {
                        
                             break;
                         case "SALES":
-                            cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno,C.Contryear, From Cust C Left Join Quotes Q ON Cust.schcode=Q.Schcode Left Join Produtn P on C.schcode=P.schcode Where P.JobNo !='' Order By Jobno";
+                            cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno,P.ProdNo,C.Contryear, From Cust C Left Join Quotes Q ON Cust.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.Invno Where P.JobNo !='' Order By Jobno";
                             sqlclient.CommandText(cmdtext);
                             var jobcoderesult = sqlclient.SelectMany<SalesJobCode>();
                             if (jobcoderesult.IsError)
@@ -273,7 +275,19 @@ namespace Mbc5.Forms.MemoryBook {
                             txtSearch.Select();
                             break;
                         case "PRODUCTION":
-                            break;
+							cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.invno Where P.JobNo !='' Order By Jobno";
+							sqlclient.CommandText(cmdtext);
+							var prodJobcoderesult = sqlclient.SelectMany<SalesJobCode>();
+							if (prodJobcoderesult.IsError) {
+								MbcMessageBox.Error(prodJobcoderesult.Errors[0].ErrorMessage, "Error");
+								return;
+							}
+							var vProdJobCodes = (List<SalesJobCode>)prodJobcoderesult.Data;
+							this.ProdJobCodeList = vProdJobCodes;
+							bsData.DataSource = this.ProdJobCodeList;
+							dgSearch.DataSource = bsData;
+							txtSearch.Select();
+							break;
                     }
                     break;
                 case "INVNO":
@@ -357,19 +371,33 @@ namespace Mbc5.Forms.MemoryBook {
 
                             break;
                         case "SALES":
+							cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
+							sqlclient.CommandText(cmdtext);
+							var result1 = sqlclient.SelectMany<ProdNoSearch>();
+							if (result1.IsError) {
+								MbcMessageBox.Error(result1.Errors[0].ErrorMessage, "Error");
+								return;
+							}
+							var lRetRecs1 = (List<ProdNoSearch>)result1.Data;
+							this.ProdutnNoList = lRetRecs1;
+							bsData.DataSource = this.ProdutnNoList;
 
-                            break;
+							dgSearch.DataSource = bsData.DataSource;
+
+							txtSearch.Select();
+							break;
+					
                         case "PRODUCTION":
                             cmdtext = @"Select RTrim(P.ProdNo)AS ProdNo,P.Invno,C.Schname,C.Schcode,C.Contryear From Produtn P Left Join Cust C On P.Schcode=C.Schcode Order By ProdNo";
                             sqlclient.CommandText(cmdtext);
-                            var result1 = sqlclient.SelectMany<ProdNoSearch>();
-                            if (result1.IsError)
+                            var result2 = sqlclient.SelectMany<ProdNoSearch>();
+                            if (result2.IsError)
                             {
-                                MbcMessageBox.Error(result1.Errors[0].ErrorMessage, "Error");
+                                MbcMessageBox.Error(result2.Errors[0].ErrorMessage, "Error");
                                 return;
                             }
-                            var lRetRecs1 = (List<ProdNoSearch>)result1.Data;
-                            this.ProdutnNoList = lRetRecs1;
+                            var lRetRecs2 = (List<ProdNoSearch>)result2.Data;
+                            this.ProdutnNoList = lRetRecs2;
                             bsData.DataSource = this.ProdutnNoList;
 
                             dgSearch.DataSource = bsData.DataSource;
@@ -692,8 +720,8 @@ namespace Mbc5.Forms.MemoryBook {
                     }
                     else if (ReturnForm == "PRODUCTION")
                     {
-                       
-                    }
+						vJobList = this.ProdJobCodeList.Select(x => x.JobNo).ToList();
+					}
 
                     try
                     {

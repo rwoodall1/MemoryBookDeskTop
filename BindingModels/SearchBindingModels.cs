@@ -152,7 +152,8 @@ namespace BindingModels
         public string Schcode { get; set; }
         public string Schname { get; set; }
         public string Invoice { get; set; }
-        public string Contryear { get; set; }
+		public string ProdNo { get; set; }
+		public string Contryear { get; set; }
         
     }
     //Produtn

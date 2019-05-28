@@ -3669,8 +3669,54 @@ namespace Mbc5.Forms
 
 
         }
-        //nothing below here  
-    }
+		public override void JobNoSearch() {
+
+			var produtnResult = SaveProdutn();
+			if (produtnResult.IsError) {
+				var result1 = MessageBox.Show("Production record could not be saved:" + produtnResult.Errors[0].ErrorMessage + " Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+				if (result1 == DialogResult.No) {
+
+					return;
+				}
+			}
+
+			DataRowView currentrow = (DataRowView)produtnBindingSource.Current;
+			var jobno = currentrow["jobno"].ToString();
+
+			frmSearch frmSearch = new frmSearch("JOBNO", "PRODUCTION", jobno);
+
+			var result = frmSearch.ShowDialog();
+			if (result == DialogResult.OK) {
+				//values preserved after close
+
+				try {
+					this.Invno = frmSearch.ReturnValue.Invno;
+					this.Schcode = frmSearch.ReturnValue.Schcode;
+					if (string.IsNullOrEmpty(Schcode)) {
+						MbcMessageBox.Hand("A search value was not returned", "Error");
+						return;
+					}
+
+					Fill();
+					DataRowView current = (DataRowView)produtnBindingSource.Current;
+
+					this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+					this.Schcode = current["Schcode"].ToString();
+				} catch (Exception ex) {
+					MbcMessageBox.Error(ex.Message, "Error");
+					return;
+
+				}
+				this.Cursor = Cursors.Default;
+				frmProdutn_Paint(this, null);
+
+			}
+
+
+
+		}
+		//nothing below here  
+	}
     public class BinderyInfo
 	{
 		public string Schname { get; set; }
