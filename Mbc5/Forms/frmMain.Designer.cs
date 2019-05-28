@@ -256,7 +256,7 @@
             this.testFormToolStripMenuItem.Name = "testFormToolStripMenuItem";
             this.testFormToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.testFormToolStripMenuItem.Text = "TestForm";
-            this.testFormToolStripMenuItem.Click += new System.EventHandler(this.testFormToolStripMenuItem_Click);
+        
             // 
             // editToolStripMenuItem
             // 

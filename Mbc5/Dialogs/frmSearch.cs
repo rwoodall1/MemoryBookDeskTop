@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using BaseClass.Classes;
 using BaseClass;
 using BindingModels;
-namespace Mbc5.Forms.MemoryBook {
+namespace Mbc5.Dialogs {
     public partial class frmSearch : Form
     {
         public frmSearch(string vSearchType, string vForm, string vcurrentSearchValue)
@@ -260,7 +260,7 @@ namespace Mbc5.Forms.MemoryBook {
                        
                             break;
                         case "SALES":
-                            cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno,P.ProdNo,C.Contryear, From Cust C Left Join Quotes Q ON Cust.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.Invno Where P.JobNo !='' Order By Jobno";
+                            cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno AS Invoice,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.Invno Where P.JobNo !='' Order By Jobno";
                             sqlclient.CommandText(cmdtext);
                             var jobcoderesult = sqlclient.SelectMany<SalesJobCode>();
                             if (jobcoderesult.IsError)
@@ -275,7 +275,7 @@ namespace Mbc5.Forms.MemoryBook {
                             txtSearch.Select();
                             break;
                         case "PRODUCTION":
-							cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.invno Where P.JobNo !='' Order By Jobno";
+							cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno AS Invoice,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.invno Where P.JobNo !='' Order By Jobno";
 							sqlclient.CommandText(cmdtext);
 							var prodJobcoderesult = sqlclient.SelectMany<SalesJobCode>();
 							if (prodJobcoderesult.IsError) {
@@ -710,7 +710,7 @@ namespace Mbc5.Forms.MemoryBook {
                     }
                     break;
                 case "JOBNO":
-                    List<string> vJobList = new List<string>();
+                   List<string> vJobList = new List<string>();
                     if (ReturnForm == "CUST" )
                     {
                         vJobList = this.CustJobCodeList.Select(x => x.JobNo).ToList();
@@ -981,10 +981,10 @@ namespace Mbc5.Forms.MemoryBook {
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
 
                 }
-                else if (SearchType == "JobNo" && ReturnForm == "SALES")
+                else if (SearchType == "JOBNO" && (ReturnForm == "SALES"||ReturnForm=="PRODUCTION"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
-                    this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
+                    this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[3].Value;
 
                 }
                 else if (SearchType == "ORACLECODE" && ReturnForm == "CUST")

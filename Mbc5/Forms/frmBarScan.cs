@@ -1262,8 +1262,14 @@ namespace Mbc5.Forms
 
         }
 
-            #endregion
+        #endregion
+
+        private void frmBarScan_Activated(object sender, EventArgs e)
+        {
+            var frmMain = (frmMain)this.MdiParent;
+            frmMain.HideSearchButtons();
         }
+    }
 
     }
 

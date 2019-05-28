@@ -74,6 +74,7 @@ namespace Mbc5.Forms
             tsLastNameSearch.Visible = false;
             tsZipCodeSearch.Visible = false;
             tsEmailSearch.Visible = false;
+            tsJobNo.Visible = false;
 
         }
         public void PrintScreen() {
@@ -441,14 +442,7 @@ namespace Mbc5.Forms
             this.PrintScreen();
             }
 
-        private void testToolStripMenuItem_Click(object sender,EventArgs e) {
-            this.Cursor = Cursors.AppStarting;
-            test test = new test();
-          
-            test.MdiParent = this;
-            test.Show();
-            this.Cursor = Cursors.Default;
-            }
+        
 
         private void tsSave_Click(object sender,EventArgs e) {
             try {
@@ -610,14 +604,7 @@ namespace Mbc5.Forms
             MessageBox.Show("MBC version:" + localVersion, "Version", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void testFormToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-          test test = new test();
-           
-            test.Show();
-            this.Cursor = Cursors.Default;
-        }
-
+       
         private void barScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
            

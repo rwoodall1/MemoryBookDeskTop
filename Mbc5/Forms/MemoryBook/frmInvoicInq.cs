@@ -30,12 +30,13 @@ namespace Mbc5.Forms.MemoryBook
             frmMain frmMain = (frmMain)this.MdiParent;
 
         }
+        public frmMain frmMain { get; set; }
         public List<Invoice> Invoices { get; set; }
         private void frmInvoicInq_Load(object sender, EventArgs e)
         {
-		
+            frmMain frmMain = (frmMain)this.MdiParent;
 
-			dgInvoices.AutoGenerateColumns = false;
+            dgInvoices.AutoGenerateColumns = false;
         }
        
 
@@ -302,7 +303,10 @@ namespace Mbc5.Forms.MemoryBook
 		
 		}
 
-		
-	}
+        private void frmInvoicInq_Activated(object sender, EventArgs e)
+        {
+            try { this.frmMain.HideSearchButtons(); } catch { }
+        }
+    }
   
 }

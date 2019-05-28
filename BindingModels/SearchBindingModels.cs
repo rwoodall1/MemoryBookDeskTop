@@ -151,7 +151,7 @@ namespace BindingModels
         public string JobNo { get; set; }
         public string Schcode { get; set; }
         public string Schname { get; set; }
-        public string Invoice { get; set; }
+        public int Invoice { get; set; }
 		public string ProdNo { get; set; }
 		public string Contryear { get; set; }
         

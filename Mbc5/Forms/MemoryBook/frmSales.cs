@@ -21,7 +21,7 @@ using System.IO;
 using System.Reflection;
 using BaseClass;
 using BaseClass.Core;
-
+using Mbc5.Dialogs;
 namespace Mbc5.Forms.MemoryBook
 {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged
@@ -4209,71 +4209,63 @@ namespace Mbc5.Forms.MemoryBook
                 this.Cursor = Cursors.Default;
             }
         }
-       
-        //public override void InvoiceNumberSearch()
-        //{
-        //    var currentSchool = this.Schcode;
-        //    if (DoPhoneLog())
-        //    {
-        //        MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-        //        return;
-        //    }
-        //    var custSaveResult = Save();
-        //    if (custSaveResult.IsError)
-        //    {
-        //        DialogResult result1 = MessageBox.Show("Record failed to save. Hit cancel to correct.", "Save", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-        //        if (result1 == DialogResult.Cancel)
-        //        {
-        //            return;
-        //        }
-        //    }
+        public override void JobNoSearch()
+        {
 
-        //    frmSearch frmSearch = new frmSearch("Invno", "Cust", this.Invno.ToString());
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
 
-        //    var result = frmSearch.ShowDialog();
-        //    if (result == DialogResult.OK)
-        //    {
-        //        string retSchcode = frmSearch.ReturnValue;            //values preserved after close
-        //        if (string.IsNullOrEmpty(retSchcode))
-        //        {
-        //            MbcMessageBox.Hand("A search value was not returned", "Error");
-        //        }
-        //        int records = 0;
-        //        try
-        //        {
-        //            records = this.custTableAdapter.Fill(this.dsCust.cust, retSchcode);
-        //            //records = this.custTableAdapter.Fill(this.dsCust.cust, txtSchCodesrch.Text);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MbcMessageBox.Error(ex.Message, "Error");
-        //            return;
+                return;
+            }
 
-        //        }
-        //        try
-        //        {
-        //            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, lblSchcodeVal.Text);
-        //            this.datecontTableAdapter.Fill(this.dsCust.datecont, lblSchcodeVal.Text);
-        //            TeleGo = false;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MbcMessageBox.Error(ex.Message, "Error");
-        //        }
-        //        this.Cursor = Cursors.Default;
-        //    }
-        //    else { return; }
+            DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
+            var invno = currentrow["invno"].ToString();
+        
 
-        //    SetInvnoSchCode();
-        //    frmMbcCust_Paint(this, null);
+            frmSearch frmSearch = new frmSearch("JOBNO", "SALES", "");
 
-        //}
+            
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+
+                    this.Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                frmSales_Paint(this, null);
+
+                this.Cursor = Cursors.Default;
+            }
 
 
 
+        }
 
-
-        //  nothing below here
+      
     }
     
    }

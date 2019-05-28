@@ -62,6 +62,7 @@ namespace Mbc5.Forms
 				handler(this, e);
 		}
 		private UserPrincipal ApplicationUser { get; set; }
+        private frmMain frmMain { get; set; }
         #endregion
         private void SetConnectionString()
         {
@@ -77,6 +78,8 @@ namespace Mbc5.Forms
         }
         private void frmEndSheet_Load(object sender, EventArgs e)
 		{
+            this.frmMain = (frmMain)this.MdiParent;
+
             this.SetConnectionString();
             Fill();
 		}
@@ -468,7 +471,7 @@ namespace Mbc5.Forms
 				}
 				else
 				{
-					DialogResult result = MessageBox.Show("End Sheet record was not found. For this invoice number (" + Invno + "), do you want to add one?", "Invoice#", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Stop);
+					DialogResult result = MessageBox.Show("End Sheet record was not found. For this invoice number (" + Invno + "), do you want to add one?", "Invoice#", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
 					if (result == DialogResult.Yes)
 					{
 						if (Add())
@@ -695,5 +698,213 @@ namespace Mbc5.Forms
         {
             tbEndSheets.Visible = true;
         }
+
+        private void frmEndSheet_Activated(object sender, EventArgs e)
+        {
+            frmMain.ShowSearchButtons(this.Name);
+        }
+
+        private void frmEndSheet_Deactivate(object sender, EventArgs e)
+        {
+            frmMain.HideSearchButtons();
+        }
+        public override void SchnameSearch()
+        {
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+            DataRowView currentrow = (DataRowView)custBindingSource.Current;
+            var schname = currentrow["schname"].ToString();
+
+            frmSearch frmSearch = new frmSearch("Schname", "SALES", schname);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+
+                frmSales_Paint(this, null);
+                this.Cursor = Cursors.Default;
+            }
+
+
+
+        }
+        //public override void OracleCodeSearch()
+        //{
+        //    var saveResult = this.Save();
+        //    if (saveResult.IsError)
+        //    {
+
+        //        return;
+        //    }
+        //    DataRowView currentrow = (DataRowView)custBindingSource.Current;
+        //    var oraclecode = currentrow["oraclecode"].ToString();
+
+        //    frmSearch frmSearch = new frmSearch("OracleCode", "SALES", oraclecode);
+
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        //values preserved after close
+
+        //        try
+        //        {
+        //            this.Invno = frmSearch.ReturnValue.Invno;
+        //            this.Schcode = frmSearch.ReturnValue.Schcode;
+        //            if (string.IsNullOrEmpty(Schcode))
+        //            {
+        //                MbcMessageBox.Hand("A search value was not returned", "Error");
+        //                return;
+        //            }
+        //            this.Fill();
+        //            DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+        //            this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+        //            this.Schcode = current["Schcode"].ToString();
+        //            EnableAllControls(this);
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //            return;
+
+        //        }
+        //        frmSales_Paint(this, null);
+
+        //        this.Cursor = Cursors.Default;
+        //    }
+        //}
+        //public override void InvoiceNumberSearch()
+        //{
+        //    var saveResult = this.Save();
+        //    if (saveResult.IsError)
+        //    {
+
+        //        return;
+        //    }
+        //    DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
+        //    var invno = currentrow["invno"].ToString();
+
+        //    frmSearch frmSearch = new frmSearch("INVNO", "SALES", invno);
+
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        //values preserved after close
+
+        //        try
+        //        {
+        //            this.Invno = frmSearch.ReturnValue.Invno;
+        //            this.Schcode = frmSearch.ReturnValue.Schcode;
+        //            if (string.IsNullOrEmpty(Schcode))
+        //            {
+        //                MbcMessageBox.Hand("A search value was not returned", "Error");
+        //                return;
+        //            }
+        //            this.Fill();
+        //            DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+        //            this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+        //            this.Schcode = current["Schcode"].ToString();
+        //            EnableAllControls(this);
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //            return;
+
+        //        }
+        //        frmSales_Paint(this, null);
+
+        //        this.Cursor = Cursors.Default;
+        //    }
+        //}
+        //public override void JobNoSearch()
+        //{
+
+        //    var saveResult = this.Save();
+        //    if (saveResult.IsError)
+        //    {
+
+        //        return;
+        //    }
+
+        //    DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
+        //    var invno = currentrow["invno"].ToString();
+
+
+        //    frmSearch frmSearch = new frmSearch("JOBNO", "SALES", "");
+
+
+
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        //values preserved after close
+
+        //        try
+        //        {
+        //            this.Invno = frmSearch.ReturnValue.Invno;
+        //            this.Schcode = frmSearch.ReturnValue.Schcode;
+        //            if (string.IsNullOrEmpty(Schcode))
+        //            {
+        //                MbcMessageBox.Hand("A search value was not returned", "Error");
+        //                return;
+        //            }
+
+        //            this.Fill();
+        //            DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+        //            this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+        //            this.Schcode = current["Schcode"].ToString();
+        //            EnableAllControls(this);
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //            return;
+
+        //        }
+        //        frmSales_Paint(this, null);
+
+        //        this.Cursor = Cursors.Default;
+        //    }
+
+
+
+        //}
+
+        //nothing below
     }
 }

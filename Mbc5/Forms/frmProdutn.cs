@@ -3681,8 +3681,14 @@ namespace Mbc5.Forms
 			}
 
 			DataRowView currentrow = (DataRowView)produtnBindingSource.Current;
-			var jobno = currentrow["jobno"].ToString();
+            string jobno = "";
+            try {
+			 jobno = currentrow["jobno"].ToString();
+            }
+            catch (Exception ex)
+            {
 
+            }
 			frmSearch frmSearch = new frmSearch("JOBNO", "PRODUCTION", jobno);
 
 			var result = frmSearch.ShowDialog();

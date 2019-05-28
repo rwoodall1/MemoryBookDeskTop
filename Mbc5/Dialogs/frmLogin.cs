@@ -40,6 +40,7 @@ namespace Mbc5.Dialogs {
             this.pbLoading.Visible = true;
             var AppConnectionString = "";
             var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+          
             if (Environment == "DEV")
             {
                 AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5;User Id=sa;password=Briggitte1; Connect Timeout=5";
