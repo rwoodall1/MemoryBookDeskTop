@@ -145,6 +145,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsEndSheet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsExtra.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsExtra.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsMktInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -541,6 +546,17 @@
     </None>
     <None Include="DataSets\dsCust.xss">
       <DependentUpon>dsCust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsExtra.xsc">
+      <DependentUpon>dsExtra.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsExtra.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsExtra.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsExtra.xss">
+      <DependentUpon>dsExtra.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsRcard.xsc">
       <DependentUpon>dsRcard.xsd</DependentUpon>

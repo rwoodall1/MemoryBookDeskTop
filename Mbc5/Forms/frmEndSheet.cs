@@ -49,10 +49,8 @@ namespace Mbc5.Forms
 			{
 				DisableControls(tab);
 			}
-			EnableControls(this.txtInvoiceNoSrch);
-			EnableControls(this.btnInvoiceSrch);
-			EnableControls(this.txtsheetSrch);
-			EnableControls(this.btnsheetSrch);
+			
+		
 		}
 		#region Properties
 		public void InvokePropertyChanged(PropertyChangedEventArgs e)
@@ -93,12 +91,15 @@ namespace Mbc5.Forms
 			switch (tbEndSheets.SelectedIndex)
 			{
 				case 0:
-					var endSheetResult=SaveEndSheet();
+                 
+                    var endSheetResult=SaveEndSheet();
 					if (endSheetResult.IsError) {
 						MbcMessageBox.Error(endSheetResult.Errors[0].ErrorMessage, "");
 						processingResult.IsError = true;
 					} else {
+                      
 						MbcMessageBox.Exclamation("End sheet saved.", "Success");
+                       
 					}
 
 					break;
@@ -225,9 +226,9 @@ namespace Mbc5.Forms
 					try
 					{
 						this.supplBindingSource.EndEdit();
-						var a = endsheetTableAdapter.Update(dsEndSheet.endsheet);
+						var a = supplTableAdapter.Update(dsEndSheet.suppl);
 						//must refill so we get updated time stamp so concurrency is not thrown
-						supplTableAdapter.Fill(dsEndSheet.suppl, Schcode);
+						supplTableAdapter.FillByInvno(dsEndSheet.suppl,Invno);
 						
 					}
 					catch (Exception ex)
@@ -256,13 +257,13 @@ namespace Mbc5.Forms
 						this.endsheetBindingSource.EndEdit();
 						var a = endsheetTableAdapter.Update(dsEndSheet.endsheet);
 						//must refill so we get updated time stamp so concurrency is not thrown
-						endsheetTableAdapter.Fill(dsEndSheet.endsheet, Invno);
+						
                         try
                         {
                             this.produtnBindingSource.EndEdit();
                             var b = produtnTableAdapter.Update(dsEndSheet.produtn);
                             //must refill so we get updated time stamp so concurrency is not thrown
-                            produtnTableAdapter.Fill(dsEndSheet.produtn, Invno);
+                            
                         }catch(Exception ex)
                         {
                             ex.ToExceptionless()
@@ -271,16 +272,17 @@ namespace Mbc5.Forms
                             processingResult.IsError = true;
                             processingResult.Errors.Add(new ApiProcessingError("Production record failed to update: " + ex.Message, "Production record failed to update: " + ex.Message, ""));
                         }
-
+                        endsheetTableAdapter.Fill(dsEndSheet.endsheet, Invno);
+                        produtnTableAdapter.Fill(dsEndSheet.produtn, Invno);
                     }
 					catch (Exception ex)
 					{
 								
 						ex.ToExceptionless()
-					   .SetMessage("Production record failed to update:" + ex.Message)
+					   .SetMessage("EndSheet record failed to update:" + ex.Message)
 					   .Submit();
 						processingResult.IsError = true;
-						processingResult.Errors.Add(new ApiProcessingError("Production record failed to update: " + ex.Message,"Production record failed to update: " + ex.Message,""));
+						processingResult.Errors.Add(new ApiProcessingError("EndSheet record failed to update: " + ex.Message,"EndSheet record failed to update: " + ex.Message,""));
 					}
 				}
 			}
@@ -414,9 +416,7 @@ namespace Mbc5.Forms
                         {
                             DisableControls(tab);
                         }
-                        EnableControls(this.txtInvoiceNoSrch);
-
-                        EnableControls(this.btnInvoiceSrch);
+                        
                     }
 
 
@@ -430,9 +430,7 @@ namespace Mbc5.Forms
                         {
                             DisableControls(tab);
                         }
-                        EnableControls(this.txtInvoiceNoSrch);
-
-                        EnableControls(this.btnInvoiceSrch);
+                        
                     }
 
                     if (dsEndSheet.produtn.Count < 1)
@@ -445,9 +443,7 @@ namespace Mbc5.Forms
                         {
                             DisableControls(tab);
                         }
-                        EnableControls(this.txtInvoiceNoSrch);
-
-                        EnableControls(this.btnInvoiceSrch);
+                        
                     }
                     else { EnableAllControls(this); }
 
@@ -521,39 +517,7 @@ namespace Mbc5.Forms
 
 		#endregion
 
-		private void btnInvoiceSrch_Click(object sender, EventArgs e)
-		{
-			switch (tbEndSheets.SelectedIndex)
-			{
-				case 0:
-					var endSheetResult = SaveEndSheet();
-					if (endSheetResult.IsError)
-					{
-						var result1 = MessageBox.Show("End sheet record could not be saved:"+endSheetResult.Errors[0].ErrorMessage+" Continue search?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result1 == DialogResult.No)
-						{
-
-							return;
-						}
-					}
-					break;
-
-
-			}
-
-			var sqlQuery = new SQLQuery();
-			string query = "Select invno,schcode from endsheet where invno=@invno";
-			var parameters = new SqlParameter[] { new SqlParameter("@invno", txtInvoiceNoSrch.Text) };
-			var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, query, parameters);
-			if (result.Rows.Count > 0)
-			{
-				Schcode = result.Rows[0]["schcode"].ToString();
-				Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
-				Fill();
-			}
-			else { MessageBox.Show("Record was not found.", "Invoice Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-
-		}
+	
 
 		private void frmEndSheet_Paint(object sender, PaintEventArgs e)
 		{
@@ -942,6 +906,8 @@ namespace Mbc5.Forms
 
             }
 
-            //nothing below
-        }
+       
+
+        //nothing below
+    }
 }

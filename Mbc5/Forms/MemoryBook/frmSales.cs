@@ -22,6 +22,7 @@ using System.Reflection;
 using BaseClass;
 using BaseClass.Core;
 using Mbc5.Dialogs;
+
 namespace Mbc5.Forms.MemoryBook
 {
     public partial class frmSales : BaseClass.frmBase, INotifyPropertyChanged
@@ -1820,6 +1821,7 @@ namespace Mbc5.Forms.MemoryBook
                     custTableAdapter.Fill(dsSales.cust, Schcode);
 
                     quotesTableAdapter.Fill(dsSales.quotes, Schcode);
+                    xtraTableAdapter.Fill(dsExtra.xtra, Schcode);
                     this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
                 }
                 catch (Exception ex)
@@ -4265,7 +4267,118 @@ namespace Mbc5.Forms.MemoryBook
 
         }
 
-      
+       
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+        }
+
+        private void btnCreateInvoice_Click(object sender, EventArgs e)
+        {
+            gpbInvoice.Visible = true;
+
+            CalculateInvoice();
+
+        }
+        private void CalculateInvoice()
+        {
+            lblBookPrice.Text = extrbkprcTextBox1.Text;
+            decimal vBookPrice = 0;
+            decimal vTaxRate = 0;
+            decimal vTaxTotal = 0;
+            decimal vShipping = 0;
+            int quantity = 0;
+            decimal.TryParse(lblBookPrice.Text, out vBookPrice);
+            decimal.TryParse(lblTaxRate.Text, out vTaxRate);
+            decimal.TryParse(txtShippingCharges.Text, out vShipping);
+            int.TryParse(txtQuantity.Text, out quantity);
+            vTaxTotal = ((quantity * vBookPrice) * vTaxRate);
+            lblTaxTotal.Text = vTaxTotal.ToString("0.00");
+            lblInvoiceTotal.Text = ((quantity * vBookPrice) + vTaxTotal+vShipping).ToString("0.OO");
+        }
+
+        private void txtQuantity_Leave(object sender, EventArgs e)
+        {
+            CalculateInvoice();
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            CalculateInvoice();
+        }
+
+        private void lblBookPrice_TextChanged(object sender, EventArgs e)
+        {
+            CalculateInvoice();
+        }
+
+        private void schooltaxrateLabel2_TextChanged(object sender, EventArgs e)
+        {
+            CalculateInvoice();
+        }
+
+        private void btnAddExtra_Click(object sender, EventArgs e)
+        {
+
+            var sqlquery = new SQLCustomClient();
+            if (xtraBindingSource.Count == 0)
+            {
+                //insert
+                var cmdtext = @"Insert into Xtra (Invno,Schcod,Year) values(@Invno,@Schcode,@Year)";
+                sqlquery.AddParameter("@Invno", this.Invno);
+                sqlquery.AddParameter("@Schcode", this.Schcode);
+                sqlquery.AddParameter("@Year", lblinvoiceYear);
+                var result = sqlquery.Insert();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+                    return;
+                }
+            }
+            else
+            {
+                //update
+                var cmdtext = @"Update Xtra 
+                                    SET 
+                                    ,[extrabooks] = @extrabooks
+                                    ,[exunfinish] = @exunfinish
+                                    ,[extrbkshpd] =@extrbkshpd
+                                    ,[exreplshpd] = @exreplshpd
+                                    ,[extrbkshdt] = @extrbkshdt
+                                    ,[extrbktot] = @extrbktot
+                                    ,[exonhand] = @exonhand
+                                    ,[extrbkprc] = @extrbkprc
+                                    ,[xnotes] = @xnotes, text
+                                    ,[room] = @room
+                                    ,[shelf] = @shelf
+                                    ,[rack] = @rack
+                                Where Invno=@Invno";
+
+                sqlquery.AddParameter("@extrabooks", extrabooksTextBox1.Text);
+                sqlquery.AddParameter("@exunfinish", exunfinishTextBox.Text);
+                sqlquery.AddParameter("@extrbkshpd", extrbkshpdTextBox.Text);
+                sqlquery.AddParameter("@exreplshpd", this.Schcode);
+                sqlquery.AddParameter("@extrbkshdt", lblinvoiceYear);
+                sqlquery.AddParameter("@extrbktot", this.Schcode);
+                sqlquery.AddParameter("@exonhand", exonhandTextBox1.Text);
+                sqlquery.AddParameter("@extrbkprc", extrbkprcTextBox1.Text);
+                sqlquery.AddParameter("@xnotes", xnotesTextBox.Text);
+                sqlquery.AddParameter("@room", roomTextBox.Text);
+                sqlquery.AddParameter("@shelf", shelfTextBox.Text);
+                sqlquery.AddParameter("@rack", rackTextBox.Text);
+              
+                var result = sqlquery.Update() ;
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+                    return;
+                }
+
+            }
+        }
+
+        
     }
     
    }

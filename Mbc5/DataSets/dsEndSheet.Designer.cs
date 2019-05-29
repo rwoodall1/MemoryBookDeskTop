@@ -1234,7 +1234,7 @@ namespace Mbc5.DataSets {
                         bool fourclr, 
                         bool scanner, 
                         bool remake, 
-                        string prntsmp, 
+                        bool prntsmp, 
                         System.DateTime proofsent, 
                         System.DateTime apprvdte, 
                         string fldesc, 
@@ -1429,7 +1429,7 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnscanner);
                 this.columnremake = new global::System.Data.DataColumn("remake", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnremake);
-                this.columnprntsmp = new global::System.Data.DataColumn("prntsmp", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnprntsmp = new global::System.Data.DataColumn("prntsmp", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprntsmp);
                 this.columnproofsent = new global::System.Data.DataColumn("proofsent", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproofsent);
@@ -1526,14 +1526,13 @@ namespace Mbc5.DataSets {
                 this.columnfourclr.AllowDBNull = false;
                 this.columnscanner.AllowDBNull = false;
                 this.columnremake.AllowDBNull = false;
-                this.columnprntsmp.MaxLength = 1;
+                this.columnprntsmp.AllowDBNull = false;
                 this.columnfldesc.MaxLength = 100;
                 this.columnfrdesc.MaxLength = 100;
                 this.columnspecinst.MaxLength = 2147483647;
                 this.columnprtvend.MaxLength = 3;
                 this.columnlamvend.MaxLength = 3;
                 this.columndcvend.MaxLength = 3;
-                this.columnothr.AllowDBNull = false;
                 this.columnothrvend.MaxLength = 3;
                 this.columnacceptd.MaxLength = 1;
                 this.columnreprnacp.MaxLength = 1;
@@ -5851,14 +5850,9 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string prntsmp {
+            public bool prntsmp {
                 get {
-                    try {
-                        return ((string)(this[this.tableendsheet.prntsmpColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'prntsmp\' in table \'endsheet\' is DBNull.", e);
-                    }
+                    return ((bool)(this[this.tableendsheet.prntsmpColumn]));
                 }
                 set {
                     this[this.tableendsheet.prntsmpColumn] = value;
@@ -6093,7 +6087,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool othr {
                 get {
-                    return ((bool)(this[this.tableendsheet.othrColumn]));
+                    try {
+                        return ((bool)(this[this.tableendsheet.othrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'othr\' in table \'endsheet\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableendsheet.othrColumn] = value;
@@ -6585,18 +6584,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsprntsmpNull() {
-                return this.IsNull(this.tableendsheet.prntsmpColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetprntsmpNull() {
-                this[this.tableendsheet.prntsmpColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsproofsentNull() {
                 return this.IsNull(this.tableendsheet.proofsentColumn);
             }
@@ -6761,6 +6748,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdcdtebkNull() {
                 this[this.tableendsheet.dcdtebkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsothrNull() {
+                return this.IsNull(this.tableendsheet.othrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetothrNull() {
+                this[this.tableendsheet.othrColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10853,6 +10852,7 @@ namespace Mbc5.DataSets.dsEndSheetTableAdapters {
             tableMapping.ColumnMappings.Add("clr4", "clr4");
             tableMapping.ColumnMappings.Add("clr5", "clr5");
             tableMapping.ColumnMappings.Add("clr6", "clr6");
+            tableMapping.ColumnMappings.Add("prntsmp", "prntsmp");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -10922,8 +10922,8 @@ SET                endshtno = @endshtno, stock = @stock, fourclr = @fourclr, sca
                          dcdtesent = @dcdtesent, dcdtebk = @dcdtebk, othr = @othr, othrvend = @othrvend, otdtesent = @otdtesent, otdtebk = @otdtebk, prntsam = @prntsam, acceptd = @acceptd, reqstdcpy = @reqstdcpy, 
                          reprntdte = @reprntdte, reprnacp = @reprnacp, reason = @reason, desorgdte = @desorgdte, reprreas = @reprreas, persondest = @persondest, csonhold = @csonhold, csoffhold = @csoffhold, 
                          endshtype = @endshtype, endstrecv = @endstrecv, spotclr = @spotclr, frcopies = @frcopies, bkcopies = @bkcopies, bldesc = @bldesc, brdesc = @brdesc, prtdtebk = @prtdtebk, prtdtesent = @prtdtesent, 
-                         prtvend = @prtvend, specinst = @specinst, proofsent = @proofsent, apprvdte = @apprvdte, fldesc = @fldesc, frdesc = @frdesc, clr1 = @clr1, clr2 = @clr2, clr3 = @clr3, clr4 = @clr4, clr5 = @clr5, 
-                         clr6 = @clr6
+                         prtvend = @prtvend, specinst = @specinst, proofsent = @proofsent, apprvdte = @apprvdte, fldesc = @fldesc, frdesc = @frdesc, clr1 = @clr1, clr2 = @clr2, clr3 = @clr3, clr4 = @clr4, clr5 = @clr5, clr6 = @clr6, 
+                         prntsmp = @prntsmp
 WHERE        (invno = @invno)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@endshtno", global::System.Data.SqlDbType.Char, 5, global::System.Data.ParameterDirection.Input, 0, 0, "endshtno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10937,7 +10937,7 @@ WHERE        (invno = @invno)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dcvend", global::System.Data.SqlDbType.Char, 3, global::System.Data.ParameterDirection.Input, 0, 0, "dcvend", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dcdtesent", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "dcdtesent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dcdtebk", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "dcdtebk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@othr", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "othr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@othr", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "othr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@othrvend", global::System.Data.SqlDbType.Char, 3, global::System.Data.ParameterDirection.Input, 0, 0, "othrvend", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@otdtesent", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "otdtesent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@otdtebk", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "otdtebk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10973,6 +10973,7 @@ WHERE        (invno = @invno)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clr4", global::System.Data.SqlDbType.Char, 15, global::System.Data.ParameterDirection.Input, 0, 0, "clr4", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clr5", global::System.Data.SqlDbType.Char, 15, global::System.Data.ParameterDirection.Input, 0, 0, "clr5", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clr6", global::System.Data.SqlDbType.Char, 15, global::System.Data.ParameterDirection.Input, 0, 0, "clr6", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prntsmp", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "prntsmp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -10991,7 +10992,7 @@ WHERE        (invno = @invno)";
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        endshtno, invno, stock, fourclr, scanner, remake, lamvend, lamdtesent, lamdtebk, dcvend, dcdtesent, dcdtebk, othr, othrvend, otdtesent, otdtebk, prntsam, acceptd, reqstdcpy, reprntdte, reprnacp, reason, 
                          desorgdte, reprreas, persondest, csonhold, csoffhold, endshtype, endstrecv, spotclr, frcopies, bkcopies, bldesc, brdesc, timestamp_column, prtdtebk, prtdtesent, prtvend, specinst, proofsent, apprvdte, fldesc, 
-                         frdesc, clr1, clr2, clr3, clr4, clr5, clr6
+                         frdesc, clr1, clr2, clr3, clr4, clr5, clr6, prntsmp
 FROM            dbo.endsheet
 WHERE        (invno = @Invno)
 ORDER BY invno";

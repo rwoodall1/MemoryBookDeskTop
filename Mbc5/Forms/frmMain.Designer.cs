@@ -256,7 +256,6 @@
             this.testFormToolStripMenuItem.Name = "testFormToolStripMenuItem";
             this.testFormToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.testFormToolStripMenuItem.Text = "TestForm";
-        
             // 
             // editToolStripMenuItem
             // 
@@ -680,6 +679,7 @@
             this.tsJobNo.Size = new System.Drawing.Size(23, 22);
             this.tsJobNo.Text = "J";
             this.tsJobNo.ToolTipText = "JobNo";
+            this.tsJobNo.Visible = false;
             this.tsJobNo.Click += new System.EventHandler(this.tsJobNo_Click);
             // 
             // frmMain

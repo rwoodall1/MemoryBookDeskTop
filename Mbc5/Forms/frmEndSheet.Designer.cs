@@ -86,13 +86,18 @@
             System.Windows.Forms.Label label39;
             System.Windows.Forms.Label label34;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEndSheet));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label label35;
             this.tbEndSheets = new System.Windows.Forms.TabControl();
             this.pgEndSheets = new System.Windows.Forms.TabPage();
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.laminatedTextBox = new System.Windows.Forms.TextBox();
+            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsEndSheet = new Mbc5.DataSets.dsEndSheet();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -103,13 +108,17 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnsheetSrch = new System.Windows.Forms.Button();
-            this.txtsheetSrch = new System.Windows.Forms.TextBox();
             this.reprntdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.btnInvoiceSrch = new System.Windows.Forms.Button();
-            this.txtInvoiceNoSrch = new System.Windows.Forms.TextBox();
+            this.endsheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.endsheetdetailDataGridView = new System.Windows.Forms.DataGridView();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endsheetdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reasonTextBox = new System.Windows.Forms.TextBox();
             this.persondestTextBox = new System.Windows.Forms.TextBox();
             this.reprnacpCheckBox = new System.Windows.Forms.CheckBox();
@@ -149,7 +158,6 @@
             this.bkcopiesTextBox = new System.Windows.Forms.TextBox();
             this.bldescTextBox = new System.Windows.Forms.TextBox();
             this.brdescTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.invnoLabel2 = new System.Windows.Forms.Label();
             this.prodnoLabel2 = new System.Windows.Forms.Label();
             this.specinstTextBox = new System.Windows.Forms.TextBox();
@@ -176,7 +184,16 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.suppdetailDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suppdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.partmemoTextBox = new System.Windows.Forms.TextBox();
+            this.supplBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.totsigsTextBox = new System.Windows.Forms.TextBox();
             this.supplementsCheckBox = new System.Windows.Forms.CheckBox();
             this.oursuppCheckBox = new System.Windows.Forms.CheckBox();
@@ -213,6 +230,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.PreFlight = new System.Windows.Forms.TabPage();
             this.technoteTextBox = new System.Windows.Forms.TextBox();
+            this.preflitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custquestTextBox = new System.Windows.Forms.TextBox();
             this.numsentTextBox = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -260,6 +278,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.specinstTextBox1 = new System.Windows.Forms.TextBox();
             this.customdescTextBox = new System.Windows.Forms.TextBox();
+            this.bannerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.customCheckBox = new System.Windows.Forms.CheckBox();
             this.txtcolorComboBox = new System.Windows.Forms.ComboBox();
             this.bkcolorComboBox = new System.Windows.Forms.ComboBox();
@@ -274,28 +293,6 @@
             this.numTextBox = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsEndSheet = new Mbc5.DataSets.dsEndSheet();
-            this.endsheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endsheetdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.suppdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.supplBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.preflitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bannerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager();
             this.produtnTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.produtnTableAdapter();
@@ -306,7 +303,6 @@
             this.suppdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.suppdetailTableAdapter();
             this.preflitTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.preflitTableAdapter();
             this.bannerTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.bannerTableAdapter();
-            this.laminatedTextBox = new System.Windows.Forms.TextBox();
             prodnoLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             clr1Label = new System.Windows.Forms.Label();
@@ -363,17 +359,26 @@
             label37 = new System.Windows.Forms.Label();
             label39 = new System.Windows.Forms.Label();
             label34 = new System.Windows.Forms.Label();
+            label35 = new System.Windows.Forms.Label();
             this.tbEndSheets.SuspendLayout();
             this.pgEndSheets.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.Supplement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).BeginInit();
             this.PreFlight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).BeginInit();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -382,14 +387,6 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.Banner.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -925,13 +922,10 @@
             // 
             this.pgEndSheets.AutoScroll = true;
             this.pgEndSheets.BackColor = System.Drawing.SystemColors.Control;
+            this.pgEndSheets.Controls.Add(label35);
             this.pgEndSheets.Controls.Add(this.laminatedTextBox);
             this.pgEndSheets.Controls.Add(this.bindingNavigator1);
-            this.pgEndSheets.Controls.Add(this.btnsheetSrch);
-            this.pgEndSheets.Controls.Add(this.txtsheetSrch);
             this.pgEndSheets.Controls.Add(this.reprntdteDateTimePicker);
-            this.pgEndSheets.Controls.Add(this.btnInvoiceSrch);
-            this.pgEndSheets.Controls.Add(this.txtInvoiceNoSrch);
             this.pgEndSheets.Controls.Add(this.endsheetdetailDataGridView);
             this.pgEndSheets.Controls.Add(reasonLabel);
             this.pgEndSheets.Controls.Add(this.reasonTextBox);
@@ -969,7 +963,6 @@
             this.pgEndSheets.Controls.Add(this.label7);
             this.pgEndSheets.Controls.Add(this.groupBox2);
             this.pgEndSheets.Controls.Add(this.groupBox1);
-            this.pgEndSheets.Controls.Add(this.button1);
             this.pgEndSheets.Controls.Add(this.invnoLabel2);
             this.pgEndSheets.Controls.Add(this.prodnoLabel2);
             this.pgEndSheets.Controls.Add(this.specinstTextBox);
@@ -1012,10 +1005,25 @@
             this.pgEndSheets.TabIndex = 0;
             this.pgEndSheets.Text = "End Sheet";
             // 
-            // quotesBindingSource
+            // laminatedTextBox
             // 
-            this.quotesBindingSource.DataMember = "cust_quotes";
-            this.quotesBindingSource.DataSource = this.custBindingSource;
+            this.laminatedTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.laminatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "laminated", true));
+            this.laminatedTextBox.Location = new System.Drawing.Point(60, 361);
+            this.laminatedTextBox.MaxLength = 1;
+            this.laminatedTextBox.Name = "laminatedTextBox";
+            this.laminatedTextBox.Size = new System.Drawing.Size(22, 20);
+            this.laminatedTextBox.TabIndex = 146;
+            // 
+            // produtnBindingSource
+            // 
+            this.produtnBindingSource.DataMember = "produtn";
+            this.produtnBindingSource.DataSource = this.dsEndSheet;
+            // 
+            // dsEndSheet
+            // 
+            this.dsEndSheet.DataSetName = "dsEndSheet";
+            this.dsEndSheet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigator1
             // 
@@ -1036,14 +1044,14 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(3, 731);
+            this.bindingNavigator1.Location = new System.Drawing.Point(3, 728);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1213, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(1199, 25);
             this.bindingNavigator1.TabIndex = 145;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -1055,6 +1063,16 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "cust_quotes";
+            this.quotesBindingSource.DataSource = this.custBindingSource;
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsEndSheet;
             // 
             // bindingNavigatorCountItem
             // 
@@ -1132,22 +1150,6 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnsheetSrch
-            // 
-            this.btnsheetSrch.Location = new System.Drawing.Point(1046, 34);
-            this.btnsheetSrch.Name = "btnsheetSrch";
-            this.btnsheetSrch.Size = new System.Drawing.Size(60, 23);
-            this.btnsheetSrch.TabIndex = 144;
-            this.btnsheetSrch.Text = "Sheet #";
-            this.btnsheetSrch.UseVisualStyleBackColor = true;
-            // 
-            // txtsheetSrch
-            // 
-            this.txtsheetSrch.Location = new System.Drawing.Point(1111, 34);
-            this.txtsheetSrch.Name = "txtsheetSrch";
-            this.txtsheetSrch.Size = new System.Drawing.Size(67, 20);
-            this.txtsheetSrch.TabIndex = 143;
-            // 
             // reprntdteDateTimePicker
             // 
             this.reprntdteDateTimePicker.CustomFormat = "\'\'";
@@ -1159,23 +1161,10 @@
             this.reprntdteDateTimePicker.TabIndex = 140;
             this.reprntdteDateTimePicker.ValueChanged += new System.EventHandler(this.reprntdteDateTimePicker_ValueChanged);
             // 
-            // btnInvoiceSrch
+            // endsheetBindingSource
             // 
-            this.btnInvoiceSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoiceSrch.Location = new System.Drawing.Point(997, 10);
-            this.btnInvoiceSrch.Name = "btnInvoiceSrch";
-            this.btnInvoiceSrch.Size = new System.Drawing.Size(109, 23);
-            this.btnInvoiceSrch.TabIndex = 139;
-            this.btnInvoiceSrch.Text = "Search Invoice#";
-            this.btnInvoiceSrch.UseVisualStyleBackColor = true;
-            this.btnInvoiceSrch.Click += new System.EventHandler(this.btnInvoiceSrch_Click);
-            // 
-            // txtInvoiceNoSrch
-            // 
-            this.txtInvoiceNoSrch.Location = new System.Drawing.Point(1111, 10);
-            this.txtInvoiceNoSrch.Name = "txtInvoiceNoSrch";
-            this.txtInvoiceNoSrch.Size = new System.Drawing.Size(105, 20);
-            this.txtInvoiceNoSrch.TabIndex = 138;
+            this.endsheetBindingSource.DataMember = "endsheet";
+            this.endsheetBindingSource.DataSource = this.dsEndSheet;
             // 
             // endsheetdetailDataGridView
             // 
@@ -1184,14 +1173,14 @@
             this.endsheetdetailDataGridView.AllowUserToOrderColumns = true;
             this.endsheetdetailDataGridView.AutoGenerateColumns = false;
             this.endsheetdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.endsheetdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.endsheetdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Description,
@@ -1214,6 +1203,50 @@
             this.Description.DataPropertyName = "Description";
             this.Description.HeaderText = "Description";
             this.Description.Name = "Description";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "war";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Actual";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "wdr";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Due";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "wtr";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Time";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Invno";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Invno";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "wir";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Initials";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Visible = false;
+            // 
+            // endsheetdetailBindingSource
+            // 
+            this.endsheetdetailBindingSource.DataMember = "endsheetdetail";
+            this.endsheetdetailBindingSource.DataSource = this.dsEndSheet;
             // 
             // reasonTextBox
             // 
@@ -1592,15 +1625,6 @@
             this.brdescTextBox.Size = new System.Drawing.Size(307, 20);
             this.brdescTextBox.TabIndex = 50;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(21, 56);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 23);
-            this.button1.TabIndex = 57;
-            this.button1.Text = "Sheet #";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // invnoLabel2
             // 
             this.invnoLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "invno", true));
@@ -1715,6 +1739,7 @@
             // 
             this.clr6TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr6", true));
             this.clr6TextBox.Location = new System.Drawing.Point(384, 31);
+            this.clr6TextBox.MaxLength = 15;
             this.clr6TextBox.Name = "clr6TextBox";
             this.clr6TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr6TextBox.TabIndex = 19;
@@ -1723,6 +1748,7 @@
             // 
             this.clr5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr5", true));
             this.clr5TextBox.Location = new System.Drawing.Point(317, 31);
+            this.clr5TextBox.MaxLength = 15;
             this.clr5TextBox.Name = "clr5TextBox";
             this.clr5TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr5TextBox.TabIndex = 17;
@@ -1731,6 +1757,7 @@
             // 
             this.clr4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr4", true));
             this.clr4TextBox.Location = new System.Drawing.Point(249, 31);
+            this.clr4TextBox.MaxLength = 15;
             this.clr4TextBox.Name = "clr4TextBox";
             this.clr4TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr4TextBox.TabIndex = 15;
@@ -1739,6 +1766,7 @@
             // 
             this.clr3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr3", true));
             this.clr3TextBox.Location = new System.Drawing.Point(180, 31);
+            this.clr3TextBox.MaxLength = 15;
             this.clr3TextBox.Name = "clr3TextBox";
             this.clr3TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr3TextBox.TabIndex = 13;
@@ -1747,6 +1775,7 @@
             // 
             this.clr2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr2", true));
             this.clr2TextBox.Location = new System.Drawing.Point(108, 31);
+            this.clr2TextBox.MaxLength = 15;
             this.clr2TextBox.Name = "clr2TextBox";
             this.clr2TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr2TextBox.TabIndex = 11;
@@ -1755,6 +1784,7 @@
             // 
             this.clr1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr1", true));
             this.clr1TextBox.Location = new System.Drawing.Point(33, 31);
+            this.clr1TextBox.MaxLength = 15;
             this.clr1TextBox.Name = "clr1TextBox";
             this.clr1TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr1TextBox.TabIndex = 9;
@@ -1884,14 +1914,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.suppdetailDataGridView.AutoGenerateColumns = false;
             this.suppdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.suppdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.suppdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -1909,6 +1939,56 @@
             this.suppdetailDataGridView.Size = new System.Drawing.Size(913, 334);
             this.suppdetailDataGridView.TabIndex = 92;
             // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "Description";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "war";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Actual";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "wdr";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Due";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "wtr";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Time";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "invno";
+            this.dataGridViewTextBoxColumn11.HeaderText = "invno";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "wir";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Initials";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn13.HeaderText = "id";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn13.Visible = false;
+            // 
+            // suppdetailBindingSource
+            // 
+            this.suppdetailBindingSource.DataMember = "suppdetail";
+            this.suppdetailBindingSource.DataSource = this.dsEndSheet;
+            // 
             // partmemoTextBox
             // 
             this.partmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "partmemo", true));
@@ -1917,6 +1997,11 @@
             this.partmemoTextBox.Name = "partmemoTextBox";
             this.partmemoTextBox.Size = new System.Drawing.Size(481, 64);
             this.partmemoTextBox.TabIndex = 92;
+            // 
+            // supplBindingSource
+            // 
+            this.supplBindingSource.DataMember = "suppl";
+            this.supplBindingSource.DataSource = this.dsEndSheet;
             // 
             // totsigsTextBox
             // 
@@ -2296,6 +2381,11 @@
             this.technoteTextBox.Name = "technoteTextBox";
             this.technoteTextBox.Size = new System.Drawing.Size(667, 57);
             this.technoteTextBox.TabIndex = 115;
+            // 
+            // preflitBindingSource
+            // 
+            this.preflitBindingSource.DataMember = "preflit";
+            this.preflitBindingSource.DataSource = this.dsEndSheet;
             // 
             // custquestTextBox
             // 
@@ -2842,6 +2932,11 @@
             this.customdescTextBox.Size = new System.Drawing.Size(361, 60);
             this.customdescTextBox.TabIndex = 144;
             // 
+            // bannerBindingSource1
+            // 
+            this.bannerBindingSource1.DataMember = "banner";
+            this.bannerBindingSource1.DataSource = this.dsEndSheet;
+            // 
             // customCheckBox
             // 
             this.customCheckBox.AutoSize = true;
@@ -2972,135 +3067,6 @@
             this.label38.TabIndex = 121;
             this.label38.Text = "label7";
             // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsEndSheet;
-            // 
-            // dsEndSheet
-            // 
-            this.dsEndSheet.DataSetName = "dsEndSheet";
-            this.dsEndSheet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // endsheetBindingSource
-            // 
-            this.endsheetBindingSource.DataMember = "endsheet";
-            this.endsheetBindingSource.DataSource = this.dsEndSheet;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "war";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Actual";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "wdr";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Due";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "wtr";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Time";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Invno";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Invno";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "wir";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Initials";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Visible = false;
-            // 
-            // endsheetdetailBindingSource
-            // 
-            this.endsheetdetailBindingSource.DataMember = "endsheetdetail";
-            this.endsheetdetailBindingSource.DataSource = this.dsEndSheet;
-            // 
-            // produtnBindingSource
-            // 
-            this.produtnBindingSource.DataMember = "produtn";
-            this.produtnBindingSource.DataSource = this.dsEndSheet;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "Description";
-            this.dataGridViewTextBoxColumn15.HeaderText = "Description";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "war";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Actual";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "wdr";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Due";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "wtr";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Time";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "invno";
-            this.dataGridViewTextBoxColumn11.HeaderText = "invno";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "wir";
-            this.dataGridViewTextBoxColumn12.HeaderText = "Initials";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn13.HeaderText = "id";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Visible = false;
-            // 
-            // suppdetailBindingSource
-            // 
-            this.suppdetailBindingSource.DataMember = "suppdetail";
-            this.suppdetailBindingSource.DataSource = this.dsEndSheet;
-            // 
-            // supplBindingSource
-            // 
-            this.supplBindingSource.DataMember = "suppl";
-            this.supplBindingSource.DataSource = this.dsEndSheet;
-            // 
-            // preflitBindingSource
-            // 
-            this.preflitBindingSource.DataMember = "preflit";
-            this.preflitBindingSource.DataSource = this.dsEndSheet;
-            // 
-            // bannerBindingSource1
-            // 
-            this.bannerBindingSource1.DataMember = "banner";
-            this.bannerBindingSource1.DataSource = this.dsEndSheet;
-            // 
             // custTableAdapter
             // 
             this.custTableAdapter.ClearBeforeFill = true;
@@ -3149,15 +3115,14 @@
             // 
             this.bannerTableAdapter.ClearBeforeFill = true;
             // 
-            // laminatedTextBox
+            // label35
             // 
-            this.laminatedTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.laminatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "laminated", true));
-            this.laminatedTextBox.Location = new System.Drawing.Point(60, 361);
-            this.laminatedTextBox.MaxLength = 1;
-            this.laminatedTextBox.Name = "laminatedTextBox";
-            this.laminatedTextBox.Size = new System.Drawing.Size(22, 20);
-            this.laminatedTextBox.TabIndex = 146;
+            label35.AutoSize = true;
+            label35.Location = new System.Drawing.Point(19, 58);
+            label35.Name = "label35";
+            label35.Size = new System.Drawing.Size(64, 13);
+            label35.TabIndex = 147;
+            label35.Text = "Sheet No.";
             // 
             // frmEndSheet
             // 
@@ -3175,11 +3140,16 @@
             this.tbEndSheets.ResumeLayout(false);
             this.pgEndSheets.ResumeLayout(false);
             this.pgEndSheets.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -3187,8 +3157,11 @@
             this.Supplement.ResumeLayout(false);
             this.Supplement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).EndInit();
             this.PreFlight.ResumeLayout(false);
             this.PreFlight.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -3205,14 +3178,6 @@
             this.groupBox3.PerformLayout();
             this.Banner.ResumeLayout(false);
             this.Banner.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
@@ -3261,7 +3226,6 @@
 		private System.Windows.Forms.TextBox bldescTextBox;
 		private System.Windows.Forms.TextBox bkcopiesTextBox;
 		private System.Windows.Forms.TextBox frcopiesTextBox;
-		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Label label11;
@@ -3303,8 +3267,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-		private System.Windows.Forms.Button btnInvoiceSrch;
-		private System.Windows.Forms.TextBox txtInvoiceNoSrch;
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.BindingSource supplBindingSource;
 		private DataSets.dsEndSheetTableAdapters.supplTableAdapter supplTableAdapter;
@@ -3421,8 +3383,6 @@
 		private System.Windows.Forms.Label label38;
 		private System.Windows.Forms.TextBox txtsupllSrch;
 		private System.Windows.Forms.Button btnSupplSrch;
-		private System.Windows.Forms.Button btnsheetSrch;
-		private System.Windows.Forms.TextBox txtsheetSrch;
 		private System.Windows.Forms.BindingSource bannerBindingSource;
 		private System.Windows.Forms.BindingSource bannerBindingSource1;
 		private DataSets.dsEndSheetTableAdapters.bannerTableAdapter bannerTableAdapter;
