@@ -158,6 +158,8 @@
             this.dsInvoice = new Mbc5.DataSets.dsInvoice();
             this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bsxtraPrintInvoice = new System.Windows.Forms.BindingSource(this.components);
+            this.bsxtraPrintDetailInvoice = new System.Windows.Forms.BindingSource(this.components);
             this.tabSales = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblSalesTax = new System.Windows.Forms.Label();
@@ -591,6 +593,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsxtraPrintInvoice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsxtraPrintDetailInvoice)).BeginInit();
             this.tabSales.SuspendLayout();
             this.pg1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
@@ -4903,7 +4907,7 @@
             // btnPrintXInvoice
             // 
             this.btnPrintXInvoice.ContextMenuStrip = this.mnuEditLkUp;
-            this.btnPrintXInvoice.Location = new System.Drawing.Point(689, 71);
+            this.btnPrintXInvoice.Location = new System.Drawing.Point(679, 71);
             this.btnPrintXInvoice.Name = "btnPrintXInvoice";
             this.btnPrintXInvoice.Size = new System.Drawing.Size(123, 23);
             this.btnPrintXInvoice.TabIndex = 51;
@@ -4931,9 +4935,9 @@
             reportDataSource5.Name = "cust";
             reportDataSource5.Value = this.custBindingSource;
             reportDataSource6.Name = "invoice";
-            reportDataSource6.Value = this.invoiceBindingSource;
+            reportDataSource6.Value = this.bsxtraPrintInvoice;
             reportDataSource7.Name = "invoicedetail";
-            reportDataSource7.Value = this.invdetailBindingSource;
+            reportDataSource7.Value = this.bsxtraPrintDetailInvoice;
             reportDataSource8.Name = "payment";
             reportDataSource8.Value = this.paymntBindingSource;
             this.reportViewer2.LocalReport.DataSources.Add(reportDataSource5);
@@ -4947,6 +4951,7 @@
             this.reportViewer2.Size = new System.Drawing.Size(84, 91);
             this.reportViewer2.TabIndex = 50;
             this.reportViewer2.Visible = false;
+            this.reportViewer2.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer2_RenderingComplete);
             // 
             // btnCancelXtraInvoice
             // 
@@ -5489,6 +5494,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsxtraPrintInvoice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsxtraPrintDetailInvoice)).EndInit();
             this.tabSales.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
@@ -5870,5 +5877,7 @@
         private System.Windows.Forms.Button btnCancelXtraInvoice;
         private System.Windows.Forms.Button btnPrintXInvoice;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        private System.Windows.Forms.BindingSource bsxtraPrintInvoice;
+        private System.Windows.Forms.BindingSource bsxtraPrintDetailInvoice;
     }
     }

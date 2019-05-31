@@ -151,7 +151,9 @@ namespace Mbc5.Forms.MemoryBook
         public Decimal TaxRate { get; set; } = 0;
         public List<Price> Pricing { get; set; }
         public BookOptionPrice BookOptionPricing { get; set; }
-        public List<XtraInvoice> XrtaInvoices { get; set; }
+        public List<XtraInvoiceGrid> XrtaInvoicesGridData { get; set; }
+        public XtraInvoicePrint XrtaInvoicePrint { get; set; }
+        public List<XtraInvoiceDetailPrint> XrtaInvoiceDetailsPrint { get; set; }
         public string CurPriceYr { get; set; } = null;
         private bool StartUp { get; set; }
         #endregion
@@ -322,12 +324,15 @@ namespace Mbc5.Forms.MemoryBook
             txtCompReason.Enabled = true;
 
         }
-
         private bool CalculatePayments()
+        {
+           return CalculatePayments(lblInvoice.Text);
+        }
+            private bool CalculatePayments(string invoiceNumber)
         {
             bool retval = false;
             decimal? paymentTotals = 0;
-            if (string.IsNullOrEmpty(lblInvoice.Text))
+            if (string.IsNullOrEmpty(invoiceNumber))
             {
                 return retval;
             }
@@ -335,7 +340,7 @@ namespace Mbc5.Forms.MemoryBook
             var cmdText = @"SELECT ISNULL(SUM(ISNULL(payment, 0) + ISNULL(refund, 0) + ISNULL(adjmnt, 0)),0) AS paymentresult
                          FROM paymnt where Invno=@Invno";
             SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text) };
+                new SqlParameter("@Invno",invoiceNumber) };
             var result = SqlQuery.ExecuteReaderAsync(CommandType.Text, cmdText, parameters);
             //paymentTotals =(decimal)this.paymntTableAdapter.SumPayment(Convert.ToInt32(lblInvoice.Text));
             try
@@ -344,7 +349,7 @@ namespace Mbc5.Forms.MemoryBook
                 paymentTotals = (decimal)result.Rows[0]["paymentresult"];
                 cmdText = @"Update invoice set payments=@payments,baldue=invtot-@payments  where Invno=@Invno ";
                 SqlParameter[] parameters1 = new SqlParameter[] {
-                new SqlParameter("@Invno",lblInvoice.Text),
+                new SqlParameter("@Invno",invoiceNumber),
                 new SqlParameter("@payments",paymentTotals)};
                 var a = SqlQuery.ExecuteNonQueryAsync(CommandType.Text, cmdText, parameters1);
                 this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToInt32(lblInvoice.Text));
@@ -4423,15 +4428,15 @@ namespace Mbc5.Forms.MemoryBook
                                         Where SX.SalesInvoice=@Invno";
                     sqlquery.CommandText(cmdtext);
                     sqlquery.AddParameter("@Invno",Invno);
-                   var xtraResult=sqlquery.SelectMany<XtraInvoice>();
+                   var xtraResult=sqlquery.SelectMany<XtraInvoiceGrid>();
                     if (xtraResult.IsError)
                     {
                         MbcMessageBox.Information("Failed to get Xtra Invoices", "");
                         return;
                     }
-                    var vXtra = (List<XtraInvoice>)xtraResult.Data;
-                    this.XrtaInvoices = vXtra;
-                    XtraInvoiceBindingSource.DataSource = this.XrtaInvoices;
+                    var vXtra = (List<XtraInvoiceGrid>)xtraResult.Data;
+                    this.XrtaInvoicesGridData = vXtra;
+                    XtraInvoiceBindingSource.DataSource = this.XrtaInvoicesGridData;
                     grdXtraInvoice.DataSource = XtraInvoiceBindingSource;
 
                 }
@@ -4470,10 +4475,7 @@ namespace Mbc5.Forms.MemoryBook
             CalculateXtra();
         }
 
-        private void txtQuantity_Leave_1(object sender, EventArgs e)
-        {
-            CalculateXtraInvoice();
-        }
+        
 
         private void txtShippingCharges_Leave(object sender, EventArgs e)
         {
@@ -4487,6 +4489,27 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnApplyInvoice_Click(object sender, EventArgs e)
         {
+
+
+            errorProvider1.SetError(txtQuantity, "");
+            int vInvoiceQty = 0;
+            int vInventoryQty = 0;
+            int.TryParse(txtQuantity.Text, out vInvoiceQty);
+            int.TryParse(lblOnHand.Text, out vInventoryQty);
+            if (vInventoryQty == 0)
+            {
+                errorProvider1.SetError(txtQuantity, "There is no inventory to invoice.");
+                return;
+            }
+
+            if (vInvoiceQty > vInventoryQty)
+            {
+                errorProvider1.SetError(txtQuantity, "Invoice quantity is greater than inventory quantity.");
+               
+                return;
+
+            }
+
 
             var sqlquery = new SQLCustomClient();
 
@@ -4555,12 +4578,14 @@ namespace Mbc5.Forms.MemoryBook
                 sqlquery.CommandText(@"INSERT INTO InvDetail (schcode,invno,descr,price,DateCreated,DateModified, ModifiedBy) 
                                        Values(@schcode,@invno,@descr,@price,GetDate(),GetDate(),@ModifiedBy)");
                 sqlquery.AddParameter("@schcode", this.Schcode);
-                sqlquery.AddParameter("@invno", this.Invno);
+                sqlquery.AddParameter("@invno", lblXtraInvoiceNo.Text);
                 sqlquery.AddParameter("@descr", baseDescrip);
                 sqlquery.AddParameter("@price",price);
 
-                sqlquery.AddParameter("@ModifiedBy", "");
-                CalculatePayments();
+                sqlquery.AddParameter("@ModifiedBy", txtModifiedByInv.Text);
+                var detailResult=sqlquery.Insert();
+                if (detailResult.IsError) {MbcMessageBox.Error("Failed to insert invoice detail record. Contact IT.",""); }
+                CalculatePayments(lblXtraInvoiceNo.Text);
 
             }
             catch (Exception ex)
@@ -4621,40 +4646,123 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnPrintXInvoice_Click(object sender, EventArgs e)
         {
+            var vInvno ="0";
+            try {
+                    var vIndex = grdXtraInvoice.CurrentCell.RowIndex;
+                    vInvno = grdXtraInvoice.Rows[vIndex].Cells[1].Value.ToString(); }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Information("Please select a invoice to be printed.", "");
+                return;
+            }
+
+            var sqlquery = new SQLCustomClient();
+            string cmdInvoice = @"Select invno,CAST(qtedate as date)AS qtedate,ponum,BeforeTaxTotal,SalesTax,invtot,payments From Invoice where Invno=@Invno";
+            string cmdInvoiceDetail = @"Select schcode,invno,descr,price,discpercent from invdetail where Invno=@Invno ";
+            sqlquery.CommandText(cmdInvoice);
+            sqlquery.AddParameter("@Invno", vInvno);
+            var invoiceResult = sqlquery.Select<XtraInvoicePrint>();
+            if (invoiceResult.IsError)
+            {
+                MbcMessageBox.Error("Could not retrieve invoice information.", "");
+                return;
+            }
+            this.XrtaInvoicePrint =(XtraInvoicePrint)invoiceResult.Data;
+            bsxtraPrintInvoice.DataSource = this.XrtaInvoicePrint;
+
+            sqlquery.ClearParameters();
+            sqlquery.CommandText(cmdInvoiceDetail);
+            sqlquery.AddParameter("@Invno", vInvno);
+    
+            var invoiceDetailResult = sqlquery.SelectMany<XtraInvoiceDetailPrint>();
+            if (invoiceDetailResult.IsError)
+            {
+                MbcMessageBox.Error("Could not retrieve invoice detail information.", "");
+                return;
+            }
+            this.XrtaInvoiceDetailsPrint=(List<XtraInvoiceDetailPrint>)invoiceDetailResult.Data;
+            if (this.XrtaInvoiceDetailsPrint == null)
+            {
+                var vList = new List<XtraInvoiceDetailPrint>();
+            }
+
+            bsxtraPrintDetailInvoice.DataSource = this.XrtaInvoiceDetailsPrint;
+
+            //refresh report
+            this.reportViewer2.RefreshReport();
+
+
+        }
+        private void txtQuantity_Leave_1(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(txtQuantity, "");
+            int vInvoiceQty = 0;
+            int vInventoryQty = 0;
+            int.TryParse(txtQuantity.Text, out vInvoiceQty);
+            int.TryParse(lblOnHand.Text, out vInventoryQty);
+            if (vInventoryQty == 0)
+            {
+                errorProvider1.SetError(txtQuantity, "There is no inventory to invoice.");
+           
+            }
+
+            if (vInvoiceQty > vInventoryQty)
+            {
+                errorProvider1.SetError(txtQuantity, "Invoice quantity is greater than inventory quantity.");
 
           
 
-        //var sqlquery = new SQLCustomClient();
-        //    string cmdCust = @"Select contfname,contLname,schname,schcode,schaddr,schaddr2,schcity,schstate,schZip From Cust Where Schcode=@Schcode";
-        //    string cmdInvoice = @"Select invno,qtedate,ponum,BeforeTaxTotal,SalesTax,invtot,payments From Invoice where Invno=@Invno";
-        //    string cmdPayment = @"Select payment where Invno=@Invno";
+            }
 
-        //    sqlquery.CommandText(cmdText);
-        //    sqlquery.AddParameter("@SalesInvno", Invno);
 
-        //    sqlquery.AddParameter("@extrbkshpd", txtQuantity.Text);
-        //    var result = sqlquery.Update();
-        //    if (result.IsError)
-        //    {
-        //        MbcMessageBox.Error("Failed to update inventory.", "");
-        //    }
 
+            CalculateXtraInvoice();
+        }
+
+        private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            try
+            {
+                reportViewer2.PrintDialog();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
 
 
         //nothing below here
     }
-    public class XtraInvoice
+    public class XtraInvoiceGrid
     {
         public decimal SalesInvoice { get; set; }
         public int Invoice { get; set; }
         public DateTime InvoiceDate { get; set; }
         public decimal Quantity { get; set; }
         public decimal Total { get; set; }
-    } 
-    
-   }
+    }
+    public class XtraInvoicePrint
+    {
+        public int invno { get; set; }
+        public DateTime qtedate { get; set; }
+        public string ponum { get; set; }
+        public decimal BeforeTaxTotal { get; set; }
+        public decimal SalesTax { get; set; }
+        public decimal invtot { get; set; }
+        public decimal payments { get; set; }
+    }
+    public class XtraInvoiceDetailPrint
+    {
+        public decimal invno { get; set; }
+        public string schcode { get; set; }
+        public string descr { get; set; }
+        public decimal price { get; set; }
+        public decimal discpercent { get; set; }
+    }
+
+}
 
 
     
