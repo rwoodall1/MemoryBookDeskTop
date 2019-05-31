@@ -4533,7 +4533,7 @@ namespace Mbc5.Forms.MemoryBook
                 sqlquery.AddParameter("@allclrck", chkAllClr.Checked);
                 sqlquery.AddParameter("@freebooks", 0);
                 sqlquery.AddParameter("@SalesTax", lblTaxTotal.Text.Replace("$", "").Replace(",", ""));
-                sqlquery.AddParameter("@BeforeTaxTotal", lblBookTotal.Text.Replace("$", "").Replace(",", ""));
+                sqlquery.AddParameter("@BeforeTaxTotal", lblBookTotalValue.Text.Replace("$", "").Replace(",", ""));
                 sqlquery.AddParameter("@Schname", ((DataRowView)this.custBindingSource.Current).Row["schname"].ToString().Trim());
                 sqlquery.AddParameter("@Schaddr", ((DataRowView)this.custBindingSource.Current).Row["schaddr"].ToString().Trim());
                 sqlquery.AddParameter("@Schaddr2", ((DataRowView)this.custBindingSource.Current).Row["schaddr2"].ToString().Trim());
@@ -4687,7 +4687,7 @@ namespace Mbc5.Forms.MemoryBook
             }
 
             bsxtraPrintDetailInvoice.DataSource = this.XrtaInvoiceDetailsPrint;
-
+         
             //refresh report
             this.reportViewer2.RefreshReport();
 
@@ -4740,7 +4740,7 @@ namespace Mbc5.Forms.MemoryBook
         public decimal SalesInvoice { get; set; }
         public int Invoice { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public decimal Quantity { get; set; }
+        public int Quantity { get; set; }
         public decimal Total { get; set; }
     }
     public class XtraInvoicePrint
@@ -4759,7 +4759,7 @@ namespace Mbc5.Forms.MemoryBook
         public string schcode { get; set; }
         public string descr { get; set; }
         public decimal price { get; set; }
-        public decimal discpercent { get; set; }
+        public string discpercent { get; set; }
     }
 
 }
