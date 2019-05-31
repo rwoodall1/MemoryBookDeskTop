@@ -4559,7 +4559,7 @@ namespace Mbc5.Forms.MemoryBook
                 sqlquery.AddParameter("@descr", baseDescrip);
                 sqlquery.AddParameter("@price",price);
 
-                sqlquery.AddParameter("@ModifiedBy", );
+                sqlquery.AddParameter("@ModifiedBy", "");
                 CalculatePayments();
 
             }
