@@ -1198,40 +1198,41 @@ namespace Mbc5.Forms.MemoryBook {
             DataTable EditedRecs = dsCust.datecont.GetChanges();
             if (EditedRecs != null)
                 {
-                SqlConnection conn = new SqlConnection(FormConnectionString);
-                string sql = "UPDATE DateCont Set Id=@Id,reason=@reason,contact=@contact,typecont=@typecont, nxtdate=@nxtdate,callcont=@callcont, calltime=@calltime,priority=@priority,techcall=@techcall where id=@id ;";
-                SqlCommand cmd = new SqlCommand(sql,conn);
+                var sqlquery = new SQLCustomClient();
+                sqlquery.CommandText("UPDATE DateCont Set Id=@Id,reason=@reason,contact=@contact,typecont=@typecont, nxtdate=@nxtdate,callcont=@callcont, calltime=@calltime,priority=@priority,techcall=@techcall where id=@id ");
+             
+              
                 foreach (DataRow row in EditedRecs.Rows)
                     {
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@Id",row["id"]);
-                    cmd.Parameters.AddWithValue("@reason",row["reason"]);
-                    cmd.Parameters.AddWithValue("@contact",row["contact"]);
-                    cmd.Parameters.AddWithValue("@typecont",row["typecont"]);
-                    cmd.Parameters.AddWithValue("@nxtdate",row["nxtdate"]);
-                    cmd.Parameters.AddWithValue("@callcont",row["callcont"]);
-                    cmd.Parameters.AddWithValue("@calltime",row["calltime"]);
-                    cmd.Parameters.AddWithValue("@priority",row["priority"]);
-                    cmd.Parameters.AddWithValue("@techcall",row["techcall"]);
-
-                    try
-                        {
-                        cmd.Connection.Open();
-                        cmd.ExecuteNonQuery();
+                    sqlquery.ClearParameters();
+                   sqlquery.AddParameter("@Id",row["id"]);
+                    sqlquery.AddParameter("@reason",row["reason"]);
+                    sqlquery.AddParameter("@contact",row["contact"]);
+                    sqlquery.AddParameter("@typecont",row["typecont"]);
+                    sqlquery.AddParameter("@nxtdate",row["nxtdate"]);
+                    sqlquery.AddParameter("@callcont",row["callcont"]);
+                    sqlquery.AddParameter("@calltime",row["calltime"]);
+                    sqlquery.AddParameter("@priority",row["priority"]);
+                    sqlquery.AddParameter("@techcall",row["techcall"]);
+                    var logResult=sqlquery.Insert();
+                    if (logResult.IsError)
+                    {
+                        MbcMessageBox.Error("Failed to insert phone log:"+logResult.Errors[0].ErrorMessage, "");
+                        ExceptionlessClient.Default.CreateLog("Failed to insert phone log")
+                            .AddObject(logResult)
+                            .Submit();
+                        return;
+                    }
+                   
                         TeleLogAdded = false;
                         TeleGo = true;
 					
-					}
-                    catch (Exception ex)
-                        {
-                        MessageBox.Show("Failed to update telephone log record.");
-                        Log.Error("Failed to update telephone log:" + ex.Message);
-                        //go on we are not stopping the program for this
-                        }
-                    finally { cmd.Connection.Close(); }
 					try {
 						this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
 					}catch(Exception ex) {
+                        ex.ToExceptionless()
+                            .AddObject(ex)
+                            .Submit();
 						MbcMessageBox.Error(ex.Message, "");
 					}
                     
