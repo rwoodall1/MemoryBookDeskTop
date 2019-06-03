@@ -101,7 +101,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtModifiedBy.Text = this.ApplicationUser.id;
 
             var vSchocode = this.Schcode;
-            this.chkMktComplete.DataBindings.Add("Checked", this, "MktGo", false, DataSourceUpdateMode.OnPropertyChanged);//bind check box to property of form
+           
 
             if (!ApplicationUser.Roles.Contains("MbcCS"))
             {
@@ -1307,14 +1307,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
             
             }
-        private void commentListBox_DoubleClick(object sender,EventArgs e) {
-            string val = commentListBox.GetItemText(commentListBox.SelectedItem);
-            txtReason.Text = val;
-
-            txtReason.Select();
-
-
-            }
+        
 
         private void txtReason_Leave(object sender,EventArgs e) {
             datecontDataGridView.Select();
@@ -1325,59 +1318,85 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void btnAddLog_Click(object sender,EventArgs e) {
 
-            SqlConnection conn = new SqlConnection(FormConnectionString);
-            string sql = "INSERT INTO DateCont (Id,schcode,datecont,initial) VALUES(@Id,@schcode,@datecont,@initial);";
-            SqlCommand cmd = new SqlCommand(sql,conn);
-            cmd.Parameters.AddWithValue("@Id",Guid.NewGuid().ToString());
-            cmd.Parameters.AddWithValue("@initial",ApplicationUser.FirstName.Substring(0,1) + ApplicationUser.LastName.Substring(0,1));
-            cmd.Parameters.AddWithValue("@datecont",DateTime.Now.ToString());
-            cmd.Parameters.AddWithValue("@schcode",lblSchcode.Text);
-            try
-                {
-                cmd.Connection.Open();
-                cmd.ExecuteNonQuery();
-                TeleLogAdded = true;
-                }
-            catch (Exception ex)
-                {
-                MessageBox.Show("Failed to insert telephone log record.");
-                Log.Error("Failed to Insert telephone log:" + ex.Message);
-                //go on we are not stopping the program for this
-                }
-            finally { cmd.Connection.Close(); }
-            this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+            AddLog();
 
             }
+        private void btnEditTeleLog_Click(object sender, EventArgs e)
+        {
+            var vresult = datecontDataGridView.Rows[datecontDataGridView.SelectedCells[0].RowIndex].Cells["id"].Value ;
+            var vLogId = Convert.ToInt32(vresult);
+            frmTeleLogModify frmTeleLogModify = new frmTeleLogModify(vLogId,"T", frmMain);
+            DialogResult result = frmTeleLogModify.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+                    mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, Schcode);
+                    
+                }
+                catch (Exception ex)
+                {
+                    ex.ToExceptionless()
+                        .AddObject(ex)
+                        .Submit();
+                    MbcMessageBox.Error(ex.Message, "");
+                    return;
+                }
+            }
+        }
+        private void btnSaveMktLog_Click(object sender, EventArgs e)
+        {
+            var vresult = mktinfoDataGridView.Rows[mktinfoDataGridView.SelectedCells[0].RowIndex].Cells["id"].Value;
+            var vLogId = Convert.ToInt32(vresult);
+            frmTeleLogModify frmTeleLogModify = new frmTeleLogModify(vLogId, "M", frmMain);
+            DialogResult result = frmTeleLogModify.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+                    mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, Schcode);
+
+                }
+                catch (Exception ex)
+                {
+                    ex.ToExceptionless()
+                        .AddObject(ex)
+                        .Submit();
+                    MbcMessageBox.Error(ex.Message, "");
+                    return;
+                }
+            }
+        }
 
         private void btnAddMarketLog_Click(object sender,EventArgs e) {
-            SqlConnection conn = new SqlConnection(FormConnectionString);
-            string sql = "INSERT INTO MktInfo (ddate,initial,schcode) VALUES(@ddate,@initial,@schcode);";
-            SqlCommand cmd = new SqlCommand(sql,conn);
-            cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@initial",ApplicationUser.FirstName.Substring(0,1) + ApplicationUser.LastName.Substring(0,1));
-            cmd.Parameters.AddWithValue("@ddate",DateTime.Now.ToString());
-            cmd.Parameters.AddWithValue("@schcode",lblSchcode.Text);
-            try
+            AddLog();
+        }
+        private void AddLog()
+        {
+            frmTeleLogModify frmTeleLogModify = new frmTeleLogModify("MBC", Schcode, this.frmMain);
+            DialogResult result = frmTeleLogModify.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
                 {
-                cmd.Connection.Open();
-                cmd.ExecuteNonQuery();
-                MktLogAdded = true;
+                    this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
+                    mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, Schcode);
+                    TeleGo = true;
+                    MktGo = true;
                 }
-            catch (Exception ex)
+                catch (Exception ex)
                 {
-                MessageBox.Show("Failed to insert Marketing log record.");
-                Log.Error("Failed to Marketing log:" + ex.Message);
-                //go on we are not stopping the program for this
+                    ex.ToExceptionless()
+                        .AddObject(ex)
+                        .Submit();
+                    MbcMessageBox.Error(ex.Message, "");
+                    return;
                 }
-            finally { cmd.Connection.Close(); }
-            this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo,this.Schcode);
             }
-
-        private void btnSaveTeleLog_Click(object sender,EventArgs e) {
-            
-                  SaveTeleLog();
-        
-            }
+        }
+       
 
         private void frmMbcCust_FormClosing(object sender,FormClosingEventArgs e) {
             if(DoPhoneLog())
@@ -1407,9 +1426,7 @@ namespace Mbc5.Forms.MemoryBook {
            
             }
 
-        private void btnSaveMktLog_Click(object sender,EventArgs e) {
-            SaveMktLog();
-            }
+      
 
         private void mktinfoDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
@@ -1782,6 +1799,8 @@ namespace Mbc5.Forms.MemoryBook {
         }
 
         
+
+
 
 
         //Nothing below here

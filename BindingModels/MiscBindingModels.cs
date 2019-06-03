@@ -9,6 +9,20 @@ namespace BindingModels
     {
         public decimal Rate { get; set; }
     }
+    public class MktInfo
+    {
+        public int Id { get; set; }
+        public string Schname { get; set; }
+        public string Schcode { get; set; }
+        public DateTime Ddate { get; set; }
+        public string Initial { get; set; }
+        public string Note { get; set; }
+        public string Promo { get; set; }
+        public string Refered { get; set; }
+        public string Company { get; set; }
+        public int ProspectId { get; set; }
+        
+    }
     public class MbcBarScanModel
     {
         public string SchCode { get; set; }
@@ -129,4 +143,25 @@ namespace BindingModels
 		public string CoverType { get; set; }
 		public string CoverDescription { get; set; }
 	}
+    public class TelephonLogRecord
+    {
+        public string Schname { get; set; }
+        public string Schcode { get; set; }
+        public DateTime Datecont { get; set; }
+        public string Reason { get; set; }
+        public string Initial { get; set; }
+        public string Contact { get; set; }
+        public string TypeCont { get; set; }
+        public int NxtDays { get; set; }
+        public DateTime NxtDate { get; set; }
+        public bool CallCont { get; set; }
+        public decimal CallTime { get; set; }
+        public int Priority { get; set; }
+        public string Company { get; set; }
+        public bool TechCall { get; set; }
+        public int Id { get; set; }
+
+
+
+    }
 }

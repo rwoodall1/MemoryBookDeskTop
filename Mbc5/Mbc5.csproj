@@ -734,6 +734,7 @@
     <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProdutnTicketModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.TelephonLogRecord.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

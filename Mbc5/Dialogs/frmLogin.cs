@@ -115,6 +115,7 @@ namespace Mbc5.Dialogs {
                 userPrincipal.FirstName = vFirstName;
                 userPrincipal.LastName = vLastName;
                 userPrincipal.Email = vEmail;
+                userPrincipal.Initials = vFirstName.Substring(0, 1) + vLastName.Substring(0, 1);
                 userPrincipal.Roles = arrayrole.ToList();
                 frmMain.ApplicationUser = userPrincipal;
 

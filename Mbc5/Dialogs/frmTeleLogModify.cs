@@ -7,80 +7,325 @@ using System.Text;
 using System.Windows.Forms;
 using BaseClass;
 using BaseClass.Classes;
+using BaseClass.Forms;
 using Exceptionless;
-
+using Mbc5.Forms;
+using BindingModels;
 namespace Mbc5.Dialogs
 {
-    public partial class frmTeleLogModify : BaseClass.Forms.bTopBottom
+    public partial class frmTeleLogModify : Form
     {
-        public frmTeleLogModify(int vLogId)
+        public frmTeleLogModify(int vLogId,string type,frmMain parent)
         {
+            if (type=="T")
+            {
+                EditType = "T";
+              
+            }
+            else
+            {
+                EditType = "M";
+               
+            }
             LogId = vLogId;
+            frmMain = parent;
             InitializeComponent();
         }
-        public frmTeleLogModify()
+        public frmTeleLogModify(string company, string schcode, frmMain parent) 
         {
-         
+            this.Schcode = schcode;
+            frmMain = parent;
+            Company = company;
             InitializeComponent();
         }
 
-        private void datecontBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.datecontBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dsDateCont);
-
-        }
-
+        private string EditType;
+        private string Schcode;
+        private frmMain frmMain;
         private int LogId=0;
-
+        private string Company = "";
         private void frmTeleLogModify_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
-            this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
-            // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
-            this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
-            // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
-            this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
-            var sqlquery = new SQLCustomClient();
-            sqlquery.CommandText(@"Select Schcode,DateCont,Reason,Initial,Contact,TypeCont,NxtDays,CallCont,CallTime,Priority,Company,TechCall,Id Where Id=@Id");
-            sqlquery.AddParameter("@Id",LogId);
-            var contactResult=sqlquery.Select<TelephonLogRecord>();
-            if (contactResult.IsError)
+            if (EditType == "T")
             {
-                MbcMessageBox.Error("Failed to retrieve Telephone Log record","");
-                ExceptionlessClient.Default.CreateLog("Failed to retrieve Telephone Log record")
-                      .AddObject(contactResult)
-                        .Submit();
+                chkbypassMkt.Visible = false;
+                this.tbLog.TabPages.Remove(pg2);
+            }
+            else if(EditType == "M")
+            {
+                chkbypassMkt.Visible = false;
+                this.tbLog.TabPages.Remove(pg1);
+            }
+            var tmpMktRec = new MktInfo();
+            mktinfoBindingSource.DataSource = tmpMktRec;
+            try
+            {
+                // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
+                this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
+                // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
+                this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
+                // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
+                this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
+            }catch(Exception ex)
+            {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .Submit();
+                MbcMessageBox.Error(ex.Message, "");
+            }
+          var sqlquery = new SQLCustomClient();
+            if (LogId > 0 && EditType == "T") {
+                //edit
+
+                sqlquery.CommandText(@"Select C.Schname,D.Schcode,D.Datecont,D.Reason,D.Initial,D.Contact,D.TypeCont,D.NxtDate,D.NxtDays,D.CallCont,D.CallTime,D.Priority,D.Company,D.TechCall,D.Id 
+                    FROM DateCont D 
+                    Left Join Cust C On D.Schcode=C.Schcode
+                    Where Id=@Id");
+                sqlquery.AddParameter("@Id", LogId);
+                var contactResult = sqlquery.Select<TelephonLogRecord>();
+                if (contactResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to retrieve Telephone Log record", "");
+                    ExceptionlessClient.Default.CreateLog("Failed to retrieve Telephone Log record")
+                          .AddObject(contactResult)
+                            .Submit();
+                    this.DialogResult = DialogResult.Cancel;
+                    return;
+                }
+                var vData = (TelephonLogRecord)contactResult.Data;
+                datecontBindingSource.DataSource = vData;
+                lblTitle.Text = vData.Schname.Trim() + "(" + vData.Schcode + ")";
+            }
+            else if(LogId > 0 && EditType == "M") { 
+                //mkt info
+                sqlquery.ClearParameters();
+                sqlquery.CommandText(@"SELECT [Id
+                                        ,C.Schname
+                                        ,M.Ddate
+                                        ,M.Initial
+                                        ,M.Note
+                                        ,M.Promo
+                                        ,M.Refered
+                                        ,M.Schcode
+                                        ,M.Company
+                                        ,M.ProspectId
+                                    FROM mktinfo M 
+                                    Left Join Cust C On M.shcode=C.schcode
+                                    Where Id=@Id");
+                sqlquery.AddParameter("@Id", LogId);
+                var mktResult = sqlquery.Select<MktInfo>();
+                if (mktResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to retrieve Marketing Log record", "");
+                    ExceptionlessClient.Default.CreateLog("Failed to retrieve Marketing Log record")
+                          .AddObject(mktResult)
+                            .Submit();
+                    this.DialogResult = DialogResult.Cancel;
+                    return;
+                }
+                var vData1 = (MktInfo)mktResult.Data;
+                mktinfoBindingSource.DataSource = vData1;
+                lblTitle.Text = vData1.Schname.Trim() + "(" + vData1.Schcode + ")";
+                
+
+
+
 
 
             }
+            else
+            {
+                //new
+                sqlquery.CommandText(@"Insert INTO DateCont (Schcode,Datecont,Initial,Company) VALUES(@Schcode,GETDATE(),@Initial,@Company)");
+                sqlquery.AddParameter(@"Schcode",Schcode);
+                sqlquery.AddParameter("@Initial",frmMain.ApplicationUser.Initials);
+                sqlquery.AddParameter("@Company", Company);
+               
+                var contactResult =sqlquery.Insert();
+               
+                if (!int.TryParse(contactResult.Data, out LogId))
+                {
+                    MbcMessageBox.Error("Insert did not receive an Id in return.", "");
+                    this.DialogResult = DialogResult.Cancel;
+                    return;
+                };
+                if (contactResult.IsError)
+                {
+                    MbcMessageBox.Error("Failed to insert Telephone Log record", "");
+                    ExceptionlessClient.Default.CreateLog("Failed to insert Telephone Log record")
+                          .AddObject(contactResult)
+                            .Submit();
+                    this.DialogResult = DialogResult.Cancel;
+                    return;
+                }
+                sqlquery.ClearParameters();
+                sqlquery.CommandText(@"Select C.Schname,D.Schcode,D.Datecont,D.Reason,D.Initial,D.Contact,D.TypeCont,D.NxtDays,D.CallCont,D.CallTime,D.Priority,D.Company,D.TechCall,D.Id 
+                    FROM DateCont D 
+                    Left Join Cust C On D.Schcode=C.Schcode
+                    Where Id=@Id");
+                sqlquery.AddParameter("@Id", LogId);
+                var contactResult1 = sqlquery.Select<TelephonLogRecord>();
+                if (contactResult1.IsError)
+                {
+                    MbcMessageBox.Error("Failed to retrieve Telephone Log record", "");
+                    ExceptionlessClient.Default.CreateLog("Failed to retrieve Telephone Log record")
+                          .AddObject(contactResult)
+                            .Submit();
+                    this.DialogResult = DialogResult.Cancel;
+                }
+                var vData = (TelephonLogRecord)contactResult1.Data;
+                datecontBindingSource.DataSource = vData;
+                lblTitle.Text = vData.Schname.Trim() + "(" + vData.Schcode + ")";
 
+            }
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+       private void AddMktRecord()
         {
+            var sqlquery = new SQLCustomClient();
+            sqlquery.CommandText(@"INSERT INTO [dbo].[mktinfo]
+                                    (
+                                         ddate
+                                        ,initial
+                                        ,schcode
+                                        ,company
+                                    )
+                                    VALUES
+                                    (
+                                        GETDATE()
+                                        ,@initial 
+                                        ,@schcode
+                                        ,@company 
+                                    )");
+            sqlquery.AddParameter(@"Schcode", Schcode);
+            sqlquery.AddParameter("@Initial", frmMain.ApplicationUser.Initials);
+            sqlquery.AddParameter("@Company", Company);
 
+            var contactResult = sqlquery.Insert();
+            if (contactResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to insert Marketing record", "");
+                ExceptionlessClient.Default.CreateLog("Failed to insert Marketing record")
+                      .AddObject(contactResult)
+                        .Submit();
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
+            if (!int.TryParse(contactResult.Data, out LogId))
+            {
+                MbcMessageBox.Error("Insert did not receive an Id in return.", "");
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            };
+            sqlquery.ClearParameters();
+            sqlquery.CommandText(@"SELECT [Id]
+                                        ,[Ddate]
+                                        ,[Initial]
+                                        ,[Note]
+                                        ,[Promo]
+                                        ,[Refered]
+                                        ,[Schcode]
+                                        ,[Company]
+                                        ,[ProspectId]
+                                        FROM [dbo].[mktinfo]
+                                                    Where Id=@Id");
+            sqlquery.AddParameter("@Id", LogId);
+            var contactResult1 = sqlquery.Select<MktInfo>();
+            if (contactResult1.IsError)
+            {
+                MbcMessageBox.Error("Failed to retrieve Marketing Log record", "");
+                ExceptionlessClient.Default.CreateLog("Failed to retrieve Marketing Log record")
+                      .AddObject(contactResult)
+                        .Submit();
+                this.DialogResult = DialogResult.Cancel;
+            }
+            var vData = (MktInfo)contactResult1.Data;
+         mktinfoBindingSource.DataSource = vData;
+            pnlMkt.Enabled = true;
         }
+        private void nxtdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            nxtdateDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+
+        private void cmbReasons_SelectedValueChanged(object sender, EventArgs e)
+        {
+            reasonTextBox.Text = cmbReasons.Text;
+        }
+
+        private void btnSave1_Click(object sender, EventArgs e)
+        {
+           
+            var sqlquery = new SQLCustomClient();
+            sqlquery.CommandText(@"UPDATE DateCont Set Datecont=@Datecont,Reason=@Reason,Contact=@Contact,TypeCont=@TypeContact,
+                                    NxtDays=@NxtDays,NxtDate=@NxtDate,CallCont=@CallCont,CallTime=@CallTime,
+                                    Priority=@Priority,Company=@Company,TechCall=@TechCall   
+                                    Where Id=@Id");
+            sqlquery.AddParameter("@Id", LogId);
+            sqlquery.AddParameter("@Datecont", datecontLabel2.Text);
+            sqlquery.AddParameter("@Reason", reasonTextBox.Text);
+            sqlquery.AddParameter("@Contact", contactTextBox.Text);
+            sqlquery.AddParameter("@TypeContact", typecontComboBox.Text.Trim());
+            sqlquery.AddParameter("@NxtDays", nxtdaysComboBox.Text==""?null : nxtdaysComboBox.Text);
+            sqlquery.AddParameter("@NxtDate", nxtdateDateTimePicker.Text==""?null: nxtdateDateTimePicker.Text);
+            sqlquery.AddParameter("@CallCont", callcontCheckBox.Checked);
+            sqlquery.AddParameter("@CallTime", callTimeTextBox.Text=="0"?null: callTimeTextBox.Text);
+            sqlquery.AddParameter("@Priority",priorityComboBox.Text == "" ? null : priorityComboBox.Text);
+            sqlquery.AddParameter("@Company",Company );
+            sqlquery.AddParameter("@TechCall ",techcallCheckBox.Checked );
+
+            var updateResult= sqlquery.Update();
+            if (updateResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to save Telephone Log record", "");
+                ExceptionlessClient.Default.CreateLog("Failed to save Telephone Log record")
+                      .AddObject(updateResult)
+                        .Submit();
+                this.DialogResult = DialogResult.Cancel;
+                return;
+            }
+            if (!chkbypassMkt.Checked)
+            {
+                sqlquery.ClearParameters();
+               
+        sqlquery.CommandText(@"UPDATE MktInfo Set Note=@Note,Promo=@Promo,Refered=@Refered,ProspectId=@ProspectId   
+                                    Where Id=@Id");
+                sqlquery.AddParameter("@Id", LogId);
+                sqlquery.AddParameter("@Note", noteTextBox.Text);
+                sqlquery.AddParameter("@Promo",promoComboBox.Text);
+                sqlquery.AddParameter("@Refered",referedComboBox.Text);
+                sqlquery.AddParameter("@ProspectId ", typecontComboBox.Text.Trim());
+                
+                var updateResult1 = sqlquery.Update();
+                if (updateResult1.IsError)
+                {
+                    MbcMessageBox.Error("Failed to save Telephone Log record", "");
+                    ExceptionlessClient.Default.CreateLog("Failed to save Telephone Log record")
+                          .AddObject(updateResult)
+                            .Submit();
+                    this.DialogResult = DialogResult.Cancel;
+                    return;
+                }
+
+
+            }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void btnCancel1_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnCreateMktLog_Click(object sender, EventArgs e)
+        {
+            AddMktRecord();
+        }
+
+        
     }
-    public class TelephonLogRecord
-    {
-        public string Schcode { get; set; }
-        public DateTime Datecont { get; set; }
-        public string Reason { get; set; }
-        public string Initials { get; set; }
-        public string Contact { get; set; }
-        public string TypeContact { get; set; }
-        public int NxtDays { get; set; }
-        public bool CallCont { get; set; }
-        public int CallTime { get; set; }
-        public int Priority { get; set; }
-        public string Company { get; set; }
-        public bool TechCall { get; set; }
-        public int Id { get; set; }
-
-
-
-    }
+   
 }

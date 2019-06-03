@@ -441,9 +441,6 @@ namespace Mbc5.Forms
         private void tsPrintScreen_Click(object sender,EventArgs e) {
             this.PrintScreen();
             }
-
-        
-
         private void tsSave_Click(object sender,EventArgs e) {
             try {
                 var activeform = this.ActiveMdiChild as BaseClass.frmBase;
