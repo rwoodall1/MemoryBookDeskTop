@@ -44,16 +44,17 @@ namespace Mbc5.Dialogs
         private frmMain frmMain;
         private int LogId=0;
         private string Company = "";
+        public bool MarketRecAdded { get; set; } = false;
         private void frmTeleLogModify_Load(object sender, EventArgs e)
         {
             if (EditType == "T")
             {
-                chkbypassMkt.Visible = false;
+             
                 this.tbLog.TabPages.Remove(pg2);
             }
             else if(EditType == "M")
             {
-                chkbypassMkt.Visible = false;
+               
                 this.tbLog.TabPages.Remove(pg1);
             }
             var tmpMktRec = new MktInfo();
@@ -243,6 +244,7 @@ namespace Mbc5.Dialogs
             var vData = (MktInfo)contactResult1.Data;
          mktinfoBindingSource.DataSource = vData;
             pnlMkt.Enabled = true;
+            this.MarketRecAdded = true;
         }
         private void nxtdateDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
@@ -256,14 +258,19 @@ namespace Mbc5.Dialogs
 
         private void btnSave1_Click(object sender, EventArgs e)
         {
-           
-            var sqlquery = new SQLCustomClient();
-            sqlquery.CommandText(@"UPDATE DateCont Set Datecont=@Datecont,Reason=@Reason,Contact=@Contact,TypeCont=@TypeContact,
+            if (reasonTextBox.Text.Trim() == "")
+            {
+                this.errorProvider1.SetError(reasonTextBox, "Reason is required");
+                return;
+            }
+
+             var sqlquery = new SQLCustomClient();
+            sqlquery.CommandText(@"UPDATE DateCont Set Reason=@Reason,Contact=@Contact,TypeCont=@TypeContact,
                                     NxtDays=@NxtDays,NxtDate=@NxtDate,CallCont=@CallCont,CallTime=@CallTime,
                                     Priority=@Priority,Company=@Company,TechCall=@TechCall   
-                                    Where Id=@Id");
+                                    Where Id=@Id And Initial=@Initial");
             sqlquery.AddParameter("@Id", LogId);
-            sqlquery.AddParameter("@Datecont", datecontLabel2.Text);
+            sqlquery.AddParameter("@Initial", frmMain.ApplicationUser.Initials);
             sqlquery.AddParameter("@Reason", reasonTextBox.Text);
             sqlquery.AddParameter("@Contact", contactTextBox.Text);
             sqlquery.AddParameter("@TypeContact", typecontComboBox.Text.Trim());
@@ -285,13 +292,12 @@ namespace Mbc5.Dialogs
                 this.DialogResult = DialogResult.Cancel;
                 return;
             }
-            if (!chkbypassMkt.Checked)
-            {
-                sqlquery.ClearParameters();
-               
-        sqlquery.CommandText(@"UPDATE MktInfo Set Note=@Note,Promo=@Promo,Refered=@Refered,ProspectId=@ProspectId   
-                                    Where Id=@Id");
+            sqlquery.ClearParameters();
+                if (chkbypassMkt.Checked && MarketRecAdded)
+                {   sqlquery.CommandText(@"UPDATE MktInfo Set Note=@Note,Promo=@Promo,Refered=@Refered,ProspectId=@ProspectId   
+                                    Where Id=@Id AND Initial=@Initial");
                 sqlquery.AddParameter("@Id", LogId);
+                sqlquery.AddParameter("@Initial", frmMain.ApplicationUser.Initials);
                 sqlquery.AddParameter("@Note", noteTextBox.Text);
                 sqlquery.AddParameter("@Promo",promoComboBox.Text);
                 sqlquery.AddParameter("@Refered",referedComboBox.Text);
@@ -309,6 +315,10 @@ namespace Mbc5.Dialogs
                 }
 
 
+            }else if (!chkbypassMkt.Checked && frmMain.ApplicationUser.UserName.Substring(0,2).ToUpper()=="CS")
+            {
+                MbcMessageBox.Hand("Please verify you have added Market Information by clicking the Market Information Completed checkbox.", "Information");
+                return;
             }
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -323,9 +333,15 @@ namespace Mbc5.Dialogs
         private void btnCreateMktLog_Click(object sender, EventArgs e)
         {
             AddMktRecord();
+
         }
 
-        
+        private void reasonTextBox_Leave(object sender, EventArgs e)
+        {
+            if (reasonTextBox.Text.Trim() != ""){
+                errorProvider1.Clear();
+            }
+        }
     }
    
 }

@@ -1798,7 +1798,12 @@ namespace Mbc5.Forms.MemoryBook {
             
         }
 
-        
+        private void btnMainLog_Click(object sender, EventArgs e)
+        {
+            AddLog();
+        }
+
+
 
 
 

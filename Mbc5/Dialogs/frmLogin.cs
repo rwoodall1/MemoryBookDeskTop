@@ -61,8 +61,8 @@ namespace Mbc5.Dialogs {
             cmd.CommandType = CommandType.Text;
             cmd.CommandTimeout = 5;
             cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@username", cUser);
-            cmd.Parameters.AddWithValue("@password", cPassword);
+            cmd.Parameters.AddWithValue("@username", cUser.Trim());
+            cmd.Parameters.AddWithValue("@password", cPassword.Trim());
             GenericIdentity vApplicationUser = new GenericIdentity(cUser);
 
             List<string> vroles = new List<string>();
@@ -78,20 +78,28 @@ namespace Mbc5.Dialogs {
                 string vFirstName = null;
                 cmd.Connection.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+                if (rdr.HasRows)
                 {
-                    
-                    vPassword = rdr["password"].ToString();
-                    vEmail = rdr["EmailAddress"].ToString();
-                    vId = rdr["id"].ToString();
-                    vChangePassword = rdr.IsDBNull(rdr.GetOrdinal("changepassword")) ? false: (bool)rdr["changepassword"];
-                    string vUsername = rdr["username"].ToString();
-                    vLastName = rdr["LastName"].ToString();
-                    vFirstName = rdr["FirstName"].ToString();
-                    vroles.Add(rdr["RoleName"].ToString().Trim());
+                    while (rdr.Read())
+                    {
 
+                        vPassword = rdr["password"].ToString();
+                        vEmail = rdr["EmailAddress"].ToString();
+                        vId = rdr["id"].ToString();
+                        vChangePassword = rdr.IsDBNull(rdr.GetOrdinal("changepassword")) ? false : (bool)rdr["changepassword"];
+                        string vUsername = rdr["username"].ToString();
+                        vLastName = rdr["LastName"].ToString();
+                        vFirstName = rdr["FirstName"].ToString();
+                        vroles.Add(rdr["RoleName"].ToString().Trim());
+
+                    }
                 }
-                if (vPassword == cPassword)
+                else {
+                    this.DialogResult = DialogResult.No;
+                    return;
+                }
+
+                if (vPassword.Trim() == cPassword.Trim())
                 {
                     this.panel1.Visible = false;
                     this.pbLoading.Visible = false;

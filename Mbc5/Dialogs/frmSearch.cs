@@ -1057,7 +1057,7 @@ namespace Mbc5.Dialogs {
         
 
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
-       {
+      {
             if (e.KeyChar == 13)
             {
                 this.DialogResult = DialogResult.OK;
@@ -1065,6 +1065,7 @@ namespace Mbc5.Dialogs {
                 if (SearchType == "SCHCODE" && ReturnForm == "CUST")
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+
                 } else if (SearchType == "SCHCODE" && ReturnForm == "SALES")
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
@@ -1211,9 +1212,11 @@ namespace Mbc5.Dialogs {
         }
         private void dgSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
+            
             //tabs 1 row so take row back off
             if (e.KeyChar == 13)
             {
+               CurrentIndex = dgSearch.CurrentCell.RowIndex-1;
                 txtSearch_KeyPress(sender, e);
             }
         }
