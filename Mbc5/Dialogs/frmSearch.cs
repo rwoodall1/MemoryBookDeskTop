@@ -54,6 +54,8 @@ namespace Mbc5.Dialogs {
         private List<EndSheetSchNameSearch> EndSheetSchoolNameList { get; set; }
         private List<EndSheetOracleCodeSearch> EndSheetOracleCodeList { get; set; }
         private List<EndSheetJobNoSearch> EndSheetJobNoList { get; set; }
+        private List<BidsSchcodeSearch> BidSchcodeList { get; set; }
+        private List<BidsSchnameSearch> BidSchnameList { get; set; }
         private List<EndSheetInvnoSearch> EndSheetInvnoList { get; set; }
         public ReturnValues ReturnValue { get; set; } = new ReturnValues();
 
@@ -119,7 +121,19 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "BIDS":
-                            
+                            cmdtext = @"Select C.Schcode,C.Schname,B.Id,B.Contryear,C.SchZip,C.SchState From Bids B  INNER JOIN Cust C on B.Schcode=C.Schcode Order By Schcode,Id";
+                            sqlclient.CommandText(cmdtext);
+                            var bidresult = sqlclient.SelectMany<BidsSchcodeSearch>();
+                            if (bidresult.IsError)
+                            {
+                                MbcMessageBox.Error(bidresult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var bidretVal = (List<BidsSchcodeSearch>)bidresult.Data;
+                            this.BidSchcodeList = bidretVal;
+                            bsData.DataSource = this.BidSchcodeList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
                             break;
                         case "ENDSHEET":
                             cmdtext = @"Select C.Schcode,C.Schname,E.Invno AS Invoice,E.endshtno AS EndSheetNo,C.Contryear From Cust C 
@@ -194,6 +208,21 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "BIDS":
+                            cmdtext = @"Select C.Schcode,C.Schname,B.Id,B.Contryear,C.SchZip,C.SchState From Bids B  INNER JOIN Cust C on B.Schcode=C.Schcode Order By Schcode,Id";
+                            sqlclient.CommandText(cmdtext);
+                            var bidresult = sqlclient.SelectMany<BidsSchnameSearch>();
+                            if (bidresult.IsError)
+                            {
+                                MbcMessageBox.Error(bidresult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var bidretVal1 = (List<BidsSchnameSearch>)bidresult.Data;
+                            this.BidSchnameList = bidretVal1;
+                            bsData.DataSource = this.BidSchnameList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
+
+
                             break;
                         case "ENDSHEET":
                             cmdtext = @"Select C.Schname,C.Schcode,E.Invno AS Invoice,E.endshtno AS EndSheetNo,C.Contryear From Cust C 
@@ -751,6 +780,9 @@ namespace Mbc5.Dialogs {
                     }else if (ReturnForm == "ENDSHEET")
                     {
                         vList = this.EndSheetSchoolCodeList.Select(x => x.Schcode).ToList();
+                    }else if (ReturnForm=="BIDS")
+                    {
+                        vList = this.BidSchcodeList.Select(x => x.Schcode).ToList();
                     }
                         
     
@@ -786,6 +818,9 @@ namespace Mbc5.Dialogs {
                     }else if (ReturnForm == "PRODUCTION")
                     {
                         vListName = this.ProdutnSchnameList.Select(x => x.Schname).ToList();
+                    }else if (ReturnForm == "BIDS")
+                    {
+                        vListName = this.BidSchnameList.Select(x => x.Schname).ToList();
                     }
                     else if (ReturnForm == "ENDSHEET")
                     {
@@ -1078,6 +1113,10 @@ namespace Mbc5.Dialogs {
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
+                }else if (SearchType == "SCHCODE" && ReturnForm == "BIDS")
+                {
+                    this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+                    this.ReturnValue.Invno= (int)dgSearch.Rows[CurrentIndex].Cells[3].Value;//bid id put in Invno
                 }
                 else if (SearchType == "SCHNAME" && ReturnForm == "CUST")
 
@@ -1094,6 +1133,10 @@ namespace Mbc5.Dialogs {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
 
+                }else if (SearchType == "SCHNAME" && ReturnForm == "BIDS")
+                {
+                    this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
+                    this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[3].Value;
                 }
                 else if (SearchType == "SCHNAME" && ReturnForm == "ENDSHEET")
                 {

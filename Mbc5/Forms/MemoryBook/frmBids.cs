@@ -15,7 +15,7 @@ using BindingModels;
 using BaseClass;
 using BaseClass.Core;
 using Microsoft.Reporting.WinForms;
-
+using Mbc5.Dialogs;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmBids : BaseClass.frmBase, INotifyPropertyChanged
     {
@@ -871,8 +871,6 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
 
-      
-
         //General
         public override ApiProcessingResult<bool> Save()
         {
@@ -982,6 +980,105 @@ namespace Mbc5.Forms.MemoryBook {
             
             return val;
         }
+        public override void SchCodeSearch()
+        {
+            
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+
+
+            var currentSchool = this.Schcode;
+            frmSearch frmSearch = new frmSearch("Schcode", "BIDS", Schcode);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    int vId = frmSearch.ReturnValue.Invno;//this will be the bid id
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)bidsBindingSource.Current;
+
+                  
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+                    var vPos = bidsBindingSource.Find("Id", vId);
+                    bidsBindingSource.Position = vPos;
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                frmBids_Paint(this, null);
+                this.Cursor = Cursors.Default;
+            }
+        }
+        public override void SchnameSearch()
+        {
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+
+
+            var currentSchool = this.Schname;
+            frmSearch frmSearch = new frmSearch("Schname", "BIDS", currentSchool);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    int vId = frmSearch.ReturnValue.Invno;//this will be the bid id
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)bidsBindingSource.Current;
+
+
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+                    var vPos = bidsBindingSource.Find("Id", vId);
+                    bidsBindingSource.Position = vPos;
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                frmBids_Paint(this, null);
+                this.Cursor = Cursors.Default;
+            }
+
+
+
+        }
+       
 
         #endregion
         #region Validation

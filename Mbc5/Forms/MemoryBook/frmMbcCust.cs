@@ -1289,9 +1289,9 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void btnSchoolEmail_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
-            string body = txtSchEmail.Text;
-            string subj = "Inter Office Memo";
-            string email = "";
+            string body = "";
+            string subj =txtSchname.Text.Trim()+" "+Schcode+" "+cmbState.SelectedValue.ToString();
+            string email = txtSchEmail.Text;
             var emailHelper = new EmailHelper();
             EmailType type = EmailType.Mbc;
             emailHelper.SendOutLookEmail(subj, email, "", body, type);
@@ -1813,6 +1813,7 @@ namespace Mbc5.Forms.MemoryBook {
             Add();
         }
 
+       
 
 
 
