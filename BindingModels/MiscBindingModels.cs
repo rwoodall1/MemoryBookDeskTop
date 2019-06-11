@@ -62,14 +62,14 @@ namespace BindingModels
         public int PersonalCopies { get; set; }
         public bool Personalize { get; set; }
         public string FoilClr { get; set; }
-        public int MSstandardQty { get; set; }
+       public int MSstandardQty { get; set; }
         public bool Laminated { get; set; }
         public string CoverType { get; set; }
         public string CoverDesc { get; set; }
         public string BindVend { get; set; }
         public DateTime Prshpdte { get; set; }
         public string SchColors { get; set; }
-        public int NumPgs { get; set; }
+        public string NumPgs { get; set; }
     }
     public class ProductionCheckList
     {

@@ -111,6 +111,9 @@
     <Compile Include="Classes\OptionPrice.cs" />
     <Compile Include="Classes\Price.cs" />
     <Compile Include="Classes\Utils.cs" />
+    <Compile Include="DataSets\dsBids.cs">
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsBids.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -186,8 +186,12 @@ namespace Mbc5.Forms.MemoryBook {
             DataRowView newrow = (DataRowView)custBindingSource.AddNew();
             GetSetSchcode();
             txtSchname.ReadOnly = false;
+            
             this.txtModifiedBy.Text = this.ApplicationUser.id;
-			return true;
+            this.lblHiddenSchcode.Text = Schcode;
+            frmMbcCust_Paint(null, null);
+
+            return true;
             }
         public override void Delete() {
 
@@ -1103,7 +1107,7 @@ namespace Mbc5.Forms.MemoryBook {
         //    return coverNum.ToString();
         //    }
         private void GetSetSchcode() {
-            SqlConnection conn = new SqlConnection(FormConnectionString);
+            SqlConnection conn = new SqlConnection(frmMain.AppConnectionString);
             SqlCommand cmd = new SqlCommand("SELECT precode,schcode from codecnt ",conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
@@ -1663,6 +1667,7 @@ namespace Mbc5.Forms.MemoryBook {
                 MessageBox.Show(dataReturned.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+         
             var data = (ProdutnTicketModel)dataReturned.Data;
             
             ProdutnTicketModelBindingSource.DataSource = data;
@@ -1802,6 +1807,13 @@ namespace Mbc5.Forms.MemoryBook {
         {
             AddLog();
         }
+
+        private void btnAddcust_Click(object sender, EventArgs e)
+        {
+            Add();
+        }
+
+
 
 
 
