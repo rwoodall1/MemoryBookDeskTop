@@ -4742,6 +4742,11 @@ namespace Mbc5.Forms.MemoryBook
             dteQuote.Format = DateTimePickerFormat.Short;
         }
 
+        private void pg2_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
         //nothing below here

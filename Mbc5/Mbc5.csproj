@@ -242,6 +242,12 @@
     <Compile Include="Dialogs\frmTeleLogModify.Designer.cs">
       <DependentUpon>frmTeleLogModify.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\addresslabel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\addresslabel.Designer.cs">
+      <DependentUpon>addresslabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmBarScan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -456,6 +462,9 @@
     <EmbeddedResource Include="Dialogs\frmTeleLogModify.resx">
       <DependentUpon>frmTeleLogModify.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\addresslabel.resx">
+      <DependentUpon>addresslabel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBarScan.resx">
       <DependentUpon>frmBarScan.cs</DependentUpon>
     </EmbeddedResource>
@@ -534,6 +543,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\AddressLabel.rdlc" />
     <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
     <EmbeddedResource Include="Reports\InvoiceDetails.rdlc" />
