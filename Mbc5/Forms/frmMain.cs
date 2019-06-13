@@ -19,6 +19,7 @@ using Mbc5.Classes;
 using System.Data.SqlClient;
 using Exceptionless;
 using Exceptionless.Models;
+using BaseClass;
 namespace Mbc5.Forms
 {
     public partial class frmMain : BaseClass.ParentForm
@@ -896,6 +897,72 @@ namespace Mbc5.Forms
             addresslabel addressLabel = new addresslabel();
           addressLabel.Show();
            
+        }
+
+        private void tsFileFolder_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name== "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("FILEFOLDER");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+
+        }
+
+        private void tsAddress_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("ADDRESSLABEL");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+
+        }
+
+        private void tsReceivingLabel_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("RECEIVINGLABEL");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+        }
+
+        private void tsEnvelopeLabel_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("ENVELOPELABEL");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
         }
 
 

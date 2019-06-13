@@ -1,116 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
-  <Body>
-    <ReportItems>
-      <Textbox Name="contfname">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!contfname.Value.ToString().Trim() +" "
-+Fields!contlname.Value.ToString().Trim(),
- "DataSet1")</Value>
-                <Style>
-                  <FontSize>18pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>contfname</rd:DefaultName>
-        <Left>0.905in</Left>
-        <Height>0.32291in</Height>
-        <Width>4.35417in</Width>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="schaddr">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!schaddr.Value.ToString().Trim() + " "+ Fields!schaddr2.Value.ToString().Trim()
-+Environment.NewLine
-+Fields!schcity.Value.ToString().Trim() + " " + Fields!schstate.Value.ToString().Trim() + " "
-+Fields!schzip.Value, "DataSet1")</Value>
-                <Style>
-                  <FontSize>18pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>schaddr</rd:DefaultName>
-        <Top>0.72791in</Top>
-        <Left>0.905in</Left>
-        <Height>0.34375in</Height>
-        <Width>4.35417in</Width>
-        <ZIndex>1</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="schcode">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!schname.Value.ToString().Trim(), "DataSet1")</Value>
-                <Style>
-                  <FontSize>18pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>schcode</rd:DefaultName>
-        <Top>0.34597in</Top>
-        <Left>0.905in</Left>
-        <Height>0.34028in</Height>
-        <Width>4.35417in</Width>
-        <ZIndex>2</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-    </ReportItems>
-    <Height>2.03125in</Height>
-    <Style />
-  </Body>
-  <Width>5.38417in</Width>
-  <Page>
-    <PageHeight>3in</PageHeight>
-    <PageWidth>4in</PageWidth>
-    <Style />
-  </Page>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="dsCust">
@@ -118,7 +7,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>f3a59a86-3720-416d-b933-e1e0a4725bc5</rd:DataSourceID>
+      <rd:DataSourceID>96384303-ae73-49ef-95d6-05f348d72a29</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -707,6 +596,155 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="schcity">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!contfname.Value.ToString().Trim()+" "+Fields!contlname.Value.ToString().Trim(), "DataSet1")</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <LineHeight>1pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>schcity</rd:DefaultName>
+            <Height>0.17361in</Height>
+            <Width>3.40625in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <VerticalAlign>Bottom</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+          </Textbox>
+          <Textbox Name="shiptocont">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=IIf(Fields!shiptocont.Value="Y","C/O"+Fields!schname.Value.ToString().Trim(),Fields!schname.Value.ToString().Trim())</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <LineHeight>1pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>shiptocont</rd:DefaultName>
+            <Top>0.21528in</Top>
+            <Height>0.19792in</Height>
+            <Width>3.40625in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <VerticalAlign>Top</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+          </Textbox>
+          <Textbox Name="shiptocont1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=IIf(Fields!shiptocont.Value="Y",Fields!contaddr.Value.ToString().Trim(),Fields!schaddr.Value.ToString().Trim()+" "+IIf(Fields!shiptocont.Value="Y",Fields!contaddr2.Value.ToString().Trim(),Fields!schaddr2.Value.ToString().Trim()))</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <LineHeight>1pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>shiptocont1</rd:DefaultName>
+            <Top>0.48264in</Top>
+            <Height>0.1875in</Height>
+            <Width>3.40625in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+          </Textbox>
+          <Textbox Name="shiptocont3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=IIf(Fields!shiptocont.Value = "Y", Fields!contcity.Value.ToString.Trim, Fields!schcity.Value.ToString.Trim)</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <LineHeight>1pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>shiptocont2</rd:DefaultName>
+            <Top>0.73958in</Top>
+            <Height>0.26042in</Height>
+            <Width>3.40625in</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>1.17708in</Height>
+        <Style />
+      </Body>
+      <Width>3.40625in</Width>
+      <Page>
+        <PageHeight>4in</PageHeight>
+        <PageWidth>5in</PageWidth>
+        <LeftMargin>0.25in</LeftMargin>
+        <BottomMargin>1.5in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>2d96da2a-351f-4e60-abbe-1d3f6d7ec468</rd:ReportID>
+  <rd:ReportID>213d2ab5-ab71-4977-9a08-ccea5e40cd41</rd:ReportID>
 </Report>

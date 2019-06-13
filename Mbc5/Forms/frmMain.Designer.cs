@@ -58,6 +58,8 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.stoneFieldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsAddress = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsFileFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.customeReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,6 +97,8 @@
             this.tsZipCodeSearch = new System.Windows.Forms.ToolStripButton();
             this.tsEmailSearch = new System.Windows.Forms.ToolStripButton();
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
+            this.tsReceivingLabel = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsEnvelopeLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -138,7 +142,7 @@
             this.onlineFormsToolStripMenuItem,
             this.salesToolStripMenuItem});
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
-            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
             // 
             // customerToolStripMenuItem
@@ -183,7 +187,7 @@
             this.mbidsToolStripMenuItem,
             this.onlineFormsToolStripMenuItem1});
             this.meridianToolStripMenuItem.Name = "meridianToolStripMenuItem";
-            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
             // 
             // MerToolStrip
@@ -220,7 +224,7 @@
             this.endSheetSupplementPreFlightToolStripMenuItem,
             this.barScanToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -247,14 +251,14 @@
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
             // 
             // testFormToolStripMenuItem
             // 
             this.testFormToolStripMenuItem.Name = "testFormToolStripMenuItem";
-            this.testFormToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testFormToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.testFormToolStripMenuItem.Text = "TestForm";
             this.testFormToolStripMenuItem.Click += new System.EventHandler(this.testFormToolStripMenuItem_Click);
             // 
@@ -331,19 +335,38 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             // 
             // labelsToolStripMenuItem
             // 
+            this.labelsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsAddress,
+            this.tsEnvelopeLabel,
+            this.tsFileFolder,
+            this.tsReceivingLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
+            // 
+            // tsAddress
+            // 
+            this.tsAddress.Name = "tsAddress";
+            this.tsAddress.Size = new System.Drawing.Size(180, 22);
+            this.tsAddress.Text = "Address";
+            this.tsAddress.Click += new System.EventHandler(this.tsAddress_Click);
+            // 
+            // tsFileFolder
+            // 
+            this.tsFileFolder.Name = "tsFileFolder";
+            this.tsFileFolder.Size = new System.Drawing.Size(180, 22);
+            this.tsFileFolder.Text = "File Folder";
+            this.tsFileFolder.Click += new System.EventHandler(this.tsFileFolder_Click);
             // 
             // customeReportsToolStripMenuItem
             // 
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             // 
             // windowToolStripMenuItem
@@ -683,6 +706,20 @@
             this.tsJobNo.Visible = false;
             this.tsJobNo.Click += new System.EventHandler(this.tsJobNo_Click);
             // 
+            // tsReceivingLabel
+            // 
+            this.tsReceivingLabel.Name = "tsReceivingLabel";
+            this.tsReceivingLabel.Size = new System.Drawing.Size(180, 22);
+            this.tsReceivingLabel.Text = "Receiving Label";
+            this.tsReceivingLabel.Click += new System.EventHandler(this.tsReceivingLabel_Click);
+            // 
+            // tsEnvelopeLabel
+            // 
+            this.tsEnvelopeLabel.Name = "tsEnvelopeLabel";
+            this.tsEnvelopeLabel.Size = new System.Drawing.Size(180, 22);
+            this.tsEnvelopeLabel.Text = "Envelope Label";
+            this.tsEnvelopeLabel.Click += new System.EventHandler(this.tsEnvelopeLabel_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -772,5 +809,9 @@
         private System.Windows.Forms.ToolStripButton tsInvno;
         private System.Windows.Forms.ToolStripButton tsEmailSearch;
         private System.Windows.Forms.ToolStripButton tsJobNo;
+        private System.Windows.Forms.ToolStripMenuItem tsFileFolder;
+        private System.Windows.Forms.ToolStripMenuItem tsAddress;
+        private System.Windows.Forms.ToolStripMenuItem tsReceivingLabel;
+        private System.Windows.Forms.ToolStripMenuItem tsEnvelopeLabel;
     }
 }

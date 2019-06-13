@@ -18,9 +18,11 @@ using Exceptionless.Models;
 using Mbc5.Classes;
 using BindingModels;
 using BaseClass.Core;
+using Microsoft.Reporting.WinForms;
+
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmMbcCust : BaseClass.Forms.bTopBottom ,INotifyPropertyChanged {
-           private bool vMktGo = false;
+        private bool vMktGo = false;
         private string vSchcode = null;
         private int vInvno = 0;
         Bitmap memoryImage;
@@ -45,7 +47,7 @@ namespace Mbc5.Forms.MemoryBook {
         private UserPrincipal ApplicationUser { get; set; }
         public new frmMain frmMain { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
-        #region "Properties"
+   #region "Properties"
         public bool MktGo {
             get { return vMktGo; }
             set {                
@@ -60,31 +62,8 @@ namespace Mbc5.Forms.MemoryBook {
        
 
         #endregion
-        private void SetConnectionString()
-        {
-            frmMain frmMain = (frmMain)this.MdiParent;
-            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpLeadSourceTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
-            this.lkpLeadNameTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.custSearchTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-         
-            this.lkpMultiYearOptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpTypeContTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpPromotionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpPrevPubTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpNoRebookTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpschtypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpMktReferenceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.lkpCommentsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.datecontTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-           
-            this.contpstnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            this.mktinfoTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-
-
-        }
-        private void frmMbcCust_Load(object sender,EventArgs e) {
+        
+   private void frmMbcCust_Load(object sender,EventArgs e) {
             this.frmMain = (frmMain)this.MdiParent;
 
             SetConnectionString();
@@ -138,231 +117,340 @@ namespace Mbc5.Forms.MemoryBook {
             {
                 MbcMessageBox.Error(ex.Message, "");
             }
+            
         }
-
 
         #region CrudOperations
         public override ApiProcessingResult<bool> Save()
-        {
-			var processingResult = new ApiProcessingResult<bool>();
-			this.txtModifiedBy.Text  = this.ApplicationUser.id;
-            bool retval = false;
+{
+	var processingResult = new ApiProcessingResult<bool>();
+	this.txtModifiedBy.Text  = this.ApplicationUser.id;
+    bool retval = false;
 		
-            txtSchname.ReadOnly = true;
-       //     var a = this.ValidateChildren(ValidationConstraints.Enabled);
-           //     var b=this.ValidateChildren(ValidationConstraints.ImmediateChildren);
-            if (this.ValidateChildren(ValidationConstraints.Enabled))
-            {
-                this.custBindingSource.EndEdit();
-                try
-                {
-                    custTableAdapter.Update(dsCust);
-                    this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
-                    this.SetInvnoSchCode();
-                    retval = true;
-                }
-                catch (DBConcurrencyException dbex)
-                {
-                    DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsCust.custRow)(dbex.Row), ref dsCust);
-                    if (result == DialogResult.Yes) {
-                        Save();
-                    }
+    txtSchname.ReadOnly = true;
+//     var a = this.ValidateChildren(ValidationConstraints.Enabled);
+    //     var b=this.ValidateChildren(ValidationConstraints.ImmediateChildren);
+    if (this.ValidateChildren(ValidationConstraints.Enabled))
+    {
+        this.custBindingSource.EndEdit();
+        try
+        {
+            custTableAdapter.Update(dsCust);
+            this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+            this.SetInvnoSchCode();
+            retval = true;
+        }
+        catch (DBConcurrencyException dbex)
+        {
+            DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsCust.custRow)(dbex.Row), ref dsCust);
+            if (result == DialogResult.Yes) {
+                Save();
+            }
                                  
-                }catch(Exception ex) {
-                    MessageBox.Show("School record failed to update:" + ex.Message);
-                    ex.ToExceptionless()
-                   .SetMessage("School record failed to update:" + ex.Message)
-                   .Submit();
-					processingResult.IsError = true;
-					processingResult.Errors.Add(new ApiProcessingError("Record not save:"+ex.Message, "Record not save:" + ex.Message,""));
-                    }
+        }catch(Exception ex) {
+            MessageBox.Show("School record failed to update:" + ex.Message);
+            ex.ToExceptionless()
+            .SetMessage("School record failed to update:" + ex.Message)
+            .Submit();
+			processingResult.IsError = true;
+			processingResult.Errors.Add(new ApiProcessingError("Record not save:"+ex.Message, "Record not save:" + ex.Message,""));
             }
+    }
 			
-			return processingResult;
-        }
-        public override bool Add() {
+	return processingResult;
+}
+public override bool Add() {
 			
-			dsCust.Clear();
-            DataRowView newrow = (DataRowView)custBindingSource.AddNew();
-            GetSetSchcode();
-            txtSchname.ReadOnly = false;
+	dsCust.Clear();
+    DataRowView newrow = (DataRowView)custBindingSource.AddNew();
+    GetSetSchcode();
+    txtSchname.ReadOnly = false;
             
-            this.txtModifiedBy.Text = this.ApplicationUser.id;
-            this.lblHiddenSchcode.Text = Schcode;
-            frmMbcCust_Paint(null, null);
+    this.txtModifiedBy.Text = this.ApplicationUser.id;
+    this.lblHiddenSchcode.Text = Schcode;
+    frmMbcCust_Paint(null, null);
 
-            return true;
-            }
-        public override void Delete() {
+    return true;
+    }
+public override void Delete() {
 
-			//should mark as deleted or remove??
-			this.txtModifiedBy.Text = this.ApplicationUser.id;
-			DialogResult messageResult = MessageBox.Show("This will delete the current customer. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
-			if (messageResult == DialogResult.Yes)
-			{
-				DataRowView current = (DataRowView)custBindingSource.Current;
-				var schcode = current["schcode"];
+	//should mark as deleted or remove??
+	this.txtModifiedBy.Text = this.ApplicationUser.id;
+	DialogResult messageResult = MessageBox.Show("This will delete the current customer. Do you want to proceed?","Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+	if (messageResult == DialogResult.Yes)
+	{
+		DataRowView current = (DataRowView)custBindingSource.Current;
+		var schcode = current["schcode"];
 
-				var sqlQuery = new SQLQuery();
-				var queryString = "Delete  From  cust where schcode=@schcode ";
-				SqlParameter[] parameters = new SqlParameter[] {
-				new SqlParameter("@schcode",schcode)
-			};
-				try {
-				var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
-				this.custTableAdapter.Fill(this.dsCust.cust, "038752");//set to cs record   
-                this.SetInvnoSchCode();
-				} catch (Exception ex) {
-					MbcMessageBox.Error(ex.Message, "");
-				}
-				
-            }
-
+		var sqlQuery = new SQLQuery();
+		var queryString = "Delete  From  cust where schcode=@schcode ";
+		SqlParameter[] parameters = new SqlParameter[] {
+		new SqlParameter("@schcode",schcode)
+	};
+		try {
+		var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
+		this.custTableAdapter.Fill(this.dsCust.cust, "038752");//set to cs record   
+        this.SetInvnoSchCode();
+		} catch (Exception ex) {
+			MbcMessageBox.Error(ex.Message, "");
 		}
-        public override void Cancel() {
-            custBindingSource.CancelEdit();
-            }     
-        #endregion
+				
+    }
 
-        #region Validation
-        private void txtSchname_Validating(object sender,CancelEventArgs e) {
-            bool cancel = false;
-            if (string.IsNullOrEmpty(this.txtSchname.Text.Trim()))
-                {
-                //This control fails validation: Name cannot be empty.
-                cancel = true;
-                this.errorProvider1.SetError(this.txtSchname,"School name is required.");
-                }
-            e.Cancel = cancel;
-            }
-
-        private void txtSchPhone_Validating(object sender,CancelEventArgs e) {
-            bool cancel = false;
-            if (string.IsNullOrEmpty(this.txtSchPhone.Text.Trim()))
-                {
-                //This control fails validation: Name cannot be empty.
-                cancel = true;
-                this.errorProvider1.SetError(this.txtSchPhone,"School phone number is required.");
-                }
-            e.Cancel = cancel;
-            }
-
-        private void txtaddress_Validating(object sender,CancelEventArgs e) {
-            bool cancel = false;
-            if (string.IsNullOrEmpty(this.txtaddress.Text.Trim()))
-                {
-                //This control fails validation: Name cannot be empty.
-                cancel = true;
-                this.errorProvider1.SetError(this.txtaddress,"School address is required.");
-                }
-            e.Cancel = cancel;
-            }
-
-        private void txtCity_Validating(object sender,CancelEventArgs e) {
-            bool cancel = false;
-            if (string.IsNullOrEmpty(this.txtCity.Text.Trim()))
-                {
-                //This control fails validation: Name cannot be empty.
-                cancel = true;
-                this.errorProvider1.SetError(this.txtCity,"School city is required.");
-                }
-            e.Cancel = cancel;
-            }
-
-        private void cmbState_Validating(object sender,CancelEventArgs e) {
-            bool cancel = false;
-            if (string.IsNullOrEmpty(this.cmbState.Text))
-                {
-                //This control fails validation: Name cannot be empty.
-                cancel = true;
-                this.errorProvider1.SetError(this.cmbState,"School state is required.");
-                }
-            e.Cancel = cancel;
-            }
-
-        private void txtZip_Validating(object sender,CancelEventArgs e) {
-            bool cancel = false;
-            if (string.IsNullOrEmpty(this.txtZip.Text.Trim()))
-                {
-                //This control fails validation: Name cannot be empty.
-                cancel = true;
-                this.errorProvider1.SetError(this.txtZip,"School zip code is required.");
-                }
-            e.Cancel = cancel;
-            }
-
-        private void txtCsRep_Validating(object sender, CancelEventArgs e)
-        {
-            bool cancel = false;
-            if (string.IsNullOrEmpty(this.txtCsRep.Text.Trim()))
+}
+public override void Cancel() {
+    custBindingSource.CancelEdit();
+    }     
+    #endregion
+ #region Validation
+    private void txtSchname_Validating(object sender,CancelEventArgs e) {
+        bool cancel = false;
+        if (string.IsNullOrEmpty(this.txtSchname.Text.Trim()))
             {
-                //This control fails validation: Name cannot be empty.
-                cancel = true;
-                this.errorProvider1.SetError(this.txtCsRep, "Sales rep is required.");
+            //This control fails validation: Name cannot be empty.
+            cancel = true;
+            this.errorProvider1.SetError(this.txtSchname,"School name is required.");
             }
-            e.Cancel = cancel;
-            return;
+        e.Cancel = cancel;
         }
-        private void txtCsRep_Validated(object sender, EventArgs e)
+
+    private void txtSchPhone_Validating(object sender,CancelEventArgs e) {
+        bool cancel = false;
+        if (string.IsNullOrEmpty(this.txtSchPhone.Text.Trim()))
+            {
+            //This control fails validation: Name cannot be empty.
+            cancel = true;
+            this.errorProvider1.SetError(this.txtSchPhone,"School phone number is required.");
+            }
+        e.Cancel = cancel;
+        }
+
+    private void txtaddress_Validating(object sender,CancelEventArgs e) {
+        bool cancel = false;
+        if (string.IsNullOrEmpty(this.txtaddress.Text.Trim()))
+            {
+            //This control fails validation: Name cannot be empty.
+            cancel = true;
+            this.errorProvider1.SetError(this.txtaddress,"School address is required.");
+            }
+        e.Cancel = cancel;
+        }
+
+    private void txtCity_Validating(object sender,CancelEventArgs e) {
+        bool cancel = false;
+        if (string.IsNullOrEmpty(this.txtCity.Text.Trim()))
+            {
+            //This control fails validation: Name cannot be empty.
+            cancel = true;
+            this.errorProvider1.SetError(this.txtCity,"School city is required.");
+            }
+        e.Cancel = cancel;
+        }
+
+    private void cmbState_Validating(object sender,CancelEventArgs e) {
+        bool cancel = false;
+        if (string.IsNullOrEmpty(this.cmbState.Text))
+            {
+            //This control fails validation: Name cannot be empty.
+            cancel = true;
+            this.errorProvider1.SetError(this.cmbState,"School state is required.");
+            }
+        e.Cancel = cancel;
+        }
+
+    private void txtZip_Validating(object sender,CancelEventArgs e) {
+        bool cancel = false;
+        if (string.IsNullOrEmpty(this.txtZip.Text.Trim()))
+            {
+            //This control fails validation: Name cannot be empty.
+            cancel = true;
+            this.errorProvider1.SetError(this.txtZip,"School zip code is required.");
+            }
+        e.Cancel = cancel;
+        }
+
+    private void txtCsRep_Validating(object sender, CancelEventArgs e)
+    {
+        bool cancel = false;
+        if (string.IsNullOrEmpty(this.txtCsRep.Text.Trim()))
         {
-            this.errorProvider1.SetError(this.txtCsRep, string.Empty);
+            //This control fails validation: Name cannot be empty.
+            cancel = true;
+            this.errorProvider1.SetError(this.txtCsRep, "Sales rep is required.");
         }
-        private void txtSchname_Validated(object sender,EventArgs e) {
-            this.errorProvider1.SetError(this.txtSchname,string.Empty);
-            }
+        e.Cancel = cancel;
+        return;
+    }
+    private void txtCsRep_Validated(object sender, EventArgs e)
+    {
+        this.errorProvider1.SetError(this.txtCsRep, string.Empty);
+    }
+    private void txtSchname_Validated(object sender,EventArgs e) {
+        this.errorProvider1.SetError(this.txtSchname,string.Empty);
+        }
 
-        private void txtaddress_Validated(object sender,EventArgs e) {
-            this.errorProvider1.SetError(this.txtaddress,string.Empty);
-            }
+    private void txtaddress_Validated(object sender,EventArgs e) {
+        this.errorProvider1.SetError(this.txtaddress,string.Empty);
+        }
 
-        private void txtCity_Validated(object sender,EventArgs e) {
-            this.errorProvider1.SetError(this.txtCity,string.Empty);
-            }
+    private void txtCity_Validated(object sender,EventArgs e) {
+        this.errorProvider1.SetError(this.txtCity,string.Empty);
+        }
 
-        private void cmbState_Validated(object sender,EventArgs e) {
-            this.errorProvider1.SetError(this.cmbState,string.Empty);
-            }
+    private void cmbState_Validated(object sender,EventArgs e) {
+        this.errorProvider1.SetError(this.cmbState,string.Empty);
+        }
 
-        private void txtZip_Validated(object sender,EventArgs e) {
-            this.errorProvider1.SetError(this.txtZip,string.Empty);
-            }
+    private void txtZip_Validated(object sender,EventArgs e) {
+        this.errorProvider1.SetError(this.txtZip,string.Empty);
+        }
 
-        private void txtSchPhone_Validated(object sender,EventArgs e) {
-            this.errorProvider1.SetError(this.txtSchPhone,string.Empty);
-            }
-        //private void yb_sthTextBox_Validating(object sender,CancelEventArgs e) {
-        //    //bool cancel = false;
-        //    //if (yb_sthTextBox.Text!="Y" || !string.IsNullOrEmpty(this.yb_sthTextBox.Text.Trim()))
-        //    //{
-        //    //    //This control fails validation: Name cannot be empty.
-        //    //    cancel = true;
-        //    //    this.errorProvider1.SetError(this.yb_sthTextBox, "Value must be empty or Y.");
-        //    //}
-        //    //e.Cancel = cancel;
-        //    }
+    private void txtSchPhone_Validated(object sender,EventArgs e) {
+        this.errorProvider1.SetError(this.txtSchPhone,string.Empty);
+        }
+    //private void yb_sthTextBox_Validating(object sender,CancelEventArgs e) {
+    //    //bool cancel = false;
+    //    //if (yb_sthTextBox.Text!="Y" || !string.IsNullOrEmpty(this.yb_sthTextBox.Text.Trim()))
+    //    //{
+    //    //    //This control fails validation: Name cannot be empty.
+    //    //    cancel = true;
+    //    //    this.errorProvider1.SetError(this.yb_sthTextBox, "Value must be empty or Y.");
+    //    //}
+    //    //e.Cancel = cancel;
+    //    }
 
-        private void yb_sthTextBox_Validated(object sender,EventArgs e) {
-            //this.errorProvider1.SetError(this.yb_sthTextBox, string.Empty);
-            }
+    private void yb_sthTextBox_Validated(object sender,EventArgs e) {
+        //this.errorProvider1.SetError(this.yb_sthTextBox, string.Empty);
+        }
 
-        private void shiptocontTextBox_Validated(object sender,EventArgs e) {
-            //this.errorProvider1.SetError(this.shiptocontTextBox, string.Empty);
-            }
+    private void shiptocontTextBox_Validated(object sender,EventArgs e) {
+        //this.errorProvider1.SetError(this.shiptocontTextBox, string.Empty);
+        }
 
-        //private void shiptocontTextBox_Validating(object sender,CancelEventArgs e) {
-        //    //bool cancel = false;
-        //    //var a = !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim());
-        //    //if (shiptocontTextBox.Text != "Y" || !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim()))
-        //    //{
-        //    //    //This control fails validation: Name cannot be empty.
-        //    //    cancel = true;
-        //    //    this.errorProvider1.SetError(this.shiptocontTextBox, "Value must be empty or Y.");
-        //    //}
-        //    //e.Cancel = cancel;
-        //    }
-		#endregion
-#region Methods
-		public override void OracleCodeSearch() {
+//private void shiptocontTextBox_Validating(object sender,CancelEventArgs e) {
+//    //bool cancel = false;
+//    //var a = !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim());
+//    //if (shiptocontTextBox.Text != "Y" || !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim()))
+//    //{
+//    //    //This control fails validation: Name cannot be empty.
+//    //    cancel = true;
+//    //    this.errorProvider1.SetError(this.shiptocontTextBox, "Value must be empty or Y.");
+//    //}
+//    //e.Cancel = cancel;
+//    }
+        #endregion
+ #region Methods
+        public void PrintLabel(string vLabel)
+        {
+            switch (vLabel.ToUpper())
+            {
+                case "FILEFOLDER" :
+                    // change reportviewer source report
+                    reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30323FileFolderLabel.rdlc";
+                    reportViewer2.LocalReport.DataSources.Clear();
+                    reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", custBindingSource));
+                    try
+                    {
+                    var ProdNo = ((DataRowView)this.custBindingSource.Current).Row["ProdNo"].ToString();
+                    ReportParameter rp0 = new ReportParameter("ProdNo", ProdNo);
+                    reportViewer2.LocalReport.SetParameters(new ReportParameter[] { rp0 });
+                    this.reportViewer2.RefreshReport();
+                }
+                catch(Exception ex)
+                {
+                        MbcMessageBox.Error(ex.Message, "");
+                }
+                    break;
+                case "ADDRESSLABEL":
+                    //change reportviewer source report
+                    reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30256AddressLabel.rdlc";
+                    reportViewer2.LocalReport.DataSources.Clear();
+                    reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", custBindingSource));
+                    this.reportViewer2.RefreshReport();
+                    break;
+                case "RECEIVINGLABEL":
+                    //change reportviewer source report
+                    try
+                    {
+                        reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321ReceivingLabel.rdlc";
+                        reportViewer2.LocalReport.DataSources.Clear();
+                        reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", custBindingSource));
+                        string KitRecvd = "/  /";
+                        string PrShipDate = "/  /";
+                        if (!((DataRowView)this.custBindingSource.Current).Row.IsNull("kitrecvd"))
+                        {
+                            var vKitRecvd = (DateTime)((DataRowView)this.custBindingSource.Current).Row["kitrecvd"];
+                            KitRecvd = vKitRecvd.ToString("d");
+                        }
+                        if (!((DataRowView)this.custBindingSource.Current).Row.IsNull("prshpdte"))
+                        {
+                            var vPrShipDate = (DateTime)((DataRowView)this.custBindingSource.Current).Row["prshpdte"];
+                            PrShipDate = vPrShipDate.ToString("d");
+                        }
+
+
+                       
+                       
+                        ReportParameter rp0 = new ReportParameter("KitRecvd", KitRecvd);
+                        ReportParameter rp1 = new ReportParameter("PromiseShipDate", PrShipDate);
+                        reportViewer2.LocalReport.SetParameters(new ReportParameter[] { rp0,rp1 });
+                        this.reportViewer2.RefreshReport();
+                    }
+                    catch (Exception ex)
+                    {
+                        MbcMessageBox.Error(ex.Message, "");
+                    }
+                  
+                    break;
+                case "ENVELOPELABEL":
+                    //change reportviewer source report
+                    try
+                    {
+                        reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321Envelope.rdlc";
+                        reportViewer2.LocalReport.DataSources.Clear();
+                        reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", custBindingSource));
+                       this.reportViewer2.RefreshReport();
+                    }
+                    catch (Exception ex)
+                    {
+                        MbcMessageBox.Error(ex.Message, "");
+                    }
+
+                    break;
+                default:
+                    MbcMessageBox.Stop("Missing Parameter", "");
+                    break;
+            }
+           
+           
+         
+            
+        }
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpLeadSourceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpLeadNameTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.custSearchTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+
+            this.lkpMultiYearOptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpTypeContTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpPromotionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpPrevPubTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpNoRebookTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpschtypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpMktReferenceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpCommentsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.datecontTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+
+            this.contpstnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.mktinfoTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+
+
+        }
+        public override void OracleCodeSearch() {
 			var currentOracleCode = oraclecodeTextBox.Text;
 			if (DoPhoneLog()) {
 				MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -1273,63 +1361,327 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
         #endregion
+ #region Events
+        private void txtSchname_MouseClick(object sender, MouseEventArgs e)
+        {
 
-        private void btnInterOffice_Click(object sender,EventArgs e) {
-         
-                this.Cursor = Cursors.AppStarting;
-                string body = inofficeTextBox.Text;
-                string subj = "Inter Office Memo";
-                string email = "";
-                var emailHelper = new EmailHelper();
-                EmailType type = EmailType.Mbc;
-                emailHelper.SendOutLookEmail(subj, email, "", body, type);
-                this.Cursor = Cursors.Default;
-         
         }
+        private void txtSchname_DoubleClick(object sender, EventArgs e)
+        {
+            if (ApplicationUser.IsInRole("SA") || ApplicationUser.IsInRole("Administrator"))
+            {
+                txtSchname.ReadOnly = false;
+            }
+        }
+        private void frmMbcCust_Paint(object sender, PaintEventArgs e)
+        {
+            try { this.Text = "MBC Customers-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+            catch
+            {
 
-        private void btnSchoolEmail_Click(object sender,EventArgs e) {
+            }
+        }
+        private void schoutDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            schoutDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+        private void contdateDateTimePicker_ValueChanged_1(object sender, EventArgs e)
+        {
+
+            contdateDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+        private void initcontDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            initcontDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+        private void sourdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            sourdateDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+        private void btnNewCustomer_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.AppStarting;
+            string body = txtSchname.Text.Trim() + "<br/>" + txtaddress.Text.Trim() + "<br/>" + txtCity.Text.Trim() + ", " + cmbState.SelectedValue + ' ' + txtZip.Text.Trim() + "<br/><br/>Congratulations to the Jostens Team...Memory Book just signed the following NEW customer in your territory for the " + contryearTextBox.Text + " school year! ";
+            string subj = Schcode + " " + txtSchname.Text.Trim() + " " + cmbState.SelectedValue + " NEW SCHOOL By Customer Service Rep " + txtCsRep.Text;
+            //string email = "yearbook@memorybook.com;hcantrell@memorybook.com;john.cox@jostens.com;tammy.whitaker@jostens.com";
+            string email = "randy@woodalldevelopment.com";
+            var emailHelper = new EmailHelper();
+            EmailType type = EmailType.Mbc;
+            emailHelper.SendOutLookEmail(subj, email, "", body, type);
+            this.Cursor = Cursors.Default;
+
+
+        }
+        private void contdateDateTimePicker_CloseUp(object sender, EventArgs e)
+        {
+
+            AddSalesRecord();
+
+        }
+        private void btnWebsite_Click_1(object sender, EventArgs e)
+        {
+            try
+            { Process.Start(txtWebsite.Text); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Url is invalid.");
+            }
+
+        }
+        private void txtSchname_DoubleClick_1(object sender, EventArgs e)
+        {
+            if (ApplicationUser.IsInRole("SA") || ApplicationUser.IsInRole("Administrator"))
+            {
+                txtSchname.ReadOnly = false;
+            }
+        }
+        private void btnEmailContac3_Click_1(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtContact3Email.Text))
+            {
+                this.errorProvider1.SetError(txtContact3Email, string.Empty);
+                var emailHelper = new EmailHelper();
+                emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
+            }
+            else
+            {
+                this.errorProvider1.SetError(txtContact3Email, "Email address is required.");
+            }
+
+        }
+        private void btnEmailCont2_Click_1(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtContact2Email.Text))
+            {
+                this.errorProvider1.SetError(txtContact2Email, string.Empty);
+                var emailHelper = new EmailHelper();
+                emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
+            }
+            else
+            {
+                this.errorProvider1.SetError(txtContact2Email, "Email address is required.");
+            }
+
+        }
+        private void firstDaySchoolDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            firstDaySchoolDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+        private void rbdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            rbdateDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+        private void xeldateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            xeldateDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+        private void btnProdTckt_Click(object sender, EventArgs e)
+        {
+            var sqlClient = new SQLCustomClient();
+            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.contryear as ContractYear,
+             Q.BookType,P.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
+             ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
+                FROM Cust C
+                LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
+				Left JOIN EndSheet ES ON Q.Invno=ES.Invno
+				Left JOIN Recv2 R ON Q.Invno=R.Invno
+                LEFT JOIN Produtn P ON Q.Invno=P.Invno
+            Where Q.Invno=@Invno";
+
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            var dataReturned = sqlClient.Select<ProdutnTicketModel>();
+            if (dataReturned.IsError)
+            {
+                MessageBox.Show(dataReturned.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var data = (ProdutnTicketModel)dataReturned.Data;
+
+            ProdutnTicketModelBindingSource.DataSource = data;
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewer1.RefreshReport();
+            Cursor.Current = Cursors.Default;
+
+        }
+        private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewer1.PrintDialog();
+            Cursor.Current = Cursors.Default;
+        }
+        private void splitContainer_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void frmMbcCust_Shown(object sender, EventArgs e)
+        {
+            CustTab.Visible = true;
+            SetInvnoSchCode();
+        }
+        private void btnProdChk_Click(object sender, EventArgs e)
+        {
+
+            //m.newfname = cust.newfname
+            //m.newlname = cust.newlname
+
+            //m.spec1 = ''
+
+            var sqlClient = new SQLCustomClient();
+            string cmdText = @"
+                        Select  C.Schname,C.Schcode,C.SchState,C.SchCity,C.SchAddr,C.SchZip,C.SchPhone,C.Vcrsent,C.Spcinst,C.magic,
+                        C.Enrollment,C.AllColor,C.ContFname,C.ContLname,C.ContAddr,C.ContAddr2,C.ContCity,C.ContState,C.ContZip,C.ShipToCont,C.Contphnhom,
+                        C.Sal,C.ShipMemo,Q.NoPages,Q.NoCopies,Q.Glspaper,Q.Insck,Q.Dc1,Q.BookType,Q.Allclrck,P.Invno,P.Prodno,P.Covertype,P.Diecut,
+                        P.Laminated,P.Contrecvd,P.Perfbind,P.Screcv,P.Speccover,P.Kitrecvd,P.Dedayin,P.Dedayout,P.Shpdate,P.Coilclr,
+                        P.Cstat,I.Invtot,I.Payments,I.BalDue,R.Hndred,R.Schout
+                        FROM Cust C
+                            LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
+                            Left JOIN Invoice I ON Q.Invno=I.Invno
+                            Left JOIN Recv2 R ON Q.Invno=R.Invno
+                            LEFT JOIN Produtn P ON Q.Invno=P.Invno
+                        Where Q.Invno=@Invno";
+
+            sqlClient.CommandText(cmdText);
+            sqlClient.AddParameter("@Invno", this.Invno);
+            var dataReturnedResult = sqlClient.Select<ProductionCheckList>();
+            if (dataReturnedResult.IsError)
+            {
+                MessageBox.Show(dataReturnedResult.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            var data = (ProductionCheckList)dataReturnedResult.Data;
+
+            ProductionCheckListBindingSource.DataSource = data;
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewerCheckList.RefreshReport();
+            Cursor.Current = Cursors.Default;
+
+        }
+        private void reportViewerCheckList_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            reportViewerCheckList.PrintDialog();
+            Cursor.Current = Cursors.Default;
+        }
+        private void AddLeadName_Click(object sender, EventArgs e)
+        {
+            LkpLeadName frmLkpLeadName = new LkpLeadName(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpLeadName.MdiParent = this.ParentForm;
+            frmLkpLeadName.Show();
+            this.Cursor = Cursors.Default;
+        }
+        private void leadsourceComboBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    addItemMenu.Items["AddLeadSource"].Visible = true;
+                    addItemMenu.Items["AddLeadName"].Visible = false;
+                    addItemMenu.Show(this, new Point(e.X, e.Y));
+                }
+            }
+        }
+        private void leadnameComboBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA"))
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    addItemMenu.Items["AddLeadName"].Visible = true;
+                    addItemMenu.Items["AddLeadSource"].Visible = false;
+                    addItemMenu.Show(this, new Point(e.X, e.Y));
+                }
+            }
+        }
+        private void AddLeadSource_Click(object sender, EventArgs e)
+        {
+            LkpLeadSource frmLkpLeadSource = new LkpLeadSource(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpLeadSource.MdiParent = this.ParentForm;
+            frmLkpLeadSource.Show();
+            this.Cursor = Cursors.Default;
+        }
+        private void taxExemptionReceivedDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            taxExemptionReceivedDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+        private void frmMbcCust_Activated(object sender, EventArgs e)
+        {
+
+            try { frmMain.ShowSearchButtons(this.Name); } catch { }
+        }
+        private void frmMbcCust_Deactivate(object sender, EventArgs e)
+        {
+            try { frmMain.HideSearchButtons(); } catch { }
+
+        }
+        private void btnMainLog_Click(object sender, EventArgs e)
+        {
+            AddLog();
+        }
+        private void btnAddcust_Click(object sender, EventArgs e)
+        {
+            Add();
+        }
+        private void btnInterOffice_Click(object sender, EventArgs e)
+        {
+
+            this.Cursor = Cursors.AppStarting;
+            string body = inofficeTextBox.Text;
+            string subj = "Inter Office Memo";
+            string email = "";
+            var emailHelper = new EmailHelper();
+            EmailType type = EmailType.Mbc;
+            emailHelper.SendOutLookEmail(subj, email, "", body, type);
+            this.Cursor = Cursors.Default;
+
+        }
+        private void btnSchoolEmail_Click(object sender, EventArgs e)
+        {
             this.Cursor = Cursors.AppStarting;
             string body = "";
-            string subj =txtSchname.Text.Trim()+" "+Schcode+" "+cmbState.SelectedValue.ToString();
+            string subj = txtSchname.Text.Trim() + " " + Schcode + " " + cmbState.SelectedValue.ToString();
             string email = txtSchEmail.Text;
             var emailHelper = new EmailHelper();
             EmailType type = EmailType.Mbc;
             emailHelper.SendOutLookEmail(subj, email, "", body, type);
             this.Cursor = Cursors.Default;
         }
-
-        private void btnEmailContact_Click(object sender,EventArgs e) {
+        private void btnEmailContact_Click(object sender, EventArgs e)
+        {
             if (!String.IsNullOrEmpty(txtContactEmail.Text))
             {
                 this.errorProvider1.SetError(txtContactEmail, string.Empty);
                 var emailHelper = new EmailHelper();
-            emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
+                emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
             }
             else
             {
                 this.errorProvider1.SetError(txtContactEmail, "Email address is required.");
             }
-            
-            }
-        
 
-        private void txtReason_Leave(object sender,EventArgs e) {
+        }
+        private void txtReason_Leave(object sender, EventArgs e)
+        {
             datecontDataGridView.Select();
             this.BindingContext[this.datecontDataGridView.DataSource].EndCurrentEdit();
             datecontDataGridView.Refresh();
             datecontDataGridView.Parent.Refresh();
-            }
-
-        private void btnAddLog_Click(object sender,EventArgs e) {
+        }
+        private void btnAddLog_Click(object sender, EventArgs e)
+        {
 
             AddLog();
 
-            }
+        }
         private void btnEditTeleLog_Click(object sender, EventArgs e)
         {
-            var vresult = datecontDataGridView.Rows[datecontDataGridView.SelectedCells[0].RowIndex].Cells["id"].Value ;
+            var vresult = datecontDataGridView.Rows[datecontDataGridView.SelectedCells[0].RowIndex].Cells["id"].Value;
             var vLogId = Convert.ToInt32(vresult);
-            frmTeleLogModify frmTeleLogModify = new frmTeleLogModify(vLogId,"T", frmMain);
+            frmTeleLogModify frmTeleLogModify = new frmTeleLogModify(vLogId, "T", frmMain);
             DialogResult result = frmTeleLogModify.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -1337,7 +1689,7 @@ namespace Mbc5.Forms.MemoryBook {
                 {
                     this.datecontTableAdapter.Fill(this.dsCust.datecont, this.Schcode);
                     mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, Schcode);
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -1373,8 +1725,8 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
         }
-
-        private void btnAddMarketLog_Click(object sender,EventArgs e) {
+        private void btnAddMarketLog_Click(object sender, EventArgs e)
+        {
             AddLog();
         }
         private void AddLog()
@@ -1400,426 +1752,124 @@ namespace Mbc5.Forms.MemoryBook {
                 }
             }
         }
-       
-
-        private void frmMbcCust_FormClosing(object sender,FormClosingEventArgs e) {
-            if(DoPhoneLog())
-                {
+        private void frmMbcCust_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DoPhoneLog())
+            {
                 e.Cancel = true;
-                MessageBox.Show("Please enter your customer service log information","Log",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                MessageBox.Show("Please enter your customer service log information", "Log", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
-                }
-			var custSaveResult = Save();
-			if (custSaveResult.IsError) {
-				DialogResult result=MessageBox.Show("Record failed to save. Continue closeing?","Save",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
-                if (result == DialogResult.No) {
+            }
+            var custSaveResult = Save();
+            if (custSaveResult.IsError)
+            {
+                DialogResult result = MessageBox.Show("Record failed to save. Continue closeing?", "Save", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No)
+                {
                     e.Cancel = true;
                     return;
-                    }
-               
-            }
-          
-        }
-
-        private void datecontDataGridView_CellDoubleClick(object sender,DataGridViewCellEventArgs e) {
-            if (e.ColumnIndex == 9)
-                {
-                  DataGridViewCell cell=(DataGridViewCell) datecontDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                cell.Value = DateTime.Now.ToShortDateString();
                 }
-           
+
             }
 
-      
+        }
+        private void datecontDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 9)
+            {
+                DataGridViewCell cell = (DataGridViewCell)datecontDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.Value = DateTime.Now.ToShortDateString();
+            }
 
+        }
         private void mktinfoDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             //leave
         }
-
         private void datecontDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             //Leave Here;
 
         }
-
-        private void pg3_Leave(object sender,EventArgs e) {
+        private void pg3_Leave(object sender, EventArgs e)
+        {
             //save if user leaves to another tab or form will not affect log check.
             DataTable EditedRecs = dsMktInfo.mktinfo.GetChanges();
             if (EditedRecs != null)
-                {
+            {
                 SaveMktLog();
-                }
+            }
             DataTable EditedRecs1 = dsCust.datecont.GetChanges();
             if (EditedRecs1 != null)
-                {
+            {
                 SaveTeleLog();
-                }
-                }
-
+            }
+        }
         private void lblSchcodeVal_TextChanged(object sender, EventArgs e)
         {
             SetInvnoSchCode();
         }
-
         private void custDataGridView_Leave(object sender, EventArgs e)
         {
- 
+
             lblSchcode.Refresh();
             custDataGridView.Parent.Refresh();
         }
-
         private void lblInvno_TextChanged(object sender, EventArgs e)
         {
             SetInvnoSchCode();
         }
-
-        private void button1_Click_1(object sender,EventArgs e) {
+        private void button1_Click_1(object sender, EventArgs e)
+        {
             var a = new ScreenPrinter(this);
             a.PrintScreen();
 
-            }
-
-        private void button3_Click(object sender,EventArgs e) {
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
             var a = 1;
             ScreenPrinter aa = new ScreenPrinter(this);
 
-            }
-
-        private void pg1_Enter(object sender,EventArgs e) {
-            if (custBindingSource.Count < 1) {
+        }
+        private void pg1_Enter(object sender, EventArgs e)
+        {
+            if (custBindingSource.Count < 1)
+            {
                 this.splitContainer.Panel1.Enabled = false;
                 this.splitContainer.Panel2.Enabled = false;
-                }
+            }
+        }
+        private void custDataGridView_Enter(object sender, EventArgs e)
+        {
+            try
+            {
+                this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+                SetInvnoSchCode();
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "");
             }
 
-        private void custDataGridView_Enter(object sender,EventArgs e) {
-			try {
-				this.custTableAdapter.Fill(this.dsCust.cust,this.Schcode);
-				SetInvnoSchCode();
-			} catch (Exception ex) {
-				MbcMessageBox.Error(ex.Message, "");
-			}
-            
-            }
-
-        private void custDataGridView_CellDoubleClick(object sender,DataGridViewCellEventArgs e) {
+        }
+        private void custDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
             GoToSales();
-            }
-
+        }
         private void contdateDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
 
         }
-
-		private void button2_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void txtSchname_MouseClick(object sender, MouseEventArgs e)
-		{
-
-		}
-
-		private void txtSchname_DoubleClick(object sender, EventArgs e)
-		{
-			if (ApplicationUser.IsInRole("SA")|| ApplicationUser.IsInRole("Administrator"))
-			{
-				txtSchname.ReadOnly = false;
-			}
-		}
-
-		private void frmMbcCust_Paint(object sender, PaintEventArgs e)
-		{
-			try { this.Text = "MBC Customers-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
-			catch
-			{
-
-			}
-		}
-
-		private void schoutDateTimePicker_ValueChanged(object sender, EventArgs e)
-		{
-			schoutDateTimePicker.Format = DateTimePickerFormat.Short;
-		}
-
-		private void contdateDateTimePicker_ValueChanged_1(object sender, EventArgs e)
-		{
-			
-			contdateDateTimePicker.Format = DateTimePickerFormat.Short;
-		}
-
-		private void initcontDateTimePicker_ValueChanged(object sender, EventArgs e)
-		{
-			initcontDateTimePicker.Format = DateTimePickerFormat.Short;
-		}
-
-		private void sourdateDateTimePicker_ValueChanged(object sender, EventArgs e)
-		{
-			sourdateDateTimePicker.Format = DateTimePickerFormat.Short;
-		}
-
-		private void btnNewCustomer_Click(object sender, EventArgs e)
-		{
-			this.Cursor = Cursors.AppStarting;
-			string body = txtSchname.Text.Trim() + "<br/>" + txtaddress.Text.Trim() + "<br/>" +  txtCity.Text.Trim() + ", " + cmbState.SelectedValue + ' ' + txtZip.Text.Trim() + "<br/><br/>Congratulations to the Jostens Team...Memory Book just signed the following NEW customer in your territory for the " + contryearTextBox.Text + " school year! ";
-			string subj = Schcode + " " + txtSchname.Text.Trim() + " " + cmbState.SelectedValue + " NEW SCHOOL By Customer Service Rep " + txtCsRep.Text;
-			//string email = "yearbook@memorybook.com;hcantrell@memorybook.com;john.cox@jostens.com;tammy.whitaker@jostens.com";
-			string email = "randy@woodalldevelopment.com";
-			var emailHelper = new EmailHelper();
-			EmailType type = EmailType.Mbc;
-			emailHelper.SendOutLookEmail(subj, email, "", body, type);
-			this.Cursor = Cursors.Default;
-
-			
-		}
-
-		private void contdateDateTimePicker_CloseUp(object sender, EventArgs e)
-		{
-
-			AddSalesRecord();
-	
-		}
-
-        private void btnWebsite_Click_1(object sender, EventArgs e)
-        {
-            try
-            { Process.Start(txtWebsite.Text); }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Url is invalid.");
-            }
-
-        }
-
-        private void txtSchname_DoubleClick_1(object sender, EventArgs e)
-        {
-            if (ApplicationUser.IsInRole("SA") || ApplicationUser.IsInRole("Administrator"))
-            {
-                txtSchname.ReadOnly = false;
-            }
-        }
-
-        private void btnEmailContac3_Click_1(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(txtContact3Email.Text))
-            {
-                this.errorProvider1.SetError(txtContact3Email, string.Empty);
-                var emailHelper = new EmailHelper();
-                emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
-            }
-            else
-            {
-                this.errorProvider1.SetError(txtContact3Email, "Email address is required.");
-            }
-          
-        }
-
-        private void btnEmailCont2_Click_1(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(txtContact2Email.Text))
-            {
-                this.errorProvider1.SetError(txtContact2Email, string.Empty);
-                var emailHelper = new EmailHelper();
-                emailHelper.SendOutLookEmail("", txtContactEmail.Text, "", "", EmailType.Mbc);
-            }
-            else
-            {
-                this.errorProvider1.SetError(txtContact2Email, "Email address is required.");
-            }
-           
-        }
-
-        private void firstDaySchoolDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            firstDaySchoolDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-
-        private void rbdateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            rbdateDateTimePicker.Format= DateTimePickerFormat.Short;
-        }
-
-        private void xeldateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            xeldateDateTimePicker.Format= DateTimePickerFormat.Short;
-        }
-
-        private void btnProdTckt_Click(object sender, EventArgs e)
-        {
-            var sqlClient = new SQLCustomClient();
-            string cmdText = @"Select  C.Schname,C.Schcode,C.SchState AS State,C.spcinst AS SpecialInstructions,C.SchColors,P.JobNo,P.Company,Q.Invno,Q.contryear as ContractYear,
-             Q.BookType,P.PerfBind,Q.Insck,Q.YirSchool,P.ProdNo,P.bkgrnd AS BackGround,P.NoPages,P.NoCopies,P.CoilClr,P.Theme,P.Laminated,P.persnlz AS Personalize,Q.perscopies AS PersonalCopies,Q.allclrck As AllClrck
-             ,Q.msstanqty AS MSstandardQty,ES.endshtno AS EndsheetNumb,P.TypeStyle,P.CoverType,P.CoverDesc,P.BindVend,P.Prshpdte,R.numpgs
-                FROM Cust C
-                LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
-				Left JOIN EndSheet ES ON Q.Invno=ES.Invno
-				Left JOIN Recv2 R ON Q.Invno=R.Invno
-                LEFT JOIN Produtn P ON Q.Invno=P.Invno
-            Where Q.Invno=@Invno";
-
-            sqlClient.CommandText(cmdText);
-            sqlClient.AddParameter("@Invno", this.Invno);
-            var dataReturned = sqlClient.Select<ProdutnTicketModel>();
-            if (dataReturned.IsError)
-            {
-                MessageBox.Show(dataReturned.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-         
-            var data = (ProdutnTicketModel)dataReturned.Data;
-            
-            ProdutnTicketModelBindingSource.DataSource = data;
-            Cursor.Current = Cursors.WaitCursor;
-            reportViewer1.RefreshReport();
-            Cursor.Current = Cursors.Default;
-           
-        }
-
-        private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-            reportViewer1.PrintDialog();
-            Cursor.Current = Cursors.Default;
-        }
-
-        private void splitContainer_Panel1_Paint(object sender, PaintEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void frmMbcCust_Shown(object sender, EventArgs e)
+        private void reportViewer2_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
-            CustTab.Visible = true;
-            SetInvnoSchCode();
+            reportViewer2.PrintDialog();
         }
-
-        private void btnProdChk_Click(object sender, EventArgs e)
-        {
-
-//m.newfname = cust.newfname
-//m.newlname = cust.newlname
-
-//m.spec1 = ''
-
-            var sqlClient = new SQLCustomClient();
-            string cmdText = @"
-                        Select  C.Schname,C.Schcode,C.SchState,C.SchCity,C.SchAddr,C.SchZip,C.SchPhone,C.Vcrsent,C.Spcinst,C.magic,
-                        C.Enrollment,C.AllColor,C.ContFname,C.ContLname,C.ContAddr,C.ContAddr2,C.ContCity,C.ContState,C.ContZip,C.ShipToCont,C.Contphnhom,
-                        C.Sal,C.ShipMemo,Q.NoPages,Q.NoCopies,Q.Glspaper,Q.Insck,Q.Dc1,Q.BookType,Q.Allclrck,P.Invno,P.Prodno,P.Covertype,P.Diecut,
-                        P.Laminated,P.Contrecvd,P.Perfbind,P.Screcv,P.Speccover,P.Kitrecvd,P.Dedayin,P.Dedayout,P.Shpdate,P.Coilclr,
-                        P.Cstat,I.Invtot,I.Payments,I.BalDue,R.Hndred,R.Schout
-                        FROM Cust C
-                            LEFT JOIN Quotes Q ON C.Schcode=Q.Schcode
-                            Left JOIN Invoice I ON Q.Invno=I.Invno
-                            Left JOIN Recv2 R ON Q.Invno=R.Invno
-                            LEFT JOIN Produtn P ON Q.Invno=P.Invno
-                        Where Q.Invno=@Invno";
-
-            sqlClient.CommandText(cmdText);
-            sqlClient.AddParameter("@Invno", this.Invno);
-            var dataReturnedResult = sqlClient.Select<ProductionCheckList>();
-            if (dataReturnedResult.IsError)
-            {
-                MessageBox.Show(dataReturnedResult.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            var data = (ProductionCheckList)dataReturnedResult.Data;
-
-            ProductionCheckListBindingSource.DataSource = data;
-            Cursor.Current = Cursors.WaitCursor;
-            reportViewerCheckList.RefreshReport();
-            Cursor.Current = Cursors.Default;
-
-        }
-
-        private void reportViewerCheckList_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-            reportViewerCheckList.PrintDialog();
-            Cursor.Current = Cursors.Default;
-        }
-
-         
-
-        private void AddLeadName_Click(object sender, EventArgs e)
-        {
-            LkpLeadName frmLkpLeadName = new LkpLeadName(this.ApplicationUser);
-            this.Cursor = Cursors.AppStarting;
-            frmLkpLeadName.MdiParent = this.ParentForm;
-            frmLkpLeadName.Show();
-            this.Cursor = Cursors.Default;
-        }
-
-        private void leadsourceComboBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (ApplicationUser.IsInRole("Administrator")|| ApplicationUser.IsInRole("SA"))
-            {
-                if (e.Button == MouseButtons.Right)
-                {
-                    addItemMenu.Items["AddLeadSource"].Visible = true;
-                    addItemMenu.Items["AddLeadName"].Visible = false;
-                    addItemMenu.Show(this, new Point(e.X, e.Y));
-                }
-            }
-        }
-
-        private void leadnameComboBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (ApplicationUser.IsInRole("Administrator") || ApplicationUser.IsInRole("SA")) {
-                if (e.Button == MouseButtons.Right)
-                {
-                    addItemMenu.Items["AddLeadName"].Visible = true;
-                    addItemMenu.Items["AddLeadSource"].Visible = false;
-                    addItemMenu.Show(this, new Point(e.X, e.Y));
-                }
-            }
-        }
-
-        private void AddLeadSource_Click(object sender, EventArgs e)
-        {
-            LkpLeadSource frmLkpLeadSource = new LkpLeadSource(this.ApplicationUser);
-            this.Cursor = Cursors.AppStarting;
-            frmLkpLeadSource.MdiParent = this.ParentForm;
-            frmLkpLeadSource.Show();
-            this.Cursor = Cursors.Default;
-        }
-
-		private void taxExemptionReceivedDateTimePicker_ValueChanged(object sender, EventArgs e)
-		{
-			taxExemptionReceivedDateTimePicker.Format = DateTimePickerFormat.Short;
-		}
-
-        private void frmMbcCust_Activated(object sender, EventArgs e)
-        {
-
-            try { frmMain.ShowSearchButtons(this.Name ); } catch { }
-        }
-
-        private void frmMbcCust_Deactivate(object sender, EventArgs e)
-        {
-            try { frmMain.HideSearchButtons(); } catch { }
-            
-        }
-
-        private void btnMainLog_Click(object sender, EventArgs e)
-        {
-            AddLog();
-        }
-
-        private void btnAddcust_Click(object sender, EventArgs e)
-        {
-            Add();
-        }
-
-       
-
-
-
-
-
-
+        #endregion
 
         //Nothing below here
     }

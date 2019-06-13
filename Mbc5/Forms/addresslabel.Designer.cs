@@ -31,16 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label schcodeLabel;
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dsCust = new Mbc5.DataSets.dsCust();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
-            this.tableAdapterManager = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
+            this.dsCust = new Mbc5.DataSets.dsCust();
+            this.button1 = new System.Windows.Forms.Button();
             this.schcodeTextBox = new System.Windows.Forms.TextBox();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
+            this.tableAdapterManager = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
             schcodeLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             this.SuspendLayout();
             // 
             // schcodeLabel
@@ -52,15 +52,10 @@
             schcodeLabel.TabIndex = 19;
             schcodeLabel.Text = "schcode:";
             // 
-            // button1
+            // custBindingSource
             // 
-            this.button1.Location = new System.Drawing.Point(28, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsCust;
             // 
             // dsCust
             // 
@@ -68,22 +63,15 @@
             this.dsCust.EnforceConstraints = false;
             this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // custBindingSource
+            // button1
             // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsCust;
-            // 
-            // custTableAdapter
-            // 
-            this.custTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.custSearchTableAdapter = null;
-            this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
-            this.tableAdapterManager.datecontTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.button1.Location = new System.Drawing.Point(28, 28);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "address label";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // schcodeTextBox
             // 
@@ -98,12 +86,24 @@
             reportDataSource1.Name = "DataSet1";
             reportDataSource1.Value = this.custBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.AddressLabel.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30256AddressLabel.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(120, 113);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(527, 246);
             this.reportViewer1.TabIndex = 21;
+            // 
+            // custTableAdapter
+            // 
+            this.custTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.custSearchTableAdapter = null;
+            this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
+            this.tableAdapterManager.datecontTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // addresslabel
             // 
@@ -117,8 +117,8 @@
             this.Name = "addresslabel";
             this.Text = "addresslabel";
             this.Load += new System.EventHandler(this.addresslabel_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

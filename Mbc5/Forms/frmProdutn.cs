@@ -279,7 +279,31 @@ namespace Mbc5.Forms
 			AllEmails = vAllEmails;
 
 		}
+        public void PrintYearBookLabels()
+        {
+            //put in check for nulls
+            var vKitRecvd = ((DataRowView)this.produtnBindingSource.Current).Row["kitrecvd"].ToString();
+            var vRecvCardSent = ((DataRowView)this.produtnBindingSource.Current).Row["reccardsent"].ToString();
+            if (vRecvCardSent!="True")
+            {
+                MbcMessageBox.Information("A receiving card has not been sent for this customer.", "Receiving Card");
+            }
+            var vSchoolState= ((DataRowView)this.custBindingSource.Current).Row["schstate"].ToString();
+            if (string.IsNullOrEmpty(vKitRecvd))
+            {
+                MbcMessageBox.Information("Kit received date must be entered before printing a label.", "");
+                return;
+            }
+            reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30323FileFolderLabel.rdlc";
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", custBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", produtnBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", quotesBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", wipBindingSource));
 
+            this.reportViewer1.RefreshReport();
+                      
+        }
 		//General
 		private void SetCodeInvno()
 		{
@@ -1205,7 +1229,7 @@ namespace Mbc5.Forms
 							var vVal = prodno.Substring(0, 1);
 							if (txtPerfbind.Text != vVal)
 							{
-								MessageBox.Show("Your Production Number (Binding) First Digit is not the same as this value... Press andy key to continue...It is being changed!", "Binding Type Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+								MessageBox.Show("Your Production Number (Binding) First Digit is not the same as this value... Press OK to continue...It is being changed!", "Binding Type Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 								if (txtPerfbind.Text == "C" || txtPerfbind.Text == "G" || txtPerfbind.Text == "K" || txtPerfbind.Text == "H" || txtPerfbind.Text == "P" || txtPerfbind.Text == "S" || txtPerfbind.Text == "M")
 								{
 									if (vVal == "C" || vVal == "G" || vVal == "K" || vVal == "H" || vVal == "P" || vVal == "S" || vVal == "M")

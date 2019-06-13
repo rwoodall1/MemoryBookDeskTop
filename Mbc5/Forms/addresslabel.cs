@@ -29,7 +29,10 @@ namespace Mbc5.Forms
         
         private void button1_Click(object sender, EventArgs e)
         {
+            this.custTableAdapter.Fill(this.dsCust.cust, "038752");
             this.reportViewer1.RefreshReport();
         }
+
+        
     }
 }
