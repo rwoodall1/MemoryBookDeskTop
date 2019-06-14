@@ -59,7 +59,9 @@
             this.stoneFieldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsAddress = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsEnvelopeLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsFileFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsReceivingLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.customeReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,8 +99,7 @@
             this.tsZipCodeSearch = new System.Windows.Forms.ToolStripButton();
             this.tsEmailSearch = new System.Windows.Forms.ToolStripButton();
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
-            this.tsReceivingLabel = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsEnvelopeLabel = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsYearBookLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -344,7 +345,8 @@
             this.tsAddress,
             this.tsEnvelopeLabel,
             this.tsFileFolder,
-            this.tsReceivingLabel});
+            this.tsReceivingLabel,
+            this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
             this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
@@ -356,12 +358,26 @@
             this.tsAddress.Text = "Address";
             this.tsAddress.Click += new System.EventHandler(this.tsAddress_Click);
             // 
+            // tsEnvelopeLabel
+            // 
+            this.tsEnvelopeLabel.Name = "tsEnvelopeLabel";
+            this.tsEnvelopeLabel.Size = new System.Drawing.Size(180, 22);
+            this.tsEnvelopeLabel.Text = "Envelope Label";
+            this.tsEnvelopeLabel.Click += new System.EventHandler(this.tsEnvelopeLabel_Click);
+            // 
             // tsFileFolder
             // 
             this.tsFileFolder.Name = "tsFileFolder";
             this.tsFileFolder.Size = new System.Drawing.Size(180, 22);
             this.tsFileFolder.Text = "File Folder";
             this.tsFileFolder.Click += new System.EventHandler(this.tsFileFolder_Click);
+            // 
+            // tsReceivingLabel
+            // 
+            this.tsReceivingLabel.Name = "tsReceivingLabel";
+            this.tsReceivingLabel.Size = new System.Drawing.Size(180, 22);
+            this.tsReceivingLabel.Text = "Receiving Label";
+            this.tsReceivingLabel.Click += new System.EventHandler(this.tsReceivingLabel_Click);
             // 
             // customeReportsToolStripMenuItem
             // 
@@ -706,19 +722,12 @@
             this.tsJobNo.Visible = false;
             this.tsJobNo.Click += new System.EventHandler(this.tsJobNo_Click);
             // 
-            // tsReceivingLabel
+            // tsYearBookLabel
             // 
-            this.tsReceivingLabel.Name = "tsReceivingLabel";
-            this.tsReceivingLabel.Size = new System.Drawing.Size(180, 22);
-            this.tsReceivingLabel.Text = "Receiving Label";
-            this.tsReceivingLabel.Click += new System.EventHandler(this.tsReceivingLabel_Click);
-            // 
-            // tsEnvelopeLabel
-            // 
-            this.tsEnvelopeLabel.Name = "tsEnvelopeLabel";
-            this.tsEnvelopeLabel.Size = new System.Drawing.Size(180, 22);
-            this.tsEnvelopeLabel.Text = "Envelope Label";
-            this.tsEnvelopeLabel.Click += new System.EventHandler(this.tsEnvelopeLabel_Click);
+            this.tsYearBookLabel.Name = "tsYearBookLabel";
+            this.tsYearBookLabel.Size = new System.Drawing.Size(180, 22);
+            this.tsYearBookLabel.Text = "Year Book Label";
+            this.tsYearBookLabel.Click += new System.EventHandler(this.tsYearBookLabel_Click);
             // 
             // frmMain
             // 
@@ -813,5 +822,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsAddress;
         private System.Windows.Forms.ToolStripMenuItem tsReceivingLabel;
         private System.Windows.Forms.ToolStripMenuItem tsEnvelopeLabel;
+        private System.Windows.Forms.ToolStripMenuItem tsYearBookLabel;
     }
 }

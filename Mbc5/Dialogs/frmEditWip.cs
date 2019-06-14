@@ -38,7 +38,7 @@ namespace Mbc5.Dialogs
             this.wipDetailTableAdapter.Connection.ConnectionString = AppConnectionString;
 
             wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "WIP");
-            wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+           // wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
             var pos = wipDetailBindingSource.Find("id", ID);
             if (pos > -1)
             {

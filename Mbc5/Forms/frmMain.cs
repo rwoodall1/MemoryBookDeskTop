@@ -189,7 +189,7 @@ namespace Mbc5.Forms
             {
                 this.AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
             }
-            else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+            else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = svc_Mbc5; password = Briggitte1; Connect Timeout=5"; }
             
 
             List<string> roles = new List<string>();
@@ -957,6 +957,20 @@ namespace Mbc5.Forms
                 cusFrm.PrintLabel("ENVELOPELABEL");
 
 
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+        }
+
+        private void tsYearBookLabel_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmProdutn"))
+            {
+                var produtnFrm = (frmProdutn)this.ActiveMdiChild;
+                produtnFrm.PrintYearBookLabel();
             }
             else
             {

@@ -544,9 +544,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\30256AddressLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321YearBookLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321Envelope.rdlc" />
     <EmbeddedResource Include="Reports\30321ReceivingLabel.rdlc" />
-    <EmbeddedResource Include="Reports\30323FileFolderLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321FileFolderLabel.rdlc" />
     <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
     <EmbeddedResource Include="Reports\InvoiceDetails.rdlc" />

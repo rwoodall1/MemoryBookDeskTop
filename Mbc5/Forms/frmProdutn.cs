@@ -121,10 +121,12 @@ namespace Mbc5.Forms
 				MessageBox.Show(ex.Message, "Error");
 			}
 
-		}
 
-		#region "Properties"
-		public void InvokePropertyChanged(PropertyChangedEventArgs e)
+         
+        }
+
+        #region "Properties"
+        public void InvokePropertyChanged(PropertyChangedEventArgs e)
 		{
 			PropertyChangedEventHandler handler = PropertyChanged;
 			if (handler != null)
@@ -279,7 +281,7 @@ namespace Mbc5.Forms
 			AllEmails = vAllEmails;
 
 		}
-        public void PrintYearBookLabels()
+        public void PrintYearBookLabel()
         {
             //put in check for nulls
             var vKitRecvd = ((DataRowView)this.produtnBindingSource.Current).Row["kitrecvd"].ToString();
@@ -288,21 +290,21 @@ namespace Mbc5.Forms
             {
                 MbcMessageBox.Information("A receiving card has not been sent for this customer.", "Receiving Card");
             }
-            var vSchoolState= ((DataRowView)this.custBindingSource.Current).Row["schstate"].ToString();
+            var vSchoolState= ((DataRowView)this.custBindingSource.Current).Row["schstate"].ToString().Trim();
             if (string.IsNullOrEmpty(vKitRecvd))
             {
                 MbcMessageBox.Information("Kit received date must be entered before printing a label.", "");
                 return;
             }
-            reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30323FileFolderLabel.rdlc";
-            reportViewer1.LocalReport.DataSources.Clear();
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", custBindingSource));
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", produtnBindingSource));
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", quotesBindingSource));
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", wipBindingSource));
 
-            this.reportViewer1.RefreshReport();
-                      
+            reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsRCust", custBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsRQuotes", quotesBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsRProdutn", produtnBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsRWip", wipBindingSource));
+
+            reportViewer1.RefreshReport();   
         }
 		//General
 		private void SetCodeInvno()
@@ -361,7 +363,8 @@ namespace Mbc5.Forms
                 }
 				try {
 					wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
-					wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+                                     
+					wipDetailTableAdapter.Fill(dsProdutn.WipDetail,"", Invno);
 				} catch(Exception ex) {
 
 					MbcMessageBox.Error(ex.Message, "");
@@ -1316,7 +1319,7 @@ namespace Mbc5.Forms
 			var result = frmeditWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+				//wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
 			}
 		}
 		private void nocopiesTextBox1_Validating(object sender, CancelEventArgs e)
@@ -1404,7 +1407,7 @@ namespace Mbc5.Forms
 			var result = frmeditCoverWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+				//wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
 			}
 		}
 
@@ -1417,7 +1420,7 @@ namespace Mbc5.Forms
 			var result = frmeditCoverWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+				//wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
 			}
 		}
 
@@ -3745,8 +3748,15 @@ namespace Mbc5.Forms
 
 
 		}
-		//nothing below here  
-	}
+
+        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            reportViewer1.PrintDialog();
+        }
+
+
+        //nothing below here  
+    }
     public class BinderyInfo
 	{
 		public string Schname { get; set; }

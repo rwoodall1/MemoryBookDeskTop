@@ -45,7 +45,7 @@ namespace Mbc5.Dialogs {
             {
                 AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5;User Id=sa;password=Briggitte1; Connect Timeout=5";
             }
-            else if (Environment == "PROD") {AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+            else if (Environment == "PROD") {AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id =MbcUser; password =3l3phant1; Connect Timeout=5"; }
 
             SqlConnection conn = new SqlConnection(AppConnectionString);
        

@@ -618,11 +618,14 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <LineHeight>1pt</LineHeight>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>schcode</rd:DefaultName>
-            <Height>0.25in</Height>
+            <Top>0.875in</Top>
+            <Height>0.15278in</Height>
             <Width>3.66667in</Width>
             <Style>
               <Border>
@@ -643,11 +646,13 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <LineHeight>1pt</LineHeight>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>schcity</rd:DefaultName>
-            <Top>0.18056in</Top>
+            <Top>1.125in</Top>
             <Height>0.25in</Height>
             <Width>3.66667in</Width>
             <ZIndex>1</ZIndex>
@@ -670,11 +675,13 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <LineHeight>1pt</LineHeight>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>schcode1</rd:DefaultName>
-            <Top>0.34722in</Top>
+            <Top>1.34722in</Top>
             <Height>0.25in</Height>
             <Width>3.66667in</Width>
             <ZIndex>2</ZIndex>
@@ -692,11 +699,9 @@
       </Body>
       <Width>3.66667in</Width>
       <Page>
-        <PageHeight>8.5in</PageHeight>
-        <PageWidth>11in</PageWidth>
+        <PageHeight>2.25in</PageHeight>
+        <PageWidth>7in</PageWidth>
         <LeftMargin>0.25in</LeftMargin>
-        <TopMargin>0.25in</TopMargin>
-        <BottomMargin>0.25in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>

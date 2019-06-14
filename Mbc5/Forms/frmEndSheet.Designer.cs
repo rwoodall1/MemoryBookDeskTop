@@ -85,10 +85,10 @@
             System.Windows.Forms.Label label37;
             System.Windows.Forms.Label label39;
             System.Windows.Forms.Label label34;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEndSheet));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label35;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEndSheet));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbEndSheets = new System.Windows.Forms.TabControl();
             this.pgEndSheets = new System.Windows.Forms.TabPage();
             this.laminatedTextBox = new System.Windows.Forms.TextBox();
@@ -220,8 +220,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.supnoTextBox = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.booktypeLabel1 = new System.Windows.Forms.Label();
             this.duedateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.recvdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -393,7 +391,7 @@
             // prodnoLabel
             // 
             prodnoLabel.AutoSize = true;
-            prodnoLabel.Location = new System.Drawing.Point(285, 7);
+            prodnoLabel.Location = new System.Drawing.Point(13, 3);
             prodnoLabel.Name = "prodnoLabel";
             prodnoLabel.Size = new System.Drawing.Size(41, 13);
             prodnoLabel.TabIndex = 4;
@@ -402,7 +400,7 @@
             // invnoLabel
             // 
             invnoLabel.AutoSize = true;
-            invnoLabel.Location = new System.Drawing.Point(423, 7);
+            invnoLabel.Location = new System.Drawing.Point(151, 3);
             invnoLabel.Name = "invnoLabel";
             invnoLabel.Size = new System.Drawing.Size(57, 13);
             invnoLabel.TabIndex = 6;
@@ -645,7 +643,7 @@
             // nopagesLabel1
             // 
             nopagesLabel1.AutoSize = true;
-            nopagesLabel1.Location = new System.Drawing.Point(12, 39);
+            nopagesLabel1.Location = new System.Drawing.Point(12, 32);
             nopagesLabel1.Name = "nopagesLabel1";
             nopagesLabel1.Size = new System.Drawing.Size(127, 13);
             nopagesLabel1.TabIndex = 57;
@@ -654,7 +652,7 @@
             // nocopiesLabel1
             // 
             nocopiesLabel1.AutoSize = true;
-            nocopiesLabel1.Location = new System.Drawing.Point(261, 39);
+            nocopiesLabel1.Location = new System.Drawing.Point(261, 32);
             nocopiesLabel1.Name = "nocopiesLabel1";
             nocopiesLabel1.Size = new System.Drawing.Size(57, 13);
             nocopiesLabel1.TabIndex = 58;
@@ -664,7 +662,7 @@
             // 
             recvdteLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             recvdteLabel.AutoSize = true;
-            recvdteLabel.Location = new System.Drawing.Point(435, 39);
+            recvdteLabel.Location = new System.Drawing.Point(458, 32);
             recvdteLabel.Name = "recvdteLabel";
             recvdteLabel.Size = new System.Drawing.Size(95, 13);
             recvdteLabel.TabIndex = 59;
@@ -674,7 +672,7 @@
             // 
             duedateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             duedateLabel.AutoSize = true;
-            duedateLabel.Location = new System.Drawing.Point(755, 39);
+            duedateLabel.Location = new System.Drawing.Point(778, 32);
             duedateLabel.Name = "duedateLabel";
             duedateLabel.Size = new System.Drawing.Size(61, 13);
             duedateLabel.TabIndex = 60;
@@ -684,7 +682,7 @@
             // 
             booktypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             booktypeLabel.AutoSize = true;
-            booktypeLabel.Location = new System.Drawing.Point(1038, 13);
+            booktypeLabel.Location = new System.Drawing.Point(931, 6);
             booktypeLabel.Name = "booktypeLabel";
             booktypeLabel.Size = new System.Drawing.Size(68, 13);
             booktypeLabel.TabIndex = 61;
@@ -748,7 +746,7 @@
             // 
             initialLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             initialLabel.AutoSize = true;
-            initialLabel.Location = new System.Drawing.Point(1117, 5);
+            initialLabel.Location = new System.Drawing.Point(1000, 5);
             initialLabel.Name = "initialLabel";
             initialLabel.Size = new System.Drawing.Size(44, 13);
             initialLabel.TabIndex = 101;
@@ -794,7 +792,7 @@
             // 
             specinstLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             specinstLabel.AutoSize = true;
-            specinstLabel.Location = new System.Drawing.Point(1644, 278);
+            specinstLabel.Location = new System.Drawing.Point(1527, 278);
             specinstLabel.Name = "specinstLabel";
             specinstLabel.Size = new System.Drawing.Size(119, 13);
             specinstLabel.TabIndex = 145;
@@ -894,11 +892,20 @@
             // 
             label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label34.AutoSize = true;
-            label34.Location = new System.Drawing.Point(582, 278);
+            label34.Location = new System.Drawing.Point(535, 278);
             label34.Name = "label34";
             label34.Size = new System.Drawing.Size(119, 13);
             label34.TabIndex = 148;
             label34.Text = "Special Instructions";
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Location = new System.Drawing.Point(19, 58);
+            label35.Name = "label35";
+            label35.Size = new System.Drawing.Size(64, 13);
+            label35.TabIndex = 147;
+            label35.Text = "Sheet No.";
             // 
             // tbEndSheets
             // 
@@ -913,7 +920,7 @@
             this.tbEndSheets.Location = new System.Drawing.Point(0, 0);
             this.tbEndSheets.Name = "tbEndSheets";
             this.tbEndSheets.SelectedIndex = 0;
-            this.tbEndSheets.Size = new System.Drawing.Size(1230, 763);
+            this.tbEndSheets.Size = new System.Drawing.Size(1113, 740);
             this.tbEndSheets.TabIndex = 0;
             this.tbEndSheets.Visible = false;
             this.tbEndSheets.Deselecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tbEndSheets_Deselecting);
@@ -1001,7 +1008,7 @@
             this.pgEndSheets.Location = new System.Drawing.Point(4, 22);
             this.pgEndSheets.Name = "pgEndSheets";
             this.pgEndSheets.Padding = new System.Windows.Forms.Padding(3);
-            this.pgEndSheets.Size = new System.Drawing.Size(1222, 737);
+            this.pgEndSheets.Size = new System.Drawing.Size(1105, 714);
             this.pgEndSheets.TabIndex = 0;
             this.pgEndSheets.Text = "End Sheet";
             // 
@@ -1051,7 +1058,7 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1199, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(1192, 25);
             this.bindingNavigator1.TabIndex = 145;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -1173,14 +1180,14 @@
             this.endsheetdetailDataGridView.AllowUserToOrderColumns = true;
             this.endsheetdetailDataGridView.AutoGenerateColumns = false;
             this.endsheetdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.endsheetdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.endsheetdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Description,
@@ -1628,7 +1635,7 @@
             // invnoLabel2
             // 
             this.invnoLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "invno", true));
-            this.invnoLabel2.Location = new System.Drawing.Point(486, 7);
+            this.invnoLabel2.Location = new System.Drawing.Point(214, 3);
             this.invnoLabel2.Name = "invnoLabel2";
             this.invnoLabel2.Size = new System.Drawing.Size(100, 23);
             this.invnoLabel2.TabIndex = 56;
@@ -1637,7 +1644,7 @@
             // prodnoLabel2
             // 
             this.prodnoLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
-            this.prodnoLabel2.Location = new System.Drawing.Point(332, 7);
+            this.prodnoLabel2.Location = new System.Drawing.Point(60, 3);
             this.prodnoLabel2.Name = "prodnoLabel2";
             this.prodnoLabel2.Size = new System.Drawing.Size(84, 23);
             this.prodnoLabel2.TabIndex = 55;
@@ -1838,8 +1845,6 @@
             this.Supplement.Controls.Add(this.label19);
             this.Supplement.Controls.Add(this.label18);
             this.Supplement.Controls.Add(this.label17);
-            this.Supplement.Controls.Add(this.supnoTextBox);
-            this.Supplement.Controls.Add(this.button2);
             this.Supplement.Controls.Add(booktypeLabel);
             this.Supplement.Controls.Add(this.booktypeLabel1);
             this.Supplement.Controls.Add(duedateLabel);
@@ -1856,20 +1861,20 @@
             this.Supplement.Location = new System.Drawing.Point(4, 22);
             this.Supplement.Name = "Supplement";
             this.Supplement.Padding = new System.Windows.Forms.Padding(3);
-            this.Supplement.Size = new System.Drawing.Size(1222, 737);
+            this.Supplement.Size = new System.Drawing.Size(1105, 714);
             this.Supplement.TabIndex = 1;
             this.Supplement.Text = "Supplement";
             // 
             // txtsupllSrch
             // 
-            this.txtsupllSrch.Location = new System.Drawing.Point(1127, 42);
+            this.txtsupllSrch.Location = new System.Drawing.Point(148, 72);
             this.txtsupllSrch.Name = "txtsupllSrch";
             this.txtsupllSrch.Size = new System.Drawing.Size(80, 20);
             this.txtsupllSrch.TabIndex = 100;
             // 
             // btnSupplSrch
             // 
-            this.btnSupplSrch.Location = new System.Drawing.Point(1046, 40);
+            this.btnSupplSrch.Location = new System.Drawing.Point(67, 70);
             this.btnSupplSrch.Name = "btnSupplSrch";
             this.btnSupplSrch.Size = new System.Drawing.Size(75, 23);
             this.btnSupplSrch.TabIndex = 99;
@@ -1914,14 +1919,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.suppdetailDataGridView.AutoGenerateColumns = false;
             this.suppdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.suppdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.suppdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -1936,7 +1941,7 @@
             this.suppdetailDataGridView.Location = new System.Drawing.Point(164, 292);
             this.suppdetailDataGridView.Name = "suppdetailDataGridView";
             this.suppdetailDataGridView.RowHeadersVisible = false;
-            this.suppdetailDataGridView.Size = new System.Drawing.Size(913, 334);
+            this.suppdetailDataGridView.Size = new System.Drawing.Size(796, 334);
             this.suppdetailDataGridView.TabIndex = 92;
             // 
             // dataGridViewTextBoxColumn15
@@ -2037,7 +2042,7 @@
             // 
             this.rmbtotTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rmbtotTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "rmbtot", true));
-            this.rmbtotTextBox.Location = new System.Drawing.Point(802, 199);
+            this.rmbtotTextBox.Location = new System.Drawing.Point(825, 192);
             this.rmbtotTextBox.Name = "rmbtotTextBox";
             this.rmbtotTextBox.Size = new System.Drawing.Size(100, 20);
             this.rmbtotTextBox.TabIndex = 88;
@@ -2048,7 +2053,7 @@
             this.rmbfrmDateTimePicker.CustomFormat = "\'\'";
             this.rmbfrmDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "rmbfrm", true));
             this.rmbfrmDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.rmbfrmDateTimePicker.Location = new System.Drawing.Point(802, 175);
+            this.rmbfrmDateTimePicker.Location = new System.Drawing.Point(825, 168);
             this.rmbfrmDateTimePicker.Name = "rmbfrmDateTimePicker";
             this.rmbfrmDateTimePicker.Size = new System.Drawing.Size(216, 20);
             this.rmbfrmDateTimePicker.TabIndex = 87;
@@ -2059,7 +2064,7 @@
             this.remaketypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.remaketypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "remaketype", true));
             this.remaketypeComboBox.FormattingEnabled = true;
-            this.remaketypeComboBox.Location = new System.Drawing.Point(802, 148);
+            this.remaketypeComboBox.Location = new System.Drawing.Point(825, 141);
             this.remaketypeComboBox.Name = "remaketypeComboBox";
             this.remaketypeComboBox.Size = new System.Drawing.Size(215, 21);
             this.remaketypeComboBox.TabIndex = 86;
@@ -2071,7 +2076,7 @@
             this.rmbtoDateTimePicker.CustomFormat = "\'\'";
             this.rmbtoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "rmbto", true));
             this.rmbtoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.rmbtoDateTimePicker.Location = new System.Drawing.Point(802, 116);
+            this.rmbtoDateTimePicker.Location = new System.Drawing.Point(825, 109);
             this.rmbtoDateTimePicker.Name = "rmbtoDateTimePicker";
             this.rmbtoDateTimePicker.Size = new System.Drawing.Size(216, 20);
             this.rmbtoDateTimePicker.TabIndex = 85;
@@ -2081,7 +2086,7 @@
             // 
             this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(671, 199);
+            this.label27.Location = new System.Drawing.Point(694, 192);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(125, 13);
             this.label27.TabIndex = 84;
@@ -2091,7 +2096,7 @@
             // 
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(680, 175);
+            this.label26.Location = new System.Drawing.Point(703, 168);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(116, 13);
             this.label26.TabIndex = 83;
@@ -2101,7 +2106,7 @@
             // 
             this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(696, 148);
+            this.label25.Location = new System.Drawing.Point(719, 141);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(100, 13);
             this.label25.TabIndex = 82;
@@ -2111,7 +2116,7 @@
             // 
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(692, 116);
+            this.label24.Location = new System.Drawing.Point(715, 109);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(104, 13);
             this.label24.TabIndex = 81;
@@ -2258,28 +2263,11 @@
             this.label17.TabIndex = 65;
             this.label17.Text = "Check In/Out";
             // 
-            // supnoTextBox
-            // 
-            this.supnoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "supno", true));
-            this.supnoTextBox.Location = new System.Drawing.Point(100, 65);
-            this.supnoTextBox.Name = "supnoTextBox";
-            this.supnoTextBox.Size = new System.Drawing.Size(80, 20);
-            this.supnoTextBox.TabIndex = 64;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(19, 63);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 63;
-            this.button2.Text = "Suppl #";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // booktypeLabel1
             // 
             this.booktypeLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.booktypeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "booktype", true));
-            this.booktypeLabel1.Location = new System.Drawing.Point(1107, 13);
+            this.booktypeLabel1.Location = new System.Drawing.Point(1000, 6);
             this.booktypeLabel1.Name = "booktypeLabel1";
             this.booktypeLabel1.Size = new System.Drawing.Size(100, 23);
             this.booktypeLabel1.TabIndex = 62;
@@ -2291,7 +2279,7 @@
             this.duedateDateTimePicker.CustomFormat = "\'\'";
             this.duedateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "duedate", true));
             this.duedateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.duedateDateTimePicker.Location = new System.Drawing.Point(821, 39);
+            this.duedateDateTimePicker.Location = new System.Drawing.Point(844, 32);
             this.duedateDateTimePicker.Name = "duedateDateTimePicker";
             this.duedateDateTimePicker.Size = new System.Drawing.Size(212, 20);
             this.duedateDateTimePicker.TabIndex = 61;
@@ -2303,7 +2291,7 @@
             this.recvdteDateTimePicker.CustomFormat = "\'\'";
             this.recvdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "recvdte", true));
             this.recvdteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.recvdteDateTimePicker.Location = new System.Drawing.Point(530, 39);
+            this.recvdteDateTimePicker.Location = new System.Drawing.Point(553, 32);
             this.recvdteDateTimePicker.Name = "recvdteDateTimePicker";
             this.recvdteDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.recvdteDateTimePicker.TabIndex = 60;
@@ -2312,7 +2300,7 @@
             // nocopiesTextBox
             // 
             this.nocopiesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nocopies", true));
-            this.nocopiesTextBox.Location = new System.Drawing.Point(324, 39);
+            this.nocopiesTextBox.Location = new System.Drawing.Point(324, 32);
             this.nocopiesTextBox.Name = "nocopiesTextBox";
             this.nocopiesTextBox.Size = new System.Drawing.Size(100, 20);
             this.nocopiesTextBox.TabIndex = 59;
@@ -2320,7 +2308,7 @@
             // nopagesTextBox1
             // 
             this.nopagesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nopages", true));
-            this.nopagesTextBox1.Location = new System.Drawing.Point(145, 39);
+            this.nopagesTextBox1.Location = new System.Drawing.Point(145, 32);
             this.nopagesTextBox1.Name = "nopagesTextBox1";
             this.nopagesTextBox1.Size = new System.Drawing.Size(100, 20);
             this.nopagesTextBox1.TabIndex = 58;
@@ -2367,7 +2355,7 @@
             this.PreFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PreFlight.Location = new System.Drawing.Point(4, 22);
             this.PreFlight.Name = "PreFlight";
-            this.PreFlight.Size = new System.Drawing.Size(1222, 737);
+            this.PreFlight.Size = new System.Drawing.Size(1105, 714);
             this.PreFlight.TabIndex = 2;
             this.PreFlight.Text = "PreFlight";
             // 
@@ -2379,7 +2367,7 @@
             this.technoteTextBox.Location = new System.Drawing.Point(190, 457);
             this.technoteTextBox.Multiline = true;
             this.technoteTextBox.Name = "technoteTextBox";
-            this.technoteTextBox.Size = new System.Drawing.Size(667, 57);
+            this.technoteTextBox.Size = new System.Drawing.Size(550, 57);
             this.technoteTextBox.TabIndex = 115;
             // 
             // preflitBindingSource
@@ -2395,7 +2383,7 @@
             this.custquestTextBox.Location = new System.Drawing.Point(190, 343);
             this.custquestTextBox.Multiline = true;
             this.custquestTextBox.Name = "custquestTextBox";
-            this.custquestTextBox.Size = new System.Drawing.Size(667, 93);
+            this.custquestTextBox.Size = new System.Drawing.Size(550, 93);
             this.custquestTextBox.TabIndex = 114;
             // 
             // numsentTextBox
@@ -2491,7 +2479,7 @@
             // 
             this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox8.Controls.Add(this.cvrrecvCheckBox);
-            this.groupBox8.Location = new System.Drawing.Point(431, 232);
+            this.groupBox8.Location = new System.Drawing.Point(314, 232);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(256, 45);
             this.groupBox8.TabIndex = 111;
@@ -2517,7 +2505,7 @@
             this.groupBox7.Controls.Add(this.imgdarkCheckBox);
             this.groupBox7.Controls.Add(this.imglowCheckBox);
             this.groupBox7.Controls.Add(this.img200CheckBox);
-            this.groupBox7.Location = new System.Drawing.Point(628, 122);
+            this.groupBox7.Location = new System.Drawing.Point(511, 122);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(204, 107);
             this.groupBox7.TabIndex = 110;
@@ -2585,7 +2573,7 @@
             this.groupBox6.Controls.Add(this.dcnocutCheckBox);
             this.groupBox6.Controls.Add(this.dcnotsetCheckBox);
             this.groupBox6.Controls.Add(this.dcokCheckBox);
-            this.groupBox6.Location = new System.Drawing.Point(856, 122);
+            this.groupBox6.Location = new System.Drawing.Point(739, 122);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(153, 73);
             this.groupBox6.TabIndex = 109;
@@ -2630,7 +2618,7 @@
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.margfixCheckBox);
             this.groupBox5.Controls.Add(this.margokCheckBox);
-            this.groupBox5.Location = new System.Drawing.Point(459, 122);
+            this.groupBox5.Location = new System.Drawing.Point(342, 122);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(144, 64);
             this.groupBox5.TabIndex = 108;
@@ -2818,7 +2806,7 @@
             // 
             this.initialTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.initialTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "initial", true));
-            this.initialTextBox.Location = new System.Drawing.Point(1164, 5);
+            this.initialTextBox.Location = new System.Drawing.Point(1047, 5);
             this.initialTextBox.Name = "initialTextBox";
             this.initialTextBox.Size = new System.Drawing.Size(44, 20);
             this.initialTextBox.TabIndex = 102;
@@ -2891,14 +2879,14 @@
             this.Banner.Location = new System.Drawing.Point(4, 22);
             this.Banner.Name = "Banner";
             this.Banner.Padding = new System.Windows.Forms.Padding(3);
-            this.Banner.Size = new System.Drawing.Size(1222, 737);
+            this.Banner.Size = new System.Drawing.Size(1105, 714);
             this.Banner.TabIndex = 3;
             this.Banner.Text = "Banner";
             // 
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(708, 278);
+            this.textBox2.Location = new System.Drawing.Point(661, 278);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(361, 69);
@@ -2907,7 +2895,7 @@
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(2045, 51);
+            this.button5.Location = new System.Drawing.Point(1928, 51);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(180, 23);
             this.button5.TabIndex = 147;
@@ -2917,7 +2905,7 @@
             // specinstTextBox1
             // 
             this.specinstTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.specinstTextBox1.Location = new System.Drawing.Point(1770, 278);
+            this.specinstTextBox1.Location = new System.Drawing.Point(1653, 278);
             this.specinstTextBox1.Multiline = true;
             this.specinstTextBox1.Name = "specinstTextBox1";
             this.specinstTextBox1.Size = new System.Drawing.Size(361, 69);
@@ -3024,7 +3012,7 @@
             // button6
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(1549, 11);
+            this.button6.Location = new System.Drawing.Point(1432, 11);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(71, 23);
             this.button6.TabIndex = 127;
@@ -3034,7 +3022,7 @@
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(1630, 11);
+            this.textBox1.Location = new System.Drawing.Point(1513, 11);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(84, 20);
             this.textBox1.TabIndex = 126;
@@ -3115,20 +3103,12 @@
             // 
             this.bannerTableAdapter.ClearBeforeFill = true;
             // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.Location = new System.Drawing.Point(19, 58);
-            label35.Name = "label35";
-            label35.Size = new System.Drawing.Size(64, 13);
-            label35.TabIndex = 147;
-            label35.Text = "Sheet No.";
-            // 
             // frmEndSheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1234, 764);
+            this.ClientSize = new System.Drawing.Size(1125, 741);
             this.Controls.Add(this.tbEndSheets);
+            this.MinimumSize = new System.Drawing.Size(1141, 780);
             this.Name = "frmEndSheet";
             this.Text = "End Sheet/Supplements/Preflight";
             this.Activated += new System.EventHandler(this.frmEndSheet_Activated);
@@ -3287,8 +3267,6 @@
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.Label label17;
-		private System.Windows.Forms.TextBox supnoTextBox;
-		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.TextBox rmbtotTextBox;
 		private System.Windows.Forms.DateTimePicker rmbfrmDateTimePicker;
 		private System.Windows.Forms.ComboBox remaketypeComboBox;

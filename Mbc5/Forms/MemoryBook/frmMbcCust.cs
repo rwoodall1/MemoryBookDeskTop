@@ -346,7 +346,7 @@ public override void Cancel() {
             {
                 case "FILEFOLDER" :
                     // change reportviewer source report
-                    reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30323FileFolderLabel.rdlc";
+                    reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321FileFolderLabel.rdlc";
                     reportViewer2.LocalReport.DataSources.Clear();
                     reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", custBindingSource));
                     try
