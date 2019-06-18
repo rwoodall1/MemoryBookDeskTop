@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using BindingModels;
 using BaseClass.Classes;
+using BaseClass;
 namespace Mbc5.Forms
 {
     public partial class frmBarScan : BaseClass.frmBase
@@ -33,6 +34,11 @@ namespace Mbc5.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(txtDeptCode.Text) && !string.IsNullOrEmpty(txtDept.Text))
+            {
+                MbcMessageBox.Hand("You can scan either Item 2 or Item 6, NOT both. Please RE-SCAN.", "One Department per Scan");
+                return;
+            }
             string company = txtBarCode.Text.Substring(0, 3);
             //Insert prodtrk here
             if (company == "MBC") {
@@ -47,7 +53,8 @@ namespace Mbc5.Forms
             {
                 return;
             }
-            string trkType = txtBarCode.Text.Substring(9, 2);
+            string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length-2, 2);
+            
             switch (trkType)
             {
                 case "YB":
@@ -55,6 +62,8 @@ namespace Mbc5.Forms
                     {
                         case "WAR29":
                             {
+                                lblCopies.Visible = true;
+                                txtCopies.Visible = true;
                                 txtIntitials.Mask = ">LLLLLLL";
                                 break;
                             }
@@ -106,6 +115,8 @@ namespace Mbc5.Forms
                     {
                         case "LAM1":
                             {
+                                lblCopies.Visible = true;
+                                txtCopies.Visible = true;
                                 txtIntitials.Mask = ">####";
                                 break;
                             }
@@ -144,13 +155,17 @@ namespace Mbc5.Forms
 
         private void txtBarCode_Leave(object sender, EventArgs e)
         {
-            if (txtBarCode.Text.Length >= 6)
-            {
+            
                 this.Company = txtBarCode.Text.Substring(0, 3);
-                this.Invno = int.Parse(txtBarCode.Text.Substring(3, 6));
+                string vInvno = txtBarCode.Text.Substring(3, txtBarCode.Text.Length - 2);
+                int parsedInvno = 0;
+
+                var parseResult= int.TryParse(vInvno,out parsedInvno);
+                this.Invno = parsedInvno;
+           if(!parseResult)
+           { MessageBox.Show("Invalid scan code");
+                return;
             }
-            else { MessageBox.Show("Invalid scan code");
-                return; }
             var sqlQuery = new SQLCustomClient();
             switch (this.Company)
             {
@@ -201,7 +216,7 @@ namespace Mbc5.Forms
         private void MbScan()
         {
             int vDeptCode = 0;
-            string trkType = txtBarCode.Text.Substring(9, 2);
+            string trkType = txtBarCode.Text.Substring(txtBarCode.Text.Length-2, 2);
             string company = txtBarCode.Text.Substring(0, 3);
             var vDateTime = DateTime.Now;
 
@@ -213,21 +228,6 @@ namespace Mbc5.Forms
             var sqlClient = new SQLCustomClient();
 
 
-            if (!string.IsNullOrEmpty(txtDeptCode.Text) && !string.IsNullOrEmpty(txtDept.Text))
-            {
-                sqlClient.AddParameter("@Invno", this.Invno);
-                sqlClient.CommandText(@"Select C.Schname,C.Schcode,P.NoPages,P.NoCopies,P.Invno,P.Perfbind,P.VendCd FROM Cust C
-                                        Left Join Quotes Q ON C.Schcode=Q.Schcode
-                                        Left Join Produtn P On Q.Invno=P.Invno                   
-                                        WHERE Q.Invno=@Invno");
-
-                //    sqlClient.AddParameter("@Des1", "Yearbook Printing Cost");
-
-                //    sqlClient.CommandText(@"Insert INTO Voucher (Invno,NoPages,NoCopies,PerfBind,Des1,Schname,) Values(@Invno,@NoPages,@NoCoies,@PerfBind,@Des1,@Schname));
-                return;
-            }
-
-
             if (trkType == "YB")
             {
                 if (vDeptCode != 0) {
@@ -235,7 +235,7 @@ namespace Mbc5.Forms
                     {
                         //May have to change this id.
                         //ToPROD
-                        case "1012":
+                        case "51":
                             {
                                 sqlClient.AddParameter("@Invno", this.Invno);
                                 sqlClient.AddParameter("@ToProd", vDateTime);
@@ -243,17 +243,32 @@ namespace Mbc5.Forms
 
                                 try
                                 {
-                                    var result = sqlClient.Update();
+                                    var result12 = sqlClient.Update();
                                 }
                                 catch (Exception ex)
                                 {
                                     MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
                                 }
-
+                                sqlClient.ClearParameters();
+                                sqlClient.AddParameter("@i_toprod", vWIR);
+                                sqlClient.AddParameter("@t_toprod", vWtr);
+                                sqlClient.AddParameter("@Invno", this.Invno);
+                                sqlClient.CommandText(@"UPDATE Wip Set i_toprod=@i_toprod,t_toprod=t_toprod+@t_toprod where Invno=@Invno");
+                                try
+                                {
+                                    sqlClient.Update();
+                                }catch(Exception ex)
+                                {
+                                    MessageBox.Show("Failed to insert scan.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                                 break;
                             }
-                        case "1000":
+                        case "41":
                             {
+
+                                //on hold
                                 //war 41
                                 //war is datetime
                                 //wir is initials
@@ -262,7 +277,7 @@ namespace Mbc5.Forms
                                 sqlClient.AddParameter("@DescripID", vDeptCode);
                                 sqlClient.AddParameter("@WAR", vDateTime);
                                 sqlClient.AddParameter("@WIR", vWIR);
-                                sqlClient.AddParameter("@Wtr", vWtr);
+                                sqlClient.AddParameter("@Wtr", 0);
                                 sqlClient.AddParameter("@Schcode", txtSchcode.Text);
                                 sqlClient.CommandText(@"Update WIPDetail SET
                                  
@@ -286,6 +301,18 @@ namespace Mbc5.Forms
                                                     END
                                                     ");
                                 var result1 = sqlClient.Insert();
+
+                                sqlClient.ClearParameters();
+                                sqlClient.AddParameter("@Invno", this.Invno);
+                                sqlClient.AddParameter("@DescripID", vDeptCode);
+                                sqlClient.AddParameter("@WAR",DBNull.Value);
+                                sqlClient.AddParameter("@WIR","");
+                                sqlClient.AddParameter("@Wtr", 0);
+                                sqlClient.AddParameter("@Schcode", txtSchcode.Text);
+                                sqlClient.CommandText(@" UPDATE WipDetail Set War=@WAR,Wir=@WIR,Wtr=@Wtr  Where Invno=@Invno AND DescripID=42
+                                                    ");
+                                try {var updateResult = sqlClient.Update(); }catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+                                
                                 break;
                             }
                         default:
@@ -1268,6 +1295,17 @@ namespace Mbc5.Forms
         {
             var frmMain = (frmMain)this.MdiParent;
             frmMain.HideSearchButtons();
+        }
+
+        private void txtCopies_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            lblCopies.Visible = false;
+            txtCopies.Visible = false;
         }
     }
 

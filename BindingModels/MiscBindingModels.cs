@@ -9,6 +9,11 @@ namespace BindingModels
     {
         public decimal Rate { get; set; }
     }
+    public class DepartmentLabel
+    {
+        public int Id { get; set; }
+        public string Description { get; set; }
+    }
     public class MktInfo
     {
         public int Id { get; set; }

@@ -224,6 +224,12 @@
     <Compile Include="Dialogs\frmProdutnSelctCust.Designer.cs">
       <DependentUpon>frmProdutnSelctCust.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\frmScanLabels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmScanLabels.Designer.cs">
+      <DependentUpon>frmScanLabels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\frmSelctCust.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -453,6 +459,9 @@
     <EmbeddedResource Include="Dialogs\frmProdutnSelctCust.resx">
       <DependentUpon>frmProdutnSelctCust.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmScanLabels.resx">
+      <DependentUpon>frmScanLabels.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmSelctCust.resx">
       <DependentUpon>frmSelctCust.cs</DependentUpon>
     </EmbeddedResource>
@@ -548,6 +557,7 @@
     <EmbeddedResource Include="Reports\30321Envelope.rdlc" />
     <EmbeddedResource Include="Reports\30321ReceivingLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321FileFolderLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321DepartmentLabel.rdlc" />
     <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
     <EmbeddedResource Include="Reports\InvoiceDetails.rdlc" />
@@ -746,6 +756,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\BindingModels.BidInvoiceDetail.datasource" />
+    <None Include="Properties\DataSources\BindingModels.DepartmentLabel.datasource" />
     <None Include="Properties\DataSources\BindingModels.FullInvoice.datasource" />
     <None Include="Properties\DataSources\BindingModels.Invoice.datasource" />
     <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />

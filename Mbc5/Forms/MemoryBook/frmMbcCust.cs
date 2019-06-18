@@ -1869,6 +1869,66 @@ public override void Cancel() {
         {
             reportViewer2.PrintDialog();
         }
+
+        private void shipppingAddrLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSchoolToInvoice_Click(object sender, EventArgs e)
+        {
+            var vInvAddress = ((DataRowView)custBindingSource.Current).Row["InvoiceAddr"].ToString();
+            invAddrTextBox.Text = vInvAddress;
+            var vInvAddress2 = ((DataRowView)custBindingSource.Current).Row["InvoiceAddr2"].ToString();
+            invAddr2TextBox.Text = vInvAddress2;
+            var vInvCity = ((DataRowView)custBindingSource.Current).Row["InvoiceCity"].ToString();
+            invCityTextBox.Text = vInvCity;
+            var vInvState = ((DataRowView)custBindingSource.Current).Row["InvoiceState"].ToString();
+            cmbInvStateComboBox.SelectedValue = vInvState;
+            var vInvZipcode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString();
+            invZipCodeTextBox.Text = vInvZipcode;
+        }
+
+        private void btnSchoolToShipping_Click(object sender, EventArgs e)
+        {
+            var vShpAddress = ((DataRowView)custBindingSource.Current).Row["ShippingAddr"].ToString();
+            shipppingAddrTextBox1.Text = vShpAddress;
+            var vShpAddress2 = ((DataRowView)custBindingSource.Current).Row["ShippingAddr2"].ToString();
+            shippingAddr2TextBox1.Text = vShpAddress2;
+             var vShpCity = ((DataRowView)custBindingSource.Current).Row["ShippingCity"].ToString();
+            shippingCityTextBox.Text = vShpCity;
+            var vShpState = ((DataRowView)custBindingSource.Current).Row["ShippingState"].ToString();
+            cmbshippingState.SelectedValue = vShpState;
+            var vShpZipcode = ((DataRowView)custBindingSource.Current).Row["ShippingZipCode"].ToString();
+            shippingZipCodeTextBox.Text = vShpZipcode;
+         
+        }
+
+        private void btnSaveInformation_Click(object sender, EventArgs e)
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"
+                                    UPDATE Cust Set InvoiceAddr=@InvoiceAddr
+                                        ,InvoiceAddr2=@InvoiceAddr2
+                                        , InvoiceCity=@InvoiceCity
+                                        ,InvoiceState=@InvoiceState
+                                        ,InvoiceZipCode=@InvoiceZipCode 
+,ShippingAddr=@ShippingAddr
+,ShippingAddr2=@ShippingAddr2
+                                    WHERE Schcode=@Schcode
+                                    ");
+            sqlClient.AddParameter("@",);
+            sqlClient.AddParameter("@",);
+            sqlClient.AddParameter("@",);
+            sqlClient.AddParameter("@",);
+            sqlClient.AddParameter("@",);
+            sqlClient.AddParameter("@",);
+            sqlClient.AddParameter("@",);
+            sqlClient.AddParameter("@",);
+            sqlClient.AddParameter("@",);
+            sqlClient.AddParameter("@",);
+
+        }
         #endregion
 
         //Nothing below here

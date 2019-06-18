@@ -189,7 +189,7 @@ namespace Mbc5.Forms
             {
                 this.AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
             }
-            else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = svc_Mbc5; password = Briggitte1; Connect Timeout=5"; }
+            else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id =MbcUser; password =3l3phant1; Connect Timeout=5"; }
             
 
             List<string> roles = new List<string>();
@@ -243,7 +243,9 @@ namespace Mbc5.Forms
         private void SetMenu()
         {
 
-            this.userMaintinanceToolStripMenuItem.Enabled = this.ValidatedUserRoles.Contains("SA");
+            this.userMaintinanceToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
+            this.tsDeptScanLabel.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
+            lookUpMaintenanceToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
         }
         public void exitMBCToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -977,6 +979,17 @@ namespace Mbc5.Forms
                 MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
 
             }
+        }
+
+        private void tsDeptScanLabel_Click(object sender, EventArgs e)
+        {
+           
+               this.Cursor = Cursors.AppStarting;
+                frmScanLabels frmDeptLabel = new frmScanLabels();
+
+                frmDeptLabel.ShowDialog() ;
+                this.Cursor = Cursors.Default;
+    
         }
 
 
