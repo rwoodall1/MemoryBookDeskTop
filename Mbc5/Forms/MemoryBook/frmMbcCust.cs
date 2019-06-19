@@ -64,21 +64,14 @@ namespace Mbc5.Forms.MemoryBook {
         #endregion
         
    private void frmMbcCust_Load(object sender,EventArgs e) {
+            
+            
+
+
             this.frmMain = (frmMain)this.MdiParent;
 
             SetConnectionString();
-            // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
-            this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
-            // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.
-            this.lkpLeadNameTableAdapter.Fill(this.dsCust.lkpLeadName);
-            // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
-            this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
-            // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
-            this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
-            // TODO: This line of code loads data into the 'lookUp.lkpMultiYearOptions' table. You can move, or remove it, as needed.
-            this.lkpMultiYearOptionsTableAdapter.Fill(this.lookUp.lkpMultiYearOptions);
-            this.txtModifiedBy.Text = this.ApplicationUser.id;
-
+            
             var vSchocode = this.Schcode;
            
 
@@ -89,6 +82,21 @@ namespace Mbc5.Forms.MemoryBook {
             }
             try
             {
+
+                // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
+                this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
+                // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.
+                this.lkpLeadNameTableAdapter.Fill(this.dsCust.lkpLeadName);
+                // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
+                this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
+                // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
+                this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
+                // TODO: This line of code loads data into the 'lookUp.lkpMultiYearOptions' table. You can move, or remove it, as needed.
+                this.lkpMultiYearOptionsTableAdapter.Fill(this.lookUp.lkpMultiYearOptions);
+                this.txtModifiedBy.Text = this.ApplicationUser.id;
+                this.lkpSupplyItemsTableAdapter.Fill(this.lookUp.lkpSupplyItems);
+                xsuppliesTableAdapter.Fill(dsXSupplies.xsupplies,Schcode);
+                this.lkpSupplyItemsTableAdapter.Fill(this.lookUp.lkpSupplyItems);
                 this.statesTableAdapter.Fill(this.lookUp.states);
                 this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
                 // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
@@ -429,12 +437,13 @@ public override void Cancel() {
         private void SetConnectionString()
         {
             frmMain frmMain = (frmMain)this.MdiParent;
+            xsuppliesTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
             this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.statesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.lkpLeadSourceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.lkpLeadNameTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.custSearchTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-
+            this.lkpSupplyItemsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.lkpMultiYearOptionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.lkpTypeContTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.lkpPromotionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -444,7 +453,7 @@ public override void Cancel() {
             this.lkpMktReferenceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.lkpCommentsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.datecontTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-
+        
             this.contpstnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.mktinfoTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 
@@ -1876,31 +1885,31 @@ public override void Cancel() {
         }
 
         private void btnSchoolToInvoice_Click(object sender, EventArgs e)
-        {
-            var vInvAddress = ((DataRowView)custBindingSource.Current).Row["InvoiceAddr"].ToString();
+         {
+            var vInvAddress = ((DataRowView)custBindingSource.Current).Row["Schaddr"].ToString().Trim();
             invAddrTextBox.Text = vInvAddress;
-            var vInvAddress2 = ((DataRowView)custBindingSource.Current).Row["InvoiceAddr2"].ToString();
+            var vInvAddress2 = ((DataRowView)custBindingSource.Current).Row["SchAddr2"].ToString().Trim();
             invAddr2TextBox.Text = vInvAddress2;
-            var vInvCity = ((DataRowView)custBindingSource.Current).Row["InvoiceCity"].ToString();
+            var vInvCity = ((DataRowView)custBindingSource.Current).Row["SchCity"].ToString().Trim();
             invCityTextBox.Text = vInvCity;
-            var vInvState = ((DataRowView)custBindingSource.Current).Row["InvoiceState"].ToString();
+            var vInvState = ((DataRowView)custBindingSource.Current).Row["SchState"].ToString().Trim();
             cmbInvStateComboBox.SelectedValue = vInvState;
-            var vInvZipcode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString();
-            invZipCodeTextBox.Text = vInvZipcode;
+            var vInvZipcode = ((DataRowView)custBindingSource.Current).Row["SchZip"].ToString().Trim();
+            invZipCodeTextBox.Text = vInvZipcode.Substring(0,5);
         }
 
         private void btnSchoolToShipping_Click(object sender, EventArgs e)
         {
-            var vShpAddress = ((DataRowView)custBindingSource.Current).Row["ShippingAddr"].ToString();
+            var vShpAddress = ((DataRowView)custBindingSource.Current).Row["Schaddr"].ToString().Trim();
             shipppingAddrTextBox1.Text = vShpAddress;
-            var vShpAddress2 = ((DataRowView)custBindingSource.Current).Row["ShippingAddr2"].ToString();
+            var vShpAddress2 = ((DataRowView)custBindingSource.Current).Row["SchAddr2"].ToString().Trim();
             shippingAddr2TextBox1.Text = vShpAddress2;
-             var vShpCity = ((DataRowView)custBindingSource.Current).Row["ShippingCity"].ToString();
+             var vShpCity = ((DataRowView)custBindingSource.Current).Row["SchCity"].ToString().Trim();
             shippingCityTextBox.Text = vShpCity;
-            var vShpState = ((DataRowView)custBindingSource.Current).Row["ShippingState"].ToString();
+            var vShpState = ((DataRowView)custBindingSource.Current).Row["SchState"].ToString().Trim();
             cmbshippingState.SelectedValue = vShpState;
-            var vShpZipcode = ((DataRowView)custBindingSource.Current).Row["ShippingZipCode"].ToString();
-            shippingZipCodeTextBox.Text = vShpZipcode;
+            var vShpZipcode = ((DataRowView)custBindingSource.Current).Row["SchZip"].ToString().Trim();
+            shippingZipCodeTextBox.Text = vShpZipcode.Substring(0,5);
          
         }
 
@@ -1910,25 +1919,69 @@ public override void Cancel() {
             sqlClient.CommandText(@"
                                     UPDATE Cust Set InvoiceAddr=@InvoiceAddr
                                         ,InvoiceAddr2=@InvoiceAddr2
-                                        , InvoiceCity=@InvoiceCity
+                                        ,InvoiceCity=@InvoiceCity
                                         ,InvoiceState=@InvoiceState
                                         ,InvoiceZipCode=@InvoiceZipCode 
-,ShippingAddr=@ShippingAddr
-,ShippingAddr2=@ShippingAddr2
+                                        ,ShippingAddr=@ShippingAddr
+                                        ,ShippingAddr2=@ShippingAddr2
+                                        ,ShippingCity=@ShippingCity
+                                        ,ShippingState=@ShippingState
+                                        ,ShippingZipCode=@ShippingZipCode
                                     WHERE Schcode=@Schcode
                                     ");
-            sqlClient.AddParameter("@",);
-            sqlClient.AddParameter("@",);
-            sqlClient.AddParameter("@",);
-            sqlClient.AddParameter("@",);
-            sqlClient.AddParameter("@",);
-            sqlClient.AddParameter("@",);
-            sqlClient.AddParameter("@",);
-            sqlClient.AddParameter("@",);
-            sqlClient.AddParameter("@",);
-            sqlClient.AddParameter("@",);
+            sqlClient.AddParameter("@InvoiceAddr", invAddrTextBox.Text);
+            sqlClient.AddParameter("@InvoiceAddr2", invAddr2TextBox.Text);
+            sqlClient.AddParameter("@InvoiceCity", invCityTextBox.Text);
+            sqlClient.AddParameter("@InvoiceState", cmbInvStateComboBox.SelectedValue);
+            sqlClient.AddParameter("@InvoiceZipCode", invZipCodeTextBox.Text);
+            sqlClient.AddParameter("@ShippingAddr", shipppingAddrTextBox1.Text);
+            sqlClient.AddParameter("@ShippingAddr2", shippingAddr2TextBox1.Text);
+            sqlClient.AddParameter("@ShippingCity", shippingCityTextBox.Text);
+            sqlClient.AddParameter("@ShippingState", cmbshippingState.SelectedValue);
+            sqlClient.AddParameter("@ShippingZipCode", shippingZipCodeTextBox.Text);
+            sqlClient.AddParameter("@SchCode", Schcode);
+            var updateResult = sqlClient.Update();
+            if (updateResult.IsError)
+            {
+                MbcMessageBox.Error(updateResult.Errors[0].ErrorMessage,"");
+                ExceptionlessClient.Default.CreateLog("Update Error")
+                    .AddObject(updateResult)
+                    .MarkAsCritical()
+                    .Submit();
+                    
+            }
 
         }
+
+        //private void btnAddSupply_Click(object sender, EventArgs e)
+        //{
+        //    this.pnlAdd.Visible = true;
+        //    btnAddSupply.Visible = false;
+        //}
+
+        //private void btnSaveSupply_Click(object sender, EventArgs e)
+        //{
+            //txtsupplyInvoice.Text = "";
+            //txtSupplyQty.Text = "";
+            //cmbSupplyItem.SelectedValue = "";
+            //this.pnlAdd.Visible = false;
+            //btnAddSupply.Visible = true;
+        //}
+
+        //private void btnCancelSupply_Click(object sender, EventArgs e)
+        //{
+        //    txtsupplyInvoice.Text = "";
+        //    txtSupplyQty.Text = "";
+        //    cmbSupplyItem.SelectedValue = "";
+        //    this.pnlAdd.Visible = false;
+        //    btnAddSupply.Visible = true;
+        //}
+
+      
+
+
+
+
         #endregion
 
         //Nothing below here
