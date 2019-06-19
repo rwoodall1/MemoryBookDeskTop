@@ -1972,6 +1972,7 @@ public override void Cancel() {
         {
             this.pnlAdd.Visible = true;
             btnAddSupply.Visible = false;
+            txtSupplyInvoice.Text = this.Invno.ToString();
         }
 
         private void btnCancelSupply_Click(object sender, EventArgs e)
@@ -1985,12 +1986,37 @@ public override void Cancel() {
 
         private void btnSaveSupply_Click(object sender, EventArgs e)
         {
+            
+            var sqlClient = new SQLCustomClient();
+                    sqlClient.CommandText(@"
+                                            INSERT INTO XSupplies(Item,Quantity,Schcode,Invno,ShipAddress,ShippAddress2,ShipCity,ShipState,ShipZipCode)
+                                            Values(@Item,@Quantity,@Schcode,@Invno,@ShipAddress,@ShippAddress2,@ShipCity,@ShipState,@ShipZipCode"
+                                         );
+            sqlClient.AddParameter("@Item",cmbSupplyItem.SelectedValue);
+            sqlClient.AddParameter("@Quantity",txtSupplyQty.Text);
+            sqlClient.AddParameter("@Schcode",Schcode);
+            sqlClient.AddParameter("@Invno", txtSupplyInvoice.Text);
+            sqlClient.AddParameter("@ShipAddress", shipAddressLabel1.Text);
+            sqlClient.AddParameter("@ShipAddress2", shipAddress2Label1.Text);
+            sqlClient.AddParameter("@ShipCity",shipCityLabel1.Text);
+            sqlClient.AddParameter("@ShipState",shipStateLabel1.Text);
+            sqlClient.AddParameter("@ShipZipCode",shipZipCodeLabel1.Text);
             this.pnlAdd.Visible = false;
             btnAddSupply.Visible = true;
             txtSupplyInvoice.Text = "";
             txtSupplyQty.Text = "";
             cmbSupplyItem.SelectedValue = "";
 
+        }
+
+        private void txtSupplyQty_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.Clear();
+            int vqty=0;
+            if(!int.TryParse(txtSupplyQty.Text,out vqty) ||vqty==0)
+            {
+                errorProvider1.SetError(txtSupplyQty, "Enter a valid quantity.");
+            }
         }
 
 
