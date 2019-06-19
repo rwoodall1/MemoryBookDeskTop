@@ -2825,7 +2825,7 @@ namespace Mbc5.DataSets {
                                 this.columnschcode}, true));
                 this.columncstatus.MaxLength = 40;
                 this.columnsource.MaxLength = 3;
-                this.columnsecsource.MaxLength = 3;
+                this.columnsecsource.MaxLength = 50;
                 this.columnorigsour.MaxLength = 3;
                 this.columnorigyear.MaxLength = 2;
                 this.columnrebook.MaxLength = 1;
@@ -2835,44 +2835,42 @@ namespace Mbc5.DataSets {
                 this.columnschcode.MaxLength = 6;
                 this.columngrades.MaxLength = 16;
                 this.columnsal.MaxLength = 25;
-                this.columnschaddr.AllowDBNull = false;
-                this.columnschaddr.MaxLength = 35;
-                this.columnschaddr2.MaxLength = 35;
-                this.columnschcity.MaxLength = 21;
+                this.columnschaddr.MaxLength = 50;
+                this.columnschaddr2.MaxLength = 50;
+                this.columnschcity.MaxLength = 50;
                 this.columnschstate.MaxLength = 3;
-                this.columnschzip.MaxLength = 10;
-                this.columnschphone.MaxLength = 25;
-                this.columnschfax.MaxLength = 14;
-                this.columnschemail.MaxLength = 45;
+                this.columnschzip.MaxLength = 50;
+                this.columnschphone.MaxLength = 50;
+                this.columnschfax.MaxLength = 50;
+                this.columnschemail.MaxLength = 50;
                 this.columnsprngbrk.MaxLength = 25;
-                this.columncontmemo.MaxLength = 2147483647;
-                this.columnposition.MaxLength = 20;
+                this.columnposition.MaxLength = 50;
                 this.columngender.MaxLength = 1;
-                this.columncontfname.MaxLength = 20;
-                this.columncontlname.MaxLength = 20;
-                this.columnnewfname.MaxLength = 20;
-                this.columnnewlname.MaxLength = 20;
+                this.columncontfname.MaxLength = 50;
+                this.columncontlname.MaxLength = 50;
+                this.columnnewfname.MaxLength = 50;
+                this.columnnewlname.MaxLength = 50;
                 this.columnyb_sth.MaxLength = 1;
                 this.columnshiptocont.MaxLength = 1;
-                this.columncontaddr.MaxLength = 30;
-                this.columncontaddr2.MaxLength = 30;
-                this.columncontcity.MaxLength = 21;
-                this.columncontstate.MaxLength = 3;
-                this.columncontzip.MaxLength = 10;
-                this.columncontphnhom.MaxLength = 14;
-                this.columncontphnwrk.MaxLength = 25;
-                this.columncontfax.MaxLength = 14;
-                this.columncontemail.MaxLength = 45;
+                this.columncontaddr.MaxLength = 50;
+                this.columncontaddr2.MaxLength = 50;
+                this.columncontcity.MaxLength = 50;
+                this.columncontstate.MaxLength = 50;
+                this.columncontzip.MaxLength = 50;
+                this.columncontphnhom.MaxLength = 50;
+                this.columncontphnwrk.MaxLength = 50;
+                this.columncontfax.MaxLength = 50;
+                this.columncontemail.MaxLength = 50;
                 this.columnsigfopf.MaxLength = 1;
-                this.columnenvflyer.MaxLength = 6;
+                this.columnenvflyer.MaxLength = 25;
                 this.columnmarketing.MaxLength = 1;
                 this.columnclrpg_int.MaxLength = 1;
                 this.columnshipmemo.MaxLength = 2147483647;
                 this.columninoffice.MaxLength = 2147483647;
-                this.columnsvcode1.MaxLength = 2;
-                this.columnsvdesc1.MaxLength = 21;
-                this.columnsvcode2.MaxLength = 2;
-                this.columnsvdesc2.MaxLength = 21;
+                this.columnsvcode1.MaxLength = 10;
+                this.columnsvdesc1.MaxLength = 50;
+                this.columnsvcode2.MaxLength = 10;
+                this.columnsvdesc2.MaxLength = 50;
                 this.columnspcinst.MaxLength = 2147483647;
                 this.columncsrep.MaxLength = 2;
                 this.columncstat.MaxLength = 20;
@@ -2881,47 +2879,47 @@ namespace Mbc5.DataSets {
                 this.columnpcmac.MaxLength = 10;
                 this.columnjunsno.MaxLength = 10;
                 this.columnjobno.MaxLength = 7;
-                this.columnadvpw.MaxLength = 16;
+                this.columnadvpw.MaxLength = 25;
                 this.columnstfpw.MaxLength = 5;
-                this.columnbcontfname.MaxLength = 20;
-                this.columnbcontlname.MaxLength = 20;
-                this.columnbcontaddr.MaxLength = 30;
-                this.columnbcontaddr2.MaxLength = 30;
-                this.columnbcontcity.MaxLength = 21;
-                this.columnbcontstate.MaxLength = 3;
-                this.columnbcontzip.MaxLength = 10;
-                this.columnbcontphnhom.MaxLength = 14;
-                this.columnbcontphnwrk.MaxLength = 14;
-                this.columnbcontfax.MaxLength = 14;
-                this.columnbcontemail.MaxLength = 45;
-                this.columnmultiyroptions.MaxLength = 30;
+                this.columnbcontfname.MaxLength = 50;
+                this.columnbcontlname.MaxLength = 50;
+                this.columnbcontaddr.MaxLength = 50;
+                this.columnbcontaddr2.MaxLength = 50;
+                this.columnbcontcity.MaxLength = 50;
+                this.columnbcontstate.MaxLength = 50;
+                this.columnbcontzip.MaxLength = 50;
+                this.columnbcontphnhom.MaxLength = 50;
+                this.columnbcontphnwrk.MaxLength = 50;
+                this.columnbcontfax.MaxLength = 50;
+                this.columnbcontemail.MaxLength = 50;
+                this.columnmultiyroptions.MaxLength = 50;
                 this.columnwebsite.MaxLength = 50;
-                this.columnbposition.MaxLength = 20;
-                this.columnmbconlinepassword.MaxLength = 45;
-                this.columnccontfname.MaxLength = 20;
-                this.columnccontlname.MaxLength = 20;
-                this.columnccontaddr.MaxLength = 30;
-                this.columnccontaddr2.MaxLength = 30;
-                this.columnccontcity.MaxLength = 21;
+                this.columnbposition.MaxLength = 50;
+                this.columnmbconlinepassword.MaxLength = 50;
+                this.columnccontfname.MaxLength = 50;
+                this.columnccontlname.MaxLength = 50;
+                this.columnccontaddr.MaxLength = 50;
+                this.columnccontaddr2.MaxLength = 50;
+                this.columnccontcity.MaxLength = 50;
                 this.columnccontstate.MaxLength = 3;
-                this.columnccontzip.MaxLength = 10;
-                this.columnccontphnhom.MaxLength = 14;
-                this.columnccontphnwork.MaxLength = 14;
-                this.columnccontfax.MaxLength = 14;
-                this.columnccontemail.MaxLength = 45;
-                this.columnnorebookreason.MaxLength = 25;
-                this.columnnewpublisher.MaxLength = 25;
+                this.columnccontzip.MaxLength = 50;
+                this.columnccontphnhom.MaxLength = 50;
+                this.columnccontphnwork.MaxLength = 50;
+                this.columnccontfax.MaxLength = 50;
+                this.columnccontemail.MaxLength = 50;
+                this.columnnorebookreason.MaxLength = 50;
+                this.columnnewpublisher.MaxLength = 50;
                 this.columncsrep2.MaxLength = 2;
-                this.columnschcolors.MaxLength = 45;
-                this.columnleadsource.MaxLength = 25;
-                this.columnleadsname.MaxLength = 25;
-                this.columnprevpublisher.MaxLength = 25;
-                this.columnleadname.MaxLength = 25;
+                this.columnschcolors.MaxLength = 50;
+                this.columnleadsource.MaxLength = 50;
+                this.columnleadsname.MaxLength = 50;
+                this.columnprevpublisher.MaxLength = 50;
+                this.columnleadname.MaxLength = 50;
                 this.columnbooktype.MaxLength = 8;
                 this.columnprodno.MaxLength = 12;
                 this.columnTimeStamp.ReadOnly = true;
                 this.columnschname.AllowDBNull = false;
-                this.columnschname.MaxLength = 34;
+                this.columnschname.MaxLength = 50;
                 this.columnModifiedBy.MaxLength = 128;
                 this.columnoraclecode.MaxLength = 7;
                 this.columncontryear.MaxLength = 2;
@@ -4600,7 +4598,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schaddr {
                 get {
-                    return ((string)(this[this.tablecust.schaddrColumn]));
+                    try {
+                        return ((string)(this[this.tablecust.schaddrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schaddr\' in table \'cust\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablecust.schaddrColumn] = value;
@@ -6963,6 +6966,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetsalNull() {
                 this[this.tablecust.salColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschaddrNull() {
+                return this.IsNull(this.tablecust.schaddrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschaddrNull() {
+                this[this.tablecust.schaddrColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9824,13 +9839,12 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 " = @cposition, electronickit = @electronickit, \r\n                         electr" +
                 "onickitoptions = @electronicoptions, status = @status, IsTaxExempt = @IsTaxExemp" +
                 "t, stage = @Stage, TaxExemptionReceived = @TaxExemptionReceived, FirstDaySchool " +
-                "= @FirstDaySchool, \r\n                         NotTaxExempt = @NotTaxExempt, Ship" +
-                "pingCity = @ShippingCity, ShippingAddr2 = @ShippingAddr2, ShippingZipCode = @Shi" +
-                "ppingZipCode, ShippingState = @ShippingState, InvoiceAddr = @InvoiceAddr, \r\n    " +
-                "                     InvoiceAddr2 = @InvoiceAddr2, InvoiceCity = @InvoiceCity, I" +
-                "nvoiceState = @InvoiceState, InvoiceZipCode = @InvoiceZipCode, ShippingAddr = @S" +
-                "hippingAddr\r\nWHERE        (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)" +
-                "";
+                "= @FirstDaySchool, \r\n                         NotTaxExempt = @NotTaxExempt, Invo" +
+                "iceZipCode = @InvoiceZipCode, InvoiceState = @InvoiceState, InvoiceCity = @Invoi" +
+                "ceCity, InvoiceAddr2 = @InvoiceAddr2, InvoiceAddr = @InvoiceAddr, \r\n            " +
+                "             ShippingState = @ShippingState, ShippingZipCode = @ShippingZipCode," +
+                " ShippingCity = @ShippingCity, ShippingAddr2 = @ShippngAddr2, ShippingAddr = @Sh" +
+                "ippingAddr\r\nWHERE        (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cstatus", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9962,15 +9976,15 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxExemptionReceived", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TaxExemptionReceived", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstDaySchool", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "FirstDaySchool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NotTaxExempt", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "NotTaxExempt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingCity", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingCity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingAddr2", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingAddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingZipCode", global::System.Data.SqlDbType.VarChar, 11, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingZipCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingState", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingState", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceAddr", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceAddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceAddr2", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceAddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceCity", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceCity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceState", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceState", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceZipCode", global::System.Data.SqlDbType.VarChar, 11, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceZipCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceState", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceState", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceCity", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceCity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceAddr2", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceAddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceAddr", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceAddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingState", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingState", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingZipCode", global::System.Data.SqlDbType.VarChar, 11, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingZipCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingCity", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingCity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippngAddr2", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingAddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingAddr", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingAddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Orig_TimeStamp", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -9985,7 +9999,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +
@@ -10031,49 +10045,76 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +
-                "ecsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookd" +
-                "te, cust.refby, cust.schcode, cust.schname, cust.contryear, \r\n                  " +
-                "       cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust" +
-                ".schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail," +
-                " cust.sprngbrk, cust.schout, cust.contmemo, cust.position, \r\n                   " +
-                "      cust.gender, cust.contfname, cust.contlname, cust.newfname, cust.newlname," +
-                " cust.yb_sth, cust.shiptocont, cust.contaddr, cust.contaddr2, cust.contcity, cus" +
-                "t.contstate, cust.contzip, cust.contphnhom, \r\n                         cust.cont" +
-                "phnwrk, cust.contfax, cust.contemail, cust.vcrsent, cust.sigfopf, cust.envflyer," +
-                " cust.marketing, cust.yearrnd, cust.clrpg_int, cust.shipmemo, cust.schclosed, cu" +
-                "st.inoffice, cust.digintrst, cust.svcode1, \r\n                         cust.svdes" +
-                "c1, cust.svcode2, cust.svdesc2, cust.spcinst, cust.lastcont, cust.nextcont, cust" +
-                ".csrep, cust.cstat, cust.xeldate, cust.allcolor, cust.rbinit, cust.rbdate, cust." +
-                "clspic, cust.magic, cust.extrchg, cust.sprinfo, \r\n                         cust." +
-                "fallinfo, cust.initcont, cust.highsp, cust.slownone, cust.pcmac, cust.junsno, cu" +
-                "st.bcontfname, cust.bcontlname, cust.bcontaddr, cust.bcontaddr2, cust.bcontcity," +
-                " cust.bcontstate, cust.bcontzip, \r\n                         cust.bcontphnhom, cu" +
-                "st.bcontphnwrk, cust.bcontfax, cust.bcontemail, cust.multiyroptions, cust.multiy" +
-                "ear, cust.schuploading, cust.website, cust.nomktemail, cust.nodirectmail, cust.b" +
-                "position, cust.blkwhite, \r\n                         cust.mbconlinepassword, cust" +
-                ".ccontfname, cust.ccontlname, cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, c" +
-                "ust.ccontstate, cust.ccontzip, cust.ccontphnhom, cust.ccontphnwork, cust.ccontfa" +
-                "x, cust.ccontemail, \r\n                         cust.norebookreason, cust.newpubl" +
-                "isher, cust.csrep2, cust.schcolors, cust.keeppswd, cust.leadsource, cust.leadsna" +
-                "me, cust.prevpublisher, cust.leadname, quotes.booktype, quotes.contryear AS Qyea" +
-                "r, \r\n                         quotes.invno AS QInvno, produtn.prodno, produtn.de" +
-                "dayin, produtn.dedayout, produtn.kitrecvd, produtn.jobno, produtn.advpw, produtn" +
-                ".stfpw, cust.oraclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, \r\n " +
-                "                        cust.electronickitoptions, cust.electronickit, cust.cpos" +
-                "ition, cust.status, cust.TaxExemptionReceived, cust.FirstDaySchool, cust.stage, " +
-                "cust.NotTaxExempt, cust.IsTaxExempt, cust.taxexemptionexpirationdate, \r\n        " +
-                "                 cust.ShippingAddr2, cust.ShippingCity, cust.ShippingZipCode, cu" +
-                "st.ShippingState, cust.InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.In" +
-                "voiceState, cust.InvoiceZipCode, cust.ShippingAddr\r\nFROM            cust LEFT OU" +
-                "TER JOIN\r\n                         quotes ON cust.schcode = quotes.schcode LEFT " +
-                "OUTER JOIN\r\n                         produtn ON quotes.invno = produtn.invno\r\nWH" +
-                "ERE        (cust.oraclecode = @oraclecode)\r\nORDER BY Qyear DESC";
+            this._commandCollection[1].CommandText = "SELECT        cstatus, source, sourdate, photographer, secsource, contdate, origs" +
+                "our, origyear, rebook, rebookdte, refby, schcode, schname, contryear, enrollment" +
+                ", grades, sal, schaddr, schaddr2, schcity, schstate, schzip, \r\n                 " +
+                "        schphone, schfax, schemail, sprngbrk, schout, contmemo, position, gender" +
+                ", contfname, contlname, newfname, newlname, yb_sth, shiptocont, contaddr, contad" +
+                "dr2, contcity, contstate, contzip, contphnhom, \r\n                         contph" +
+                "nwrk, contfax, contemail, vcrsent, sigfopf, envflyer, marketing, yearrnd, clrpg_" +
+                "int, shipmemo, schclosed, inoffice, digintrst, svcode1, svdesc1, svcode2, svdesc" +
+                "2, spcinst, lastcont, nextcont, csrep, cstat, \r\n                         xeldate" +
+                ", allcolor, rbinit, rbdate, clspic, magic, extrchg, sprinfo, fallinfo, initcont," +
+                " highsp, slownone, pcmac, junsno, bcontfname, bcontlname, bcontaddr, bcontaddr2," +
+                " bcontcity, bcontstate, bcontzip, bcontphnhom, \r\n                         bcontp" +
+                "hnwrk, bcontfax, bcontemail, multiyroptions, multiyear, schuploading, website, n" +
+                "omktemail, nodirectmail, bposition, blkwhite, mbconlinepassword, ccontfname, cco" +
+                "ntlname, ccontaddr, ccontaddr2, ccontcity, \r\n                         ccontstate" +
+                ", ccontzip, ccontphnhom, ccontphnwork, ccontfax, ccontemail, norebookreason, new" +
+                "publisher, csrep2, schcolors, keeppswd, leadsource, leadsname, prevpublisher, le" +
+                "adname, oraclecode, TimeStamp, \r\n                         ModifiedBy, DateModifi" +
+                "ed, electronickitoptions, electronickit, cposition, status, TaxExemptionReceived" +
+                ", FirstDaySchool, stage, NotTaxExempt, IsTaxExempt, taxexemptionexpirationdate, " +
+                "ShippingAddr2, \r\n                         ShippingCity, ShippingZipCode, Shippin" +
+                "gState, InvoiceAddr, InvoiceAddr2, InvoiceCity, InvoiceState, InvoiceZipCode, Sh" +
+                "ippingAddr\r\nFROM            cust\r\nWHERE        (schcode = @schcode)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oraclecode", global::System.Data.SqlDbType.NVarChar, 7, global::System.Data.ParameterDirection.Input, 0, 0, "oraclecode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +
+                "ecsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookd" +
+                "te, cust.refby, cust.schcode, cust.contryear, cust.enrollment, \r\n               " +
+                "          cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust.schcity, cust" +
+                ".schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail, cust.sprngbrk" +
+                ", cust.schout, cust.contmemo, cust.position, cust.gender, \r\n                    " +
+                "     cust.contfname, cust.contlname, cust.newfname, cust.newlname, cust.yb_sth, " +
+                "cust.shiptocont, cust.contaddr, cust.contaddr2, cust.contcity, cust.contstate, c" +
+                "ust.contzip, cust.contphnhom, cust.contphnwrk, \r\n                         cust.c" +
+                "ontfax, cust.contemail, cust.vcrsent, cust.sigfopf, cust.envflyer, cust.marketin" +
+                "g, cust.yearrnd, cust.clrpg_int, cust.shipmemo, cust.schclosed, cust.inoffice, c" +
+                "ust.digintrst, cust.svcode1, cust.svdesc1, \r\n                         cust.svcod" +
+                "e2, cust.svdesc2, cust.spcinst, cust.lastcont, cust.nextcont, cust.csrep, cust.c" +
+                "stat, cust.xeldate, cust.allcolor, cust.rbinit, cust.rbdate, cust.clspic, cust.m" +
+                "agic, cust.extrchg, cust.sprinfo, cust.fallinfo, \r\n                         cust" +
+                ".initcont, cust.highsp, cust.slownone, cust.pcmac, cust.junsno, cust.bcontfname," +
+                " cust.bcontlname, cust.bcontaddr, cust.bcontaddr2, cust.bcontcity, cust.bcontsta" +
+                "te, cust.bcontzip, cust.bcontphnhom, \r\n                         cust.bcontphnwrk" +
+                ", cust.bcontfax, cust.bcontemail, cust.multiyroptions, cust.multiyear, cust.schu" +
+                "ploading, cust.website, cust.nomktemail, cust.nodirectmail, cust.bposition, cust" +
+                ".blkwhite, cust.mbconlinepassword, \r\n                         cust.ccontfname, c" +
+                "ust.ccontlname, cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, cust.ccontstate" +
+                ", cust.ccontzip, cust.ccontphnhom, cust.ccontphnwork, cust.ccontfax, cust.cconte" +
+                "mail, cust.norebookreason, \r\n                         cust.newpublisher, cust.cs" +
+                "rep2, cust.schcolors, cust.keeppswd, cust.leadsource, cust.leadsname, cust.prevp" +
+                "ublisher, cust.leadname, quotes.booktype, quotes.contryear AS Qyear, quotes.invn" +
+                "o AS QInvno, \r\n                         produtn.prodno, produtn.dedayin, produtn" +
+                ".dedayout, produtn.kitrecvd, produtn.jobno, produtn.advpw, produtn.stfpw, cust.o" +
+                "raclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, cust.electronicki" +
+                "toptions, \r\n                         cust.electronickit, cust.cposition, cust.st" +
+                "atus, cust.TaxExemptionReceived, cust.FirstDaySchool, cust.stage, cust.NotTaxExe" +
+                "mpt, cust.IsTaxExempt, cust.taxexemptionexpirationdate, cust.ShippingAddr2, \r\n  " +
+                "                       cust.ShippingCity, cust.ShippingZipCode, cust.ShippingSta" +
+                "te, cust.InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, cu" +
+                "st.InvoiceZipCode, cust.ShippingAddr, cust.schname\r\nFROM            cust LEFT OU" +
+                "TER JOIN\r\n                         quotes ON cust.schcode = quotes.schcode LEFT " +
+                "OUTER JOIN\r\n                         produtn ON quotes.invno = produtn.invno\r\nWH" +
+                "ERE        (cust.oraclecode = @oraclecode)\r\nORDER BY Qyear DESC";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oraclecode", global::System.Data.SqlDbType.NVarChar, 7, global::System.Data.ParameterDirection.Input, 0, 0, "oraclecode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +
                 "ecsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookd" +
                 "te, cust.refby, cust.schcode, cust.schname, cust.contryear, \r\n                  " +
                 "       cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust" +
@@ -10111,8 +10152,8 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
                 "TER JOIN\r\n                         quotes ON cust.schcode = quotes.schcode LEFT " +
                 "OUTER JOIN\r\n                         produtn ON quotes.invno = produtn.invno\r\nWH" +
                 "ERE        (cust.schname LIKE @schname + \'%\')\r\nORDER BY Qyear DESC";
-            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10155,8 +10196,27 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByOracleCode(dsCust.custDataTable dataTable, string oraclecode) {
+        public virtual int ConcurrencyFill(dsCust.custDataTable dataTable, string schcode) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((schcode == null)) {
+                throw new global::System.ArgumentNullException("schcode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schcode));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByOracleCode(dsCust.custDataTable dataTable, string oraclecode) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((oraclecode == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -10175,7 +10235,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual dsCust.custDataTable GetDataBy1(string oraclecode) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((oraclecode == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -10192,7 +10252,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillBySchname(dsCust.custDataTable dataTable, string schname) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((schname == null)) {
                 throw new global::System.ArgumentNullException("schname");
             }
@@ -10211,7 +10271,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual dsCust.custDataTable GetDataBy(string schname) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((schname == null)) {
                 throw new global::System.ArgumentNullException("schname");
             }

@@ -80,55 +80,13 @@ namespace Mbc5.Forms.MemoryBook {
                 TeleGo = true;
                 MktGo = true;
             }
-            try
-            {
-
-                // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
-                this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
-                // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.
-                this.lkpLeadNameTableAdapter.Fill(this.dsCust.lkpLeadName);
-                // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
-                this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
-                // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
-                this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
-                // TODO: This line of code loads data into the 'lookUp.lkpMultiYearOptions' table. You can move, or remove it, as needed.
-                this.lkpMultiYearOptionsTableAdapter.Fill(this.lookUp.lkpMultiYearOptions);
-                this.txtModifiedBy.Text = this.ApplicationUser.id;
-                this.lkpSupplyItemsTableAdapter.Fill(this.lookUp.lkpSupplyItems);
-                xsuppliesTableAdapter.Fill(dsXSupplies.xsupplies,Schcode);
-                this.lkpSupplyItemsTableAdapter.Fill(this.lookUp.lkpSupplyItems);
-                this.statesTableAdapter.Fill(this.lookUp.states);
-                this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
-                // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
-                this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
-                this.lkpPrevPubTableAdapter.Fill(this.lookUp.lkpPrevPub);
-                this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
-                this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
-                // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
-                this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
-                // TODO: This line of code loads data into the 'lookUp.lkpComments' table. You can move, or remove it, as needed.
-                this.lkpCommentsTableAdapter.Fill(this.lookUp.lkpComments);
-                // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
-
-                // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
-                this.datecontTableAdapter.Fill(this.dsCust.datecont, vSchocode);
-                // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
-
-                this.custTableAdapter.Fill(this.dsCust.cust, vSchocode);
-                // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
-                this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
-                // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
-
-                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, vSchocode);
-            }
-            catch (Exception ex)
-            {
-                MbcMessageBox.Error(ex.Message, "");
-            }
-            
+            Fill();
+            this.txtModifiedBy.Text = this.ApplicationUser.id;
         }
 
-        #region CrudOperations
+        
+        
+ #region CrudOperations
         public override ApiProcessingResult<bool> Save()
 {
 	var processingResult = new ApiProcessingResult<bool>();
@@ -348,6 +306,56 @@ public override void Cancel() {
 //    }
         #endregion
  #region Methods
+        public void Fill()
+        {
+
+            try
+            {
+
+                // TODO: This line of code loads data into the 'dsCust.lkpLeadSource' table. You can move, or remove it, as needed.
+                this.lkpLeadSourceTableAdapter.Fill(this.dsCust.lkpLeadSource);
+                // TODO: This line of code loads data into the 'dsCust.lkpLeadName' table. You can move, or remove it, as needed.
+                this.lkpLeadNameTableAdapter.Fill(this.dsCust.lkpLeadName);
+                // TODO: This line of code loads data into the 'dsCust.custSearch' table. You can move, or remove it, as needed.
+                this.custSearchTableAdapter.Fill(this.dsCust.custSearch);
+                // TODO: This line of code loads data into the 'lookUp.lkpschtype' table. You can move, or remove it, as needed.
+                this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
+                // TODO: This line of code loads data into the 'lookUp.lkpMultiYearOptions' table. You can move, or remove it, as needed.
+                this.lkpMultiYearOptionsTableAdapter.Fill(this.lookUp.lkpMultiYearOptions);
+                this.txtModifiedBy.Text = this.ApplicationUser.id;
+                this.lkpSupplyItemsTableAdapter.Fill(this.lookUp.lkpSupplyItems);
+                xsuppliesTableAdapter.Fill(dsXSupplies.xsupplies, Schcode);
+                this.lkpSupplyItemsTableAdapter.Fill(this.lookUp.lkpSupplyItems);
+                this.statesTableAdapter.Fill(this.lookUp.states);
+                this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
+                // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
+                this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
+                this.lkpPrevPubTableAdapter.Fill(this.lookUp.lkpPrevPub);
+                this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
+                this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
+                // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
+                this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
+                // TODO: This line of code loads data into the 'lookUp.lkpComments' table. You can move, or remove it, as needed.
+                this.lkpCommentsTableAdapter.Fill(this.lookUp.lkpComments);
+                // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
+
+                // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
+                this.datecontTableAdapter.Fill(this.dsCust.datecont, Schcode);
+                // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
+
+                this.custTableAdapter.Fill(this.dsCust.cust, Schcode);
+                // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
+                this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
+                // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
+
+                this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, Schcode);
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "");
+            }
+
+        }
         public void PrintLabel(string vLabel)
         {
             switch (vLabel.ToUpper())
@@ -453,7 +461,8 @@ public override void Cancel() {
             this.lkpMktReferenceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.lkpCommentsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.datecontTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-        
+            this.lkpschtypeTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.lkpSupplyItemsTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
             this.contpstnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.mktinfoTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 
@@ -1886,16 +1895,16 @@ public override void Cancel() {
 
         private void btnSchoolToInvoice_Click(object sender, EventArgs e)
          {
-            var vInvAddress = ((DataRowView)custBindingSource.Current).Row["Schaddr"].ToString().Trim();
-            invAddrTextBox.Text = vInvAddress;
-            var vInvAddress2 = ((DataRowView)custBindingSource.Current).Row["SchAddr2"].ToString().Trim();
-            invAddr2TextBox.Text = vInvAddress2;
-            var vInvCity = ((DataRowView)custBindingSource.Current).Row["SchCity"].ToString().Trim();
-            invCityTextBox.Text = vInvCity;
-            var vInvState = ((DataRowView)custBindingSource.Current).Row["SchState"].ToString().Trim();
-            cmbInvStateComboBox.SelectedValue = vInvState;
-            var vInvZipcode = ((DataRowView)custBindingSource.Current).Row["SchZip"].ToString().Trim();
-            invZipCodeTextBox.Text = vInvZipcode.Substring(0,5);
+            //var vInvAddress = ((DataRowView)custBindingSource.Current).Row["Schaddr"].ToString().Trim();
+            //invAddrTextBox.Text = vInvAddress;
+            //var vInvAddress2 = ((DataRowView)custBindingSource.Current).Row["SchAddr2"].ToString().Trim();
+            //invAddr2TextBox.Text = vInvAddress2;
+            //var vInvCity = ((DataRowView)custBindingSource.Current).Row["SchCity"].ToString().Trim();
+            //invCityTextBox.Text = vInvCity;
+            //var vInvState = ((DataRowView)custBindingSource.Current).Row["SchState"].ToString().Trim();
+            //cmbInvStateComboBox.SelectedValue = vInvState;
+            //var vInvZipcode = ((DataRowView)custBindingSource.Current).Row["SchZip"].ToString().Trim();
+            //invZipCodeTextBox.Text = vInvZipcode.Substring(0,5);
         }
 
         private void btnSchoolToShipping_Click(object sender, EventArgs e)
@@ -1950,36 +1959,39 @@ public override void Cancel() {
                     .Submit();
                     
             }
+            //get current timestamp
+            this.Fill();
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
 
         }
 
-        //private void btnAddSupply_Click(object sender, EventArgs e)
-        //{
-        //    this.pnlAdd.Visible = true;
-        //    btnAddSupply.Visible = false;
-        //}
+        private void btnAddSupply_Click(object sender, EventArgs e)
+        {
+            this.pnlAdd.Visible = true;
+            btnAddSupply.Visible = false;
+        }
 
-        //private void btnSaveSupply_Click(object sender, EventArgs e)
-        //{
-            //txtsupplyInvoice.Text = "";
-            //txtSupplyQty.Text = "";
-            //cmbSupplyItem.SelectedValue = "";
-            //this.pnlAdd.Visible = false;
-            //btnAddSupply.Visible = true;
-        //}
+        private void btnCancelSupply_Click(object sender, EventArgs e)
+        {
+            txtSupplyInvoice.Text = "";
+            txtSupplyQty.Text = "";
+            cmbSupplyItem.SelectedValue = "";
+            this.pnlAdd.Visible = false;
+            btnAddSupply.Visible = true;
+        }
 
-        //private void btnCancelSupply_Click(object sender, EventArgs e)
-        //{
-        //    txtsupplyInvoice.Text = "";
-        //    txtSupplyQty.Text = "";
-        //    cmbSupplyItem.SelectedValue = "";
-        //    this.pnlAdd.Visible = false;
-        //    btnAddSupply.Visible = true;
-        //}
+        private void btnSaveSupply_Click(object sender, EventArgs e)
+        {
+            this.pnlAdd.Visible = false;
+            btnAddSupply.Visible = true;
+            txtSupplyInvoice.Text = "";
+            txtSupplyQty.Text = "";
+            cmbSupplyItem.SelectedValue = "";
 
-      
-
-
+        }
 
 
         #endregion
