@@ -253,7 +253,8 @@ namespace Mbc5.Forms.MemoryBook
                     }
                     catch (DBConcurrencyException ex1)
                     {
-
+                        MbcMessageBox.Hand("Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", "Concurrency Error");
+                        this.Fill();
                         string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
 
                         processingResult.IsError = true;
@@ -984,11 +985,15 @@ namespace Mbc5.Forms.MemoryBook
                     }
                     catch (DBConcurrencyException ex1)
                     {
-                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsSales.quotesRow)(ex1.Row), ref dsSales);
-                        if (result == DialogResult.Yes)
-                        {
-                            Save();
-                        }
+                       // MbcMessageBox.Hand("Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", "Concurrency Error");
+                        this.Fill();
+                        //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsSales.quotesRow)(ex1.Row), ref dsSales);
+                        //if (result == DialogResult.Yes)
+                        //{
+                        //    Save();
+                        //}
+                        processingResult.IsError = true;
+                        processingResult.Errors.Add(new ApiProcessingError("Another user has updated this record, your copy is not current. Your data is being reverted, Please re - enter your data.", "Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", ""));
                     }
                     catch (Exception ex)
                     {

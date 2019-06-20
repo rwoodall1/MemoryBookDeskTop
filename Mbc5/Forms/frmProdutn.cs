@@ -29,13 +29,7 @@ namespace Mbc5.Forms
 	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
 	{
 
-		//Some time use this code to make textboxes tab on enter key
-		//	 if (e.KeyCode == Keys.Enter) {
-  //      SendKeys.Send("{tab}");
-  //      e.SuppressKeyPress = true;
-    
-
-
+		
 	private bool startup = true;
 		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
 		{
@@ -95,10 +89,7 @@ namespace Mbc5.Forms
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
             this.frmMain = (frmMain)this.MdiParent;
- 
-           
-
-			this.SetConnectionString();
+ 			this.SetConnectionString();
 			try
 			{
                 this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
@@ -143,6 +134,44 @@ namespace Mbc5.Forms
 		private string CurrentProdNo { get; set; }
 		#endregion
 		#region "Methods"
+        private void WipTest()
+        {
+            var prodRow = (DataRowView)produtnBindingSource.Current;
+            if (!prodRow.Row.IsNull("bkstd") && (bool)prodRow["bkstd"])
+            {
+
+            } else if (!prodRow.Row.IsNull("bk9") && (bool)prodRow["bk9"])
+            {
+
+            }
+            else if (!prodRow.Row.IsNull("bk10") && (bool)prodRow["bk10"])
+            {
+
+            } else if (!prodRow.Row.IsNull("bk11") && (bool)prodRow["bk11"]) {
+
+            }
+            else if (!prodRow.Row.IsNull("bk12") && (bool)prodRow["bk12"])
+            {
+
+            }else if (!prodRow.Row.IsNull("bkhard") && (bool)prodRow["bkhard"])
+            {
+
+            }
+            else if (!prodRow.Row.IsNull("bkcoil") && (bool)prodRow["bkcoil"])
+            {
+
+            }else if (!prodRow.Row.IsNull("allclrck") && (bool)prodRow["allclrck"])
+            {
+                
+            }else if (!prodRow.Row.IsNull("milled") && (bool)prodRow["milled"])
+            {
+
+            }
+            else  
+            {
+                //Standard
+            }
+        }
 		private void ShippingEmail()
 		{
 			var cMainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -3827,6 +3856,11 @@ namespace Mbc5.Forms
             if (e.KeyChar == (char)Keys.Enter)
                 e.KeyChar = (char)Keys.Tab;
             SendKeys.Send(e.KeyChar.ToString());//send the keystroke to the form.
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            WipTest();
         }
 
 

@@ -109,10 +109,12 @@ namespace Mbc5.Forms.MemoryBook {
         }
         catch (DBConcurrencyException dbex)
         {
-            DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsCust.custRow)(dbex.Row), ref dsCust);
-            if (result == DialogResult.Yes) {
-                Save();
-            }
+              MbcMessageBox.Hand("Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", "Concurrency Error");
+            this.Fill();
+                    //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsCust.custRow)(dbex.Row), ref dsCust);
+            //if (result == DialogResult.Yes) {
+            //    Save();
+            //}
                                  
         }catch(Exception ex) {
             MessageBox.Show("School record failed to update:" + ex.Message);

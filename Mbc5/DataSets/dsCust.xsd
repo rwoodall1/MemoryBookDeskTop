@@ -168,7 +168,7 @@ VALUES        (@schcode,@schname,@contryear,@cstatus,@source,@sourdate,@secsourc
                          quotes.invno AS QInvno, produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, produtn.jobno, produtn.advpw, produtn.stfpw, cust.oraclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, 
                          cust.electronickitoptions, cust.electronickit, cust.cposition, cust.status, cust.TaxExemptionReceived, cust.FirstDaySchool, cust.stage, cust.NotTaxExempt, cust.IsTaxExempt, cust.taxexemptionexpirationdate, 
                          produtn.prshpdte, cust.ShippingAddr2, cust.ShippingCity, cust.ShippingZipCode, cust.ShippingState, cust.InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, cust.InvoiceZipCode, 
-                         cust.ShippingAddr
+                         cust.ShippingAddr, cust.PIN
 FROM            cust LEFT OUTER JOIN
                          quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN
                          produtn ON quotes.invno = produtn.invno
@@ -186,11 +186,11 @@ SET                cstatus = @cstatus, source = @source, sourdate = @sourdate, s
                          refby = @refby, schcode = @schcode, enrollment = @enrollment, grades = @grades, sal = @sal, schaddr = @schaddr, schaddr2 = @schaddr2, schcity = @schcity, schzip = @schzip, schphone = @schphone, 
                          schfax = @schfax, schemail = @schemail, sprngbrk = @sprngbrk, schout = @schout, contmemo = @contmemo, position = @position, gender = @gender, contfname = @contfname, contlname = @contlname, 
                          newfname = @newfname, newlname = @newlname, yb_sth = @yb_sth, shiptocont = @shiptocont, contaddr = @contaddr, contaddr2 = @contaddr2, contcity = @contcity, contstate = @contstate, 
-                         contzip = @contzip, contphnhom = @contphnhom, contphnwrk = @contphnwrk, contfax = @contfax, contemail = @contemail, booktype = @booktype, vcrsent = @vcrsent, sigfopf = @sigfopf, envflyer = @envflyer, 
-                         marketing = @marketing, yearrnd = @yearrnd, clrpg_int = @clrpg_int, shipmemo = @shipmemo, schclosed = @schclosed, inoffice = @inoffice, digintrst = @digintrst, svcode1 = @svcode1, svdesc1 = @svdesc1, 
-                         svcode2 = @svcode2, svdesc2 = @svdesc2, spcinst = @spcinst, lastcont = @lastcont, nextcont = @nextcont, csrep = @csrep, cstat = @cstat, xeldate = @xeldate, allcolor = @allcolor, rbinit = @rbinit, 
-                         rbdate = @rbdate, clspic = @clspic, magic = @magic, extrchg = @extrchg, sprinfo = @sprinfo, fallinfo = @fallinfo, initcont = @initcont, highsp = @highsp, slownone = @slownone, pcmac = @pcmac, 
-                         junsno = @junsno, bcontfname = @bcontfname, bcontlname = @bcontlname, bcontaddr = @bcontaddr, bcontaddr2 = @bcontaddr2, bcontcity = @bcontcity, bcontstate = @bcontstate, bcontzip = @bcontzip, 
+                         contzip = @contzip, contphnhom = @contphnhom, contphnwrk = @contphnwrk, contfax = @contfax, contemail = @contemail, vcrsent = @vcrsent, sigfopf = @sigfopf, envflyer = @envflyer, marketing = @marketing,
+                          yearrnd = @yearrnd, clrpg_int = @clrpg_int, shipmemo = @shipmemo, schclosed = @schclosed, inoffice = @inoffice, digintrst = @digintrst, svcode1 = @svcode1, svdesc1 = @svdesc1, svcode2 = @svcode2, 
+                         svdesc2 = @svdesc2, spcinst = @spcinst, lastcont = @lastcont, nextcont = @nextcont, csrep = @csrep, cstat = @cstat, xeldate = @xeldate, allcolor = @allcolor, rbinit = @rbinit, rbdate = @rbdate, 
+                         clspic = @clspic, magic = @magic, extrchg = @extrchg, sprinfo = @sprinfo, fallinfo = @fallinfo, initcont = @initcont, highsp = @highsp, slownone = @slownone, pcmac = @pcmac, junsno = @junsno, 
+                         bcontfname = @bcontfname, bcontlname = @bcontlname, bcontaddr = @bcontaddr, bcontaddr2 = @bcontaddr2, bcontcity = @bcontcity, bcontstate = @bcontstate, bcontzip = @bcontzip, 
                          bcontphnhom = @bcontphnhom, bcontphnwrk = @bcontphnwrk, bcontfax = @bcontfax, bcontemail = @bcontemail, multiyroptions = @multiyroptions, multiyear = @multiyear, schuploading = @schuploading, 
                          website = @website, nomktemail = @nomktemail, nodirectmail = @nodirectmail, bposition = @bposition, blkwhite = @blkwhite, mbconlinepassword = @mbconlinepassword, ccontfname = @ccontfname, 
                          ccontlname = @ccontlname, ccontaddr = @ccontaddr, ccontaddr2 = @ccontaddr2, ccontcity = @ccontcity, ccontstate = @ccontstate, ccontzip = @ccontzip, ccontphnhom = @ccontphnhom, 
@@ -200,7 +200,7 @@ SET                cstatus = @cstatus, source = @source, sourdate = @sourdate, s
                          electronickitoptions = @electronicoptions, status = @status, IsTaxExempt = @IsTaxExempt, stage = @Stage, TaxExemptionReceived = @TaxExemptionReceived, FirstDaySchool = @FirstDaySchool, 
                          NotTaxExempt = @NotTaxExempt, InvoiceZipCode = @InvoiceZipCode, InvoiceState = @InvoiceState, InvoiceCity = @InvoiceCity, InvoiceAddr2 = @InvoiceAddr2, InvoiceAddr = @InvoiceAddr, 
                          ShippingState = @ShippingState, ShippingZipCode = @ShippingZipCode, ShippingCity = @ShippingCity, ShippingAddr2 = @ShippngAddr2, ShippingAddr = @ShippingAddr, 
-                         taxexemptionexpirationdate = @taxexemptionexpirationdate
+                         taxexemptionexpirationdate = @taxexemptionexpirationdate, PIN = @PIN
 WHERE        (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="cstatus" ColumnName="cstatus" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@cstatus" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="cstatus" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -233,8 +233,8 @@ WHERE        (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)</CommandText
                       <Parameter AllowDbNull="true" AutogeneratedName="contlname" ColumnName="contlname" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@contlname" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="contlname" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="newfname" ColumnName="newfname" DataSourceName="Mbc5.dbo.cust" DataTypeServer="char(50)" DbType="AnsiString" Direction="Input" ParameterName="@newfname" Precision="0" ProviderType="Char" Scale="0" Size="50" SourceColumn="newfname" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="newlname" ColumnName="newlname" DataSourceName="Mbc5.dbo.cust" DataTypeServer="char(50)" DbType="AnsiString" Direction="Input" ParameterName="@newlname" Precision="0" ProviderType="Char" Scale="0" Size="50" SourceColumn="newlname" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="yb_sth" ColumnName="yb_sth" DataSourceName="Mbc5.dbo.cust" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@yb_sth" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="yb_sth" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="shiptocont" ColumnName="shiptocont" DataSourceName="Mbc5.dbo.cust" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@shiptocont" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="shiptocont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="yb_sth" ColumnName="yb_sth" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@yb_sth" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="yb_sth" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="shiptocont" ColumnName="shiptocont" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(1)" DbType="AnsiString" Direction="Input" ParameterName="@shiptocont" Precision="0" ProviderType="VarChar" Scale="0" Size="1" SourceColumn="shiptocont" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="contaddr" ColumnName="contaddr" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@contaddr" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="contaddr" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="contaddr2" ColumnName="contaddr2" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@contaddr2" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="contaddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="contcity" ColumnName="contcity" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@contcity" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="contcity" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -244,7 +244,6 @@ WHERE        (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)</CommandText
                       <Parameter AllowDbNull="true" AutogeneratedName="contphnwrk" ColumnName="contphnwrk" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@contphnwrk" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="contphnwrk" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="contfax" ColumnName="contfax" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@contfax" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="contfax" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="contemail" ColumnName="contemail" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@contemail" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="contemail" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="booktype" ColumnName="booktype" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(4)" DbType="AnsiString" Direction="Input" ParameterName="@booktype" Precision="0" ProviderType="VarChar" Scale="0" Size="4" SourceColumn="booktype" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="vcrsent" ColumnName="vcrsent" DataSourceName="Mbc5.dbo.cust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@vcrsent" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="vcrsent" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="sigfopf" ColumnName="sigfopf" DataSourceName="Mbc5.dbo.cust" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@sigfopf" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="sigfopf" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="envflyer" ColumnName="envflyer" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@envflyer" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="envflyer" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -344,6 +343,7 @@ WHERE        (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)</CommandText
                       <Parameter AllowDbNull="true" AutogeneratedName="ShippngAddr2" ColumnName="ShippingAddr2" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="@ShippngAddr2" Precision="0" ProviderType="VarChar" Scale="0" Size="100" SourceColumn="ShippingAddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="ShippingAddr" ColumnName="ShippingAddr" DataSourceName="Mbc5.dbo.cust" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="@ShippingAddr" Precision="0" ProviderType="VarChar" Scale="0" Size="100" SourceColumn="ShippingAddr" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="taxexemptionexpirationdate" ColumnName="taxexemptionexpirationdate" DataSourceName="Mbc5.dbo.cust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@taxexemptionexpirationdate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="taxexemptionexpirationdate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="PIN" ColumnName="PIN" DataSourceName="Mbc5.dbo.cust" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@PIN" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="PIN" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="Orig_TimeStamp" ColumnName="TimeStamp" DataSourceName="Mbc5.dbo.cust" DataTypeServer="timestamp" DbType="Binary" Direction="Input" ParameterName="@Orig_TimeStamp" Precision="0" ProviderType="Timestamp" Scale="0" Size="8" SourceColumn="TimeStamp" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
@@ -504,6 +504,7 @@ WHERE        (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)</CommandText
               <Mapping SourceColumn="InvoiceZipCode" DataSetColumn="InvoiceZipCode" />
               <Mapping SourceColumn="enrollment" DataSetColumn="enrollment" />
               <Mapping SourceColumn="ShippingAddr" DataSetColumn="ShippingAddr" />
+              <Mapping SourceColumn="PIN" DataSetColumn="PIN" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.cust" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="ConcurrencyFill" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="ConcurrencyFill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="ConcurrencyFill">
@@ -516,7 +517,7 @@ WHERE        (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)</CommandText
                          bcontphnwrk, bcontfax, bcontemail, multiyroptions, multiyear, schuploading, website, nomktemail, nodirectmail, bposition, blkwhite, mbconlinepassword, ccontfname, ccontlname, ccontaddr, ccontaddr2, ccontcity, 
                          ccontstate, ccontzip, ccontphnhom, ccontphnwork, ccontfax, ccontemail, norebookreason, newpublisher, csrep2, schcolors, keeppswd, leadsource, leadsname, prevpublisher, leadname, oraclecode, TimeStamp, 
                          ModifiedBy, DateModified, electronickitoptions, electronickit, cposition, status, TaxExemptionReceived, FirstDaySchool, stage, NotTaxExempt, IsTaxExempt, taxexemptionexpirationdate, ShippingAddr2, 
-                         ShippingCity, ShippingZipCode, ShippingState, InvoiceAddr, InvoiceAddr2, InvoiceCity, InvoiceState, InvoiceZipCode, ShippingAddr
+                         ShippingCity, ShippingZipCode, ShippingState, InvoiceAddr, InvoiceAddr2, InvoiceCity, InvoiceState, InvoiceZipCode, ShippingAddr, PIN
 FROM            cust
 WHERE        (schcode = @schcode)</CommandText>
                     <Parameters>
@@ -539,7 +540,7 @@ WHERE        (schcode = @schcode)</CommandText>
                          cust.newpublisher, cust.csrep2, cust.schcolors, cust.keeppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust.leadname, quotes.booktype, quotes.contryear AS Qyear, quotes.invno AS QInvno, 
                          produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, produtn.jobno, produtn.advpw, produtn.stfpw, cust.oraclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, cust.electronickitoptions, 
                          cust.electronickit, cust.cposition, cust.status, cust.TaxExemptionReceived, cust.FirstDaySchool, cust.stage, cust.NotTaxExempt, cust.IsTaxExempt, cust.taxexemptionexpirationdate, cust.ShippingAddr2, 
-                         cust.ShippingCity, cust.ShippingZipCode, cust.ShippingState, cust.InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, cust.InvoiceZipCode, cust.ShippingAddr, cust.schname
+                         cust.ShippingCity, cust.ShippingZipCode, cust.ShippingState, cust.InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, cust.InvoiceZipCode, cust.ShippingAddr, cust.schname, cust.PIN
 FROM            cust LEFT OUTER JOIN
                          quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN
                          produtn ON quotes.invno = produtn.invno
@@ -565,7 +566,7 @@ ORDER BY Qyear DESC</CommandText>
                          cust.norebookreason, cust.newpublisher, cust.csrep2, cust.schcolors, cust.keeppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust.leadname, quotes.booktype, quotes.contryear AS Qyear, 
                          quotes.invno AS QInvno, produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd, produtn.jobno, produtn.advpw, produtn.stfpw, cust.oraclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, 
                          cust.electronickitoptions, cust.electronickit, cust.cposition, cust.status, cust.TaxExemptionReceived, cust.FirstDaySchool, cust.stage, cust.NotTaxExempt, cust.IsTaxExempt, cust.taxexemptionexpirationdate, 
-                         cust.ShippingAddr2, cust.ShippingCity, cust.ShippingZipCode, cust.ShippingState, cust.InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, cust.InvoiceZipCode, cust.ShippingAddr
+                         cust.ShippingAddr2, cust.ShippingCity, cust.ShippingZipCode, cust.ShippingState, cust.InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, cust.InvoiceZipCode, cust.ShippingAddr, cust.PIN
 FROM            cust LEFT OUTER JOIN
                          quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN
                          produtn ON quotes.invno = produtn.invno
@@ -1277,7 +1278,7 @@ ORDER BY Name</CommandText>
   <xs:element name="dsCust" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCust" msprop:Generator_UserDSName="dsCust">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_RowClassName="custRow" msprop:Generator_UserTableName="cust" msprop:Generator_RowEvArgName="custRowChangeEvent">
+        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_UserTableName="cust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_RowEvArgName="custRowChangeEvent" msprop:Generator_RowClassName="custRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="cstatus" msprop:Generator_ColumnVarNameInTable="columncstatus" msprop:Generator_ColumnPropNameInRow="cstatus" msprop:Generator_ColumnPropNameInTable="cstatusColumn" msprop:Generator_UserColumnName="cstatus" minOccurs="0">
@@ -1353,7 +1354,7 @@ ORDER BY Name</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="schaddr" msprop:Generator_ColumnVarNameInTable="columnschaddr" msprop:Generator_ColumnPropNameInRow="schaddr" msprop:Generator_ColumnPropNameInTable="schaddrColumn" msprop:Generator_UserColumnName="schaddr" minOccurs="0">
+              <xs:element name="schaddr" msprop:Generator_ColumnVarNameInTable="columnschaddr" msprop:Generator_ColumnPropNameInRow="schaddr" msprop:Generator_ColumnPropNameInTable="schaddrColumn" msprop:Generator_UserColumnName="schaddr">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -2093,10 +2094,11 @@ ORDER BY Name</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="PIN" msprop:Generator_ColumnVarNameInTable="columnPIN" msprop:Generator_ColumnPropNameInRow="PIN" msprop:Generator_ColumnPropNameInTable="PINColumn" msprop:Generator_UserColumnName="PIN" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="custSearch" msprop:Generator_TableClassName="custSearchDataTable" msprop:Generator_TableVarName="tablecustSearch" msprop:Generator_TablePropName="custSearch" msprop:Generator_RowDeletingName="custSearchRowDeleting" msprop:Generator_RowChangingName="custSearchRowChanging" msprop:Generator_RowEvHandlerName="custSearchRowChangeEventHandler" msprop:Generator_RowDeletedName="custSearchRowDeleted" msprop:Generator_UserTableName="custSearch" msprop:Generator_RowChangedName="custSearchRowChanged" msprop:Generator_RowEvArgName="custSearchRowChangeEvent" msprop:Generator_RowClassName="custSearchRow">
+        <xs:element name="custSearch" msprop:Generator_TableClassName="custSearchDataTable" msprop:Generator_TableVarName="tablecustSearch" msprop:Generator_RowChangedName="custSearchRowChanged" msprop:Generator_TablePropName="custSearch" msprop:Generator_RowDeletingName="custSearchRowDeleting" msprop:Generator_RowChangingName="custSearchRowChanging" msprop:Generator_RowEvHandlerName="custSearchRowChangeEventHandler" msprop:Generator_RowDeletedName="custSearchRowDeleted" msprop:Generator_RowClassName="custSearchRow" msprop:Generator_UserTableName="custSearch" msprop:Generator_RowEvArgName="custSearchRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -2137,7 +2139,7 @@ ORDER BY Name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="datecont" msprop:Generator_TableClassName="datecontDataTable" msprop:Generator_TableVarName="tabledatecont" msprop:Generator_RowChangedName="datecontRowChanged" msprop:Generator_TablePropName="datecont" msprop:Generator_RowDeletingName="datecontRowDeleting" msprop:Generator_RowChangingName="datecontRowChanging" msprop:Generator_RowEvHandlerName="datecontRowChangeEventHandler" msprop:Generator_RowDeletedName="datecontRowDeleted" msprop:Generator_RowClassName="datecontRow" msprop:Generator_UserTableName="datecont" msprop:Generator_RowEvArgName="datecontRowChangeEvent">
+        <xs:element name="datecont" msprop:Generator_TableClassName="datecontDataTable" msprop:Generator_TableVarName="tabledatecont" msprop:Generator_TablePropName="datecont" msprop:Generator_RowDeletingName="datecontRowDeleting" msprop:Generator_RowChangingName="datecontRowChanging" msprop:Generator_RowEvHandlerName="datecontRowChangeEventHandler" msprop:Generator_RowDeletedName="datecontRowDeleted" msprop:Generator_UserTableName="datecont" msprop:Generator_RowChangedName="datecontRowChanged" msprop:Generator_RowEvArgName="datecontRowChangeEvent" msprop:Generator_RowClassName="datecontRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -2201,7 +2203,7 @@ ORDER BY Name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="lkpLeadSource" msprop:Generator_TableClassName="lkpLeadSourceDataTable" msprop:Generator_TableVarName="tablelkpLeadSource" msprop:Generator_TablePropName="lkpLeadSource" msprop:Generator_RowDeletingName="lkpLeadSourceRowDeleting" msprop:Generator_RowChangingName="lkpLeadSourceRowChanging" msprop:Generator_RowEvHandlerName="lkpLeadSourceRowChangeEventHandler" msprop:Generator_RowDeletedName="lkpLeadSourceRowDeleted" msprop:Generator_UserTableName="lkpLeadSource" msprop:Generator_RowChangedName="lkpLeadSourceRowChanged" msprop:Generator_RowEvArgName="lkpLeadSourceRowChangeEvent" msprop:Generator_RowClassName="lkpLeadSourceRow">
+        <xs:element name="lkpLeadSource" msprop:Generator_TableClassName="lkpLeadSourceDataTable" msprop:Generator_TableVarName="tablelkpLeadSource" msprop:Generator_RowChangedName="lkpLeadSourceRowChanged" msprop:Generator_TablePropName="lkpLeadSource" msprop:Generator_RowDeletingName="lkpLeadSourceRowDeleting" msprop:Generator_RowChangingName="lkpLeadSourceRowChanging" msprop:Generator_RowEvHandlerName="lkpLeadSourceRowChangeEventHandler" msprop:Generator_RowDeletedName="lkpLeadSourceRowDeleted" msprop:Generator_RowClassName="lkpLeadSourceRow" msprop:Generator_UserTableName="lkpLeadSource" msprop:Generator_RowEvArgName="lkpLeadSourceRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
@@ -2214,7 +2216,7 @@ ORDER BY Name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="lkpLeadName" msprop:Generator_TableClassName="lkpLeadNameDataTable" msprop:Generator_TableVarName="tablelkpLeadName" msprop:Generator_TablePropName="lkpLeadName" msprop:Generator_RowDeletingName="lkpLeadNameRowDeleting" msprop:Generator_RowChangingName="lkpLeadNameRowChanging" msprop:Generator_RowEvHandlerName="lkpLeadNameRowChangeEventHandler" msprop:Generator_RowDeletedName="lkpLeadNameRowDeleted" msprop:Generator_UserTableName="lkpLeadName" msprop:Generator_RowChangedName="lkpLeadNameRowChanged" msprop:Generator_RowEvArgName="lkpLeadNameRowChangeEvent" msprop:Generator_RowClassName="lkpLeadNameRow">
+        <xs:element name="lkpLeadName" msprop:Generator_TableClassName="lkpLeadNameDataTable" msprop:Generator_TableVarName="tablelkpLeadName" msprop:Generator_RowChangedName="lkpLeadNameRowChanged" msprop:Generator_TablePropName="lkpLeadName" msprop:Generator_RowDeletingName="lkpLeadNameRowDeleting" msprop:Generator_RowChangingName="lkpLeadNameRowChanging" msprop:Generator_RowEvHandlerName="lkpLeadNameRowChangeEventHandler" msprop:Generator_RowDeletedName="lkpLeadNameRowDeleted" msprop:Generator_RowClassName="lkpLeadNameRow" msprop:Generator_UserTableName="lkpLeadName" msprop:Generator_RowEvArgName="lkpLeadNameRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">

@@ -73,8 +73,8 @@ namespace Mbc5.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = svc_Mbc5; password = Brigg" +
-            "itte1; Connect Timeout=5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id =MbcUser; password =3l3phant" +
+            "1; Connect Timeout=5")]
         public string Mbc5ConnectionString {
             get {
                 return ((string)(this["Mbc5ConnectionString"]));
