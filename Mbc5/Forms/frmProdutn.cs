@@ -958,10 +958,7 @@ namespace Mbc5.Forms
 			kitrecvdDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
-		private void toprodDateTimePicker_ValueChanged(object sender, EventArgs e)
-		{
-			toprodDateTimePicker.Format = DateTimePickerFormat.Short;
-		}
+		
 
 		private void tovendDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
@@ -1045,10 +1042,7 @@ namespace Mbc5.Forms
 
 				var numDays = (wks * 5) + (days);
 				var result = CalulateBusinessDay.BusDayAdd(kitrecvdDateTimePicker.Value, numDays);
-				if (result != null)
-				{
-					dedayinDateTimePicker.Value = result;
-				}
+				
 				txtCalcResult.Text = result.ToShortDateString();
 
 			}
@@ -3753,6 +3747,91 @@ namespace Mbc5.Forms
         {
             reportViewer1.PrintDialog();
         }
+
+        private void dedmadeTextBox_Leave(object sender, EventArgs e)
+        {
+
+
+
+            if (dedmadeTextBox.Text=="Y")
+            {
+                dpCustomerServiceDate.Value = dedayoutDateTimePicker.Value;
+            }
+        }
+
+        private void btnBkDue_Click(object sender, EventArgs e)
+        {
+            var emailList = new List<string>();
+            DataRowView custRow = (DataRowView)custBindingSource.Current;
+            DataRowView prodRow = (DataRowView)produtnBindingSource.Current;
+            string vDedayOut = "";
+            string vDedayIn = "";
+           string vPin ="";
+            DateTime vdate;
+            if (!prodRow.Row.IsNull("dedayout"))
+            {
+                     vdate=(DateTime)prodRow["dedayout"];
+                vDedayOut = vdate.ToString("d");
+            }
+            if (!prodRow.Row.IsNull("dedayin"))
+            {
+                 vdate = (DateTime)prodRow["dedayin"];
+                vDedayIn = vdate.ToString("d");
+            }
+            if (!custRow.Row.IsNull("PIN"))
+            {
+                vPin = ((DataRowView)custBindingSource.Current).Row["pin"].ToString();
+            }
+         
+            string vNoPages = ((DataRowView)quotesBindingSource.Current).Row["nopages"].ToString();
+            string vNoCopies= ((DataRowView)quotesBindingSource.Current).Row["nocopies"].ToString();
+            
+            string vCsName= ((DataRowView)custBindingSource.Current).Row["csname"].ToString().Trim();
+            string vCsEmail= ((DataRowView)custBindingSource.Current).Row["csemail"].ToString().Trim();
+            string vcontEmail = custRow["contemail"] != null ? custRow["contemail"].ToString().Trim() : "";
+            string vBcontEmail = custRow["bcontemail"] != null ? custRow["bcontemail"].ToString().Trim() : "";
+            string vCcontEmail = custRow["ccontemail"] != null ? custRow["ccontemail"].ToString().Trim() : "";
+            if (!string.IsNullOrEmpty(vcontEmail))
+            {
+                emailList.Add(vcontEmail);
+            }
+            if (!string.IsNullOrEmpty(vBcontEmail))
+            {
+                emailList.Add(vBcontEmail);
+            }
+            if (!string.IsNullOrEmpty(vCcontEmail))
+            {
+                emailList.Add(vCcontEmail);
+            }
+            var emailHelper = new EmailHelper();
+            string subject = "Memory Book Deadline Reminder";
+                    string body = @"The deadline for submitting your yearbook pages is right around the corner.
+                                    In order to ensure delivery of your books by "+ vDedayOut+ ", please submit " +
+                                    "your pages by " + vDedayIn + "." + " According to our records, your order is for "
+                                    + vNoPages + " pages and " + vNoCopies + " yearbooks. If this is not correct, please" +
+                                    " call 1-800-247-1526 or respond to this e-mail with any changes you may have. Payment is" +
+                                    " due upon receipt of invoice; to be issued within a week of page submission. Payments may" +
+                                    " be made online https://pay.memorybook.com/school (School Code:" + Schcode+ " and PIN:" 
+                                    + vPin + " will be needed) or by mailing a check to: <br/><strong>Memory Book Company " +
+                                    "<br/>304 Curry Drive  <br/>Sedalia, MO 65301</strong> <br/><br/>Once your pages are here and " +
+                                    "your book has entered production you will receive an email, this will confirm your order and " +
+                                    "delivery date.<br/><br/>" + vCsName + "<br/>" + vCsEmail;
+
+
+            emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
+        }
+
+        private void frmProdutn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //set KeyPriview to True first.
+            if (e.KeyChar == (char)Keys.Enter)
+                e.KeyChar = (char)Keys.Tab;
+            SendKeys.Send(e.KeyChar.ToString());//send the keystroke to the form.
+        }
+
+
+
+
 
 
         //nothing below here  

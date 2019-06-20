@@ -71,9 +71,9 @@
             System.Windows.Forms.Label sbtotLabel;
             System.Windows.Forms.Label ordagryrLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBids));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsBids = new Mbc5.DataSets.dsBids();
             this.bidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -1041,15 +1041,15 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 48;
-            reportDataSource1.Name = "dsCust";
-            reportDataSource1.Value = this.custBindingSource;
-            reportDataSource2.Name = "dsBidValues";
-            reportDataSource2.Value = this.bidsBindingSource;
-            reportDataSource3.Name = "detailbid";
-            reportDataSource3.Value = this.BidInvoiceDetailBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource4.Name = "dsCust";
+            reportDataSource4.Value = this.custBindingSource;
+            reportDataSource5.Name = "dsBidValues";
+            reportDataSource5.Value = this.bidsBindingSource;
+            reportDataSource6.Name = "detailbid";
+            reportDataSource6.Value = this.BidInvoiceDetailBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuote.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(582, 601);
             this.reportViewer1.Name = "reportViewer1";
@@ -2496,6 +2496,7 @@
             this.Controls.Add(this.bidsBindingNavigator);
             this.Controls.Add(this.tabBids);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(1137, 800);
             this.Name = "frmBids";
             this.Text = "Bids";
@@ -2504,6 +2505,7 @@
             this.Load += new System.EventHandler(this.frmBids_Load_1);
             this.Shown += new System.EventHandler(this.frmBids_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmBids_Paint);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmBids_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsBids)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource)).EndInit();

@@ -3108,6 +3108,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1125, 741);
             this.Controls.Add(this.tbEndSheets);
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(1141, 780);
             this.Name = "frmEndSheet";
             this.Text = "End Sheet/Supplements/Preflight";
@@ -3117,6 +3118,7 @@
             this.Load += new System.EventHandler(this.frmEndSheet_Load);
             this.Shown += new System.EventHandler(this.frmEndSheet_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmEndSheet_Paint);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmEndSheet_KeyPress);
             this.tbEndSheets.ResumeLayout(false);
             this.pgEndSheets.ResumeLayout(false);
             this.pgEndSheets.PerformLayout();

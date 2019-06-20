@@ -61,11 +61,12 @@ namespace Mbc5.Dialogs
             mktinfoBindingSource.DataSource = tmpMktRec;
             try
             {
-                // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
+                datecontTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                lkpMktReferenceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                lkpTypeContTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+                lkpPromotionsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
                 this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
-                // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
                 this.lkpTypeContTableAdapter.Fill(this.lookUp.lkpTypeCont);
-                // TODO: This line of code loads data into the 'lookUp.lkpPromotions' table. You can move, or remove it, as needed.
                 this.lkpPromotionsTableAdapter.Fill(this.lookUp.lkpPromotions);
             }catch(Exception ex)
             {
@@ -341,6 +342,11 @@ namespace Mbc5.Dialogs
             if (reasonTextBox.Text.Trim() != ""){
                 errorProvider1.Clear();
             }
+        }
+
+        private void nxtdateDateTimePicker_ValueChanged_1(object sender, EventArgs e)
+        {
+            nxtdateDateTimePicker.Format = DateTimePickerFormat.Short;
         }
     }
    

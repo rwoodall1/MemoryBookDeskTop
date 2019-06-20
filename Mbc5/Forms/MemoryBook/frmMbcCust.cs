@@ -82,6 +82,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
             Fill();
             this.txtModifiedBy.Text = this.ApplicationUser.id;
+            custBindingSource.ResetBindings(true);
         }
 
         
@@ -1895,16 +1896,16 @@ public override void Cancel() {
 
         private void btnSchoolToInvoice_Click(object sender, EventArgs e)
          {
-            //var vInvAddress = ((DataRowView)custBindingSource.Current).Row["Schaddr"].ToString().Trim();
-            //invAddrTextBox.Text = vInvAddress;
-            //var vInvAddress2 = ((DataRowView)custBindingSource.Current).Row["SchAddr2"].ToString().Trim();
-            //invAddr2TextBox.Text = vInvAddress2;
-            //var vInvCity = ((DataRowView)custBindingSource.Current).Row["SchCity"].ToString().Trim();
-            //invCityTextBox.Text = vInvCity;
-            //var vInvState = ((DataRowView)custBindingSource.Current).Row["SchState"].ToString().Trim();
-            //cmbInvStateComboBox.SelectedValue = vInvState;
-            //var vInvZipcode = ((DataRowView)custBindingSource.Current).Row["SchZip"].ToString().Trim();
-            //invZipCodeTextBox.Text = vInvZipcode.Substring(0,5);
+            var vInvAddress = ((DataRowView)custBindingSource.Current).Row["Schaddr"].ToString().Trim();
+            invAddrTextBox.Text = vInvAddress;
+            var vInvAddress2 = ((DataRowView)custBindingSource.Current).Row["SchAddr2"].ToString().Trim();
+            invAddr2TextBox.Text = vInvAddress2;
+            var vInvCity = ((DataRowView)custBindingSource.Current).Row["SchCity"].ToString().Trim();
+            invCityTextBox.Text = vInvCity;
+            var vInvState = ((DataRowView)custBindingSource.Current).Row["SchState"].ToString().Trim();
+            cmbInvStateComboBox.SelectedValue = vInvState;
+            var vInvZipcode = ((DataRowView)custBindingSource.Current).Row["SchZip"].ToString().Trim();
+            invZipCodeTextBox.Text = vInvZipcode.Substring(0, 5);
         }
 
         private void btnSchoolToShipping_Click(object sender, EventArgs e)
@@ -1977,6 +1978,7 @@ public override void Cancel() {
 
         private void btnCancelSupply_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
             txtSupplyInvoice.Text = "";
             txtSupplyQty.Text = "";
             cmbSupplyItem.SelectedValue = "";
@@ -1986,38 +1988,74 @@ public override void Cancel() {
 
         private void btnSaveSupply_Click(object sender, EventArgs e)
         {
-            
-            var sqlClient = new SQLCustomClient();
-                    sqlClient.CommandText(@"
-                                            INSERT INTO XSupplies(Item,Quantity,Schcode,Invno,ShipAddress,ShippAddress2,ShipCity,ShipState,ShipZipCode)
-                                            Values(@Item,@Quantity,@Schcode,@Invno,@ShipAddress,@ShippAddress2,@ShipCity,@ShipState,@ShipZipCode"
-                                         );
-            sqlClient.AddParameter("@Item",cmbSupplyItem.SelectedValue);
-            sqlClient.AddParameter("@Quantity",txtSupplyQty.Text);
-            sqlClient.AddParameter("@Schcode",Schcode);
-            sqlClient.AddParameter("@Invno", txtSupplyInvoice.Text);
-            sqlClient.AddParameter("@ShipAddress", shipAddressLabel1.Text);
-            sqlClient.AddParameter("@ShipAddress2", shipAddress2Label1.Text);
-            sqlClient.AddParameter("@ShipCity",shipCityLabel1.Text);
-            sqlClient.AddParameter("@ShipState",shipStateLabel1.Text);
-            sqlClient.AddParameter("@ShipZipCode",shipZipCodeLabel1.Text);
-            this.pnlAdd.Visible = false;
-            btnAddSupply.Visible = true;
-            txtSupplyInvoice.Text = "";
-            txtSupplyQty.Text = "";
-            cmbSupplyItem.SelectedValue = "";
+            errorProvider1.Clear();
+            int vqty = 0;
+            int vInvno = 0;
+            if (!int.TryParse(txtSupplyQty.Text, out vqty) || vqty == 0)
+            {
+                errorProvider1.SetError(txtSupplyQty, "Enter a valid quantity.");
+                return;
+            }else if (!int.TryParse(txtSupplyInvoice.Text,out vInvno)||vInvno==0)
+            {
+                errorProvider1.SetError(txtSupplyInvoice, "Enter a valid invoice #.");
+                return;
+            }else if (cmbSupplyItem.SelectedValue==null||cmbSupplyItem.SelectedValue.ToString()== "--Select Item--")
+            {
+                errorProvider1.SetError(cmbSupplyItem, "Select an item.");
+                return;
+            }
 
-        }
+
+            var sqlClient = new SQLCustomClient();
+                sqlClient.CommandText(@"
+                                            INSERT INTO XSupplies(Item,Quantity,Schcode,Invno,ShipAddress,ShipAddress2,ShipCity,ShipState,ShipZipCode)
+                                            Values(@Item,@Quantity,@Schcode,@Invno,@ShipAddress,@ShipAddress2,@ShipCity,@ShipState,@ShipZipCode)"
+                                     );
+            var vshipAddress = ((DataRowView)custBindingSource.Current).Row["ShippingAddr"].ToString().Trim();
+            var vshipAddress2 = ((DataRowView)custBindingSource.Current).Row["ShippingAddr2"].ToString().Trim();
+            var vshipCity = ((DataRowView)custBindingSource.Current).Row["ShippingCity"].ToString().Trim();
+            var vshipState = ((DataRowView)custBindingSource.Current).Row["ShippingState"].ToString().Trim();
+            var vshipZipcode = ((DataRowView)custBindingSource.Current).Row["ShippingZipCode"].ToString().Trim();
+            sqlClient.AddParameter("@Item", cmbSupplyItem.SelectedValue);
+                sqlClient.AddParameter("@Quantity", txtSupplyQty.Text);
+                sqlClient.AddParameter("@Schcode", Schcode);
+                sqlClient.AddParameter("@Invno", txtSupplyInvoice.Text);
+                sqlClient.AddParameter("@ShipAddress", vshipAddress);
+                sqlClient.AddParameter("@ShipAddress2", vshipAddress2);
+                sqlClient.AddParameter("@ShipCity", vshipCity);
+                sqlClient.AddParameter("@ShipState", vshipState);
+                sqlClient.AddParameter("@ShipZipCode", vshipZipcode);
+                var insertResult = sqlClient.Insert();
+                if (insertResult.IsError)
+                {
+                    MbcMessageBox.Error(insertResult.Errors[0].ErrorMessage, "");
+                    ExceptionlessClient.Default.CreateLog(insertResult.Errors[0].ErrorMessage)
+                        .AddObject(insertResult)
+                        .Submit();
+                    return;
+                }
+                this.pnlAdd.Visible = false;
+                btnAddSupply.Visible = true;
+                txtSupplyInvoice.Text = "";
+                txtSupplyQty.Text = "";
+                cmbSupplyItem.SelectedValue = "";
+            errorProvider1.Clear();
+            try { xsuppliesTableAdapter.Fill(dsXSupplies.xsupplies, Schcode); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+             
+            }
 
         private void txtSupplyQty_Validating(object sender, CancelEventArgs e)
         {
-            errorProvider1.Clear();
-            int vqty=0;
-            if(!int.TryParse(txtSupplyQty.Text,out vqty) ||vqty==0)
-            {
-                errorProvider1.SetError(txtSupplyQty, "Enter a valid quantity.");
-            }
+           
         }
+
+        private void reportViewer2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+
 
 
         #endregion

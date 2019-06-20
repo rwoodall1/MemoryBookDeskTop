@@ -363,6 +363,7 @@
             this.nxtdateDateTimePicker.Name = "nxtdateDateTimePicker";
             this.nxtdateDateTimePicker.Size = new System.Drawing.Size(126, 20);
             this.nxtdateDateTimePicker.TabIndex = 10;
+            this.nxtdateDateTimePicker.ValueChanged += new System.EventHandler(this.nxtdateDateTimePicker_ValueChanged_1);
             // 
             // priorityComboBox
             // 
@@ -624,6 +625,7 @@
             this.tableAdapterManager2.lkpPrevPubTableAdapter = null;
             this.tableAdapterManager2.lkpPromotionsTableAdapter = this.lkpPromotionsTableAdapter;
             this.tableAdapterManager2.lkpschtypeTableAdapter = null;
+            this.tableAdapterManager2.lkpSupplyItemsTableAdapter = null;
             this.tableAdapterManager2.lkpTypeContTableAdapter = this.lkpTypeContTableAdapter;
             this.tableAdapterManager2.lkTypeDataTableAdapter = null;
             this.tableAdapterManager2.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
