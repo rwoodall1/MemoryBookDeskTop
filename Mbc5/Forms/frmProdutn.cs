@@ -136,41 +136,123 @@ namespace Mbc5.Forms
 		#region "Methods"
         private void WipTest()
         {
+            if (((DataRowView)produtnBindingSource.Current).Row.IsNull("cstsvcdte"))
+            {
+                MbcMessageBox.Information("Customer service date is empty. WIP was not updated.", "");
+                return;
+            } 
+             var CustomerServicedate= (DateTime)((DataRowView)produtnBindingSource.Current).Row["cstsvcdte"];  
+                      
+            var sqlClient = new SQLCustomClient();
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"SELECT bktype As BookType,prmsdte AS PromiseDate,wrndte AS WarnDate,prshpdte As ProjectedShipDate
+                                        ,l_dteProd,l_dwdr1,l_dwdr2,l_wdr3,l_wdr4,l_wdr5,l_wdr6,l_wdr7,l_wdr8,l_wdr9,l_wdr10,l_wdr11,l_wdr12,l_wdr13
+                                        ,l_wdr14,l_wdr15,l_wdr16,l_wdr17,l_wdr18,l_wdr19,l_wdr20,l_wdr21,l_wdr22,l_wdr23,l_wdr24,l_wdr25,l_wdr26,l_wdr27
+                                        ,l_wdr28,l_wdr29,l_wdr30,l_wdr31,l_wdr32,l_wdr33,l_wdr34,l_wdr35,l_wdr36,l_wdr37,l_wdr38,l_wdr39,l_wdr40,l_wdr41
+                                        ,l_wdr42,l_wdr43,l_wdr44,l_wdr45,l_wdr46,l_wdr47,l_wdr48,l_wdr49,l_wdr50
+                                      FROM WipDats
+                                       WHERE ProdType=@ProdType");
             var prodRow = (DataRowView)produtnBindingSource.Current;
             if (!prodRow.Row.IsNull("bkstd") && (bool)prodRow["bkstd"])
             {
+                sqlClient.AddParameter("@ProdType","Standard");
 
             } else if (!prodRow.Row.IsNull("bk9") && (bool)prodRow["bk9"])
             {
-
+                sqlClient.AddParameter("@ProdType","Bk9");
             }
             else if (!prodRow.Row.IsNull("bk10") && (bool)prodRow["bk10"])
             {
-
+                sqlClient.AddParameter("@ProdType","Bk10");
             } else if (!prodRow.Row.IsNull("bk11") && (bool)prodRow["bk11"]) {
-
+                sqlClient.AddParameter("@ProdType","Bk11");
             }
             else if (!prodRow.Row.IsNull("bk12") && (bool)prodRow["bk12"])
             {
-
-            }else if (!prodRow.Row.IsNull("bkhard") && (bool)prodRow["bkhard"])
+                sqlClient.AddParameter("@ProdType","Bk12");
+            }
+            else if (!prodRow.Row.IsNull("bkhard") && (bool)prodRow["bkhard"])
             {
-
+                sqlClient.AddParameter("@ProdType","Hbk");
             }
             else if (!prodRow.Row.IsNull("bkcoil") && (bool)prodRow["bkcoil"])
             {
-
-            }else if (!prodRow.Row.IsNull("allclrck") && (bool)prodRow["allclrck"])
+                sqlClient.AddParameter("@ProdType","Cbk");
+            }
+            else if (!prodRow.Row.IsNull("allclrck") && (bool)prodRow["allclrck"])
             {
-                
-            }else if (!prodRow.Row.IsNull("milled") && (bool)prodRow["milled"])
+                sqlClient.AddParameter("@ProdType","ClrBk");
+            }
+            else if (!prodRow.Row.IsNull("milled") && (bool)prodRow["milled"])
             {
-
+                sqlClient.AddParameter("@ProdType","MillBk");
             }
             else  
             {
                 //Standard
+                sqlClient.AddParameter("@ProdType","Standard");
             }
+            var wipDatsResult=sqlClient.Select<WipDats>();
+            if (wipDatsResult.IsError)
+            {
+                MbcMessageBox.Error("WIP not updated, error retrieving wipdats:"+wipDatsResult.Errors[0].ErrorMessage,"");
+                return;
+            }
+            var vWipDats =(WipDats) wipDatsResult.Data;
+            //Update Produtn
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"UPDATE Produtn 
+                                    Set prmsdate=@prmsdate,prshpdte=@prshpdte,warndate=@warndate where Invno=@Invno");
+            DateTime? newDate;
+            DateTime? vPrmsDate = null;
+            DateTime? vProjShpDate = null;
+            DateTime? vWarnDate = null;
+            if (vWipDats.prmsdte>0)
+            {
+                newDate = null;
+                newDate = CalulateBusinessDay.BusDaySubtract(CustomerServicedate, vWipDats.prmsdte);
+                if (newDate != null)
+                {
+                    vPrmsDate = newDate;
+                }
+            }
+            if (vWipDats.ProjectedShipDate > 0)
+            {
+                newDate = null;
+                newDate = CalulateBusinessDay.BusDaySubtract(CustomerServicedate, vWipDats.ProjectedShipDate);
+                if (newDate != null)
+                {
+                    vProjShpDate = newDate;
+                    ///Make WiP.50 null also.
+                }
+            }
+            if (vWipDats.WarnDate > 0)
+            {
+                newDate = null;
+                newDate = CalulateBusinessDay.BusDaySubtract(CustomerServicedate, vWipDats.WarnDate);
+                if (newDate != null)
+                {
+                    vWarnDate = newDate;
+                   
+                }
+            }
+         
+         
+            sqlClient.AddParameter("@prmsdate", vPrmsDate);
+            sqlClient.AddParameter("@prshpdte", vProjShpDate);
+            sqlClient.AddParameter("@warndate", vWarnDate);
+            sqlClient.AddParameter("@Invno",Invno);
+            var produtnResult = sqlClient.Update();
+            if (produtnResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to update production fields in WIP:" + produtnResult.Errors[0].ErrorMessage, "");
+                return;
+            }
+            //Update WIP
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"UPDATE WIP
+                                    Set prmsdate=@prmsdate,prshpdte=@prshpdte,warndate=@warndate where Invno=@Invno");
+
         }
 		private void ShippingEmail()
 		{
@@ -1698,78 +1780,141 @@ namespace Mbc5.Forms
 				return processingResult;
 
 			}
-			var sqlClient = new SQLCustomClient();
-			string commandText = "";
-			if (bkStd.Checked)
-			{
-				commandText = @" Select * FROM WipDats Order BY bktype
-                                ";
+            //var sqlClient = new SQLCustomClient();
+            //string commandText = "";
+            //if (bkStd.Checked)
+            //{
+            //	commandText = @" Select * FROM WipDats Order BY bktype
+            //                             ";
 
-			} else if (bk9.Checked)
-			{
-				commandText = @" Select * FROM WipDat9 Order BY bktype
-                                ";
-			}
-			else if (bk10.Checked)
-			{
-				commandText = @" Select * FROM WipDat10 Order BY bktype
-                                ";
-			}
-			else if (bk11.Checked)
-			{
-				commandText = @" Select * FROM WipDat11 Order BY bktype";
-			}
-			else if (bk12.Checked)
-			{
-				commandText = @"Select * FROM WipDat12 Order BY bktype";
-			}
-			else if (bkHard.Checked)
-			{
-				commandText = @"Select * FROM WipDath Order BY bktype";
-			}
-			else if (bkCoil.Checked)
-			{
-				commandText = @"Select * FROM WipDatc Order BY bktype";
-			}
-			else if (bkAllClr.Checked)
-			{
-				commandText = @" Select * FROM WipDatal Order BY bktype";
-			}
-			else if (bkMilled.Checked)
-			{
-				commandText = @" Select * FROM WipDatmilled Order BY bktype";
-			}
-			else
-			{
-				commandText = @"Select * FROM WipDats Order BY bktype";
-			};
+            //} else if (bk9.Checked)
+            //{
+            //	commandText = @" Select * FROM WipDat9 Order BY bktype
+            //                             ";
+            //}
+            //else if (bk10.Checked)
+            //{
+            //	commandText = @" Select * FROM WipDat10 Order BY bktype
+            //                             ";
+            //}
+            //else if (bk11.Checked)
+            //{
+            //	commandText = @" Select * FROM WipDat11 Order BY bktype";
+            //}
+            //else if (bk12.Checked)
+            //{
+            //	commandText = @"Select * FROM WipDat12 Order BY bktype";
+            //}
+            //else if (bkHard.Checked)
+            //{
+            //	commandText = @"Select * FROM WipDath Order BY bktype";
+            //}
+            //else if (bkCoil.Checked)
+            //{
+            //	commandText = @"Select * FROM WipDatc Order BY bktype";
+            //}
+            //else if (bkAllClr.Checked)
+            //{
+            //	commandText = @" Select * FROM WipDatal Order BY bktype";
+            //}
+            //else if (bkMilled.Checked)
+            //{
+            //	commandText = @" Select * FROM WipDatmilled Order BY bktype";
+            //}
+            //else
+            //{
+            //	commandText = @"Select * FROM WipDats Order BY bktype";
+            //};
+            //var result = sqlClient.SelectMany<WipDats>();
+            //			if (result.IsError)
+            //			{
+            //				MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //				processingResult.IsError = true;
+            //				return processingResult;
+            //			}
+            //if (result.Data == null)
+            //			{
+            //				processingResult.IsError = true;
+            //				return processingResult;
+            //			}
+            //var vWipsDats = (List<WipDats>)result.Data;
+            var sqlClient = new SQLCustomClient();
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"SELECT bktype As BookType,prmsdte AS PromiseDate,wrndte AS WarnDate,prshpdte As ProjectedShipDate
+                                        ,l_dteProd,l_dwdr1,l_dwdr2,l_wdr3,l_wdr4,l_wdr5,l_wdr6,l_wdr7,l_wdr8,l_wdr9,l_wdr10,l_wdr11,l_wdr12,l_wdr13
+                                        ,l_wdr14,l_wdr15,l_wdr16,l_wdr17,l_wdr18,l_wdr19,l_wdr20,l_wdr21,l_wdr22,l_wdr23,l_wdr24,l_wdr25,l_wdr26,l_wdr27
+                                        ,l_wdr28,l_wdr29,l_wdr30,l_wdr31,l_wdr32,l_wdr33,l_wdr34,l_wdr35,l_wdr36,l_wdr37,l_wdr38,l_wdr39,l_wdr40,l_wdr41
+                                        ,l_wdr42,l_wdr43,l_wdr44,l_wdr45,l_wdr46,l_wdr47,l_wdr48,l_wdr49,l_wdr50
+                                      FROM WipDats
+                                       WHERE ProdType=@ProdType");
+            var prodRow = (DataRowView)produtnBindingSource.Current;
+            if (!prodRow.Row.IsNull("bkstd") && (bool)prodRow["bkstd"])
+            {
+                sqlClient.AddParameter("@ProdType", "Standard");
 
-			decimal[] wCalc = new decimal[50];
-			sqlClient.CommandText(commandText);
-			var result = sqlClient.SelectMany<WipDats>();
-			if (result.IsError)
-			{
-				MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				processingResult.IsError = true;
-				return processingResult;
-			}
-			if (result.Data == null)
-			{
-				processingResult.IsError = true;
-				return processingResult;
-			}
-			var vWipsDats = (List<WipDats>)result.Data;
+            }
+            else if (!prodRow.Row.IsNull("bk9") && (bool)prodRow["bk9"])
+            {
+                sqlClient.AddParameter("@ProdType", "Bk9");
+            }
+            else if (!prodRow.Row.IsNull("bk10") && (bool)prodRow["bk10"])
+            {
+                sqlClient.AddParameter("@ProdType", "Bk10");
+            }
+            else if (!prodRow.Row.IsNull("bk11") && (bool)prodRow["bk11"])
+            {
+                sqlClient.AddParameter("@ProdType", "Bk11");
+            }
+            else if (!prodRow.Row.IsNull("bk12") && (bool)prodRow["bk12"])
+            {
+                sqlClient.AddParameter("@ProdType", "Bk12");
+            }
+            else if (!prodRow.Row.IsNull("bkhard") && (bool)prodRow["bkhard"])
+            {
+                sqlClient.AddParameter("@ProdType", "Hbk");
+            }
+            else if (!prodRow.Row.IsNull("bkcoil") && (bool)prodRow["bkcoil"])
+            {
+                sqlClient.AddParameter("@ProdType", "Cbk");
+            }
+            else if (!prodRow.Row.IsNull("allclrck") && (bool)prodRow["allclrck"])
+            {
+                sqlClient.AddParameter("@ProdType", "ClrBk");
+            }
+            else if (!prodRow.Row.IsNull("milled") && (bool)prodRow["milled"])
+            {
+                sqlClient.AddParameter("@ProdType", "MillBk");
+            }
+            else
+            {
+                //Standard
+                sqlClient.AddParameter("@ProdType", "Standard");
+            }
+            var wipDatsResult = sqlClient.Select<WipDats>();
+            if (wipDatsResult.IsError)
+            {
+                MbcMessageBox.Error("WIP not updated, error retrieving wipdats:" + wipDatsResult.Errors[0].ErrorMessage, "");
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("WIP not updated, error retrieving wipdats:" + wipDatsResult.Errors[0].ErrorMessage, "WIP not updated, error retrieving wipdats:" + wipDatsResult.Errors[0].ErrorMessage, ""));
+                return processingResult;
+            }
+            var vWipDats = (WipDats)wipDatsResult.Data;
+            decimal[] wCalc = new decimal[50];
+			//sqlClient.CommandText(commandText);
+			
+			
+		
 			string vBooktype = txtBookType.Text.Trim();
 
-			WipDats vWhipDates = new WipDats();
-			foreach (WipDats dat in vWipsDats)
-			{
-				if (dat.bktype == vBooktype)
-				{
-					vWhipDates = dat;
-					break;
-				}
-			}
+			//WipDats vWhipDates = new WipDats();
+			//foreach (WipDats dat in vWipsDats)
+			//{
+			//	if (dat.bktype == vBooktype)
+			//	{
+			//		vWhipDates = dat;
+			//		break;
+			//	}
+			//}
 			DateTime custSvcDate = dpCustomerServiceDate.Value;
 			if (vWhipDates.prmsdte != 0)
 			{
