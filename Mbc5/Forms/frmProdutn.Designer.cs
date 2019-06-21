@@ -323,7 +323,6 @@
             this.btnBkDue = new System.Windows.Forms.Button();
             this.bkmixedCheckBox = new System.Windows.Forms.CheckBox();
             this.txtBookType = new System.Windows.Forms.TextBox();
-            this.btnBookType = new System.Windows.Forms.Button();
             this.allclrckCheckBox = new System.Windows.Forms.CheckBox();
             this.lblcontryear = new System.Windows.Forms.Label();
             this.lblProdNo = new System.Windows.Forms.Label();
@@ -565,7 +564,8 @@
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
             this.vendorTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.vendorTableAdapter();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnUpdateWip = new System.Windows.Forms.Button();
+            this.label56 = new System.Windows.Forms.Label();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -2426,7 +2426,7 @@
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
-            this.pg1.Controls.Add(this.button8);
+            this.pg1.Controls.Add(this.label56);
             this.pg1.Controls.Add(this.btnStandarCoverEmail);
             this.pg1.Controls.Add(this.btnspCoverEmail);
             this.pg1.Controls.Add(this.btnSchoolSearch);
@@ -2447,7 +2447,6 @@
             this.pg1.Controls.Add(this.btnBkDue);
             this.pg1.Controls.Add(this.bkmixedCheckBox);
             this.pg1.Controls.Add(this.txtBookType);
-            this.pg1.Controls.Add(this.btnBookType);
             this.pg1.Controls.Add(this.allclrckCheckBox);
             this.pg1.Controls.Add(contryearLabel);
             this.pg1.Controls.Add(this.lblcontryear);
@@ -2465,6 +2464,7 @@
             this.pg1.Size = new System.Drawing.Size(1220, 705);
             this.pg1.TabIndex = 0;
             this.pg1.Text = " Production";
+            this.pg1.Click += new System.EventHandler(this.pg1_Click);
             // 
             // btnStandarCoverEmail
             // 
@@ -3742,23 +3742,12 @@
             // txtBookType
             // 
             this.txtBookType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "booktype", true));
-            this.txtBookType.Location = new System.Drawing.Point(90, 37);
+            this.txtBookType.Location = new System.Drawing.Point(80, 37);
             this.txtBookType.MaxLength = 3;
             this.txtBookType.Name = "txtBookType";
             this.txtBookType.ReadOnly = true;
             this.txtBookType.Size = new System.Drawing.Size(53, 20);
             this.txtBookType.TabIndex = 15;
-            // 
-            // btnBookType
-            // 
-            this.btnBookType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBookType.Location = new System.Drawing.Point(13, 37);
-            this.btnBookType.Name = "btnBookType";
-            this.btnBookType.Size = new System.Drawing.Size(71, 23);
-            this.btnBookType.TabIndex = 14;
-            this.btnBookType.Text = "Book Type";
-            this.btnBookType.UseVisualStyleBackColor = true;
-            this.btnBookType.Visible = false;
             // 
             // allclrckCheckBox
             // 
@@ -3819,6 +3808,7 @@
             // 
             this.pg2.AutoScroll = true;
             this.pg2.BackColor = System.Drawing.SystemColors.Control;
+            this.pg2.Controls.Add(this.btnUpdateWip);
             this.pg2.Controls.Add(invnoLabel7);
             this.pg2.Controls.Add(this.invnoTextBox);
             this.pg2.Controls.Add(label22);
@@ -6331,15 +6321,26 @@
             // 
             this.vendorTableAdapter.ClearBeforeFill = true;
             // 
-            // button8
+            // btnUpdateWip
             // 
-            this.button8.Location = new System.Drawing.Point(231, 53);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 160;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.btnUpdateWip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateWip.Location = new System.Drawing.Point(924, 300);
+            this.btnUpdateWip.Name = "btnUpdateWip";
+            this.btnUpdateWip.Size = new System.Drawing.Size(113, 23);
+            this.btnUpdateWip.TabIndex = 134;
+            this.btnUpdateWip.Text = "Change All WIP Dates";
+            this.btnUpdateWip.UseVisualStyleBackColor = true;
+            this.btnUpdateWip.Click += new System.EventHandler(this.btnUpdateWip_Click);
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.Location = new System.Drawing.Point(5, 41);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(68, 13);
+            this.label56.TabIndex = 160;
+            this.label56.Text = "Book Type";
             // 
             // frmProdutn
             // 
@@ -6436,7 +6437,6 @@
         private System.Windows.Forms.Label lblProdNo;
         private System.Windows.Forms.Label lblInvno;
         private System.Windows.Forms.Label lblcontryear;
-        private System.Windows.Forms.Button btnBookType;
         private System.Windows.Forms.CheckBox allclrckCheckBox;
         private System.Windows.Forms.CheckBox bkmixedCheckBox;
         private System.Windows.Forms.TextBox txtBookType;
@@ -6781,7 +6781,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.CheckBox photographerPermissionCheckBox;
         private System.Windows.Forms.CheckBox enhancementsCheckBox;
-        private System.Windows.Forms.Button button8;
         protected System.Windows.Forms.RadioButton bkMilled;
+        private System.Windows.Forms.Button btnUpdateWip;
+        private System.Windows.Forms.Label label56;
     }
 }

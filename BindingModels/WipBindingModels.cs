@@ -7,14 +7,14 @@ namespace BindingModels
 {
     public class WipDats
     {
-        public string PordType { get; set; }
+        public string ProdType { get; set; }
         public string BookType { get; set; }
         public int PromiseDate { get; set; }
         public int WarnDate { get; set; }
         public int ProjectedShipDate { get; set; }
-        public int l_dteProd { get; set; }
+        public int l_dtoprod { get; set; }
         public int l_dwdr1 { get; set; }
-        public int l_dwdr2 { get; set; }
+        public int l_wdr2 { get; set; }
         public int l_wdr3 { get; set; }
         public int l_wdr4 { get; set; }
         public int l_wdr5 { get; set; }
