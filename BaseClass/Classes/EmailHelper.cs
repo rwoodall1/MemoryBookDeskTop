@@ -9,6 +9,7 @@ using Exceptionless.Models;
 using Exceptionless;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
+using BindingModels;
 namespace BaseClass.Classes
 {
     public class EmailHelper
@@ -91,7 +92,7 @@ namespace BaseClass.Classes
 			    .right{text-align:right;}
 			    .center{text-align:center;}
 		    </style>
-			<table border='0' cellspacing='0' cellpadding='0' width='1024' align='center' style='max-width: 600px;border:1px solid #333'>
+			<table border='0' cellspacing='0' cellpadding='0' width='1024' align='center' style='max-width: 900px;border:1px solid #333'>
 				<tbody>
 					<tr>
 						<td style='background:#fff;width:10px' width='10'>&nbsp;</td>
@@ -234,7 +235,7 @@ namespace BaseClass.Classes
                 mailMessage.To.Add(address);
             }
             foreach (var address in CCAddresses) {
-                mailMessage.To.Add(address);
+                mailMessage.CC.Add(address);
             }
 
             try
@@ -294,7 +295,7 @@ namespace BaseClass.Classes
             }
         }
 
-        public bool SendEmail(string Subject, string ToAddresses, List<string> CCAddresses, string Body, EmailType TypeEmail) {
+        public bool SendEmail(string Subject, string ToAddresses, List<string> CCAddresses, string Body, EmailType TypeEmail, List<string> attachments = null) {
             if (ToAddresses == null || ToAddresses == "")
             {
                 MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -322,8 +323,14 @@ namespace BaseClass.Classes
             foreach (var address in CCAddresses) {
                 mailMessage.CC.Add(address);
             }
-
-            try
+			if (attachments != null)
+			{
+				foreach (var attachPath in attachments)
+				{
+					mailMessage.Attachments.Add(new Attachment(attachPath));
+				}
+			}
+			try
             {
                 smtpClient.Send(mailMessage);
                 return true;
@@ -338,7 +345,7 @@ namespace BaseClass.Classes
         }
 
 
-        public bool SendOutLookEmail(string Subject, string ToAddresses, string CCAddresses, string Body, EmailType TypeEmail) {
+        public bool SendOutLookEmail(string Subject, string ToAddresses, string CCAddresses, string Body, EmailType TypeEmail,List<OutlookAttachemt> attachments = null) {
             if (ToAddresses == null ||ToAddresses=="")
             {
                 MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -365,6 +372,12 @@ namespace BaseClass.Classes
 
                 mailItem.Subject = Subject;
                 mailItem.HTMLBody = brandedHtml;
+				if(attachments!=null && attachments.Count>0)
+				foreach(OutlookAttachemt attachement in attachments)
+				{
+					mailItem.Attachments.Add(attachement.Path, Outlook.OlAttachmentType.olByValue,1, attachement.Name);
+				}
+				
                 mailItem.Display(true);
                 return true;
                 }catch(Exception ex) {
@@ -376,7 +389,7 @@ namespace BaseClass.Classes
                 return false;
                 }
             }
-        public bool SendOutLookEmail(string Subject,List<string> ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail) {
+        public bool SendOutLookEmail(string Subject,List<string> ToAddresses,List<string> CCAddresses,string Body,EmailType TypeEmail, List<OutlookAttachemt> attachments = null) {
             if (ToAddresses == null || ToAddresses.Count < 1)
             {
                 MessageBox.Show("Email address is empty. Check school and school contacts email addresses.", "Empty Email Address", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -399,7 +412,7 @@ namespace BaseClass.Classes
                 var vToAddresses = "";
                 var vCCAddresses = "";
                 foreach (var address in ToAddresses) {
-                    vToAddresses = vToAddresses + address + "'";
+                    vToAddresses = vToAddresses + address + ";";
                    
                     }
                     mailItem.To = vToAddresses;
@@ -407,7 +420,11 @@ namespace BaseClass.Classes
                     vCCAddresses = vCCAddresses + address + ";";
                     
                     }
-                 mailItem.CC =vCCAddresses;
+				if (attachments != null && attachments.Count > 0)
+					foreach (OutlookAttachemt attachement in attachments) {
+						mailItem.Attachments.Add(attachement.Path, Outlook.OlAttachmentType.olByValue, 1, attachement.Name);
+					}
+				mailItem.CC =vCCAddresses;
                 mailItem.Subject = Subject;
                 mailItem.HTMLBody = brandedHtml;
                 mailItem.Display(true);

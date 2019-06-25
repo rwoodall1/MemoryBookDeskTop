@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BaseClass.FormHandler;
 using System.Security.Principal;
 using BaseClass.Classes;
+using BaseClass.Core;
 using NLog;
 namespace BaseClass
 {
@@ -23,6 +24,7 @@ namespace BaseClass
         }
         protected Logger Log { get; private set; } 
         #region "Properties" 
+
         [Browsable(true)]
         //protected Logger Log { get; private set; }
         private bool CloseForm { get; set; }
@@ -35,6 +37,7 @@ namespace BaseClass
             ShowWithOwner
         }
         public virtual string Schcode { get; set; }
+        public virtual string FormConnectionString { get; set; }
         public virtual int Invno { get; set; }
         public event EventHandler UserIsAllowed;
         public event EventHandler UserIsDenied;
@@ -201,12 +204,48 @@ namespace BaseClass
            
         }
         [Browsable(true)]
-        public virtual bool Save()
+        public virtual ApiProcessingResult<bool> Save()
         {
-            return true;
+			return new ApiProcessingResult<bool>();
         }
        
         [Browsable(true)]
+		public virtual void SchCodeSearch() {
+
+		}
+		public virtual void SchnameSearch() {
+
+		}
+		public virtual void OracleCodeSearch() {
+
+		}
+		public virtual void ProdutnNoSearch() {
+
+		}
+		public virtual void InvoiceNumberSearch() {
+
+		}
+        public virtual void FirstNameSearch()
+        {
+
+        }
+        public virtual void LastNameSearch()
+        {
+
+        }
+        public virtual void ZipCodeSearch()
+        {
+
+        }
+        public virtual void EmailSearch()
+        {
+
+        }
+        public virtual void JobNoSearch()
+        {
+
+        }
+
         public virtual void Delete()
         {
 

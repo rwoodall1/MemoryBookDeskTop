@@ -6,8 +6,12 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BaseClass.Classes;
+using BaseClass;
+using BaseClass.Core;
 using Exceptionless;
 using Exceptionless.Models;
+using System.Configuration;
+using Mbc5.Classes;
 namespace Mbc5.LookUpForms
 {
     public partial class LkpWipDescriptions : BaseClass.Forms.bTopBottom
@@ -17,9 +21,9 @@ namespace Mbc5.LookUpForms
             InitializeComponent();
         }
         public DataTable TableVals { get; set; }
-         override public bool Save()          
+         override public ApiProcessingResult<bool> Save()          
         {
-            bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
            this.Validate();
             this.wipDescriptionsBindingSource.EndEdit();
             try
@@ -30,9 +34,11 @@ namespace Mbc5.LookUpForms
                 ex.ToExceptionless()
                     .AddTags("Save Error")
                     .Submit();
-                MessageBox.Show("Error saving record. The record was not saved.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error saving record:"+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				processingResult.IsError = true;
+				processingResult.Errors.Add(new ApiProcessingError("Error saving record:" + ex.Message, "Error saving record:" + ex.Message,""));
             }
-            return retval;
+            return processingResult;
         }
         public override void Delete()
         {
@@ -52,11 +58,26 @@ namespace Mbc5.LookUpForms
             Save();
 
         }
+        private void SetConnectionString()
+        {
+            string AppConnectionString = "";
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            if (Environment == "DEV")
+            {
+                AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
+            }
+            else if (Environment == "PROD")
+            {
+                AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5";
+            }
+            wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
+        }
 
         private void LkpWipDescriptions_Load(object sender, EventArgs e)
         {
+            this.SetConnectionString();
+			try {wipDescriptionsTableAdapter.FillAll(dsProdutn.WipDescriptions); }catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
             
-            wipDescriptionsTableAdapter.FillAll(dsProdutn.WipDescriptions);
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)

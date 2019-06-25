@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,12 @@ using BaseClass.Forms;
 using System.Diagnostics;
 using Mbc5.LookUpForms;
 using NLog;
-using Mbc5.Reports;
+//using Mbc5.Reports;
+using Mbc5.Classes;
+using System.Data.SqlClient;
+using Exceptionless;
+using Exceptionless.Models;
+using BaseClass;
 namespace Mbc5.Forms
 {
     public partial class frmMain : BaseClass.ParentForm
@@ -27,10 +33,58 @@ namespace Mbc5.Forms
         #region "Properties"
 
         public bool ForcePasswordChange { get; set; }
-
+        public string AppConnectionString { get; set; }
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
         #region "Methods"
+        public  void ShowSearchButtons(string formName)
+        {
+            tsSchcodeSearch.Visible = true;
+            tsSchnameSearch.Visible = true;
+            tsInvno.Visible = true;
+            tsProdutnNumberSearch.Visible = true;
+            tsOracleCodeSearch.Visible = true;
+
+            if (formName == "frmMbcCust")
+            {
+                tsFirstNameSearch.Visible = true;
+                tsLastNameSearch.Visible = true;
+                tsZipCodeSearch.Visible = true;
+                tsEmailSearch.Visible = true;
+            }else if (formName == "frmSales")
+            {
+                tsProdutnNumberSearch.Visible = false;
+            }else if (formName == "frmBids")
+            {
+            
+                tsInvno.Visible = false;
+                tsProdutnNumberSearch.Visible = false;
+                tsOracleCodeSearch.Visible = false;
+
+            }
+            else
+            {
+                tsFirstNameSearch.Visible = false;
+                tsLastNameSearch.Visible = false;
+                tsZipCodeSearch.Visible = false;
+                tsEmailSearch.Visible = false;
+            }
+
+        }
+        public  void HideSearchButtons()
+        {
+            tsSchcodeSearch.Visible = false;
+            tsSchnameSearch.Visible = false;
+            tsInvno.Visible = false;
+            tsProdutnNumberSearch.Visible = false;
+            tsOracleCodeSearch.Visible = false;
+            tsFirstNameSearch.Visible = false;
+            tsLastNameSearch.Visible = false;
+            tsZipCodeSearch.Visible = false;
+            tsEmailSearch.Visible = false;
+            tsJobNo.Visible = false;
+
+        }
         public void PrintScreen() {
             ScreenPrinter vScreenPrinter = new ScreenPrinter(this);
            vScreenPrinter.PrintScreen();
@@ -50,6 +104,7 @@ namespace Mbc5.Forms
                 
 
             }
+       
         private int GetInvno()
         {
           
@@ -129,6 +184,14 @@ namespace Mbc5.Forms
         #endregion
         private void frmMain_Load(object sender, EventArgs e)
         {
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            if (Environment == "DEV")
+            {
+                this.AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
+            }
+            else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id =MbcUser; password =3l3phant1; Connect Timeout=5"; }
+            
+
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
@@ -179,12 +242,10 @@ namespace Mbc5.Forms
         }
         private void SetMenu()
         {
-            var a = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
-            var aa = this.ValidatedUserRoles.Contains("Administrator") || this.ValidatedUserRoles.Contains("SA");
-            this.systemToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("Administrator") || this.ValidatedUserRoles.Contains("SA"); 
 
-            
-            //this.userMaintinanceToolStripMenuItem.Enabled = this.ValidatedUserRoles.Contains("SA");
+            this.userMaintinanceToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
+            this.tsDeptScanLabel.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
+            lookUpMaintenanceToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
         }
         public void exitMBCToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -229,21 +290,24 @@ namespace Mbc5.Forms
                 this.Cursor = Cursors.AppStarting;
                 string vSchcode = GetSchcode();
 
-                if (String.IsNullOrEmpty(vSchcode) ) {
-                    this.Cursor = Cursors.AppStarting;
+                    if (String.IsNullOrEmpty(vSchcode) ) {
+                        this.Cursor = Cursors.AppStarting;
 
-                    frmMbcCust frmCust1 = new frmMbcCust(this.ApplicationUser);
-                    frmCust1.MdiParent = this;
-                    frmCust1.Show();
-                    this.Cursor = Cursors.Default;
+                        frmMbcCust frmCust1 = new frmMbcCust(this.ApplicationUser);
+                        frmCust1.MdiParent = this;
+                        frmCust1.Show();
+                        this.Cursor = Cursors.Default;
                     }
+                    else
+                    {
+                        this.Cursor = Cursors.AppStarting;
 
-                this.Cursor = Cursors.AppStarting;
+                        frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser,vSchcode);
+                        frmCust.MdiParent = this;
+                        frmCust.Show();
+                        this.Cursor = Cursors.Default;
 
-                frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser,vSchcode);
-                frmCust.MdiParent = this;
-                frmCust.Show();
-                this.Cursor = Cursors.Default;
+                    }
 
                 }
 
@@ -387,16 +451,6 @@ namespace Mbc5.Forms
         private void tsPrintScreen_Click(object sender,EventArgs e) {
             this.PrintScreen();
             }
-
-        private void testToolStripMenuItem_Click(object sender,EventArgs e) {
-            this.Cursor = Cursors.AppStarting;
-            test test = new test();
-          
-            test.MdiParent = this;
-            test.Show();
-            this.Cursor = Cursors.Default;
-            }
-
         private void tsSave_Click(object sender,EventArgs e) {
             try {
                 var activeform = this.ActiveMdiChild as BaseClass.frmBase;
@@ -470,7 +524,7 @@ namespace Mbc5.Forms
                 activeform.Cancel();
 
                 } catch (Exception ex) {
-                MessageBox.Show("Add record is not implemented for this form.","Add",MessageBoxButtons.OK,MessageBoxIcon.Hand);
+               
                 }
             }
 
@@ -487,9 +541,9 @@ namespace Mbc5.Forms
 		{
 			if (this.ActiveMdiChild == null)
 			{
-				frmEndSheet frmProdutn = new frmEndSheet(this.ApplicationUser);
-				frmProdutn.MdiParent = this;
-				frmProdutn.Show();
+				frmEndSheet frmEndSheet = new frmEndSheet(this.ApplicationUser);
+                frmEndSheet.MdiParent = this;
+                frmEndSheet.Show();
 				this.Cursor = Cursors.Default;
 
 
@@ -557,14 +611,7 @@ namespace Mbc5.Forms
             MessageBox.Show("MBC version:" + localVersion, "Version", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void testFormToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-          test test = new test();
-           
-            test.Show();
-            this.Cursor = Cursors.Default;
-        }
-
+       
         private void barScanToolStripMenuItem_Click(object sender, EventArgs e)
         {
            
@@ -575,11 +622,378 @@ namespace Mbc5.Forms
                 frmBarScan.Show();
                 this.Cursor = Cursors.Default;
 
+        }
 
-            
-            
+        private void leadSourceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LkpLeadSource frmLkpLeadSource = new LkpLeadSource(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpLeadSource.MdiParent = this;
+            frmLkpLeadSource.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void leadNamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LkpLeadName frmLkpLeadName = new LkpLeadName(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpLeadName.MdiParent = this;
+            frmLkpLeadName.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void typeStylesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LkpTypeStyle frmLkpTypeStyle = new LkpTypeStyle(this.ApplicationUser);
+            this.Cursor = Cursors.AppStarting;
+            frmLkpTypeStyle.MdiParent = this;
+            frmLkpTypeStyle.Show();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void invoicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			this.Cursor = Cursors.AppStarting;
+
+			frmInvoicInq frmInvoice = new frmInvoicInq(this.ApplicationUser);
+			frmInvoice.MdiParent = this;
+			frmInvoice.Show();
+			this.Cursor = Cursors.Default;
+		}
+
+        public int GetNewInvno()
+        {
+
+            var sqlQuery = new BaseClass.Classes.SQLQuery();
+
+            SqlParameter[] parameters = new SqlParameter[] {
+
+                    };
+            var strQuery = "SELECT Invno FROM Invcnum";
+            try
+            {
+                DataTable userResult = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+                DataRow dr = userResult.Rows[0];
+                int Invno = (int)dr["Invno"];
+                int newInvno = Invno + 1;
+                strQuery = "Update Invcnum Set invno=@newInvno";
+                SqlParameter[] parameters1 = new SqlParameter[] {
+                      new SqlParameter("@newInvno",newInvno),
+                    };
+                sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
+
+                return Invno;
+
+            }
+            catch (Exception ex)
+            {
+             ex.ToExceptionless()
+                    .SetMessage("Failed to get invoice number for a new record");
+                    
+                MessageBox.Show("Failed to get invoice number for a new record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+
+            }
 
         }
+        public string GetProdNo()
+        {
+            var sqlQuery = new SQLQuery();
+            //useing hard code until function to generate invno is done
+            SqlParameter[] parameters = new SqlParameter[] { };
+            var strQuery = "Select * from prodnum";
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+            int? prodNum = null;
+            try
+            {
+                prodNum = Convert.ToInt32(result.Rows[0]["lstprodno"]);
+                strQuery = "Update Prodnum Set lstprodno=@lstprodno";
+                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@lstprodno", (prodNum + 1)) };
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
+                if (result1 != 1)
+                {
+                    ExceptionlessClient.Default.CreateLog("Error updating Prodnum table with new value.")
+                         .AddTags("New prod number error.")
+                         .Submit();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error getting the production number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                ex.ToExceptionless()
+                  .AddTags("MBCWindows")
+                  .SetMessage("Error getting production number.")
+                  .Submit();
+
+            }
+			string vprodNum = prodNum.ToString();
+			vprodNum = " " + vprodNum;
+            return prodNum.ToString();
+
+        }
+        public string GetCoverNumber()
+        {
+            var sqlQuery = new SQLQuery();
+            //useing hard code until function to generate invno is done
+            SqlParameter[] parameters = new SqlParameter[] { };
+            var strQuery = "Select * from Spcover";
+            var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
+            int? coverNum = null;
+            try
+            {
+                coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
+                strQuery = "Update Spcover set speccvno=@speccvno";
+                SqlParameter[] parameters1 = new SqlParameter[] { new SqlParameter("@speccvno", (coverNum + 1)) };
+                var result1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
+                if (result1 != 1)
+                {
+                    ExceptionlessClient.Default.CreateLog("Error updating Spcover table with new value.")
+                         .AddTags("New cover number error.")
+                         .Submit();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error getting the cover number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ex.ToExceptionless()
+                  .AddTags("MBCWindows")
+                  .SetMessage("Error getting cover number.")
+                  .Submit();
+
+            }
+
+            return coverNum.ToString();
+        }
+
+		private void tsSchcodeSearch_Click(object sender, EventArgs e) {
+			try {
+				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+			   activeform.SchCodeSearch();
+
+			} catch (Exception ex) {
+
+			}
+		}
+
+		private void tsSchnameSearch_Click(object sender, EventArgs e) {
+			try {
+				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+				activeform.SchnameSearch();
+
+			} catch (Exception ex) {
+
+			}
+		}
+
+		private void tsProdutnNumberSearch_Click(object sender, EventArgs e) {
+			try {
+				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+				activeform.ProdutnNoSearch();
+
+			} catch (Exception ex) {
+
+			}
+		}
+
+		private void tsOracleCodeSearch_Click(object sender, EventArgs e) {
+			try {
+				var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+				activeform.OracleCodeSearch();
+
+			} catch (Exception ex) {
+
+			}
+		}
+
+        private void tsInvno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.InvoiceNumberSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void tsFirstNameSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.FirstNameSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void tsLastNameSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.LastNameSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void tsZipCodeSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.ZipCodeSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void tsEmailSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.EmailSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void tsJobNo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.JobNoSearch();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void testFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addresslabel addressLabel = new addresslabel();
+          addressLabel.Show();
+           
+        }
+
+        private void tsFileFolder_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name== "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("FILEFOLDER");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+
+        }
+
+        private void tsAddress_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("ADDRESSLABEL");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+
+        }
+
+        private void tsReceivingLabel_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("RECEIVINGLABEL");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+        }
+
+        private void tsEnvelopeLabel_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("ENVELOPELABEL");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+        }
+
+        private void tsYearBookLabel_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmProdutn"))
+            {
+                var produtnFrm = (frmProdutn)this.ActiveMdiChild;
+                produtnFrm.PrintYearBookLabel();
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+        }
+
+        private void tsDeptScanLabel_Click(object sender, EventArgs e)
+        {
+           
+               this.Cursor = Cursors.AppStarting;
+                frmScanLabels frmDeptLabel = new frmScanLabels();
+
+                frmDeptLabel.ShowDialog() ;
+                this.Cursor = Cursors.Default;
+    
+        }
+
+
+
 
 
 

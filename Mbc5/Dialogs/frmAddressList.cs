@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BaseClass.Classes;
 using Mbc5.Forms;
+using System.Configuration;
 namespace Mbc5.Dialogs
 {
     public partial class frmAddressList : Form
@@ -23,7 +24,15 @@ namespace Mbc5.Dialogs
 
         private void frmAddressList_Load(object sender, EventArgs e)
         {
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            string AppConnectionString = "";
+            if (Environment == "DEV")
+            {
+                AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
+            }
+            else if (Environment == "PROD") {  AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
             // TODO: This line of code loads data into the 'dsUser.mbcUsers' table. You can move, or remove it, as needed.
+            this.mbcUsersTableAdapter.Connection.ConnectionString = AppConnectionString;
             this.mbcUsersTableAdapter.Fill(this.dsUser.mbcUsers);
 
         }

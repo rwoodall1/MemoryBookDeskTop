@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BaseClass.Classes;
 using System.Data.Sql;
+using System.Configuration;
 using System.Data.SqlClient;
 namespace Mbc5.Dialogs
 {
@@ -25,8 +26,19 @@ namespace Mbc5.Dialogs
         public bool Refill { get; set; }
         private void frmEditWip_Load(object sender, EventArgs e)
         {
+            var Environment = ConfigurationManager.AppSettings["Environment"].ToString();
+            string AppConnectionString = "";
+            if (Environment == "DEV")
+            {
+                AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
+            }
+            else if (Environment == "PROD") { AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+
+            this.wipDescriptionsTableAdapter.Connection.ConnectionString = AppConnectionString;
+            this.wipDetailTableAdapter.Connection.ConnectionString = AppConnectionString;
+
             wipDescriptionsTableAdapter.Fill(dsProdutn.WipDescriptions, "WIP");
-            wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+           wipDetailTableAdapter.Fill(dsProdutn.WipDetail,null,Invno);
             var pos = wipDetailBindingSource.Find("id", ID);
             if (pos > -1)
             {
@@ -45,9 +57,22 @@ namespace Mbc5.Dialogs
             this.wipDetailBindingSource.EndEdit();
             DataRowView row = (DataRowView)wipDetailBindingSource.Current;           
             int descid = (int)cmbDescription.SelectedValue;
-           DateTime war = (DateTime)row["War"];
-          DateTime wdr = (DateTime)row["Wdr"];
-            decimal wtr = (decimal)row["Wtr"];
+			DateTime war=DateTime.Now;
+			if (row["War"]!=null)
+			{
+				try
+				{war =(DateTime)row["War"]  ; }catch(Exception ec)
+				{
+					return;
+				}
+				
+			}
+			
+			
+			
+
+           DateTime? wdr =  row["Wdr"]!=null?(DateTime?)row["Wdr"]:null;
+           decimal wtr = (decimal)row["Wtr"];
            string wir = row["Wir"].ToString();
             int invno = (int)row["Invno"];
             int id = (int)row["id"];
@@ -82,8 +107,9 @@ namespace Mbc5.Dialogs
             var result=MessageBox.Show("This will permentaly remove the record. Continue?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
-                wipDetailTableAdapter.Delete(ID);
-                wipDetailBindingSource.RemoveCurrent();
+               
+				wipDetailTableAdapter.DeleteQuery(ID);
+				wipDetailBindingSource.RemoveCurrent();
                 Refill = true;
             }
      

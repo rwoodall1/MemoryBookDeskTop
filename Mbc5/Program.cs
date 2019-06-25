@@ -16,7 +16,7 @@ namespace Mbc5
         [STAThread]
         static void Main()
         {
-            //ExceptionlessClient.Default.Register();
+            ExceptionlessClient.Default.Register();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             try { Application.Run(new frmMain());

@@ -22,7 +22,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>0.06944in</Top>
-        <Left>5.97333in</Left>
+        <Left>6.47333in</Left>
         <Height>0.22222in</Height>
         <Width>1in</Width>
         <Style>
@@ -55,7 +55,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
         <Top>0.04167in</Top>
-        <Left>4.72333in</Left>
+        <Left>5.22333in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
         <ZIndex>1</ZIndex>
@@ -112,7 +112,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!invno.Value, "invoice")</Value>
+                <Value>=First(Fields!invno.Value, "invoice")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -123,7 +123,7 @@
         </Paragraphs>
         <rd:DefaultName>invno</rd:DefaultName>
         <Top>0.23611in</Top>
-        <Left>4.72333in</Left>
+        <Left>5.22333in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
         <ZIndex>3</ZIndex>
@@ -154,7 +154,7 @@
         </Paragraphs>
         <rd:DefaultName>qtedate</rd:DefaultName>
         <Top>0.23611in</Top>
-        <Left>5.97333in</Left>
+        <Left>6.47333in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
         <ZIndex>4</ZIndex>
@@ -181,8 +181,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>schcode</rd:DefaultName>
-        <Top>0.70708in</Top>
-        <Left>5.9675in</Left>
+        <Top>0.42534in</Top>
+        <Left>6.39979in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
         <ZIndex>5</ZIndex>
@@ -215,8 +215,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>0.70708in</Top>
-        <Left>4.57167in</Left>
+        <Top>0.42534in</Top>
+        <Left>5.00396in</Left>
         <Height>0.25in</Height>
         <Width>1.39583in</Width>
         <ZIndex>6</ZIndex>
@@ -248,8 +248,8 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>0.70708in</Top>
-        <Left>0.53583in</Left>
+        <Top>0.42534in</Top>
+        <Left>0.34312in</Left>
         <Height>0.25in</Height>
         <Width>1.39583in</Width>
         <ZIndex>7</ZIndex>
@@ -281,8 +281,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>ponum</rd:DefaultName>
-        <Top>0.72097in</Top>
-        <Left>1.93166in</Left>
+        <Top>0.43923in</Top>
+        <Left>1.73895in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
         <ZIndex>8</ZIndex>
@@ -316,7 +316,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
             <Top>0.07292in</Top>
-            <Left>0.04167in</Left>
+            <Left>0.26042in</Left>
             <Height>0.25in</Height>
             <Width>0.94792in</Width>
             <Style>
@@ -347,7 +347,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>0.06597in</Top>
-            <Left>5.78584in</Left>
+            <Left>6.00459in</Left>
             <Height>0.25in</Height>
             <Width>1.18166in</Width>
             <ZIndex>1</ZIndex>
@@ -363,9 +363,10 @@
           </Textbox>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
-        <Top>1.10292in</Top>
+        <Top>0.82118in</Top>
+        <Left>0.08854in</Left>
         <Height>0.32292in</Height>
-        <Width>6.98833in</Width>
+        <Width>7.20708in</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <Border>
@@ -374,20 +375,364 @@
           </Border>
         </Style>
       </Rectangle>
+      <Textbox Name="invtot">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!invtot.Value, "invoice")</Value>
+                <Style>
+                  <Format>'$'#,0.00</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>invtot</rd:DefaultName>
+        <Top>2.36633in</Top>
+        <Left>6.27479in</Left>
+        <Height>0.25in</Height>
+        <Width>1.02083in</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="baldue">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!invtot.Value, "invoice")-Sum(Fields!payment.Value, "payment")</Value>
+                <Style>
+                  <Format>'$'#,0.00</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>baldue</rd:DefaultName>
+        <Top>2.99132in</Top>
+        <Left>6.27479in</Left>
+        <Height>0.25in</Height>
+        <Width>1.02083in</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox15">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>SubTotal</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox15</rd:DefaultName>
+        <Top>1.82466in</Top>
+        <Left>5.21923in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox17">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Balance Due</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox17</rd:DefaultName>
+        <Top>2.99132in</Top>
+        <Left>5.21923in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line1">
+        <Top>1.71355in</Top>
+        <Left>5.21923in</Left>
+        <Height>0in</Height>
+        <Width>2.07639in</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox19">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Payments</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox19</rd:DefaultName>
+        <Top>2.69966in</Top>
+        <Left>5.44818in</Left>
+        <Height>0.25in</Height>
+        <Width>0.77105in</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="BeforeTaxTotal">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!BeforeTaxTotal.Value, "invoice")</Value>
+                <Style>
+                  <Format>'$'0.00;('$'0.00)</Format>
+                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>BeforeTaxTotal</rd:DefaultName>
+        <Top>1.81077in</Top>
+        <Left>6.2609in</Left>
+        <Height>0.25in</Height>
+        <Width>1.02083in</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox18">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Invoice Total</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox15</rd:DefaultName>
+        <Top>2.38021in</Top>
+        <Left>5.21923in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox20">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Tax</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox15</rd:DefaultName>
+        <Top>2.08855in</Top>
+        <Left>5.84423in</Left>
+        <Height>0.25in</Height>
+        <Width>0.375in</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="SalesTax">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!SalesTax.Value, "invoice")</Value>
+                <Style>
+                  <Format>'$'0.00;('$'0.00)</Format>
+                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>SalesTax</rd:DefaultName>
+        <Top>2.08855in</Top>
+        <Left>6.24701in</Left>
+        <Height>0.25in</Height>
+        <Width>1.02778in</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="payments">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!payments.Value, "invoice")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>payments</rd:DefaultName>
+        <Top>2.69966in</Top>
+        <Left>6.29562in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>20</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
       <Tablix Name="Tablix2">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.77282in</Width>
+              <Width>3.49417in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.77823in</Width>
+              <Width>1.11417in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.23196in</Width>
+              <Width>1.29707in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.16365in</Width>
+              <Width>1.22876in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -396,7 +741,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox7">
+                    <Textbox Name="Textbox38">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -410,7 +755,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <rd:DefaultName>Textbox38</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -520,21 +865,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="descr">
+                    <Textbox Name="descr1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=iif(Fields!descr.Value="Base Price",iif(First(Fields!allclrck.Value , "invoice"),"All Color with "+ First(Fields!nopages.Value, "invoice").ToString() +" pages and "+First(Fields!nocopies.Value, "invoice").ToString()+" books","All Black &amp; White with " + First(Fields!nopages.Value, "invoice").ToString() + " pages and "+ First(Fields!nocopies.Value, "invoice").ToString()+" books"),Fields!descr.Value)</Value>
+                              <Value>=Fields!descr.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>descr</rd:DefaultName>
+                      <rd:DefaultName>descr1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -565,7 +910,7 @@
                       </Paragraphs>
                       <rd:DefaultName>discpercent1</rd:DefaultName>
                       <Visibility>
-                        <Hidden>=Fields!discpercent.Value&lt;=0</Hidden>
+                        <Hidden>=Fields!discpercent.Value ="" Or First(Fields!discpercent.Value, "invoicedetail")="0"</Hidden>
                       </Visibility>
                       <Style>
                         <Border>
@@ -675,376 +1020,29 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>invoicedetail</DataSetName>
-        <Top>1.46751in</Top>
-        <Left>0.04167in</Left>
+        <Top>1.20834in</Top>
+        <Left>0.14062in</Left>
         <Height>0.5in</Height>
-        <Width>6.94666in</Width>
-        <ZIndex>10</ZIndex>
+        <Width>7.13417in</Width>
+        <ZIndex>21</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
-      <Textbox Name="invtot">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!invtot.Value, "invoice")</Value>
-                <Style>
-                  <Format>'$'#,0.00</Format>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>invtot</rd:DefaultName>
-        <Top>2.52307in</Top>
-        <Left>5.9675in</Left>
-        <Height>0.25in</Height>
-        <Width>1.02083in</Width>
-        <ZIndex>11</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-          <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-        </Style>
-      </Textbox>
-      <Textbox Name="baldue">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!invtot.Value, "invoice")-Sum(Fields!payment.Value, "payment")</Value>
-                <Style>
-                  <Format>'$'#,0.00</Format>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>baldue</rd:DefaultName>
-        <Top>3.14806in</Top>
-        <Left>5.9675in</Left>
-        <Height>0.25in</Height>
-        <Width>1.02083in</Width>
-        <ZIndex>12</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-          <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox15">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>SubTotal</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>1.9814in</Top>
-        <Left>4.91194in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>13</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox17">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Balance Due</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>3.14806in</Top>
-        <Left>4.91194in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>14</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Line Name="Line1">
-        <Top>1.99529in</Top>
-        <Left>4.91194in</Left>
-        <Height>0in</Height>
-        <Width>2.07639in</Width>
-        <ZIndex>15</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Line>
-      <Textbox Name="payment">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Sum(Fields!payment.Value, "payment")</Value>
-                <Style>
-                  <Format>'$'#,0.00</Format>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>payment</rd:DefaultName>
-        <Top>2.85639in</Top>
-        <Left>5.95361in</Left>
-        <Height>0.25in</Height>
-        <Width>1.02083in</Width>
-        <ZIndex>16</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-          <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox19">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Payments</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox19</rd:DefaultName>
-        <Top>2.85639in</Top>
-        <Left>5.14089in</Left>
-        <Height>0.25in</Height>
-        <Width>0.77105in</Width>
-        <ZIndex>17</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="BeforeTaxTotal">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Sum(Fields!BeforeTaxTotal.Value, "invoice")</Value>
-                <Style>
-                  <Format>'$'0.00;('$'0.00)</Format>
-                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>BeforeTaxTotal</rd:DefaultName>
-        <Top>1.96751in</Top>
-        <Left>5.95361in</Left>
-        <Height>0.25in</Height>
-        <Width>1.02083in</Width>
-        <ZIndex>18</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox18">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Invoice Total</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>2.53695in</Top>
-        <Left>4.91194in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>19</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox20">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Tax</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>2.24529in</Top>
-        <Left>5.53694in</Left>
-        <Height>0.25in</Height>
-        <Width>0.375in</Width>
-        <ZIndex>20</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="SalesTax">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Sum(Fields!SalesTax.Value, "invoice")</Value>
-                <Style>
-                  <Format>'$'0.00;('$'0.00)</Format>
-                  <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>SalesTax</rd:DefaultName>
-        <Top>2.24529in</Top>
-        <Left>5.93972in</Left>
-        <Height>0.25in</Height>
-        <Width>1.02778in</Width>
-        <ZIndex>21</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
     </ReportItems>
-    <Height>11.04167in</Height>
+    <Height>3.66667in</Height>
     <Style>
       <Border>
         <Style>None</Style>
       </Border>
     </Style>
   </Body>
-  <Width>13.00917in</Width>
+  <Width>8.34772in</Width>
   <Page>
     <PageHeader>
-      <Height>1.25in</Height>
+      <Height>1.10417in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1076,7 +1074,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>3131 W. Main </Value>
+                  <Value>304 Curry Drive</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1102,7 +1100,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox9</rd:DefaultName>
-          <Left>3.66542in</Left>
+          <Left>4.16542in</Left>
           <Height>0.75in</Height>
           <Width>3.32291in</Width>
           <ZIndex>1</ZIndex>
@@ -1169,10 +1167,10 @@
       </Style>
     </PageHeader>
     <PageWidth>8in</PageWidth>
-    <LeftMargin>0.5in</LeftMargin>
-    <RightMargin>0.5in</RightMargin>
-    <TopMargin>0.5in</TopMargin>
-    <BottomMargin>0.5in</BottomMargin>
+    <LeftMargin>0.25in</LeftMargin>
+    <RightMargin>0.25in</RightMargin>
+    <TopMargin>0.25in</TopMargin>
+    <BottomMargin>0.25in</BottomMargin>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -1608,6 +1606,7 @@ YzLKJB/ywXOKw/jX/wAHTPwT/ZR8KXHgf9lT4I2VxpVnJILa9nsIvC/h9XOMXENlCnnzBscrKtq5x1r8
 I0/9qb/oQfgD/wCCTV//AJZ0f8Rp/wC1N/0IPwB/8Emr/wDyzo9hILn9PFfzEf8AB1Z/yl41T/sTtG/nc0n/ABGn/tTf9CD8Af8AwSav/wDLOvjr9tL/AIKG+NP+CoHx2uPit4+0rwto/iKawt9Ge38P29xb2Zit9xRts80z7z5rAnfg4GAOc+1kNNxxV32f6HBmL/cv5HlFNkiWYYZVYehGadRX2h88AGBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH/2Q==</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>924c9a6a-3e34-479a-91ab-8fb0a300ec4e</rd:ReportID>
 </Report>

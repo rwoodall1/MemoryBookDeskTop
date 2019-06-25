@@ -40,12 +40,21 @@
     <StartupObject>Mbc5.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Exceptionless, Version=4.0.1955.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Exceptionless.4.0.1955\lib\net45\Exceptionless.dll</HintPath>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms.resources">
+      <HintPath>..\packages\CrystalReports.Windows.Forms.13.0.3501\lib\net20\en\CrystalDecisions.Windows.Forms.resources.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Exceptionless.Windows, Version=4.0.1955.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Exceptionless.Windows.4.0.1955\lib\net45\Exceptionless.Windows.dll</HintPath>
+    <Reference Include="Exceptionless, Version=4.3.2027.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Exceptionless.4.3.2027\lib\net45\Exceptionless.dll</HintPath>
     </Reference>
+    <Reference Include="Exceptionless.Windows, Version=4.3.2027.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Exceptionless.Windows.4.3.2027\lib\net45\Exceptionless.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -74,6 +83,7 @@
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.3.2\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
@@ -83,7 +93,11 @@
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -96,9 +110,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DirectPrint.cs" />
     <Compile Include="Classes\ExceptionHandler.cs" />
     <Compile Include="Classes\OptionPrice.cs" />
     <Compile Include="Classes\Price.cs" />
+    <Compile Include="Classes\Utils.cs" />
+    <Compile Include="DataSets\dsBids.cs">
+      <DependentUpon>dsBids.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsBids.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -111,9 +130,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSets\dsCust.cs">
-      <DependentUpon>dsCust.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsCust.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -130,6 +146,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsEndSheet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsExtra.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsExtra.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsMktInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -142,6 +163,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsProdutn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsRcard.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRcard.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dsRoles.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -172,6 +198,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsInvoice.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsXSupplies.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsXSupplies.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\frmAddressList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,17 +227,41 @@
     <Compile Include="Dialogs\frmEditWip.Designer.cs">
       <DependentUpon>frmEditWip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\frmProdutnSelctCust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmProdutnSelctCust.Designer.cs">
+      <DependentUpon>frmProdutnSelctCust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmScanLabels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmScanLabels.Designer.cs">
+      <DependentUpon>frmScanLabels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\frmSelctCust.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\frmSelctCust.Designer.cs">
       <DependentUpon>frmSelctCust.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Dialogs\frmSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Dialogs\frmSearch.Designer.cs">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmTeleLogModify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmTeleLogModify.Designer.cs">
+      <DependentUpon>frmTeleLogModify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\addresslabel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\addresslabel.Designer.cs">
+      <DependentUpon>addresslabel.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmBarScan.cs">
       <SubType>Form</SubType>
@@ -226,17 +281,23 @@
     <Compile Include="Forms\frmProdutn.Designer.cs">
       <DependentUpon>frmProdutn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MemoryBook\frmInvoicInq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmInvoicInq.Designer.cs">
+      <DependentUpon>frmInvoicInq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmReceivingCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MemoryBook\frmReceivingCard.Designer.cs">
+      <DependentUpon>frmReceivingCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MemoryBook\frmSales.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MemoryBook\frmSales.Designer.cs">
       <DependentUpon>frmSales.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MemoryBook\test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MemoryBook\test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Meridian\frmMSales.cs">
       <SubType>Form</SubType>
@@ -312,6 +373,36 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="LookUpForms\LkpLeadName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpLeadName.Designer.cs">
+      <DependentUpon>LkpLeadName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpCustType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpCustType.Designer.cs">
+      <DependentUpon>LkpCustType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpBackGround.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpBackGround.Designer.cs">
+      <DependentUpon>LkpBackGround.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpTypeStyle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpTypeStyle.Designer.cs">
+      <DependentUpon>LkpTypeStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LookUpForms\LkpLeadSource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookUpForms\LkpLeadSource.Designer.cs">
+      <DependentUpon>LkpLeadSource.cs</DependentUpon>
+    </Compile>
     <Compile Include="LookUpForms\LkpWipDescriptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,14 +417,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\ReportTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reports\ReportTest.Designer.cs">
-      <DependentUpon>ReportTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Content Include="Content\MAIL.png" />
+    <Content Include="Content\SystemIcons\tsAdd.Image.png" />
+    <Content Include="Content\SystemIcons\tsCancel.Image.png" />
+    <Content Include="Content\SystemIcons\tsCopy.Image.png" />
+    <Content Include="Content\SystemIcons\tsCut.Image.png" />
+    <Content Include="Content\SystemIcons\tsDelete.Image.png" />
+    <Content Include="Content\SystemIcons\tsEmail.Image.png" />
+    <Content Include="Content\SystemIcons\tsPaste.Image.png" />
+    <Content Include="Content\SystemIcons\tsPrint.Image.png" />
+    <Content Include="Content\SystemIcons\tsSave.Image.png" />
+    <Content Include="Content\SystemIcons\tsUndo.Image.png" />
     <Content Include="NOTES TODO.txt" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
@@ -360,11 +455,23 @@
     <EmbeddedResource Include="Dialogs\frmEditWip.resx">
       <DependentUpon>frmEditWip.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmProdutnSelctCust.resx">
+      <DependentUpon>frmProdutnSelctCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmScanLabels.resx">
+      <DependentUpon>frmScanLabels.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmSelctCust.resx">
       <DependentUpon>frmSelctCust.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\frmSearch.resx">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmTeleLogModify.resx">
+      <DependentUpon>frmTeleLogModify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\addresslabel.resx">
+      <DependentUpon>addresslabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBarScan.resx">
       <DependentUpon>frmBarScan.cs</DependentUpon>
@@ -375,11 +482,14 @@
     <EmbeddedResource Include="Forms\frmProdutn.resx">
       <DependentUpon>frmProdutn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MemoryBook\frmInvoicInq.resx">
+      <DependentUpon>frmInvoicInq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MemoryBook\frmReceivingCard.resx">
+      <DependentUpon>frmReceivingCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryBook\frmSales.resx">
       <DependentUpon>frmSales.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MemoryBook\test.resx">
-      <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meridian\frmMSales.resx">
       <DependentUpon>frmMSales.cs</DependentUpon>
@@ -415,6 +525,21 @@
     <EmbeddedResource Include="Forms\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpLeadName.resx">
+      <DependentUpon>LkpLeadName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpCustType.resx">
+      <DependentUpon>LkpCustType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpBackGround.resx">
+      <DependentUpon>LkpBackGround.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpTypeStyle.resx">
+      <DependentUpon>LkpTypeStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookUpForms\LkpLeadSource.resx">
+      <DependentUpon>LkpLeadSource.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LookUpForms\LkpWipDescriptions.resx">
       <DependentUpon>LkpWipDescriptions.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,13 +551,64 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\30256AddressLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321YearBookLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321Envelope.rdlc" />
+    <EmbeddedResource Include="Reports\30321ReceivingLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321FileFolderLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321DepartmentLabel.rdlc" />
+    <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
+    <EmbeddedResource Include="Reports\InvoiceDetails.rdlc" />
+    <EmbeddedResource Include="Reports\MultiMemInvoice.rdlc" />
     <EmbeddedResource Include="Reports\MemInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\ProdCheckList.rdlc" />
     <EmbeddedResource Include="Reports\ProdutnTicket.rdlc" />
-    <EmbeddedResource Include="Reports\Report1.rdlc" />
-    <EmbeddedResource Include="Reports\ReportTest.resx">
-      <DependentUpon>ReportTest.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\test.rdlc" />
+    <None Include="DataSets\dsCust.xsc">
+      <DependentUpon>dsCust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsCust.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCust.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\dsCust.xss">
+      <DependentUpon>dsCust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsExtra.xsc">
+      <DependentUpon>dsExtra.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsExtra.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsExtra.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsExtra.xss">
+      <DependentUpon>dsExtra.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsRcard.xsc">
+      <DependentUpon>dsRcard.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsRcard.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRcard.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsRcard.xss">
+      <DependentUpon>dsRcard.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsXSupplies.xsc">
+      <DependentUpon>dsXSupplies.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsXSupplies.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsXSupplies.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsXSupplies.xss">
+      <DependentUpon>dsXSupplies.xsd</DependentUpon>
+    </None>
     <None Include="localConnection.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -458,17 +634,6 @@
     </None>
     <None Include="DataSets\dsChangePassword.xss">
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
-    </None>
-    <None Include="DataSets\dsCust.xsc">
-      <DependentUpon>dsCust.xsd</DependentUpon>
-    </None>
-    <None Include="DataSets\dsCust.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsCust.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSets\dsCust.xss">
-      <DependentUpon>dsCust.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsDateCont.xsc">
       <DependentUpon>dsDateCont.xsd</DependentUpon>
@@ -579,8 +744,13 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\BindingModels.BidInvoiceDetail.datasource" />
+    <None Include="Properties\DataSources\BindingModels.DepartmentLabel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.FullInvoice.datasource" />
+    <None Include="Properties\DataSources\BindingModels.Invoice.datasource" />
     <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
+    <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProdutnTicketModel.datasource" />
+    <None Include="Properties\DataSources\BindingModels.TelephonLogRecord.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -597,7 +767,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\SystemIcons\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
@@ -632,6 +801,9 @@
       <Project>{5f448496-325e-429a-ae98-18aa1015ad80}</Project>
       <Name>BindingModels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

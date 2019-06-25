@@ -85,17 +85,31 @@
             System.Windows.Forms.Label label37;
             System.Windows.Forms.Label label39;
             System.Windows.Forms.Label label34;
+            System.Windows.Forms.Label label35;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEndSheet));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.endsheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsEndSheet = new Mbc5.DataSets.dsEndSheet();
             this.tbEndSheets = new System.Windows.Forms.TabControl();
             this.pgEndSheets = new System.Windows.Forms.TabPage();
-            this.btnsheetSrch = new System.Windows.Forms.Button();
-            this.txtsheetSrch = new System.Windows.Forms.TextBox();
+            this.laminatedTextBox = new System.Windows.Forms.TextBox();
+            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsEndSheet = new Mbc5.DataSets.dsEndSheet();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.reprntdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.btnInvoiceSrch = new System.Windows.Forms.Button();
-            this.txtInvoiceNoSrch = new System.Windows.Forms.TextBox();
+            this.endsheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.endsheetdetailDataGridView = new System.Windows.Forms.DataGridView();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,9 +139,7 @@
             this.lamvendTextBox = new System.Windows.Forms.TextBox();
             this.prtvendTextBox = new System.Windows.Forms.TextBox();
             this.diecutCheckBox = new System.Windows.Forms.CheckBox();
-            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.othrCheckBox = new System.Windows.Forms.CheckBox();
-            this.laminatedCheckBox = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -146,10 +158,7 @@
             this.bkcopiesTextBox = new System.Windows.Forms.TextBox();
             this.bldescTextBox = new System.Windows.Forms.TextBox();
             this.brdescTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.invnoLabel2 = new System.Windows.Forms.Label();
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.prodnoLabel2 = new System.Windows.Forms.Label();
             this.specinstTextBox = new System.Windows.Forms.TextBox();
             this.nopagesTextBox = new System.Windows.Forms.TextBox();
@@ -211,8 +220,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.supnoTextBox = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.booktypeLabel1 = new System.Windows.Forms.Label();
             this.duedateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.recvdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -350,17 +357,20 @@
             label37 = new System.Windows.Forms.Label();
             label39 = new System.Windows.Forms.Label();
             label34 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).BeginInit();
+            label35 = new System.Windows.Forms.Label();
             this.tbEndSheets.SuspendLayout();
             this.pgEndSheets.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailBindingSource)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.Supplement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).BeginInit();
@@ -381,7 +391,7 @@
             // prodnoLabel
             // 
             prodnoLabel.AutoSize = true;
-            prodnoLabel.Location = new System.Drawing.Point(285, 7);
+            prodnoLabel.Location = new System.Drawing.Point(13, 3);
             prodnoLabel.Name = "prodnoLabel";
             prodnoLabel.Size = new System.Drawing.Size(41, 13);
             prodnoLabel.TabIndex = 4;
@@ -390,7 +400,7 @@
             // invnoLabel
             // 
             invnoLabel.AutoSize = true;
-            invnoLabel.Location = new System.Drawing.Point(423, 7);
+            invnoLabel.Location = new System.Drawing.Point(151, 3);
             invnoLabel.Name = "invnoLabel";
             invnoLabel.Size = new System.Drawing.Size(57, 13);
             invnoLabel.TabIndex = 6;
@@ -633,7 +643,7 @@
             // nopagesLabel1
             // 
             nopagesLabel1.AutoSize = true;
-            nopagesLabel1.Location = new System.Drawing.Point(12, 39);
+            nopagesLabel1.Location = new System.Drawing.Point(12, 32);
             nopagesLabel1.Name = "nopagesLabel1";
             nopagesLabel1.Size = new System.Drawing.Size(127, 13);
             nopagesLabel1.TabIndex = 57;
@@ -642,7 +652,7 @@
             // nocopiesLabel1
             // 
             nocopiesLabel1.AutoSize = true;
-            nocopiesLabel1.Location = new System.Drawing.Point(261, 39);
+            nocopiesLabel1.Location = new System.Drawing.Point(261, 32);
             nocopiesLabel1.Name = "nocopiesLabel1";
             nocopiesLabel1.Size = new System.Drawing.Size(57, 13);
             nocopiesLabel1.TabIndex = 58;
@@ -652,7 +662,7 @@
             // 
             recvdteLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             recvdteLabel.AutoSize = true;
-            recvdteLabel.Location = new System.Drawing.Point(435, 39);
+            recvdteLabel.Location = new System.Drawing.Point(458, 32);
             recvdteLabel.Name = "recvdteLabel";
             recvdteLabel.Size = new System.Drawing.Size(95, 13);
             recvdteLabel.TabIndex = 59;
@@ -662,7 +672,7 @@
             // 
             duedateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             duedateLabel.AutoSize = true;
-            duedateLabel.Location = new System.Drawing.Point(755, 39);
+            duedateLabel.Location = new System.Drawing.Point(778, 32);
             duedateLabel.Name = "duedateLabel";
             duedateLabel.Size = new System.Drawing.Size(61, 13);
             duedateLabel.TabIndex = 60;
@@ -672,7 +682,7 @@
             // 
             booktypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             booktypeLabel.AutoSize = true;
-            booktypeLabel.Location = new System.Drawing.Point(1038, 13);
+            booktypeLabel.Location = new System.Drawing.Point(931, 6);
             booktypeLabel.Name = "booktypeLabel";
             booktypeLabel.Size = new System.Drawing.Size(68, 13);
             booktypeLabel.TabIndex = 61;
@@ -736,7 +746,7 @@
             // 
             initialLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             initialLabel.AutoSize = true;
-            initialLabel.Location = new System.Drawing.Point(1117, 5);
+            initialLabel.Location = new System.Drawing.Point(1000, 5);
             initialLabel.Name = "initialLabel";
             initialLabel.Size = new System.Drawing.Size(44, 13);
             initialLabel.TabIndex = 101;
@@ -782,7 +792,7 @@
             // 
             specinstLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             specinstLabel.AutoSize = true;
-            specinstLabel.Location = new System.Drawing.Point(1644, 278);
+            specinstLabel.Location = new System.Drawing.Point(1527, 278);
             specinstLabel.Name = "specinstLabel";
             specinstLabel.Size = new System.Drawing.Size(119, 13);
             specinstLabel.TabIndex = 145;
@@ -882,21 +892,20 @@
             // 
             label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label34.AutoSize = true;
-            label34.Location = new System.Drawing.Point(582, 278);
+            label34.Location = new System.Drawing.Point(535, 278);
             label34.Name = "label34";
             label34.Size = new System.Drawing.Size(119, 13);
             label34.TabIndex = 148;
             label34.Text = "Special Instructions";
             // 
-            // endsheetBindingSource
+            // label35
             // 
-            this.endsheetBindingSource.DataMember = "endsheet";
-            this.endsheetBindingSource.DataSource = this.dsEndSheet;
-            // 
-            // dsEndSheet
-            // 
-            this.dsEndSheet.DataSetName = "dsEndSheet";
-            this.dsEndSheet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            label35.AutoSize = true;
+            label35.Location = new System.Drawing.Point(19, 58);
+            label35.Name = "label35";
+            label35.Size = new System.Drawing.Size(64, 13);
+            label35.TabIndex = 147;
+            label35.Text = "Sheet No.";
             // 
             // tbEndSheets
             // 
@@ -911,7 +920,7 @@
             this.tbEndSheets.Location = new System.Drawing.Point(0, 0);
             this.tbEndSheets.Name = "tbEndSheets";
             this.tbEndSheets.SelectedIndex = 0;
-            this.tbEndSheets.Size = new System.Drawing.Size(1230, 763);
+            this.tbEndSheets.Size = new System.Drawing.Size(1113, 740);
             this.tbEndSheets.TabIndex = 0;
             this.tbEndSheets.Visible = false;
             this.tbEndSheets.Deselecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tbEndSheets_Deselecting);
@@ -920,11 +929,10 @@
             // 
             this.pgEndSheets.AutoScroll = true;
             this.pgEndSheets.BackColor = System.Drawing.SystemColors.Control;
-            this.pgEndSheets.Controls.Add(this.btnsheetSrch);
-            this.pgEndSheets.Controls.Add(this.txtsheetSrch);
+            this.pgEndSheets.Controls.Add(label35);
+            this.pgEndSheets.Controls.Add(this.laminatedTextBox);
+            this.pgEndSheets.Controls.Add(this.bindingNavigator1);
             this.pgEndSheets.Controls.Add(this.reprntdteDateTimePicker);
-            this.pgEndSheets.Controls.Add(this.btnInvoiceSrch);
-            this.pgEndSheets.Controls.Add(this.txtInvoiceNoSrch);
             this.pgEndSheets.Controls.Add(this.endsheetdetailDataGridView);
             this.pgEndSheets.Controls.Add(reasonLabel);
             this.pgEndSheets.Controls.Add(this.reasonTextBox);
@@ -952,7 +960,6 @@
             this.pgEndSheets.Controls.Add(this.prtvendTextBox);
             this.pgEndSheets.Controls.Add(this.diecutCheckBox);
             this.pgEndSheets.Controls.Add(this.othrCheckBox);
-            this.pgEndSheets.Controls.Add(this.laminatedCheckBox);
             this.pgEndSheets.Controls.Add(this.label11);
             this.pgEndSheets.Controls.Add(this.label12);
             this.pgEndSheets.Controls.Add(this.label13);
@@ -963,7 +970,6 @@
             this.pgEndSheets.Controls.Add(this.label7);
             this.pgEndSheets.Controls.Add(this.groupBox2);
             this.pgEndSheets.Controls.Add(this.groupBox1);
-            this.pgEndSheets.Controls.Add(this.button1);
             this.pgEndSheets.Controls.Add(this.invnoLabel2);
             this.pgEndSheets.Controls.Add(this.prodnoLabel2);
             this.pgEndSheets.Controls.Add(this.specinstTextBox);
@@ -1002,25 +1008,154 @@
             this.pgEndSheets.Location = new System.Drawing.Point(4, 22);
             this.pgEndSheets.Name = "pgEndSheets";
             this.pgEndSheets.Padding = new System.Windows.Forms.Padding(3);
-            this.pgEndSheets.Size = new System.Drawing.Size(1222, 737);
+            this.pgEndSheets.Size = new System.Drawing.Size(1105, 714);
             this.pgEndSheets.TabIndex = 0;
             this.pgEndSheets.Text = "End Sheet";
             // 
-            // btnsheetSrch
+            // laminatedTextBox
             // 
-            this.btnsheetSrch.Location = new System.Drawing.Point(1046, 34);
-            this.btnsheetSrch.Name = "btnsheetSrch";
-            this.btnsheetSrch.Size = new System.Drawing.Size(60, 23);
-            this.btnsheetSrch.TabIndex = 144;
-            this.btnsheetSrch.Text = "Sheet #";
-            this.btnsheetSrch.UseVisualStyleBackColor = true;
+            this.laminatedTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.laminatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "laminated", true));
+            this.laminatedTextBox.Location = new System.Drawing.Point(60, 361);
+            this.laminatedTextBox.MaxLength = 1;
+            this.laminatedTextBox.Name = "laminatedTextBox";
+            this.laminatedTextBox.Size = new System.Drawing.Size(22, 20);
+            this.laminatedTextBox.TabIndex = 146;
             // 
-            // txtsheetSrch
+            // produtnBindingSource
             // 
-            this.txtsheetSrch.Location = new System.Drawing.Point(1111, 34);
-            this.txtsheetSrch.Name = "txtsheetSrch";
-            this.txtsheetSrch.Size = new System.Drawing.Size(67, 20);
-            this.txtsheetSrch.TabIndex = 143;
+            this.produtnBindingSource.DataMember = "produtn";
+            this.produtnBindingSource.DataSource = this.dsEndSheet;
+            // 
+            // dsEndSheet
+            // 
+            this.dsEndSheet.DataSetName = "dsEndSheet";
+            this.dsEndSheet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bindingNavigator1
+            // 
+            this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigator1.BindingSource = this.quotesBindingSource;
+            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem});
+            this.bindingNavigator1.Location = new System.Drawing.Point(3, 728);
+            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
+            this.bindingNavigator1.Size = new System.Drawing.Size(1192, 25);
+            this.bindingNavigator1.TabIndex = 145;
+            this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "cust_quotes";
+            this.quotesBindingSource.DataSource = this.custBindingSource;
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsEndSheet;
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // reprntdteDateTimePicker
             // 
@@ -1033,23 +1168,10 @@
             this.reprntdteDateTimePicker.TabIndex = 140;
             this.reprntdteDateTimePicker.ValueChanged += new System.EventHandler(this.reprntdteDateTimePicker_ValueChanged);
             // 
-            // btnInvoiceSrch
+            // endsheetBindingSource
             // 
-            this.btnInvoiceSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoiceSrch.Location = new System.Drawing.Point(997, 10);
-            this.btnInvoiceSrch.Name = "btnInvoiceSrch";
-            this.btnInvoiceSrch.Size = new System.Drawing.Size(109, 23);
-            this.btnInvoiceSrch.TabIndex = 139;
-            this.btnInvoiceSrch.Text = "Search Invoice#";
-            this.btnInvoiceSrch.UseVisualStyleBackColor = true;
-            this.btnInvoiceSrch.Click += new System.EventHandler(this.btnInvoiceSrch_Click);
-            // 
-            // txtInvoiceNoSrch
-            // 
-            this.txtInvoiceNoSrch.Location = new System.Drawing.Point(1111, 10);
-            this.txtInvoiceNoSrch.Name = "txtInvoiceNoSrch";
-            this.txtInvoiceNoSrch.Size = new System.Drawing.Size(105, 20);
-            this.txtInvoiceNoSrch.TabIndex = 138;
+            this.endsheetBindingSource.DataMember = "endsheet";
+            this.endsheetBindingSource.DataSource = this.dsEndSheet;
             // 
             // endsheetdetailDataGridView
             // 
@@ -1152,7 +1274,7 @@
             // 
             // reprnacpCheckBox
             // 
-            this.reprnacpCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.endsheetBindingSource, "reprnacp", true));
+            this.reprnacpCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.endsheetBindingSource, "reprnacp", true));
             this.reprnacpCheckBox.Location = new System.Drawing.Point(929, 360);
             this.reprnacpCheckBox.Name = "reprnacpCheckBox";
             this.reprnacpCheckBox.Size = new System.Drawing.Size(126, 24);
@@ -1162,7 +1284,7 @@
             // 
             // acceptdCheckBox
             // 
-            this.acceptdCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.endsheetBindingSource, "acceptd", true));
+            this.acceptdCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.endsheetBindingSource, "acceptd", true));
             this.acceptdCheckBox.Location = new System.Drawing.Point(929, 339);
             this.acceptdCheckBox.Name = "acceptdCheckBox";
             this.acceptdCheckBox.Size = new System.Drawing.Size(104, 24);
@@ -1324,35 +1446,21 @@
             // 
             // diecutCheckBox
             // 
-            this.diecutCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "diecut", true));
+            this.diecutCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "diecut", true));
             this.diecutCheckBox.Location = new System.Drawing.Point(63, 384);
             this.diecutCheckBox.Name = "diecutCheckBox";
             this.diecutCheckBox.Size = new System.Drawing.Size(17, 15);
             this.diecutCheckBox.TabIndex = 70;
             this.diecutCheckBox.UseVisualStyleBackColor = true;
             // 
-            // produtnBindingSource
-            // 
-            this.produtnBindingSource.DataMember = "produtn";
-            this.produtnBindingSource.DataSource = this.dsEndSheet;
-            // 
             // othrCheckBox
             // 
-            this.othrCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.endsheetBindingSource, "othr", true));
+            this.othrCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.endsheetBindingSource, "othr", true));
             this.othrCheckBox.Location = new System.Drawing.Point(63, 408);
             this.othrCheckBox.Name = "othrCheckBox";
             this.othrCheckBox.Size = new System.Drawing.Size(17, 13);
             this.othrCheckBox.TabIndex = 69;
             this.othrCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // laminatedCheckBox
-            // 
-            this.laminatedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "laminated", true));
-            this.laminatedCheckBox.Location = new System.Drawing.Point(63, 361);
-            this.laminatedCheckBox.Name = "laminatedCheckBox";
-            this.laminatedCheckBox.Size = new System.Drawing.Size(17, 19);
-            this.laminatedCheckBox.TabIndex = 68;
-            this.laminatedCheckBox.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -1524,38 +1632,19 @@
             this.brdescTextBox.Size = new System.Drawing.Size(307, 20);
             this.brdescTextBox.TabIndex = 50;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(21, 56);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 23);
-            this.button1.TabIndex = 57;
-            this.button1.Text = "Sheet #";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // invnoLabel2
             // 
-            this.invnoLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "invno", true));
-            this.invnoLabel2.Location = new System.Drawing.Point(486, 7);
+            this.invnoLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "invno", true));
+            this.invnoLabel2.Location = new System.Drawing.Point(214, 3);
             this.invnoLabel2.Name = "invnoLabel2";
             this.invnoLabel2.Size = new System.Drawing.Size(100, 23);
             this.invnoLabel2.TabIndex = 56;
             this.invnoLabel2.Text = "label7";
             // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "cust_quotes";
-            this.quotesBindingSource.DataSource = this.custBindingSource;
-            // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsEndSheet;
-            // 
             // prodnoLabel2
             // 
             this.prodnoLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
-            this.prodnoLabel2.Location = new System.Drawing.Point(332, 7);
+            this.prodnoLabel2.Location = new System.Drawing.Point(60, 3);
             this.prodnoLabel2.Name = "prodnoLabel2";
             this.prodnoLabel2.Size = new System.Drawing.Size(84, 23);
             this.prodnoLabel2.TabIndex = 55;
@@ -1580,7 +1669,7 @@
             // 
             // prntsmpCheckBox
             // 
-            this.prntsmpCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.endsheetBindingSource, "prntsmp", true));
+            this.prntsmpCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.endsheetBindingSource, "prntsmp", true));
             this.prntsmpCheckBox.Location = new System.Drawing.Point(467, 56);
             this.prntsmpCheckBox.Name = "prntsmpCheckBox";
             this.prntsmpCheckBox.Size = new System.Drawing.Size(107, 24);
@@ -1657,6 +1746,7 @@
             // 
             this.clr6TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr6", true));
             this.clr6TextBox.Location = new System.Drawing.Point(384, 31);
+            this.clr6TextBox.MaxLength = 15;
             this.clr6TextBox.Name = "clr6TextBox";
             this.clr6TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr6TextBox.TabIndex = 19;
@@ -1665,6 +1755,7 @@
             // 
             this.clr5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr5", true));
             this.clr5TextBox.Location = new System.Drawing.Point(317, 31);
+            this.clr5TextBox.MaxLength = 15;
             this.clr5TextBox.Name = "clr5TextBox";
             this.clr5TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr5TextBox.TabIndex = 17;
@@ -1673,6 +1764,7 @@
             // 
             this.clr4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr4", true));
             this.clr4TextBox.Location = new System.Drawing.Point(249, 31);
+            this.clr4TextBox.MaxLength = 15;
             this.clr4TextBox.Name = "clr4TextBox";
             this.clr4TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr4TextBox.TabIndex = 15;
@@ -1681,6 +1773,7 @@
             // 
             this.clr3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr3", true));
             this.clr3TextBox.Location = new System.Drawing.Point(180, 31);
+            this.clr3TextBox.MaxLength = 15;
             this.clr3TextBox.Name = "clr3TextBox";
             this.clr3TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr3TextBox.TabIndex = 13;
@@ -1689,6 +1782,7 @@
             // 
             this.clr2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr2", true));
             this.clr2TextBox.Location = new System.Drawing.Point(108, 31);
+            this.clr2TextBox.MaxLength = 15;
             this.clr2TextBox.Name = "clr2TextBox";
             this.clr2TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr2TextBox.TabIndex = 11;
@@ -1697,6 +1791,7 @@
             // 
             this.clr1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.endsheetBindingSource, "clr1", true));
             this.clr1TextBox.Location = new System.Drawing.Point(33, 31);
+            this.clr1TextBox.MaxLength = 15;
             this.clr1TextBox.Name = "clr1TextBox";
             this.clr1TextBox.Size = new System.Drawing.Size(45, 20);
             this.clr1TextBox.TabIndex = 9;
@@ -1750,8 +1845,6 @@
             this.Supplement.Controls.Add(this.label19);
             this.Supplement.Controls.Add(this.label18);
             this.Supplement.Controls.Add(this.label17);
-            this.Supplement.Controls.Add(this.supnoTextBox);
-            this.Supplement.Controls.Add(this.button2);
             this.Supplement.Controls.Add(booktypeLabel);
             this.Supplement.Controls.Add(this.booktypeLabel1);
             this.Supplement.Controls.Add(duedateLabel);
@@ -1768,20 +1861,20 @@
             this.Supplement.Location = new System.Drawing.Point(4, 22);
             this.Supplement.Name = "Supplement";
             this.Supplement.Padding = new System.Windows.Forms.Padding(3);
-            this.Supplement.Size = new System.Drawing.Size(1222, 737);
+            this.Supplement.Size = new System.Drawing.Size(1105, 714);
             this.Supplement.TabIndex = 1;
             this.Supplement.Text = "Supplement";
             // 
             // txtsupllSrch
             // 
-            this.txtsupllSrch.Location = new System.Drawing.Point(1127, 42);
+            this.txtsupllSrch.Location = new System.Drawing.Point(148, 72);
             this.txtsupllSrch.Name = "txtsupllSrch";
             this.txtsupllSrch.Size = new System.Drawing.Size(80, 20);
             this.txtsupllSrch.TabIndex = 100;
             // 
             // btnSupplSrch
             // 
-            this.btnSupplSrch.Location = new System.Drawing.Point(1046, 40);
+            this.btnSupplSrch.Location = new System.Drawing.Point(67, 70);
             this.btnSupplSrch.Name = "btnSupplSrch";
             this.btnSupplSrch.Size = new System.Drawing.Size(75, 23);
             this.btnSupplSrch.TabIndex = 99;
@@ -1848,7 +1941,7 @@
             this.suppdetailDataGridView.Location = new System.Drawing.Point(164, 292);
             this.suppdetailDataGridView.Name = "suppdetailDataGridView";
             this.suppdetailDataGridView.RowHeadersVisible = false;
-            this.suppdetailDataGridView.Size = new System.Drawing.Size(913, 334);
+            this.suppdetailDataGridView.Size = new System.Drawing.Size(796, 334);
             this.suppdetailDataGridView.TabIndex = 92;
             // 
             // dataGridViewTextBoxColumn15
@@ -1949,7 +2042,7 @@
             // 
             this.rmbtotTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rmbtotTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "rmbtot", true));
-            this.rmbtotTextBox.Location = new System.Drawing.Point(802, 199);
+            this.rmbtotTextBox.Location = new System.Drawing.Point(825, 192);
             this.rmbtotTextBox.Name = "rmbtotTextBox";
             this.rmbtotTextBox.Size = new System.Drawing.Size(100, 20);
             this.rmbtotTextBox.TabIndex = 88;
@@ -1960,7 +2053,7 @@
             this.rmbfrmDateTimePicker.CustomFormat = "\'\'";
             this.rmbfrmDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "rmbfrm", true));
             this.rmbfrmDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.rmbfrmDateTimePicker.Location = new System.Drawing.Point(802, 175);
+            this.rmbfrmDateTimePicker.Location = new System.Drawing.Point(825, 168);
             this.rmbfrmDateTimePicker.Name = "rmbfrmDateTimePicker";
             this.rmbfrmDateTimePicker.Size = new System.Drawing.Size(216, 20);
             this.rmbfrmDateTimePicker.TabIndex = 87;
@@ -1971,7 +2064,7 @@
             this.remaketypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.remaketypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "remaketype", true));
             this.remaketypeComboBox.FormattingEnabled = true;
-            this.remaketypeComboBox.Location = new System.Drawing.Point(802, 148);
+            this.remaketypeComboBox.Location = new System.Drawing.Point(825, 141);
             this.remaketypeComboBox.Name = "remaketypeComboBox";
             this.remaketypeComboBox.Size = new System.Drawing.Size(215, 21);
             this.remaketypeComboBox.TabIndex = 86;
@@ -1983,7 +2076,7 @@
             this.rmbtoDateTimePicker.CustomFormat = "\'\'";
             this.rmbtoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "rmbto", true));
             this.rmbtoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.rmbtoDateTimePicker.Location = new System.Drawing.Point(802, 116);
+            this.rmbtoDateTimePicker.Location = new System.Drawing.Point(825, 109);
             this.rmbtoDateTimePicker.Name = "rmbtoDateTimePicker";
             this.rmbtoDateTimePicker.Size = new System.Drawing.Size(216, 20);
             this.rmbtoDateTimePicker.TabIndex = 85;
@@ -1993,7 +2086,7 @@
             // 
             this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(671, 199);
+            this.label27.Location = new System.Drawing.Point(694, 192);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(125, 13);
             this.label27.TabIndex = 84;
@@ -2003,7 +2096,7 @@
             // 
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(680, 175);
+            this.label26.Location = new System.Drawing.Point(703, 168);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(116, 13);
             this.label26.TabIndex = 83;
@@ -2013,7 +2106,7 @@
             // 
             this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(696, 148);
+            this.label25.Location = new System.Drawing.Point(719, 141);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(100, 13);
             this.label25.TabIndex = 82;
@@ -2023,7 +2116,7 @@
             // 
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(692, 116);
+            this.label24.Location = new System.Drawing.Point(715, 109);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(104, 13);
             this.label24.TabIndex = 81;
@@ -2031,7 +2124,7 @@
             // 
             // tape_1CheckBox
             // 
-            this.tape_1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.supplBindingSource, "tape_1", true));
+            this.tape_1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.supplBindingSource, "tape_", true));
             this.tape_1CheckBox.Location = new System.Drawing.Point(125, 171);
             this.tape_1CheckBox.Name = "tape_1CheckBox";
             this.tape_1CheckBox.Size = new System.Drawing.Size(63, 24);
@@ -2170,28 +2263,11 @@
             this.label17.TabIndex = 65;
             this.label17.Text = "Check In/Out";
             // 
-            // supnoTextBox
-            // 
-            this.supnoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "supno", true));
-            this.supnoTextBox.Location = new System.Drawing.Point(100, 65);
-            this.supnoTextBox.Name = "supnoTextBox";
-            this.supnoTextBox.Size = new System.Drawing.Size(80, 20);
-            this.supnoTextBox.TabIndex = 64;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(19, 63);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 63;
-            this.button2.Text = "Suppl #";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // booktypeLabel1
             // 
             this.booktypeLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.booktypeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "booktype", true));
-            this.booktypeLabel1.Location = new System.Drawing.Point(1107, 13);
+            this.booktypeLabel1.Location = new System.Drawing.Point(1000, 6);
             this.booktypeLabel1.Name = "booktypeLabel1";
             this.booktypeLabel1.Size = new System.Drawing.Size(100, 23);
             this.booktypeLabel1.TabIndex = 62;
@@ -2203,7 +2279,7 @@
             this.duedateDateTimePicker.CustomFormat = "\'\'";
             this.duedateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "duedate", true));
             this.duedateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.duedateDateTimePicker.Location = new System.Drawing.Point(821, 39);
+            this.duedateDateTimePicker.Location = new System.Drawing.Point(844, 32);
             this.duedateDateTimePicker.Name = "duedateDateTimePicker";
             this.duedateDateTimePicker.Size = new System.Drawing.Size(212, 20);
             this.duedateDateTimePicker.TabIndex = 61;
@@ -2215,7 +2291,7 @@
             this.recvdteDateTimePicker.CustomFormat = "\'\'";
             this.recvdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.supplBindingSource, "recvdte", true));
             this.recvdteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.recvdteDateTimePicker.Location = new System.Drawing.Point(530, 39);
+            this.recvdteDateTimePicker.Location = new System.Drawing.Point(553, 32);
             this.recvdteDateTimePicker.Name = "recvdteDateTimePicker";
             this.recvdteDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.recvdteDateTimePicker.TabIndex = 60;
@@ -2224,7 +2300,7 @@
             // nocopiesTextBox
             // 
             this.nocopiesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nocopies", true));
-            this.nocopiesTextBox.Location = new System.Drawing.Point(324, 39);
+            this.nocopiesTextBox.Location = new System.Drawing.Point(324, 32);
             this.nocopiesTextBox.Name = "nocopiesTextBox";
             this.nocopiesTextBox.Size = new System.Drawing.Size(100, 20);
             this.nocopiesTextBox.TabIndex = 59;
@@ -2232,7 +2308,7 @@
             // nopagesTextBox1
             // 
             this.nopagesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "nopages", true));
-            this.nopagesTextBox1.Location = new System.Drawing.Point(145, 39);
+            this.nopagesTextBox1.Location = new System.Drawing.Point(145, 32);
             this.nopagesTextBox1.Name = "nopagesTextBox1";
             this.nopagesTextBox1.Size = new System.Drawing.Size(100, 20);
             this.nopagesTextBox1.TabIndex = 58;
@@ -2279,7 +2355,7 @@
             this.PreFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PreFlight.Location = new System.Drawing.Point(4, 22);
             this.PreFlight.Name = "PreFlight";
-            this.PreFlight.Size = new System.Drawing.Size(1222, 737);
+            this.PreFlight.Size = new System.Drawing.Size(1105, 714);
             this.PreFlight.TabIndex = 2;
             this.PreFlight.Text = "PreFlight";
             // 
@@ -2291,7 +2367,7 @@
             this.technoteTextBox.Location = new System.Drawing.Point(190, 457);
             this.technoteTextBox.Multiline = true;
             this.technoteTextBox.Name = "technoteTextBox";
-            this.technoteTextBox.Size = new System.Drawing.Size(667, 57);
+            this.technoteTextBox.Size = new System.Drawing.Size(550, 57);
             this.technoteTextBox.TabIndex = 115;
             // 
             // preflitBindingSource
@@ -2307,7 +2383,7 @@
             this.custquestTextBox.Location = new System.Drawing.Point(190, 343);
             this.custquestTextBox.Multiline = true;
             this.custquestTextBox.Name = "custquestTextBox";
-            this.custquestTextBox.Size = new System.Drawing.Size(667, 93);
+            this.custquestTextBox.Size = new System.Drawing.Size(550, 93);
             this.custquestTextBox.TabIndex = 114;
             // 
             // numsentTextBox
@@ -2403,7 +2479,7 @@
             // 
             this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox8.Controls.Add(this.cvrrecvCheckBox);
-            this.groupBox8.Location = new System.Drawing.Point(431, 232);
+            this.groupBox8.Location = new System.Drawing.Point(314, 232);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(256, 45);
             this.groupBox8.TabIndex = 111;
@@ -2429,7 +2505,7 @@
             this.groupBox7.Controls.Add(this.imgdarkCheckBox);
             this.groupBox7.Controls.Add(this.imglowCheckBox);
             this.groupBox7.Controls.Add(this.img200CheckBox);
-            this.groupBox7.Location = new System.Drawing.Point(628, 122);
+            this.groupBox7.Location = new System.Drawing.Point(511, 122);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(204, 107);
             this.groupBox7.TabIndex = 110;
@@ -2497,7 +2573,7 @@
             this.groupBox6.Controls.Add(this.dcnocutCheckBox);
             this.groupBox6.Controls.Add(this.dcnotsetCheckBox);
             this.groupBox6.Controls.Add(this.dcokCheckBox);
-            this.groupBox6.Location = new System.Drawing.Point(856, 122);
+            this.groupBox6.Location = new System.Drawing.Point(739, 122);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(153, 73);
             this.groupBox6.TabIndex = 109;
@@ -2542,7 +2618,7 @@
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.margfixCheckBox);
             this.groupBox5.Controls.Add(this.margokCheckBox);
-            this.groupBox5.Location = new System.Drawing.Point(459, 122);
+            this.groupBox5.Location = new System.Drawing.Point(342, 122);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(144, 64);
             this.groupBox5.TabIndex = 108;
@@ -2730,7 +2806,7 @@
             // 
             this.initialTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.initialTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.preflitBindingSource, "initial", true));
-            this.initialTextBox.Location = new System.Drawing.Point(1164, 5);
+            this.initialTextBox.Location = new System.Drawing.Point(1047, 5);
             this.initialTextBox.Name = "initialTextBox";
             this.initialTextBox.Size = new System.Drawing.Size(44, 20);
             this.initialTextBox.TabIndex = 102;
@@ -2803,14 +2879,14 @@
             this.Banner.Location = new System.Drawing.Point(4, 22);
             this.Banner.Name = "Banner";
             this.Banner.Padding = new System.Windows.Forms.Padding(3);
-            this.Banner.Size = new System.Drawing.Size(1222, 737);
+            this.Banner.Size = new System.Drawing.Size(1105, 714);
             this.Banner.TabIndex = 3;
             this.Banner.Text = "Banner";
             // 
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(708, 278);
+            this.textBox2.Location = new System.Drawing.Point(661, 278);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(361, 69);
@@ -2819,7 +2895,7 @@
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(2045, 51);
+            this.button5.Location = new System.Drawing.Point(1928, 51);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(180, 23);
             this.button5.TabIndex = 147;
@@ -2829,7 +2905,7 @@
             // specinstTextBox1
             // 
             this.specinstTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.specinstTextBox1.Location = new System.Drawing.Point(1770, 278);
+            this.specinstTextBox1.Location = new System.Drawing.Point(1653, 278);
             this.specinstTextBox1.Multiline = true;
             this.specinstTextBox1.Name = "specinstTextBox1";
             this.specinstTextBox1.Size = new System.Drawing.Size(361, 69);
@@ -2936,7 +3012,7 @@
             // button6
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(1549, 11);
+            this.button6.Location = new System.Drawing.Point(1432, 11);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(71, 23);
             this.button6.TabIndex = 127;
@@ -2946,7 +3022,7 @@
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(1630, 11);
+            this.textBox1.Location = new System.Drawing.Point(1513, 11);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(84, 20);
             this.textBox1.TabIndex = 126;
@@ -3030,28 +3106,36 @@
             // frmEndSheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1234, 764);
+            this.ClientSize = new System.Drawing.Size(1125, 741);
             this.Controls.Add(this.tbEndSheets);
+            this.KeyPreview = true;
+            this.MinimumSize = new System.Drawing.Size(1141, 780);
             this.Name = "frmEndSheet";
             this.Text = "End Sheet/Supplements/Preflight";
+            this.Activated += new System.EventHandler(this.frmEndSheet_Activated);
+            this.Deactivate += new System.EventHandler(this.frmEndSheet_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEndSheet_FormClosing);
             this.Load += new System.EventHandler(this.frmEndSheet_Load);
             this.Shown += new System.EventHandler(this.frmEndSheet_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmEndSheet_Paint);
-            ((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).EndInit();
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmEndSheet_KeyPress);
             this.tbEndSheets.ResumeLayout(false);
             this.pgEndSheets.ResumeLayout(false);
             this.pgEndSheets.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
+            this.bindingNavigator1.ResumeLayout(false);
+            this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             this.Supplement.ResumeLayout(false);
             this.Supplement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).EndInit();
@@ -3124,7 +3208,6 @@
 		private System.Windows.Forms.TextBox bldescTextBox;
 		private System.Windows.Forms.TextBox bkcopiesTextBox;
 		private System.Windows.Forms.TextBox frcopiesTextBox;
-		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Label label11;
@@ -3136,7 +3219,6 @@
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.CheckBox othrCheckBox;
-		private System.Windows.Forms.CheckBox laminatedCheckBox;
 		private System.Windows.Forms.DateTimePicker otdtebkDateTimePicker;
 		private System.Windows.Forms.DateTimePicker otdtesentDateTimePicker;
 		private System.Windows.Forms.DateTimePicker dcdtebkDateTimePicker;
@@ -3167,8 +3249,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-		private System.Windows.Forms.Button btnInvoiceSrch;
-		private System.Windows.Forms.TextBox txtInvoiceNoSrch;
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.BindingSource supplBindingSource;
 		private DataSets.dsEndSheetTableAdapters.supplTableAdapter supplTableAdapter;
@@ -3189,8 +3269,6 @@
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.Label label17;
-		private System.Windows.Forms.TextBox supnoTextBox;
-		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.TextBox rmbtotTextBox;
 		private System.Windows.Forms.DateTimePicker rmbfrmDateTimePicker;
 		private System.Windows.Forms.ComboBox remaketypeComboBox;
@@ -3285,11 +3363,22 @@
 		private System.Windows.Forms.Label label38;
 		private System.Windows.Forms.TextBox txtsupllSrch;
 		private System.Windows.Forms.Button btnSupplSrch;
-		private System.Windows.Forms.Button btnsheetSrch;
-		private System.Windows.Forms.TextBox txtsheetSrch;
 		private System.Windows.Forms.BindingSource bannerBindingSource;
 		private System.Windows.Forms.BindingSource bannerBindingSource1;
 		private DataSets.dsEndSheetTableAdapters.bannerTableAdapter bannerTableAdapter;
 		private System.Windows.Forms.TextBox textBox2;
-	}
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.TextBox laminatedTextBox;
+    }
 }

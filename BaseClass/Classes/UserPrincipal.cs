@@ -13,6 +13,7 @@ namespace BaseClass.Classes
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
+        public string Initials { get; set; }
         public List<string> Roles { get; set; }
         public UserPrincipal(GenericIdentity User,string[] roles):base(User,roles)
         {

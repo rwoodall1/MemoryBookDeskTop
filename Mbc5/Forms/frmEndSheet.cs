@@ -17,11 +17,13 @@ using BindingModels;
 using Exceptionless;
 using Exceptionless.Models;
 using Outlook = Microsoft.Office.Interop.Outlook;
+using BaseClass.Core;
+using BaseClass;
 namespace Mbc5.Forms
 {
 	public partial class frmEndSheet : BaseClass.frmBase, INotifyPropertyChanged
 	{
-		private static string _ConnectionString =  Properties.Settings.Default.Mbc5ConnectionString;
+		
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -47,10 +49,8 @@ namespace Mbc5.Forms
 			{
 				DisableControls(tab);
 			}
-			EnableControls(this.txtInvoiceNoSrch);
-			EnableControls(this.btnInvoiceSrch);
-			EnableControls(this.txtsheetSrch);
-			EnableControls(this.btnsheetSrch);
+			
+		
 		}
 		#region Properties
 		public void InvokePropertyChanged(PropertyChangedEventArgs e)
@@ -60,41 +60,87 @@ namespace Mbc5.Forms
 				handler(this, e);
 		}
 		private UserPrincipal ApplicationUser { get; set; }
-		#endregion
-		private void frmEndSheet_Load(object sender, EventArgs e)
+        private frmMain frmMain { get; set; }
+        #endregion
+        private void SetConnectionString()
+        {
+            frmMain frmMain = (frmMain)this.MdiParent;
+            this.custTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.quotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.bannerTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.produtnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.endsheetdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.endsheetTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.suppdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.preflitTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+        }
+        private void frmEndSheet_Load(object sender, EventArgs e)
 		{
-			Fill();
+            this.frmMain = (frmMain)this.MdiParent;
+
+            this.SetConnectionString();
+            Fill();
 		}
 
 
 		#region Methods
 
-		public override bool Save()
+		public override ApiProcessingResult<bool> Save()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
 			switch (tbEndSheets.SelectedIndex)
 			{
 				case 0:
-					SaveEndSheet();
+                 
+                    var endSheetResult=SaveEndSheet();
+					if (endSheetResult.IsError) {
+						MbcMessageBox.Error(endSheetResult.Errors[0].ErrorMessage, "");
+						processingResult.IsError = true;
+					} else {
+                      
+						MbcMessageBox.Exclamation("End sheet saved.", "Success");
+                       
+					}
 
 					break;
 				case 1:
 					{
-						SaveSupplement();
+						var supplementResult = SaveSupplement();
+						if (supplementResult.IsError) {
+							MbcMessageBox.Error(supplementResult.Errors[0].ErrorMessage, "");
+							processingResult.IsError = true;
+						} else {
+							MbcMessageBox.Exclamation("Supplement saved.", "Success");
+						}
+						
 						break;
 					}
 				case 2:
 					{
-						SavePreFlight();
+						var preFlightResult = SavePreFlight();
+						if (preFlightResult.IsError) {
+							MbcMessageBox.Error(preFlightResult.Errors[0].ErrorMessage, "");
+							processingResult.IsError = true;
+						} else {
+							MbcMessageBox.Exclamation("PreFlight saved.", "Success");
+						}
+						
 						break;
 					}
 				case 3:
 					{
-						SaveBanner();
+						var bannerResult = SaveBanner();
+						if (bannerResult.IsError) {
+							MbcMessageBox.Error(bannerResult.Errors[0].ErrorMessage, "");
+							processingResult.IsError = true;
+						} else {
+							MbcMessageBox.Exclamation("Banner saved.", "Success");
+						}
+					
 						break;
 					}
 			}
-			return retval;
+			return processingResult;
 		}
 		private bool SaveOrStop()
 		{
@@ -102,10 +148,11 @@ namespace Mbc5.Forms
 			switch (tbEndSheets.SelectedIndex)
 			{
 				case 0:
-					if (!SaveEndSheet())
+					var result = SaveEndSheet();
+					if (result.IsError)
 					{
-						var result = MessageBox.Show("End Sheet record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result == DialogResult.No)
+						var dialogResult = MessageBox.Show("End Sheet record could not be saved:"+ result.Errors[0].ErrorMessage+" Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (dialogResult == DialogResult.No)
 						{
 							retval = false;
 
@@ -114,10 +161,11 @@ namespace Mbc5.Forms
 					break;
 
 				case 1:
-					if (!SaveSupplement())
+					var supplementResult = SaveSupplement();
+					if (supplementResult.IsError)
 					{
-						var result = MessageBox.Show("Supplement record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result == DialogResult.No)
+						var dialogResult1 = MessageBox.Show("Supplement record could not be saved:" + supplementResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (dialogResult1 == DialogResult.No)
 						{
 							retval = false;
 						}
@@ -125,10 +173,11 @@ namespace Mbc5.Forms
 					break;
 
 				case 2:
-					if (!SaveBanner())
+					var bannerResult = SaveBanner();
+					if (bannerResult.IsError)
 					{
-						var result = MessageBox.Show("Banner record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result == DialogResult.No)
+						var dialogResult2 = MessageBox.Show("Banner record could not be saved:" + bannerResult.Errors[0].ErrorMessage + " Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+						if (dialogResult2 == DialogResult.No)
 						{
 							retval = false; ;
 						}
@@ -139,9 +188,9 @@ namespace Mbc5.Forms
 			return retval;
 
 		}
-		public bool SaveBanner()
+		public ApiProcessingResult<bool> SaveBanner()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsEndSheet.banner.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -151,24 +200,25 @@ namespace Mbc5.Forms
 						this.bannerBindingSource.EndEdit();
 						var a = bannerTableAdapter.Update(dsEndSheet.banner);
 						//must refill so we get updated time stamp so concurrency is not thrown
-						bannerTableAdapter.Fill(dsEndSheet.banner, Schcode);
-						retval = true;
+						bannerTableAdapter.Fill(dsEndSheet.banner, Invno);
+						
 					}
 					catch (Exception ex)
 					{
-						retval = false;
-						MessageBox.Show("Banner record failed to update:" + ex.Message);
+						
 						ex.ToExceptionless()
 					   .SetMessage("Banner record failed to update:" + ex.Message)
 					   .Submit();
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("Banner record failed to update:" + ex.Message, "Banner record failed to update:" + ex.Message, ""));
 					}
 				}
 			}
-			return retval;
+			return processingResult;
 		}
-		public bool SaveSupplement()
+		public ApiProcessingResult<bool> SaveSupplement()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
 			if (dsEndSheet.suppl.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -176,26 +226,28 @@ namespace Mbc5.Forms
 					try
 					{
 						this.supplBindingSource.EndEdit();
-						var a = endsheetTableAdapter.Update(dsEndSheet.endsheet);
+						var a = supplTableAdapter.Update(dsEndSheet.suppl);
 						//must refill so we get updated time stamp so concurrency is not thrown
-						supplTableAdapter.Fill(dsEndSheet.suppl, Schcode);
-						retval = true;
+						supplTableAdapter.FillByInvno(dsEndSheet.suppl,Invno);
+						
 					}
 					catch (Exception ex)
 					{
-						retval = false;
-						MessageBox.Show("Supplement record failed to update:" + ex.Message);
+						
 						ex.ToExceptionless()
 					   .SetMessage("Supplement record failed to update:" + ex.Message)
 					   .Submit();
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("Supplement record failed to update:" + ex.Message, "Supplement record failed to update:" + ex.Message, ""));
 					}
 				}
 			}
-			return retval;
+			return processingResult;
 		}
-		public bool SaveEndSheet()
+		public ApiProcessingResult<bool> SaveEndSheet()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
+	
 			if (dsEndSheet.endsheet.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -205,24 +257,41 @@ namespace Mbc5.Forms
 						this.endsheetBindingSource.EndEdit();
 						var a = endsheetTableAdapter.Update(dsEndSheet.endsheet);
 						//must refill so we get updated time stamp so concurrency is not thrown
-						endsheetTableAdapter.Fill(dsEndSheet.endsheet, Schcode);
-						retval = true;
-					}
+						
+                        try
+                        {
+                            this.produtnBindingSource.EndEdit();
+                            var b = produtnTableAdapter.Update(dsEndSheet.produtn);
+                            //must refill so we get updated time stamp so concurrency is not thrown
+                            
+                        }catch(Exception ex)
+                        {
+                            ex.ToExceptionless()
+                       .SetMessage("EndSheet record failed to update:" + ex.Message)
+                       .Submit();
+                            processingResult.IsError = true;
+                            processingResult.Errors.Add(new ApiProcessingError("Production record failed to update: " + ex.Message, "Production record failed to update: " + ex.Message, ""));
+                        }
+                        endsheetTableAdapter.Fill(dsEndSheet.endsheet, Invno);
+                        produtnTableAdapter.Fill(dsEndSheet.produtn, Invno);
+                    }
 					catch (Exception ex)
 					{
-						retval = false;
-						MessageBox.Show("Production record failed to update:" + ex.Message);
+								
 						ex.ToExceptionless()
-					   .SetMessage("Production record failed to update:" + ex.Message)
+					   .SetMessage("EndSheet record failed to update:" + ex.Message)
 					   .Submit();
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("EndSheet record failed to update: " + ex.Message,"EndSheet record failed to update: " + ex.Message,""));
 					}
 				}
 			}
-			return retval;
+			return processingResult;
 		}
-		public bool SavePreFlight()
+		public ApiProcessingResult<bool> SavePreFlight()
 		{
-			bool retval = true;
+			var processingResult = new ApiProcessingResult<bool>();
+		
 			if (dsEndSheet.preflit.Count > 0)
 			{
 				if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -233,19 +302,21 @@ namespace Mbc5.Forms
 						var a = preflitTableAdapter.Update(dsEndSheet.preflit);
 						//must refill so we get updated time stamp so concurrency is not thrown
 						preflitTableAdapter.Fill(dsEndSheet.preflit, Schcode);
-						retval = true;
+					
 					}
 					catch (Exception ex)
 					{
-						retval = false;
-						MessageBox.Show("PreFlight record failed to update:" + ex.Message);
+					
+						
 						ex.ToExceptionless()
 					   .SetMessage("PreFlight record failed to update:" + ex.Message)
 					   .Submit();
+						processingResult.IsError = true;
+						processingResult.Errors.Add(new ApiProcessingError("PreFlight record failed to update:" + ex.Message, "PreFlight record failed to update:" + ex.Message, ""));
 					}
 				}
 			}
-			return retval;
+			return processingResult;
 		}
 		public override bool Add()
 		{
@@ -322,114 +393,100 @@ namespace Mbc5.Forms
 		}
 		private void Fill()
 		{
-			if (Schcode != null)
-			{
-				custTableAdapter.Fill(dsEndSheet.cust, Schcode);
-				if (dsEndSheet.cust.Count < 1)
-				{
-					//disable all tabs
-					DisableControls(this.tbEndSheets.TabPages[0]);
-					DisableControls(this.tbEndSheets.TabPages[1]);
-					DisableControls(this.tbEndSheets.TabPages[2]);
-					foreach (TabPage tab in tbEndSheets.TabPages)
-					{
-						DisableControls(tab);
-					}
-					EnableControls(this.txtInvoiceNoSrch);
+            if (Schcode != null)
+            {
+                try
+                {
+                    custTableAdapter.Fill(dsEndSheet.cust, Schcode);
+                    quotesTableAdapter.Fill(dsEndSheet.quotes, Invno);
+                    produtnTableAdapter.Fill(dsEndSheet.produtn, Invno);
+                    endsheetTableAdapter.Fill(dsEndSheet.endsheet, Invno);
+                    supplTableAdapter.FillByInvno(dsEndSheet.suppl, Invno);
 
-					EnableControls(this.btnInvoiceSrch);
-				}
-				quotesTableAdapter.Fill(dsEndSheet.quotes, Schcode);
-				if (dsEndSheet.quotes.Count < 1)
-				{
-					//disable all tabs
-					DisableControls(this.tbEndSheets.TabPages[0]);
-					DisableControls(this.tbEndSheets.TabPages[1]);
-					DisableControls(this.tbEndSheets.TabPages[2]);
-					foreach (TabPage tab in tbEndSheets.TabPages)
-					{
-						DisableControls(tab);
-					}
-					EnableControls(this.txtInvoiceNoSrch);
+                    preflitTableAdapter.FillByInvno(dsEndSheet.preflit, Invno);
+                    bannerTableAdapter.Fill(dsEndSheet.banner, Invno);
 
-					EnableControls(this.btnInvoiceSrch);
-				}
-				produtnTableAdapter.Fill(dsEndSheet.produtn, Schcode);
-				if (dsEndSheet.produtn.Count < 1)
-				{
-					//disable all tabs
-					DisableControls(this.tbEndSheets.TabPages[0]);
-					DisableControls(this.tbEndSheets.TabPages[1]);
-					DisableControls(this.tbEndSheets.TabPages[2]);
-					foreach (TabPage tab in tbEndSheets.TabPages)
-					{
-						DisableControls(tab);
-					}
-					EnableControls(this.txtInvoiceNoSrch);
-
-					EnableControls(this.btnInvoiceSrch);
-				}
-				else { EnableAllControls(this); }
-
-				endsheetTableAdapter.Fill(dsEndSheet.endsheet, Schcode);
-				if (dsEndSheet.endsheet.Count < 1)
-				{
-					DisableControls(this.tbEndSheets.TabPages[0]);
-
-				}
-				else { EnableAllControls(this.tbEndSheets.TabPages[0]); }
-
-				supplTableAdapter.Fill(dsEndSheet.suppl, Schcode);
-				if (dsEndSheet.suppl.Count < 1)
-				{
-					DisableControls(this.tbEndSheets.TabPages[1]);
-				}
-				else { EnableAllControls(this.tbEndSheets.TabPages[1]); }
-
-				preflitTableAdapter.Fill(dsEndSheet.preflit, Schcode);
-				if (dsEndSheet.preflit.Count < 1)
-				{
-					DisableControls(this.tbEndSheets.TabPages[2]);
-				}
-				else { EnableAllControls(this.tbEndSheets.TabPages[2]); }
+                    if (dsEndSheet.cust.Count < 1)
+                    {
+                        //disable all tabs
+                        DisableControls(this.tbEndSheets.TabPages[0]);
+                        DisableControls(this.tbEndSheets.TabPages[1]);
+                        DisableControls(this.tbEndSheets.TabPages[2]);
+                        foreach (TabPage tab in tbEndSheets.TabPages)
+                        {
+                            DisableControls(tab);
+                        }
+                        
+                    }
 
 
-				bannerTableAdapter.Fill(dsEndSheet.banner, Schcode);
-				if (dsEndSheet.banner.Count < 1)
-				{
-					DisableControls(this.tbEndSheets.TabPages[3]);
-				}
-				else { EnableAllControls(this.tbEndSheets.TabPages[3]); }
+                    if (dsEndSheet.quotes.Count < 1)
+                    {
+                        //disable all tabs
+                        DisableControls(this.tbEndSheets.TabPages[0]);
+                        DisableControls(this.tbEndSheets.TabPages[1]);
+                        DisableControls(this.tbEndSheets.TabPages[2]);
+                        foreach (TabPage tab in tbEndSheets.TabPages)
+                        {
+                            DisableControls(tab);
+                        }
+                        
+                    }
 
-			}
+                    if (dsEndSheet.produtn.Count < 1)
+                    {
+                        //disable all tabs
+                        DisableControls(this.tbEndSheets.TabPages[0]);
+                        DisableControls(this.tbEndSheets.TabPages[1]);
+                        DisableControls(this.tbEndSheets.TabPages[2]);
+                        foreach (TabPage tab in tbEndSheets.TabPages)
+                        {
+                            DisableControls(tab);
+                        }
+                        
+                    }
+                    else { EnableAllControls(this); }
+
+
+                    if (dsEndSheet.endsheet.Count < 1)
+                    {
+                        DisableControls(this.tbEndSheets.TabPages[0]);
+
+                    }
+                    else { EnableAllControls(this.tbEndSheets.TabPages[0]); }
+
+
+                    if (dsEndSheet.suppl.Count < 1)
+                    {
+                        DisableControls(this.tbEndSheets.TabPages[1]);
+                    }
+                    else { EnableAllControls(this.tbEndSheets.TabPages[1]); }
+
+
+                    if (dsEndSheet.preflit.Count < 1)
+                    {
+                        DisableControls(this.tbEndSheets.TabPages[2]);
+                    }
+                    else { EnableAllControls(this.tbEndSheets.TabPages[2]); }
 
 
 
+                    if (dsEndSheet.banner.Count < 1)
+                    {
+                        DisableControls(this.tbEndSheets.TabPages[3]);
+                    }
+                    else { EnableAllControls(this.tbEndSheets.TabPages[3]); }
 
 
-			if (Invno != 0)
-			{
-				var pos = endsheetBindingSource.Find("invno", this.Invno);
-				if (pos > -1)
-				{
-					endsheetBindingSource.Position = pos;
-				}
-				else
-				{
-					DialogResult result = MessageBox.Show("End Sheet record was not found. For this invoice number (" + Invno + "), do you want to add one?", "Invoice#", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Stop);
-					if (result == DialogResult.Yes)
-					{
-						if (Add())
-						{
-							Fill();
-						}
-					}
-				}
+                }
+                catch (Exception ex)
+                {
 
+                    MbcMessageBox.Error(ex.Message, "");
 
+                }
 
-			}
-
+            }
 
 		}
 		private void DisableControls(Control con)
@@ -460,38 +517,7 @@ namespace Mbc5.Forms
 
 		#endregion
 
-		private void btnInvoiceSrch_Click(object sender, EventArgs e)
-		{
-			switch (tbEndSheets.SelectedIndex)
-			{
-				case 0:
-					if (!SaveEndSheet())
-					{
-						var result1 = MessageBox.Show("End sheet record could not be saved. Continue search?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-						if (result1 == DialogResult.No)
-						{
-
-							return;
-						}
-					}
-					break;
-
-
-			}
-
-			var sqlQuery = new SQLQuery();
-			string query = "Select invno,schcode from endsheet where invno=@invno";
-			var parameters = new SqlParameter[] { new SqlParameter("@invno", txtInvoiceNoSrch.Text) };
-			var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, query, parameters);
-			if (result.Rows.Count > 0)
-			{
-				Schcode = result.Rows[0]["schcode"].ToString();
-				Invno = int.Parse(result.Rows[0]["invno"].ToString());// will always have a invno
-				Fill();
-			}
-			else { MessageBox.Show("Record was not found.", "Invoice Number Search", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-
-		}
+	
 
 		private void frmEndSheet_Paint(object sender, PaintEventArgs e)
 		{
@@ -504,42 +530,42 @@ namespace Mbc5.Forms
 		#region DateFormat
 		private void predateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			predateDateTimePicker.Format = DateTimePickerFormat.Long;
+			predateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void recvdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			recvdteDateTimePicker.Format = DateTimePickerFormat.Long;
+			recvdteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void duedateDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			duedateDateTimePicker.Format = DateTimePickerFormat.Long;
+			duedateDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void iinDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			iinDateTimePicker.Format = DateTimePickerFormat.Long;
+			iinDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void ioutDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			ioutDateTimePicker.Format = DateTimePickerFormat.Long;
+			ioutDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void binddteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			binddteDateTimePicker.Format = DateTimePickerFormat.Long;
+			binddteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void frmbindDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			frmbindDateTimePicker.Format = DateTimePickerFormat.Long;
+			frmbindDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void rmbtoDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			rmbtoDateTimePicker.Format = DateTimePickerFormat.Long;
+			rmbtoDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void remaketypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -549,77 +575,77 @@ namespace Mbc5.Forms
 
 		private void rmbfrmDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			rmbfrmDateTimePicker.Format = DateTimePickerFormat.Long;
+			rmbfrmDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void csonholdDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			csonholdDateTimePicker.Format = DateTimePickerFormat.Long;
+			csonholdDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void csoffholdDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			csoffholdDateTimePicker.Format = DateTimePickerFormat.Long;
+			csoffholdDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void endstrecvDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			endstrecvDateTimePicker.Format = DateTimePickerFormat.Long;
+			endstrecvDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void prtdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			prtdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+			prtdtesentDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void lamdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			lamdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+			lamdtesentDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void dcdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dcdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+			dcdtesentDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void otdtesentDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			otdtesentDateTimePicker.Format = DateTimePickerFormat.Long;
+			otdtesentDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void prtdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			prtdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+			prtdtebkDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void lamdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			lamdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+			lamdtebkDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void dcdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			dcdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+			dcdtebkDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void otdtebkDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			otdtebkDateTimePicker.Format = DateTimePickerFormat.Long;
+			otdtebkDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void prntsamDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			prntsamDateTimePicker.Format = DateTimePickerFormat.Long;
+			prntsamDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 
 		private void reprntdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			reprntdteDateTimePicker.Format = DateTimePickerFormat.Long;
+			reprntdteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 		private void desorgdteDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			desorgdteDateTimePicker.Format = DateTimePickerFormat.Long;
+			desorgdteDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 
@@ -642,5 +668,256 @@ namespace Mbc5.Forms
         {
             tbEndSheets.Visible = true;
         }
+
+        private void frmEndSheet_Activated(object sender, EventArgs e)
+        {
+            frmMain.ShowSearchButtons(this.Name);
+        }
+
+        private void frmEndSheet_Deactivate(object sender, EventArgs e)
+        {
+            frmMain.HideSearchButtons();
+        }
+        public override void SchCodeSearch()      
+        {
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+            DataRowView currentrow = (DataRowView)custBindingSource.Current;
+            var schcode = currentrow["schcode"].ToString();
+
+            frmSearch frmSearch = new frmSearch("Schcode", "ENDSHEET", schcode);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+
+
+                this.Cursor = Cursors.Default;
+            }
+
+
+
+        }
+        public override void SchnameSearch()
+        {
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+            DataRowView currentrow = (DataRowView)custBindingSource.Current;
+            var schname = currentrow["schname"].ToString();
+
+            frmSearch frmSearch = new frmSearch("Schname", "ENDSHEET", schname);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                    
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+
+                
+                this.Cursor = Cursors.Default;
+            }
+
+
+
+        }
+        public override void OracleCodeSearch()
+        {
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+            DataRowView currentrow = (DataRowView)custBindingSource.Current;
+            var oraclecode = currentrow["oraclecode"].ToString();
+
+            frmSearch frmSearch = new frmSearch("OracleCode", "ENDSHEET", oraclecode);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                   
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+             
+                this.Cursor = Cursors.Default;
+            }
+        }
+        public override void InvoiceNumberSearch()
+        {
+            DataRowView currentrow = (DataRowView)endsheetBindingSource.Current;
+            var invno = currentrow["invno"].ToString();
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+            
+
+            frmSearch frmSearch = new frmSearch("INVNO", "ENDSHEET", invno);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                   
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+               this.Cursor = Cursors.Default;
+            }
+        }
+        public override void JobNoSearch()
+        {
+
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+
+            DataRowView currentrow = (DataRowView)endsheetBindingSource.Current;
+            var invno = currentrow["invno"].ToString();
+
+
+            frmSearch frmSearch = new frmSearch("JOBNO", "ENDSHEET", "");
+
+
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+
+                    this.Fill();
+                  
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                
+                this.Cursor = Cursors.Default;
+            }
+
+
+
+            }
+
+        private void frmEndSheet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //set KeyPriview to True first.
+            if (e.KeyChar == (char)Keys.Enter)
+                e.KeyChar = (char)Keys.Tab;
+            SendKeys.Send(e.KeyChar.ToString());//send the keystroke to the form.
+        }
+
+
+
+
+
+        //nothing below
     }
 }

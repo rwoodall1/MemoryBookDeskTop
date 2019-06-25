@@ -94,10 +94,12 @@
   <ItemGroup>
     <Compile Include="BidInvoice.cs" />
     <Compile Include="CustomerBindingModels.cs" />
-    <Compile Include="InvoiceDetailBindingModel.cs" />
-    <Compile Include="InvoiceDetails.cs" />
+    <Compile Include="Invoice.cs" />
     <Compile Include="MiscBindingModels.cs" />
+    <Compile Include="ProdutnBindingModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchBindingModels.cs" />
+    <Compile Include="WipBindingModels.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

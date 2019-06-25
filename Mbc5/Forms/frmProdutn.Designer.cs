@@ -50,12 +50,9 @@
             System.Windows.Forms.Label diecutLabel2;
             System.Windows.Forms.Label coilclrLabel;
             System.Windows.Forms.Label perfbindLabel;
-            System.Windows.Forms.Label laminatedLabel;
             System.Windows.Forms.Label screcvLabel;
             System.Windows.Forms.Label coverdescLabel;
             System.Windows.Forms.Label covertypeLabel;
-            System.Windows.Forms.Label bknopgsLabel;
-            System.Windows.Forms.Label toprodLabel;
             System.Windows.Forms.Label tovendLabel;
             System.Windows.Forms.Label warndateLabel;
             System.Windows.Forms.Label prshpdteLabel;
@@ -185,31 +182,56 @@
             System.Windows.Forms.Label rmbfrmLabel1;
             System.Windows.Forms.Label rmptotLabel1;
             System.Windows.Forms.Label rmbtotLabel1;
+            System.Windows.Forms.Label invnoLabel7;
+            System.Windows.Forms.Label endstrecvLabel;
+            System.Windows.Forms.Label speccoverLabel;
+            System.Windows.Forms.Label colorsLabel;
+            System.Windows.Forms.Label laminatedLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource13 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource14 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource15 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource16 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsProdutn = new Mbc5.DataSets.dsProdutn();
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.wipBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invoiceCustBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsCust = new Mbc5.DataSets.dsCust();
+            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsInvoice = new Mbc5.DataSets.dsInvoice();
+            this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbProdutn = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
+            this.btnStandarCoverEmail = new System.Windows.Forms.Button();
+            this.btnspCoverEmail = new System.Windows.Forms.Button();
+            this.btnSchoolSearch = new System.Windows.Forms.Button();
+            this.txtSchNamesrch = new System.Windows.Forms.TextBox();
             this.btnInvoiceSrch = new System.Windows.Forms.Button();
-            this.txtInvoiceNoSrch = new System.Windows.Forms.TextBox();
+            this.txtSchCode = new System.Windows.Forms.TextBox();
             this.txtProdNoSrch = new System.Windows.Forms.TextBox();
             this.btnProdSrch = new System.Windows.Forms.Button();
             this.lblShipped = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.modifiedByTextBox = new System.Windows.Forms.TextBox();
-            this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsProdutn = new Mbc5.DataSets.dsProdutn();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.btnMbo = new System.Windows.Forms.Button();
+            this.lblModifiedBy = new System.Windows.Forms.Label();
+            this.txtMbo = new System.Windows.Forms.TextBox();
             this.cominitlTextBox = new System.Windows.Forms.TextBox();
             this.comdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.cstsvcdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.dpCustomerServiceDate = new System.Windows.Forms.DateTimePicker();
             this.btnEmailPw = new System.Windows.Forms.Button();
             this.btnPrntMbOnline = new System.Windows.Forms.Button();
             this.btnUpdateJob = new System.Windows.Forms.Button();
@@ -220,16 +242,16 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.bk10 = new System.Windows.Forms.RadioButton();
+            this.bk12 = new System.Windows.Forms.RadioButton();
+            this.bkAllClr = new System.Windows.Forms.RadioButton();
+            this.ovrRide = new System.Windows.Forms.RadioButton();
+            this.bkMilled = new System.Windows.Forms.RadioButton();
+            this.bkCoil = new System.Windows.Forms.RadioButton();
+            this.bkHard = new System.Windows.Forms.RadioButton();
+            this.bk11 = new System.Windows.Forms.RadioButton();
+            this.bk9 = new System.Windows.Forms.RadioButton();
+            this.bkStd = new System.Windows.Forms.RadioButton();
             this.btnCalCS = new System.Windows.Forms.Button();
             this.txtCalcResult = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -237,22 +259,24 @@
             this.txtWeeks = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.vendcdComboBox1 = new System.Windows.Forms.ComboBox();
+            this.vendorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cmbBindingVendor = new System.Windows.Forms.ComboBox();
             this.btnKitRecv = new System.Windows.Forms.Button();
             this.kitrecvdDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.bknopgsTextBox = new System.Windows.Forms.TextBox();
-            this.toprodDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.bindvendTextBox = new System.Windows.Forms.TextBox();
             this.btnBindVend = new System.Windows.Forms.Button();
             this.btnPrntVendor = new System.Windows.Forms.Button();
-            this.vendcdTextBox = new System.Windows.Forms.TextBox();
             this.tovendDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.warndateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.prshpdteDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.prmsdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.shpdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.coilclrTextBox = new System.Windows.Forms.TextBox();
             this.laminatedTextBox = new System.Windows.Forms.TextBox();
+            this.colorsTextBox = new System.Windows.Forms.TextBox();
+            this.speccoverTextBox = new System.Windows.Forms.TextBox();
+            this.endstrecvDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.coilclrTextBox = new System.Windows.Forms.TextBox();
             this.cpnumTextBox = new System.Windows.Forms.TextBox();
             this.wipgBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cprecvDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -262,11 +286,13 @@
             this.colorpgsCheckBox = new System.Windows.Forms.CheckBox();
             this.txtPerfbind = new System.Windows.Forms.TextBox();
             this.screcvDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.coverdescTextBox = new System.Windows.Forms.TextBox();
-            this.covertypeTextBox = new System.Windows.Forms.TextBox();
+            this.txtCoverDescription = new System.Windows.Forms.TextBox();
+            this.txtCoverType = new System.Windows.Forms.TextBox();
             this.pnl11 = new System.Windows.Forms.Panel();
             this.listrecdCheckBox1 = new System.Windows.Forms.CheckBox();
             this.persnlzCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.photographerPermissionCheckBox = new System.Windows.Forms.CheckBox();
+            this.enhancementsCheckBox = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnDeadLineInfo = new System.Windows.Forms.Button();
             this.booktypeTextBox2 = new System.Windows.Forms.TextBox();
@@ -275,6 +301,10 @@
             this.partbkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.vendcdComboBox = new System.Windows.Forms.ComboBox();
+            this.addItemMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnType = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnCust = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnBackGround = new System.Windows.Forms.ToolStripMenuItem();
             this.lkTypeDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
             this.cstatComboBox = new System.Windows.Forms.ComboBox();
@@ -290,21 +320,17 @@
             this.reccardsentCheckBox = new System.Windows.Forms.CheckBox();
             this.btnRecvLabel = new System.Windows.Forms.Button();
             this.btnRecvHistory = new System.Windows.Forms.Button();
-            this.btnRcvCard = new System.Windows.Forms.Button();
-            this.btnBinderyEmail = new System.Windows.Forms.Button();
-            this.btnEmailProdForm = new System.Windows.Forms.Button();
+            this.btnBkDue = new System.Windows.Forms.Button();
             this.bkmixedCheckBox = new System.Windows.Forms.CheckBox();
-            this.booktypeTextBox = new System.Windows.Forms.TextBox();
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnBookType = new System.Windows.Forms.Button();
+            this.txtBookType = new System.Windows.Forms.TextBox();
             this.allclrckCheckBox = new System.Windows.Forms.CheckBox();
             this.lblcontryear = new System.Windows.Forms.Label();
             this.lblProdNo = new System.Windows.Forms.Label();
             this.lblInvno = new System.Windows.Forms.Label();
             this.txtCompany = new System.Windows.Forms.TextBox();
             this.lblSchoolName = new System.Windows.Forms.Label();
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pg2 = new System.Windows.Forms.TabPage();
+            this.invnoTextBox = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.wipDetailDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -317,7 +343,6 @@
             this.wipDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kitrecvdLabel1 = new System.Windows.Forms.Label();
             this.manovrdeTextBox = new System.Windows.Forms.TextBox();
-            this.wipBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtnoPlates = new System.Windows.Forms.TextBox();
             this.totsigsTextBox = new System.Windows.Forms.TextBox();
             this.wipmemoTextBox = new System.Windows.Forms.TextBox();
@@ -519,8 +544,8 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager();
-            this.produtnTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.produtnTableAdapter();
             this.quotesTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.quotesTableAdapter();
+            this.produtnTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.produtnTableAdapter();
             this.partbkTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.partbkTableAdapter();
             this.ptbkbTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ptbkbTableAdapter();
             this.wipgTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.wipgTableAdapter();
@@ -533,6 +558,14 @@
             this.lkpBackGroundTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpBackGroundTableAdapter();
             this.partBkDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.PartBkDetailTableAdapter();
             this.prtbkbdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.prtbkbdetailTableAdapter();
+            this.invoiceCustTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
+            this.invoiceTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invoiceTableAdapter();
+            this.tableAdapterManager2 = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
+            this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
+            this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
+            this.vendorTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.vendorTableAdapter();
+            this.btnUpdateWip = new System.Windows.Forms.Button();
+            this.label56 = new System.Windows.Forms.Label();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -554,12 +587,9 @@
             diecutLabel2 = new System.Windows.Forms.Label();
             coilclrLabel = new System.Windows.Forms.Label();
             perfbindLabel = new System.Windows.Forms.Label();
-            laminatedLabel = new System.Windows.Forms.Label();
             screcvLabel = new System.Windows.Forms.Label();
             coverdescLabel = new System.Windows.Forms.Label();
             covertypeLabel = new System.Windows.Forms.Label();
-            bknopgsLabel = new System.Windows.Forms.Label();
-            toprodLabel = new System.Windows.Forms.Label();
             tovendLabel = new System.Windows.Forms.Label();
             warndateLabel = new System.Windows.Forms.Label();
             prshpdteLabel = new System.Windows.Forms.Label();
@@ -689,28 +719,41 @@
             rmbfrmLabel1 = new System.Windows.Forms.Label();
             rmptotLabel1 = new System.Windows.Forms.Label();
             rmbtotLabel1 = new System.Windows.Forms.Label();
+            invnoLabel7 = new System.Windows.Forms.Label();
+            endstrecvLabel = new System.Windows.Forms.Label();
+            speccoverLabel = new System.Windows.Forms.Label();
+            colorsLabel = new System.Windows.Forms.Label();
+            laminatedLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             this.tbProdutn.SuspendLayout();
             this.pg1.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wipgBindingSource)).BeginInit();
             this.pnl11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbkbBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partbkBindingSource)).BeginInit();
+            this.addItemMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkTypeDataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpBackGroundBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             this.pg2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).BeginInit();
             this.pg3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverdetailDataGridView)).BeginInit();
@@ -859,7 +902,7 @@
             // 
             lblfoilclr.AutoSize = true;
             lblfoilclr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            lblfoilclr.Location = new System.Drawing.Point(88, 375);
+            lblfoilclr.Location = new System.Drawing.Point(89, 328);
             lblfoilclr.Name = "lblfoilclr";
             lblfoilclr.Size = new System.Drawing.Size(36, 13);
             lblfoilclr.TabIndex = 62;
@@ -869,7 +912,7 @@
             // 
             ptbrcvdLabel.AutoSize = true;
             ptbrcvdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ptbrcvdLabel.Location = new System.Drawing.Point(-3, 292);
+            ptbrcvdLabel.Location = new System.Drawing.Point(4, 325);
             ptbrcvdLabel.Name = "ptbrcvdLabel";
             ptbrcvdLabel.Size = new System.Drawing.Size(169, 13);
             ptbrcvdLabel.TabIndex = 126;
@@ -879,7 +922,7 @@
             // 
             ptnopgsLabel.AutoSize = true;
             ptnopgsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ptnopgsLabel.Location = new System.Drawing.Point(38, 270);
+            ptnopgsLabel.Location = new System.Drawing.Point(44, 303);
             ptnopgsLabel.Name = "ptnopgsLabel";
             ptnopgsLabel.Size = new System.Drawing.Size(129, 13);
             ptnopgsLabel.TabIndex = 124;
@@ -889,7 +932,7 @@
             // 
             ptrecvdLabel.AutoSize = true;
             ptrecvdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ptrecvdLabel.Location = new System.Drawing.Point(21, 244);
+            ptrecvdLabel.Location = new System.Drawing.Point(26, 277);
             ptrecvdLabel.Name = "ptrecvdLabel";
             ptrecvdLabel.Size = new System.Drawing.Size(147, 13);
             ptrecvdLabel.TabIndex = 122;
@@ -899,7 +942,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.Location = new System.Drawing.Point(43, 216);
+            label3.Location = new System.Drawing.Point(46, 249);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(127, 13);
             label3.TabIndex = 121;
@@ -909,7 +952,7 @@
             // 
             diecutLabel2.AutoSize = true;
             diecutLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            diecutLabel2.Location = new System.Drawing.Point(78, 193);
+            diecutLabel2.Location = new System.Drawing.Point(92, 226);
             diecutLabel2.Name = "diecutLabel2";
             diecutLabel2.Size = new System.Drawing.Size(81, 13);
             diecutLabel2.TabIndex = 120;
@@ -919,7 +962,7 @@
             // 
             coilclrLabel.AutoSize = true;
             coilclrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            coilclrLabel.Location = new System.Drawing.Point(94, 148);
+            coilclrLabel.Location = new System.Drawing.Point(112, 181);
             coilclrLabel.Name = "coilclrLabel";
             coilclrLabel.Size = new System.Drawing.Size(61, 13);
             coilclrLabel.TabIndex = 117;
@@ -929,27 +972,17 @@
             // 
             perfbindLabel.AutoSize = true;
             perfbindLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            perfbindLabel.Location = new System.Drawing.Point(37, 126);
+            perfbindLabel.Location = new System.Drawing.Point(45, 159);
             perfbindLabel.Name = "perfbindLabel";
             perfbindLabel.Size = new System.Drawing.Size(128, 13);
             perfbindLabel.TabIndex = 115;
             perfbindLabel.Text = "Binding(C,H,K,P,S,M)";
             // 
-            // laminatedLabel
-            // 
-            laminatedLabel.AutoSize = true;
-            laminatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            laminatedLabel.Location = new System.Drawing.Point(89, 108);
-            laminatedLabel.Name = "laminatedLabel";
-            laminatedLabel.Size = new System.Drawing.Size(68, 13);
-            laminatedLabel.TabIndex = 113;
-            laminatedLabel.Text = "Lamination";
-            // 
             // screcvLabel
             // 
             screcvLabel.AutoSize = true;
             screcvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            screcvLabel.Location = new System.Drawing.Point(49, 61);
+            screcvLabel.Location = new System.Drawing.Point(60, 61);
             screcvLabel.Name = "screcvLabel";
             screcvLabel.Size = new System.Drawing.Size(113, 13);
             screcvLabel.TabIndex = 103;
@@ -959,7 +992,7 @@
             // 
             coverdescLabel.AutoSize = true;
             coverdescLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            coverdescLabel.Location = new System.Drawing.Point(54, 37);
+            coverdescLabel.Location = new System.Drawing.Point(65, 37);
             coverdescLabel.Name = "coverdescLabel";
             coverdescLabel.Size = new System.Drawing.Size(108, 13);
             coverdescLabel.TabIndex = 101;
@@ -969,37 +1002,17 @@
             // 
             covertypeLabel.AutoSize = true;
             covertypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            covertypeLabel.Location = new System.Drawing.Point(83, 15);
+            covertypeLabel.Location = new System.Drawing.Point(101, 15);
             covertypeLabel.Name = "covertypeLabel";
             covertypeLabel.Size = new System.Drawing.Size(72, 13);
             covertypeLabel.TabIndex = 99;
             covertypeLabel.Text = "Cover Type";
             // 
-            // bknopgsLabel
-            // 
-            bknopgsLabel.AutoSize = true;
-            bknopgsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            bknopgsLabel.Location = new System.Drawing.Point(6, 46);
-            bknopgsLabel.Name = "bknopgsLabel";
-            bknopgsLabel.Size = new System.Drawing.Size(111, 13);
-            bknopgsLabel.TabIndex = 92;
-            bknopgsLabel.Text = "Bk# of Pgs Recvd";
-            // 
-            // toprodLabel
-            // 
-            toprodLabel.AutoSize = true;
-            toprodLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            toprodLabel.Location = new System.Drawing.Point(27, 69);
-            toprodLabel.Name = "toprodLabel";
-            toprodLabel.Size = new System.Drawing.Size(87, 13);
-            toprodLabel.TabIndex = 94;
-            toprodLabel.Text = "To Production";
-            // 
             // tovendLabel
             // 
             tovendLabel.AutoSize = true;
             tovendLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tovendLabel.Location = new System.Drawing.Point(18, 161);
+            tovendLabel.Location = new System.Drawing.Point(16, 109);
             tovendLabel.Name = "tovendLabel";
             tovendLabel.Size = new System.Drawing.Size(97, 13);
             tovendLabel.TabIndex = 99;
@@ -1009,7 +1022,7 @@
             // 
             warndateLabel.AutoSize = true;
             warndateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            warndateLabel.Location = new System.Drawing.Point(42, 186);
+            warndateLabel.Location = new System.Drawing.Point(40, 134);
             warndateLabel.Name = "warndateLabel";
             warndateLabel.Size = new System.Drawing.Size(68, 13);
             warndateLabel.TabIndex = 102;
@@ -1019,7 +1032,7 @@
             // 
             prshpdteLabel.AutoSize = true;
             prshpdteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            prshpdteLabel.Location = new System.Drawing.Point(26, 219);
+            prshpdteLabel.Location = new System.Drawing.Point(24, 167);
             prshpdteLabel.Name = "prshpdteLabel";
             prshpdteLabel.Size = new System.Drawing.Size(89, 13);
             prshpdteLabel.TabIndex = 104;
@@ -1029,7 +1042,7 @@
             // 
             prmsdateLabel.AutoSize = true;
             prmsdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            prmsdateLabel.Location = new System.Drawing.Point(31, 244);
+            prmsdateLabel.Location = new System.Drawing.Point(29, 192);
             prmsdateLabel.Name = "prmsdateLabel";
             prmsdateLabel.Size = new System.Drawing.Size(82, 13);
             prmsdateLabel.TabIndex = 106;
@@ -1039,7 +1052,7 @@
             // 
             shpdateLabel.AutoSize = true;
             shpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            shpdateLabel.Location = new System.Drawing.Point(47, 271);
+            shpdateLabel.Location = new System.Drawing.Point(45, 219);
             shpdateLabel.Name = "shpdateLabel";
             shpdateLabel.Size = new System.Drawing.Size(63, 13);
             shpdateLabel.TabIndex = 108;
@@ -1238,6 +1251,7 @@
             label5.Size = new System.Drawing.Size(82, 13);
             label5.TabIndex = 106;
             label5.Text = "Planner Type";
+            label5.Visible = false;
             // 
             // iinLabel
             // 
@@ -2283,6 +2297,111 @@
             rmbtotLabel1.TabIndex = 161;
             rmbtotLabel1.Text = "Total Book Remakes:";
             // 
+            // invnoLabel7
+            // 
+            invnoLabel7.AutoSize = true;
+            invnoLabel7.Location = new System.Drawing.Point(566, 15);
+            invnoLabel7.Name = "invnoLabel7";
+            invnoLabel7.Size = new System.Drawing.Size(42, 13);
+            invnoLabel7.TabIndex = 132;
+            invnoLabel7.Text = "invno:";
+            // 
+            // endstrecvLabel
+            // 
+            endstrecvLabel.AutoSize = true;
+            endstrecvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            endstrecvLabel.Location = new System.Drawing.Point(38, 351);
+            endstrecvLabel.Name = "endstrecvLabel";
+            endstrecvLabel.Size = new System.Drawing.Size(135, 13);
+            endstrecvLabel.TabIndex = 132;
+            endstrecvLabel.Text = "End Sheet Recv Date:";
+            // 
+            // speccoverLabel
+            // 
+            speccoverLabel.AutoSize = true;
+            speccoverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            speccoverLabel.Location = new System.Drawing.Point(125, 85);
+            speccoverLabel.Name = "speccoverLabel";
+            speccoverLabel.Size = new System.Drawing.Size(48, 13);
+            speccoverLabel.TabIndex = 133;
+            speccoverLabel.Text = "Cover#";
+            // 
+            // colorsLabel
+            // 
+            colorsLabel.AutoSize = true;
+            colorsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            colorsLabel.Location = new System.Drawing.Point(104, 108);
+            colorsLabel.Name = "colorsLabel";
+            colorsLabel.Size = new System.Drawing.Size(69, 13);
+            colorsLabel.TabIndex = 134;
+            colorsLabel.Text = "# of Colors";
+            // 
+            // laminatedLabel
+            // 
+            laminatedLabel.AutoSize = true;
+            laminatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            laminatedLabel.Location = new System.Drawing.Point(115, 133);
+            laminatedLabel.Name = "laminatedLabel";
+            laminatedLabel.Size = new System.Drawing.Size(58, 13);
+            laminatedLabel.TabIndex = 139;
+            laminatedLabel.Text = "Laminate";
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsProdutn;
+            // 
+            // dsProdutn
+            // 
+            this.dsProdutn.DataSetName = "dsProdutn";
+            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsProdutn;
+            // 
+            // produtnBindingSource
+            // 
+            this.produtnBindingSource.DataMember = "produtn";
+            this.produtnBindingSource.DataSource = this.dsProdutn;
+            // 
+            // wipBindingSource
+            // 
+            this.wipBindingSource.DataMember = "wip";
+            this.wipBindingSource.DataSource = this.dsProdutn;
+            // 
+            // invoiceCustBindingSource
+            // 
+            this.invoiceCustBindingSource.DataMember = "cust";
+            this.invoiceCustBindingSource.DataSource = this.dsCust;
+            // 
+            // dsCust
+            // 
+            this.dsCust.DataSetName = "dsCust";
+            this.dsCust.EnforceConstraints = false;
+            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invoiceBindingSource
+            // 
+            this.invoiceBindingSource.DataMember = "invoice";
+            this.invoiceBindingSource.DataSource = this.dsInvoice;
+            // 
+            // dsInvoice
+            // 
+            this.dsInvoice.DataSetName = "dsInvoice";
+            this.dsInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invdetailBindingSource
+            // 
+            this.invdetailBindingSource.DataMember = "invdetail";
+            this.invdetailBindingSource.DataSource = this.dsInvoice;
+            // 
+            // paymntBindingSource
+            // 
+            this.paymntBindingSource.DataMember = "paymnt";
+            this.paymntBindingSource.DataSource = this.dsInvoice;
+            // 
             // tbProdutn
             // 
             this.tbProdutn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2307,8 +2426,13 @@
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.label56);
+            this.pg1.Controls.Add(this.btnStandarCoverEmail);
+            this.pg1.Controls.Add(this.btnspCoverEmail);
+            this.pg1.Controls.Add(this.btnSchoolSearch);
+            this.pg1.Controls.Add(this.txtSchNamesrch);
             this.pg1.Controls.Add(this.btnInvoiceSrch);
-            this.pg1.Controls.Add(this.txtInvoiceNoSrch);
+            this.pg1.Controls.Add(this.txtSchCode);
             this.pg1.Controls.Add(this.txtProdNoSrch);
             this.pg1.Controls.Add(this.btnProdSrch);
             this.pg1.Controls.Add(this.lblShipped);
@@ -2320,12 +2444,9 @@
             this.pg1.Controls.Add(this.reccardsentCheckBox);
             this.pg1.Controls.Add(this.btnRecvLabel);
             this.pg1.Controls.Add(this.btnRecvHistory);
-            this.pg1.Controls.Add(this.btnRcvCard);
-            this.pg1.Controls.Add(this.btnBinderyEmail);
-            this.pg1.Controls.Add(this.btnEmailProdForm);
+            this.pg1.Controls.Add(this.btnBkDue);
             this.pg1.Controls.Add(this.bkmixedCheckBox);
-            this.pg1.Controls.Add(this.booktypeTextBox);
-            this.pg1.Controls.Add(this.btnBookType);
+            this.pg1.Controls.Add(this.txtBookType);
             this.pg1.Controls.Add(this.allclrckCheckBox);
             this.pg1.Controls.Add(contryearLabel);
             this.pg1.Controls.Add(this.lblcontryear);
@@ -2343,31 +2464,83 @@
             this.pg1.Size = new System.Drawing.Size(1220, 705);
             this.pg1.TabIndex = 0;
             this.pg1.Text = " Production";
+            this.pg1.Click += new System.EventHandler(this.pg1_Click);
+            // 
+            // btnStandarCoverEmail
+            // 
+            this.btnStandarCoverEmail.AutoSize = true;
+            this.btnStandarCoverEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStandarCoverEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnStandarCoverEmail.Image")));
+            this.btnStandarCoverEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnStandarCoverEmail.Location = new System.Drawing.Point(293, 529);
+            this.btnStandarCoverEmail.Name = "btnStandarCoverEmail";
+            this.btnStandarCoverEmail.Size = new System.Drawing.Size(125, 38);
+            this.btnStandarCoverEmail.TabIndex = 159;
+            this.btnStandarCoverEmail.Text = "Standard Cvr Email";
+            this.btnStandarCoverEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnStandarCoverEmail.UseVisualStyleBackColor = true;
+            this.btnStandarCoverEmail.Click += new System.EventHandler(this.btnStandarCoverEmail_Click);
+            // 
+            // btnspCoverEmail
+            // 
+            this.btnspCoverEmail.AutoSize = true;
+            this.btnspCoverEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnspCoverEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnspCoverEmail.Image")));
+            this.btnspCoverEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnspCoverEmail.Location = new System.Drawing.Point(174, 529);
+            this.btnspCoverEmail.Name = "btnspCoverEmail";
+            this.btnspCoverEmail.Size = new System.Drawing.Size(116, 38);
+            this.btnspCoverEmail.TabIndex = 158;
+            this.btnspCoverEmail.Text = "Special Cvr Email";
+            this.btnspCoverEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnspCoverEmail.UseVisualStyleBackColor = true;
+            this.btnspCoverEmail.Click += new System.EventHandler(this.btnspCoverEmail_Click);
+            // 
+            // btnSchoolSearch
+            // 
+            this.btnSchoolSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchoolSearch.Location = new System.Drawing.Point(778, 7);
+            this.btnSchoolSearch.Name = "btnSchoolSearch";
+            this.btnSchoolSearch.Size = new System.Drawing.Size(106, 23);
+            this.btnSchoolSearch.TabIndex = 138;
+            this.btnSchoolSearch.Text = "School Name";
+            this.btnSchoolSearch.UseVisualStyleBackColor = true;
+            this.btnSchoolSearch.Click += new System.EventHandler(this.btnSchoolSearch_Click);
+            // 
+            // txtSchNamesrch
+            // 
+            this.txtSchNamesrch.Location = new System.Drawing.Point(890, 7);
+            this.txtSchNamesrch.MaxLength = 34;
+            this.txtSchNamesrch.Name = "txtSchNamesrch";
+            this.txtSchNamesrch.Size = new System.Drawing.Size(230, 20);
+            this.txtSchNamesrch.TabIndex = 139;
+            this.txtSchNamesrch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchNamesrch_KeyPress);
             // 
             // btnInvoiceSrch
             // 
             this.btnInvoiceSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInvoiceSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoiceSrch.Location = new System.Drawing.Point(855, 33);
+            this.btnInvoiceSrch.Location = new System.Drawing.Point(761, 31);
             this.btnInvoiceSrch.Name = "btnInvoiceSrch";
             this.btnInvoiceSrch.Size = new System.Drawing.Size(109, 23);
             this.btnInvoiceSrch.TabIndex = 137;
-            this.btnInvoiceSrch.Text = "Search Invoice#";
+            this.btnInvoiceSrch.Text = "School Code";
             this.btnInvoiceSrch.UseVisualStyleBackColor = true;
             this.btnInvoiceSrch.Click += new System.EventHandler(this.btnInvoiceSrch_Click);
             // 
-            // txtInvoiceNoSrch
+            // txtSchCode
             // 
-            this.txtInvoiceNoSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInvoiceNoSrch.Location = new System.Drawing.Point(969, 33);
-            this.txtInvoiceNoSrch.Name = "txtInvoiceNoSrch";
-            this.txtInvoiceNoSrch.Size = new System.Drawing.Size(105, 20);
-            this.txtInvoiceNoSrch.TabIndex = 136;
+            this.txtSchCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSchCode.Location = new System.Drawing.Point(875, 31);
+            this.txtSchCode.Name = "txtSchCode";
+            this.txtSchCode.Size = new System.Drawing.Size(105, 20);
+            this.txtSchCode.TabIndex = 136;
+            this.txtSchCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchCode_KeyPress);
             // 
             // txtProdNoSrch
             // 
             this.txtProdNoSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProdNoSrch.Location = new System.Drawing.Point(969, 10);
+            this.txtProdNoSrch.Location = new System.Drawing.Point(876, 57);
             this.txtProdNoSrch.Name = "txtProdNoSrch";
             this.txtProdNoSrch.Size = new System.Drawing.Size(105, 20);
             this.txtProdNoSrch.TabIndex = 134;
@@ -2376,7 +2549,7 @@
             // 
             this.btnProdSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnProdSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProdSrch.Location = new System.Drawing.Point(855, 10);
+            this.btnProdSrch.Location = new System.Drawing.Point(762, 57);
             this.btnProdSrch.Name = "btnProdSrch";
             this.btnProdSrch.Size = new System.Drawing.Size(109, 23);
             this.btnProdSrch.TabIndex = 133;
@@ -2398,13 +2571,16 @@
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.modifiedByTextBox);
+            this.panel4.Controls.Add(this.reportViewer1);
+            this.panel4.Controls.Add(this.btnMbo);
+            this.panel4.Controls.Add(this.lblModifiedBy);
+            this.panel4.Controls.Add(this.txtMbo);
             this.panel4.Controls.Add(label7);
             this.panel4.Controls.Add(this.cominitlTextBox);
             this.panel4.Controls.Add(label6);
             this.panel4.Controls.Add(this.comdateDateTimePicker);
             this.panel4.Controls.Add(cstsvcdteLabel);
-            this.panel4.Controls.Add(this.cstsvcdteDateTimePicker);
+            this.panel4.Controls.Add(this.dpCustomerServiceDate);
             this.panel4.Controls.Add(this.btnEmailPw);
             this.panel4.Controls.Add(this.btnPrntMbOnline);
             this.panel4.Controls.Add(this.btnUpdateJob);
@@ -2416,36 +2592,70 @@
             this.panel4.Controls.Add(this.txtadvpw);
             this.panel4.Controls.Add(jobnoLabel);
             this.panel4.Controls.Add(this.txtjobno);
-            this.panel4.Location = new System.Drawing.Point(685, 383);
+            this.panel4.Location = new System.Drawing.Point(589, 399);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(530, 316);
+            this.panel4.Size = new System.Drawing.Size(533, 306);
             this.panel4.TabIndex = 131;
             // 
-            // modifiedByTextBox
+            // reportViewer1
             // 
-            this.modifiedByTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ModifiedBy", true));
-            this.modifiedByTextBox.Enabled = false;
-            this.modifiedByTextBox.Location = new System.Drawing.Point(514, 293);
-            this.modifiedByTextBox.Name = "modifiedByTextBox";
-            this.modifiedByTextBox.Size = new System.Drawing.Size(1, 20);
-            this.modifiedByTextBox.TabIndex = 156;
+            this.reportViewer1.DocumentMapWidth = 71;
+            reportDataSource13.Name = "dsRCust";
+            reportDataSource13.Value = this.custBindingSource;
+            reportDataSource14.Name = "dsRQuotes";
+            reportDataSource14.Value = this.quotesBindingSource;
+            reportDataSource15.Name = "dsRProdutn";
+            reportDataSource15.Value = this.produtnBindingSource;
+            reportDataSource16.Name = "dsRWip";
+            reportDataSource16.Value = this.wipBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource13);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource14);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource15);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource16);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(438, 206);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(73, 59);
+            this.reportViewer1.TabIndex = 157;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
-            // produtnBindingSource
+            // btnMbo
             // 
-            this.produtnBindingSource.DataMember = "produtn";
-            this.produtnBindingSource.DataSource = this.dsProdutn;
+            this.btnMbo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMbo.Location = new System.Drawing.Point(208, 179);
+            this.btnMbo.Name = "btnMbo";
+            this.btnMbo.Size = new System.Drawing.Size(86, 23);
+            this.btnMbo.TabIndex = 141;
+            this.btnMbo.Text = "Search MBO";
+            this.btnMbo.UseVisualStyleBackColor = true;
+            this.btnMbo.Click += new System.EventHandler(this.btnMbo_Click);
             // 
-            // dsProdutn
+            // lblModifiedBy
             // 
-            this.dsProdutn.DataSetName = "dsProdutn";
-            this.dsProdutn.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.lblModifiedBy.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ModifiedBy", true));
+            this.lblModifiedBy.Location = new System.Drawing.Point(495, 287);
+            this.lblModifiedBy.Name = "lblModifiedBy";
+            this.lblModifiedBy.Size = new System.Drawing.Size(0, 5);
+            this.lblModifiedBy.TabIndex = 156;
+            this.lblModifiedBy.Paint += new System.Windows.Forms.PaintEventHandler(this.lblModifiedBy_Paint);
+            // 
+            // txtMbo
+            // 
+            this.txtMbo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMbo.Location = new System.Drawing.Point(300, 179);
+            this.txtMbo.MaxLength = 7;
+            this.txtMbo.Name = "txtMbo";
+            this.txtMbo.Size = new System.Drawing.Size(82, 20);
+            this.txtMbo.TabIndex = 140;
             // 
             // cominitlTextBox
             // 
             this.cominitlTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "cominitl", true));
             this.cominitlTextBox.Location = new System.Drawing.Point(198, 47);
             this.cominitlTextBox.Name = "cominitlTextBox";
-            this.cominitlTextBox.Size = new System.Drawing.Size(100, 20);
+            this.cominitlTextBox.Size = new System.Drawing.Size(85, 20);
             this.cominitlTextBox.TabIndex = 154;
             // 
             // comdateDateTimePicker
@@ -2455,20 +2665,21 @@
             this.comdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.comdateDateTimePicker.Location = new System.Drawing.Point(198, 25);
             this.comdateDateTimePicker.Name = "comdateDateTimePicker";
-            this.comdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.comdateDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.comdateDateTimePicker.TabIndex = 152;
             this.comdateDateTimePicker.ValueChanged += new System.EventHandler(this.comdateDateTimePicker_ValueChanged);
             // 
-            // cstsvcdteDateTimePicker
+            // dpCustomerServiceDate
             // 
-            this.cstsvcdteDateTimePicker.CustomFormat = "\'\'";
-            this.cstsvcdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "cstsvcdte", true));
-            this.cstsvcdteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.cstsvcdteDateTimePicker.Location = new System.Drawing.Point(198, 3);
-            this.cstsvcdteDateTimePicker.Name = "cstsvcdteDateTimePicker";
-            this.cstsvcdteDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.cstsvcdteDateTimePicker.TabIndex = 151;
-            this.cstsvcdteDateTimePicker.ValueChanged += new System.EventHandler(this.cstsvcdteDateTimePicker_ValueChanged);
+            this.dpCustomerServiceDate.CustomFormat = "\'\'";
+            this.dpCustomerServiceDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "cstsvcdte", true));
+            this.dpCustomerServiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpCustomerServiceDate.Location = new System.Drawing.Point(198, 3);
+            this.dpCustomerServiceDate.Name = "dpCustomerServiceDate";
+            this.dpCustomerServiceDate.Size = new System.Drawing.Size(85, 20);
+            this.dpCustomerServiceDate.TabIndex = 151;
+            this.dpCustomerServiceDate.ValueChanged += new System.EventHandler(this.cstsvcdteDateTimePicker_ValueChanged);
+            this.dpCustomerServiceDate.Leave += new System.EventHandler(this.dpCustomerServiceDate_Leave);
             // 
             // btnEmailPw
             // 
@@ -2494,6 +2705,7 @@
             this.btnPrntMbOnline.TabIndex = 148;
             this.btnPrntMbOnline.Text = "Print MB Online";
             this.btnPrntMbOnline.UseVisualStyleBackColor = true;
+            this.btnPrntMbOnline.Click += new System.EventHandler(this.btnPrntMbOnline_Click);
             // 
             // btnUpdateJob
             // 
@@ -2550,7 +2762,7 @@
             this.panel3.Controls.Add(this.txtDays);
             this.panel3.Controls.Add(this.txtWeeks);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Location = new System.Drawing.Point(1014, 64);
+            this.panel3.Location = new System.Drawing.Point(921, 80);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(203, 316);
             this.panel3.TabIndex = 130;
@@ -2568,154 +2780,155 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton10);
-            this.groupBox1.Controls.Add(this.radioButton9);
-            this.groupBox1.Controls.Add(this.radioButton8);
-            this.groupBox1.Controls.Add(this.radioButton7);
-            this.groupBox1.Controls.Add(this.radioButton6);
-            this.groupBox1.Controls.Add(this.radioButton5);
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.bk10);
+            this.groupBox1.Controls.Add(this.bk12);
+            this.groupBox1.Controls.Add(this.bkAllClr);
+            this.groupBox1.Controls.Add(this.ovrRide);
+            this.groupBox1.Controls.Add(this.bkMilled);
+            this.groupBox1.Controls.Add(this.bkCoil);
+            this.groupBox1.Controls.Add(this.bkHard);
+            this.groupBox1.Controls.Add(this.bk11);
+            this.groupBox1.Controls.Add(this.bk9);
+            this.groupBox1.Controls.Add(this.bkStd);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(72, 88);
+            this.groupBox1.Location = new System.Drawing.Point(72, 85);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(129, 201);
+            this.groupBox1.Size = new System.Drawing.Size(129, 197);
             this.groupBox1.TabIndex = 137;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Production Length";
             // 
-            // radioButton10
+            // bk10
             // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bk10", true));
-            this.radioButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton10.Location = new System.Drawing.Point(10, 173);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(97, 17);
-            this.radioButton10.TabIndex = 9;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "10 Week Book";
-            this.radioButton10.UseVisualStyleBackColor = true;
+            this.bk10.AutoSize = true;
+            this.bk10.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bk10", true));
+            this.bk10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bk10.Location = new System.Drawing.Point(10, 173);
+            this.bk10.Name = "bk10";
+            this.bk10.Size = new System.Drawing.Size(97, 17);
+            this.bk10.TabIndex = 9;
+            this.bk10.TabStop = true;
+            this.bk10.Text = "10 Week Book";
+            this.bk10.UseVisualStyleBackColor = true;
+            this.bk10.Visible = false;
             // 
-            // radioButton9
+            // bk12
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bk12", true));
-            this.radioButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton9.Location = new System.Drawing.Point(10, 156);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(113, 17);
-            this.radioButton9.TabIndex = 8;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "All Color Hardback";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.bk12.AutoSize = true;
+            this.bk12.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bk12", true));
+            this.bk12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bk12.Location = new System.Drawing.Point(10, 156);
+            this.bk12.Name = "bk12";
+            this.bk12.Size = new System.Drawing.Size(113, 17);
+            this.bk12.TabIndex = 8;
+            this.bk12.TabStop = true;
+            this.bk12.Text = "All Color Hardback";
+            this.bk12.UseVisualStyleBackColor = true;
+            this.bk12.Visible = false;
             // 
-            // radioButton8
+            // bkAllClr
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "allclrck", true));
-            this.radioButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton8.Location = new System.Drawing.Point(10, 139);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(63, 17);
-            this.radioButton8.TabIndex = 7;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "All Color";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.bkAllClr.AutoSize = true;
+            this.bkAllClr.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "allclrck", true));
+            this.bkAllClr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bkAllClr.Location = new System.Drawing.Point(10, 139);
+            this.bkAllClr.Name = "bkAllClr";
+            this.bkAllClr.Size = new System.Drawing.Size(63, 17);
+            this.bkAllClr.TabIndex = 7;
+            this.bkAllClr.Text = "All Color";
+            this.bkAllClr.UseVisualStyleBackColor = true;
+            this.bkAllClr.Visible = false;
             // 
-            // radioButton7
+            // ovrRide
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "ovride", true));
-            this.radioButton7.Enabled = false;
-            this.radioButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton7.Location = new System.Drawing.Point(10, 122);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(65, 17);
-            this.radioButton7.TabIndex = 6;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Override";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.ovrRide.AutoSize = true;
+            this.ovrRide.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "ovride", true));
+            this.ovrRide.Enabled = false;
+            this.ovrRide.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ovrRide.Location = new System.Drawing.Point(10, 122);
+            this.ovrRide.Name = "ovrRide";
+            this.ovrRide.Size = new System.Drawing.Size(65, 17);
+            this.ovrRide.TabIndex = 6;
+            this.ovrRide.TabStop = true;
+            this.ovrRide.Text = "Override";
+            this.ovrRide.UseVisualStyleBackColor = true;
+            this.ovrRide.Visible = false;
             // 
-            // radioButton6
+            // bkMilled
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "milled", true));
-            this.radioButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(10, 105);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(52, 17);
-            this.radioButton6.TabIndex = 5;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Milled";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.bkMilled.AutoSize = true;
+            this.bkMilled.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "milled", true));
+            this.bkMilled.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bkMilled.Location = new System.Drawing.Point(10, 105);
+            this.bkMilled.Name = "bkMilled";
+            this.bkMilled.Size = new System.Drawing.Size(69, 17);
+            this.bkMilled.TabIndex = 5;
+            this.bkMilled.Text = "K&P Milled";
+            this.bkMilled.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // bkCoil
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bkcoil", true));
-            this.radioButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(10, 88);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(103, 17);
-            this.radioButton5.TabIndex = 4;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Coil bound Book";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.bkCoil.AutoSize = true;
+            this.bkCoil.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bkcoil", true));
+            this.bkCoil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bkCoil.Location = new System.Drawing.Point(10, 88);
+            this.bkCoil.Name = "bkCoil";
+            this.bkCoil.Size = new System.Drawing.Size(104, 17);
+            this.bkCoil.TabIndex = 4;
+            this.bkCoil.Text = "Coil Bound Book";
+            this.bkCoil.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // bkHard
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bkhard", true));
-            this.radioButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(10, 71);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(100, 17);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Hardback Book";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.bkHard.AutoSize = true;
+            this.bkHard.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bkhard", true));
+            this.bkHard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bkHard.Location = new System.Drawing.Point(10, 71);
+            this.bkHard.Name = "bkHard";
+            this.bkHard.Size = new System.Drawing.Size(100, 17);
+            this.bkHard.TabIndex = 3;
+            this.bkHard.TabStop = true;
+            this.bkHard.Text = "Hardback Book";
+            this.bkHard.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // bk11
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bk11", true));
-            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(10, 54);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(87, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Case Binding";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.bk11.AutoSize = true;
+            this.bk11.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bk11", true));
+            this.bk11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bk11.Location = new System.Drawing.Point(10, 54);
+            this.bk11.Name = "bk11";
+            this.bk11.Size = new System.Drawing.Size(89, 17);
+            this.bk11.TabIndex = 2;
+            this.bk11.TabStop = true;
+            this.bk11.Text = "K&P Not Milled";
+            this.bk11.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // bk9
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bk9", true));
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(10, 37);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(91, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "9 Week Book";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.bk9.AutoSize = true;
+            this.bk9.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bk9", true));
+            this.bk9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bk9.Location = new System.Drawing.Point(10, 37);
+            this.bk9.Name = "bk9";
+            this.bk9.Size = new System.Drawing.Size(79, 17);
+            this.bk9.TabIndex = 1;
+            this.bk9.TabStop = true;
+            this.bk9.Text = "Conveniant";
+            this.bk9.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // bkStd
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bkstd", true));
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(10, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(91, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "8 Week Book";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.bkStd.AutoSize = true;
+            this.bkStd.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "bkstd", true));
+            this.bkStd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bkStd.Location = new System.Drawing.Point(10, 20);
+            this.bkStd.Name = "bkStd";
+            this.bkStd.Size = new System.Drawing.Size(39, 17);
+            this.bkStd.TabIndex = 0;
+            this.bkStd.TabStop = true;
+            this.bkStd.Text = "SS";
+            this.bkStd.UseVisualStyleBackColor = true;
             // 
             // btnCalCS
             // 
@@ -2776,16 +2989,12 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.vendcdComboBox1);
+            this.panel2.Controls.Add(this.cmbBindingVendor);
             this.panel2.Controls.Add(this.btnKitRecv);
             this.panel2.Controls.Add(this.kitrecvdDateTimePicker);
-            this.panel2.Controls.Add(this.bknopgsTextBox);
-            this.panel2.Controls.Add(bknopgsLabel);
-            this.panel2.Controls.Add(this.toprodDateTimePicker);
-            this.panel2.Controls.Add(toprodLabel);
-            this.panel2.Controls.Add(this.bindvendTextBox);
             this.panel2.Controls.Add(this.btnBindVend);
             this.panel2.Controls.Add(this.btnPrntVendor);
-            this.panel2.Controls.Add(this.vendcdTextBox);
             this.panel2.Controls.Add(this.tovendDateTimePicker);
             this.panel2.Controls.Add(tovendLabel);
             this.panel2.Controls.Add(this.warndateDateTimePicker);
@@ -2796,10 +3005,36 @@
             this.panel2.Controls.Add(prmsdateLabel);
             this.panel2.Controls.Add(shpdateLabel);
             this.panel2.Controls.Add(this.shpdateDateTimePicker);
-            this.panel2.Location = new System.Drawing.Point(682, 64);
+            this.panel2.Location = new System.Drawing.Point(589, 82);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(327, 316);
             this.panel2.TabIndex = 129;
+            // 
+            // vendcdComboBox1
+            // 
+            this.vendcdComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "vendcd", true));
+            this.vendcdComboBox1.DataSource = this.vendorBindingSource;
+            this.vendcdComboBox1.DisplayMember = "vendcd";
+            this.vendcdComboBox1.FormattingEnabled = true;
+            this.vendcdComboBox1.Location = new System.Drawing.Point(119, 75);
+            this.vendcdComboBox1.Name = "vendcdComboBox1";
+            this.vendcdComboBox1.Size = new System.Drawing.Size(121, 21);
+            this.vendcdComboBox1.TabIndex = 111;
+            this.vendcdComboBox1.ValueMember = "vendcd";
+            // 
+            // vendorBindingSource
+            // 
+            this.vendorBindingSource.DataMember = "vendor";
+            this.vendorBindingSource.DataSource = this.dsProdutn;
+            // 
+            // cmbBindingVendor
+            // 
+            this.cmbBindingVendor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "bindvend", true));
+            this.cmbBindingVendor.FormattingEnabled = true;
+            this.cmbBindingVendor.Location = new System.Drawing.Point(119, 43);
+            this.cmbBindingVendor.Name = "cmbBindingVendor";
+            this.cmbBindingVendor.Size = new System.Drawing.Size(121, 21);
+            this.cmbBindingVendor.TabIndex = 110;
             // 
             // btnKitRecv
             // 
@@ -2818,42 +3053,14 @@
             this.kitrecvdDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.kitrecvdDateTimePicker.Location = new System.Drawing.Point(121, 7);
             this.kitrecvdDateTimePicker.Name = "kitrecvdDateTimePicker";
-            this.kitrecvdDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.kitrecvdDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.kitrecvdDateTimePicker.TabIndex = 90;
             this.kitrecvdDateTimePicker.ValueChanged += new System.EventHandler(this.kitrecvdDateTimePicker_ValueChanged);
-            // 
-            // bknopgsTextBox
-            // 
-            this.bknopgsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "bknopgs", true));
-            this.bknopgsTextBox.Location = new System.Drawing.Point(121, 46);
-            this.bknopgsTextBox.Name = "bknopgsTextBox";
-            this.bknopgsTextBox.Size = new System.Drawing.Size(100, 20);
-            this.bknopgsTextBox.TabIndex = 93;
-            // 
-            // toprodDateTimePicker
-            // 
-            this.toprodDateTimePicker.CustomFormat = "\'\'";
-            this.toprodDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "toprod", true));
-            this.toprodDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.toprodDateTimePicker.Location = new System.Drawing.Point(121, 69);
-            this.toprodDateTimePicker.Name = "toprodDateTimePicker";
-            this.toprodDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.toprodDateTimePicker.TabIndex = 95;
-            this.toprodDateTimePicker.ValueChanged += new System.EventHandler(this.toprodDateTimePicker_ValueChanged);
-            // 
-            // bindvendTextBox
-            // 
-            this.bindvendTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.bindvendTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "bindvend", true));
-            this.bindvendTextBox.Location = new System.Drawing.Point(121, 95);
-            this.bindvendTextBox.Name = "bindvendTextBox";
-            this.bindvendTextBox.Size = new System.Drawing.Size(100, 20);
-            this.bindvendTextBox.TabIndex = 96;
             // 
             // btnBindVend
             // 
             this.btnBindVend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBindVend.Location = new System.Drawing.Point(39, 95);
+            this.btnBindVend.Location = new System.Drawing.Point(37, 43);
             this.btnBindVend.Name = "btnBindVend";
             this.btnBindVend.Size = new System.Drawing.Size(70, 24);
             this.btnBindVend.TabIndex = 97;
@@ -2863,30 +3070,21 @@
             // btnPrntVendor
             // 
             this.btnPrntVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrntVendor.Location = new System.Drawing.Point(39, 126);
+            this.btnPrntVendor.Location = new System.Drawing.Point(37, 74);
             this.btnPrntVendor.Name = "btnPrntVendor";
             this.btnPrntVendor.Size = new System.Drawing.Size(70, 24);
             this.btnPrntVendor.TabIndex = 98;
             this.btnPrntVendor.Text = "Print Vend";
             this.btnPrntVendor.UseVisualStyleBackColor = true;
             // 
-            // vendcdTextBox
-            // 
-            this.vendcdTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.vendcdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "vendcd", true));
-            this.vendcdTextBox.Location = new System.Drawing.Point(121, 127);
-            this.vendcdTextBox.Name = "vendcdTextBox";
-            this.vendcdTextBox.Size = new System.Drawing.Size(100, 20);
-            this.vendcdTextBox.TabIndex = 100;
-            // 
             // tovendDateTimePicker
             // 
             this.tovendDateTimePicker.CustomFormat = "\'\'";
             this.tovendDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "tovend", true));
             this.tovendDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.tovendDateTimePicker.Location = new System.Drawing.Point(121, 161);
+            this.tovendDateTimePicker.Location = new System.Drawing.Point(119, 109);
             this.tovendDateTimePicker.Name = "tovendDateTimePicker";
-            this.tovendDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.tovendDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.tovendDateTimePicker.TabIndex = 101;
             this.tovendDateTimePicker.ValueChanged += new System.EventHandler(this.tovendDateTimePicker_ValueChanged);
             // 
@@ -2896,9 +3094,9 @@
             this.warndateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "warndate", true));
             this.warndateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "warndate", true));
             this.warndateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.warndateDateTimePicker.Location = new System.Drawing.Point(121, 187);
+            this.warndateDateTimePicker.Location = new System.Drawing.Point(119, 135);
             this.warndateDateTimePicker.Name = "warndateDateTimePicker";
-            this.warndateDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.warndateDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.warndateDateTimePicker.TabIndex = 103;
             this.warndateDateTimePicker.ValueChanged += new System.EventHandler(this.warndateDateTimePicker_ValueChanged);
             // 
@@ -2907,9 +3105,9 @@
             this.prshpdteDateTimePicker.CustomFormat = "\'\'";
             this.prshpdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prshpdte", true));
             this.prshpdteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.prshpdteDateTimePicker.Location = new System.Drawing.Point(121, 213);
+            this.prshpdteDateTimePicker.Location = new System.Drawing.Point(119, 161);
             this.prshpdteDateTimePicker.Name = "prshpdteDateTimePicker";
-            this.prshpdteDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.prshpdteDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.prshpdteDateTimePicker.TabIndex = 105;
             this.prshpdteDateTimePicker.ValueChanged += new System.EventHandler(this.prshpdteDateTimePicker_ValueChanged);
             // 
@@ -2918,9 +3116,9 @@
             this.prmsdateDateTimePicker.CustomFormat = "\'\'";
             this.prmsdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "prmsdate", true));
             this.prmsdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.prmsdateDateTimePicker.Location = new System.Drawing.Point(121, 239);
+            this.prmsdateDateTimePicker.Location = new System.Drawing.Point(119, 187);
             this.prmsdateDateTimePicker.Name = "prmsdateDateTimePicker";
-            this.prmsdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.prmsdateDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.prmsdateDateTimePicker.TabIndex = 107;
             this.prmsdateDateTimePicker.ValueChanged += new System.EventHandler(this.prmsdateDateTimePicker_ValueChanged);
             // 
@@ -2929,18 +3127,26 @@
             this.shpdateDateTimePicker.CustomFormat = "\'\'";
             this.shpdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "shpdate", true));
             this.shpdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.shpdateDateTimePicker.Location = new System.Drawing.Point(121, 270);
+            this.shpdateDateTimePicker.Location = new System.Drawing.Point(119, 218);
             this.shpdateDateTimePicker.Name = "shpdateDateTimePicker";
-            this.shpdateDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.shpdateDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.shpdateDateTimePicker.TabIndex = 109;
             this.shpdateDateTimePicker.ValueChanged += new System.EventHandler(this.shpdateDateTimePicker_ValueChanged);
+            this.shpdateDateTimePicker.Leave += new System.EventHandler(this.shpdateDateTimePicker_Leave);
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.coilclrTextBox);
+            this.panel1.Controls.Add(laminatedLabel);
             this.panel1.Controls.Add(this.laminatedTextBox);
+            this.panel1.Controls.Add(colorsLabel);
+            this.panel1.Controls.Add(this.colorsTextBox);
+            this.panel1.Controls.Add(speccoverLabel);
+            this.panel1.Controls.Add(this.speccoverTextBox);
+            this.panel1.Controls.Add(endstrecvLabel);
+            this.panel1.Controls.Add(this.endstrecvDateTimePicker);
+            this.panel1.Controls.Add(this.coilclrTextBox);
             this.panel1.Controls.Add(this.cpnumTextBox);
             this.panel1.Controls.Add(this.cprecvDateTimePicker);
             this.panel1.Controls.Add(ptbrcvdLabel);
@@ -2955,39 +3161,68 @@
             this.panel1.Controls.Add(coilclrLabel);
             this.panel1.Controls.Add(perfbindLabel);
             this.panel1.Controls.Add(this.txtPerfbind);
-            this.panel1.Controls.Add(laminatedLabel);
             this.panel1.Controls.Add(screcvLabel);
             this.panel1.Controls.Add(this.screcvDateTimePicker);
             this.panel1.Controls.Add(coverdescLabel);
-            this.panel1.Controls.Add(this.coverdescTextBox);
+            this.panel1.Controls.Add(this.txtCoverDescription);
             this.panel1.Controls.Add(covertypeLabel);
-            this.panel1.Controls.Add(this.covertypeTextBox);
-            this.panel1.Location = new System.Drawing.Point(328, 64);
+            this.panel1.Controls.Add(this.txtCoverType);
+            this.panel1.Location = new System.Drawing.Point(281, 80);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(352, 408);
+            this.panel1.Size = new System.Drawing.Size(302, 400);
             this.panel1.TabIndex = 128;
+            // 
+            // laminatedTextBox
+            // 
+            this.laminatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "laminated", true));
+            this.laminatedTextBox.Location = new System.Drawing.Point(176, 133);
+            this.laminatedTextBox.MaxLength = 1;
+            this.laminatedTextBox.Name = "laminatedTextBox";
+            this.laminatedTextBox.Size = new System.Drawing.Size(33, 20);
+            this.laminatedTextBox.TabIndex = 140;
+            this.laminatedTextBox.Leave += new System.EventHandler(this.laminatedTextBox_Leave);
+            // 
+            // colorsTextBox
+            // 
+            this.colorsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "colors", true));
+            this.colorsTextBox.Location = new System.Drawing.Point(176, 105);
+            this.colorsTextBox.Name = "colorsTextBox";
+            this.colorsTextBox.Size = new System.Drawing.Size(97, 20);
+            this.colorsTextBox.TabIndex = 135;
+            // 
+            // speccoverTextBox
+            // 
+            this.speccoverTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "speccover", true));
+            this.speccoverTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.speccoverTextBox.Location = new System.Drawing.Point(176, 82);
+            this.speccoverTextBox.Name = "speccoverTextBox";
+            this.speccoverTextBox.Size = new System.Drawing.Size(96, 20);
+            this.speccoverTextBox.TabIndex = 134;
+            // 
+            // endstrecvDateTimePicker
+            // 
+            this.endstrecvDateTimePicker.CustomFormat = "\'\'";
+            this.endstrecvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "endstrecv", true));
+            this.endstrecvDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.endstrecvDateTimePicker.Location = new System.Drawing.Point(176, 351);
+            this.endstrecvDateTimePicker.Name = "endstrecvDateTimePicker";
+            this.endstrecvDateTimePicker.Size = new System.Drawing.Size(85, 20);
+            this.endstrecvDateTimePicker.TabIndex = 133;
+            this.endstrecvDateTimePicker.ValueChanged += new System.EventHandler(this.endstrecvDateTimePicker_ValueChanged);
             // 
             // coilclrTextBox
             // 
             this.coilclrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coilclr", true));
-            this.coilclrTextBox.Location = new System.Drawing.Point(165, 151);
+            this.coilclrTextBox.Location = new System.Drawing.Point(176, 184);
             this.coilclrTextBox.Name = "coilclrTextBox";
             this.coilclrTextBox.Size = new System.Drawing.Size(99, 20);
             this.coilclrTextBox.TabIndex = 132;
             this.coilclrTextBox.WordWrap = false;
             // 
-            // laminatedTextBox
-            // 
-            this.laminatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "laminated", true));
-            this.laminatedTextBox.Location = new System.Drawing.Point(167, 105);
-            this.laminatedTextBox.Name = "laminatedTextBox";
-            this.laminatedTextBox.Size = new System.Drawing.Size(35, 20);
-            this.laminatedTextBox.TabIndex = 131;
-            // 
             // cpnumTextBox
             // 
             this.cpnumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipgBindingSource, "cpnum", true));
-            this.cpnumTextBox.Location = new System.Drawing.Point(166, 193);
+            this.cpnumTextBox.Location = new System.Drawing.Point(176, 226);
             this.cpnumTextBox.Name = "cpnumTextBox";
             this.cpnumTextBox.Size = new System.Drawing.Size(50, 20);
             this.cpnumTextBox.TabIndex = 130;
@@ -3002,9 +3237,9 @@
             this.cprecvDateTimePicker.CustomFormat = "\'\'";
             this.cprecvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.wipgBindingSource, "cprecv", true));
             this.cprecvDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.cprecvDateTimePicker.Location = new System.Drawing.Point(169, 216);
+            this.cprecvDateTimePicker.Location = new System.Drawing.Point(176, 249);
             this.cprecvDateTimePicker.Name = "cprecvDateTimePicker";
-            this.cprecvDateTimePicker.Size = new System.Drawing.Size(179, 20);
+            this.cprecvDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.cprecvDateTimePicker.TabIndex = 129;
             this.cprecvDateTimePicker.ValueChanged += new System.EventHandler(this.cprecvDateTimePicker_ValueChanged);
             // 
@@ -3015,9 +3250,9 @@
             this.ptbrcvdDateTimePicker.CustomFormat = "\'\'";
             this.ptbrcvdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "ptbrcvd", true));
             this.ptbrcvdDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ptbrcvdDateTimePicker.Location = new System.Drawing.Point(169, 292);
+            this.ptbrcvdDateTimePicker.Location = new System.Drawing.Point(176, 325);
             this.ptbrcvdDateTimePicker.Name = "ptbrcvdDateTimePicker";
-            this.ptbrcvdDateTimePicker.Size = new System.Drawing.Size(179, 20);
+            this.ptbrcvdDateTimePicker.Size = new System.Drawing.Size(108, 20);
             this.ptbrcvdDateTimePicker.TabIndex = 127;
             this.ptbrcvdDateTimePicker.ValueChanged += new System.EventHandler(this.ptbrcvdDateTimePicker_ValueChanged);
             // 
@@ -3026,9 +3261,9 @@
             this.ptnopgsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ptnopgsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ptnopgs", true));
-            this.ptnopgsTextBox.Location = new System.Drawing.Point(168, 267);
+            this.ptnopgsTextBox.Location = new System.Drawing.Point(176, 300);
             this.ptnopgsTextBox.Name = "ptnopgsTextBox";
-            this.ptnopgsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ptnopgsTextBox.Size = new System.Drawing.Size(71, 20);
             this.ptnopgsTextBox.TabIndex = 125;
             // 
             // ptrecvdDateTimePicker
@@ -3038,17 +3273,17 @@
             this.ptrecvdDateTimePicker.CustomFormat = "\'\'";
             this.ptrecvdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "ptrecvd", true));
             this.ptrecvdDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ptrecvdDateTimePicker.Location = new System.Drawing.Point(169, 244);
+            this.ptrecvdDateTimePicker.Location = new System.Drawing.Point(176, 277);
             this.ptrecvdDateTimePicker.Name = "ptrecvdDateTimePicker";
-            this.ptrecvdDateTimePicker.Size = new System.Drawing.Size(179, 20);
+            this.ptrecvdDateTimePicker.Size = new System.Drawing.Size(108, 20);
             this.ptrecvdDateTimePicker.TabIndex = 123;
             this.ptrecvdDateTimePicker.ValueChanged += new System.EventHandler(this.ptrecvdDateTimePicker_ValueChanged);
             // 
             // colorpgsCheckBox
             // 
-            this.colorpgsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.wipgBindingSource, "cpnum", true));
+            this.colorpgsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "colorpgs", true));
             this.colorpgsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorpgsCheckBox.Location = new System.Drawing.Point(168, 171);
+            this.colorpgsCheckBox.Location = new System.Drawing.Point(176, 204);
             this.colorpgsCheckBox.Name = "colorpgsCheckBox";
             this.colorpgsCheckBox.Size = new System.Drawing.Size(104, 24);
             this.colorpgsCheckBox.TabIndex = 119;
@@ -3061,7 +3296,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPerfbind.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPerfbind.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "perfbind", true));
-            this.txtPerfbind.Location = new System.Drawing.Point(168, 126);
+            this.txtPerfbind.Location = new System.Drawing.Point(176, 159);
             this.txtPerfbind.MaxLength = 1;
             this.txtPerfbind.Name = "txtPerfbind";
             this.txtPerfbind.Size = new System.Drawing.Size(33, 20);
@@ -3075,37 +3310,41 @@
             this.screcvDateTimePicker.CustomFormat = "\'\'";
             this.screcvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "screcv", true));
             this.screcvDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.screcvDateTimePicker.Location = new System.Drawing.Point(168, 56);
+            this.screcvDateTimePicker.Location = new System.Drawing.Point(176, 56);
             this.screcvDateTimePicker.Name = "screcvDateTimePicker";
-            this.screcvDateTimePicker.Size = new System.Drawing.Size(179, 20);
+            this.screcvDateTimePicker.Size = new System.Drawing.Size(108, 20);
             this.screcvDateTimePicker.TabIndex = 104;
             this.screcvDateTimePicker.ValueChanged += new System.EventHandler(this.screcvDateTimePicker_ValueChanged);
             // 
-            // coverdescTextBox
+            // txtCoverDescription
             // 
-            this.coverdescTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCoverDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.coverdescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coverdesc", true));
-            this.coverdescTextBox.Location = new System.Drawing.Point(168, 34);
-            this.coverdescTextBox.Name = "coverdescTextBox";
-            this.coverdescTextBox.Size = new System.Drawing.Size(100, 20);
-            this.coverdescTextBox.TabIndex = 102;
+            this.txtCoverDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coverdesc", true));
+            this.txtCoverDescription.Location = new System.Drawing.Point(176, 34);
+            this.txtCoverDescription.Name = "txtCoverDescription";
+            this.txtCoverDescription.Size = new System.Drawing.Size(108, 20);
+            this.txtCoverDescription.TabIndex = 102;
             // 
-            // covertypeTextBox
+            // txtCoverType
             // 
-            this.covertypeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCoverType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.covertypeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "covertype", true));
-            this.covertypeTextBox.Location = new System.Drawing.Point(168, 12);
-            this.covertypeTextBox.MaxLength = 4;
-            this.covertypeTextBox.Name = "covertypeTextBox";
-            this.covertypeTextBox.Size = new System.Drawing.Size(100, 20);
-            this.covertypeTextBox.TabIndex = 100;
+            this.txtCoverType.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCoverType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "covertype", true));
+            this.txtCoverType.Location = new System.Drawing.Point(176, 12);
+            this.txtCoverType.MaxLength = 4;
+            this.txtCoverType.Name = "txtCoverType";
+            this.txtCoverType.Size = new System.Drawing.Size(108, 20);
+            this.txtCoverType.TabIndex = 100;
+            this.txtCoverType.Leave += new System.EventHandler(this.covertypeTextBox_Leave);
             // 
             // pnl11
             // 
             this.pnl11.Controls.Add(this.listrecdCheckBox1);
             this.pnl11.Controls.Add(this.persnlzCheckBox1);
+            this.pnl11.Controls.Add(this.photographerPermissionCheckBox);
+            this.pnl11.Controls.Add(this.enhancementsCheckBox);
             this.pnl11.Controls.Add(this.comboBox1);
             this.pnl11.Controls.Add(this.btnDeadLineInfo);
             this.pnl11.Controls.Add(this.booktypeTextBox2);
@@ -3132,32 +3371,55 @@
             this.pnl11.Controls.Add(dedayinLabel);
             this.pnl11.Controls.Add(this.dedayinDateTimePicker);
             this.pnl11.Controls.Add(this.btnCalcDeadLine);
-            this.pnl11.Location = new System.Drawing.Point(7, 64);
+            this.pnl11.Enabled = false;
+            this.pnl11.Location = new System.Drawing.Point(7, 80);
             this.pnl11.Name = "pnl11";
-            this.pnl11.Size = new System.Drawing.Size(318, 400);
+            this.pnl11.Size = new System.Drawing.Size(275, 437);
             this.pnl11.TabIndex = 127;
             // 
             // listrecdCheckBox1
             // 
-            this.listrecdCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "listrecd", true));
+            this.listrecdCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "listrecd", true));
             this.listrecdCheckBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listrecdCheckBox1.Location = new System.Drawing.Point(129, 326);
+            this.listrecdCheckBox1.Location = new System.Drawing.Point(16, 407);
             this.listrecdCheckBox1.Name = "listrecdCheckBox1";
-            this.listrecdCheckBox1.Size = new System.Drawing.Size(104, 24);
+            this.listrecdCheckBox1.Size = new System.Drawing.Size(89, 24);
             this.listrecdCheckBox1.TabIndex = 153;
             this.listrecdCheckBox1.Text = "List Recvd";
             this.listrecdCheckBox1.UseVisualStyleBackColor = true;
             // 
             // persnlzCheckBox1
             // 
-            this.persnlzCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.produtnBindingSource, "persnlz", true));
+            this.persnlzCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "persnlz", true));
             this.persnlzCheckBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.persnlzCheckBox1.Location = new System.Drawing.Point(129, 348);
+            this.persnlzCheckBox1.Location = new System.Drawing.Point(16, 354);
             this.persnlzCheckBox1.Name = "persnlzCheckBox1";
             this.persnlzCheckBox1.Size = new System.Drawing.Size(120, 21);
             this.persnlzCheckBox1.TabIndex = 152;
             this.persnlzCheckBox1.Text = "Personalization";
             this.persnlzCheckBox1.UseVisualStyleBackColor = true;
+            // 
+            // photographerPermissionCheckBox
+            // 
+            this.photographerPermissionCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "PhotographerPermission", true));
+            this.photographerPermissionCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.photographerPermissionCheckBox.Location = new System.Drawing.Point(16, 372);
+            this.photographerPermissionCheckBox.Name = "photographerPermissionCheckBox";
+            this.photographerPermissionCheckBox.Size = new System.Drawing.Size(169, 20);
+            this.photographerPermissionCheckBox.TabIndex = 155;
+            this.photographerPermissionCheckBox.Text = "Photographer Permission";
+            this.photographerPermissionCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // enhancementsCheckBox
+            // 
+            this.enhancementsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "Enhancements", true));
+            this.enhancementsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enhancementsCheckBox.Location = new System.Drawing.Point(16, 389);
+            this.enhancementsCheckBox.Name = "enhancementsCheckBox";
+            this.enhancementsCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.enhancementsCheckBox.TabIndex = 154;
+            this.enhancementsCheckBox.Text = "Enhancements";
+            this.enhancementsCheckBox.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
@@ -3184,7 +3446,7 @@
             "SILVER FOIL",
             "YELLOW INK",
             "PURPLE INK"});
-            this.comboBox1.Location = new System.Drawing.Point(128, 372);
+            this.comboBox1.Location = new System.Drawing.Point(129, 325);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 151;
@@ -3208,6 +3470,7 @@
             this.booktypeTextBox2.Location = new System.Drawing.Point(129, 26);
             this.booktypeTextBox2.MaxLength = 4;
             this.booktypeTextBox2.Name = "booktypeTextBox2";
+            this.booktypeTextBox2.ReadOnly = true;
             this.booktypeTextBox2.Size = new System.Drawing.Size(44, 20);
             this.booktypeTextBox2.TabIndex = 142;
             // 
@@ -3222,6 +3485,7 @@
             this.textBox5.Location = new System.Drawing.Point(129, 3);
             this.textBox5.MaxLength = 4;
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(44, 20);
             this.textBox5.TabIndex = 141;
             // 
@@ -3242,6 +3506,7 @@
             // 
             // vendcdComboBox
             // 
+            this.vendcdComboBox.ContextMenuStrip = this.addItemMenu;
             this.vendcdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "typestyle", true));
             this.vendcdComboBox.DataSource = this.lkTypeDataBindingSource;
             this.vendcdComboBox.DisplayMember = "Style";
@@ -3251,6 +3516,37 @@
             this.vendcdComboBox.Size = new System.Drawing.Size(121, 21);
             this.vendcdComboBox.TabIndex = 42;
             this.vendcdComboBox.ValueMember = "Style";
+            this.vendcdComboBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.vendcdComboBox_MouseDown);
+            // 
+            // addItemMenu
+            // 
+            this.addItemMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnType,
+            this.mnCust,
+            this.mnBackGround});
+            this.addItemMenu.Name = "addItemMenu";
+            this.addItemMenu.Size = new System.Drawing.Size(180, 70);
+            // 
+            // mnType
+            // 
+            this.mnType.Name = "mnType";
+            this.mnType.Size = new System.Drawing.Size(179, 22);
+            this.mnType.Text = "Add Type Style";
+            this.mnType.Click += new System.EventHandler(this.mnType_Click);
+            // 
+            // mnCust
+            // 
+            this.mnCust.Name = "mnCust";
+            this.mnCust.Size = new System.Drawing.Size(179, 22);
+            this.mnCust.Text = "Add Customer Type";
+            this.mnCust.Click += new System.EventHandler(this.mnCust_Click);
+            // 
+            // mnBackGround
+            // 
+            this.mnBackGround.Name = "mnBackGround";
+            this.mnBackGround.Size = new System.Drawing.Size(179, 22);
+            this.mnBackGround.Text = "Add Back Ground";
+            this.mnBackGround.Click += new System.EventHandler(this.mnBackGround_Click);
             // 
             // lkTypeDataBindingSource
             // 
@@ -3265,6 +3561,7 @@
             // 
             // cstatComboBox
             // 
+            this.cstatComboBox.ContextMenuStrip = this.addItemMenu;
             this.cstatComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "cstat", true));
             this.cstatComboBox.FormattingEnabled = true;
             this.cstatComboBox.Items.AddRange(new object[] {
@@ -3283,9 +3580,11 @@
             this.cstatComboBox.Name = "cstatComboBox";
             this.cstatComboBox.Size = new System.Drawing.Size(121, 21);
             this.cstatComboBox.TabIndex = 44;
+            this.cstatComboBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cstatComboBox_MouseDown);
             // 
             // bkgrndComboBox
             // 
+            this.bkgrndComboBox.ContextMenuStrip = this.addItemMenu;
             this.bkgrndComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "bkgrnd", true));
             this.bkgrndComboBox.DataSource = this.lkpBackGroundBindingSource;
             this.bkgrndComboBox.DisplayMember = "BkgrndName";
@@ -3295,6 +3594,7 @@
             this.bkgrndComboBox.Size = new System.Drawing.Size(121, 21);
             this.bkgrndComboBox.TabIndex = 46;
             this.bkgrndComboBox.ValueMember = "BkgrndName";
+            this.bkgrndComboBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bkgrndComboBox_MouseDown);
             // 
             // lkpBackGroundBindingSource
             // 
@@ -3309,6 +3609,8 @@
             this.nopagesTextBox.ReadOnly = true;
             this.nopagesTextBox.Size = new System.Drawing.Size(100, 20);
             this.nopagesTextBox.TabIndex = 48;
+            this.nopagesTextBox.Leave += new System.EventHandler(this.nopagesTextBox_Leave);
+            this.nopagesTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.nopagesTextBox_MouseDown);
             // 
             // nocopiesTextBox
             // 
@@ -3318,6 +3620,8 @@
             this.nocopiesTextBox.ReadOnly = true;
             this.nocopiesTextBox.Size = new System.Drawing.Size(100, 20);
             this.nocopiesTextBox.TabIndex = 50;
+            this.nocopiesTextBox.Leave += new System.EventHandler(this.nocopiesTextBox_Leave);
+            this.nocopiesTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.nocopiesTextBox_MouseDown);
             // 
             // adduploaddateDateTimePicker
             // 
@@ -3326,19 +3630,21 @@
             this.adduploaddateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.adduploaddateDateTimePicker.Location = new System.Drawing.Point(129, 181);
             this.adduploaddateDateTimePicker.Name = "adduploaddateDateTimePicker";
-            this.adduploaddateDateTimePicker.Size = new System.Drawing.Size(184, 20);
+            this.adduploaddateDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.adduploaddateDateTimePicker.TabIndex = 52;
             this.adduploaddateDateTimePicker.Value = new System.DateTime(2016, 12, 7, 21, 23, 13, 0);
             this.adduploaddateDateTimePicker.ValueChanged += new System.EventHandler(this.adduploaddateDateTimePicker_ValueChanged);
             // 
             // dedmadeTextBox
             // 
+            this.dedmadeTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.dedmadeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "dedmade", true));
             this.dedmadeTextBox.Location = new System.Drawing.Point(129, 303);
             this.dedmadeTextBox.MaxLength = 1;
             this.dedmadeTextBox.Name = "dedmadeTextBox";
-            this.dedmadeTextBox.Size = new System.Drawing.Size(42, 20);
+            this.dedmadeTextBox.Size = new System.Drawing.Size(32, 20);
             this.dedmadeTextBox.TabIndex = 59;
+            this.dedmadeTextBox.Leave += new System.EventHandler(this.dedmadeTextBox_Leave);
             // 
             // dedayoutDateTimePicker
             // 
@@ -3347,7 +3653,7 @@
             this.dedayoutDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dedayoutDateTimePicker.Location = new System.Drawing.Point(129, 277);
             this.dedayoutDateTimePicker.Name = "dedayoutDateTimePicker";
-            this.dedayoutDateTimePicker.Size = new System.Drawing.Size(184, 20);
+            this.dedayoutDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.dedayoutDateTimePicker.TabIndex = 57;
             this.dedayoutDateTimePicker.ValueChanged += new System.EventHandler(this.dedayoutDateTimePicker_ValueChanged);
             // 
@@ -3358,7 +3664,7 @@
             this.dedayinDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dedayinDateTimePicker.Location = new System.Drawing.Point(129, 251);
             this.dedayinDateTimePicker.Name = "dedayinDateTimePicker";
-            this.dedayinDateTimePicker.Size = new System.Drawing.Size(184, 20);
+            this.dedayinDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.dedayinDateTimePicker.TabIndex = 55;
             this.dedayinDateTimePicker.ValueChanged += new System.EventHandler(this.dedayinDateTimePicker_ValueChanged);
             // 
@@ -3378,7 +3684,7 @@
             // 
             this.reccardsentCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "reccardsent", true));
             this.reccardsentCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reccardsentCheckBox.Location = new System.Drawing.Point(293, 629);
+            this.reccardsentCheckBox.Location = new System.Drawing.Point(114, 595);
             this.reccardsentCheckBox.Name = "reccardsentCheckBox";
             this.reccardsentCheckBox.Size = new System.Drawing.Size(143, 21);
             this.reccardsentCheckBox.TabIndex = 105;
@@ -3388,7 +3694,7 @@
             // btnRecvLabel
             // 
             this.btnRecvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecvLabel.Location = new System.Drawing.Point(52, 656);
+            this.btnRecvLabel.Location = new System.Drawing.Point(52, 622);
             this.btnRecvLabel.Name = "btnRecvLabel";
             this.btnRecvLabel.Size = new System.Drawing.Size(126, 23);
             this.btnRecvLabel.TabIndex = 94;
@@ -3398,86 +3704,50 @@
             // btnRecvHistory
             // 
             this.btnRecvHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecvHistory.Location = new System.Drawing.Point(16, 627);
+            this.btnRecvHistory.Location = new System.Drawing.Point(16, 593);
             this.btnRecvHistory.Name = "btnRecvHistory";
             this.btnRecvHistory.Size = new System.Drawing.Size(86, 23);
             this.btnRecvHistory.TabIndex = 93;
             this.btnRecvHistory.Text = "Rcv. Card Hist";
             this.btnRecvHistory.UseVisualStyleBackColor = true;
+            this.btnRecvHistory.Click += new System.EventHandler(this.btnRecvHistory_Click);
             // 
-            // btnRcvCard
+            // btnBkDue
             // 
-            this.btnRcvCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRcvCard.Location = new System.Drawing.Point(108, 627);
-            this.btnRcvCard.Name = "btnRcvCard";
-            this.btnRcvCard.Size = new System.Drawing.Size(174, 23);
-            this.btnRcvCard.TabIndex = 92;
-            this.btnRcvCard.Text = "Recieving Card History";
-            this.btnRcvCard.UseVisualStyleBackColor = true;
-            // 
-            // btnBinderyEmail
-            // 
-            this.btnBinderyEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBinderyEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnBinderyEmail.Image")));
-            this.btnBinderyEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBinderyEmail.Location = new System.Drawing.Point(48, 572);
-            this.btnBinderyEmail.Name = "btnBinderyEmail";
-            this.btnBinderyEmail.Size = new System.Drawing.Size(120, 50);
-            this.btnBinderyEmail.TabIndex = 90;
-            this.btnBinderyEmail.Text = "Bindery/Vendor Email";
-            this.btnBinderyEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBinderyEmail.UseVisualStyleBackColor = true;
-            this.btnBinderyEmail.Click += new System.EventHandler(this.btnBinderyEmail_Click);
-            // 
-            // btnEmailProdForm
-            // 
-            this.btnEmailProdForm.AutoSize = true;
-            this.btnEmailProdForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmailProdForm.Image = ((System.Drawing.Image)(resources.GetObject("btnEmailProdForm.Image")));
-            this.btnEmailProdForm.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEmailProdForm.Location = new System.Drawing.Point(60, 528);
-            this.btnEmailProdForm.Name = "btnEmailProdForm";
-            this.btnEmailProdForm.Size = new System.Drawing.Size(108, 38);
-            this.btnEmailProdForm.TabIndex = 38;
-            this.btnEmailProdForm.Text = "Email Prod Form";
-            this.btnEmailProdForm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEmailProdForm.UseVisualStyleBackColor = true;
+            this.btnBkDue.AutoSize = true;
+            this.btnBkDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBkDue.Image = ((System.Drawing.Image)(resources.GetObject("btnBkDue.Image")));
+            this.btnBkDue.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBkDue.Location = new System.Drawing.Point(54, 528);
+            this.btnBkDue.Name = "btnBkDue";
+            this.btnBkDue.Size = new System.Drawing.Size(117, 38);
+            this.btnBkDue.TabIndex = 38;
+            this.btnBkDue.Text = "BK Due Reminder";
+            this.btnBkDue.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBkDue.UseVisualStyleBackColor = true;
+            this.btnBkDue.Click += new System.EventHandler(this.btnBkDue_Click);
             // 
             // bkmixedCheckBox
             // 
             this.bkmixedCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bkmixedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "reorder", true));
             this.bkmixedCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bkmixedCheckBox.Location = new System.Drawing.Point(1101, 29);
+            this.bkmixedCheckBox.Location = new System.Drawing.Point(1002, 53);
             this.bkmixedCheckBox.Name = "bkmixedCheckBox";
             this.bkmixedCheckBox.Size = new System.Drawing.Size(78, 24);
             this.bkmixedCheckBox.TabIndex = 16;
             this.bkmixedCheckBox.Text = "Reorder";
             this.bkmixedCheckBox.UseVisualStyleBackColor = true;
             // 
-            // booktypeTextBox
+            // txtBookType
             // 
-            this.booktypeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "booktype", true));
-            this.booktypeTextBox.Location = new System.Drawing.Point(90, 37);
-            this.booktypeTextBox.MaxLength = 3;
-            this.booktypeTextBox.Name = "booktypeTextBox";
-            this.booktypeTextBox.Size = new System.Drawing.Size(53, 20);
-            this.booktypeTextBox.TabIndex = 15;
-            // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsProdutn;
-            // 
-            // btnBookType
-            // 
-            this.btnBookType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBookType.Location = new System.Drawing.Point(13, 37);
-            this.btnBookType.Name = "btnBookType";
-            this.btnBookType.Size = new System.Drawing.Size(71, 23);
-            this.btnBookType.TabIndex = 14;
-            this.btnBookType.Text = "Book Type";
-            this.btnBookType.UseVisualStyleBackColor = true;
+            this.txtBookType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "booktype", true));
+            this.txtBookType.Location = new System.Drawing.Point(80, 37);
+            this.txtBookType.MaxLength = 3;
+            this.txtBookType.Name = "txtBookType";
+            this.txtBookType.ReadOnly = true;
+            this.txtBookType.Size = new System.Drawing.Size(53, 20);
+            this.txtBookType.TabIndex = 15;
             // 
             // allclrckCheckBox
             // 
@@ -3485,7 +3755,7 @@
             this.allclrckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "allclrck", true));
             this.allclrckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.allclrckCheckBox.ForeColor = System.Drawing.Color.Red;
-            this.allclrckCheckBox.Location = new System.Drawing.Point(1101, 9);
+            this.allclrckCheckBox.Location = new System.Drawing.Point(1001, 33);
             this.allclrckCheckBox.Name = "allclrckCheckBox";
             this.allclrckCheckBox.Size = new System.Drawing.Size(113, 24);
             this.allclrckCheckBox.TabIndex = 13;
@@ -3534,15 +3804,13 @@
             this.lblSchoolName.TabIndex = 8;
             this.lblSchoolName.Text = "label1";
             // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsProdutn;
-            // 
             // pg2
             // 
             this.pg2.AutoScroll = true;
             this.pg2.BackColor = System.Drawing.SystemColors.Control;
+            this.pg2.Controls.Add(this.btnUpdateWip);
+            this.pg2.Controls.Add(invnoLabel7);
+            this.pg2.Controls.Add(this.invnoTextBox);
             this.pg2.Controls.Add(label22);
             this.pg2.Controls.Add(this.label23);
             this.pg2.Controls.Add(this.wipDetailDataGridView);
@@ -3599,12 +3867,20 @@
             this.pg2.TabIndex = 2;
             this.pg2.Text = "WIP";
             // 
+            // invnoTextBox
+            // 
+            this.invnoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.wipBindingSource, "invno", true));
+            this.invnoTextBox.Location = new System.Drawing.Point(614, 12);
+            this.invnoTextBox.Name = "invnoTextBox";
+            this.invnoTextBox.Size = new System.Drawing.Size(100, 20);
+            this.invnoTextBox.TabIndex = 133;
+            // 
             // label23
             // 
             this.label23.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "invno", true));
             this.label23.Location = new System.Drawing.Point(416, 6);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(100, 23);
+            this.label23.Size = new System.Drawing.Size(100, 13);
             this.label23.TabIndex = 132;
             this.label23.Text = "label1";
             // 
@@ -3618,14 +3894,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wipDetailDataGridView.AutoGenerateColumns = false;
             this.wipDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle71.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle71.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle71.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle71.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle71.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle71.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle71.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle71;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
             this.wipDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.wipDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -3637,7 +3913,7 @@
             this.dataGridViewTextBoxColumn7});
             this.wipDetailDataGridView.DataSource = this.wipDetailBindingSource;
             this.wipDetailDataGridView.EnableHeadersVisualStyles = false;
-            this.wipDetailDataGridView.Location = new System.Drawing.Point(74, 331);
+            this.wipDetailDataGridView.Location = new System.Drawing.Point(34, 331);
             this.wipDetailDataGridView.Name = "wipDetailDataGridView";
             this.wipDetailDataGridView.ReadOnly = true;
             this.wipDetailDataGridView.RowHeadersVisible = false;
@@ -3648,8 +3924,9 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            dataGridViewCellStyle72.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle72;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle32;
+            this.dataGridViewTextBoxColumn1.FillWeight = 161.9298F;
             this.dataGridViewTextBoxColumn1.HeaderText = "Description";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -3657,8 +3934,9 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "War";
-            dataGridViewCellStyle73.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle73;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle33;
+            this.dataGridViewTextBoxColumn2.FillWeight = 65.751F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Actual";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -3666,8 +3944,9 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Wdr";
-            dataGridViewCellStyle74.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle74;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle34;
+            this.dataGridViewTextBoxColumn3.FillWeight = 70.919F;
             this.dataGridViewTextBoxColumn3.HeaderText = "Due";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -3675,8 +3954,9 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Wtr";
-            dataGridViewCellStyle75.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle75;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle35;
+            this.dataGridViewTextBoxColumn4.FillWeight = 76.14214F;
             this.dataGridViewTextBoxColumn4.HeaderText = "Time";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -3684,8 +3964,9 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "Wir";
-            dataGridViewCellStyle76.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle76;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle36;
+            this.dataGridViewTextBoxColumn5.FillWeight = 125.258F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Initials";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -3729,11 +4010,6 @@
             this.manovrdeTextBox.Name = "manovrdeTextBox";
             this.manovrdeTextBox.Size = new System.Drawing.Size(100, 20);
             this.manovrdeTextBox.TabIndex = 129;
-            // 
-            // wipBindingSource
-            // 
-            this.wipBindingSource.DataMember = "wip";
-            this.wipBindingSource.DataSource = this.dsProdutn;
             // 
             // txtnoPlates
             // 
@@ -3923,6 +4199,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 105;
+            this.textBox3.Visible = false;
             // 
             // txtbindvend
             // 
@@ -3968,10 +4245,11 @@
             // 
             // lblProdNodata
             // 
+            this.lblProdNodata.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
             this.lblProdNodata.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdNodata.Location = new System.Drawing.Point(255, 5);
             this.lblProdNodata.Name = "lblProdNodata";
-            this.lblProdNodata.Size = new System.Drawing.Size(120, 23);
+            this.lblProdNodata.Size = new System.Drawing.Size(100, 14);
             this.lblProdNodata.TabIndex = 1;
             this.lblProdNodata.Text = "label1";
             // 
@@ -4166,14 +4444,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.coverdetailDataGridView.AutoGenerateColumns = false;
             this.coverdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle77.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle77.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle77.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle77.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle77.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle77.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle77;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
             this.coverdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.coverdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -4885,7 +5163,7 @@
             // textBox7
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "nopages", true));
+            this.textBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoPages", true));
             this.textBox7.Location = new System.Drawing.Point(675, 82);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(45, 20);
@@ -5128,7 +5406,7 @@
             // 
             // textBox10
             // 
-            this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "nocopies", true));
+            this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoCopies", true));
             this.textBox10.Location = new System.Drawing.Point(956, 52);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
@@ -5137,7 +5415,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "nopages", true));
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoPages", true));
             this.textBox2.Location = new System.Drawing.Point(772, 52);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
@@ -5243,14 +5521,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.partBkDetailDataGridView.AutoGenerateColumns = false;
             this.partBkDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle78.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle78.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle78.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle78.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle78.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle78.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.partBkDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle78;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle38.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.partBkDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle38;
             this.partBkDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partBkDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn24,
@@ -5413,7 +5691,7 @@
             // textBox12
             // 
             this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "nopages", true));
+            this.textBox12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoPages", true));
             this.textBox12.Location = new System.Drawing.Point(1008, 35);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
@@ -5757,14 +6035,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.prtbkbdetailDataGridView.AutoGenerateColumns = false;
             this.prtbkbdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle79.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle79.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle79.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle79.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle79.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle79.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.prtbkbdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle79;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.prtbkbdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle39;
             this.prtbkbdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.prtbkbdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -5780,8 +6058,8 @@
             this.prtbkbdetailDataGridView.Location = new System.Drawing.Point(118, 94);
             this.prtbkbdetailDataGridView.Name = "prtbkbdetailDataGridView";
             this.prtbkbdetailDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle80.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prtbkbdetailDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle80;
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prtbkbdetailDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle40;
             this.prtbkbdetailDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prtbkbdetailDataGridView.Size = new System.Drawing.Size(924, 242);
             this.prtbkbdetailDataGridView.TabIndex = 134;
@@ -5844,7 +6122,7 @@
             // 
             // textBox13
             // 
-            this.textBox13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "nopages", true));
+            this.textBox13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoPages", true));
             this.textBox13.Location = new System.Drawing.Point(565, 50);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
@@ -5932,7 +6210,7 @@
             this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
             this.tableAdapterManager.PartBkDetailTableAdapter = null;
             this.tableAdapterManager.partbkTableAdapter = null;
-            this.tableAdapterManager.produtnTableAdapter = this.produtnTableAdapter;
+            this.tableAdapterManager.produtnTableAdapter = null;
             this.tableAdapterManager.prtbkbdetailTableAdapter = null;
             this.tableAdapterManager.ptbkbTableAdapter = null;
             this.tableAdapterManager.quotesTableAdapter = this.quotesTableAdapter;
@@ -5941,13 +6219,13 @@
             this.tableAdapterManager.WipDetailTableAdapter = null;
             this.tableAdapterManager.wipTableAdapter = null;
             // 
-            // produtnTableAdapter
-            // 
-            this.produtnTableAdapter.ClearBeforeFill = true;
-            // 
             // quotesTableAdapter
             // 
             this.quotesTableAdapter.ClearBeforeFill = true;
+            // 
+            // produtnTableAdapter
+            // 
+            this.produtnTableAdapter.ClearBeforeFill = true;
             // 
             // partbkTableAdapter
             // 
@@ -5987,12 +6265,16 @@
             this.tableAdapterManager1.contpstnTableAdapter = null;
             this.tableAdapterManager1.lkpBackGroundTableAdapter = null;
             this.tableAdapterManager1.lkpCommentsTableAdapter = null;
+            this.tableAdapterManager1.lkpCustTypeTableAdapter = null;
+            this.tableAdapterManager1.lkpLeadNameTableAdapter = null;
+            this.tableAdapterManager1.lkpLeadSourceTableAdapter = null;
             this.tableAdapterManager1.lkpMktReferenceTableAdapter = null;
             this.tableAdapterManager1.lkpMultiYearOptionsTableAdapter = null;
             this.tableAdapterManager1.lkpNoRebookTableAdapter = null;
             this.tableAdapterManager1.lkpPrevPubTableAdapter = null;
             this.tableAdapterManager1.lkpPromotionsTableAdapter = null;
             this.tableAdapterManager1.lkpschtypeTableAdapter = null;
+            this.tableAdapterManager1.lkpSupplyItemsTableAdapter = null;
             this.tableAdapterManager1.lkpTypeContTableAdapter = null;
             this.tableAdapterManager1.lkTypeDataTableAdapter = this.lkTypeDataTableAdapter;
             this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -6009,32 +6291,97 @@
             // 
             this.prtbkbdetailTableAdapter.ClearBeforeFill = true;
             // 
+            // invoiceCustTableAdapter
+            // 
+            this.invoiceCustTableAdapter.ClearBeforeFill = true;
+            // 
+            // invoiceTableAdapter
+            // 
+            this.invoiceTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager2
+            // 
+            this.tableAdapterManager2.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager2.custTableAdapter = null;
+            this.tableAdapterManager2.invdetailTableAdapter = this.invdetailTableAdapter;
+            this.tableAdapterManager2.invoiceTableAdapter = this.invoiceTableAdapter;
+            this.tableAdapterManager2.paymntTableAdapter = this.paymntTableAdapter;
+            this.tableAdapterManager2.quotesTableAdapter = null;
+            this.tableAdapterManager2.UpdateOrder = Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // invdetailTableAdapter
+            // 
+            this.invdetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // paymntTableAdapter
+            // 
+            this.paymntTableAdapter.ClearBeforeFill = true;
+            // 
+            // vendorTableAdapter
+            // 
+            this.vendorTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnUpdateWip
+            // 
+            this.btnUpdateWip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateWip.Location = new System.Drawing.Point(924, 300);
+            this.btnUpdateWip.Name = "btnUpdateWip";
+            this.btnUpdateWip.Size = new System.Drawing.Size(113, 23);
+            this.btnUpdateWip.TabIndex = 134;
+            this.btnUpdateWip.Text = "Change All WIP Dates";
+            this.btnUpdateWip.UseVisualStyleBackColor = true;
+            this.btnUpdateWip.Click += new System.EventHandler(this.btnUpdateWip_Click);
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.Location = new System.Drawing.Point(5, 41);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(68, 13);
+            this.label56.TabIndex = 160;
+            this.label56.Text = "Book Type";
+            // 
             // frmProdutn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.ClientSize = new System.Drawing.Size(1234, 731);
             this.Controls.Add(this.tbProdutn);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(1250, 770);
             this.Name = "frmProdutn";
             this.Text = "Production";
+            this.Activated += new System.EventHandler(this.frmProdutn_Activated);
+            this.Deactivate += new System.EventHandler(this.frmProdutn_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmProdutn_FormClosing);
             this.Load += new System.EventHandler(this.frmProdutn_Load);
             this.Shown += new System.EventHandler(this.frmProdutn_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmProdutn_Paint);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmProdutn_KeyPress);
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceCustBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             this.tbProdutn.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wipgBindingSource)).EndInit();
@@ -6042,16 +6389,14 @@
             this.pnl11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbkbBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.partbkBindingSource)).EndInit();
+            this.addItemMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lkTypeDataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpBackGroundBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             this.pg2.ResumeLayout(false);
             this.pg2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wipDetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wipBindingSource)).EndInit();
             this.pg3.ResumeLayout(false);
             this.pg3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource1)).EndInit();
@@ -6092,15 +6437,12 @@
         private System.Windows.Forms.Label lblProdNo;
         private System.Windows.Forms.Label lblInvno;
         private System.Windows.Forms.Label lblcontryear;
-        private System.Windows.Forms.Button btnBookType;
         private System.Windows.Forms.CheckBox allclrckCheckBox;
         private System.Windows.Forms.CheckBox bkmixedCheckBox;
-        private System.Windows.Forms.TextBox booktypeTextBox;
-        private System.Windows.Forms.Button btnEmailProdForm;
+        private System.Windows.Forms.TextBox txtBookType;
+        private System.Windows.Forms.Button btnBkDue;
         private System.Windows.Forms.Button btnRecvLabel;
         private System.Windows.Forms.Button btnRecvHistory;
-        private System.Windows.Forms.Button btnRcvCard;
-        private System.Windows.Forms.Button btnBinderyEmail;
         private System.Windows.Forms.CheckBox reccardsentCheckBox;
         private System.Windows.Forms.Panel pnl11;
         private System.Windows.Forms.Label label2;
@@ -6117,12 +6459,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnKitRecv;
         private System.Windows.Forms.DateTimePicker kitrecvdDateTimePicker;
-        private System.Windows.Forms.TextBox bknopgsTextBox;
-        private System.Windows.Forms.DateTimePicker toprodDateTimePicker;
-        private System.Windows.Forms.TextBox bindvendTextBox;
         private System.Windows.Forms.Button btnBindVend;
         private System.Windows.Forms.Button btnPrntVendor;
-        private System.Windows.Forms.TextBox vendcdTextBox;
         private System.Windows.Forms.DateTimePicker tovendDateTimePicker;
         private System.Windows.Forms.DateTimePicker warndateDateTimePicker;
         private System.Windows.Forms.DateTimePicker prshpdteDateTimePicker;
@@ -6135,21 +6473,20 @@
         private System.Windows.Forms.CheckBox colorpgsCheckBox;
         private System.Windows.Forms.TextBox txtPerfbind;
         private System.Windows.Forms.DateTimePicker screcvDateTimePicker;
-        private System.Windows.Forms.TextBox coverdescTextBox;
-        private System.Windows.Forms.TextBox covertypeTextBox;
+        private System.Windows.Forms.TextBox txtCoverDescription;
+        private System.Windows.Forms.TextBox txtCoverType;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton10;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton bk10;
+        private System.Windows.Forms.RadioButton bk12;
+        private System.Windows.Forms.RadioButton bkAllClr;
+        private System.Windows.Forms.RadioButton ovrRide;
+        private System.Windows.Forms.RadioButton bkCoil;
+        private System.Windows.Forms.RadioButton bkHard;
+        private System.Windows.Forms.RadioButton bk11;
+        private System.Windows.Forms.RadioButton bk9;
+        private System.Windows.Forms.RadioButton bkStd;
         private System.Windows.Forms.Button btnCalCS;
         private System.Windows.Forms.TextBox txtCalcResult;
         private System.Windows.Forms.Label label10;
@@ -6159,7 +6496,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox cominitlTextBox;
         private System.Windows.Forms.DateTimePicker comdateDateTimePicker;
-        private System.Windows.Forms.DateTimePicker cstsvcdteDateTimePicker;
+        private System.Windows.Forms.DateTimePicker dpCustomerServiceDate;
         private System.Windows.Forms.Button btnEmailPw;
         private System.Windows.Forms.Button btnPrntMbOnline;
         private System.Windows.Forms.Button btnUpdateJob;
@@ -6216,13 +6553,6 @@
         private System.Windows.Forms.BindingSource wipDetailBindingSource;
         private DataSets.dsProdutnTableAdapters.WipDetailTableAdapter wipDetailTableAdapter;
         private System.Windows.Forms.DataGridView wipDetailDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.Label lblShipped;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label23;
@@ -6315,7 +6645,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnInvoiceSrch;
-        private System.Windows.Forms.TextBox txtInvoiceNoSrch;
+        private System.Windows.Forms.TextBox txtSchCode;
         private System.Windows.Forms.TextBox txtProdNoSrch;
         private System.Windows.Forms.Button btnProdSrch;
         private DataSets.LookUp lookUp;
@@ -6406,11 +6736,53 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
-		private System.Windows.Forms.TextBox modifiedByTextBox;
-        private System.Windows.Forms.TextBox laminatedTextBox;
         private System.Windows.Forms.TextBox coilclrTextBox;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.CheckBox persnlzCheckBox1;
         private System.Windows.Forms.CheckBox listrecdCheckBox1;
+        private System.Windows.Forms.ContextMenuStrip addItemMenu;
+        private System.Windows.Forms.ToolStripMenuItem mnType;
+        private System.Windows.Forms.ToolStripMenuItem mnCust;
+        private System.Windows.Forms.ToolStripMenuItem mnBackGround;
+        private System.Windows.Forms.Label lblModifiedBy;
+		private System.Windows.Forms.TextBox invnoTextBox;
+		private System.Windows.Forms.Button btnSchoolSearch;
+		private System.Windows.Forms.TextBox txtSchNamesrch;
+		private System.Windows.Forms.Button btnMbo;
+		private System.Windows.Forms.TextBox txtMbo;
+		private DataSets.dsCust dsCust;
+		private System.Windows.Forms.BindingSource invoiceCustBindingSource;
+		private DataSets.dsCustTableAdapters.custTableAdapter invoiceCustTableAdapter;
+		private DataSets.dsInvoice dsInvoice;
+		private System.Windows.Forms.BindingSource invoiceBindingSource;
+		private DataSets.dsInvoiceTableAdapters.invoiceTableAdapter invoiceTableAdapter;
+		private DataSets.dsInvoiceTableAdapters.TableAdapterManager tableAdapterManager2;
+		private DataSets.dsInvoiceTableAdapters.invdetailTableAdapter invdetailTableAdapter;
+		private System.Windows.Forms.BindingSource invdetailBindingSource;
+		private DataSets.dsInvoiceTableAdapters.paymntTableAdapter paymntTableAdapter;
+		private System.Windows.Forms.BindingSource paymntBindingSource;
+		private System.Windows.Forms.ComboBox vendcdComboBox1;
+		private System.Windows.Forms.ComboBox cmbBindingVendor;
+		private System.Windows.Forms.BindingSource vendorBindingSource;
+		private DataSets.dsProdutnTableAdapters.vendorTableAdapter vendorTableAdapter;
+		private System.Windows.Forms.DateTimePicker endstrecvDateTimePicker;
+		private System.Windows.Forms.Button btnStandarCoverEmail;
+		private System.Windows.Forms.Button btnspCoverEmail;
+		private System.Windows.Forms.TextBox colorsTextBox;
+		private System.Windows.Forms.TextBox speccoverTextBox;
+		private System.Windows.Forms.TextBox laminatedTextBox;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.CheckBox photographerPermissionCheckBox;
+        private System.Windows.Forms.CheckBox enhancementsCheckBox;
+        protected System.Windows.Forms.RadioButton bkMilled;
+        private System.Windows.Forms.Button btnUpdateWip;
+        private System.Windows.Forms.Label label56;
     }
 }
