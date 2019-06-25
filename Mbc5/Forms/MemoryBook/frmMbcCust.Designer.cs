@@ -127,23 +127,28 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.Label shipCityLabel;
             System.Windows.Forms.Label shipStateLabel;
             System.Windows.Forms.Label shipZipCodeLabel;
+            System.Windows.Forms.Label dateCreatedLabel;
+            System.Windows.Forms.Label invnoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMbcCust));
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
             this.ProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ProductionCheckListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.xSuppliesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsXSupplies = new Mbc5.DataSets.dsXSupplies();
+            this.xSuppliesDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.pnlHead = new System.Windows.Forms.Panel();
@@ -216,6 +221,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtZip = new System.Windows.Forms.TextBox();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
+            this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnProdTckt = new System.Windows.Forms.Button();
             this.btnProdChk = new System.Windows.Forms.Button();
             this.csrep2TextBox = new System.Windows.Forms.TextBox();
@@ -344,30 +350,40 @@ namespace Mbc5.Forms.MemoryBook {
             this.shippingCityTextBox = new System.Windows.Forms.TextBox();
             this.shippingAddr2TextBox1 = new System.Windows.Forms.TextBox();
             this.pg5 = new System.Windows.Forms.TabPage();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.lblId = new System.Windows.Forms.Label();
+            this.btnAddDetail = new System.Windows.Forms.Button();
+            this.btnNewSupplyRecord = new System.Windows.Forms.Button();
+            this.invnoLabel1 = new System.Windows.Forms.Label();
+            this.dateCreatedLabel1 = new System.Windows.Forms.Label();
+            this.xSuppliesDetailDataGridView = new System.Windows.Forms.DataGridView();
+            this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shipAddressLabel3 = new System.Windows.Forms.Label();
             this.pnlAdd = new System.Windows.Forms.Panel();
             this.btnCancelSupply = new System.Windows.Forms.Button();
             this.btnSaveSupply = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.cmbSupplyItem = new System.Windows.Forms.ComboBox();
             this.lkpSupplyItemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtSupplyQty = new System.Windows.Forms.TextBox();
-            this.txtSupplyInvoice = new System.Windows.Forms.TextBox();
-            this.btnAddSupply = new System.Windows.Forms.Button();
-            this.xsuppliesDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xsuppliesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsXSupplies = new Mbc5.DataSets.dsXSupplies();
             this.shipZipCodeLabel1 = new System.Windows.Forms.Label();
             this.shipStateLabel1 = new System.Windows.Forms.Label();
             this.shipCityLabel1 = new System.Windows.Forms.Label();
             this.shipAddress2Label1 = new System.Windows.Forms.Label();
-            this.shipAddressLabel1 = new System.Windows.Forms.Label();
             this.pg6 = new System.Windows.Forms.TabPage();
             this.lkpTypeContBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lkpCommentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -399,9 +415,11 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadSourceTableAdapter();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.reportViewerCheckList = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.xsuppliesTableAdapter = new Mbc5.DataSets.dsXSuppliesTableAdapters.xsuppliesTableAdapter();
             this.tableAdapterManager4 = new Mbc5.DataSets.dsXSuppliesTableAdapters.TableAdapterManager();
             this.lkpSupplyItemsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpSupplyItemsTableAdapter();
+            this.xSuppliesDetailTableAdapter = new Mbc5.DataSets.dsXSuppliesTableAdapters.XSuppliesDetailTableAdapter();
+            this.xsuppliesTableAdapter = new Mbc5.DataSets.dsXSuppliesTableAdapters.xsuppliesTableAdapter();
+            this.btnRefresh = new System.Windows.Forms.Button();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -499,11 +517,16 @@ namespace Mbc5.Forms.MemoryBook {
             shipCityLabel = new System.Windows.Forms.Label();
             shipStateLabel = new System.Windows.Forms.Label();
             shipZipCodeLabel = new System.Windows.Forms.Label();
+            dateCreatedLabel = new System.Windows.Forms.Label();
+            invnoLabel = new System.Windows.Forms.Label();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProdutnTicketModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionCheckListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xSuppliesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsXSupplies)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xSuppliesDetailBindingSource)).BeginInit();
             this.CustTab.SuspendLayout();
             this.pg1.SuspendLayout();
             this.pnlHead.SuspendLayout();
@@ -539,11 +562,11 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource4)).BeginInit();
             this.pg5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xSuppliesDetailDataGridView)).BeginInit();
             this.pnlAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpSupplyItemsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xsuppliesDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xsuppliesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsXSupplies)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpTypeContBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpCommentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -1458,6 +1481,26 @@ namespace Mbc5.Forms.MemoryBook {
             shipZipCodeLabel.TabIndex = 8;
             shipZipCodeLabel.Text = "Shipping Zip Code";
             // 
+            // dateCreatedLabel
+            // 
+            dateCreatedLabel.AutoSize = true;
+            dateCreatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dateCreatedLabel.Location = new System.Drawing.Point(826, 20);
+            dateCreatedLabel.Name = "dateCreatedLabel";
+            dateCreatedLabel.Size = new System.Drawing.Size(44, 20);
+            dateCreatedLabel.TabIndex = 13;
+            dateCreatedLabel.Text = "Date";
+            // 
+            // invnoLabel
+            // 
+            invnoLabel.AutoSize = true;
+            invnoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            invnoLabel.Location = new System.Drawing.Point(802, 52);
+            invnoLabel.Name = "invnoLabel";
+            invnoLabel.Size = new System.Drawing.Size(68, 20);
+            invnoLabel.TabIndex = 14;
+            invnoLabel.Text = "Invoice#";
+            // 
             // custBindingSource
             // 
             this.custBindingSource.DataMember = "cust";
@@ -1472,6 +1515,21 @@ namespace Mbc5.Forms.MemoryBook {
             // ProdutnTicketModelBindingSource
             // 
             this.ProdutnTicketModelBindingSource.DataSource = typeof(BindingModels.ProdutnTicketModel);
+            // 
+            // xSuppliesBindingSource
+            // 
+            this.xSuppliesBindingSource.DataMember = "xsupplies";
+            this.xSuppliesBindingSource.DataSource = this.dsXSupplies;
+            // 
+            // dsXSupplies
+            // 
+            this.dsXSupplies.DataSetName = "dsXSupplies";
+            this.dsXSupplies.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // xSuppliesDetailBindingSource
+            // 
+            this.xSuppliesDetailBindingSource.DataMember = "xsupplies_XSuppliesDetail";
+            this.xSuppliesDetailBindingSource.DataSource = this.xSuppliesBindingSource;
             // 
             // CustTab
             // 
@@ -1489,6 +1547,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.CustTab.SelectedIndex = 0;
             this.CustTab.Size = new System.Drawing.Size(1234, 670);
             this.CustTab.TabIndex = 0;
+            this.CustTab.Visible = false;
             // 
             // pg1
             // 
@@ -1510,6 +1569,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.pnlHead.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHead.Controls.Add(this.btnRefresh);
             this.pnlHead.Controls.Add(this.lblHiddenSchcode);
             this.pnlHead.Controls.Add(this.btnAddcust);
             this.pnlHead.Controls.Add(this.btnMainLog);
@@ -1678,6 +1738,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.splitContainer.Panel2.AutoScroll = true;
             this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel2.Controls.Add(this.reportViewer3);
             this.splitContainer.Panel2.Controls.Add(this.btnProdTckt);
             this.splitContainer.Panel2.Controls.Add(csrep2Label);
             this.splitContainer.Panel2.Controls.Add(this.btnProdChk);
@@ -2325,6 +2386,24 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtCity.Size = new System.Drawing.Size(183, 20);
             this.txtCity.TabIndex = 5;
             // 
+            // reportViewer3
+            // 
+            this.reportViewer3.DocumentMapWidth = 91;
+            reportDataSource3.Name = "dsXSuppyReport";
+            reportDataSource3.Value = this.xSuppliesBindingSource;
+            reportDataSource4.Name = "dsXsupplyDetailreport";
+            reportDataSource4.Value = this.xSuppliesDetailBindingSource;
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.XSuppy.rdlc";
+            this.reportViewer3.Location = new System.Drawing.Point(501, 132);
+            this.reportViewer3.Name = "reportViewer3";
+            this.reportViewer3.ServerReport.BearerToken = null;
+            this.reportViewer3.Size = new System.Drawing.Size(93, 75);
+            this.reportViewer3.TabIndex = 126;
+            this.reportViewer3.Visible = false;
+            this.reportViewer3.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer3_RenderingComplete_1);
+            // 
             // btnProdTckt
             // 
             this.btnProdTckt.Location = new System.Drawing.Point(487, 286);
@@ -2591,9 +2670,9 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.reportViewer2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.reportViewer2.DocumentMapWidth = 48;
-            reportDataSource3.Name = "DataSet1";
-            reportDataSource3.Value = this.custBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource5.Name = "DataSet1";
+            reportDataSource5.Value = this.custBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource5);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30323FileFolderLabel.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(459, 213);
             this.reportViewer2.Name = "reportViewer2";
@@ -3690,9 +3769,18 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.pg5.AutoScroll = true;
             this.pg5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pg5.Controls.Add(this.btnPrint);
+            this.pg5.Controls.Add(this.bindingNavigator1);
+            this.pg5.Controls.Add(this.lblId);
+            this.pg5.Controls.Add(this.btnAddDetail);
+            this.pg5.Controls.Add(this.btnNewSupplyRecord);
+            this.pg5.Controls.Add(invnoLabel);
+            this.pg5.Controls.Add(this.invnoLabel1);
+            this.pg5.Controls.Add(dateCreatedLabel);
+            this.pg5.Controls.Add(this.dateCreatedLabel1);
+            this.pg5.Controls.Add(this.xSuppliesDetailDataGridView);
+            this.pg5.Controls.Add(this.shipAddressLabel3);
             this.pg5.Controls.Add(this.pnlAdd);
-            this.pg5.Controls.Add(this.btnAddSupply);
-            this.pg5.Controls.Add(this.xsuppliesDataGridView);
             this.pg5.Controls.Add(shipZipCodeLabel);
             this.pg5.Controls.Add(this.shipZipCodeLabel1);
             this.pg5.Controls.Add(shipStateLabel);
@@ -3702,12 +3790,234 @@ namespace Mbc5.Forms.MemoryBook {
             this.pg5.Controls.Add(shipAddress2Label);
             this.pg5.Controls.Add(this.shipAddress2Label1);
             this.pg5.Controls.Add(shipAddressLabel);
-            this.pg5.Controls.Add(this.shipAddressLabel1);
             this.pg5.Location = new System.Drawing.Point(4, 22);
             this.pg5.Name = "pg5";
             this.pg5.Size = new System.Drawing.Size(1226, 644);
             this.pg5.TabIndex = 4;
             this.pg5.Text = "Supplies";
+            this.pg5.Click += new System.EventHandler(this.pg5_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(134, 302);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 21;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // bindingNavigator1
+            // 
+            this.bindingNavigator1.AddNewItem = null;
+            this.bindingNavigator1.BindingSource = this.xSuppliesBindingSource;
+            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigator1.DeleteItem = null;
+            this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2});
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 619);
+            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
+            this.bindingNavigator1.Size = new System.Drawing.Size(1226, 25);
+            this.bindingNavigator1.TabIndex = 20;
+            this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // lblId
+            // 
+            this.lblId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xSuppliesBindingSource, "Id", true));
+            this.lblId.Location = new System.Drawing.Point(812, 75);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(75, 23);
+            this.lblId.TabIndex = 19;
+            this.lblId.Text = "label22";
+            // 
+            // btnAddDetail
+            // 
+            this.btnAddDetail.Location = new System.Drawing.Point(134, 273);
+            this.btnAddDetail.Name = "btnAddDetail";
+            this.btnAddDetail.Size = new System.Drawing.Size(75, 23);
+            this.btnAddDetail.TabIndex = 17;
+            this.btnAddDetail.Text = "Add Item";
+            this.btnAddDetail.UseVisualStyleBackColor = true;
+            this.btnAddDetail.Click += new System.EventHandler(this.btnAddDetail_Click);
+            // 
+            // btnNewSupplyRecord
+            // 
+            this.btnNewSupplyRecord.Location = new System.Drawing.Point(54, 20);
+            this.btnNewSupplyRecord.Name = "btnNewSupplyRecord";
+            this.btnNewSupplyRecord.Size = new System.Drawing.Size(112, 23);
+            this.btnNewSupplyRecord.TabIndex = 16;
+            this.btnNewSupplyRecord.Text = "New Supply Record";
+            this.btnNewSupplyRecord.UseVisualStyleBackColor = true;
+            this.btnNewSupplyRecord.Click += new System.EventHandler(this.btnNewSupplyRecord_Click);
+            // 
+            // invnoLabel1
+            // 
+            this.invnoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xSuppliesBindingSource, "Invno", true));
+            this.invnoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invnoLabel1.Location = new System.Drawing.Point(876, 52);
+            this.invnoLabel1.Name = "invnoLabel1";
+            this.invnoLabel1.Size = new System.Drawing.Size(100, 23);
+            this.invnoLabel1.TabIndex = 15;
+            this.invnoLabel1.Text = "label27";
+            // 
+            // dateCreatedLabel1
+            // 
+            this.dateCreatedLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xSuppliesBindingSource, "dateCreated", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
+            this.dateCreatedLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateCreatedLabel1.Location = new System.Drawing.Point(876, 20);
+            this.dateCreatedLabel1.Name = "dateCreatedLabel1";
+            this.dateCreatedLabel1.Size = new System.Drawing.Size(127, 23);
+            this.dateCreatedLabel1.TabIndex = 14;
+            this.dateCreatedLabel1.Text = "label27";
+            // 
+            // xSuppliesDetailDataGridView
+            // 
+            this.xSuppliesDetailDataGridView.AllowUserToAddRows = false;
+            this.xSuppliesDetailDataGridView.AllowUserToDeleteRows = false;
+            this.xSuppliesDetailDataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.xSuppliesDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.xSuppliesDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.xSuppliesDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.deleteColumn,
+            this.Item,
+            this.Column1,
+            this.idDataGridViewTextBoxColumn});
+            this.xSuppliesDetailDataGridView.DataMember = "xsupplies_XSuppliesDetail";
+            this.xSuppliesDetailDataGridView.DataSource = this.xSuppliesBindingSource;
+            this.xSuppliesDetailDataGridView.EnableHeadersVisualStyles = false;
+            this.xSuppliesDetailDataGridView.Location = new System.Drawing.Point(239, 273);
+            this.xSuppliesDetailDataGridView.Name = "xSuppliesDetailDataGridView";
+            this.xSuppliesDetailDataGridView.Size = new System.Drawing.Size(549, 220);
+            this.xSuppliesDetailDataGridView.TabIndex = 13;
+            this.xSuppliesDetailDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.xSuppliesDetailDataGridView_CellContentClick);
+            // 
+            // deleteColumn
+            // 
+            this.deleteColumn.HeaderText = "";
+            this.deleteColumn.Name = "deleteColumn";
+            this.deleteColumn.Text = "Remove";
+            this.deleteColumn.ToolTipText = "Remove Record";
+            this.deleteColumn.UseColumnTextForButtonValue = true;
+            // 
+            // Item
+            // 
+            this.Item.DataPropertyName = "Item";
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            this.Item.Width = 275;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "Quantity";
+            this.Column1.HeaderText = "Qty";
+            this.Column1.Name = "Column1";
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // shipAddressLabel3
+            // 
+            this.shipAddressLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xSuppliesBindingSource, "ShipAddress", true));
+            this.shipAddressLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipAddressLabel3.Location = new System.Drawing.Point(432, 20);
+            this.shipAddressLabel3.Name = "shipAddressLabel3";
+            this.shipAddressLabel3.Size = new System.Drawing.Size(285, 23);
+            this.shipAddressLabel3.TabIndex = 13;
+            this.shipAddressLabel3.Text = "label27";
             // 
             // pnlAdd
             // 
@@ -3716,10 +4026,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.pnlAdd.Controls.Add(this.btnSaveSupply);
             this.pnlAdd.Controls.Add(this.label25);
             this.pnlAdd.Controls.Add(this.label23);
-            this.pnlAdd.Controls.Add(this.label22);
             this.pnlAdd.Controls.Add(this.cmbSupplyItem);
             this.pnlAdd.Controls.Add(this.txtSupplyQty);
-            this.pnlAdd.Controls.Add(this.txtSupplyInvoice);
             this.pnlAdd.Location = new System.Drawing.Point(239, 195);
             this.pnlAdd.Name = "pnlAdd";
             this.pnlAdd.Size = new System.Drawing.Size(543, 72);
@@ -3749,7 +4057,7 @@ namespace Mbc5.Forms.MemoryBook {
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(206, 8);
+            this.label25.Location = new System.Drawing.Point(125, 8);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(27, 13);
             this.label25.TabIndex = 19;
@@ -3758,29 +4066,20 @@ namespace Mbc5.Forms.MemoryBook {
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(385, 8);
+            this.label23.Location = new System.Drawing.Point(321, 8);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(23, 13);
             this.label23.TabIndex = 18;
             this.label23.Text = "Qty";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(25, 8);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(49, 13);
-            this.label22.TabIndex = 17;
-            this.label22.Text = "Invoice#";
             // 
             // cmbSupplyItem
             // 
             this.cmbSupplyItem.DataSource = this.lkpSupplyItemsBindingSource;
             this.cmbSupplyItem.DisplayMember = "ItemName";
             this.cmbSupplyItem.FormattingEnabled = true;
-            this.cmbSupplyItem.Location = new System.Drawing.Point(114, 28);
+            this.cmbSupplyItem.Location = new System.Drawing.Point(3, 28);
             this.cmbSupplyItem.Name = "cmbSupplyItem";
-            this.cmbSupplyItem.Size = new System.Drawing.Size(222, 21);
+            this.cmbSupplyItem.Size = new System.Drawing.Size(278, 21);
             this.cmbSupplyItem.TabIndex = 16;
             this.cmbSupplyItem.ValueMember = "ItemName";
             // 
@@ -3791,115 +4090,15 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // txtSupplyQty
             // 
-            this.txtSupplyQty.Location = new System.Drawing.Point(351, 28);
+            this.txtSupplyQty.Location = new System.Drawing.Point(287, 28);
             this.txtSupplyQty.Name = "txtSupplyQty";
             this.txtSupplyQty.Size = new System.Drawing.Size(100, 20);
             this.txtSupplyQty.TabIndex = 15;
             this.txtSupplyQty.Validating += new System.ComponentModel.CancelEventHandler(this.txtSupplyQty_Validating);
             // 
-            // txtSupplyInvoice
-            // 
-            this.txtSupplyInvoice.Location = new System.Drawing.Point(8, 28);
-            this.txtSupplyInvoice.Name = "txtSupplyInvoice";
-            this.txtSupplyInvoice.Size = new System.Drawing.Size(100, 20);
-            this.txtSupplyInvoice.TabIndex = 14;
-            // 
-            // btnAddSupply
-            // 
-            this.btnAddSupply.Location = new System.Drawing.Point(158, 278);
-            this.btnAddSupply.Name = "btnAddSupply";
-            this.btnAddSupply.Size = new System.Drawing.Size(75, 23);
-            this.btnAddSupply.TabIndex = 11;
-            this.btnAddSupply.Text = "Add";
-            this.btnAddSupply.UseVisualStyleBackColor = true;
-            this.btnAddSupply.Click += new System.EventHandler(this.btnAddSupply_Click);
-            // 
-            // xsuppliesDataGridView
-            // 
-            this.xsuppliesDataGridView.AllowUserToAddRows = false;
-            this.xsuppliesDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.xsuppliesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.xsuppliesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.xsuppliesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn12});
-            this.xsuppliesDataGridView.DataSource = this.xsuppliesBindingSource;
-            this.xsuppliesDataGridView.EnableHeadersVisualStyles = false;
-            this.xsuppliesDataGridView.Location = new System.Drawing.Point(239, 278);
-            this.xsuppliesDataGridView.Name = "xsuppliesDataGridView";
-            this.xsuppliesDataGridView.ReadOnly = true;
-            this.xsuppliesDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            this.xsuppliesDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.xsuppliesDataGridView.Size = new System.Drawing.Size(654, 220);
-            this.xsuppliesDataGridView.TabIndex = 10;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "Invno";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Invoice#";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            this.dataGridViewTextBoxColumn20.Width = 75;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "Item";
-            this.dataGridViewTextBoxColumn16.HeaderText = "Item";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Width = 325;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "quantity";
-            this.dataGridViewTextBoxColumn17.HeaderText = "Qty";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            this.dataGridViewTextBoxColumn17.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "dateCreated";
-            dataGridViewCellStyle8.Format = "d";
-            dataGridViewCellStyle8.NullValue = null;
-            this.dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn18.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            this.dataGridViewTextBoxColumn18.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn12.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Visible = false;
-            // 
-            // xsuppliesBindingSource
-            // 
-            this.xsuppliesBindingSource.DataMember = "xsupplies";
-            this.xsuppliesBindingSource.DataSource = this.dsXSupplies;
-            // 
-            // dsXSupplies
-            // 
-            this.dsXSupplies.DataSetName = "dsXSupplies";
-            this.dsXSupplies.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // shipZipCodeLabel1
             // 
-            this.shipZipCodeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xsuppliesBindingSource, "ShipZipCode", true));
+            this.shipZipCodeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xSuppliesBindingSource, "ShipZipCode", true));
             this.shipZipCodeLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shipZipCodeLabel1.Location = new System.Drawing.Point(432, 148);
             this.shipZipCodeLabel1.Name = "shipZipCodeLabel1";
@@ -3909,7 +4108,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // shipStateLabel1
             // 
-            this.shipStateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xsuppliesBindingSource, "ShipState", true));
+            this.shipStateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xSuppliesBindingSource, "ShipState", true));
             this.shipStateLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shipStateLabel1.Location = new System.Drawing.Point(432, 116);
             this.shipStateLabel1.Name = "shipStateLabel1";
@@ -3919,7 +4118,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // shipCityLabel1
             // 
-            this.shipCityLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xsuppliesBindingSource, "ShipCity", true));
+            this.shipCityLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xSuppliesBindingSource, "ShipCity", true));
             this.shipCityLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shipCityLabel1.Location = new System.Drawing.Point(432, 84);
             this.shipCityLabel1.Name = "shipCityLabel1";
@@ -3929,23 +4128,13 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // shipAddress2Label1
             // 
-            this.shipAddress2Label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xsuppliesBindingSource, "ShipAddress2", true));
+            this.shipAddress2Label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xSuppliesBindingSource, "ShipAddress2", true));
             this.shipAddress2Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shipAddress2Label1.Location = new System.Drawing.Point(432, 52);
             this.shipAddress2Label1.Name = "shipAddress2Label1";
             this.shipAddress2Label1.Size = new System.Drawing.Size(285, 20);
             this.shipAddress2Label1.TabIndex = 3;
             this.shipAddress2Label1.Text = "label22";
-            // 
-            // shipAddressLabel1
-            // 
-            this.shipAddressLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xsuppliesBindingSource, "ShipAddress", true));
-            this.shipAddressLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipAddressLabel1.Location = new System.Drawing.Point(432, 20);
-            this.shipAddressLabel1.Name = "shipAddressLabel1";
-            this.shipAddressLabel1.Size = new System.Drawing.Size(285, 20);
-            this.shipAddressLabel1.TabIndex = 1;
-            this.shipAddressLabel1.Text = "label22";
             // 
             // pg6
             // 
@@ -4131,19 +4320,35 @@ namespace Mbc5.Forms.MemoryBook {
             this.reportViewerCheckList.Visible = false;
             this.reportViewerCheckList.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewerCheckList_RenderingComplete);
             // 
-            // xsuppliesTableAdapter
-            // 
-            this.xsuppliesTableAdapter.ClearBeforeFill = true;
-            // 
             // tableAdapterManager4
             // 
             this.tableAdapterManager4.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager4.Connection = null;
             this.tableAdapterManager4.UpdateOrder = Mbc5.DataSets.dsXSuppliesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager4.xsuppliesTableAdapter = this.xsuppliesTableAdapter;
+            this.tableAdapterManager4.XSuppliesDetailTableAdapter = null;
+            this.tableAdapterManager4.xsuppliesTableAdapter = null;
             // 
             // lkpSupplyItemsTableAdapter
             // 
             this.lkpSupplyItemsTableAdapter.ClearBeforeFill = true;
+            // 
+            // xSuppliesDetailTableAdapter
+            // 
+            this.xSuppliesDetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // xsuppliesTableAdapter
+            // 
+            this.xsuppliesTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(273, 2);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(127, 23);
+            this.btnRefresh.TabIndex = 109;
+            this.btnRefresh.Text = "Refresh Data";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // frmMbcCust
             // 
@@ -4169,6 +4374,9 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProdutnTicketModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionCheckListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xSuppliesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsXSupplies)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xSuppliesDetailBindingSource)).EndInit();
             this.CustTab.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pnlHead.ResumeLayout(false);
@@ -4211,12 +4419,13 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource4)).EndInit();
             this.pg5.ResumeLayout(false);
             this.pg5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
+            this.bindingNavigator1.ResumeLayout(false);
+            this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xSuppliesDetailDataGridView)).EndInit();
             this.pnlAdd.ResumeLayout(false);
             this.pnlAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpSupplyItemsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xsuppliesDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xsuppliesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsXSupplies)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpTypeContBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpCommentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -4446,33 +4655,17 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.Button btnSchoolToInvoice;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
-        private DataSets.dsXSupplies dsXSupplies;
-        private System.Windows.Forms.BindingSource xsuppliesBindingSource;
-        private DataSets.dsXSuppliesTableAdapters.xsuppliesTableAdapter xsuppliesTableAdapter;
         private DataSets.dsXSuppliesTableAdapters.TableAdapterManager tableAdapterManager4;
-        private System.Windows.Forms.DataGridView xsuppliesDataGridView;
-        private System.Windows.Forms.Label shipZipCodeLabel1;
-        private System.Windows.Forms.Label shipStateLabel1;
-        private System.Windows.Forms.Label shipCityLabel1;
-        private System.Windows.Forms.Label shipAddress2Label1;
-        private System.Windows.Forms.Label shipAddressLabel1;
         private System.Windows.Forms.Panel pnlAdd;
-        private System.Windows.Forms.Button btnAddSupply;
         private System.Windows.Forms.BindingSource lkpSupplyItemsBindingSource;
         private DataSets.LookUpTableAdapters.lkpSupplyItemsTableAdapter lkpSupplyItemsTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.Button btnCancelSupply;
         private System.Windows.Forms.Button btnSaveSupply;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox cmbSupplyItem;
         private System.Windows.Forms.TextBox txtSupplyQty;
-        private System.Windows.Forms.TextBox txtSupplyInvoice;
         private System.Windows.Forms.TextBox invZipCodeTextBox;
         private System.Windows.Forms.ComboBox cmbInvStateComboBox;
         private System.Windows.Forms.TextBox invCityTextBox;
@@ -4494,5 +4687,38 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        private DataSets.dsXSupplies dsXSupplies;
+        private System.Windows.Forms.BindingSource xSuppliesBindingSource;
+        private System.Windows.Forms.BindingSource xSuppliesDetailBindingSource;
+        private DataSets.dsXSuppliesTableAdapters.XSuppliesDetailTableAdapter xSuppliesDetailTableAdapter;
+        private System.Windows.Forms.Label invnoLabel1;
+        private System.Windows.Forms.Label dateCreatedLabel1;
+        private System.Windows.Forms.DataGridView xSuppliesDetailDataGridView;
+        private System.Windows.Forms.Label shipAddressLabel3;
+        private System.Windows.Forms.Label shipZipCodeLabel1;
+        private System.Windows.Forms.Label shipStateLabel1;
+        private System.Windows.Forms.Label shipCityLabel1;
+        private System.Windows.Forms.Label shipAddress2Label1;
+        private DataSets.dsXSuppliesTableAdapters.xsuppliesTableAdapter xsuppliesTableAdapter;
+        private System.Windows.Forms.Button btnAddDetail;
+        private System.Windows.Forms.Button btnNewSupplyRecord;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.DataGridViewButtonColumn deleteColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnPrint;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer3;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

@@ -418,7 +418,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <None Include="Content\download.png" />
     <Content Include="Content\MAIL.png" />
+    <None Include="Content\school.png" />
     <Content Include="Content\SystemIcons\tsAdd.Image.png" />
     <Content Include="Content\SystemIcons\tsCancel.Image.png" />
     <Content Include="Content\SystemIcons\tsCopy.Image.png" />
@@ -549,7 +551,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\30256AddressLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321YearBookLabel.rdlc" />
@@ -565,6 +566,7 @@
     <EmbeddedResource Include="Reports\ProdCheckList.rdlc" />
     <EmbeddedResource Include="Reports\ProdutnTicket.rdlc" />
     <EmbeddedResource Include="Reports\test.rdlc" />
+    <EmbeddedResource Include="Reports\XSuppy.rdlc" />
     <None Include="DataSets\dsCust.xsc">
       <DependentUpon>dsCust.xsd</DependentUpon>
     </None>
@@ -755,11 +757,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>

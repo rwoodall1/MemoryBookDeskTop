@@ -83,11 +83,12 @@ namespace Mbc5.Forms.MemoryBook {
             Fill();
             this.txtModifiedBy.Text = this.ApplicationUser.id;
             custBindingSource.ResetBindings(true);
+            
         }
 
-        
-        
- #region CrudOperations
+
+
+        #region CrudOperations
         public override ApiProcessingResult<bool> Save()
 {
 	var processingResult = new ApiProcessingResult<bool>();
@@ -325,29 +326,37 @@ public override void Cancel() {
                                         ,ShippingZipCode=@ShippingZipCode
                                     WHERE Schcode=@Schcode
                                     ");
-            sqlClient.AddParameter("@InvoiceAddr", invAddrTextBox.Text);
-            sqlClient.AddParameter("@InvoiceAddr2", invAddr2TextBox.Text);
-            sqlClient.AddParameter("@InvoiceCity", invCityTextBox.Text);
-            sqlClient.AddParameter("@InvoiceState", cmbInvStateComboBox.SelectedValue);
-            sqlClient.AddParameter("@InvoiceZipCode", invZipCodeTextBox.Text);
-            sqlClient.AddParameter("@ShippingAddr", shipppingAddrTextBox1.Text);
-            sqlClient.AddParameter("@ShippingAddr2", shippingAddr2TextBox1.Text);
-            sqlClient.AddParameter("@ShippingCity", shippingCityTextBox.Text);
-            sqlClient.AddParameter("@ShippingState", cmbshippingState.SelectedValue);
-            sqlClient.AddParameter("@ShippingZipCode", shippingZipCodeTextBox.Text);
-            sqlClient.AddParameter("@SchCode", Schcode);
-            var updateResult = sqlClient.Update();
-            if (updateResult.IsError)
+            try
             {
-                MbcMessageBox.Error("Error saving address information:"+updateResult.Errors[0].ErrorMessage, "");
-                ExceptionlessClient.Default.CreateLog("Update Error")
-                    .AddObject(updateResult)
-                    .MarkAsCritical()
-                    .Submit();
+                //use try here because this fire when closing form. combo are empty and throws and error.
+                sqlClient.AddParameter("@InvoiceAddr", invAddrTextBox.Text);
+                sqlClient.AddParameter("@InvoiceAddr2", invAddr2TextBox.Text);
+                sqlClient.AddParameter("@InvoiceCity", invCityTextBox.Text);
+                sqlClient.AddParameter("@InvoiceState", cmbInvStateComboBox.SelectedValue.ToString());
+                sqlClient.AddParameter("@InvoiceZipCode", invZipCodeTextBox.Text);
+                sqlClient.AddParameter("@ShippingAddr", shipppingAddrTextBox1.Text);
+                sqlClient.AddParameter("@ShippingAddr2", shippingAddr2TextBox1.Text);
+                sqlClient.AddParameter("@ShippingCity", shippingCityTextBox.Text);
+                sqlClient.AddParameter("@ShippingState", cmbshippingState.SelectedValue.ToString());
+                sqlClient.AddParameter("@ShippingZipCode", shippingZipCodeTextBox.Text);
+                sqlClient.AddParameter("@SchCode", Schcode);
+                var updateResult = sqlClient.Update();
+                if (updateResult.IsError)
+                {
+                    MbcMessageBox.Error("Error saving address information:" + updateResult.Errors[0].ErrorMessage, "");
+                    ExceptionlessClient.Default.CreateLog("Update Error")
+                        .AddObject(updateResult)
+                        .MarkAsCritical()
+                        .Submit();
+
+                }
+                //get current timestamp
+                this.Fill();
+            }
+            catch
+            {
 
             }
-            //get current timestamp
-            this.Fill();
         }
         public void Fill()
         {
@@ -377,21 +386,14 @@ public override void Cancel() {
                 this.lkpNoRebookTableAdapter.Fill(this.lookUp.lkpNoRebook);
                 this.lkpschtypeTableAdapter.Fill(this.lookUp.lkpschtype);
                 // TODO: This line of code loads data into the 'lookUp.lkpMktReference' table. You can move, or remove it, as needed.
-                this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);
-                // TODO: This line of code loads data into the 'lookUp.lkpComments' table. You can move, or remove it, as needed.
+                this.lkpMktReferenceTableAdapter.Fill(this.lookUp.lkpMktReference);           
                 this.lkpCommentsTableAdapter.Fill(this.lookUp.lkpComments);
-                // TODO: This line of code loads data into the 'lookUp.lkpTypeCont' table. You can move, or remove it, as needed.
-
-                // TODO: This line of code loads data into the 'dsCust.datecont' table. You can move, or remove it, as needed.
                 this.datecontTableAdapter.Fill(this.dsCust.datecont, Schcode);
-                // TODO: This line of code loads data into the 'dsCust.cust' table. You can move, or remove it, as needed.
-
-                this.custTableAdapter.Fill(this.dsCust.cust, Schcode);
-                // TODO: This line of code loads data into the 'lookUp.contpstn' table. You can move, or remove it, as needed.
+                this.custTableAdapter.Fill(this.dsCust.cust, Schcode);        
                 this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
-                // TODO: This line of code loads data into the 'lookUp.states' table. You can move, or remove it, as needed.
-
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, Schcode);
+                this.xsuppliesTableAdapter.Fill(this.dsXSupplies.xsupplies, Schcode);
+                this.xSuppliesDetailTableAdapter.Fill(dsXSupplies.XSuppliesDetail, Schcode);
             }
             catch (Exception ex)
             {
@@ -1976,22 +1978,7 @@ public override void Cancel() {
 
         }
 
-        private void btnAddSupply_Click(object sender, EventArgs e)
-        {
-            this.pnlAdd.Visible = true;
-            btnAddSupply.Visible = false;
-            txtSupplyInvoice.Text = this.Invno.ToString();
-        }
-
-        private void btnCancelSupply_Click(object sender, EventArgs e)
-        {
-            errorProvider1.Clear();
-            txtSupplyInvoice.Text = "";
-            txtSupplyQty.Text = "";
-            cmbSupplyItem.SelectedValue = "";
-            this.pnlAdd.Visible = false;
-            btnAddSupply.Visible = true;
-        }
+        
 
         private void btnSaveSupply_Click(object sender, EventArgs e)
         {
@@ -2002,11 +1989,9 @@ public override void Cancel() {
             {
                 errorProvider1.SetError(txtSupplyQty, "Enter a valid quantity.");
                 return;
-            }else if (!int.TryParse(txtSupplyInvoice.Text,out vInvno)||vInvno==0)
-            {
-                errorProvider1.SetError(txtSupplyInvoice, "Enter a valid invoice #.");
-                return;
-            }else if (cmbSupplyItem.SelectedValue==null||cmbSupplyItem.SelectedValue.ToString()== "--Select Item--")
+            }
+            
+            else if (cmbSupplyItem.SelectedValue == null || cmbSupplyItem.SelectedValue.ToString() == "--Select Item--")
             {
                 errorProvider1.SetError(cmbSupplyItem, "Select an item.");
                 return;
@@ -2014,42 +1999,45 @@ public override void Cancel() {
 
 
             var sqlClient = new SQLCustomClient();
-                sqlClient.CommandText(@"
-                                            INSERT INTO XSupplies(Item,Quantity,Schcode,Invno,ShipAddress,ShipAddress2,ShipCity,ShipState,ShipZipCode)
-                                            Values(@Item,@Quantity,@Schcode,@Invno,@ShipAddress,@ShipAddress2,@ShipCity,@ShipState,@ShipZipCode)"
-                                     );
-            var vshipAddress = ((DataRowView)custBindingSource.Current).Row["ShippingAddr"].ToString().Trim();
-            var vshipAddress2 = ((DataRowView)custBindingSource.Current).Row["ShippingAddr2"].ToString().Trim();
-            var vshipCity = ((DataRowView)custBindingSource.Current).Row["ShippingCity"].ToString().Trim();
-            var vshipState = ((DataRowView)custBindingSource.Current).Row["ShippingState"].ToString().Trim();
-            var vshipZipcode = ((DataRowView)custBindingSource.Current).Row["ShippingZipCode"].ToString().Trim();
-            sqlClient.AddParameter("@Item", cmbSupplyItem.SelectedValue);
-                sqlClient.AddParameter("@Quantity", txtSupplyQty.Text);
-                sqlClient.AddParameter("@Schcode", Schcode);
-                sqlClient.AddParameter("@Invno", txtSupplyInvoice.Text);
-                sqlClient.AddParameter("@ShipAddress", vshipAddress);
-                sqlClient.AddParameter("@ShipAddress2", vshipAddress2);
-                sqlClient.AddParameter("@ShipCity", vshipCity);
-                sqlClient.AddParameter("@ShipState", vshipState);
-                sqlClient.AddParameter("@ShipZipCode", vshipZipcode);
-                var insertResult = sqlClient.Insert();
-                if (insertResult.IsError)
-                {
-                    MbcMessageBox.Error(insertResult.Errors[0].ErrorMessage, "");
-                    ExceptionlessClient.Default.CreateLog(insertResult.Errors[0].ErrorMessage)
-                        .AddObject(insertResult)
-                        .Submit();
-                    return;
-                }
-                this.pnlAdd.Visible = false;
-                btnAddSupply.Visible = true;
-                txtSupplyInvoice.Text = "";
-                txtSupplyQty.Text = "";
-                cmbSupplyItem.SelectedValue = "";
-            errorProvider1.Clear();
-            try { xsuppliesTableAdapter.Fill(dsXSupplies.xsupplies, Schcode); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
-             
+            sqlClient.CommandText(@"
+                                            INSERT INTO XSuppliesDetail(Item,Quantity,Schcode,Invno,XSuppliesID)
+                                            Values(@Item,@Quantity,@Schcode,@Invno,@XSuppliesID)"
+                                 );
+     
+            sqlClient.AddParameter("@Item", cmbSupplyItem.SelectedValue.ToString());
+            sqlClient.AddParameter("@Quantity", txtSupplyQty.Text);
+            sqlClient.AddParameter("@Schcode", Schcode);
+            sqlClient.AddParameter("@Invno", Invno);
+            sqlClient.AddParameter("@XSuppliesID",lblId.Text);
+            var insertResult = sqlClient.Insert();
+            if (insertResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to insert xsuppliesDetails record:"+insertResult.Errors[0].ErrorMessage, "");
+                ExceptionlessClient.Default.CreateLog(insertResult.Errors[0].ErrorMessage)
+                    .AddObject(insertResult)
+                    .Submit();
+                return;
             }
+
+            pnlAdd.Visible = false;
+            btnAddDetail.Visible = true;
+            txtSupplyQty.Text = "";
+            cmbSupplyItem.SelectedValue = "";
+            errorProvider1.Clear();
+            try
+            {
+               
+                xSuppliesDetailTableAdapter.Fill(dsXSupplies.XSuppliesDetail, Schcode);
+
+            }
+            catch
+            {
+
+            }
+                
+               
+
+        }
 
         private void txtSupplyQty_Validating(object sender, CancelEventArgs e)
         {
@@ -2064,6 +2052,103 @@ public override void Cancel() {
         private void pg4_Leave(object sender, EventArgs e)
         {
             SaveAddressInfo();
+        }
+
+        private void btnNewSupplyRecord_Click(object sender, EventArgs e)
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"Insert Into XSupplies (Schcode,Schname,Schphone,Invno,AdvisorName,ShipAddress,ShipAddress2,ShipCity,ShipState,ShipZipCode)
+                                        VALUES(@Schcode,@Schname,@Schphone,@Invno,@AdvisorName,@ShipAddress,@ShipAddress2,@ShipCity,@ShipState,@ShipZipCode)");
+            
+
+            var vAdvisorName = ((DataRowView)custBindingSource.Current).Row["contfname"].ToString().Trim()+" "+ ((DataRowView)custBindingSource.Current).Row["contlname"].ToString().Trim();
+            sqlClient.AddParameter("@AdvisorName", vAdvisorName);
+            sqlClient.AddParameter("@Schname", ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim());
+            sqlClient.AddParameter("@Schphone", ((DataRowView)custBindingSource.Current).Row["schphone"].ToString().Trim());
+            sqlClient.AddParameter("@Schcode",Schcode);
+            sqlClient.AddParameter("@Invno",Invno);
+            sqlClient.AddParameter("@ShipAddress", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingAddr") ?"":((DataRowView)custBindingSource.Current).Row["ShippingAddr"].ToString());
+            sqlClient.AddParameter("@ShipAddress2", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingAddr2") ? "" : ((DataRowView)custBindingSource.Current).Row["ShippingAddr2"].ToString());
+            sqlClient.AddParameter("@ShipCity", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingCity") ? "" : ((DataRowView)custBindingSource.Current).Row["ShippingCity"].ToString());
+            sqlClient.AddParameter("@ShipState", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingState") ? "" : ((DataRowView)custBindingSource.Current).Row["ShippingState"].ToString());
+            sqlClient.AddParameter("@ShipZipCode", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingZipCode") ? "" : ((DataRowView)custBindingSource.Current).Row["ShippingZipCode"].ToString());
+            var insertResult = sqlClient.Insert();
+            if (insertResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to insert a supply record:" + insertResult.Errors[0].ErrorMessage,"");
+                ExceptionlessClient.Default.CreateLog("Failed to insert a supply record")
+                    .AddObject(insertResult)
+                    .Submit();
+                return;
+            }
+            var vId = insertResult.Data;
+            this.xsuppliesTableAdapter.Fill(this.dsXSupplies.xsupplies, Schcode);
+           var vPos= xSuppliesBindingSource.Find("Id", vId);
+            if (vPos > -1)
+            {
+                xSuppliesBindingSource.Position = vPos;
+            }
+
+        }
+
+        private void btnAddDetail_Click(object sender, EventArgs e)
+        {
+            this.pnlAdd.Visible = true;
+            btnAddDetail.Visible = false;
+            
+        }
+
+        private void btnCancelSupply_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+           
+            txtSupplyQty.Text = "";
+            cmbSupplyItem.SelectedValue = "";
+            this.pnlAdd.Visible = false;
+            btnAddDetail.Visible = true;
+        }
+
+        private void xSuppliesDetailDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                var vId = senderGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                var sqlClient = new SQLCustomClient();
+                sqlClient.CommandText(@"Delete FROM XSuppliesDetail where Id=@Id");
+                sqlClient.AddParameter("@Id", vId);
+               var deleteResult= sqlClient.Delete();
+                if (deleteResult.IsError)
+                {
+                    MbcMessageBox.Error("Delete failed:" + deleteResult.Errors[0].ErrorMessage, "");
+                    return;
+                }
+                xSuppliesDetailBindingSource.RemoveCurrent();
+            }
+        }
+
+        private void pg5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            reportViewer3.RefreshReport();
+        }
+
+      
+
+        private void reportViewer3_RenderingComplete_1(object sender, RenderingCompleteEventArgs e)
+        {
+            reportViewer3.PrintDialog();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            this.Fill();
         }
 
 
