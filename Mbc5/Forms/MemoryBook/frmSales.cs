@@ -85,8 +85,7 @@ namespace Mbc5.Forms.MemoryBook
             BookCalc();
             txtBYear.Focus();
             startup = false;
-            var vKitrecvd = ((DataRowView)quotesBindingSource.Current).Row.IsNull("kitrecvd")?"":((DataRowView)quotesBindingSource.Current).Row["kitrecvd"].ToString();
-            booktypeTextBox.ReadOnly = string.IsNullOrEmpty(vKitrecvd);
+            
         }
         
         private void btnPoSrch_Click(object sender, EventArgs e)
@@ -1803,6 +1802,13 @@ namespace Mbc5.Forms.MemoryBook
                 DataRowView current = (DataRowView)quotesBindingSource.Current;
                 this.Schcode = current["schcode"].ToString();
                 this.Invno = Convert.ToInt32(current["invno"]);
+                var vKitrecvd = "";
+                if (!((DataRowView)quotesBindingSource.Current).Row.IsNull("kitrecvd"))
+                {
+                    ((DataRowView)quotesBindingSource.Current).Row["kitrecvd"].ToString();
+                }
+
+                booktypeTextBox.ReadOnly = string.IsNullOrEmpty(vKitrecvd);
             }
         }
         private void Fill()
@@ -1814,7 +1820,11 @@ namespace Mbc5.Forms.MemoryBook
                     custTableAdapter.Fill(dsSales.cust, Schcode);
 
                   
-                    this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim().Substring(0,5);
+                    this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
+                    if (this.SchoolZipCode.Length > 5)
+                    {
+                        this.SchoolZipCode = this.SchoolZipCode.Substring(0, 5);
+                    }
                 }
                 catch (Exception ex)
                 {

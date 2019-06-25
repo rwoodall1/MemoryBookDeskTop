@@ -2855,7 +2855,7 @@ namespace Mbc5.DataSets {
                 this.columnschaddr2.MaxLength = 50;
                 this.columnschcity.MaxLength = 50;
                 this.columnschstate.MaxLength = 3;
-                this.columnschzip.MaxLength = 50;
+                this.columnschzip.MaxLength = 5;
                 this.columnschphone.MaxLength = 50;
                 this.columnschfax.MaxLength = 50;
                 this.columnschemail.MaxLength = 50;

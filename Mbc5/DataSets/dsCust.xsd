@@ -1278,7 +1278,7 @@ ORDER BY Name</CommandText>
   <xs:element name="dsCust" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCust" msprop:Generator_UserDSName="dsCust">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_UserTableName="cust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_RowEvArgName="custRowChangeEvent" msprop:Generator_RowClassName="custRow">
+        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_RowClassName="custRow" msprop:Generator_UserTableName="cust" msprop:Generator_RowEvArgName="custRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="cstatus" msprop:Generator_ColumnVarNameInTable="columncstatus" msprop:Generator_ColumnPropNameInRow="cstatus" msprop:Generator_ColumnPropNameInTable="cstatusColumn" msprop:Generator_UserColumnName="cstatus" minOccurs="0">
@@ -1385,7 +1385,7 @@ ORDER BY Name</CommandText>
               <xs:element name="schzip" msprop:Generator_ColumnVarNameInTable="columnschzip" msprop:Generator_ColumnPropNameInRow="schzip" msprop:Generator_ColumnPropNameInTable="schzipColumn" msprop:Generator_UserColumnName="schzip" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
+                    <xs:maxLength value="5" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -2098,7 +2098,7 @@ ORDER BY Name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="custSearch" msprop:Generator_TableClassName="custSearchDataTable" msprop:Generator_TableVarName="tablecustSearch" msprop:Generator_RowChangedName="custSearchRowChanged" msprop:Generator_TablePropName="custSearch" msprop:Generator_RowDeletingName="custSearchRowDeleting" msprop:Generator_RowChangingName="custSearchRowChanging" msprop:Generator_RowEvHandlerName="custSearchRowChangeEventHandler" msprop:Generator_RowDeletedName="custSearchRowDeleted" msprop:Generator_RowClassName="custSearchRow" msprop:Generator_UserTableName="custSearch" msprop:Generator_RowEvArgName="custSearchRowChangeEvent">
+        <xs:element name="custSearch" msprop:Generator_TableClassName="custSearchDataTable" msprop:Generator_TableVarName="tablecustSearch" msprop:Generator_TablePropName="custSearch" msprop:Generator_RowDeletingName="custSearchRowDeleting" msprop:Generator_RowChangingName="custSearchRowChanging" msprop:Generator_RowEvHandlerName="custSearchRowChangeEventHandler" msprop:Generator_RowDeletedName="custSearchRowDeleted" msprop:Generator_UserTableName="custSearch" msprop:Generator_RowChangedName="custSearchRowChanged" msprop:Generator_RowEvArgName="custSearchRowChangeEvent" msprop:Generator_RowClassName="custSearchRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -2139,7 +2139,7 @@ ORDER BY Name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="datecont" msprop:Generator_TableClassName="datecontDataTable" msprop:Generator_TableVarName="tabledatecont" msprop:Generator_TablePropName="datecont" msprop:Generator_RowDeletingName="datecontRowDeleting" msprop:Generator_RowChangingName="datecontRowChanging" msprop:Generator_RowEvHandlerName="datecontRowChangeEventHandler" msprop:Generator_RowDeletedName="datecontRowDeleted" msprop:Generator_UserTableName="datecont" msprop:Generator_RowChangedName="datecontRowChanged" msprop:Generator_RowEvArgName="datecontRowChangeEvent" msprop:Generator_RowClassName="datecontRow">
+        <xs:element name="datecont" msprop:Generator_TableClassName="datecontDataTable" msprop:Generator_TableVarName="tabledatecont" msprop:Generator_RowChangedName="datecontRowChanged" msprop:Generator_TablePropName="datecont" msprop:Generator_RowDeletingName="datecontRowDeleting" msprop:Generator_RowChangingName="datecontRowChanging" msprop:Generator_RowEvHandlerName="datecontRowChangeEventHandler" msprop:Generator_RowDeletedName="datecontRowDeleted" msprop:Generator_RowClassName="datecontRow" msprop:Generator_UserTableName="datecont" msprop:Generator_RowEvArgName="datecontRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -2203,7 +2203,7 @@ ORDER BY Name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="lkpLeadSource" msprop:Generator_TableClassName="lkpLeadSourceDataTable" msprop:Generator_TableVarName="tablelkpLeadSource" msprop:Generator_RowChangedName="lkpLeadSourceRowChanged" msprop:Generator_TablePropName="lkpLeadSource" msprop:Generator_RowDeletingName="lkpLeadSourceRowDeleting" msprop:Generator_RowChangingName="lkpLeadSourceRowChanging" msprop:Generator_RowEvHandlerName="lkpLeadSourceRowChangeEventHandler" msprop:Generator_RowDeletedName="lkpLeadSourceRowDeleted" msprop:Generator_RowClassName="lkpLeadSourceRow" msprop:Generator_UserTableName="lkpLeadSource" msprop:Generator_RowEvArgName="lkpLeadSourceRowChangeEvent">
+        <xs:element name="lkpLeadSource" msprop:Generator_TableClassName="lkpLeadSourceDataTable" msprop:Generator_TableVarName="tablelkpLeadSource" msprop:Generator_TablePropName="lkpLeadSource" msprop:Generator_RowDeletingName="lkpLeadSourceRowDeleting" msprop:Generator_RowChangingName="lkpLeadSourceRowChanging" msprop:Generator_RowEvHandlerName="lkpLeadSourceRowChangeEventHandler" msprop:Generator_RowDeletedName="lkpLeadSourceRowDeleted" msprop:Generator_UserTableName="lkpLeadSource" msprop:Generator_RowChangedName="lkpLeadSourceRowChanged" msprop:Generator_RowEvArgName="lkpLeadSourceRowChangeEvent" msprop:Generator_RowClassName="lkpLeadSourceRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
@@ -2216,7 +2216,7 @@ ORDER BY Name</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="lkpLeadName" msprop:Generator_TableClassName="lkpLeadNameDataTable" msprop:Generator_TableVarName="tablelkpLeadName" msprop:Generator_RowChangedName="lkpLeadNameRowChanged" msprop:Generator_TablePropName="lkpLeadName" msprop:Generator_RowDeletingName="lkpLeadNameRowDeleting" msprop:Generator_RowChangingName="lkpLeadNameRowChanging" msprop:Generator_RowEvHandlerName="lkpLeadNameRowChangeEventHandler" msprop:Generator_RowDeletedName="lkpLeadNameRowDeleted" msprop:Generator_RowClassName="lkpLeadNameRow" msprop:Generator_UserTableName="lkpLeadName" msprop:Generator_RowEvArgName="lkpLeadNameRowChangeEvent">
+        <xs:element name="lkpLeadName" msprop:Generator_TableClassName="lkpLeadNameDataTable" msprop:Generator_TableVarName="tablelkpLeadName" msprop:Generator_TablePropName="lkpLeadName" msprop:Generator_RowDeletingName="lkpLeadNameRowDeleting" msprop:Generator_RowChangingName="lkpLeadNameRowChanging" msprop:Generator_RowEvHandlerName="lkpLeadNameRowChangeEventHandler" msprop:Generator_RowDeletedName="lkpLeadNameRowDeleted" msprop:Generator_UserTableName="lkpLeadName" msprop:Generator_RowChangedName="lkpLeadNameRowChanged" msprop:Generator_RowEvArgName="lkpLeadNameRowChangeEvent" msprop:Generator_RowClassName="lkpLeadNameRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">

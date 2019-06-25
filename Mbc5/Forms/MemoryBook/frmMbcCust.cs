@@ -309,6 +309,46 @@ public override void Cancel() {
 //    }
         #endregion
  #region Methods
+        public void SaveAddressInfo()
+        {
+            var sqlClient = new SQLCustomClient();
+            sqlClient.CommandText(@"
+                                    UPDATE Cust Set InvoiceAddr=@InvoiceAddr
+                                        ,InvoiceAddr2=@InvoiceAddr2
+                                        ,InvoiceCity=@InvoiceCity
+                                        ,InvoiceState=@InvoiceState
+                                        ,InvoiceZipCode=@InvoiceZipCode 
+                                        ,ShippingAddr=@ShippingAddr
+                                        ,ShippingAddr2=@ShippingAddr2
+                                        ,ShippingCity=@ShippingCity
+                                        ,ShippingState=@ShippingState
+                                        ,ShippingZipCode=@ShippingZipCode
+                                    WHERE Schcode=@Schcode
+                                    ");
+            sqlClient.AddParameter("@InvoiceAddr", invAddrTextBox.Text);
+            sqlClient.AddParameter("@InvoiceAddr2", invAddr2TextBox.Text);
+            sqlClient.AddParameter("@InvoiceCity", invCityTextBox.Text);
+            sqlClient.AddParameter("@InvoiceState", cmbInvStateComboBox.SelectedValue);
+            sqlClient.AddParameter("@InvoiceZipCode", invZipCodeTextBox.Text);
+            sqlClient.AddParameter("@ShippingAddr", shipppingAddrTextBox1.Text);
+            sqlClient.AddParameter("@ShippingAddr2", shippingAddr2TextBox1.Text);
+            sqlClient.AddParameter("@ShippingCity", shippingCityTextBox.Text);
+            sqlClient.AddParameter("@ShippingState", cmbshippingState.SelectedValue);
+            sqlClient.AddParameter("@ShippingZipCode", shippingZipCodeTextBox.Text);
+            sqlClient.AddParameter("@SchCode", Schcode);
+            var updateResult = sqlClient.Update();
+            if (updateResult.IsError)
+            {
+                MbcMessageBox.Error("Error saving address information:"+updateResult.Errors[0].ErrorMessage, "");
+                ExceptionlessClient.Default.CreateLog("Update Error")
+                    .AddObject(updateResult)
+                    .MarkAsCritical()
+                    .Submit();
+
+            }
+            //get current timestamp
+            this.Fill();
+        }
         public void Fill()
         {
 
@@ -1927,43 +1967,8 @@ public override void Cancel() {
 
         private void btnSaveInformation_Click(object sender, EventArgs e)
         {
-            var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"
-                                    UPDATE Cust Set InvoiceAddr=@InvoiceAddr
-                                        ,InvoiceAddr2=@InvoiceAddr2
-                                        ,InvoiceCity=@InvoiceCity
-                                        ,InvoiceState=@InvoiceState
-                                        ,InvoiceZipCode=@InvoiceZipCode 
-                                        ,ShippingAddr=@ShippingAddr
-                                        ,ShippingAddr2=@ShippingAddr2
-                                        ,ShippingCity=@ShippingCity
-                                        ,ShippingState=@ShippingState
-                                        ,ShippingZipCode=@ShippingZipCode
-                                    WHERE Schcode=@Schcode
-                                    ");
-            sqlClient.AddParameter("@InvoiceAddr", invAddrTextBox.Text);
-            sqlClient.AddParameter("@InvoiceAddr2", invAddr2TextBox.Text);
-            sqlClient.AddParameter("@InvoiceCity", invCityTextBox.Text);
-            sqlClient.AddParameter("@InvoiceState", cmbInvStateComboBox.SelectedValue);
-            sqlClient.AddParameter("@InvoiceZipCode", invZipCodeTextBox.Text);
-            sqlClient.AddParameter("@ShippingAddr", shipppingAddrTextBox1.Text);
-            sqlClient.AddParameter("@ShippingAddr2", shippingAddr2TextBox1.Text);
-            sqlClient.AddParameter("@ShippingCity", shippingCityTextBox.Text);
-            sqlClient.AddParameter("@ShippingState", cmbshippingState.SelectedValue);
-            sqlClient.AddParameter("@ShippingZipCode", shippingZipCodeTextBox.Text);
-            sqlClient.AddParameter("@SchCode", Schcode);
-            var updateResult = sqlClient.Update();
-            if (updateResult.IsError)
-            {
-                MbcMessageBox.Error(updateResult.Errors[0].ErrorMessage,"");
-                ExceptionlessClient.Default.CreateLog("Update Error")
-                    .AddObject(updateResult)
-                    .MarkAsCritical()
-                    .Submit();
-                    
-            }
-            //get current timestamp
-            this.Fill();
+            SaveAddressInfo();
+           
         }
 
         private void label23_Click(object sender, EventArgs e)
@@ -2054,6 +2059,11 @@ public override void Cancel() {
         private void reportViewer2_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void pg4_Leave(object sender, EventArgs e)
+        {
+            SaveAddressInfo();
         }
 
 
