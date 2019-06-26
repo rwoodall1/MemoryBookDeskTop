@@ -55,3 +55,6 @@ BaseClass/bin/Debug/BaseClass.dll
 *.dll
 Mbc5/obj/Debug/Mbc5.csproj.FileListAbsolute.txt
 Mbc5/obj/Debug/Mbc5.csproj.FileListAbsolute.txt
+/.vs/MemoryBook/DesignTimeBuild/.dtbcache
+/.vs/MemoryBook/v15/Server/sqlite3
+/.vs/MemoryBook/v16/Server/sqlite3
