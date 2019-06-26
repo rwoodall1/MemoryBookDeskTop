@@ -417,8 +417,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <None Include="Content\download.png" />
     <Content Include="Content\MAIL.png" />
     <None Include="Content\school.png" />
     <Content Include="Content\SystemIcons\tsAdd.Image.png" />
@@ -551,6 +555,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\30256AddressLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321YearBookLabel.rdlc" />
