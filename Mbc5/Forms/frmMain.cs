@@ -896,8 +896,7 @@ namespace Mbc5.Forms
 
         private void testFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            addresslabel addressLabel = new addresslabel();
-          addressLabel.Show();
+           
            
         }
 
