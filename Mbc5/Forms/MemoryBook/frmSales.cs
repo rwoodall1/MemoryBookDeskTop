@@ -85,9 +85,9 @@ namespace Mbc5.Forms.MemoryBook
             BookCalc();
             txtBYear.Focus();
             startup = false;
-            
+
         }
-        
+
         private void btnPoSrch_Click(object sender, EventArgs e)
         {
             if (txtPoSrch.Text.Length<1)
@@ -420,8 +420,8 @@ namespace Mbc5.Forms.MemoryBook
                 cmdText = "Update Quotes set invoiced=1 where invno=@invno";
                 command.CommandText = cmdText;
                 command.ExecuteNonQuery();
-                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,ponum,invtot,baldue,contryear,allclrck,freebooks,SalesTax,BeforeTaxTotal,Schname,Schaddr,Schaddr2,schcity,Schstate,Schzip,DateCreated,DateModified,ModifiedBy) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks,@SalesTax,@BeforeTaxTotal,@Schname,@Schaddr,@Schaddr2,@Schcity,@Schstate,@Schzip,GETDATE(),GETDATE(),@ModifiedBy)";
-                //cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each)";
+                cmdText = "Insert into Invoice (Invno,schcode,qtedate,nopages,nocopies,book_ea,source,contfname,contlname,ponum,invtot,baldue,contryear,allclrck,freebooks,SalesTax,BeforeTaxTotal,Schname,schaddr,schaddr2,schcity,schstate,schzip,DateCreated,DateModified,ModifiedBy) VALUES(@invno,@schcode,@qtedate,@nopages,@nocopies,@book_each,@source,@contfname,@contlname,@ponum,@invtot,@baldue,@contryear,@allclrck,@freebooks,@SalesTax,@BeforeTaxTotal,@Schname,@InvoiceAddr,@InvoiceAddr2,@InvoiceCity,@InvoiceState,@InvoiceZipCode,GETDATE(),GETDATE(),@ModifiedBy)";
+               
                 command.CommandText = cmdText;
                 command.Parameters.Clear();
                 decimal vtax = 0;
@@ -439,6 +439,8 @@ namespace Mbc5.Forms.MemoryBook
                     new SqlParameter("@book_each",lblPriceEach.Text.Replace("$","").Replace(",","")),
                     new SqlParameter("@source",txtSource.Text ),
                     new SqlParameter("@ponum",txtPoNum.Text),
+                    new SqlParameter("@contfname",((DataRowView)custBindingSource.Current).Row.IsNull("contfname")?"":((DataRowView)custBindingSource.Current).Row["contfname"].ToString().Trim()),
+                    new SqlParameter("@contlname",((DataRowView)custBindingSource.Current).Row.IsNull("contlname")?"":((DataRowView)custBindingSource.Current).Row["contlname"].ToString().Trim()),
                     new SqlParameter("@SalesTax",lblSalesTax.Text.Replace("$","").Replace(",","")),
                     new SqlParameter("@BeforeTaxTotal",vBeforeTaxTotal),
                     new SqlParameter("@invtot",lbladjbef.Text.Replace("$","").Replace(",","") ),
@@ -447,12 +449,12 @@ namespace Mbc5.Forms.MemoryBook
                     new SqlParameter("@allclrck",chkAllClr.Checked),
                     new SqlParameter("@freebooks",txtfreebooks.Text ),
                     new SqlParameter("@ModifiedBy",txtModifiedByInv.Text),
-                    new SqlParameter("@Schname", ((DataRowView)this.custBindingSource.Current).Row["schname"].ToString().Trim()),
-                    new SqlParameter("@Schaddr",((DataRowView)this.custBindingSource.Current).Row["schaddr"].ToString().Trim() ),
-                    new SqlParameter("@Schaddr2",((DataRowView)this.custBindingSource.Current).Row["schaddr2"].ToString().Trim()),
-                    new SqlParameter("@Schcity",((DataRowView)this.custBindingSource.Current).Row["schcity"].ToString().Trim()),
-                    new SqlParameter("@Schstate",((DataRowView)this.custBindingSource.Current).Row["schstate"].ToString().Trim() ),
-                    new SqlParameter("@Schzip",((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim())
+                    new SqlParameter("@Schname",((DataRowView)this.custBindingSource.Current).Row["schname"].ToString().Trim()),
+                    new SqlParameter("@InvoiceAddr",((DataRowView)custBindingSource.Current).Row.IsNull("InvoiceAddr")?"": ((DataRowView)this.custBindingSource.Current).Row["InvoiceAddr"].ToString().Trim() ),
+                    new SqlParameter("@InvoiceAddr2",((DataRowView)custBindingSource.Current).Row.IsNull("InvoiceAddr2")?"":((DataRowView)this.custBindingSource.Current).Row["InvoiceAddr2"].ToString().Trim()),
+                    new SqlParameter("@InvoiceCity",((DataRowView)custBindingSource.Current).Row.IsNull("InvoiceCity")?"":((DataRowView)this.custBindingSource.Current).Row["InvoiceCity"].ToString().Trim()),
+                    new SqlParameter("@InvoiceState",((DataRowView)custBindingSource.Current).Row.IsNull("InvoiceState")?"":((DataRowView)this.custBindingSource.Current).Row["InvoiceState"].ToString().Trim() ),
+                    new SqlParameter("@InvoiceZipCode",((DataRowView)custBindingSource.Current).Row.IsNull("InvoiceZipCode")?"":((DataRowView)this.custBindingSource.Current).Row["InvoiceZipCode"].ToString().Trim())
               };
                 command.Parameters.AddRange(parameters);
                 command.ExecuteNonQuery();
@@ -3688,14 +3690,16 @@ namespace Mbc5.Forms.MemoryBook
             try
             {
                 this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToInt32(lblInvoice.Text));
+                this.invCustTableAdapter.Fill(dsInvoice.cust, Schcode);
                 this.invdetailTableAdapter.Fill(dsInvoice.invdetail, Convert.ToInt32(lblInvoice.Text));
+                lblPayments.Text = this.paymntTableAdapter.SumPayment(Convert.ToInt32(lblInvoice.Text)).ToString();
             }
             catch (Exception ex)
             {
                 MbcMessageBox.Error("Failed to retrieve invoice information.", "");
                 return;
             }
-            lblPayments.Text = this.paymntTableAdapter.SumPayment(Convert.ToInt32(lblInvoice.Text)).ToString();
+            
 
 
         }
@@ -3777,7 +3781,7 @@ namespace Mbc5.Forms.MemoryBook
         }
 
         private void frmSales_Paint(object sender, PaintEventArgs e)
-        {
+                 {
             try { this.Text = "Sales-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
             catch
             {
@@ -4795,6 +4799,116 @@ namespace Mbc5.Forms.MemoryBook
                     booktypeTextBox.ReadOnly = false;
                 }
             }
+        }
+
+        private void btnPrntInvoice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel11_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void agreedteDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            agreedteDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+
+        private void onlinecutoDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            onlinecutoDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+
+        private void adcutoDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            adcutoDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+
+        private void btnPassword_Click(object sender, EventArgs e)
+        {
+            var emailHelper = new EmailHelper();
+            string vsub = "Advisor Log In's for Online Parent Pay and Promotional Materials";
+            string vSchcode = ((DataRowView)quotesBindingSource.Current).Row["schcode"].ToString().Trim();
+            string vInvno = ((DataRowView)quotesBindingSource.Current).Row["invno"].ToString().Trim();
+            string vJobNo = ((DataRowView)quotesBindingSource.Current).Row["jobno"].ToString().Trim();
+            string vContEmail = ((DataRowView)custBindingSource.Current).Row.IsNull("contemail") ?"":((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim(); 
+            string vBContemail = ((DataRowView)custBindingSource.Current).Row.IsNull("bcontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["bcontemail"].ToString().Trim(); 
+            string vCContEmail = ((DataRowView)custBindingSource.Current).Row.IsNull("ccontemail") ? "" : ((DataRowView)custBindingSource.Current).Row["ccontemail"].ToString().Trim();
+            List<string> vEmailList = new List<string>();
+            if (!string.IsNullOrEmpty(vContEmail))
+            {
+                vEmailList.Add(vContEmail);
+            }
+            if (!string.IsNullOrEmpty(vBContemail))
+            {
+                vEmailList.Add(vBContemail);
+            }
+            if (!string.IsNullOrEmpty(vCContEmail))
+            {
+                vEmailList.Add(vCContEmail);
+            }
+
+                string vBody = @"Below please find your Online Pay Advisor access information. You can copy and paste the link below into a browser to take you to the advisor log in page. http://www.shop.memorybook.com/admin/ <br/>
+                <br/>&nbsp&nbsp School Code:<b>" + vSchcode+ @"</b><br/>
+                &nbsp&nbsp Password:<b>" + vInvno + @"</b><br/> <br/>
+                  &nbsp&nbsp*Create the drop down list of teachers - when individuals go to order they can select their grade and teacher <br/> 
+                  &nbsp&nbsp*Search for orders by order ID or Student name<br/>
+                  &nbsp&nbsp*Generate a report of all orders and order information <br/><br/>
+                You can order your online pay flyers and customize them by pasting the following link; https://coverorders.memorybook.com/login <br/><br/>
+                User Name:<b>" + vJobNo+ @"</b><br/>
+                Password:<b>Adviser</b> </br><br/> <br/>
+                Once you are logged into the order center then click on yearbook promotional materials and then online pay fliers. Here you will be able to customize your flier, proof and approve it.<br/> 
+                 <br/> &nbsp&nbsp*Enter school name<br/>
+                 &nbsp&nbsp *Enter your Pay Code " + vSchcode+ @"<br/>
+                 &nbsp&nbsp *Enter the amount you would like to charge per book<br/>
+                  &nbsp&nbsp *Enter online order cutoff date<br/>
+                  &nbsp&nbsp *You can also customize the text at the bottom of the flyer to include your contact information.<br/>
+                You may also order additional promotional materials at this time through the order center.<br/><br/>Thank you.";
+
+                emailHelper.SendOutLookEmail(vsub,vEmailList,null, vBody,EmailType.Mbc);
+
+
+        }
+
+        private void btnPrintAgreement_Click(object sender, EventArgs e)
+        {
+            decimal vtax = 0;
+            decimal.TryParse(lblSalesTax.Text.Replace("$", "").Replace(",", ""), out vtax);
+            decimal vtotal = 0;
+            decimal.TryParse(lblFinalTotPrc.Text.Replace("$", "").Replace(",", ""), out vtotal);
+            DataRowView currentrow = (DataRowView)custBindingSource.Current;
+            var vSchname = currentrow["schname"].ToString();
+            var AgreementHeader = new OnlineAgreementHeader()
+            {
+                Invno = Invno,
+                PoNumber = txtPoNum.Text,
+                SchCode=Schcode,
+                NoCopies=txtNocopies.Text==""?"0": txtNocopies.Text,
+                BeforeTaxTotal = vtotal,
+                SalesTax = vtax,
+                Invtot = vtotal,
+                QuoteDate = dteQuote.Value,
+                SchName = vSchname,
+                ContactFirstName = ((DataRowView)custBindingSource.Current).Row["contfname"].ToString().Trim(),
+                ContactLastName = ((DataRowView)custBindingSource.Current).Row["contlname"].ToString().Trim(),
+                SchAddress = ((DataRowView)custBindingSource.Current).Row["InvoiceAddr"].ToString().Trim(),
+                SchAddress2 = ((DataRowView)custBindingSource.Current).Row["InvoiceAddr2"].ToString().Trim(),
+                SchCity = ((DataRowView)custBindingSource.Current).Row["InvoiceCity"].ToString().Trim(),
+                SchState = ((DataRowView)custBindingSource.Current).Row["InvoiceState"].ToString().Trim(),
+                SchZipCode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString().Trim()
+            };
+                bsAgreementHeader.DataSource = AgreementHeader;
+                var AgreementDetails= GetDetailRecords(Invno.ToString());
+                bsAgreementDetails.DataSource = AgreementDetails;
+                reportViewer3.RefreshReport();
+            
+        }
+
+        private void reportViewer3_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+           // reportViewer3.PrintDialog();
         }
 
 

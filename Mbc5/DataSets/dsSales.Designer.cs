@@ -727,6 +727,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnkitrecvd;
             
+            private global::System.Data.DataColumn columnjobno;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public quotesDataTable() {
@@ -2274,6 +2276,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn jobnoColumn {
+                get {
+                    return this.columnjobno;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2498,7 +2508,8 @@ namespace Mbc5.DataSets {
                         int nocopies, 
                         decimal schooltax, 
                         int msstanqty1, 
-                        System.DateTime kitrecvd) {
+                        System.DateTime kitrecvd, 
+                        string jobno) {
                 quotesRow rowquotesRow = ((quotesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         invno,
@@ -2689,7 +2700,8 @@ namespace Mbc5.DataSets {
                         nocopies,
                         schooltax,
                         msstanqty1,
-                        kitrecvd};
+                        kitrecvd,
+                        jobno};
                 rowquotesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowquotesRow);
                 return rowquotesRow;
@@ -2908,6 +2920,7 @@ namespace Mbc5.DataSets {
                 this.columnschooltax = base.Columns["schooltax"];
                 this.columnmsstanqty1 = base.Columns["msstanqty1"];
                 this.columnkitrecvd = base.Columns["kitrecvd"];
+                this.columnjobno = base.Columns["jobno"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3291,6 +3304,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnmsstanqty1);
                 this.columnkitrecvd = new global::System.Data.DataColumn("kitrecvd", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnkitrecvd);
+                this.columnjobno = new global::System.Data.DataColumn("jobno", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjobno);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columninvno.AllowDBNull = false;
@@ -3321,6 +3336,7 @@ namespace Mbc5.DataSets {
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
                 this.columnmsstanqty1.Caption = "msstanqty";
+                this.columnjobno.MaxLength = 7;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3464,6 +3480,40 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnschstate;
             
+            private global::System.Data.DataColumn columnInvoiceZipCode;
+            
+            private global::System.Data.DataColumn columnInvoiceState;
+            
+            private global::System.Data.DataColumn columnInvoiceCity;
+            
+            private global::System.Data.DataColumn columnInvoiceAddr2;
+            
+            private global::System.Data.DataColumn columnInvoiceAddr;
+            
+            private global::System.Data.DataColumn columnShippingState;
+            
+            private global::System.Data.DataColumn columnShippingZipCode;
+            
+            private global::System.Data.DataColumn columnShippingCity;
+            
+            private global::System.Data.DataColumn columnShippingAddr2;
+            
+            private global::System.Data.DataColumn columnShippingAddr;
+            
+            private global::System.Data.DataColumn columncsrep;
+            
+            private global::System.Data.DataColumn columncontfname;
+            
+            private global::System.Data.DataColumn columncontlname;
+            
+            private global::System.Data.DataColumn columnmbconlinepassword;
+            
+            private global::System.Data.DataColumn columncontemail;
+            
+            private global::System.Data.DataColumn columnbcontemail;
+            
+            private global::System.Data.DataColumn columnccontemail;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custDataTable() {
@@ -3539,6 +3589,142 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InvoiceZipCodeColumn {
+                get {
+                    return this.columnInvoiceZipCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InvoiceStateColumn {
+                get {
+                    return this.columnInvoiceState;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InvoiceCityColumn {
+                get {
+                    return this.columnInvoiceCity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InvoiceAddr2Column {
+                get {
+                    return this.columnInvoiceAddr2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InvoiceAddrColumn {
+                get {
+                    return this.columnInvoiceAddr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShippingStateColumn {
+                get {
+                    return this.columnShippingState;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShippingZipCodeColumn {
+                get {
+                    return this.columnShippingZipCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShippingCityColumn {
+                get {
+                    return this.columnShippingCity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShippingAddr2Column {
+                get {
+                    return this.columnShippingAddr2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShippingAddrColumn {
+                get {
+                    return this.columnShippingAddr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn csrepColumn {
+                get {
+                    return this.columncsrep;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn contfnameColumn {
+                get {
+                    return this.columncontfname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn contlnameColumn {
+                get {
+                    return this.columncontlname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn mbconlinepasswordColumn {
+                get {
+                    return this.columnmbconlinepassword;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn contemailColumn {
+                get {
+                    return this.columncontemail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn bcontemailColumn {
+                get {
+                    return this.columnbcontemail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ccontemailColumn {
+                get {
+                    return this.columnccontemail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3574,14 +3760,53 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public custRow AddcustRow(string schcode, string schname, string contryear, string schzip, string schstate) {
+            public custRow AddcustRow(
+                        string schcode, 
+                        string schname, 
+                        string contryear, 
+                        string schzip, 
+                        string schstate, 
+                        string InvoiceZipCode, 
+                        string InvoiceState, 
+                        string InvoiceCity, 
+                        string InvoiceAddr2, 
+                        string InvoiceAddr, 
+                        string ShippingState, 
+                        string ShippingZipCode, 
+                        string ShippingCity, 
+                        string ShippingAddr2, 
+                        string ShippingAddr, 
+                        string csrep, 
+                        string contfname, 
+                        string contlname, 
+                        string mbconlinepassword, 
+                        string contemail, 
+                        string bcontemail, 
+                        string ccontemail) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
                         schname,
                         contryear,
                         schzip,
-                        schstate};
+                        schstate,
+                        InvoiceZipCode,
+                        InvoiceState,
+                        InvoiceCity,
+                        InvoiceAddr2,
+                        InvoiceAddr,
+                        ShippingState,
+                        ShippingZipCode,
+                        ShippingCity,
+                        ShippingAddr2,
+                        ShippingAddr,
+                        csrep,
+                        contfname,
+                        contlname,
+                        mbconlinepassword,
+                        contemail,
+                        bcontemail,
+                        ccontemail};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -3616,6 +3841,23 @@ namespace Mbc5.DataSets {
                 this.columncontryear = base.Columns["contryear"];
                 this.columnschzip = base.Columns["schzip"];
                 this.columnschstate = base.Columns["schstate"];
+                this.columnInvoiceZipCode = base.Columns["InvoiceZipCode"];
+                this.columnInvoiceState = base.Columns["InvoiceState"];
+                this.columnInvoiceCity = base.Columns["InvoiceCity"];
+                this.columnInvoiceAddr2 = base.Columns["InvoiceAddr2"];
+                this.columnInvoiceAddr = base.Columns["InvoiceAddr"];
+                this.columnShippingState = base.Columns["ShippingState"];
+                this.columnShippingZipCode = base.Columns["ShippingZipCode"];
+                this.columnShippingCity = base.Columns["ShippingCity"];
+                this.columnShippingAddr2 = base.Columns["ShippingAddr2"];
+                this.columnShippingAddr = base.Columns["ShippingAddr"];
+                this.columncsrep = base.Columns["csrep"];
+                this.columncontfname = base.Columns["contfname"];
+                this.columncontlname = base.Columns["contlname"];
+                this.columnmbconlinepassword = base.Columns["mbconlinepassword"];
+                this.columncontemail = base.Columns["contemail"];
+                this.columnbcontemail = base.Columns["bcontemail"];
+                this.columnccontemail = base.Columns["ccontemail"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3631,6 +3873,40 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnschzip);
                 this.columnschstate = new global::System.Data.DataColumn("schstate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschstate);
+                this.columnInvoiceZipCode = new global::System.Data.DataColumn("InvoiceZipCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceZipCode);
+                this.columnInvoiceState = new global::System.Data.DataColumn("InvoiceState", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceState);
+                this.columnInvoiceCity = new global::System.Data.DataColumn("InvoiceCity", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceCity);
+                this.columnInvoiceAddr2 = new global::System.Data.DataColumn("InvoiceAddr2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceAddr2);
+                this.columnInvoiceAddr = new global::System.Data.DataColumn("InvoiceAddr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceAddr);
+                this.columnShippingState = new global::System.Data.DataColumn("ShippingState", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShippingState);
+                this.columnShippingZipCode = new global::System.Data.DataColumn("ShippingZipCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShippingZipCode);
+                this.columnShippingCity = new global::System.Data.DataColumn("ShippingCity", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShippingCity);
+                this.columnShippingAddr2 = new global::System.Data.DataColumn("ShippingAddr2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShippingAddr2);
+                this.columnShippingAddr = new global::System.Data.DataColumn("ShippingAddr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShippingAddr);
+                this.columncsrep = new global::System.Data.DataColumn("csrep", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncsrep);
+                this.columncontfname = new global::System.Data.DataColumn("contfname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontfname);
+                this.columncontlname = new global::System.Data.DataColumn("contlname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontlname);
+                this.columnmbconlinepassword = new global::System.Data.DataColumn("mbconlinepassword", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmbconlinepassword);
+                this.columncontemail = new global::System.Data.DataColumn("contemail", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontemail);
+                this.columnbcontemail = new global::System.Data.DataColumn("bcontemail", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbcontemail);
+                this.columnccontemail = new global::System.Data.DataColumn("ccontemail", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnccontemail);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columnschcode.AllowDBNull = false;
@@ -3641,6 +3917,23 @@ namespace Mbc5.DataSets {
                 this.columncontryear.MaxLength = 50;
                 this.columnschzip.MaxLength = 50;
                 this.columnschstate.MaxLength = 50;
+                this.columnInvoiceZipCode.MaxLength = 5;
+                this.columnInvoiceState.MaxLength = 3;
+                this.columnInvoiceCity.MaxLength = 100;
+                this.columnInvoiceAddr2.MaxLength = 100;
+                this.columnInvoiceAddr.MaxLength = 100;
+                this.columnShippingState.MaxLength = 3;
+                this.columnShippingZipCode.MaxLength = 5;
+                this.columnShippingCity.MaxLength = 100;
+                this.columnShippingAddr2.MaxLength = 100;
+                this.columnShippingAddr.MaxLength = 100;
+                this.columncsrep.MaxLength = 2;
+                this.columncontfname.MaxLength = 50;
+                this.columncontlname.MaxLength = 50;
+                this.columnmbconlinepassword.MaxLength = 50;
+                this.columncontemail.MaxLength = 50;
+                this.columnbcontemail.MaxLength = 50;
+                this.columnccontemail.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7091,6 +7384,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string jobno {
+                get {
+                    try {
+                        return ((string)(this[this.tablequotes.jobnoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jobno\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.jobnoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsprodnoNull() {
                 return this.IsNull(this.tablequotes.prodnoColumn);
             }
@@ -9332,6 +9641,18 @@ namespace Mbc5.DataSets {
             public void SetkitrecvdNull() {
                 this[this.tablequotes.kitrecvdColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsjobnoNull() {
+                return this.IsNull(this.tablequotes.jobnoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetjobnoNull() {
+                this[this.tablequotes.jobnoColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -9420,6 +9741,278 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InvoiceZipCode {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.InvoiceZipCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceZipCode\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.InvoiceZipCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InvoiceState {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.InvoiceStateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceState\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.InvoiceStateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InvoiceCity {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.InvoiceCityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceCity\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.InvoiceCityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InvoiceAddr2 {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.InvoiceAddr2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceAddr2\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.InvoiceAddr2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InvoiceAddr {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.InvoiceAddrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceAddr\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.InvoiceAddrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShippingState {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.ShippingStateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShippingState\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.ShippingStateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShippingZipCode {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.ShippingZipCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShippingZipCode\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.ShippingZipCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShippingCity {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.ShippingCityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShippingCity\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.ShippingCityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShippingAddr2 {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.ShippingAddr2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShippingAddr2\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.ShippingAddr2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShippingAddr {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.ShippingAddrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShippingAddr\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.ShippingAddrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string csrep {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.csrepColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'csrep\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.csrepColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string contfname {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.contfnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contfname\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.contfnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string contlname {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.contlnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contlname\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.contlnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string mbconlinepassword {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.mbconlinepasswordColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'mbconlinepassword\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.mbconlinepasswordColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string contemail {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.contemailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contemail\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.contemailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string bcontemail {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.bcontemailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'bcontemail\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.bcontemailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ccontemail {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.ccontemailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ccontemail\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.ccontemailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
@@ -9452,6 +10045,210 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetschstateNull() {
                 this[this.tablecust.schstateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInvoiceZipCodeNull() {
+                return this.IsNull(this.tablecust.InvoiceZipCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInvoiceZipCodeNull() {
+                this[this.tablecust.InvoiceZipCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInvoiceStateNull() {
+                return this.IsNull(this.tablecust.InvoiceStateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInvoiceStateNull() {
+                this[this.tablecust.InvoiceStateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInvoiceCityNull() {
+                return this.IsNull(this.tablecust.InvoiceCityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInvoiceCityNull() {
+                this[this.tablecust.InvoiceCityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInvoiceAddr2Null() {
+                return this.IsNull(this.tablecust.InvoiceAddr2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInvoiceAddr2Null() {
+                this[this.tablecust.InvoiceAddr2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInvoiceAddrNull() {
+                return this.IsNull(this.tablecust.InvoiceAddrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInvoiceAddrNull() {
+                this[this.tablecust.InvoiceAddrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShippingStateNull() {
+                return this.IsNull(this.tablecust.ShippingStateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShippingStateNull() {
+                this[this.tablecust.ShippingStateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShippingZipCodeNull() {
+                return this.IsNull(this.tablecust.ShippingZipCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShippingZipCodeNull() {
+                this[this.tablecust.ShippingZipCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShippingCityNull() {
+                return this.IsNull(this.tablecust.ShippingCityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShippingCityNull() {
+                this[this.tablecust.ShippingCityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShippingAddr2Null() {
+                return this.IsNull(this.tablecust.ShippingAddr2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShippingAddr2Null() {
+                this[this.tablecust.ShippingAddr2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShippingAddrNull() {
+                return this.IsNull(this.tablecust.ShippingAddrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShippingAddrNull() {
+                this[this.tablecust.ShippingAddrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscsrepNull() {
+                return this.IsNull(this.tablecust.csrepColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcsrepNull() {
+                this[this.tablecust.csrepColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscontfnameNull() {
+                return this.IsNull(this.tablecust.contfnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcontfnameNull() {
+                this[this.tablecust.contfnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscontlnameNull() {
+                return this.IsNull(this.tablecust.contlnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcontlnameNull() {
+                this[this.tablecust.contlnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsmbconlinepasswordNull() {
+                return this.IsNull(this.tablecust.mbconlinepasswordColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetmbconlinepasswordNull() {
+                this[this.tablecust.mbconlinepasswordColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscontemailNull() {
+                return this.IsNull(this.tablecust.contemailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcontemailNull() {
+                this[this.tablecust.contemailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsbcontemailNull() {
+                return this.IsNull(this.tablecust.bcontemailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetbcontemailNull() {
+                this[this.tablecust.bcontemailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsccontemailNull() {
+                return this.IsNull(this.tablecust.ccontemailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetccontemailNull() {
+                this[this.tablecust.ccontemailColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -9928,6 +10725,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("schooltax", "schooltax");
             tableMapping.ColumnMappings.Add("msstanqty", "msstanqty1");
             tableMapping.ColumnMappings.Add("kitrecvd", "kitrecvd");
+            tableMapping.ColumnMappings.Add("jobno", "jobno");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -10542,9 +11340,9 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 " quotes.DateModified, quotes.DateCreated, quotes.IconCopies, quotes.IconAmt, quo" +
                 "tes.extrchg, quotes.schooltaxrate, quotes.schcode, \r\n                         qu" +
                 "otes.donotchargeschoolsalestax, quotes.nopages, quotes.nocopies, quotes.schoolta" +
-                "x, produtn.kitrecvd\r\nFROM            quotes INNER JOIN\r\n                        " +
-                " produtn ON quotes.invno = produtn.invno\r\nWHERE        (quotes.schcode = @schcod" +
-                "e)\r\nORDER BY quotes.qtedate DESC";
+                "x, produtn.kitrecvd, produtn.jobno\r\nFROM            quotes INNER JOIN\r\n         " +
+                "                produtn ON quotes.invno = produtn.invno\r\nWHERE        (quotes.sc" +
+                "hcode = @schcode)\r\nORDER BY quotes.qtedate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -10595,8 +11393,9 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "quotes.totallovelines, quotes.totalpersonline, quotes.totalsoldonline, quotes.we" +
                 "bonly, quotes.xtrabkno, quotes.xtrabkprc, quotes.yiramt, quotes.yirschool, \r\n   " +
                 "                      quotes.yirsovrride, quotes.yrdiscount, quotes.yrdiscountam" +
-                "t, produtn.kitrecvd\r\nFROM            quotes INNER JOIN\r\n                        " +
-                " produtn ON quotes.invno = produtn.invno\r\nWHERE        (quotes.invno = @invno)";
+                "t, produtn.kitrecvd, produtn.jobno\r\nFROM            quotes INNER JOIN\r\n         " +
+                "                produtn ON quotes.invno = produtn.invno\r\nWHERE        (quotes.in" +
+                "vno = @invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -13666,6 +14465,23 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("contryear", "contryear");
             tableMapping.ColumnMappings.Add("schzip", "schzip");
             tableMapping.ColumnMappings.Add("schstate", "schstate");
+            tableMapping.ColumnMappings.Add("InvoiceZipCode", "InvoiceZipCode");
+            tableMapping.ColumnMappings.Add("InvoiceState", "InvoiceState");
+            tableMapping.ColumnMappings.Add("InvoiceCity", "InvoiceCity");
+            tableMapping.ColumnMappings.Add("InvoiceAddr2", "InvoiceAddr2");
+            tableMapping.ColumnMappings.Add("InvoiceAddr", "InvoiceAddr");
+            tableMapping.ColumnMappings.Add("ShippingState", "ShippingState");
+            tableMapping.ColumnMappings.Add("ShippingZipCode", "ShippingZipCode");
+            tableMapping.ColumnMappings.Add("ShippingCity", "ShippingCity");
+            tableMapping.ColumnMappings.Add("ShippingAddr2", "ShippingAddr2");
+            tableMapping.ColumnMappings.Add("ShippingAddr", "ShippingAddr");
+            tableMapping.ColumnMappings.Add("csrep", "csrep");
+            tableMapping.ColumnMappings.Add("contfname", "contfname");
+            tableMapping.ColumnMappings.Add("contlname", "contlname");
+            tableMapping.ColumnMappings.Add("mbconlinepassword", "mbconlinepassword");
+            tableMapping.ColumnMappings.Add("contemail", "contemail");
+            tableMapping.ColumnMappings.Add("bcontemail", "bcontemail");
+            tableMapping.ColumnMappings.Add("ccontemail", "ccontemail");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -14086,8 +14902,10 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        schcode, schname, contryear, schzip, schstate\r\nFROM            dbo." +
-                "cust\r\nWHERE        (schcode = @schcode)";
+            this._commandCollection[0].CommandText = @"SELECT        schcode, schname, contryear, csrep, mbconlinepassword, schzip, contfname, contlname, schstate, InvoiceZipCode, InvoiceState, InvoiceCity, InvoiceAddr2, InvoiceAddr, ShippingState, ShippingZipCode, 
+                         ShippingCity, ShippingAddr2, ShippingAddr, contemail, bcontemail, ccontemail
+FROM            cust
+WHERE        (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

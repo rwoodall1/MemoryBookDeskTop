@@ -5,6 +5,24 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class OnlineAgreementHeader {
+        public int Invno { get; set; }
+        public string PoNumber { get; set; }
+        public decimal BeforeTaxTotal { get; set; }
+        public decimal SalesTax { get; set; }
+        public decimal Invtot { get; set; }
+        public DateTime QuoteDate { get; set; }
+        public string SchName { get; set; }
+        public string SchCode { get; set; }
+        public string ContactFirstName { get; set; }
+        public string ContactLastName { get; set; }
+        public string SchAddress { get; set; }
+        public string SchAddress2 { get; set; }
+        public string SchCity { get; set; }
+        public string SchState { get; set; }
+        public string SchZipCode { get; set; }
+        public string NoCopies { get; set; }
+     }
     
     public class TaxRate
     {

@@ -554,6 +554,7 @@
     <EmbeddedResource Include="Reports\30321ReceivingLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321FileFolderLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321DepartmentLabel.rdlc" />
+    <EmbeddedResource Include="Reports\OnlineAgreement.rdlc" />
     <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
     <EmbeddedResource Include="Reports\InvoiceDetails.rdlc" />
@@ -606,9 +607,6 @@
     </None>
     <None Include="DataSets\dsXSupplies.xss">
       <DependentUpon>dsXSupplies.xsd</DependentUpon>
-    </None>
-    <None Include="localConnection.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="app.config" />
     <None Include="DataSets\dsBids.xsc">
@@ -746,6 +744,7 @@
     <None Include="Properties\DataSources\BindingModels.FullInvoice.datasource" />
     <None Include="Properties\DataSources\BindingModels.Invoice.datasource" />
     <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
+    <None Include="Properties\DataSources\BindingModels.OnlineAgreementHeader.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProdutnTicketModel.datasource" />
     <None Include="Properties\DataSources\BindingModels.TelephonLogRecord.datasource" />
