@@ -2,66 +2,6 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Image Name="JostensLogo">
-        <Source>Embedded</Source>
-        <Value>MemBookJostensLogo</Value>
-        <Sizing>FitProportional</Sizing>
-        <Left>1.26236in</Left>
-        <Height>0.60417in</Height>
-        <Width>2.16667in</Width>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Image>
-      <Textbox Name="Textbox9">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>304 Curry Drive</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Sedalia, Mo 65301</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>(800) 247-1526 Fax (800) 550-7129</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Left>6.18424in</Left>
-        <Height>0.60417in</Height>
-        <Width>2.28124in</Width>
-        <ZIndex>1</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="schname">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -83,10 +23,9 @@
         </Paragraphs>
         <rd:DefaultName>schname</rd:DefaultName>
         <Top>0.67361in</Top>
-        <Left>1.26236in</Left>
+        <Left>0.01236in</Left>
         <Height>0.625in</Height>
         <Width>3.36458in</Width>
-        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -116,10 +55,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
         <Top>0.67361in</Top>
-        <Left>5.14653in</Left>
+        <Left>3.89653in</Left>
         <Height>0.25in</Height>
         <Width>2.32292in</Width>
-        <ZIndex>3</ZIndex>
+        <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -146,10 +85,10 @@
         </Paragraphs>
         <rd:DefaultName>qtedate</rd:DefaultName>
         <Top>0.99306in</Top>
-        <Left>6.20208in</Left>
+        <Left>4.95208in</Left>
         <Height>0.20833in</Height>
         <Width>1in</Width>
-        <ZIndex>4</ZIndex>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -178,10 +117,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
         <Top>0.99306in</Top>
-        <Left>5.14653in</Left>
+        <Left>3.89653in</Left>
         <Height>0.20833in</Height>
         <Width>1in</Width>
-        <ZIndex>5</ZIndex>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -208,10 +147,10 @@
         </Paragraphs>
         <rd:DefaultName>ponum</rd:DefaultName>
         <Top>1.36806in</Top>
-        <Left>2.29014in</Left>
+        <Left>1.04014in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -240,10 +179,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
         <Top>1.36806in</Top>
-        <Left>1.26236in</Left>
+        <Left>0.01236in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -270,10 +209,10 @@
         </Paragraphs>
         <rd:DefaultName>schcode</rd:DefaultName>
         <Top>1.36806in</Top>
-        <Left>6.20208in</Left>
+        <Left>4.95208in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>8</ZIndex>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -302,10 +241,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
         <Top>1.36806in</Top>
-        <Left>4.84444in</Left>
+        <Left>3.59444in</Left>
         <Height>0.25in</Height>
         <Width>1.30208in</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -384,10 +323,10 @@
         </ReportItems>
         <KeepTogether>true</KeepTogether>
         <Top>1.67708in</Top>
-        <Left>1.3984in</Left>
+        <Left>0.1484in</Left>
         <Height>0.32292in</Height>
         <Width>7.20708in</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -697,10 +636,10 @@
         </TablixRowHierarchy>
         <DataSetName>dsItemDetails</DataSetName>
         <Top>2.08854in</Top>
-        <Left>1.43486in</Left>
+        <Left>0.18486in</Left>
         <Height>0.5in</Height>
         <Width>7.13417in</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -725,10 +664,10 @@
         </Paragraphs>
         <rd:DefaultName>invtot</rd:DefaultName>
         <Top>3.3316in</Top>
-        <Left>7.52501in</Left>
+        <Left>6.27501in</Left>
         <Height>0.25in</Height>
         <Width>1.02083in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -760,10 +699,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
         <Top>2.69271in</Top>
-        <Left>6.46375in</Left>
+        <Left>5.21375in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>13</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -793,10 +732,10 @@
         </Paragraphs>
         <rd:DefaultName>BeforeTaxTotal</rd:DefaultName>
         <Top>2.69271in</Top>
-        <Left>7.52501in</Left>
+        <Left>6.27501in</Left>
         <Height>0.25in</Height>
         <Width>1.02083in</Width>
-        <ZIndex>14</ZIndex>
+        <ZIndex>12</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -827,10 +766,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
         <Top>3.3316in</Top>
-        <Left>6.46375in</Left>
+        <Left>5.21375in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>15</ZIndex>
+        <ZIndex>13</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -861,10 +800,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
         <Top>3.01215in</Top>
-        <Left>7.08875in</Left>
+        <Left>5.83875in</Left>
         <Height>0.25in</Height>
         <Width>0.375in</Width>
-        <ZIndex>16</ZIndex>
+        <ZIndex>14</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -894,10 +833,10 @@
         </Paragraphs>
         <rd:DefaultName>SalesTax</rd:DefaultName>
         <Top>3.01215in</Top>
-        <Left>7.52501in</Left>
+        <Left>6.27501in</Left>
         <Height>0.25in</Height>
         <Width>1.02778in</Width>
-        <ZIndex>17</ZIndex>
+        <ZIndex>15</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -910,10 +849,10 @@
       </Textbox>
       <Line Name="Line1">
         <Top>2.58854in</Top>
-        <Left>6.46375in</Left>
+        <Left>5.21375in</Left>
         <Height>0in</Height>
         <Width>2.07639in</Width>
-        <ZIndex>18</ZIndex>
+        <ZIndex>16</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -936,10 +875,10 @@
         </Paragraphs>
         <rd:DefaultName>schstate</rd:DefaultName>
         <Top>3.56125in</Top>
-        <Left>1.51236in</Left>
+        <Left>0.26236in</Left>
         <Height>0.25in</Height>
         <Width>3.11458in</Width>
-        <ZIndex>19</ZIndex>
+        <ZIndex>17</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!SchState.Value&lt;&gt;"AK" Or Fields!SchState.Value&lt;&gt;"HI" OR Fields!SchState.Value&lt;&gt;"AE" , "dsHeader")</Hidden>
         </Visibility>
@@ -972,10 +911,10 @@
         </Paragraphs>
         <rd:DefaultName>BeforeTaxTotal</rd:DefaultName>
         <Top>3.63715in</Top>
-        <Left>7.52501in</Left>
+        <Left>6.27501in</Left>
         <Height>0.25in</Height>
         <Width>1.02083in</Width>
-        <ZIndex>20</ZIndex>
+        <ZIndex>18</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1006,10 +945,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
         <Top>3.63715in</Top>
-        <Left>6.19291in</Left>
+        <Left>4.94291in</Left>
         <Height>0.25in</Height>
         <Width>1.27083in</Width>
-        <ZIndex>21</ZIndex>
+        <ZIndex>19</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1021,150 +960,21 @@
         </Style>
       </Textbox>
       <Rectangle Name="Rectangle2">
-        <ReportItems>
-          <Textbox Name="Textbox29">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>We Appreciate Your Business</Value>
-                    <Style>
-                      <FontSize>14pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox29</rd:DefaultName>
-            <Top>0.13021in</Top>
-            <Left>0.11396in</Left>
-            <Height>0.30208in</Height>
-            <Width>3.05208in</Width>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox2">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>="Print Date "+FormatDateTime(Now(),DateFormat.ShortDate)</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>0.18229in</Top>
-            <Left>5.01785in</Left>
-            <Height>0.25in</Height>
-            <Width>2.17708in</Width>
-            <ZIndex>1</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-        </ReportItems>
         <PageBreak>
           <BreakLocation>End</BreakLocation>
         </PageBreak>
         <KeepTogether>true</KeepTogether>
         <Top>4.25917in</Top>
-        <Left>1.3984in</Left>
+        <Left>0.1484in</Left>
         <Height>0.53125in</Height>
         <Width>7.31708in</Width>
-        <ZIndex>22</ZIndex>
+        <ZIndex>20</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Rectangle>
-      <Image Name="JostensLogo2">
-        <Source>Embedded</Source>
-        <Value>MemBookJostensLogo</Value>
-        <Sizing>FitProportional</Sizing>
-        <Top>5.14583in</Top>
-        <Left>1.51236in</Left>
-        <Height>0.60417in</Height>
-        <Width>2.16667in</Width>
-        <ZIndex>23</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Image>
-      <Textbox Name="Textbox12">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>304 Curry Drive</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Sedalia, Mo 65301</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>(800) 247-1526 Fax (800) 550-7129</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>5.14583in</Top>
-        <Left>6.43424in</Left>
-        <Height>0.60417in</Height>
-        <Width>2.28124in</Width>
-        <ZIndex>24</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox32">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -1184,11 +994,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox32</rd:DefaultName>
-        <Top>5.88417in</Top>
-        <Left>3.40854in</Left>
+        <Top>5.00917in</Top>
+        <Left>2.15854in</Left>
         <Height>0.40625in</Height>
         <Width>3.21458in</Width>
-        <ZIndex>25</ZIndex>
+        <ZIndex>21</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1216,11 +1026,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>SchName</rd:DefaultName>
-        <Top>6.34597in</Top>
-        <Left>2.7502in</Left>
+        <Top>5.47097in</Top>
+        <Left>1.5002in</Left>
         <Height>0.25in</Height>
         <Width>4.53125in</Width>
-        <ZIndex>26</ZIndex>
+        <ZIndex>22</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1277,11 +1087,11 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox34</rd:DefaultName>
-        <Top>6.74875in</Top>
-        <Left>1.51236in</Left>
+        <Top>5.87375in</Top>
+        <Left>0.26236in</Left>
         <Height>3.22917in</Height>
         <Width>7.02778in</Width>
-        <ZIndex>27</ZIndex>
+        <ZIndex>23</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1315,11 +1125,11 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>10.00458in</Top>
-        <Left>1.51236in</Left>
+        <Top>9.12958in</Top>
+        <Left>0.26236in</Left>
         <Height>0.25in</Height>
-        <Width>4.88418in</Width>
-        <ZIndex>28</ZIndex>
+        <Width>5.68972in</Width>
+        <ZIndex>24</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1348,11 +1158,10 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox27</rd:DefaultName>
-        <Top>10.32403in</Top>
-        <Left>0.25in</Left>
+        <Top>9.42125in</Top>
         <Height>0.25in</Height>
-        <Width>6.14652in</Width>
-        <ZIndex>29</ZIndex>
+        <Width>5.95208in</Width>
+        <ZIndex>25</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1381,11 +1190,11 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox28</rd:DefaultName>
-        <Top>10.47681in</Top>
-        <Left>1.51236in</Left>
+        <Top>9.60181in</Top>
+        <Left>0.26236in</Left>
         <Height>0.16667in</Height>
         <Width>4.88418in</Width>
-        <ZIndex>30</ZIndex>
+        <ZIndex>26</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1414,11 +1223,11 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>luvlines</rd:DefaultName>
-        <Top>10.71292in</Top>
-        <Left>1.51236in</Left>
+        <Top>9.81015in</Top>
+        <Left>1.04014in</Left>
         <Height>0.25in</Height>
         <Width>4.88418in</Width>
-        <ZIndex>31</ZIndex>
+        <ZIndex>27</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1436,7 +1245,7 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Switch(First(Fields!adline.Value=true, "dsOnlinePay"), "Online Pay Price you will be charging for an Ad "
+                <Value>=Switch(First(Fields!adline.Value=true, "dsOnlinePay"), "Online Pay Price you will be charging for an Ad: "
 + Switch(First(Fields!eighthadamt.Value&gt;0, "dsOnlinePay"),"1/8 Page Ad &lt;b&gt;&lt;u&gt;$"+First(Fields!eighthadamt.Value.ToString(), "dsOnlinePay")+"&lt;/b&gt;&lt;/u&gt;&lt;br/&gt;")
 + Switch(First(Fields!quarteradamt.Value&gt;0, "dsOnlinePay"),"1/4 Page Ad &lt;b&gt;&lt;u&gt;$"+First(Fields!quarteradamt.Value.ToString(), "dsOnlinePay")+"&lt;/b&gt;&lt;/u&gt;&lt;br/&gt;")
 + Switch(First(Fields!halfadamt.Value&gt;0, "dsOnlinePay"),"1/2 Page Ad &lt;b&gt;&lt;u&gt;$"+First(Fields!halfadamt.Value.ToString(), "dsOnlinePay")+"&lt;/b&gt;&lt;/u&gt;&lt;br/&gt;")
@@ -1452,11 +1261,11 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>11.03236in</Top>
-        <Left>1.51234in</Left>
+        <Top>10.12959in</Top>
+        <Left>1.0679in</Left>
         <Height>0.25in</Height>
         <Width>4.88418in</Width>
-        <ZIndex>32</ZIndex>
+        <ZIndex>28</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1475,8 +1284,8 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
             <TextRuns>
               <TextRun>
                 <Value>=First("Online purchase available through &lt;u&gt;&lt;b&gt;"+FormatDatetime(Fields!onlinecuto.Value,DateFormat.ShortDate)
-+"&lt;/b&gt;&lt;/u&gt;  Online Ad purchase avaliable through &lt;u&gt;&lt;b&gt;"
-+FormatDatetime(!adcuto.Value,DateFormat.ShortDate)+"&lt;/b&gt;&lt;/u&gt;&lt;br/&gt;&lt;i&gt;&lt;font size=1&gt;&lt;/font&gt;#This date must be a minimum of one week prior to book submission date&lt;/i&gt;"),"dsOnlinePay")</Value>
++"&lt;/b&gt;&lt;/u&gt; &amp;nbsp&amp;nbsp&amp;nbsp Online Ad purchase avaliable through &lt;u&gt;&lt;b&gt;"
++FormatDatetime(Fields!adcuto.Value,DateFormat.ShortDate)+"&lt;/b&gt;&lt;/u&gt;&lt;br/&gt;&lt;i&gt;&lt;font size=1&gt;&lt;/font&gt;**This date must be a minimum of one week prior to book submission date&lt;/i&gt;&lt;br/&gt;","dsOnlinePay")</Value>
                 <MarkupType>HTML</MarkupType>
                 <Style />
               </TextRun>
@@ -1485,11 +1294,71 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>11.35181in</Top>
-        <Left>1.51236in</Left>
+        <Top>10.47681in</Top>
+        <Left>0.26236in</Left>
         <Height>0.25in</Height>
         <Width>7.05667in</Width>
-        <ZIndex>33</ZIndex>
+        <ZIndex>29</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox36">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Signature______________________________________________</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox36</rd:DefaultName>
+        <Top>10.79625in</Top>
+        <Left>0.26236in</Left>
+        <Height>0.25in</Height>
+        <Width>4.88418in</Width>
+        <ZIndex>30</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox37">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Print Name_____________________________________________           Date___________________</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox37</rd:DefaultName>
+        <Top>11.1157in</Top>
+        <Left>0.26234in</Left>
+        <Height>0.25in</Height>
+        <Width>7.09314in</Width>
+        <ZIndex>31</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1501,13 +1370,87 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>11.86333in</Height>
+    <Height>12.30083in</Height>
     <Style />
   </Body>
-  <Width>9.16043in</Width>
+  <Width>7.46548in</Width>
   <Page>
+    <PageHeader>
+      <Height>0.75in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Image Name="JostensLogo">
+          <Source>Embedded</Source>
+          <Value>MemBookJostensLogo</Value>
+          <Sizing>FitProportional</Sizing>
+          <Top>0.07291in</Top>
+          <Left>0.13118in</Left>
+          <Height>0.60417in</Height>
+          <Width>2.16667in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
+        <Textbox Name="Textbox9">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>304 Curry Drive</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Sedalia, Mo 65301</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>(800) 247-1526 Fax (800) 550-7129</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox9</rd:DefaultName>
+          <Top>0.07291in</Top>
+          <Left>5.05306in</Left>
+          <Height>0.60417in</Height>
+          <Width>2.28124in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
     <PageFooter>
-      <Height>0.67709in</Height>
+      <Height>0.4375in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1529,7 +1472,7 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox29</rd:DefaultName>
-          <Top>0.29167in</Top>
+          <Top>0.06944in</Top>
           <Left>1.3984in</Left>
           <Height>0.30208in</Height>
           <Width>3.05208in</Width>
@@ -1552,7 +1495,7 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
                 <TextRun>
                   <Value>="Print Date "+FormatDateTime(Now(),DateFormat.ShortDate)</Value>
                   <Style>
-                    <FontSize>8pt</FontSize>
+                    <FontSize>6pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -1560,10 +1503,10 @@ If the Customer chooses to cancel this yearbook order for any reason, all sums d
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.29167in</Top>
-          <Left>7.52501in</Left>
+          <Top>0.06944in</Top>
+          <Left>5.77501in</Left>
           <Height>0.25in</Height>
-          <Width>1.63541in</Width>
+          <Width>1.47916in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>

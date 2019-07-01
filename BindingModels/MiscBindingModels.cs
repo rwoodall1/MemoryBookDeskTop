@@ -5,6 +5,22 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class OnlineFlyer {
+        public string SchName { get; set; }
+        public string SchCode { get; set; }
+        public string BasicPrice { get; set; }
+        public bool HasPersonalized { get; set; }
+        public string PersonalizedPrice { get; set; }
+        public bool HasLoveLine { get; set; }
+        public string LoveLineAmt { get; set; }
+        public bool HasAds { get; set; }
+        public string EighthAdAmt { get; set; }
+        public string QuarterAdAmt { get; set; }
+        public string HalfAdAmt { get; set; }
+        public string FullAdAmt { get; set; }
+        public DateTime OnlineCutoff { get; set; }
+        public DateTime AdCutoff { get; set; }
+    }
     public class OnlineAgreementHeader {
         public int Invno { get; set; }
         public string PoNumber { get; set; }

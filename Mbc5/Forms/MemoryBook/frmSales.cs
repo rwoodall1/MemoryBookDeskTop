@@ -162,6 +162,89 @@ namespace Mbc5.Forms.MemoryBook
         private bool StartUp { get; set; }
         #endregion
         #region "Methods"
+        private void ReminderEmails(string type)
+        {
+            if (type == "Half")
+            {
+                    var schname = ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim();
+                    var vKitRecvDate1 = (DateTime)((DataRowView)quotesBindingSource.Current).Row["kitrecvd"];
+                    var vKitRecvDate = vKitRecvDate1.ToString("d");
+                    string vPin = ((DataRowView)custBindingSource.Current).Row["PIN"].ToString().Trim();
+                    var vPdfGenerator = new PdfAttachementGenerator();
+                    var result = vPdfGenerator.GenerateAttachement(this.reportViewer1, schname + " INVOICE.pdf");
+                    if (result.IsError)
+                    {
+                        MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+                        return;
+                    }
+                    var newPath = result.Data;
+                    var emailHelper = new EmailHelper();
+                    string sub = "Memory Book Payment Reminder";
+                    string body = @"Your book was submitted on " + vKitRecvDate + @". Just a reminder a payment for your order is due within 10 business days of your book submission date.
+                    If you are not paying in full a half payment or a Purchase Order for the entire amount will need to be submitted. I have attached an invoice.<br/><br/>
+                    You may pay by credit card  <a href=https://pay.memorybook.com>Memorybook</a> or submit a check. If you are paying online you need:</br> 
+                    Account Code:<b>" + Schcode + "</b> School PIN:<b>" + vPin + "</b><br/><br/><br/>Please contact your representative if you have any questions. Thank you!";
+                    List<OutlookAttachemt> Attachements = new List<OutlookAttachemt>();
+                    OutlookAttachemt Attachement = new OutlookAttachemt() { Name = Schcode + "Flyer.pdf", Path = newPath };
+                    Attachements.Add(Attachement);
+                    string Address = ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+                    emailHelper.SendOutLookEmail(sub, Address, null, body, EmailType.Mbc, Attachements);
+            }
+            else if (type == "NoPaymentRec5")
+            {
+                var schname = ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim();
+                var vKitRecvDate1 = (DateTime)((DataRowView)quotesBindingSource.Current).Row["kitrecvd"];
+                var vKitRecvDate = vKitRecvDate1.ToString("d");
+                string vPin = ((DataRowView)custBindingSource.Current).Row["PIN"].ToString().Trim();
+                var vPdfGenerator = new PdfAttachementGenerator();
+                var result = vPdfGenerator.GenerateAttachement(this.reportViewer1, schname + " INVOICE.pdf");
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+                    return;
+                }
+                var newPath = result.Data;
+                var emailHelper = new EmailHelper();
+                string sub = "Memory Book Payment Reminder";
+                string body = @"Your book was submitted on " + vKitRecvDate + @" and your account received the 5% payment in full discount. Just a reminder the 5% full payment discount is forfeited when a full payment is not received within 10 business days of book submission.
+                I have attached an invoice.<br/><br/>
+                You may pay by credit card  <a href=https://pay.memorybook.com>Memorybook</a> or submit a check. If you are paying online you need:</br> 
+                Account Code:<b>" + Schcode + "</b> School PIN:<b>" + vPin + "</b><br/><br/><br/>Please contact your representative if you have any questions. Thank you!";
+                List<OutlookAttachemt> Attachements = new List<OutlookAttachemt>();
+                OutlookAttachemt Attachement = new OutlookAttachemt() { Name = Schcode + "Flyer.pdf", Path = newPath };
+                Attachements.Add(Attachement);
+                string Address = ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+                emailHelper.SendOutLookEmail(sub, Address, null, body, EmailType.Mbc, Attachements);
+
+            }
+            else if (type == "Removing5")
+            {
+                var schname = ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim();
+                var vKitRecvDate1 = (DateTime)((DataRowView)quotesBindingSource.Current).Row["kitrecvd"];
+                var vKitRecvDate = vKitRecvDate1.ToString("d");
+                string vPin = ((DataRowView)custBindingSource.Current).Row["PIN"].ToString().Trim();
+                var vPdfGenerator = new PdfAttachementGenerator();
+                var result = vPdfGenerator.GenerateAttachement(this.reportViewer1, schname + " INVOICE.pdf");
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+                    return;
+                }
+                var newPath = result.Data;
+                var emailHelper = new EmailHelper();
+                string sub = "Memory Book Payment Reminder";
+                string body = @"Your book was submitted on " + vKitRecvDate + @" and your account received the 5% payment in full discount. The 5% full payment discount is forfeited when a full payment is not received within 10 business days of book submission. <br/>
+                Unfortunately, payment was not received.  A revised invoice is attached.
+                You may pay by credit card  via <a href=https://pay.memorybook.com>Memorybook</a> or submit a check. If you are paying online you need:</br> 
+                Account Code:<b>" + Schcode + "</b> School PIN:<b>" + vPin + "</b><br/><br/><br/>Please contact your representative if you have any questions. Thank you!";
+                List<OutlookAttachemt> Attachements = new List<OutlookAttachemt>();
+                OutlookAttachemt Attachement = new OutlookAttachemt() { Name = Schcode + "Flyer.pdf", Path = newPath };
+                Attachements.Add(Attachement);
+                string Address = ((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+                emailHelper.SendOutLookEmail(sub, Address, null, body, EmailType.Mbc, Attachements);
+            }
+
+        }
         private void DisableControls(Control con)
         {
             foreach (Control c in con.Controls)
@@ -3804,14 +3887,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
-            try
-            {
-                reportViewer1.PrintDialog();
-            }
-            catch (Exception ex)
-            {
-
-            }
+            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
 
         }
         private decimal GetTaxRate()
@@ -4747,14 +4823,7 @@ namespace Mbc5.Forms.MemoryBook
 
         private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-            try
-            {
-                reportViewer2.PrintDialog();
-            }
-            catch (Exception ex)
-            {
-
-            }
+            try { reportViewer2.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
         }
 
         private void dteQuote_ValueChanged(object sender, EventArgs e)
@@ -4902,20 +4971,85 @@ namespace Mbc5.Forms.MemoryBook
                 bsAgreementHeader.DataSource = AgreementHeader;
                 var AgreementDetails= GetDetailRecords(Invno.ToString());
                 bsAgreementDetails.DataSource = AgreementDetails;
-                reportViewer3.RefreshReport();
+            reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.OnlineAgreement.rdlc";
+            reportViewer3.LocalReport.DataSources.Clear();
+            reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsItemDetails",bsAgreementDetails));
+            reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsHeader", bsAgreementHeader));
+            reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsOnlinePay", quotesBindingSource));
+            reportViewer3.RefreshReport();
             
         }
 
         private void reportViewer3_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-           // reportViewer3.PrintDialog();
+            //try { reportViewer3.PrintDialog(); } catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+           
+        }
+
+        private void btnPrntFlyer_Click(object sender, EventArgs e)
+        {
+            reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.OnlineFlyer.rdlc";
+            reportViewer3.LocalReport.DataSources.Clear();
+            reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("dsOnlineFlyer", bsOnlineFlyer));
+            //set data
+                var vFlyerData = new OnlineFlyer()
+                {
+                    SchName = ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim(),
+                    SchCode = Schcode,
+                    BasicPrice = lblOprcperbk.Text,
+                    PersonalizedPrice = txtOprcperbk2.Text,
+                    HasPersonalized =(chkInkPers.Checked||chkInkTxt.Checked||chkFoiltxt.Checked||chkFoilIcons.Checked||chkPicPers.Checked),
+                    HasLoveLine =luvlinesCheckBox.Checked,
+                    LoveLineAmt=txtLuvLineAmt.Text ,
+                    HasAds=chkAllowAds.Checked ,
+                    EighthAdAmt=txtEighthAd.Text ,
+                    QuarterAdAmt=txtQuarterAd.Text ,
+                    HalfAdAmt=txtHaldfAd.Text ,
+                    FullAdAmt=txtFullAd.Text ,
+                    OnlineCutoff=onlinecutoDateTimePicker.Value,
+                    AdCutoff=adcutoDateTimePicker.Value
+                };
+                bsOnlineFlyer.DataSource = vFlyerData;
+
+                var vPdfGenerator = new PdfAttachementGenerator();
+                var result=vPdfGenerator.GenerateAttachement(reportViewer3, Schcode + "Flyer.pdf");
+            if (result.IsError)
+            {
+                MbcMessageBox.Error(result.Errors[0].ErrorMessage, "");
+                return;
+            }
+           var newPath = result.Data;
+              var emailHelper = new EmailHelper();
+                    string sub = "Online Pay Flyers";
+                    string body = "Attached are Online Pay Flyers that you can copy and send out to parents.";
+                    List<OutlookAttachemt> Attachements = new List<OutlookAttachemt>();
+                    OutlookAttachemt Attachement = new OutlookAttachemt() { Name = Schcode + "Flyer.pdf", Path = newPath };
+                    Attachements.Add(Attachement);
+                    string Address=((DataRowView)custBindingSource.Current).Row["contemail"].ToString().Trim();
+                    emailHelper.SendOutLookEmail(sub,Address, null, body, EmailType.Mbc,Attachements);
+
+        }
+
+        private void btnNoPayPo_Click(object sender, EventArgs e)
+        {
+            ReminderEmails("Half");
+        }
+
+        private void btnPaymentNotRec_Click(object sender, EventArgs e)
+        {
+            ReminderEmails("NoPaymentRec5");
+           
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            ReminderEmails("Removing5");
         }
 
 
 
 
-
-        //nothing below here
+        //Nothing below here
     }
     public class XtraInvoiceGrid
     {

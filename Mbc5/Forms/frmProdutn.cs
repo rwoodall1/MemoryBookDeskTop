@@ -3736,7 +3736,8 @@ namespace Mbc5.Forms
 
         private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-            reportViewer1.PrintDialog();
+            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+            
         }
 
         private void dedmadeTextBox_Leave(object sender, EventArgs e)

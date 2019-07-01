@@ -2226,7 +2226,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.reportViewer1.PrintDialog();
             }catch(Exception ex)
             {
-                var a = 1;
+               
                 MbcMessageBox.Error(ex.Message,"");
             }
             

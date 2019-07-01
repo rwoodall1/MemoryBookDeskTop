@@ -4,8 +4,8 @@
 namespace Mbc5.DataSets {
 
 
-	public partial class dsInvoice {
-	}
+    public partial class dsInvoice {
+    }
 }
 namespace Mbc5.DataSets {
     

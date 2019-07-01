@@ -1571,7 +1571,7 @@ public override void Cancel() {
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            reportViewer1.PrintDialog();
+            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
             Cursor.Current = Cursors.Default;
         }
         private void splitContainer_Panel1_Paint(object sender, PaintEventArgs e)
@@ -1624,7 +1624,7 @@ public override void Cancel() {
         private void reportViewerCheckList_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            reportViewerCheckList.PrintDialog();
+            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
             Cursor.Current = Cursors.Default;
         }
         private void AddLeadName_Click(object sender, EventArgs e)
@@ -1930,7 +1930,7 @@ public override void Cancel() {
 
         private void reportViewer2_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
-            reportViewer2.PrintDialog();
+            try { reportViewer2.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
         }
 
         private void shipppingAddrLabel_Click(object sender, EventArgs e)
@@ -2143,7 +2143,7 @@ public override void Cancel() {
 
         private void reportViewer3_RenderingComplete_1(object sender, RenderingCompleteEventArgs e)
         {
-            reportViewer3.PrintDialog();
+            try { reportViewer3.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
