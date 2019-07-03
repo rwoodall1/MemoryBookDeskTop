@@ -8,7 +8,7 @@ namespace BaseClass
 {
     public static class ExtensionMethods
     {
-        public static bool IsInOneOfRoles(this Classes.UserPrincipal ApplicationUser,string [] roles)
+        public static bool IsInOneOfRoles(this Classes.UserPrincipal ApplicationUser,List<string> roles)
         {
             bool retval = false ;
             foreach(string role in roles)

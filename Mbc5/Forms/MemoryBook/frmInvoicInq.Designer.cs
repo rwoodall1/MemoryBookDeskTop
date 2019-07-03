@@ -30,8 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
@@ -45,10 +49,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlError = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.dgAddressErrors = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.chkPrint = new System.Windows.Forms.CheckBox();
             this.dgInvoices = new System.Windows.Forms.DataGridView();
@@ -70,6 +74,10 @@
             this.tableAdapterManager = new Mbc5.DataSets.dsInvoiceTableAdapters.TableAdapterManager();
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
+            this.rdStatement = new System.Windows.Forms.RadioButton();
+            this.rdReceived = new System.Windows.Forms.RadioButton();
+            this.lblRecDte = new System.Windows.Forms.Label();
+            this.dteRecvDte = new System.Windows.Forms.DateTimePicker();
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
@@ -79,9 +87,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.pnlError.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAddressErrors)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgInvoices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsInvoices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTest)).BeginInit();
@@ -154,7 +162,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(15, 62);
+            this.label1.Location = new System.Drawing.Point(260, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(228, 13);
             this.label1.TabIndex = 4;
@@ -178,6 +186,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Clear Search";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -199,6 +208,21 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_ClickAsync);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.pnlError);
+            this.panel1.Controls.Add(this.reportViewer1);
+            this.panel1.Controls.Add(this.chkPrint);
+            this.panel1.Controls.Add(this.dgInvoices);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(2, 112);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1125, 304);
+            this.panel1.TabIndex = 9;
+            // 
             // pnlError
             // 
             this.pnlError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -206,10 +230,10 @@
             this.pnlError.Controls.Add(this.label2);
             this.pnlError.Controls.Add(this.dgAddressErrors);
             this.pnlError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlError.Location = new System.Drawing.Point(164, 107);
+            this.pnlError.Location = new System.Drawing.Point(261, 58);
             this.pnlError.Name = "pnlError";
             this.pnlError.Size = new System.Drawing.Size(657, 189);
-            this.pnlError.TabIndex = 8;
+            this.pnlError.TabIndex = 17;
             this.pnlError.Visible = false;
             // 
             // label2
@@ -217,7 +241,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(0, 5);
+            this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(649, 13);
             this.label2.TabIndex = 10;
@@ -236,25 +260,27 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgAddressErrors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgAddressErrors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgAddressErrors.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgAddressErrors.EnableHeadersVisualStyles = false;
             this.dgAddressErrors.Location = new System.Drawing.Point(60, 21);
             this.dgAddressErrors.Name = "dgAddressErrors";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgAddressErrors.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgAddressErrors.Size = new System.Drawing.Size(486, 150);
             this.dgAddressErrors.TabIndex = 9;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.reportViewer1);
-            this.panel1.Controls.Add(this.chkPrint);
-            this.panel1.Controls.Add(this.dgInvoices);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(2, 90);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1125, 326);
-            this.panel1.TabIndex = 9;
             // 
             // reportViewer1
             // 
@@ -278,7 +304,7 @@
             this.chkPrint.AutoSize = true;
             this.chkPrint.Checked = true;
             this.chkPrint.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPrint.Location = new System.Drawing.Point(16, 5);
+            this.chkPrint.Location = new System.Drawing.Point(20, 6);
             this.chkPrint.Name = "chkPrint";
             this.chkPrint.Size = new System.Drawing.Size(131, 17);
             this.chkPrint.TabIndex = 1;
@@ -292,14 +318,14 @@
             this.dgInvoices.AllowUserToDeleteRows = false;
             this.dgInvoices.AutoGenerateColumns = false;
             this.dgInvoices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ToPrint,
@@ -312,9 +338,25 @@
             this.ContactEmail,
             this.Balance});
             this.dgInvoices.DataSource = this.bsInvoices;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgInvoices.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgInvoices.EnableHeadersVisualStyles = false;
-            this.dgInvoices.Location = new System.Drawing.Point(10, 27);
+            this.dgInvoices.Location = new System.Drawing.Point(29, 29);
             this.dgInvoices.Name = "dgInvoices";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgInvoices.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgInvoices.RowHeadersVisible = false;
             this.dgInvoices.Size = new System.Drawing.Size(1096, 245);
             this.dgInvoices.TabIndex = 0;
@@ -420,23 +462,76 @@
             // 
             this.paymntTableAdapter.ClearBeforeFill = true;
             // 
+            // rdStatement
+            // 
+            this.rdStatement.AutoSize = true;
+            this.rdStatement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdStatement.Location = new System.Drawing.Point(23, 52);
+            this.rdStatement.Name = "rdStatement";
+            this.rdStatement.Size = new System.Drawing.Size(73, 17);
+            this.rdStatement.TabIndex = 10;
+            this.rdStatement.TabStop = true;
+            this.rdStatement.Text = "Statement";
+            this.rdStatement.UseVisualStyleBackColor = true;
+            // 
+            // rdReceived
+            // 
+            this.rdReceived.AutoSize = true;
+            this.rdReceived.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdReceived.Location = new System.Drawing.Point(23, 70);
+            this.rdReceived.Name = "rdReceived";
+            this.rdReceived.Size = new System.Drawing.Size(99, 17);
+            this.rdReceived.TabIndex = 11;
+            this.rdReceived.TabStop = true;
+            this.rdReceived.Text = "Book Received";
+            this.rdReceived.UseVisualStyleBackColor = true;
+            this.rdReceived.CheckedChanged += new System.EventHandler(this.rdReceived_CheckedChanged);
+            // 
+            // lblRecDte
+            // 
+            this.lblRecDte.AutoSize = true;
+            this.lblRecDte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecDte.Location = new System.Drawing.Point(28, 90);
+            this.lblRecDte.Name = "lblRecDte";
+            this.lblRecDte.Size = new System.Drawing.Size(79, 13);
+            this.lblRecDte.TabIndex = 12;
+            this.lblRecDte.Text = "Received Date";
+            this.lblRecDte.Visible = false;
+            // 
+            // dteRecvDte
+            // 
+            this.dteRecvDte.CustomFormat = "";
+            this.dteRecvDte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dteRecvDte.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dteRecvDte.Location = new System.Drawing.Point(112, 90);
+            this.dteRecvDte.Name = "dteRecvDte";
+            this.dteRecvDte.Size = new System.Drawing.Size(94, 20);
+            this.dteRecvDte.TabIndex = 13;
+            this.dteRecvDte.Visible = false;
+            // 
             // frmInvoicInq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1127, 488);
+            this.Controls.Add(this.dteRecvDte);
+            this.Controls.Add(this.lblRecDte);
+            this.Controls.Add(this.rdReceived);
+            this.Controls.Add(this.rdStatement);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlError);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmInvoicInq";
             this.Text = "Print MBC Invoice\'s";
             this.Activated += new System.EventHandler(this.frmInvoicInq_Activated);
             this.Load += new System.EventHandler(this.frmInvoicInq_Load);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.rdStatement, 0);
+            this.Controls.SetChildIndex(this.rdReceived, 0);
+            this.Controls.SetChildIndex(this.lblRecDte, 0);
+            this.Controls.SetChildIndex(this.dteRecvDte, 0);
             this.Controls.SetChildIndex(this.TopPanel, 0);
             this.Controls.SetChildIndex(this.BottomPanel, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.pnlError, 0);
-            this.Controls.SetChildIndex(this.panel1, 0);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.BottomPanel.ResumeLayout(false);
@@ -447,11 +542,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.pnlError.ResumeLayout(false);
             this.pnlError.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAddressErrors)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgInvoices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsInvoices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTest)).EndInit();
@@ -469,9 +564,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel pnlError;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgAddressErrors;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgInvoices;
         private System.Windows.Forms.BindingSource bsInvoices;
@@ -501,5 +593,12 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Schemail;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ContactEmail;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
-	}
+        private System.Windows.Forms.RadioButton rdStatement;
+        private System.Windows.Forms.RadioButton rdReceived;
+        private System.Windows.Forms.Label lblRecDte;
+        private System.Windows.Forms.DateTimePicker dteRecvDte;
+        private System.Windows.Forms.Panel pnlError;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dgAddressErrors;
+    }
 }

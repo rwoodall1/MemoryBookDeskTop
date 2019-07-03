@@ -243,9 +243,14 @@ namespace Mbc5.Forms
         private void SetMenu()
         {
 
-            this.userMaintinanceToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
-            this.tsDeptScanLabel.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
-            lookUpMaintenanceToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
+            this.userMaintinanceToolStripMenuItem.Visible =ApplicationUser.IsInOneOfRoles(new List<string>() {"SA","Administrator" }) ;
+            this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+            lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+            invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+            meridianToolStripMenuItem.Visible =ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator","MeridianCs" });
+            mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
+            cancelationStatementsToolStripMenuItem.Visible= ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+            
         }
         public void exitMBCToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -328,12 +333,11 @@ namespace Mbc5.Forms
 
             if (this.ActiveMdiChild == null)
             {
-                //frmBids frmBids = new frmBids(this.ApplicationUser);
-                //frmBids.MdiParent = this;
-                //frmBids.Show();
-                //this.Cursor = Cursors.Default;
-                MessageBox.Show("Customer screen must be open and on the customer to place bid for.");
-                return;
+                //default cs record
+                frmBids frmSales = new frmBids(this.ApplicationUser, "038752");
+                frmSales.MdiParent = this;
+                frmSales.Show();
+                this.Cursor = Cursors.Default;
 
 
             }
@@ -991,13 +995,16 @@ namespace Mbc5.Forms
     
         }
 
-
-
-
-
-
+        private void cancelationStatementsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                frmCancellationStatements frmCancel = new frmCancellationStatements(this.ApplicationUser);
+                frmCancel.MdiParent = this;
+                frmCancel.Show();
+                this.Cursor = Cursors.Default;
+           
+        }
 
         //nothing below here
+         }
     }
-        }
 

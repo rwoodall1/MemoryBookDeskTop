@@ -27,11 +27,7 @@
             this.merCustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.pg2 = new System.Windows.Forms.TabPage();
-            this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.merCustTab.SuspendLayout();
-            this.pg1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
-            this.splitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -59,7 +55,6 @@
             // pg1
             // 
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
-            this.pg1.Controls.Add(this.splitContainer);
             this.pg1.Location = new System.Drawing.Point(4, 22);
             this.pg1.Name = "pg1";
             this.pg1.Padding = new System.Windows.Forms.Padding(3);
@@ -77,26 +72,6 @@
             this.pg2.TabIndex = 1;
             this.pg2.Text = "Addresses";
             // 
-            // splitContainer
-            // 
-            this.splitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer.Name = "splitContainer";
-            // 
-            // splitContainer.Panel1
-            // 
-            this.splitContainer.Panel1.AutoScroll = true;
-            this.splitContainer.Panel1.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // splitContainer.Panel2
-            // 
-            this.splitContainer.Panel2.BackColor = System.Drawing.Color.Transparent;
-            this.splitContainer.Size = new System.Drawing.Size(1252, 672);
-            this.splitContainer.SplitterDistance = 633;
-            this.splitContainer.TabIndex = 19;
-            // 
             // frmMerCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,9 +83,6 @@
             this.Controls.SetChildIndex(this.BottomPanel, 0);
             this.Controls.SetChildIndex(this.merCustTab, 0);
             this.merCustTab.ResumeLayout(false);
-            this.pg1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
-            this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
             }
@@ -119,6 +91,5 @@
         private System.Windows.Forms.TabControl merCustTab;
         private System.Windows.Forms.TabPage pg1;
         private System.Windows.Forms.TabPage pg2;
-        private System.Windows.Forms.SplitContainer splitContainer;
         }
     }

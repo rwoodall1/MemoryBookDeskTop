@@ -92,6 +92,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvaTaxBindingModels.cs" />
     <Compile Include="BidInvoice.cs" />
     <Compile Include="CustomerBindingModels.cs" />
     <Compile Include="Invoice.cs" />

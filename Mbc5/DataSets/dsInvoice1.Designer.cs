@@ -1143,10 +1143,8 @@ namespace Mbc5.DataSets {
                 this.columnschcode.MaxLength = 6;
                 this.columninvno.AllowDBNull = false;
                 this.columninvno.Unique = true;
-                this.columnsource.MaxLength = 2;
+                this.columnsource.MaxLength = 3;
                 this.columnponum.MaxLength = 25;
-                this.columncontfname.MaxLength = 20;
-                this.columncontlname.MaxLength = 20;
                 this.columnschname.MaxLength = 36;
                 this.columnschaddr.MaxLength = 80;
                 this.columnschaddr2.MaxLength = 80;
@@ -1537,8 +1535,6 @@ namespace Mbc5.DataSets {
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
                 this.columninvno.AllowDBNull = false;
-                this.columndescr.MaxLength = 100;
-                this.columndiscpercent.MaxLength = 14;
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
                 this.columnModifiedBy.MaxLength = 128;
@@ -2016,21 +2012,9 @@ namespace Mbc5.DataSets {
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.Unique = true;
                 this.columnschcode.MaxLength = 6;
-                this.columnschname.AllowDBNull = false;
                 this.columnschname.MaxLength = 100;
                 this.columncontryear.MaxLength = 2;
-                this.columnschaddr.AllowDBNull = false;
-                this.columnschaddr.MaxLength = 100;
-                this.columnschaddr2.MaxLength = 100;
-                this.columnschcity.AllowDBNull = false;
-                this.columnschcity.MaxLength = 100;
-                this.columnschstate.AllowDBNull = false;
                 this.columnschstate.MaxLength = 3;
-                this.columnschzip.AllowDBNull = false;
-                this.columnschzip.MaxLength = 5;
-                this.columncontfname.MaxLength = 100;
-                this.columncontlname.MaxLength = 100;
-                this.columncsrep.MaxLength = 5;
                 this.columnfullname.ReadOnly = true;
                 this.columncitystatezip.ReadOnly = true;
                 this.columnnamecode.ReadOnly = true;
@@ -4197,7 +4181,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schname {
                 get {
-                    return ((string)(this[this.tablecust.schnameColumn]));
+                    try {
+                        return ((string)(this[this.tablecust.schnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schname\' in table \'cust\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablecust.schnameColumn] = value;
@@ -4224,7 +4213,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schaddr {
                 get {
-                    return ((string)(this[this.tablecust.schaddrColumn]));
+                    try {
+                        return ((string)(this[this.tablecust.schaddrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schaddr\' in table \'cust\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablecust.schaddrColumn] = value;
@@ -4251,7 +4245,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schcity {
                 get {
-                    return ((string)(this[this.tablecust.schcityColumn]));
+                    try {
+                        return ((string)(this[this.tablecust.schcityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schcity\' in table \'cust\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablecust.schcityColumn] = value;
@@ -4262,7 +4261,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schstate {
                 get {
-                    return ((string)(this[this.tablecust.schstateColumn]));
+                    try {
+                        return ((string)(this[this.tablecust.schstateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schstate\' in table \'cust\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablecust.schstateColumn] = value;
@@ -4273,7 +4277,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schzip {
                 get {
-                    return ((string)(this[this.tablecust.schzipColumn]));
+                    try {
+                        return ((string)(this[this.tablecust.schzipColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schzip\' in table \'cust\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablecust.schzipColumn] = value;
@@ -4378,6 +4387,18 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschnameNull() {
+                return this.IsNull(this.tablecust.schnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschnameNull() {
+                this[this.tablecust.schnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
@@ -4390,6 +4411,18 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschaddrNull() {
+                return this.IsNull(this.tablecust.schaddrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschaddrNull() {
+                this[this.tablecust.schaddrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Isschaddr2Null() {
                 return this.IsNull(this.tablecust.schaddr2Column);
             }
@@ -4398,6 +4431,42 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setschaddr2Null() {
                 this[this.tablecust.schaddr2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschcityNull() {
+                return this.IsNull(this.tablecust.schcityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschcityNull() {
+                this[this.tablecust.schcityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschstateNull() {
+                return this.IsNull(this.tablecust.schstateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschstateNull() {
+                this[this.tablecust.schstateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschzipNull() {
+                return this.IsNull(this.tablecust.schzipColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschzipNull() {
+                this[this.tablecust.schzipColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7550,7 +7619,7 @@ SELECT schcode, schname, contryear, schaddr, schaddr2, schcity, schstate, schzip
         public virtual int Fill(dsInvoice.custDataTable dataTable, string schcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((schcode == null)) {
-                throw new global::System.ArgumentNullException("schcode");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schcode));
@@ -7569,7 +7638,7 @@ SELECT schcode, schname, contryear, schaddr, schaddr2, schcity, schstate, schzip
         public virtual dsInvoice.custDataTable GetData(string schcode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((schcode == null)) {
-                throw new global::System.ArgumentNullException("schcode");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(schcode));
@@ -7614,13 +7683,13 @@ SELECT schcode, schname, contryear, schaddr, schaddr2, schcity, schstate, schzip
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(string Original_schcode, string Original_schname, string Original_contryear, string Original_schaddr, string Original_schaddr2, string Original_schcity, string Original_schstate, string Original_schzip, string Original_contfname, string Original_contlname, string Original_csrep) {
             if ((Original_schcode == null)) {
-                throw new global::System.ArgumentNullException("Original_schcode");
+                this.Adapter.DeleteCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_schcode));
             }
             if ((Original_schname == null)) {
-                throw new global::System.ArgumentNullException("Original_schname");
+                this.Adapter.DeleteCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_schname));
@@ -7633,7 +7702,7 @@ SELECT schcode, schname, contryear, schaddr, schaddr2, schcity, schstate, schzip
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_contryear));
             }
             if ((Original_schaddr == null)) {
-                throw new global::System.ArgumentNullException("Original_schaddr");
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_schaddr));
@@ -7646,19 +7715,19 @@ SELECT schcode, schname, contryear, schaddr, schaddr2, schcity, schstate, schzip
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_schaddr2));
             }
             if ((Original_schcity == null)) {
-                throw new global::System.ArgumentNullException("Original_schcity");
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_schcity));
             }
             if ((Original_schstate == null)) {
-                throw new global::System.ArgumentNullException("Original_schstate");
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_schstate));
             }
             if ((Original_schzip == null)) {
-                throw new global::System.ArgumentNullException("Original_schzip");
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_schzip));
@@ -7728,13 +7797,13 @@ SELECT schcode, schname, contryear, schaddr, schaddr2, schcity, schstate, schzip
                     string Original_contlname, 
                     string Original_csrep) {
             if ((schcode == null)) {
-                throw new global::System.ArgumentNullException("schcode");
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(schcode));
             }
             if ((schname == null)) {
-                throw new global::System.ArgumentNullException("schname");
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(schname));
@@ -7746,7 +7815,7 @@ SELECT schcode, schname, contryear, schaddr, schaddr2, schcity, schstate, schzip
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(contryear));
             }
             if ((schaddr == null)) {
-                throw new global::System.ArgumentNullException("schaddr");
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(schaddr));
@@ -7758,19 +7827,19 @@ SELECT schcode, schname, contryear, schaddr, schaddr2, schcity, schstate, schzip
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(schaddr2));
             }
             if ((schcity == null)) {
-                throw new global::System.ArgumentNullException("schcity");
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(schcity));
             }
             if ((schstate == null)) {
-                throw new global::System.ArgumentNullException("schstate");
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(schstate));
             }
             if ((schzip == null)) {
-                throw new global::System.ArgumentNullException("schzip");
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(schzip));
@@ -7794,13 +7863,13 @@ SELECT schcode, schname, contryear, schaddr, schaddr2, schcity, schstate, schzip
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(csrep));
             }
             if ((Original_schcode == null)) {
-                throw new global::System.ArgumentNullException("Original_schcode");
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_schcode));
             }
             if ((Original_schname == null)) {
-                throw new global::System.ArgumentNullException("Original_schname");
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_schname));
@@ -7813,7 +7882,7 @@ SELECT schcode, schname, contryear, schaddr, schaddr2, schcity, schstate, schzip
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_contryear));
             }
             if ((Original_schaddr == null)) {
-                throw new global::System.ArgumentNullException("Original_schaddr");
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_schaddr));
@@ -7826,19 +7895,19 @@ SELECT schcode, schname, contryear, schaddr, schaddr2, schcity, schstate, schzip
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_schaddr2));
             }
             if ((Original_schcity == null)) {
-                throw new global::System.ArgumentNullException("Original_schcity");
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_schcity));
             }
             if ((Original_schstate == null)) {
-                throw new global::System.ArgumentNullException("Original_schstate");
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_schstate));
             }
             if ((Original_schzip == null)) {
-                throw new global::System.ArgumentNullException("Original_schzip");
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_schzip));
