@@ -1,0 +1,1397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsMcust" targetNamespace="http://tempuri.org/dsMcust.xsd" xmlns:mstns="http://tempuri.org/dsMcust.xsd" xmlns="http://tempuri.org/dsMcust.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Mbc5ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Mbc5ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Mbc5.Properties.Settings.GlobalReference.Default.Mbc5ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mcustTableAdapter" GeneratorDataComponentClassName="mcustTableAdapter" Name="mcust" UserDataComponentName="mcustTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        mcust.schcode, mcust.source, mcust.sourdate, mcust.secsource, mcust.contdate, mcust.cstatus, mcust.origsour, mcust.origyear, mcust.rebook, mcust.rebookdte, mcust.refby, mcust.schname, mcust.contryear, 
+                         mcust.enrollment, mcust.grades, mcust.sal, mcust.schaddr, mcust.schaddr2, mcust.schcity, mcust.schstate, mcust.schzip, mcust.schphone, mcust.schfax, mcust.schemail, mcust.sprngbrk, mcust.schout, 
+                         mcust.nposition, mcust.gender, mcust.contfname, mcust.contlname, mcust.newfname, mcust.newlname, mcust.yb_sth, mcust.shiptocont, mcust.contaddr, mcust.contaddr2, mcust.contcity, mcust.contstate, 
+                         mcust.contphnhom, mcust.contzip, mcust.contphnwrk, mcust.contfax, mcust.contemail, mcust.booktype, mcust.sigfopf, mcust.vcrsent, mcust.envflyer, mcust.marketing, mcust.yearrnd, mcust.clrpg_int, 
+                         mcust.ck_lock, mcust.digintrst, mcust.svcode1, mcust.svdesc1, mcust.svcode2, mcust.svdesc2, mcust.lastcont, mcust.nextcont, mcust.csrep, mcust.cstat, mcust.xeldate, mcust.allcolor, mcust.rbinit, 
+                         mcust.rbdate, mcust.clspic, mcust.sprinfo, mcust.fallinfo, mcust.initcont, mcust.highsp, mcust.slownone, mcust.pcmac, mcust.junsno, mcust.jobno, mcust.advpw, mcust.clientcode, mcust.bcontfname, 
+                         mcust.bcontlname, mcust.bcontaddr, mcust.bcontaddr2, mcust.bcontcity, mcust.bcontstate, mcust.bcontzip, mcust.bcontphnho, mcust.bcontphnwr, mcust.bcontfax, mcust.bcontemail, mcust.multiyropt, 
+                         mcust.multiyear, mcust.schuploadi, mcust.website, mcust.nomktemail, mcust.nodirectma, mcust.bposition, mcust.booktier, mcust.josjobno, mcust.category, mcust.dteschstart, mcust.dtenextcon, 
+                         mcust.mktsegment, mcust.nextcallfr, mcust.curentprov, mcust.aplus, mcust.bussagreee, mcust.leadsource, mcust.nocont, mcust.dteschsta2, mcust.contmemo, mcust.exchg, mcust.spcinst, mcust.inoffice, 
+                         mcust.shipmemo, mcust.dteschend, mcust.multiyroptions, mcust.josname, mcust.shpaddr, mcust.shpaddr2, mcust.shpcity, mcust.shpstate, mcust.shpzip, mcust.adshpaddr, mcust.invaddr, mcust.invaddr2, 
+                         mcust.invcity, mcust.invstate, mcust.invnotes, mcust.invphone, mcust.invzip, mcust.invsameasschool, mcust.invname, mcust.schclosed, mcust.shpname, mcust.schcolors, mcust.ModifiedBy, mcust.TaxExempt, 
+                         mcust.NotTaxExempt, mcust.TaxExemptRecvd, mcust.OracleCode, mcust.Status, mcust.Staging, produtn.dedayin, produtn.dedayout, mquotes.booktype AS QBooktype, mquotes.contryear AS QYear, 
+                         mquotes.invno AS QInvno, produtn.prodno, produtn.kitrecvd, MeridianProducts.Description AS ProdDescription, mcust.DateModified, mcust.ShippingAddr, mcust.ShippingAddr2, mcust.ShippingCity, 
+                         mcust.ShippingState, mcust.ShippingZipCode, mcust.TimeStamp
+FROM            MeridianProducts RIGHT OUTER JOIN
+                         mquotes ON MeridianProducts.ProdCode = mquotes.prodcode LEFT OUTER JOIN
+                         produtn ON mquotes.invno = produtn.invno RIGHT OUTER JOIN
+                         mcust ON mquotes.schcode = mcust.schcode
+WHERE        (mcust.schcode = @schcode)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="schcode" ColumnName="schcode" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(6)" DbType="AnsiString" Direction="Input" ParameterName="@schcode" Precision="0" ProviderType="Char" Scale="0" Size="6" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       mcust
+SET                source = @source, sourdate = @sourdate, secsource = @secsource, contdate = @contdate, cstatus = @cstatus, origsour = @origsour, origyear = @origyear, rebook = @rebook, rebookdte = @rebookdte, 
+                         refby = @refby, schname = @schname, enrollment = @enrollment, contryear = @contryear, grades = @grades, sal = @sal, schaddr = @schaddr, schaddr2 = @schaddr2, schcity = @schcity, 
+                         schstate = @schstate, schzip = @schzip, schphone = @schphone, schfax = @schfax, schemail = @schemail, sprngbrk = @sprngbrk, schout = @schout, nposition = @nposition, gender = @gender, 
+                         contfname = @contfname, contlname = @contlname, newfname = @newfname, newlname = @newlname, yb_sth = @yb_sth, shiptocont = @shiptocont, contaddr = @contaddr, contaddr2 = @contaddr2, 
+                         contcity = @contcity, contstate = @contstate, contzip = @contzip, contphnhom = @contphnhom, contphnwrk = @contphnwrk, contfax = @contfax, contemail = @contemail, booktype = @booktype, 
+                         vcrsent = @vcrsent, sigfopf = @sigfopf, envflyer = @envflyer, marketing = @marketing, yearrnd = @yearrnd, clrpg_int = @clrpg_int, ck_lock = @ck_lock, digintrst = @digintrst, svcode1 = @svcode1, 
+                         svdesc1 = @svdesc1, svcode2 = @svcode2, svdesc2 = @svdesc2, lastcont = @lastcont, nextcont = @nextcont, csrep = @csrep, cstat = @cstat, xeldate = @xeldate, rbinit = @rbinit, rbdate = @rbdate, 
+                         clspic = @clspic, sprinfo = @sprinfo, fallinfo = @fallinfo, initcont = @initcont, highsp = @highsp, slownone = @slownone, pcmac = @pcmac, junsno = @junsno, clientcode = @clientcode, 
+                         bcontfname = @bcontfname, bcontlname = @bcontlname, bcontaddr = @bcontaddr, bcontaddr2 = @bcontaddr2, bcontcity = @bcontcity, bcontstate = @bcontstate, bcontzip = @bcontzip, 
+                         bcontphnho = @bcontphnho, bcontphnwr = @bcontphnwr, bcontfax = @bcontfax, bcontemail = @bcontemail, multiyropt = @multiyropt, multiyear = @multiyear, schuploadi = @schuploadi, website = @website, 
+                         nomktemail = @nomktemail, nodirectma = @nodirectma, bposition = @bposition, booktier = @booktier, josjobno = @josjobno, category = @category, dteschstart = @dteschstart, dtenextcon = @dtenextcon, 
+                         mktsegment = @mktsegment, nextcallfr = @nextcallfr, curentprov = @curentprov, aplus = @aplus, bussagreee = @bussagreee, leadsource = @leadsource, dteschsta2 = @dteschsta2, nocont = @nocont, 
+                         contmemo = @contmemo, exchg = @exchg, spcinst = @spcinst, inoffice = @inoffice, shipmemo = @shipmemo, dteschend = @dteschend, multiyroptions = @multiyroptions, josname = @josname, 
+                         shpaddr = @shpaddr, shpaddr2 = @shpaddr2, shpcity = @shpcity, shpstate = @shpstate, shpzip = @shpzip, adshpaddr = @adshpaddr, invaddr = @invaddr, invaddr2 = @invaddr2, invcity = @invcity, 
+                         invstate = @invstate, invzip = @invzip, invnotes = @invnotes, invphone = @invphone, invsameasschool = @invsameasschool, invname = @invname, schclosed = @schclosed, shpname = @shpname, 
+                         schcolors = @schcolors, ModifiedBy = @ModifiedBy, TaxExempt = @TaxExempt, NotTaxExempt = @NotTaxExempt, TaxExemptRecvd = @TaxExemptRecvd, OracleCode = @OracleCode, 
+                         DateModified = @DateModified, Status = @Status, Staging = @Staging, ShippingAddr = @ShippingAddr, ShippingAddr2 = @ShippingAddr2, ShippingCity = @ShippingCity, ShippingState = @ShippingState, 
+                         ShippingZipCode = @ShippingZipCode
+WHERE        (schcode = @schcode)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="source" ColumnName="source" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(3)" DbType="AnsiString" Direction="Input" ParameterName="@source" Precision="0" ProviderType="Char" Scale="0" Size="3" SourceColumn="source" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="sourdate" ColumnName="sourdate" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@sourdate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="sourdate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="secsource" ColumnName="secsource" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@secsource" Precision="0" ProviderType="Char" Scale="0" Size="50" SourceColumn="secsource" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contdate" ColumnName="contdate" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@contdate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="contdate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="cstatus" ColumnName="cstatus" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(40)" DbType="AnsiString" Direction="Input" ParameterName="@cstatus" Precision="0" ProviderType="Char" Scale="0" Size="40" SourceColumn="cstatus" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="origsour" ColumnName="origsour" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(3)" DbType="AnsiString" Direction="Input" ParameterName="@origsour" Precision="0" ProviderType="Char" Scale="0" Size="3" SourceColumn="origsour" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="origyear" ColumnName="origyear" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(2)" DbType="AnsiString" Direction="Input" ParameterName="@origyear" Precision="0" ProviderType="Char" Scale="0" Size="2" SourceColumn="origyear" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="rebook" ColumnName="rebook" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@rebook" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="rebook" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="rebookdte" ColumnName="rebookdte" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@rebookdte" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="rebookdte" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="refby" ColumnName="refby" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(25)" DbType="AnsiString" Direction="Input" ParameterName="@refby" Precision="0" ProviderType="Char" Scale="0" Size="25" SourceColumn="refby" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="schname" ColumnName="schname" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(34)" DbType="AnsiString" Direction="Input" ParameterName="@schname" Precision="0" ProviderType="Char" Scale="0" Size="34" SourceColumn="schname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="enrollment" ColumnName="enrollment" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="numeric(5, 0)" DbType="Decimal" Direction="Input" ParameterName="@enrollment" Precision="5" ProviderType="Decimal" Scale="0" Size="5" SourceColumn="enrollment" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contryear" ColumnName="contryear" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(2)" DbType="AnsiString" Direction="Input" ParameterName="@contryear" Precision="0" ProviderType="Char" Scale="0" Size="2" SourceColumn="contryear" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="grades" ColumnName="grades" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(16)" DbType="AnsiString" Direction="Input" ParameterName="@grades" Precision="0" ProviderType="Char" Scale="0" Size="16" SourceColumn="grades" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="sal" ColumnName="sal" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(25)" DbType="AnsiString" Direction="Input" ParameterName="@sal" Precision="0" ProviderType="Char" Scale="0" Size="25" SourceColumn="sal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="schaddr" ColumnName="schaddr" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(35)" DbType="AnsiString" Direction="Input" ParameterName="@schaddr" Precision="0" ProviderType="Char" Scale="0" Size="35" SourceColumn="schaddr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="schaddr2" ColumnName="schaddr2" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(35)" DbType="AnsiString" Direction="Input" ParameterName="@schaddr2" Precision="0" ProviderType="Char" Scale="0" Size="35" SourceColumn="schaddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="schcity" ColumnName="schcity" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@schcity" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="schcity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="schstate" ColumnName="schstate" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@schstate" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="schstate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="schzip" ColumnName="schzip" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@schzip" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="schzip" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="schphone" ColumnName="schphone" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@schphone" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="schphone" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="schfax" ColumnName="schfax" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@schfax" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="schfax" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="schemail" ColumnName="schemail" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@schemail" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="schemail" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="sprngbrk" ColumnName="sprngbrk" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@sprngbrk" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="sprngbrk" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="schout" ColumnName="schout" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@schout" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="schout" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="nposition" ColumnName="nposition" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@nposition" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="nposition" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="gender" ColumnName="gender" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@gender" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="gender" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contfname" ColumnName="contfname" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@contfname" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="contfname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contlname" ColumnName="contlname" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@contlname" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="contlname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="newfname" ColumnName="newfname" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@newfname" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="newfname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="newlname" ColumnName="newlname" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@newlname" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="newlname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="yb_sth" ColumnName="yb_sth" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@yb_sth" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="yb_sth" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="shiptocont" ColumnName="shiptocont" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@shiptocont" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="shiptocont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contaddr" ColumnName="contaddr" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(30)" DbType="AnsiString" Direction="Input" ParameterName="@contaddr" Precision="0" ProviderType="Char" Scale="0" Size="30" SourceColumn="contaddr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contaddr2" ColumnName="contaddr2" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(30)" DbType="AnsiString" Direction="Input" ParameterName="@contaddr2" Precision="0" ProviderType="Char" Scale="0" Size="30" SourceColumn="contaddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contcity" ColumnName="contcity" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(21)" DbType="AnsiString" Direction="Input" ParameterName="@contcity" Precision="0" ProviderType="Char" Scale="0" Size="21" SourceColumn="contcity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contstate" ColumnName="contstate" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(3)" DbType="AnsiString" Direction="Input" ParameterName="@contstate" Precision="0" ProviderType="Char" Scale="0" Size="3" SourceColumn="contstate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contzip" ColumnName="contzip" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(10)" DbType="AnsiString" Direction="Input" ParameterName="@contzip" Precision="0" ProviderType="Char" Scale="0" Size="10" SourceColumn="contzip" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contphnhom" ColumnName="contphnhom" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(14)" DbType="AnsiString" Direction="Input" ParameterName="@contphnhom" Precision="0" ProviderType="Char" Scale="0" Size="14" SourceColumn="contphnhom" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contphnwrk" ColumnName="contphnwrk" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(25)" DbType="AnsiString" Direction="Input" ParameterName="@contphnwrk" Precision="0" ProviderType="Char" Scale="0" Size="25" SourceColumn="contphnwrk" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contfax" ColumnName="contfax" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(14)" DbType="AnsiString" Direction="Input" ParameterName="@contfax" Precision="0" ProviderType="Char" Scale="0" Size="14" SourceColumn="contfax" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contemail" ColumnName="contemail" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(45)" DbType="AnsiString" Direction="Input" ParameterName="@contemail" Precision="0" ProviderType="Char" Scale="0" Size="45" SourceColumn="contemail" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="booktype" ColumnName="booktype" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(4)" DbType="AnsiString" Direction="Input" ParameterName="@booktype" Precision="0" ProviderType="Char" Scale="0" Size="4" SourceColumn="booktype" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="vcrsent" ColumnName="vcrsent" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@vcrsent" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="vcrsent" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="sigfopf" ColumnName="sigfopf" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@sigfopf" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="sigfopf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="envflyer" ColumnName="envflyer" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(6)" DbType="AnsiString" Direction="Input" ParameterName="@envflyer" Precision="0" ProviderType="Char" Scale="0" Size="6" SourceColumn="envflyer" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="marketing" ColumnName="marketing" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@marketing" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="marketing" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="yearrnd" ColumnName="yearrnd" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@yearrnd" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="yearrnd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="clrpg_int" ColumnName="clrpg_int" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@clrpg_int" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="clrpg_int" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ck_lock" ColumnName="ck_lock" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@ck_lock" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="ck_lock" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="digintrst" ColumnName="digintrst" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@digintrst" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="digintrst" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="svcode1" ColumnName="svcode1" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(2)" DbType="AnsiString" Direction="Input" ParameterName="@svcode1" Precision="0" ProviderType="Char" Scale="0" Size="2" SourceColumn="svcode1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="svdesc1" ColumnName="svdesc1" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(21)" DbType="AnsiString" Direction="Input" ParameterName="@svdesc1" Precision="0" ProviderType="Char" Scale="0" Size="21" SourceColumn="svdesc1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="svcode2" ColumnName="svcode2" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(2)" DbType="AnsiString" Direction="Input" ParameterName="@svcode2" Precision="0" ProviderType="Char" Scale="0" Size="2" SourceColumn="svcode2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="svdesc2" ColumnName="svdesc2" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(21)" DbType="AnsiString" Direction="Input" ParameterName="@svdesc2" Precision="0" ProviderType="Char" Scale="0" Size="21" SourceColumn="svdesc2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="lastcont" ColumnName="lastcont" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@lastcont" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="lastcont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="nextcont" ColumnName="nextcont" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@nextcont" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="nextcont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="csrep" ColumnName="csrep" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(2)" DbType="AnsiString" Direction="Input" ParameterName="@csrep" Precision="0" ProviderType="Char" Scale="0" Size="2" SourceColumn="csrep" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="cstat" ColumnName="cstat" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@cstat" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="cstat" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="xeldate" ColumnName="xeldate" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@xeldate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="xeldate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="rbinit" ColumnName="rbinit" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(3)" DbType="AnsiString" Direction="Input" ParameterName="@rbinit" Precision="0" ProviderType="Char" Scale="0" Size="3" SourceColumn="rbinit" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="rbdate" ColumnName="rbdate" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@rbdate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="rbdate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="clspic" ColumnName="clspic" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@clspic" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="clspic" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="sprinfo" ColumnName="sprinfo" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@sprinfo" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="sprinfo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="fallinfo" ColumnName="fallinfo" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@fallinfo" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="fallinfo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="initcont" ColumnName="initcont" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@initcont" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="initcont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="highsp" ColumnName="highsp" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@highsp" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="highsp" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="slownone" ColumnName="slownone" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@slownone" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="slownone" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="pcmac" ColumnName="pcmac" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(10)" DbType="AnsiString" Direction="Input" ParameterName="@pcmac" Precision="0" ProviderType="Char" Scale="0" Size="10" SourceColumn="pcmac" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="junsno" ColumnName="junsno" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(10)" DbType="AnsiString" Direction="Input" ParameterName="@junsno" Precision="0" ProviderType="Char" Scale="0" Size="10" SourceColumn="junsno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="clientcode" ColumnName="clientcode" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(5)" DbType="AnsiString" Direction="Input" ParameterName="@clientcode" Precision="0" ProviderType="Char" Scale="0" Size="5" SourceColumn="clientcode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bcontfname" ColumnName="bcontfname" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@bcontfname" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="bcontfname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bcontlname" ColumnName="bcontlname" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@bcontlname" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="bcontlname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bcontaddr" ColumnName="bcontaddr" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(30)" DbType="AnsiString" Direction="Input" ParameterName="@bcontaddr" Precision="0" ProviderType="Char" Scale="0" Size="30" SourceColumn="bcontaddr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bcontaddr2" ColumnName="bcontaddr2" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(30)" DbType="AnsiString" Direction="Input" ParameterName="@bcontaddr2" Precision="0" ProviderType="Char" Scale="0" Size="30" SourceColumn="bcontaddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bcontcity" ColumnName="bcontcity" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(21)" DbType="AnsiString" Direction="Input" ParameterName="@bcontcity" Precision="0" ProviderType="Char" Scale="0" Size="21" SourceColumn="bcontcity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bcontstate" ColumnName="bcontstate" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(3)" DbType="AnsiString" Direction="Input" ParameterName="@bcontstate" Precision="0" ProviderType="Char" Scale="0" Size="3" SourceColumn="bcontstate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bcontzip" ColumnName="bcontzip" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(10)" DbType="AnsiString" Direction="Input" ParameterName="@bcontzip" Precision="0" ProviderType="Char" Scale="0" Size="10" SourceColumn="bcontzip" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bcontphnho" ColumnName="bcontphnho" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(14)" DbType="AnsiString" Direction="Input" ParameterName="@bcontphnho" Precision="0" ProviderType="Char" Scale="0" Size="14" SourceColumn="bcontphnho" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bcontphnwr" ColumnName="bcontphnwr" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(14)" DbType="AnsiString" Direction="Input" ParameterName="@bcontphnwr" Precision="0" ProviderType="Char" Scale="0" Size="14" SourceColumn="bcontphnwr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bcontfax" ColumnName="bcontfax" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(14)" DbType="AnsiString" Direction="Input" ParameterName="@bcontfax" Precision="0" ProviderType="Char" Scale="0" Size="14" SourceColumn="bcontfax" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bcontemail" ColumnName="bcontemail" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(45)" DbType="AnsiString" Direction="Input" ParameterName="@bcontemail" Precision="0" ProviderType="Char" Scale="0" Size="45" SourceColumn="bcontemail" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="multiyropt" ColumnName="multiyropt" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(30)" DbType="AnsiString" Direction="Input" ParameterName="@multiyropt" Precision="0" ProviderType="Char" Scale="0" Size="30" SourceColumn="multiyropt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="multiyear" ColumnName="multiyear" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@multiyear" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="multiyear" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="schuploadi" ColumnName="schuploadi" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@schuploadi" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="schuploadi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="website" ColumnName="website" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(50)" DbType="AnsiString" Direction="Input" ParameterName="@website" Precision="0" ProviderType="Char" Scale="0" Size="50" SourceColumn="website" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="nomktemail" ColumnName="nomktemail" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@nomktemail" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="nomktemail" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="nodirectma" ColumnName="nodirectma" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@nodirectma" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="nodirectma" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bposition" ColumnName="bposition" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@bposition" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="bposition" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="booktier" ColumnName="booktier" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(6)" DbType="AnsiString" Direction="Input" ParameterName="@booktier" Precision="0" ProviderType="Char" Scale="0" Size="6" SourceColumn="booktier" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="josjobno" ColumnName="josjobno" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(5)" DbType="AnsiString" Direction="Input" ParameterName="@josjobno" Precision="0" ProviderType="Char" Scale="0" Size="5" SourceColumn="josjobno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="category" ColumnName="category" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(2)" DbType="AnsiString" Direction="Input" ParameterName="@category" Precision="0" ProviderType="Char" Scale="0" Size="2" SourceColumn="category" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="dteschstart" ColumnName="dteschstart" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@dteschstart" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="dteschstart" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="dtenextcon" ColumnName="dtenextcon" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@dtenextcon" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="dtenextcon" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="mktsegment" ColumnName="mktsegment" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(3)" DbType="AnsiString" Direction="Input" ParameterName="@mktsegment" Precision="0" ProviderType="Char" Scale="0" Size="3" SourceColumn="mktsegment" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="nextcallfr" ColumnName="nextcallfr" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(25)" DbType="AnsiString" Direction="Input" ParameterName="@nextcallfr" Precision="0" ProviderType="Char" Scale="0" Size="25" SourceColumn="nextcallfr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="curentprov" ColumnName="curentprov" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@curentprov" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="curentprov" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="aplus" ColumnName="aplus" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@aplus" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="aplus" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="bussagreee" ColumnName="bussagreee" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@bussagreee" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="bussagreee" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="leadsource" ColumnName="leadsource" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@leadsource" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="leadsource" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="dteschsta2" ColumnName="dteschsta2" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@dteschsta2" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="dteschsta2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="nocont" ColumnName="nocont" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@nocont" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="nocont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="contmemo" ColumnName="contmemo" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@contmemo" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="contmemo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="exchg" ColumnName="exchg" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@exchg" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="exchg" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="spcinst" ColumnName="spcinst" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@spcinst" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="spcinst" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="inoffice" ColumnName="inoffice" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@inoffice" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="inoffice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="shipmemo" ColumnName="shipmemo" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@shipmemo" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="shipmemo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="dteschend" ColumnName="dteschend" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@dteschend" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="dteschend" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="multiyroptions" ColumnName="multiyroptions" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(30)" DbType="AnsiString" Direction="Input" ParameterName="@multiyroptions" Precision="0" ProviderType="Char" Scale="0" Size="30" SourceColumn="multiyroptions" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="josname" ColumnName="josname" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(25)" DbType="AnsiString" Direction="Input" ParameterName="@josname" Precision="0" ProviderType="Char" Scale="0" Size="25" SourceColumn="josname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="shpaddr" ColumnName="shpaddr" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(35)" DbType="AnsiString" Direction="Input" ParameterName="@shpaddr" Precision="0" ProviderType="Char" Scale="0" Size="35" SourceColumn="shpaddr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="shpaddr2" ColumnName="shpaddr2" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(35)" DbType="AnsiString" Direction="Input" ParameterName="@shpaddr2" Precision="0" ProviderType="Char" Scale="0" Size="35" SourceColumn="shpaddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="shpcity" ColumnName="shpcity" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(21)" DbType="AnsiString" Direction="Input" ParameterName="@shpcity" Precision="0" ProviderType="Char" Scale="0" Size="21" SourceColumn="shpcity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="shpstate" ColumnName="shpstate" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(3)" DbType="AnsiString" Direction="Input" ParameterName="@shpstate" Precision="0" ProviderType="Char" Scale="0" Size="3" SourceColumn="shpstate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="shpzip" ColumnName="shpzip" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(10)" DbType="AnsiString" Direction="Input" ParameterName="@shpzip" Precision="0" ProviderType="Char" Scale="0" Size="10" SourceColumn="shpzip" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="adshpaddr" ColumnName="adshpaddr" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@adshpaddr" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="adshpaddr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="invaddr" ColumnName="invaddr" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(35)" DbType="AnsiString" Direction="Input" ParameterName="@invaddr" Precision="0" ProviderType="Char" Scale="0" Size="35" SourceColumn="invaddr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="invaddr2" ColumnName="invaddr2" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(35)" DbType="AnsiString" Direction="Input" ParameterName="@invaddr2" Precision="0" ProviderType="Char" Scale="0" Size="35" SourceColumn="invaddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="invcity" ColumnName="invcity" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(21)" DbType="AnsiString" Direction="Input" ParameterName="@invcity" Precision="0" ProviderType="Char" Scale="0" Size="21" SourceColumn="invcity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="invstate" ColumnName="invstate" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(3)" DbType="AnsiString" Direction="Input" ParameterName="@invstate" Precision="0" ProviderType="Char" Scale="0" Size="3" SourceColumn="invstate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="invzip" ColumnName="invzip" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(10)" DbType="AnsiString" Direction="Input" ParameterName="@invzip" Precision="0" ProviderType="Char" Scale="0" Size="10" SourceColumn="invzip" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="invnotes" ColumnName="invnotes" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="text" DbType="AnsiString" Direction="Input" ParameterName="@invnotes" Precision="0" ProviderType="Text" Scale="0" Size="2147483647" SourceColumn="invnotes" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="invphone" ColumnName="invphone" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(25)" DbType="AnsiString" Direction="Input" ParameterName="@invphone" Precision="0" ProviderType="Char" Scale="0" Size="25" SourceColumn="invphone" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="invsameasschool" ColumnName="invsameasschool" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@invsameasschool" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="invsameasschool" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="invname" ColumnName="invname" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(34)" DbType="AnsiString" Direction="Input" ParameterName="@invname" Precision="0" ProviderType="Char" Scale="0" Size="34" SourceColumn="invname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="schclosed" ColumnName="schclosed" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@schclosed" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="schclosed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="shpname" ColumnName="shpname" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(50)" DbType="AnsiString" Direction="Input" ParameterName="@shpname" Precision="0" ProviderType="Char" Scale="0" Size="50" SourceColumn="shpname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="schcolors" ColumnName="schcolors" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="char(45)" DbType="AnsiString" Direction="Input" ParameterName="@schcolors" Precision="0" ProviderType="Char" Scale="0" Size="45" SourceColumn="schcolors" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ModifiedBy" ColumnName="ModifiedBy" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="nvarchar(128)" DbType="String" Direction="Input" ParameterName="@ModifiedBy" Precision="0" ProviderType="NVarChar" Scale="0" Size="128" SourceColumn="ModifiedBy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="TaxExempt" ColumnName="TaxExempt" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@TaxExempt" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="TaxExempt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="NotTaxExempt" ColumnName="NotTaxExempt" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@NotTaxExempt" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="NotTaxExempt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="TaxExemptRecvd" ColumnName="TaxExemptRecvd" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@TaxExemptRecvd" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="TaxExemptRecvd" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="OracleCode" ColumnName="OracleCode" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(7)" DbType="AnsiString" Direction="Input" ParameterName="@OracleCode" Precision="0" ProviderType="VarChar" Scale="0" Size="7" SourceColumn="OracleCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="DateModified" ColumnName="DateModified" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@DateModified" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="DateModified" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Status" ColumnName="Status" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@Status" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="Status" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Staging" ColumnName="Staging" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@Staging" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="Staging" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShippingAddr" ColumnName="ShippingAddr" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShippingAddr" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShippingAddr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShippingAddr2" ColumnName="ShippingAddr2" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShippingAddr2" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShippingAddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShippingCity" ColumnName="ShippingCity" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShippingCity" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShippingCity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShippingState" ColumnName="ShippingState" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(3)" DbType="AnsiString" Direction="Input" ParameterName="@ShippingState" Precision="0" ProviderType="VarChar" Scale="0" Size="3" SourceColumn="ShippingState" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ShippingZipCode" ColumnName="ShippingZipCode" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(11)" DbType="AnsiString" Direction="Input" ParameterName="@ShippingZipCode" Precision="0" ProviderType="VarChar" Scale="0" Size="11" SourceColumn="ShippingZipCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="schcode" ColumnName="schcode" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@schcode" Precision="0" ProviderType="Char" Scale="0" Size="50" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="schcode" DataSetColumn="schcode" />
+              <Mapping SourceColumn="source" DataSetColumn="source" />
+              <Mapping SourceColumn="sourdate" DataSetColumn="sourdate" />
+              <Mapping SourceColumn="secsource" DataSetColumn="secsource" />
+              <Mapping SourceColumn="contdate" DataSetColumn="contdate" />
+              <Mapping SourceColumn="cstatus" DataSetColumn="cstatus" />
+              <Mapping SourceColumn="origsour" DataSetColumn="origsour" />
+              <Mapping SourceColumn="origyear" DataSetColumn="origyear" />
+              <Mapping SourceColumn="rebook" DataSetColumn="rebook" />
+              <Mapping SourceColumn="rebookdte" DataSetColumn="rebookdte" />
+              <Mapping SourceColumn="refby" DataSetColumn="refby" />
+              <Mapping SourceColumn="schname" DataSetColumn="schname" />
+              <Mapping SourceColumn="contryear" DataSetColumn="contryear" />
+              <Mapping SourceColumn="enrollment" DataSetColumn="enrollment" />
+              <Mapping SourceColumn="grades" DataSetColumn="grades" />
+              <Mapping SourceColumn="sal" DataSetColumn="sal" />
+              <Mapping SourceColumn="schaddr" DataSetColumn="schaddr" />
+              <Mapping SourceColumn="schaddr2" DataSetColumn="schaddr2" />
+              <Mapping SourceColumn="schcity" DataSetColumn="schcity" />
+              <Mapping SourceColumn="schstate" DataSetColumn="schstate" />
+              <Mapping SourceColumn="schzip" DataSetColumn="schzip" />
+              <Mapping SourceColumn="schphone" DataSetColumn="schphone" />
+              <Mapping SourceColumn="schfax" DataSetColumn="schfax" />
+              <Mapping SourceColumn="schemail" DataSetColumn="schemail" />
+              <Mapping SourceColumn="sprngbrk" DataSetColumn="sprngbrk" />
+              <Mapping SourceColumn="schout" DataSetColumn="schout" />
+              <Mapping SourceColumn="nposition" DataSetColumn="nposition" />
+              <Mapping SourceColumn="gender" DataSetColumn="gender" />
+              <Mapping SourceColumn="contfname" DataSetColumn="contfname" />
+              <Mapping SourceColumn="contlname" DataSetColumn="contlname" />
+              <Mapping SourceColumn="newfname" DataSetColumn="newfname" />
+              <Mapping SourceColumn="newlname" DataSetColumn="newlname" />
+              <Mapping SourceColumn="yb_sth" DataSetColumn="yb_sth" />
+              <Mapping SourceColumn="shiptocont" DataSetColumn="shiptocont" />
+              <Mapping SourceColumn="contaddr" DataSetColumn="contaddr" />
+              <Mapping SourceColumn="contaddr2" DataSetColumn="contaddr2" />
+              <Mapping SourceColumn="contcity" DataSetColumn="contcity" />
+              <Mapping SourceColumn="contstate" DataSetColumn="contstate" />
+              <Mapping SourceColumn="contphnhom" DataSetColumn="contphnhom" />
+              <Mapping SourceColumn="contzip" DataSetColumn="contzip" />
+              <Mapping SourceColumn="contphnwrk" DataSetColumn="contphnwrk" />
+              <Mapping SourceColumn="contfax" DataSetColumn="contfax" />
+              <Mapping SourceColumn="contemail" DataSetColumn="contemail" />
+              <Mapping SourceColumn="booktype" DataSetColumn="booktype" />
+              <Mapping SourceColumn="sigfopf" DataSetColumn="sigfopf" />
+              <Mapping SourceColumn="vcrsent" DataSetColumn="vcrsent" />
+              <Mapping SourceColumn="envflyer" DataSetColumn="envflyer" />
+              <Mapping SourceColumn="marketing" DataSetColumn="marketing" />
+              <Mapping SourceColumn="yearrnd" DataSetColumn="yearrnd" />
+              <Mapping SourceColumn="clrpg_int" DataSetColumn="clrpg_int" />
+              <Mapping SourceColumn="ck_lock" DataSetColumn="ck_lock" />
+              <Mapping SourceColumn="digintrst" DataSetColumn="digintrst" />
+              <Mapping SourceColumn="svcode1" DataSetColumn="svcode1" />
+              <Mapping SourceColumn="svdesc1" DataSetColumn="svdesc1" />
+              <Mapping SourceColumn="svcode2" DataSetColumn="svcode2" />
+              <Mapping SourceColumn="svdesc2" DataSetColumn="svdesc2" />
+              <Mapping SourceColumn="lastcont" DataSetColumn="lastcont" />
+              <Mapping SourceColumn="nextcont" DataSetColumn="nextcont" />
+              <Mapping SourceColumn="csrep" DataSetColumn="csrep" />
+              <Mapping SourceColumn="cstat" DataSetColumn="cstat" />
+              <Mapping SourceColumn="xeldate" DataSetColumn="xeldate" />
+              <Mapping SourceColumn="allcolor" DataSetColumn="allcolor" />
+              <Mapping SourceColumn="rbinit" DataSetColumn="rbinit" />
+              <Mapping SourceColumn="rbdate" DataSetColumn="rbdate" />
+              <Mapping SourceColumn="clspic" DataSetColumn="clspic" />
+              <Mapping SourceColumn="sprinfo" DataSetColumn="sprinfo" />
+              <Mapping SourceColumn="fallinfo" DataSetColumn="fallinfo" />
+              <Mapping SourceColumn="initcont" DataSetColumn="initcont" />
+              <Mapping SourceColumn="highsp" DataSetColumn="highsp" />
+              <Mapping SourceColumn="slownone" DataSetColumn="slownone" />
+              <Mapping SourceColumn="pcmac" DataSetColumn="pcmac" />
+              <Mapping SourceColumn="junsno" DataSetColumn="junsno" />
+              <Mapping SourceColumn="jobno" DataSetColumn="jobno" />
+              <Mapping SourceColumn="advpw" DataSetColumn="advpw" />
+              <Mapping SourceColumn="clientcode" DataSetColumn="clientcode" />
+              <Mapping SourceColumn="bcontfname" DataSetColumn="bcontfname" />
+              <Mapping SourceColumn="bcontlname" DataSetColumn="bcontlname" />
+              <Mapping SourceColumn="bcontaddr" DataSetColumn="bcontaddr" />
+              <Mapping SourceColumn="bcontaddr2" DataSetColumn="bcontaddr2" />
+              <Mapping SourceColumn="bcontcity" DataSetColumn="bcontcity" />
+              <Mapping SourceColumn="bcontstate" DataSetColumn="bcontstate" />
+              <Mapping SourceColumn="bcontzip" DataSetColumn="bcontzip" />
+              <Mapping SourceColumn="bcontphnho" DataSetColumn="bcontphnho" />
+              <Mapping SourceColumn="bcontphnwr" DataSetColumn="bcontphnwr" />
+              <Mapping SourceColumn="bcontfax" DataSetColumn="bcontfax" />
+              <Mapping SourceColumn="bcontemail" DataSetColumn="bcontemail" />
+              <Mapping SourceColumn="multiyropt" DataSetColumn="multiyropt" />
+              <Mapping SourceColumn="multiyear" DataSetColumn="multiyear" />
+              <Mapping SourceColumn="schuploadi" DataSetColumn="schuploadi" />
+              <Mapping SourceColumn="website" DataSetColumn="website" />
+              <Mapping SourceColumn="nomktemail" DataSetColumn="nomktemail" />
+              <Mapping SourceColumn="nodirectma" DataSetColumn="nodirectma" />
+              <Mapping SourceColumn="bposition" DataSetColumn="bposition" />
+              <Mapping SourceColumn="booktier" DataSetColumn="booktier" />
+              <Mapping SourceColumn="josjobno" DataSetColumn="josjobno" />
+              <Mapping SourceColumn="category" DataSetColumn="category" />
+              <Mapping SourceColumn="dteschstart" DataSetColumn="dteschstart" />
+              <Mapping SourceColumn="dtenextcon" DataSetColumn="dtenextcon" />
+              <Mapping SourceColumn="mktsegment" DataSetColumn="mktsegment" />
+              <Mapping SourceColumn="nextcallfr" DataSetColumn="nextcallfr" />
+              <Mapping SourceColumn="curentprov" DataSetColumn="curentprov" />
+              <Mapping SourceColumn="aplus" DataSetColumn="aplus" />
+              <Mapping SourceColumn="bussagreee" DataSetColumn="bussagreee" />
+              <Mapping SourceColumn="leadsource" DataSetColumn="leadsource" />
+              <Mapping SourceColumn="nocont" DataSetColumn="nocont" />
+              <Mapping SourceColumn="dteschsta2" DataSetColumn="dteschsta2" />
+              <Mapping SourceColumn="contmemo" DataSetColumn="contmemo" />
+              <Mapping SourceColumn="exchg" DataSetColumn="exchg" />
+              <Mapping SourceColumn="spcinst" DataSetColumn="spcinst" />
+              <Mapping SourceColumn="inoffice" DataSetColumn="inoffice" />
+              <Mapping SourceColumn="shipmemo" DataSetColumn="shipmemo" />
+              <Mapping SourceColumn="dteschend" DataSetColumn="dteschend" />
+              <Mapping SourceColumn="multiyroptions" DataSetColumn="multiyroptions" />
+              <Mapping SourceColumn="josname" DataSetColumn="josname" />
+              <Mapping SourceColumn="shpaddr" DataSetColumn="shpaddr" />
+              <Mapping SourceColumn="shpaddr2" DataSetColumn="shpaddr2" />
+              <Mapping SourceColumn="shpcity" DataSetColumn="shpcity" />
+              <Mapping SourceColumn="shpstate" DataSetColumn="shpstate" />
+              <Mapping SourceColumn="shpzip" DataSetColumn="shpzip" />
+              <Mapping SourceColumn="adshpaddr" DataSetColumn="adshpaddr" />
+              <Mapping SourceColumn="invaddr" DataSetColumn="invaddr" />
+              <Mapping SourceColumn="invaddr2" DataSetColumn="invaddr2" />
+              <Mapping SourceColumn="invcity" DataSetColumn="invcity" />
+              <Mapping SourceColumn="invstate" DataSetColumn="invstate" />
+              <Mapping SourceColumn="invnotes" DataSetColumn="invnotes" />
+              <Mapping SourceColumn="invphone" DataSetColumn="invphone" />
+              <Mapping SourceColumn="invzip" DataSetColumn="invzip" />
+              <Mapping SourceColumn="invsameasschool" DataSetColumn="invsameasschool" />
+              <Mapping SourceColumn="invname" DataSetColumn="invname" />
+              <Mapping SourceColumn="schclosed" DataSetColumn="schclosed" />
+              <Mapping SourceColumn="shpname" DataSetColumn="shpname" />
+              <Mapping SourceColumn="schcolors" DataSetColumn="schcolors" />
+              <Mapping SourceColumn="ModifiedBy" DataSetColumn="ModifiedBy" />
+              <Mapping SourceColumn="TaxExempt" DataSetColumn="TaxExempt" />
+              <Mapping SourceColumn="NotTaxExempt" DataSetColumn="NotTaxExempt" />
+              <Mapping SourceColumn="TaxExemptRecvd" DataSetColumn="TaxExemptRecvd" />
+              <Mapping SourceColumn="OracleCode" DataSetColumn="OracleCode" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
+              <Mapping SourceColumn="Staging" DataSetColumn="Staging" />
+              <Mapping SourceColumn="dedayin" DataSetColumn="dedayin" />
+              <Mapping SourceColumn="dedayout" DataSetColumn="dedayout" />
+              <Mapping SourceColumn="QBooktype" DataSetColumn="QBooktype" />
+              <Mapping SourceColumn="QYear" DataSetColumn="QYear" />
+              <Mapping SourceColumn="QInvno" DataSetColumn="QInvno" />
+              <Mapping SourceColumn="prodno" DataSetColumn="prodno" />
+              <Mapping SourceColumn="kitrecvd" DataSetColumn="kitrecvd" />
+              <Mapping SourceColumn="ProdDescription" DataSetColumn="ProdDescription" />
+              <Mapping SourceColumn="DateModified" DataSetColumn="DateModified" />
+              <Mapping SourceColumn="ShippingAddr" DataSetColumn="ShippingAddr" />
+              <Mapping SourceColumn="ShippingAddr2" DataSetColumn="ShippingAddr2" />
+              <Mapping SourceColumn="ShippingCity" DataSetColumn="ShippingCity" />
+              <Mapping SourceColumn="ShippingState" DataSetColumn="ShippingState" />
+              <Mapping SourceColumn="ShippingZipCode" DataSetColumn="ShippingZipCode" />
+              <Mapping SourceColumn="TimeStamp" DataSetColumn="TimeStamp" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="datecontTableAdapter" GeneratorDataComponentClassName="datecontTableAdapter" Name="datecont" UserDataComponentName="datecontTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.datecont" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [datecont] WHERE (([schcode] = @Original_schcode) AND ([datecont] = @Original_datecont) AND ([initial] = @Original_initial) AND ([typecont] = @Original_typecont) AND ((@IsNull_contact = 1 AND [contact] IS NULL) OR ([contact] = @Original_contact)) AND ((@IsNull_nxtdays = 1 AND [nxtdays] IS NULL) OR ([nxtdays] = @Original_nxtdays)) AND ((@IsNull_nxtdate = 1 AND [nxtdate] IS NULL) OR ([nxtdate] = @Original_nxtdate)) AND ((@IsNull_callcont = 1 AND [callcont] IS NULL) OR ([callcont] = @Original_callcont)) AND ((@IsNull_calltime = 1 AND [calltime] IS NULL) OR ([calltime] = @Original_calltime)) AND ((@IsNull_priority = 1 AND [priority] IS NULL) OR ([priority] = @Original_priority)) AND ((@IsNull_company = 1 AND [company] IS NULL) OR ([company] = @Original_company)) AND ((@IsNull_techcall = 1 AND [techcall] IS NULL) OR ([techcall] = @Original_techcall)) AND ((@IsNull_prospectid = 1 AND [prospectid] IS NULL) OR ([prospectid] = @Original_prospectid)) AND ([id] = @Original_id))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_schcode" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_datecont" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="datecont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_initial" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="initial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_typecont" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="typecont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_contact" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="contact" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_contact" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="contact" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_nxtdays" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="nxtdays" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_nxtdays" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="nxtdays" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_nxtdate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="nxtdate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_nxtdate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="nxtdate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_callcont" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="callcont" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_callcont" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="callcont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_calltime" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="calltime" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_calltime" Precision="4" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="calltime" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_priority" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="priority" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_priority" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="priority" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_company" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="company" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_company" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="company" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_techcall" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="techcall" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_techcall" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="techcall" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_prospectid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="prospectid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_prospectid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="prospectid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [datecont] ([schcode], [datecont], [reason], [initial], [typecont], [contact], [nxtdays], [nxtdate], [callcont], [calltime], [priority], [company], [techcall], [prospectid]) VALUES (@schcode, @datecont, @reason, @initial, @typecont, @contact, @nxtdays, @nxtdate, @callcont, @calltime, @priority, @company, @techcall, @prospectid);
+SELECT schcode, datecont, reason, initial, typecont, contact, nxtdays, nxtdate, callcont, calltime, priority, company, techcall, prospectid, id FROM datecont WHERE (id = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@schcode" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@datecont" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="datecont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@reason" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@initial" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="initial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@typecont" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="typecont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@contact" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="contact" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@nxtdays" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="nxtdays" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@nxtdate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="nxtdate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@callcont" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="callcont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@calltime" Precision="4" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="calltime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@priority" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="priority" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@company" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="company" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@techcall" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="techcall" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@prospectid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="prospectid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        schcode, datecont, reason, initial, typecont, contact, nxtdays, nxtdate, callcont, calltime, priority, company, techcall, prospectid, id
+FROM            datecont
+WHERE        (schcode = @schcode)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="schcode" ColumnName="schcode" DataSourceName="Mbc5.dbo.datecont" DataTypeServer="char(6)" DbType="AnsiString" Direction="Input" ParameterName="@schcode" Precision="0" ProviderType="Char" Scale="0" Size="6" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [datecont] SET [schcode] = @schcode, [datecont] = @datecont, [reason] = @reason, [initial] = @initial, [typecont] = @typecont, [contact] = @contact, [nxtdays] = @nxtdays, [nxtdate] = @nxtdate, [callcont] = @callcont, [calltime] = @calltime, [priority] = @priority, [company] = @company, [techcall] = @techcall, [prospectid] = @prospectid WHERE (([schcode] = @Original_schcode) AND ([datecont] = @Original_datecont) AND ([initial] = @Original_initial) AND ([typecont] = @Original_typecont) AND ((@IsNull_contact = 1 AND [contact] IS NULL) OR ([contact] = @Original_contact)) AND ((@IsNull_nxtdays = 1 AND [nxtdays] IS NULL) OR ([nxtdays] = @Original_nxtdays)) AND ((@IsNull_nxtdate = 1 AND [nxtdate] IS NULL) OR ([nxtdate] = @Original_nxtdate)) AND ((@IsNull_callcont = 1 AND [callcont] IS NULL) OR ([callcont] = @Original_callcont)) AND ((@IsNull_calltime = 1 AND [calltime] IS NULL) OR ([calltime] = @Original_calltime)) AND ((@IsNull_priority = 1 AND [priority] IS NULL) OR ([priority] = @Original_priority)) AND ((@IsNull_company = 1 AND [company] IS NULL) OR ([company] = @Original_company)) AND ((@IsNull_techcall = 1 AND [techcall] IS NULL) OR ([techcall] = @Original_techcall)) AND ((@IsNull_prospectid = 1 AND [prospectid] IS NULL) OR ([prospectid] = @Original_prospectid)) AND ([id] = @Original_id));
+SELECT schcode, datecont, reason, initial, typecont, contact, nxtdays, nxtdate, callcont, calltime, priority, company, techcall, prospectid, id FROM datecont WHERE (id = @id)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@schcode" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@datecont" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="datecont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@reason" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@initial" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="initial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@typecont" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="typecont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@contact" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="contact" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@nxtdays" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="nxtdays" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@nxtdate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="nxtdate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@callcont" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="callcont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@calltime" Precision="4" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="calltime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@priority" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="priority" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@company" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="company" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@techcall" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="techcall" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@prospectid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="prospectid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_schcode" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_datecont" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="datecont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_initial" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="initial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_typecont" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="typecont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_contact" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="contact" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_contact" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="contact" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_nxtdays" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="nxtdays" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_nxtdays" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="nxtdays" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_nxtdate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="nxtdate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_nxtdate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="nxtdate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_callcont" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="callcont" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_callcont" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="callcont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_calltime" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="calltime" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_calltime" Precision="4" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="calltime" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_priority" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="priority" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_priority" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="priority" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_company" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="company" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_company" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="company" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_techcall" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="techcall" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_techcall" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="techcall" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_prospectid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="prospectid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_prospectid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="prospectid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="id" DataSourceName="Mbc5.dbo.datecont" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="schcode" DataSetColumn="schcode" />
+              <Mapping SourceColumn="datecont" DataSetColumn="datecont" />
+              <Mapping SourceColumn="reason" DataSetColumn="reason" />
+              <Mapping SourceColumn="initial" DataSetColumn="initial" />
+              <Mapping SourceColumn="typecont" DataSetColumn="typecont" />
+              <Mapping SourceColumn="contact" DataSetColumn="contact" />
+              <Mapping SourceColumn="nxtdays" DataSetColumn="nxtdays" />
+              <Mapping SourceColumn="nxtdate" DataSetColumn="nxtdate" />
+              <Mapping SourceColumn="callcont" DataSetColumn="callcont" />
+              <Mapping SourceColumn="calltime" DataSetColumn="calltime" />
+              <Mapping SourceColumn="priority" DataSetColumn="priority" />
+              <Mapping SourceColumn="company" DataSetColumn="company" />
+              <Mapping SourceColumn="techcall" DataSetColumn="techcall" />
+              <Mapping SourceColumn="prospectid" DataSetColumn="prospectid" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsMcust" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsMcust" msprop:Generator_UserDSName="dsMcust">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="mcust" msprop:Generator_TableClassName="mcustDataTable" msprop:Generator_TableVarName="tablemcust" msprop:Generator_RowChangedName="mcustRowChanged" msprop:Generator_TablePropName="mcust" msprop:Generator_RowDeletingName="mcustRowDeleting" msprop:Generator_RowChangingName="mcustRowChanging" msprop:Generator_RowEvHandlerName="mcustRowChangeEventHandler" msprop:Generator_RowDeletedName="mcustRowDeleted" msprop:Generator_RowClassName="mcustRow" msprop:Generator_UserTableName="mcust" msprop:Generator_RowEvArgName="mcustRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="source" msprop:Generator_ColumnVarNameInTable="columnsource" msprop:Generator_ColumnPropNameInRow="source" msprop:Generator_ColumnPropNameInTable="sourceColumn" msprop:Generator_UserColumnName="source" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sourdate" msprop:Generator_ColumnVarNameInTable="columnsourdate" msprop:Generator_ColumnPropNameInRow="sourdate" msprop:Generator_ColumnPropNameInTable="sourdateColumn" msprop:Generator_UserColumnName="sourdate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="secsource" msprop:Generator_ColumnVarNameInTable="columnsecsource" msprop:Generator_ColumnPropNameInRow="secsource" msprop:Generator_ColumnPropNameInTable="secsourceColumn" msprop:Generator_UserColumnName="secsource" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contdate" msprop:Generator_ColumnVarNameInTable="columncontdate" msprop:Generator_ColumnPropNameInRow="contdate" msprop:Generator_ColumnPropNameInTable="contdateColumn" msprop:Generator_UserColumnName="contdate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="cstatus" msprop:Generator_ColumnVarNameInTable="columncstatus" msprop:Generator_ColumnPropNameInRow="cstatus" msprop:Generator_ColumnPropNameInTable="cstatusColumn" msprop:Generator_UserColumnName="cstatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="origsour" msprop:Generator_ColumnVarNameInTable="columnorigsour" msprop:Generator_ColumnPropNameInRow="origsour" msprop:Generator_ColumnPropNameInTable="origsourColumn" msprop:Generator_UserColumnName="origsour" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="origyear" msprop:Generator_ColumnVarNameInTable="columnorigyear" msprop:Generator_ColumnPropNameInRow="origyear" msprop:Generator_ColumnPropNameInTable="origyearColumn" msprop:Generator_UserColumnName="origyear" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rebook" msprop:Generator_ColumnVarNameInTable="columnrebook" msprop:Generator_ColumnPropNameInRow="rebook" msprop:Generator_ColumnPropNameInTable="rebookColumn" msprop:Generator_UserColumnName="rebook" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rebookdte" msprop:Generator_ColumnVarNameInTable="columnrebookdte" msprop:Generator_ColumnPropNameInRow="rebookdte" msprop:Generator_ColumnPropNameInTable="rebookdteColumn" msprop:Generator_UserColumnName="rebookdte" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="refby" msprop:Generator_ColumnVarNameInTable="columnrefby" msprop:Generator_ColumnPropNameInRow="refby" msprop:Generator_ColumnPropNameInTable="refbyColumn" msprop:Generator_UserColumnName="refby" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schname" msprop:Generator_ColumnVarNameInTable="columnschname" msprop:Generator_ColumnPropNameInRow="schname" msprop:Generator_ColumnPropNameInTable="schnameColumn" msprop:Generator_UserColumnName="schname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="34" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contryear" msprop:Generator_ColumnVarNameInTable="columncontryear" msprop:Generator_ColumnPropNameInRow="contryear" msprop:Generator_ColumnPropNameInTable="contryearColumn" msprop:Generator_UserColumnName="contryear" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="enrollment" msprop:Generator_ColumnVarNameInTable="columnenrollment" msprop:Generator_ColumnPropNameInRow="enrollment" msprop:Generator_ColumnPropNameInTable="enrollmentColumn" msprop:Generator_UserColumnName="enrollment" type="xs:decimal" minOccurs="0" />
+              <xs:element name="grades" msprop:Generator_ColumnVarNameInTable="columngrades" msprop:Generator_ColumnPropNameInRow="grades" msprop:Generator_ColumnPropNameInTable="gradesColumn" msprop:Generator_UserColumnName="grades" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="16" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sal" msprop:Generator_ColumnVarNameInTable="columnsal" msprop:Generator_ColumnPropNameInRow="sal" msprop:Generator_ColumnPropNameInTable="salColumn" msprop:Generator_UserColumnName="sal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schaddr" msprop:Generator_ColumnVarNameInTable="columnschaddr" msprop:Generator_ColumnPropNameInRow="schaddr" msprop:Generator_ColumnPropNameInTable="schaddrColumn" msprop:Generator_UserColumnName="schaddr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schaddr2" msprop:Generator_ColumnVarNameInTable="columnschaddr2" msprop:Generator_ColumnPropNameInRow="schaddr2" msprop:Generator_ColumnPropNameInTable="schaddr2Column" msprop:Generator_UserColumnName="schaddr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schcity" msprop:Generator_ColumnVarNameInTable="columnschcity" msprop:Generator_ColumnPropNameInRow="schcity" msprop:Generator_ColumnPropNameInTable="schcityColumn" msprop:Generator_UserColumnName="schcity">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schstate" msprop:Generator_ColumnVarNameInTable="columnschstate" msprop:Generator_ColumnPropNameInRow="schstate" msprop:Generator_ColumnPropNameInTable="schstateColumn" msprop:Generator_UserColumnName="schstate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schzip" msprop:Generator_ColumnVarNameInTable="columnschzip" msprop:Generator_ColumnPropNameInRow="schzip" msprop:Generator_ColumnPropNameInTable="schzipColumn" msprop:Generator_UserColumnName="schzip" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schphone" msprop:Generator_ColumnVarNameInTable="columnschphone" msprop:Generator_ColumnPropNameInRow="schphone" msprop:Generator_ColumnPropNameInTable="schphoneColumn" msprop:Generator_UserColumnName="schphone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schfax" msprop:Generator_ColumnVarNameInTable="columnschfax" msprop:Generator_ColumnPropNameInRow="schfax" msprop:Generator_ColumnPropNameInTable="schfaxColumn" msprop:Generator_UserColumnName="schfax" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schemail" msprop:Generator_ColumnVarNameInTable="columnschemail" msprop:Generator_ColumnPropNameInRow="schemail" msprop:Generator_ColumnPropNameInTable="schemailColumn" msprop:Generator_UserColumnName="schemail" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sprngbrk" msprop:Generator_ColumnVarNameInTable="columnsprngbrk" msprop:Generator_ColumnPropNameInRow="sprngbrk" msprop:Generator_ColumnPropNameInTable="sprngbrkColumn" msprop:Generator_UserColumnName="sprngbrk" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schout" msprop:Generator_ColumnVarNameInTable="columnschout" msprop:Generator_ColumnPropNameInRow="schout" msprop:Generator_ColumnPropNameInTable="schoutColumn" msprop:Generator_UserColumnName="schout" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="nposition" msprop:Generator_ColumnVarNameInTable="columnnposition" msprop:Generator_ColumnPropNameInRow="nposition" msprop:Generator_ColumnPropNameInTable="npositionColumn" msprop:Generator_UserColumnName="nposition" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="gender" msprop:Generator_ColumnVarNameInTable="columngender" msprop:Generator_ColumnPropNameInRow="gender" msprop:Generator_ColumnPropNameInTable="genderColumn" msprop:Generator_UserColumnName="gender" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contfname" msprop:Generator_ColumnVarNameInTable="columncontfname" msprop:Generator_ColumnPropNameInRow="contfname" msprop:Generator_ColumnPropNameInTable="contfnameColumn" msprop:Generator_UserColumnName="contfname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contlname" msprop:Generator_ColumnVarNameInTable="columncontlname" msprop:Generator_ColumnPropNameInRow="contlname" msprop:Generator_ColumnPropNameInTable="contlnameColumn" msprop:Generator_UserColumnName="contlname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="newfname" msprop:Generator_ColumnVarNameInTable="columnnewfname" msprop:Generator_ColumnPropNameInRow="newfname" msprop:Generator_ColumnPropNameInTable="newfnameColumn" msprop:Generator_UserColumnName="newfname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="newlname" msprop:Generator_ColumnVarNameInTable="columnnewlname" msprop:Generator_ColumnPropNameInRow="newlname" msprop:Generator_ColumnPropNameInTable="newlnameColumn" msprop:Generator_UserColumnName="newlname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="yb_sth" msprop:Generator_ColumnVarNameInTable="columnyb_sth" msprop:Generator_ColumnPropNameInRow="yb_sth" msprop:Generator_ColumnPropNameInTable="yb_sthColumn" msprop:Generator_UserColumnName="yb_sth" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shiptocont" msprop:Generator_ColumnVarNameInTable="columnshiptocont" msprop:Generator_ColumnPropNameInRow="shiptocont" msprop:Generator_ColumnPropNameInTable="shiptocontColumn" msprop:Generator_UserColumnName="shiptocont" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contaddr" msprop:Generator_ColumnVarNameInTable="columncontaddr" msprop:Generator_ColumnPropNameInRow="contaddr" msprop:Generator_ColumnPropNameInTable="contaddrColumn" msprop:Generator_UserColumnName="contaddr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contaddr2" msprop:Generator_ColumnVarNameInTable="columncontaddr2" msprop:Generator_ColumnPropNameInRow="contaddr2" msprop:Generator_ColumnPropNameInTable="contaddr2Column" msprop:Generator_UserColumnName="contaddr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contcity" msprop:Generator_ColumnVarNameInTable="columncontcity" msprop:Generator_ColumnPropNameInRow="contcity" msprop:Generator_ColumnPropNameInTable="contcityColumn" msprop:Generator_UserColumnName="contcity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contstate" msprop:Generator_ColumnVarNameInTable="columncontstate" msprop:Generator_ColumnPropNameInRow="contstate" msprop:Generator_ColumnPropNameInTable="contstateColumn" msprop:Generator_UserColumnName="contstate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contphnhom" msprop:Generator_ColumnVarNameInTable="columncontphnhom" msprop:Generator_ColumnPropNameInRow="contphnhom" msprop:Generator_ColumnPropNameInTable="contphnhomColumn" msprop:Generator_UserColumnName="contphnhom" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contzip" msprop:Generator_ColumnVarNameInTable="columncontzip" msprop:Generator_ColumnPropNameInRow="contzip" msprop:Generator_ColumnPropNameInTable="contzipColumn" msprop:Generator_UserColumnName="contzip" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contphnwrk" msprop:Generator_ColumnVarNameInTable="columncontphnwrk" msprop:Generator_ColumnPropNameInRow="contphnwrk" msprop:Generator_ColumnPropNameInTable="contphnwrkColumn" msprop:Generator_UserColumnName="contphnwrk" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contfax" msprop:Generator_ColumnVarNameInTable="columncontfax" msprop:Generator_ColumnPropNameInRow="contfax" msprop:Generator_ColumnPropNameInTable="contfaxColumn" msprop:Generator_UserColumnName="contfax" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contemail" msprop:Generator_ColumnVarNameInTable="columncontemail" msprop:Generator_ColumnPropNameInRow="contemail" msprop:Generator_ColumnPropNameInTable="contemailColumn" msprop:Generator_UserColumnName="contemail" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="booktype" msprop:Generator_ColumnVarNameInTable="columnbooktype" msprop:Generator_ColumnPropNameInRow="booktype" msprop:Generator_ColumnPropNameInTable="booktypeColumn" msprop:Generator_UserColumnName="booktype" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sigfopf" msprop:Generator_ColumnVarNameInTable="columnsigfopf" msprop:Generator_ColumnPropNameInRow="sigfopf" msprop:Generator_ColumnPropNameInTable="sigfopfColumn" msprop:Generator_UserColumnName="sigfopf" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="vcrsent" msprop:Generator_ColumnVarNameInTable="columnvcrsent" msprop:Generator_ColumnPropNameInRow="vcrsent" msprop:Generator_ColumnPropNameInTable="vcrsentColumn" msprop:Generator_UserColumnName="vcrsent" type="xs:boolean" />
+              <xs:element name="envflyer" msprop:Generator_ColumnVarNameInTable="columnenvflyer" msprop:Generator_ColumnPropNameInRow="envflyer" msprop:Generator_ColumnPropNameInTable="envflyerColumn" msprop:Generator_UserColumnName="envflyer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="marketing" msprop:Generator_ColumnVarNameInTable="columnmarketing" msprop:Generator_ColumnPropNameInRow="marketing" msprop:Generator_ColumnPropNameInTable="marketingColumn" msprop:Generator_UserColumnName="marketing" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="yearrnd" msprop:Generator_ColumnVarNameInTable="columnyearrnd" msprop:Generator_ColumnPropNameInRow="yearrnd" msprop:Generator_ColumnPropNameInTable="yearrndColumn" msprop:Generator_UserColumnName="yearrnd" type="xs:boolean" />
+              <xs:element name="clrpg_int" msprop:Generator_ColumnVarNameInTable="columnclrpg_int" msprop:Generator_ColumnPropNameInRow="clrpg_int" msprop:Generator_ColumnPropNameInTable="clrpg_intColumn" msprop:Generator_UserColumnName="clrpg_int" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ck_lock" msprop:Generator_ColumnVarNameInTable="columnck_lock" msprop:Generator_ColumnPropNameInRow="ck_lock" msprop:Generator_ColumnPropNameInTable="ck_lockColumn" msprop:Generator_UserColumnName="ck_lock" type="xs:boolean" />
+              <xs:element name="digintrst" msprop:Generator_ColumnVarNameInTable="columndigintrst" msprop:Generator_ColumnPropNameInRow="digintrst" msprop:Generator_ColumnPropNameInTable="digintrstColumn" msprop:Generator_UserColumnName="digintrst" type="xs:boolean" />
+              <xs:element name="svcode1" msprop:Generator_ColumnVarNameInTable="columnsvcode1" msprop:Generator_ColumnPropNameInRow="svcode1" msprop:Generator_ColumnPropNameInTable="svcode1Column" msprop:Generator_UserColumnName="svcode1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="svdesc1" msprop:Generator_ColumnVarNameInTable="columnsvdesc1" msprop:Generator_ColumnPropNameInRow="svdesc1" msprop:Generator_ColumnPropNameInTable="svdesc1Column" msprop:Generator_UserColumnName="svdesc1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="svcode2" msprop:Generator_ColumnVarNameInTable="columnsvcode2" msprop:Generator_ColumnPropNameInRow="svcode2" msprop:Generator_ColumnPropNameInTable="svcode2Column" msprop:Generator_UserColumnName="svcode2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="svdesc2" msprop:Generator_ColumnVarNameInTable="columnsvdesc2" msprop:Generator_ColumnPropNameInRow="svdesc2" msprop:Generator_ColumnPropNameInTable="svdesc2Column" msprop:Generator_UserColumnName="svdesc2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="lastcont" msprop:Generator_ColumnVarNameInTable="columnlastcont" msprop:Generator_ColumnPropNameInRow="lastcont" msprop:Generator_ColumnPropNameInTable="lastcontColumn" msprop:Generator_UserColumnName="lastcont" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="nextcont" msprop:Generator_ColumnVarNameInTable="columnnextcont" msprop:Generator_ColumnPropNameInRow="nextcont" msprop:Generator_ColumnPropNameInTable="nextcontColumn" msprop:Generator_UserColumnName="nextcont" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="csrep" msprop:Generator_ColumnVarNameInTable="columncsrep" msprop:Generator_ColumnPropNameInRow="csrep" msprop:Generator_ColumnPropNameInTable="csrepColumn" msprop:Generator_UserColumnName="csrep" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cstat" msprop:Generator_ColumnVarNameInTable="columncstat" msprop:Generator_ColumnPropNameInRow="cstat" msprop:Generator_ColumnPropNameInTable="cstatColumn" msprop:Generator_UserColumnName="cstat" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="xeldate" msprop:Generator_ColumnVarNameInTable="columnxeldate" msprop:Generator_ColumnPropNameInRow="xeldate" msprop:Generator_ColumnPropNameInTable="xeldateColumn" msprop:Generator_UserColumnName="xeldate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="allcolor" msprop:Generator_ColumnVarNameInTable="columnallcolor" msprop:Generator_ColumnPropNameInRow="allcolor" msprop:Generator_ColumnPropNameInTable="allcolorColumn" msprop:Generator_UserColumnName="allcolor" type="xs:boolean" />
+              <xs:element name="rbinit" msprop:Generator_ColumnVarNameInTable="columnrbinit" msprop:Generator_ColumnPropNameInRow="rbinit" msprop:Generator_ColumnPropNameInTable="rbinitColumn" msprop:Generator_UserColumnName="rbinit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rbdate" msprop:Generator_ColumnVarNameInTable="columnrbdate" msprop:Generator_ColumnPropNameInRow="rbdate" msprop:Generator_ColumnPropNameInTable="rbdateColumn" msprop:Generator_UserColumnName="rbdate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="clspic" msprop:Generator_ColumnVarNameInTable="columnclspic" msprop:Generator_ColumnPropNameInRow="clspic" msprop:Generator_ColumnPropNameInTable="clspicColumn" msprop:Generator_UserColumnName="clspic" type="xs:boolean" />
+              <xs:element name="sprinfo" msprop:Generator_ColumnVarNameInTable="columnsprinfo" msprop:Generator_ColumnPropNameInRow="sprinfo" msprop:Generator_ColumnPropNameInTable="sprinfoColumn" msprop:Generator_UserColumnName="sprinfo" type="xs:boolean" />
+              <xs:element name="fallinfo" msprop:Generator_ColumnVarNameInTable="columnfallinfo" msprop:Generator_ColumnPropNameInRow="fallinfo" msprop:Generator_ColumnPropNameInTable="fallinfoColumn" msprop:Generator_UserColumnName="fallinfo" type="xs:boolean" />
+              <xs:element name="initcont" msprop:Generator_ColumnVarNameInTable="columninitcont" msprop:Generator_ColumnPropNameInRow="initcont" msprop:Generator_ColumnPropNameInTable="initcontColumn" msprop:Generator_UserColumnName="initcont" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="highsp" msprop:Generator_ColumnVarNameInTable="columnhighsp" msprop:Generator_ColumnPropNameInRow="highsp" msprop:Generator_ColumnPropNameInTable="highspColumn" msprop:Generator_UserColumnName="highsp" type="xs:boolean" />
+              <xs:element name="slownone" msprop:Generator_ColumnVarNameInTable="columnslownone" msprop:Generator_ColumnPropNameInRow="slownone" msprop:Generator_ColumnPropNameInTable="slownoneColumn" msprop:Generator_UserColumnName="slownone" type="xs:boolean" />
+              <xs:element name="pcmac" msprop:Generator_ColumnVarNameInTable="columnpcmac" msprop:Generator_ColumnPropNameInRow="pcmac" msprop:Generator_ColumnPropNameInTable="pcmacColumn" msprop:Generator_UserColumnName="pcmac" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="junsno" msprop:Generator_ColumnVarNameInTable="columnjunsno" msprop:Generator_ColumnPropNameInRow="junsno" msprop:Generator_ColumnPropNameInTable="junsnoColumn" msprop:Generator_UserColumnName="junsno" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="jobno" msprop:Generator_ColumnVarNameInTable="columnjobno" msprop:Generator_ColumnPropNameInRow="jobno" msprop:Generator_ColumnPropNameInTable="jobnoColumn" msprop:Generator_UserColumnName="jobno" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="advpw" msprop:Generator_ColumnVarNameInTable="columnadvpw" msprop:Generator_ColumnPropNameInRow="advpw" msprop:Generator_ColumnPropNameInTable="advpwColumn" msprop:Generator_UserColumnName="advpw" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="16" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="clientcode" msprop:Generator_ColumnVarNameInTable="columnclientcode" msprop:Generator_ColumnPropNameInRow="clientcode" msprop:Generator_ColumnPropNameInTable="clientcodeColumn" msprop:Generator_UserColumnName="clientcode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bcontfname" msprop:Generator_ColumnVarNameInTable="columnbcontfname" msprop:Generator_ColumnPropNameInRow="bcontfname" msprop:Generator_ColumnPropNameInTable="bcontfnameColumn" msprop:Generator_UserColumnName="bcontfname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bcontlname" msprop:Generator_ColumnVarNameInTable="columnbcontlname" msprop:Generator_ColumnPropNameInRow="bcontlname" msprop:Generator_ColumnPropNameInTable="bcontlnameColumn" msprop:Generator_UserColumnName="bcontlname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bcontaddr" msprop:Generator_ColumnVarNameInTable="columnbcontaddr" msprop:Generator_ColumnPropNameInRow="bcontaddr" msprop:Generator_ColumnPropNameInTable="bcontaddrColumn" msprop:Generator_UserColumnName="bcontaddr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bcontaddr2" msprop:Generator_ColumnVarNameInTable="columnbcontaddr2" msprop:Generator_ColumnPropNameInRow="bcontaddr2" msprop:Generator_ColumnPropNameInTable="bcontaddr2Column" msprop:Generator_UserColumnName="bcontaddr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bcontcity" msprop:Generator_ColumnVarNameInTable="columnbcontcity" msprop:Generator_ColumnPropNameInRow="bcontcity" msprop:Generator_ColumnPropNameInTable="bcontcityColumn" msprop:Generator_UserColumnName="bcontcity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bcontstate" msprop:Generator_ColumnVarNameInTable="columnbcontstate" msprop:Generator_ColumnPropNameInRow="bcontstate" msprop:Generator_ColumnPropNameInTable="bcontstateColumn" msprop:Generator_UserColumnName="bcontstate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bcontzip" msprop:Generator_ColumnVarNameInTable="columnbcontzip" msprop:Generator_ColumnPropNameInRow="bcontzip" msprop:Generator_ColumnPropNameInTable="bcontzipColumn" msprop:Generator_UserColumnName="bcontzip" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bcontphnho" msprop:Generator_ColumnVarNameInTable="columnbcontphnho" msprop:Generator_ColumnPropNameInRow="bcontphnho" msprop:Generator_ColumnPropNameInTable="bcontphnhoColumn" msprop:Generator_UserColumnName="bcontphnho" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bcontphnwr" msprop:Generator_ColumnVarNameInTable="columnbcontphnwr" msprop:Generator_ColumnPropNameInRow="bcontphnwr" msprop:Generator_ColumnPropNameInTable="bcontphnwrColumn" msprop:Generator_UserColumnName="bcontphnwr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bcontfax" msprop:Generator_ColumnVarNameInTable="columnbcontfax" msprop:Generator_ColumnPropNameInRow="bcontfax" msprop:Generator_ColumnPropNameInTable="bcontfaxColumn" msprop:Generator_UserColumnName="bcontfax" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bcontemail" msprop:Generator_ColumnVarNameInTable="columnbcontemail" msprop:Generator_ColumnPropNameInRow="bcontemail" msprop:Generator_ColumnPropNameInTable="bcontemailColumn" msprop:Generator_UserColumnName="bcontemail" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="multiyropt" msprop:Generator_ColumnVarNameInTable="columnmultiyropt" msprop:Generator_ColumnPropNameInRow="multiyropt" msprop:Generator_ColumnPropNameInTable="multiyroptColumn" msprop:Generator_UserColumnName="multiyropt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="multiyear" msprop:Generator_ColumnVarNameInTable="columnmultiyear" msprop:Generator_ColumnPropNameInRow="multiyear" msprop:Generator_ColumnPropNameInTable="multiyearColumn" msprop:Generator_UserColumnName="multiyear" type="xs:boolean" />
+              <xs:element name="schuploadi" msprop:Generator_ColumnVarNameInTable="columnschuploadi" msprop:Generator_ColumnPropNameInRow="schuploadi" msprop:Generator_ColumnPropNameInTable="schuploadiColumn" msprop:Generator_UserColumnName="schuploadi" type="xs:boolean" />
+              <xs:element name="website" msprop:Generator_ColumnVarNameInTable="columnwebsite" msprop:Generator_ColumnPropNameInRow="website" msprop:Generator_ColumnPropNameInTable="websiteColumn" msprop:Generator_UserColumnName="website" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nomktemail" msprop:Generator_ColumnVarNameInTable="columnnomktemail" msprop:Generator_ColumnPropNameInRow="nomktemail" msprop:Generator_ColumnPropNameInTable="nomktemailColumn" msprop:Generator_UserColumnName="nomktemail" type="xs:boolean" />
+              <xs:element name="nodirectma" msprop:Generator_ColumnVarNameInTable="columnnodirectma" msprop:Generator_ColumnPropNameInRow="nodirectma" msprop:Generator_ColumnPropNameInTable="nodirectmaColumn" msprop:Generator_UserColumnName="nodirectma" type="xs:boolean" />
+              <xs:element name="bposition" msprop:Generator_ColumnVarNameInTable="columnbposition" msprop:Generator_ColumnPropNameInRow="bposition" msprop:Generator_ColumnPropNameInTable="bpositionColumn" msprop:Generator_UserColumnName="bposition" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="booktier" msprop:Generator_ColumnVarNameInTable="columnbooktier" msprop:Generator_ColumnPropNameInRow="booktier" msprop:Generator_ColumnPropNameInTable="booktierColumn" msprop:Generator_UserColumnName="booktier" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="josjobno" msprop:Generator_ColumnVarNameInTable="columnjosjobno" msprop:Generator_ColumnPropNameInRow="josjobno" msprop:Generator_ColumnPropNameInTable="josjobnoColumn" msprop:Generator_UserColumnName="josjobno" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="category" msprop:Generator_ColumnVarNameInTable="columncategory" msprop:Generator_ColumnPropNameInRow="category" msprop:Generator_ColumnPropNameInTable="categoryColumn" msprop:Generator_UserColumnName="category" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dteschstart" msprop:Generator_ColumnVarNameInTable="columndteschstart" msprop:Generator_ColumnPropNameInRow="dteschstart" msprop:Generator_ColumnPropNameInTable="dteschstartColumn" msprop:Generator_UserColumnName="dteschstart" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="dtenextcon" msprop:Generator_ColumnVarNameInTable="columndtenextcon" msprop:Generator_ColumnPropNameInRow="dtenextcon" msprop:Generator_ColumnPropNameInTable="dtenextconColumn" msprop:Generator_UserColumnName="dtenextcon" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="mktsegment" msprop:Generator_ColumnVarNameInTable="columnmktsegment" msprop:Generator_ColumnPropNameInRow="mktsegment" msprop:Generator_ColumnPropNameInTable="mktsegmentColumn" msprop:Generator_UserColumnName="mktsegment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nextcallfr" msprop:Generator_ColumnVarNameInTable="columnnextcallfr" msprop:Generator_ColumnPropNameInRow="nextcallfr" msprop:Generator_ColumnPropNameInTable="nextcallfrColumn" msprop:Generator_UserColumnName="nextcallfr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="curentprov" msprop:Generator_ColumnVarNameInTable="columncurentprov" msprop:Generator_ColumnPropNameInRow="curentprov" msprop:Generator_ColumnPropNameInTable="curentprovColumn" msprop:Generator_UserColumnName="curentprov" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aplus" msprop:Generator_ColumnVarNameInTable="columnaplus" msprop:Generator_ColumnPropNameInRow="aplus" msprop:Generator_ColumnPropNameInTable="aplusColumn" msprop:Generator_UserColumnName="aplus" type="xs:boolean" />
+              <xs:element name="bussagreee" msprop:Generator_ColumnVarNameInTable="columnbussagreee" msprop:Generator_ColumnPropNameInRow="bussagreee" msprop:Generator_ColumnPropNameInTable="bussagreeeColumn" msprop:Generator_UserColumnName="bussagreee" type="xs:boolean" />
+              <xs:element name="leadsource" msprop:Generator_ColumnVarNameInTable="columnleadsource" msprop:Generator_ColumnPropNameInRow="leadsource" msprop:Generator_ColumnPropNameInTable="leadsourceColumn" msprop:Generator_UserColumnName="leadsource" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nocont" msprop:Generator_ColumnVarNameInTable="columnnocont" msprop:Generator_ColumnPropNameInRow="nocont" msprop:Generator_ColumnPropNameInTable="nocontColumn" msprop:Generator_UserColumnName="nocont" type="xs:boolean" />
+              <xs:element name="dteschsta2" msprop:Generator_ColumnVarNameInTable="columndteschsta2" msprop:Generator_ColumnPropNameInRow="dteschsta2" msprop:Generator_ColumnPropNameInTable="dteschsta2Column" msprop:Generator_UserColumnName="dteschsta2" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="contmemo" msprop:Generator_ColumnVarNameInTable="columncontmemo" msprop:Generator_ColumnPropNameInRow="contmemo" msprop:Generator_ColumnPropNameInTable="contmemoColumn" msprop:Generator_UserColumnName="contmemo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="exchg" msprop:Generator_ColumnVarNameInTable="columnexchg" msprop:Generator_ColumnPropNameInRow="exchg" msprop:Generator_ColumnPropNameInTable="exchgColumn" msprop:Generator_UserColumnName="exchg" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="spcinst" msprop:Generator_ColumnVarNameInTable="columnspcinst" msprop:Generator_ColumnPropNameInRow="spcinst" msprop:Generator_ColumnPropNameInTable="spcinstColumn" msprop:Generator_UserColumnName="spcinst" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="inoffice" msprop:Generator_ColumnVarNameInTable="columninoffice" msprop:Generator_ColumnPropNameInRow="inoffice" msprop:Generator_ColumnPropNameInTable="inofficeColumn" msprop:Generator_UserColumnName="inoffice" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shipmemo" msprop:Generator_ColumnVarNameInTable="columnshipmemo" msprop:Generator_ColumnPropNameInRow="shipmemo" msprop:Generator_ColumnPropNameInTable="shipmemoColumn" msprop:Generator_UserColumnName="shipmemo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dteschend" msprop:Generator_ColumnVarNameInTable="columndteschend" msprop:Generator_ColumnPropNameInRow="dteschend" msprop:Generator_ColumnPropNameInTable="dteschendColumn" msprop:Generator_UserColumnName="dteschend" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="multiyroptions" msprop:Generator_ColumnVarNameInTable="columnmultiyroptions" msprop:Generator_ColumnPropNameInRow="multiyroptions" msprop:Generator_ColumnPropNameInTable="multiyroptionsColumn" msprop:Generator_UserColumnName="multiyroptions" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="josname" msprop:Generator_ColumnVarNameInTable="columnjosname" msprop:Generator_ColumnPropNameInRow="josname" msprop:Generator_ColumnPropNameInTable="josnameColumn" msprop:Generator_UserColumnName="josname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shpaddr" msprop:Generator_ColumnVarNameInTable="columnshpaddr" msprop:Generator_ColumnPropNameInRow="shpaddr" msprop:Generator_ColumnPropNameInTable="shpaddrColumn" msprop:Generator_UserColumnName="shpaddr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shpaddr2" msprop:Generator_ColumnVarNameInTable="columnshpaddr2" msprop:Generator_ColumnPropNameInRow="shpaddr2" msprop:Generator_ColumnPropNameInTable="shpaddr2Column" msprop:Generator_UserColumnName="shpaddr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shpcity" msprop:Generator_ColumnVarNameInTable="columnshpcity" msprop:Generator_ColumnPropNameInRow="shpcity" msprop:Generator_ColumnPropNameInTable="shpcityColumn" msprop:Generator_UserColumnName="shpcity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shpstate" msprop:Generator_ColumnVarNameInTable="columnshpstate" msprop:Generator_ColumnPropNameInRow="shpstate" msprop:Generator_ColumnPropNameInTable="shpstateColumn" msprop:Generator_UserColumnName="shpstate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shpzip" msprop:Generator_ColumnVarNameInTable="columnshpzip" msprop:Generator_ColumnPropNameInRow="shpzip" msprop:Generator_ColumnPropNameInTable="shpzipColumn" msprop:Generator_UserColumnName="shpzip" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="adshpaddr" msprop:Generator_ColumnVarNameInTable="columnadshpaddr" msprop:Generator_ColumnPropNameInRow="adshpaddr" msprop:Generator_ColumnPropNameInTable="adshpaddrColumn" msprop:Generator_UserColumnName="adshpaddr" type="xs:boolean" />
+              <xs:element name="invaddr" msprop:Generator_ColumnVarNameInTable="columninvaddr" msprop:Generator_ColumnPropNameInRow="invaddr" msprop:Generator_ColumnPropNameInTable="invaddrColumn" msprop:Generator_UserColumnName="invaddr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="invaddr2" msprop:Generator_ColumnVarNameInTable="columninvaddr2" msprop:Generator_ColumnPropNameInRow="invaddr2" msprop:Generator_ColumnPropNameInTable="invaddr2Column" msprop:Generator_UserColumnName="invaddr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="invcity" msprop:Generator_ColumnVarNameInTable="columninvcity" msprop:Generator_ColumnPropNameInRow="invcity" msprop:Generator_ColumnPropNameInTable="invcityColumn" msprop:Generator_UserColumnName="invcity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="21" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="invstate" msprop:Generator_ColumnVarNameInTable="columninvstate" msprop:Generator_ColumnPropNameInRow="invstate" msprop:Generator_ColumnPropNameInTable="invstateColumn" msprop:Generator_UserColumnName="invstate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="invnotes" msprop:Generator_ColumnVarNameInTable="columninvnotes" msprop:Generator_ColumnPropNameInRow="invnotes" msprop:Generator_ColumnPropNameInTable="invnotesColumn" msprop:Generator_UserColumnName="invnotes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="invphone" msprop:Generator_ColumnVarNameInTable="columninvphone" msprop:Generator_ColumnPropNameInRow="invphone" msprop:Generator_ColumnPropNameInTable="invphoneColumn" msprop:Generator_UserColumnName="invphone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="invzip" msprop:Generator_ColumnVarNameInTable="columninvzip" msprop:Generator_ColumnPropNameInRow="invzip" msprop:Generator_ColumnPropNameInTable="invzipColumn" msprop:Generator_UserColumnName="invzip" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="invsameasschool" msprop:Generator_ColumnVarNameInTable="columninvsameasschool" msprop:Generator_ColumnPropNameInRow="invsameasschool" msprop:Generator_ColumnPropNameInTable="invsameasschoolColumn" msprop:Generator_UserColumnName="invsameasschool" type="xs:boolean" />
+              <xs:element name="invname" msprop:Generator_ColumnVarNameInTable="columninvname" msprop:Generator_ColumnPropNameInRow="invname" msprop:Generator_ColumnPropNameInTable="invnameColumn" msprop:Generator_UserColumnName="invname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="34" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schclosed" msprop:Generator_ColumnVarNameInTable="columnschclosed" msprop:Generator_ColumnPropNameInRow="schclosed" msprop:Generator_ColumnPropNameInTable="schclosedColumn" msprop:Generator_UserColumnName="schclosed" type="xs:boolean" />
+              <xs:element name="shpname" msprop:Generator_ColumnVarNameInTable="columnshpname" msprop:Generator_ColumnPropNameInRow="shpname" msprop:Generator_ColumnPropNameInTable="shpnameColumn" msprop:Generator_UserColumnName="shpname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schcolors" msprop:Generator_ColumnVarNameInTable="columnschcolors" msprop:Generator_ColumnPropNameInRow="schcolors" msprop:Generator_ColumnPropNameInTable="schcolorsColumn" msprop:Generator_UserColumnName="schcolors">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ModifiedBy" msprop:Generator_ColumnVarNameInTable="columnModifiedBy" msprop:Generator_ColumnPropNameInRow="ModifiedBy" msprop:Generator_ColumnPropNameInTable="ModifiedByColumn" msprop:Generator_UserColumnName="ModifiedBy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TaxExempt" msprop:Generator_ColumnVarNameInTable="columnTaxExempt" msprop:Generator_ColumnPropNameInRow="TaxExempt" msprop:Generator_ColumnPropNameInTable="TaxExemptColumn" msprop:Generator_UserColumnName="TaxExempt" type="xs:boolean" minOccurs="0" />
+              <xs:element name="NotTaxExempt" msprop:Generator_ColumnVarNameInTable="columnNotTaxExempt" msprop:Generator_ColumnPropNameInRow="NotTaxExempt" msprop:Generator_ColumnPropNameInTable="NotTaxExemptColumn" msprop:Generator_UserColumnName="NotTaxExempt" type="xs:boolean" minOccurs="0" />
+              <xs:element name="TaxExemptRecvd" msprop:Generator_ColumnVarNameInTable="columnTaxExemptRecvd" msprop:Generator_ColumnPropNameInRow="TaxExemptRecvd" msprop:Generator_ColumnPropNameInTable="TaxExemptRecvdColumn" msprop:Generator_UserColumnName="TaxExemptRecvd" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="OracleCode" msprop:Generator_ColumnVarNameInTable="columnOracleCode" msprop:Generator_ColumnPropNameInRow="OracleCode" msprop:Generator_ColumnPropNameInTable="OracleCodeColumn" msprop:Generator_UserColumnName="OracleCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Staging" msprop:Generator_ColumnVarNameInTable="columnStaging" msprop:Generator_ColumnPropNameInRow="Staging" msprop:Generator_ColumnPropNameInTable="StagingColumn" msprop:Generator_UserColumnName="Staging" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dedayin" msprop:Generator_ColumnVarNameInTable="columndedayin" msprop:Generator_ColumnPropNameInRow="dedayin" msprop:Generator_ColumnPropNameInTable="dedayinColumn" msprop:Generator_UserColumnName="dedayin" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="dedayout" msprop:Generator_ColumnVarNameInTable="columndedayout" msprop:Generator_ColumnPropNameInRow="dedayout" msprop:Generator_ColumnPropNameInTable="dedayoutColumn" msprop:Generator_UserColumnName="dedayout" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="QBooktype" msprop:Generator_ColumnVarNameInTable="columnQBooktype" msprop:Generator_ColumnPropNameInRow="QBooktype" msprop:Generator_ColumnPropNameInTable="QBooktypeColumn" msprop:Generator_UserColumnName="QBooktype" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QYear" msprop:Generator_ColumnVarNameInTable="columnQYear" msprop:Generator_ColumnPropNameInRow="QYear" msprop:Generator_ColumnPropNameInTable="QYearColumn" msprop:Generator_UserColumnName="QYear" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QInvno" msprop:Generator_ColumnVarNameInTable="columnQInvno" msprop:Generator_ColumnPropNameInRow="QInvno" msprop:Generator_ColumnPropNameInTable="QInvnoColumn" msprop:Generator_UserColumnName="QInvno" type="xs:decimal" minOccurs="0" />
+              <xs:element name="prodno" msprop:Generator_ColumnVarNameInTable="columnprodno" msprop:Generator_ColumnPropNameInRow="prodno" msprop:Generator_ColumnPropNameInTable="prodnoColumn" msprop:Generator_UserColumnName="prodno" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="kitrecvd" msprop:Generator_ColumnVarNameInTable="columnkitrecvd" msprop:Generator_ColumnPropNameInRow="kitrecvd" msprop:Generator_ColumnPropNameInTable="kitrecvdColumn" msprop:Generator_UserColumnName="kitrecvd" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ProdDescription" msprop:Generator_ColumnVarNameInTable="columnProdDescription" msprop:Generator_ColumnPropNameInRow="ProdDescription" msprop:Generator_ColumnPropNameInTable="ProdDescriptionColumn" msprop:Generator_UserColumnName="ProdDescription" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateModified" msprop:Generator_ColumnVarNameInTable="columnDateModified" msprop:Generator_ColumnPropNameInRow="DateModified" msprop:Generator_ColumnPropNameInTable="DateModifiedColumn" msprop:Generator_UserColumnName="DateModified" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ShippingAddr" msprop:Generator_ColumnVarNameInTable="columnShippingAddr" msprop:Generator_ColumnPropNameInRow="ShippingAddr" msprop:Generator_ColumnPropNameInTable="ShippingAddrColumn" msprop:Generator_UserColumnName="ShippingAddr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingAddr2" msprop:Generator_ColumnVarNameInTable="columnShippingAddr2" msprop:Generator_ColumnPropNameInRow="ShippingAddr2" msprop:Generator_ColumnPropNameInTable="ShippingAddr2Column" msprop:Generator_UserColumnName="ShippingAddr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingCity" msprop:Generator_ColumnVarNameInTable="columnShippingCity" msprop:Generator_ColumnPropNameInRow="ShippingCity" msprop:Generator_ColumnPropNameInTable="ShippingCityColumn" msprop:Generator_UserColumnName="ShippingCity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingState" msprop:Generator_ColumnVarNameInTable="columnShippingState" msprop:Generator_ColumnPropNameInRow="ShippingState" msprop:Generator_ColumnPropNameInTable="ShippingStateColumn" msprop:Generator_UserColumnName="ShippingState" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShippingZipCode" msprop:Generator_ColumnVarNameInTable="columnShippingZipCode" msprop:Generator_ColumnPropNameInRow="ShippingZipCode" msprop:Generator_ColumnPropNameInTable="ShippingZipCodeColumn" msprop:Generator_UserColumnName="ShippingZipCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TimeStamp" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTimeStamp" msprop:Generator_ColumnPropNameInRow="TimeStamp" msprop:Generator_ColumnPropNameInTable="TimeStampColumn" msprop:Generator_UserColumnName="TimeStamp" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="datecont" msprop:Generator_TableClassName="datecontDataTable" msprop:Generator_TableVarName="tabledatecont" msprop:Generator_RowChangedName="datecontRowChanged" msprop:Generator_TablePropName="datecont" msprop:Generator_RowDeletingName="datecontRowDeleting" msprop:Generator_RowChangingName="datecontRowChanging" msprop:Generator_RowEvHandlerName="datecontRowChangeEventHandler" msprop:Generator_RowDeletedName="datecontRowDeleted" msprop:Generator_RowClassName="datecontRow" msprop:Generator_UserTableName="datecont" msprop:Generator_RowEvArgName="datecontRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="datecont" msprop:Generator_ColumnVarNameInTable="columndatecont" msprop:Generator_ColumnPropNameInRow="datecont" msprop:Generator_ColumnPropNameInTable="datecontColumn" msprop:Generator_UserColumnName="datecont" type="xs:dateTime" />
+              <xs:element name="reason" msprop:Generator_ColumnVarNameInTable="columnreason" msprop:Generator_ColumnPropNameInRow="reason" msprop:Generator_ColumnPropNameInTable="reasonColumn" msprop:Generator_UserColumnName="reason" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="initial" msprop:Generator_ColumnVarNameInTable="columninitial" msprop:Generator_ColumnPropNameInRow="initial" msprop:Generator_ColumnPropNameInTable="initialColumn" msprop:Generator_UserColumnName="initial">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="typecont" msprop:Generator_ColumnVarNameInTable="columntypecont" msprop:Generator_ColumnPropNameInRow="typecont" msprop:Generator_ColumnPropNameInTable="typecontColumn" msprop:Generator_UserColumnName="typecont">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contact" msprop:Generator_ColumnVarNameInTable="columncontact" msprop:Generator_ColumnPropNameInRow="contact" msprop:Generator_ColumnPropNameInTable="contactColumn" msprop:Generator_UserColumnName="contact" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nxtdays" msprop:Generator_ColumnVarNameInTable="columnnxtdays" msprop:Generator_ColumnPropNameInRow="nxtdays" msprop:Generator_ColumnPropNameInTable="nxtdaysColumn" msprop:Generator_UserColumnName="nxtdays" type="xs:int" minOccurs="0" />
+              <xs:element name="nxtdate" msprop:Generator_ColumnVarNameInTable="columnnxtdate" msprop:Generator_ColumnPropNameInRow="nxtdate" msprop:Generator_ColumnPropNameInTable="nxtdateColumn" msprop:Generator_UserColumnName="nxtdate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="callcont" msprop:Generator_ColumnVarNameInTable="columncallcont" msprop:Generator_ColumnPropNameInRow="callcont" msprop:Generator_ColumnPropNameInTable="callcontColumn" msprop:Generator_UserColumnName="callcont" type="xs:boolean" minOccurs="0" />
+              <xs:element name="calltime" msprop:Generator_ColumnVarNameInTable="columncalltime" msprop:Generator_ColumnPropNameInRow="calltime" msprop:Generator_ColumnPropNameInTable="calltimeColumn" msprop:Generator_UserColumnName="calltime" type="xs:decimal" minOccurs="0" />
+              <xs:element name="priority" msprop:Generator_ColumnVarNameInTable="columnpriority" msprop:Generator_ColumnPropNameInRow="priority" msprop:Generator_ColumnPropNameInTable="priorityColumn" msprop:Generator_UserColumnName="priority" type="xs:int" minOccurs="0" />
+              <xs:element name="company" msprop:Generator_ColumnVarNameInTable="columncompany" msprop:Generator_ColumnPropNameInRow="company" msprop:Generator_ColumnPropNameInTable="companyColumn" msprop:Generator_UserColumnName="company" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="techcall" msprop:Generator_ColumnVarNameInTable="columntechcall" msprop:Generator_ColumnPropNameInRow="techcall" msprop:Generator_ColumnPropNameInTable="techcallColumn" msprop:Generator_UserColumnName="techcall" type="xs:boolean" minOccurs="0" />
+              <xs:element name="prospectid" msprop:Generator_ColumnVarNameInTable="columnprospectid" msprop:Generator_ColumnPropNameInRow="prospectid" msprop:Generator_ColumnPropNameInTable="prospectidColumn" msprop:Generator_UserColumnName="prospectid" type="xs:int" minOccurs="0" />
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:datecont" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

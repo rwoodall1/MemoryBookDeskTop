@@ -45,7 +45,7 @@ namespace Mbc5.Classes {
                       .AddTags("TaxRate")
                       .MarkAsCritical()
                       .Submit();
-                MbcMessageBox.Error(ex.error.message, "");
+                MbcMessageBox.Error(ex.error.message);
               
             }
 

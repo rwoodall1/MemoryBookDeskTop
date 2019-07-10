@@ -3595,7 +3595,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // pg4
             // 
-            this.pg4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pg4.BackColor = System.Drawing.SystemColors.Control;
             this.pg4.Controls.Add(this.shipppingAddrTextBox1);
             this.pg4.Controls.Add(this.invZipCodeTextBox);
             this.pg4.Controls.Add(this.cmbInvStateComboBox);
@@ -3623,7 +3623,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.pg4.Controls.Add(shipppingAddrLabel);
             this.pg4.Location = new System.Drawing.Point(4, 22);
             this.pg4.Name = "pg4";
-            this.pg4.Size = new System.Drawing.Size(1226, 644);
+            this.pg4.Size = new System.Drawing.Size(1188, 625);
             this.pg4.TabIndex = 3;
             this.pg4.Text = "Shipping Invoice Info";
             this.pg4.Leave += new System.EventHandler(this.pg4_Leave);

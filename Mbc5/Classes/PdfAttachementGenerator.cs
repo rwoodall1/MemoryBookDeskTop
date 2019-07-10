@@ -49,7 +49,7 @@ namespace BaseClass.Classes {
             }
             catch (Exception ex)
             {
-                MbcMessageBox.Error(ex.Message, "");
+                MbcMessageBox.Error(ex.Message);
                 ExceptionlessClient.Default.CreateLog("Error Creating Flyer")
                     .AddObject(ex)
                     .Submit();

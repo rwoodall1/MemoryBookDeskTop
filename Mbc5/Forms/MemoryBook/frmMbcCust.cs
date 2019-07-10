@@ -89,7 +89,7 @@ namespace Mbc5.Forms.MemoryBook {
 
 
         #region CrudOperations
-        public override ApiProcessingResult<bool> Save()
+ public override ApiProcessingResult<bool> Save()
 {
 	var processingResult = new ApiProcessingResult<bool>();
 	this.txtModifiedBy.Text  = this.ApplicationUser.id;
@@ -390,13 +390,16 @@ public override void Cancel() {
                 this.lkpCommentsTableAdapter.Fill(this.lookUp.lkpComments);
                 this.datecontTableAdapter.Fill(this.dsCust.datecont, Schcode);
                 this.custTableAdapter.Fill(this.dsCust.cust, Schcode);        
-                this.contpstnTableAdapter.Fill(this.lookUp.contpstn);
                 this.mktinfoTableAdapter.Fill(this.dsMktInfo.mktinfo, Schcode);
                 this.xsuppliesTableAdapter.Fill(this.dsXSupplies.xsupplies, Schcode);
                 this.xSuppliesDetailTableAdapter.Fill(dsXSupplies.XSuppliesDetail, Schcode);
             }
             catch (Exception ex)
             {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .MarkAsCritical()
+                    .Submit();
                 MbcMessageBox.Error(ex.Message, "");
             }
 
@@ -521,7 +524,7 @@ public override void Cancel() {
 			}
 			var custSaveResult = Save();
 			if (custSaveResult.IsError) {
-				DialogResult result1 = MessageBox.Show("Record failed to save correct and save again.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				DialogResult result1 = MessageBox.Show("Record failed to save, correct and save again.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
@@ -1438,7 +1441,7 @@ public override void Cancel() {
         }
         private void frmMbcCust_Paint(object sender, PaintEventArgs e)
         {
-            try { this.Text = "MBC Customers-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+            try { this.Text = "MBC Customer-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
             catch
             {
 
@@ -1949,7 +1952,15 @@ public override void Cancel() {
             var vInvState = ((DataRowView)custBindingSource.Current).Row["SchState"].ToString().Trim();
             cmbInvStateComboBox.SelectedValue = vInvState;
             var vInvZipcode = ((DataRowView)custBindingSource.Current).Row["SchZip"].ToString().Trim();
-            invZipCodeTextBox.Text = vInvZipcode.Substring(0, 5);
+            if (vInvZipcode.Length>5)
+            {
+                invZipCodeTextBox.Text = vInvZipcode.Substring(0, 5);
+            }
+            else
+            {
+                invZipCodeTextBox.Text = vInvZipcode;
+            }
+            
         }
 
         private void btnSchoolToShipping_Click(object sender, EventArgs e)
@@ -1963,7 +1974,15 @@ public override void Cancel() {
             var vShpState = ((DataRowView)custBindingSource.Current).Row["SchState"].ToString().Trim();
             cmbshippingState.SelectedValue = vShpState;
             var vShpZipcode = ((DataRowView)custBindingSource.Current).Row["SchZip"].ToString().Trim();
-            shippingZipCodeTextBox.Text = vShpZipcode.Substring(0,5);
+            if (vShpZipcode.Length>0)
+            {
+                shippingZipCodeTextBox.Text = vShpZipcode.Substring(0, 5);
+            }
+            else
+            {
+                shippingZipCodeTextBox.Text = vShpZipcode;
+            }
+            
          
         }
 

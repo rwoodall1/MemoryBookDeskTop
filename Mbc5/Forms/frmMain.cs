@@ -322,7 +322,7 @@ namespace Mbc5.Forms
         private void MerToolStrip_Click(object sender,EventArgs e) {
             this.Cursor = Cursors.AppStarting;
 
-            frmMbcCust frmMer = new frmMbcCust(this.ApplicationUser);
+            frmMerCust frmMer = new frmMerCust(this.ApplicationUser);
             frmMer.MdiParent = this;
             frmMer.Show();
             this.Cursor = Cursors.Default;
@@ -915,7 +915,7 @@ namespace Mbc5.Forms
             }
             else
             {
-                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.","Stop");
 
             }
 
@@ -932,7 +932,7 @@ namespace Mbc5.Forms
             }
             else
             {
-                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.","Stop");
 
             }
 

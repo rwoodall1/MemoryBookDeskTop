@@ -8,7 +8,12 @@ namespace BaseClass
 {
 	public class MbcMessageBox
 	{
-		public static void Error(string msg,string title)
+        public static void Error(string msg)
+        {
+            Error(msg, "Error");
+         }
+
+            public static void Error(string msg,string title)
 		{
 			if (string.IsNullOrEmpty(title))
 			{
@@ -16,7 +21,13 @@ namespace BaseClass
 			}
 			MessageBox.Show(msg,title,MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
-		public static void Information(string msg, string title)
+
+        public static void Information(string msg)
+        {
+            Information(msg, "Information");
+        }
+
+        public static void Information(string msg, string title)
 		{
 			if (string.IsNullOrEmpty(title))
 			{
@@ -24,7 +35,12 @@ namespace BaseClass
 			}
 			MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
-		public static void Exclamation(string msg, string title)
+        public static void Exclamation(string msg)
+        {
+            Exclamation(msg, "Success");
+        }
+        
+            public static void Exclamation(string msg, string title)
 		{
 			if (string.IsNullOrEmpty(title))
 			{

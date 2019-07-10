@@ -168,6 +168,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsExtra.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsMcust.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMcust.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsMktInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -273,6 +278,12 @@
     </Compile>
     <Compile Include="Dialogs\frmTeleLogModify.Designer.cs">
       <DependentUpon>frmTeleLogModify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmBarScan.cs">
       <SubType>Form</SubType>
@@ -493,6 +504,9 @@
     <EmbeddedResource Include="Dialogs\frmTeleLogModify.resx">
       <DependentUpon>frmTeleLogModify.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBarScan.resx">
       <DependentUpon>frmBarScan.cs</DependentUpon>
     </EmbeddedResource>
@@ -612,6 +626,17 @@
     </None>
     <None Include="DataSets\dsExtra.xss">
       <DependentUpon>dsExtra.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMcust.xsc">
+      <DependentUpon>dsMcust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMcust.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMcust.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsMcust.xss">
+      <DependentUpon>dsMcust.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsRcard.xsc">
       <DependentUpon>dsRcard.xsd</DependentUpon>
