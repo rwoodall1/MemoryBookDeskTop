@@ -88,7 +88,7 @@ namespace Mbc5.Forms.MemoryBook {
 
 
 
-        #region CrudOperations
+ #region CrudOperations
  public override ApiProcessingResult<bool> Save()
 {
 	var processingResult = new ApiProcessingResult<bool>();
@@ -1067,21 +1067,24 @@ public override void Cancel() {
 					 new SqlParameter("@Schcode",this.Schcode),
 					 new SqlParameter("@ProdNo",this.frmMain.GetProdNo()),
 					  new SqlParameter("@Contryear", contryearTextBox.Text),
-					   new SqlParameter("@Company","MBC")
-					};
-						strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company)";
+					   new SqlParameter("@Company","MBC"),
+                      new SqlParameter("@ProdCustDate",contdateDateTimePicker.Value)
+                    };
+						strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company,ProdCustDate)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company,@ProdCustDate)";
 						var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
 						if (userResult1 != 1) {
 							MessageBox.Show("Failed to insert production record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 							return;
 						}
+                        
 						SqlParameter[] parameters2 = new SqlParameter[] {
 					new SqlParameter("@Invno",InvNum),
 					 new SqlParameter("@Schcode",this.Schcode),
 					 new SqlParameter("@Specovr",frmMain.GetCoverNumber()),
 						 new SqlParameter("@Specinst",GetInstructions() ),
-					   new SqlParameter("@Company","MBC")
-					};
+					   new SqlParameter("@Company","MBC"),
+                    
+                    };
 						strQuery = "Insert into Covers (schcode,invno,company,specovr,Specinst) Values(@Schcode,@Invno,@Company,@Specovr,@Specinst)";
 						var userResult2 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters2);
 						if (userResult2 != 1) {
@@ -1108,11 +1111,12 @@ public override void Cancel() {
 
 
 					Save();
-					try {
-						this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
-					}catch(Exception ex){
-						MbcMessageBox.Error(ex.Message, "");
-					}
+                    //filled in save method
+					//try {
+					//	this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
+					//}catch(Exception ex){
+					//	MbcMessageBox.Error(ex.Message, "");
+					//}
 					
                     this.SetInvnoSchCode();
                 };

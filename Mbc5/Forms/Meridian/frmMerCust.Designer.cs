@@ -94,13 +94,13 @@
             System.Windows.Forms.Label label12;
             System.Windows.Forms.Label label13;
             System.Windows.Forms.Label label14;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
             this.merCustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
+            this.lblInvno = new System.Windows.Forms.Label();
             this.mcustBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMcust = new Mbc5.DataSets.dsMcust();
-            this.lblInvno = new System.Windows.Forms.Label();
             this.lblSchcode = new System.Windows.Forms.Label();
             this.lblAppUser = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -127,7 +127,7 @@
             this.sourdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.josnameComboBox = new System.Windows.Forms.ComboBox();
             this.leadsourceComboBox = new System.Windows.Forms.ComboBox();
-            this.contryearTextBox = new System.Windows.Forms.TextBox();
+            this.txtContryear = new System.Windows.Forms.TextBox();
             this.schuploadiCheckBox = new System.Windows.Forms.CheckBox();
             this.multiyroptComboBox = new System.Windows.Forms.ComboBox();
             this.initcontDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -151,7 +151,7 @@
             this.schaddrTextBox = new System.Windows.Forms.TextBox();
             this.stagingComboBox = new System.Windows.Forms.ComboBox();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
-            this.oracleCodeTextBox = new System.Windows.Forms.TextBox();
+            this.txtOracleCode = new System.Windows.Forms.TextBox();
             this.junsnoTextBox = new System.Windows.Forms.TextBox();
             this.taxExemptRecvdDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.chkNotTaxExempt = new System.Windows.Forms.CheckBox();
@@ -163,6 +163,9 @@
             this.lblModifiedBy = new System.Windows.Forms.Label();
             this.txtSchname = new System.Windows.Forms.TextBox();
             this.pg3 = new System.Windows.Forms.TabPage();
+            this.contcityTextBox = new System.Windows.Forms.TextBox();
+            this.contaddr2TextBox1 = new System.Windows.Forms.TextBox();
+            this.contaddrTextBox1 = new System.Windows.Forms.TextBox();
             this.bcontcityTextBox = new System.Windows.Forms.TextBox();
             this.btnEmailCont2 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -184,14 +187,11 @@
             this.txtContactEmail = new System.Windows.Forms.TextBox();
             this.contphnwrkTextBox = new System.Windows.Forms.TextBox();
             this.contfaxTextBox = new System.Windows.Forms.TextBox();
-            this.contcityTextBox = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.bsStateContact1 = new System.Windows.Forms.BindingSource(this.components);
             this.contphnhomTextBox = new System.Windows.Forms.TextBox();
             this.contzipTextBox = new System.Windows.Forms.TextBox();
-            this.contaddrTextBox = new System.Windows.Forms.TextBox();
             this.contlnameTextBox = new System.Windows.Forms.TextBox();
-            this.contaddr2TextBox = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.btnEmailContact = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
@@ -199,23 +199,23 @@
             this.lblSeperator1 = new System.Windows.Forms.Label();
             this.contfnameTextBox = new System.Windows.Forms.TextBox();
             this.pg2 = new System.Windows.Forms.TabPage();
-            this.btnSaveInformation = new System.Windows.Forms.Button();
-            this.txtInvAddr = new System.Windows.Forms.TextBox();
-            this.txtInvZipcode = new System.Windows.Forms.TextBox();
-            this.cmbInvState = new System.Windows.Forms.ComboBox();
-            this.txtInvCity = new System.Windows.Forms.TextBox();
-            this.txtInvAddr2 = new System.Windows.Forms.TextBox();
-            this.txtShpAddr = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtShpZipcode = new System.Windows.Forms.TextBox();
+            this.txtShpZip = new System.Windows.Forms.TextBox();
             this.cmbShpState = new System.Windows.Forms.ComboBox();
+            this.statesBindingSourceShp = new System.Windows.Forms.BindingSource(this.components);
             this.txtShpCity = new System.Windows.Forms.TextBox();
             this.txtShpAddr2 = new System.Windows.Forms.TextBox();
+            this.txtShpAddr = new System.Windows.Forms.TextBox();
+            this.txtInvZip = new System.Windows.Forms.TextBox();
+            this.cmbInvState = new System.Windows.Forms.ComboBox();
+            this.statesBindingSourceInv = new System.Windows.Forms.BindingSource(this.components);
+            this.txtInvCity = new System.Windows.Forms.TextBox();
+            this.txtInvAddr2 = new System.Windows.Forms.TextBox();
+            this.txtInvAddr = new System.Windows.Forms.TextBox();
+            this.btnSaveInformation = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
             this.btnSchoolToShipping = new System.Windows.Forms.Button();
             this.btnSchoolToInvoice = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
-            this.statesBindingSourceInv = new System.Windows.Forms.BindingSource(this.components);
-            this.statesBindingSourceShp = new System.Windows.Forms.BindingSource(this.components);
             this.mcustTableAdapter = new Mbc5.DataSets.dsMcustTableAdapters.mcustTableAdapter();
             this.datecontTableAdapter = new Mbc5.DataSets.dsMcustTableAdapters.datecontTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsMcustTableAdapters.TableAdapterManager();
@@ -307,8 +307,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.contpstnBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsStateContact1)).BeginInit();
             this.pg2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceInv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceShp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceInv)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -332,7 +332,7 @@
             // csrepLabel
             // 
             csrepLabel.AutoSize = true;
-            csrepLabel.Location = new System.Drawing.Point(771, 36);
+            csrepLabel.Location = new System.Drawing.Point(771, 37);
             csrepLabel.Name = "csrepLabel";
             csrepLabel.Size = new System.Drawing.Size(93, 13);
             csrepLabel.TabIndex = 3;
@@ -341,7 +341,7 @@
             // taxExemptRecvdLabel
             // 
             taxExemptRecvdLabel.AutoSize = true;
-            taxExemptRecvdLabel.Location = new System.Drawing.Point(249, 39);
+            taxExemptRecvdLabel.Location = new System.Drawing.Point(249, 37);
             taxExemptRecvdLabel.Name = "taxExemptRecvdLabel";
             taxExemptRecvdLabel.Size = new System.Drawing.Size(98, 13);
             taxExemptRecvdLabel.TabIndex = 44;
@@ -377,7 +377,7 @@
             // stagingLabel
             // 
             stagingLabel.AutoSize = true;
-            stagingLabel.Location = new System.Drawing.Point(587, 39);
+            stagingLabel.Location = new System.Drawing.Point(587, 37);
             stagingLabel.Name = "stagingLabel";
             stagingLabel.Size = new System.Drawing.Size(43, 13);
             stagingLabel.TabIndex = 48;
@@ -650,7 +650,7 @@
             // shipppingAddrLabel
             // 
             shipppingAddrLabel.AutoSize = true;
-            shipppingAddrLabel.Location = new System.Drawing.Point(122, 91);
+            shipppingAddrLabel.Location = new System.Drawing.Point(158, 92);
             shipppingAddrLabel.Name = "shipppingAddrLabel";
             shipppingAddrLabel.Size = new System.Drawing.Size(83, 13);
             shipppingAddrLabel.TabIndex = 69;
@@ -659,7 +659,7 @@
             // invoiceZipCodeLabel
             // 
             invoiceZipCodeLabel.AutoSize = true;
-            invoiceZipCodeLabel.Location = new System.Drawing.Point(126, 196);
+            invoiceZipCodeLabel.Location = new System.Drawing.Point(153, 196);
             invoiceZipCodeLabel.Name = "invoiceZipCodeLabel";
             invoiceZipCodeLabel.Size = new System.Drawing.Size(88, 13);
             invoiceZipCodeLabel.TabIndex = 104;
@@ -668,7 +668,7 @@
             // invoiceStateLabel
             // 
             invoiceStateLabel.AutoSize = true;
-            invoiceStateLabel.Location = new System.Drawing.Point(144, 169);
+            invoiceStateLabel.Location = new System.Drawing.Point(171, 169);
             invoiceStateLabel.Name = "invoiceStateLabel";
             invoiceStateLabel.Size = new System.Drawing.Size(70, 13);
             invoiceStateLabel.TabIndex = 103;
@@ -677,7 +677,7 @@
             // invoiceCityLabel
             // 
             invoiceCityLabel.AutoSize = true;
-            invoiceCityLabel.Location = new System.Drawing.Point(152, 143);
+            invoiceCityLabel.Location = new System.Drawing.Point(179, 143);
             invoiceCityLabel.Name = "invoiceCityLabel";
             invoiceCityLabel.Size = new System.Drawing.Size(62, 13);
             invoiceCityLabel.TabIndex = 102;
@@ -686,7 +686,7 @@
             // shippingAddr2Label
             // 
             shippingAddr2Label.AutoSize = true;
-            shippingAddr2Label.Location = new System.Drawing.Point(122, 117);
+            shippingAddr2Label.Location = new System.Drawing.Point(149, 117);
             shippingAddr2Label.Name = "shippingAddr2Label";
             shippingAddr2Label.Size = new System.Drawing.Size(92, 13);
             shippingAddr2Label.TabIndex = 101;
@@ -695,7 +695,7 @@
             // shippingZipCodeLabel
             // 
             shippingZipCodeLabel.AutoSize = true;
-            shippingZipCodeLabel.Location = new System.Drawing.Point(145, 403);
+            shippingZipCodeLabel.Location = new System.Drawing.Point(147, 400);
             shippingZipCodeLabel.Name = "shippingZipCodeLabel";
             shippingZipCodeLabel.Size = new System.Drawing.Size(94, 13);
             shippingZipCodeLabel.TabIndex = 97;
@@ -704,7 +704,7 @@
             // shippingStateLabel
             // 
             shippingStateLabel.AutoSize = true;
-            shippingStateLabel.Location = new System.Drawing.Point(163, 376);
+            shippingStateLabel.Location = new System.Drawing.Point(165, 373);
             shippingStateLabel.Name = "shippingStateLabel";
             shippingStateLabel.Size = new System.Drawing.Size(76, 13);
             shippingStateLabel.TabIndex = 95;
@@ -713,7 +713,7 @@
             // shippingCityLabel
             // 
             shippingCityLabel.AutoSize = true;
-            shippingCityLabel.Location = new System.Drawing.Point(171, 350);
+            shippingCityLabel.Location = new System.Drawing.Point(173, 350);
             shippingCityLabel.Name = "shippingCityLabel";
             shippingCityLabel.Size = new System.Drawing.Size(68, 13);
             shippingCityLabel.TabIndex = 93;
@@ -722,7 +722,7 @@
             // shippingAddr2Label1
             // 
             shippingAddr2Label1.AutoSize = true;
-            shippingAddr2Label1.Location = new System.Drawing.Point(141, 324);
+            shippingAddr2Label1.Location = new System.Drawing.Point(143, 324);
             shippingAddr2Label1.Name = "shippingAddr2Label1";
             shippingAddr2Label1.Size = new System.Drawing.Size(98, 13);
             shippingAddr2Label1.TabIndex = 91;
@@ -731,7 +731,7 @@
             // shipppingAddrLabel1
             // 
             shipppingAddrLabel1.AutoSize = true;
-            shipppingAddrLabel1.Location = new System.Drawing.Point(144, 295);
+            shipppingAddrLabel1.Location = new System.Drawing.Point(146, 295);
             shipppingAddrLabel1.Name = "shipppingAddrLabel1";
             shipppingAddrLabel1.Size = new System.Drawing.Size(95, 13);
             shipppingAddrLabel1.TabIndex = 90;
@@ -750,7 +750,7 @@
             // 
             contlnameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contlnameLabel.AutoSize = true;
-            contlnameLabel.Location = new System.Drawing.Point(365, 31);
+            contlnameLabel.Location = new System.Drawing.Point(432, 31);
             contlnameLabel.Name = "contlnameLabel";
             contlnameLabel.Size = new System.Drawing.Size(61, 13);
             contlnameLabel.TabIndex = 374;
@@ -760,7 +760,7 @@
             // 
             contaddr2Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contaddr2Label.AutoSize = true;
-            contaddr2Label.Location = new System.Drawing.Point(372, 59);
+            contaddr2Label.Location = new System.Drawing.Point(439, 59);
             contaddr2Label.Name = "contaddr2Label";
             contaddr2Label.Size = new System.Drawing.Size(54, 13);
             contaddr2Label.TabIndex = 372;
@@ -788,7 +788,7 @@
             // 
             contphnhomLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contphnhomLabel.AutoSize = true;
-            contphnhomLabel.Location = new System.Drawing.Point(354, 114);
+            contphnhomLabel.Location = new System.Drawing.Point(421, 114);
             contphnhomLabel.Name = "contphnhomLabel";
             contphnhomLabel.Size = new System.Drawing.Size(72, 13);
             contphnhomLabel.TabIndex = 382;
@@ -798,7 +798,7 @@
             // 
             contzipLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contzipLabel.AutoSize = true;
-            contzipLabel.Location = new System.Drawing.Point(401, 85);
+            contzipLabel.Location = new System.Drawing.Point(468, 85);
             contzipLabel.Name = "contzipLabel";
             contzipLabel.Size = new System.Drawing.Size(25, 13);
             contzipLabel.TabIndex = 380;
@@ -817,7 +817,7 @@
             // 
             contfaxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contfaxLabel.AutoSize = true;
-            contfaxLabel.Location = new System.Drawing.Point(365, 141);
+            contfaxLabel.Location = new System.Drawing.Point(432, 141);
             contfaxLabel.Name = "contfaxLabel";
             contfaxLabel.Size = new System.Drawing.Size(61, 13);
             contfaxLabel.TabIndex = 388;
@@ -836,7 +836,7 @@
             // 
             contemailLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contemailLabel.AutoSize = true;
-            contemailLabel.Location = new System.Drawing.Point(391, 167);
+            contemailLabel.Location = new System.Drawing.Point(458, 167);
             contemailLabel.Name = "contemailLabel";
             contemailLabel.Size = new System.Drawing.Size(35, 13);
             contemailLabel.TabIndex = 392;
@@ -864,7 +864,7 @@
             // 
             label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(354, 309);
+            label5.Location = new System.Drawing.Point(421, 309);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(72, 13);
             label5.TabIndex = 415;
@@ -874,7 +874,7 @@
             // 
             label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(365, 231);
+            label6.Location = new System.Drawing.Point(432, 231);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(61, 13);
             label6.TabIndex = 414;
@@ -893,7 +893,7 @@
             // 
             label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(391, 366);
+            label8.Location = new System.Drawing.Point(458, 366);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(35, 13);
             label8.TabIndex = 412;
@@ -903,7 +903,7 @@
             // 
             label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(365, 337);
+            label9.Location = new System.Drawing.Point(432, 337);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(61, 13);
             label9.TabIndex = 411;
@@ -922,7 +922,7 @@
             // 
             label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(401, 282);
+            label11.Location = new System.Drawing.Point(468, 282);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(25, 13);
             label11.TabIndex = 409;
@@ -941,7 +941,7 @@
             // 
             label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(372, 257);
+            label13.Location = new System.Drawing.Point(439, 257);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(54, 13);
             label13.TabIndex = 407;
@@ -972,7 +972,6 @@
             // 
             // pg1
             // 
-            this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
             this.pg1.Controls.Add(this.lblInvno);
             this.pg1.Controls.Add(this.lblSchcode);
@@ -995,7 +994,7 @@
             this.pg1.Controls.Add(statusLabel);
             this.pg1.Controls.Add(this.statusComboBox);
             this.pg1.Controls.Add(oracleCodeLabel);
-            this.pg1.Controls.Add(this.oracleCodeTextBox);
+            this.pg1.Controls.Add(this.txtOracleCode);
             this.pg1.Controls.Add(junsnoLabel);
             this.pg1.Controls.Add(this.junsnoTextBox);
             this.pg1.Controls.Add(taxExemptRecvdLabel);
@@ -1018,6 +1017,15 @@
             this.pg1.Text = "School";
             this.pg1.Click += new System.EventHandler(this.pg1_Click);
             // 
+            // lblInvno
+            // 
+            this.lblInvno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "QInvno", true));
+            this.lblInvno.Location = new System.Drawing.Point(3, 466);
+            this.lblInvno.Name = "lblInvno";
+            this.lblInvno.Size = new System.Drawing.Size(1, 1);
+            this.lblInvno.TabIndex = 64;
+            this.lblInvno.Text = "l";
+            // 
             // mcustBindingSource
             // 
             this.mcustBindingSource.DataMember = "mcust";
@@ -1027,15 +1035,6 @@
             // 
             this.dsMcust.DataSetName = "dsMcust";
             this.dsMcust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lblInvno
-            // 
-            this.lblInvno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "QInvno", true));
-            this.lblInvno.Location = new System.Drawing.Point(3, 466);
-            this.lblInvno.Name = "lblInvno";
-            this.lblInvno.Size = new System.Drawing.Size(1, 1);
-            this.lblInvno.TabIndex = 64;
-            this.lblInvno.Text = "l";
             // 
             // lblSchcode
             // 
@@ -1060,14 +1059,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.qInvnoDataGridViewTextBoxColumn,
@@ -1218,7 +1217,7 @@
             this.panel2.Controls.Add(leadsourceLabel);
             this.panel2.Controls.Add(this.leadsourceComboBox);
             this.panel2.Controls.Add(contryearLabel);
-            this.panel2.Controls.Add(this.contryearTextBox);
+            this.panel2.Controls.Add(this.txtContryear);
             this.panel2.Controls.Add(this.schuploadiCheckBox);
             this.panel2.Controls.Add(this.multiyroptComboBox);
             this.panel2.Controls.Add(initcontLabel);
@@ -1284,6 +1283,7 @@
             this.contdateDateTimePicker.Name = "contdateDateTimePicker";
             this.contdateDateTimePicker.Size = new System.Drawing.Size(159, 20);
             this.contdateDateTimePicker.TabIndex = 23;
+            this.contdateDateTimePicker.CloseUp += new System.EventHandler(this.contdateDateTimePicker_CloseUp);
             this.contdateDateTimePicker.ValueChanged += new System.EventHandler(this.contdateDateTimePicker_ValueChanged);
             // 
             // dedayinDateTimePicker
@@ -1326,14 +1326,14 @@
             this.leadsourceComboBox.Size = new System.Drawing.Size(154, 21);
             this.leadsourceComboBox.TabIndex = 17;
             // 
-            // contryearTextBox
+            // txtContryear
             // 
-            this.contryearTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contryear", true));
-            this.contryearTextBox.Location = new System.Drawing.Point(878, 60);
-            this.contryearTextBox.MaxLength = 2;
-            this.contryearTextBox.Name = "contryearTextBox";
-            this.contryearTextBox.Size = new System.Drawing.Size(44, 20);
-            this.contryearTextBox.TabIndex = 16;
+            this.txtContryear.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contryear", true));
+            this.txtContryear.Location = new System.Drawing.Point(878, 60);
+            this.txtContryear.MaxLength = 2;
+            this.txtContryear.Name = "txtContryear";
+            this.txtContryear.Size = new System.Drawing.Size(44, 20);
+            this.txtContryear.TabIndex = 16;
             // 
             // schuploadiCheckBox
             // 
@@ -1543,7 +1543,7 @@
             // 
             this.stagingComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "Staging", true));
             this.stagingComboBox.FormattingEnabled = true;
-            this.stagingComboBox.Location = new System.Drawing.Point(633, 36);
+            this.stagingComboBox.Location = new System.Drawing.Point(633, 37);
             this.stagingComboBox.Name = "stagingComboBox";
             this.stagingComboBox.Size = new System.Drawing.Size(121, 21);
             this.stagingComboBox.TabIndex = 49;
@@ -1557,14 +1557,14 @@
             this.statusComboBox.Size = new System.Drawing.Size(121, 21);
             this.statusComboBox.TabIndex = 48;
             // 
-            // oracleCodeTextBox
+            // txtOracleCode
             // 
-            this.oracleCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "OracleCode", true));
-            this.oracleCodeTextBox.Location = new System.Drawing.Point(482, 6);
-            this.oracleCodeTextBox.MaxLength = 7;
-            this.oracleCodeTextBox.Name = "oracleCodeTextBox";
-            this.oracleCodeTextBox.Size = new System.Drawing.Size(85, 20);
-            this.oracleCodeTextBox.TabIndex = 47;
+            this.txtOracleCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "OracleCode", true));
+            this.txtOracleCode.Location = new System.Drawing.Point(482, 6);
+            this.txtOracleCode.MaxLength = 7;
+            this.txtOracleCode.Name = "txtOracleCode";
+            this.txtOracleCode.Size = new System.Drawing.Size(85, 20);
+            this.txtOracleCode.TabIndex = 47;
             // 
             // junsnoTextBox
             // 
@@ -1580,7 +1580,7 @@
             this.taxExemptRecvdDateTimePicker.CustomFormat = "\'\'";
             this.taxExemptRecvdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.mcustBindingSource, "TaxExemptRecvd", true));
             this.taxExemptRecvdDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.taxExemptRecvdDateTimePicker.Location = new System.Drawing.Point(356, 35);
+            this.taxExemptRecvdDateTimePicker.Location = new System.Drawing.Point(356, 37);
             this.taxExemptRecvdDateTimePicker.Name = "taxExemptRecvdDateTimePicker";
             this.taxExemptRecvdDateTimePicker.Size = new System.Drawing.Size(120, 20);
             this.taxExemptRecvdDateTimePicker.TabIndex = 45;
@@ -1589,7 +1589,7 @@
             // chkNotTaxExempt
             // 
             this.chkNotTaxExempt.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mcustBindingSource, "NotTaxExempt", true));
-            this.chkNotTaxExempt.Location = new System.Drawing.Point(482, 34);
+            this.chkNotTaxExempt.Location = new System.Drawing.Point(482, 37);
             this.chkNotTaxExempt.Name = "chkNotTaxExempt";
             this.chkNotTaxExempt.Size = new System.Drawing.Size(104, 24);
             this.chkNotTaxExempt.TabIndex = 44;
@@ -1599,7 +1599,7 @@
             // chkTaxExempt
             // 
             this.chkTaxExempt.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mcustBindingSource, "TaxExempt", true));
-            this.chkTaxExempt.Location = new System.Drawing.Point(165, 32);
+            this.chkTaxExempt.Location = new System.Drawing.Point(165, 37);
             this.chkTaxExempt.Name = "chkTaxExempt";
             this.chkTaxExempt.Size = new System.Drawing.Size(104, 24);
             this.chkTaxExempt.TabIndex = 43;
@@ -1609,7 +1609,7 @@
             // chkSchoolClosed
             // 
             this.chkSchoolClosed.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mcustBindingSource, "schclosed", true));
-            this.chkSchoolClosed.Location = new System.Drawing.Point(60, 32);
+            this.chkSchoolClosed.Location = new System.Drawing.Point(60, 37);
             this.chkSchoolClosed.Name = "chkSchoolClosed";
             this.chkSchoolClosed.Size = new System.Drawing.Size(113, 24);
             this.chkSchoolClosed.TabIndex = 42;
@@ -1640,7 +1640,7 @@
             // csrepTextBox
             // 
             this.csrepTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "csrep", true));
-            this.csrepTextBox.Location = new System.Drawing.Point(870, 36);
+            this.csrepTextBox.Location = new System.Drawing.Point(870, 37);
             this.csrepTextBox.MaxLength = 3;
             this.csrepTextBox.Name = "csrepTextBox";
             this.csrepTextBox.Size = new System.Drawing.Size(29, 20);
@@ -1666,8 +1666,10 @@
             // 
             // pg3
             // 
-            this.pg3.AutoScroll = true;
             this.pg3.BackColor = System.Drawing.SystemColors.Control;
+            this.pg3.Controls.Add(this.contcityTextBox);
+            this.pg3.Controls.Add(this.contaddr2TextBox1);
+            this.pg3.Controls.Add(this.contaddrTextBox1);
             this.pg3.Controls.Add(bcontcityLabel);
             this.pg3.Controls.Add(this.bcontcityTextBox);
             this.pg3.Controls.Add(this.btnEmailCont2);
@@ -1703,7 +1705,6 @@
             this.pg3.Controls.Add(contfaxLabel);
             this.pg3.Controls.Add(this.contfaxTextBox);
             this.pg3.Controls.Add(contcityLabel);
-            this.pg3.Controls.Add(this.contcityTextBox);
             this.pg3.Controls.Add(this.comboBox1);
             this.pg3.Controls.Add(contstateLabel);
             this.pg3.Controls.Add(contphnhomLabel);
@@ -1711,11 +1712,9 @@
             this.pg3.Controls.Add(contzipLabel);
             this.pg3.Controls.Add(this.contzipTextBox);
             this.pg3.Controls.Add(contaddrLabel);
-            this.pg3.Controls.Add(this.contaddrTextBox);
             this.pg3.Controls.Add(contlnameLabel);
             this.pg3.Controls.Add(this.contlnameTextBox);
             this.pg3.Controls.Add(contaddr2Label);
-            this.pg3.Controls.Add(this.contaddr2TextBox);
             this.pg3.Controls.Add(this.label17);
             this.pg3.Controls.Add(this.btnEmailContact);
             this.pg3.Controls.Add(this.label28);
@@ -1729,9 +1728,38 @@
             this.pg3.TabIndex = 2;
             this.pg3.Text = "Contacts";
             // 
+            // contcityTextBox
+            // 
+            this.contcityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contcity", true));
+            this.contcityTextBox.Location = new System.Drawing.Point(112, 85);
+            this.contcityTextBox.MaxLength = 50;
+            this.contcityTextBox.Name = "contcityTextBox";
+            this.contcityTextBox.Size = new System.Drawing.Size(228, 20);
+            this.contcityTextBox.TabIndex = 423;
+            // 
+            // contaddr2TextBox1
+            // 
+            this.contaddr2TextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contaddr2", true));
+            this.contaddr2TextBox1.Location = new System.Drawing.Point(495, 59);
+            this.contaddr2TextBox1.MaxLength = 50;
+            this.contaddr2TextBox1.Name = "contaddr2TextBox1";
+            this.contaddr2TextBox1.Size = new System.Drawing.Size(232, 20);
+            this.contaddr2TextBox1.TabIndex = 422;
+            // 
+            // contaddrTextBox1
+            // 
+            this.contaddrTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contaddr", true));
+            this.contaddrTextBox1.Location = new System.Drawing.Point(110, 59);
+            this.contaddrTextBox1.MaxLength = 50;
+            this.contaddrTextBox1.Name = "contaddrTextBox1";
+            this.contaddrTextBox1.Size = new System.Drawing.Size(230, 20);
+            this.contaddrTextBox1.TabIndex = 421;
+            // 
             // bcontcityTextBox
             // 
+            this.bcontcityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontcity", true));
             this.bcontcityTextBox.Location = new System.Drawing.Point(108, 282);
+            this.bcontcityTextBox.MaxLength = 50;
             this.bcontcityTextBox.Name = "bcontcityTextBox";
             this.bcontcityTextBox.Size = new System.Drawing.Size(232, 20);
             this.bcontcityTextBox.TabIndex = 420;
@@ -1794,7 +1822,9 @@
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(428, 309);
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontphnho", true));
+            this.textBox1.Location = new System.Drawing.Point(495, 309);
+            this.textBox1.MaxLength = 50;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(232, 20);
             this.textBox1.TabIndex = 402;
@@ -1802,14 +1832,18 @@
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(428, 231);
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontlname", true));
+            this.textBox2.Location = new System.Drawing.Point(495, 231);
+            this.textBox2.MaxLength = 50;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(232, 20);
             this.textBox2.TabIndex = 396;
             // 
             // txtBContFname
             // 
+            this.txtBContFname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontfname", true));
             this.txtBContFname.Location = new System.Drawing.Point(108, 231);
+            this.txtBContFname.MaxLength = 50;
             this.txtBContFname.Name = "txtBContFname";
             this.txtBContFname.Size = new System.Drawing.Size(232, 20);
             this.txtBContFname.TabIndex = 395;
@@ -1817,7 +1851,9 @@
             // txtContact2Email
             // 
             this.txtContact2Email.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtContact2Email.Location = new System.Drawing.Point(428, 363);
+            this.txtContact2Email.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontemail", true));
+            this.txtContact2Email.Location = new System.Drawing.Point(495, 363);
+            this.txtContact2Email.MaxLength = 50;
             this.txtContact2Email.Name = "txtContact2Email";
             this.txtContact2Email.Size = new System.Drawing.Size(232, 20);
             this.txtContact2Email.TabIndex = 405;
@@ -1825,14 +1861,18 @@
             // textBox5
             // 
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(428, 337);
+            this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontfax", true));
+            this.textBox5.Location = new System.Drawing.Point(495, 337);
+            this.textBox5.MaxLength = 50;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(232, 20);
             this.textBox5.TabIndex = 403;
             // 
             // textBox6
             // 
+            this.textBox6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontphnwr", true));
             this.textBox6.Location = new System.Drawing.Point(108, 337);
+            this.textBox6.MaxLength = 50;
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(232, 20);
             this.textBox6.TabIndex = 401;
@@ -1840,7 +1880,9 @@
             // textBox7
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Location = new System.Drawing.Point(428, 282);
+            this.textBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontzip", true));
+            this.textBox7.Location = new System.Drawing.Point(495, 282);
+            this.textBox7.MaxLength = 50;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(232, 20);
             this.textBox7.TabIndex = 400;
@@ -1848,21 +1890,25 @@
             // textBox8
             // 
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Location = new System.Drawing.Point(428, 257);
+            this.textBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontaddr2", true));
+            this.textBox8.Location = new System.Drawing.Point(495, 257);
+            this.textBox8.MaxLength = 50;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(232, 20);
             this.textBox8.TabIndex = 398;
             // 
             // textBox9
             // 
+            this.textBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontaddr", true));
             this.textBox9.Location = new System.Drawing.Point(108, 257);
+            this.textBox9.MaxLength = 50;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(232, 20);
             this.textBox9.TabIndex = 397;
             // 
             // comboBox2
             // 
-            this.comboBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.mcustBindingSource, "secsource", true));
+            this.comboBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.mcustBindingSource, "nposition", true));
             this.comboBox2.DataSource = this.contpstnBindingSource;
             this.comboBox2.DisplayMember = "Position";
             this.comboBox2.FormattingEnabled = true;
@@ -1880,14 +1926,18 @@
             // txtContactEmail
             // 
             this.txtContactEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtContactEmail.Location = new System.Drawing.Point(428, 167);
+            this.txtContactEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contemail", true));
+            this.txtContactEmail.Location = new System.Drawing.Point(495, 167);
+            this.txtContactEmail.MaxLength = 50;
             this.txtContactEmail.Name = "txtContactEmail";
             this.txtContactEmail.Size = new System.Drawing.Size(232, 20);
             this.txtContactEmail.TabIndex = 391;
             // 
             // contphnwrkTextBox
             // 
+            this.contphnwrkTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contphnwrk", true));
             this.contphnwrkTextBox.Location = new System.Drawing.Point(108, 141);
+            this.contphnwrkTextBox.MaxLength = 50;
             this.contphnwrkTextBox.Name = "contphnwrkTextBox";
             this.contphnwrkTextBox.Size = new System.Drawing.Size(232, 20);
             this.contphnwrkTextBox.TabIndex = 389;
@@ -1895,17 +1945,12 @@
             // contfaxTextBox
             // 
             this.contfaxTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.contfaxTextBox.Location = new System.Drawing.Point(428, 141);
+            this.contfaxTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contfax", true));
+            this.contfaxTextBox.Location = new System.Drawing.Point(495, 141);
+            this.contfaxTextBox.MaxLength = 50;
             this.contfaxTextBox.Name = "contfaxTextBox";
             this.contfaxTextBox.Size = new System.Drawing.Size(232, 20);
             this.contfaxTextBox.TabIndex = 387;
-            // 
-            // contcityTextBox
-            // 
-            this.contcityTextBox.Location = new System.Drawing.Point(108, 85);
-            this.contcityTextBox.Name = "contcityTextBox";
-            this.contcityTextBox.Size = new System.Drawing.Size(232, 20);
-            this.contcityTextBox.TabIndex = 386;
             // 
             // comboBox1
             // 
@@ -1927,7 +1972,9 @@
             // contphnhomTextBox
             // 
             this.contphnhomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.contphnhomTextBox.Location = new System.Drawing.Point(428, 114);
+            this.contphnhomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contphnhom", true));
+            this.contphnhomTextBox.Location = new System.Drawing.Point(495, 114);
+            this.contphnhomTextBox.MaxLength = 50;
             this.contphnhomTextBox.Name = "contphnhomTextBox";
             this.contphnhomTextBox.Size = new System.Drawing.Size(232, 20);
             this.contphnhomTextBox.TabIndex = 381;
@@ -1935,33 +1982,22 @@
             // contzipTextBox
             // 
             this.contzipTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.contzipTextBox.Location = new System.Drawing.Point(428, 85);
+            this.contzipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contzip", true));
+            this.contzipTextBox.Location = new System.Drawing.Point(495, 85);
+            this.contzipTextBox.MaxLength = 50;
             this.contzipTextBox.Name = "contzipTextBox";
             this.contzipTextBox.Size = new System.Drawing.Size(232, 20);
             this.contzipTextBox.TabIndex = 379;
             // 
-            // contaddrTextBox
-            // 
-            this.contaddrTextBox.Location = new System.Drawing.Point(108, 59);
-            this.contaddrTextBox.Name = "contaddrTextBox";
-            this.contaddrTextBox.Size = new System.Drawing.Size(232, 20);
-            this.contaddrTextBox.TabIndex = 376;
-            // 
             // contlnameTextBox
             // 
             this.contlnameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.contlnameTextBox.Location = new System.Drawing.Point(428, 31);
+            this.contlnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contlname", true));
+            this.contlnameTextBox.Location = new System.Drawing.Point(495, 31);
+            this.contlnameTextBox.MaxLength = 50;
             this.contlnameTextBox.Name = "contlnameTextBox";
             this.contlnameTextBox.Size = new System.Drawing.Size(232, 20);
             this.contlnameTextBox.TabIndex = 371;
-            // 
-            // contaddr2TextBox
-            // 
-            this.contaddr2TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.contaddr2TextBox.Location = new System.Drawing.Point(428, 59);
-            this.contaddr2TextBox.Name = "contaddr2TextBox";
-            this.contaddr2TextBox.Size = new System.Drawing.Size(232, 20);
-            this.contaddr2TextBox.TabIndex = 373;
             // 
             // label17
             // 
@@ -1970,7 +2006,7 @@
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label17.Location = new System.Drawing.Point(29, 603);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(1042, 3);
+            this.label17.Size = new System.Drawing.Size(1008, 3);
             this.label17.TabIndex = 278;
             // 
             // btnEmailContact
@@ -1991,7 +2027,7 @@
             this.label28.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label28.Location = new System.Drawing.Point(29, 401);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(1042, 3);
+            this.label28.Size = new System.Drawing.Size(1008, 3);
             this.label28.TabIndex = 276;
             // 
             // label22
@@ -2011,13 +2047,14 @@
             this.lblSeperator1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblSeperator1.Location = new System.Drawing.Point(29, 200);
             this.lblSeperator1.Name = "lblSeperator1";
-            this.lblSeperator1.Size = new System.Drawing.Size(1042, 3);
+            this.lblSeperator1.Size = new System.Drawing.Size(1008, 3);
             this.lblSeperator1.TabIndex = 274;
             // 
             // contfnameTextBox
             // 
             this.contfnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contfname", true));
             this.contfnameTextBox.Location = new System.Drawing.Point(108, 31);
+            this.contfnameTextBox.MaxLength = 50;
             this.contfnameTextBox.Name = "contfnameTextBox";
             this.contfnameTextBox.Size = new System.Drawing.Size(232, 20);
             this.contfnameTextBox.TabIndex = 253;
@@ -2025,26 +2062,26 @@
             // pg2
             // 
             this.pg2.BackColor = System.Drawing.SystemColors.Control;
-            this.pg2.Controls.Add(this.btnSaveInformation);
-            this.pg2.Controls.Add(this.txtInvAddr);
-            this.pg2.Controls.Add(this.txtInvZipcode);
+            this.pg2.Controls.Add(this.txtShpZip);
+            this.pg2.Controls.Add(this.cmbShpState);
+            this.pg2.Controls.Add(this.txtShpCity);
+            this.pg2.Controls.Add(this.txtShpAddr2);
+            this.pg2.Controls.Add(this.txtShpAddr);
+            this.pg2.Controls.Add(this.txtInvZip);
             this.pg2.Controls.Add(this.cmbInvState);
             this.pg2.Controls.Add(this.txtInvCity);
             this.pg2.Controls.Add(this.txtInvAddr2);
+            this.pg2.Controls.Add(this.txtInvAddr);
+            this.pg2.Controls.Add(this.btnSaveInformation);
             this.pg2.Controls.Add(invoiceZipCodeLabel);
             this.pg2.Controls.Add(invoiceStateLabel);
             this.pg2.Controls.Add(invoiceCityLabel);
             this.pg2.Controls.Add(shippingAddr2Label);
-            this.pg2.Controls.Add(this.txtShpAddr);
             this.pg2.Controls.Add(this.label21);
             this.pg2.Controls.Add(shippingZipCodeLabel);
-            this.pg2.Controls.Add(this.txtShpZipcode);
             this.pg2.Controls.Add(shippingStateLabel);
-            this.pg2.Controls.Add(this.cmbShpState);
             this.pg2.Controls.Add(shippingCityLabel);
-            this.pg2.Controls.Add(this.txtShpCity);
             this.pg2.Controls.Add(shippingAddr2Label1);
-            this.pg2.Controls.Add(this.txtShpAddr2);
             this.pg2.Controls.Add(shipppingAddrLabel1);
             this.pg2.Controls.Add(shipppingAddrLabel);
             this.pg2.Controls.Add(this.btnSchoolToShipping);
@@ -2057,65 +2094,124 @@
             this.pg2.TabIndex = 1;
             this.pg2.Text = "Shiping/Invoice Information";
             // 
+            // txtShpZip
+            // 
+            this.txtShpZip.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "shpzip", true));
+            this.txtShpZip.Location = new System.Drawing.Point(248, 400);
+            this.txtShpZip.MaxLength = 50;
+            this.txtShpZip.Name = "txtShpZip";
+            this.txtShpZip.Size = new System.Drawing.Size(230, 20);
+            this.txtShpZip.TabIndex = 120;
+            // 
+            // cmbShpState
+            // 
+            this.cmbShpState.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.mcustBindingSource, "shpstate", true));
+            this.cmbShpState.DataSource = this.statesBindingSourceShp;
+            this.cmbShpState.DisplayMember = "Name";
+            this.cmbShpState.FormattingEnabled = true;
+            this.cmbShpState.Location = new System.Drawing.Point(248, 373);
+            this.cmbShpState.MaxLength = 3;
+            this.cmbShpState.Name = "cmbShpState";
+            this.cmbShpState.Size = new System.Drawing.Size(258, 21);
+            this.cmbShpState.TabIndex = 119;
+            this.cmbShpState.ValueMember = "Abrev";
+            // 
+            // statesBindingSourceShp
+            // 
+            this.statesBindingSourceShp.DataMember = "states";
+            this.statesBindingSourceShp.DataSource = this.lookUp;
+            // 
+            // txtShpCity
+            // 
+            this.txtShpCity.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "shpcity", true));
+            this.txtShpCity.Location = new System.Drawing.Point(248, 347);
+            this.txtShpCity.MaxLength = 50;
+            this.txtShpCity.Name = "txtShpCity";
+            this.txtShpCity.Size = new System.Drawing.Size(230, 20);
+            this.txtShpCity.TabIndex = 118;
+            // 
+            // txtShpAddr2
+            // 
+            this.txtShpAddr2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "shpaddr2", true));
+            this.txtShpAddr2.Location = new System.Drawing.Point(248, 321);
+            this.txtShpAddr2.MaxLength = 50;
+            this.txtShpAddr2.Name = "txtShpAddr2";
+            this.txtShpAddr2.Size = new System.Drawing.Size(230, 20);
+            this.txtShpAddr2.TabIndex = 117;
+            // 
+            // txtShpAddr
+            // 
+            this.txtShpAddr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "shpaddr", true));
+            this.txtShpAddr.Location = new System.Drawing.Point(248, 295);
+            this.txtShpAddr.MaxLength = 50;
+            this.txtShpAddr.Name = "txtShpAddr";
+            this.txtShpAddr.Size = new System.Drawing.Size(233, 20);
+            this.txtShpAddr.TabIndex = 116;
+            // 
+            // txtInvZip
+            // 
+            this.txtInvZip.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "invzip", true));
+            this.txtInvZip.Location = new System.Drawing.Point(248, 196);
+            this.txtInvZip.MaxLength = 50;
+            this.txtInvZip.Name = "txtInvZip";
+            this.txtInvZip.Size = new System.Drawing.Size(233, 20);
+            this.txtInvZip.TabIndex = 115;
+            // 
+            // cmbInvState
+            // 
+            this.cmbInvState.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "invstate", true));
+            this.cmbInvState.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.mcustBindingSource, "invstate", true));
+            this.cmbInvState.DataSource = this.statesBindingSourceInv;
+            this.cmbInvState.DisplayMember = "Name";
+            this.cmbInvState.FormattingEnabled = true;
+            this.cmbInvState.Location = new System.Drawing.Point(248, 169);
+            this.cmbInvState.MaxLength = 3;
+            this.cmbInvState.Name = "cmbInvState";
+            this.cmbInvState.Size = new System.Drawing.Size(258, 21);
+            this.cmbInvState.TabIndex = 114;
+            this.cmbInvState.ValueMember = "Abrev";
+            // 
+            // statesBindingSourceInv
+            // 
+            this.statesBindingSourceInv.DataMember = "states";
+            this.statesBindingSourceInv.DataSource = this.lookUp;
+            // 
+            // txtInvCity
+            // 
+            this.txtInvCity.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "invcity", true));
+            this.txtInvCity.Location = new System.Drawing.Point(248, 143);
+            this.txtInvCity.MaxLength = 50;
+            this.txtInvCity.Name = "txtInvCity";
+            this.txtInvCity.Size = new System.Drawing.Size(230, 20);
+            this.txtInvCity.TabIndex = 113;
+            // 
+            // txtInvAddr2
+            // 
+            this.txtInvAddr2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "invaddr2", true));
+            this.txtInvAddr2.Location = new System.Drawing.Point(248, 117);
+            this.txtInvAddr2.MaxLength = 50;
+            this.txtInvAddr2.Name = "txtInvAddr2";
+            this.txtInvAddr2.Size = new System.Drawing.Size(230, 20);
+            this.txtInvAddr2.TabIndex = 112;
+            // 
+            // txtInvAddr
+            // 
+            this.txtInvAddr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "invaddr", true));
+            this.txtInvAddr.Location = new System.Drawing.Point(248, 92);
+            this.txtInvAddr.MaxLength = 50;
+            this.txtInvAddr.Name = "txtInvAddr";
+            this.txtInvAddr.Size = new System.Drawing.Size(230, 20);
+            this.txtInvAddr.TabIndex = 111;
+            // 
             // btnSaveInformation
             // 
-            this.btnSaveInformation.Location = new System.Drawing.Point(248, 445);
+            this.btnSaveInformation.Location = new System.Drawing.Point(311, 437);
             this.btnSaveInformation.Name = "btnSaveInformation";
             this.btnSaveInformation.Size = new System.Drawing.Size(143, 23);
             this.btnSaveInformation.TabIndex = 110;
             this.btnSaveInformation.Text = "Save Address Information";
             this.btnSaveInformation.UseVisualStyleBackColor = true;
-            // 
-            // txtInvAddr
-            // 
-            this.txtInvAddr.Location = new System.Drawing.Point(223, 91);
-            this.txtInvAddr.MaxLength = 50;
-            this.txtInvAddr.Name = "txtInvAddr";
-            this.txtInvAddr.Size = new System.Drawing.Size(230, 20);
-            this.txtInvAddr.TabIndex = 109;
-            // 
-            // txtInvZipcode
-            // 
-            this.txtInvZipcode.Location = new System.Drawing.Point(223, 196);
-            this.txtInvZipcode.MaxLength = 5;
-            this.txtInvZipcode.Name = "txtInvZipcode";
-            this.txtInvZipcode.Size = new System.Drawing.Size(230, 20);
-            this.txtInvZipcode.TabIndex = 108;
-            // 
-            // cmbInvState
-            // 
-            this.cmbInvState.DisplayMember = "Name";
-            this.cmbInvState.FormattingEnabled = true;
-            this.cmbInvState.Location = new System.Drawing.Point(223, 169);
-            this.cmbInvState.MaxLength = 3;
-            this.cmbInvState.Name = "cmbInvState";
-            this.cmbInvState.Size = new System.Drawing.Size(251, 21);
-            this.cmbInvState.TabIndex = 107;
-            this.cmbInvState.ValueMember = "Abrev";
-            // 
-            // txtInvCity
-            // 
-            this.txtInvCity.Location = new System.Drawing.Point(223, 143);
-            this.txtInvCity.MaxLength = 50;
-            this.txtInvCity.Name = "txtInvCity";
-            this.txtInvCity.Size = new System.Drawing.Size(230, 20);
-            this.txtInvCity.TabIndex = 106;
-            // 
-            // txtInvAddr2
-            // 
-            this.txtInvAddr2.Location = new System.Drawing.Point(223, 117);
-            this.txtInvAddr2.MaxLength = 50;
-            this.txtInvAddr2.Name = "txtInvAddr2";
-            this.txtInvAddr2.Size = new System.Drawing.Size(230, 20);
-            this.txtInvAddr2.TabIndex = 105;
-            // 
-            // txtShpAddr
-            // 
-            this.txtShpAddr.Location = new System.Drawing.Point(248, 295);
-            this.txtShpAddr.MaxLength = 50;
-            this.txtShpAddr.Name = "txtShpAddr";
-            this.txtShpAddr.Size = new System.Drawing.Size(230, 20);
-            this.txtShpAddr.TabIndex = 100;
+            this.btnSaveInformation.Click += new System.EventHandler(this.btnSaveInformation_Click_1);
             // 
             // label21
             // 
@@ -2127,44 +2223,9 @@
             this.label21.TabIndex = 99;
             this.label21.Text = "Shipping Information";
             // 
-            // txtShpZipcode
-            // 
-            this.txtShpZipcode.Location = new System.Drawing.Point(248, 400);
-            this.txtShpZipcode.MaxLength = 5;
-            this.txtShpZipcode.Name = "txtShpZipcode";
-            this.txtShpZipcode.Size = new System.Drawing.Size(230, 20);
-            this.txtShpZipcode.TabIndex = 98;
-            // 
-            // cmbShpState
-            // 
-            this.cmbShpState.DisplayMember = "Name";
-            this.cmbShpState.FormattingEnabled = true;
-            this.cmbShpState.Location = new System.Drawing.Point(248, 373);
-            this.cmbShpState.MaxLength = 3;
-            this.cmbShpState.Name = "cmbShpState";
-            this.cmbShpState.Size = new System.Drawing.Size(251, 21);
-            this.cmbShpState.TabIndex = 96;
-            this.cmbShpState.ValueMember = "Abrev";
-            // 
-            // txtShpCity
-            // 
-            this.txtShpCity.Location = new System.Drawing.Point(248, 347);
-            this.txtShpCity.MaxLength = 50;
-            this.txtShpCity.Name = "txtShpCity";
-            this.txtShpCity.Size = new System.Drawing.Size(230, 20);
-            this.txtShpCity.TabIndex = 94;
-            // 
-            // txtShpAddr2
-            // 
-            this.txtShpAddr2.Location = new System.Drawing.Point(248, 321);
-            this.txtShpAddr2.MaxLength = 50;
-            this.txtShpAddr2.Name = "txtShpAddr2";
-            this.txtShpAddr2.Size = new System.Drawing.Size(230, 20);
-            this.txtShpAddr2.TabIndex = 92;
-            // 
             // btnSchoolToShipping
             // 
-            this.btnSchoolToShipping.Location = new System.Drawing.Point(521, 327);
+            this.btnSchoolToShipping.Location = new System.Drawing.Point(487, 295);
             this.btnSchoolToShipping.Name = "btnSchoolToShipping";
             this.btnSchoolToShipping.Size = new System.Drawing.Size(129, 23);
             this.btnSchoolToShipping.TabIndex = 66;
@@ -2174,7 +2235,7 @@
             // 
             // btnSchoolToInvoice
             // 
-            this.btnSchoolToInvoice.Location = new System.Drawing.Point(521, 88);
+            this.btnSchoolToInvoice.Location = new System.Drawing.Point(487, 92);
             this.btnSchoolToInvoice.Name = "btnSchoolToInvoice";
             this.btnSchoolToInvoice.Size = new System.Drawing.Size(129, 23);
             this.btnSchoolToInvoice.TabIndex = 47;
@@ -2191,16 +2252,6 @@
             this.label20.Size = new System.Drawing.Size(163, 20);
             this.label20.TabIndex = 45;
             this.label20.Text = "Invoice Information";
-            // 
-            // statesBindingSourceInv
-            // 
-            this.statesBindingSourceInv.DataMember = "states";
-            this.statesBindingSourceInv.DataSource = this.lookUp;
-            // 
-            // statesBindingSourceShp
-            // 
-            this.statesBindingSourceShp.DataMember = "states";
-            this.statesBindingSourceShp.DataSource = this.lookUp;
             // 
             // mcustTableAdapter
             // 
@@ -2254,6 +2305,8 @@
             this.MinimumSize = new System.Drawing.Size(1200, 39);
             this.Name = "frmMerCust";
             this.Text = "Meridian Customers";
+            this.Activated += new System.EventHandler(this.frmMerCust_Activated);
+            this.Deactivate += new System.EventHandler(this.frmMerCust_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMerCust_FormClosing);
             this.Load += new System.EventHandler(this.frmMerCust_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmMerCust_Paint);
@@ -2281,8 +2334,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsStateContact1)).EndInit();
             this.pg2.ResumeLayout(false);
             this.pg2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceInv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceShp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSourceInv)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -2304,7 +2357,7 @@
         private System.Windows.Forms.CheckBox chkTaxExempt;
         private System.Windows.Forms.DateTimePicker taxExemptRecvdDateTimePicker;
         private System.Windows.Forms.TextBox junsnoTextBox;
-        private System.Windows.Forms.TextBox oracleCodeTextBox;
+        private System.Windows.Forms.TextBox txtOracleCode;
         private System.Windows.Forms.ComboBox statusComboBox;
         private System.Windows.Forms.ComboBox stagingComboBox;
         private System.Windows.Forms.DateTimePicker dedayoutDateTimePicker;
@@ -2320,7 +2373,7 @@
         private System.Windows.Forms.DateTimePicker sourdateDateTimePicker;
         private System.Windows.Forms.ComboBox josnameComboBox;
         private System.Windows.Forms.ComboBox leadsourceComboBox;
-        private System.Windows.Forms.TextBox contryearTextBox;
+        private System.Windows.Forms.TextBox txtContryear;
         private System.Windows.Forms.CheckBox schuploadiCheckBox;
         private System.Windows.Forms.ComboBox multiyroptComboBox;
         private System.Windows.Forms.DateTimePicker initcontDateTimePicker;
@@ -2377,22 +2430,9 @@
         private DataSets.LookUpTableAdapters.contpstnTableAdapter contpstnTableAdapter;
         private System.Windows.Forms.BindingSource contpstnBiningSource2;
         private System.Windows.Forms.Button btnSchoolToShipping;
-        private System.Windows.Forms.TextBox txtInvAddr;
-        private System.Windows.Forms.TextBox txtInvZipcode;
-        private System.Windows.Forms.ComboBox cmbInvState;
-        private System.Windows.Forms.TextBox txtInvCity;
-        private System.Windows.Forms.TextBox txtInvAddr2;
-        private System.Windows.Forms.TextBox txtShpAddr;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txtShpZipcode;
-        private System.Windows.Forms.ComboBox cmbShpState;
-        private System.Windows.Forms.TextBox txtShpCity;
-        private System.Windows.Forms.TextBox txtShpAddr2;
         private System.Windows.Forms.Button btnSaveInformation;
-        private System.Windows.Forms.TextBox contaddrTextBox;
         private System.Windows.Forms.TextBox contlnameTextBox;
-        private System.Windows.Forms.TextBox contaddr2TextBox;
-        private System.Windows.Forms.TextBox contcityTextBox;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox contphnhomTextBox;
         private System.Windows.Forms.TextBox contzipTextBox;
@@ -2414,5 +2454,18 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox contaddr2TextBox1;
+        private System.Windows.Forms.TextBox contaddrTextBox1;
+        private System.Windows.Forms.TextBox contcityTextBox;
+        private System.Windows.Forms.TextBox txtShpZip;
+        private System.Windows.Forms.ComboBox cmbShpState;
+        private System.Windows.Forms.TextBox txtShpCity;
+        private System.Windows.Forms.TextBox txtShpAddr2;
+        private System.Windows.Forms.TextBox txtShpAddr;
+        private System.Windows.Forms.TextBox txtInvZip;
+        private System.Windows.Forms.ComboBox cmbInvState;
+        private System.Windows.Forms.TextBox txtInvCity;
+        private System.Windows.Forms.TextBox txtInvAddr2;
+        private System.Windows.Forms.TextBox txtInvAddr;
     }
     }

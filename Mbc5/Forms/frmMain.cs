@@ -51,12 +51,19 @@ namespace Mbc5.Forms
                 tsLastNameSearch.Visible = true;
                 tsZipCodeSearch.Visible = true;
                 tsEmailSearch.Visible = true;
-            }else if (formName == "frmSales")
+            } else if (formName == "frmMerCust") {
+                tsFirstNameSearch.Visible = true;
+                tsLastNameSearch.Visible = true;
+                tsZipCodeSearch.Visible = true;
+                tsEmailSearch.Visible = true;
+
+
+            } else if (formName == "frmSales")
             {
                 tsProdutnNumberSearch.Visible = false;
-            }else if (formName == "frmBids")
+            } else if (formName == "frmBids")
             {
-            
+
                 tsInvno.Visible = false;
                 tsProdutnNumberSearch.Visible = false;
                 tsOracleCodeSearch.Visible = false;
@@ -745,7 +752,7 @@ namespace Mbc5.Forms
             SqlParameter[] parameters = new SqlParameter[] { };
             var strQuery = "Select * from Spcover";
             var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-            int? coverNum = null;
+            int coverNum = 0;
             try
             {
                 coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
