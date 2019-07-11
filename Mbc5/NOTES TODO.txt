@@ -1,3 +1,4 @@
 ﻿1. Sales form update is slow when in debug. When not debugging runs fine. https://social.msdn.microsoft.com/Forums/en-US/f763319b-4e5c-45a0-aaaa-34cd198e3a3a/sqlclientsqldataadapterupdate-performs-very-slowly?forum=adodotnetdataproviders
 2.Get row error (constraint errors)https://stackoverflow.com/questions/7026566/failed-to-enable-constraints-one-or-more-rows-contain-values-violating-non-null
 var a=dsMcust.Tables["mcust"].GetErrors();
+3. Excptionless login. randy.woodall@jostens.com/Briggitte1

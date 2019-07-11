@@ -178,6 +178,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMktInfo.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsMSales.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMSales.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsProdutn.cs">
       <DependentUpon>dsProdutn.xsd</DependentUpon>
     </Compile>
@@ -646,6 +651,17 @@
     </None>
     <None Include="DataSets\dsMcust.xss">
       <DependentUpon>dsMcust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMSales.xsc">
+      <DependentUpon>dsMSales.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMSales.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMSales.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsMSales.xss">
+      <DependentUpon>dsMSales.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsRcard.xsc">
       <DependentUpon>dsRcard.xsd</DependentUpon>

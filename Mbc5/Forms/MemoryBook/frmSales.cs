@@ -163,6 +163,15 @@ namespace Mbc5.Forms.MemoryBook
         private bool StartUp { get; set; }
         #endregion
         #region "Methods"
+        private void SetNoticeLabels()
+        {
+            DataRowView dr = (DataRowView)quotesBindingSource.Current;
+            bool vHoldPayment =dr.Row.IsNull("holdpmt") ?false:(bool) dr.Row["holdpmt"];
+            lblIncollections.Visible = vHoldPayment;
+            bool vshpdate = dr.Row.IsNull("shpdate");
+            lblShipped.Visible = !vshpdate;
+
+        }
         private void ReminderEmails(string type)
         {
             if (type == "Half")
@@ -1980,6 +1989,7 @@ namespace Mbc5.Forms.MemoryBook
             txtModifiedByInv.Text = this.ApplicationUser.id;
             txtModifiedByInvdetail.Text = this.ApplicationUser.id;
             txtModifiedByPay.Text = this.ApplicationUser.id;
+            SetNoticeLabels();
         }
         public override ApiProcessingResult<bool> Save()
         {
@@ -5111,6 +5121,11 @@ namespace Mbc5.Forms.MemoryBook
         private void btnRemove_Click(object sender, EventArgs e)
         {
             ReminderEmails("Removing5");
+        }
+
+        private void holdpmtCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            SetNoticeLabels();
         }
 
 

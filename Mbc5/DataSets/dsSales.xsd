@@ -215,23 +215,22 @@ SELECT invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, p
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT        quotes.invno, quotes.prodno, quotes.booktype, quotes.qtedate, quotes.contryear, quotes.book_ea, quotes.book_price, quotes.pryn, quotes.prof, quotes.coyn, quotes.conven, quotes.specea, quotes.speccvr, 
-                         quotes.scovrde, quotes.layn, quotes.laminate, quotes.peyn, quotes.perfbind, quotes.foilck, quotes.foilamt, quotes.insck, quotes.insamt, quotes.spirck, quotes.spiramt, quotes.hdbky_n, quotes.hardback, 
-                         quotes.casey_n, quotes.caseamt, quotes.customy_n, quotes.customized, quotes.misc, quotes.mdesc, quotes.sbtot, quotes.dc1, quotes.dp1, quotes.disc1, quotes.dc2, quotes.dp2, quotes.disc2, quotes.dp3desc, 
-                         quotes.dp3, quotes.disc3, quotes.dp4, quotes.disc4, quotes.cred_etc, quotes.adjbef, quotes.adjaftr, quotes.fbkprc, quotes.ftotprc, quotes.source, quotes.xtrabkno, quotes.xtrabkprc, quotes.desc1, quotes.desc1tot, 
-                         quotes.desc2, quotes.desc2tot, quotes.ponum, quotes.invoiced, quotes.newprice, quotes.schout, quotes.saletax, quotes.allclrck, quotes.allclramt, quotes.inkclr, quotes.foiladamt, quotes.desc3, quotes.desc3tot, 
-                         quotes.desc4, quotes.desc4tot, quotes.clrpgdesc, quotes.clrpgtot, quotes.glspaper, quotes.glsamt, quotes.acovrde, quotes.bpovrde, quotes.holdpmt, quotes.bpyear, quotes.themck, quotes.themamt, 
-                         quotes.yirschool, quotes.story, quotes.supplements, quotes.yiramt, quotes.storyamt, quotes.suppamt, quotes.persamount, quotes.perstotal, quotes.perscopies, quotes.oursupp, quotes.oursuppamt, 
-                         quotes.ourovrride, quotes.dp1desc, quotes.rebookinvremv, quotes.rebookinvremv1, quotes.rebookinvremv2, quotes.rebookinvremv3, quotes.rebookinvremv4, quotes.rebookinvremv5, quotes.rebookinvremv6, 
-                         quotes.norebookletter, quotes.myovrride, quotes.hbovrride, quotes.profovrride, quotes.conovrride, quotes.themovrride, quotes.cbovrride, quotes.spiovrride, quotes.pbovrride, quotes.yirsovrride, 
-                         quotes.ourstyovrride, quotes.laminateovrride, quotes.foilyearovrride, quotes.sdlstich, quotes.sdlstichamt, quotes.copiesovride, quotes.bascicpp, quotes.perpp, quotes.agreerec, quotes.basicamoun, 
-                         quotes.peramount, quotes.oprcperbk, quotes.oprcperbk2, quotes.agreedte, quotes.onlinecuto, quotes.basicpp, quotes.msstanqty, quotes.msstandtot, quotes.fldtype, quotes.isfolder, quotes.priceovrd, 
-                         quotes.mlamsoft, quotes.mlamhrd, quotes.mlaminationamt, quotes.mlamination, quotes.opinkpers, quotes.opfoilpers, quotes.opinkpersamt, quotes.opfoilpersamt, quotes.oppicpers, quotes.oppicpersamt, 
-                         quotes.opcustom, quotes.opcustomamt, quotes.opfoiltxtamt, quotes.opfoiltxt, quotes.opinkamt, quotes.opink, quotes.yrdiscount, quotes.luvlines, quotes.yrdiscountamt, quotes.luvlineamt, quotes.fullad, 
-                         quotes.fulladamt, quotes.halfad, quotes.halfadamt, quotes.quarterad, quotes.quarteradamt, quotes.eighthad, quotes.eighthadamt, quotes.adline, quotes.cred_etc2, quotes.desc22, quotes.adjaftr2, 
-                         quotes.desc22tot, quotes.prcor, quotes.adcuto, quotes.webonly, quotes.totalsoldonline, quotes.totalpersonline, quotes.totaldollarsonline, quotes.freebooks, quotes.totalads, quotes.totallovelines, 
-                         quotes.TimeStamp, quotes.onlinenotes, quotes.ModifiedBy, quotes.DateModified, quotes.DateCreated, quotes.IconCopies, quotes.IconAmt, quotes.extrchg, quotes.schooltaxrate, quotes.schcode, 
-                         quotes.donotchargeschoolsalestax, quotes.nopages, quotes.nocopies, quotes.schooltax, produtn.kitrecvd, produtn.jobno
+                    <CommandText>SELECT        quotes.invno, quotes.prodno, quotes.booktype, quotes.qtedate, quotes.contryear, quotes.book_ea, quotes.book_price, quotes.pryn, quotes.prof, quotes.coyn, quotes.conven, quotes.specea, quotes.speccvr, quotes.scovrde, 
+                         quotes.layn, quotes.laminate, quotes.peyn, quotes.perfbind, quotes.foilck, quotes.foilamt, quotes.insck, quotes.insamt, quotes.spirck, quotes.spiramt, quotes.hdbky_n, quotes.hardback, quotes.casey_n, quotes.caseamt, 
+                         quotes.customy_n, quotes.customized, quotes.misc, quotes.mdesc, quotes.sbtot, quotes.dc1, quotes.dp1, quotes.disc1, quotes.dc2, quotes.dp2, quotes.disc2, quotes.dp3desc, quotes.dp3, quotes.disc3, quotes.dp4, 
+                         quotes.disc4, quotes.cred_etc, quotes.adjbef, quotes.adjaftr, quotes.fbkprc, quotes.ftotprc, quotes.source, quotes.xtrabkno, quotes.xtrabkprc, quotes.desc1, quotes.desc1tot, quotes.desc2, quotes.desc2tot, quotes.ponum, 
+                         quotes.invoiced, quotes.newprice, quotes.schout, quotes.saletax, quotes.allclrck, quotes.allclramt, quotes.inkclr, quotes.foiladamt, quotes.desc3, quotes.desc3tot, quotes.desc4, quotes.desc4tot, quotes.clrpgdesc, 
+                         quotes.clrpgtot, quotes.glspaper, quotes.glsamt, quotes.acovrde, quotes.bpovrde, quotes.holdpmt, quotes.bpyear, quotes.themck, quotes.themamt, quotes.yirschool, quotes.story, quotes.supplements, quotes.yiramt, 
+                         quotes.storyamt, quotes.suppamt, quotes.persamount, quotes.perstotal, quotes.perscopies, quotes.oursupp, quotes.oursuppamt, quotes.ourovrride, quotes.dp1desc, quotes.rebookinvremv, quotes.rebookinvremv1, 
+                         quotes.rebookinvremv2, quotes.rebookinvremv3, quotes.rebookinvremv4, quotes.rebookinvremv5, quotes.rebookinvremv6, quotes.norebookletter, quotes.myovrride, quotes.hbovrride, quotes.profovrride, quotes.conovrride, 
+                         quotes.themovrride, quotes.cbovrride, quotes.spiovrride, quotes.pbovrride, quotes.yirsovrride, quotes.ourstyovrride, quotes.laminateovrride, quotes.foilyearovrride, quotes.sdlstich, quotes.sdlstichamt, quotes.copiesovride, 
+                         quotes.bascicpp, quotes.perpp, quotes.agreerec, quotes.basicamoun, quotes.peramount, quotes.oprcperbk, quotes.oprcperbk2, quotes.agreedte, quotes.onlinecuto, quotes.basicpp, quotes.msstanqty, quotes.msstandtot, 
+                         quotes.fldtype, quotes.isfolder, quotes.priceovrd, quotes.mlamsoft, quotes.mlamhrd, quotes.mlaminationamt, quotes.mlamination, quotes.opinkpers, quotes.opfoilpers, quotes.opinkpersamt, quotes.opfoilpersamt, 
+                         quotes.oppicpers, quotes.oppicpersamt, quotes.opcustom, quotes.opcustomamt, quotes.opfoiltxtamt, quotes.opfoiltxt, quotes.opinkamt, quotes.opink, quotes.yrdiscount, quotes.luvlines, quotes.yrdiscountamt, quotes.luvlineamt,
+                          quotes.fullad, quotes.fulladamt, quotes.halfad, quotes.halfadamt, quotes.quarterad, quotes.quarteradamt, quotes.eighthad, quotes.eighthadamt, quotes.adline, quotes.cred_etc2, quotes.desc22, quotes.adjaftr2, 
+                         quotes.desc22tot, quotes.prcor, quotes.adcuto, quotes.webonly, quotes.totalsoldonline, quotes.totalpersonline, quotes.totaldollarsonline, quotes.freebooks, quotes.totalads, quotes.totallovelines, quotes.TimeStamp, 
+                         quotes.onlinenotes, quotes.ModifiedBy, quotes.DateModified, quotes.DateCreated, quotes.IconCopies, quotes.IconAmt, quotes.extrchg, quotes.schooltaxrate, quotes.schcode, quotes.donotchargeschoolsalestax, 
+                         quotes.nopages, quotes.nocopies, quotes.schooltax, produtn.kitrecvd, produtn.jobno, produtn.shpdate
 FROM            quotes INNER JOIN
                          produtn ON quotes.invno = produtn.invno
 WHERE        (quotes.schcode = @schcode)
@@ -648,6 +647,7 @@ SELECT invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, p
               <Mapping SourceColumn="msstanqty" DataSetColumn="msstanqty1" />
               <Mapping SourceColumn="kitrecvd" DataSetColumn="kitrecvd" />
               <Mapping SourceColumn="jobno" DataSetColumn="jobno" />
+              <Mapping SourceColumn="shpdate" DataSetColumn="shpdate" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.quotes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInvno">
@@ -1097,7 +1097,7 @@ WHERE        (invno = @Invno)</CommandText>
   <xs:element name="dsSales" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsSales" msprop:Generator_UserDSName="dsSales">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="quotes" msprop:Generator_TableClassName="quotesDataTable" msprop:Generator_TableVarName="tablequotes" msprop:Generator_RowChangedName="quotesRowChanged" msprop:Generator_TablePropName="quotes" msprop:Generator_RowDeletingName="quotesRowDeleting" msprop:Generator_RowChangingName="quotesRowChanging" msprop:Generator_RowEvHandlerName="quotesRowChangeEventHandler" msprop:Generator_RowDeletedName="quotesRowDeleted" msprop:Generator_RowClassName="quotesRow" msprop:Generator_UserTableName="quotes" msprop:Generator_RowEvArgName="quotesRowChangeEvent">
+        <xs:element name="quotes" msprop:Generator_TableClassName="quotesDataTable" msprop:Generator_TableVarName="tablequotes" msprop:Generator_TablePropName="quotes" msprop:Generator_RowDeletingName="quotesRowDeleting" msprop:Generator_RowChangingName="quotesRowChanging" msprop:Generator_RowEvHandlerName="quotesRowChangeEventHandler" msprop:Generator_RowDeletedName="quotesRowDeleted" msprop:Generator_UserTableName="quotes" msprop:Generator_RowChangedName="quotesRowChanged" msprop:Generator_RowEvArgName="quotesRowChangeEvent" msprop:Generator_RowClassName="quotesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="invno" msprop:Generator_ColumnVarNameInTable="columninvno" msprop:Generator_ColumnPropNameInRow="invno" msprop:Generator_ColumnPropNameInTable="invnoColumn" msprop:Generator_UserColumnName="invno" type="xs:int" />
@@ -1434,10 +1434,11 @@ WHERE        (invno = @Invno)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="shpdate" msprop:Generator_ColumnVarNameInTable="columnshpdate" msprop:Generator_ColumnPropNameInRow="shpdate" msprop:Generator_ColumnPropNameInTable="shpdateColumn" msprop:Generator_UserColumnName="shpdate" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_RowClassName="custRow" msprop:Generator_UserTableName="cust" msprop:Generator_RowEvArgName="custRowChangeEvent">
+        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_UserTableName="cust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_RowEvArgName="custRowChangeEvent" msprop:Generator_RowClassName="custRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -1598,7 +1599,7 @@ WHERE        (invno = @Invno)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="InvHst" msprop:Generator_TableClassName="InvHstDataTable" msprop:Generator_TableVarName="tableInvHst" msprop:Generator_TablePropName="InvHst" msprop:Generator_RowDeletingName="InvHstRowDeleting" msprop:Generator_RowChangingName="InvHstRowChanging" msprop:Generator_RowEvHandlerName="InvHstRowChangeEventHandler" msprop:Generator_RowDeletedName="InvHstRowDeleted" msprop:Generator_UserTableName="InvHst" msprop:Generator_RowChangedName="InvHstRowChanged" msprop:Generator_RowEvArgName="InvHstRowChangeEvent" msprop:Generator_RowClassName="InvHstRow">
+        <xs:element name="InvHst" msprop:Generator_TableClassName="InvHstDataTable" msprop:Generator_TableVarName="tableInvHst" msprop:Generator_RowChangedName="InvHstRowChanged" msprop:Generator_TablePropName="InvHst" msprop:Generator_RowDeletingName="InvHstRowDeleting" msprop:Generator_RowChangingName="InvHstRowChanging" msprop:Generator_RowEvHandlerName="InvHstRowChangeEventHandler" msprop:Generator_RowDeletedName="InvHstRowDeleted" msprop:Generator_RowClassName="InvHstRow" msprop:Generator_UserTableName="InvHst" msprop:Generator_RowEvArgName="InvHstRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="invno" msprop:Generator_ColumnVarNameInTable="columninvno" msprop:Generator_ColumnPropNameInRow="invno" msprop:Generator_ColumnPropNameInTable="invnoColumn" msprop:Generator_UserColumnName="invno" type="xs:decimal" />
