@@ -94,7 +94,7 @@
             System.Windows.Forms.Label label12;
             System.Windows.Forms.Label label13;
             System.Windows.Forms.Label label14;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
             this.merCustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
@@ -222,6 +222,7 @@
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.contpstnTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.contpstnTableAdapter();
+            this.button2 = new System.Windows.Forms.Button();
             schnameLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             taxExemptRecvdLabel = new System.Windows.Forms.Label();
@@ -973,6 +974,7 @@
             // pg1
             // 
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.button2);
             this.pg1.Controls.Add(this.lblInvno);
             this.pg1.Controls.Add(this.lblSchcode);
             this.pg1.Controls.Add(this.lblAppUser);
@@ -1059,14 +1061,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.qInvnoDataGridViewTextBoxColumn,
@@ -2297,6 +2299,16 @@
             // 
             this.contpstnTableAdapter.ClearBeforeFill = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(8, 8);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 65;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frmMerCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2467,5 +2479,6 @@
         private System.Windows.Forms.TextBox txtInvCity;
         private System.Windows.Forms.TextBox txtInvAddr2;
         private System.Windows.Forms.TextBox txtInvAddr;
+        private System.Windows.Forms.Button button2;
     }
     }

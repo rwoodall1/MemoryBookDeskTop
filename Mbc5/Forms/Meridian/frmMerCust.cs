@@ -12,6 +12,8 @@ using BaseClass.Core;
 using Exceptionless;
 using Mbc5.Dialogs;
 using System.Data.SqlClient;
+using System.Reflection;
+using BindingModels;
 namespace Mbc5.Forms.Meridian {
     public partial class frmMerCust : BaseClass.Forms.bTopBottom {
         public frmMerCust(UserPrincipal userPrincipal) : base(new string[] { "SA","Administrator","MerCS" },userPrincipal) {
@@ -981,6 +983,45 @@ namespace Mbc5.Forms.Meridian {
             AddSalesRecord();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Test();
+        }
+        private void Test()
+        {
+           
+                var sqlQuery = new SQLCustomClient();
+                sqlQuery.ClearParameters();
+                
+               
+                sqlQuery.CommandText(@"
+                SELECT * From MeridianPricing where Type='LF' and yr='19' 
+                ");
+                
+                var pricingResult = sqlQuery.Select<MeridianPrice>();
+                if (pricingResult.IsError)
+                {
+                    ExceptionlessClient.Default.CreateLog("Error getting Meridian Pricing")
+                        .AddObject(pricingResult)
+                        .MarkAsCritical()
+                        .Submit();
+                    MbcMessageBox.Error("Failed to get meridian pricing" + pricingResult.Errors[0].DeveloperMessage);
+                 
+                }
+                
+                var Pricing = (MeridianPrice)pricingResult.Data;
+            ///
+            var qtyField = "Q400";
+
+            var a=ObjectFieldValue.Get<MeridianPrice>(qtyField,Pricing);
+
+
+
+
+
+            return;
+            
+        }
         //nothing below here
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mbc5.Classes
+namespace BindingModels
 {
     public class Price
     {
@@ -101,5 +101,30 @@ namespace Mbc5.Classes
         public Decimal Pg360 { get; set; }
        
      
+    }
+    public class MeridianPrice
+    {
+        public int Id { get; set; }
+        public string Yr { get; set; }
+        public string Type { get; set; }
+        public decimal Q2000 { get; set; }
+        public decimal Q1000 { get; set; }
+        public decimal Q800 { get; set; }
+        public decimal Q600 { get; set; }
+        public decimal Q400 { get; set; }
+        public decimal Q300 { get; set; }
+        public decimal Q250 { get; set; }
+        public decimal Q200 { get; set; }
+        public decimal Q100 { get; set; }
+        public decimal Generic{ get; set; }
+        public decimal GenericCL { get; set; }
+        public decimal GenericM { get; set; }
+        public decimal Jostens { get; set; }
+        public decimal StandardPageCost { get; set; }
+        public decimal EightPageCost { get; set; }
+        public decimal FourPageCost { get; set; }
+        public decimal ZeroPageCost { get; set; }
+
+
     }
 }

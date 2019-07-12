@@ -81,9 +81,12 @@
             System.Windows.Forms.Label label18;
             System.Windows.Forms.Label label16;
             this.schcodeLabel1 = new System.Windows.Forms.Label();
+            this.mquotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsMSales = new Mbc5.DataSets.dsMSales();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lblAppUser = new System.Windows.Forms.Label();
             this.txtPOAmt = new System.Windows.Forms.TextBox();
             this.txtPayments = new System.Windows.Forms.TextBox();
             this.salesTaxReceivedTextBox = new System.Windows.Forms.TextBox();
@@ -103,6 +106,7 @@
             this.totoptionprcTextBox = new System.Windows.Forms.TextBox();
             this.specprcTextBox = new System.Windows.Forms.TextBox();
             this.desc4TextBox1 = new System.Windows.Forms.TextBox();
+            this.coversBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.desc3TextBox1 = new System.Windows.Forms.TextBox();
             this.desc2TextBox1 = new System.Windows.Forms.TextBox();
             this.impquidprcTextBox = new System.Windows.Forms.TextBox();
@@ -127,18 +131,18 @@
             this.hallpqtyTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.wghtTextBox = new System.Windows.Forms.TextBox();
-            this.jostensCheckBox = new System.Windows.Forms.CheckBox();
-            this.genericCheckBox = new System.Windows.Forms.CheckBox();
+            this.chkJostens = new System.Windows.Forms.CheckBox();
+            this.chkGeneric = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.line = new System.Windows.Forms.Label();
             this.basetotTextBox1 = new System.Windows.Forms.TextBox();
             this.basetotTextBox = new System.Windows.Forms.TextBox();
             this.baseprcTextBox = new System.Windows.Forms.TextBox();
-            this.priceovrdTextBox = new System.Windows.Forms.TextBox();
-            this.nopagesTextBox = new System.Windows.Forms.TextBox();
-            this.qtytotTextBox = new System.Windows.Forms.TextBox();
-            this.qtystudTextBox = new System.Windows.Forms.TextBox();
-            this.qtyteacherTextBox = new System.Windows.Forms.TextBox();
+            this.txtPriceOverRide = new System.Windows.Forms.TextBox();
+            this.txtNoPages = new System.Windows.Forms.TextBox();
+            this.txtTotalQty = new System.Windows.Forms.TextBox();
+            this.txtQtyStudent = new System.Windows.Forms.TextBox();
+            this.txtQtyTeacher = new System.Windows.Forms.TextBox();
             this.mdescTextBox = new System.Windows.Forms.TextBox();
             this.sbtotTextBox = new System.Windows.Forms.TextBox();
             this.miscTextBox = new System.Windows.Forms.TextBox();
@@ -166,7 +170,7 @@
             this.sourceTextBox = new System.Windows.Forms.TextBox();
             this.chkindateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.lblInvno = new System.Windows.Forms.Label();
-            this.bpyearTextBox = new System.Windows.Forms.TextBox();
+            this.txtBpYear = new System.Windows.Forms.TextBox();
             this.contryearTextBox = new System.Windows.Forms.TextBox();
             this.prodcodeComboBox = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -177,13 +181,11 @@
             this.ponumTextBox = new System.Windows.Forms.TextBox();
             this.lblSchname = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.mquotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsMSales = new Mbc5.DataSets.dsMSales();
-            this.coversBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mquotesTableAdapter = new Mbc5.DataSets.dsMSalesTableAdapters.mquotesTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsMSalesTableAdapters.TableAdapterManager();
             this.coversTableAdapter = new Mbc5.DataSets.dsMSalesTableAdapters.coversTableAdapter();
-            this.lblAppUser = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             schcodeLabel = new System.Windows.Forms.Label();
             ponumLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -239,15 +241,16 @@
             salesTaxReceivedLabel = new System.Windows.Forms.Label();
             label18 = new System.Windows.Forms.Label();
             label16 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.mquotesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mquotesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // schcodeLabel
@@ -804,6 +807,16 @@
             this.schcodeLabel1.TabIndex = 3;
             this.schcodeLabel1.Text = "schcode";
             // 
+            // mquotesBindingSource
+            // 
+            this.mquotesBindingSource.DataMember = "mquotes";
+            this.mquotesBindingSource.DataSource = this.dsMSales;
+            // 
+            // dsMSales
+            // 
+            this.dsMSales.DataSetName = "dsMSales";
+            this.dsMSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // tabControl1
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -821,6 +834,7 @@
             // 
             this.tabPage1.AutoScroll = true;
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.panel4);
             this.tabPage1.Controls.Add(this.panel3);
             this.tabPage1.Controls.Add(this.panel2);
@@ -831,7 +845,7 @@
             this.tabPage1.Controls.Add(invnoLabel);
             this.tabPage1.Controls.Add(this.lblInvno);
             this.tabPage1.Controls.Add(bpyearLabel);
-            this.tabPage1.Controls.Add(this.bpyearTextBox);
+            this.tabPage1.Controls.Add(this.txtBpYear);
             this.tabPage1.Controls.Add(contryearLabel);
             this.tabPage1.Controls.Add(this.contryearTextBox);
             this.tabPage1.Controls.Add(this.prodcodeComboBox);
@@ -930,6 +944,15 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(989, 400);
             this.panel4.TabIndex = 23;
+            // 
+            // lblAppUser
+            // 
+            this.lblAppUser.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "ModifiedBy", true));
+            this.lblAppUser.Location = new System.Drawing.Point(12, 267);
+            this.lblAppUser.Name = "lblAppUser";
+            this.lblAppUser.Size = new System.Drawing.Size(1, 1);
+            this.lblAppUser.TabIndex = 25;
+            this.lblAppUser.Text = "au";
             // 
             // txtPOAmt
             // 
@@ -1107,6 +1130,11 @@
             this.desc4TextBox1.Name = "desc4TextBox1";
             this.desc4TextBox1.Size = new System.Drawing.Size(195, 20);
             this.desc4TextBox1.TabIndex = 38;
+            // 
+            // coversBindingSource
+            // 
+            this.coversBindingSource.DataMember = "covers";
+            this.coversBindingSource.DataSource = this.dsMSales;
             // 
             // desc3TextBox1
             // 
@@ -1299,8 +1327,8 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(wghtLabel);
             this.panel3.Controls.Add(this.wghtTextBox);
-            this.panel3.Controls.Add(this.jostensCheckBox);
-            this.panel3.Controls.Add(this.genericCheckBox);
+            this.panel3.Controls.Add(this.chkJostens);
+            this.panel3.Controls.Add(this.chkGeneric);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.line);
             this.panel3.Controls.Add(basetotLabel1);
@@ -1310,15 +1338,15 @@
             this.panel3.Controls.Add(baseprcLabel);
             this.panel3.Controls.Add(this.baseprcTextBox);
             this.panel3.Controls.Add(priceovrdLabel);
-            this.panel3.Controls.Add(this.priceovrdTextBox);
+            this.panel3.Controls.Add(this.txtPriceOverRide);
             this.panel3.Controls.Add(nopagesLabel);
-            this.panel3.Controls.Add(this.nopagesTextBox);
+            this.panel3.Controls.Add(this.txtNoPages);
             this.panel3.Controls.Add(qtytotLabel);
-            this.panel3.Controls.Add(this.qtytotTextBox);
+            this.panel3.Controls.Add(this.txtTotalQty);
             this.panel3.Controls.Add(qtystudLabel);
-            this.panel3.Controls.Add(this.qtystudTextBox);
+            this.panel3.Controls.Add(this.txtQtyStudent);
             this.panel3.Controls.Add(qtyteacherLabel);
-            this.panel3.Controls.Add(this.qtyteacherTextBox);
+            this.panel3.Controls.Add(this.txtQtyTeacher);
             this.panel3.Controls.Add(sbtotLabel);
             this.panel3.Controls.Add(this.mdescTextBox);
             this.panel3.Controls.Add(this.sbtotTextBox);
@@ -1338,27 +1366,27 @@
             this.wghtTextBox.Size = new System.Drawing.Size(44, 20);
             this.wghtTextBox.TabIndex = 50;
             // 
-            // jostensCheckBox
+            // chkJostens
             // 
-            this.jostensCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mquotesBindingSource, "jostens", true));
-            this.jostensCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jostensCheckBox.Location = new System.Drawing.Point(478, 22);
-            this.jostensCheckBox.Name = "jostensCheckBox";
-            this.jostensCheckBox.Size = new System.Drawing.Size(70, 24);
-            this.jostensCheckBox.TabIndex = 49;
-            this.jostensCheckBox.Text = "Jostens";
-            this.jostensCheckBox.UseVisualStyleBackColor = true;
+            this.chkJostens.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mquotesBindingSource, "jostens", true));
+            this.chkJostens.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkJostens.Location = new System.Drawing.Point(478, 22);
+            this.chkJostens.Name = "chkJostens";
+            this.chkJostens.Size = new System.Drawing.Size(70, 24);
+            this.chkJostens.TabIndex = 49;
+            this.chkJostens.Text = "Jostens";
+            this.chkJostens.UseVisualStyleBackColor = true;
             // 
-            // genericCheckBox
+            // chkGeneric
             // 
-            this.genericCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mquotesBindingSource, "generic", true));
-            this.genericCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genericCheckBox.Location = new System.Drawing.Point(478, 3);
-            this.genericCheckBox.Name = "genericCheckBox";
-            this.genericCheckBox.Size = new System.Drawing.Size(70, 24);
-            this.genericCheckBox.TabIndex = 48;
-            this.genericCheckBox.Text = "Generic";
-            this.genericCheckBox.UseVisualStyleBackColor = true;
+            this.chkGeneric.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.mquotesBindingSource, "generic", true));
+            this.chkGeneric.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGeneric.Location = new System.Drawing.Point(478, 3);
+            this.chkGeneric.Name = "chkGeneric";
+            this.chkGeneric.Size = new System.Drawing.Size(70, 24);
+            this.chkGeneric.TabIndex = 48;
+            this.chkGeneric.Text = "Generic";
+            this.chkGeneric.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -1400,45 +1428,45 @@
             this.baseprcTextBox.Size = new System.Drawing.Size(51, 20);
             this.baseprcTextBox.TabIndex = 42;
             // 
-            // priceovrdTextBox
+            // txtPriceOverRide
             // 
-            this.priceovrdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "priceovrd", true));
-            this.priceovrdTextBox.Location = new System.Drawing.Point(247, 54);
-            this.priceovrdTextBox.Name = "priceovrdTextBox";
-            this.priceovrdTextBox.Size = new System.Drawing.Size(45, 20);
-            this.priceovrdTextBox.TabIndex = 41;
+            this.txtPriceOverRide.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "priceovrd", true));
+            this.txtPriceOverRide.Location = new System.Drawing.Point(247, 54);
+            this.txtPriceOverRide.Name = "txtPriceOverRide";
+            this.txtPriceOverRide.Size = new System.Drawing.Size(45, 20);
+            this.txtPriceOverRide.TabIndex = 41;
             // 
-            // nopagesTextBox
+            // txtNoPages
             // 
-            this.nopagesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "nopages", true));
-            this.nopagesTextBox.Location = new System.Drawing.Point(247, 7);
-            this.nopagesTextBox.Name = "nopagesTextBox";
-            this.nopagesTextBox.Size = new System.Drawing.Size(45, 20);
-            this.nopagesTextBox.TabIndex = 40;
+            this.txtNoPages.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "nopages", true));
+            this.txtNoPages.Location = new System.Drawing.Point(247, 7);
+            this.txtNoPages.Name = "txtNoPages";
+            this.txtNoPages.Size = new System.Drawing.Size(45, 20);
+            this.txtNoPages.TabIndex = 40;
             // 
-            // qtytotTextBox
+            // txtTotalQty
             // 
-            this.qtytotTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "qtytot", true));
-            this.qtytotTextBox.Location = new System.Drawing.Point(92, 54);
-            this.qtytotTextBox.Name = "qtytotTextBox";
-            this.qtytotTextBox.Size = new System.Drawing.Size(54, 20);
-            this.qtytotTextBox.TabIndex = 39;
+            this.txtTotalQty.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "qtytot", true));
+            this.txtTotalQty.Location = new System.Drawing.Point(92, 54);
+            this.txtTotalQty.Name = "txtTotalQty";
+            this.txtTotalQty.Size = new System.Drawing.Size(54, 20);
+            this.txtTotalQty.TabIndex = 39;
             // 
-            // qtystudTextBox
+            // txtQtyStudent
             // 
-            this.qtystudTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "qtystud", true));
-            this.qtystudTextBox.Location = new System.Drawing.Point(92, 7);
-            this.qtystudTextBox.Name = "qtystudTextBox";
-            this.qtystudTextBox.Size = new System.Drawing.Size(54, 20);
-            this.qtystudTextBox.TabIndex = 38;
+            this.txtQtyStudent.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "qtystud", true));
+            this.txtQtyStudent.Location = new System.Drawing.Point(92, 7);
+            this.txtQtyStudent.Name = "txtQtyStudent";
+            this.txtQtyStudent.Size = new System.Drawing.Size(54, 20);
+            this.txtQtyStudent.TabIndex = 38;
             // 
-            // qtyteacherTextBox
+            // txtQtyTeacher
             // 
-            this.qtyteacherTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "qtyteacher", true));
-            this.qtyteacherTextBox.Location = new System.Drawing.Point(92, 30);
-            this.qtyteacherTextBox.Name = "qtyteacherTextBox";
-            this.qtyteacherTextBox.Size = new System.Drawing.Size(54, 20);
-            this.qtyteacherTextBox.TabIndex = 37;
+            this.txtQtyTeacher.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "qtyteacher", true));
+            this.txtQtyTeacher.Location = new System.Drawing.Point(92, 30);
+            this.txtQtyTeacher.Name = "txtQtyTeacher";
+            this.txtQtyTeacher.Size = new System.Drawing.Size(54, 20);
+            this.txtQtyTeacher.TabIndex = 37;
             // 
             // mdescTextBox
             // 
@@ -1709,13 +1737,13 @@
             this.lblInvno.TabIndex = 16;
             this.lblInvno.Text = "invno";
             // 
-            // bpyearTextBox
+            // txtBpYear
             // 
-            this.bpyearTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "bpyear", true));
-            this.bpyearTextBox.Location = new System.Drawing.Point(551, 28);
-            this.bpyearTextBox.Name = "bpyearTextBox";
-            this.bpyearTextBox.Size = new System.Drawing.Size(41, 20);
-            this.bpyearTextBox.TabIndex = 15;
+            this.txtBpYear.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "bpyear", true));
+            this.txtBpYear.Location = new System.Drawing.Point(551, 28);
+            this.txtBpYear.Name = "txtBpYear";
+            this.txtBpYear.Size = new System.Drawing.Size(41, 20);
+            this.txtBpYear.TabIndex = 15;
             // 
             // contryearTextBox
             // 
@@ -1816,21 +1844,6 @@
             this.tabPage2.Text = "Extra Books";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // mquotesBindingSource
-            // 
-            this.mquotesBindingSource.DataMember = "mquotes";
-            this.mquotesBindingSource.DataSource = this.dsMSales;
-            // 
-            // dsMSales
-            // 
-            this.dsMSales.DataSetName = "dsMSales";
-            this.dsMSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // coversBindingSource
-            // 
-            this.coversBindingSource.DataMember = "covers";
-            this.coversBindingSource.DataSource = this.dsMSales;
-            // 
             // mquotesTableAdapter
             // 
             this.mquotesTableAdapter.ClearBeforeFill = true;
@@ -1846,14 +1859,19 @@
             // 
             this.coversTableAdapter.ClearBeforeFill = true;
             // 
-            // lblAppUser
+            // errorProvider1
             // 
-            this.lblAppUser.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mquotesBindingSource, "ModifiedBy", true));
-            this.lblAppUser.Location = new System.Drawing.Point(12, 267);
-            this.lblAppUser.Name = "lblAppUser";
-            this.lblAppUser.Size = new System.Drawing.Size(1, 1);
-            this.lblAppUser.TabIndex = 25;
-            this.lblAppUser.Text = "au";
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(297, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmMSales
             // 
@@ -1867,19 +1885,20 @@
             this.Activated += new System.EventHandler(this.frmMSales_Activated);
             this.Deactivate += new System.EventHandler(this.frmMSales_Deactivate);
             this.Load += new System.EventHandler(this.frmMSales_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.mquotesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.mquotesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -1893,7 +1912,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox bpyearTextBox;
+        private System.Windows.Forms.TextBox txtBpYear;
         private System.Windows.Forms.TextBox contryearTextBox;
         private System.Windows.Forms.ComboBox prodcodeComboBox;
         private System.Windows.Forms.Panel panel1;
@@ -1921,14 +1940,14 @@
         private System.Windows.Forms.TextBox basetotTextBox1;
         private System.Windows.Forms.TextBox basetotTextBox;
         private System.Windows.Forms.TextBox baseprcTextBox;
-        private System.Windows.Forms.TextBox priceovrdTextBox;
-        private System.Windows.Forms.TextBox nopagesTextBox;
-        private System.Windows.Forms.TextBox qtytotTextBox;
-        private System.Windows.Forms.TextBox qtystudTextBox;
-        private System.Windows.Forms.TextBox qtyteacherTextBox;
+        private System.Windows.Forms.TextBox txtPriceOverRide;
+        private System.Windows.Forms.TextBox txtNoPages;
+        private System.Windows.Forms.TextBox txtTotalQty;
+        private System.Windows.Forms.TextBox txtQtyStudent;
+        private System.Windows.Forms.TextBox txtQtyTeacher;
         private System.Windows.Forms.TextBox wghtTextBox;
-        private System.Windows.Forms.CheckBox jostensCheckBox;
-        private System.Windows.Forms.CheckBox genericCheckBox;
+        private System.Windows.Forms.CheckBox chkJostens;
+        private System.Windows.Forms.CheckBox chkGeneric;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label line;
         private System.Windows.Forms.CheckBox disc3CheckBox;
@@ -1989,5 +2008,7 @@
         private System.Windows.Forms.TextBox txtPOAmt;
         private System.Windows.Forms.TextBox txtPayments;
         private System.Windows.Forms.Label lblAppUser;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button button1;
     }
     }

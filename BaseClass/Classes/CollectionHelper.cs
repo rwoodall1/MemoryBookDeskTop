@@ -136,4 +136,38 @@ namespace BaseClass.Classes {
             return table;
             }
         }
+    public class ObjectFieldValue
+    {
+        private ObjectFieldValue()
+        {
+        }
+        public static decimal Get<T>(string fieldName,object objectValues)
+        {
+            decimal retval = 0;
+            var obj = Activator.CreateInstance<T>();
+            PropertyInfo prop = obj.GetType().GetProperty(fieldName);
+            try
+            {
+
+                if (prop != null)
+                {
+                 
+                   var aa= prop.GetValue(objectValues);
+                   var cc= Convert.ChangeType(aa, aa.GetType());
+                 
+                }
+               
+
+
+            }
+            catch (Exception ex)
+            {
+                // You can log something here
+                throw;
+            }
+            
+            return retval;
+
+        } 
+    }
     }

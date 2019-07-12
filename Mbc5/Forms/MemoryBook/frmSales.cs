@@ -1273,9 +1273,7 @@ namespace Mbc5.Forms.MemoryBook
                     lblprofprice.Text = vprofprce.ToString("c");
 
                     lblProftotalPrc.Text = (vprofprce * copies).ToString("c");
-
-
-                    // BookCalc();
+                     BookCalc();
                 }
             }
 

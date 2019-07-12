@@ -129,7 +129,6 @@
     <Compile Include="Classes\ExceptionHandler.cs" />
     <Compile Include="Classes\OptionPrice.cs" />
     <Compile Include="Classes\PdfAttachementGenerator.cs" />
-    <Compile Include="Classes\Price.cs" />
     <Compile Include="Classes\TaxService.cs" />
     <Compile Include="Classes\Utils.cs" />
     <Compile Include="DataSets\dsBids.cs">
