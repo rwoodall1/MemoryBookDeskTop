@@ -934,11 +934,11 @@ namespace Mbc5.Forms.Meridian {
 
         private void frmMerCust_Paint(object sender, PaintEventArgs e)
         {
-            try { this.Text = "Meridian Customer-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
-            catch
-            {
+            //try { this.Text = "Meridian Customer-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+            //catch
+            //{
 
-            }
+            //}
         }
 
         private void btnSchoolToShipping_Click(object sender, EventArgs e)
@@ -983,10 +983,7 @@ namespace Mbc5.Forms.Meridian {
             AddSalesRecord();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Test();
-        }
+      
         private void Test()
         {
            
@@ -1013,7 +1010,8 @@ namespace Mbc5.Forms.Meridian {
             ///
             var qtyField = "Q400";
 
-            var a=ObjectFieldValue.Get<MeridianPrice>(qtyField,Pricing);
+            var a=(decimal)ObjectFieldValue.Get<MeridianPrice>(qtyField,Pricing);
+       
 
 
 

@@ -98,10 +98,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
             this.merCustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
-            this.lblInvno = new System.Windows.Forms.Label();
+            this.lblSchcode = new System.Windows.Forms.Label();
             this.mcustBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMcust = new Mbc5.DataSets.dsMcust();
-            this.lblSchcode = new System.Windows.Forms.Label();
             this.lblAppUser = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.qInvnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -222,7 +221,7 @@
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.contpstnTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.contpstnTableAdapter();
-            this.button2 = new System.Windows.Forms.Button();
+            this.lblInvno = new System.Windows.Forms.Label();
             schnameLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             taxExemptRecvdLabel = new System.Windows.Forms.Label();
@@ -973,8 +972,8 @@
             // 
             // pg1
             // 
+            this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
-            this.pg1.Controls.Add(this.button2);
             this.pg1.Controls.Add(this.lblInvno);
             this.pg1.Controls.Add(this.lblSchcode);
             this.pg1.Controls.Add(this.lblAppUser);
@@ -1019,14 +1018,14 @@
             this.pg1.Text = "School";
             this.pg1.Click += new System.EventHandler(this.pg1_Click);
             // 
-            // lblInvno
+            // lblSchcode
             // 
-            this.lblInvno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "QInvno", true));
-            this.lblInvno.Location = new System.Drawing.Point(3, 466);
-            this.lblInvno.Name = "lblInvno";
-            this.lblInvno.Size = new System.Drawing.Size(1, 1);
-            this.lblInvno.TabIndex = 64;
-            this.lblInvno.Text = "l";
+            this.lblSchcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "schcode", true));
+            this.lblSchcode.Location = new System.Drawing.Point(3, 499);
+            this.lblSchcode.Name = "lblSchcode";
+            this.lblSchcode.Size = new System.Drawing.Size(1, 1);
+            this.lblSchcode.TabIndex = 63;
+            this.lblSchcode.Text = "l";
             // 
             // mcustBindingSource
             // 
@@ -1037,15 +1036,6 @@
             // 
             this.dsMcust.DataSetName = "dsMcust";
             this.dsMcust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lblSchcode
-            // 
-            this.lblSchcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "schcode", true));
-            this.lblSchcode.Location = new System.Drawing.Point(3, 499);
-            this.lblSchcode.Name = "lblSchcode";
-            this.lblSchcode.Size = new System.Drawing.Size(1, 1);
-            this.lblSchcode.TabIndex = 63;
-            this.lblSchcode.Text = "l";
             // 
             // lblAppUser
             // 
@@ -2299,15 +2289,14 @@
             // 
             this.contpstnTableAdapter.ClearBeforeFill = true;
             // 
-            // button2
+            // lblInvno
             // 
-            this.button2.Location = new System.Drawing.Point(8, 8);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 65;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.lblInvno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "QInvno", true));
+            this.lblInvno.Location = new System.Drawing.Point(6, 545);
+            this.lblInvno.Name = "lblInvno";
+            this.lblInvno.Size = new System.Drawing.Size(1, 1);
+            this.lblInvno.TabIndex = 64;
+            this.lblInvno.Text = "label3";
             // 
             // frmMerCust
             // 
@@ -2420,7 +2409,6 @@
         private System.Windows.Forms.Label lblAppUser;
         private System.Windows.Forms.Label lblSchcode;
         private DataSets.dsMcustTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.Label lblInvno;
         private System.Windows.Forms.Button btnSchoolToInvoice;
         private System.Windows.Forms.Label label20;
         private DataSets.LookUp lookUp;
@@ -2479,6 +2467,6 @@
         private System.Windows.Forms.TextBox txtInvCity;
         private System.Windows.Forms.TextBox txtInvAddr2;
         private System.Windows.Forms.TextBox txtInvAddr;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label lblInvno;
     }
     }

@@ -99,8 +99,8 @@ namespace BindingModels
         public Decimal Pg352 { get; set; }
         public Decimal Pg356 { get; set; }
         public Decimal Pg360 { get; set; }
-       
-     
+
+
     }
     public class MeridianPrice
     {
@@ -116,7 +116,7 @@ namespace BindingModels
         public decimal Q250 { get; set; }
         public decimal Q200 { get; set; }
         public decimal Q100 { get; set; }
-        public decimal Generic{ get; set; }
+        public decimal Generic { get; set; }
         public decimal GenericCL { get; set; }
         public decimal GenericM { get; set; }
         public decimal Jostens { get; set; }
@@ -125,6 +125,122 @@ namespace BindingModels
         public decimal FourPageCost { get; set; }
         public decimal ZeroPageCost { get; set; }
 
+
+    }
+    public class JostenPricing
+    {
+        public int Id { get; set; }
+        public string Yr { get; set; }
+        public decimal LF0 { get; set; }
+        public decimal LF2 { get; set; }
+        public decimal LF4 { get; set; }
+        public decimal LF6 { get; set; }
+        public decimal LF8 { get; set; }
+        public decimal LF10 { get; set; }
+        public decimal LF12 { get; set; }
+        public decimal LF14 { get; set; }
+        public decimal LF16 { get; set; }
+        public decimal LF18 { get; set; }
+        public decimal LF20 { get; set; }
+        public decimal LF24 { get; set; }
+        public decimal LF26 { get; set; }
+        public decimal LF28 { get; set; }
+        public decimal LF30 { get; set; }
+        public decimal LF32 { get; set; }
+        public decimal LF34 { get; set; }
+        public decimal LF36 { get; set; }
+        public decimal LF38 { get; set; }
+        public decimal LF40 { get; set; }
+        public decimal LF42 { get; set; }
+        public decimal LF44 { get; set; }
+        public decimal LF46 { get; set; }
+        public decimal LF48 { get; set; }
+        public decimal LF50 { get; set; }
+        public decimal LF52 { get; set; }
+        public decimal LF54 { get; set; }
+        public decimal LF56 { get; set; }
+        public decimal LF58 { get; set; }
+        public decimal LF60 { get; set; }
+        public decimal LF62 { get; set; }
+        public decimal LF64 { get; set; }
+        public decimal LF68 { get; set; }
+        public decimal LF70 { get; set; }
+        public decimal LF72 { get; set; }
+        public decimal LF74 { get; set; }
+        public decimal SF0 { get; set; }
+        public decimal SF2 { get; set; }
+        public decimal SF4 { get; set; }
+        public decimal SF6 { get; set; }
+        public decimal SF8 { get; set; }
+        public decimal SF10 { get; set; }
+        public decimal SF12 { get; set; }
+        public decimal SF14 { get; set; }
+        public decimal SF16 { get; set; }
+        public decimal SF18 { get; set; }
+        public decimal SF20 { get; set; }
+        public decimal SF24 { get; set; }
+        public decimal SF26 { get; set; }
+        public decimal SF28 { get; set; }
+        public decimal SF30 { get; set; }
+        public decimal SF32 { get; set; }
+        public decimal SF34 { get; set; }
+        public decimal SF36 { get; set; }
+        public decimal SF38 { get; set; }
+        public decimal SF40 { get; set; }
+        public decimal SF42 { get; set; }
+        public decimal SF44 { get; set; }
+        public decimal SF46 { get; set; }
+        public decimal SF48 { get; set; }
+        public decimal SF50 { get; set; }
+        public decimal SF52 { get; set; }
+        public decimal SF54 { get; set; }
+        public decimal SF56 { get; set; }
+        public decimal SF58 { get; set; }
+        public decimal SF60 { get; set; }
+        public decimal SF62 { get; set; }
+        public decimal SF64 { get; set; }
+        public decimal SF68 { get; set; }
+        public decimal SF70 { get; set; }
+        public decimal SF72 { get; set; }
+        public decimal SF74 { get; set; }
+        public decimal SF78 { get; set; }
+        public decimal SF80 { get; set; }
+        public decimal SF82 { get; set; }
+        public decimal SF84 { get; set; }
+        public decimal SF86 { get; set; }
+        public decimal SF88 { get; set; }
+        public decimal SF90 { get; set; }
+        public decimal SF92 { get; set; }
+        public decimal SF94 { get; set; }
+        public decimal SF96 { get; set; }
+        public decimal SF98 { get; set; }
+        public decimal SF100 { get; set; }
+        public decimal SF102 { get; set; }
+        public decimal SF104 { get; set; }
+        public decimal SF106 { get; set; }
+        public decimal SF108 { get; set; }
+        public decimal SF110 { get; set; }
+        public decimal SF112 { get; set; }
+        public decimal SF114 { get; set; }
+        public decimal SF116 { get; set; }
+        public decimal SF118 { get; set; }
+        public decimal SF120 { get; set; }
+        public decimal SF122 { get; set; }
+        public decimal SF124 { get; set; }
+        public decimal SF126 { get; set; }
+        public decimal SF128 { get; set; }
+        public decimal SF130 { get; set; }
+        public decimal SF132 { get; set; }
+        public decimal SF134 { get; set; }
+        public decimal SF136 { get; set; }
+        public decimal SF138 { get; set; }
+        public decimal SF140 { get; set; }
+        public decimal SF142 { get; set; }
+        public decimal SF144 { get; set; }
+        public decimal SF146 { get; set; }
+        public decimal SF148 { get; set; }
+        public decimal SF150 { get; set; }
+        public decimal SF152 { get; set; }
 
     }
 }

@@ -15,9 +15,10 @@ using Exceptionless;
 using System.Reflection;
 
 namespace Mbc5.Forms.Meridian {
-    public partial class frmMSales : BaseClass.frmBase {
-        
-        public frmMSales(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
+    public partial class frmMSales : BaseClass.frmBase
+    {
+
+        public frmMSales(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MerCS" }, userPrincipal)
         {
             InitializeComponent();
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -26,7 +27,7 @@ namespace Mbc5.Forms.Meridian {
             this.Schcode = schcode;
 
         }
-        public frmMSales(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
+        public frmMSales(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MerCS" }, userPrincipal)
         {
             InitializeComponent();
             //this.DisableControls(this);
@@ -45,15 +46,13 @@ namespace Mbc5.Forms.Meridian {
         protected MeridianPrice Pricing { get; set; }
         private void frmMSales_Load(object sender, EventArgs e)
         {
-
+            // TODO: This line of code loads data into the 'lookUp.MeridianProducts' table. You can move, or remove it, as needed.
+            this.meridianProductsTableAdapter.Fill(this.lookUp.MeridianProducts);
+            SetConnectionString();
+            Fill();
+            this.tabControl1.TabPages[0].AutoScroll = false;
         }
-        private void mquotesBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.mquotesBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dsMSales);
 
-        }
         #region Methods
         private void SetNoticeLabels()
         {
@@ -66,33 +65,16 @@ namespace Mbc5.Forms.Meridian {
         }
         private void Fill()
         {
-            if (!string.IsNullOrEmpty(Schcode))
-            {
-                //try
-                //{
-                //    custTableAdapter.Fill(dsSales.cust, Schcode);
 
-
-                //    this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
-                //    if (this.SchoolZipCode.Length > 5)
-                //    {
-                //        this.SchoolZipCode = this.SchoolZipCode.Substring(0, 5);
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    MbcMessageBox.Error(ex.Message, "");
-                //}
-
-            }
             if (Invno != 0)
             {
                 try
                 {
                     mquotesTableAdapter.Fill(dsMSales.mquotes, Invno);
                     // xtraTableAdapter.Fill(dsExtra.xtra, Invno);
-
-
+                    SetCodeInvno();
+                    lblAppUser.Text = this.ApplicationUser.id;
+                    SetNoticeLabels();
                 }
                 catch (Exception ex)
                 {
@@ -100,43 +82,40 @@ namespace Mbc5.Forms.Meridian {
                 }
 
             }
-       
-            SetCodeInvno();
-            lblAppUser.Text = this.ApplicationUser.id;
-            //txtModifiedByInv.Text = this.ApplicationUser.id;
-            //txtModifiedByInvdetail.Text = this.ApplicationUser.id;
-            //txtModifiedByPay.Text = this.ApplicationUser.id;
-            SetNoticeLabels();
+
+
+
+
         }
         private void DisableControls(Control con)
         {
-            foreach (Control c in con.Controls)
-            {
-                DisableControls(c);
-            }
-            con.Enabled = false;
+            //foreach (Control c in con.Controls)
+            //{
+            //    DisableControls(c);
+            //}
+            //con.Enabled = false;
         }
         private void EnableControls(Control con)
         {
-            if (con != null)
-            {
-                con.Enabled = true;
-                EnableControls(con.Parent);
-            }
+            //if (con != null)
+            //{
+            //    con.Enabled = true;
+            //    EnableControls(con.Parent);
+            //}
         }
         private void EnableAllControls(Control con)
         {
-            foreach (Control c in con.Controls)
-            {
-                EnableAllControls(c);
-            }
-            con.Enabled = true;
+            //foreach (Control c in con.Controls)
+            //{
+            //    EnableAllControls(c);
+            //}
+            //con.Enabled = true;
         }
         private void SetConnectionString()
         {
             this.frmMain = (frmMain)this.MdiParent;
             this.FormConnectionString = frmMain.AppConnectionString;
-
+            this.meridianProductsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             // this.paymntTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             // this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
@@ -150,22 +129,8 @@ namespace Mbc5.Forms.Meridian {
         {
             GetBookPricing();
             var qtyField = "Q400";
-            var obj = Activator.CreateInstance<MeridianPrice>();
-            PropertyInfo prop = obj.GetType().GetProperty(qtyField);
-            try
-            {
 
-                if (prop != null)
-                {
-                    prop.GetValue(Pricing);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                // You can log something here
-                throw;
-            }
+            var a = (decimal)ObjectFieldValue.Get<MeridianPrice>(qtyField, Pricing);
 
         }
         private void CalculateBase()
@@ -187,55 +152,189 @@ namespace Mbc5.Forms.Meridian {
                 return;
             }
             //calculate regular
+            decimal vBasePrice = 0;
             decimal vPriceOveride = 0;
+            decimal vTeacherBasePrice = 0;
             int vQtyTeacher = 0;
             int vQtyStudent = 0;
             int vTotalQty = 0;
             int vPages = 0;
+            int pageMultiplier = 0;
+            decimal xtraPagePrice = 0;
             decimal.TryParse(txtPriceOverRide.Text, out vPriceOveride);
-            int.TryParse(txtQtyTeacher.Text,out vQtyTeacher);
-            int.TryParse(txtQtyStudent.Text,out vQtyStudent);
-            int.TryParse(txtTotalQty.Text, out vTotalQty);
+            int.TryParse(txtQtyTeacher.Text, out vQtyTeacher);
+            int.TryParse(txtQtyStudent.Text, out vQtyStudent);
+            vTotalQty = vQtyStudent + vQtyTeacher;
             int.TryParse(txtNoPages.Text, out vPages);
-            if (contryearTextBox.Text==""||vPriceOveride > 0)
+            int mPages;
+            txtTotalQty.Text = vTotalQty.ToString("0.00");
+            if (contryearTextBox.Text == "")
             {
                 return;
             }
-           
+
+
             if (lfRadioButton.Checked)
             {
-                
-                if (vPages== 0)
+                if (vPriceOveride > 0)
                 {
-                    vPages = 4;
+                    vBasePrice = vPriceOveride;
+                    lblBasePrice.Text = vBasePrice.ToString("0.00");
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
+                        //always same for Large Font
+                        vTeacherBasePrice = vBasePrice;
+                    }
+                    lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
+                    return;
                 }
+
+                if (vPages == 0) { mPages = 4; } else { mPages = vPages; }
                 //field to look for
                 string qtyField = GetCopies(vTotalQty);
-                int pageMultiplier = GetXtraPages(vPages,"LF",CurPriceYr);
-                //var vBasePrice=Pricing.q
-              
+                pageMultiplier = GetXtraPages(mPages, "LF", CurPriceYr);
+                xtraPagePrice = pageMultiplier * Pricing.StandardPageCost;
+                vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>(qtyField, Pricing);
+                if (vPages == 0) { vBasePrice += Pricing.ZeroPageCost; }
+                if (vPages == 4) { vBasePrice += Pricing.FourPageCost; }
+                vBasePrice += xtraPagePrice;
+                if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                {
+                    lblTeachBasePrice.Text = "0.00";
+                }
+                else
+                {
+                    lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
+                }
+                if (!string.IsNullOrEmpty(txtPriceOverRide.Text))
+                {
+                    lblBasePrice.Text = txtPriceOverRide.Text;
+                }
+                else { lblBasePrice.Text = vBasePrice.ToString("0.00"); }
 
             }
             //////////////----------------------------------------------------------------
             if (sfRadioButton.Checked)
             {
-                if (vPages == 0)
+                if (vPriceOveride > 0)
                 {
-                    vPages = 8;
+                    vBasePrice = vPriceOveride;
+                    lblBasePrice.Text = vBasePrice.ToString("0.00");
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
+                        vTeacherBasePrice = vBasePrice;
+                    }
+                    lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
+                    return;
                 }
+                if (vPages == 0) { mPages = 8; } else { mPages = vPages; }
                 var qtyField = GetCopies(vTotalQty);
-                int pageMultiplier = GetXtraPages(vPages, "SF", CurPriceYr);
+                pageMultiplier = GetXtraPages(mPages, "SF", CurPriceYr);
+                xtraPagePrice = pageMultiplier * Pricing.StandardPageCost;
+                vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>(qtyField, Pricing);
+                if (vPages == 0) { vBasePrice += Pricing.ZeroPageCost; }
+                if (vPages == 8) { vBasePrice += Pricing.EightPageCost; }
+                vBasePrice += xtraPagePrice;
 
+
+                lblBasePrice.Text = vBasePrice.ToString("0.00");
             }
 
         }
         private void CalculateJostenBase()
         {
+            decimal vBasePrice = 0;
+            decimal vPriceOveride = 0;
+            decimal vTeacherBasePrice = 0;
+            int vQtyTeacher = 0;
+            int vQtyStudent = 0;
+            int vTotalQty = 0;
+            int vPages = 0;
+            int pageMultiplier = 0;
+            decimal xtraPagePrice = 0;
+            decimal.TryParse(txtPriceOverRide.Text, out vPriceOveride);
+            int.TryParse(txtQtyTeacher.Text, out vQtyTeacher);
+            int.TryParse(txtQtyStudent.Text, out vQtyStudent);
+            vTotalQty = vQtyStudent + vQtyTeacher;
+            int.TryParse(txtNoPages.Text, out vPages);
+            int mPages;
+            txtTotalQty.Text = vTotalQty.ToString("0.00");
+            if (contryearTextBox.Text == "")
+            {
+                return;
+            }
+            if (vPriceOveride > 0)
+            {
+                vBasePrice = vPriceOveride;
+                lblBasePrice.Text = vBasePrice.ToString("0.00");
+                if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                {
+                    vTeacherBasePrice = 0;
+                    lblTeachBasePrice.Text = "0.00";
+                }
+                else
+                {
+                    lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
+                    //always same for Large Font
+                    vTeacherBasePrice = vBasePrice;
+                }
+                lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
+                return;
+            }
+            if (vPages > 76)
+
+            {
+                MbcMessageBox.Information("Pages are over 76, Jostens pricing not available. Enter a price override.");
+                return;
+
+            }
+            if (string.IsNullOrEmpty(txtBYear.Text))
+            {
+                MbcMessageBox.Information("Enter a base price year");
+                return;
+            }
+            var vJostenPrice = GetJostensPricing(txtBYear.Text, sfRadioButton.Checked ? "SF" : "LF", vPages);
+            if (vTotalQty < 600)
+            {
+                vJostenPrice += .25m;
+            }
+            lblBasePrice.Text = vJostenPrice.ToString("0.00");
+            if (vQtyTeacher>0) {
+                lblTeachBasePrice.Text = vJostenPrice.ToString("0.00");//same as student
+            }
+            lblTotalBasePrice.Text = ((vJostenPrice * vQtyStudent) + (vJostenPrice * vQtyTeacher)).ToString("0.00");
 
         }
+
+    
         private void CalculateGeneric()
         {
 
+        }
+        private decimal GetJostensPricing(string vYear,string vType,int pageQty)
+        {
+            string fieldName = vType + pageQty.ToString();
+            var sqlQuery = new SQLCustomClient();
+            sqlQuery.CommandText(@"Select * From JostensPricing where Yr=@Yr");
+            sqlQuery.AddParameter("@Yr",vYear);
+            var result=sqlQuery.Select<JostenPricing>();
+            var vPricing=(JostenPricing)result.Data;
+            if(result.IsError)
+            { MbcMessageBox.Error(result.Errors[0].ErrorMessage); return 0; }
+            var vJostensBasePrice =(decimal)ObjectFieldValue.Get<JostenPricing>(fieldName, vPricing);
+            return vJostensBasePrice;
         }
         private int GetXtraPages(int Qty,string Facing,string Year)
         {
@@ -643,30 +742,30 @@ namespace Mbc5.Forms.Meridian {
         {
             var sqlQuery = new SQLCustomClient();
             sqlQuery.ClearParameters();
-            if (String.IsNullOrEmpty(txtBpYear.Text))
+            if (String.IsNullOrEmpty(txtBYear.Text))
             {
-                errorProvider1.SetError(txtBpYear, "");
+                errorProvider1.SetError(txtBYear, "");
 
-                errorProvider1.SetError(txtBpYear, "Please enter a  base price year.");
-                return false ;
+                errorProvider1.SetError(txtBYear, "Please enter a  base price year.");
+                return false;
             }
-             this.CurPriceYr = txtBpYear.Text;
+            this.CurPriceYr = txtBYear.Text;
             sqlQuery.CommandText(@"
                 SELECT * From MeridianPricing where Type=@Type and yr=@Yr 
                 ");
-            sqlQuery.AddParameter("@Type", lfRadioButton.Checked ? "LF":"SF");
+            sqlQuery.AddParameter("@Type", lfRadioButton.Checked ? "LF" : "SF");
             sqlQuery.AddParameter("@Yr", CurPriceYr);
-             var pricingResult=sqlQuery.Select<MeridianPrice>();
+            var pricingResult = sqlQuery.Select<MeridianPrice>();
             if (pricingResult.IsError)
             {
                 ExceptionlessClient.Default.CreateLog("Error getting Meridian Pricing")
                     .AddObject(pricingResult)
                     .MarkAsCritical()
                     .Submit();
-                MbcMessageBox.Error("Failed to get meridian pricing"+pricingResult.Errors[0].DeveloperMessage);
+                MbcMessageBox.Error("Failed to get meridian pricing" + pricingResult.Errors[0].DeveloperMessage);
                 return false;
             }
-            if (pricingResult.Data==null)
+            if (pricingResult.Data == null)
             {
                 MbcMessageBox.Information("Meridian pricing for the given year and type was not found.");
                 return false; ;
@@ -746,7 +845,7 @@ namespace Mbc5.Forms.Meridian {
 
         private void collectionsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-           // SetNoticeLabels();
+            SetNoticeLabels();
         }
 
         private void frmMSales_Activated(object sender, EventArgs e)
@@ -762,6 +861,65 @@ namespace Mbc5.Forms.Meridian {
         private void button1_Click(object sender, EventArgs e)
         {
             Test();
+        }
+
+
+
+        private void chkindateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            chkindateDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+
+        private void txtQtyStudent_Leave(object sender, EventArgs e)
+        {
+            CalculateBase();
+        }
+
+        private void txtQtyTeacher_Leave(object sender, EventArgs e)
+        {
+            CalculateBase();
+        }
+
+        private void prodcodeComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            var dr = (DataRowView)mquotesBindingSource.Current;
+            if (prodcodeComboBox.SelectedValue.ToString() == "HSP"|| prodcodeComboBox.SelectedValue.ToString() == "ADVLOG"|| prodcodeComboBox.SelectedValue.ToString() == "MAG")
+            {
+                sfRadioButton.Checked = true;
+                lfRadioButton.Checked = false;
+              
+
+                  
+            }
+            else
+            {
+                sfRadioButton.Checked = false;
+                lfRadioButton.Checked = true;
+            }
+            switch (prodcodeComboBox.SelectedValue.ToString())
+            {
+                case "HSP":
+                    dr.Row["Schtype"] = "HS";
+                break;
+                case "MSP":
+                    dr.Row["Schtype"] = "MS";
+                break;
+                case "MAG":
+                    dr.Row["Schtype"] = "MAGNET";
+                break;
+                case "ADVLOG":
+                    dr.Row["Schtype"] = "ADVENTURE LOG";
+                break;
+                case "ELSP":
+                    dr.Row["Schtype"] = "ELEM";
+                break;
+                case "PRISP":
+                    dr.Row["Schtype"] ="PRIM";
+                break;
+            }
+
+
+
         }
 
 

@@ -141,9 +141,9 @@ namespace BaseClass.Classes {
         private ObjectFieldValue()
         {
         }
-        public static decimal Get<T>(string fieldName,object objectValues)
+        public static object Get<T>(string fieldName,object objectValues)
         {
-            decimal retval = 0;
+            object retval=null;
             var obj = Activator.CreateInstance<T>();
             PropertyInfo prop = obj.GetType().GetProperty(fieldName);
             try
@@ -152,8 +152,8 @@ namespace BaseClass.Classes {
                 if (prop != null)
                 {
                  
-                   var aa= prop.GetValue(objectValues);
-                   var cc= Convert.ChangeType(aa, aa.GetType());
+                   retval= prop.GetValue(objectValues);
+                   //var cc= Convert.ChangeType(aa, aa.GetType());
                  
                 }
                

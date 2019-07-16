@@ -30,8 +30,9 @@ namespace Mbc5.Forms
 
             InitializeComponent();
         }
+    
         #region "Properties"
-
+        public bool keepLoading { get; set; } = true;
         public bool ForcePasswordChange { get; set; }
         public string AppConnectionString { get; set; }
         public List<string> ValidatedUserRoles { get; private set; }
@@ -134,6 +135,13 @@ namespace Mbc5.Forms
 						vInvno = tmpForm.Invno;
 						break;
 					}
+                case "frmMerCust":
+                    {
+                        var tmpForm = (frmMerCust)this.ActiveMdiChild;
+                        vInvno = tmpForm.Invno;
+                        break;
+                   
+                    }
 				case "frmBids":
                     {
                         var tmpForm = (frmBids)this.ActiveMdiChild;
@@ -171,6 +179,14 @@ namespace Mbc5.Forms
                         vSchcode = tmpForm.Schcode;
                         break;
                     }
+                case "frmMerCust":
+                    {
+
+                        var tmpForm = (frmMerCust)this.ActiveMdiChild;
+
+                        vSchcode = tmpForm.Schcode;
+                        break;
+                    }
                 case "frmBids":
                     {
                         var tmpForm = (frmBids)this.ActiveMdiChild;
@@ -203,7 +219,7 @@ namespace Mbc5.Forms
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
             this.Hide();
-            bool keepLoading = true;
+         
             for (int i = 0; i < 3; i++)
             {
                 if (this.Login())
@@ -368,12 +384,41 @@ namespace Mbc5.Forms
             }
 
         private void msalesToolStripMenuItem_Click(object sender,EventArgs e) {
-            this.Cursor = Cursors.AppStarting;
-            frmMSales frmMSales = new frmMSales(this.ApplicationUser);
-            frmMSales.MdiParent = this;
-            frmMSales.Show();
-            this.Cursor = Cursors.Default;
+            if (this.ActiveMdiChild == null)
+            {
+                frmMSales frmMSales = new frmMSales(this.ApplicationUser);
+                frmMSales.MdiParent = this;
+                frmMSales.Show();
+                this.Cursor = Cursors.Default;
+
+
             }
+            else
+            {
+                this.Cursor = Cursors.AppStarting;
+                int vInvno = GetInvno();
+                string vSchcode = GetSchcode();
+
+                if (vInvno == 0)
+                {
+                    MessageBox.Show("This school does not have a sales record to go to. Please search for record from Sales Screen.", "Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmMSales frmSales1 = new frmMSales(this.ApplicationUser);
+                    frmSales1.MdiParent = this;
+                    frmSales1.Show();
+                    this.Cursor = Cursors.Default;
+                }
+                else
+                {
+
+                    frmMSales frmSales = new frmMSales(this.ApplicationUser, vInvno, vSchcode);
+                    frmSales.MdiParent = this;
+                    frmSales.Show();
+                    this.Cursor = Cursors.Default;
+                }
+
+            }
+           
+        }
 
         private void salesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -588,8 +633,9 @@ namespace Mbc5.Forms
         {
             frmLogin Login = new frmLogin(this);
             var _result = Login.ShowDialog();
-            if (_result == DialogResult.Cancel)
+            if (_result == DialogResult.Cancel||_result == DialogResult.Abort)
             {
+                keepLoading = false;
                 Application.Exit();
             }
             else if (_result == DialogResult.No)
@@ -597,11 +643,7 @@ namespace Mbc5.Forms
                 MessageBox.Show("Your password or user name was incorrect.", " Login Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 return false;
             }
-            else if (_result == DialogResult.Abort)
-            {
-
-                Application.Exit();
-            }
+            
             
 
             return true;
