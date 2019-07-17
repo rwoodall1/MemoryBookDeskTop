@@ -127,6 +127,35 @@ namespace BindingModels
 
 
     }
+    public class MeridianOptionPricing
+    {
+        public int Id { get; set; }
+        public string Yr { get; set; }
+        public decimal HallPassLF { get; set; }
+        public decimal HallPassSF { get; set; }
+        public decimal BkMrk { get; set; }
+        public decimal VpLF { get; set; }
+        public decimal VpSF { get; set; }
+        public decimal IdPouch { get; set; }
+        public decimal TitlePgSF { get; set; }
+        public decimal TitlePgLF { get; set; }
+        public decimal DuraGlazeLF { get; set; }
+        public decimal DuraGlaseSF { get; set; }
+        public decimal WallChart { get; set; }
+        public decimal TeachersEdtSF { get; set; }
+        public decimal TeachersEdtLF { get; set; }
+        public decimal TypeSet { get; set; }
+        public decimal ImpGuide { get; set; }
+        public decimal JostensFourClr { get; set; }
+        public decimal FourClr { get; set; }
+        public decimal ThreeClr { get; set; }
+        public decimal TwoClr { get; set; }
+        public decimal OneClr { get; set; }
+        public decimal SpecialCoverPrice1 { get; set; }
+        public decimal SpecialCoverPrice2 { get; set; }
+        public decimal SpecialCoverPrice3 { get; set; }
+
+    }
     public class JostenPricing
     {
         public int Id { get; set; }
