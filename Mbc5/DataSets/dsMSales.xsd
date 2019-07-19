@@ -153,19 +153,19 @@
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT        mquotes.schcode, mquotes.booktype, mquotes.qtedate, mquotes.contryear, mquotes.nopages, mquotes.nocopies, mquotes.baseprc, mquotes.basetot, mquotes.customized, mquotes.misc, mquotes.mdesc, mquotes.sbtot, 
-                         mquotes.cred_etc, mquotes.adjbef, mquotes.adjaftr, mquotes.fbkprc, mquotes.ftotprc, mquotes.source, mquotes.ponum, mquotes.invoiced, mquotes.invno, mquotes.schtype, mquotes.acovrde, mquotes.bpovrde, 
-                         mquotes.holdpmt, mquotes.bpyear, mquotes.shipping, mquotes.shippingin, mquotes.shippingam, mquotes.lf, mquotes.sf, mquotes.qtyteacher, mquotes.qtystud, mquotes.qtytot, mquotes.priceovrd, mquotes.cvrdesign, 
-                         mquotes.fourclr, mquotes.hrdcpyprf, mquotes.coverapprd, mquotes.cvrunitprc, mquotes.cvrprfreqd, mquotes.cvrtotprc, mquotes.hallpass, mquotes.hallpqty, mquotes.hallpprice, mquotes.bmark, mquotes.bmarkqty, 
-                         mquotes.bmarkprc, mquotes.vpa, mquotes.vpaqty, mquotes.vpprc, mquotes.vpb, mquotes.vpbqty, mquotes.vpbprc, mquotes.idpouch, mquotes.idpouchqty, mquotes.idpouchprc, mquotes.stdtitpg, mquotes.stttitpgqty, 
-                         mquotes.stdttitpgprc, mquotes.duraglaze, mquotes.duraglzqty, mquotes.duraglzprc, mquotes.wallch, mquotes.wallchqty, mquotes.wallchprc, mquotes.teachedt, mquotes.teachedtqty, mquotes.teachedtprc, mquotes.typeset, 
-                         mquotes.typesetqty, mquotes.typesetprc, mquotes.impguid, mquotes.impguidqty, mquotes.impquidprc, mquotes.specprc, mquotes.totoptionprc, mquotes.discdesc, mquotes.disc, mquotes.earlydisc, mquotes.earlydiscp, 
-                         mquotes.predisc, mquotes.prediscprc, mquotes.discdesc1, mquotes.discdesc1p, mquotes.discdesc2, mquotes.discdesc2p, mquotes.plnprc, mquotes.plnsbtot, mquotes.salestx, mquotes.custpu, mquotes.shpphndl, 
-                         mquotes.afttxadj, mquotes.afttxadjde, mquotes.fplnprc, mquotes.fplntot, mquotes.newprice, mquotes.disctot, mquotes.desc1amt, mquotes.stdtitpgprc, mquotes.desc1, mquotes.descamt, mquotes.desc2, mquotes.afterdisctot, 
-                         mquotes.stdtitpgqty, mquotes.erldisc, mquotes.erldiscamt, mquotes.predis, mquotes.prediscamt, mquotes.threeclr, mquotes.twoclr, mquotes.stx, mquotes.dp1, mquotes.oneclr, mquotes.generic, mquotes.wght, 
-                         mquotes.shipovride, mquotes.adcdesc, mquotes.adcamt, mquotes.jostens, mquotes.collections, mquotes.desc3amt, mquotes.desc4amt, mquotes.disc3, mquotes.disc4, mquotes.desc3, mquotes.desc4, mquotes.flaminate, 
-                         mquotes.prime, mquotes.psetup, mquotes.psetupamt, mquotes.prodcode, mquotes.orderid, mquotes.chkindate, produtn.prodno, produtn.kitrecvd, mcust.schname, mquotes.DoNotChargeTax, mquotes.SchoolTaxRate, 
-                         mquotes.SalesTaxReceived, mquotes.ModifiedBy, mcust.invzip, mcust.invstate, mcust.invcity, mcust.invaddr2, mcust.invaddr
+                    <CommandText>SELECT        mquotes.schcode, mquotes.booktype, mquotes.qtedate, mquotes.contryear, mquotes.nopages, mquotes.baseprc, mquotes.basetot, mquotes.customized, mquotes.misc, mquotes.mdesc, mquotes.sbtot, mquotes.cred_etc, 
+                         mquotes.adjbef, mquotes.adjaftr, mquotes.fbkprc, mquotes.ftotprc, mquotes.source, mquotes.ponum, mquotes.invoiced, mquotes.invno, mquotes.schtype, mquotes.acovrde, mquotes.bpovrde, mquotes.holdpmt, mquotes.bpyear,
+                          mquotes.shipping, mquotes.shippingin, mquotes.shippingam, mquotes.lf, mquotes.sf, mquotes.qtyteacher, mquotes.qtystud, mquotes.qtytot, mquotes.priceovrd, mquotes.cvrdesign, mquotes.fourclr, mquotes.hrdcpyprf, 
+                         mquotes.coverapprd, mquotes.cvrunitprc, mquotes.cvrprfreqd, mquotes.cvrtotprc, mquotes.hallpass, mquotes.hallpqty, mquotes.hallpprice, mquotes.bmark, mquotes.bmarkqty, mquotes.bmarkprc, mquotes.vpa, mquotes.vpaqty, 
+                         mquotes.vpprc, mquotes.vpb, mquotes.vpbqty, mquotes.vpbprc, mquotes.idpouch, mquotes.idpouchqty, mquotes.idpouchprc, mquotes.stdtitpg, mquotes.stttitpgqty, mquotes.stdttitpgprc, mquotes.duraglaze, mquotes.duraglzqty, 
+                         mquotes.duraglzprc, mquotes.wallch, mquotes.wallchqty, mquotes.wallchprc, mquotes.teachedt, mquotes.teachedtqty, mquotes.teachedtprc, mquotes.typeset, mquotes.typesetqty, mquotes.typesetprc, mquotes.impguid, 
+                         mquotes.impguidqty, mquotes.impquidprc, mquotes.specprc, mquotes.totoptionprc, mquotes.discdesc, mquotes.disc, mquotes.earlydisc, mquotes.earlydiscp, mquotes.predisc, mquotes.prediscprc, mquotes.discdesc1, 
+                         mquotes.discdesc1p, mquotes.discdesc2, mquotes.discdesc2p, mquotes.plnprc, mquotes.plnsbtot, mquotes.salestx, mquotes.custpu, mquotes.shpphndl, mquotes.afttxadj, mquotes.afttxadjde, mquotes.fplnprc, mquotes.fplntot, 
+                         mquotes.newprice, mquotes.disctot, mquotes.desc1amt, mquotes.stdtitpgprc, mquotes.desc1, mquotes.descamt, mquotes.desc2, mquotes.afterdisctot, mquotes.stdtitpgqty, mquotes.erldisc, mquotes.erldiscamt, mquotes.predis, 
+                         mquotes.prediscamt, mquotes.threeclr, mquotes.twoclr, mquotes.stx, mquotes.dp1, mquotes.oneclr, mquotes.generic, mquotes.wght, mquotes.shipovride, mquotes.adcdesc, mquotes.adcamt, mquotes.jostens, 
+                         mquotes.collections, mquotes.desc3amt, mquotes.desc4amt, mquotes.disc3, mquotes.disc4, mquotes.desc3, mquotes.desc4, mquotes.flaminate, mquotes.prime, mquotes.psetup, mquotes.psetupamt, mquotes.prodcode, 
+                         mquotes.orderid, mquotes.chkindate, produtn.prodno, produtn.kitrecvd, mcust.schname, mquotes.DoNotChargeTax, mquotes.SchoolTaxRate, mquotes.SalesTaxReceived, mquotes.ModifiedBy, mcust.invzip, mcust.invstate, 
+                         mcust.invcity, mcust.invaddr2, mcust.invaddr, mquotes.DateModified, mquotes.TeBasePrc
 FROM            mquotes RIGHT OUTER JOIN
                          produtn ON mquotes.invno = produtn.invno LEFT OUTER JOIN
                          mcust ON mquotes.schcode = mcust.schcode
@@ -300,8 +300,12 @@ WHERE        (mquotes.invno = @Invno)</CommandText>
               <Mapping SourceColumn="SchoolTaxRate" DataSetColumn="SchoolTaxRate" />
               <Mapping SourceColumn="SalesTaxReceived" DataSetColumn="SalesTaxReceived" />
               <Mapping SourceColumn="ModifiedBy" DataSetColumn="ModifiedBy" />
+              <Mapping SourceColumn="invzip" DataSetColumn="invzip" />
+              <Mapping SourceColumn="invstate" DataSetColumn="invstate" />
+              <Mapping SourceColumn="invcity" DataSetColumn="invcity" />
+              <Mapping SourceColumn="invaddr2" DataSetColumn="invaddr2" />
+              <Mapping SourceColumn="invaddr" DataSetColumn="invaddr" />
               <Mapping SourceColumn="nopages" DataSetColumn="nopages1" />
-              <Mapping SourceColumn="nocopies" DataSetColumn="nocopies1" />
               <Mapping SourceColumn="qtyteacher" DataSetColumn="qtyteacher1" />
               <Mapping SourceColumn="qtystud" DataSetColumn="qtystud1" />
               <Mapping SourceColumn="qtytot" DataSetColumn="qtytot1" />
@@ -319,11 +323,8 @@ WHERE        (mquotes.invno = @Invno)</CommandText>
               <Mapping SourceColumn="disctot" DataSetColumn="disctot1" />
               <Mapping SourceColumn="stdtitpgqty" DataSetColumn="stdtitpgqty1" />
               <Mapping SourceColumn="wght" DataSetColumn="wght1" />
-              <Mapping SourceColumn="invzip" DataSetColumn="invzip" />
-              <Mapping SourceColumn="invstate" DataSetColumn="invstate" />
-              <Mapping SourceColumn="invcity" DataSetColumn="invcity" />
-              <Mapping SourceColumn="invaddr2" DataSetColumn="invaddr2" />
-              <Mapping SourceColumn="invaddr" DataSetColumn="invaddr" />
+              <Mapping SourceColumn="DateModified" DataSetColumn="DateModified" />
+              <Mapping SourceColumn="TeBasePrc" DataSetColumn="TeBasePrc" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -385,7 +386,7 @@ SELECT desc2, desc3, desc4, invno FROM covers WHERE (invno = @invno)</CommandTex
   <xs:element name="dsMSales" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsMSales" msprop:Generator_UserDSName="dsMSales">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="mquotes" msprop:Generator_TableClassName="mquotesDataTable" msprop:Generator_TableVarName="tablemquotes" msprop:Generator_TablePropName="mquotes" msprop:Generator_RowDeletingName="mquotesRowDeleting" msprop:Generator_RowChangingName="mquotesRowChanging" msprop:Generator_RowEvHandlerName="mquotesRowChangeEventHandler" msprop:Generator_RowDeletedName="mquotesRowDeleted" msprop:Generator_UserTableName="mquotes" msprop:Generator_RowChangedName="mquotesRowChanged" msprop:Generator_RowEvArgName="mquotesRowChangeEvent" msprop:Generator_RowClassName="mquotesRow">
+        <xs:element name="mquotes" msprop:Generator_TableClassName="mquotesDataTable" msprop:Generator_TableVarName="tablemquotes" msprop:Generator_RowChangedName="mquotesRowChanged" msprop:Generator_TablePropName="mquotes" msprop:Generator_RowDeletingName="mquotesRowDeleting" msprop:Generator_RowChangingName="mquotesRowChanging" msprop:Generator_RowEvHandlerName="mquotesRowChangeEventHandler" msprop:Generator_RowDeletedName="mquotesRowDeleted" msprop:Generator_RowClassName="mquotesRow" msprop:Generator_UserTableName="mquotes" msprop:Generator_RowEvArgName="mquotesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode" minOccurs="0">
@@ -411,7 +412,6 @@ SELECT desc2, desc3, desc4, invno FROM covers WHERE (invno = @invno)</CommandTex
                 </xs:simpleType>
               </xs:element>
               <xs:element name="nopages" msprop:Generator_ColumnVarNameInTable="columnnopages" msprop:Generator_ColumnPropNameInRow="nopages" msprop:Generator_ColumnPropNameInTable="nopagesColumn" msprop:Generator_UserColumnName="nopages" type="xs:decimal" minOccurs="0" />
-              <xs:element name="nocopies" msprop:Generator_ColumnVarNameInTable="columnnocopies" msprop:Generator_ColumnPropNameInRow="nocopies" msprop:Generator_ColumnPropNameInTable="nocopiesColumn" msprop:Generator_UserColumnName="nocopies" type="xs:decimal" minOccurs="0" />
               <xs:element name="baseprc" msprop:Generator_ColumnVarNameInTable="columnbaseprc" msprop:Generator_ColumnPropNameInRow="baseprc" msprop:Generator_ColumnPropNameInTable="baseprcColumn" msprop:Generator_UserColumnName="baseprc" type="xs:decimal" minOccurs="0" />
               <xs:element name="basetot" msprop:Generator_ColumnVarNameInTable="columnbasetot" msprop:Generator_ColumnPropNameInRow="basetot" msprop:Generator_ColumnPropNameInTable="basetotColumn" msprop:Generator_UserColumnName="basetot" type="xs:decimal" minOccurs="0" />
               <xs:element name="customized" msprop:Generator_ColumnVarNameInTable="columncustomized" msprop:Generator_ColumnPropNameInRow="customized" msprop:Generator_ColumnPropNameInTable="customizedColumn" msprop:Generator_UserColumnName="customized" type="xs:decimal" minOccurs="0" />
@@ -667,25 +667,6 @@ SELECT desc2, desc3, desc4, invno FROM covers WHERE (invno = @invno)</CommandTex
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="nopages1" msdata:Caption="nopages" msprop:Generator_ColumnVarNameInTable="columnnopages1" msprop:Generator_ColumnPropNameInRow="nopages1" msprop:Generator_ColumnPropNameInTable="nopages1Column" msprop:Generator_UserColumnName="nopages1" type="xs:int" minOccurs="0" />
-              <xs:element name="nocopies1" msdata:Caption="nocopies" msprop:Generator_ColumnVarNameInTable="columnnocopies1" msprop:Generator_ColumnPropNameInRow="nocopies1" msprop:Generator_ColumnPropNameInTable="nocopies1Column" msprop:Generator_UserColumnName="nocopies1" type="xs:int" minOccurs="0" />
-              <xs:element name="qtyteacher1" msdata:Caption="qtyteacher" msprop:Generator_ColumnVarNameInTable="columnqtyteacher1" msprop:Generator_ColumnPropNameInRow="qtyteacher1" msprop:Generator_ColumnPropNameInTable="qtyteacher1Column" msprop:Generator_UserColumnName="qtyteacher1" type="xs:int" minOccurs="0" />
-              <xs:element name="qtystud1" msdata:Caption="qtystud" msprop:Generator_ColumnVarNameInTable="columnqtystud1" msprop:Generator_ColumnPropNameInRow="qtystud1" msprop:Generator_ColumnPropNameInTable="qtystud1Column" msprop:Generator_UserColumnName="qtystud1" type="xs:int" minOccurs="0" />
-              <xs:element name="qtytot1" msdata:Caption="qtytot" msprop:Generator_ColumnVarNameInTable="columnqtytot1" msprop:Generator_ColumnPropNameInRow="qtytot1" msprop:Generator_ColumnPropNameInTable="qtytot1Column" msprop:Generator_UserColumnName="qtytot1" type="xs:int" minOccurs="0" />
-              <xs:element name="hallpqty1" msdata:Caption="hallpqty" msprop:Generator_ColumnVarNameInTable="columnhallpqty1" msprop:Generator_ColumnPropNameInRow="hallpqty1" msprop:Generator_ColumnPropNameInTable="hallpqty1Column" msprop:Generator_UserColumnName="hallpqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="bmarkqty1" msdata:Caption="bmarkqty" msprop:Generator_ColumnVarNameInTable="columnbmarkqty1" msprop:Generator_ColumnPropNameInRow="bmarkqty1" msprop:Generator_ColumnPropNameInTable="bmarkqty1Column" msprop:Generator_UserColumnName="bmarkqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="vpaqty1" msdata:Caption="vpaqty" msprop:Generator_ColumnVarNameInTable="columnvpaqty1" msprop:Generator_ColumnPropNameInRow="vpaqty1" msprop:Generator_ColumnPropNameInTable="vpaqty1Column" msprop:Generator_UserColumnName="vpaqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="vpbqty1" msdata:Caption="vpbqty" msprop:Generator_ColumnVarNameInTable="columnvpbqty1" msprop:Generator_ColumnPropNameInRow="vpbqty1" msprop:Generator_ColumnPropNameInTable="vpbqty1Column" msprop:Generator_UserColumnName="vpbqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="idpouchqty1" msdata:Caption="idpouchqty" msprop:Generator_ColumnVarNameInTable="columnidpouchqty1" msprop:Generator_ColumnPropNameInRow="idpouchqty1" msprop:Generator_ColumnPropNameInTable="idpouchqty1Column" msprop:Generator_UserColumnName="idpouchqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="stttitpgqty1" msdata:Caption="stttitpgqty" msprop:Generator_ColumnVarNameInTable="columnstttitpgqty1" msprop:Generator_ColumnPropNameInRow="stttitpgqty1" msprop:Generator_ColumnPropNameInTable="stttitpgqty1Column" msprop:Generator_UserColumnName="stttitpgqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="duraglzqty1" msdata:Caption="duraglzqty" msprop:Generator_ColumnVarNameInTable="columnduraglzqty1" msprop:Generator_ColumnPropNameInRow="duraglzqty1" msprop:Generator_ColumnPropNameInTable="duraglzqty1Column" msprop:Generator_UserColumnName="duraglzqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="wallchqty1" msdata:Caption="wallchqty" msprop:Generator_ColumnVarNameInTable="columnwallchqty1" msprop:Generator_ColumnPropNameInRow="wallchqty1" msprop:Generator_ColumnPropNameInTable="wallchqty1Column" msprop:Generator_UserColumnName="wallchqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="teachedtqty1" msdata:Caption="teachedtqty" msprop:Generator_ColumnVarNameInTable="columnteachedtqty1" msprop:Generator_ColumnPropNameInRow="teachedtqty1" msprop:Generator_ColumnPropNameInTable="teachedtqty1Column" msprop:Generator_UserColumnName="teachedtqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="typesetqty1" msdata:Caption="typesetqty" msprop:Generator_ColumnVarNameInTable="columntypesetqty1" msprop:Generator_ColumnPropNameInRow="typesetqty1" msprop:Generator_ColumnPropNameInTable="typesetqty1Column" msprop:Generator_UserColumnName="typesetqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="impguidqty1" msdata:Caption="impguidqty" msprop:Generator_ColumnVarNameInTable="columnimpguidqty1" msprop:Generator_ColumnPropNameInRow="impguidqty1" msprop:Generator_ColumnPropNameInTable="impguidqty1Column" msprop:Generator_UserColumnName="impguidqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="disctot1" msdata:Caption="disctot" msprop:Generator_ColumnVarNameInTable="columndisctot1" msprop:Generator_ColumnPropNameInRow="disctot1" msprop:Generator_ColumnPropNameInTable="disctot1Column" msprop:Generator_UserColumnName="disctot1" type="xs:int" minOccurs="0" />
-              <xs:element name="stdtitpgqty1" msdata:Caption="stdtitpgqty" msprop:Generator_ColumnVarNameInTable="columnstdtitpgqty1" msprop:Generator_ColumnPropNameInRow="stdtitpgqty1" msprop:Generator_ColumnPropNameInTable="stdtitpgqty1Column" msprop:Generator_UserColumnName="stdtitpgqty1" type="xs:int" minOccurs="0" />
-              <xs:element name="wght1" msdata:Caption="wght" msprop:Generator_ColumnVarNameInTable="columnwght1" msprop:Generator_ColumnPropNameInRow="wght1" msprop:Generator_ColumnPropNameInTable="wght1Column" msprop:Generator_UserColumnName="wght1" type="xs:int" minOccurs="0" />
               <xs:element name="invzip" msprop:Generator_ColumnVarNameInTable="columninvzip" msprop:Generator_ColumnPropNameInRow="invzip" msprop:Generator_ColumnPropNameInTable="invzipColumn" msprop:Generator_UserColumnName="invzip" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -721,10 +702,30 @@ SELECT desc2, desc3, desc4, invno FROM covers WHERE (invno = @invno)</CommandTex
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="nopages1" msdata:Caption="nopages" msprop:Generator_ColumnVarNameInTable="columnnopages1" msprop:Generator_ColumnPropNameInRow="nopages1" msprop:Generator_ColumnPropNameInTable="nopages1Column" msprop:Generator_UserColumnName="nopages1" type="xs:int" minOccurs="0" />
+              <xs:element name="qtyteacher1" msdata:Caption="qtyteacher" msprop:Generator_ColumnVarNameInTable="columnqtyteacher1" msprop:Generator_ColumnPropNameInRow="qtyteacher1" msprop:Generator_ColumnPropNameInTable="qtyteacher1Column" msprop:Generator_UserColumnName="qtyteacher1" type="xs:int" minOccurs="0" />
+              <xs:element name="qtystud1" msdata:Caption="qtystud" msprop:Generator_ColumnVarNameInTable="columnqtystud1" msprop:Generator_ColumnPropNameInRow="qtystud1" msprop:Generator_ColumnPropNameInTable="qtystud1Column" msprop:Generator_UserColumnName="qtystud1" type="xs:int" minOccurs="0" />
+              <xs:element name="qtytot1" msdata:Caption="qtytot" msprop:Generator_ColumnVarNameInTable="columnqtytot1" msprop:Generator_ColumnPropNameInRow="qtytot1" msprop:Generator_ColumnPropNameInTable="qtytot1Column" msprop:Generator_UserColumnName="qtytot1" type="xs:int" minOccurs="0" />
+              <xs:element name="hallpqty1" msdata:Caption="hallpqty" msprop:Generator_ColumnVarNameInTable="columnhallpqty1" msprop:Generator_ColumnPropNameInRow="hallpqty1" msprop:Generator_ColumnPropNameInTable="hallpqty1Column" msprop:Generator_UserColumnName="hallpqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="bmarkqty1" msdata:Caption="bmarkqty" msprop:Generator_ColumnVarNameInTable="columnbmarkqty1" msprop:Generator_ColumnPropNameInRow="bmarkqty1" msprop:Generator_ColumnPropNameInTable="bmarkqty1Column" msprop:Generator_UserColumnName="bmarkqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="vpaqty1" msdata:Caption="vpaqty" msprop:Generator_ColumnVarNameInTable="columnvpaqty1" msprop:Generator_ColumnPropNameInRow="vpaqty1" msprop:Generator_ColumnPropNameInTable="vpaqty1Column" msprop:Generator_UserColumnName="vpaqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="vpbqty1" msdata:Caption="vpbqty" msprop:Generator_ColumnVarNameInTable="columnvpbqty1" msprop:Generator_ColumnPropNameInRow="vpbqty1" msprop:Generator_ColumnPropNameInTable="vpbqty1Column" msprop:Generator_UserColumnName="vpbqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="idpouchqty1" msdata:Caption="idpouchqty" msprop:Generator_ColumnVarNameInTable="columnidpouchqty1" msprop:Generator_ColumnPropNameInRow="idpouchqty1" msprop:Generator_ColumnPropNameInTable="idpouchqty1Column" msprop:Generator_UserColumnName="idpouchqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="stttitpgqty1" msdata:Caption="stttitpgqty" msprop:Generator_ColumnVarNameInTable="columnstttitpgqty1" msprop:Generator_ColumnPropNameInRow="stttitpgqty1" msprop:Generator_ColumnPropNameInTable="stttitpgqty1Column" msprop:Generator_UserColumnName="stttitpgqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="duraglzqty1" msdata:Caption="duraglzqty" msprop:Generator_ColumnVarNameInTable="columnduraglzqty1" msprop:Generator_ColumnPropNameInRow="duraglzqty1" msprop:Generator_ColumnPropNameInTable="duraglzqty1Column" msprop:Generator_UserColumnName="duraglzqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="wallchqty1" msdata:Caption="wallchqty" msprop:Generator_ColumnVarNameInTable="columnwallchqty1" msprop:Generator_ColumnPropNameInRow="wallchqty1" msprop:Generator_ColumnPropNameInTable="wallchqty1Column" msprop:Generator_UserColumnName="wallchqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="teachedtqty1" msdata:Caption="teachedtqty" msprop:Generator_ColumnVarNameInTable="columnteachedtqty1" msprop:Generator_ColumnPropNameInRow="teachedtqty1" msprop:Generator_ColumnPropNameInTable="teachedtqty1Column" msprop:Generator_UserColumnName="teachedtqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="typesetqty1" msdata:Caption="typesetqty" msprop:Generator_ColumnVarNameInTable="columntypesetqty1" msprop:Generator_ColumnPropNameInRow="typesetqty1" msprop:Generator_ColumnPropNameInTable="typesetqty1Column" msprop:Generator_UserColumnName="typesetqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="impguidqty1" msdata:Caption="impguidqty" msprop:Generator_ColumnVarNameInTable="columnimpguidqty1" msprop:Generator_ColumnPropNameInRow="impguidqty1" msprop:Generator_ColumnPropNameInTable="impguidqty1Column" msprop:Generator_UserColumnName="impguidqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="disctot1" msdata:Caption="disctot" msprop:Generator_ColumnVarNameInTable="columndisctot1" msprop:Generator_ColumnPropNameInRow="disctot1" msprop:Generator_ColumnPropNameInTable="disctot1Column" msprop:Generator_UserColumnName="disctot1" type="xs:int" minOccurs="0" />
+              <xs:element name="stdtitpgqty1" msdata:Caption="stdtitpgqty" msprop:Generator_ColumnVarNameInTable="columnstdtitpgqty1" msprop:Generator_ColumnPropNameInRow="stdtitpgqty1" msprop:Generator_ColumnPropNameInTable="stdtitpgqty1Column" msprop:Generator_UserColumnName="stdtitpgqty1" type="xs:int" minOccurs="0" />
+              <xs:element name="wght1" msdata:Caption="wght" msprop:Generator_ColumnVarNameInTable="columnwght1" msprop:Generator_ColumnPropNameInRow="wght1" msprop:Generator_ColumnPropNameInTable="wght1Column" msprop:Generator_UserColumnName="wght1" type="xs:int" minOccurs="0" />
+              <xs:element name="DateModified" msprop:Generator_ColumnVarNameInTable="columnDateModified" msprop:Generator_ColumnPropNameInRow="DateModified" msprop:Generator_ColumnPropNameInTable="DateModifiedColumn" msprop:Generator_UserColumnName="DateModified" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TeBasePrc" msprop:Generator_ColumnVarNameInTable="columnTeBasePrc" msprop:Generator_ColumnPropNameInRow="TeBasePrc" msprop:Generator_ColumnPropNameInTable="TeBasePrcColumn" msprop:Generator_UserColumnName="TeBasePrc" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="covers" msprop:Generator_TableClassName="coversDataTable" msprop:Generator_TableVarName="tablecovers" msprop:Generator_RowChangedName="coversRowChanged" msprop:Generator_TablePropName="covers" msprop:Generator_RowDeletingName="coversRowDeleting" msprop:Generator_RowChangingName="coversRowChanging" msprop:Generator_RowEvHandlerName="coversRowChangeEventHandler" msprop:Generator_RowDeletedName="coversRowDeleted" msprop:Generator_RowClassName="coversRow" msprop:Generator_UserTableName="covers" msprop:Generator_RowEvArgName="coversRowChangeEvent">
+        <xs:element name="covers" msprop:Generator_TableClassName="coversDataTable" msprop:Generator_TableVarName="tablecovers" msprop:Generator_TablePropName="covers" msprop:Generator_RowDeletingName="coversRowDeleting" msprop:Generator_RowChangingName="coversRowChanging" msprop:Generator_RowEvHandlerName="coversRowChangeEventHandler" msprop:Generator_RowDeletedName="coversRowDeleted" msprop:Generator_UserTableName="covers" msprop:Generator_RowChangedName="coversRowChanged" msprop:Generator_RowEvArgName="coversRowChangeEvent" msprop:Generator_RowClassName="coversRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="desc2" msprop:Generator_ColumnVarNameInTable="columndesc2" msprop:Generator_ColumnPropNameInRow="desc2" msprop:Generator_ColumnPropNameInTable="desc2Column" msprop:Generator_UserColumnName="desc2" minOccurs="0">

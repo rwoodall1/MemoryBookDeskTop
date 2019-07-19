@@ -15,6 +15,7 @@ using Exceptionless;
 using System.Reflection;
 using BaseClass.Core;
 using Mbc5.Classes;
+using Mbc5.Dialogs;
 namespace Mbc5.Forms.Meridian {
     public partial class frmMSales : BaseClass.frmBase
     {
@@ -31,7 +32,7 @@ namespace Mbc5.Forms.Meridian {
         public frmMSales(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MerCS" }, userPrincipal)
         {
             InitializeComponent();
-            //this.DisableControls(this);
+            this.DisableControls(this);
 
             //EnableControls(btnPoSrch);
             //EnableControls(txtPoSrch);
@@ -41,6 +42,7 @@ namespace Mbc5.Forms.Meridian {
             this.Schcode = null;
 
         }
+        
         #region Properties
         private UserPrincipal ApplicationUser { get; set; }
         protected frmMain frmMain { get; set; }
@@ -51,21 +53,329 @@ namespace Mbc5.Forms.Meridian {
         
         private void frmMSales_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'lookUp.MeridianProducts' table. You can move, or remove it, as needed.
-            this.meridianProductsTableAdapter.Fill(this.lookUp.MeridianProducts);
+          
             SetConnectionString();
             Fill();
-            this.tabControl1.TabPages[0].AutoScroll = false;
-          
+            this.salesTabControl.TabPages[0].AutoScroll = false;
+      
+            mquotesBindingSource.ResetBindings(true);
+
         }
+        #region SearchMethods
+        public override void SchCodeSearch()
+        {
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+
+
+            var currentSchool = this.Schcode;
+            frmSearch frmSearch = new frmSearch("Schcode", "MSALES", Schcode);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)mquotesBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+
+                frmMSales_Paint(this, null);
+                this.Cursor = Cursors.Default;
+            }
+        }
+        //public override void SchnameSearch()
+        //{
+        //    var saveResult = this.Save();
+        //    if (saveResult.IsError)
+        //    {
+
+        //        return;
+        //    }
+        //    DataRowView currentrow = (DataRowView)custBindingSource.Current;
+        //    var schname = currentrow["schname"].ToString();
+
+        //    frmSearch frmSearch = new frmSearch("Schname", "SALES", schname);
+
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        //values preserved after close
+
+        //        try
+        //        {
+        //            this.Invno = frmSearch.ReturnValue.Invno;
+        //            this.Schcode = frmSearch.ReturnValue.Schcode;
+        //            if (string.IsNullOrEmpty(Schcode))
+        //            {
+        //                MbcMessageBox.Hand("A search value was not returned", "Error");
+        //                return;
+        //            }
+        //            this.Fill();
+        //            DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+        //            this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+        //            this.Schcode = current["Schcode"].ToString();
+        //            EnableAllControls(this);
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //            return;
+
+        //        }
+
+        //        frmSales_Paint(this, null);
+        //        this.Cursor = Cursors.Default;
+        //    }
+
+
+
+        //}
+        //public override void OracleCodeSearch()
+        //{
+        //    var saveResult = this.Save();
+        //    if (saveResult.IsError)
+        //    {
+
+        //        return;
+        //    }
+        //    DataRowView currentrow = (DataRowView)custBindingSource.Current;
+        //    var oraclecode = currentrow["oraclecode"].ToString();
+
+        //    frmSearch frmSearch = new frmSearch("OracleCode", "SALES", oraclecode);
+
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        //values preserved after close
+
+        //        try
+        //        {
+        //            this.Invno = frmSearch.ReturnValue.Invno;
+        //            this.Schcode = frmSearch.ReturnValue.Schcode;
+        //            if (string.IsNullOrEmpty(Schcode))
+        //            {
+        //                MbcMessageBox.Hand("A search value was not returned", "Error");
+        //                return;
+        //            }
+        //            this.Fill();
+        //            DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+        //            this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+        //            this.Schcode = current["Schcode"].ToString();
+        //            EnableAllControls(this);
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //            return;
+
+        //        }
+        //        frmSales_Paint(this, null);
+
+        //        this.Cursor = Cursors.Default;
+        //    }
+        //}
+        //public override void InvoiceNumberSearch()
+        //{
+        //    var invno = "0";
+        //    var saveResult = this.Save();
+        //    if (saveResult.IsError)
+        //    {
+
+        //        return;
+        //    }
+        //    DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
+        //    if (currentrow != null)
+        //    {
+        //        invno = currentrow["invno"].ToString();
+        //    }
+        //    frmSearch frmSearch = new frmSearch("INVNO", "SALES", invno);
+
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        //values preserved after close
+
+        //        try
+        //        {
+        //            this.Invno = frmSearch.ReturnValue.Invno;
+        //            this.Schcode = frmSearch.ReturnValue.Schcode;
+        //            if (string.IsNullOrEmpty(Schcode))
+        //            {
+        //                MbcMessageBox.Hand("A search value was not returned", "Error");
+        //                return;
+        //            }
+        //            this.Fill();
+        //            DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+        //            this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+        //            this.Schcode = current["Schcode"].ToString();
+        //            EnableAllControls(this);
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //            return;
+
+        //        }
+        //        frmSales_Paint(this, null);
+
+        //        this.Cursor = Cursors.Default;
+        //    }
+        //}
+        //public override void JobNoSearch()
+        //{
+
+        //    var saveResult = this.Save();
+        //    if (saveResult.IsError)
+        //    {
+
+        //        return;
+        //    }
+
+        //    DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
+        //    var invno = currentrow["invno"].ToString();
+
+
+        //    frmSearch frmSearch = new frmSearch("JOBNO", "SALES", "");
+
+
+
+        //    var result = frmSearch.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        //values preserved after close
+
+        //        try
+        //        {
+        //            this.Invno = frmSearch.ReturnValue.Invno;
+        //            this.Schcode = frmSearch.ReturnValue.Schcode;
+        //            if (string.IsNullOrEmpty(Schcode))
+        //            {
+        //                MbcMessageBox.Hand("A search value was not returned", "Error");
+        //                return;
+        //            }
+
+        //            this.Fill();
+        //            DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+        //            this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+        //            this.Schcode = current["Schcode"].ToString();
+        //            EnableAllControls(this);
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MbcMessageBox.Error(ex.Message, "Error");
+        //            return;
+
+        //        }
+        //        frmSales_Paint(this, null);
+
+        //        this.Cursor = Cursors.Default;
+        //    }
+
+
+
+        //}
+        #endregion
         #region Methods
+        private bool ValidSales()
+        {
+            bool retval = true;
+
+            retval = ValidateCalcData();
+            if (!retval) { return retval; }
+            
+            retval = this.ValidateChildren();
+            if (!retval) { return retval; }
+            retval = this.Validate();
+            return retval;
+        }
+        public override ApiProcessingResult<bool> Save()
+        {
+           
+                
+            return SaveSales();
+        }
+        private ApiProcessingResult<bool> SaveSales()
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            if (!ValidSales())
+            {
+                processingResult.IsError = false;
+                return processingResult;
+            }
+            //var aa = Validate();
+            var bvb = ValidateChildren();
+            try {
+                if (Validate())
+                {
+                    mquotesBindingSource.EndEdit();                  
+                    var a = mquotesTableAdapter.Update(dsMSales.mquotes);
+                    coversBindingSource.EndEdit();
+                    var aaa=coversTableAdapter.Update(dsMSales.covers);
+                    Fill();
+                    processingResult.Data = true;
+                    return processingResult;
+                    
+                }
+                processingResult.Data =false;
+                return processingResult;
+            } catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .MarkAsCritical()
+                    .Submit();
+                processingResult.Data = false;
+                processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message,""));
+                return processingResult;
+            }       
+        }
         private void SetNoticeLabels()
         {
-            //DataRowView dr = (DataRowView)quotesBindingSource.Current;
-            //bool vHoldPayment = dr.Row.IsNull("holdpmt") ? false : (bool)dr.Row["holdpmt"];
-            //lblIncollections.Visible = vHoldPayment;
-            //bool vshpdate = dr.Row.IsNull("shpdate");
-            //lblShipped.Visible = !vshpdate;
+            try
+            {
+                lblIncollections.Location = new Point(157, 86);
+                lblIncollections.Visible = collectionsCheckBox.Checked;
+                DataRowView dr = (DataRowView)mquotesBindingSource.Current;
+                bool vshpdate = dr.Row.IsNull("shpdate");
+                lblShipped.Visible = !vshpdate;
+             }
+            catch
+            {
+
+            }
 
         }
         private void Fill()
@@ -75,7 +385,9 @@ namespace Mbc5.Forms.Meridian {
             {
                 try
                 {
+                    this.meridianProductsTableAdapter.Fill(this.lookUp.MeridianProducts);
                     mquotesTableAdapter.Fill(dsMSales.mquotes, Invno);
+                    coversTableAdapter.Fill(dsMSales.covers, Invno);
                     // xtraTableAdapter.Fill(dsExtra.xtra, Invno);
                     SetCodeInvno();
                     lblAppUser.Text = this.ApplicationUser.id;
@@ -94,27 +406,27 @@ namespace Mbc5.Forms.Meridian {
         }
         private void DisableControls(Control con)
         {
-            //foreach (Control c in con.Controls)
-            //{
-            //    DisableControls(c);
-            //}
-            //con.Enabled = false;
+            foreach (Control c in con.Controls)
+            {
+                DisableControls(c);
+            }
+            con.Enabled = false;
         }
         private void EnableControls(Control con)
         {
-            //if (con != null)
-            //{
-            //    con.Enabled = true;
-            //    EnableControls(con.Parent);
-            //}
+            if (con != null)
+            {
+                con.Enabled = true;
+                EnableControls(con.Parent);
+            }
         }
         private void EnableAllControls(Control con)
         {
-            //foreach (Control c in con.Controls)
-            //{
-            //    EnableAllControls(c);
-            //}
-            //con.Enabled = true;
+            foreach (Control c in con.Controls)
+            {
+                EnableAllControls(c);
+            }
+            con.Enabled = true;
         }
         private void SetConnectionString()
         {
@@ -122,38 +434,99 @@ namespace Mbc5.Forms.Meridian {
             this.FormConnectionString = frmMain.AppConnectionString;
             this.meridianProductsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            // this.paymntTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            // this.invdetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            // this.invCustTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            //this.invHstTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            // this.invoiceTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            //this.xtraTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-
+           
         }
-        private void Test()
-        {
-            GetBookPricing();
-            var qtyField = "Q400";
+        private void CalculateOptions() {
+           if (!Validate())
+            {
+                return;
+            }
+            if (sfRadioButton.Checked)
+            {
 
-            var a = (decimal)ObjectFieldValue.Get<MeridianPrice>(qtyField, Pricing);
+                vpbqtyTextBox.Enabled = false;
+                vpbqtyTextBox.Text = "0";
+                vpbprcTextBox.Text = "0.00";
 
-        }
-        private void CalculateOptions()
-        {
+            }
+            else
+            {
+                vpbqtyTextBox.Enabled = true;
+            }
+
             if (OptionPrices == null)
             {
                 GetOptionPricing();
             }
+            int vnumberOfCovers = 0;
+            if (desc2TextBox1.Text.Length > 0)
+            {
+                vnumberOfCovers += 1;
+            }
+            if (desc3TextBox1.Text.Length > 0)
+            {
+                vnumberOfCovers += 1;
+            }
+            if (desc4TextBox1.Text.Length > 0)
+            {
+                vnumberOfCovers += 1;
+            }
+            switch (vnumberOfCovers)
+            {
+                case 1:
+                    lblSpecialCoverPrice.Text = OptionPrices.SpecialCoverPrice1.ToString();
+                    break;
+                case 2:
+                    lblSpecialCoverPrice.Text = OptionPrices.SpecialCoverPrice2.ToString();
+                    break;
+                case 3:
+                    lblSpecialCoverPrice.Text = OptionPrices.SpecialCoverPrice3.ToString();
+                    break;
+                default:
+                    lblSpecialCoverPrice.Text = "0.00";
+                    break;
 
-            hallppriceTextBox.Text = (hallpqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.HallPassSF : OptionPrices.HallPassLF)).ToString("0.00");
-            bmarkprcTextBox.Text= (bmarkqtyTextBox.ConvertToInt() *OptionPrices.BkMrk).ToString("0.00");
-            idpouchprcTextBox.Text= (idpouchqtyTextBox.ConvertToInt() *OptionPrices.IdPouch).ToString("0.00");
-            stdttitpgprcTextBox.Text = (stttitpgqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.TitlePgLF : OptionPrices.TitlePgSF)).ToString("0.00");
-            duraglzprcTextBox.Text= (duraglzqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.DuraGlazeLF : OptionPrices.DuraGlaseSF)).ToString("0.00");
-            wallchprcTextBox.Text = (wallchqtyTextBox.ConvertToInt() * OptionPrices.WallChart).ToString("0.00");
-            typesetprcTextBox.Text = (typesetqtyTextBox.ConvertToInt() * OptionPrices.TypeSet).ToString("0.00");
+            }
+
+            hallppriceTextBox.Text = (hallpqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.HallPassSF : OptionPrices.HallPassLF)).ToString();
+            bmarkprcTextBox.Text = (bmarkqtyTextBox.ConvertToInt() * OptionPrices.BkMrk).ToString();
+            vpprcTextBox.Text = (vpaqtyTextBox.ConvertToInt() * (sfRadioButton.Checked ? OptionPrices.VpSF : OptionPrices.VpLF)).ToString();
+            vpbprcTextBox.Text = (vpbqtyTextBox.ConvertToInt() * OptionPrices.VpLF).ToString();//vinyle pocket B only available if LF
+            idpouchprcTextBox.Text = (idpouchqtyTextBox.ConvertToInt() * OptionPrices.IdPouch).ToString();
+            stdttitpgprcTextBox.Text = (stttitpgqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.TitlePgLF : OptionPrices.TitlePgSF)).ToString();
+            duraglzprcTextBox.Text = (duraglzqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.DuraGlazeLF : OptionPrices.DuraGlazeSF)).ToString();
+            wallchprcTextBox.Text = (wallchqtyTextBox.ConvertToInt() * OptionPrices.WallChart).ToString();
+            typesetprcTextBox.Text = (typesetqtyTextBox.ConvertToInt() * OptionPrices.TypeSet).ToString();
+            //TotalOption __________________________________________________________________
+            lblTotalOptions.Text = (hallppriceTextBox.ConvertToDecimal() + bmarkprcTextBox.ConvertToDecimal() + idpouchprcTextBox.ConvertToDecimal()
+             + stdttitpgprcTextBox.ConvertToDecimal() + duraglzprcTextBox.ConvertToDecimal() + wallchprcTextBox.ConvertToDecimal() + typesetprcTextBox.ConvertToDecimal()
+             + lblSpecialCoverPrice.ConvertToDecimal() + vpprcTextBox.ConvertToDecimal() + vpbprcTextBox.ConvertToDecimal()).ToString();
+            //________________________________________________________________
 
 
+            //Before Discounts Total__________________________________________________________________________
+            lblsbtot.Text = (lblTotalBasePrice.ConvertToDecimal() + lblCoverPricetotal.ConvertToDecimal() + lblTotalOptions.ConvertToDecimal() + txtmisc.ConvertToDecimal()).ToString();
+            //Sbtot_____________________________________________________
+            decimal vSbtot = lblsbtot.ConvertToDecimal();
+            //After Discount Total__________________________________________________________________________
+            afterdisctotLabel2.Text = (vSbtot + erldiscamtTextBox.ConvertToDecimal() + desc1amtTextBox1.ConvertToDecimal() + descamtTextBox.ConvertToDecimal()
+            + desc4amtTextBox.ConvertToDecimal() + desc3amtTextBox.ConvertToDecimal()).ToString();
+            //___________________________________________________________________
+            decimal vTotal = afterdisctotLabel2.ConvertToDecimal() + txtShipping.ConvertToDecimal() + txtAdditionChrg.ConvertToDecimal();
+
+            lblFinalPrice.Text = vTotal.ToString();
+            if (!doNotChargeTaxCheckBox.Checked)
+            {
+               // Control values are set in function
+                GetTax(vTotal);
+            }
+            else
+            {
+                lblTaxRate.Text = "0.00";
+                lblTax.Text = "0.00";
+            }
+
+            lblFinalTotal.Text = (lblFinalPrice.ConvertToDecimal() + lblTax.ConvertToDecimal()).ToString();
 
 
 
@@ -174,19 +547,24 @@ namespace Mbc5.Forms.Meridian {
             }
             if (chkGeneric.Checked)
             {
-                CalculateGeneric();
+                if (CalculateGeneric())
+                { return; }
+
             }
             if (chkJostens.Checked)
             {
-                CalculateJostenBase();
-                return;
+                if (CalculateJostenBase())
+                {
+                    return;
+                }
+
             }
             //calculate regular
             decimal vBasePrice = 0;
             decimal vPriceOveride = 0;
             decimal vTeacherBasePrice = 0;
             int mPages;
-            int vTotalQty = 0;       
+            int vTotalQty = 0;
             int pageMultiplier = 0;
             decimal xtraPagePrice = 0;
             var vMiscAmt = txtmisc.ConvertToDecimal();
@@ -201,14 +579,14 @@ namespace Mbc5.Forms.Meridian {
             {
                 return;
             }
-           
+
 
             if (lfRadioButton.Checked)
             {
                 if (vPriceOveride > 0)
                 {
                     vBasePrice = vPriceOveride;
-                    lblBasePrice.Text = vBasePrice.ToString("0.00");
+                    lblBasePrice.Text = vBasePrice.ToString();
                     if (string.IsNullOrEmpty(txtQtyTeacher.Text))
                     {
                         vTeacherBasePrice = 0;
@@ -216,11 +594,11 @@ namespace Mbc5.Forms.Meridian {
                     }
                     else
                     {
-                        lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
+                        lblTeachBasePrice.Text = vBasePrice.ToString();
                         //always same for Large Font
                         vTeacherBasePrice = vBasePrice;
                     }
-                    lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
+                    lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
                     return;
                 }
 
@@ -240,12 +618,12 @@ namespace Mbc5.Forms.Meridian {
                 }
                 else
                 {
-                    lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
+                    lblTeachBasePrice.Text = vBasePrice.ToString();
                     vTeacherBasePrice = vBasePrice;
                 }
-                lblBasePrice.Text = vBasePrice.ToString("0.00");
-                lblsbtot.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher) + vMiscAmt).ToString("0.00");
-                lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
+                lblBasePrice.Text = vBasePrice.ToString();
+                lblsbtot.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher) + vMiscAmt).ToString();
+                lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
             }
             //////////////----------------------------------------------------------------
             if (sfRadioButton.Checked)
@@ -253,7 +631,7 @@ namespace Mbc5.Forms.Meridian {
                 if (vPriceOveride > 0)
                 {
                     vBasePrice = vPriceOveride;
-                    lblBasePrice.Text = vBasePrice.ToString("0.00");
+                    lblBasePrice.Text = vBasePrice.ToString();
                     if (string.IsNullOrEmpty(txtQtyTeacher.Text))
                     {
                         vTeacherBasePrice = 0;
@@ -261,10 +639,10 @@ namespace Mbc5.Forms.Meridian {
                     }
                     else
                     {
-                        lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
+                        lblTeachBasePrice.Text = vBasePrice.ToString();
                         vTeacherBasePrice = vBasePrice;
                     }
-                    lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
+                    lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
                     return;
                 }
                 if (vPages == 0) { mPages = 8; } else { mPages = vPages; }//test
@@ -275,25 +653,25 @@ namespace Mbc5.Forms.Meridian {
                 if (vPages == 0) { vBasePrice += Pricing.ZeroPageCost; }
                 if (vPages == 8) { vBasePrice += Pricing.EightPageCost; }
                 vBasePrice += xtraPagePrice;
-                if (string.IsNullOrEmpty(txtQtyTeacher.Text)|| txtQtyTeacher.Text=="0")
+                if (string.IsNullOrEmpty(txtQtyTeacher.Text) || txtQtyTeacher.Text == "0")
                 {
                     lblTeachBasePrice.Text = "0.00";
                     vTeacherBasePrice = 0;
                 }
                 else
                 {
-                    lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
+                    lblTeachBasePrice.Text = vBasePrice.ToString();
                     vTeacherBasePrice = vBasePrice;
                 }
 
-                lblBasePrice.Text = vBasePrice.ToString("0.00");
-              
+                lblBasePrice.Text = vBasePrice.ToString();
+
             }
-            lblTotalBasePrice.Text= ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
-            lblsbtot.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher) + vMiscAmt).ToString("0.00");
+            lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
+            lblsbtot.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher) + vMiscAmt).ToString();
             CalculateOptions();
         }
-        private void CalculateJostenBase()
+        private bool CalculateJostenBase()
         {
             decimal vBasePrice = 0;
             decimal vPriceOveride = 0;
@@ -310,10 +688,10 @@ namespace Mbc5.Forms.Meridian {
             vTotalQty = vQtyStudent + vQtyTeacher;
             int.TryParse(txtNoPages.Text, out vPages);
             int mPages;
-           lblQtyTotal.Text = vTotalQty.ToString("0.00");
+            lblQtyTotal.Text = vTotalQty.ToString("0.00");
             if (contryearTextBox.Text == "")
             {
-                return;
+                return false;
             }
             if (vPriceOveride > 0)
             {
@@ -331,19 +709,19 @@ namespace Mbc5.Forms.Meridian {
                     vTeacherBasePrice = vBasePrice;
                 }
                 lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
-                return;
+                return true;
             }
             if (vPages > 76)
 
             {
                 MbcMessageBox.Information("Pages are over 76, Jostens pricing not available. Enter a price override.");
-                return;
+                return false;
 
             }
             if (string.IsNullOrEmpty(txtBYear.Text))
             {
                 MbcMessageBox.Information("Enter a base price year");
-                return;
+                return false;
             }
             var vJostenPrice = GetJostensPricing(txtBYear.Text, sfRadioButton.Checked ? "SF" : "LF", vPages);
             if (vTotalQty < 600)
@@ -351,16 +729,18 @@ namespace Mbc5.Forms.Meridian {
                 vJostenPrice += .25m;
             }
             lblBasePrice.Text = vJostenPrice.ToString("0.00");
-            if (vQtyTeacher>0) {
+            if (vQtyTeacher > 0)
+            {
                 lblTeachBasePrice.Text = vJostenPrice.ToString("0.00");//same as student
             }
             lblTotalBasePrice.Text = ((vJostenPrice * vQtyStudent) + (vJostenPrice * vQtyTeacher)).ToString("0.00");
             CalculateOptions();
-
+            return true;
         }
-        private void CalculateGeneric()
+        private bool CalculateGeneric()
         {
             CalculateOptions();
+            return false;//temporary then make true;
         }
         private decimal GetJostensPricing(string vYear,string vType,int pageQty)
         {
@@ -451,8 +831,9 @@ namespace Mbc5.Forms.Meridian {
         }
         private bool GetBookPricing()
         {
-           
-            if (!ValidateBookYear()){
+
+            if (!ValidateBookYear())
+            {
                 lblTotalBasePrice.Text = "0.00";
                 return false;
             }
@@ -553,8 +934,11 @@ namespace Mbc5.Forms.Meridian {
             {
                 GetOptionPricing();
             }
+
             if (fourclrCheckBox.Checked)
             {
+                
+
                 if (chkJostens.Checked)
                 {
                     lblCoverPricetotal.Text = OptionPrices.JostensFourClr.ToString("0.00");
@@ -566,6 +950,7 @@ namespace Mbc5.Forms.Meridian {
             }
             else if (threeclrCheckBox.Checked)
             {
+               
                 if (chkJostens.Checked)
                 {
                     lblCoverPricetotal.Text = OptionPrices.JostensFourClr.ToString("0.00");
@@ -577,10 +962,12 @@ namespace Mbc5.Forms.Meridian {
             }
             else if (twoclrCheckBox.Checked)
             {
-                lblCoverPricetotal.Text = OptionPrices.ThreeClr.ToString("0.00");
+                
+                lblCoverPricetotal.Text = OptionPrices.TwoClr.ToString("0.00");
             }
             else
             {
+                
                 lblCoverPricetotal.Text = OptionPrices.OneClr.ToString("0.00");
             }
             CalculateOptions();
@@ -592,7 +979,7 @@ namespace Mbc5.Forms.Meridian {
                 return;
             }
             var sqlQuery = new SQLCustomClient();
-            sqlQuery.CommandText(@"Select * From MeridianPricing Where Yr=@Yr");
+            sqlQuery.CommandText(@"Select * From MeridianOptionPrices Where Yr=@Yr");
             sqlQuery.AddParameter("@Yr", contryearTextBox.Text);
             var result = sqlQuery.Select<MeridianOptionPricing>();
             if (result.IsError)
@@ -677,29 +1064,35 @@ namespace Mbc5.Forms.Meridian {
         }
         private decimal GetTax(decimal vAmount)
         {
-        
-            var vschname = ((DataRowView)mquotesBindingSource.Current).Row["schname"].ToString().Trim();
-            var vaddress = ((DataRowView)mquotesBindingSource.Current).Row["InvAddr"].ToString().Trim();
-            var vaddress2 = ((DataRowView)mquotesBindingSource.Current).Row["InvAddr2"].ToString().Trim();
-            var vcity = ((DataRowView)mquotesBindingSource.Current).Row["InvCity"].ToString().Trim();
-            var vState = ((DataRowView)mquotesBindingSource.Current).Row["InvState"].ToString().Trim();
-            var vzipCode = ((DataRowView)mquotesBindingSource.Current).Row["InvZip"].ToString().Trim();
-            var vTaxingInfo = new AvaSalesTaxingInfo()
+            try
             {
-                CompanyName = vschname,
-                Address = vaddress,
-                Address2 = vaddress2,
-                City = vcity,
-                State = vState,
-                ZipCode = vzipCode,
-                TaxableAmount = vAmount
-            };
+                var vschname = ((DataRowView)mquotesBindingSource.Current).Row["schname"].ToString().Trim();
+                var vaddress = ((DataRowView)mquotesBindingSource.Current).Row["InvAddr"].ToString().Trim();
+                var vaddress2 = ((DataRowView)mquotesBindingSource.Current).Row["InvAddr2"].ToString().Trim();
+                var vcity = ((DataRowView)mquotesBindingSource.Current).Row["InvCity"].ToString().Trim();
+                var vState = ((DataRowView)mquotesBindingSource.Current).Row["InvState"].ToString().Trim();
+                var vzipCode = ((DataRowView)mquotesBindingSource.Current).Row["InvZip"].ToString().Trim();
+                var vTaxingInfo = new AvaSalesTaxingInfo()
+                {
+                    CompanyName = vschname,
+                    Address = vaddress,
+                    Address2 = vaddress2,
+                    City = vcity,
+                    State = vState,
+                    ZipCode = vzipCode,
+                    TaxableAmount = vAmount
+                };
 
-            var totalTaxCharged = TaxService.CaclulateTax(vTaxingInfo);
-            lblTaxRate.Text = (totalTaxCharged / vAmount).ToString("0.0000");
-            lblTax.Text = totalTaxCharged.ToString("0.00");
+                var totalTaxCharged = TaxService.CaclulateTax(vTaxingInfo);
+                lblTaxRate.Text = (totalTaxCharged / vAmount).ToString("0.0000");
+                lblTax.Text = totalTaxCharged.ToString("0.00");
 
-            return totalTaxCharged;
+                return totalTaxCharged;
+            }
+            catch 
+            {
+                return 0;
+            }
         }
 
 
@@ -722,8 +1115,16 @@ namespace Mbc5.Forms.Meridian {
         }
         private void txtQtyStudent_Leave(object sender, EventArgs e)
         {
+            
+            int vQtyStudent = txtQtyStudent.ConvertToInt();
+            int vQtyTeacher = txtQtyTeacher.ConvertToInt();
+            int vRemainder = (vQtyStudent + vQtyTeacher) % 25;
+            int vExtra = vRemainder == 0 ? 0 : 1;
+
+             txtImpGuideQty.Text = (((vQtyStudent + vQtyTeacher) / 25) + vExtra).ToString();
+            impquidprcTextBox.Text = "0.00" ; //Free
             CalculateBase();
-         
+
         }
         private void txtQtyTeacher_Leave(object sender, EventArgs e)
         {
@@ -734,7 +1135,7 @@ namespace Mbc5.Forms.Meridian {
         {
             if (!GetBookPricing())
             {
-                   return;
+                return;
             }
             var dr = (DataRowView)mquotesBindingSource.Current;
             if (prodcodeComboBox.SelectedValue.ToString() == "HSP" || prodcodeComboBox.SelectedValue.ToString() == "ADVLOG" || prodcodeComboBox.SelectedValue.ToString() == "MAG")
@@ -768,41 +1169,22 @@ namespace Mbc5.Forms.Meridian {
                     lblSchtype.Text = "PRIM";
                     break;
             }
-            
+
             CalculateBase();
             CalculateOptions();
         }
-        private void contryearTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            int vYear;
-            errorProvider1.SetError(contryearTextBox, "");
-            if (contryearTextBox.TextLength < 2)
-            {
-                errorProvider1.SetError(contryearTextBox, "Enter a  valid 2 digit year.");
-                e.Cancel = true;
-            }
-            if (!int.TryParse(contryearTextBox.Text, out vYear))
-            {
-                errorProvider1.SetError(contryearTextBox, "Enter a  valid 2 digit year.");
-                e.Cancel = true;
-            }
-
-           
-        }
+       
         private void txtBYear_Leave(object sender, EventArgs e)
         {
             if (GetBookPricing())
             {
                 CalculateBase();
                 CalculateOptions();
-            }              
-                
-            
+            }
+
+
         }
-        private void contryearTextBox_Leave(object sender, EventArgs e)
-        {
-            this.Validate();
-        }
+        
         private void wghtTextBox_Leave(object sender, EventArgs e)
         {
             Validate();
@@ -832,39 +1214,63 @@ namespace Mbc5.Forms.Meridian {
         }
         private void chkGeneric_Click(object sender, EventArgs e)
         {
+            if (chkGeneric.Checked)
+            {
+                chkJostens.Checked = false;
+            }
             CalculateBase();
             CalculateOptions();
         }
         private void chkJostens_Click(object sender, EventArgs e)
         {
+            if (chkJostens.Checked)
+            {
+               chkGeneric.Checked = false;
+            }
             CalculateBase();
             CalculateOptions();
         }     
         private void fourclrCheckBox_Click(object sender, EventArgs e)
         {
+            threeclrCheckBox.Checked = false;
+            twoclrCheckBox.Checked = false;
+            oneclrCheckBox.Checked = false;
             CoverCalc();
             CalculateOptions();
         }
         private void threeclrCheckBox_Click(object sender, EventArgs e)
         {
+            fourclrCheckBox.Checked = false;
+            twoclrCheckBox.Checked = false;
+            oneclrCheckBox.Checked = false;
             CoverCalc();
             CalculateOptions();
         }
         private void twoclrCheckBox_Click(object sender, EventArgs e)
         {
+            threeclrCheckBox.Checked = false;
+            fourclrCheckBox.Checked = false;
+            oneclrCheckBox.Checked = false;
             CoverCalc();
             CalculateOptions();
         }
         private void oneclrCheckBox_Click(object sender, EventArgs e)
         {
+            threeclrCheckBox.Checked = false;
+            twoclrCheckBox.Checked = false;
+            fourclrCheckBox.Checked = false;
             CoverCalc();
             CalculateOptions();
         }
 
         private void dp1TextBox_Leave(object sender, EventArgs e)
         {
-            dp1TextBox.Text = dp1TextBox.ConvertToDecimal().ToString("0.00");
-            CalculateOptions();
+            if (Validate())
+            {
+                erldiscamtTextBox.Text ="-"+ (dp1TextBox.ConvertToDecimal() * lblsbtot.ConvertToDecimal()).ToString("0.00");
+             
+                CalculateOptions();
+            }
         }
 
         private void erldiscamtTextBox_Leave(object sender, EventArgs e)
@@ -899,25 +1305,39 @@ namespace Mbc5.Forms.Meridian {
 
         private void shpphndlTextBox_Leave(object sender, EventArgs e)
         {
-            shpphndlTextBox.Text = shpphndlTextBox.ConvertToDecimal().ToString("0.00");
+            txtShipping.Text = txtShipping.ConvertToDecimal().ToString("0.00");
             CalculateOptions();
         }
 
         private void adcamtTextBox_Leave(object sender, EventArgs e)
         {
-            adcamtTextBox.Text = adcamtTextBox.ConvertToDecimal().ToString("0.00");
+            txtAdditionChrg.Text = txtAdditionChrg.ConvertToDecimal().ToString("0.00");
             CalculateOptions();
         }
 
        
 
         private void disc4CheckBox_Click(object sender, EventArgs e)
-        {            
+        {
+            if (disc4CheckBox.Checked)
+            {
+                desc4amtTextBox.Text = "-100.00";
+            }
+            else
+            {
+                desc4amtTextBox.Text = "0.00";
+            }
                 CalculateOptions();
         }
 
         private void disc3CheckBox_Click(object sender, EventArgs e)
         {
+            if (disc3CheckBox.Checked)
+            {
+
+                desc3amtTextBox.Text = "-" + (lblQtyTotal.ConvertToDecimal() * .25m).ToString("0.00");
+            }
+            else { desc3amtTextBox.Text = "0.00"; }
             CalculateOptions();
         }
 
@@ -928,52 +1348,225 @@ namespace Mbc5.Forms.Meridian {
 
         private void hallpqtyTextBox_Leave(object sender, EventArgs e)
         {
-           
-            
+
+            CalculateOptions();
 
         }
 
         private void bmarkqtyTextBox_Leave(object sender, EventArgs e)
         {
-           
+            CalculateOptions();
         }
 
         private void vpaqtyTextBox_Leave(object sender, EventArgs e)
         {
-            
-          
+
+            CalculateOptions();
+
         }
 
         private void vpbqtyTextBox_Leave(object sender, EventArgs e)
         {
-            
+            CalculateOptions();
         }
 
         private void idpouchqtyTextBox_Leave(object sender, EventArgs e)
         {
-            
+            CalculateOptions();
         }
 
         private void stttitpgqtyTextBox_Leave(object sender, EventArgs e)
         {
-            
+            CalculateOptions();
         }
 
         private void duraglzqtyTextBox_Leave(object sender, EventArgs e)
         {
-            
+            CalculateOptions();
         }
 
         private void wallchqtyTextBox_Leave(object sender, EventArgs e)
         {
-            
+            CalculateOptions();
         }
 
         private void typesetqtyTextBox_Leave(object sender, EventArgs e)
         {
-          
+            CalculateOptions();
         }
 
+        private void txtmisc_Leave(object sender, EventArgs e)
+        {
+       
+            CalculateOptions();
+        }
+
+        private void desc2TextBox1_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void desc3TextBox1_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void desc4TextBox1_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        
+
+        private void dp1TextBox_Validating(object sender, CancelEventArgs e)
+        {
+            decimal vValue;
+            errorProvider1.SetError(dp1TextBox, "");
+           
+            if (!decimal.TryParse(contryearTextBox.Text, out vValue))
+            {
+                errorProvider1.SetError(dp1TextBox, "Enter a  valid percentage.");
+                e.Cancel = true;
+            }
+        }
+
+        private void qtedateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            qtedateDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+
+      
+        private void collectionsCheckBox_CheckedChanged_1(object sender, EventArgs e)
+        {
+            SetNoticeLabels();
+        }
+
+        private void frmMSales_Paint(object sender, PaintEventArgs e)
+        {
+            try { this.Text = "Meridian Sales-" + lblSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")  Invoice No."+Invno ; }
+            catch
+            {
+
+            }
+        }
+
+       
+        private void contryearTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            int vYear;
+            errorProvider1.SetError(contryearTextBox, "");
+            if (contryearTextBox.TextLength < 2)
+            {
+                errorProvider1.SetError(contryearTextBox, "Enter a  valid 2 digit year.");
+                e.Cancel = true;
+            }
+            if (!int.TryParse(contryearTextBox.Text, out vYear))
+            {
+                errorProvider1.SetError(contryearTextBox, "Enter a  valid 2 digit year.");
+                e.Cancel = true;
+            }
+
+
+        }
+        private void contryearTextBox_Leave(object sender, EventArgs e)
+        {
+            this.Validate();
+            GetOptionPricing();
+            CalculateOptions();
+        }
+
+        private void txtNoPages_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.SetError(txtNoPages, "");
+            if (sfRadioButton.Checked)
+            {
+                if (txtNoPages.ConvertToInt() >152)
+                {
+                    errorProvider1.SetError(txtNoPages, "Number of pages should be 152 or less for josten planners.");
+                    e.Cancel = true;
+                }
+                if (chkJostens.Checked)
+                {
+                    if (txtNoPages.ConvertToInt() % 4 > 0 || txtNoPages.ConvertToInt() < 1)
+                    {
+                        errorProvider1.SetError(txtNoPages, "The number of pages entry must divisible by 4");
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+
+                if (txtNoPages.ConvertToInt() % 2 != 0)
+                {
+
+                    errorProvider1.SetError(txtNoPages, "The number of pages entry must be greater divisible by 2!");
+                    e.Cancel = true;
+                    return;
+                }
+
+            }
+            else
+            {
+                //LF-----------------
+                if (txtNoPages.ConvertToInt() > 76 && chkJostens.Checked && txtPriceOverRide.ConvertToDecimal()==0)
+                {
+                    errorProvider1.SetError(txtNoPages, "Number of pages should be 76 or less for josten planners.");
+                    e.Cancel = true;
+                    return;
+                   
+                }
+
+                if (chkJostens.Checked)
+                {
+                    if (txtNoPages.ConvertToInt() % 2 > 0 || txtNoPages.ConvertToInt() < 1)
+                    {
+                        errorProvider1.SetError(txtNoPages, "The number of pages entry must be greater than 1 and divisible by 2!");
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+                if (txtNoPages.ConvertToInt() % 2 != 0)
+                {
+
+                    errorProvider1.SetError(txtNoPages, "The number of pages entry must be greater divisible by 2!");
+                    e.Cancel = true;
+                    return;
+                }
+
+            }
+
+        }
+
+        private void frmMSales_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (salesTabControl.SelectedIndex)
+            {
+                case 0:
+                case 1:
+                    var salesResult = SaveSales();
+                    if (salesResult.IsError)
+                    {
+                        var result = MessageBox.Show("Sales record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (result == DialogResult.No)
+                        {
+                            e.Cancel = true;
+                            return;
+                        }
+                    }
+                    break;
+                case 3:
+                    //var paymentResult = SavePayment();
+                    //if (paymentResult.IsError)
+                    //{
+                    //    var result = MessageBox.Show("Payment record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    //    if (result == DialogResult.No)
+                    //    {
+                    //        e.Cancel = true;
+                    //        return;
+                    //    }
+                    //}
+                    break;
+            }
+        }
 
         //nothing below here
     }

@@ -140,7 +140,7 @@ namespace BindingModels
         public decimal TitlePgSF { get; set; }
         public decimal TitlePgLF { get; set; }
         public decimal DuraGlazeLF { get; set; }
-        public decimal DuraGlaseSF { get; set; }
+        public decimal DuraGlazeSF { get; set; }
         public decimal WallChart { get; set; }
         public decimal TeachersEdtSF { get; set; }
         public decimal TeachersEdtLF { get; set; }

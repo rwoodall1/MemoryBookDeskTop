@@ -35,5 +35,18 @@ namespace BaseClass
             int.TryParse(ctrl.Text, out retval);
             return retval;
         }
+        public static decimal ConvertToDecimal(this Label ctrl)
+        {
+            ctrl.Text.Replace("$", "").Replace(",", "");
+            decimal retval = 0;
+            decimal.TryParse(ctrl.Text, out retval);
+            return retval;
+        }
+        public static int ConvertToInt(this Label ctrl)
+        {
+            int retval = 0;
+            int.TryParse(ctrl.Text, out retval);
+            return retval;
+        }
     }
 }

@@ -165,11 +165,17 @@ namespace Mbc5.Forms.MemoryBook
         #region "Methods"
         private void SetNoticeLabels()
         {
-            DataRowView dr = (DataRowView)quotesBindingSource.Current;
-            bool vHoldPayment =dr.Row.IsNull("holdpmt") ?false:(bool) dr.Row["holdpmt"];
-            lblIncollections.Visible = vHoldPayment;
-            bool vshpdate = dr.Row.IsNull("shpdate");
-            lblShipped.Visible = !vshpdate;
+            try
+            {
+                DataRowView dr = (DataRowView)quotesBindingSource.Current;
+                bool vHoldPayment = dr.Row.IsNull("holdpmt") ? false : (bool)dr.Row["holdpmt"];
+                lblIncollections.Visible = vHoldPayment;
+                bool vshpdate = dr.Row.IsNull("shpdate");
+                lblShipped.Visible = !vshpdate;
+            }catch(Exception ex)
+            {
+
+            }
 
         }
         private void ReminderEmails(string type)
@@ -426,7 +432,7 @@ namespace Mbc5.Forms.MemoryBook
         {
            return CalculatePayments(lblInvoice.Text);
         }
-            private bool CalculatePayments(string invoiceNumber)
+       private bool CalculatePayments(string invoiceNumber)
         {
             bool retval = false;
             decimal? paymentTotals = 0;
@@ -3566,9 +3572,6 @@ namespace Mbc5.Forms.MemoryBook
             }
             txtNumtoPers.Text = (number1 + number).ToString();
         }
-
-
-
         private void oppicpersCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             SetOnlinePayOptions(this.txtPicPers.Name, this.chkPicPers.Name, chkPicPers.Checked);

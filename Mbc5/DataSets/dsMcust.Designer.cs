@@ -314,28 +314,6 @@ namespace Mbc5.DataSets {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class mcustDataTable : global::System.Data.TypedTableBase<mcustRow> {
             
-            private global::System.Data.DataColumn columnschcode;
-            
-            private global::System.Data.DataColumn columnsource;
-            
-            private global::System.Data.DataColumn columnsourdate;
-            
-            private global::System.Data.DataColumn columnsecsource;
-            
-            private global::System.Data.DataColumn columncontdate;
-            
-            private global::System.Data.DataColumn columncstatus;
-            
-            private global::System.Data.DataColumn columnorigsour;
-            
-            private global::System.Data.DataColumn columnorigyear;
-            
-            private global::System.Data.DataColumn columnrebook;
-            
-            private global::System.Data.DataColumn columnrebookdte;
-            
-            private global::System.Data.DataColumn columnrefby;
-            
             private global::System.Data.DataColumn columnschname;
             
             private global::System.Data.DataColumn columncontryear;
@@ -626,6 +604,28 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columninvoiced;
             
+            private global::System.Data.DataColumn columnrefby;
+            
+            private global::System.Data.DataColumn columnrebook;
+            
+            private global::System.Data.DataColumn columnorigyear;
+            
+            private global::System.Data.DataColumn columnrebookdte;
+            
+            private global::System.Data.DataColumn columnorigsour;
+            
+            private global::System.Data.DataColumn columncstatus;
+            
+            private global::System.Data.DataColumn columncontdate;
+            
+            private global::System.Data.DataColumn columnsecsource;
+            
+            private global::System.Data.DataColumn columnsourdate;
+            
+            private global::System.Data.DataColumn columnsource;
+            
+            private global::System.Data.DataColumn columnschcode;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public mcustDataTable() {
@@ -657,94 +657,6 @@ namespace Mbc5.DataSets {
             protected mcustDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn schcodeColumn {
-                get {
-                    return this.columnschcode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn sourceColumn {
-                get {
-                    return this.columnsource;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn sourdateColumn {
-                get {
-                    return this.columnsourdate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn secsourceColumn {
-                get {
-                    return this.columnsecsource;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn contdateColumn {
-                get {
-                    return this.columncontdate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn cstatusColumn {
-                get {
-                    return this.columncstatus;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn origsourColumn {
-                get {
-                    return this.columnorigsour;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn origyearColumn {
-                get {
-                    return this.columnorigyear;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn rebookColumn {
-                get {
-                    return this.columnrebook;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn rebookdteColumn {
-                get {
-                    return this.columnrebookdte;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn refbyColumn {
-                get {
-                    return this.columnrefby;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1909,6 +1821,94 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn refbyColumn {
+                get {
+                    return this.columnrefby;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn rebookColumn {
+                get {
+                    return this.columnrebook;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn origyearColumn {
+                get {
+                    return this.columnorigyear;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn rebookdteColumn {
+                get {
+                    return this.columnrebookdte;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn origsourColumn {
+                get {
+                    return this.columnorigsour;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn cstatusColumn {
+                get {
+                    return this.columncstatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn contdateColumn {
+                get {
+                    return this.columncontdate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn secsourceColumn {
+                get {
+                    return this.columnsecsource;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn sourdateColumn {
+                get {
+                    return this.columnsourdate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn sourceColumn {
+                get {
+                    return this.columnsource;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn schcodeColumn {
+                get {
+                    return this.columnschcode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1945,17 +1945,6 @@ namespace Mbc5.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public mcustRow AddmcustRow(
-                        string schcode, 
-                        string source, 
-                        System.DateTime sourdate, 
-                        string secsource, 
-                        System.DateTime contdate, 
-                        string cstatus, 
-                        string origsour, 
-                        string origyear, 
-                        string rebook, 
-                        System.DateTime rebookdte, 
-                        string refby, 
                         string schname, 
                         string contryear, 
                         decimal enrollment, 
@@ -2100,20 +2089,20 @@ namespace Mbc5.DataSets {
                         string ShippingZipCode, 
                         byte[] TimeStamp, 
                         string specinst, 
-                        bool invoiced) {
+                        bool invoiced, 
+                        string refby, 
+                        string rebook, 
+                        string origyear, 
+                        System.DateTime rebookdte, 
+                        string origsour, 
+                        string cstatus, 
+                        System.DateTime contdate, 
+                        string secsource, 
+                        System.DateTime sourdate, 
+                        string source, 
+                        string schcode) {
                 mcustRow rowmcustRow = ((mcustRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        schcode,
-                        source,
-                        sourdate,
-                        secsource,
-                        contdate,
-                        cstatus,
-                        origsour,
-                        origyear,
-                        rebook,
-                        rebookdte,
-                        refby,
                         schname,
                         contryear,
                         enrollment,
@@ -2258,7 +2247,18 @@ namespace Mbc5.DataSets {
                         ShippingZipCode,
                         TimeStamp,
                         specinst,
-                        invoiced};
+                        invoiced,
+                        refby,
+                        rebook,
+                        origyear,
+                        rebookdte,
+                        origsour,
+                        cstatus,
+                        contdate,
+                        secsource,
+                        sourdate,
+                        source,
+                        schcode};
                 rowmcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmcustRow);
                 return rowmcustRow;
@@ -2288,17 +2288,6 @@ namespace Mbc5.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnschcode = base.Columns["schcode"];
-                this.columnsource = base.Columns["source"];
-                this.columnsourdate = base.Columns["sourdate"];
-                this.columnsecsource = base.Columns["secsource"];
-                this.columncontdate = base.Columns["contdate"];
-                this.columncstatus = base.Columns["cstatus"];
-                this.columnorigsour = base.Columns["origsour"];
-                this.columnorigyear = base.Columns["origyear"];
-                this.columnrebook = base.Columns["rebook"];
-                this.columnrebookdte = base.Columns["rebookdte"];
-                this.columnrefby = base.Columns["refby"];
                 this.columnschname = base.Columns["schname"];
                 this.columncontryear = base.Columns["contryear"];
                 this.columnenrollment = base.Columns["enrollment"];
@@ -2444,33 +2433,22 @@ namespace Mbc5.DataSets {
                 this.columnTimeStamp = base.Columns["TimeStamp"];
                 this.columnspecinst = base.Columns["specinst"];
                 this.columninvoiced = base.Columns["invoiced"];
+                this.columnrefby = base.Columns["refby"];
+                this.columnrebook = base.Columns["rebook"];
+                this.columnorigyear = base.Columns["origyear"];
+                this.columnrebookdte = base.Columns["rebookdte"];
+                this.columnorigsour = base.Columns["origsour"];
+                this.columncstatus = base.Columns["cstatus"];
+                this.columncontdate = base.Columns["contdate"];
+                this.columnsecsource = base.Columns["secsource"];
+                this.columnsourdate = base.Columns["sourdate"];
+                this.columnsource = base.Columns["source"];
+                this.columnschcode = base.Columns["schcode"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnschcode = new global::System.Data.DataColumn("schcode", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnschcode);
-                this.columnsource = new global::System.Data.DataColumn("source", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnsource);
-                this.columnsourdate = new global::System.Data.DataColumn("sourdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnsourdate);
-                this.columnsecsource = new global::System.Data.DataColumn("secsource", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnsecsource);
-                this.columncontdate = new global::System.Data.DataColumn("contdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncontdate);
-                this.columncstatus = new global::System.Data.DataColumn("cstatus", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncstatus);
-                this.columnorigsour = new global::System.Data.DataColumn("origsour", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnorigsour);
-                this.columnorigyear = new global::System.Data.DataColumn("origyear", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnorigyear);
-                this.columnrebook = new global::System.Data.DataColumn("rebook", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrebook);
-                this.columnrebookdte = new global::System.Data.DataColumn("rebookdte", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrebookdte);
-                this.columnrefby = new global::System.Data.DataColumn("refby", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrefby);
                 this.columnschname = new global::System.Data.DataColumn("schname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschname);
                 this.columncontryear = new global::System.Data.DataColumn("contryear", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2761,18 +2739,30 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnspecinst);
                 this.columninvoiced = new global::System.Data.DataColumn("invoiced", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninvoiced);
+                this.columnrefby = new global::System.Data.DataColumn("refby", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrefby);
+                this.columnrebook = new global::System.Data.DataColumn("rebook", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrebook);
+                this.columnorigyear = new global::System.Data.DataColumn("origyear", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnorigyear);
+                this.columnrebookdte = new global::System.Data.DataColumn("rebookdte", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrebookdte);
+                this.columnorigsour = new global::System.Data.DataColumn("origsour", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnorigsour);
+                this.columncstatus = new global::System.Data.DataColumn("cstatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncstatus);
+                this.columncontdate = new global::System.Data.DataColumn("contdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontdate);
+                this.columnsecsource = new global::System.Data.DataColumn("secsource", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsecsource);
+                this.columnsourdate = new global::System.Data.DataColumn("sourdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsourdate);
+                this.columnsource = new global::System.Data.DataColumn("source", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsource);
+                this.columnschcode = new global::System.Data.DataColumn("schcode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschcode);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
-                this.columnschcode.AllowDBNull = false;
-                this.columnschcode.Unique = true;
-                this.columnschcode.MaxLength = 6;
-                this.columnsource.MaxLength = 3;
-                this.columnsecsource.MaxLength = 3;
-                this.columncstatus.MaxLength = 40;
-                this.columnorigsour.MaxLength = 3;
-                this.columnorigyear.MaxLength = 2;
-                this.columnrebook.MaxLength = 1;
-                this.columnrefby.MaxLength = 25;
                 this.columnschname.MaxLength = 34;
                 this.columncontryear.MaxLength = 2;
                 this.columngrades.MaxLength = 16;
@@ -2900,6 +2890,16 @@ namespace Mbc5.DataSets {
                 this.columnShippingZipCode.MaxLength = 11;
                 this.columnTimeStamp.ReadOnly = true;
                 this.columnspecinst.MaxLength = 2147483647;
+                this.columnrefby.MaxLength = 25;
+                this.columnrebook.MaxLength = 1;
+                this.columnorigyear.MaxLength = 2;
+                this.columnorigsour.MaxLength = 3;
+                this.columncstatus.MaxLength = 40;
+                this.columnsecsource.MaxLength = 3;
+                this.columnsource.MaxLength = 3;
+                this.columnschcode.AllowDBNull = false;
+                this.columnschcode.Unique = true;
+                this.columnschcode.MaxLength = 6;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3506,177 +3506,6 @@ namespace Mbc5.DataSets {
             internal mcustRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tablemcust = ((mcustDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string schcode {
-                get {
-                    return ((string)(this[this.tablemcust.schcodeColumn]));
-                }
-                set {
-                    this[this.tablemcust.schcodeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string source {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.sourceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'source\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.sourceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime sourdate {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tablemcust.sourdateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'sourdate\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.sourdateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string secsource {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.secsourceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'secsource\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.secsourceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime contdate {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tablemcust.contdateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'contdate\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.contdateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string cstatus {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.cstatusColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'cstatus\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.cstatusColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string origsour {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.origsourColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'origsour\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.origsourColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string origyear {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.origyearColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'origyear\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.origyearColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string rebook {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.rebookColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'rebook\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.rebookColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime rebookdte {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tablemcust.rebookdteColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'rebookdte\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.rebookdteColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string refby {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.refbyColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'refby\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.refbyColumn] = value;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5891,122 +5720,173 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IssourceNull() {
-                return this.IsNull(this.tablemcust.sourceColumn);
+            public string refby {
+                get {
+                    try {
+                        return ((string)(this[this.tablemcust.refbyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'refby\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.refbyColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetsourceNull() {
-                this[this.tablemcust.sourceColumn] = global::System.Convert.DBNull;
+            public string rebook {
+                get {
+                    try {
+                        return ((string)(this[this.tablemcust.rebookColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'rebook\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.rebookColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IssourdateNull() {
-                return this.IsNull(this.tablemcust.sourdateColumn);
+            public string origyear {
+                get {
+                    try {
+                        return ((string)(this[this.tablemcust.origyearColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'origyear\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.origyearColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetsourdateNull() {
-                this[this.tablemcust.sourdateColumn] = global::System.Convert.DBNull;
+            public System.DateTime rebookdte {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablemcust.rebookdteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'rebookdte\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.rebookdteColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IssecsourceNull() {
-                return this.IsNull(this.tablemcust.secsourceColumn);
+            public string origsour {
+                get {
+                    try {
+                        return ((string)(this[this.tablemcust.origsourColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'origsour\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.origsourColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetsecsourceNull() {
-                this[this.tablemcust.secsourceColumn] = global::System.Convert.DBNull;
+            public string cstatus {
+                get {
+                    try {
+                        return ((string)(this[this.tablemcust.cstatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cstatus\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.cstatusColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IscontdateNull() {
-                return this.IsNull(this.tablemcust.contdateColumn);
+            public System.DateTime contdate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablemcust.contdateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contdate\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.contdateColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetcontdateNull() {
-                this[this.tablemcust.contdateColumn] = global::System.Convert.DBNull;
+            public string secsource {
+                get {
+                    try {
+                        return ((string)(this[this.tablemcust.secsourceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'secsource\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.secsourceColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IscstatusNull() {
-                return this.IsNull(this.tablemcust.cstatusColumn);
+            public System.DateTime sourdate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablemcust.sourdateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sourdate\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.sourdateColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetcstatusNull() {
-                this[this.tablemcust.cstatusColumn] = global::System.Convert.DBNull;
+            public string source {
+                get {
+                    try {
+                        return ((string)(this[this.tablemcust.sourceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'source\' in table \'mcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemcust.sourceColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsorigsourNull() {
-                return this.IsNull(this.tablemcust.origsourColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetorigsourNull() {
-                this[this.tablemcust.origsourColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsorigyearNull() {
-                return this.IsNull(this.tablemcust.origyearColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetorigyearNull() {
-                this[this.tablemcust.origyearColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsrebookNull() {
-                return this.IsNull(this.tablemcust.rebookColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetrebookNull() {
-                this[this.tablemcust.rebookColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsrebookdteNull() {
-                return this.IsNull(this.tablemcust.rebookdteColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetrebookdteNull() {
-                this[this.tablemcust.rebookdteColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsrefbyNull() {
-                return this.IsNull(this.tablemcust.refbyColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetrefbyNull() {
-                this[this.tablemcust.refbyColumn] = global::System.Convert.DBNull;
+            public string schcode {
+                get {
+                    return ((string)(this[this.tablemcust.schcodeColumn]));
+                }
+                set {
+                    this[this.tablemcust.schcodeColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7484,6 +7364,126 @@ namespace Mbc5.DataSets {
             public void SetinvoicedNull() {
                 this[this.tablemcust.invoicedColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsrefbyNull() {
+                return this.IsNull(this.tablemcust.refbyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetrefbyNull() {
+                this[this.tablemcust.refbyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsrebookNull() {
+                return this.IsNull(this.tablemcust.rebookColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetrebookNull() {
+                this[this.tablemcust.rebookColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsorigyearNull() {
+                return this.IsNull(this.tablemcust.origyearColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetorigyearNull() {
+                this[this.tablemcust.origyearColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsrebookdteNull() {
+                return this.IsNull(this.tablemcust.rebookdteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetrebookdteNull() {
+                this[this.tablemcust.rebookdteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsorigsourNull() {
+                return this.IsNull(this.tablemcust.origsourColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetorigsourNull() {
+                this[this.tablemcust.origsourColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscstatusNull() {
+                return this.IsNull(this.tablemcust.cstatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcstatusNull() {
+                this[this.tablemcust.cstatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscontdateNull() {
+                return this.IsNull(this.tablemcust.contdateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcontdateNull() {
+                this[this.tablemcust.contdateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IssecsourceNull() {
+                return this.IsNull(this.tablemcust.secsourceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetsecsourceNull() {
+                this[this.tablemcust.secsourceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IssourdateNull() {
+                return this.IsNull(this.tablemcust.sourdateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetsourdateNull() {
+                this[this.tablemcust.sourdateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IssourceNull() {
+                return this.IsNull(this.tablemcust.sourceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetsourceNull() {
+                this[this.tablemcust.sourceColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -8029,17 +8029,6 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "mcust";
-            tableMapping.ColumnMappings.Add("schcode", "schcode");
-            tableMapping.ColumnMappings.Add("source", "source");
-            tableMapping.ColumnMappings.Add("sourdate", "sourdate");
-            tableMapping.ColumnMappings.Add("secsource", "secsource");
-            tableMapping.ColumnMappings.Add("contdate", "contdate");
-            tableMapping.ColumnMappings.Add("cstatus", "cstatus");
-            tableMapping.ColumnMappings.Add("origsour", "origsour");
-            tableMapping.ColumnMappings.Add("origyear", "origyear");
-            tableMapping.ColumnMappings.Add("rebook", "rebook");
-            tableMapping.ColumnMappings.Add("rebookdte", "rebookdte");
-            tableMapping.ColumnMappings.Add("refby", "refby");
             tableMapping.ColumnMappings.Add("schname", "schname");
             tableMapping.ColumnMappings.Add("contryear", "contryear");
             tableMapping.ColumnMappings.Add("enrollment", "enrollment");
@@ -8185,6 +8174,17 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
             tableMapping.ColumnMappings.Add("TimeStamp", "TimeStamp");
             tableMapping.ColumnMappings.Add("specinst", "specinst");
             tableMapping.ColumnMappings.Add("invoiced", "invoiced");
+            tableMapping.ColumnMappings.Add("refby", "refby");
+            tableMapping.ColumnMappings.Add("rebook", "rebook");
+            tableMapping.ColumnMappings.Add("origyear", "origyear");
+            tableMapping.ColumnMappings.Add("rebookdte", "rebookdte");
+            tableMapping.ColumnMappings.Add("origsour", "origsour");
+            tableMapping.ColumnMappings.Add("cstatus", "cstatus");
+            tableMapping.ColumnMappings.Add("contdate", "contdate");
+            tableMapping.ColumnMappings.Add("secsource", "secsource");
+            tableMapping.ColumnMappings.Add("sourdate", "sourdate");
+            tableMapping.ColumnMappings.Add("source", "source");
+            tableMapping.ColumnMappings.Add("schcode", "schcode");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
@@ -8392,49 +8392,49 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        mcust.schcode, mcust.source, mcust.sourdate, mcust.secsource, mcust" +
-                ".contdate, mcust.cstatus, mcust.origsour, mcust.origyear, mcust.rebook, mcust.re" +
-                "bookdte, mcust.refby, mcust.schname, mcust.contryear, \r\n                        " +
-                " mcust.enrollment, mcust.grades, mcust.sal, mcust.schaddr, mcust.schaddr2, mcust" +
-                ".schcity, mcust.schstate, mcust.schzip, mcust.schphone, mcust.schfax, mcust.sche" +
-                "mail, mcust.sprngbrk, mcust.schout, mcust.nposition, \r\n                         " +
-                "mcust.gender, mcust.contfname, mcust.contlname, mcust.newfname, mcust.newlname, " +
-                "mcust.yb_sth, mcust.shiptocont, mcust.contaddr, mcust.contaddr2, mcust.contcity," +
-                " mcust.contstate, mcust.contphnhom, mcust.contzip, \r\n                         mc" +
-                "ust.contphnwrk, mcust.contfax, mcust.contemail, mcust.booktype, mcust.sigfopf, m" +
-                "cust.vcrsent, mcust.envflyer, mcust.marketing, mcust.yearrnd, mcust.clrpg_int, m" +
-                "cust.ck_lock, mcust.digintrst, mcust.svcode1, \r\n                         mcust.s" +
-                "vdesc1, mcust.svcode2, mcust.svdesc2, mcust.lastcont, mcust.nextcont, mcust.csre" +
-                "p, mcust.cstat, mcust.xeldate, mcust.allcolor, mcust.rbinit, mcust.rbdate, mcust" +
-                ".clspic, mcust.sprinfo, mcust.fallinfo, mcust.initcont, \r\n                      " +
-                "   mcust.highsp, mcust.slownone, mcust.pcmac, mcust.junsno, mcust.jobno, mcust.a" +
-                "dvpw, mcust.clientcode, mcust.bcontfname, mcust.bcontlname, mcust.bcontaddr, mcu" +
-                "st.bcontaddr2, mcust.bcontcity, mcust.bcontstate, \r\n                         mcu" +
-                "st.bcontzip, mcust.bcontphnho, mcust.bcontphnwr, mcust.bcontfax, mcust.bcontemai" +
-                "l, mcust.multiyropt, mcust.multiyear, mcust.schuploadi, mcust.website, mcust.nom" +
-                "ktemail, mcust.nodirectma, mcust.bposition, \r\n                         mcust.boo" +
-                "ktier, mcust.josjobno, mcust.category, mcust.dteschstart, mcust.dtenextcon, mcus" +
-                "t.mktsegment, mcust.nextcallfr, mcust.curentprov, mcust.aplus, mcust.bussagreee," +
-                " mcust.leadsource, mcust.nocont, \r\n                         mcust.dteschsta2, mc" +
-                "ust.contmemo, mcust.exchg, mcust.spcinst, mcust.inoffice, mcust.shipmemo, mcust." +
-                "dteschend, mcust.multiyroptions, mcust.josname, mcust.shpaddr, mcust.shpaddr2, m" +
-                "cust.shpcity, mcust.shpstate, \r\n                         mcust.shpzip, mcust.ads" +
-                "hpaddr, mcust.invaddr, mcust.invaddr2, mcust.invcity, mcust.invstate, mcust.invn" +
-                "otes, mcust.invphone, mcust.invzip, mcust.invsameasschool, mcust.invname, mcust." +
-                "schclosed, mcust.shpname, \r\n                         mcust.schcolors, mcust.Modi" +
-                "fiedBy, mcust.TaxExempt, mcust.NotTaxExempt, mcust.TaxExemptRecvd, mcust.OracleC" +
-                "ode, mcust.Status, mcust.Staging, produtn.dedayin, produtn.dedayout, mquotes.boo" +
-                "ktype AS QBooktype, \r\n                         mquotes.contryear AS QYear, mquot" +
-                "es.invno AS QInvno, produtn.prodno, produtn.kitrecvd, MeridianProducts.Descripti" +
-                "on AS ProdDescription, mcust.DateModified, mcust.ShippingAddr, mcust.ShippingAdd" +
-                "r2, mcust.ShippingCity, \r\n                         mcust.ShippingState, mcust.Sh" +
-                "ippingZipCode, mcust.TimeStamp, covers.specinst, mquotes.invoiced\r\nFROM         " +
-                "   covers RIGHT OUTER JOIN\r\n                         mquotes ON covers.invno = m" +
-                "quotes.invno LEFT OUTER JOIN\r\n                         MeridianProducts ON mquot" +
-                "es.prodcode = MeridianProducts.ProdCode LEFT OUTER JOIN\r\n                       " +
-                "  produtn ON mquotes.invno = produtn.invno RIGHT OUTER JOIN\r\n                   " +
-                "      mcust ON mquotes.schcode = mcust.schcode\r\nWHERE        (mcust.schcode = @s" +
-                "chcode)";
+            this._commandCollection[0].CommandText = "SELECT        mcust.schname, mcust.contryear, mcust.enrollment, mcust.grades, mcu" +
+                "st.sal, mcust.schaddr, mcust.schaddr2, mcust.schcity, mcust.schstate, mcust.schz" +
+                "ip, mcust.schphone, mcust.schfax, mcust.schemail, mcust.sprngbrk, \r\n            " +
+                "             mcust.schout, mcust.nposition, mcust.gender, mcust.contfname, mcust" +
+                ".contlname, mcust.newfname, mcust.newlname, mcust.yb_sth, mcust.shiptocont, mcus" +
+                "t.contaddr, mcust.contaddr2, mcust.contcity, mcust.contstate, \r\n                " +
+                "         mcust.contphnhom, mcust.contzip, mcust.contphnwrk, mcust.contfax, mcust" +
+                ".contemail, mcust.booktype, mcust.sigfopf, mcust.vcrsent, mcust.envflyer, mcust." +
+                "marketing, mcust.yearrnd, mcust.clrpg_int, mcust.ck_lock, \r\n                    " +
+                "     mcust.digintrst, mcust.svcode1, mcust.svdesc1, mcust.svcode2, mcust.svdesc2" +
+                ", mcust.lastcont, mcust.nextcont, mcust.csrep, mcust.cstat, mcust.xeldate, mcust" +
+                ".allcolor, mcust.rbinit, mcust.rbdate, mcust.clspic, mcust.sprinfo, \r\n          " +
+                "               mcust.fallinfo, mcust.initcont, mcust.highsp, mcust.slownone, mcu" +
+                "st.pcmac, mcust.junsno, mcust.jobno, mcust.advpw, mcust.clientcode, mcust.bcontf" +
+                "name, mcust.bcontlname, mcust.bcontaddr, mcust.bcontaddr2, \r\n                   " +
+                "      mcust.bcontcity, mcust.bcontstate, mcust.bcontzip, mcust.bcontphnho, mcust" +
+                ".bcontphnwr, mcust.bcontfax, mcust.bcontemail, mcust.multiyropt, mcust.multiyear" +
+                ", mcust.schuploadi, mcust.website, mcust.nomktemail, \r\n                         " +
+                "mcust.nodirectma, mcust.bposition, mcust.booktier, mcust.josjobno, mcust.categor" +
+                "y, mcust.dteschstart, mcust.dtenextcon, mcust.mktsegment, mcust.nextcallfr, mcus" +
+                "t.curentprov, mcust.aplus, mcust.bussagreee, \r\n                         mcust.le" +
+                "adsource, mcust.nocont, mcust.dteschsta2, mcust.contmemo, mcust.exchg, mcust.spc" +
+                "inst, mcust.inoffice, mcust.shipmemo, mcust.dteschend, mcust.multiyroptions, mcu" +
+                "st.josname, mcust.shpaddr, mcust.shpaddr2, \r\n                         mcust.shpc" +
+                "ity, mcust.shpstate, mcust.shpzip, mcust.adshpaddr, mcust.invaddr, mcust.invaddr" +
+                "2, mcust.invcity, mcust.invstate, mcust.invnotes, mcust.invphone, mcust.invzip, " +
+                "mcust.invsameasschool, mcust.invname, \r\n                         mcust.schclosed" +
+                ", mcust.shpname, mcust.schcolors, mcust.ModifiedBy, mcust.TaxExempt, mcust.NotTa" +
+                "xExempt, mcust.TaxExemptRecvd, mcust.OracleCode, mcust.Status, mcust.Staging, pr" +
+                "odutn.dedayin, produtn.dedayout, \r\n                         mquotes.booktype AS " +
+                "QBooktype, mquotes.contryear AS QYear, mquotes.invno AS QInvno, produtn.prodno, " +
+                "produtn.kitrecvd, MeridianProducts.Description AS ProdDescription, mcust.DateMod" +
+                "ified, mcust.ShippingAddr, \r\n                         mcust.ShippingAddr2, mcust" +
+                ".ShippingCity, mcust.ShippingState, mcust.ShippingZipCode, mcust.TimeStamp, cove" +
+                "rs.specinst, mquotes.invoiced, mcust.refby, mcust.rebook, mcust.origyear, mcust." +
+                "rebookdte, mcust.origsour, \r\n                         mcust.cstatus, mcust.contd" +
+                "ate, mcust.secsource, mcust.sourdate, mcust.source, mcust.schcode\r\nFROM         " +
+                "   mcust LEFT OUTER JOIN\r\n                         mquotes ON mcust.schcode = mq" +
+                "uotes.schcode LEFT OUTER JOIN\r\n                         MeridianProducts ON mquo" +
+                "tes.prodcode = MeridianProducts.ProdCode LEFT OUTER JOIN\r\n                      " +
+                "   produtn ON mquotes.invno = produtn.invno LEFT OUTER JOIN\r\n                   " +
+                "      covers ON mquotes.invno = covers.invno\r\nWHERE        (mcust.schcode = @sch" +
+                "code)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

@@ -42,7 +42,7 @@ namespace Mbc5.Forms.Meridian {
 
         private void frmMerCust_Load(object sender, EventArgs e)
         {
-            
+            this.merCustTab.TabPages[0].AutoScroll = false;
 
             this.frmMain = (frmMain)this.MdiParent;
 
@@ -58,6 +58,20 @@ namespace Mbc5.Forms.Meridian {
         }
 
         #region Methods
+        private void GoToSales()
+        {
+
+            var a = this.lblSchcode.Text;
+            this.Cursor = Cursors.AppStarting;
+            int vInvno = this.Invno;
+            string vSchcode = this.Schcode;
+
+            frmMSales frmSales = new frmMSales(this.ApplicationUser, vInvno, vSchcode);
+            frmSales.MdiParent = this.MdiParent;
+            frmSales.Show();
+            this.Cursor = Cursors.Default;
+
+        }
         private void AddSalesRecord()
         {
             var dr = (DataRowView)mcustBindingSource.Current;
@@ -231,8 +245,7 @@ namespace Mbc5.Forms.Meridian {
             this.Save();
             SetInvnoSchCode();
 
-        }
-        
+        }      
         public override void OracleCodeSearch()
         {
             var currentOracleCode = txtOracleCode.Text;
@@ -815,11 +828,12 @@ namespace Mbc5.Forms.Meridian {
             }
             catch(Exception ex)
             {
+                var a = dsMcust.Tables["mcust"].GetErrors();
                 ex.ToExceptionless()
                     .AddObject(ex)
                     .MarkAsCritical()
                     .Submit();
-                var a=dsMcust.Tables["mcust"].GetErrors();
+                var aww=dsMcust.Tables["mcust"].GetErrors();
                 MbcMessageBox.Error(ex.Message);
             }
         }
@@ -1019,6 +1033,11 @@ namespace Mbc5.Forms.Meridian {
 
             return;
             
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            GoToSales();
         }
         //nothing below here
     }

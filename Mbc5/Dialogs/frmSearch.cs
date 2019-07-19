@@ -103,6 +103,22 @@ namespace Mbc5.Dialogs {
                             dgSearch.DataSource = bsData;
                             txtSearch.Select();
                             break;
+                        case "MSALES":
+
+                            cmdtext = @"Select C.Schcode,C.Schname,Q.Invno AS Invoice,C.OracleCode,C.Contryear,C.SchZip,C.SchState From MQuotes Q INNER JOIN MCust C on Q.Schcode=C.Schcode Order By Schcode";
+                            sqlclient.CommandText(cmdtext);
+                            var msalesresult = sqlclient.SelectMany<SchcodeSalesSearch>();
+                            if (msalesresult.IsError)
+                            {
+                                MbcMessageBox.Error(msalesresult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var retmVal = (List<SchcodeSalesSearch>)msalesresult.Data;
+                            this.SaleSchoolCodeList = retmVal;
+                            bsData.DataSource = this.SaleSchoolCodeList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
+                            break;
                         case "SALES":
 
                             cmdtext = @"Select C.Schcode,C.Schname,Q.Invno AS Invoice,C.OracleCode,C.Contryear,C.SchZip,C.SchState From Quotes Q INNER JOIN Cust C on Q.Schcode=C.Schcode Order By Schcode";
@@ -146,6 +162,21 @@ namespace Mbc5.Dialogs {
                             }
                             var bidretVal = (List<BidsSchcodeSearch>)bidresult.Data;
                             this.BidSchcodeList = bidretVal;
+                            bsData.DataSource = this.BidSchcodeList;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
+                            break;
+                        case "MBIDS":
+                            cmdtext = @"Select C.Schcode,C.Schname,B.Id,B.Contryear,C.SchZip,C.SchState From MBids B  INNER JOIN MCust C on B.Schcode=C.Schcode Order By Schcode,Id";
+                            sqlclient.CommandText(cmdtext);
+                            var mbidresult = sqlclient.SelectMany<BidsSchcodeSearch>();
+                            if (mbidresult.IsError)
+                            {
+                                MbcMessageBox.Error(mbidresult.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var mbidretVal = (List<BidsSchcodeSearch>)mbidresult.Data;
+                            this.BidSchcodeList = mbidretVal;
                             bsData.DataSource = this.BidSchcodeList;
                             dgSearch.DataSource = bsData;
                             txtSearch.Select();
@@ -989,7 +1020,7 @@ namespace Mbc5.Dialogs {
                     {
                         vList = this.CustCode.Select(x => x.Schcode).ToList();
                     }
-                    else if (ReturnForm == "SALES")
+                    else if (ReturnForm == "SALES"|| ReturnForm == "SALES")
                     {
                         vList = this.SaleSchoolCodeList.Select(x => x.Schcode).ToList();
                     }else if (ReturnForm == "PRODUCTION")
@@ -1319,7 +1350,13 @@ namespace Mbc5.Dialogs {
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[1].Value;
-                } else if (SearchType == "SCHCODE" && ReturnForm == "PRODUCTION")
+                }
+                else if (SearchType == "SCHCODE" && ReturnForm == "MSALES")
+                {
+                    this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
+                    this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[1].Value;
+                }
+                else if (SearchType == "SCHCODE" && ReturnForm == "PRODUCTION")
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
@@ -1438,6 +1475,7 @@ namespace Mbc5.Dialogs {
             }
 
         }
+
         private void dgSearch_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
 

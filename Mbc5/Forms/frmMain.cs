@@ -510,7 +510,9 @@ namespace Mbc5.Forms
         private void tsSave_Click(object sender,EventArgs e) {
             try {
                 var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-                activeform.Save(); }
+               var result= activeform.Save();
+                
+            }
             catch(Exception ex) {
                 MessageBox.Show("Save is not implemented for this form.","Save",MessageBoxButtons.OK,MessageBoxIcon.Hand);
                 }

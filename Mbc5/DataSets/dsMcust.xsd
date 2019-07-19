@@ -12,24 +12,24 @@
               <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT        mcust.schcode, mcust.source, mcust.sourdate, mcust.secsource, mcust.contdate, mcust.cstatus, mcust.origsour, mcust.origyear, mcust.rebook, mcust.rebookdte, mcust.refby, mcust.schname, mcust.contryear, 
-                         mcust.enrollment, mcust.grades, mcust.sal, mcust.schaddr, mcust.schaddr2, mcust.schcity, mcust.schstate, mcust.schzip, mcust.schphone, mcust.schfax, mcust.schemail, mcust.sprngbrk, mcust.schout, mcust.nposition, 
-                         mcust.gender, mcust.contfname, mcust.contlname, mcust.newfname, mcust.newlname, mcust.yb_sth, mcust.shiptocont, mcust.contaddr, mcust.contaddr2, mcust.contcity, mcust.contstate, mcust.contphnhom, mcust.contzip, 
-                         mcust.contphnwrk, mcust.contfax, mcust.contemail, mcust.booktype, mcust.sigfopf, mcust.vcrsent, mcust.envflyer, mcust.marketing, mcust.yearrnd, mcust.clrpg_int, mcust.ck_lock, mcust.digintrst, mcust.svcode1, 
-                         mcust.svdesc1, mcust.svcode2, mcust.svdesc2, mcust.lastcont, mcust.nextcont, mcust.csrep, mcust.cstat, mcust.xeldate, mcust.allcolor, mcust.rbinit, mcust.rbdate, mcust.clspic, mcust.sprinfo, mcust.fallinfo, mcust.initcont, 
-                         mcust.highsp, mcust.slownone, mcust.pcmac, mcust.junsno, mcust.jobno, mcust.advpw, mcust.clientcode, mcust.bcontfname, mcust.bcontlname, mcust.bcontaddr, mcust.bcontaddr2, mcust.bcontcity, mcust.bcontstate, 
-                         mcust.bcontzip, mcust.bcontphnho, mcust.bcontphnwr, mcust.bcontfax, mcust.bcontemail, mcust.multiyropt, mcust.multiyear, mcust.schuploadi, mcust.website, mcust.nomktemail, mcust.nodirectma, mcust.bposition, 
-                         mcust.booktier, mcust.josjobno, mcust.category, mcust.dteschstart, mcust.dtenextcon, mcust.mktsegment, mcust.nextcallfr, mcust.curentprov, mcust.aplus, mcust.bussagreee, mcust.leadsource, mcust.nocont, 
-                         mcust.dteschsta2, mcust.contmemo, mcust.exchg, mcust.spcinst, mcust.inoffice, mcust.shipmemo, mcust.dteschend, mcust.multiyroptions, mcust.josname, mcust.shpaddr, mcust.shpaddr2, mcust.shpcity, mcust.shpstate, 
-                         mcust.shpzip, mcust.adshpaddr, mcust.invaddr, mcust.invaddr2, mcust.invcity, mcust.invstate, mcust.invnotes, mcust.invphone, mcust.invzip, mcust.invsameasschool, mcust.invname, mcust.schclosed, mcust.shpname, 
-                         mcust.schcolors, mcust.ModifiedBy, mcust.TaxExempt, mcust.NotTaxExempt, mcust.TaxExemptRecvd, mcust.OracleCode, mcust.Status, mcust.Staging, produtn.dedayin, produtn.dedayout, mquotes.booktype AS QBooktype, 
-                         mquotes.contryear AS QYear, mquotes.invno AS QInvno, produtn.prodno, produtn.kitrecvd, MeridianProducts.Description AS ProdDescription, mcust.DateModified, mcust.ShippingAddr, mcust.ShippingAddr2, mcust.ShippingCity, 
-                         mcust.ShippingState, mcust.ShippingZipCode, mcust.TimeStamp, covers.specinst, mquotes.invoiced
-FROM            covers RIGHT OUTER JOIN
-                         mquotes ON covers.invno = mquotes.invno LEFT OUTER JOIN
+                    <CommandText>SELECT        mcust.schname, mcust.contryear, mcust.enrollment, mcust.grades, mcust.sal, mcust.schaddr, mcust.schaddr2, mcust.schcity, mcust.schstate, mcust.schzip, mcust.schphone, mcust.schfax, mcust.schemail, mcust.sprngbrk, 
+                         mcust.schout, mcust.nposition, mcust.gender, mcust.contfname, mcust.contlname, mcust.newfname, mcust.newlname, mcust.yb_sth, mcust.shiptocont, mcust.contaddr, mcust.contaddr2, mcust.contcity, mcust.contstate, 
+                         mcust.contphnhom, mcust.contzip, mcust.contphnwrk, mcust.contfax, mcust.contemail, mcust.booktype, mcust.sigfopf, mcust.vcrsent, mcust.envflyer, mcust.marketing, mcust.yearrnd, mcust.clrpg_int, mcust.ck_lock, 
+                         mcust.digintrst, mcust.svcode1, mcust.svdesc1, mcust.svcode2, mcust.svdesc2, mcust.lastcont, mcust.nextcont, mcust.csrep, mcust.cstat, mcust.xeldate, mcust.allcolor, mcust.rbinit, mcust.rbdate, mcust.clspic, mcust.sprinfo, 
+                         mcust.fallinfo, mcust.initcont, mcust.highsp, mcust.slownone, mcust.pcmac, mcust.junsno, mcust.jobno, mcust.advpw, mcust.clientcode, mcust.bcontfname, mcust.bcontlname, mcust.bcontaddr, mcust.bcontaddr2, 
+                         mcust.bcontcity, mcust.bcontstate, mcust.bcontzip, mcust.bcontphnho, mcust.bcontphnwr, mcust.bcontfax, mcust.bcontemail, mcust.multiyropt, mcust.multiyear, mcust.schuploadi, mcust.website, mcust.nomktemail, 
+                         mcust.nodirectma, mcust.bposition, mcust.booktier, mcust.josjobno, mcust.category, mcust.dteschstart, mcust.dtenextcon, mcust.mktsegment, mcust.nextcallfr, mcust.curentprov, mcust.aplus, mcust.bussagreee, 
+                         mcust.leadsource, mcust.nocont, mcust.dteschsta2, mcust.contmemo, mcust.exchg, mcust.spcinst, mcust.inoffice, mcust.shipmemo, mcust.dteschend, mcust.multiyroptions, mcust.josname, mcust.shpaddr, mcust.shpaddr2, 
+                         mcust.shpcity, mcust.shpstate, mcust.shpzip, mcust.adshpaddr, mcust.invaddr, mcust.invaddr2, mcust.invcity, mcust.invstate, mcust.invnotes, mcust.invphone, mcust.invzip, mcust.invsameasschool, mcust.invname, 
+                         mcust.schclosed, mcust.shpname, mcust.schcolors, mcust.ModifiedBy, mcust.TaxExempt, mcust.NotTaxExempt, mcust.TaxExemptRecvd, mcust.OracleCode, mcust.Status, mcust.Staging, produtn.dedayin, produtn.dedayout, 
+                         mquotes.booktype AS QBooktype, mquotes.contryear AS QYear, mquotes.invno AS QInvno, produtn.prodno, produtn.kitrecvd, MeridianProducts.Description AS ProdDescription, mcust.DateModified, mcust.ShippingAddr, 
+                         mcust.ShippingAddr2, mcust.ShippingCity, mcust.ShippingState, mcust.ShippingZipCode, mcust.TimeStamp, covers.specinst, mquotes.invoiced, mcust.refby, mcust.rebook, mcust.origyear, mcust.rebookdte, mcust.origsour, 
+                         mcust.cstatus, mcust.contdate, mcust.secsource, mcust.sourdate, mcust.source, mcust.schcode
+FROM            mcust LEFT OUTER JOIN
+                         mquotes ON mcust.schcode = mquotes.schcode LEFT OUTER JOIN
                          MeridianProducts ON mquotes.prodcode = MeridianProducts.ProdCode LEFT OUTER JOIN
-                         produtn ON mquotes.invno = produtn.invno RIGHT OUTER JOIN
-                         mcust ON mquotes.schcode = mcust.schcode
+                         produtn ON mquotes.invno = produtn.invno LEFT OUTER JOIN
+                         covers ON mquotes.invno = covers.invno
 WHERE        (mcust.schcode = @schcode)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="schcode" ColumnName="schcode" DataSourceName="Mbc5.dbo.mcust" DataTypeServer="varchar(6)" DbType="AnsiString" Direction="Input" ParameterName="@schcode" Precision="0" ProviderType="VarChar" Scale="0" Size="6" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -198,24 +198,13 @@ WHERE        (schcode = @schcode)</CommandText>
                       <Parameter AllowDbNull="true" AutogeneratedName="ShippingCity" ColumnName="ShippingCity" DataSourceName="" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@ShippingCity" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ShippingCity" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="ShippingState" ColumnName="ShippingState" DataSourceName="" DataTypeServer="varchar(3)" DbType="AnsiString" Direction="Input" ParameterName="@ShippingState" Precision="0" ProviderType="VarChar" Scale="0" Size="3" SourceColumn="ShippingState" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="ShippingZipCode" ColumnName="ShippingZipCode" DataSourceName="" DataTypeServer="varchar(11)" DbType="AnsiString" Direction="Input" ParameterName="@ShippingZipCode" Precision="0" ProviderType="VarChar" Scale="0" Size="11" SourceColumn="ShippingZipCode" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="schcode" ColumnName="schcode" DataSourceName="" DataTypeServer="varchar(6)" DbType="AnsiString" Direction="Input" ParameterName="@schcode" Precision="0" ProviderType="VarChar" Scale="0" Size="6" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="schcode" ColumnName="schcode" DataSourceName="" DataTypeServer="varchar(6)" DbType="AnsiString" Direction="Input" ParameterName="@schcode" Precision="0" ProviderType="VarChar" Scale="0" Size="6" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="schcode" DataSetColumn="schcode" />
-              <Mapping SourceColumn="source" DataSetColumn="source" />
-              <Mapping SourceColumn="sourdate" DataSetColumn="sourdate" />
-              <Mapping SourceColumn="secsource" DataSetColumn="secsource" />
-              <Mapping SourceColumn="contdate" DataSetColumn="contdate" />
-              <Mapping SourceColumn="cstatus" DataSetColumn="cstatus" />
-              <Mapping SourceColumn="origsour" DataSetColumn="origsour" />
-              <Mapping SourceColumn="origyear" DataSetColumn="origyear" />
-              <Mapping SourceColumn="rebook" DataSetColumn="rebook" />
-              <Mapping SourceColumn="rebookdte" DataSetColumn="rebookdte" />
-              <Mapping SourceColumn="refby" DataSetColumn="refby" />
               <Mapping SourceColumn="schname" DataSetColumn="schname" />
               <Mapping SourceColumn="contryear" DataSetColumn="contryear" />
               <Mapping SourceColumn="enrollment" DataSetColumn="enrollment" />
@@ -361,6 +350,17 @@ WHERE        (schcode = @schcode)</CommandText>
               <Mapping SourceColumn="TimeStamp" DataSetColumn="TimeStamp" />
               <Mapping SourceColumn="specinst" DataSetColumn="specinst" />
               <Mapping SourceColumn="invoiced" DataSetColumn="invoiced" />
+              <Mapping SourceColumn="refby" DataSetColumn="refby" />
+              <Mapping SourceColumn="rebook" DataSetColumn="rebook" />
+              <Mapping SourceColumn="origyear" DataSetColumn="origyear" />
+              <Mapping SourceColumn="rebookdte" DataSetColumn="rebookdte" />
+              <Mapping SourceColumn="origsour" DataSetColumn="origsour" />
+              <Mapping SourceColumn="cstatus" DataSetColumn="cstatus" />
+              <Mapping SourceColumn="contdate" DataSetColumn="contdate" />
+              <Mapping SourceColumn="secsource" DataSetColumn="secsource" />
+              <Mapping SourceColumn="sourdate" DataSetColumn="sourdate" />
+              <Mapping SourceColumn="source" DataSetColumn="source" />
+              <Mapping SourceColumn="schcode" DataSetColumn="schcode" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -507,65 +507,6 @@ SELECT schcode, datecont, reason, initial, typecont, contact, nxtdays, nxtdate, 
         <xs:element name="mcust" msprop:Generator_TableClassName="mcustDataTable" msprop:Generator_TableVarName="tablemcust" msprop:Generator_RowChangedName="mcustRowChanged" msprop:Generator_TablePropName="mcust" msprop:Generator_RowDeletingName="mcustRowDeleting" msprop:Generator_RowChangingName="mcustRowChanging" msprop:Generator_RowEvHandlerName="mcustRowChangeEventHandler" msprop:Generator_RowDeletedName="mcustRowDeleted" msprop:Generator_RowClassName="mcustRow" msprop:Generator_UserTableName="mcust" msprop:Generator_RowEvArgName="mcustRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="6" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="source" msprop:Generator_ColumnVarNameInTable="columnsource" msprop:Generator_ColumnPropNameInRow="source" msprop:Generator_ColumnPropNameInTable="sourceColumn" msprop:Generator_UserColumnName="source" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="3" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="sourdate" msprop:Generator_ColumnVarNameInTable="columnsourdate" msprop:Generator_ColumnPropNameInRow="sourdate" msprop:Generator_ColumnPropNameInTable="sourdateColumn" msprop:Generator_UserColumnName="sourdate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="secsource" msprop:Generator_ColumnVarNameInTable="columnsecsource" msprop:Generator_ColumnPropNameInRow="secsource" msprop:Generator_ColumnPropNameInTable="secsourceColumn" msprop:Generator_UserColumnName="secsource" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="3" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="contdate" msprop:Generator_ColumnVarNameInTable="columncontdate" msprop:Generator_ColumnPropNameInRow="contdate" msprop:Generator_ColumnPropNameInTable="contdateColumn" msprop:Generator_UserColumnName="contdate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="cstatus" msprop:Generator_ColumnVarNameInTable="columncstatus" msprop:Generator_ColumnPropNameInRow="cstatus" msprop:Generator_ColumnPropNameInTable="cstatusColumn" msprop:Generator_UserColumnName="cstatus" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="40" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="origsour" msprop:Generator_ColumnVarNameInTable="columnorigsour" msprop:Generator_ColumnPropNameInRow="origsour" msprop:Generator_ColumnPropNameInTable="origsourColumn" msprop:Generator_UserColumnName="origsour" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="3" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="origyear" msprop:Generator_ColumnVarNameInTable="columnorigyear" msprop:Generator_ColumnPropNameInRow="origyear" msprop:Generator_ColumnPropNameInTable="origyearColumn" msprop:Generator_UserColumnName="origyear" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="rebook" msprop:Generator_ColumnVarNameInTable="columnrebook" msprop:Generator_ColumnPropNameInRow="rebook" msprop:Generator_ColumnPropNameInTable="rebookColumn" msprop:Generator_UserColumnName="rebook" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="1" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="rebookdte" msprop:Generator_ColumnVarNameInTable="columnrebookdte" msprop:Generator_ColumnPropNameInRow="rebookdte" msprop:Generator_ColumnPropNameInTable="rebookdteColumn" msprop:Generator_UserColumnName="rebookdte" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="refby" msprop:Generator_ColumnVarNameInTable="columnrefby" msprop:Generator_ColumnPropNameInRow="refby" msprop:Generator_ColumnPropNameInTable="refbyColumn" msprop:Generator_UserColumnName="refby" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="25" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="schname" msprop:Generator_ColumnVarNameInTable="columnschname" msprop:Generator_ColumnPropNameInRow="schname" msprop:Generator_ColumnPropNameInTable="schnameColumn" msprop:Generator_UserColumnName="schname" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -1335,6 +1276,65 @@ SELECT schcode, datecont, reason, initial, typecont, contact, nxtdays, nxtdate, 
                 </xs:simpleType>
               </xs:element>
               <xs:element name="invoiced" msprop:Generator_ColumnVarNameInTable="columninvoiced" msprop:Generator_ColumnPropNameInRow="invoiced" msprop:Generator_ColumnPropNameInTable="invoicedColumn" msprop:Generator_UserColumnName="invoiced" type="xs:boolean" minOccurs="0" />
+              <xs:element name="refby" msprop:Generator_ColumnVarNameInTable="columnrefby" msprop:Generator_ColumnPropNameInRow="refby" msprop:Generator_ColumnPropNameInTable="refbyColumn" msprop:Generator_UserColumnName="refby" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rebook" msprop:Generator_ColumnVarNameInTable="columnrebook" msprop:Generator_ColumnPropNameInRow="rebook" msprop:Generator_ColumnPropNameInTable="rebookColumn" msprop:Generator_UserColumnName="rebook" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="origyear" msprop:Generator_ColumnVarNameInTable="columnorigyear" msprop:Generator_ColumnPropNameInRow="origyear" msprop:Generator_ColumnPropNameInTable="origyearColumn" msprop:Generator_UserColumnName="origyear" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rebookdte" msprop:Generator_ColumnVarNameInTable="columnrebookdte" msprop:Generator_ColumnPropNameInRow="rebookdte" msprop:Generator_ColumnPropNameInTable="rebookdteColumn" msprop:Generator_UserColumnName="rebookdte" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="origsour" msprop:Generator_ColumnVarNameInTable="columnorigsour" msprop:Generator_ColumnPropNameInRow="origsour" msprop:Generator_ColumnPropNameInTable="origsourColumn" msprop:Generator_UserColumnName="origsour" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cstatus" msprop:Generator_ColumnVarNameInTable="columncstatus" msprop:Generator_ColumnPropNameInRow="cstatus" msprop:Generator_ColumnPropNameInTable="cstatusColumn" msprop:Generator_UserColumnName="cstatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contdate" msprop:Generator_ColumnVarNameInTable="columncontdate" msprop:Generator_ColumnPropNameInRow="contdate" msprop:Generator_ColumnPropNameInTable="contdateColumn" msprop:Generator_UserColumnName="contdate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="secsource" msprop:Generator_ColumnVarNameInTable="columnsecsource" msprop:Generator_ColumnPropNameInRow="secsource" msprop:Generator_ColumnPropNameInTable="secsourceColumn" msprop:Generator_UserColumnName="secsource" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sourdate" msprop:Generator_ColumnVarNameInTable="columnsourdate" msprop:Generator_ColumnPropNameInRow="sourdate" msprop:Generator_ColumnPropNameInTable="sourdateColumn" msprop:Generator_UserColumnName="sourdate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="source" msprop:Generator_ColumnVarNameInTable="columnsource" msprop:Generator_ColumnPropNameInRow="source" msprop:Generator_ColumnPropNameInTable="sourceColumn" msprop:Generator_UserColumnName="source" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
