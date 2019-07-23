@@ -62,6 +62,8 @@ namespace Mbc5.Forms
             } else if (formName == "frmSales")
             {
                 tsProdutnNumberSearch.Visible = false;
+            } else if (formName == "frmSales") {
+                tsProdutnNumberSearch.Visible = false;
             } else if (formName == "frmBids")
             {
 

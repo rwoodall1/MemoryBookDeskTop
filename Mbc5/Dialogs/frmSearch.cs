@@ -253,6 +253,21 @@ namespace Mbc5.Dialogs {
                             dgSearch.DataSource = bsData;
                             txtSearch.Select();
                             break;
+                        case "MSALES":
+                            cmdtext = @"Select C.Schname,C.Schcode,Q.Invno AS Invoice,C.Contryear,C.SchZip,C.SchState From MQuotes Q Inner Join MCust C ON Q.Schcode=C.Schcode Order By Schname";
+                            sqlclient.CommandText(cmdtext);
+                            var result11 = sqlclient.SelectMany<SchnameSalesSearch>();
+                            if (result11.IsError)
+                            {
+                                MbcMessageBox.Error(result11.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var Cust11 = (List<SchnameSalesSearch>)result11.Data;
+                            this.SalesCustName = Cust11;
+                            bsData.DataSource = this.SalesCustName;
+                            dgSearch.DataSource = bsData;
+                            txtSearch.Select();
+                            break;
                         case "PRODUCTION":
                             cmdtext = @"Select C.Schname,C.Schcode,P.Invno AS Invoice,P.ProdNo,C.Contryear From Produtn P Inner Join Cust C ON P.Schcode=C.Schcode Order By Schname";
                             sqlclient.CommandText(cmdtext);
@@ -357,6 +372,24 @@ namespace Mbc5.Dialogs {
                             }
                             var lOracleCodeList = (List<OracleSalesSearch>)oracleCodeResult.Data;
                             this.OracleSalesCodeList = lOracleCodeList;
+                            bsData.DataSource = this.OracleSalesCodeList;
+
+                            dgSearch.DataSource = bsData.DataSource;
+
+                            txtSearch.Select();
+
+                            break;
+                        case "MSALES":
+                            cmdtext = @"Select COALESCE(C.OracleCode,'') AS OracleCode,C.Schname,C.Schcode,Q.Invno As Invoice,C.Contryear,C.SchZip,C.SchState From MQuotes Q  Inner Join MCust C On Q.Schcode=C.Schcode WHERE C.OracleCode !='' Order By OracleCode";
+                            sqlclient.CommandText(cmdtext);
+                            var oracleCodeResult1 = sqlclient.SelectMany<OracleSalesSearch>();
+                            if (oracleCodeResult1.IsError)
+                            {
+                                MbcMessageBox.Error(oracleCodeResult1.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var lOracleCodeList1 = (List<OracleSalesSearch>)oracleCodeResult1.Data;
+                            this.OracleSalesCodeList = lOracleCodeList1;
                             bsData.DataSource = this.OracleSalesCodeList;
 
                             dgSearch.DataSource = bsData.DataSource;
@@ -506,6 +539,23 @@ namespace Mbc5.Dialogs {
                             }
                             var lRetRecs1 = (List<InvnoSearch>)result1.Data;
                             this.InvnoList = lRetRecs1;
+                            bsData.DataSource = this.InvnoList;
+
+                            dgSearch.DataSource = bsData.DataSource;
+
+                            txtSearch.Select();
+                            break;
+                        case "MSALES":
+                            cmdtext = @"Select Q.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear,C.SchZip,C.SchState From MQuotes Q Left JOIN MCust C On Q.Schcode=C.Schcode Order By Invno";
+                            sqlclient.CommandText(cmdtext);
+                            var result12 = sqlclient.SelectMany<InvnoSearch>();
+                            if (result12.IsError)
+                            {
+                                MbcMessageBox.Error(result12.Errors[0].ErrorMessage, "Error");
+                                return;
+                            }
+                            var lRetRecs12 = (List<InvnoSearch>)result12.Data;
+                            this.InvnoList = lRetRecs12;
                             bsData.DataSource = this.InvnoList;
 
                             dgSearch.DataSource = bsData.DataSource;
@@ -1020,7 +1070,7 @@ namespace Mbc5.Dialogs {
                     {
                         vList = this.CustCode.Select(x => x.Schcode).ToList();
                     }
-                    else if (ReturnForm == "SALES"|| ReturnForm == "SALES")
+                    else if (ReturnForm == "SALES"|| ReturnForm == "MSALES")
                     {
                         vList = this.SaleSchoolCodeList.Select(x => x.Schcode).ToList();
                     }else if (ReturnForm == "PRODUCTION")
@@ -1061,7 +1111,7 @@ namespace Mbc5.Dialogs {
                     {
                         vListName = this.CustName.Select(x => x.Schname).ToList();
                     }
-                    else if (ReturnForm == "SALES")
+                    else if (ReturnForm == "SALES"|| ReturnForm == "MSALES")
                     {
                         vListName = this.SalesCustName.Select(x => x.Schname).ToList();
                     }else if (ReturnForm == "PRODUCTION")
@@ -1140,7 +1190,7 @@ namespace Mbc5.Dialogs {
                     {
                         vOracleList = this.OracleCodeList.Select(x => x.OracleCode).ToList();
                     }
-                    else if (ReturnForm == "SALES")
+                    else if (ReturnForm == "SALES"|| ReturnForm == "MSALES")
                     {
                         vOracleList = this.OracleSalesCodeList.Select(x => x.OracleCode).ToList();
                     }else if (ReturnForm == "PRODUCTION")
@@ -1346,17 +1396,12 @@ namespace Mbc5.Dialogs {
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
 
-                } else if (SearchType == "SCHCODE" && ReturnForm == "SALES")
+                } else if (SearchType == "SCHCODE" && (ReturnForm == "SALES"|| ReturnForm == "MSALES"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[1].Value;
                 }
-                else if (SearchType == "SCHCODE" && ReturnForm == "MSALES")
-                {
-                    this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
-                    this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[1].Value;
-                }
-                else if (SearchType == "SCHCODE" && ReturnForm == "PRODUCTION")
+                 else if (SearchType == "SCHCODE" && ReturnForm == "PRODUCTION")
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
@@ -1375,7 +1420,7 @@ namespace Mbc5.Dialogs {
                     //search on schname return code though
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
 
-                } else if (SearchType == "SCHNAME" && ReturnForm == "SALES")
+                } else if (SearchType == "SCHNAME" && (ReturnForm == "SALES"|| ReturnForm == "MSALES"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[2].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[1].Value;
@@ -1416,7 +1461,7 @@ namespace Mbc5.Dialogs {
                 {
                     //search on schname return code though
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
-                } else if (SearchType == "ORACLECODE" && ReturnForm == "SALES")
+                } else if (SearchType == "ORACLECODE" && (ReturnForm == "SALES"|| ReturnForm == "MSALES"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[3].Value;
@@ -1437,7 +1482,7 @@ namespace Mbc5.Dialogs {
                 else if (SearchType == "INVNO" && (ReturnForm == "CUST" || ReturnForm == "MCUST"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[2].Value.ToString();
-                } else if (SearchType == "INVNO" && ReturnForm == "SALES")
+                } else if (SearchType == "INVNO" && (ReturnForm == "SALES"|| ReturnForm == "MSALES"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[2].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[0].Value;
