@@ -168,6 +168,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsExtra.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsMBids.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMBids.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsMcust.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -640,6 +645,17 @@
     </None>
     <None Include="DataSets\dsExtra.xss">
       <DependentUpon>dsExtra.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMBids.xsc">
+      <DependentUpon>dsMBids.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMBids.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMBids.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsMBids.xss">
+      <DependentUpon>dsMBids.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsMcust.xsc">
       <DependentUpon>dsMcust.xsd</DependentUpon>

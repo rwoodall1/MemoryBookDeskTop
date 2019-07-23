@@ -18,7 +18,18 @@ namespace Mbc5.Forms.Meridian {
             this.ApplicationUser = userPrincipal;
             }
            private UserPrincipal ApplicationUser { get; set; }
+
+     
         
 
+        private void qtedateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            qtedateDateTimePicker.Format = DateTimePickerFormat.Short;
         }
+
+        private void orderDateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            orderDateDateTimePicker.Format = DateTimePickerFormat.Short;
+        }
+    }
     }
