@@ -1654,6 +1654,7 @@
             this.dp1TextBox.Name = "dp1TextBox";
             this.dp1TextBox.Size = new System.Drawing.Size(36, 20);
             this.dp1TextBox.TabIndex = 34;
+            this.dp1TextBox.Leave += new System.EventHandler(this.dp1TextBox_Leave_1);
             // 
             // hrdcpyprfCheckBox
             // 

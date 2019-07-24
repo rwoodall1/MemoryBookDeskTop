@@ -13,6 +13,8 @@ using System.Data.SqlClient;
 using BindingModels;
 using Exceptionless;
 using Mbc5.Classes;
+using BaseClass.Core;
+
 namespace Mbc5.Forms.Meridian {
     public partial class frmMBids : BaseClass.frmBase {
         public frmMBids(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MerCS" }, userPrincipal)
@@ -41,18 +43,74 @@ namespace Mbc5.Forms.Meridian {
 
         private void frmMBids_Load(object sender, EventArgs e)
         {
+         
+           
             this.frmMain = (frmMain)this.MdiParent;
             this.SetConnectionString();
             Fill();
             mbidsBindingSource.ResetBindings(true);
         }
         #region Methods
+        public override ApiProcessingResult<bool> Save()
+        {
+
+
+            return SaveBid();
+        }
+        private ApiProcessingResult<bool> SaveBid()
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            if (!ValidBid())
+            {
+                processingResult.IsError = true;
+                return processingResult;
+            }
+
+            try
+            {
+                if (Validate())
+                {
+                    mbidsBindingSource.EndEdit();
+                    var a = mbidsTableAdapter.Update(dsMBids.mbids);
+            
+                    Fill();
+                    processingResult.Data = true;
+                    return processingResult;
+
+                }
+                processingResult.Data = false;
+                return processingResult;
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .MarkAsCritical()
+                    .Submit();
+                processingResult.Data = false;
+                processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
+                return processingResult;
+            }
+        }
+        private bool ValidBid()
+        {
+            bool retval = true;
+
+            retval = ValidateCalcData();
+            if (!retval) { return retval; }
+
+            retval = this.ValidateChildren();
+            if (!retval) { return retval; }
+            retval = this.Validate();
+            return retval;
+        }
         private void Fill()
         {
             if (Schcode != null)
             {
                 try
                 {
+                    this.meridianProductsTableAdapter.Fill(this.lookUp.MeridianProducts);
                     this.mbidsTableAdapter.Fill(this.dsMBids.mbids, this.Schcode);
                 }
                 catch (Exception ex)
@@ -82,6 +140,7 @@ namespace Mbc5.Forms.Meridian {
         }
         private void SetConnectionString()
         {
+            meridianProductsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             mbidsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
         }
         private void DisableControls(Control con)
@@ -754,6 +813,8 @@ namespace Mbc5.Forms.Meridian {
                 return 0;
             }
         }
+
+
         #endregion
         private void qtedateDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
@@ -765,6 +826,363 @@ namespace Mbc5.Forms.Meridian {
             orderDateDateTimePicker.Format = DateTimePickerFormat.Short;
         }
 
-      
+        private void contryearTextBox_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBYear_Leave(object sender, EventArgs e)
+        {
+            CalculateBase();
+            CalculateOptions();
+        }
+
+        private void txtQtyStudent_Leave(object sender, EventArgs e)
+        {
+            int vQtyStudent = txtQtyStudent.ConvertToInt();
+            int vQtyTeacher = txtQtyTeacher.ConvertToInt();
+            int vRemainder = (vQtyStudent + vQtyTeacher) % 25;
+            int vExtra = vRemainder == 0 ? 0 : 1;
+
+            txtImpGuideQty.Text = (((vQtyStudent + vQtyTeacher) / 25) + vExtra).ToString();
+            impquidprcTextBox.Text = "0.00"; //Free
+            CalculateBase();
+            CalculateOptions();
+        }
+
+        private void txtQtyTeacher_Leave(object sender, EventArgs e)
+        {
+            CalculateBase();
+            CalculateOptions();
+        }
+
+        private void txtPriceOverRide_Leave(object sender, EventArgs e)
+        {
+            CalculateBase();
+            CalculateOptions();
+        }
+
+        private void txtmisc_Leave(object sender, EventArgs e)
+        {
+            txtmisc.Text = txtmisc.ConvertToDecimal().ToString("0.00");
+            CalculateOptions();
+        }
+
+        private void dp1TextBox_Leave(object sender, EventArgs e)
+        {
+            txtAdditionChrg.Text = txtAdditionChrg.ConvertToDecimal().ToString("0.00");
+            CalculateOptions();
+        }
+
+        private void erldiscamtTextBox_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void desc1amtTextBox1_Leave(object sender, EventArgs e)
+        {
+            desc1amtTextBox1.Text = desc1amtTextBox1.ConvertToDecimal().ToString("0.00");
+            CalculateOptions();
+        }
+
+        private void descamtTextBox_Leave(object sender, EventArgs e)
+        {
+            descamtTextBox.Text = descamtTextBox.ConvertToDecimal().ToString("0.00");
+            CalculateOptions();
+        }
+
+        private void desc4amtTextBox_Leave(object sender, EventArgs e)
+        {
+            desc4amtTextBox.Text = desc4amtTextBox.ConvertToDecimal().ToString("0.00");
+            CalculateOptions();
+        }
+
+        private void desc3amtTextBox_Leave(object sender, EventArgs e)
+        {
+            desc3amtTextBox.Text = desc3amtTextBox.ConvertToDecimal().ToString("0.00");
+            CalculateOptions();
+        }
+
+        private void txtShipping_Leave(object sender, EventArgs e)
+        {
+            txtShipping.Text = txtShipping.ConvertToDecimal().ToString("0.00");
+            CalculateOptions();
+        }
+
+        private void txtAdditionChrg_Leave(object sender, EventArgs e)
+        {
+            txtAdditionChrg.Text = txtAdditionChrg.ConvertToDecimal().ToString("0.00");
+            CalculateOptions();
+        }
+
+        private void desc2TextBox1_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void desc3TextBox1_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void desc4TextBox1_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void chkGeneric_Click(object sender, EventArgs e)
+        {
+            if (chkGeneric.Checked)
+            {
+                txtNoPages.Text = "0";
+                chkJostens.Checked = false;
+            }
+            CalculateBase();
+            CalculateOptions();
+        }
+
+        private void chkJostens_Click(object sender, EventArgs e)
+        {
+            if (chkJostens.Checked)
+            {
+                chkGeneric.Checked = false;
+            }
+            CalculateBase();
+            CalculateOptions();
+        }
+
+        private void fourclrCheckBox_Click(object sender, EventArgs e)
+        {
+            if (fourclrCheckBox.Checked)
+            {
+                threeclrCheckBox.Checked = false;
+                twoclrCheckBox.Checked = false;
+                oneclrCheckBox.Checked = false;
+            }
+            CoverCalc();
+        }
+
+        private void threeclrCheckBox_Click(object sender, EventArgs e)
+        {
+            if (threeclrCheckBox.Checked)
+            {
+                fourclrCheckBox.Checked = false;
+                twoclrCheckBox.Checked = false;
+                oneclrCheckBox.Checked = false;
+            }
+            CoverCalc();
+        }
+
+        private void twoclrCheckBox_Click(object sender, EventArgs e)
+        {
+            if (twoclrCheckBox.Checked)
+            {
+                threeclrCheckBox.Checked = false;
+                fourclrCheckBox.Checked = false;
+                oneclrCheckBox.Checked = false;
+            }
+            CoverCalc();
+        }
+
+        private void oneclrCheckBox_Click(object sender, EventArgs e)
+        {
+            if (oneclrCheckBox.Checked)
+            {
+                threeclrCheckBox.Checked = false;
+                fourclrCheckBox.Checked = false;
+                twoclrCheckBox.Checked = false;
+            }
+            CoverCalc();
+        }
+
+        private void disc4CheckBox_Click(object sender, EventArgs e)
+        {
+            if (disc4CheckBox.Checked)
+            {
+                desc4amtTextBox.Text = "-100.00";
+            }
+            else
+            {
+                desc4amtTextBox.Text = "0.00";
+            }
+            CalculateOptions();
+        }
+
+        private void disc3CheckBox_Click(object sender, EventArgs e)
+        {
+            if (disc3CheckBox.Checked)
+            {
+
+                desc3amtTextBox.Text = "-" + (lblQtyTotal.ConvertToDecimal() * .25m).ToString("0.00");
+            }
+            else { desc3amtTextBox.Text = "0.00"; }
+            CalculateOptions();
+        }
+
+        private void doNotChargeTaxCheckBox_Click(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void prodcodeComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            var dr = (DataRowView)mbidsBindingSource.Current;
+            if (prodcodeComboBox.SelectedValue.ToString() == "HSP" || prodcodeComboBox.SelectedValue.ToString() == "ADVLOG" || prodcodeComboBox.SelectedValue.ToString() == "MAG")
+            {
+                sfRadioButton.Checked = true;
+                lfRadioButton.Checked = false;
+            }
+            else
+            {
+                sfRadioButton.Checked = false;
+                lfRadioButton.Checked = true;
+            }
+            switch (prodcodeComboBox.SelectedValue.ToString())
+            {
+                case "HSP":
+                    lblSchtype.Text = "HS";
+                    break;
+                case "MSP":
+                    lblSchtype.Text = "MS";
+                    break;
+                case "MAG":
+                    lblSchtype.Text = "MAGNET";
+                    break;
+                case "ADVLOG":
+                    lblSchtype.Text = "ADVENTURE LOG";
+                    break;
+                case "ELSP":
+                    lblSchtype.Text = "ELEM";
+                    break;
+                case "PRISP":
+                    lblSchtype.Text = "PRIM";
+                    break;
+            }
+            if (!GetBookPricing())
+            {
+                return;
+            }
+            CalculateBase();
+            CalculateOptions();
+        }
+
+        private void typesetqtyTextBox_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void wallchqtyTextBox_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void duraglzqtyTextBox_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void stttitpgqtyTextBox_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void idpouchqtyTextBox_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void vpbqtyTextBox_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void vpaqtyTextBox_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void bmarkqtyTextBox_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void hallpqtyTextBox_Leave(object sender, EventArgs e)
+        {
+            CalculateOptions();
+        }
+
+        private void txtNoPages_Leave(object sender, EventArgs e)
+        {
+            CalculateBase();
+            CalculateOptions();
+        }
+
+        private void contryearTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            int vYear;
+            errorProvider1.SetError(contryearTextBox, "");
+            if (contryearTextBox.TextLength < 2)
+            {
+                errorProvider1.SetError(contryearTextBox, "Enter a  valid 2 digit year.");
+                e.Cancel = true;
+            }
+            if (!int.TryParse(contryearTextBox.Text, out vYear))
+            {
+                errorProvider1.SetError(contryearTextBox, "Enter a  valid 2 digit year.");
+                e.Cancel = true;
+            }
+        }
+
+        private void frmMBids_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var salesResult = SaveBid();
+            if (salesResult.IsError)
+            {
+                var result = MessageBox.Show("Bid record could not be saved. Continue closing form?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private void frmMBids_Activated(object sender, EventArgs e)
+        {
+            try { frmMain.ShowSearchButtons(this.Name); } catch { }
+        }
+
+        private void frmMBids_Deactivate(object sender, EventArgs e)
+        {
+            try { frmMain.HideSearchButtons(); } catch { }
+        }
+
+        private void wghtTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            int vWeight;
+            errorProvider1.SetError(wghtTextBox, "");
+            if (wghtTextBox.Text != "")
+            {
+                if (!int.TryParse(wghtTextBox.Text, out vWeight))
+                {
+                    errorProvider1.SetError(wghtTextBox, "Enter a  valid weight.");
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void dp1TextBox_Validating(object sender, CancelEventArgs e)
+        {
+            decimal vValue;
+            errorProvider1.SetError(dp1TextBox, "");
+            if (dp1TextBox.Text != "")
+            {
+                if (!decimal.TryParse(dp1TextBox.Text, out vValue))
+                {
+                    errorProvider1.SetError(dp1TextBox, "Enter a  valid percentage.");
+                    e.Cancel = true;
+                }
+            }
+        }
     }
     }

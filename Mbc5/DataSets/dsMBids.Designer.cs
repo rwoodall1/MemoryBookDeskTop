@@ -519,8 +519,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnprodcode;
             
-            private global::System.Data.DataColumn columnid;
-            
             private global::System.Data.DataColumn columnschname;
             
             private global::System.Data.DataColumn columnjobno;
@@ -537,11 +535,17 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columninvname;
             
-            private global::System.Data.DataColumn columnId;
-            
             private global::System.Data.DataColumn columnOrderDate;
             
             private global::System.Data.DataColumn columnReOrder;
+            
+            private global::System.Data.DataColumn columnschzip;
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnSchoolTaxRate;
+            
+            private global::System.Data.DataColumn columnDoNotChargeTax;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1538,14 +1542,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn idColumn {
-                get {
-                    return this.columnid;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn schnameColumn {
                 get {
                     return this.columnschname;
@@ -1610,14 +1606,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn OrderDateColumn {
                 get {
                     return this.columnOrderDate;
@@ -1629,6 +1617,38 @@ namespace Mbc5.DataSets {
             public global::System.Data.DataColumn ReOrderColumn {
                 get {
                     return this.columnReOrder;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn schzipColumn {
+                get {
+                    return this.columnschzip;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SchoolTaxRateColumn {
+                get {
+                    return this.columnSchoolTaxRate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DoNotChargeTaxColumn {
+                get {
+                    return this.columnDoNotChargeTax;
                 }
             }
             
@@ -1790,7 +1810,6 @@ namespace Mbc5.DataSets {
                         string desc4, 
                         string notes, 
                         string prodcode, 
-                        int id, 
                         string schname, 
                         string jobno, 
                         string invaddr, 
@@ -1800,7 +1819,10 @@ namespace Mbc5.DataSets {
                         string invzip, 
                         string invname, 
                         System.DateTime OrderDate, 
-                        bool ReOrder) {
+                        bool ReOrder, 
+                        string schzip, 
+                        decimal SchoolTaxRate, 
+                        bool DoNotChargeTax) {
                 mbidsRow rowmbidsRow = ((mbidsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -1923,7 +1945,6 @@ namespace Mbc5.DataSets {
                         desc4,
                         notes,
                         prodcode,
-                        id,
                         schname,
                         jobno,
                         invaddr,
@@ -1932,9 +1953,12 @@ namespace Mbc5.DataSets {
                         invstate,
                         invzip,
                         invname,
-                        null,
                         OrderDate,
-                        ReOrder};
+                        ReOrder,
+                        schzip,
+                        null,
+                        SchoolTaxRate,
+                        DoNotChargeTax};
                 rowmbidsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmbidsRow);
                 return rowmbidsRow;
@@ -2084,7 +2108,6 @@ namespace Mbc5.DataSets {
                 this.columndesc4 = base.Columns["desc4"];
                 this.columnnotes = base.Columns["notes"];
                 this.columnprodcode = base.Columns["prodcode"];
-                this.columnid = base.Columns["id"];
                 this.columnschname = base.Columns["schname"];
                 this.columnjobno = base.Columns["jobno"];
                 this.columninvaddr = base.Columns["invaddr"];
@@ -2093,9 +2116,12 @@ namespace Mbc5.DataSets {
                 this.columninvstate = base.Columns["invstate"];
                 this.columninvzip = base.Columns["invzip"];
                 this.columninvname = base.Columns["invname"];
-                this.columnId = base.Columns["Id"];
                 this.columnOrderDate = base.Columns["OrderDate"];
                 this.columnReOrder = base.Columns["ReOrder"];
+                this.columnschzip = base.Columns["schzip"];
+                this.columnId = base.Columns["Id"];
+                this.columnSchoolTaxRate = base.Columns["SchoolTaxRate"];
+                this.columnDoNotChargeTax = base.Columns["DoNotChargeTax"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2341,8 +2367,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnnotes);
                 this.columnprodcode = new global::System.Data.DataColumn("prodcode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprodcode);
-                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid);
                 this.columnschname = new global::System.Data.DataColumn("schname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschname);
                 this.columnjobno = new global::System.Data.DataColumn("jobno", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2359,12 +2383,18 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columninvzip);
                 this.columninvname = new global::System.Data.DataColumn("invname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninvname);
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
                 this.columnOrderDate = new global::System.Data.DataColumn("OrderDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrderDate);
                 this.columnReOrder = new global::System.Data.DataColumn("ReOrder", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnReOrder);
+                this.columnschzip = new global::System.Data.DataColumn("schzip", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnschzip);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnSchoolTaxRate = new global::System.Data.DataColumn("SchoolTaxRate", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSchoolTaxRate);
+                this.columnDoNotChargeTax = new global::System.Data.DataColumn("DoNotChargeTax", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDoNotChargeTax);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnschcode.MaxLength = 50;
@@ -2391,7 +2421,6 @@ namespace Mbc5.DataSets {
                 this.columndesc4.MaxLength = 50;
                 this.columnnotes.MaxLength = 2147483647;
                 this.columnprodcode.MaxLength = 50;
-                this.columnid.AllowDBNull = false;
                 this.columnschname.MaxLength = 34;
                 this.columnjobno.MaxLength = 7;
                 this.columninvaddr.MaxLength = 50;
@@ -2400,6 +2429,7 @@ namespace Mbc5.DataSets {
                 this.columninvstate.MaxLength = 3;
                 this.columninvzip.MaxLength = 10;
                 this.columninvname.MaxLength = 50;
+                this.columnschzip.MaxLength = 50;
                 this.columnId.AutoIncrement = true;
                 this.columnId.AutoIncrementSeed = -1;
                 this.columnId.AutoIncrementStep = -1;
@@ -4468,17 +4498,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int id {
-                get {
-                    return ((int)(this[this.tablembids.idColumn]));
-                }
-                set {
-                    this[this.tablembids.idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schname {
                 get {
                     try {
@@ -4607,17 +4626,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Id {
-                get {
-                    return ((int)(this[this.tablembids.IdColumn]));
-                }
-                set {
-                    this[this.tablembids.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime OrderDate {
                 get {
                     try {
@@ -4645,6 +4653,65 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tablembids.ReOrderColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string schzip {
+                get {
+                    try {
+                        return ((string)(this[this.tablembids.schzipColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schzip\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.schzipColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tablembids.IdColumn]));
+                }
+                set {
+                    this[this.tablembids.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal SchoolTaxRate {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablembids.SchoolTaxRateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SchoolTaxRate\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.SchoolTaxRateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool DoNotChargeTax {
+                get {
+                    try {
+                        return ((bool)(this[this.tablembids.DoNotChargeTaxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DoNotChargeTax\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.DoNotChargeTaxColumn] = value;
                 }
             }
             
@@ -6207,6 +6274,42 @@ namespace Mbc5.DataSets {
             public void SetReOrderNull() {
                 this[this.tablembids.ReOrderColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschzipNull() {
+                return this.IsNull(this.tablembids.schzipColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschzipNull() {
+                this[this.tablembids.schzipColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsSchoolTaxRateNull() {
+                return this.IsNull(this.tablembids.SchoolTaxRateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetSchoolTaxRateNull() {
+                this[this.tablembids.SchoolTaxRateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDoNotChargeTaxNull() {
+                return this.IsNull(this.tablembids.DoNotChargeTaxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDoNotChargeTaxNull() {
+                this[this.tablembids.DoNotChargeTaxColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -6488,7 +6591,6 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
             tableMapping.ColumnMappings.Add("desc4", "desc4");
             tableMapping.ColumnMappings.Add("notes", "notes");
             tableMapping.ColumnMappings.Add("prodcode", "prodcode");
-            tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("schname", "schname");
             tableMapping.ColumnMappings.Add("jobno", "jobno");
             tableMapping.ColumnMappings.Add("invaddr", "invaddr");
@@ -6497,9 +6599,12 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
             tableMapping.ColumnMappings.Add("invstate", "invstate");
             tableMapping.ColumnMappings.Add("invzip", "invzip");
             tableMapping.ColumnMappings.Add("invname", "invname");
-            tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("OrderDate", "OrderDate");
             tableMapping.ColumnMappings.Add("ReOrder", "ReOrder");
+            tableMapping.ColumnMappings.Add("schzip", "schzip");
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("SchoolTaxRate", "SchoolTaxRate");
+            tableMapping.ColumnMappings.Add("DoNotChargeTax", "DoNotChargeTax");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -6700,11 +6805,12 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
                 "cdesc3, mbids.cdesc4, mbids.generic, mbids.wght, mbids.oa, \r\n                   " +
                 "      mbids.ordagryr, mbids.shipovrride, mbids.jostens, mbids.desc3amt, mbids.de" +
                 "sc4amt, mbids.disc3, mbids.disc4, mbids.desc3, mbids.desc4, mbids.notes, mbids.p" +
-                "rodcode, mbids.Id, mcust.schname, mcust.jobno, \r\n                         mcust." +
-                "invaddr, mcust.invaddr2, mcust.invcity, mcust.invstate, mcust.invzip, mcust.invn" +
-                "ame, mbids.OrderDate, mbids.ReOrder\r\nFROM            mbids LEFT OUTER JOIN\r\n    " +
-                "                     mcust ON mbids.schcode = mcust.schcode\r\nWHERE        (mbids" +
-                ".schcode = @schcode)\r\nORDER BY mbids.schcode DESC";
+                "rodcode, mcust.schname, mcust.jobno, mcust.invaddr, \r\n                         m" +
+                "cust.invaddr2, mcust.invcity, mcust.invstate, mcust.invzip, mcust.invname, mbids" +
+                ".OrderDate, mbids.ReOrder, mcust.schzip, mbids.Id, mbids.SchoolTaxRate, mbids.Do" +
+                "NotChargeTax\r\nFROM            mbids LEFT OUTER JOIN\r\n                         mc" +
+                "ust ON mbids.schcode = mcust.schcode\r\nWHERE        (mbids.schcode = @schcode)\r\nO" +
+                "RDER BY mbids.schcode DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
