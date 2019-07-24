@@ -448,10 +448,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnshpphndl;
             
-            private global::System.Data.DataColumn columnafttxadj;
-            
-            private global::System.Data.DataColumn columnafttxadjde;
-            
             private global::System.Data.DataColumn columnfplnprc;
             
             private global::System.Data.DataColumn columnfplntot;
@@ -1163,22 +1159,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn afttxadjColumn {
-                get {
-                    return this.columnafttxadj;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn afttxadjdeColumn {
-                get {
-                    return this.columnafttxadjde;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn fplnprcColumn {
                 get {
                     return this.columnfplnprc;
@@ -1842,8 +1822,6 @@ namespace Mbc5.DataSets {
                         decimal salestx, 
                         bool custpu, 
                         decimal shpphndl, 
-                        decimal afttxadj, 
-                        string afttxadjde, 
                         decimal fplnprc, 
                         decimal fplntot, 
                         bool newprice, 
@@ -1983,8 +1961,6 @@ namespace Mbc5.DataSets {
                         salestx,
                         custpu,
                         shpphndl,
-                        afttxadj,
-                        afttxadjde,
                         fplnprc,
                         fplntot,
                         newprice,
@@ -2144,8 +2120,6 @@ namespace Mbc5.DataSets {
                 this.columnsalestx = base.Columns["salestx"];
                 this.columncustpu = base.Columns["custpu"];
                 this.columnshpphndl = base.Columns["shpphndl"];
-                this.columnafttxadj = base.Columns["afttxadj"];
-                this.columnafttxadjde = base.Columns["afttxadjde"];
                 this.columnfplnprc = base.Columns["fplnprc"];
                 this.columnfplntot = base.Columns["fplntot"];
                 this.columnnewprice = base.Columns["newprice"];
@@ -2355,10 +2329,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columncustpu);
                 this.columnshpphndl = new global::System.Data.DataColumn("shpphndl", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnshpphndl);
-                this.columnafttxadj = new global::System.Data.DataColumn("afttxadj", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnafttxadj);
-                this.columnafttxadjde = new global::System.Data.DataColumn("afttxadjde", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnafttxadjde);
                 this.columnfplnprc = new global::System.Data.DataColumn("fplnprc", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfplnprc);
                 this.columnfplntot = new global::System.Data.DataColumn("fplntot", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -2520,7 +2490,6 @@ namespace Mbc5.DataSets {
                 this.columndiscdesc.MaxLength = 40;
                 this.columndiscdesc1.MaxLength = 40;
                 this.columndiscdesc2.MaxLength = 40;
-                this.columnafttxadjde.MaxLength = 30;
                 this.columndesc1.MaxLength = 25;
                 this.columndesc2.MaxLength = 25;
                 this.columnadcdesc.MaxLength = 40;
@@ -4002,38 +3971,6 @@ namespace Mbc5.DataSets {
                 }
                 set {
                     this[this.tablemquotes.shpphndlColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal afttxadj {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablemquotes.afttxadjColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'afttxadj\' in table \'mquotes\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemquotes.afttxadjColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string afttxadjde {
-                get {
-                    try {
-                        return ((string)(this[this.tablemquotes.afttxadjdeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'afttxadjde\' in table \'mquotes\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemquotes.afttxadjdeColumn] = value;
                 }
             }
             
@@ -5855,30 +5792,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsafttxadjNull() {
-                return this.IsNull(this.tablemquotes.afttxadjColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetafttxadjNull() {
-                this[this.tablemquotes.afttxadjColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsafttxadjdeNull() {
-                return this.IsNull(this.tablemquotes.afttxadjdeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetafttxadjdeNull() {
-                this[this.tablemquotes.afttxadjdeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsfplnprcNull() {
                 return this.IsNull(this.tablemquotes.fplnprcColumn);
             }
@@ -7088,8 +7001,6 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
             tableMapping.ColumnMappings.Add("salestx", "salestx");
             tableMapping.ColumnMappings.Add("custpu", "custpu");
             tableMapping.ColumnMappings.Add("shpphndl", "shpphndl");
-            tableMapping.ColumnMappings.Add("afttxadj", "afttxadj");
-            tableMapping.ColumnMappings.Add("afttxadjde", "afttxadjde");
             tableMapping.ColumnMappings.Add("fplnprc", "fplnprc");
             tableMapping.ColumnMappings.Add("fplntot", "fplntot");
             tableMapping.ColumnMappings.Add("newprice", "newprice");
@@ -7508,24 +7419,23 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
                 "c, mquotes.earlydisc, \r\n                         mquotes.earlydiscp, mquotes.pre" +
                 "disc, mquotes.prediscprc, mquotes.discdesc1, mquotes.discdesc1p, mquotes.discdes" +
                 "c2, mquotes.discdesc2p, mquotes.plnprc, mquotes.plnsbtot, mquotes.salestx, mquot" +
-                "es.custpu, \r\n                         mquotes.shpphndl, mquotes.afttxadj, mquote" +
-                "s.afttxadjde, mquotes.fplnprc, mquotes.fplntot, mquotes.newprice, mquotes.discto" +
-                "t, mquotes.desc1amt, mquotes.stdtitpgprc, mquotes.desc1, mquotes.descamt, mquote" +
-                "s.desc2, \r\n                         mquotes.afterdisctot, mquotes.stdtitpgqty, m" +
-                "quotes.erldisc, mquotes.erldiscamt, mquotes.predis, mquotes.prediscamt, mquotes." +
-                "threeclr, mquotes.twoclr, mquotes.stx, mquotes.dp1, mquotes.oneclr, mquotes.gene" +
-                "ric, \r\n                         mquotes.wght, mquotes.shipovride, mquotes.adcdes" +
-                "c, mquotes.adcamt, mquotes.jostens, mquotes.collections, mquotes.desc3amt, mquot" +
-                "es.desc4amt, mquotes.disc3, mquotes.disc4, mquotes.desc3, mquotes.desc4, \r\n     " +
-                "                    mquotes.flaminate, mquotes.prime, mquotes.psetup, mquotes.ps" +
-                "etupamt, mquotes.prodcode, mquotes.orderid, mquotes.chkindate, produtn.prodno, p" +
-                "rodutn.kitrecvd, mcust.schname, mquotes.DoNotChargeTax, \r\n                      " +
-                "   mquotes.SchoolTaxRate, mquotes.SalesTaxReceived, mquotes.ModifiedBy, mcust.in" +
-                "vzip, mcust.invstate, mcust.invcity, mcust.invaddr2, mcust.invaddr, mquotes.Date" +
-                "Modified, mquotes.TeBasePrc, mquotes.hallprice\r\nFROM            mquotes LEFT OUT" +
-                "ER JOIN\r\n                         produtn ON mquotes.invno = produtn.invno LEFT " +
-                "OUTER JOIN\r\n                         mcust ON mquotes.schcode = mcust.schcode\r\nW" +
-                "HERE        (mquotes.invno = @Invno)";
+                "es.custpu, \r\n                         mquotes.shpphndl, mquotes.fplnprc, mquotes" +
+                ".fplntot, mquotes.newprice, mquotes.disctot, mquotes.desc1amt, mquotes.stdtitpgp" +
+                "rc, mquotes.desc1, mquotes.descamt, mquotes.desc2, mquotes.afterdisctot, mquotes" +
+                ".stdtitpgqty, \r\n                         mquotes.erldisc, mquotes.erldiscamt, mq" +
+                "uotes.predis, mquotes.prediscamt, mquotes.threeclr, mquotes.twoclr, mquotes.stx," +
+                " mquotes.dp1, mquotes.oneclr, mquotes.generic, mquotes.wght, mquotes.shipovride," +
+                " \r\n                         mquotes.adcdesc, mquotes.adcamt, mquotes.jostens, mq" +
+                "uotes.collections, mquotes.desc3amt, mquotes.desc4amt, mquotes.disc3, mquotes.di" +
+                "sc4, mquotes.desc3, mquotes.desc4, mquotes.flaminate, mquotes.prime, \r\n         " +
+                "                mquotes.psetup, mquotes.psetupamt, mquotes.prodcode, mquotes.ord" +
+                "erid, mquotes.chkindate, produtn.prodno, produtn.kitrecvd, mcust.schname, mquote" +
+                "s.DoNotChargeTax, mquotes.SchoolTaxRate, \r\n                         mquotes.Sale" +
+                "sTaxReceived, mquotes.ModifiedBy, mcust.invzip, mcust.invstate, mcust.invcity, m" +
+                "cust.invaddr2, mcust.invaddr, mquotes.DateModified, mquotes.TeBasePrc, mquotes.h" +
+                "allprice\r\nFROM            mquotes LEFT OUTER JOIN\r\n                         prod" +
+                "utn ON mquotes.invno = produtn.invno LEFT OUTER JOIN\r\n                         m" +
+                "cust ON mquotes.schcode = mcust.schcode\r\nWHERE        (mquotes.invno = @Invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

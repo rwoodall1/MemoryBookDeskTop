@@ -149,7 +149,7 @@
                          mbids.custpu, mbids.shpphndl, mbids.fplnprc, mbids.fplntot, mbids.newprice, mbids.disctot, mbids.desc1amt, mbids.stdtitpgprc, mbids.desc1, mbids.descamt, mbids.desc2, mbids.afterdisctot, mbids.stdtitpgqty, mbids.erldisc, 
                          mbids.erldiscamt, mbids.predis, mbids.prediscamt, mbids.threeclr, mbids.twoclr, mbids.dp1, mbids.oneclr, mbids.stx, mbids.coverdesc, mbids.cdesc2, mbids.cdesc3, mbids.cdesc4, mbids.generic, mbids.wght, mbids.oa, 
                          mbids.ordagryr, mbids.shipovrride, mbids.jostens, mbids.desc3amt, mbids.desc4amt, mbids.disc3, mbids.disc4, mbids.desc3, mbids.desc4, mbids.notes, mbids.prodcode, mbids.Id, mcust.schname, mcust.jobno, 
-                         mcust.invaddr, mcust.invaddr2, mcust.invcity, mcust.invstate, mcust.invzip, mcust.invname, mbids.OrderDate
+                         mcust.invaddr, mcust.invaddr2, mcust.invcity, mcust.invstate, mcust.invzip, mcust.invname, mbids.OrderDate, mbids.ReOrder
 FROM            mbids LEFT OUTER JOIN
                          mcust ON mbids.schcode = mcust.schcode
 WHERE        (mbids.schcode = @schcode)
@@ -293,6 +293,7 @@ ORDER BY mbids.schcode DESC</CommandText>
               <Mapping SourceColumn="invname" DataSetColumn="invname" />
               <Mapping SourceColumn="Id" DataSetColumn="Id" />
               <Mapping SourceColumn="OrderDate" DataSetColumn="OrderDate" />
+              <Mapping SourceColumn="ReOrder" DataSetColumn="ReOrder" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -630,6 +631,7 @@ ORDER BY mbids.schcode DESC</CommandText>
               </xs:element>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
               <xs:element name="OrderDate" msprop:Generator_ColumnVarNameInTable="columnOrderDate" msprop:Generator_ColumnPropNameInRow="OrderDate" msprop:Generator_ColumnPropNameInTable="OrderDateColumn" msprop:Generator_UserColumnName="OrderDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ReOrder" msprop:Generator_ColumnVarNameInTable="columnReOrder" msprop:Generator_ColumnPropNameInRow="ReOrder" msprop:Generator_ColumnPropNameInTable="ReOrderColumn" msprop:Generator_UserColumnName="ReOrder" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

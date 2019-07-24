@@ -541,6 +541,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnOrderDate;
             
+            private global::System.Data.DataColumn columnReOrder;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public mbidsDataTable() {
@@ -1624,6 +1626,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ReOrderColumn {
+                get {
+                    return this.columnReOrder;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1789,7 +1799,8 @@ namespace Mbc5.DataSets {
                         string invstate, 
                         string invzip, 
                         string invname, 
-                        System.DateTime OrderDate) {
+                        System.DateTime OrderDate, 
+                        bool ReOrder) {
                 mbidsRow rowmbidsRow = ((mbidsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -1922,7 +1933,8 @@ namespace Mbc5.DataSets {
                         invzip,
                         invname,
                         null,
-                        OrderDate};
+                        OrderDate,
+                        ReOrder};
                 rowmbidsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmbidsRow);
                 return rowmbidsRow;
@@ -2083,6 +2095,7 @@ namespace Mbc5.DataSets {
                 this.columninvname = base.Columns["invname"];
                 this.columnId = base.Columns["Id"];
                 this.columnOrderDate = base.Columns["OrderDate"];
+                this.columnReOrder = base.Columns["ReOrder"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2350,6 +2363,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnId);
                 this.columnOrderDate = new global::System.Data.DataColumn("OrderDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrderDate);
+                this.columnReOrder = new global::System.Data.DataColumn("ReOrder", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReOrder);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnschcode.MaxLength = 50;
@@ -4619,6 +4634,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool ReOrder {
+                get {
+                    try {
+                        return ((bool)(this[this.tablembids.ReOrderColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ReOrder\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.ReOrderColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsschcodeNull() {
                 return this.IsNull(this.tablembids.schcodeColumn);
             }
@@ -6164,6 +6195,18 @@ namespace Mbc5.DataSets {
             public void SetOrderDateNull() {
                 this[this.tablembids.OrderDateColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsReOrderNull() {
+                return this.IsNull(this.tablembids.ReOrderColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetReOrderNull() {
+                this[this.tablembids.ReOrderColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -6456,6 +6499,7 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
             tableMapping.ColumnMappings.Add("invname", "invname");
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("OrderDate", "OrderDate");
+            tableMapping.ColumnMappings.Add("ReOrder", "ReOrder");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -6658,9 +6702,9 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
                 "sc4amt, mbids.disc3, mbids.disc4, mbids.desc3, mbids.desc4, mbids.notes, mbids.p" +
                 "rodcode, mbids.Id, mcust.schname, mcust.jobno, \r\n                         mcust." +
                 "invaddr, mcust.invaddr2, mcust.invcity, mcust.invstate, mcust.invzip, mcust.invn" +
-                "ame, mbids.OrderDate\r\nFROM            mbids LEFT OUTER JOIN\r\n                   " +
-                "      mcust ON mbids.schcode = mcust.schcode\r\nWHERE        (mbids.schcode = @sch" +
-                "code)\r\nORDER BY mbids.schcode DESC";
+                "ame, mbids.OrderDate, mbids.ReOrder\r\nFROM            mbids LEFT OUTER JOIN\r\n    " +
+                "                     mcust ON mbids.schcode = mcust.schcode\r\nWHERE        (mbids" +
+                ".schcode = @schcode)\r\nORDER BY mbids.schcode DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
