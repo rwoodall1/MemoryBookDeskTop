@@ -9655,44 +9655,43 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO dbo.cust\r\n                         (schcode, schname, contryear, csta" +
-                "tus, source, sourdate, secsource, contdate, origsour, origyear, rebook, rebookdt" +
-                "e, refby, enrollment, grades, sal, schaddr, schaddr2, schcity, schstate, schzip," +
-                " schphone, \r\n                         schfax, schemail, sprngbrk, schout, contme" +
-                "mo, position, gender, contfname, contlname, yb_sth, shiptocont, contaddr, contad" +
-                "dr2, contcity, contstate, contzip, contphnhom, contphnwrk, contfax, contemail, b" +
-                "ooktype,\r\n                          vcrsent, sigfopf, envflyer, marketing, yearr" +
-                "nd, clrpg_int, shipmemo, schclosed, inoffice, digintrst, svcode1, svdesc1, svcod" +
-                "e2, svdesc2, spcinst, lastcont, nextcont, csrep, cstat, xeldate, allcolor, rbini" +
-                "t, rbdate, \r\n                         clspic, magic, extrchg, sprinfo, fallinfo," +
-                " initcont, highsp, slownone, pcmac, junsno, bcontfname, bcontlname, bcontaddr, b" +
-                "contaddr2, bcontcity, bcontstate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, " +
-                "\r\n                         bcontemail, multiyroptions, multiyear, schuploading, " +
-                "website, nomktemail, nodirectmail, bposition, blkwhite, mbconlinepassword, ccont" +
-                "fname, ccontlname, ccontaddr, ccontaddr2, ccontcity, ccontstate, ccontzip, \r\n   " +
-                "                      ccontphnhom, ccontphnwork, ccontfax, ccontemail, norebookr" +
-                "eason, newpublisher, csrep2, schcolors, keeppswd, leadsource, leadsname, prevpub" +
-                "lisher, leadname, photographer, oraclecode, cposition, \r\n                       " +
-                "  electronickit, electronickitoptions, status, taxexemptionexpirationdate, IsTax" +
-                "Exempt, stage, FirstDaySchool, NotTaxExempt, TaxExemptionReceived)\r\nVALUES      " +
-                "  (@schcode,@schname,@contryear,@cstatus,@source,@sourdate,@secsource,@contdate," +
-                "@origsour,@origyear,@rebook,@rebookdte,@refby,@enrollment,@grades,@sal,@schaddr," +
-                "@schaddr2,@schcity,@schstate,@schzip,@schphone,@schfax,@schemail,@sprngbrk,@scho" +
-                "ut,@contmemo,@position,@gender,@contfname,@contlname,@yb_sth,@shiptocont,@contad" +
-                "dr,@contaddr2,@contcity,@contstate,@contzip,@contphnhom,@contphnwrk,@contfax,@co" +
-                "ntemail,@booktype,@vcrsent,@sigfopf,@envflyer,@marketing,@yearnd,@clrpg_int,@shp" +
-                "memo,@schclosed,@inoffice,@digintrst,@svcode1,@svdesc1,@svcode2,@svdesc2,@spcins" +
-                "t,@lastcont,@nextcont,@csrep,@cstat,@xeldate,@allcolor,@rbinit,@rbdate,@clspic,@" +
-                "magic,@extrchg,@sprinfo,@fallinfo,@initcont,@highsp,@slownone,@pcmac,@junsno,@bc" +
-                "ontfname,@bcontlname,@bcontaddr,@bcontaddr2,@bcontcity,@bcontstate,@bcontzip,@bc" +
-                "ontphnhom,@bcontphnwrk,@bcontfax,@bcontemail,@multiyroptions,@multiyear,@schuplo" +
-                "ading,@website,@nomktemail,@nodirectmail,@bposition,@blkwhite,@mbconlinepassword" +
-                ",@ccontfname,@ccontlname,@ccontaddr,@ccontaddr2,@ccontcity,@ccontstate,@ccontzip" +
-                ",@ccontphnhom,@ccontphnwork,@ccontfax,@ccontemail,@norebookreason,@newpublisher," +
-                "@csrep2,@schcolors,@keeppswd,@leadsource,@leadsname,@prevpublisher,@leadname,@ph" +
-                "otographer,@oraclecode,@cposition,@electronickit,@electronickitoptions,@status,@" +
-                "taxexemptionexpirationdate,@IsTaxExempt,@stage,@FirstDaySchool,@NotTaxExempt,@Ta" +
-                "xExemptionReceived)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO cust\r\n                         (schcode, schname, contryear, cstatus," +
+                " source, sourdate, secsource, contdate, origsour, origyear, rebook, rebookdte, r" +
+                "efby, enrollment, grades, sal, schaddr, schaddr2, schcity, schstate, schzip, sch" +
+                "phone, schfax, schemail, \r\n                         sprngbrk, schout, contmemo, " +
+                "position, gender, contfname, contlname, yb_sth, shiptocont, contaddr, contaddr2," +
+                " contcity, contstate, contzip, contphnhom, contphnwrk, contfax, contemail, vcrse" +
+                "nt, sigfopf, envflyer, marketing, \r\n                         yearrnd, clrpg_int," +
+                " shipmemo, schclosed, inoffice, digintrst, svcode1, svdesc1, svcode2, svdesc2, s" +
+                "pcinst, lastcont, nextcont, csrep, cstat, xeldate, allcolor, rbinit, rbdate, cls" +
+                "pic, magic, extrchg, sprinfo, fallinfo, initcont, highsp, \r\n                    " +
+                "     slownone, pcmac, junsno, bcontfname, bcontlname, bcontaddr, bcontaddr2, bco" +
+                "ntcity, bcontstate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, bcontemail, mu" +
+                "ltiyroptions, multiyear, schuploading, website, nomktemail, \r\n                  " +
+                "       nodirectmail, bposition, blkwhite, mbconlinepassword, ccontfname, ccontln" +
+                "ame, ccontaddr, ccontaddr2, ccontcity, ccontstate, ccontzip, ccontphnhom, ccontp" +
+                "hnwork, ccontfax, ccontemail, norebookreason, newpublisher, csrep2, \r\n          " +
+                "               schcolors, keeppswd, leadsource, leadsname, prevpublisher, leadna" +
+                "me, photographer, oraclecode, cposition, electronickit, electronickitoptions, st" +
+                "atus, taxexemptionexpirationdate, IsTaxExempt, stage, FirstDaySchool, \r\n        " +
+                "                 NotTaxExempt, TaxExemptionReceived)\r\nVALUES        (@schcode,@s" +
+                "chname,@contryear,@cstatus,@source,@sourdate,@secsource,@contdate,@origsour,@ori" +
+                "gyear,@rebook,@rebookdte,@refby,@enrollment,@grades,@sal,@schaddr,@schaddr2,@sch" +
+                "city,@schstate,@schzip,@schphone,@schfax,@schemail,@sprngbrk,@schout,@contmemo,@" +
+                "position,@gender,@contfname,@contlname,@yb_sth,@shiptocont,@contaddr,@contaddr2," +
+                "@contcity,@contstate,@contzip,@contphnhom,@contphnwrk,@contfax,@contemail,@vcrse" +
+                "nt,@sigfopf,@envflyer,@marketing,@yearnd,@clrpg_int,@shpmemo,@schclosed,@inoffic" +
+                "e,@digintrst,@svcode1,@svdesc1,@svcode2,@svdesc2,@spcinst,@lastcont,@nextcont,@c" +
+                "srep,@cstat,@xeldate,@allcolor,@rbinit,@rbdate,@clspic,@magic,@extrchg,@sprinfo," +
+                "@fallinfo,@initcont,@highsp,@slownone,@pcmac,@junsno,@bcontfname,@bcontlname,@bc" +
+                "ontaddr,@bcontaddr2,@bcontcity,@bcontstate,@bcontzip,@bcontphnhom,@bcontphnwrk,@" +
+                "bcontfax,@bcontemail,@multiyroptions,@multiyear,@schuploading,@website,@nomktema" +
+                "il,@nodirectmail,@bposition,@blkwhite,@mbconlinepassword,@ccontfname,@ccontlname" +
+                ",@ccontaddr,@ccontaddr2,@ccontcity,@ccontstate,@ccontzip,@ccontphnhom,@ccontphnw" +
+                "ork,@ccontfax,@ccontemail,@norebookreason,@newpublisher,@csrep2,@schcolors,@keep" +
+                "pswd,@leadsource,@leadsname,@prevpublisher,@leadname,@photographer,@oraclecode,@" +
+                "cposition,@electronickit,@electronickitoptions,@status,@taxexemptionexpirationda" +
+                "te,@IsTaxExempt,@stage,@FirstDaySchool,@NotTaxExempt,@TaxExemptionReceived)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9707,14 +9706,14 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebook", global::System.Data.SqlDbType.VarChar, 1, global::System.Data.ParameterDirection.Input, 0, 0, "rebook", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rebookdte", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "rebookdte", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@refby", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "refby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@enrollment", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 5, 0, "enrollment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@enrollment", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "enrollment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@grades", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "grades", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sal", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "sal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schaddr", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schaddr2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcity", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schstate", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schzip", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schstate", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "schstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schzip", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "schzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schphone", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schphone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schfax", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schemail", global::System.Data.SqlDbType.VarChar, 80, global::System.Data.ParameterDirection.Input, 0, 0, "schemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9725,8 +9724,8 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@gender", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "gender", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contfname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contlname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@yb_sth", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "yb_sth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shiptocont", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "shiptocont", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@yb_sth", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "yb_sth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shiptocont", global::System.Data.SqlDbType.VarChar, 1, global::System.Data.ParameterDirection.Input, 0, 0, "shiptocont", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contaddr", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contaddr2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contcity", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9736,7 +9735,6 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contphnwrk", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contphnwrk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contfax", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contemail", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.VarChar, 4, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vcrsent", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "vcrsent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sigfopf", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "sigfopf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@envflyer", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "envflyer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9795,7 +9793,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontaddr", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontaddr2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontcity", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontstate", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontstate", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "ccontstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontzip", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontphnhom", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontphnhom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ccontphnwork", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ccontphnwork", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

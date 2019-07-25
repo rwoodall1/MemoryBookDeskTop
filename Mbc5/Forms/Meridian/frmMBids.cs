@@ -188,7 +188,10 @@ namespace Mbc5.Forms.Meridian {
 
             if (OptionPrices == null)
             {
-                GetOptionPricing();
+                if (!GetOptionPricing())
+                {
+                    return;
+                }
             }
             int vnumberOfCovers = 0;
             if (desc2TextBox1.Text.Length > 0)
@@ -258,7 +261,7 @@ namespace Mbc5.Forms.Meridian {
                 lblTax.Text = "0.00";
             }
 
-            // lblFinalTotal.Text = (lblFinalPrice.ConvertToDecimal() + lblTax.ConvertToDecimal()).ToString();
+             lblFinalTotal.Text = (lblFinalPrice.ConvertToDecimal() + lblTax.ConvertToDecimal()).ToString();
 
 
 
@@ -691,11 +694,11 @@ namespace Mbc5.Forms.Meridian {
             }
             CalculateOptions();
         }
-        private void GetOptionPricing()
+        private bool GetOptionPricing()
         {
             if (string.IsNullOrEmpty(contryearTextBox.Text))
             {
-                return;
+                return false;
             }
             var sqlQuery = new SQLCustomClient();
             sqlQuery.CommandText(@"Select * From MeridianOptionPrices Where Yr=@Yr");
@@ -708,9 +711,15 @@ namespace Mbc5.Forms.Meridian {
                     .MarkAsCritical()
                     .Submit();
                 MbcMessageBox.Error("Error retrieving Meridian Option Prices:" + result.Errors[0].ErrorMessage);
-                return;
+                return false;
+            }
+            if (result.Data == null)
+            {
+                MbcMessageBox.Error("There were no option prices found for year:"+ contryearTextBox.Text);
+                return false;
             }
             OptionPrices = (MeridianOptionPricing)result.Data;
+            return true;
         }
         private bool ValidateCalcData()
         {
@@ -833,6 +842,10 @@ namespace Mbc5.Forms.Meridian {
 
         private void txtBYear_Leave(object sender, EventArgs e)
         {
+            if (!GetBookPricing())
+            {
+                return;
+            }
             CalculateBase();
             CalculateOptions();
         }

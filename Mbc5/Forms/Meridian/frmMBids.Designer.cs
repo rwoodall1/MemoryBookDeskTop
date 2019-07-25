@@ -136,10 +136,9 @@
             this.hallppriceTextBox = new System.Windows.Forms.TextBox();
             this.hallpqtyTextBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.afterdisctotLabel2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.afterdisctotLabel2 = new System.Windows.Forms.Label();
             this.lblCoverPricetotal = new System.Windows.Forms.Label();
             this.lblSchtype = new System.Windows.Forms.Label();
             this.disc3CheckBox = new System.Windows.Forms.CheckBox();
@@ -1105,6 +1104,7 @@
             // 
             this.lblTax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTax.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "salestx", true));
+            this.lblTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTax.Location = new System.Drawing.Point(981, 79);
             this.lblTax.Name = "lblTax";
             this.lblTax.Size = new System.Drawing.Size(52, 13);
@@ -1116,9 +1116,10 @@
             this.lblTaxRate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTaxRate.AutoSize = true;
             this.lblTaxRate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "SchoolTaxRate", true));
+            this.lblTaxRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxRate.Location = new System.Drawing.Point(851, 79);
             this.lblTaxRate.Name = "lblTaxRate";
-            this.lblTaxRate.Size = new System.Drawing.Size(48, 13);
+            this.lblTaxRate.Size = new System.Drawing.Size(41, 13);
             this.lblTaxRate.TabIndex = 153;
             this.lblTaxRate.Text = "label10";
             // 
@@ -1126,6 +1127,7 @@
             // 
             this.lblFinalTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFinalTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "fplntot", true));
+            this.lblFinalTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFinalTotal.Location = new System.Drawing.Point(981, 102);
             this.lblFinalTotal.Name = "lblFinalTotal";
             this.lblFinalTotal.Size = new System.Drawing.Size(52, 13);
@@ -1136,6 +1138,7 @@
             // 
             this.lblFinalPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFinalPrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "fplnprc", true));
+            this.lblFinalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFinalPrice.Location = new System.Drawing.Point(981, 54);
             this.lblFinalPrice.Name = "lblFinalPrice";
             this.lblFinalPrice.Size = new System.Drawing.Size(52, 16);
@@ -1435,10 +1438,9 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.afterdisctotLabel2);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.afterdisctotLabel2);
             this.panel2.Controls.Add(this.lblCoverPricetotal);
             this.panel2.Controls.Add(this.lblSchtype);
             this.panel2.Controls.Add(this.disc3CheckBox);
@@ -1471,15 +1473,15 @@
             this.panel2.Size = new System.Drawing.Size(1048, 156);
             this.panel2.TabIndex = 225;
             // 
-            // label1
+            // afterdisctotLabel2
             // 
-            this.label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "afterdisctot", true));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(980, 132);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 18);
-            this.label1.TabIndex = 158;
-            this.label1.Text = "label9";
+            this.afterdisctotLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "afterdisctot", true));
+            this.afterdisctotLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.afterdisctotLabel2.Location = new System.Drawing.Point(980, 132);
+            this.afterdisctotLabel2.Name = "afterdisctotLabel2";
+            this.afterdisctotLabel2.Size = new System.Drawing.Size(52, 18);
+            this.afterdisctotLabel2.TabIndex = 158;
+            this.afterdisctotLabel2.Text = "label9";
             // 
             // label12
             // 
@@ -1503,15 +1505,6 @@
             this.label10.Size = new System.Drawing.Size(126, 7);
             this.label10.TabIndex = 54;
             this.label10.Text = "Negative=Discount / Positive=Charge";
-            // 
-            // afterdisctotLabel2
-            // 
-            this.afterdisctotLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.afterdisctotLabel2.Location = new System.Drawing.Point(1134, 132);
-            this.afterdisctotLabel2.Name = "afterdisctotLabel2";
-            this.afterdisctotLabel2.Size = new System.Drawing.Size(52, 18);
-            this.afterdisctotLabel2.TabIndex = 52;
-            this.afterdisctotLabel2.Text = "label9";
             // 
             // lblCoverPricetotal
             // 
@@ -2118,7 +2111,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label afterdisctotLabel2;
         private System.Windows.Forms.Label lblCoverPricetotal;
         private System.Windows.Forms.Label lblSchtype;
         private System.Windows.Forms.CheckBox disc3CheckBox;
@@ -2168,6 +2160,6 @@
         private DataSets.LookUpTableAdapters.MeridianProductsTableAdapter meridianProductsTableAdapter;
         private DataSets.LookUpTableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.Label idLabel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label afterdisctotLabel2;
     }
     }

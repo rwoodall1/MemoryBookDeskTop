@@ -1500,10 +1500,10 @@ public override void Cancel() {
         }
         private void txtSchname_DoubleClick_1(object sender, EventArgs e)
         {
-            if (ApplicationUser.IsInRole("SA") || ApplicationUser.IsInRole("Administrator"))
-            {
+            //if (ApplicationUser.IsInRole("SA") || ApplicationUser.IsInRole("Administrator"))
+            //{
                 txtSchname.ReadOnly = false;
-            }
+           // }
         }
         private void btnEmailContac3_Click_1(object sender, EventArgs e)
         {
@@ -2174,6 +2174,18 @@ public override void Cancel() {
             this.Fill();
            
         }
+
+        private void txtSchname_Validating_1(object sender, CancelEventArgs e)
+        {
+            errorProvider1.SetError(txtSchname, "");
+            if (txtSchname.Text.Trim()=="")
+            {
+                errorProvider1.SetError(txtSchname, "Name is required");
+                e.Cancel = true;
+            }
+        }
+
+        
 
 
 

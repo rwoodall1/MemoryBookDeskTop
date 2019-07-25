@@ -346,7 +346,7 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
             this.stoneFieldToolStripMenuItem.Visible = false;
             // 
@@ -360,7 +360,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             // 
             // tsAddress
@@ -409,7 +409,7 @@
             // customeReportsToolStripMenuItem
             // 
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
             this.customeReportsToolStripMenuItem.Visible = false;
             // 
@@ -612,8 +612,8 @@
             this.tsPrint.Image = ((System.Drawing.Image)(resources.GetObject("tsPrint.Image")));
             this.tsPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsPrint.Name = "tsPrint";
-            this.tsPrint.Size = new System.Drawing.Size(52, 22);
-            this.tsPrint.Text = "Print";
+            this.tsPrint.Size = new System.Drawing.Size(89, 22);
+            this.tsPrint.Text = "Screen Shot";
             this.tsPrint.Click += new System.EventHandler(this.tsPrint_Click);
             // 
             // tsEmail

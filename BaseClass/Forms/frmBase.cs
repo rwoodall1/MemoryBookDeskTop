@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BaseClass.FormHandler;
+//using BaseClass.FormHandler;
 using System.Security.Principal;
 using BaseClass.Classes;
 using BaseClass.Core;
@@ -169,15 +169,15 @@ namespace BaseClass
         {
             if (!this.DesignMode)
             {
-                   FormInstance vForm = ((ParentForm)this.MdiParent).GetFormInstance(this.Name);
-                if (vForm.Instances > this.MaxNumForms)
+                FormAllowed allowedResult= ((ParentForm)this.MdiParent).AllowedInstance(this.Name,this.MaxNumForms);
+                if (!allowedResult.Allowed)
                 {
                     //close
                     this.BeginInvoke(new MethodInvoker(this.Close));
                 }
-                if (vForm.Instances > 1)
+                if (allowedResult.Number > 1)
                 {
-                    this.Text = this.Text + "(" + vForm.Instances.ToString() + ")";
+                    this.Text = this.Text + "(" + allowedResult.Number.ToString() + ")";
                 }
             }
            

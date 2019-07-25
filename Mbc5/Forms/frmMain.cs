@@ -585,8 +585,26 @@ namespace Mbc5.Forms
             }
 
         private void tsPrint_Click(object sender,EventArgs e) {
-            this.PrintScreen();
+            //this.PrintScreen();
+            try
+            {
+                Process snippingToolProcess = new Process();
+                snippingToolProcess.EnableRaisingEvents = true;
+                if (!Environment.Is64BitProcess)
+                {
+                    snippingToolProcess.StartInfo.FileName = "C:\\Windows\\sysnative\\SnippingTool.exe";
+                    snippingToolProcess.Start();
+                }
+                else
+                {
+                    snippingToolProcess.StartInfo.FileName = "C:\\Windows\\system32\\SnippingTool.exe";
+                    snippingToolProcess.Start();
+                }
+            }catch(Exception ex)
+            {
+
             }
+        }
 
         private void tsEmail_Click(object sender,EventArgs e) {
             

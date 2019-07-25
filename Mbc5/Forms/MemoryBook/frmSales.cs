@@ -71,7 +71,7 @@ namespace Mbc5.Forms.MemoryBook
         }
         private void frmSales_Load(object sender, EventArgs e)
         {
-
+            pg1.AutoScroll = false;
 
             this.SetConnectionString();
             lblPCEach.DataBindings.Add("Text", this, "PrcEa", false, DataSourceUpdateMode.OnPropertyChanged);//bind 

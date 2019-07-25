@@ -403,11 +403,14 @@ private void CalculateOptions() {
         vpbqtyTextBox.Enabled = true;
     }
 
-    if (OptionPrices == null)
-    {
-        GetOptionPricing();
-    }
-    int vnumberOfCovers = 0;
+            if (OptionPrices == null)
+            {
+                if (!GetOptionPricing())
+                {
+                    return;
+                }
+            }
+            int vnumberOfCovers = 0;
     if (desc2TextBox1.Text.Length > 0)
     {
         vnumberOfCovers += 1;
@@ -1052,27 +1055,34 @@ private void CoverCalc()
     }
     CalculateOptions();
 }
-private void GetOptionPricing()
+private bool GetOptionPricing()
 {
-if (string.IsNullOrEmpty(contryearTextBox.Text))
-{
-    return;
-}
-var sqlQuery = new SQLCustomClient();
-sqlQuery.CommandText(@"Select * From MeridianOptionPrices Where Yr=@Yr");
-sqlQuery.AddParameter("@Yr", contryearTextBox.Text);
-var result = sqlQuery.Select<MeridianOptionPricing>();
-if (result.IsError)
-{
-    ExceptionlessClient.Default.CreateLog("MeridianOption Pricing")
-        .AddObject(result)
-        .MarkAsCritical()
-        .Submit();
-    MbcMessageBox.Error("Error retrieving Meridian Option Prices:" + result.Errors[0].ErrorMessage);
-    return;
-}
-OptionPrices = (MeridianOptionPricing)result.Data;
-}
+            if (string.IsNullOrEmpty(contryearTextBox.Text))
+            {
+                return false;
+            }
+            var sqlQuery = new SQLCustomClient();
+            sqlQuery.CommandText(@"Select * From MeridianOptionPrices Where Yr=@Yr");
+            sqlQuery.AddParameter("@Yr", contryearTextBox.Text);
+            var result = sqlQuery.Select<MeridianOptionPricing>();
+            if (result.IsError)
+            {
+                ExceptionlessClient.Default.CreateLog("MeridianOption Pricing")
+                    .AddObject(result)
+                    .MarkAsCritical()
+                    .Submit();
+                MbcMessageBox.Error("Error retrieving Meridian Option Prices:" + result.Errors[0].ErrorMessage);
+                return false;
+            }
+            if (result.Data == null)
+            {
+                MbcMessageBox.Error("There were no option prices found for year:" + contryearTextBox.Text);
+                return false;
+            }
+            OptionPrices = (MeridianOptionPricing)result.Data;
+            return true;
+        }
+
 private bool ValidateCalcData()
 {
 bool retval = true;
