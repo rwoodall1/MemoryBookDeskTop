@@ -540,13 +540,13 @@ namespace Mbc5.DataSets {
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
                 this.columnUserName.AllowDBNull = false;
-                this.columnUserName.MaxLength = 50;
+                this.columnUserName.MaxLength = 100;
                 this.columnPassWord.AllowDBNull = false;
-                this.columnPassWord.MaxLength = 50;
+                this.columnPassWord.MaxLength = 100;
                 this.columnroleid.MaxLength = 128;
-                this.columnEmailAddress.MaxLength = 45;
-                this.columnFirstName.MaxLength = 45;
-                this.columnLastName.MaxLength = 45;
+                this.columnEmailAddress.MaxLength = 100;
+                this.columnFirstName.MaxLength = 100;
+                this.columnLastName.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

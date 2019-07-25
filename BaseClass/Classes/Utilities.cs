@@ -57,6 +57,7 @@ namespace BaseClass.Classes
         private void printDocument1_PrintPage(System.Object sender,
           System.Drawing.Printing.PrintPageEventArgs e)
         {
+            e.PageSettings.Landscape = false;
             // calculate width and height scalings taking page margins into account
             var wScale = e.MarginBounds.Width / (float)memoryImage.Width;
             var hScale = e.MarginBounds.Height / (float)memoryImage.Height;
@@ -66,7 +67,7 @@ namespace BaseClass.Classes
              e.Graphics.ScaleTransform(scale,scale);
            // e.Graphics.ScaleTransform(wScale,hScale);
 
-            e.PageSettings.Landscape = true;
+            
             e.Graphics.DrawImage(memoryImage, 0, 0);
          
             }
