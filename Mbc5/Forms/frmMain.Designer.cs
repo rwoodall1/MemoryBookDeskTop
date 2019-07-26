@@ -48,7 +48,6 @@
             this.endSheetSupplementPreFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMBCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +101,7 @@
             this.tsZipCodeSearch = new System.Windows.Forms.ToolStripButton();
             this.tsEmailSearch = new System.Windows.Forms.ToolStripButton();
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -130,8 +130,8 @@
             this.mBCToolStripMenuItem,
             this.meridianToolStripMenuItem,
             this.productionToolStripMenuItem,
-            this.exitMBCToolStripMenuItem,
-            this.testFormToolStripMenuItem});
+            this.logOutToolStripMenuItem,
+            this.exitMBCToolStripMenuItem});
             this.formsToolStripMenuItem.Name = "formsToolStripMenuItem";
             this.formsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.formsToolStripMenuItem.Text = "&Forms";
@@ -146,7 +146,7 @@
             this.onlineFormsToolStripMenuItem,
             this.salesToolStripMenuItem});
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
-            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
             // 
             // customerToolStripMenuItem
@@ -198,7 +198,7 @@
             this.mbidsToolStripMenuItem,
             this.onlineFormsToolStripMenuItem1});
             this.meridianToolStripMenuItem.Name = "meridianToolStripMenuItem";
-            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
             // 
             // MerToolStrip
@@ -235,7 +235,7 @@
             this.endSheetSupplementPreFlightToolStripMenuItem,
             this.barScanToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -262,16 +262,9 @@
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
-            // 
-            // testFormToolStripMenuItem
-            // 
-            this.testFormToolStripMenuItem.Name = "testFormToolStripMenuItem";
-            this.testFormToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.testFormToolStripMenuItem.Text = "TestForm";
-            this.testFormToolStripMenuItem.Click += new System.EventHandler(this.testFormToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -741,6 +734,13 @@
             this.tsJobNo.Visible = false;
             this.tsJobNo.Click += new System.EventHandler(this.tsJobNo_Click);
             // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOutToolStripMenuItem.Text = "Log Out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -814,7 +814,6 @@
         private System.Windows.Forms.ToolStripMenuItem scanDescriptionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem testFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem barScanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem leadSourceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem leadNamesToolStripMenuItem;
@@ -837,5 +836,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsYearBookLabel;
         private System.Windows.Forms.ToolStripMenuItem tsDeptScanLabel;
         private System.Windows.Forms.ToolStripMenuItem cancelationStatementsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
     }
 }

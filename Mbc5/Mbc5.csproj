@@ -168,6 +168,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsExtra.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsMBids.cs">
+      <DependentUpon>dsMBids.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsMBids.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

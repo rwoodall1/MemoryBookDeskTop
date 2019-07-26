@@ -257,9 +257,494 @@ if (result == DialogResult.OK)
     this.Cursor = Cursors.Default;
 }
 }
-       
-#endregion
+
+        #endregion
 #region Methods
+#region CalcMethods
+        private void CalculateOptions()
+        {
+            if (!Validate())
+            {
+                return;
+            }
+            if (sfRadioButton.Checked)
+            {
+
+                vpbqtyTextBox.Enabled = false;
+                vpbqtyTextBox.Text = "0";
+                vpbprcTextBox.Text = "0.00";
+
+            }
+            else
+            {
+                vpbqtyTextBox.Enabled = true;
+            }
+
+            if (OptionPrices == null)
+            {
+                if (!GetOptionPricing())
+                {
+                    return;
+                }
+            }
+            int vnumberOfCovers = 0;
+            if (desc2TextBox1.Text.Length > 0)
+            {
+                vnumberOfCovers += 1;
+            }
+            if (desc3TextBox1.Text.Length > 0)
+            {
+                vnumberOfCovers += 1;
+            }
+            if (desc4TextBox1.Text.Length > 0)
+            {
+                vnumberOfCovers += 1;
+            }
+            switch (vnumberOfCovers)
+            {
+                case 1:
+                    lblSpecialCoverPrice.Text = OptionPrices.SpecialCoverPrice1.ToString();
+                    break;
+                case 2:
+                    lblSpecialCoverPrice.Text = OptionPrices.SpecialCoverPrice2.ToString();
+                    break;
+                case 3:
+                    lblSpecialCoverPrice.Text = OptionPrices.SpecialCoverPrice3.ToString();
+                    break;
+                default:
+                    lblSpecialCoverPrice.Text = "0.00";
+                    break;
+
+            }
+
+            hallppriceTextBox.Text = (hallpqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.HallPassSF : OptionPrices.HallPassLF)).ToString();
+            bmarkprcTextBox.Text = (bmarkqtyTextBox.ConvertToInt() * OptionPrices.BkMrk).ToString();
+            vpprcTextBox.Text = (vpaqtyTextBox.ConvertToInt() * (sfRadioButton.Checked ? OptionPrices.VpSF : OptionPrices.VpLF)).ToString();
+            vpbprcTextBox.Text = (vpbqtyTextBox.ConvertToInt() * OptionPrices.VpLF).ToString();//vinyle pocket B only available if LF
+            idpouchprcTextBox.Text = (idpouchqtyTextBox.ConvertToInt() * OptionPrices.IdPouch).ToString();
+            stdttitpgprcTextBox.Text = (stttitpgqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.TitlePgLF : OptionPrices.TitlePgSF)).ToString();
+            duraglzprcTextBox.Text = (duraglzqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.DuraGlazeLF : OptionPrices.DuraGlazeSF)).ToString();
+            wallchprcTextBox.Text = (wallchqtyTextBox.ConvertToInt() * OptionPrices.WallChart).ToString();
+            typesetprcTextBox.Text = (typesetqtyTextBox.ConvertToInt() * OptionPrices.TypeSet).ToString();
+            //TotalOption __________________________________________________________________
+            lblTotalOptions.Text = (hallppriceTextBox.ConvertToDecimal() + bmarkprcTextBox.ConvertToDecimal() + idpouchprcTextBox.ConvertToDecimal()
+                + stdttitpgprcTextBox.ConvertToDecimal() + duraglzprcTextBox.ConvertToDecimal() + wallchprcTextBox.ConvertToDecimal() + typesetprcTextBox.ConvertToDecimal()
+                + lblSpecialCoverPrice.ConvertToDecimal() + vpprcTextBox.ConvertToDecimal() + vpbprcTextBox.ConvertToDecimal()).ToString();
+            //________________________________________________________________
+
+
+            //Before Discounts Total__________________________________________________________________________
+            lblsbtot.Text = (lblTotalBasePrice.ConvertToDecimal() + lblCoverPricetotal.ConvertToDecimal() + lblTotalOptions.ConvertToDecimal() + txtmisc.ConvertToDecimal()).ToString();
+            //Sbtot_____________________________________________________
+            decimal vSbtot = lblsbtot.ConvertToDecimal();
+            //After Discount Total__________________________________________________________________________
+            erldiscamtTextBox.Text = "-" + (dp1TextBox.ConvertToDecimal() * vSbtot).ToString("0.00");
+
+            afterdisctotLabel2.Text = (vSbtot + erldiscamtTextBox.ConvertToDecimal() + desc1amtTextBox1.ConvertToDecimal() + descamtTextBox.ConvertToDecimal()
+            + desc4amtTextBox.ConvertToDecimal() + desc3amtTextBox.ConvertToDecimal()).ToString();
+            //___________________________________________________________________
+            decimal vTotal = afterdisctotLabel2.ConvertToDecimal() + txtShipping.ConvertToDecimal() + txtAdditionChrg.ConvertToDecimal();
+
+            lblFinalPrice.Text = vTotal.ToString();
+            if (!doNotChargeTaxCheckBox.Checked)
+            {
+                // Control values are set in function
+                GetTax(vTotal);
+            }
+            else
+            {
+                lblTaxRate.Text = "0.00";
+                lblTax.Text = "0.00";
+            }
+
+            // lblFinalTotal.Text = (lblFinalPrice.ConvertToDecimal() + lblTax.ConvertToDecimal()).ToString();
+
+
+
+        }
+        private void CalculateBase()
+        {
+            if (!ValidateCalcData())
+            {
+
+                return;
+            }
+            if (Pricing == null)
+            {
+                if (!GetBookPricing())
+                {
+                    return;
+                }
+            }
+            if (chkGeneric.Checked)
+            {
+                if (CalculateGeneric())
+                { return; }
+
+            }
+            if (chkJostens.Checked)
+            {
+                if (CalculateJostenBase())
+                {
+                    return;
+                }
+
+            }
+            //calculate regular
+            decimal vBasePrice = 0;
+            decimal vPriceOveride = 0;
+            decimal vTeacherBasePrice = 0;
+            int mPages;
+            int vTotalQty = 0;
+            int pageMultiplier = 0;
+            decimal xtraPagePrice = 0;
+            var vMiscAmt = txtmisc.ConvertToDecimal();
+            var vQtyTeacher = txtQtyTeacher.ConvertToInt();
+            var vQtyStudent = txtQtyStudent.ConvertToInt();
+            vTotalQty = vQtyStudent + vQtyTeacher;
+            var vPages = txtNoPages.ConvertToInt();
+            var vPriceOverride = txtPriceOverRide.ConvertToDecimal();
+            lblQtyTotal.Text = vTotalQty.ToString();
+
+            if (contryearTextBox.Text == "")
+            {
+                return;
+            }
+
+
+            if (lfRadioButton.Checked)
+            {
+                if (vPriceOveride > 0)
+                {
+                    vBasePrice = vPriceOveride;
+                    lblBasePrice.Text = vBasePrice.ToString();
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        lblTeachBasePrice.Text = vBasePrice.ToString();
+                        //always same for Large Font
+                        vTeacherBasePrice = vBasePrice;
+                    }
+                    lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
+                    return;
+                }
+
+                if (vPages == 0) { mPages = 4; } else { mPages = vPages; }
+                //field to look for
+                string qtyField = GetCopies(vTotalQty);
+                pageMultiplier = GetXtraPages(mPages, "LF", CurPriceYr);
+                xtraPagePrice = pageMultiplier * Pricing.StandardPageCost;
+                vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>(qtyField, Pricing);
+                if (vPages == 0) { vBasePrice += Pricing.ZeroPageCost; }
+                if (vPages == 4) { vBasePrice += Pricing.FourPageCost; }
+                vBasePrice += xtraPagePrice;
+                if (string.IsNullOrEmpty(txtQtyTeacher.Text) || txtQtyTeacher.Text == "0")
+                {
+                    lblTeachBasePrice.Text = "0.00";
+                    vTeacherBasePrice = 0;
+                }
+                else
+                {
+                    lblTeachBasePrice.Text = vBasePrice.ToString();
+                    vTeacherBasePrice = vBasePrice;
+                }
+                lblBasePrice.Text = vBasePrice.ToString();
+                lblsbtot.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher) + vMiscAmt).ToString();
+                lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
+            }
+            //////////////----------------------------------------------------------------
+            if (sfRadioButton.Checked)
+            {
+                if (vPriceOveride > 0)
+                {
+                    vBasePrice = vPriceOveride;
+                    lblBasePrice.Text = vBasePrice.ToString();
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        lblTeachBasePrice.Text = vBasePrice.ToString();
+                        vTeacherBasePrice = vBasePrice;
+                    }
+                    lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
+                    return;
+                }
+                if (vPages == 0) { mPages = 8; } else { mPages = vPages; }//test
+                var qtyField = GetCopies(vTotalQty);
+                pageMultiplier = GetXtraPages(mPages, "SF", CurPriceYr);
+                xtraPagePrice = pageMultiplier * Pricing.StandardPageCost;
+                vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>(qtyField, Pricing);
+                if (vPages == 0) { vBasePrice += Pricing.ZeroPageCost; }
+                if (vPages == 8) { vBasePrice += Pricing.EightPageCost; }
+                vBasePrice += xtraPagePrice;
+                if (string.IsNullOrEmpty(txtQtyTeacher.Text) || txtQtyTeacher.Text == "0")
+                {
+                    lblTeachBasePrice.Text = "0.00";
+                    vTeacherBasePrice = 0;
+                }
+                else
+                {
+                    lblTeachBasePrice.Text = vBasePrice.ToString();
+                    vTeacherBasePrice = vBasePrice;
+                }
+
+                lblBasePrice.Text = vBasePrice.ToString();
+
+            }
+            lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
+            lblsbtot.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher) + vMiscAmt).ToString();
+            CalculateOptions();
+        }
+        private bool CalculateJostenBase()
+        {
+            decimal vBasePrice = 0;
+            decimal vPriceOveride = 0;
+            decimal vTeacherBasePrice = 0;
+            int vQtyTeacher = 0;
+            int vQtyStudent = 0;
+            int vTotalQty = 0;
+            int vPages = 0;
+            int pageMultiplier = 0;
+            decimal xtraPagePrice = 0;
+            decimal.TryParse(txtPriceOverRide.Text, out vPriceOveride);
+            int.TryParse(txtQtyTeacher.Text, out vQtyTeacher);
+            int.TryParse(txtQtyStudent.Text, out vQtyStudent);
+            vTotalQty = vQtyStudent + vQtyTeacher;
+            int.TryParse(txtNoPages.Text, out vPages);
+            int mPages;
+            lblQtyTotal.Text = vTotalQty.ToString();
+            if (contryearTextBox.Text == "")
+            {
+                return false;
+            }
+            if (vPriceOveride > 0)
+            {
+                vBasePrice = vPriceOveride;
+                lblBasePrice.Text = vBasePrice.ToString("0.00");
+                if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                {
+                    vTeacherBasePrice = 0;
+                    lblTeachBasePrice.Text = "0.00";
+                }
+                else
+                {
+                    lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
+                    //always same for Large Font
+                    vTeacherBasePrice = vBasePrice;
+                }
+                lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
+                CalculateOptions();
+                return true;
+            }
+            if (vPages > 76)
+
+            {
+                MbcMessageBox.Information("Pages are over 76, Jostens pricing not available. Enter a price override.");
+                return false;
+
+            }
+            if (string.IsNullOrEmpty(txtBYear.Text))
+            {
+                MbcMessageBox.Information("Enter a base price year");
+                return false;
+            }
+            var vJostenPrice = GetJostensPricing(txtBYear.Text, sfRadioButton.Checked ? "SF" : "LF", vPages);
+            if (vTotalQty < 600)
+            {
+                vJostenPrice += .25m;
+            }
+            lblBasePrice.Text = vJostenPrice.ToString("0.00");
+            if (vQtyTeacher > 0)
+            {
+                lblTeachBasePrice.Text = vJostenPrice.ToString("0.00");//same as student
+            }
+            lblTotalBasePrice.Text = ((vJostenPrice * vQtyStudent) + (vJostenPrice * vQtyTeacher)).ToString("0.00");
+            CalculateOptions();
+            return true;
+        }
+        private bool CalculateGeneric()
+        {
+            decimal vBasePrice = 0;
+            decimal vPriceOveride = 0;
+            decimal vTeacherBasePrice = 0;
+            int vQtyTeacher = 0;
+            int vQtyStudent = 0;
+            int vTotalQty = 0;
+            int vPages = 0;
+
+            decimal.TryParse(txtPriceOverRide.Text, out vPriceOveride);
+            int.TryParse(txtQtyTeacher.Text, out vQtyTeacher);
+            int.TryParse(txtQtyStudent.Text, out vQtyStudent);
+            vTotalQty = vQtyStudent + vQtyTeacher;
+            int.TryParse(txtNoPages.Text, out vPages);
+
+            lblQtyTotal.Text = vTotalQty.ToString();
+            if (contryearTextBox.Text == "")
+            {
+                return false;
+            }
+            if (vPriceOveride > 0)
+            {
+                vBasePrice = vPriceOveride;
+                lblBasePrice.Text = vBasePrice.ToString("0.00");
+                if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                {
+                    vTeacherBasePrice = 0;
+                    lblTeachBasePrice.Text = "0.00";
+                }
+                else
+                {
+                    lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
+                    //always same for Large Font
+                    vTeacherBasePrice = vBasePrice;
+                }
+                lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
+                CalculateOptions();
+                return true;
+            }
+            if (lfRadioButton.Checked)
+            {
+                if (prodcodeComboBox.SelectedValue.ToString() == "ADVLOG")
+                {
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        vTeacherBasePrice += .50m;
+                        lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
+                    }
+                    if (vTotalQty > 0 && vTotalQty <= 249)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        vBasePrice += .50m;
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                    else if (vTotalQty >= 250 && vTotalQty <= 599)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericM", Pricing);
+                        vBasePrice += .50m;
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                    else if (vTotalQty >= 600)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
+                        vBasePrice += .50m;
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+
+
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
+                    }
+                    if (vTotalQty > 0 && vTotalQty <= 249)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                    else if (vTotalQty >= 250 && vTotalQty <= 599)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericM", Pricing);
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                    else if (vTotalQty >= 600)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                }
+            }
+            else if (sfRadioButton.Checked)
+            {
+                if (prodcodeComboBox.SelectedValue.ToString() == "ADVLOG")
+                {
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        vTeacherBasePrice += .50m;
+                        lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
+                    }
+                    if (vTotalQty > 0 && vTotalQty <= 599)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        vBasePrice += .50m;
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+
+                    else if (vTotalQty >= 600)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
+                        vBasePrice += .50m;
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+
+
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
+                    }
+                    if (vTotalQty > 0 && vTotalQty <= 599)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+
+                    else if (vTotalQty >= 600)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                }
+            }
+            lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
+            CalculateOptions();
+            return true;
+        }
+        #endregion
 private bool ValidSales()
 {
 bool retval = true;
@@ -385,484 +870,7 @@ this.meridianProductsTableAdapter.Connection.ConnectionString = frmMain.AppConne
 this.mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
            
 }
-private void CalculateOptions() {
-    if (!Validate())
-    {
-        return;
-    }
-    if (sfRadioButton.Checked)
-    {
 
-        vpbqtyTextBox.Enabled = false;
-        vpbqtyTextBox.Text = "0";
-        vpbprcTextBox.Text = "0.00";
-
-    }
-    else
-    {
-        vpbqtyTextBox.Enabled = true;
-    }
-
-            if (OptionPrices == null)
-            {
-                if (!GetOptionPricing())
-                {
-                    return;
-                }
-            }
-            int vnumberOfCovers = 0;
-    if (desc2TextBox1.Text.Length > 0)
-    {
-        vnumberOfCovers += 1;
-    }
-    if (desc3TextBox1.Text.Length > 0)
-    {
-        vnumberOfCovers += 1;
-    }
-    if (desc4TextBox1.Text.Length > 0)
-    {
-        vnumberOfCovers += 1;
-    }
-    switch (vnumberOfCovers)
-    {
-        case 1:
-            lblSpecialCoverPrice.Text = OptionPrices.SpecialCoverPrice1.ToString();
-            break;
-        case 2:
-            lblSpecialCoverPrice.Text = OptionPrices.SpecialCoverPrice2.ToString();
-            break;
-        case 3:
-            lblSpecialCoverPrice.Text = OptionPrices.SpecialCoverPrice3.ToString();
-            break;
-        default:
-            lblSpecialCoverPrice.Text = "0.00";
-            break;
-
-    }
-
-    hallppriceTextBox.Text = (hallpqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.HallPassSF : OptionPrices.HallPassLF)).ToString();
-    bmarkprcTextBox.Text = (bmarkqtyTextBox.ConvertToInt() * OptionPrices.BkMrk).ToString();
-    vpprcTextBox.Text = (vpaqtyTextBox.ConvertToInt() * (sfRadioButton.Checked ? OptionPrices.VpSF : OptionPrices.VpLF)).ToString();
-    vpbprcTextBox.Text = (vpbqtyTextBox.ConvertToInt() * OptionPrices.VpLF).ToString();//vinyle pocket B only available if LF
-    idpouchprcTextBox.Text = (idpouchqtyTextBox.ConvertToInt() * OptionPrices.IdPouch).ToString();
-    stdttitpgprcTextBox.Text = (stttitpgqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.TitlePgLF : OptionPrices.TitlePgSF)).ToString();
-    duraglzprcTextBox.Text = (duraglzqtyTextBox.ConvertToInt() * (lfRadioButton.Checked ? OptionPrices.DuraGlazeLF : OptionPrices.DuraGlazeSF)).ToString();
-    wallchprcTextBox.Text = (wallchqtyTextBox.ConvertToInt() * OptionPrices.WallChart).ToString();
-    typesetprcTextBox.Text = (typesetqtyTextBox.ConvertToInt() * OptionPrices.TypeSet).ToString();
-    //TotalOption __________________________________________________________________
-    lblTotalOptions.Text = (hallppriceTextBox.ConvertToDecimal() + bmarkprcTextBox.ConvertToDecimal() + idpouchprcTextBox.ConvertToDecimal()
-        + stdttitpgprcTextBox.ConvertToDecimal() + duraglzprcTextBox.ConvertToDecimal() + wallchprcTextBox.ConvertToDecimal() + typesetprcTextBox.ConvertToDecimal()
-        + lblSpecialCoverPrice.ConvertToDecimal() + vpprcTextBox.ConvertToDecimal() + vpbprcTextBox.ConvertToDecimal()).ToString();
-    //________________________________________________________________
-
-
-    //Before Discounts Total__________________________________________________________________________
-    lblsbtot.Text = (lblTotalBasePrice.ConvertToDecimal() + lblCoverPricetotal.ConvertToDecimal() + lblTotalOptions.ConvertToDecimal() + txtmisc.ConvertToDecimal()).ToString();
-    //Sbtot_____________________________________________________
-    decimal vSbtot = lblsbtot.ConvertToDecimal();
-    //After Discount Total__________________________________________________________________________
-    afterdisctotLabel2.Text = (vSbtot + erldiscamtTextBox.ConvertToDecimal() + desc1amtTextBox1.ConvertToDecimal() + descamtTextBox.ConvertToDecimal()
-    + desc4amtTextBox.ConvertToDecimal() + desc3amtTextBox.ConvertToDecimal()).ToString();
-    //___________________________________________________________________
-    decimal vTotal = afterdisctotLabel2.ConvertToDecimal() + txtShipping.ConvertToDecimal() + txtAdditionChrg.ConvertToDecimal();
-
-    lblFinalPrice.Text = vTotal.ToString();
-    if (!doNotChargeTaxCheckBox.Checked)
-    {
-        // Control values are set in function
-        GetTax(vTotal);
-    }
-    else
-    {
-        lblTaxRate.Text = "0.00";
-        lblTax.Text = "0.00";
-    }
-
-    // lblFinalTotal.Text = (lblFinalPrice.ConvertToDecimal() + lblTax.ConvertToDecimal()).ToString();
-
-
-
-}
-private void CalculateBase()
-{
-    if (!ValidateCalcData())
-    {
-
-        return;
-    }
-    if (Pricing == null)
-    {
-        if (!GetBookPricing())
-        {
-            return;
-        }
-    }
-    if (chkGeneric.Checked)
-    {
-        if (CalculateGeneric())
-        { return; }
-
-    }
-    if (chkJostens.Checked)
-    {
-        if (CalculateJostenBase())
-        {
-            return;
-        }
-
-    }
-    //calculate regular
-    decimal vBasePrice = 0;
-    decimal vPriceOveride = 0;
-    decimal vTeacherBasePrice = 0;
-    int mPages;
-    int vTotalQty = 0;
-    int pageMultiplier = 0;
-    decimal xtraPagePrice = 0;
-    var vMiscAmt = txtmisc.ConvertToDecimal();
-    var vQtyTeacher = txtQtyTeacher.ConvertToInt();
-    var vQtyStudent = txtQtyStudent.ConvertToInt();
-    vTotalQty = vQtyStudent + vQtyTeacher;
-    var vPages = txtNoPages.ConvertToInt();
-    var vPriceOverride = txtPriceOverRide.ConvertToDecimal();
-    lblQtyTotal.Text = vTotalQty.ToString();
-
-    if (contryearTextBox.Text == "")
-    {
-        return;
-    }
-
-
-    if (lfRadioButton.Checked)
-    {
-        if (vPriceOveride > 0)
-        {
-            vBasePrice = vPriceOveride;
-            lblBasePrice.Text = vBasePrice.ToString();
-            if (string.IsNullOrEmpty(txtQtyTeacher.Text))
-            {
-                vTeacherBasePrice = 0;
-                lblTeachBasePrice.Text = "0.00";
-            }
-            else
-            {
-                lblTeachBasePrice.Text = vBasePrice.ToString();
-                //always same for Large Font
-                vTeacherBasePrice = vBasePrice;
-            }
-            lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
-            return;
-        }
-
-        if (vPages == 0) { mPages = 4; } else { mPages = vPages; }
-        //field to look for
-        string qtyField = GetCopies(vTotalQty);
-        pageMultiplier = GetXtraPages(mPages, "LF", CurPriceYr);
-        xtraPagePrice = pageMultiplier * Pricing.StandardPageCost;
-        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>(qtyField, Pricing);
-        if (vPages == 0) { vBasePrice += Pricing.ZeroPageCost; }
-        if (vPages == 4) { vBasePrice += Pricing.FourPageCost; }
-        vBasePrice += xtraPagePrice;
-        if (string.IsNullOrEmpty(txtQtyTeacher.Text) || txtQtyTeacher.Text == "0")
-        {
-            lblTeachBasePrice.Text = "0.00";
-            vTeacherBasePrice = 0;
-        }
-        else
-        {
-            lblTeachBasePrice.Text = vBasePrice.ToString();
-            vTeacherBasePrice = vBasePrice;
-        }
-        lblBasePrice.Text = vBasePrice.ToString();
-        lblsbtot.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher) + vMiscAmt).ToString();
-        lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
-    }
-    //////////////----------------------------------------------------------------
-    if (sfRadioButton.Checked)
-    {
-        if (vPriceOveride > 0)
-        {
-            vBasePrice = vPriceOveride;
-            lblBasePrice.Text = vBasePrice.ToString();
-            if (string.IsNullOrEmpty(txtQtyTeacher.Text))
-            {
-                vTeacherBasePrice = 0;
-                lblTeachBasePrice.Text = "0.00";
-            }
-            else
-            {
-                lblTeachBasePrice.Text = vBasePrice.ToString();
-                vTeacherBasePrice = vBasePrice;
-            }
-            lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
-            return;
-        }
-        if (vPages == 0) { mPages = 8; } else { mPages = vPages; }//test
-        var qtyField = GetCopies(vTotalQty);
-        pageMultiplier = GetXtraPages(mPages, "SF", CurPriceYr);
-        xtraPagePrice = pageMultiplier * Pricing.StandardPageCost;
-        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>(qtyField, Pricing);
-        if (vPages == 0) { vBasePrice += Pricing.ZeroPageCost; }
-        if (vPages == 8) { vBasePrice += Pricing.EightPageCost; }
-        vBasePrice += xtraPagePrice;
-        if (string.IsNullOrEmpty(txtQtyTeacher.Text) || txtQtyTeacher.Text == "0")
-        {
-            lblTeachBasePrice.Text = "0.00";
-            vTeacherBasePrice = 0;
-        }
-        else
-        {
-            lblTeachBasePrice.Text = vBasePrice.ToString();
-            vTeacherBasePrice = vBasePrice;
-        }
-
-        lblBasePrice.Text = vBasePrice.ToString();
-
-    }
-    lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
-    lblsbtot.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher) + vMiscAmt).ToString();
-    CalculateOptions();
-}
-private bool CalculateJostenBase()
-{
-    decimal vBasePrice = 0;
-    decimal vPriceOveride = 0;
-    decimal vTeacherBasePrice = 0;
-    int vQtyTeacher = 0;
-    int vQtyStudent = 0;
-    int vTotalQty = 0;
-    int vPages = 0;
-    int pageMultiplier = 0;
-    decimal xtraPagePrice = 0;
-    decimal.TryParse(txtPriceOverRide.Text, out vPriceOveride);
-    int.TryParse(txtQtyTeacher.Text, out vQtyTeacher);
-    int.TryParse(txtQtyStudent.Text, out vQtyStudent);
-    vTotalQty = vQtyStudent + vQtyTeacher;
-    int.TryParse(txtNoPages.Text, out vPages);
-    int mPages;
-    lblQtyTotal.Text = vTotalQty.ToString();
-    if (contryearTextBox.Text == "")
-    {
-        return false;
-    }
-    if (vPriceOveride > 0)
-    {
-        vBasePrice = vPriceOveride;
-        lblBasePrice.Text = vBasePrice.ToString("0.00");
-        if (string.IsNullOrEmpty(txtQtyTeacher.Text))
-        {
-            vTeacherBasePrice = 0;
-            lblTeachBasePrice.Text = "0.00";
-        }
-        else
-        {
-            lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
-            //always same for Large Font
-            vTeacherBasePrice = vBasePrice;
-        }
-        lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
-    CalculateOptions();
-    return true;
-    }
-    if (vPages > 76)
-
-    {
-        MbcMessageBox.Information("Pages are over 76, Jostens pricing not available. Enter a price override.");
-        return false;
-
-    }
-    if (string.IsNullOrEmpty(txtBYear.Text))
-    {
-        MbcMessageBox.Information("Enter a base price year");
-        return false;
-    }
-    var vJostenPrice = GetJostensPricing(txtBYear.Text, sfRadioButton.Checked ? "SF" : "LF", vPages);
-    if (vTotalQty < 600)
-    {
-        vJostenPrice += .25m;
-    }
-    lblBasePrice.Text = vJostenPrice.ToString("0.00");
-    if (vQtyTeacher > 0)
-    {
-        lblTeachBasePrice.Text = vJostenPrice.ToString("0.00");//same as student
-    }
-    lblTotalBasePrice.Text = ((vJostenPrice * vQtyStudent) + (vJostenPrice * vQtyTeacher)).ToString("0.00");
-    CalculateOptions();
-    return true;
-}
-private bool CalculateGeneric()
-{
-decimal vBasePrice = 0;
-decimal vPriceOveride = 0;
-decimal vTeacherBasePrice = 0;
-int vQtyTeacher = 0;
-int vQtyStudent = 0;
-int vTotalQty = 0;
-int vPages = 0;
-           
-decimal.TryParse(txtPriceOverRide.Text, out vPriceOveride);
-int.TryParse(txtQtyTeacher.Text, out vQtyTeacher);
-int.TryParse(txtQtyStudent.Text, out vQtyStudent);
-vTotalQty = vQtyStudent + vQtyTeacher;
-int.TryParse(txtNoPages.Text, out vPages);
-           
-lblQtyTotal.Text = vTotalQty.ToString();
-if (contryearTextBox.Text == "")
-{
-    return false;
-}
-if (vPriceOveride > 0)
-{
-    vBasePrice = vPriceOveride;
-    lblBasePrice.Text = vBasePrice.ToString("0.00");
-    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
-    {
-        vTeacherBasePrice = 0;
-        lblTeachBasePrice.Text = "0.00";
-    }
-    else
-    {
-        lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
-        //always same for Large Font
-        vTeacherBasePrice = vBasePrice;
-    }
-    lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
-    CalculateOptions();
-    return true;
-}
-if (lfRadioButton.Checked) {
-    if (prodcodeComboBox.SelectedValue.ToString() == "ADVLOG")
-    {
-        if (string.IsNullOrEmpty(txtQtyTeacher.Text))
-        {
-            vTeacherBasePrice = 0;
-            lblTeachBasePrice.Text = "0.00";
-        }
-        else
-        {
-            vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
-            vTeacherBasePrice += .50m;
-            lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
-        }
-        if (vTotalQty > 0 && vTotalQty <= 249)
-        {
-            vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
-            vBasePrice += .50m;
-            lblBasePrice.Text = vBasePrice.ToString();
-
-        }
-        else if (vTotalQty >= 250 && vTotalQty <= 599)
-        {
-            vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
-            vBasePrice += .50m;
-            lblBasePrice.Text = vBasePrice.ToString();
-
-        }
-        else if (vTotalQty >= 600)
-        {
-            vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericM", Pricing);
-            vBasePrice += .50m;
-            lblBasePrice.Text = vBasePrice.ToString();
-
-        }
-
-
-    }
-    else
-    {
-        if (string.IsNullOrEmpty(txtQtyTeacher.Text))
-        {
-            vTeacherBasePrice = 0;
-            lblTeachBasePrice.Text = "0.00";
-        }
-        else
-        {
-            vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
-            lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
-        }
-        if (vTotalQty > 0 && vTotalQty <= 249)
-        {
-            vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
-            lblBasePrice.Text = vBasePrice.ToString();
-
-        }
-        else if (vTotalQty >= 250 && vTotalQty <= 599)
-        {
-            vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
-            lblBasePrice.Text = vBasePrice.ToString();
-
-        }
-        else if (vTotalQty >= 600)
-        {
-            vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericM", Pricing);
-            lblBasePrice.Text = vBasePrice.ToString();
-
-        }
-    }
-}else if (sfRadioButton.Checked)
-{
-    if (prodcodeComboBox.SelectedValue.ToString() == "ADVLOG")
-    {
-        if (string.IsNullOrEmpty(txtQtyTeacher.Text))
-        {
-            vTeacherBasePrice = 0;
-            lblTeachBasePrice.Text = "0.00";
-        }
-        else
-        {
-            vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
-            vTeacherBasePrice += .50m;
-            lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
-        }
-        if (vTotalQty > 0 && vTotalQty <= 599)
-        {
-            vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
-            vBasePrice += .50m;
-            lblBasePrice.Text = vBasePrice.ToString();
-
-        }
-                   
-        else if (vTotalQty >= 600)
-        {
-            vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
-            vBasePrice += .50m;
-            lblBasePrice.Text = vBasePrice.ToString();
-
-        }
-
-
-    }
-    else
-    {
-        if (string.IsNullOrEmpty(txtQtyTeacher.Text))
-        {
-            vTeacherBasePrice = 0;
-            lblTeachBasePrice.Text = "0.00";
-        }
-        else
-        {
-            vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
-            lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
-        }
-        if (vTotalQty > 0 && vTotalQty <= 599)
-        {
-            vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
-            lblBasePrice.Text = vBasePrice.ToString();
-
-        }
-                   
-        else if (vTotalQty >= 600)
-        {
-            vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
-            lblBasePrice.Text = vBasePrice.ToString();
-
-        }
-    }
-}
-lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
-CalculateOptions();
-return true;
-}
 private decimal GetJostensPricing(string vYear,string vType,int pageQty)
 {
 string fieldName = vType + pageQty.ToString();
@@ -1674,7 +1682,10 @@ private void oneclrCheckBox_Click_1(object sender, EventArgs e)
 }
 private void dp1TextBox_Leave_1(object sender, EventArgs e)
 {
-            
+            if (dp1TextBox.Text.Trim()=="")
+            {
+                dp1TextBox.Text = "0";
+            }      
     CalculateOptions();
 }
         //nothing below here

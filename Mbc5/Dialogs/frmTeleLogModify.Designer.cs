@@ -353,6 +353,7 @@
             this.nxtdaysComboBox.Name = "nxtdaysComboBox";
             this.nxtdaysComboBox.Size = new System.Drawing.Size(68, 21);
             this.nxtdaysComboBox.TabIndex = 9;
+            this.nxtdaysComboBox.SelectedValueChanged += new System.EventHandler(this.nxtdaysComboBox_SelectedValueChanged);
             // 
             // nxtdateDateTimePicker
             // 
@@ -628,6 +629,7 @@
             this.tableAdapterManager2.lkpSupplyItemsTableAdapter = null;
             this.tableAdapterManager2.lkpTypeContTableAdapter = this.lkpTypeContTableAdapter;
             this.tableAdapterManager2.lkTypeDataTableAdapter = null;
+            this.tableAdapterManager2.MeridianProductsTableAdapter = null;
             this.tableAdapterManager2.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // lkpMktReferenceTableAdapter

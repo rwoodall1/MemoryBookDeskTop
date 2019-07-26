@@ -48,126 +48,13 @@ namespace Mbc5.Forms.Meridian {
             this.frmMain = (frmMain)this.MdiParent;
             this.SetConnectionString();
             Fill();
-            mbidsBindingSource.ResetBindings(true);
+    mbidsBindingSource.ResetBindings(true);
+           lblModifiedby.Text = frmMain.ApplicationUser.id;
+            
         }
         #region Methods
-        public override ApiProcessingResult<bool> Save()
-        {
-
-
-            return SaveBid();
-        }
-        private ApiProcessingResult<bool> SaveBid()
-        {
-            var processingResult = new ApiProcessingResult<bool>();
-            if (!ValidBid())
-            {
-                processingResult.IsError = true;
-                return processingResult;
-            }
-
-            try
-            {
-                if (Validate())
-                {
-                    mbidsBindingSource.EndEdit();
-                    var a = mbidsTableAdapter.Update(dsMBids.mbids);
-            
-                    Fill();
-                    processingResult.Data = true;
-                    return processingResult;
-
-                }
-                processingResult.Data = false;
-                return processingResult;
-            }
-            catch (Exception ex)
-            {
-                ex.ToExceptionless()
-                    .AddObject(ex)
-                    .MarkAsCritical()
-                    .Submit();
-                processingResult.Data = false;
-                processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
-                return processingResult;
-            }
-        }
-        private bool ValidBid()
-        {
-            bool retval = true;
-
-            retval = ValidateCalcData();
-            if (!retval) { return retval; }
-
-            retval = this.ValidateChildren();
-            if (!retval) { return retval; }
-            retval = this.Validate();
-            return retval;
-        }
-        private void Fill()
-        {
-            if (Schcode != null)
-            {
-                try
-                {
-                    this.meridianProductsTableAdapter.Fill(this.lookUp.MeridianProducts);
-                    this.mbidsTableAdapter.Fill(this.dsMBids.mbids, this.Schcode);
-                }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error(ex.Message, "");
-                }
-            }
-            if (mbidsBindingSource.Count == 0)
-            {
-                DisableControls(this);
-                EnableControls(this);
-            }
-            else
-            {
-               
-            }
-            try
-            {
-                this.Schname = ((DataRowView)mbidsBindingSource.Current).Row["schname"].ToString().Trim();
-                this.SchoolZipCode = ((DataRowView)this.mbidsBindingSource.Current).Row["schzip"].ToString().Trim().Substring(0, 5);
-
-            }
-            catch (Exception ex)
-            {
-                MbcMessageBox.Error(ex.Message, "");
-            }
-        }
-        private void SetConnectionString()
-        {
-            meridianProductsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-            mbidsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-        }
-        private void DisableControls(Control con)
-        {
-            foreach (Control c in con.Controls)
-            {
-                DisableControls(c);
-            }
-            con.Enabled = false;
-        }
-        private void EnableControls(Control con)
-        {
-            if (con != null)
-            {
-                con.Enabled = true;
-                EnableControls(con.Parent);
-            }
-        }
-        private void EnableAllControls(Control con)
-        {
-            foreach (Control c in con.Controls)
-            {
-                EnableAllControls(c);
-            }
-            con.Enabled = true;
-        }
-        private void CalculateOptions()
+        #region CalcMethods
+ private void CalculateOptions()
         {
             if (!Validate())
             {
@@ -244,6 +131,7 @@ namespace Mbc5.Forms.Meridian {
             //Sbtot_____________________________________________________
             decimal vSbtot = lblsbtot.ConvertToDecimal();
             //After Discount Total__________________________________________________________________________
+            erldiscamtTextBox.Text = "-" + (dp1TextBox.ConvertToDecimal() * vSbtot).ToString("0.00");
             afterdisctotLabel2.Text = (vSbtot + erldiscamtTextBox.ConvertToDecimal() + desc1amtTextBox1.ConvertToDecimal() + descamtTextBox.ConvertToDecimal()
             + desc4amtTextBox.ConvertToDecimal() + desc3amtTextBox.ConvertToDecimal()).ToString();
             //___________________________________________________________________
@@ -474,9 +362,295 @@ namespace Mbc5.Forms.Meridian {
         }
         private bool CalculateGeneric()
         {
+            decimal vBasePrice = 0;
+            decimal vPriceOveride = 0;
+            decimal vTeacherBasePrice = 0;
+            int vQtyTeacher = 0;
+            int vQtyStudent = 0;
+            int vTotalQty = 0;
+            int vPages = 0;
+
+            decimal.TryParse(txtPriceOverRide.Text, out vPriceOveride);
+            int.TryParse(txtQtyTeacher.Text, out vQtyTeacher);
+            int.TryParse(txtQtyStudent.Text, out vQtyStudent);
+            vTotalQty = vQtyStudent + vQtyTeacher;
+            int.TryParse(txtNoPages.Text, out vPages);
+
+            lblQtyTotal.Text = vTotalQty.ToString();
+            if (contryearTextBox.Text == "")
+            {
+                return false;
+            }
+            if (vPriceOveride > 0)
+            {
+                vBasePrice = vPriceOveride;
+                lblBasePrice.Text = vBasePrice.ToString("0.00");
+                if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                {
+                    vTeacherBasePrice = 0;
+                    lblTeachBasePrice.Text = "0.00";
+                }
+                else
+                {
+                    lblTeachBasePrice.Text = vBasePrice.ToString("0.00");
+                    //always same for Large Font
+                    vTeacherBasePrice = vBasePrice;
+                }
+                lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
+                CalculateOptions();
+                return true;
+            }
+            if (lfRadioButton.Checked)
+            {
+                if (prodcodeComboBox.SelectedValue.ToString() == "ADVLOG")
+                {
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        vTeacherBasePrice += .50m;
+                        lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
+                    }
+                    if (vTotalQty > 0 && vTotalQty <= 249)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        vBasePrice += .50m;
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                    else if (vTotalQty >= 250 && vTotalQty <= 599)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCM", Pricing);
+                        vBasePrice += .50m;
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                    else if (vTotalQty >= 600)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
+                        vBasePrice += .50m;
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+
+
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
+                    }
+                    if (vTotalQty > 0 && vTotalQty <= 249)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                    else if (vTotalQty >= 250 && vTotalQty <= 599)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericM", Pricing);
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                    else if (vTotalQty >= 600)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                }
+            }
+            else if (sfRadioButton.Checked)
+            {
+                if (prodcodeComboBox.SelectedValue.ToString() == "ADVLOG")
+                {
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        vTeacherBasePrice += .50m;
+                        lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
+                    }
+                    if (vTotalQty > 0 && vTotalQty <= 599)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        vBasePrice += .50m;
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+
+                    else if (vTotalQty >= 600)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
+                        vBasePrice += .50m;
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+
+
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(txtQtyTeacher.Text))
+                    {
+                        vTeacherBasePrice = 0;
+                        lblTeachBasePrice.Text = "0.00";
+                    }
+                    else
+                    {
+                        vTeacherBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        lblTeachBasePrice.Text = vTeacherBasePrice.ToString();
+                    }
+                    if (vTotalQty > 0 && vTotalQty <= 599)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("Generic", Pricing);
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+
+                    else if (vTotalQty >= 600)
+                    {
+                        vBasePrice = (decimal)ObjectFieldValue.Get<MeridianPrice>("GenericCL", Pricing);
+                        lblBasePrice.Text = vBasePrice.ToString();
+
+                    }
+                }
+            }
+            lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString("0.00");
             CalculateOptions();
-            return false;//temporary then make true;
+            return true;
         }
+        #endregion
+        public override ApiProcessingResult<bool> Save()
+        {
+            return SaveBid();
+        }
+        private ApiProcessingResult<bool> SaveBid()
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            if (!ValidBid())
+            {
+                processingResult.IsError = true;
+                return processingResult;
+            }
+
+            try
+            {
+                if (Validate())
+                {
+                    mbidsBindingSource.EndEdit();
+                    var a = mbidsTableAdapter.Update(dsMBids.mbids);
+            
+                    Fill();
+                    processingResult.Data = true;
+                    return processingResult;
+
+                }
+                processingResult.Data = false;
+                return processingResult;
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .MarkAsCritical()
+                    .Submit();
+                processingResult.Data = false;
+                processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
+                var a = dsMBids.Tables["mbids"].GetErrors();
+                return processingResult;
+            }
+        }
+        private bool ValidBid()
+        {
+            bool retval = true;
+
+            retval = ValidateCalcData();
+            if (!retval) { return retval; }
+
+            retval = this.ValidateChildren();
+            if (!retval) { return retval; }
+            retval = this.Validate();
+            return retval;
+        }
+        private void Fill()
+        {
+            if (Schcode != null)
+            {
+                try
+                {
+                    this.meridianProductsTableAdapter.Fill(this.lookUp.MeridianProducts);
+                    this.mbidsTableAdapter.Fill(this.dsMBids.mbids, this.Schcode);
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "");
+                }
+            }
+            if (mbidsBindingSource.Count == 0)
+            {
+                DisableControls(this);
+                EnableControls(this);
+            }
+            else
+            {
+               
+            }
+            try
+            {
+                this.Schname = ((DataRowView)mbidsBindingSource.Current).Row["schname"].ToString().Trim();
+                this.SchoolZipCode = ((DataRowView)this.mbidsBindingSource.Current).Row["schzip"].ToString().Trim().Substring(0, 5);
+
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "");
+            }
+        }
+        private void SetConnectionString()
+        {
+            meridianProductsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            mbidsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+        }
+        private void DisableControls(Control con)
+        {
+            foreach (Control c in con.Controls)
+            {
+                DisableControls(c);
+            }
+            con.Enabled = false;
+        }
+        private void EnableControls(Control con)
+        {
+            if (con != null)
+            {
+                con.Enabled = true;
+                EnableControls(con.Parent);
+            }
+        }
+        private void EnableAllControls(Control con)
+        {
+            foreach (Control c in con.Controls)
+            {
+                EnableAllControls(c);
+            }
+            con.Enabled = true;
+        }      
         private decimal GetJostensPricing(string vYear, string vType, int pageQty)
         {
             string fieldName = vType + pageQty.ToString();
@@ -604,8 +778,9 @@ namespace Mbc5.Forms.Meridian {
             }
             if (pricingResult.Data == null)
             {
-                MbcMessageBox.Information("Meridian base pricing for the given year and type was not found.");
+                MbcMessageBox.Information("Meridian base pricing for the given base price year and type was not found.");
                 lblTotalBasePrice.Text = "0.00";
+               
                 return false; ;
             }
             Pricing = (MeridianPrice)pricingResult.Data;
@@ -715,7 +890,8 @@ namespace Mbc5.Forms.Meridian {
             }
             if (result.Data == null)
             {
-                MbcMessageBox.Error("There were no option prices found for year:"+ contryearTextBox.Text);
+                MbcMessageBox.Error("There were no option prices found for contract year:"+ contryearTextBox.Text);
+                
                 return false;
             }
             OptionPrices = (MeridianOptionPricing)result.Data;
@@ -777,12 +953,13 @@ namespace Mbc5.Forms.Meridian {
             if (txtBYear.TextLength < 2)
             {
                 errorProvider1.SetError(txtBYear, "Enter a  valid 2 digit pricing year.");
-
+                txtBYear.Focus();
                 retval = false;
             }
             if (!int.TryParse(txtBYear.Text, out vYear))
             {
                 errorProvider1.SetError(txtBYear, "Enter a  valid 2 digit pricing year.");
+                txtBYear.Focus();
                 retval = false; ;
 
             }
@@ -865,6 +1042,10 @@ namespace Mbc5.Forms.Meridian {
 
         private void txtQtyTeacher_Leave(object sender, EventArgs e)
         {
+            if (txtQtyTeacher.Text.Trim()=="")
+            {
+                txtQtyTeacher.Text = "0";
+            }
             CalculateBase();
             CalculateOptions();
         }
@@ -883,7 +1064,7 @@ namespace Mbc5.Forms.Meridian {
 
         private void dp1TextBox_Leave(object sender, EventArgs e)
         {
-            txtAdditionChrg.Text = txtAdditionChrg.ConvertToDecimal().ToString("0.00");
+            dp1TextBox.Text = dp1TextBox.ConvertToDecimal().ToString("0.0000");
             CalculateOptions();
         }
 
@@ -1126,6 +1307,10 @@ namespace Mbc5.Forms.Meridian {
 
         private void txtNoPages_Leave(object sender, EventArgs e)
         {
+            if (txtNoPages.Text.Trim()=="")
+            {
+                txtNoPages.Text = "0";
+            }
             CalculateBase();
             CalculateOptions();
         }
@@ -1196,6 +1381,11 @@ namespace Mbc5.Forms.Meridian {
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void txtAdditionChrg_Validating(object sender, CancelEventArgs e)
+        {
+
         }
     }
     }

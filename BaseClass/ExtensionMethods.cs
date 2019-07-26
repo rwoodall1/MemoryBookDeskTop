@@ -26,12 +26,21 @@ namespace BaseClass
         {
             ctrl.Text.Replace("$", "").Replace(",", "");
             decimal retval=0;
+            if (ctrl.Text.Trim() == "")
+            {
+                ctrl.Text = "0";
+            }
             decimal.TryParse(ctrl.Text, out retval);
                 return retval;
         }
         public static int ConvertToInt(this TextBox ctrl)
         {
+            ctrl.Text.Replace("$", "").Replace(",", "");
             int retval = 0;
+            if (ctrl.Text.Trim() == "")
+            {
+                ctrl.Text = "0";
+            }
             int.TryParse(ctrl.Text, out retval);
             return retval;
         }
@@ -39,12 +48,21 @@ namespace BaseClass
         {
             ctrl.Text.Replace("$", "").Replace(",", "");
             decimal retval = 0;
+            if (ctrl.Text.Trim() == "")
+            {
+                ctrl.Text = "0";
+            }
             decimal.TryParse(ctrl.Text, out retval);
             return retval;
         }
         public static int ConvertToInt(this Label ctrl)
         {
+            ctrl.Text.Replace("$", "").Replace(",", "");
             int retval = 0;
+            if (ctrl.Text.Trim() == "")
+            {
+                ctrl.Text = "0";
+            }
             int.TryParse(ctrl.Text, out retval);
             return retval;
         }

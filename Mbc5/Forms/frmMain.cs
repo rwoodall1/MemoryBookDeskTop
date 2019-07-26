@@ -1091,7 +1091,60 @@ namespace Mbc5.Forms
            
         }
 
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                frm.Close();
+
+            }
+            this.ApplicationUser = null;
+            List<string> roles = new List<string>();
+            this.ValidatedUserRoles = roles;
+            this.Hide();
+            for (int i = 0; i < 3; i++)
+            {
+                if (this.Login())
+                {
+                    break;
+                };
+                if (i == 2)
+                {
+                    //if 2 tries close 
+                    MessageBox.Show("You do not have the proper credentials. Contact your supervisor.", "Final Login Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    keepLoading = false;
+                    Application.Exit();
+                }
+            }
+
+            if (keepLoading)
+            {
+                this.WindowState = FormWindowState.Maximized;
+
+
+                if (this.ForcePasswordChange)
+                {
+                    this.Cursor = Cursors.AppStarting;
+
+                    frmChangePassword frmPassword = new frmChangePassword(this.ApplicationUser.id, this);
+
+                    frmPassword.ShowDialog();
+                    this.Cursor = Cursors.Default;
+                    if (ForcePasswordChange)
+                    {
+                        MessageBox.Show("Password was not changed.");
+                        Application.Exit();
+                    }
+                }
+                ValidateUserRoles();
+                SetMenu();
+                mnuMain.Enabled = true;
+                this.WindowState = FormWindowState.Maximized;
+
+            }
+        }
+
         //nothing below here
-         }
+    }
     }
 

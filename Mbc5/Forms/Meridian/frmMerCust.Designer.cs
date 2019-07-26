@@ -2359,6 +2359,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1184, 634);
             this.Controls.Add(this.merCustTab);
+            this.MaxNumForms = 3;
             this.MinimumSize = new System.Drawing.Size(1200, 673);
             this.Name = "frmMerCust";
             this.Text = "Meridian Customers";

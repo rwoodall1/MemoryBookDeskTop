@@ -2185,7 +2185,29 @@ public override void Cancel() {
             }
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var vShpAddress = ((DataRowView)custBindingSource.Current).Row["Contaddr"].ToString().Trim();
+            shipppingAddrTextBox1.Text = vShpAddress;
+            var vShpAddress2 = ((DataRowView)custBindingSource.Current).Row["ContAddr2"].ToString().Trim();
+            shippingAddr2TextBox1.Text = vShpAddress2;
+            var vShpCity = ((DataRowView)custBindingSource.Current).Row["ContCity"].ToString().Trim();
+            shippingCityTextBox.Text = vShpCity;
+            var vShpState = ((DataRowView)custBindingSource.Current).Row["ContState"].ToString().Trim();
+            cmbshippingState.SelectedValue = vShpState;
+            var vShpZipcode = ((DataRowView)custBindingSource.Current).Row["ContZip"].ToString().Trim();
+            if (vShpZipcode.Length > 0)
+            {
+                shippingZipCodeTextBox.Text = vShpZipcode.Substring(0, 5);
+            }
+            else
+            {
+                shippingZipCodeTextBox.Text = vShpZipcode;
+            }
+
+        }
+
+
 
 
 
