@@ -4602,7 +4602,7 @@ namespace Mbc5.Forms.MemoryBook
                 {
                     //getinvoices
                     var sqlquery = new SQLCustomClient();
-                    var cmdtext = @"Select X.SalesInvno AS SalesInvoice,I.Invno AS Invoice,CAST(I.qtedate AS date)AS InvoiceDate,I.nocopies AS Quantity,I.InvTot As Total From Xtra X 
+                    var cmdtext = @"Select X.SalesInvno AS SalesInvoice, I.Invno AS Invoice,CAST(I.qtedate AS date)AS InvoiceDate,I.nocopies AS Quantity,I.InvTot As Total From Xtra X 
                                     Left Join Sales_ExtraInvoice SX ON X.SalesInvno=SX.SalesInvoice
                                      Left Join Invoice I ON SX.XtraInvoice=I.Invno 
                                         Where SX.SalesInvoice=@Invno";
