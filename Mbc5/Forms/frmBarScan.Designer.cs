@@ -53,7 +53,7 @@
             this.txtProdNumber = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtCopies = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblCopies = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -299,16 +299,18 @@
             this.txtCopies.Name = "txtCopies";
             this.txtCopies.Size = new System.Drawing.Size(47, 20);
             this.txtCopies.TabIndex = 28;
+            this.txtCopies.Visible = false;
+            this.txtCopies.TextChanged += new System.EventHandler(this.txtCopies_TextChanged);
             // 
-            // label13
+            // lblCopies
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(134, 200);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(45, 13);
-            this.label13.TabIndex = 27;
-            this.label13.Text = "Copies";
+            this.lblCopies.AutoSize = true;
+            this.lblCopies.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCopies.Location = new System.Drawing.Point(134, 200);
+            this.lblCopies.Name = "lblCopies";
+            this.lblCopies.Size = new System.Drawing.Size(45, 13);
+            this.lblCopies.TabIndex = 27;
+            this.lblCopies.Text = "Copies";
             // 
             // label14
             // 
@@ -339,6 +341,7 @@
             this.btnCancel.TabIndex = 31;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label15
             // 
@@ -599,7 +602,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtCopies);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lblCopies);
             this.Controls.Add(this.txtProdNumber);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtSchoolName);
@@ -658,7 +661,7 @@
         private System.Windows.Forms.TextBox txtProdNumber;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtCopies;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblCopies;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;

@@ -9,20 +9,21 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="produtnTableAdapter" GeneratorDataComponentClassName="produtnTableAdapter" Name="produtn" UserDataComponentName="produtnTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        produtn.invno, produtn.schcode, produtn.hcproof, produtn.prodno, produtn.contrecvd, produtn.deadlinein, produtn.typestyle, produtn.nopages AS ProdNoPages, produtn.nocopies AS ProdNoCopies, produtn.dedayin, 
-                         produtn.dedayout, produtn.dedmade, produtn.covertype, produtn.coverdesc, produtn.speccover, produtn.colors, produtn.diecut, produtn.perfbind, produtn.coilclr, produtn.laminated, produtn.colorpgs, produtn.screcv, 
-                         produtn.scprod, produtn.kitrecvd, produtn.vendcd, produtn.tovend, produtn.toprod, produtn.warndate, produtn.prshpdte, produtn.shpdate, produtn.prmsdate, produtn.retpstupdt, produtn.hardcost, produtn.voucherno, 
-                         produtn.ptrecvd, produtn.ptnopgs, produtn.ptbrcvd, produtn.ptbnopgs, produtn.bknopgs, produtn.bkstd, produtn.bk9, produtn.bk10, produtn.bk11, produtn.bk12, produtn.bkhard, produtn.TimeStamp, produtn.cominitl, 
-                         produtn.comdate, produtn.cstsvcdte, produtn.cstat, produtn.jobno, produtn.advpw, produtn.persnlz, produtn.foiling, produtn.foilclr, produtn.onlineyr, produtn.remaketype, produtn.fullremake, produtn.shortremak, 
-                         produtn.indivremak, produtn.scname, produtn.indivname, produtn.indivpic, produtn.yr, produtn.icon_, produtn.wipremaketype, produtn.numtopersonalize, produtn.schpic, produtn.reccardsent, produtn.company, produtn.schname, 
-                         produtn.contryear, produtn.pemailed, produtn.listrecd, produtn.finalized, produtn.reorder, produtn.milled, produtn.DateCreated, produtn.DateModified, produtn.usersw, produtn.stfpw, produtn.bkmixed, produtn.bkcoil, 
-                         produtn.ovride, produtn.allclrck, produtn.foilck, produtn.bktype2, produtn.bledpgchk, produtn.bledpgno, produtn.ugrnd, produtn.u3day, produtn.u2ndday, produtn.ustdon, produtn.uprion, produtn.fgrnd, produtn.f2ndday, 
-                         produtn.fstdon, produtn.fprion, produtn.rbinit, produtn.rbdate, produtn.x5252, produtn.dcdesc1, produtn.dcdesc2, produtn.bkgrnd, produtn.bindvend, produtn.magirdate, produtn.magirtrn, produtn.magiregis, produtn.regto, 
-                         produtn.pcmac, produtn.webinar, produtn.prfreq, produtn.l400, produtn.m400, produtn.noplates, produtn.theme, produtn.mk, produtn.se, produtn.te, produtn.dura, produtn.hallp, produtn.titlep, produtn.vinyl, produtn.finalcpycnt, 
-                         produtn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        produtn.invno, produtn.schcode, produtn.hcproof, produtn.prodno, produtn.contrecvd, produtn.deadlinein, produtn.typestyle, produtn.nopages AS ProdNoPages, produtn.nocopies AS ProdNoCopies, 
+                         produtn.dedayin, produtn.dedayout, produtn.dedmade, produtn.covertype, produtn.coverdesc, produtn.speccover, produtn.colors, produtn.diecut, produtn.perfbind, produtn.coilclr, produtn.laminated, 
+                         produtn.colorpgs, produtn.screcv, produtn.scprod, produtn.kitrecvd, produtn.vendcd, produtn.tovend, produtn.toprod, produtn.warndate, produtn.prshpdte, produtn.shpdate, produtn.prmsdate, produtn.retpstupdt, 
+                         produtn.hardcost, produtn.voucherno, produtn.ptrecvd, produtn.ptnopgs, produtn.ptbrcvd, produtn.ptbnopgs, produtn.bknopgs, produtn.bkstd, produtn.bk9, produtn.bk10, produtn.bk11, produtn.bk12, produtn.bkhard, 
+                         produtn.TimeStamp, produtn.cominitl, produtn.comdate, produtn.cstsvcdte, produtn.cstat, produtn.jobno, produtn.advpw, produtn.persnlz, produtn.foiling, produtn.foilclr, produtn.onlineyr, produtn.remaketype, 
+                         produtn.fullremake, produtn.shortremak, produtn.indivremak, produtn.scname, produtn.indivname, produtn.indivpic, produtn.yr, produtn.icon_, produtn.wipremaketype, produtn.numtopersonalize, produtn.schpic, 
+                         produtn.reccardsent, produtn.company, produtn.schname, produtn.contryear, produtn.pemailed, produtn.listrecd, produtn.finalized, produtn.reorder, produtn.milled, produtn.DateCreated, produtn.DateModified, 
+                         produtn.usersw, produtn.stfpw, produtn.bkmixed, produtn.bkcoil, produtn.ovride, produtn.allclrck, produtn.foilck, produtn.bktype2, produtn.bledpgchk, produtn.bledpgno, produtn.ugrnd, produtn.u3day, 
+                         produtn.u2ndday, produtn.ustdon, produtn.uprion, produtn.fgrnd, produtn.f2ndday, produtn.fstdon, produtn.fprion, produtn.rbinit, produtn.rbdate, produtn.x5252, produtn.dcdesc1, produtn.dcdesc2, produtn.bkgrnd, 
+                         produtn.bindvend, produtn.magirdate, produtn.magirtrn, produtn.magiregis, produtn.regto, produtn.pcmac, produtn.webinar, produtn.prfreq, produtn.l400, produtn.m400, produtn.noplates, produtn.theme, 
+                         produtn.mk, produtn.se, produtn.te, produtn.dura, produtn.hallp, produtn.titlep, produtn.vinyl, produtn.finalcpycnt, produtn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv, 
+                         produtn.Enhancements, produtn.PhotographerPermission
 FROM            produtn LEFT OUTER JOIN
                          endsheet ON produtn.invno = endsheet.invno
 WHERE        (produtn.schcode = @Schcode)</CommandText>
@@ -34,19 +35,20 @@ WHERE        (produtn.schcode = @Schcode)</CommandText>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       produtn
-SET                invno = @invno, schcode = @schcode, hcproof = @hcproof, prodno = @prodno, contrecvd = @contrecvd, deadlinein = @deadlinein, typestyle = @typestyle, dedayin = @dedayin, dedayout = @dedayout, dedmade = @dedmade, 
-                         covertype = @covertype, coverdesc = @coverdesc, speccover = @speccover, colors = @colors, diecut = @diecut, perfbind = @perfbind, coilclr = @coilclr, laminated = @laminated, colorpgs = @colorpgs, screcv = @screcv, 
-                         scprod = @scprod, kitrecvd = @kitrecvd, vendcd = @vendcd, tovend = @tovend, toprod = @toprod, warndate = @warndate, prshpdte = @prshpdte, shpdate = @shpdate, prmsdate = @prmsdate, retpstupdt = @retpstupdt, 
-                         hardcost = @hardcost, voucherno = @voucherno, ptrecvd = @ptrecvd, ptnopgs = @ptnopgs, ptbrcvd = @ptbrcvd, ptbnopgs = @ptbnopgs, bknopgs = @bknopgs, bkstd = @bkstd, bk9 = @bk9, bk10 = @bk10, bk11 = @bk11, 
-                         bk12 = @bk12, bkhard = @bkhard, cominitl = @cominitl, comdate = @comdate, cstsvcdte = @cstsvcdte, cstat = @cstat, jobno = @jobno, advpw = @advpw, persnlz = @persnlz, foiling = @foiling, foilclr = @foilclr, 
-                         onlineyr = @onlineyr, remaketype = @remaketype, fullremake = @fullremake, shortremak = @shortremak, indivremak = @indivremak, scname = @scname, indivname = @indivname, indivpic = @indivpic, yr = @yr, 
-                         icon_ = @icon_, wipremaketype = @wipremaketype, numtopersonalize = @numtopersonalize, schpic = @schpic, reccardsent = @reccardsent, company = @company, schname = @schname, contryear = @contryear, 
-                         pemailed = @pemailed, listrecd = @listrecd, finalized = @finalized, reorder = @reorder, milled = @milled, DateCreated = @DateCreated, DateModified = @DateModified, usersw = @usersw, stfpw = @stfpw, 
-                         bkmixed = @bkmixed, bkcoil = @bkcoil, ovride = @ovride, allclrck = @allclrck, foilck = @foilck, bktype2 = @bktype2, bledpgchk = @bledpgchk, bledpgno = @bledpgno, ugrnd = @ugrnd, u3day = @u3day, u2ndday = @u2ndday, 
-                         ustdon = @ustdon, uprion = @uprion, fgrnd = @fgrnd, f2ndday = @f2ndday, fstdon = @fstdon, fprion = @fprion, rbinit = @rbinit, rbdate = @rbdate, x5252 = @x5252, dcdesc1 = @dcdesc1, dcdesc2 = @dcdesc2, 
-                         bkgrnd = @bkgrnd, bindvend = @bindvend, magirdate = @magirdate, magirtrn = @magirtrn, magiregis = @magiregis, regto = @regto, pcmac = @pcmac, webinar = @webinar, prfreq = @prfreq, l400 = @l400, m400 = @m400, 
-                         noplates = @noplates, theme = @theme, mk = @mk, se = @se, te = @te, dura = @dura, hallp = @hallp, titlep = @titlep, vinyl = @vinyl, finalcpycnt = @finalcpycnt, pdfsent = @pdfsent, adduploaddate = @adduploaddate, 
-                         ModifiedBy = @ModifiedBy, nopages = @nopages, nocopies = @nocopies
+SET                invno = @invno, schcode = @schcode, hcproof = @hcproof, prodno = @prodno, contrecvd = @contrecvd, deadlinein = @deadlinein, typestyle = @typestyle, dedayin = @dedayin, dedayout = @dedayout, 
+                         dedmade = @dedmade, covertype = @covertype, coverdesc = @coverdesc, speccover = @speccover, colors = @colors, diecut = @diecut, perfbind = @perfbind, coilclr = @coilclr, laminated = @laminated, 
+                         colorpgs = @colorpgs, screcv = @screcv, scprod = @scprod, kitrecvd = @kitrecvd, vendcd = @vendcd, tovend = @tovend, toprod = @toprod, warndate = @warndate, prshpdte = @prshpdte, shpdate = @shpdate, 
+                         prmsdate = @prmsdate, retpstupdt = @retpstupdt, hardcost = @hardcost, voucherno = @voucherno, ptrecvd = @ptrecvd, ptnopgs = @ptnopgs, ptbrcvd = @ptbrcvd, ptbnopgs = @ptbnopgs, bknopgs = @bknopgs, 
+                         bkstd = @bkstd, bk9 = @bk9, bk10 = @bk10, bk11 = @bk11, bk12 = @bk12, bkhard = @bkhard, cominitl = @cominitl, comdate = @comdate, cstsvcdte = @cstsvcdte, cstat = @cstat, jobno = @jobno, 
+                         advpw = @advpw, persnlz = @persnlz, foiling = @foiling, foilclr = @foilclr, onlineyr = @onlineyr, remaketype = @remaketype, fullremake = @fullremake, shortremak = @shortremak, indivremak = @indivremak, 
+                         scname = @scname, indivname = @indivname, indivpic = @indivpic, yr = @yr, icon_ = @icon_, wipremaketype = @wipremaketype, numtopersonalize = @numtopersonalize, schpic = @schpic, 
+                         reccardsent = @reccardsent, company = @company, schname = @schname, contryear = @contryear, pemailed = @pemailed, listrecd = @listrecd, finalized = @finalized, reorder = @reorder, milled = @milled, 
+                         DateCreated = @DateCreated, DateModified = @DateModified, usersw = @usersw, stfpw = @stfpw, bkmixed = @bkmixed, bkcoil = @bkcoil, ovride = @ovride, allclrck = @allclrck, foilck = @foilck, 
+                         bktype2 = @bktype2, bledpgchk = @bledpgchk, bledpgno = @bledpgno, ugrnd = @ugrnd, u3day = @u3day, u2ndday = @u2ndday, ustdon = @ustdon, uprion = @uprion, fgrnd = @fgrnd, f2ndday = @f2ndday, 
+                         fstdon = @fstdon, fprion = @fprion, rbinit = @rbinit, rbdate = @rbdate, x5252 = @x5252, dcdesc1 = @dcdesc1, dcdesc2 = @dcdesc2, bkgrnd = @bkgrnd, bindvend = @bindvend, magirdate = @magirdate, 
+                         magirtrn = @magirtrn, magiregis = @magiregis, regto = @regto, pcmac = @pcmac, webinar = @webinar, prfreq = @prfreq, l400 = @l400, m400 = @m400, noplates = @noplates, theme = @theme, mk = @mk, 
+                         se = @se, te = @te, dura = @dura, hallp = @hallp, titlep = @titlep, vinyl = @vinyl, finalcpycnt = @finalcpycnt, pdfsent = @pdfsent, adduploaddate = @adduploaddate, ModifiedBy = @ModifiedBy, 
+                         Enhancements = @enhancements, PhotographerPermission = @PhotographerPermission, nopages = @nopages, nocopies = @nocopies
 WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStamp IS NULL) OR
                          (invno = @Original_invno) AND (TimeStamp = @Original_TimeStamp)</CommandText>
                     <Parameters>
@@ -64,7 +66,7 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
                       <Parameter AllowDbNull="true" AutogeneratedName="coverdesc" ColumnName="coverdesc" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(25)" DbType="AnsiString" Direction="Input" ParameterName="@coverdesc" Precision="0" ProviderType="Char" Scale="0" Size="25" SourceColumn="coverdesc" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="speccover" ColumnName="speccover" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(5)" DbType="AnsiString" Direction="Input" ParameterName="@speccover" Precision="0" ProviderType="Char" Scale="0" Size="5" SourceColumn="speccover" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="colors" ColumnName="colors" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@colors" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="colors" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="diecut" ColumnName="diecut" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@diecut" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="diecut" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="diecut" ColumnName="diecut" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@diecut" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="diecut" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="perfbind" ColumnName="perfbind" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@perfbind" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="perfbind" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="coilclr" ColumnName="coilclr" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(20)" DbType="AnsiString" Direction="Input" ParameterName="@coilclr" Precision="0" ProviderType="Char" Scale="0" Size="20" SourceColumn="coilclr" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="laminated" ColumnName="laminated" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="varchar(1)" DbType="AnsiString" Direction="Input" ParameterName="@laminated" Precision="0" ProviderType="VarChar" Scale="0" Size="1" SourceColumn="laminated" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -83,10 +85,10 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
                       <Parameter AllowDbNull="true" AutogeneratedName="hardcost" ColumnName="hardcost" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="numeric(7, 2)" DbType="Decimal" Direction="Input" ParameterName="@hardcost" Precision="7" ProviderType="Decimal" Scale="2" Size="5" SourceColumn="hardcost" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="voucherno" ColumnName="voucherno" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(8)" DbType="AnsiString" Direction="Input" ParameterName="@voucherno" Precision="0" ProviderType="Char" Scale="0" Size="8" SourceColumn="voucherno" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="ptrecvd" ColumnName="ptrecvd" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@ptrecvd" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="ptrecvd" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ptnopgs" ColumnName="ptnopgs" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="numeric(5, 0)" DbType="Decimal" Direction="Input" ParameterName="@ptnopgs" Precision="5" ProviderType="Decimal" Scale="0" Size="5" SourceColumn="ptnopgs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ptnopgs" ColumnName="ptnopgs" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ptnopgs" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ptnopgs" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="ptbrcvd" ColumnName="ptbrcvd" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@ptbrcvd" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="ptbrcvd" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ptbnopgs" ColumnName="ptbnopgs" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="numeric(5, 0)" DbType="Decimal" Direction="Input" ParameterName="@ptbnopgs" Precision="5" ProviderType="Decimal" Scale="0" Size="5" SourceColumn="ptbnopgs" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="bknopgs" ColumnName="bknopgs" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="numeric(5, 0)" DbType="Decimal" Direction="Input" ParameterName="@bknopgs" Precision="5" ProviderType="Decimal" Scale="0" Size="5" SourceColumn="bknopgs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ptbnopgs" ColumnName="ptbnopgs" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ptbnopgs" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ptbnopgs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bknopgs" ColumnName="bknopgs" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@bknopgs" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="bknopgs" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="bkstd" ColumnName="bkstd" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@bkstd" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="bkstd" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="bk9" ColumnName="bk9" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@bk9" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="bk9" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="bk10" ColumnName="bk10" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@bk10" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="bk10" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -107,7 +109,7 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
                       <Parameter AllowDbNull="true" AutogeneratedName="fullremake" ColumnName="fullremake" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@fullremake" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="fullremake" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="shortremak" ColumnName="shortremak" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@shortremak" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="shortremak" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="indivremak" ColumnName="indivremak" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@indivremak" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="indivremak" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="scname" ColumnName="scname" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@scname" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="scname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="scname" ColumnName="scname" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="@scname" Precision="0" ProviderType="VarChar" Scale="0" Size="100" SourceColumn="scname" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="indivname" ColumnName="indivname" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@indivname" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="indivname" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="indivpic" ColumnName="indivpic" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@indivpic" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="indivpic" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="yr" ColumnName="yr" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@yr" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="yr" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -135,7 +137,7 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
                       <Parameter AllowDbNull="true" AutogeneratedName="foilck" ColumnName="foilck" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@foilck" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="foilck" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="bktype2" ColumnName="bktype2" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(3)" DbType="AnsiString" Direction="Input" ParameterName="@bktype2" Precision="0" ProviderType="Char" Scale="0" Size="3" SourceColumn="bktype2" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="bledpgchk" ColumnName="bledpgchk" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@bledpgchk" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="bledpgchk" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="bledpgno" ColumnName="bledpgno" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="numeric(3, 0)" DbType="Decimal" Direction="Input" ParameterName="@bledpgno" Precision="3" ProviderType="Decimal" Scale="0" Size="5" SourceColumn="bledpgno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="bledpgno" ColumnName="bledpgno" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@bledpgno" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="bledpgno" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="ugrnd" ColumnName="ugrnd" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@ugrnd" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="ugrnd" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="u3day" ColumnName="u3day" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@u3day" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="u3day" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="u2ndday" ColumnName="u2ndday" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@u2ndday" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="u2ndday" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -164,16 +166,18 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
                       <Parameter AllowDbNull="true" AutogeneratedName="noplates" ColumnName="noplates" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@noplates" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="noplates" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="theme" ColumnName="theme" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(25)" DbType="AnsiString" Direction="Input" ParameterName="@theme" Precision="0" ProviderType="Char" Scale="0" Size="25" SourceColumn="theme" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="mk" ColumnName="mk" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@mk" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="mk" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="se" ColumnName="se" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="numeric(5, 0)" DbType="Decimal" Direction="Input" ParameterName="@se" Precision="5" ProviderType="Decimal" Scale="0" Size="5" SourceColumn="se" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="te" ColumnName="te" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="numeric(5, 0)" DbType="Decimal" Direction="Input" ParameterName="@te" Precision="5" ProviderType="Decimal" Scale="0" Size="5" SourceColumn="te" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="se" ColumnName="se" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@se" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="se" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="te" ColumnName="te" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@te" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="te" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="dura" ColumnName="dura" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@dura" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="dura" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="hallp" ColumnName="hallp" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@hallp" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="hallp" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="titlep" ColumnName="titlep" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@titlep" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="titlep" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="vinyl" ColumnName="vinyl" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="char(1)" DbType="AnsiString" Direction="Input" ParameterName="@vinyl" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="vinyl" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="finalcpycnt" ColumnName="finalcpycnt" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="numeric(5, 0)" DbType="Decimal" Direction="Input" ParameterName="@finalcpycnt" Precision="5" ProviderType="Decimal" Scale="0" Size="5" SourceColumn="finalcpycnt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="finalcpycnt" ColumnName="finalcpycnt" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@finalcpycnt" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="finalcpycnt" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="pdfsent" ColumnName="pdfsent" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@pdfsent" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="pdfsent" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="adduploaddate" ColumnName="adduploaddate" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@adduploaddate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="adduploaddate" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="ModifiedBy" ColumnName="ModifiedBy" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="nvarchar(128)" DbType="String" Direction="Input" ParameterName="@ModifiedBy" Precision="0" ProviderType="NVarChar" Scale="0" Size="128" SourceColumn="ModifiedBy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="enhancements" ColumnName="Enhancements" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@enhancements" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="Enhancements" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="PhotographerPermission" ColumnName="PhotographerPermission" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@PhotographerPermission" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="PhotographerPermission" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="nopages" ColumnName="nopages" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@nopages" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ProdNoPages" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="nocopies" ColumnName="nocopies" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@nocopies" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ProdNoCopies" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="Original_invno" ColumnName="invno" DataSourceName="Mbc5.dbo.produtn" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Original_invno" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="invno" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -217,10 +221,7 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
               <Mapping SourceColumn="hardcost" DataSetColumn="hardcost" />
               <Mapping SourceColumn="voucherno" DataSetColumn="voucherno" />
               <Mapping SourceColumn="ptrecvd" DataSetColumn="ptrecvd" />
-              <Mapping SourceColumn="ptnopgs" DataSetColumn="ptnopgs" />
               <Mapping SourceColumn="ptbrcvd" DataSetColumn="ptbrcvd" />
-              <Mapping SourceColumn="ptbnopgs" DataSetColumn="ptbnopgs" />
-              <Mapping SourceColumn="bknopgs" DataSetColumn="bknopgs" />
               <Mapping SourceColumn="bkstd" DataSetColumn="bkstd" />
               <Mapping SourceColumn="bk9" DataSetColumn="bk9" />
               <Mapping SourceColumn="bk10" DataSetColumn="bk10" />
@@ -242,7 +243,6 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
               <Mapping SourceColumn="fullremake" DataSetColumn="fullremake" />
               <Mapping SourceColumn="shortremak" DataSetColumn="shortremak" />
               <Mapping SourceColumn="indivremak" DataSetColumn="indivremak" />
-              <Mapping SourceColumn="scname" DataSetColumn="scname" />
               <Mapping SourceColumn="indivname" DataSetColumn="indivname" />
               <Mapping SourceColumn="indivpic" DataSetColumn="indivpic" />
               <Mapping SourceColumn="yr" DataSetColumn="yr" />
@@ -270,7 +270,6 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
               <Mapping SourceColumn="foilck" DataSetColumn="foilck" />
               <Mapping SourceColumn="bktype2" DataSetColumn="bktype2" />
               <Mapping SourceColumn="bledpgchk" DataSetColumn="bledpgchk" />
-              <Mapping SourceColumn="bledpgno" DataSetColumn="bledpgno" />
               <Mapping SourceColumn="ugrnd" DataSetColumn="ugrnd" />
               <Mapping SourceColumn="u3day" DataSetColumn="u3day" />
               <Mapping SourceColumn="u2ndday" DataSetColumn="u2ndday" />
@@ -299,13 +298,10 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
               <Mapping SourceColumn="noplates" DataSetColumn="noplates" />
               <Mapping SourceColumn="theme" DataSetColumn="theme" />
               <Mapping SourceColumn="mk" DataSetColumn="mk" />
-              <Mapping SourceColumn="se" DataSetColumn="se" />
-              <Mapping SourceColumn="te" DataSetColumn="te" />
               <Mapping SourceColumn="dura" DataSetColumn="dura" />
               <Mapping SourceColumn="hallp" DataSetColumn="hallp" />
               <Mapping SourceColumn="titlep" DataSetColumn="titlep" />
               <Mapping SourceColumn="vinyl" DataSetColumn="vinyl" />
-              <Mapping SourceColumn="finalcpycnt" DataSetColumn="finalcpycnt" />
               <Mapping SourceColumn="pdfsent" DataSetColumn="pdfsent" />
               <Mapping SourceColumn="adduploaddate" DataSetColumn="adduploaddate" />
               <Mapping SourceColumn="ProdNoPages" DataSetColumn="ProdNoPages" />
@@ -313,22 +309,33 @@ WHERE        (invno = @Original_invno) AND (@IsNull_TimeStamp = 1) AND (TimeStam
               <Mapping SourceColumn="ModifiedBy" DataSetColumn="ModifiedBy" />
               <Mapping SourceColumn="hcproof" DataSetColumn="hcproof" />
               <Mapping SourceColumn="endstrecv" DataSetColumn="endstrecv" />
+              <Mapping SourceColumn="ptnopgs" DataSetColumn="ptnopgs1" />
+              <Mapping SourceColumn="ptbnopgs" DataSetColumn="ptbnopgs1" />
+              <Mapping SourceColumn="bknopgs" DataSetColumn="bknopgs1" />
+              <Mapping SourceColumn="scname" DataSetColumn="scname1" />
+              <Mapping SourceColumn="bledpgno" DataSetColumn="bledpgno1" />
+              <Mapping SourceColumn="se" DataSetColumn="se1" />
+              <Mapping SourceColumn="te" DataSetColumn="te1" />
+              <Mapping SourceColumn="finalcpycnt" DataSetColumn="finalcpycnt1" />
+              <Mapping SourceColumn="Enhancements" DataSetColumn="Enhancements" />
+              <Mapping SourceColumn="PhotographerPermission" DataSetColumn="PhotographerPermission" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByInvno" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataByInvno" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByInvno" UserSourceName="FillByInvno">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByInvno" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataByInvno" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByInvno" UserSourceName="FillByInvno">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        produtn.invno, produtn.schcode, produtn.hcproof, produtn.prodno, produtn.contrecvd, produtn.deadlinein, produtn.typestyle, produtn.nopages AS ProdNoPages, produtn.nocopies AS ProdNoCopies, produtn.dedayin, 
-                         produtn.dedayout, produtn.dedmade, produtn.covertype, produtn.coverdesc, produtn.speccover, produtn.colors, produtn.diecut, produtn.perfbind, produtn.coilclr, produtn.laminated, produtn.colorpgs, produtn.screcv, 
-                         produtn.scprod, produtn.kitrecvd, produtn.vendcd, produtn.tovend, produtn.toprod, produtn.warndate, produtn.prshpdte, produtn.shpdate, produtn.prmsdate, produtn.retpstupdt, produtn.hardcost, produtn.voucherno, 
-                         produtn.ptrecvd, produtn.ptnopgs, produtn.ptbrcvd, produtn.ptbnopgs, produtn.bknopgs, produtn.bkstd, produtn.bk9, produtn.bk10, produtn.bk11, produtn.bk12, produtn.bkhard, produtn.TimeStamp, produtn.cominitl, 
-                         produtn.comdate, produtn.cstsvcdte, produtn.cstat, produtn.jobno, produtn.advpw, produtn.persnlz, produtn.foiling, produtn.foilclr, produtn.onlineyr, produtn.remaketype, produtn.fullremake, produtn.shortremak, 
-                         produtn.indivremak, produtn.scname, produtn.indivname, produtn.indivpic, produtn.yr, produtn.icon_, produtn.wipremaketype, produtn.numtopersonalize, produtn.schpic, produtn.reccardsent, produtn.company, produtn.schname, 
-                         produtn.contryear, produtn.pemailed, produtn.listrecd, produtn.finalized, produtn.reorder, produtn.milled, produtn.DateCreated, produtn.DateModified, produtn.usersw, produtn.stfpw, produtn.bkmixed, produtn.bkcoil, 
-                         produtn.ovride, produtn.allclrck, produtn.foilck, produtn.bktype2, produtn.bledpgchk, produtn.bledpgno, produtn.ugrnd, produtn.u3day, produtn.u2ndday, produtn.ustdon, produtn.uprion, produtn.fgrnd, produtn.f2ndday, 
-                         produtn.fstdon, produtn.fprion, produtn.rbinit, produtn.rbdate, produtn.x5252, produtn.dcdesc1, produtn.dcdesc2, produtn.bkgrnd, produtn.bindvend, produtn.magirdate, produtn.magirtrn, produtn.magiregis, produtn.regto, 
-                         produtn.pcmac, produtn.webinar, produtn.prfreq, produtn.l400, produtn.m400, produtn.noplates, produtn.theme, produtn.mk, produtn.se, produtn.te, produtn.dura, produtn.hallp, produtn.titlep, produtn.vinyl, produtn.finalcpycnt, 
-                         produtn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv
+                    <CommandText>SELECT        produtn.invno, produtn.schcode, produtn.hcproof, produtn.prodno, produtn.contrecvd, produtn.deadlinein, produtn.typestyle, produtn.nopages AS ProdNoPages, produtn.nocopies AS ProdNoCopies, 
+                         produtn.dedayin, produtn.dedayout, produtn.dedmade, produtn.covertype, produtn.coverdesc, produtn.speccover, produtn.colors, produtn.diecut, produtn.perfbind, produtn.coilclr, produtn.laminated, 
+                         produtn.colorpgs, produtn.screcv, produtn.scprod, produtn.kitrecvd, produtn.vendcd, produtn.tovend, produtn.toprod, produtn.warndate, produtn.prshpdte, produtn.shpdate, produtn.prmsdate, produtn.retpstupdt, 
+                         produtn.hardcost, produtn.voucherno, produtn.ptrecvd, produtn.ptnopgs, produtn.ptbrcvd, produtn.ptbnopgs, produtn.bknopgs, produtn.bkstd, produtn.bk9, produtn.bk10, produtn.bk11, produtn.bk12, produtn.bkhard, 
+                         produtn.TimeStamp, produtn.cominitl, produtn.comdate, produtn.cstsvcdte, produtn.cstat, produtn.jobno, produtn.advpw, produtn.persnlz, produtn.foiling, produtn.foilclr, produtn.onlineyr, produtn.remaketype, 
+                         produtn.fullremake, produtn.shortremak, produtn.indivremak, produtn.scname, produtn.indivname, produtn.indivpic, produtn.yr, produtn.icon_, produtn.wipremaketype, produtn.numtopersonalize, produtn.schpic, 
+                         produtn.reccardsent, produtn.company, produtn.schname, produtn.contryear, produtn.pemailed, produtn.listrecd, produtn.finalized, produtn.reorder, produtn.milled, produtn.DateCreated, produtn.DateModified, 
+                         produtn.usersw, produtn.stfpw, produtn.bkmixed, produtn.bkcoil, produtn.ovride, produtn.allclrck, produtn.foilck, produtn.bktype2, produtn.bledpgchk, produtn.bledpgno, produtn.ugrnd, produtn.u3day, 
+                         produtn.u2ndday, produtn.ustdon, produtn.uprion, produtn.fgrnd, produtn.f2ndday, produtn.fstdon, produtn.fprion, produtn.rbinit, produtn.rbdate, produtn.x5252, produtn.dcdesc1, produtn.dcdesc2, produtn.bkgrnd, 
+                         produtn.bindvend, produtn.magirdate, produtn.magirtrn, produtn.magiregis, produtn.regto, produtn.pcmac, produtn.webinar, produtn.prfreq, produtn.l400, produtn.m400, produtn.noplates, produtn.theme, 
+                         produtn.mk, produtn.se, produtn.te, produtn.dura, produtn.hallp, produtn.titlep, produtn.vinyl, produtn.finalcpycnt, produtn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv, 
+                         produtn.Enhancements, produtn.PhotographerPermission
 FROM            produtn LEFT OUTER JOIN
                          endsheet ON produtn.invno = endsheet.invno
 WHERE        (produtn.invno = @Invno)</CommandText>
@@ -338,20 +345,21 @@ WHERE        (produtn.invno = @Invno)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByProdNo" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByProdNo" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByProdNo">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByProdNo" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByProdNo" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByProdNo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        produtn.invno, produtn.schcode, produtn.hcproof, produtn.prodno, produtn.contrecvd, produtn.deadlinein, produtn.typestyle, produtn.nopages AS ProdNoPages, produtn.nocopies AS ProdNoCopies, produtn.dedayin, 
-                         produtn.dedayout, produtn.dedmade, produtn.covertype, produtn.coverdesc, produtn.speccover, produtn.colors, produtn.diecut, produtn.perfbind, produtn.coilclr, produtn.laminated, produtn.colorpgs, produtn.screcv, 
-                         produtn.scprod, produtn.kitrecvd, produtn.vendcd, produtn.tovend, produtn.toprod, produtn.warndate, produtn.prshpdte, produtn.shpdate, produtn.prmsdate, produtn.retpstupdt, produtn.hardcost, produtn.voucherno, 
-                         produtn.ptrecvd, produtn.ptnopgs, produtn.ptbrcvd, produtn.ptbnopgs, produtn.bknopgs, produtn.bkstd, produtn.bk9, produtn.bk10, produtn.bk11, produtn.bk12, produtn.bkhard, produtn.TimeStamp, produtn.cominitl, 
-                         produtn.comdate, produtn.cstsvcdte, produtn.cstat, produtn.jobno, produtn.advpw, produtn.persnlz, produtn.foiling, produtn.foilclr, produtn.onlineyr, produtn.remaketype, produtn.fullremake, produtn.shortremak, 
-                         produtn.indivremak, produtn.scname, produtn.indivname, produtn.indivpic, produtn.yr, produtn.icon_, produtn.wipremaketype, produtn.numtopersonalize, produtn.schpic, produtn.reccardsent, produtn.company, produtn.schname, 
-                         produtn.contryear, produtn.pemailed, produtn.listrecd, produtn.finalized, produtn.reorder, produtn.milled, produtn.DateCreated, produtn.DateModified, produtn.usersw, produtn.stfpw, produtn.bkmixed, produtn.bkcoil, 
-                         produtn.ovride, produtn.allclrck, produtn.foilck, produtn.bktype2, produtn.bledpgchk, produtn.bledpgno, produtn.ugrnd, produtn.u3day, produtn.u2ndday, produtn.ustdon, produtn.uprion, produtn.fgrnd, produtn.f2ndday, 
-                         produtn.fstdon, produtn.fprion, produtn.rbinit, produtn.rbdate, produtn.x5252, produtn.dcdesc1, produtn.dcdesc2, produtn.bkgrnd, produtn.bindvend, produtn.magirdate, produtn.magirtrn, produtn.magiregis, produtn.regto, 
-                         produtn.pcmac, produtn.webinar, produtn.prfreq, produtn.l400, produtn.m400, produtn.noplates, produtn.theme, produtn.mk, produtn.se, produtn.te, produtn.dura, produtn.hallp, produtn.titlep, produtn.vinyl, produtn.finalcpycnt, 
-                         produtn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv
+                    <CommandText>SELECT        produtn.invno, produtn.schcode, produtn.hcproof, produtn.prodno, produtn.contrecvd, produtn.deadlinein, produtn.typestyle, produtn.nopages AS ProdNoPages, produtn.nocopies AS ProdNoCopies, 
+                         produtn.dedayin, produtn.dedayout, produtn.dedmade, produtn.covertype, produtn.coverdesc, produtn.speccover, produtn.colors, produtn.diecut, produtn.perfbind, produtn.coilclr, produtn.laminated, 
+                         produtn.colorpgs, produtn.screcv, produtn.scprod, produtn.kitrecvd, produtn.vendcd, produtn.tovend, produtn.toprod, produtn.warndate, produtn.prshpdte, produtn.shpdate, produtn.prmsdate, produtn.retpstupdt, 
+                         produtn.hardcost, produtn.voucherno, produtn.ptrecvd, produtn.ptnopgs, produtn.ptbrcvd, produtn.ptbnopgs, produtn.bknopgs, produtn.bkstd, produtn.bk9, produtn.bk10, produtn.bk11, produtn.bk12, produtn.bkhard, 
+                         produtn.TimeStamp, produtn.cominitl, produtn.comdate, produtn.cstsvcdte, produtn.cstat, produtn.jobno, produtn.advpw, produtn.persnlz, produtn.foiling, produtn.foilclr, produtn.onlineyr, produtn.remaketype, 
+                         produtn.fullremake, produtn.shortremak, produtn.indivremak, produtn.scname, produtn.indivname, produtn.indivpic, produtn.yr, produtn.icon_, produtn.wipremaketype, produtn.numtopersonalize, produtn.schpic, 
+                         produtn.reccardsent, produtn.company, produtn.schname, produtn.contryear, produtn.pemailed, produtn.listrecd, produtn.finalized, produtn.reorder, produtn.milled, produtn.DateCreated, produtn.DateModified, 
+                         produtn.usersw, produtn.stfpw, produtn.bkmixed, produtn.bkcoil, produtn.ovride, produtn.allclrck, produtn.foilck, produtn.bktype2, produtn.bledpgchk, produtn.bledpgno, produtn.ugrnd, produtn.u3day, 
+                         produtn.u2ndday, produtn.ustdon, produtn.uprion, produtn.fgrnd, produtn.f2ndday, produtn.fstdon, produtn.fprion, produtn.rbinit, produtn.rbdate, produtn.x5252, produtn.dcdesc1, produtn.dcdesc2, produtn.bkgrnd, 
+                         produtn.bindvend, produtn.magirdate, produtn.magirtrn, produtn.magiregis, produtn.regto, produtn.pcmac, produtn.webinar, produtn.prfreq, produtn.l400, produtn.m400, produtn.noplates, produtn.theme, 
+                         produtn.mk, produtn.se, produtn.te, produtn.dura, produtn.hallp, produtn.titlep, produtn.vinyl, produtn.finalcpycnt, produtn.pdfsent, produtn.adduploaddate, produtn.ModifiedBy, endsheet.endstrecv, 
+                         produtn.Enhancements, produtn.PhotographerPermission
 FROM            produtn LEFT OUTER JOIN
                          endsheet ON produtn.invno = endsheet.invno
 WHERE        (produtn.prodno = @Prodno)</CommandText>
@@ -365,7 +373,7 @@ WHERE        (produtn.prodno = @Prodno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="custTableAdapter" GeneratorDataComponentClassName="custTableAdapter" Name="cust" UserDataComponentName="custTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.cust" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[cust] WHERE (([schcode] = @Original_schcode) AND ([schname] = @Original_schname) AND ((@IsNull_contryear = 1 AND [contryear] IS NULL) OR ([contryear] = @Original_contryear)) AND ((@IsNull_cstatus = 1 AND [cstatus] IS NULL) OR ([cstatus] = @Original_cstatus)) AND ((@IsNull_origyear = 1 AND [origyear] IS NULL) OR ([origyear] = @Original_origyear)) AND ((@IsNull_rebook = 1 AND [rebook] IS NULL) OR ([rebook] = @Original_rebook)) AND ([schaddr] = @Original_schaddr) AND ((@IsNull_schaddr2 = 1 AND [schaddr2] IS NULL) OR ([schaddr2] = @Original_schaddr2)) AND ([schcity] = @Original_schcity) AND ([schstate] = @Original_schstate) AND ([schzip] = @Original_schzip) AND ((@IsNull_schphone = 1 AND [schphone] IS NULL) OR ([schphone] = @Original_schphone)) AND ((@IsNull_schfax = 1 AND [schfax] IS NULL) OR ([schfax] = @Original_schfax)) AND ((@IsNull_schemail = 1 AND [schemail] IS NULL) OR ([schemail] = @Original_schemail)) AND ((@IsNull_position = 1 AND [position] IS NULL) OR ([position] = @Original_position)) AND ((@IsNull_yb_sth = 1 AND [yb_sth] IS NULL) OR ([yb_sth] = @Original_yb_sth)) AND ((@IsNull_contfname = 1 AND [contfname] IS NULL) OR ([contfname] = @Original_contfname)) AND ((@IsNull_contlname = 1 AND [contlname] IS NULL) OR ([contlname] = @Original_contlname)) AND ((@IsNull_contemail = 1 AND [contemail] IS NULL) OR ([contemail] = @Original_contemail)) AND ((@IsNull_bcontemail = 1 AND [bcontemail] IS NULL) OR ([bcontemail] = @Original_bcontemail)) AND ((@IsNull_ccontemail = 1 AND [ccontemail] IS NULL) OR ([ccontemail] = @Original_ccontemail)) AND ([oraclecode] = @Original_oraclecode))</CommandText>
@@ -411,11 +419,13 @@ WHERE        (produtn.prodno = @Prodno)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        schcode, schname, contryear, spcinst, cstatus, origyear, rebook, schaddr, schaddr2, schcity, schstate, schzip, schphone, schfax, schemail, contmemo, position, yb_sth, shipmemo, inoffice, contfname, contlname,
-                          contemail, bcontemail, ccontemail, oraclecode
-FROM            dbo.cust
-WHERE        (schcode = @schcode)</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        cust.schcode, cust.schname, cust.contryear, cust.spcinst, cust.cstatus, cust.origyear, cust.rebook, cust.schaddr, cust.schaddr2, cust.schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail, 
+                         cust.contmemo, cust.position, cust.yb_sth, cust.shipmemo, cust.inoffice, cust.contfname, cust.contlname, cust.contemail, cust.bcontemail, cust.ccontemail, cust.oraclecode, csnames.csname, csnames.csemail, 
+                         cust.PIN
+FROM            cust LEFT OUTER JOIN
+                         csnames ON cust.csrep = csnames.source
+WHERE        (cust.schcode = @schcode)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="schcode" ColumnName="schcode" DataSourceName="Mbc5.dbo.cust" DataTypeServer="char(6)" DbType="AnsiString" Direction="Input" ParameterName="@schcode" Precision="0" ProviderType="Char" Scale="0" Size="6" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -521,6 +531,9 @@ SELECT schcode, schname, contryear, spcinst, cstatus, origyear, rebook, schaddr,
               <Mapping SourceColumn="ccontemail" DataSetColumn="ccontemail" />
               <Mapping SourceColumn="spcinst" DataSetColumn="spcinst" />
               <Mapping SourceColumn="oraclecode" DataSetColumn="oraclecode" />
+              <Mapping SourceColumn="csname" DataSetColumn="csname" />
+              <Mapping SourceColumn="csemail" DataSetColumn="csemail" />
+              <Mapping SourceColumn="PIN" DataSetColumn="PIN" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -560,8 +573,8 @@ SELECT invno, prodno, schcode, contryear, allclrck, booktype FROM quotes WHERE (
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT        invno, prodno, schcode, contryear, allclrck, booktype
-FROM            quotes
+                    <CommandText>SELECT        invno, prodno, schcode, contryear, allclrck, booktype, nopages, nocopies
+FROM            dbo.quotes
 WHERE        (schcode = @schcode)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="schcode" ColumnName="schcode" DataSourceName="Mbc5.dbo.quotes" DataTypeServer="char(6)" DbType="AnsiString" Direction="Input" ParameterName="@schcode" Precision="0" ProviderType="Char" Scale="0" Size="6" SourceColumn="schcode" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -601,14 +614,14 @@ SELECT invno, prodno, schcode, contryear, allclrck, booktype FROM quotes WHERE (
               <Mapping SourceColumn="contryear" DataSetColumn="contryear" />
               <Mapping SourceColumn="allclrck" DataSetColumn="allclrck" />
               <Mapping SourceColumn="booktype" DataSetColumn="booktype" />
+              <Mapping SourceColumn="nopages" DataSetColumn="nopages" />
+              <Mapping SourceColumn="nocopies" DataSetColumn="nocopies" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.quotes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByInvno" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataByInvno" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByInvno" UserSourceName="FillByInvno">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        invno, prodno, schcode, contryear, allclrck, booktype
-FROM            quotes
-WHERE        (invno = @invno)</CommandText>
+                    <CommandText>SELECT allclrck, booktype, contryear, invno, nocopies, nopages, prodno, schcode FROM dbo.quotes WHERE (invno = @invno)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="invno" ColumnName="invno" DataSourceName="Mbc5.dbo.quotes" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@invno" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="invno" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -1519,25 +1532,22 @@ WHERE        (invno = @invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="WipDetailTableAdapter" GeneratorDataComponentClassName="WipDetailTableAdapter" Name="WipDetail" UserDataComponentName="WipDetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="Mbc5.dbo.GetWipDetail" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM WipDetail
 WHERE        (id = @Id)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="Id" ColumnName="id" DataSourceName="Mbc5.dbo.WipDetail" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Id" ColumnName="id" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        WipDescriptions.Description, WipDetail.War, WipDetail.Wdr, WipDetail.Wtr, WipDetail.Wir, WipDetail.Invno, WipDetail.id, WipDescriptions.TableName, WipDescriptions.Id AS IdDesc, WipDetail.DescripId
-FROM            WipDetail INNER JOIN
-                         WipDescriptions ON WipDetail.DescripId = WipDescriptions.Id
-WHERE        (WipDetail.Schcode = @schcode)
-ORDER BY WipDetail.DescripId</CommandText>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="true">
+                    <CommandText>GetWipDetail</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="schcode" ColumnName="Schcode" DataSourceName="Mbc5.dbo.WipDetail" DataTypeServer="nvarchar(6)" DbType="String" Direction="Input" ParameterName="@schcode" Precision="0" ProviderType="NVarChar" Scale="0" Size="6" SourceColumn="Schcode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" ColumnName="Schcode" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@schcode" Precision="0" Scale="0" Size="0" SourceColumn="Schcode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" ColumnName="Invno" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Invno" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Invno" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -1545,15 +1555,8 @@ ORDER BY WipDetail.DescripId</CommandText>
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="Description" DataSetColumn="Description" />
-              <Mapping SourceColumn="War" DataSetColumn="War" />
-              <Mapping SourceColumn="Wdr" DataSetColumn="Wdr" />
-              <Mapping SourceColumn="Wir" DataSetColumn="Wir" />
               <Mapping SourceColumn="Invno" DataSetColumn="Invno" />
               <Mapping SourceColumn="id" DataSetColumn="id" />
-              <Mapping SourceColumn="Wtr" DataSetColumn="Wtr" />
-              <Mapping SourceColumn="TableName" DataSetColumn="TableName" />
-              <Mapping SourceColumn="DescripId" DataSetColumn="DescripId" />
-              <Mapping SourceColumn="IdDesc" DataSetColumn="IdDesc" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
@@ -1566,19 +1569,6 @@ WHERE        (id = @Id)</CommandText>
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
-              </DbSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        WipDescriptions.Description, WipDetail.War, WipDetail.Wdr, WipDetail.Wtr, WipDetail.Wir, WipDetail.Invno, WipDetail.id, WipDescriptions.TableName, WipDescriptions.Id AS IdDesc, WipDetail.DescripId
-FROM            WipDetail INNER JOIN
-                         WipDescriptions ON WipDetail.DescripId = WipDescriptions.Id
-WHERE        (WipDetail.Invno= @Invno) ORDER BY WipDetail.DescripId</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="Invno" ColumnName="Invno" DataSourceName="Mbc5.dbo.WipDetail" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Invno" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Invno" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
               </DbSource>
             </Sources>
           </TableAdapter>
@@ -1652,7 +1642,7 @@ ORDER BY TableName, Description</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="coverdetailTableAdapter" GeneratorDataComponentClassName="coverdetailTableAdapter" Name="coverdetail" UserDataComponentName="coverdetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM coverdetail
@@ -1732,7 +1722,7 @@ SELECT DescripId, war, wdr, wtr, Invno, wir, schcode, id FROM coverdetail WHERE 
               <Mapping SourceColumn="Description" DataSetColumn="Description" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInvno">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByInvno" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByInvno" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByInvno">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        coverdetail.DescripId, coverdetail.war, coverdetail.wdr, coverdetail.wtr, coverdetail.Invno, coverdetail.wir, coverdetail.schcode, coverdetail.id, WipDescriptions.TableName, WipDescriptions.Description
@@ -1749,7 +1739,7 @@ WHERE        (coverdetail.invno = @Invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PartBkDetailTableAdapter" GeneratorDataComponentClassName="PartBkDetailTableAdapter" Name="PartBkDetail" UserDataComponentName="PartBkDetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>INSERT INTO [PartBkDetail] ([Schcode], [Invno], [War], [Wdr], [Wtr], [Wir], [DescripId]) VALUES (@Schcode, @Invno, @War, @Wdr, @Wtr, @Wir, @DescripId)</CommandText>
@@ -1791,7 +1781,7 @@ WHERE        (PartBkDetail.Schcode = @schode)</CommandText>
               <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        PartBkDetail.Invno, PartBkDetail.War, PartBkDetail.Wdr, PartBkDetail.Wtr, PartBkDetail.Wir, PartBkDetail.id, PartBkDetail.DescripId, WipDescriptions.Id AS IdDesc, WipDescriptions.Description
@@ -1804,7 +1794,7 @@ WHERE        (PartBkDetail.Invno = @Invno)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillBy1" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy1">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillBy1" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        PartBkDetail.Schcode, PartBkDetail.Invno, PartBkDetail.War, PartBkDetail.Wdr, PartBkDetail.Wtr, PartBkDetail.Wir, PartBkDetail.id, PartBkDetail.DescripId, WipDescriptions.Id AS Expr1, WipDescriptions.Description
@@ -1821,7 +1811,7 @@ WHERE        (PartBkDetail.Invno = @Invno)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="prtbkbdetailTableAdapter" GeneratorDataComponentClassName="prtbkbdetailTableAdapter" Name="prtbkbdetail" UserDataComponentName="prtbkbdetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [prtbkbdetail] WHERE (((@IsNull_DescripId = 1 AND [DescripId] IS NULL) OR ([DescripId] = @Original_DescripId)) AND ((@IsNull_War = 1 AND [War] IS NULL) OR ([War] = @Original_War)) AND ((@IsNull_Wdr = 1 AND [Wdr] IS NULL) OR ([Wdr] = @Original_Wdr)) AND ((@IsNull_Wtr = 1 AND [Wtr] IS NULL) OR ([Wtr] = @Original_Wtr)) AND ((@IsNull_Wir = 1 AND [Wir] IS NULL) OR ([Wir] = @Original_Wir)) AND ((@IsNull_Schcode = 1 AND [Schcode] IS NULL) OR ([Schcode] = @Original_Schcode)) AND ([Invno] = @Original_Invno) AND ([Id] = @Original_Id))</CommandText>
@@ -1914,7 +1904,7 @@ SELECT DescripId, War, Wdr, Wtr, Wir, Schcode, Invno, Id FROM prtbkbdetail WHERE
               <Mapping SourceColumn="Description" DataSetColumn="Description" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="Mbc5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        prtbkbdetail.DescripId, prtbkbdetail.War, prtbkbdetail.Wdr, prtbkbdetail.Wtr, prtbkbdetail.Wir, prtbkbdetail.Schcode, prtbkbdetail.Invno, prtbkbdetail.Id, WipDescriptions.Description
@@ -1956,7 +1946,7 @@ ORDER BY vendcd</CommandText>
   <xs:element name="dsProdutn" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsProdutn" msprop:Generator_UserDSName="dsProdutn">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="produtn" msprop:Generator_TableClassName="produtnDataTable" msprop:Generator_TableVarName="tableprodutn" msprop:Generator_TablePropName="produtn" msprop:Generator_RowDeletingName="produtnRowDeleting" msprop:Generator_RowChangingName="produtnRowChanging" msprop:Generator_RowEvHandlerName="produtnRowChangeEventHandler" msprop:Generator_RowDeletedName="produtnRowDeleted" msprop:Generator_UserTableName="produtn" msprop:Generator_RowChangedName="produtnRowChanged" msprop:Generator_RowEvArgName="produtnRowChangeEvent" msprop:Generator_RowClassName="produtnRow">
+        <xs:element name="produtn" msprop:Generator_TableClassName="produtnDataTable" msprop:Generator_TableVarName="tableprodutn" msprop:Generator_RowChangedName="produtnRowChanged" msprop:Generator_TablePropName="produtn" msprop:Generator_RowDeletingName="produtnRowDeleting" msprop:Generator_RowChangingName="produtnRowChanging" msprop:Generator_RowEvHandlerName="produtnRowChangeEventHandler" msprop:Generator_RowDeletedName="produtnRowDeleted" msprop:Generator_RowClassName="produtnRow" msprop:Generator_UserTableName="produtn" msprop:Generator_RowEvArgName="produtnRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="invno" msdata:Caption="Invoie #" msprop:Generator_ColumnVarNameInTable="columninvno" msprop:Generator_ColumnPropNameInRow="invno" msprop:Generator_ColumnPropNameInTable="invnoColumn" msprop:Generator_UserColumnName="invno" type="xs:int" />
@@ -2345,10 +2335,26 @@ ORDER BY vendcd</CommandText>
               </xs:element>
               <xs:element name="hcproof" msprop:Generator_ColumnVarNameInTable="columnhcproof" msprop:Generator_ColumnPropNameInRow="hcproof" msprop:Generator_ColumnPropNameInTable="hcproofColumn" msprop:Generator_UserColumnName="hcproof" type="xs:boolean" minOccurs="0" />
               <xs:element name="endstrecv" msprop:Generator_ColumnVarNameInTable="columnendstrecv" msprop:Generator_ColumnPropNameInRow="endstrecv" msprop:Generator_ColumnPropNameInTable="endstrecvColumn" msprop:Generator_UserColumnName="endstrecv" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ptnopgs1" msdata:Caption="ptnopgs" msprop:Generator_ColumnVarNameInTable="columnptnopgs1" msprop:Generator_ColumnPropNameInRow="ptnopgs1" msprop:Generator_ColumnPropNameInTable="ptnopgs1Column" msprop:Generator_UserColumnName="ptnopgs1" type="xs:int" minOccurs="0" />
+              <xs:element name="ptbnopgs1" msdata:Caption="ptbnopgs" msprop:Generator_ColumnVarNameInTable="columnptbnopgs1" msprop:Generator_ColumnPropNameInRow="ptbnopgs1" msprop:Generator_ColumnPropNameInTable="ptbnopgs1Column" msprop:Generator_UserColumnName="ptbnopgs1" type="xs:int" minOccurs="0" />
+              <xs:element name="bknopgs1" msdata:Caption="bknopgs" msprop:Generator_ColumnVarNameInTable="columnbknopgs1" msprop:Generator_ColumnPropNameInRow="bknopgs1" msprop:Generator_ColumnPropNameInTable="bknopgs1Column" msprop:Generator_UserColumnName="bknopgs1" type="xs:int" minOccurs="0" />
+              <xs:element name="scname1" msdata:Caption="scname" msprop:Generator_ColumnVarNameInTable="columnscname1" msprop:Generator_ColumnPropNameInRow="scname1" msprop:Generator_ColumnPropNameInTable="scname1Column" msprop:Generator_UserColumnName="scname1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bledpgno1" msdata:Caption="bledpgno" msprop:Generator_ColumnVarNameInTable="columnbledpgno1" msprop:Generator_ColumnPropNameInRow="bledpgno1" msprop:Generator_ColumnPropNameInTable="bledpgno1Column" msprop:Generator_UserColumnName="bledpgno1" type="xs:int" minOccurs="0" />
+              <xs:element name="se1" msdata:Caption="se" msprop:Generator_ColumnVarNameInTable="columnse1" msprop:Generator_ColumnPropNameInRow="se1" msprop:Generator_ColumnPropNameInTable="se1Column" msprop:Generator_UserColumnName="se1" type="xs:int" minOccurs="0" />
+              <xs:element name="te1" msdata:Caption="te" msprop:Generator_ColumnVarNameInTable="columnte1" msprop:Generator_ColumnPropNameInRow="te1" msprop:Generator_ColumnPropNameInTable="te1Column" msprop:Generator_UserColumnName="te1" type="xs:int" minOccurs="0" />
+              <xs:element name="finalcpycnt1" msdata:Caption="finalcpycnt" msprop:Generator_ColumnVarNameInTable="columnfinalcpycnt1" msprop:Generator_ColumnPropNameInRow="finalcpycnt1" msprop:Generator_ColumnPropNameInTable="finalcpycnt1Column" msprop:Generator_UserColumnName="finalcpycnt1" type="xs:int" minOccurs="0" />
+              <xs:element name="Enhancements" msprop:Generator_ColumnVarNameInTable="columnEnhancements" msprop:Generator_ColumnPropNameInRow="Enhancements" msprop:Generator_ColumnPropNameInTable="EnhancementsColumn" msprop:Generator_UserColumnName="Enhancements" type="xs:boolean" minOccurs="0" />
+              <xs:element name="PhotographerPermission" msprop:Generator_ColumnVarNameInTable="columnPhotographerPermission" msprop:Generator_ColumnPropNameInRow="PhotographerPermission" msprop:Generator_ColumnPropNameInTable="PhotographerPermissionColumn" msprop:Generator_UserColumnName="PhotographerPermission" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_RowClassName="custRow" msprop:Generator_UserTableName="cust" msprop:Generator_RowEvArgName="custRowChangeEvent">
+        <xs:element name="cust" msprop:Generator_TableClassName="custDataTable" msprop:Generator_TableVarName="tablecust" msprop:Generator_TablePropName="cust" msprop:Generator_RowDeletingName="custRowDeleting" msprop:Generator_RowChangingName="custRowChanging" msprop:Generator_RowEvHandlerName="custRowChangeEventHandler" msprop:Generator_RowDeletedName="custRowDeleted" msprop:Generator_UserTableName="cust" msprop:Generator_RowChangedName="custRowChanged" msprop:Generator_RowEvArgName="custRowChangeEvent" msprop:Generator_RowClassName="custRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -2407,21 +2413,21 @@ ORDER BY vendcd</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="schcity" msprop:Generator_ColumnVarNameInTable="columnschcity" msprop:Generator_ColumnPropNameInRow="schcity" msprop:Generator_ColumnPropNameInTable="schcityColumn" msprop:Generator_UserColumnName="schcity">
+              <xs:element name="schcity" msprop:Generator_ColumnVarNameInTable="columnschcity" msprop:Generator_ColumnPropNameInRow="schcity" msprop:Generator_ColumnPropNameInTable="schcityColumn" msprop:Generator_UserColumnName="schcity" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="schstate" msprop:Generator_ColumnVarNameInTable="columnschstate" msprop:Generator_ColumnPropNameInRow="schstate" msprop:Generator_ColumnPropNameInTable="schstateColumn" msprop:Generator_UserColumnName="schstate">
+              <xs:element name="schstate" msprop:Generator_ColumnVarNameInTable="columnschstate" msprop:Generator_ColumnPropNameInRow="schstate" msprop:Generator_ColumnPropNameInTable="schstateColumn" msprop:Generator_UserColumnName="schstate" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="schzip" msprop:Generator_ColumnVarNameInTable="columnschzip" msprop:Generator_ColumnPropNameInRow="schzip" msprop:Generator_ColumnPropNameInTable="schzipColumn" msprop:Generator_UserColumnName="schzip">
+              <xs:element name="schzip" msprop:Generator_ColumnVarNameInTable="columnschzip" msprop:Generator_ColumnPropNameInRow="schzip" msprop:Generator_ColumnPropNameInTable="schzipColumn" msprop:Generator_UserColumnName="schzip" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -2526,17 +2532,32 @@ ORDER BY vendcd</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="oraclecode" msprop:Generator_ColumnVarNameInTable="columnoraclecode" msprop:Generator_ColumnPropNameInRow="oraclecode" msprop:Generator_ColumnPropNameInTable="oraclecodeColumn" msprop:Generator_UserColumnName="oraclecode">
+              <xs:element name="oraclecode" msprop:Generator_ColumnVarNameInTable="columnoraclecode" msprop:Generator_ColumnPropNameInRow="oraclecode" msprop:Generator_ColumnPropNameInTable="oraclecodeColumn" msprop:Generator_UserColumnName="oraclecode" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="7" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="csname" msprop:Generator_ColumnVarNameInTable="columncsname" msprop:Generator_ColumnPropNameInRow="csname" msprop:Generator_ColumnPropNameInTable="csnameColumn" msprop:Generator_UserColumnName="csname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="csemail" msprop:Generator_ColumnVarNameInTable="columncsemail" msprop:Generator_ColumnPropNameInRow="csemail" msprop:Generator_ColumnPropNameInTable="csemailColumn" msprop:Generator_UserColumnName="csemail" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PIN" msprop:Generator_ColumnVarNameInTable="columnPIN" msprop:Generator_ColumnPropNameInRow="PIN" msprop:Generator_ColumnPropNameInTable="PINColumn" msprop:Generator_UserColumnName="PIN" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="quotes" msprop:Generator_TableClassName="quotesDataTable" msprop:Generator_TableVarName="tablequotes" msprop:Generator_RowChangedName="quotesRowChanged" msprop:Generator_TablePropName="quotes" msprop:Generator_RowDeletingName="quotesRowDeleting" msprop:Generator_RowChangingName="quotesRowChanging" msprop:Generator_RowEvHandlerName="quotesRowChangeEventHandler" msprop:Generator_RowDeletedName="quotesRowDeleted" msprop:Generator_RowClassName="quotesRow" msprop:Generator_UserTableName="quotes" msprop:Generator_RowEvArgName="quotesRowChangeEvent">
+        <xs:element name="quotes" msprop:Generator_TableClassName="quotesDataTable" msprop:Generator_TableVarName="tablequotes" msprop:Generator_TablePropName="quotes" msprop:Generator_RowDeletingName="quotesRowDeleting" msprop:Generator_RowChangingName="quotesRowChanging" msprop:Generator_RowEvHandlerName="quotesRowChangeEventHandler" msprop:Generator_RowDeletedName="quotesRowDeleted" msprop:Generator_UserTableName="quotes" msprop:Generator_RowChangedName="quotesRowChanged" msprop:Generator_RowEvArgName="quotesRowChangeEvent" msprop:Generator_RowClassName="quotesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="invno" msprop:Generator_ColumnVarNameInTable="columninvno" msprop:Generator_ColumnPropNameInRow="invno" msprop:Generator_ColumnPropNameInTable="invnoColumn" msprop:Generator_UserColumnName="invno" type="xs:int" />
@@ -2569,10 +2590,12 @@ ORDER BY vendcd</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="nopages" msprop:Generator_ColumnVarNameInTable="columnnopages" msprop:Generator_ColumnPropNameInRow="nopages" msprop:Generator_ColumnPropNameInTable="nopagesColumn" msprop:Generator_UserColumnName="nopages" type="xs:int" minOccurs="0" />
+              <xs:element name="nocopies" msprop:Generator_ColumnVarNameInTable="columnnocopies" msprop:Generator_ColumnPropNameInRow="nocopies" msprop:Generator_ColumnPropNameInTable="nocopiesColumn" msprop:Generator_UserColumnName="nocopies" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="partbk" msprop:Generator_TableClassName="partbkDataTable" msprop:Generator_TableVarName="tablepartbk" msprop:Generator_RowChangedName="partbkRowChanged" msprop:Generator_TablePropName="partbk" msprop:Generator_RowDeletingName="partbkRowDeleting" msprop:Generator_RowChangingName="partbkRowChanging" msprop:Generator_RowEvHandlerName="partbkRowChangeEventHandler" msprop:Generator_RowDeletedName="partbkRowDeleted" msprop:Generator_RowClassName="partbkRow" msprop:Generator_UserTableName="partbk" msprop:Generator_RowEvArgName="partbkRowChangeEvent">
+        <xs:element name="partbk" msprop:Generator_TableClassName="partbkDataTable" msprop:Generator_TableVarName="tablepartbk" msprop:Generator_TablePropName="partbk" msprop:Generator_RowDeletingName="partbkRowDeleting" msprop:Generator_RowChangingName="partbkRowChanging" msprop:Generator_RowEvHandlerName="partbkRowChangeEventHandler" msprop:Generator_RowDeletedName="partbkRowDeleted" msprop:Generator_UserTableName="partbk" msprop:Generator_RowChangedName="partbkRowChanged" msprop:Generator_RowEvArgName="partbkRowChangeEvent" msprop:Generator_RowClassName="partbkRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -2619,7 +2642,7 @@ ORDER BY vendcd</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ptbkb" msprop:Generator_TableClassName="ptbkbDataTable" msprop:Generator_TableVarName="tableptbkb" msprop:Generator_RowChangedName="ptbkbRowChanged" msprop:Generator_TablePropName="ptbkb" msprop:Generator_RowDeletingName="ptbkbRowDeleting" msprop:Generator_RowChangingName="ptbkbRowChanging" msprop:Generator_RowEvHandlerName="ptbkbRowChangeEventHandler" msprop:Generator_RowDeletedName="ptbkbRowDeleted" msprop:Generator_RowClassName="ptbkbRow" msprop:Generator_UserTableName="ptbkb" msprop:Generator_RowEvArgName="ptbkbRowChangeEvent">
+        <xs:element name="ptbkb" msprop:Generator_TableClassName="ptbkbDataTable" msprop:Generator_TableVarName="tableptbkb" msprop:Generator_TablePropName="ptbkb" msprop:Generator_RowDeletingName="ptbkbRowDeleting" msprop:Generator_RowChangingName="ptbkbRowChanging" msprop:Generator_RowEvHandlerName="ptbkbRowChangeEventHandler" msprop:Generator_RowDeletedName="ptbkbRowDeleted" msprop:Generator_UserTableName="ptbkb" msprop:Generator_RowChangedName="ptbkbRowChanged" msprop:Generator_RowEvArgName="ptbkbRowChangeEvent" msprop:Generator_RowClassName="ptbkbRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode" minOccurs="0">
@@ -2719,7 +2742,7 @@ ORDER BY vendcd</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="wip" msprop:Generator_TableClassName="wipDataTable" msprop:Generator_TableVarName="tablewip" msprop:Generator_RowChangedName="wipRowChanged" msprop:Generator_TablePropName="wip" msprop:Generator_RowDeletingName="wipRowDeleting" msprop:Generator_RowChangingName="wipRowChanging" msprop:Generator_RowEvHandlerName="wipRowChangeEventHandler" msprop:Generator_RowDeletedName="wipRowDeleted" msprop:Generator_RowClassName="wipRow" msprop:Generator_UserTableName="wip" msprop:Generator_RowEvArgName="wipRowChangeEvent">
+        <xs:element name="wip" msprop:Generator_TableClassName="wipDataTable" msprop:Generator_TableVarName="tablewip" msprop:Generator_TablePropName="wip" msprop:Generator_RowDeletingName="wipRowDeleting" msprop:Generator_RowChangingName="wipRowChanging" msprop:Generator_RowEvHandlerName="wipRowChangeEventHandler" msprop:Generator_RowDeletedName="wipRowDeleted" msprop:Generator_UserTableName="wip" msprop:Generator_RowChangedName="wipRowChanged" msprop:Generator_RowEvArgName="wipRowChangeEvent" msprop:Generator_RowClassName="wipRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode">
@@ -2845,7 +2868,7 @@ ORDER BY vendcd</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="wipg" msprop:Generator_TableClassName="wipgDataTable" msprop:Generator_TableVarName="tablewipg" msprop:Generator_TablePropName="wipg" msprop:Generator_RowDeletingName="wipgRowDeleting" msprop:Generator_RowChangingName="wipgRowChanging" msprop:Generator_RowEvHandlerName="wipgRowChangeEventHandler" msprop:Generator_RowDeletedName="wipgRowDeleted" msprop:Generator_UserTableName="wipg" msprop:Generator_RowChangedName="wipgRowChanged" msprop:Generator_RowEvArgName="wipgRowChangeEvent" msprop:Generator_RowClassName="wipgRow">
+        <xs:element name="wipg" msprop:Generator_TableClassName="wipgDataTable" msprop:Generator_TableVarName="tablewipg" msprop:Generator_RowChangedName="wipgRowChanged" msprop:Generator_TablePropName="wipg" msprop:Generator_RowDeletingName="wipgRowDeleting" msprop:Generator_RowChangingName="wipgRowChanging" msprop:Generator_RowEvHandlerName="wipgRowChangeEventHandler" msprop:Generator_RowDeletedName="wipgRowDeleted" msprop:Generator_RowClassName="wipgRow" msprop:Generator_UserTableName="wipg" msprop:Generator_RowEvArgName="wipgRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="invno" msprop:Generator_ColumnVarNameInTable="columninvno" msprop:Generator_ColumnPropNameInRow="invno" msprop:Generator_ColumnPropNameInTable="invnoColumn" msprop:Generator_UserColumnName="invno" type="xs:int" />
@@ -2940,7 +2963,7 @@ ORDER BY vendcd</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="covers" msprop:Generator_TableClassName="coversDataTable" msprop:Generator_TableVarName="tablecovers" msprop:Generator_RowChangedName="coversRowChanged" msprop:Generator_TablePropName="covers" msprop:Generator_RowDeletingName="coversRowDeleting" msprop:Generator_RowChangingName="coversRowChanging" msprop:Generator_RowEvHandlerName="coversRowChangeEventHandler" msprop:Generator_RowDeletedName="coversRowDeleted" msprop:Generator_RowClassName="coversRow" msprop:Generator_UserTableName="covers" msprop:Generator_RowEvArgName="coversRowChangeEvent">
+        <xs:element name="covers" msprop:Generator_TableClassName="coversDataTable" msprop:Generator_TableVarName="tablecovers" msprop:Generator_TablePropName="covers" msprop:Generator_RowDeletingName="coversRowDeleting" msprop:Generator_RowChangingName="coversRowChanging" msprop:Generator_RowEvHandlerName="coversRowChangeEventHandler" msprop:Generator_RowDeletedName="coversRowDeleted" msprop:Generator_UserTableName="covers" msprop:Generator_RowChangedName="coversRowChanged" msprop:Generator_RowEvArgName="coversRowChangeEvent" msprop:Generator_RowClassName="coversRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="specovr" msprop:Generator_ColumnVarNameInTable="columnspecovr" msprop:Generator_ColumnPropNameInRow="specovr" msprop:Generator_ColumnPropNameInTable="specovrColumn" msprop:Generator_UserColumnName="specovr" minOccurs="0">
@@ -3187,41 +3210,30 @@ ORDER BY vendcd</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="WipDetail" msprop:Generator_TableClassName="WipDetailDataTable" msprop:Generator_TableVarName="tableWipDetail" msprop:Generator_TablePropName="WipDetail" msprop:Generator_RowDeletingName="WipDetailRowDeleting" msprop:Generator_RowChangingName="WipDetailRowChanging" msprop:Generator_RowEvHandlerName="WipDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="WipDetailRowDeleted" msprop:Generator_UserTableName="WipDetail" msprop:Generator_RowChangedName="WipDetailRowChanged" msprop:Generator_RowEvArgName="WipDetailRowChangeEvent" msprop:Generator_RowClassName="WipDetailRow">
+        <xs:element name="WipDetail" msprop:Generator_TableClassName="WipDetailDataTable" msprop:Generator_TableVarName="tableWipDetail" msprop:Generator_RowChangedName="WipDetailRowChanged" msprop:Generator_TablePropName="WipDetail" msprop:Generator_RowDeletingName="WipDetailRowDeleting" msprop:Generator_RowChangingName="WipDetailRowChanging" msprop:Generator_RowEvHandlerName="WipDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="WipDetailRowDeleted" msprop:Generator_RowClassName="WipDetailRow" msprop:Generator_UserTableName="WipDetail" msprop:Generator_RowEvArgName="WipDetailRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="War" msprop:Generator_ColumnVarNameInTable="columnWar" msprop:Generator_ColumnPropNameInRow="War" msprop:Generator_ColumnPropNameInTable="WarColumn" msprop:Generator_UserColumnName="War" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Wdr" msprop:Generator_ColumnVarNameInTable="columnWdr" msprop:Generator_ColumnPropNameInRow="Wdr" msprop:Generator_ColumnPropNameInTable="WdrColumn" msprop:Generator_UserColumnName="Wdr" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Wir" msprop:Generator_ColumnVarNameInTable="columnWir" msprop:Generator_ColumnPropNameInRow="Wir" msprop:Generator_ColumnPropNameInTable="WirColumn" msprop:Generator_UserColumnName="Wir" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="5" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="Invno" msprop:Generator_ColumnVarNameInTable="columnInvno" msprop:Generator_ColumnPropNameInRow="Invno" msprop:Generator_ColumnPropNameInTable="InvnoColumn" msprop:Generator_UserColumnName="Invno" type="xs:int" />
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="TableName" msprop:Generator_ColumnVarNameInTable="columnTableName" msprop:Generator_ColumnPropNameInRow="TableName" msprop:Generator_ColumnPropNameInTable="TableNameColumn" msprop:Generator_UserColumnName="TableName" type="xs:string" minOccurs="0" />
+              <xs:element name="War" msprop:Generator_ColumnVarNameInTable="columnWar" msprop:Generator_ColumnPropNameInRow="War" msprop:Generator_ColumnPropNameInTable="WarColumn" msprop:Generator_UserColumnName="War" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Wdr" msprop:Generator_ColumnVarNameInTable="columnWdr" msprop:Generator_ColumnPropNameInRow="Wdr" msprop:Generator_ColumnPropNameInTable="WdrColumn" msprop:Generator_UserColumnName="Wdr" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Wir" msprop:Generator_ColumnVarNameInTable="columnWir" msprop:Generator_ColumnPropNameInRow="Wir" msprop:Generator_ColumnPropNameInTable="WirColumn" msprop:Generator_UserColumnName="Wir" type="xs:string" minOccurs="0" />
               <xs:element name="Wtr" msprop:Generator_ColumnVarNameInTable="columnWtr" msprop:Generator_ColumnPropNameInRow="Wtr" msprop:Generator_ColumnPropNameInTable="WtrColumn" msprop:Generator_UserColumnName="Wtr" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TableName" msprop:Generator_ColumnVarNameInTable="columnTableName" msprop:Generator_ColumnPropNameInRow="TableName" msprop:Generator_ColumnPropNameInTable="TableNameColumn" msprop:Generator_UserColumnName="TableName">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="25" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="IdDesc" msprop:Generator_ColumnVarNameInTable="columnIdDesc" msprop:Generator_ColumnPropNameInRow="IdDesc" msprop:Generator_ColumnPropNameInTable="IdDescColumn" msprop:Generator_UserColumnName="IdDesc" type="xs:int" minOccurs="0" />
               <xs:element name="DescripId" msprop:Generator_ColumnVarNameInTable="columnDescripId" msprop:Generator_ColumnPropNameInRow="DescripId" msprop:Generator_ColumnPropNameInTable="DescripIdColumn" msprop:Generator_UserColumnName="DescripId" type="xs:int" minOccurs="0" />
-              <xs:element name="IdDesc" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdDesc" msprop:Generator_ColumnPropNameInRow="IdDesc" msprop:Generator_ColumnPropNameInTable="IdDescColumn" msprop:Generator_UserColumnName="IdDesc" type="xs:int" />
+              <xs:element name="ScanCopies" msprop:Generator_ColumnVarNameInTable="columnScanCopies" msprop:Generator_ColumnPropNameInRow="ScanCopies" msprop:Generator_ColumnPropNameInTable="ScanCopiesColumn" msprop:Generator_UserColumnName="ScanCopies" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="WipDescriptions" msprop:Generator_TableClassName="WipDescriptionsDataTable" msprop:Generator_TableVarName="tableWipDescriptions" msprop:Generator_TablePropName="WipDescriptions" msprop:Generator_RowDeletingName="WipDescriptionsRowDeleting" msprop:Generator_RowChangingName="WipDescriptionsRowChanging" msprop:Generator_RowEvHandlerName="WipDescriptionsRowChangeEventHandler" msprop:Generator_RowDeletedName="WipDescriptionsRowDeleted" msprop:Generator_UserTableName="WipDescriptions" msprop:Generator_RowChangedName="WipDescriptionsRowChanged" msprop:Generator_RowEvArgName="WipDescriptionsRowChangeEvent" msprop:Generator_RowClassName="WipDescriptionsRow">
+        <xs:element name="WipDescriptions" msprop:Generator_TableClassName="WipDescriptionsDataTable" msprop:Generator_TableVarName="tableWipDescriptions" msprop:Generator_RowChangedName="WipDescriptionsRowChanged" msprop:Generator_TablePropName="WipDescriptions" msprop:Generator_RowDeletingName="WipDescriptionsRowDeleting" msprop:Generator_RowChangingName="WipDescriptionsRowChanging" msprop:Generator_RowEvHandlerName="WipDescriptionsRowChangeEventHandler" msprop:Generator_RowDeletedName="WipDescriptionsRowDeleted" msprop:Generator_RowClassName="WipDescriptionsRow" msprop:Generator_UserTableName="WipDescriptions" msprop:Generator_RowEvArgName="WipDescriptionsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
@@ -3242,7 +3254,7 @@ ORDER BY vendcd</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="coverdetail" msprop:Generator_TableClassName="coverdetailDataTable" msprop:Generator_TableVarName="tablecoverdetail" msprop:Generator_RowChangedName="coverdetailRowChanged" msprop:Generator_TablePropName="coverdetail" msprop:Generator_RowDeletingName="coverdetailRowDeleting" msprop:Generator_RowChangingName="coverdetailRowChanging" msprop:Generator_RowEvHandlerName="coverdetailRowChangeEventHandler" msprop:Generator_RowDeletedName="coverdetailRowDeleted" msprop:Generator_RowClassName="coverdetailRow" msprop:Generator_UserTableName="coverdetail" msprop:Generator_RowEvArgName="coverdetailRowChangeEvent">
+        <xs:element name="coverdetail" msprop:Generator_TableClassName="coverdetailDataTable" msprop:Generator_TableVarName="tablecoverdetail" msprop:Generator_TablePropName="coverdetail" msprop:Generator_RowDeletingName="coverdetailRowDeleting" msprop:Generator_RowChangingName="coverdetailRowChanging" msprop:Generator_RowEvHandlerName="coverdetailRowChangeEventHandler" msprop:Generator_RowDeletedName="coverdetailRowDeleted" msprop:Generator_UserTableName="coverdetail" msprop:Generator_RowChangedName="coverdetailRowChanged" msprop:Generator_RowEvArgName="coverdetailRowChangeEvent" msprop:Generator_RowClassName="coverdetailRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DescripId" msprop:Generator_ColumnVarNameInTable="columnDescripId" msprop:Generator_ColumnPropNameInRow="DescripId" msprop:Generator_ColumnPropNameInTable="DescripIdColumn" msprop:Generator_UserColumnName="DescripId" type="xs:int" minOccurs="0" />
@@ -3282,7 +3294,7 @@ ORDER BY vendcd</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PartBkDetail" msprop:Generator_TableClassName="PartBkDetailDataTable" msprop:Generator_TableVarName="tablePartBkDetail" msprop:Generator_RowChangedName="PartBkDetailRowChanged" msprop:Generator_TablePropName="PartBkDetail" msprop:Generator_RowDeletingName="PartBkDetailRowDeleting" msprop:Generator_RowChangingName="PartBkDetailRowChanging" msprop:Generator_RowEvHandlerName="PartBkDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="PartBkDetailRowDeleted" msprop:Generator_RowClassName="PartBkDetailRow" msprop:Generator_UserTableName="PartBkDetail" msprop:Generator_RowEvArgName="PartBkDetailRowChangeEvent">
+        <xs:element name="PartBkDetail" msprop:Generator_TableClassName="PartBkDetailDataTable" msprop:Generator_TableVarName="tablePartBkDetail" msprop:Generator_TablePropName="PartBkDetail" msprop:Generator_RowDeletingName="PartBkDetailRowDeleting" msprop:Generator_RowChangingName="PartBkDetailRowChanging" msprop:Generator_RowEvHandlerName="PartBkDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="PartBkDetailRowDeleted" msprop:Generator_UserTableName="PartBkDetail" msprop:Generator_RowChangedName="PartBkDetailRowChanged" msprop:Generator_RowEvArgName="PartBkDetailRowChangeEvent" msprop:Generator_RowClassName="PartBkDetailRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Schcode" msprop:Generator_ColumnVarNameInTable="columnSchcode" msprop:Generator_ColumnPropNameInRow="Schcode" msprop:Generator_ColumnPropNameInTable="SchcodeColumn" msprop:Generator_UserColumnName="Schcode" minOccurs="0">
@@ -3316,7 +3328,7 @@ ORDER BY vendcd</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="prtbkbdetail" msprop:Generator_TableClassName="prtbkbdetailDataTable" msprop:Generator_TableVarName="tableprtbkbdetail" msprop:Generator_RowChangedName="prtbkbdetailRowChanged" msprop:Generator_TablePropName="prtbkbdetail" msprop:Generator_RowDeletingName="prtbkbdetailRowDeleting" msprop:Generator_RowChangingName="prtbkbdetailRowChanging" msprop:Generator_RowEvHandlerName="prtbkbdetailRowChangeEventHandler" msprop:Generator_RowDeletedName="prtbkbdetailRowDeleted" msprop:Generator_RowClassName="prtbkbdetailRow" msprop:Generator_UserTableName="prtbkbdetail" msprop:Generator_RowEvArgName="prtbkbdetailRowChangeEvent">
+        <xs:element name="prtbkbdetail" msprop:Generator_TableClassName="prtbkbdetailDataTable" msprop:Generator_TableVarName="tableprtbkbdetail" msprop:Generator_TablePropName="prtbkbdetail" msprop:Generator_RowDeletingName="prtbkbdetailRowDeleting" msprop:Generator_RowChangingName="prtbkbdetailRowChanging" msprop:Generator_RowEvHandlerName="prtbkbdetailRowChangeEventHandler" msprop:Generator_RowDeletedName="prtbkbdetailRowDeleted" msprop:Generator_UserTableName="prtbkbdetail" msprop:Generator_RowChangedName="prtbkbdetailRowChanged" msprop:Generator_RowEvArgName="prtbkbdetailRowChangeEvent" msprop:Generator_RowClassName="prtbkbdetailRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DescripId" msprop:Generator_ColumnVarNameInTable="columnDescripId" msprop:Generator_ColumnPropNameInRow="DescripId" msprop:Generator_ColumnPropNameInTable="DescripIdColumn" msprop:Generator_UserColumnName="DescripId" type="xs:int" minOccurs="0" />
@@ -3349,7 +3361,7 @@ ORDER BY vendcd</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vendor" msprop:Generator_TableClassName="vendorDataTable" msprop:Generator_TableVarName="tablevendor" msprop:Generator_RowChangedName="vendorRowChanged" msprop:Generator_TablePropName="vendor" msprop:Generator_RowDeletingName="vendorRowDeleting" msprop:Generator_RowChangingName="vendorRowChanging" msprop:Generator_RowEvHandlerName="vendorRowChangeEventHandler" msprop:Generator_RowDeletedName="vendorRowDeleted" msprop:Generator_RowClassName="vendorRow" msprop:Generator_UserTableName="vendor" msprop:Generator_RowEvArgName="vendorRowChangeEvent">
+        <xs:element name="vendor" msprop:Generator_TableClassName="vendorDataTable" msprop:Generator_TableVarName="tablevendor" msprop:Generator_TablePropName="vendor" msprop:Generator_RowDeletingName="vendorRowDeleting" msprop:Generator_RowChangingName="vendorRowChanging" msprop:Generator_RowEvHandlerName="vendorRowChangeEventHandler" msprop:Generator_RowDeletedName="vendorRowDeleted" msprop:Generator_UserTableName="vendor" msprop:Generator_RowChangedName="vendorRowChanged" msprop:Generator_RowEvArgName="vendorRowChangeEvent" msprop:Generator_RowClassName="vendorRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="vendcd" msprop:Generator_ColumnVarNameInTable="columnvendcd" msprop:Generator_ColumnPropNameInRow="vendcd" msprop:Generator_ColumnPropNameInTable="vendcdColumn" msprop:Generator_UserColumnName="vendcd">
@@ -3426,17 +3438,17 @@ ORDER BY vendcd</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="quotes_produtn" msdata:parent="quotes" msdata:child="produtn" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="produtn" msprop:Generator_ChildPropName="GetprodutnRows" msprop:Generator_UserRelationName="quotes_produtn" msprop:Generator_RelationVarName="relationquotes_produtn" msprop:Generator_UserParentTable="quotes" msprop:Generator_ParentPropName="quotesRow" />
-      <msdata:Relationship name="produtn_wip" msdata:parent="produtn" msdata:child="wip" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="wip" msprop:Generator_ChildPropName="GetwipRows" msprop:Generator_UserRelationName="produtn_wip" msprop:Generator_ParentPropName="produtnRow" msprop:Generator_RelationVarName="relationprodutn_wip" msprop:Generator_UserParentTable="produtn" />
-      <msdata:Relationship name="wip_WipDetail" msdata:parent="wip" msdata:child="WipDetail" msdata:parentkey="invno" msdata:childkey="Invno" msprop:Generator_UserChildTable="WipDetail" msprop:Generator_ChildPropName="GetWipDetailRows" msprop:Generator_UserRelationName="wip_WipDetail" msprop:Generator_ParentPropName="wipRow" msprop:Generator_RelationVarName="relationwip_WipDetail" msprop:Generator_UserParentTable="wip" />
-      <msdata:Relationship name="produtn_covers" msdata:parent="produtn" msdata:child="covers" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="covers" msprop:Generator_ChildPropName="GetcoversRows" msprop:Generator_UserRelationName="produtn_covers" msprop:Generator_ParentPropName="produtnRow" msprop:Generator_RelationVarName="relationprodutn_covers" msprop:Generator_UserParentTable="produtn" />
-      <msdata:Relationship name="covers_coverdetail" msdata:parent="covers" msdata:child="coverdetail" msdata:parentkey="invno" msdata:childkey="Invno" msprop:Generator_UserChildTable="coverdetail" msprop:Generator_ChildPropName="GetcoverdetailRows" msprop:Generator_UserRelationName="covers_coverdetail" msprop:Generator_RelationVarName="relationcovers_coverdetail" msprop:Generator_UserParentTable="covers" msprop:Generator_ParentPropName="coversRow" />
-      <msdata:Relationship name="produtn_wipg" msdata:parent="produtn" msdata:child="wipg" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="wipg" msprop:Generator_ChildPropName="GetwipgRows" msprop:Generator_UserRelationName="produtn_wipg" msprop:Generator_RelationVarName="relationprodutn_wipg" msprop:Generator_UserParentTable="produtn" msprop:Generator_ParentPropName="produtnRow" />
-      <msdata:Relationship name="produtn_partbk" msdata:parent="produtn" msdata:child="partbk" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="partbk" msprop:Generator_ChildPropName="GetpartbkRows" msprop:Generator_UserRelationName="produtn_partbk" msprop:Generator_RelationVarName="relationprodutn_partbk" msprop:Generator_UserParentTable="produtn" msprop:Generator_ParentPropName="produtnRow" />
-      <msdata:Relationship name="partbk_PartBkDetail" msdata:parent="partbk" msdata:child="PartBkDetail" msdata:parentkey="invno" msdata:childkey="Invno" msprop:Generator_UserChildTable="PartBkDetail" msprop:Generator_ChildPropName="GetPartBkDetailRows" msprop:Generator_UserRelationName="partbk_PartBkDetail" msprop:Generator_RelationVarName="relationpartbk_PartBkDetail" msprop:Generator_UserParentTable="partbk" msprop:Generator_ParentPropName="partbkRow" />
-      <msdata:Relationship name="produtn_ptbkb" msdata:parent="produtn" msdata:child="ptbkb" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="ptbkb" msprop:Generator_ChildPropName="GetptbkbRows" msprop:Generator_UserRelationName="produtn_ptbkb" msprop:Generator_ParentPropName="produtnRow" msprop:Generator_RelationVarName="relationprodutn_ptbkb" msprop:Generator_UserParentTable="produtn" />
-      <msdata:Relationship name="ptbkb_prtbkbdetail" msdata:parent="ptbkb" msdata:child="prtbkbdetail" msdata:parentkey="invno" msdata:childkey="Invno" msprop:Generator_UserChildTable="prtbkbdetail" msprop:Generator_ChildPropName="GetprtbkbdetailRows" msprop:Generator_UserRelationName="ptbkb_prtbkbdetail" msprop:Generator_RelationVarName="relationptbkb_prtbkbdetail" msprop:Generator_UserParentTable="ptbkb" msprop:Generator_ParentPropName="ptbkbRow" />
-      <msdata:Relationship name="cust_quotes" msdata:parent="cust" msdata:child="quotes" msdata:parentkey="schcode" msdata:childkey="schcode" msprop:Generator_UserChildTable="quotes" msprop:Generator_ChildPropName="GetquotesRows" msprop:Generator_UserRelationName="cust_quotes" msprop:Generator_RelationVarName="relationcust_quotes" msprop:Generator_UserParentTable="cust" msprop:Generator_ParentPropName="custRow" />
+      <msdata:Relationship name="quotes_produtn" msdata:parent="quotes" msdata:child="produtn" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="produtn" msprop:Generator_ChildPropName="GetprodutnRows" msprop:Generator_UserRelationName="quotes_produtn" msprop:Generator_ParentPropName="quotesRow" msprop:Generator_RelationVarName="relationquotes_produtn" msprop:Generator_UserParentTable="quotes" />
+      <msdata:Relationship name="produtn_wip" msdata:parent="produtn" msdata:child="wip" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="wip" msprop:Generator_ChildPropName="GetwipRows" msprop:Generator_UserRelationName="produtn_wip" msprop:Generator_RelationVarName="relationprodutn_wip" msprop:Generator_UserParentTable="produtn" msprop:Generator_ParentPropName="produtnRow" />
+      <msdata:Relationship name="wip_WipDetail" msdata:parent="wip" msdata:child="WipDetail" msdata:parentkey="invno" msdata:childkey="Invno" msprop:Generator_UserChildTable="WipDetail" msprop:Generator_ChildPropName="GetWipDetailRows" msprop:Generator_UserRelationName="wip_WipDetail" msprop:Generator_RelationVarName="relationwip_WipDetail" msprop:Generator_UserParentTable="wip" msprop:Generator_ParentPropName="wipRow" />
+      <msdata:Relationship name="produtn_covers" msdata:parent="produtn" msdata:child="covers" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="covers" msprop:Generator_ChildPropName="GetcoversRows" msprop:Generator_UserRelationName="produtn_covers" msprop:Generator_RelationVarName="relationprodutn_covers" msprop:Generator_UserParentTable="produtn" msprop:Generator_ParentPropName="produtnRow" />
+      <msdata:Relationship name="covers_coverdetail" msdata:parent="covers" msdata:child="coverdetail" msdata:parentkey="invno" msdata:childkey="Invno" msprop:Generator_UserChildTable="coverdetail" msprop:Generator_ChildPropName="GetcoverdetailRows" msprop:Generator_UserRelationName="covers_coverdetail" msprop:Generator_ParentPropName="coversRow" msprop:Generator_RelationVarName="relationcovers_coverdetail" msprop:Generator_UserParentTable="covers" />
+      <msdata:Relationship name="produtn_wipg" msdata:parent="produtn" msdata:child="wipg" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="wipg" msprop:Generator_ChildPropName="GetwipgRows" msprop:Generator_UserRelationName="produtn_wipg" msprop:Generator_ParentPropName="produtnRow" msprop:Generator_RelationVarName="relationprodutn_wipg" msprop:Generator_UserParentTable="produtn" />
+      <msdata:Relationship name="produtn_partbk" msdata:parent="produtn" msdata:child="partbk" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="partbk" msprop:Generator_ChildPropName="GetpartbkRows" msprop:Generator_UserRelationName="produtn_partbk" msprop:Generator_ParentPropName="produtnRow" msprop:Generator_RelationVarName="relationprodutn_partbk" msprop:Generator_UserParentTable="produtn" />
+      <msdata:Relationship name="partbk_PartBkDetail" msdata:parent="partbk" msdata:child="PartBkDetail" msdata:parentkey="invno" msdata:childkey="Invno" msprop:Generator_UserChildTable="PartBkDetail" msprop:Generator_ChildPropName="GetPartBkDetailRows" msprop:Generator_UserRelationName="partbk_PartBkDetail" msprop:Generator_ParentPropName="partbkRow" msprop:Generator_RelationVarName="relationpartbk_PartBkDetail" msprop:Generator_UserParentTable="partbk" />
+      <msdata:Relationship name="produtn_ptbkb" msdata:parent="produtn" msdata:child="ptbkb" msdata:parentkey="invno" msdata:childkey="invno" msprop:Generator_UserChildTable="ptbkb" msprop:Generator_ChildPropName="GetptbkbRows" msprop:Generator_UserRelationName="produtn_ptbkb" msprop:Generator_RelationVarName="relationprodutn_ptbkb" msprop:Generator_UserParentTable="produtn" msprop:Generator_ParentPropName="produtnRow" />
+      <msdata:Relationship name="ptbkb_prtbkbdetail" msdata:parent="ptbkb" msdata:child="prtbkbdetail" msdata:parentkey="invno" msdata:childkey="Invno" msprop:Generator_UserChildTable="prtbkbdetail" msprop:Generator_ChildPropName="GetprtbkbdetailRows" msprop:Generator_UserRelationName="ptbkb_prtbkbdetail" msprop:Generator_ParentPropName="ptbkbRow" msprop:Generator_RelationVarName="relationptbkb_prtbkbdetail" msprop:Generator_UserParentTable="ptbkb" />
+      <msdata:Relationship name="cust_quotes" msdata:parent="cust" msdata:child="quotes" msdata:parentkey="schcode" msdata:childkey="schcode" msprop:Generator_UserChildTable="quotes" msprop:Generator_ChildPropName="GetquotesRows" msprop:Generator_UserRelationName="cust_quotes" msprop:Generator_ParentPropName="custRow" msprop:Generator_RelationVarName="relationcust_quotes" msprop:Generator_UserParentTable="cust" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

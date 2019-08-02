@@ -44,8 +44,7 @@ namespace Mbc5.Forms.MemoryBook
         {
             InitializeComponent();
             this.DisableControls(this);
-            EnableControls(this.txtInvoSrch);
-            EnableControls(btnInvSrch);
+           
             EnableControls(btnPoSrch);
             EnableControls(txtPoSrch);
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -86,11 +85,17 @@ namespace Mbc5.Forms.MemoryBook
             BookCalc();
             txtBYear.Focus();
             startup = false;
-
+            var vKitrecvd = ((DataRowView)quotesBindingSource.Current).Row.IsNull("kitrecvd")?"":((DataRowView)quotesBindingSource.Current).Row["kitrecvd"].ToString();
+            booktypeTextBox.ReadOnly = string.IsNullOrEmpty(vKitrecvd);
         }
         
         private void btnPoSrch_Click(object sender, EventArgs e)
         {
+            if (txtPoSrch.Text.Length<1)
+            {
+                MbcMessageBox.Information("Enter data to search on.", "");
+                return;
+            }
             var sqlQuery = new SQLQuery();
             string querystring = "Select schcode,invno from Quotes where PoNum=@PoNum";
             SqlParameter[] parameters = new SqlParameter[] {
@@ -249,7 +254,8 @@ namespace Mbc5.Forms.MemoryBook
                     }
                     catch (DBConcurrencyException ex1)
                     {
-
+                        MbcMessageBox.Hand("Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", "Concurrency Error");
+                        this.Fill();
                         string errmsg = "Concurrency violation" + Environment.NewLine + ex1.Row.ItemArray[0].ToString();
 
                         processingResult.IsError = true;
@@ -980,11 +986,15 @@ namespace Mbc5.Forms.MemoryBook
                     }
                     catch (DBConcurrencyException ex1)
                     {
-                        DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsSales.quotesRow)(ex1.Row), ref dsSales);
-                        if (result == DialogResult.Yes)
-                        {
-                            Save();
-                        }
+                       // MbcMessageBox.Hand("Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", "Concurrency Error");
+                        this.Fill();
+                        //DialogResult result = ExceptionHandler.CreateMessage((DataSets.dsSales.quotesRow)(ex1.Row), ref dsSales);
+                        //if (result == DialogResult.Yes)
+                        //{
+                        //    Save();
+                        //}
+                        processingResult.IsError = true;
+                        processingResult.Errors.Add(new ApiProcessingError("Another user has updated this record, your copy is not current. Your data is being reverted, Please re - enter your data.", "Another user has updated this record, your copy is not current. Your data is being reverted, Please re-enter your data.", ""));
                     }
                     catch (Exception ex)
                     {
@@ -1024,8 +1034,7 @@ namespace Mbc5.Forms.MemoryBook
             if (String.IsNullOrEmpty(lblInvoice.Text) || lblInvoice.Text == "0")
             {
                 this.DisableControls(this);
-                EnableControls(this.txtInvoSrch);
-                EnableControls(btnInvSrch);
+               
                 EnableControls(btnPoSrch);
                 EnableControls(txtPoSrch);
             }
@@ -1225,7 +1234,7 @@ namespace Mbc5.Forms.MemoryBook
                         decimal Casebind = 0;
                         if (chkCaseBind.Checked)
                         {
-                            Casebind = BookOptionPricing.Case * numberOfCopies;
+                            Casebind = BookOptionPricing.Customized * numberOfCopies;
                             vBookCalcTax += (Casebind * this.TaxRate);
                             lblCaseamt.Text = Casebind.ToString();
                             CalcInk();
@@ -1315,7 +1324,7 @@ namespace Mbc5.Forms.MemoryBook
                         decimal Yir = 0;
                         if (chkYir.Checked)
                         {
-                            Yir = (BookOptionPricing.Yir * numberOfCopies);
+                            Yir = (BookOptionPricing.Ink * numberOfCopies);
                             vBookCalcTax += (Yir * this.TaxRate);
                             lblYir.Text = Yir.ToString();
                         }
@@ -1805,7 +1814,7 @@ namespace Mbc5.Forms.MemoryBook
                     custTableAdapter.Fill(dsSales.cust, Schcode);
 
                   
-                    this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
+                    this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim().Substring(0,5);
                 }
                 catch (Exception ex)
                 {
@@ -4152,6 +4161,7 @@ namespace Mbc5.Forms.MemoryBook
         }
         public override void InvoiceNumberSearch()
         {
+            var invno ="0";
             var saveResult = this.Save();
             if (saveResult.IsError)
             {
@@ -4159,8 +4169,10 @@ namespace Mbc5.Forms.MemoryBook
                 return;
             }
             DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
-            var invno = currentrow["invno"].ToString();
-
+            if (currentrow!=null)
+            {
+                invno = currentrow["invno"].ToString();
+            }
             frmSearch frmSearch = new frmSearch("INVNO", "SALES", invno);
 
             var result = frmSearch.ShowDialog();
@@ -4533,7 +4545,7 @@ namespace Mbc5.Forms.MemoryBook
                 sqlquery.AddParameter("@allclrck", chkAllClr.Checked);
                 sqlquery.AddParameter("@freebooks", 0);
                 sqlquery.AddParameter("@SalesTax", lblTaxTotal.Text.Replace("$", "").Replace(",", ""));
-                sqlquery.AddParameter("@BeforeTaxTotal", lblBookTotal.Text.Replace("$", "").Replace(",", ""));
+                sqlquery.AddParameter("@BeforeTaxTotal", lblBookTotalValue.Text.Replace("$", "").Replace(",", ""));
                 sqlquery.AddParameter("@Schname", ((DataRowView)this.custBindingSource.Current).Row["schname"].ToString().Trim());
                 sqlquery.AddParameter("@Schaddr", ((DataRowView)this.custBindingSource.Current).Row["schaddr"].ToString().Trim());
                 sqlquery.AddParameter("@Schaddr2", ((DataRowView)this.custBindingSource.Current).Row["schaddr2"].ToString().Trim());
@@ -4687,7 +4699,7 @@ namespace Mbc5.Forms.MemoryBook
             }
 
             bsxtraPrintDetailInvoice.DataSource = this.XrtaInvoiceDetailsPrint;
-
+         
             //refresh report
             this.reportViewer2.RefreshReport();
 
@@ -4731,6 +4743,52 @@ namespace Mbc5.Forms.MemoryBook
             }
         }
 
+        private void dteQuote_ValueChanged(object sender, EventArgs e)
+        {
+            dteQuote.Format = DateTimePickerFormat.Short;
+        }
+
+        private void pg2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmSales_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //set KeyPriview to True first.
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.KeyChar = (char)Keys.Tab;
+                SendKeys.Send(e.KeyChar.ToString());//send the keystroke to the form.
+            }
+
+            //if ((e.KeyChar == '\r'))
+            //{
+            //    e.KeyChar = '\t';
+            //    SendKeys.Send(e.KeyChar.ToString());
+            //}
+        }
+
+        private void booktypeTextBox_Leave(object sender, EventArgs e)
+        {
+            var vKitrecvd = ((DataRowView)quotesBindingSource.Current).Row["kitrecvd"].ToString();
+
+        }
+
+        private void booktypeTextBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                string[] roles = {"SA","Adminstratro"};
+                if (ApplicationUser.IsInOneOfRoles(roles))
+                {
+                    booktypeTextBox.ReadOnly = false;
+                }
+            }
+        }
+
+
+
 
 
         //nothing below here
@@ -4759,7 +4817,7 @@ namespace Mbc5.Forms.MemoryBook
         public string schcode { get; set; }
         public string descr { get; set; }
         public decimal price { get; set; }
-        public decimal discpercent { get; set; }
+        public string discpercent { get; set; }
     }
 
 }

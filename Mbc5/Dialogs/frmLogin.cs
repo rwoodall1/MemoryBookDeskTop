@@ -45,7 +45,7 @@ namespace Mbc5.Dialogs {
             {
                 AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5;User Id=sa;password=Briggitte1; Connect Timeout=5";
             }
-            else if (Environment == "PROD") {AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+            else if (Environment == "PROD") {AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id =MbcUser; password =3l3phant1; Connect Timeout=5"; }
 
             SqlConnection conn = new SqlConnection(AppConnectionString);
        
@@ -61,8 +61,8 @@ namespace Mbc5.Dialogs {
             cmd.CommandType = CommandType.Text;
             cmd.CommandTimeout = 5;
             cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@username", cUser);
-            cmd.Parameters.AddWithValue("@password", cPassword);
+            cmd.Parameters.AddWithValue("@username", cUser.Trim());
+            cmd.Parameters.AddWithValue("@password", cPassword.Trim());
             GenericIdentity vApplicationUser = new GenericIdentity(cUser);
 
             List<string> vroles = new List<string>();
@@ -78,20 +78,28 @@ namespace Mbc5.Dialogs {
                 string vFirstName = null;
                 cmd.Connection.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+                if (rdr.HasRows)
                 {
-                    
-                    vPassword = rdr["password"].ToString();
-                    vEmail = rdr["EmailAddress"].ToString();
-                    vId = rdr["id"].ToString();
-                    vChangePassword = rdr.IsDBNull(rdr.GetOrdinal("changepassword")) ? false: (bool)rdr["changepassword"];
-                    string vUsername = rdr["username"].ToString();
-                    vLastName = rdr["LastName"].ToString();
-                    vFirstName = rdr["FirstName"].ToString();
-                    vroles.Add(rdr["RoleName"].ToString().Trim());
+                    while (rdr.Read())
+                    {
 
+                        vPassword = rdr["password"].ToString();
+                        vEmail = rdr["EmailAddress"].ToString();
+                        vId = rdr["id"].ToString();
+                        vChangePassword = rdr.IsDBNull(rdr.GetOrdinal("changepassword")) ? false : (bool)rdr["changepassword"];
+                        string vUsername = rdr["username"].ToString();
+                        vLastName = rdr["LastName"].ToString();
+                        vFirstName = rdr["FirstName"].ToString();
+                        vroles.Add(rdr["RoleName"].ToString().Trim());
+
+                    }
                 }
-                if (vPassword == cPassword)
+                else {
+                    this.DialogResult = DialogResult.No;
+                    return;
+                }
+
+                if (vPassword.Trim() == cPassword.Trim())
                 {
                     this.panel1.Visible = false;
                     this.pbLoading.Visible = false;
@@ -115,6 +123,7 @@ namespace Mbc5.Dialogs {
                 userPrincipal.FirstName = vFirstName;
                 userPrincipal.LastName = vLastName;
                 userPrincipal.Email = vEmail;
+                userPrincipal.Initials = vFirstName.Substring(0, 1) + vLastName.Substring(0, 1);
                 userPrincipal.Roles = arrayrole.ToList();
                 frmMain.ApplicationUser = userPrincipal;
 

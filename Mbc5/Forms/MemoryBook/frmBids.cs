@@ -14,6 +14,8 @@ using System.Linq;
 using BindingModels;
 using BaseClass;
 using BaseClass.Core;
+using Microsoft.Reporting.WinForms;
+using Mbc5.Dialogs;
 namespace Mbc5.Forms.MemoryBook {
     public partial class frmBids : BaseClass.frmBase, INotifyPropertyChanged
     {
@@ -41,9 +43,10 @@ namespace Mbc5.Forms.MemoryBook {
         }
         private void bidsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
 		{
-			this.Validate();
-			this.bidsBindingSource.EndEdit();
-			this.tableAdapterManager.UpdateAll(this.dsBids);
+			//this.Validate();
+			//this.bidsBindingSource.EndEdit();
+            this.Save();
+			
 
 		}
         public frmMain frmMain { get; set; }
@@ -110,17 +113,25 @@ namespace Mbc5.Forms.MemoryBook {
             {
 				try {
 					this.custTableAdapter.Fill(this.dsBids.cust, this.Schcode);
-					this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
+					this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim().Substring(0,5);
 					this.bidsTableAdapter.Fill(this.dsBids.bids, this.Schcode);
-					DataRowView current = (DataRowView)bidsBindingSource.Current;
-					this.Schname = current["schname"].ToString();
-				}catch(Exception ex) {
+                    DataRowView current = (DataRowView)custBindingSource.Current;
+                    this.Schname = current["schname"].ToString().Trim();
+                    
+                }
+                catch(Exception ex) {
 					MbcMessageBox.Error(ex.Message, "");
 				}
             }
-            
-            CalculateEach();
-            BookCalc();
+            if (bidsBindingSource.Count == 0)
+            {
+                DisableControls(this.tabBids);
+                EnableControls(bidsBindingNavigator);
+            }
+            else {
+                CalculateEach();
+               BookCalc(); }
+           
         }
         private void DisableControls(Control con)
         {
@@ -408,7 +419,7 @@ namespace Mbc5.Forms.MemoryBook {
                         decimal Casebind = 0;
                         if (chkCaseBind.Checked)
                         {
-                            Casebind = BookOptionPricing.Case * numberOfCopies;
+                            Casebind = BookOptionPricing.Customized * numberOfCopies;
                             vBookCalcTax += (Casebind * this.TaxRate);
                             lblCaseamt.Text = Casebind.ToString();
                             CalcInk();
@@ -498,7 +509,7 @@ namespace Mbc5.Forms.MemoryBook {
                         decimal Yir = 0;
                         if (chkYir.Checked)
                         {
-                            Yir = (BookOptionPricing.Yir * numberOfCopies);
+                            Yir = (BookOptionPricing.Ink * numberOfCopies);
                             vBookCalcTax += (Yir * this.TaxRate);
                             lblYir.Text = Yir.ToString();
                         }
@@ -570,18 +581,18 @@ namespace Mbc5.Forms.MemoryBook {
                             foilamtTextBox.Text = "0.00";
                         }
                         //Lam
-                        decimal Laminationsft = 0;
+                        decimal Lamination = 0;
                         if (chkMLaminate.Checked)
                         {
-                            Laminationsft = (BookOptionPricing.Laminationsft * numberOfCopies);
-                            vBookCalcTax += (Laminationsft * this.TaxRate);
-                            lblMLaminateAmt.Text = Laminationsft.ToString();
+                            Lamination = (BookOptionPricing.Lamination * numberOfCopies);
+                            vBookCalcTax += (Lamination * this.TaxRate);
+                            lblMLaminateAmt.Text = Lamination.ToString();
 
                         }
                         else
                         {
                             lblMLaminateAmt.Text = "0.00";
-                            Laminationsft = 0;
+                            Lamination = 0;
                         }
                         //convert rest of info from strings to decimals for calculations
                         bool vParseResult;
@@ -603,10 +614,12 @@ namespace Mbc5.Forms.MemoryBook {
                         vParseResult = decimal.TryParse(txtDesc3tot.Text, out Desc3Tot);
                         vParseResult = decimal.TryParse(txtDesc4tot.Text, out Desc4Tot);
 
-                     
+                       
 
 
-                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story + Gloss + Laminationsft + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
+
+
+                        decimal SubTotal = (BookTotal + HardBack + Casebind + Perfectbind + Spiral + SaddleStitch + Professional + Convenient + Yir + Story + Gloss + Lamination + SpecCvrTot + FoilTot + ClrPgTot + MiscTot + Desc1Tot + Desc3Tot + Desc4Tot);
                         lblsubtot.Text = SubTotal.ToString("c");
                         this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);
                         this.lblSalesTax.Text = this.SalesTax.ToString("c");
@@ -618,7 +631,16 @@ namespace Mbc5.Forms.MemoryBook {
                         decimal msTot = 0;
                         decimal persTot = 0;
                         decimal iconTot = 0;
-                        
+                        decimal Credits = 0;
+                        decimal Credits2 = 0;
+                        decimal OtherChrg = 0;
+                        decimal OtherChrg2 = 0;
+                        vParseResult = decimal.TryParse(txtCredits.Text, out Credits);
+                        vParseResult = decimal.TryParse(txtCredits2.Text, out Credits2);
+                        vParseResult = decimal.TryParse(txtOtherChrg.Text, out OtherChrg);
+                        vParseResult = decimal.TryParse(txtOtherChrg2.Text, out OtherChrg2);
+
+
                         vParseResult = decimal.TryParse(lbldisc1amount.Text, out disc1);
                         vParseResult = decimal.TryParse(lbldisc2amount.Text, out disc2);
                         vParseResult = decimal.TryParse(otherdiscamt.Text, out disc3);
@@ -635,7 +657,7 @@ namespace Mbc5.Forms.MemoryBook {
                         this.SalesTax = Math.Round(vBookCalcTax, 2, MidpointRounding.AwayFromZero);
                         this.lblSalesTax.Text = this.SalesTax.ToString("c");
 
-                        lblfilnalsubtotal.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + iconTot).ToString("c");
+                        lblfilnalsubtotal.Text = (SubTotal + disc1 + disc2 + disc3 + msTot + persTot + iconTot+Credits+Credits2+OtherChrg+OtherChrg2).ToString("c");
                         SubTotal += (disc1 + disc2 + disc3 + msTot + persTot + iconTot);
                         txtFinalbookprc.Text =(SubTotal / numberOfCopies).ToString("c");
                         //other charges and credits
@@ -849,8 +871,6 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
 
-      
-
         //General
         public override ApiProcessingResult<bool> Save()
         {
@@ -960,6 +980,105 @@ namespace Mbc5.Forms.MemoryBook {
             
             return val;
         }
+        public override void SchCodeSearch()
+        {
+            
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+
+
+            var currentSchool = this.Schcode;
+            frmSearch frmSearch = new frmSearch("Schcode", "BIDS", Schcode);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    int vId = frmSearch.ReturnValue.Invno;//this will be the bid id
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)bidsBindingSource.Current;
+
+                  
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+                    var vPos = bidsBindingSource.Find("Id", vId);
+                    bidsBindingSource.Position = vPos;
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                frmBids_Paint(this, null);
+                this.Cursor = Cursors.Default;
+            }
+        }
+        public override void SchnameSearch()
+        {
+            var saveResult = this.Save();
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+
+
+            var currentSchool = this.Schname;
+            frmSearch frmSearch = new frmSearch("Schname", "BIDS", currentSchool);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    int vId = frmSearch.ReturnValue.Invno;//this will be the bid id
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)bidsBindingSource.Current;
+
+
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+                    var vPos = bidsBindingSource.Find("Id", vId);
+                    bidsBindingSource.Position = vPos;
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                frmBids_Paint(this, null);
+                this.Cursor = Cursors.Default;
+            }
+
+
+
+        }
+       
 
         #endregion
         #region Validation
@@ -1277,164 +1396,47 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void txtClrTot_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtClrTot.Text))
-            {
 
-                errorProvider1.SetError(txtClrTot, "");
-                decimal numeral;
-                var result = decimal.TryParse(txtClrTot.Text, out numeral);
-                //non numeric
-                if (!result)
-                {
-                    errorProvider1.SetError(txtClrTot, "Please enter a decimal amount.");
-                    e.Cancel = true;
-
-                }
-            }
         }
 
         private void txtMisc_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtMisc.Text))
-            {
 
-                errorProvider1.SetError(txtMisc, "");
-                decimal numeral;
-                var result = decimal.TryParse(txtMisc.Text, out numeral);
-                //non numeric
-                if (!result)
-                {
-                    errorProvider1.SetError(txtMisc, "Please enter a decimal amount.");
-                    e.Cancel = true;
-
-                }
-            }
         }
 
         private void txtDesc1amt_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtDesc1amt.Text))
-            {
 
-                errorProvider1.SetError(txtDesc1amt, "");
-                decimal numeral;
-                var result = decimal.TryParse(txtDesc1amt.Text, out numeral);
-                //non numeric
-                if (!result)
-                {
-                    errorProvider1.SetError(txtDesc1amt, "Please enter a decimal amount.");
-                    e.Cancel = true;
-
-                }
-            }
         }
 
         private void txtDesc3tot_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtDesc3tot.Text))
-            {
 
-                errorProvider1.SetError(txtDesc3tot, "");
-                decimal numeral;
-                var result = decimal.TryParse(txtDesc3tot.Text, out numeral);
-                //non numeric
-                if (!result)
-                {
-                    errorProvider1.SetError(txtDesc3tot, "Please enter a decimal amount.");
-                    e.Cancel = true;
-
-                }
-            }
         }
 
         private void txtDesc4tot_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtDesc4tot.Text))
-            {
 
-                errorProvider1.SetError(txtDesc4tot, "");
-                decimal numeral;
-                var result = decimal.TryParse(txtDesc4tot.Text, out numeral);
-                //non numeric
-                if (!result)
-                {
-                    errorProvider1.SetError(txtDesc4tot, "Please enter a decimal amount.");
-                    e.Cancel = true;
-
-                }
-            }
         }
 
         private void txtCredits_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtCredits.Text))
-            {
 
-                errorProvider1.SetError(txtCredits, "");
-                decimal numeral;
-                var result = decimal.TryParse(txtCredits.Text, out numeral);
-                //non numeric
-                if (!result)
-                {
-                    errorProvider1.SetError(txtCredits, "Please enter a decimal amount.");
-                    e.Cancel = true;
-
-                }
-            }
         }
 
         private void txtCredits2_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtCredits2.Text))
-            {
 
-                errorProvider1.SetError(txtCredits2, "");
-                decimal numeral;
-                var result = decimal.TryParse(txtCredits2.Text, out numeral);
-                //non numeric
-                if (!result)
-                {
-                    errorProvider1.SetError(txtCredits2, "Please enter a decimal amount.");
-                    e.Cancel = true;
-
-                }
-            }
         }
 
         private void txtOtherChrg_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtOtherChrg.Text))
-            {
 
-                errorProvider1.SetError(txtOtherChrg, "");
-                decimal numeral;
-                var result = decimal.TryParse(txtOtherChrg.Text, out numeral);
-                //non numeric
-                if (!result)
-                {
-                    errorProvider1.SetError(txtOtherChrg, "Please enter a decimal amount.");
-                    e.Cancel = true;
-
-                }
-            }
         }
 
         private void txtOtherChrg2_Validating(object sender, CancelEventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtOtherChrg2.Text))
-            {
 
-                errorProvider1.SetError(txtOtherChrg2, "");
-                decimal numeral;
-                var result = decimal.TryParse(txtOtherChrg2.Text, out numeral);
-                //non numeric
-                if (!result)
-                {
-                    errorProvider1.SetError(txtOtherChrg2, "Please enter a decimal amount.");
-                    e.Cancel = true;
-
-                }
-            }
         }
 
         private void saletaxTextBox_Validating(object sender, CancelEventArgs e)
@@ -1499,7 +1501,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void frmBids_Paint(object sender, PaintEventArgs e)
         {
-            try { this.Text = "MBC Customer-" + this.Schname.Trim() + " (" + this.Schcode.Trim() + ")"; }
+            try { this.Text = "Bids-" + this.Schname.Trim() + " (" + this.Schcode.Trim() + ")"; }
             catch
             {
 
@@ -1508,6 +1510,8 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void txtNocopies_Leave(object sender, EventArgs e)
         {
+            this.BookOptionPricing = null;
+            this.Pricing = null;
             CalculateEach();
             BookCalc();
         }
@@ -1520,6 +1524,8 @@ namespace Mbc5.Forms.MemoryBook {
 
         private void txtBYear_Leave(object sender, EventArgs e)
         {
+            this.BookOptionPricing = null;
+            this.Pricing = null;
             CalculateEach();
             BookCalc();
         }
@@ -1870,7 +1876,7 @@ namespace Mbc5.Forms.MemoryBook {
             }
             else
             {
-                vrow.Description = "Black and White book withBlack and White book with " + txtNoPages.Text + " Pages " + txtNocopies.Text + " Copies";
+                vrow.Description = "Black and White book with " + txtNoPages.Text + " Pages " + txtNocopies.Text + " Copies";
                 vrow.Price = Convert.ToDecimal(lblBookTotal.Text);
                 vrow.DiscountPercentage = "";
             }
@@ -2195,10 +2201,16 @@ namespace Mbc5.Forms.MemoryBook {
             
            
             BidInvoiceDetailBindingSource.DataSource = vBidDetails;
+            ReportParameter rp0 = new ReportParameter("ReportType", chkPrntAsInvoice.Checked.ToString());
+
+            reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp0});
+          
 
             Cursor.Current = Cursors.WaitCursor;
            
-            this.reportViewer1.RefreshReport();
+                this.reportViewer1.RefreshReport();
+            
+            
              Cursor.Current = Cursors.Arrow;
         }
         private void prntBid()
@@ -2209,7 +2221,15 @@ namespace Mbc5.Forms.MemoryBook {
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
+            try
+            {
             this.reportViewer1.PrintDialog();
+            }catch(Exception ex)
+            {
+                var a = 1;
+                MbcMessageBox.Error(ex.Message,"");
+            }
+            
            Cursor.Current = Cursors.Arrow;
 
         }
@@ -2249,7 +2269,7 @@ namespace Mbc5.Forms.MemoryBook {
 
                             ,[disc2],[dp3desc],[dp3],[disc3],[dp4],[disc4],[cred_etc],[adjbef],[adjaftr],[fbkprc],[ftotprc]
 
-                            ,[source],[xtrabkno],[xtrabkprc],[desc1],[desc1tot],[desc2],[desc2tot],[ponum],[newprice],[schout]
+                            ,[source],[xtrabkno],[xtrabkprc],[desc1],[desc1tot],[desc2],[desc2tot],[ponum],[newprice]
 
                              ,[allclrck],[allclramt],[inkclr],[foiladamt],[desc3],[desc3tot],[desc4],[desc4tot],[clrpgdesc]
 							 ,[clrpgtot],[glspaper],[glsamt] ,[acovrde],[bpovrde],[bpyear],[themck],[themamt],[yirschool],[story],[supplements]
@@ -2287,7 +2307,7 @@ namespace Mbc5.Forms.MemoryBook {
 
                             ,[disc2],[dp3desc],[dp3],[disc3],[dp4],[disc4],[cred_etc],[adjbef],[adjaftr],[fbkprc],[ftotprc]
 
-                            ,[source],[xtrabkno],[xtrabkprc],[desc1],[desc1tot],[desc2],[desc2tot],[ponum],[newprice],[schout]
+                            ,[source],[xtrabkno],[xtrabkprc],[desc1],[desc1tot],[desc2],[desc2tot],[ponum],[newprice]
 
                             ,[allclrck],[allclramt],[inkclr],[foiladamt],[desc3],[desc3tot] ,[desc4],[desc4tot],[clrpgdesc]
 							,[clrpgtot],[glspaper],[glsamt],[acovrde],[bpovrde],[bpyear],[themck],[themamt],[yirschool],[story],[supplements]
@@ -2433,6 +2453,81 @@ namespace Mbc5.Forms.MemoryBook {
         private void frmBids_Deactivate(object sender, EventArgs e)
         {
             try { frmMain.HideSearchButtons(); } catch { }
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            EnableAllControls(this.tabBids);
+            this.lblschode.Text = this.Schcode;
+        }
+
+        private void chkStory_Click(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtClrTot_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtMisc_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtDesc1amt_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtDesc3tot_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtDesc4tot_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtCredits_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtCredits2_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtOtherChrg_Leave_1(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void txtOtherChrg2_Leave_1(object sender, EventArgs e)
+        {
+           BookCalc();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dteQuote_ValueChanged(object sender, EventArgs e)
+        {
+
+            dteQuote.Format = DateTimePickerFormat.Short;
+        }
+
+        private void frmBids_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //set KeyPriview to True first.
+            if (e.KeyChar == (char)Keys.Enter)
+                e.KeyChar = (char)Keys.Tab;
+            SendKeys.Send(e.KeyChar.ToString());//send the keystroke to the form.
         }
     }
 }

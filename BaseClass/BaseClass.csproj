@@ -84,6 +84,7 @@
     <Compile Include="Classes\Utilities.cs" />
     <Compile Include="Core\ApiProcessingError.cs" />
     <Compile Include="Core\ApiProcessingResult.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Forms\frmBase.cs">
       <SubType>Form</SubType>
     </Compile>

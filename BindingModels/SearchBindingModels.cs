@@ -239,4 +239,24 @@ namespace BindingModels
         public string EndSheetNo { get; set; }
         public string Contryear { get; set; }
     }
+    public class BidsSchcodeSearch
+    {
+        public string Schcode { get; set; }
+        public string Schname { get; set; }
+        public string Contryear { get; set; }
+        public int Id { get; set; }
+        public string SchZip { get; set; }
+        public string Schstate { get; set; }
+    }
+    public class BidsSchnameSearch
+    {
+        public string Schname { get; set; }
+        public string Schcode { get; set; }
+        public string Contryear { get; set; }
+        public int Id {get; set;}
+        public string SchZip { get; set; }
+        public string Schstate { get; set; }
+
+
+    }
 }

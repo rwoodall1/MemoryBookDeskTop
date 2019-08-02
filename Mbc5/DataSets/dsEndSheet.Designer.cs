@@ -1838,8 +1838,8 @@ namespace Mbc5.DataSets {
                 this.columnschcode.Unique = true;
                 this.columnschcode.MaxLength = 6;
                 this.columnschname.AllowDBNull = false;
-                this.columnschname.MaxLength = 34;
-                this.columncontryear.MaxLength = 2;
+                this.columnschname.MaxLength = 50;
+                this.columncontryear.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11249,8 +11249,8 @@ SELECT schcode, schname, contryear FROM cust WHERE (schcode = @schcode)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT          schcode, schname, contryear\r\nFROM              cust\r\nWHERE       " +
-                "   (schcode = @Schcode)";
+            this._commandCollection[0].CommandText = "SELECT        schcode, schname, contryear\r\nFROM            dbo.cust\r\nWHERE       " +
+                " (schcode = @Schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

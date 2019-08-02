@@ -112,23 +112,49 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.Label stageLabel1;
             System.Windows.Forms.Label gradesLabel;
             System.Windows.Forms.Label enrollmentLabel1;
+            System.Windows.Forms.Label shipppingAddrLabel;
+            System.Windows.Forms.Label shippingAddr2Label;
+            System.Windows.Forms.Label invoiceCityLabel;
+            System.Windows.Forms.Label invoiceStateLabel;
+            System.Windows.Forms.Label invoiceZipCodeLabel;
+            System.Windows.Forms.Label shipppingAddrLabel1;
+            System.Windows.Forms.Label shippingAddr2Label1;
+            System.Windows.Forms.Label shippingCityLabel;
+            System.Windows.Forms.Label shippingStateLabel;
+            System.Windows.Forms.Label shippingZipCodeLabel;
+            System.Windows.Forms.Label shipAddressLabel;
+            System.Windows.Forms.Label shipAddress2Label;
+            System.Windows.Forms.Label shipCityLabel;
+            System.Windows.Forms.Label shipStateLabel;
+            System.Windows.Forms.Label shipZipCodeLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMbcCust));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource12 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsCust = new Mbc5.DataSets.dsCust();
             this.ProdutnTicketModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ProductionCheckListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
+            this.pnlHead = new System.Windows.Forms.Panel();
+            this.lblHiddenSchcode = new System.Windows.Forms.Label();
+            this.btnAddcust = new System.Windows.Forms.Button();
+            this.btnMainLog = new System.Windows.Forms.Button();
+            this.btnNewCustomer = new System.Windows.Forms.Button();
+            this.lblSchcodeVal = new System.Windows.Forms.Label();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.txtSchEmail = new System.Windows.Forms.TextBox();
             this.enrollmentTextBox = new System.Windows.Forms.TextBox();
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsCust = new Mbc5.DataSets.dsCust();
             this.gradesComboBox = new System.Windows.Forms.ComboBox();
             this.blkwhiteCheckBox = new System.Windows.Forms.CheckBox();
             this.allcolorCheckBox = new System.Windows.Forms.CheckBox();
@@ -185,12 +211,12 @@ namespace Mbc5.Forms.MemoryBook {
             this.springbreakTextBox = new System.Windows.Forms.TextBox();
             this.txtWebsite = new System.Windows.Forms.TextBox();
             this.btnWebsite = new System.Windows.Forms.Button();
-            this.txtSchEmail = new System.Windows.Forms.TextBox();
             this.txtaddress = new System.Windows.Forms.TextBox();
             this.txtSchPhone = new System.Windows.Forms.TextBox();
             this.txtZip = new System.Windows.Forms.TextBox();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
+            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnProdTckt = new System.Windows.Forms.Button();
             this.btnProdChk = new System.Windows.Forms.Button();
             this.csrep2TextBox = new System.Windows.Forms.TextBox();
@@ -215,9 +241,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.btnInterOffice = new System.Windows.Forms.Button();
             this.yb_sthTextBox = new System.Windows.Forms.TextBox();
             this.inofficeTextBox = new System.Windows.Forms.TextBox();
-            this.pnlHead = new System.Windows.Forms.Panel();
-            this.btnNewCustomer = new System.Windows.Forms.Button();
-            this.lblSchcodeVal = new System.Windows.Forms.Label();
             this.pg2 = new System.Windows.Forms.TabPage();
             this.ccontcityTextBox = new System.Windows.Forms.TextBox();
             this.bcontcityTextBox = new System.Windows.Forms.TextBox();
@@ -270,32 +293,29 @@ namespace Mbc5.Forms.MemoryBook {
             this.contaddr2TextBox = new System.Windows.Forms.TextBox();
             this.contaddrTextBox = new System.Windows.Forms.TextBox();
             this.pg3 = new System.Windows.Forms.TabPage();
-            this.chkMktComplete = new System.Windows.Forms.CheckBox();
             this.btnSaveMktLog = new System.Windows.Forms.Button();
-            this.btnSaveTeleLog = new System.Windows.Forms.Button();
+            this.btnEditTeleLog = new System.Windows.Forms.Button();
             this.lblSchcode = new System.Windows.Forms.Label();
-            this.btnAddMarketLog = new System.Windows.Forms.Button();
             this.btnAddLog = new System.Windows.Forms.Button();
             this.lblMarketing = new System.Windows.Forms.Label();
             this.mktinfoDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.lkpMktReferenceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.lkpPromotionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mktinfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMktInfo = new Mbc5.DataSets.dsMktInfo();
             this.txtReason = new System.Windows.Forms.TextBox();
             this.datecontBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.commentListBox = new System.Windows.Forms.ListBox();
-            this.lkpCommentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.datecontDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datecont = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.initial = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -303,9 +323,54 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.lkpTypeContBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTeleSchname = new System.Windows.Forms.Label();
+            this.pg4 = new System.Windows.Forms.TabPage();
+            this.shipppingAddrTextBox1 = new System.Windows.Forms.TextBox();
+            this.invZipCodeTextBox = new System.Windows.Forms.TextBox();
+            this.cmbInvStateComboBox = new System.Windows.Forms.ComboBox();
+            this.statesBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.invCityTextBox = new System.Windows.Forms.TextBox();
+            this.invAddr2TextBox = new System.Windows.Forms.TextBox();
+            this.invAddrTextBox = new System.Windows.Forms.TextBox();
+            this.btnSaveInformation = new System.Windows.Forms.Button();
+            this.btnSchoolToShipping = new System.Windows.Forms.Button();
+            this.btnSchoolToInvoice = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.shippingZipCodeTextBox = new System.Windows.Forms.TextBox();
+            this.cmbshippingState = new System.Windows.Forms.ComboBox();
+            this.statesBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.shippingCityTextBox = new System.Windows.Forms.TextBox();
+            this.shippingAddr2TextBox1 = new System.Windows.Forms.TextBox();
+            this.pg5 = new System.Windows.Forms.TabPage();
+            this.pnlAdd = new System.Windows.Forms.Panel();
+            this.btnCancelSupply = new System.Windows.Forms.Button();
+            this.btnSaveSupply = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cmbSupplyItem = new System.Windows.Forms.ComboBox();
+            this.lkpSupplyItemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtSupplyQty = new System.Windows.Forms.TextBox();
+            this.txtSupplyInvoice = new System.Windows.Forms.TextBox();
+            this.btnAddSupply = new System.Windows.Forms.Button();
+            this.xsuppliesDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xsuppliesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsXSupplies = new Mbc5.DataSets.dsXSupplies();
+            this.shipZipCodeLabel1 = new System.Windows.Forms.Label();
+            this.shipStateLabel1 = new System.Windows.Forms.Label();
+            this.shipCityLabel1 = new System.Windows.Forms.Label();
+            this.shipAddress2Label1 = new System.Windows.Forms.Label();
+            this.shipAddressLabel1 = new System.Windows.Forms.Label();
+            this.pg6 = new System.Windows.Forms.TabPage();
+            this.lkpTypeContBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lkpCommentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -334,6 +399,9 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpLeadSourceTableAdapter = new Mbc5.DataSets.dsCustTableAdapters.lkpLeadSourceTableAdapter();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.reportViewerCheckList = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.xsuppliesTableAdapter = new Mbc5.DataSets.dsXSuppliesTableAdapters.xsuppliesTableAdapter();
+            this.tableAdapterManager4 = new Mbc5.DataSets.dsXSuppliesTableAdapters.TableAdapterManager();
+            this.lkpSupplyItemsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpSupplyItemsTableAdapter();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -416,17 +484,33 @@ namespace Mbc5.Forms.MemoryBook {
             stageLabel1 = new System.Windows.Forms.Label();
             gradesLabel = new System.Windows.Forms.Label();
             enrollmentLabel1 = new System.Windows.Forms.Label();
+            shipppingAddrLabel = new System.Windows.Forms.Label();
+            shippingAddr2Label = new System.Windows.Forms.Label();
+            invoiceCityLabel = new System.Windows.Forms.Label();
+            invoiceStateLabel = new System.Windows.Forms.Label();
+            invoiceZipCodeLabel = new System.Windows.Forms.Label();
+            shipppingAddrLabel1 = new System.Windows.Forms.Label();
+            shippingAddr2Label1 = new System.Windows.Forms.Label();
+            shippingCityLabel = new System.Windows.Forms.Label();
+            shippingStateLabel = new System.Windows.Forms.Label();
+            shippingZipCodeLabel = new System.Windows.Forms.Label();
+            shipAddressLabel = new System.Windows.Forms.Label();
+            shipAddress2Label = new System.Windows.Forms.Label();
+            shipCityLabel = new System.Windows.Forms.Label();
+            shipStateLabel = new System.Windows.Forms.Label();
+            shipZipCodeLabel = new System.Windows.Forms.Label();
             this.BottomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProdutnTicketModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionCheckListBindingSource)).BeginInit();
             this.CustTab.SuspendLayout();
             this.pg1.SuspendLayout();
+            this.pnlHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             this.addItemMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkpLeadNameBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).BeginInit();
@@ -437,7 +521,6 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.lkpPrevPubBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpMultiYearOptionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).BeginInit();
-            this.pnlHead.SuspendLayout();
             this.pg2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contpstnBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource2)).BeginInit();
@@ -451,9 +534,18 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.mktinfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMktInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpCommentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontDataGridView)).BeginInit();
+            this.pg4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource4)).BeginInit();
+            this.pg5.SuspendLayout();
+            this.pnlAdd.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpSupplyItemsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xsuppliesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xsuppliesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsXSupplies)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpTypeContBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpCommentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsDateCont)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource1)).BeginInit();
@@ -1225,6 +1317,158 @@ namespace Mbc5.Forms.MemoryBook {
             enrollmentLabel1.TabIndex = 121;
             enrollmentLabel1.Text = "Enroll:";
             // 
+            // shipppingAddrLabel
+            // 
+            shipppingAddrLabel.AutoSize = true;
+            shipppingAddrLabel.Location = new System.Drawing.Point(152, 87);
+            shipppingAddrLabel.Name = "shipppingAddrLabel";
+            shipppingAddrLabel.Size = new System.Drawing.Size(83, 13);
+            shipppingAddrLabel.TabIndex = 0;
+            shipppingAddrLabel.Text = "Invoice Address";
+            shipppingAddrLabel.Click += new System.EventHandler(this.shipppingAddrLabel_Click);
+            // 
+            // shippingAddr2Label
+            // 
+            shippingAddr2Label.AutoSize = true;
+            shippingAddr2Label.Location = new System.Drawing.Point(143, 113);
+            shippingAddr2Label.Name = "shippingAddr2Label";
+            shippingAddr2Label.Size = new System.Drawing.Size(92, 13);
+            shippingAddr2Label.TabIndex = 2;
+            shippingAddr2Label.Text = "Invoice Address 2";
+            // 
+            // invoiceCityLabel
+            // 
+            invoiceCityLabel.AutoSize = true;
+            invoiceCityLabel.Location = new System.Drawing.Point(173, 139);
+            invoiceCityLabel.Name = "invoiceCityLabel";
+            invoiceCityLabel.Size = new System.Drawing.Size(62, 13);
+            invoiceCityLabel.TabIndex = 4;
+            invoiceCityLabel.Text = "Invoice City";
+            // 
+            // invoiceStateLabel
+            // 
+            invoiceStateLabel.AutoSize = true;
+            invoiceStateLabel.Location = new System.Drawing.Point(165, 165);
+            invoiceStateLabel.Name = "invoiceStateLabel";
+            invoiceStateLabel.Size = new System.Drawing.Size(70, 13);
+            invoiceStateLabel.TabIndex = 6;
+            invoiceStateLabel.Text = "Invoice State";
+            // 
+            // invoiceZipCodeLabel
+            // 
+            invoiceZipCodeLabel.AutoSize = true;
+            invoiceZipCodeLabel.Location = new System.Drawing.Point(147, 192);
+            invoiceZipCodeLabel.Name = "invoiceZipCodeLabel";
+            invoiceZipCodeLabel.Size = new System.Drawing.Size(88, 13);
+            invoiceZipCodeLabel.TabIndex = 8;
+            invoiceZipCodeLabel.Text = "Invoice Zip Code";
+            // 
+            // shipppingAddrLabel1
+            // 
+            shipppingAddrLabel1.AutoSize = true;
+            shipppingAddrLabel1.Location = new System.Drawing.Point(140, 287);
+            shipppingAddrLabel1.Name = "shipppingAddrLabel1";
+            shipppingAddrLabel1.Size = new System.Drawing.Size(95, 13);
+            shipppingAddrLabel1.TabIndex = 10;
+            shipppingAddrLabel1.Text = "Shippping Address";
+            // 
+            // shippingAddr2Label1
+            // 
+            shippingAddr2Label1.AutoSize = true;
+            shippingAddr2Label1.Location = new System.Drawing.Point(137, 316);
+            shippingAddr2Label1.Name = "shippingAddr2Label1";
+            shippingAddr2Label1.Size = new System.Drawing.Size(98, 13);
+            shippingAddr2Label1.TabIndex = 12;
+            shippingAddr2Label1.Text = "Shipping Address 2";
+            // 
+            // shippingCityLabel
+            // 
+            shippingCityLabel.AutoSize = true;
+            shippingCityLabel.Location = new System.Drawing.Point(167, 342);
+            shippingCityLabel.Name = "shippingCityLabel";
+            shippingCityLabel.Size = new System.Drawing.Size(68, 13);
+            shippingCityLabel.TabIndex = 14;
+            shippingCityLabel.Text = "Shipping City";
+            // 
+            // shippingStateLabel
+            // 
+            shippingStateLabel.AutoSize = true;
+            shippingStateLabel.Location = new System.Drawing.Point(159, 368);
+            shippingStateLabel.Name = "shippingStateLabel";
+            shippingStateLabel.Size = new System.Drawing.Size(76, 13);
+            shippingStateLabel.TabIndex = 16;
+            shippingStateLabel.Text = "Shipping State";
+            // 
+            // shippingZipCodeLabel
+            // 
+            shippingZipCodeLabel.AutoSize = true;
+            shippingZipCodeLabel.Location = new System.Drawing.Point(141, 395);
+            shippingZipCodeLabel.Name = "shippingZipCodeLabel";
+            shippingZipCodeLabel.Size = new System.Drawing.Size(94, 13);
+            shippingZipCodeLabel.TabIndex = 18;
+            shippingZipCodeLabel.Text = "Shipping Zip Code";
+            // 
+            // shipAddressLabel
+            // 
+            shipAddressLabel.AutoSize = true;
+            shipAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            shipAddressLabel.Location = new System.Drawing.Point(274, 20);
+            shipAddressLabel.Name = "shipAddressLabel";
+            shipAddressLabel.Size = new System.Drawing.Size(150, 20);
+            shipAddressLabel.TabIndex = 0;
+            shipAddressLabel.Text = "Shipping Address";
+            // 
+            // shipAddress2Label
+            // 
+            shipAddress2Label.AutoSize = true;
+            shipAddress2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            shipAddress2Label.Location = new System.Drawing.Point(259, 52);
+            shipAddress2Label.Name = "shipAddress2Label";
+            shipAddress2Label.Size = new System.Drawing.Size(165, 20);
+            shipAddress2Label.TabIndex = 2;
+            shipAddress2Label.Text = "Shipping Address 2";
+            // 
+            // shipCityLabel
+            // 
+            shipCityLabel.AutoSize = true;
+            shipCityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            shipCityLabel.Location = new System.Drawing.Point(310, 84);
+            shipCityLabel.Name = "shipCityLabel";
+            shipCityLabel.Size = new System.Drawing.Size(114, 20);
+            shipCityLabel.TabIndex = 4;
+            shipCityLabel.Text = "Shipping City";
+            // 
+            // shipStateLabel
+            // 
+            shipStateLabel.AutoSize = true;
+            shipStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            shipStateLabel.Location = new System.Drawing.Point(296, 116);
+            shipStateLabel.Name = "shipStateLabel";
+            shipStateLabel.Size = new System.Drawing.Size(128, 20);
+            shipStateLabel.TabIndex = 6;
+            shipStateLabel.Text = "Shipping State";
+            // 
+            // shipZipCodeLabel
+            // 
+            shipZipCodeLabel.AutoSize = true;
+            shipZipCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            shipZipCodeLabel.Location = new System.Drawing.Point(268, 148);
+            shipZipCodeLabel.Name = "shipZipCodeLabel";
+            shipZipCodeLabel.Size = new System.Drawing.Size(156, 20);
+            shipZipCodeLabel.TabIndex = 8;
+            shipZipCodeLabel.Text = "Shipping Zip Code";
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsCust;
+            // 
+            // dsCust
+            // 
+            this.dsCust.DataSetName = "dsCust";
+            this.dsCust.EnforceConstraints = false;
+            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // ProdutnTicketModelBindingSource
             // 
             this.ProdutnTicketModelBindingSource.DataSource = typeof(BindingModels.ProdutnTicketModel);
@@ -1237,6 +1481,9 @@ namespace Mbc5.Forms.MemoryBook {
             this.CustTab.Controls.Add(this.pg1);
             this.CustTab.Controls.Add(this.pg2);
             this.CustTab.Controls.Add(this.pg3);
+            this.CustTab.Controls.Add(this.pg4);
+            this.CustTab.Controls.Add(this.pg5);
+            this.CustTab.Controls.Add(this.pg6);
             this.CustTab.Location = new System.Drawing.Point(0, 20);
             this.CustTab.Name = "CustTab";
             this.CustTab.SelectedIndex = 0;
@@ -1247,8 +1494,8 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.Color.Transparent;
-            this.pg1.Controls.Add(this.splitContainer);
             this.pg1.Controls.Add(this.pnlHead);
+            this.pg1.Controls.Add(this.splitContainer);
             this.pg1.Location = new System.Drawing.Point(4, 22);
             this.pg1.Margin = new System.Windows.Forms.Padding(2);
             this.pg1.Name = "pg1";
@@ -1257,6 +1504,73 @@ namespace Mbc5.Forms.MemoryBook {
             this.pg1.TabIndex = 0;
             this.pg1.Text = "School";
             this.pg1.Enter += new System.EventHandler(this.pg1_Enter);
+            // 
+            // pnlHead
+            // 
+            this.pnlHead.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHead.Controls.Add(this.lblHiddenSchcode);
+            this.pnlHead.Controls.Add(this.btnAddcust);
+            this.pnlHead.Controls.Add(this.btnMainLog);
+            this.pnlHead.Controls.Add(this.btnNewCustomer);
+            this.pnlHead.Controls.Add(this.lblSchcodeVal);
+            this.pnlHead.Location = new System.Drawing.Point(0, 0);
+            this.pnlHead.Name = "pnlHead";
+            this.pnlHead.Size = new System.Drawing.Size(1226, 27);
+            this.pnlHead.TabIndex = 64;
+            // 
+            // lblHiddenSchcode
+            // 
+            this.lblHiddenSchcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
+            this.lblHiddenSchcode.Location = new System.Drawing.Point(270, 3);
+            this.lblHiddenSchcode.Name = "lblHiddenSchcode";
+            this.lblHiddenSchcode.Size = new System.Drawing.Size(1, 1);
+            this.lblHiddenSchcode.TabIndex = 108;
+            this.lblHiddenSchcode.Text = "schcode";
+            // 
+            // btnAddcust
+            // 
+            this.btnAddcust.Location = new System.Drawing.Point(7, 2);
+            this.btnAddcust.Name = "btnAddcust";
+            this.btnAddcust.Size = new System.Drawing.Size(127, 23);
+            this.btnAddcust.TabIndex = 107;
+            this.btnAddcust.Text = "Add New Customer";
+            this.btnAddcust.UseVisualStyleBackColor = true;
+            this.btnAddcust.Click += new System.EventHandler(this.btnAddcust_Click);
+            // 
+            // btnMainLog
+            // 
+            this.btnMainLog.Location = new System.Drawing.Point(139, 2);
+            this.btnMainLog.Name = "btnMainLog";
+            this.btnMainLog.Size = new System.Drawing.Size(127, 23);
+            this.btnMainLog.TabIndex = 106;
+            this.btnMainLog.Text = "Add Log";
+            this.btnMainLog.UseVisualStyleBackColor = true;
+            this.btnMainLog.Click += new System.EventHandler(this.btnMainLog_Click);
+            // 
+            // btnNewCustomer
+            // 
+            this.btnNewCustomer.AutoSize = true;
+            this.btnNewCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnNewCustomer.Image")));
+            this.btnNewCustomer.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnNewCustomer.Location = new System.Drawing.Point(1060, 3);
+            this.btnNewCustomer.Name = "btnNewCustomer";
+            this.btnNewCustomer.Size = new System.Drawing.Size(159, 23);
+            this.btnNewCustomer.TabIndex = 9;
+            this.btnNewCustomer.Text = "New Customer Email";
+            this.btnNewCustomer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNewCustomer.UseVisualStyleBackColor = true;
+            this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
+            // 
+            // lblSchcodeVal
+            // 
+            this.lblSchcodeVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
+            this.lblSchcodeVal.Location = new System.Drawing.Point(980, 6);
+            this.lblSchcodeVal.Name = "lblSchcodeVal";
+            this.lblSchcodeVal.Size = new System.Drawing.Size(1, 1);
+            this.lblSchcodeVal.TabIndex = 105;
+            this.lblSchcodeVal.Text = "label29";
             // 
             // splitContainer
             // 
@@ -1270,6 +1584,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.splitContainer.Panel1.AutoScroll = true;
             this.splitContainer.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel1.Controls.Add(this.txtSchEmail);
             this.splitContainer.Panel1.Controls.Add(enrollmentLabel1);
             this.splitContainer.Panel1.Controls.Add(this.enrollmentTextBox);
             this.splitContainer.Panel1.Controls.Add(gradesLabel);
@@ -1346,7 +1661,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.Panel1.Controls.Add(this.springbreakTextBox);
             this.splitContainer.Panel1.Controls.Add(this.txtWebsite);
             this.splitContainer.Panel1.Controls.Add(this.btnWebsite);
-            this.splitContainer.Panel1.Controls.Add(this.txtSchEmail);
             this.splitContainer.Panel1.Controls.Add(this.txtaddress);
             this.splitContainer.Panel1.Controls.Add(this.txtSchPhone);
             this.splitContainer.Panel1.Controls.Add(schphoneLabel);
@@ -1393,10 +1707,20 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.Panel2.Controls.Add(this.btnInterOffice);
             this.splitContainer.Panel2.Controls.Add(this.yb_sthTextBox);
             this.splitContainer.Panel2.Controls.Add(this.inofficeTextBox);
+            this.splitContainer.Panel2.Controls.Add(this.reportViewer2);
             this.splitContainer.Size = new System.Drawing.Size(1221, 596);
             this.splitContainer.SplitterDistance = 598;
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
+            // 
+            // txtSchEmail
+            // 
+            this.txtSchEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schemail", true));
+            this.txtSchEmail.Location = new System.Drawing.Point(91, 207);
+            this.txtSchEmail.MaxLength = 80;
+            this.txtSchEmail.Name = "txtSchEmail";
+            this.txtSchEmail.Size = new System.Drawing.Size(188, 20);
+            this.txtSchEmail.TabIndex = 123;
             // 
             // enrollmentTextBox
             // 
@@ -1405,17 +1729,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.enrollmentTextBox.Name = "enrollmentTextBox";
             this.enrollmentTextBox.Size = new System.Drawing.Size(80, 20);
             this.enrollmentTextBox.TabIndex = 122;
-            // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsCust;
-            // 
-            // dsCust
-            // 
-            this.dsCust.DataSetName = "dsCust";
-            this.dsCust.EnforceConstraints = false;
-            this.dsCust.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // gradesComboBox
             // 
@@ -1449,8 +1762,17 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // stageComboBox1
             // 
+            this.stageComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "stage", true));
             this.stageComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "stage", true));
             this.stageComboBox1.FormattingEnabled = true;
+            this.stageComboBox1.Items.AddRange(new object[] {
+            " ",
+            "Advance",
+            "Close",
+            "Discover",
+            "Lost",
+            "Qualify",
+            "Submitted"});
             this.stageComboBox1.Location = new System.Drawing.Point(99, 245);
             this.stageComboBox1.Name = "stageComboBox1";
             this.stageComboBox1.Size = new System.Drawing.Size(141, 21);
@@ -1585,7 +1907,6 @@ namespace Mbc5.Forms.MemoryBook {
             // leadsourceComboBox
             // 
             this.leadsourceComboBox.ContextMenuStrip = this.addItemMenu;
-            this.leadsourceComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "leadsource", true));
             this.leadsourceComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "leadsource", true));
             this.leadsourceComboBox.DataSource = this.lkpLeadSourceBindingSource;
             this.leadsourceComboBox.DisplayMember = "Name";
@@ -1630,6 +1951,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // electronicoptions
             // 
+            this.electronicoptions.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "electronickitoptions", true));
             this.electronicoptions.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "electronickitoptions", true));
             this.electronicoptions.FormattingEnabled = true;
             this.electronicoptions.Items.AddRange(new object[] {
@@ -1810,7 +2132,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // cmbNoRebook
             // 
-            this.cmbNoRebook.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "norebookreason", true));
+            this.cmbNoRebook.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "norebookreason", true));
             this.cmbNoRebook.DataSource = this.lkpNoRebookBindingSource;
             this.cmbNoRebook.DisplayMember = "descripiton";
             this.cmbNoRebook.FormattingEnabled = true;
@@ -1826,7 +2148,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // cmbPrevPublisher
             // 
-            this.cmbPrevPublisher.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "prevpublisher", true));
+            this.cmbPrevPublisher.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "prevpublisher", true));
             this.cmbPrevPublisher.DataSource = this.lkpPrevPubBindingSource;
             this.cmbPrevPublisher.DisplayMember = "Name";
             this.cmbPrevPublisher.FormattingEnabled = true;
@@ -1862,7 +2184,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // multiyearComboBox
             // 
-            this.multiyearComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "multiyear", true));
+            this.multiyearComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "multiyear", true));
             this.multiyearComboBox.DataSource = this.lkpMultiYearOptionsBindingSource;
             this.multiyearComboBox.DisplayMember = "Name";
             this.multiyearComboBox.FormattingEnabled = true;
@@ -1958,15 +2280,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.btnWebsite.UseVisualStyleBackColor = true;
             this.btnWebsite.Click += new System.EventHandler(this.btnWebsite_Click_1);
             // 
-            // txtSchEmail
-            // 
-            this.txtSchEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schemail", true));
-            this.txtSchEmail.Location = new System.Drawing.Point(91, 207);
-            this.txtSchEmail.MaxLength = 80;
-            this.txtSchEmail.Name = "txtSchEmail";
-            this.txtSchEmail.Size = new System.Drawing.Size(188, 20);
-            this.txtSchEmail.TabIndex = 9;
-            // 
             // txtaddress
             // 
             this.txtaddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schaddr", true));
@@ -2011,6 +2324,22 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(183, 20);
             this.txtCity.TabIndex = 5;
+            // 
+            // reportViewer2
+            // 
+            this.reportViewer2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.reportViewer2.DocumentMapWidth = 48;
+            reportDataSource10.Name = "DataSet1";
+            reportDataSource10.Value = this.custBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource10);
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30323FileFolderLabel.rdlc";
+            this.reportViewer2.Location = new System.Drawing.Point(459, 213);
+            this.reportViewer2.Name = "reportViewer2";
+            this.reportViewer2.ServerReport.BearerToken = null;
+            this.reportViewer2.Size = new System.Drawing.Size(63, 50);
+            this.reportViewer2.TabIndex = 125;
+            this.reportViewer2.Visible = false;
+            this.reportViewer2.Load += new System.EventHandler(this.reportViewer2_Load);
             // 
             // btnProdTckt
             // 
@@ -2129,14 +2458,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.custDataGridView.AllowUserToDeleteRows = false;
             this.custDataGridView.AutoGenerateColumns = false;
             this.custDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.custDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.custDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.custDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn105,
@@ -2186,9 +2515,9 @@ namespace Mbc5.Forms.MemoryBook {
             // dataGridViewTextBoxColumn111
             // 
             this.dataGridViewTextBoxColumn111.DataPropertyName = "kitrecvd";
-            dataGridViewCellStyle20.Format = "d";
-            dataGridViewCellStyle20.NullValue = null;
-            this.dataGridViewTextBoxColumn111.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle29.Format = "d";
+            dataGridViewCellStyle29.NullValue = null;
+            this.dataGridViewTextBoxColumn111.DefaultCellStyle = dataGridViewCellStyle29;
             this.dataGridViewTextBoxColumn111.HeaderText = "Kit Recvd Date";
             this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
             this.dataGridViewTextBoxColumn111.ReadOnly = true;
@@ -2273,41 +2602,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.inofficeTextBox.Name = "inofficeTextBox";
             this.inofficeTextBox.Size = new System.Drawing.Size(338, 62);
             this.inofficeTextBox.TabIndex = 29;
-            // 
-            // pnlHead
-            // 
-            this.pnlHead.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlHead.Controls.Add(this.btnNewCustomer);
-            this.pnlHead.Controls.Add(this.lblSchcodeVal);
-            this.pnlHead.Location = new System.Drawing.Point(0, 0);
-            this.pnlHead.Name = "pnlHead";
-            this.pnlHead.Size = new System.Drawing.Size(1226, 30);
-            this.pnlHead.TabIndex = 64;
-            // 
-            // btnNewCustomer
-            // 
-            this.btnNewCustomer.AutoSize = true;
-            this.btnNewCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnNewCustomer.Image")));
-            this.btnNewCustomer.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnNewCustomer.Location = new System.Drawing.Point(1060, 3);
-            this.btnNewCustomer.Name = "btnNewCustomer";
-            this.btnNewCustomer.Size = new System.Drawing.Size(159, 23);
-            this.btnNewCustomer.TabIndex = 9;
-            this.btnNewCustomer.Text = "New Customer Email";
-            this.btnNewCustomer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNewCustomer.UseVisualStyleBackColor = true;
-            this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
-            // 
-            // lblSchcodeVal
-            // 
-            this.lblSchcodeVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
-            this.lblSchcodeVal.Location = new System.Drawing.Point(980, 6);
-            this.lblSchcodeVal.Name = "lblSchcodeVal";
-            this.lblSchcodeVal.Size = new System.Drawing.Size(1, 1);
-            this.lblSchcodeVal.TabIndex = 105;
-            this.lblSchcodeVal.Text = "label29";
             // 
             // pg2
             // 
@@ -2852,16 +3146,13 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.pg3.AutoScroll = true;
             this.pg3.BackColor = System.Drawing.SystemColors.Control;
-            this.pg3.Controls.Add(this.chkMktComplete);
             this.pg3.Controls.Add(this.btnSaveMktLog);
-            this.pg3.Controls.Add(this.btnSaveTeleLog);
+            this.pg3.Controls.Add(this.btnEditTeleLog);
             this.pg3.Controls.Add(this.lblSchcode);
-            this.pg3.Controls.Add(this.btnAddMarketLog);
             this.pg3.Controls.Add(this.btnAddLog);
             this.pg3.Controls.Add(this.lblMarketing);
             this.pg3.Controls.Add(this.mktinfoDataGridView);
             this.pg3.Controls.Add(this.txtReason);
-            this.pg3.Controls.Add(this.commentListBox);
             this.pg3.Controls.Add(this.datecontDataGridView);
             this.pg3.Controls.Add(this.lblTeleSchname);
             this.pg3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2872,65 +3163,44 @@ namespace Mbc5.Forms.MemoryBook {
             this.pg3.Text = "Telephone";
             this.pg3.Leave += new System.EventHandler(this.pg3_Leave);
             // 
-            // chkMktComplete
-            // 
-            this.chkMktComplete.AutoSize = true;
-            this.chkMktComplete.Location = new System.Drawing.Point(952, 381);
-            this.chkMktComplete.Name = "chkMktComplete";
-            this.chkMktComplete.Size = new System.Drawing.Size(181, 17);
-            this.chkMktComplete.TabIndex = 8;
-            this.chkMktComplete.Text = "Marketing Information Completed";
-            this.chkMktComplete.UseVisualStyleBackColor = true;
-            // 
             // btnSaveMktLog
             // 
             this.btnSaveMktLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSaveMktLog.Location = new System.Drawing.Point(179, 375);
+            this.btnSaveMktLog.Location = new System.Drawing.Point(52, 397);
             this.btnSaveMktLog.Name = "btnSaveMktLog";
             this.btnSaveMktLog.Size = new System.Drawing.Size(75, 23);
             this.btnSaveMktLog.TabIndex = 7;
-            this.btnSaveMktLog.Text = "Save";
+            this.btnSaveMktLog.Text = "Edit Mkt Log";
             this.btnSaveMktLog.UseVisualStyleBackColor = true;
             this.btnSaveMktLog.Click += new System.EventHandler(this.btnSaveMktLog_Click);
             // 
-            // btnSaveTeleLog
+            // btnEditTeleLog
             // 
-            this.btnSaveTeleLog.Location = new System.Drawing.Point(179, 138);
-            this.btnSaveTeleLog.Name = "btnSaveTeleLog";
-            this.btnSaveTeleLog.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveTeleLog.TabIndex = 4;
-            this.btnSaveTeleLog.Text = "Save";
-            this.btnSaveTeleLog.UseVisualStyleBackColor = true;
-            this.btnSaveTeleLog.Click += new System.EventHandler(this.btnSaveTeleLog_Click);
+            this.btnEditTeleLog.Location = new System.Drawing.Point(179, 153);
+            this.btnEditTeleLog.Name = "btnEditTeleLog";
+            this.btnEditTeleLog.Size = new System.Drawing.Size(83, 23);
+            this.btnEditTeleLog.TabIndex = 4;
+            this.btnEditTeleLog.Text = "Edit Tele Log";
+            this.btnEditTeleLog.UseVisualStyleBackColor = true;
+            this.btnEditTeleLog.Click += new System.EventHandler(this.btnEditTeleLog_Click);
             // 
             // lblSchcode
             // 
             this.lblSchcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schcode", true));
             this.lblSchcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSchcode.Location = new System.Drawing.Point(101, 25);
+            this.lblSchcode.Location = new System.Drawing.Point(8, 0);
             this.lblSchcode.Name = "lblSchcode";
-            this.lblSchcode.Size = new System.Drawing.Size(120, 53);
+            this.lblSchcode.Size = new System.Drawing.Size(97, 26);
             this.lblSchcode.TabIndex = 8;
-            this.lblSchcode.Text = "test";
-            // 
-            // btnAddMarketLog
-            // 
-            this.btnAddMarketLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAddMarketLog.Location = new System.Drawing.Point(46, 375);
-            this.btnAddMarketLog.Name = "btnAddMarketLog";
-            this.btnAddMarketLog.Size = new System.Drawing.Size(127, 23);
-            this.btnAddMarketLog.TabIndex = 5;
-            this.btnAddMarketLog.Text = "Add Marketing Log";
-            this.btnAddMarketLog.UseVisualStyleBackColor = true;
-            this.btnAddMarketLog.Click += new System.EventHandler(this.btnAddMarketLog_Click);
+            this.lblSchcode.Text = "code";
             // 
             // btnAddLog
             // 
-            this.btnAddLog.Location = new System.Drawing.Point(46, 138);
+            this.btnAddLog.Location = new System.Drawing.Point(46, 153);
             this.btnAddLog.Name = "btnAddLog";
             this.btnAddLog.Size = new System.Drawing.Size(127, 23);
             this.btnAddLog.TabIndex = 2;
-            this.btnAddLog.Text = "Add Telephone Log";
+            this.btnAddLog.Text = "Add Log";
             this.btnAddLog.UseVisualStyleBackColor = true;
             this.btnAddLog.Click += new System.EventHandler(this.btnAddLog_Click);
             // 
@@ -2939,7 +3209,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.lblMarketing.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblMarketing.AutoSize = true;
             this.lblMarketing.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarketing.Location = new System.Drawing.Point(438, 363);
+            this.lblMarketing.Location = new System.Drawing.Point(438, 385);
             this.lblMarketing.Name = "lblMarketing";
             this.lblMarketing.Size = new System.Drawing.Size(189, 24);
             this.lblMarketing.TabIndex = 5;
@@ -2954,24 +3224,25 @@ namespace Mbc5.Forms.MemoryBook {
             this.mktinfoDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.mktinfoDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.mktinfoDataGridView.CausesValidation = false;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mktinfoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.mktinfoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mktinfoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn13});
             this.mktinfoDataGridView.DataSource = this.mktinfoBindingSource;
             this.mktinfoDataGridView.EnableHeadersVisualStyles = false;
-            this.mktinfoDataGridView.Location = new System.Drawing.Point(46, 404);
+            this.mktinfoDataGridView.Location = new System.Drawing.Point(46, 426);
             this.mktinfoDataGridView.Name = "mktinfoDataGridView";
             this.mktinfoDataGridView.Size = new System.Drawing.Size(1087, 156);
             this.mktinfoDataGridView.TabIndex = 6;
@@ -2993,6 +3264,12 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpMktReferenceBindingSource.DataMember = "lkpMktReference";
             this.lkpMktReferenceBindingSource.DataSource = this.lookUp;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
             // dataGridViewTextBoxColumn14
             // 
             this.dataGridViewTextBoxColumn14.DataPropertyName = "promo";
@@ -3009,11 +3286,11 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpPromotionsBindingSource.DataMember = "lkpPromotions";
             this.lkpPromotionsBindingSource.DataSource = this.lookUp;
             // 
-            // dataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ddate";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ddate";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // dataGridViewTextBoxColumn11
             // 
@@ -3042,10 +3319,10 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtReason.CausesValidation = false;
             this.txtReason.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.datecontBindingSource, "reason", true));
             this.txtReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReason.Location = new System.Drawing.Point(372, 60);
+            this.txtReason.Location = new System.Drawing.Point(46, 52);
             this.txtReason.Multiline = true;
             this.txtReason.Name = "txtReason";
-            this.txtReason.Size = new System.Drawing.Size(338, 32);
+            this.txtReason.Size = new System.Drawing.Size(1073, 95);
             this.txtReason.TabIndex = 1;
             this.txtReason.Leave += new System.EventHandler(this.txtReason_Leave);
             // 
@@ -3053,25 +3330,6 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.datecontBindingSource.DataMember = "datecont";
             this.datecontBindingSource.DataSource = this.dsCust;
-            // 
-            // commentListBox
-            // 
-            this.commentListBox.CausesValidation = false;
-            this.commentListBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.lkpCommentsBindingSource, "Comment", true));
-            this.commentListBox.DataSource = this.lkpCommentsBindingSource;
-            this.commentListBox.DisplayMember = "Comment";
-            this.commentListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.commentListBox.FormattingEnabled = true;
-            this.commentListBox.Location = new System.Drawing.Point(731, 60);
-            this.commentListBox.Name = "commentListBox";
-            this.commentListBox.Size = new System.Drawing.Size(399, 95);
-            this.commentListBox.TabIndex = 0;
-            this.commentListBox.DoubleClick += new System.EventHandler(this.commentListBox_DoubleClick);
-            // 
-            // lkpCommentsBindingSource
-            // 
-            this.lkpCommentsBindingSource.DataMember = "lkpComments";
-            this.lkpCommentsBindingSource.DataSource = this.lookUp;
             // 
             // datecontDataGridView
             // 
@@ -3082,17 +3340,16 @@ namespace Mbc5.Forms.MemoryBook {
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.datecontDataGridView.AutoGenerateColumns = false;
-            this.datecontDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datecontDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.datecontDataGridView.CausesValidation = false;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datecontDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
             this.datecontDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datecontDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn3,
@@ -3109,8 +3366,9 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn6});
             this.datecontDataGridView.DataSource = this.datecontBindingSource;
             this.datecontDataGridView.EnableHeadersVisualStyles = false;
-            this.datecontDataGridView.Location = new System.Drawing.Point(46, 167);
+            this.datecontDataGridView.Location = new System.Drawing.Point(46, 182);
             this.datecontDataGridView.Name = "datecontDataGridView";
+            this.datecontDataGridView.ReadOnly = true;
             this.datecontDataGridView.Size = new System.Drawing.Size(1087, 190);
             this.datecontDataGridView.TabIndex = 3;
             this.datecontDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datecontDataGridView_CellDoubleClick);
@@ -3122,6 +3380,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewCheckBoxColumn3.DataPropertyName = "techcall";
             this.dataGridViewCheckBoxColumn3.HeaderText = "Tech Call";
             this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
+            this.dataGridViewCheckBoxColumn3.ReadOnly = true;
             this.dataGridViewCheckBoxColumn3.Width = 58;
             // 
             // id
@@ -3129,6 +3388,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.id.DataPropertyName = "id";
             this.id.HeaderText = "id";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             this.id.Visible = false;
             // 
             // dataGridViewCheckBoxColumn1
@@ -3137,25 +3397,17 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewCheckBoxColumn1.DataPropertyName = "callcont";
             this.dataGridViewCheckBoxColumn1.HeaderText = "Call";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             this.dataGridViewCheckBoxColumn1.Width = 30;
             // 
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn10.DataPropertyName = "priority";
-            this.dataGridViewTextBoxColumn10.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.dataGridViewTextBoxColumn10.HeaderText = "Pri";
-            this.dataGridViewTextBoxColumn10.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7"});
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             this.dataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewTextBoxColumn10.Width = 44;
             // 
             // datecont
@@ -3169,14 +3421,15 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // dataGridViewTextBoxColumn3
             // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "reason";
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle32;
             this.dataGridViewTextBoxColumn3.HeaderText = "Reason";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 275;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn3.Width = 69;
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn3.Width = 275;
             // 
             // initial
             // 
@@ -3184,6 +3437,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.initial.DataPropertyName = "initial";
             this.initial.HeaderText = "Initials";
             this.initial.Name = "initial";
+            this.initial.ReadOnly = true;
             this.initial.Width = 61;
             // 
             // dataGridViewTextBoxColumn9
@@ -3192,7 +3446,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn9.DataPropertyName = "calltime";
             this.dataGridViewTextBoxColumn9.HeaderText = "Call Time";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Width = 69;
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 75;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -3200,19 +3455,21 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn7.DataPropertyName = "nxtdays";
             this.dataGridViewTextBoxColumn7.HeaderText = "Contact (Days)";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 94;
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 102;
             // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn8.DataPropertyName = "nxtdate";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.NullValue = " / / ";
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.NullValue = " / / ";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle33;
             this.dataGridViewTextBoxColumn8.HeaderText = "Next Date";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.Width = 80;
             // 
             // dataGridViewTextBoxColumn5
@@ -3220,23 +3477,17 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn5.DataPropertyName = "contact";
             this.dataGridViewTextBoxColumn5.HeaderText = "Contact";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 132;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "typecont";
-            this.dataGridViewTextBoxColumn6.DataSource = this.lkpTypeContBindingSource;
-            this.dataGridViewTextBoxColumn6.DisplayMember = "Name";
-            this.dataGridViewTextBoxColumn6.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.dataGridViewTextBoxColumn6.HeaderText = "Type Cont";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewTextBoxColumn6.ValueMember = "Name";
-            // 
-            // lkpTypeContBindingSource
-            // 
-            this.lkpTypeContBindingSource.DataMember = "lkpTypeCont";
-            this.lkpTypeContBindingSource.DataSource = this.lookUp;
+            this.dataGridViewTextBoxColumn6.Width = 132;
             // 
             // lblTeleSchname
             // 
@@ -3249,6 +3500,468 @@ namespace Mbc5.Forms.MemoryBook {
             this.lblTeleSchname.Size = new System.Drawing.Size(88, 24);
             this.lblTeleSchname.TabIndex = 0;
             this.lblTeleSchname.Text = "schname";
+            // 
+            // pg4
+            // 
+            this.pg4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pg4.Controls.Add(this.shipppingAddrTextBox1);
+            this.pg4.Controls.Add(this.invZipCodeTextBox);
+            this.pg4.Controls.Add(this.cmbInvStateComboBox);
+            this.pg4.Controls.Add(this.invCityTextBox);
+            this.pg4.Controls.Add(this.invAddr2TextBox);
+            this.pg4.Controls.Add(this.invAddrTextBox);
+            this.pg4.Controls.Add(this.btnSaveInformation);
+            this.pg4.Controls.Add(this.btnSchoolToShipping);
+            this.pg4.Controls.Add(this.btnSchoolToInvoice);
+            this.pg4.Controls.Add(this.label21);
+            this.pg4.Controls.Add(this.label20);
+            this.pg4.Controls.Add(shippingZipCodeLabel);
+            this.pg4.Controls.Add(this.shippingZipCodeTextBox);
+            this.pg4.Controls.Add(shippingStateLabel);
+            this.pg4.Controls.Add(this.cmbshippingState);
+            this.pg4.Controls.Add(shippingCityLabel);
+            this.pg4.Controls.Add(this.shippingCityTextBox);
+            this.pg4.Controls.Add(shippingAddr2Label1);
+            this.pg4.Controls.Add(this.shippingAddr2TextBox1);
+            this.pg4.Controls.Add(shipppingAddrLabel1);
+            this.pg4.Controls.Add(invoiceZipCodeLabel);
+            this.pg4.Controls.Add(invoiceStateLabel);
+            this.pg4.Controls.Add(invoiceCityLabel);
+            this.pg4.Controls.Add(shippingAddr2Label);
+            this.pg4.Controls.Add(shipppingAddrLabel);
+            this.pg4.Location = new System.Drawing.Point(4, 22);
+            this.pg4.Name = "pg4";
+            this.pg4.Size = new System.Drawing.Size(1226, 644);
+            this.pg4.TabIndex = 3;
+            this.pg4.Text = "Shipping Invoice Info";
+            // 
+            // shipppingAddrTextBox1
+            // 
+            this.shipppingAddrTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "ShippingAddr", true));
+            this.shipppingAddrTextBox1.Location = new System.Drawing.Point(244, 287);
+            this.shipppingAddrTextBox1.Name = "shipppingAddrTextBox1";
+            this.shipppingAddrTextBox1.Size = new System.Drawing.Size(230, 20);
+            this.shipppingAddrTextBox1.TabIndex = 30;
+            // 
+            // invZipCodeTextBox
+            // 
+            this.invZipCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "InvoiceZipCode", true));
+            this.invZipCodeTextBox.Location = new System.Drawing.Point(244, 192);
+            this.invZipCodeTextBox.Name = "invZipCodeTextBox";
+            this.invZipCodeTextBox.Size = new System.Drawing.Size(230, 20);
+            this.invZipCodeTextBox.TabIndex = 29;
+            // 
+            // cmbInvStateComboBox
+            // 
+            this.cmbInvStateComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "InvoiceState", true));
+            this.cmbInvStateComboBox.DataSource = this.statesBindingSource3;
+            this.cmbInvStateComboBox.DisplayMember = "Name";
+            this.cmbInvStateComboBox.FormattingEnabled = true;
+            this.cmbInvStateComboBox.Location = new System.Drawing.Point(244, 165);
+            this.cmbInvStateComboBox.Name = "cmbInvStateComboBox";
+            this.cmbInvStateComboBox.Size = new System.Drawing.Size(251, 21);
+            this.cmbInvStateComboBox.TabIndex = 28;
+            this.cmbInvStateComboBox.ValueMember = "Abrev";
+            // 
+            // statesBindingSource3
+            // 
+            this.statesBindingSource3.DataMember = "states";
+            this.statesBindingSource3.DataSource = this.lookUp;
+            // 
+            // invCityTextBox
+            // 
+            this.invCityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "InvoiceCity", true));
+            this.invCityTextBox.Location = new System.Drawing.Point(244, 139);
+            this.invCityTextBox.Name = "invCityTextBox";
+            this.invCityTextBox.Size = new System.Drawing.Size(230, 20);
+            this.invCityTextBox.TabIndex = 27;
+            // 
+            // invAddr2TextBox
+            // 
+            this.invAddr2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "InvoiceAddr2", true));
+            this.invAddr2TextBox.Location = new System.Drawing.Point(244, 113);
+            this.invAddr2TextBox.Name = "invAddr2TextBox";
+            this.invAddr2TextBox.Size = new System.Drawing.Size(230, 20);
+            this.invAddr2TextBox.TabIndex = 26;
+            // 
+            // invAddrTextBox
+            // 
+            this.invAddrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "InvoiceAddr", true));
+            this.invAddrTextBox.Location = new System.Drawing.Point(244, 87);
+            this.invAddrTextBox.Name = "invAddrTextBox";
+            this.invAddrTextBox.Size = new System.Drawing.Size(230, 20);
+            this.invAddrTextBox.TabIndex = 25;
+            // 
+            // btnSaveInformation
+            // 
+            this.btnSaveInformation.Location = new System.Drawing.Point(244, 438);
+            this.btnSaveInformation.Name = "btnSaveInformation";
+            this.btnSaveInformation.Size = new System.Drawing.Size(143, 23);
+            this.btnSaveInformation.TabIndex = 24;
+            this.btnSaveInformation.Text = "Save Address Information";
+            this.btnSaveInformation.UseVisualStyleBackColor = true;
+            this.btnSaveInformation.Click += new System.EventHandler(this.btnSaveInformation_Click);
+            // 
+            // btnSchoolToShipping
+            // 
+            this.btnSchoolToShipping.Location = new System.Drawing.Point(539, 290);
+            this.btnSchoolToShipping.Name = "btnSchoolToShipping";
+            this.btnSchoolToShipping.Size = new System.Drawing.Size(129, 23);
+            this.btnSchoolToShipping.TabIndex = 23;
+            this.btnSchoolToShipping.Text = "Make Same As School";
+            this.btnSchoolToShipping.UseVisualStyleBackColor = true;
+            this.btnSchoolToShipping.Click += new System.EventHandler(this.btnSchoolToShipping_Click);
+            // 
+            // btnSchoolToInvoice
+            // 
+            this.btnSchoolToInvoice.Location = new System.Drawing.Point(539, 84);
+            this.btnSchoolToInvoice.Name = "btnSchoolToInvoice";
+            this.btnSchoolToInvoice.Size = new System.Drawing.Size(129, 23);
+            this.btnSchoolToInvoice.TabIndex = 22;
+            this.btnSchoolToInvoice.Text = "Make Same As School";
+            this.btnSchoolToInvoice.UseVisualStyleBackColor = true;
+            this.btnSchoolToInvoice.Click += new System.EventHandler(this.btnSchoolToInvoice_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(88, 234);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(176, 20);
+            this.label21.TabIndex = 21;
+            this.label21.Text = "Shipping Information";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(88, 18);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(163, 20);
+            this.label20.TabIndex = 20;
+            this.label20.Text = "Invoice Information";
+            // 
+            // shippingZipCodeTextBox
+            // 
+            this.shippingZipCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "ShippingZipCode", true));
+            this.shippingZipCodeTextBox.Location = new System.Drawing.Point(244, 392);
+            this.shippingZipCodeTextBox.Name = "shippingZipCodeTextBox";
+            this.shippingZipCodeTextBox.Size = new System.Drawing.Size(230, 20);
+            this.shippingZipCodeTextBox.TabIndex = 19;
+            // 
+            // cmbshippingState
+            // 
+            this.cmbshippingState.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.custBindingSource, "ShippingState", true));
+            this.cmbshippingState.DataSource = this.statesBindingSource4;
+            this.cmbshippingState.DisplayMember = "Name";
+            this.cmbshippingState.FormattingEnabled = true;
+            this.cmbshippingState.Location = new System.Drawing.Point(244, 365);
+            this.cmbshippingState.Name = "cmbshippingState";
+            this.cmbshippingState.Size = new System.Drawing.Size(251, 21);
+            this.cmbshippingState.TabIndex = 17;
+            this.cmbshippingState.ValueMember = "Abrev";
+            // 
+            // statesBindingSource4
+            // 
+            this.statesBindingSource4.DataMember = "states";
+            this.statesBindingSource4.DataSource = this.lookUp;
+            // 
+            // shippingCityTextBox
+            // 
+            this.shippingCityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "ShippingCity", true));
+            this.shippingCityTextBox.Location = new System.Drawing.Point(244, 339);
+            this.shippingCityTextBox.Name = "shippingCityTextBox";
+            this.shippingCityTextBox.Size = new System.Drawing.Size(230, 20);
+            this.shippingCityTextBox.TabIndex = 15;
+            // 
+            // shippingAddr2TextBox1
+            // 
+            this.shippingAddr2TextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "ShippingAddr2", true));
+            this.shippingAddr2TextBox1.Location = new System.Drawing.Point(244, 313);
+            this.shippingAddr2TextBox1.Name = "shippingAddr2TextBox1";
+            this.shippingAddr2TextBox1.Size = new System.Drawing.Size(230, 20);
+            this.shippingAddr2TextBox1.TabIndex = 13;
+            // 
+            // pg5
+            // 
+            this.pg5.AutoScroll = true;
+            this.pg5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pg5.Controls.Add(this.pnlAdd);
+            this.pg5.Controls.Add(this.btnAddSupply);
+            this.pg5.Controls.Add(this.xsuppliesDataGridView);
+            this.pg5.Controls.Add(shipZipCodeLabel);
+            this.pg5.Controls.Add(this.shipZipCodeLabel1);
+            this.pg5.Controls.Add(shipStateLabel);
+            this.pg5.Controls.Add(this.shipStateLabel1);
+            this.pg5.Controls.Add(shipCityLabel);
+            this.pg5.Controls.Add(this.shipCityLabel1);
+            this.pg5.Controls.Add(shipAddress2Label);
+            this.pg5.Controls.Add(this.shipAddress2Label1);
+            this.pg5.Controls.Add(shipAddressLabel);
+            this.pg5.Controls.Add(this.shipAddressLabel1);
+            this.pg5.Location = new System.Drawing.Point(4, 22);
+            this.pg5.Name = "pg5";
+            this.pg5.Size = new System.Drawing.Size(1226, 644);
+            this.pg5.TabIndex = 4;
+            this.pg5.Text = "Supplies";
+            // 
+            // pnlAdd
+            // 
+            this.pnlAdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlAdd.Controls.Add(this.btnCancelSupply);
+            this.pnlAdd.Controls.Add(this.btnSaveSupply);
+            this.pnlAdd.Controls.Add(this.label25);
+            this.pnlAdd.Controls.Add(this.label23);
+            this.pnlAdd.Controls.Add(this.label22);
+            this.pnlAdd.Controls.Add(this.cmbSupplyItem);
+            this.pnlAdd.Controls.Add(this.txtSupplyQty);
+            this.pnlAdd.Controls.Add(this.txtSupplyInvoice);
+            this.pnlAdd.Location = new System.Drawing.Point(239, 195);
+            this.pnlAdd.Name = "pnlAdd";
+            this.pnlAdd.Size = new System.Drawing.Size(543, 72);
+            this.pnlAdd.TabIndex = 12;
+            this.pnlAdd.Visible = false;
+            // 
+            // btnCancelSupply
+            // 
+            this.btnCancelSupply.Location = new System.Drawing.Point(457, 41);
+            this.btnCancelSupply.Name = "btnCancelSupply";
+            this.btnCancelSupply.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelSupply.TabIndex = 21;
+            this.btnCancelSupply.Text = "Cancel";
+            this.btnCancelSupply.UseVisualStyleBackColor = true;
+            this.btnCancelSupply.Click += new System.EventHandler(this.btnCancelSupply_Click);
+            // 
+            // btnSaveSupply
+            // 
+            this.btnSaveSupply.Location = new System.Drawing.Point(457, 13);
+            this.btnSaveSupply.Name = "btnSaveSupply";
+            this.btnSaveSupply.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveSupply.TabIndex = 20;
+            this.btnSaveSupply.Text = "Save";
+            this.btnSaveSupply.UseVisualStyleBackColor = true;
+            this.btnSaveSupply.Click += new System.EventHandler(this.btnSaveSupply_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(206, 8);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(27, 13);
+            this.label25.TabIndex = 19;
+            this.label25.Text = "Item";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(385, 8);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(23, 13);
+            this.label23.TabIndex = 18;
+            this.label23.Text = "Qty";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(25, 8);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(49, 13);
+            this.label22.TabIndex = 17;
+            this.label22.Text = "Invoice#";
+            // 
+            // cmbSupplyItem
+            // 
+            this.cmbSupplyItem.DataSource = this.lkpSupplyItemsBindingSource;
+            this.cmbSupplyItem.DisplayMember = "ItemName";
+            this.cmbSupplyItem.FormattingEnabled = true;
+            this.cmbSupplyItem.Location = new System.Drawing.Point(114, 28);
+            this.cmbSupplyItem.Name = "cmbSupplyItem";
+            this.cmbSupplyItem.Size = new System.Drawing.Size(222, 21);
+            this.cmbSupplyItem.TabIndex = 16;
+            this.cmbSupplyItem.ValueMember = "ItemName";
+            // 
+            // lkpSupplyItemsBindingSource
+            // 
+            this.lkpSupplyItemsBindingSource.DataMember = "lkpSupplyItems";
+            this.lkpSupplyItemsBindingSource.DataSource = this.lookUp;
+            // 
+            // txtSupplyQty
+            // 
+            this.txtSupplyQty.Location = new System.Drawing.Point(351, 28);
+            this.txtSupplyQty.Name = "txtSupplyQty";
+            this.txtSupplyQty.Size = new System.Drawing.Size(100, 20);
+            this.txtSupplyQty.TabIndex = 15;
+            this.txtSupplyQty.Validating += new System.ComponentModel.CancelEventHandler(this.txtSupplyQty_Validating);
+            // 
+            // txtSupplyInvoice
+            // 
+            this.txtSupplyInvoice.Location = new System.Drawing.Point(8, 28);
+            this.txtSupplyInvoice.Name = "txtSupplyInvoice";
+            this.txtSupplyInvoice.Size = new System.Drawing.Size(100, 20);
+            this.txtSupplyInvoice.TabIndex = 14;
+            // 
+            // btnAddSupply
+            // 
+            this.btnAddSupply.Location = new System.Drawing.Point(158, 278);
+            this.btnAddSupply.Name = "btnAddSupply";
+            this.btnAddSupply.Size = new System.Drawing.Size(75, 23);
+            this.btnAddSupply.TabIndex = 11;
+            this.btnAddSupply.Text = "Add";
+            this.btnAddSupply.UseVisualStyleBackColor = true;
+            this.btnAddSupply.Click += new System.EventHandler(this.btnAddSupply_Click);
+            // 
+            // xsuppliesDataGridView
+            // 
+            this.xsuppliesDataGridView.AllowUserToAddRows = false;
+            this.xsuppliesDataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.xsuppliesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            this.xsuppliesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.xsuppliesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn12});
+            this.xsuppliesDataGridView.DataSource = this.xsuppliesBindingSource;
+            this.xsuppliesDataGridView.EnableHeadersVisualStyles = false;
+            this.xsuppliesDataGridView.Location = new System.Drawing.Point(239, 278);
+            this.xsuppliesDataGridView.Name = "xsuppliesDataGridView";
+            this.xsuppliesDataGridView.ReadOnly = true;
+            this.xsuppliesDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
+            this.xsuppliesDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle36;
+            this.xsuppliesDataGridView.Size = new System.Drawing.Size(654, 220);
+            this.xsuppliesDataGridView.TabIndex = 10;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "Invno";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Invoice#";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            this.dataGridViewTextBoxColumn20.Width = 75;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "Item";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Item";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.Width = 325;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "quantity";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Qty";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            this.dataGridViewTextBoxColumn17.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "dateCreated";
+            dataGridViewCellStyle35.Format = "d";
+            dataGridViewCellStyle35.NullValue = null;
+            this.dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle35;
+            this.dataGridViewTextBoxColumn18.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            this.dataGridViewTextBoxColumn18.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.dataGridViewTextBoxColumn12.Visible = false;
+            // 
+            // xsuppliesBindingSource
+            // 
+            this.xsuppliesBindingSource.DataMember = "xsupplies";
+            this.xsuppliesBindingSource.DataSource = this.dsXSupplies;
+            // 
+            // dsXSupplies
+            // 
+            this.dsXSupplies.DataSetName = "dsXSupplies";
+            this.dsXSupplies.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // shipZipCodeLabel1
+            // 
+            this.shipZipCodeLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xsuppliesBindingSource, "ShipZipCode", true));
+            this.shipZipCodeLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipZipCodeLabel1.Location = new System.Drawing.Point(432, 148);
+            this.shipZipCodeLabel1.Name = "shipZipCodeLabel1";
+            this.shipZipCodeLabel1.Size = new System.Drawing.Size(285, 20);
+            this.shipZipCodeLabel1.TabIndex = 9;
+            this.shipZipCodeLabel1.Text = "label22";
+            // 
+            // shipStateLabel1
+            // 
+            this.shipStateLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xsuppliesBindingSource, "ShipState", true));
+            this.shipStateLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipStateLabel1.Location = new System.Drawing.Point(432, 116);
+            this.shipStateLabel1.Name = "shipStateLabel1";
+            this.shipStateLabel1.Size = new System.Drawing.Size(285, 20);
+            this.shipStateLabel1.TabIndex = 7;
+            this.shipStateLabel1.Text = "label22";
+            // 
+            // shipCityLabel1
+            // 
+            this.shipCityLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xsuppliesBindingSource, "ShipCity", true));
+            this.shipCityLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipCityLabel1.Location = new System.Drawing.Point(432, 84);
+            this.shipCityLabel1.Name = "shipCityLabel1";
+            this.shipCityLabel1.Size = new System.Drawing.Size(285, 20);
+            this.shipCityLabel1.TabIndex = 5;
+            this.shipCityLabel1.Text = "label22";
+            // 
+            // shipAddress2Label1
+            // 
+            this.shipAddress2Label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xsuppliesBindingSource, "ShipAddress2", true));
+            this.shipAddress2Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipAddress2Label1.Location = new System.Drawing.Point(432, 52);
+            this.shipAddress2Label1.Name = "shipAddress2Label1";
+            this.shipAddress2Label1.Size = new System.Drawing.Size(285, 20);
+            this.shipAddress2Label1.TabIndex = 3;
+            this.shipAddress2Label1.Text = "label22";
+            // 
+            // shipAddressLabel1
+            // 
+            this.shipAddressLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xsuppliesBindingSource, "ShipAddress", true));
+            this.shipAddressLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipAddressLabel1.Location = new System.Drawing.Point(432, 20);
+            this.shipAddressLabel1.Name = "shipAddressLabel1";
+            this.shipAddressLabel1.Size = new System.Drawing.Size(285, 20);
+            this.shipAddressLabel1.TabIndex = 1;
+            this.shipAddressLabel1.Text = "label22";
+            // 
+            // pg6
+            // 
+            this.pg6.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pg6.Location = new System.Drawing.Point(4, 22);
+            this.pg6.Name = "pg6";
+            this.pg6.Size = new System.Drawing.Size(1226, 644);
+            this.pg6.TabIndex = 5;
+            this.pg6.Text = "Shipping";
+            // 
+            // lkpTypeContBindingSource
+            // 
+            this.lkpTypeContBindingSource.DataMember = "lkpTypeCont";
+            this.lkpTypeContBindingSource.DataSource = this.lookUp;
+            // 
+            // lkpCommentsBindingSource
+            // 
+            this.lkpCommentsBindingSource.DataMember = "lkpComments";
+            this.lkpCommentsBindingSource.DataSource = this.lookUp;
             // 
             // custTableAdapter
             // 
@@ -3287,6 +4000,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.tableAdapterManager1.lkpPrevPubTableAdapter = null;
             this.tableAdapterManager1.lkpPromotionsTableAdapter = null;
             this.tableAdapterManager1.lkpschtypeTableAdapter = null;
+            this.tableAdapterManager1.lkpSupplyItemsTableAdapter = null;
             this.tableAdapterManager1.lkpTypeContTableAdapter = null;
             this.tableAdapterManager1.lkTypeDataTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -3386,15 +4100,15 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             // reportViewer1
             // 
-            this.reportViewer1.DocumentMapWidth = 48;
-            reportDataSource7.Name = "dsRptProdutn";
-            reportDataSource7.Value = this.ProdutnTicketModelBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource7);
+            this.reportViewer1.DocumentMapWidth = 30;
+            reportDataSource11.Name = "dsRptProdutn";
+            reportDataSource11.Value = this.ProdutnTicketModelBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource11);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.ProdutnTicket.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(583, -22);
+            this.reportViewer1.Location = new System.Drawing.Point(553, -97);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(68, 82);
+            this.reportViewer1.Size = new System.Drawing.Size(48, 157);
             this.reportViewer1.TabIndex = 287;
             this.reportViewer1.Visible = false;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
@@ -3402,9 +4116,9 @@ namespace Mbc5.Forms.MemoryBook {
             // reportViewerCheckList
             // 
             this.reportViewerCheckList.DocumentMapWidth = 48;
-            reportDataSource8.Name = "dsProdChkList";
-            reportDataSource8.Value = this.ProductionCheckListBindingSource;
-            this.reportViewerCheckList.LocalReport.DataSources.Add(reportDataSource8);
+            reportDataSource12.Name = "dsProdChkList";
+            reportDataSource12.Value = this.ProductionCheckListBindingSource;
+            this.reportViewerCheckList.LocalReport.DataSources.Add(reportDataSource12);
             this.reportViewerCheckList.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.ProdCheckList.rdlc";
             this.reportViewerCheckList.Location = new System.Drawing.Point(665, -22);
             this.reportViewerCheckList.Name = "reportViewerCheckList";
@@ -3414,11 +4128,26 @@ namespace Mbc5.Forms.MemoryBook {
             this.reportViewerCheckList.Visible = false;
             this.reportViewerCheckList.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewerCheckList_RenderingComplete);
             // 
+            // xsuppliesTableAdapter
+            // 
+            this.xsuppliesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager4
+            // 
+            this.tableAdapterManager4.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager4.UpdateOrder = Mbc5.DataSets.dsXSuppliesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager4.xsuppliesTableAdapter = this.xsuppliesTableAdapter;
+            // 
+            // lkpSupplyItemsTableAdapter
+            // 
+            this.lkpSupplyItemsTableAdapter.ClearBeforeFill = true;
+            // 
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1234, 731);
             this.Controls.Add(this.CustTab);
+            this.MaxNumForms = 3;
             this.MinimumSize = new System.Drawing.Size(1250, 770);
             this.Name = "frmMbcCust";
             this.Text = "MBC Customers";
@@ -3433,18 +4162,20 @@ namespace Mbc5.Forms.MemoryBook {
             this.Controls.SetChildIndex(this.BottomPanel, 0);
             this.BottomPanel.ResumeLayout(false);
             this.BottomPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProdutnTicketModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionCheckListBindingSource)).EndInit();
             this.CustTab.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
+            this.pnlHead.ResumeLayout(false);
+            this.pnlHead.PerformLayout();
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel1.PerformLayout();
             this.splitContainer.Panel2.ResumeLayout(false);
             this.splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             this.addItemMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lkpLeadNameBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpLeadSourceBindingSource)).EndInit();
@@ -3455,8 +4186,6 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.lkpPrevPubBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpMultiYearOptionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custDataGridView)).EndInit();
-            this.pnlHead.ResumeLayout(false);
-            this.pnlHead.PerformLayout();
             this.pg2.ResumeLayout(false);
             this.pg2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contpstnBindingSource2)).EndInit();
@@ -3472,9 +4201,21 @@ namespace Mbc5.Forms.MemoryBook {
             ((System.ComponentModel.ISupportInitialize)(this.mktinfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMktInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpCommentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontDataGridView)).EndInit();
+            this.pg4.ResumeLayout(false);
+            this.pg4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statesBindingSource4)).EndInit();
+            this.pg5.ResumeLayout(false);
+            this.pg5.PerformLayout();
+            this.pnlAdd.ResumeLayout(false);
+            this.pnlAdd.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpSupplyItemsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xsuppliesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xsuppliesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsXSupplies)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpTypeContBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpCommentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsDateCont)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datecontBindingSource1)).EndInit();
@@ -3538,7 +4279,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.TextBox springbreakTextBox;
         private System.Windows.Forms.TextBox txtWebsite;
         private System.Windows.Forms.Button btnWebsite;
-        private System.Windows.Forms.TextBox txtSchEmail;
         private System.Windows.Forms.TextBox txtaddress;
         private System.Windows.Forms.TextBox txtSchPhone;
         private System.Windows.Forms.TextBox txtZip;
@@ -3562,7 +4302,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.BindingSource lkpTypeContBindingSource;
         private System.Windows.Forms.BindingSource lkpCommentsBindingSource;
         private System.Windows.Forms.TextBox txtReason;
-        private System.Windows.Forms.ListBox commentListBox;
         private DataSets.dsMktInfo dsMktInfo;
         private System.Windows.Forms.BindingSource mktinfoBindingSource;
         private DataSets.dsMktInfoTableAdapters.mktinfoTableAdapter mktinfoTableAdapter;
@@ -3571,11 +4310,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.BindingSource lkpMktReferenceBindingSource;
         private System.Windows.Forms.BindingSource lkpPromotionsBindingSource;
         private System.Windows.Forms.Label lblMarketing;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private DataSets.LookUpTableAdapters.lkpPromotionsTableAdapter lkpPromotionsTableAdapter;
         private DataSets.LookUpTableAdapters.lkpCommentsTableAdapter lkpCommentsTableAdapter;
         private DataSets.LookUpTableAdapters.lkpTypeContTableAdapter lkpTypeContTableAdapter;
@@ -3584,26 +4318,12 @@ namespace Mbc5.Forms.MemoryBook {
         private DataSets.dsDateCont dsDateCont;
         private DataSets.dsDateContTableAdapters.TableAdapterManager tableAdapterManager3;
         private DataSets.dsCustTableAdapters.datecontTableAdapter datecontTableAdapter;
-        private System.Windows.Forms.Button btnAddMarketLog;
         private System.Windows.Forms.Button btnAddLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Label lblSchcode;
         private System.Windows.Forms.Button btnSaveMktLog;
-        private System.Windows.Forms.Button btnSaveTeleLog;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datecont;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn initial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.Button btnEditTeleLog;
         private System.Windows.Forms.BindingSource datecontBindingSource1;
-        private System.Windows.Forms.CheckBox chkMktComplete;
         private System.Windows.Forms.Label lblInvno;
 		private System.Windows.Forms.TextBox txtModifiedBy;
 		private System.Windows.Forms.DateTimePicker initcontDateTimePicker;
@@ -3701,5 +4421,75 @@ namespace Mbc5.Forms.MemoryBook {
 		private System.Windows.Forms.DataGridViewTextBoxColumn QInvno;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn108;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn111;
-	}
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.Button btnMainLog;
+        private System.Windows.Forms.Button btnAddcust;
+        private System.Windows.Forms.Label lblHiddenSchcode;
+        private System.Windows.Forms.TextBox txtSchEmail;
+        private System.Windows.Forms.TabPage pg4;
+        private System.Windows.Forms.TabPage pg5;
+        private System.Windows.Forms.TabPage pg6;
+        private System.Windows.Forms.TextBox shippingZipCodeTextBox;
+        private System.Windows.Forms.ComboBox cmbshippingState;
+        private System.Windows.Forms.TextBox shippingCityTextBox;
+        private System.Windows.Forms.TextBox shippingAddr2TextBox1;
+        private System.Windows.Forms.Button btnSaveInformation;
+        private System.Windows.Forms.Button btnSchoolToShipping;
+        private System.Windows.Forms.Button btnSchoolToInvoice;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private DataSets.dsXSupplies dsXSupplies;
+        private System.Windows.Forms.BindingSource xsuppliesBindingSource;
+        private DataSets.dsXSuppliesTableAdapters.xsuppliesTableAdapter xsuppliesTableAdapter;
+        private DataSets.dsXSuppliesTableAdapters.TableAdapterManager tableAdapterManager4;
+        private System.Windows.Forms.DataGridView xsuppliesDataGridView;
+        private System.Windows.Forms.Label shipZipCodeLabel1;
+        private System.Windows.Forms.Label shipStateLabel1;
+        private System.Windows.Forms.Label shipCityLabel1;
+        private System.Windows.Forms.Label shipAddress2Label1;
+        private System.Windows.Forms.Label shipAddressLabel1;
+        private System.Windows.Forms.Panel pnlAdd;
+        private System.Windows.Forms.Button btnAddSupply;
+        private System.Windows.Forms.BindingSource lkpSupplyItemsBindingSource;
+        private DataSets.LookUpTableAdapters.lkpSupplyItemsTableAdapter lkpSupplyItemsTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.Button btnCancelSupply;
+        private System.Windows.Forms.Button btnSaveSupply;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox cmbSupplyItem;
+        private System.Windows.Forms.TextBox txtSupplyQty;
+        private System.Windows.Forms.TextBox txtSupplyInvoice;
+        private System.Windows.Forms.TextBox invZipCodeTextBox;
+        private System.Windows.Forms.ComboBox cmbInvStateComboBox;
+        private System.Windows.Forms.TextBox invCityTextBox;
+        private System.Windows.Forms.TextBox invAddr2TextBox;
+        private System.Windows.Forms.TextBox invAddrTextBox;
+        private System.Windows.Forms.BindingSource statesBindingSource3;
+        private System.Windows.Forms.BindingSource statesBindingSource4;
+        private System.Windows.Forms.TextBox shipppingAddrTextBox1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datecont;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn initial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+    }
 }

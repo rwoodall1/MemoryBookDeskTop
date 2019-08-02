@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using Exceptionless;
 namespace Mbc5.Classes
 {
    public static class ExceptionHandler
     {
         #region Cust
         //Cust
-        public static DialogResult CreateMessage(DataSets.dsCust.custRow cr, ref DataSets.dsCust dataset)
+        public static DialogResult CreateMessage(DataSets.dsCust.custRow CurrentFormRow, ref DataSets.dsCust dataset)
         {
-            string msg = GetRowData(GetCurrentRowInDB(cr), cr, DataRowVersion.Default) + "\n \n" +
+            string msg = GetRowData(GetCurrentRowInDB(CurrentFormRow), CurrentFormRow, DataRowVersion.Default) + "\n \n" +
               "Do you still want to update the database with the proposed value?";
             DialogResult response = MessageBox.Show(msg, "Concurrency Exception", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
             if (response == DialogResult.Yes)
@@ -32,43 +33,48 @@ namespace Mbc5.Classes
 
         }
         public static DataSets.dsCust.custDataTable tempCustDataTable = new DataSets.dsCust.custDataTable();
-        private static DataSets.dsCust.custRow GetCurrentRowInDB(DataSets.dsCust.custRow RowWithError)
+        private static DataSets.dsCust.custRow GetCurrentRowInDB(DataSets.dsCust.custRow CurrentFormRowWithError)
         {
             DataSets.dsCustTableAdapters.custTableAdapter vTableAdapter = new DataSets.dsCustTableAdapters.custTableAdapter();
-
+            DataSets.dsCust.custRow currentRowInDb=null ;
             try
             {
+                
+                vTableAdapter.ConcurrencyFill(tempCustDataTable, CurrentFormRowWithError.schcode);
+                currentRowInDb =(DataSets.dsCust.custRow)tempCustDataTable.Rows[0];
+
                
-                vTableAdapter.Fill(tempCustDataTable, RowWithError.schcode);
             }
             catch (Exception ex)
             {
-
+                ex.ToExceptionless()
+                    .SetMessage("Concurrency Error")
+                    .Submit();
             }
-            DataSets.dsCust.custRow currentRowInDb =
-              (DataSets.dsCust.custRow)tempCustDataTable.Rows[0];
-
             return currentRowInDb;
         }
-        private static string GetRowData(DataSets.dsCust.custRow curData, DataSets.dsCust.custRow vrow, DataRowVersion RowVersion)
+        private static string GetRowData(DataSets.dsCust.custRow rowInDB, DataSets.dsCust.custRow vrow, DataRowVersion RowVersion)
         {
             //string rowData = "";
-            string columnDataDefault = "";
-            string columnDataOriginal = "";
-            string columnDataCurrent = "";
-            string badColumns = "";
-            for (int i = 0; i < vrow.ItemArray.Length; i++)
+                string columnDataDefault = "";
+                string columnDataOriginal = "";
+                string columnDataCurrent = "";
+                string badColumns = "There was a concurrency violation.";
+            if (rowInDB != null)
             {
-                columnDataDefault = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Default].ToString().Trim();
-                columnDataOriginal = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Original].ToString().Trim();
-                columnDataCurrent = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + curData[i, DataRowVersion.Current].ToString().Trim();
-                if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent)
+              
+                for (int i = 0; i < vrow.ItemArray.Length; i++)
                 {
-                    badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+                    columnDataDefault = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Default].ToString().Trim();
+                    columnDataOriginal = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + vrow[i, DataRowVersion.Original].ToString().Trim();
+                    columnDataCurrent = tempCustDataTable.Columns[i].ColumnName.ToString() + ":" + rowInDB[tempCustDataTable.Columns[i].ColumnName.ToString()].ToString().Trim();
+                    if (columnDataDefault != columnDataOriginal || columnDataDefault != columnDataCurrent)
+                    {
+                        badColumns = badColumns + "(Your Data:" + columnDataDefault + ")   (Original Data:" + columnDataOriginal + ")    (Data On Server:" + columnDataCurrent + "\n \n";
+                    }
+
                 }
-
             }
-
             return badColumns;
         }
         //EndCust

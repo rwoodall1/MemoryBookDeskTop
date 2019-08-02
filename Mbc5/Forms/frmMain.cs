@@ -19,6 +19,7 @@ using Mbc5.Classes;
 using System.Data.SqlClient;
 using Exceptionless;
 using Exceptionless.Models;
+using BaseClass;
 namespace Mbc5.Forms
 {
     public partial class frmMain : BaseClass.ParentForm
@@ -53,6 +54,13 @@ namespace Mbc5.Forms
             }else if (formName == "frmSales")
             {
                 tsProdutnNumberSearch.Visible = false;
+            }else if (formName == "frmBids")
+            {
+            
+                tsInvno.Visible = false;
+                tsProdutnNumberSearch.Visible = false;
+                tsOracleCodeSearch.Visible = false;
+
             }
             else
             {
@@ -181,7 +189,7 @@ namespace Mbc5.Forms
             {
                 this.AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
             }
-            else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id = MbcUser; password = 3l3phant1; Connect Timeout=5"; }
+            else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id =MbcUser; password =3l3phant1; Connect Timeout=5"; }
             
 
             List<string> roles = new List<string>();
@@ -235,7 +243,9 @@ namespace Mbc5.Forms
         private void SetMenu()
         {
 
-            this.userMaintinanceToolStripMenuItem.Enabled = this.ValidatedUserRoles.Contains("SA");
+            this.userMaintinanceToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
+            this.tsDeptScanLabel.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
+            lookUpMaintenanceToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
         }
         public void exitMBCToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -441,9 +451,6 @@ namespace Mbc5.Forms
         private void tsPrintScreen_Click(object sender,EventArgs e) {
             this.PrintScreen();
             }
-
-        
-
         private void tsSave_Click(object sender,EventArgs e) {
             try {
                 var activeform = this.ActiveMdiChild as BaseClass.frmBase;
@@ -885,6 +892,104 @@ namespace Mbc5.Forms
             {
 
             }
+        }
+
+        private void testFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addresslabel addressLabel = new addresslabel();
+          addressLabel.Show();
+           
+        }
+
+        private void tsFileFolder_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name== "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("FILEFOLDER");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+
+        }
+
+        private void tsAddress_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("ADDRESSLABEL");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+
+        }
+
+        private void tsReceivingLabel_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("RECEIVINGLABEL");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+        }
+
+        private void tsEnvelopeLabel_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmMbcCust"))
+            {
+                var cusFrm = (frmMbcCust)this.ActiveMdiChild;
+                cusFrm.PrintLabel("ENVELOPELABEL");
+
+
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+        }
+
+        private void tsYearBookLabel_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null && (this.ActiveMdiChild.Name == "frmProdutn"))
+            {
+                var produtnFrm = (frmProdutn)this.ActiveMdiChild;
+                produtnFrm.PrintYearBookLabel();
+            }
+            else
+            {
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+
+            }
+        }
+
+        private void tsDeptScanLabel_Click(object sender, EventArgs e)
+        {
+           
+               this.Cursor = Cursors.AppStarting;
+                frmScanLabels frmDeptLabel = new frmScanLabels();
+
+                frmDeptLabel.ShowDialog() ;
+                this.Cursor = Cursors.Default;
+    
         }
 
 

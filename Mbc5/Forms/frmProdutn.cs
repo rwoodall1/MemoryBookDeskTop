@@ -29,13 +29,7 @@ namespace Mbc5.Forms
 	public partial class frmProdutn : BaseClass.frmBase, INotifyPropertyChanged
 	{
 
-		//Some time use this code to make textboxes tab on enter key
-		//	 if (e.KeyCode == Keys.Enter) {
-  //      SendKeys.Send("{tab}");
-  //      e.SuppressKeyPress = true;
-    
-
-
+		
 	private bool startup = true;
 		public frmProdutn(UserPrincipal userPrincipal, int invno, string schcode) : base(new string[] { "SA", "Administrator", "MbcCS" }, userPrincipal)
 		{
@@ -95,10 +89,7 @@ namespace Mbc5.Forms
 		private void frmProdutn_Load(object sender, EventArgs e)
 		{
             this.frmMain = (frmMain)this.MdiParent;
- 
-           
-
-			this.SetConnectionString();
+ 			this.SetConnectionString();
 			try
 			{
                 this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
@@ -121,10 +112,12 @@ namespace Mbc5.Forms
 				MessageBox.Show(ex.Message, "Error");
 			}
 
-		}
 
-		#region "Properties"
-		public void InvokePropertyChanged(PropertyChangedEventArgs e)
+         
+        }
+
+        #region "Properties"
+        public void InvokePropertyChanged(PropertyChangedEventArgs e)
 		{
 			PropertyChangedEventHandler handler = PropertyChanged;
 			if (handler != null)
@@ -141,6 +134,7 @@ namespace Mbc5.Forms
 		private string CurrentProdNo { get; set; }
 		#endregion
 		#region "Methods"
+    
 		private void ShippingEmail()
 		{
 			var cMainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -279,7 +273,31 @@ namespace Mbc5.Forms
 			AllEmails = vAllEmails;
 
 		}
+        public void PrintYearBookLabel()
+        {
+            //put in check for nulls
+            var vKitRecvd = ((DataRowView)this.produtnBindingSource.Current).Row["kitrecvd"].ToString();
+            var vRecvCardSent = ((DataRowView)this.produtnBindingSource.Current).Row["reccardsent"].ToString();
+            if (vRecvCardSent!="True")
+            {
+                MbcMessageBox.Information("A receiving card has not been sent for this customer.", "Receiving Card");
+            }
+            var vSchoolState= ((DataRowView)this.custBindingSource.Current).Row["schstate"].ToString().Trim();
+            if (string.IsNullOrEmpty(vKitRecvd))
+            {
+                MbcMessageBox.Information("Kit received date must be entered before printing a label.", "");
+                return;
+            }
 
+            reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsRCust", custBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsRQuotes", quotesBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsRProdutn", produtnBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsRWip", wipBindingSource));
+
+            reportViewer1.RefreshReport();   
+        }
 		//General
 		private void SetCodeInvno()
 		{
@@ -337,7 +355,8 @@ namespace Mbc5.Forms
                 }
 				try {
 					wipTableAdapter.FillByInvno(dsProdutn.wip, Invno);
-					wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+                                     
+					wipDetailTableAdapter.Fill(dsProdutn.WipDetail,"", Invno);
 				} catch(Exception ex) {
 
 					MbcMessageBox.Error(ex.Message, "");
@@ -931,10 +950,7 @@ namespace Mbc5.Forms
 			kitrecvdDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
-		private void toprodDateTimePicker_ValueChanged(object sender, EventArgs e)
-		{
-			toprodDateTimePicker.Format = DateTimePickerFormat.Short;
-		}
+		
 
 		private void tovendDateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
@@ -1018,10 +1034,7 @@ namespace Mbc5.Forms
 
 				var numDays = (wks * 5) + (days);
 				var result = CalulateBusinessDay.BusDayAdd(kitrecvdDateTimePicker.Value, numDays);
-				if (result != null)
-				{
-					dedayinDateTimePicker.Value = result;
-				}
+				
 				txtCalcResult.Text = result.ToShortDateString();
 
 			}
@@ -1205,7 +1218,7 @@ namespace Mbc5.Forms
 							var vVal = prodno.Substring(0, 1);
 							if (txtPerfbind.Text != vVal)
 							{
-								MessageBox.Show("Your Production Number (Binding) First Digit is not the same as this value... Press andy key to continue...It is being changed!", "Binding Type Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+								MessageBox.Show("Your Production Number (Binding) First Digit is not the same as this value... Press OK to continue...It is being changed!", "Binding Type Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 								if (txtPerfbind.Text == "C" || txtPerfbind.Text == "G" || txtPerfbind.Text == "K" || txtPerfbind.Text == "H" || txtPerfbind.Text == "P" || txtPerfbind.Text == "S" || txtPerfbind.Text == "M")
 								{
 									if (vVal == "C" || vVal == "G" || vVal == "K" || vVal == "H" || vVal == "P" || vVal == "S" || vVal == "M")
@@ -1292,7 +1305,7 @@ namespace Mbc5.Forms
 			var result = frmeditWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+				//wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
 			}
 		}
 		private void nocopiesTextBox1_Validating(object sender, CancelEventArgs e)
@@ -1380,7 +1393,7 @@ namespace Mbc5.Forms
 			var result = frmeditCoverWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+				//wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
 			}
 		}
 
@@ -1393,7 +1406,7 @@ namespace Mbc5.Forms
 			var result = frmeditCoverWip.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
+				//wipDetailTableAdapter.FillBy(dsProdutn.WipDetail, Invno);
 			}
 		}
 
@@ -1648,86 +1661,81 @@ namespace Mbc5.Forms
 				return processingResult;
 
 			}
-			var sqlClient = new SQLCustomClient();
-			string commandText = "";
-			if (bkStd.Checked)
-			{
-				commandText = @" Select * FROM WipDats Order BY bktype
-                                ";
+          
+            var sqlClient = new SQLCustomClient();
+            sqlClient.ClearParameters();
+            sqlClient.CommandText(@"SELECT ProdType,bktype As BookType,prmsdte AS PromiseDate,wrndte AS WarnDate,prshpdte As ProjectedShipDate
+                                        ,l_dtoprod,l_dwdr1,l_wdr2,l_wdr3,l_wdr4,l_wdr5,l_wdr6,l_wdr7,l_wdr8,l_wdr9,l_wdr10,l_wdr11,l_wdr12,l_wdr13
+                                        ,l_wdr14,l_wdr15,l_wdr16,l_wdr17,l_wdr18,l_wdr19,l_wdr20,l_wdr21,l_wdr22,l_wdr23,l_wdr24,l_wdr25,l_wdr26,l_wdr27
+                                        ,l_wdr28,l_wdr29,l_wdr30,l_wdr31,l_wdr32,l_wdr33,l_wdr34,l_wdr35,l_wdr36,l_wdr37,l_wdr38,l_wdr39,l_wdr40,l_wdr41
+                                        ,l_wdr42,l_wdr43,l_wdr44,l_wdr45,l_wdr46,l_wdr47,l_wdr48,l_wdr49,l_wdr50
+                                      FROM WipDats
+                                       WHERE ProdType=@ProdType");
+            var prodRow = (DataRowView)produtnBindingSource.Current;
+            if (!prodRow.Row.IsNull("bkstd") && (bool)prodRow["bkstd"])
+            {
+                sqlClient.AddParameter("@ProdType", "Standard");
 
-			} else if (bk9.Checked)
-			{
-				commandText = @" Select * FROM WipDat9 Order BY bktype
-                                ";
-			}
-			else if (bk10.Checked)
-			{
-				commandText = @" Select * FROM WipDat10 Order BY bktype
-                                ";
-			}
-			else if (bk11.Checked)
-			{
-				commandText = @" Select * FROM WipDat11 Order BY bktype";
-			}
-			else if (bk12.Checked)
-			{
-				commandText = @"Select * FROM WipDat12 Order BY bktype";
-			}
-			else if (bkHard.Checked)
-			{
-				commandText = @"Select * FROM WipDath Order BY bktype";
-			}
-			else if (bkCoil.Checked)
-			{
-				commandText = @"Select * FROM WipDatc Order BY bktype";
-			}
-			else if (bkAllClr.Checked)
-			{
-				commandText = @" Select * FROM WipDatal Order BY bktype";
-			}
-			else if (bkMilled.Checked)
-			{
-				commandText = @" Select * FROM WipDatmilled Order BY bktype";
-			}
-			else
-			{
-				commandText = @"Select * FROM WipDats Order BY bktype";
-			};
-
-			decimal[] wCalc = new decimal[50];
-			sqlClient.CommandText(commandText);
-			var result = sqlClient.SelectMany<WipDats>();
-			if (result.IsError)
-			{
-				MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				processingResult.IsError = true;
-				return processingResult;
-			}
-			if (result.Data == null)
-			{
-				processingResult.IsError = true;
-				return processingResult;
-			}
-			var vWipsDats = (List<WipDats>)result.Data;
+            }
+            else if (!prodRow.Row.IsNull("bk9") && (bool)prodRow["bk9"])
+            {
+                sqlClient.AddParameter("@ProdType", "Bk9");
+            }
+            else if (!prodRow.Row.IsNull("bk10") && (bool)prodRow["bk10"])
+            {
+                sqlClient.AddParameter("@ProdType", "Bk10");
+            }
+            else if (!prodRow.Row.IsNull("bk11") && (bool)prodRow["bk11"])
+            {
+                sqlClient.AddParameter("@ProdType", "Bk11");
+            }
+            else if (!prodRow.Row.IsNull("bk12") && (bool)prodRow["bk12"])
+            {
+                sqlClient.AddParameter("@ProdType", "Bk12");
+            }
+            else if (!prodRow.Row.IsNull("bkhard") && (bool)prodRow["bkhard"])
+            {
+                sqlClient.AddParameter("@ProdType", "Hbk");
+            }
+            else if (!prodRow.Row.IsNull("bkcoil") && (bool)prodRow["bkcoil"])
+            {
+                sqlClient.AddParameter("@ProdType", "Cbk");
+            }
+            else if (!prodRow.Row.IsNull("allclrck") && (bool)prodRow["allclrck"])
+            {
+                sqlClient.AddParameter("@ProdType", "ClrBk");
+            }
+            else if (!prodRow.Row.IsNull("milled") && (bool)prodRow["milled"])
+            {
+                sqlClient.AddParameter("@ProdType", "MillBk");
+            }
+            else
+            {
+                //Standard
+                sqlClient.AddParameter("@ProdType", "Standard");
+            }
+            var wipDatsResult = sqlClient.Select<WipDats>();
+            if (wipDatsResult.IsError)
+            {
+               
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("WIP not updated, error retrieving wipdats:" + wipDatsResult.Errors[0].ErrorMessage, "WIP not updated, error retrieving wipdats:" + wipDatsResult.Errors[0].ErrorMessage, ""));
+                return processingResult;
+            }
+            var vWipDats = (WipDats)wipDatsResult.Data;
+            decimal[] wCalc = new decimal[50];
+			
 			string vBooktype = txtBookType.Text.Trim();
 
-			WipDats vWhipDates = new WipDats();
-			foreach (WipDats dat in vWipsDats)
-			{
-				if (dat.bktype == vBooktype)
-				{
-					vWhipDates = dat;
-					break;
-				}
-			}
+            string commandText = "";
 			DateTime custSvcDate = dpCustomerServiceDate.Value;
-			if (vWhipDates.prmsdte != 0)
+			if (vWipDats.PromiseDate != 0)
 			{
 
 				sqlClient.ClearParameters();
-				sqlClient.AddParameter("@prmsdate", CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prmsdte));
+				sqlClient.AddParameter("@prmsdate", CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.PromiseDate));
 				sqlClient.AddParameter("@invno", lblInvno.Text);
-				commandText = @"
+				 commandText = @"
                         Update produtn Set prmsdate=@prmsdate WHERE invno=@invno
                         ";
 				sqlClient.CommandText(commandText);
@@ -1760,9 +1768,9 @@ namespace Mbc5.Forms
 
 			}
 
-			if (vWhipDates.l_dtoprod != 0) {
+			if (vWipDats.l_dtoprod != 0) {
 				sqlClient.ClearParameters();
-				sqlClient.AddParameter("@dtoprod", CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.l_dtoprod));
+				sqlClient.AddParameter("@dtoprod", CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.l_dtoprod));
 				sqlClient.AddParameter("@invno", lblInvno.Text);
 				commandText = @"
                         Update WIP Set dtoprod=@dtoprod WHERE invno=@invno
@@ -1794,10 +1802,10 @@ namespace Mbc5.Forms
 				}
 
 			}
-			if (vWhipDates.prshpdte != 0)
+			if (vWipDats.ProjectedShipDate != 0)
 			{
 				sqlClient.ClearParameters();
-				sqlClient.AddParameter("@prshpdte", CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte));
+				sqlClient.AddParameter("@prshpdte", CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.ProjectedShipDate));
 				sqlClient.AddParameter("@invno", lblInvno.Text);
 				commandText = @"
                         Update Produtn Set prshpdte=@prshpdte WHERE invno=@invno
@@ -1812,7 +1820,7 @@ namespace Mbc5.Forms
 				}
 
 
-				var updateResult = await UpdateWipDetailCall(50, CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte), lblInvno.Text);
+				var updateResult = await UpdateWipDetailCall(50, CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.ProjectedShipDate), lblInvno.Text);
 
 				if (updateResult.IsError)
 				{
@@ -1827,7 +1835,7 @@ namespace Mbc5.Forms
 			{
 				sqlClient.ClearParameters();
 				sqlClient.ClearParameters();
-				sqlClient.AddParameter("@prshpdte", CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte));
+				sqlClient.AddParameter("@prshpdte", CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.ProjectedShipDate));
 				sqlClient.AddParameter("@invno", lblInvno.Text);
 
 				commandText = @"
@@ -1844,7 +1852,7 @@ namespace Mbc5.Forms
 
 
 
-				var updateResult = await UpdateWipDetailCall(50, CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte), lblInvno.Text);
+				var updateResult = await UpdateWipDetailCall(50, CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.ProjectedShipDate), lblInvno.Text);
 				if (updateResult.IsError)
 				{
 					MessageBox.Show("Database error. #50a", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1852,10 +1860,10 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.wrndte != 0)
+			if (vWipDats.WarnDate != 0)
 			{
 				sqlClient.ClearParameters();
-				sqlClient.AddParameter("@warndate", CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte));
+				sqlClient.AddParameter("@warndate", CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.WarnDate));
 				sqlClient.AddParameter("@invno", lblInvno.Text);
 
 				commandText = @"
@@ -1889,17 +1897,17 @@ namespace Mbc5.Forms
 				}
 			}
 
-			DateTime? ProductionShipDate = CalulateBusinessDay.PromiseDate(custSvcDate, vWhipDates.prshpdte);
+			DateTime? ProductionShipDate = CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.PromiseDate);
 			if (ProductionShipDate == null)
 			{
 				processingResult.IsError = true;
 				return processingResult;
 			}
-			wCalc[49] = vWhipDates.l_wdr49 + vWhipDates.prmsdte;
+			wCalc[49] = vWipDats.l_wdr49 + vWipDats.PromiseDate;
 
-			if (vWhipDates.l_wdr49 != 0)
+			if (vWipDats.l_wdr49 != 0)
 			{
-				wCalc[48] = vWhipDates.l_wdr49 + wCalc[49];
+				wCalc[48] = vWipDats.l_wdr49 + wCalc[49];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[49], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(49, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -1911,7 +1919,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[48] = vWhipDates.l_wdr49 + wCalc[49];
+				wCalc[48] = vWipDats.l_wdr49 + wCalc[49];
 
 				var updateResult = await UpdateWipDetailCall(49, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -1923,9 +1931,9 @@ namespace Mbc5.Forms
 
 			}
 
-			if (vWhipDates.l_wdr48 != 0)
+			if (vWipDats.l_wdr48 != 0)
 			{
-				wCalc[47] = vWhipDates.l_wdr48 + wCalc[48];
+				wCalc[47] = vWipDats.l_wdr48 + wCalc[48];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[48], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(48, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -1937,7 +1945,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[47] = vWhipDates.l_wdr48 + wCalc[48];
+				wCalc[47] = vWipDats.l_wdr48 + wCalc[48];
 
 				var updateResult = await UpdateWipDetailCall(48, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -1948,9 +1956,9 @@ namespace Mbc5.Forms
 				}
 
 			}
-			if (vWhipDates.l_wdr47 != 0)
+			if (vWipDats.l_wdr47 != 0)
 			{
-				wCalc[46] = vWhipDates.l_wdr47 + wCalc[47];
+				wCalc[46] = vWipDats.l_wdr47 + wCalc[47];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[47], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(47, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -1962,7 +1970,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[46] = vWhipDates.l_wdr47 + wCalc[47];
+				wCalc[46] = vWipDats.l_wdr47 + wCalc[47];
 
 				var updateResult = await UpdateWipDetailCall(47, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -1974,9 +1982,9 @@ namespace Mbc5.Forms
 
 			}
 
-			if (vWhipDates.l_wdr46 != 0)
+			if (vWipDats.l_wdr46 != 0)
 			{
-				wCalc[45] = vWhipDates.l_wdr46 + wCalc[46];
+				wCalc[45] = vWipDats.l_wdr46 + wCalc[46];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[46], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(46, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -1988,7 +1996,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[45] = vWhipDates.l_wdr46 + wCalc[46];
+				wCalc[45] = vWipDats.l_wdr46 + wCalc[46];
 
 				var updateResult = await UpdateWipDetailCall(46, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -1999,9 +2007,9 @@ namespace Mbc5.Forms
 				}
 
 			}
-			if (vWhipDates.l_wdr45 != 0)
+			if (vWipDats.l_wdr45 != 0)
 			{
-				wCalc[44] = vWhipDates.l_wdr45 + wCalc[45];
+				wCalc[44] = vWipDats.l_wdr45 + wCalc[45];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[45], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(45, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2013,7 +2021,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[44] = vWhipDates.l_wdr45 + wCalc[45];
+				wCalc[44] = vWipDats.l_wdr45 + wCalc[45];
 
 				var updateResult = await UpdateWipDetailCall(45, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2024,9 +2032,9 @@ namespace Mbc5.Forms
 				}
 
 			}
-			if (vWhipDates.l_wdr44 != 0)
+			if (vWipDats.l_wdr44 != 0)
 			{
-				wCalc[43] = vWhipDates.l_wdr44 + wCalc[4];
+				wCalc[43] = vWipDats.l_wdr44 + wCalc[4];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[44], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(44, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2038,7 +2046,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[43] = vWhipDates.l_wdr44 + wCalc[44];
+				wCalc[43] = vWipDats.l_wdr44 + wCalc[44];
 
 				var updateResult = await UpdateWipDetailCall(44, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2050,9 +2058,9 @@ namespace Mbc5.Forms
 
 			}
 
-			if (vWhipDates.l_wdr43 != 0)
+			if (vWipDats.l_wdr43 != 0)
 			{
-				wCalc[42] = vWhipDates.l_wdr43 + wCalc[4];
+				wCalc[42] = vWipDats.l_wdr43 + wCalc[4];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[43], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(43, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2064,7 +2072,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[42] = vWhipDates.l_wdr43 + wCalc[43];
+				wCalc[42] = vWipDats.l_wdr43 + wCalc[43];
 
 				var updateResult = await UpdateWipDetailCall(43, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2075,9 +2083,9 @@ namespace Mbc5.Forms
 				}
 
 			}
-			if (vWhipDates.l_wdr42 != 0)
+			if (vWipDats.l_wdr42 != 0)
 			{
-				wCalc[41] = vWhipDates.l_wdr42 + wCalc[4];
+				wCalc[41] = vWipDats.l_wdr42 + wCalc[4];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[42], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(42, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2089,7 +2097,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[41] = vWhipDates.l_wdr42 + wCalc[42];
+				wCalc[41] = vWipDats.l_wdr42 + wCalc[42];
 
 				var updateResult = await UpdateWipDetailCall(42, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2101,9 +2109,9 @@ namespace Mbc5.Forms
 
 			}
 
-			if (vWhipDates.l_wdr41 != 0)
+			if (vWipDats.l_wdr41 != 0)
 			{
-				wCalc[40] = vWhipDates.l_wdr41 + wCalc[41];
+				wCalc[40] = vWipDats.l_wdr41 + wCalc[41];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[41], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(41, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2115,7 +2123,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[40] = vWhipDates.l_wdr41 + wCalc[41];
+				wCalc[40] = vWipDats.l_wdr41 + wCalc[41];
 
 				var updateResult = await UpdateWipDetailCall(41, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2127,9 +2135,9 @@ namespace Mbc5.Forms
 
 			}
 
-			if (vWhipDates.l_wdr40 != 0)
+			if (vWipDats.l_wdr40 != 0)
 			{
-				wCalc[39] = vWhipDates.l_wdr40 + wCalc[40];
+				wCalc[39] = vWipDats.l_wdr40 + wCalc[40];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[40], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(40, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2141,7 +2149,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[39] = vWhipDates.l_wdr40 + wCalc[40];
+				wCalc[39] = vWipDats.l_wdr40 + wCalc[40];
 
 				var updateResult = await UpdateWipDetailCall(40, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2151,9 +2159,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr39 != 0)
+			if (vWipDats.l_wdr39 != 0)
 			{
-				wCalc[38] = vWhipDates.l_wdr39 + wCalc[39];
+				wCalc[38] = vWipDats.l_wdr39 + wCalc[39];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[39], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(39, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2165,7 +2173,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[38] = vWhipDates.l_wdr39 + wCalc[39];
+				wCalc[38] = vWipDats.l_wdr39 + wCalc[39];
 
 				var updateResult = await UpdateWipDetailCall(39, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2176,9 +2184,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr38 != 0)
+			if (vWipDats.l_wdr38 != 0)
 			{
-				wCalc[37] = vWhipDates.l_wdr38 + wCalc[38];
+				wCalc[37] = vWipDats.l_wdr38 + wCalc[38];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[38], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(38, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2190,7 +2198,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[37] = vWhipDates.l_wdr38 + wCalc[38];
+				wCalc[37] = vWipDats.l_wdr38 + wCalc[38];
 
 				var updateResult = await UpdateWipDetailCall(38, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2201,9 +2209,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr37 != 0)
+			if (vWipDats.l_wdr37 != 0)
 			{
-				wCalc[36] = vWhipDates.l_wdr37 + wCalc[37];
+				wCalc[36] = vWipDats.l_wdr37 + wCalc[37];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[37], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(37, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2215,7 +2223,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[36] = vWhipDates.l_wdr37 + wCalc[37];
+				wCalc[36] = vWipDats.l_wdr37 + wCalc[37];
 
 				var updateResult = await UpdateWipDetailCall(37, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2225,9 +2233,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr36 != 0)
+			if (vWipDats.l_wdr36 != 0)
 			{
-				wCalc[35] = vWhipDates.l_wdr36 + wCalc[36];
+				wCalc[35] = vWipDats.l_wdr36 + wCalc[36];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[36], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(36, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2239,7 +2247,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[35] = vWhipDates.l_wdr36 + wCalc[36];
+				wCalc[35] = vWipDats.l_wdr36 + wCalc[36];
 
 				var updateResult = await UpdateWipDetailCall(36, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2249,9 +2257,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr35 != 0)
+			if (vWipDats.l_wdr35 != 0)
 			{
-				wCalc[34] = vWhipDates.l_wdr35 + wCalc[35];
+				wCalc[34] = vWipDats.l_wdr35 + wCalc[35];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[35], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(35, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2263,7 +2271,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[34] = vWhipDates.l_wdr35 + wCalc[35];
+				wCalc[34] = vWipDats.l_wdr35 + wCalc[35];
 
 				var updateResult = await UpdateWipDetailCall(35, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2273,9 +2281,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr34 != 0)
+			if (vWipDats.l_wdr34 != 0)
 			{
-				wCalc[33] = vWhipDates.l_wdr34 + wCalc[34];
+				wCalc[33] = vWipDats.l_wdr34 + wCalc[34];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[34], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(34, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2287,7 +2295,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[33] = vWhipDates.l_wdr34 + wCalc[34];
+				wCalc[33] = vWipDats.l_wdr34 + wCalc[34];
 
 				var updateResult = await UpdateWipDetailCall(34, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2297,9 +2305,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr33 != 0)
+			if (vWipDats.l_wdr33 != 0)
 			{
-				wCalc[32] = vWhipDates.l_wdr33 + wCalc[33];
+				wCalc[32] = vWipDats.l_wdr33 + wCalc[33];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[33], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(33, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2311,7 +2319,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[32] = vWhipDates.l_wdr33 + wCalc[33];
+				wCalc[32] = vWipDats.l_wdr33 + wCalc[33];
 
 				var updateResult = await UpdateWipDetailCall(33, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2321,9 +2329,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr32 != 0)
+			if (vWipDats.l_wdr32 != 0)
 			{
-				wCalc[31] = vWhipDates.l_wdr32 + wCalc[32];
+				wCalc[31] = vWipDats.l_wdr32 + wCalc[32];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[32], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(32, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2335,7 +2343,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[31] = vWhipDates.l_wdr32 + wCalc[32];
+				wCalc[31] = vWipDats.l_wdr32 + wCalc[32];
 
 				var updateResult = await UpdateWipDetailCall(32, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2345,9 +2353,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr31 != 0)
+			if (vWipDats.l_wdr31 != 0)
 			{
-				wCalc[30] = vWhipDates.l_wdr31 + wCalc[31];
+				wCalc[30] = vWipDats.l_wdr31 + wCalc[31];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[31], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(31, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2359,7 +2367,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[30] = vWhipDates.l_wdr31 + wCalc[31];
+				wCalc[30] = vWipDats.l_wdr31 + wCalc[31];
 
 				var updateResult = await UpdateWipDetailCall(31, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2370,9 +2378,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr30 != 0)
+			if (vWipDats.l_wdr30 != 0)
 			{
-				wCalc[29] = vWhipDates.l_wdr30 + wCalc[30];
+				wCalc[29] = vWipDats.l_wdr30 + wCalc[30];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[30], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(30, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2384,7 +2392,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[29] = vWhipDates.l_wdr30 + wCalc[30];
+				wCalc[29] = vWipDats.l_wdr30 + wCalc[30];
 
 				var updateResult = await UpdateWipDetailCall(30, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2395,9 +2403,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr29 != 0)
+			if (vWipDats.l_wdr29 != 0)
 			{
-				wCalc[28] = vWhipDates.l_wdr29 + wCalc[29];
+				wCalc[28] = vWipDats.l_wdr29 + wCalc[29];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[29], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(29, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2409,7 +2417,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[28] = vWhipDates.l_wdr29 + wCalc[29];
+				wCalc[28] = vWipDats.l_wdr29 + wCalc[29];
 
 				var updateResult = await UpdateWipDetailCall(29, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2420,9 +2428,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr28 != 0)
+			if (vWipDats.l_wdr28 != 0)
 			{
-				wCalc[27] = vWhipDates.l_wdr28 + wCalc[28];
+				wCalc[27] = vWipDats.l_wdr28 + wCalc[28];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[28], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(28, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2434,7 +2442,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[27] = vWhipDates.l_wdr28 + wCalc[28];
+				wCalc[27] = vWipDats.l_wdr28 + wCalc[28];
 
 				var updateResult = await UpdateWipDetailCall(28, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2445,9 +2453,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr27 != 0)
+			if (vWipDats.l_wdr27 != 0)
 			{
-				wCalc[26] = vWhipDates.l_wdr27 + wCalc[27];
+				wCalc[26] = vWipDats.l_wdr27 + wCalc[27];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[27], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(27, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2459,7 +2467,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[26] = vWhipDates.l_wdr27 + wCalc[27];
+				wCalc[26] = vWipDats.l_wdr27 + wCalc[27];
 
 				var updateResult = await UpdateWipDetailCall(27, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2470,9 +2478,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr26 != 0)
+			if (vWipDats.l_wdr26 != 0)
 			{
-				wCalc[25] = vWhipDates.l_wdr26 + wCalc[26];
+				wCalc[25] = vWipDats.l_wdr26 + wCalc[26];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[26], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(26, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2484,7 +2492,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[25] = vWhipDates.l_wdr26 + wCalc[26];
+				wCalc[25] = vWipDats.l_wdr26 + wCalc[26];
 
 				var updateResult = await UpdateWipDetailCall(26, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2494,9 +2502,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr25 != 0)
+			if (vWipDats.l_wdr25 != 0)
 			{
-				wCalc[24] = vWhipDates.l_wdr25 + wCalc[25];
+				wCalc[24] = vWipDats.l_wdr25 + wCalc[25];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[25], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(25, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2508,7 +2516,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[24] = vWhipDates.l_wdr25 + wCalc[25];
+				wCalc[24] = vWipDats.l_wdr25 + wCalc[25];
 
 				var updateResult = await UpdateWipDetailCall(25, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2519,9 +2527,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr24 != 0)
+			if (vWipDats.l_wdr24 != 0)
 			{
-				wCalc[23] = vWhipDates.l_wdr24 + wCalc[24];
+				wCalc[23] = vWipDats.l_wdr24 + wCalc[24];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[24], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(24, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2533,7 +2541,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[23] = vWhipDates.l_wdr24 + wCalc[24];
+				wCalc[23] = vWipDats.l_wdr24 + wCalc[24];
 
 				var updateResult = await UpdateWipDetailCall(24, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2544,9 +2552,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr23 != 0)
+			if (vWipDats.l_wdr23 != 0)
 			{
-				wCalc[22] = vWhipDates.l_wdr23 + wCalc[23];
+				wCalc[22] = vWipDats.l_wdr23 + wCalc[23];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[23], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(23, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2558,7 +2566,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[22] = vWhipDates.l_wdr23 + wCalc[23];
+				wCalc[22] = vWipDats.l_wdr23 + wCalc[23];
 
 				var updateResult = await UpdateWipDetailCall(23, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2569,9 +2577,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr22 != 0)
+			if (vWipDats.l_wdr22 != 0)
 			{
-				wCalc[21] = vWhipDates.l_wdr22 + wCalc[22];
+				wCalc[21] = vWipDats.l_wdr22 + wCalc[22];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[22], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(22, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2583,7 +2591,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[21] = vWhipDates.l_wdr22 + wCalc[22];
+				wCalc[21] = vWipDats.l_wdr22 + wCalc[22];
 
 				var updateResult = await UpdateWipDetailCall(22, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2594,9 +2602,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr21 != 0)
+			if (vWipDats.l_wdr21 != 0)
 			{
-				wCalc[20] = vWhipDates.l_wdr21 + wCalc[21];
+				wCalc[20] = vWipDats.l_wdr21 + wCalc[21];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[21], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(21, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2608,7 +2616,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[20] = vWhipDates.l_wdr21 + wCalc[21];
+				wCalc[20] = vWipDats.l_wdr21 + wCalc[21];
 
 				var updateResult = await UpdateWipDetailCall(21, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2619,9 +2627,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr20 != 0)
+			if (vWipDats.l_wdr20 != 0)
 			{
-				wCalc[19] = vWhipDates.l_wdr20 + wCalc[20];
+				wCalc[19] = vWipDats.l_wdr20 + wCalc[20];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[20], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(20, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2633,7 +2641,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[19] = vWhipDates.l_wdr20 + wCalc[20];
+				wCalc[19] = vWipDats.l_wdr20 + wCalc[20];
 
 				var updateResult = await UpdateWipDetailCall(20, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2643,9 +2651,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr19 != 0)
+			if (vWipDats.l_wdr19 != 0)
 			{
-				wCalc[18] = vWhipDates.l_wdr19 + wCalc[19];
+				wCalc[18] = vWipDats.l_wdr19 + wCalc[19];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[19], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(19, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2657,7 +2665,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[18] = vWhipDates.l_wdr19 + wCalc[19];
+				wCalc[18] = vWipDats.l_wdr19 + wCalc[19];
 
 				var updateResult = await UpdateWipDetailCall(19, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2667,9 +2675,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr18 != 0)
+			if (vWipDats.l_wdr18 != 0)
 			{
-				wCalc[17] = vWhipDates.l_wdr18 + wCalc[18];
+				wCalc[17] = vWipDats.l_wdr18 + wCalc[18];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[18], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(18, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2681,7 +2689,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[17] = vWhipDates.l_wdr18 + wCalc[18];
+				wCalc[17] = vWipDats.l_wdr18 + wCalc[18];
 
 				var updateResult = await UpdateWipDetailCall(18, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2692,9 +2700,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr17 != 0)
+			if (vWipDats.l_wdr17 != 0)
 			{
-				wCalc[16] = vWhipDates.l_wdr17 + wCalc[17];
+				wCalc[16] = vWipDats.l_wdr17 + wCalc[17];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[17], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(17, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2706,7 +2714,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[16] = vWhipDates.l_wdr17 + wCalc[17];
+				wCalc[16] = vWipDats.l_wdr17 + wCalc[17];
 
 				var updateResult = await UpdateWipDetailCall(17, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2716,9 +2724,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr16 != 0)
+			if (vWipDats.l_wdr16 != 0)
 			{
-				wCalc[15] = vWhipDates.l_wdr16 + wCalc[16];
+				wCalc[15] = vWipDats.l_wdr16 + wCalc[16];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[16], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(16, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2730,7 +2738,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[15] = vWhipDates.l_wdr16 + wCalc[16];
+				wCalc[15] = vWipDats.l_wdr16 + wCalc[16];
 
 				var updateResult = await UpdateWipDetailCall(16, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2740,9 +2748,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr15 != 0)
+			if (vWipDats.l_wdr15 != 0)
 			{
-				wCalc[14] = vWhipDates.l_wdr15 + wCalc[15];
+				wCalc[14] = vWipDats.l_wdr15 + wCalc[15];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[15], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(15, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2754,7 +2762,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[15] = vWhipDates.l_wdr15 + wCalc[15];
+				wCalc[15] = vWipDats.l_wdr15 + wCalc[15];
 
 				var updateResult = await UpdateWipDetailCall(15, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2764,9 +2772,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr14 != 0)
+			if (vWipDats.l_wdr14 != 0)
 			{
-				wCalc[13] = vWhipDates.l_wdr14 + wCalc[14];
+				wCalc[13] = vWipDats.l_wdr14 + wCalc[14];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[14], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(14, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2778,7 +2786,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[13] = vWhipDates.l_wdr14 + wCalc[14];
+				wCalc[13] = vWipDats.l_wdr14 + wCalc[14];
 
 				var updateResult = await UpdateWipDetailCall(14, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2789,9 +2797,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr13 != 0)
+			if (vWipDats.l_wdr13 != 0)
 			{
-				wCalc[12] = vWhipDates.l_wdr13 + wCalc[13];
+				wCalc[12] = vWipDats.l_wdr13 + wCalc[13];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[13], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(13, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2803,7 +2811,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[12] = vWhipDates.l_wdr13 + wCalc[13];
+				wCalc[12] = vWipDats.l_wdr13 + wCalc[13];
 
 				var updateResult = await UpdateWipDetailCall(13, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2813,9 +2821,9 @@ namespace Mbc5.Forms
 					return processingResult;
 				}
 			}
-			if (vWhipDates.l_wdr12 != 0)
+			if (vWipDats.l_wdr12 != 0)
 			{
-				wCalc[11] = vWhipDates.l_wdr12 + wCalc[12];
+				wCalc[11] = vWipDats.l_wdr12 + wCalc[12];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[12], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(12, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2827,7 +2835,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[11] = vWhipDates.l_wdr12 + wCalc[12];
+				wCalc[11] = vWipDats.l_wdr12 + wCalc[12];
 
 				var updateResult = await UpdateWipDetailCall(12, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2838,9 +2846,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr11 != 0)
+			if (vWipDats.l_wdr11 != 0)
 			{
-				wCalc[10] = vWhipDates.l_wdr11 + wCalc[11];
+				wCalc[10] = vWipDats.l_wdr11 + wCalc[11];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[11], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(11, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2852,7 +2860,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[10] = vWhipDates.l_wdr11 + wCalc[11];
+				wCalc[10] = vWipDats.l_wdr11 + wCalc[11];
 
 				var updateResult = await UpdateWipDetailCall(11, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2863,9 +2871,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr10 != 0)
+			if (vWipDats.l_wdr10 != 0)
 			{
-				wCalc[9] = vWhipDates.l_wdr10 + wCalc[10];
+				wCalc[9] = vWipDats.l_wdr10 + wCalc[10];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[10], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(10, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2877,7 +2885,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[10] = vWhipDates.l_wdr10 + wCalc[10];
+				wCalc[10] = vWipDats.l_wdr10 + wCalc[10];
 
 				var updateResult = await UpdateWipDetailCall(10, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2888,9 +2896,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr9 != 0)
+			if (vWipDats.l_wdr9 != 0)
 			{
-				wCalc[8] = vWhipDates.l_wdr9 + wCalc[9];
+				wCalc[8] = vWipDats.l_wdr9 + wCalc[9];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[9], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(9, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2902,7 +2910,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[8] = vWhipDates.l_wdr9 + wCalc[9];
+				wCalc[8] = vWipDats.l_wdr9 + wCalc[9];
 
 				var updateResult = await UpdateWipDetailCall(9, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2913,9 +2921,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr8 != 0)
+			if (vWipDats.l_wdr8 != 0)
 			{
-				wCalc[7] = vWhipDates.l_wdr8 + wCalc[8];
+				wCalc[7] = vWipDats.l_wdr8 + wCalc[8];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[8], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(8, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2927,7 +2935,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[7] = vWhipDates.l_wdr8 + wCalc[8];
+				wCalc[7] = vWipDats.l_wdr8 + wCalc[8];
 
 				var updateResult = await UpdateWipDetailCall(8, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2938,9 +2946,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr7 != 0)
+			if (vWipDats.l_wdr7 != 0)
 			{
-				wCalc[6] = vWhipDates.l_wdr7 + wCalc[7];
+				wCalc[6] = vWipDats.l_wdr7 + wCalc[7];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[7], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(7, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2952,7 +2960,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[6] = vWhipDates.l_wdr7 + wCalc[7];
+				wCalc[6] = vWipDats.l_wdr7 + wCalc[7];
 
 				var updateResult = await UpdateWipDetailCall(7, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2963,9 +2971,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr6 != 0)
+			if (vWipDats.l_wdr6 != 0)
 			{
-				wCalc[5] = vWhipDates.l_wdr6 + wCalc[6];
+				wCalc[5] = vWipDats.l_wdr6 + wCalc[6];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[6], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(6, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2977,7 +2985,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[6] = vWhipDates.l_wdr6 + wCalc[6];
+				wCalc[6] = vWipDats.l_wdr6 + wCalc[6];
 
 				var updateResult = await UpdateWipDetailCall(6, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -2988,9 +2996,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr5 != 0)
+			if (vWipDats.l_wdr5 != 0)
 			{
-				wCalc[4] = vWhipDates.l_wdr5 + wCalc[5];
+				wCalc[4] = vWipDats.l_wdr5 + wCalc[5];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[5], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(5, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -3002,7 +3010,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[4] = vWhipDates.l_wdr5 + wCalc[5];
+				wCalc[4] = vWipDats.l_wdr5 + wCalc[5];
 
 				var updateResult = await UpdateWipDetailCall(5, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -3013,9 +3021,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr4 != 0)
+			if (vWipDats.l_wdr4 != 0)
 			{
-				wCalc[3] = vWhipDates.l_wdr4 + wCalc[4];
+				wCalc[3] = vWipDats.l_wdr4 + wCalc[4];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[4], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(4, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -3027,7 +3035,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[3] = vWhipDates.l_wdr4 + wCalc[4];
+				wCalc[3] = vWipDats.l_wdr4 + wCalc[4];
 
 				var updateResult = await UpdateWipDetailCall(4, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -3038,9 +3046,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr3 != 0)
+			if (vWipDats.l_wdr3 != 0)
 			{
-				wCalc[2] = vWhipDates.l_wdr3 + wCalc[3];
+				wCalc[2] = vWipDats.l_wdr3 + wCalc[3];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[3], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(3, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -3052,7 +3060,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[2] = vWhipDates.l_wdr3 + wCalc[3];
+				wCalc[2] = vWipDats.l_wdr3 + wCalc[3];
 
 				var updateResult = await UpdateWipDetailCall(3, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -3063,9 +3071,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_wdr2 != 0)
+			if (vWipDats.l_wdr2 != 0)
 			{
-				wCalc[1] = vWhipDates.l_wdr2 + wCalc[2];
+				wCalc[1] = vWipDats.l_wdr2 + wCalc[2];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[2], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(2, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -3077,7 +3085,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[1] = vWhipDates.l_wdr2 + wCalc[2];
+				wCalc[1] = vWipDats.l_wdr2 + wCalc[2];
 
 				var updateResult = await UpdateWipDetailCall(2, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -3088,9 +3096,9 @@ namespace Mbc5.Forms
 				}
 			}
 
-			if (vWhipDates.l_dwdr1 != 0)
+			if (vWipDats.l_dwdr1 != 0)
 			{
-				wCalc[0] = vWhipDates.l_dwdr1 + wCalc[1];
+				wCalc[0] = vWipDats.l_dwdr1 + wCalc[1];
 				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[1], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(1, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
@@ -3102,7 +3110,7 @@ namespace Mbc5.Forms
 			}
 			else
 			{
-				wCalc[0] = vWhipDates.l_dwdr1 + wCalc[1];
+				wCalc[0] = vWipDats.l_dwdr1 + wCalc[1];
 
 				var updateResult = await UpdateWipDetailCall(1, null, lblInvno.Text);
 				if (updateResult.IsError)
@@ -3120,8 +3128,12 @@ namespace Mbc5.Forms
 		}
 		private void dpCustomerServiceDate_Leave(object sender, EventArgs e)
 		{
-			WipUpdate();
-		}
+            var result = this.WipUpdate();
+            if (result.Result.IsError)
+            {
+                MbcMessageBox.Error(result.Result.Errors[0].ErrorMessage, "");
+            }
+        }
 
 		private void txtSchNamesrch_KeyPress(object sender, KeyPressEventArgs e)
 		{
@@ -3721,8 +3733,129 @@ namespace Mbc5.Forms
 
 
 		}
-		//nothing below here  
-	}
+
+        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            reportViewer1.PrintDialog();
+        }
+
+        private void dedmadeTextBox_Leave(object sender, EventArgs e)
+        {
+
+
+
+            if (dedmadeTextBox.Text=="Y")
+            {
+                dpCustomerServiceDate.Value = dedayoutDateTimePicker.Value;
+                var result=  this.WipUpdate();
+                if (result.Result.IsError)
+                {
+                    MbcMessageBox.Error(result.Result.Errors[0].ErrorMessage, "");
+                }
+            }
+        }
+
+        private void btnBkDue_Click(object sender, EventArgs e)
+        {
+            var emailList = new List<string>();
+            DataRowView custRow = (DataRowView)custBindingSource.Current;
+            DataRowView prodRow = (DataRowView)produtnBindingSource.Current;
+            string vDedayOut = "";
+            string vDedayIn = "";
+           string vPin ="";
+            DateTime vdate;
+            if (!prodRow.Row.IsNull("dedayout"))
+            {
+                     vdate=(DateTime)prodRow["dedayout"];
+                vDedayOut = vdate.ToString("d");
+            }
+            if (!prodRow.Row.IsNull("dedayin"))
+            {
+                 vdate = (DateTime)prodRow["dedayin"];
+                vDedayIn = vdate.ToString("d");
+            }
+            if (!custRow.Row.IsNull("PIN"))
+            {
+                vPin = ((DataRowView)custBindingSource.Current).Row["pin"].ToString();
+            }
+         
+            string vNoPages = ((DataRowView)quotesBindingSource.Current).Row["nopages"].ToString();
+            string vNoCopies= ((DataRowView)quotesBindingSource.Current).Row["nocopies"].ToString();
+            
+            string vCsName= ((DataRowView)custBindingSource.Current).Row["csname"].ToString().Trim();
+            string vCsEmail= ((DataRowView)custBindingSource.Current).Row["csemail"].ToString().Trim();
+            string vcontEmail = custRow["contemail"] != null ? custRow["contemail"].ToString().Trim() : "";
+            string vBcontEmail = custRow["bcontemail"] != null ? custRow["bcontemail"].ToString().Trim() : "";
+            string vCcontEmail = custRow["ccontemail"] != null ? custRow["ccontemail"].ToString().Trim() : "";
+            if (!string.IsNullOrEmpty(vcontEmail))
+            {
+                emailList.Add(vcontEmail);
+            }
+            if (!string.IsNullOrEmpty(vBcontEmail))
+            {
+                emailList.Add(vBcontEmail);
+            }
+            if (!string.IsNullOrEmpty(vCcontEmail))
+            {
+                emailList.Add(vCcontEmail);
+            }
+            var emailHelper = new EmailHelper();
+            string subject = "Memory Book Deadline Reminder";
+                    string body = @"The deadline for submitting your yearbook pages is right around the corner.
+                                    In order to ensure delivery of your books by "+ vDedayOut+ ", please submit " +
+                                    "your pages by " + vDedayIn + "." + " According to our records, your order is for "
+                                    + vNoPages + " pages and " + vNoCopies + " yearbooks. If this is not correct, please" +
+                                    " call 1-800-247-1526 or respond to this e-mail with any changes you may have. Payment is" +
+                                    " due upon receipt of invoice; to be issued within a week of page submission. Payments may" +
+                                    " be made online https://pay.memorybook.com/school (School Code:" + Schcode+ " and PIN:" 
+                                    + vPin + " will be needed) or by mailing a check to: <br/><strong>Memory Book Company " +
+                                    "<br/>304 Curry Drive  <br/>Sedalia, MO 65301</strong> <br/><br/>Once your pages are here and " +
+                                    "your book has entered production you will receive an email, this will confirm your order and " +
+                                    "delivery date.<br/><br/>" + vCsName + "<br/>" + vCsEmail;
+
+
+            emailHelper.SendOutLookEmail(subject, emailList, "", body, EmailType.Mbc);
+        }
+
+        private void frmProdutn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //set KeyPriview to True first.
+            if (e.KeyChar == (char)Keys.Enter)
+                e.KeyChar = (char)Keys.Tab;
+            SendKeys.Send(e.KeyChar.ToString());//send the keystroke to the form.
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            WipUpdate();
+        }
+
+        private void btnUpdateWip_Click(object sender, EventArgs e)
+        {
+            var result = this.WipUpdate();
+            if (result.Result.IsError)
+            {
+                MbcMessageBox.Error(result.Result.Errors[0].ErrorMessage, "");
+            }
+        }
+
+        private void btnBookType_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pg1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+
+        //nothing below here  
+    }
     public class BinderyInfo
 	{
 		public string Schname { get; set; }
