@@ -56,8 +56,8 @@
     <StartupObject>Mbc5.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Avalara.AvaTax.RestClient.net45, Version=19.5.0.0, Culture=neutral, PublicKeyToken=196a40461b4185b8, processorArchitecture=MSIL">
-      <HintPath>..\packages\Avalara.AvaTax.19.5.0\lib\net45\Avalara.AvaTax.RestClient.net45.dll</HintPath>
+    <Reference Include="Avalara.AvaTax.RestClient.net45, Version=19.7.0.1, Culture=neutral, PublicKeyToken=c182a1af4964ace4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Avalara.AvaTax.19.7.0.1\lib\net45\Avalara.AvaTax.RestClient.net45.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless, Version=4.3.2027.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.4.3.2027\lib\net45\Exceptionless.dll</HintPath>
