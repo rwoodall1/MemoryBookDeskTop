@@ -44,10 +44,10 @@ namespace Mbc5.Forms
             string msg = "Login with your user name and this password:" + pwd + ". Once you login you will have to change your password.";
 
             SqlConnection conn = new SqlConnection(AppConnectionString);
-            SqlCommand cmd = new SqlCommand("Select Id,EmailAddress from mbcUsers  where UserName=@UserName", conn);
+            SqlCommand cmd = new SqlCommand("Select Id,EmailAddress from mbcUsers  where EmailAddress=@EmailAddress", conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
+            cmd.Parameters.AddWithValue("@EmailAddress", txtUserName.Text);
 
             try
             {

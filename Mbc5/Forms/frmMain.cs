@@ -30,14 +30,15 @@ namespace Mbc5.Forms
 
             InitializeComponent();
         }
-        #region "Properties"
 
+        #region "Properties"
+        public bool keepLoading { get; set; } = true;
         public bool ForcePasswordChange { get; set; }
         public string AppConnectionString { get; set; }
         public List<string> ValidatedUserRoles { get; private set; }
         #endregion
         #region "Methods"
-        public  void ShowSearchButtons(string formName)
+        public void ShowSearchButtons(string formName)
         {
             tsSchcodeSearch.Visible = true;
             tsSchnameSearch.Visible = true;
@@ -51,12 +52,21 @@ namespace Mbc5.Forms
                 tsLastNameSearch.Visible = true;
                 tsZipCodeSearch.Visible = true;
                 tsEmailSearch.Visible = true;
-            }else if (formName == "frmSales")
+            } else if (formName == "frmMerCust") {
+                tsFirstNameSearch.Visible = true;
+                tsLastNameSearch.Visible = true;
+                tsZipCodeSearch.Visible = true;
+                tsEmailSearch.Visible = true;
+
+
+            } else if (formName == "frmSales")
             {
                 tsProdutnNumberSearch.Visible = false;
-            }else if (formName == "frmBids")
+            } else if (formName == "frmSales") {
+                tsProdutnNumberSearch.Visible = false;
+            } else if (formName == "frmBids")
             {
-            
+
                 tsInvno.Visible = false;
                 tsProdutnNumberSearch.Visible = false;
                 tsOracleCodeSearch.Visible = false;
@@ -71,7 +81,7 @@ namespace Mbc5.Forms
             }
 
         }
-        public  void HideSearchButtons()
+        public void HideSearchButtons()
         {
             tsSchcodeSearch.Visible = false;
             tsSchnameSearch.Visible = false;
@@ -87,27 +97,27 @@ namespace Mbc5.Forms
         }
         public void PrintScreen() {
             ScreenPrinter vScreenPrinter = new ScreenPrinter(this);
-           vScreenPrinter.PrintScreen();
+            vScreenPrinter.PrintScreen();
 
-            }
+        }
         public void ValidateUserRoles() {
-            string[] AvailableRoles = new string[] { "SA","Administrator" };//list all roles when completed
+            string[] AvailableRoles = new string[] { "SA", "Administrator" };//list all roles when completed
             foreach (string role in AvailableRoles)
                 try {
                     if (this.ApplicationUser.IsInRole(role))
-                    this.ValidatedUserRoles.Add(role);
+                        this.ValidatedUserRoles.Add(role);
                 }
                 catch (Exception ex)
                 {
 
                 }
-                
 
-            }
-       
+
+        }
+
         private int GetInvno()
         {
-          
+
 
             int vInvno = 0;
             switch (this.ActiveMdiChild.Name)
@@ -121,13 +131,20 @@ namespace Mbc5.Forms
                         vInvno = tmpForm.Invno;
                         break;
                     }
-				case "frmSales":
-					{
-						var tmpForm = (frmSales)this.ActiveMdiChild;
-						vInvno = tmpForm.Invno;
-						break;
-					}
-				case "frmBids":
+                case "frmSales":
+                    {
+                        var tmpForm = (frmSales)this.ActiveMdiChild;
+                        vInvno = tmpForm.Invno;
+                        break;
+                    }
+                case "frmMerCust":
+                    {
+                        var tmpForm = (frmMerCust)this.ActiveMdiChild;
+                        vInvno = tmpForm.Invno;
+                        break;
+
+                    }
+                case "frmBids":
                     {
                         var tmpForm = (frmBids)this.ActiveMdiChild;
                         vInvno = tmpForm.Invno;
@@ -139,23 +156,23 @@ namespace Mbc5.Forms
                         vInvno = tmpForm.Invno;
                         break;
                     }
-                
+
             }
             return vInvno;
         }
         private string GetSchcode()
         {
-            string vSchcode =null;
+            string vSchcode = null;
             switch (this.ActiveMdiChild.Name)
             {
                 case "frmSales":
-                        {
+                    {
 
                         var tmpForm = (frmSales)this.ActiveMdiChild;
 
                         vSchcode = tmpForm.Schcode;
                         break;
-                        }
+                    }
                 case "frmMbcCust":
                     {
 
@@ -164,9 +181,23 @@ namespace Mbc5.Forms
                         vSchcode = tmpForm.Schcode;
                         break;
                     }
+                case "frmMerCust":
+                    {
+
+                        var tmpForm = (frmMerCust)this.ActiveMdiChild;
+
+                        vSchcode = tmpForm.Schcode;
+                        break;
+                    }
                 case "frmBids":
                     {
                         var tmpForm = (frmBids)this.ActiveMdiChild;
+                        vSchcode = tmpForm.Schcode;
+                        break;
+                    }
+                case "frmMBids":
+                    {
+                        var tmpForm = (frmMBids)this.ActiveMdiChild;
                         vSchcode = tmpForm.Schcode;
                         break;
                     }
@@ -190,20 +221,20 @@ namespace Mbc5.Forms
                 this.AppConnectionString = "Data Source=192.168.1.101; Initial Catalog=Mbc5; User Id=sa;password=Briggitte1; Connect Timeout=5";
             }
             else if (Environment == "PROD") { this.AppConnectionString = "Data Source=10.37.32.49;Initial Catalog=Mbc5;User Id =MbcUser; password =3l3phant1; Connect Timeout=5"; }
-            
+
 
             List<string> roles = new List<string>();
             this.ValidatedUserRoles = roles;
             this.WindowState = FormWindowState.Maximized;
             this.Hide();
-            bool keepLoading = true;
+
             for (int i = 0; i < 3; i++)
             {
                 if (this.Login())
                 {
                     break;
                 };
-                if (i==2)
+                if (i == 2)
                 {
                     //if 2 tries close 
                     MessageBox.Show("You do not have the proper credentials. Contact your supervisor.", "Final Login Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -236,16 +267,21 @@ namespace Mbc5.Forms
                 mnuMain.Enabled = true;
                 this.WindowState = FormWindowState.Maximized;
             }
-            
+
 
 
         }
         private void SetMenu()
         {
 
-            this.userMaintinanceToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
-            this.tsDeptScanLabel.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
-            lookUpMaintenanceToolStripMenuItem.Visible = this.ValidatedUserRoles.Contains("SA") || this.ValidatedUserRoles.Contains("Administrator");
+            this.userMaintinanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+            this.tsDeptScanLabel.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+            lookUpMaintenanceToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+            invoicesToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+            meridianToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MeridianCs" });
+            mBCToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator", "MbcCS" });
+            cancelationStatementsToolStripMenuItem.Visible = ApplicationUser.IsInOneOfRoles(new List<string>() { "SA", "Administrator" });
+
         }
         public void exitMBCToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -261,7 +297,7 @@ namespace Mbc5.Forms
             this.Cursor = Cursors.Default;
 
         }
-   
+
         private void resetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -276,7 +312,7 @@ namespace Mbc5.Forms
 
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             if (this.ActiveMdiChild == null) {
                 this.Cursor = Cursors.AppStarting;
 
@@ -286,59 +322,58 @@ namespace Mbc5.Forms
                 this.Cursor = Cursors.Default;
 
 
-                } else {
+            } else {
                 this.Cursor = Cursors.AppStarting;
                 string vSchcode = GetSchcode();
 
-                    if (String.IsNullOrEmpty(vSchcode) ) {
-                        this.Cursor = Cursors.AppStarting;
+                if (String.IsNullOrEmpty(vSchcode)) {
+                    this.Cursor = Cursors.AppStarting;
 
-                        frmMbcCust frmCust1 = new frmMbcCust(this.ApplicationUser);
-                        frmCust1.MdiParent = this;
-                        frmCust1.Show();
-                        this.Cursor = Cursors.Default;
-                    }
-                    else
-                    {
-                        this.Cursor = Cursors.AppStarting;
+                    frmMbcCust frmCust1 = new frmMbcCust(this.ApplicationUser);
+                    frmCust1.MdiParent = this;
+                    frmCust1.Show();
+                    this.Cursor = Cursors.Default;
+                }
+                else
+                {
+                    this.Cursor = Cursors.AppStarting;
 
-                        frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser,vSchcode);
-                        frmCust.MdiParent = this;
-                        frmCust.Show();
-                        this.Cursor = Cursors.Default;
-
-                    }
+                    frmMbcCust frmCust = new frmMbcCust(this.ApplicationUser, vSchcode);
+                    frmCust.MdiParent = this;
+                    frmCust.Show();
+                    this.Cursor = Cursors.Default;
 
                 }
 
-
             }
 
-        private void MerToolStrip_Click(object sender,EventArgs e) {
+
+        }
+
+        private void MerToolStrip_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.AppStarting;
 
-            frmMbcCust frmMer = new frmMbcCust(this.ApplicationUser);
+            frmMerCust frmMer = new frmMerCust(this.ApplicationUser);
             frmMer.MdiParent = this;
             frmMer.Show();
             this.Cursor = Cursors.Default;
-            }
+        }
 
-        private void bidsToolStripMenuItem_Click(object sender,EventArgs e) {
+        private void bidsToolStripMenuItem_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.AppStarting;
 
             if (this.ActiveMdiChild == null)
             {
-                //frmBids frmBids = new frmBids(this.ApplicationUser);
-                //frmBids.MdiParent = this;
-                //frmBids.Show();
-                //this.Cursor = Cursors.Default;
-                MessageBox.Show("Customer screen must be open and on the customer to place bid for.");
-                return;
+                //default cs record
+                frmBids frmSales = new frmBids(this.ApplicationUser, "038752");
+                frmSales.MdiParent = this;
+                frmSales.Show();
+                this.Cursor = Cursors.Default;
 
 
             }
             else
-            {               
+            {
                 string vSchcode = GetSchcode();
                 frmBids frmSales = new frmBids(this.ApplicationUser, vSchcode);
                 frmSales.MdiParent = this;
@@ -346,23 +381,62 @@ namespace Mbc5.Forms
                 this.Cursor = Cursors.Default;
             }
         }
-
-        private void mbidsToolStripMenuItem_Click(object sender,EventArgs e) {
+        
+        private void mbidsToolStripMenuItem_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.AppStarting;
+            if (this.ActiveMdiChild == null)
+            {
 
-            frmMBids frmMBids = new frmMBids(this.ApplicationUser);
-            frmMBids.MdiParent = this;
-            frmMBids.Show();
-            this.Cursor = Cursors.Default;
+                frmMBids frmMBids = new frmMBids(this.ApplicationUser,"124487");
+                frmMBids.MdiParent = this;
+                frmMBids.Show();
+                this.Cursor = Cursors.Default;
             }
+            else{
+                string vSchcode = GetSchcode();
+                frmMBids frmMBids = new frmMBids(this.ApplicationUser, vSchcode);
+                frmMBids.MdiParent = this;
+                frmMBids.Show();
+                this.Cursor = Cursors.Default;
+            }
+        }
 
         private void msalesToolStripMenuItem_Click(object sender,EventArgs e) {
-            this.Cursor = Cursors.AppStarting;
-            frmMSales frmMSales = new frmMSales(this.ApplicationUser);
-            frmMSales.MdiParent = this;
-            frmMSales.Show();
-            this.Cursor = Cursors.Default;
+            if (this.ActiveMdiChild == null)
+            {
+                frmMSales frmMSales = new frmMSales(this.ApplicationUser);
+                frmMSales.MdiParent = this;
+                frmMSales.Show();
+                this.Cursor = Cursors.Default;
+
+
             }
+            else
+            {
+                this.Cursor = Cursors.AppStarting;
+                int vInvno = GetInvno();
+                string vSchcode = GetSchcode();
+
+                if (vInvno == 0)
+                {
+                    MessageBox.Show("This school does not have a sales record to go to. Please search for record from Sales Screen.", "Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmMSales frmSales1 = new frmMSales(this.ApplicationUser);
+                    frmSales1.MdiParent = this;
+                    frmSales1.Show();
+                    this.Cursor = Cursors.Default;
+                }
+                else
+                {
+
+                    frmMSales frmSales = new frmMSales(this.ApplicationUser, vInvno, vSchcode);
+                    frmSales.MdiParent = this;
+                    frmSales.Show();
+                    this.Cursor = Cursors.Default;
+                }
+
+            }
+           
+        }
 
         private void salesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -454,7 +528,9 @@ namespace Mbc5.Forms
         private void tsSave_Click(object sender,EventArgs e) {
             try {
                 var activeform = this.ActiveMdiChild as BaseClass.frmBase;
-                activeform.Save(); }
+               var result= activeform.Save();
+                
+            }
             catch(Exception ex) {
                 MessageBox.Show("Save is not implemented for this form.","Save",MessageBoxButtons.OK,MessageBoxIcon.Hand);
                 }
@@ -509,8 +585,26 @@ namespace Mbc5.Forms
             }
 
         private void tsPrint_Click(object sender,EventArgs e) {
-            this.PrintScreen();
+            //this.PrintScreen();
+            try
+            {
+                Process snippingToolProcess = new Process();
+                snippingToolProcess.EnableRaisingEvents = true;
+                if (!Environment.Is64BitProcess)
+                {
+                    snippingToolProcess.StartInfo.FileName = "C:\\Windows\\sysnative\\SnippingTool.exe";
+                    snippingToolProcess.Start();
+                }
+                else
+                {
+                    snippingToolProcess.StartInfo.FileName = "C:\\Windows\\system32\\SnippingTool.exe";
+                    snippingToolProcess.Start();
+                }
+            }catch(Exception ex)
+            {
+
             }
+        }
 
         private void tsEmail_Click(object sender,EventArgs e) {
             
@@ -577,8 +671,9 @@ namespace Mbc5.Forms
         {
             frmLogin Login = new frmLogin(this);
             var _result = Login.ShowDialog();
-            if (_result == DialogResult.Cancel)
+            if (_result == DialogResult.Cancel||_result == DialogResult.Abort)
             {
+                keepLoading = false;
                 Application.Exit();
             }
             else if (_result == DialogResult.No)
@@ -586,11 +681,7 @@ namespace Mbc5.Forms
                 MessageBox.Show("Your password or user name was incorrect.", " Login Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 return false;
             }
-            else if (_result == DialogResult.Abort)
-            {
-
-                Application.Exit();
-            }
+            
             
 
             return true;
@@ -741,7 +832,7 @@ namespace Mbc5.Forms
             SqlParameter[] parameters = new SqlParameter[] { };
             var strQuery = "Select * from Spcover";
             var result = sqlQuery.ExecuteReaderAsync(CommandType.Text, strQuery, parameters);
-            int? coverNum = null;
+            int coverNum = 0;
             try
             {
                 coverNum = Convert.ToInt32(result.Rows[0]["speccvno"]);
@@ -896,8 +987,7 @@ namespace Mbc5.Forms
 
         private void testFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            addresslabel addressLabel = new addresslabel();
-          addressLabel.Show();
+           
            
         }
 
@@ -912,7 +1002,7 @@ namespace Mbc5.Forms
             }
             else
             {
-                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.","Stop");
 
             }
 
@@ -929,7 +1019,7 @@ namespace Mbc5.Forms
             }
             else
             {
-                MbcMessageBox.Stop("You must be on the proper screen to print this label.", "");
+                MbcMessageBox.Stop("You must be on the proper screen to print this label.","Stop");
 
             }
 
@@ -992,13 +1082,69 @@ namespace Mbc5.Forms
     
         }
 
+        private void cancelationStatementsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                frmCancellationStatements frmCancel = new frmCancellationStatements(this.ApplicationUser);
+                frmCancel.MdiParent = this;
+                frmCancel.Show();
+                this.Cursor = Cursors.Default;
+           
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                frm.Close();
+
+            }
+            this.ApplicationUser = null;
+            List<string> roles = new List<string>();
+            this.ValidatedUserRoles = roles;
+            this.Hide();
+            for (int i = 0; i < 3; i++)
+            {
+                if (this.Login())
+                {
+                    break;
+                };
+                if (i == 2)
+                {
+                    //if 2 tries close 
+                    MessageBox.Show("You do not have the proper credentials. Contact your supervisor.", "Final Login Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    keepLoading = false;
+                    Application.Exit();
+                }
+            }
+
+            if (keepLoading)
+            {
+                this.WindowState = FormWindowState.Maximized;
 
 
+                if (this.ForcePasswordChange)
+                {
+                    this.Cursor = Cursors.AppStarting;
 
+                    frmChangePassword frmPassword = new frmChangePassword(this.ApplicationUser.id, this);
 
+                    frmPassword.ShowDialog();
+                    this.Cursor = Cursors.Default;
+                    if (ForcePasswordChange)
+                    {
+                        MessageBox.Show("Password was not changed.");
+                        Application.Exit();
+                    }
+                }
+                ValidateUserRoles();
+                SetMenu();
+                mnuMain.Enabled = true;
+                this.WindowState = FormWindowState.Maximized;
 
+            }
+        }
 
         //nothing below here
     }
-        }
+    }
 

@@ -107,16 +107,16 @@ namespace Mbc5.Forms.MemoryBook {
         private bool StartUp { get; set; }
         #endregion
         #region "Methods"
+        
         private void Fill()
         {
             if (Schcode != null)
             {
 				try {
 					this.custTableAdapter.Fill(this.dsBids.cust, this.Schcode);
-					this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim().Substring(0,5);
+					
 					this.bidsTableAdapter.Fill(this.dsBids.bids, this.Schcode);
-                    DataRowView current = (DataRowView)custBindingSource.Current;
-                    this.Schname = current["schname"].ToString().Trim();
+                    
                     
                 }
                 catch(Exception ex) {
@@ -131,6 +131,16 @@ namespace Mbc5.Forms.MemoryBook {
             else {
                 CalculateEach();
                BookCalc(); }
+            try
+            {
+                this.Schname = ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim();
+                this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim().Substring(0, 5);
+              
+            }
+            catch(Exception ex)
+            {
+                //MbcMessageBox.Error(ex.Message, "");
+            }
            
         }
         private void DisableControls(Control con)
@@ -2226,7 +2236,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.reportViewer1.PrintDialog();
             }catch(Exception ex)
             {
-                var a = 1;
+               
                 MbcMessageBox.Error(ex.Message,"");
             }
             

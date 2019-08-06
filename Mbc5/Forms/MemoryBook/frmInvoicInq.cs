@@ -42,9 +42,21 @@ namespace Mbc5.Forms.MemoryBook
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //search for bad addresses
+
+            dgAddressErrors.DataSource = null;
+            pnlError.Visible = false;
+
+
+
+
+
+            bsInvoices.Clear();
             var sqlClient = new SQLCustomClient();
-            sqlClient.CommandText(@"
+            if (rdStatement.Checked)
+            {
+                //search for bad addresses
+               
+                sqlClient.CommandText(@"
                 SELECT I.schname AS InvoiceSchoolName,C.schname As CustomerSchname, I.schcode AS SchoolCode
                 ,I.BalDue,P.invno As InvoiceNumber
                 FROM Cust C Left Join Quotes Q On C.Schcode=Q.Schcode
@@ -53,55 +65,92 @@ namespace Mbc5.Forms.MemoryBook
                 WHERE(P.Shpdate IS NOT NULL )
                 AND(I.BalDue > 0)
                 AND((RTRIM(C.Schname) != RTRIM(I.Schname)) 
-                OR(RTRIM(C.Schaddr) != RTRIM(I.Schaddr)) 
-                OR(RTRIM(C.Schstate) != RTRIM(I.Schstate)))
+                OR(RTRIM(C.InvoiceAddr) != RTRIM(I.Schaddr)) 
+                OR(RTRIM(C.InvoiceState) != RTRIM(I.Schstate)))
                 ORDER BY I.Schname
                 ");
-            var result = sqlClient.SelectMany<InvoiceCheck>();
-            if (result.IsError)
-            {
-                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            var badRecords = (List<InvoiceCheck>)result.Data;
+                var result = sqlClient.SelectMany<InvoiceCheck>();
+                if (result.IsError)
+                {
+                    MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                var badRecords = (List<InvoiceCheck>)result.Data;
 
-            if (badRecords != null && badRecords.Count > 0)
-            {
-                var errorList = new BindingList<InvoiceCheck>(badRecords);
-                dgAddressErrors.DataSource = errorList;
-                pnlError.Visible = true;
-                MessageBox.Show("The following sales records have customer information errors in them and need invoice over rides done on them before you can proceed.", "Bad Address");
-                return;
-            }
-            else { pnlError.Visible = false; }
+                if (badRecords != null && badRecords.Count > 0)
+                {
+                    var errorList = new BindingList<InvoiceCheck>(badRecords);
+                    dgAddressErrors.DataSource = errorList;
+                    pnlError.Visible = true;
+                    MessageBox.Show("The following sales records have customer information errors in them and need invoice over rides done on them before you can proceed.", "Bad Address");
+                    return;
+                }
+                else { pnlError.Visible = false; }
 
-            sqlClient.ClearParameters();
-            sqlClient.CommandText(@"
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"
                    
                 SELECT P.ShpDate, I.Schname, I.Schcode, I.Baldue,
                 C.Schemail, C.Contemail,C.Bcontemail,C.Contfname,C.Contlname,C.Bcontfname,C.Bcontlname
                 ,P.Invno, Q.Holdpmt, CAST(1 AS bit) AS ToPrint
-                FROM Cust C Left Join Quotes Q On C.Schcode=Q.Schcode
+                FROM Invoice I
+                Left Join Quotes Q On I.invno=Q.invno
+                Left Join Cust C On Q.Schcode=C.Schcode
                 Left Join Produtn P On Q.Invno=P.Invno  
-                Left Join Invoice I On Q.Invno =I.invno 
-                WHERE(P.Shpdate IS NOT NULL ) AND(I.Baldue > 0)
+                 WHERE(P.Shpdate IS NOT NULL ) AND(I.Baldue > 0)
                 ORDER BY I.Schname
                 ");
-            var invoiceResult = sqlClient.SelectMany<Invoice>();
-            if (invoiceResult.IsError)
-            {
-                MessageBox.Show(result.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            var vInvoices = (List<Invoice>)invoiceResult.Data;
+                var invoiceResult = sqlClient.SelectMany<Invoice>();
+                if (invoiceResult.IsError)
+                {
+                    MessageBox.Show(invoiceResult.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                var vInvoices = (List<Invoice>)invoiceResult.Data;
 
-            if (vInvoices != null && vInvoices.Count > 0)
+                if (vInvoices != null && vInvoices.Count > 0)
+                {
+                    //var FinalInvoices = new List<Invoice>(vInvoices);
+                    this.Invoices = vInvoices;
+                    dgInvoices.AutoGenerateColumns = false;
+                    bsInvoices.DataSource = Invoices;
+                }
+                else { MbcMessageBox.Exclamation("No records were found.", ""); }
+            }else if (rdReceived.Checked)
             {
-                //var FinalInvoices = new List<Invoice>(vInvoices);
-                this.Invoices = vInvoices;
-                dgInvoices.AutoGenerateColumns = false;
-                bsInvoices.DataSource = Invoices;
+                sqlClient.ClearParameters();
+                sqlClient.CommandText(@"
+                      SELECT P.ShpDate, C.Schname,C.Schcode,
+                    C.Schemail, C.Contemail,C.Bcontemail,C.Pin,C.Contfname,C.Contlname,C.Bcontfname,C.Bcontlname,
+                    I.Invno,I.Baldue, Holdpmt, CAST(1 AS bit) AS ToPrint
+                    FROM  cust C Left Join 
+					Quotes Q ON C.schcode=Q.schcode
+					LEFT JOIN invoice I ON Q.invno=I.invno
+					Left JOIN Produtn P On Q.invno=P.invno      
+                    WHERE Cast(P.kitrecvd AS Date)= @kitrecvd
+                    ORDER BY C.Schname");
+
+                sqlClient.AddParameter("@kitrecvd",dteRecvDte.Value.Date.ToShortDateString());
+                var a = dteRecvDte.Value.Date.ToShortDateString();
+                var invoiceResult1 = sqlClient.SelectMany<Invoice>();
+                if (invoiceResult1.IsError)
+                {
+                    MessageBox.Show(invoiceResult1.Errors[0].ErrorMessage, "Sql Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                var vInvoices1 = (List<Invoice>)invoiceResult1.Data;
+
+                if (vInvoices1 != null && vInvoices1.Count > 0)
+                {
+                    //var FinalInvoices = new List<Invoice>(vInvoices);
+                    this.Invoices = vInvoices1;
+                    dgInvoices.AutoGenerateColumns = false;
+                    bsInvoices.DataSource = Invoices;
+                }
             }
+            else { MbcMessageBox.Information("Please select a statement type.", ""); }
+
+            
 
         }
 
@@ -130,7 +179,7 @@ namespace Mbc5.Forms.MemoryBook
 
 			var sqlClient = new SQLCustomClient();
 			sqlClient.CommandText(@"
-				SELECT C.SchName,C.SchCode,C.schaddr AS SchAddress,C.SchCity,C.SchZip As ZipCode,C.ContFName AS ContactFirstName,
+				SELECT C.SchName,C.SchCode,I.schaddr AS SchAddress,I.SchCity,I.SchZip As ZipCode,C.ContFName AS ContactFirstName,
 				C.ContLname AS ContactLastName,I.nocopies AS NumberCopies,I.nopages AS NumberPages,
 				I.Freebooks,I.Laminate,I.allclrck AS AllColor,I.contryear AS ContractYear,I.Payments,I.Ponum As PoNumber,
 				I.Invno,I.Baldue,I.BeforeTaxTotal,I.SalesTax,I.Invtot,qtedate AS QuoteDate,ID.Descr As Description,ID.Price,ID.DiscPercent
@@ -306,6 +355,25 @@ namespace Mbc5.Forms.MemoryBook
         private void frmInvoicInq_Activated(object sender, EventArgs e)
         {
             try { this.frmMain.HideSearchButtons(); } catch { }
+        }
+
+        private void rdReceived_CheckedChanged(object sender, EventArgs e)
+        {
+            bsInvoices.Clear();
+            if (rdReceived.Checked)
+            {
+                lblRecDte.Visible = true;
+                dteRecvDte.Visible = true;
+            }
+            else {
+                lblRecDte.Visible = false;
+                dteRecvDte.Visible = false;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bsInvoices.Clear();
         }
     }
   

@@ -5,14 +5,14 @@ using System.Web;
 
 namespace BindingModels
 {
-
-    public class Invoice {
+    public class Cancellation {
         public string Schname { get; set; }
         public string Schcode { get; set; }
         public string Schemail { get; set; }
+        public DateTime CancelDate { get; set; }
         public string Contemail { get; set; }
         public string Bcontemail { get; set; }
-        public DateTime ShpDate { get; set; }
+        public DateTime? ShpDate { get; set; }
         public string Contfname { get; set; }
         public string Contlname { get; set; }
         public string Bcontfname { get; set; }
@@ -22,9 +22,26 @@ namespace BindingModels
         public bool ToPrint { get; set; }
         public bool Collections { get; set; }
         public decimal Baldue { get; set; }
-
-
-        public decimal BalDue { get; set; }
+        public int Pin { get; set; }  
+        public int InvoiceNumber { get; set; }
+    }
+    public class Invoice {
+        public string Schname { get; set; }
+        public string Schcode { get; set; }
+        public string Schemail { get; set; }
+        public string Contemail { get; set; }
+        public string Bcontemail { get; set; }
+        public DateTime? ShpDate { get; set; }
+        public string Contfname { get; set; }
+        public string Contlname { get; set; }
+        public string Bcontfname { get; set; }
+        public string Bcontlname { get; set; }
+        public int Invno { get; set; }
+        public bool Holdpmt { get; set; }
+        public bool ToPrint { get; set; }
+        public bool Collections { get; set; }
+        public decimal Baldue { get; set; }
+        public int Pin { get; set; }
         public int InvoiceNumber { get; set; }
     }
     public class InvoiceCheck

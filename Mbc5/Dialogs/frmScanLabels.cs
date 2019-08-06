@@ -74,7 +74,8 @@ namespace Mbc5.Dialogs
         {
             try
             {
-             reportViewer1.PrintDialog();
+                try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+               
             }catch(Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
            
         }

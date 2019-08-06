@@ -34,6 +34,7 @@
             this.mBCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bidsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelationStatementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onlineFormsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +48,6 @@
             this.endSheetSupplementPreFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barScanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMBCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +59,7 @@
             this.stoneFieldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsAddress = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsDeptScanLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsEnvelopeLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsFileFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsReceivingLabel = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,7 +101,7 @@
             this.tsZipCodeSearch = new System.Windows.Forms.ToolStripButton();
             this.tsEmailSearch = new System.Windows.Forms.ToolStripButton();
             this.tsJobNo = new System.Windows.Forms.ToolStripButton();
-            this.tsDeptScanLabel = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -129,8 +130,8 @@
             this.mBCToolStripMenuItem,
             this.meridianToolStripMenuItem,
             this.productionToolStripMenuItem,
-            this.exitMBCToolStripMenuItem,
-            this.testFormToolStripMenuItem});
+            this.logOutToolStripMenuItem,
+            this.exitMBCToolStripMenuItem});
             this.formsToolStripMenuItem.Name = "formsToolStripMenuItem";
             this.formsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.formsToolStripMenuItem.Text = "&Forms";
@@ -140,44 +141,52 @@
             this.mBCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customerToolStripMenuItem,
             this.bidsToolStripMenuItem,
+            this.cancelationStatementsToolStripMenuItem,
             this.invoicesToolStripMenuItem,
             this.onlineFormsToolStripMenuItem,
             this.salesToolStripMenuItem});
             this.mBCToolStripMenuItem.Name = "mBCToolStripMenuItem";
-            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.mBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mBCToolStripMenuItem.Text = "&MBC";
             // 
             // customerToolStripMenuItem
             // 
             this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
-            this.customerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.customerToolStripMenuItem.Text = "&Customer";
             this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
             // 
             // bidsToolStripMenuItem
             // 
             this.bidsToolStripMenuItem.Name = "bidsToolStripMenuItem";
-            this.bidsToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.bidsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.bidsToolStripMenuItem.Text = "&Bids";
             this.bidsToolStripMenuItem.Click += new System.EventHandler(this.bidsToolStripMenuItem_Click);
+            // 
+            // cancelationStatementsToolStripMenuItem
+            // 
+            this.cancelationStatementsToolStripMenuItem.Name = "cancelationStatementsToolStripMenuItem";
+            this.cancelationStatementsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.cancelationStatementsToolStripMenuItem.Text = "Cancellation Statements";
+            this.cancelationStatementsToolStripMenuItem.Click += new System.EventHandler(this.cancelationStatementsToolStripMenuItem_Click);
             // 
             // invoicesToolStripMenuItem
             // 
             this.invoicesToolStripMenuItem.Name = "invoicesToolStripMenuItem";
-            this.invoicesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.invoicesToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.invoicesToolStripMenuItem.Text = "Invoices";
             this.invoicesToolStripMenuItem.Click += new System.EventHandler(this.invoicesToolStripMenuItem_Click);
             // 
             // onlineFormsToolStripMenuItem
             // 
             this.onlineFormsToolStripMenuItem.Name = "onlineFormsToolStripMenuItem";
-            this.onlineFormsToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.onlineFormsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.onlineFormsToolStripMenuItem.Text = "Online Forms";
             // 
             // salesToolStripMenuItem
             // 
             this.salesToolStripMenuItem.Name = "salesToolStripMenuItem";
-            this.salesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.salesToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.salesToolStripMenuItem.Text = "&Sales";
             this.salesToolStripMenuItem.Click += new System.EventHandler(this.salesToolStripMenuItem_Click);
             // 
@@ -189,7 +198,7 @@
             this.mbidsToolStripMenuItem,
             this.onlineFormsToolStripMenuItem1});
             this.meridianToolStripMenuItem.Name = "meridianToolStripMenuItem";
-            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.meridianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.meridianToolStripMenuItem.Text = "M&eridian";
             // 
             // MerToolStrip
@@ -226,7 +235,7 @@
             this.endSheetSupplementPreFlightToolStripMenuItem,
             this.barScanToolStripMenuItem});
             this.productionToolStripMenuItem.Name = "productionToolStripMenuItem";
-            this.productionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.productionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.productionToolStripMenuItem.Text = "&Production";
             // 
             // productionWIPToolStripMenuItem
@@ -253,16 +262,9 @@
             // exitMBCToolStripMenuItem
             // 
             this.exitMBCToolStripMenuItem.Name = "exitMBCToolStripMenuItem";
-            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exitMBCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitMBCToolStripMenuItem.Text = "Exit MBC";
             this.exitMBCToolStripMenuItem.Click += new System.EventHandler(this.exitMBCToolStripMenuItem_Click);
-            // 
-            // testFormToolStripMenuItem
-            // 
-            this.testFormToolStripMenuItem.Name = "testFormToolStripMenuItem";
-            this.testFormToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.testFormToolStripMenuItem.Text = "TestForm";
-            this.testFormToolStripMenuItem.Click += new System.EventHandler(this.testFormToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -337,8 +339,9 @@
             // stoneFieldToolStripMenuItem
             // 
             this.stoneFieldToolStripMenuItem.Name = "stoneFieldToolStripMenuItem";
-            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stoneFieldToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.stoneFieldToolStripMenuItem.Text = "Stone Field";
+            this.stoneFieldToolStripMenuItem.Visible = false;
             // 
             // labelsToolStripMenuItem
             // 
@@ -350,7 +353,7 @@
             this.tsReceivingLabel,
             this.tsYearBookLabel});
             this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.labelsToolStripMenuItem.Text = "Labels";
             // 
             // tsAddress
@@ -359,6 +362,14 @@
             this.tsAddress.Size = new System.Drawing.Size(201, 22);
             this.tsAddress.Text = "Address";
             this.tsAddress.Click += new System.EventHandler(this.tsAddress_Click);
+            // 
+            // tsDeptScanLabel
+            // 
+            this.tsDeptScanLabel.Name = "tsDeptScanLabel";
+            this.tsDeptScanLabel.Size = new System.Drawing.Size(201, 22);
+            this.tsDeptScanLabel.Text = "Department Scan Labels";
+            this.tsDeptScanLabel.Visible = false;
+            this.tsDeptScanLabel.Click += new System.EventHandler(this.tsDeptScanLabel_Click);
             // 
             // tsEnvelopeLabel
             // 
@@ -391,8 +402,9 @@
             // customeReportsToolStripMenuItem
             // 
             this.customeReportsToolStripMenuItem.Name = "customeReportsToolStripMenuItem";
-            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customeReportsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.customeReportsToolStripMenuItem.Text = "Custom Reports";
+            this.customeReportsToolStripMenuItem.Visible = false;
             // 
             // windowToolStripMenuItem
             // 
@@ -468,35 +480,35 @@
             // discountToolStripMenuItem
             // 
             this.discountToolStripMenuItem.Name = "discountToolStripMenuItem";
-            this.discountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.discountToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.discountToolStripMenuItem.Text = "Discount";
             this.discountToolStripMenuItem.Click += new System.EventHandler(this.discountToolStripMenuItem_Click);
             // 
             // leadNamesToolStripMenuItem
             // 
             this.leadNamesToolStripMenuItem.Name = "leadNamesToolStripMenuItem";
-            this.leadNamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.leadNamesToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.leadNamesToolStripMenuItem.Text = "Lead Names";
             this.leadNamesToolStripMenuItem.Click += new System.EventHandler(this.leadNamesToolStripMenuItem_Click);
             // 
             // leadSourceToolStripMenuItem
             // 
             this.leadSourceToolStripMenuItem.Name = "leadSourceToolStripMenuItem";
-            this.leadSourceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.leadSourceToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.leadSourceToolStripMenuItem.Text = "Lead Source";
             this.leadSourceToolStripMenuItem.Click += new System.EventHandler(this.leadSourceToolStripMenuItem_Click);
             // 
             // scanDescriptionsToolStripMenuItem
             // 
             this.scanDescriptionsToolStripMenuItem.Name = "scanDescriptionsToolStripMenuItem";
-            this.scanDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.scanDescriptionsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.scanDescriptionsToolStripMenuItem.Text = "Scan Descriptions";
             this.scanDescriptionsToolStripMenuItem.Click += new System.EventHandler(this.scanDescriptionsToolStripMenuItem_Click);
             // 
             // typeStylesToolStripMenuItem
             // 
             this.typeStylesToolStripMenuItem.Name = "typeStylesToolStripMenuItem";
-            this.typeStylesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.typeStylesToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.typeStylesToolStripMenuItem.Text = "Type Styles";
             this.typeStylesToolStripMenuItem.Click += new System.EventHandler(this.typeStylesToolStripMenuItem_Click);
             // 
@@ -593,8 +605,8 @@
             this.tsPrint.Image = ((System.Drawing.Image)(resources.GetObject("tsPrint.Image")));
             this.tsPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsPrint.Name = "tsPrint";
-            this.tsPrint.Size = new System.Drawing.Size(52, 22);
-            this.tsPrint.Text = "Print";
+            this.tsPrint.Size = new System.Drawing.Size(89, 22);
+            this.tsPrint.Text = "Screen Shot";
             this.tsPrint.Click += new System.EventHandler(this.tsPrint_Click);
             // 
             // tsEmail
@@ -613,11 +625,11 @@
             // 
             // tsSchcodeSearch
             // 
-            this.tsSchcodeSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsSchcodeSearch.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.tsSchcodeSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsSchcodeSearch.Image")));
+            this.tsSchcodeSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsSchcodeSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsSchcodeSearch.Name = "tsSchcodeSearch";
-            this.tsSchcodeSearch.Size = new System.Drawing.Size(30, 22);
+            this.tsSchcodeSearch.Size = new System.Drawing.Size(46, 22);
             this.tsSchcodeSearch.Text = "Scd";
             this.tsSchcodeSearch.ToolTipText = "School Code";
             this.tsSchcodeSearch.Visible = false;
@@ -625,11 +637,10 @@
             // 
             // tsSchnameSearch
             // 
-            this.tsSchnameSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsSchnameSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsSchnameSearch.Image")));
             this.tsSchnameSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsSchnameSearch.Name = "tsSchnameSearch";
-            this.tsSchnameSearch.Size = new System.Drawing.Size(30, 22);
+            this.tsSchnameSearch.Size = new System.Drawing.Size(46, 22);
             this.tsSchnameSearch.Text = "Scn";
             this.tsSchnameSearch.ToolTipText = "School Name";
             this.tsSchnameSearch.Visible = false;
@@ -637,11 +648,10 @@
             // 
             // tsOracleCodeSearch
             // 
-            this.tsOracleCodeSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsOracleCodeSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsOracleCodeSearch.Image")));
             this.tsOracleCodeSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsOracleCodeSearch.Name = "tsOracleCodeSearch";
-            this.tsOracleCodeSearch.Size = new System.Drawing.Size(33, 22);
+            this.tsOracleCodeSearch.Size = new System.Drawing.Size(49, 22);
             this.tsOracleCodeSearch.Text = "Ocd";
             this.tsOracleCodeSearch.ToolTipText = "Oracle Code";
             this.tsOracleCodeSearch.Visible = false;
@@ -649,11 +659,10 @@
             // 
             // tsInvno
             // 
-            this.tsInvno.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsInvno.Image = ((System.Drawing.Image)(resources.GetObject("tsInvno.Image")));
             this.tsInvno.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsInvno.Name = "tsInvno";
-            this.tsInvno.Size = new System.Drawing.Size(27, 22);
+            this.tsInvno.Size = new System.Drawing.Size(43, 22);
             this.tsInvno.Text = "Inv";
             this.tsInvno.ToolTipText = "Invoice";
             this.tsInvno.Visible = false;
@@ -661,11 +670,10 @@
             // 
             // tsProdutnNumberSearch
             // 
-            this.tsProdutnNumberSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsProdutnNumberSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsProdutnNumberSearch.Image")));
             this.tsProdutnNumberSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsProdutnNumberSearch.Name = "tsProdutnNumberSearch";
-            this.tsProdutnNumberSearch.Size = new System.Drawing.Size(36, 22);
+            this.tsProdutnNumberSearch.Size = new System.Drawing.Size(52, 22);
             this.tsProdutnNumberSearch.Text = "Prod";
             this.tsProdutnNumberSearch.ToolTipText = "Production No.";
             this.tsProdutnNumberSearch.Visible = false;
@@ -673,11 +681,10 @@
             // 
             // tsFirstNameSearch
             // 
-            this.tsFirstNameSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsFirstNameSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsFirstNameSearch.Image")));
             this.tsFirstNameSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsFirstNameSearch.Name = "tsFirstNameSearch";
-            this.tsFirstNameSearch.Size = new System.Drawing.Size(23, 22);
+            this.tsFirstNameSearch.Size = new System.Drawing.Size(33, 22);
             this.tsFirstNameSearch.Text = "F";
             this.tsFirstNameSearch.ToolTipText = "Contact First Name";
             this.tsFirstNameSearch.Visible = false;
@@ -685,11 +692,10 @@
             // 
             // tsLastNameSearch
             // 
-            this.tsLastNameSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsLastNameSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsLastNameSearch.Image")));
             this.tsLastNameSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsLastNameSearch.Name = "tsLastNameSearch";
-            this.tsLastNameSearch.Size = new System.Drawing.Size(23, 22);
+            this.tsLastNameSearch.Size = new System.Drawing.Size(33, 22);
             this.tsLastNameSearch.Text = "L";
             this.tsLastNameSearch.ToolTipText = "Contact Last Name";
             this.tsLastNameSearch.Visible = false;
@@ -697,11 +703,10 @@
             // 
             // tsZipCodeSearch
             // 
-            this.tsZipCodeSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsZipCodeSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsZipCodeSearch.Image")));
             this.tsZipCodeSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsZipCodeSearch.Name = "tsZipCodeSearch";
-            this.tsZipCodeSearch.Size = new System.Drawing.Size(23, 22);
+            this.tsZipCodeSearch.Size = new System.Drawing.Size(34, 22);
             this.tsZipCodeSearch.Text = "Z";
             this.tsZipCodeSearch.ToolTipText = "Zip Code";
             this.tsZipCodeSearch.Visible = false;
@@ -709,11 +714,10 @@
             // 
             // tsEmailSearch
             // 
-            this.tsEmailSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsEmailSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsEmailSearch.Image")));
             this.tsEmailSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsEmailSearch.Name = "tsEmailSearch";
-            this.tsEmailSearch.Size = new System.Drawing.Size(23, 22);
+            this.tsEmailSearch.Size = new System.Drawing.Size(33, 22);
             this.tsEmailSearch.Text = "E";
             this.tsEmailSearch.ToolTipText = "Email";
             this.tsEmailSearch.Visible = false;
@@ -721,23 +725,21 @@
             // 
             // tsJobNo
             // 
-            this.tsJobNo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsJobNo.Image = ((System.Drawing.Image)(resources.GetObject("tsJobNo.Image")));
             this.tsJobNo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsJobNo.Name = "tsJobNo";
-            this.tsJobNo.Size = new System.Drawing.Size(23, 22);
+            this.tsJobNo.Size = new System.Drawing.Size(31, 22);
             this.tsJobNo.Text = "J";
             this.tsJobNo.ToolTipText = "JobNo";
             this.tsJobNo.Visible = false;
             this.tsJobNo.Click += new System.EventHandler(this.tsJobNo_Click);
             // 
-            // tsDeptScanLabel
+            // logOutToolStripMenuItem
             // 
-            this.tsDeptScanLabel.Name = "tsDeptScanLabel";
-            this.tsDeptScanLabel.Size = new System.Drawing.Size(201, 22);
-            this.tsDeptScanLabel.Text = "Department Scan Labels";
-            this.tsDeptScanLabel.Visible = false;
-            this.tsDeptScanLabel.Click += new System.EventHandler(this.tsDeptScanLabel_Click);
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOutToolStripMenuItem.Text = "Log Out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -812,7 +814,6 @@
         private System.Windows.Forms.ToolStripMenuItem scanDescriptionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem testFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem barScanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem leadSourceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem leadNamesToolStripMenuItem;
@@ -834,5 +835,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsEnvelopeLabel;
         private System.Windows.Forms.ToolStripMenuItem tsYearBookLabel;
         private System.Windows.Forms.ToolStripMenuItem tsDeptScanLabel;
+        private System.Windows.Forms.ToolStripMenuItem cancelationStatementsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
     }
 }

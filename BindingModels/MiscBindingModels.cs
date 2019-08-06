@@ -5,6 +5,40 @@ using System.Web;
 
 namespace BindingModels
 {
+    public class OnlineFlyer {
+        public string SchName { get; set; }
+        public string SchCode { get; set; }
+        public string BasicPrice { get; set; }
+        public bool HasPersonalized { get; set; }
+        public string PersonalizedPrice { get; set; }
+        public bool HasLoveLine { get; set; }
+        public string LoveLineAmt { get; set; }
+        public bool HasAds { get; set; }
+        public string EighthAdAmt { get; set; }
+        public string QuarterAdAmt { get; set; }
+        public string HalfAdAmt { get; set; }
+        public string FullAdAmt { get; set; }
+        public DateTime OnlineCutoff { get; set; }
+        public DateTime AdCutoff { get; set; }
+    }
+    public class OnlineAgreementHeader {
+        public int Invno { get; set; }
+        public string PoNumber { get; set; }
+        public decimal BeforeTaxTotal { get; set; }
+        public decimal SalesTax { get; set; }
+        public decimal Invtot { get; set; }
+        public DateTime QuoteDate { get; set; }
+        public string SchName { get; set; }
+        public string SchCode { get; set; }
+        public string ContactFirstName { get; set; }
+        public string ContactLastName { get; set; }
+        public string SchAddress { get; set; }
+        public string SchAddress2 { get; set; }
+        public string SchCity { get; set; }
+        public string SchState { get; set; }
+        public string SchZipCode { get; set; }
+        public string NoCopies { get; set; }
+     }
     
     public class TaxRate
     {

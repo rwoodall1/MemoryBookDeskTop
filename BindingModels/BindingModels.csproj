@@ -92,10 +92,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvaTaxBindingModels.cs" />
     <Compile Include="BidInvoice.cs" />
     <Compile Include="CustomerBindingModels.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="MiscBindingModels.cs" />
+    <Compile Include="Price.cs" />
     <Compile Include="ProdutnBindingModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchBindingModels.cs" />

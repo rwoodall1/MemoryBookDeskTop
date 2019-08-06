@@ -3736,7 +3736,8 @@ namespace Mbc5.Forms
 
         private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-            reportViewer1.PrintDialog();
+            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+            
         }
 
         private void dedmadeTextBox_Leave(object sender, EventArgs e)
@@ -3820,9 +3821,9 @@ namespace Mbc5.Forms
         private void frmProdutn_KeyPress(object sender, KeyPressEventArgs e)
         {
             //set KeyPriview to True first.
-            if (e.KeyChar == (char)Keys.Enter)
-                e.KeyChar = (char)Keys.Tab;
-            SendKeys.Send(e.KeyChar.ToString());//send the keystroke to the form.
+            //if (e.KeyChar == (char)Keys.Enter)
+            //    e.KeyChar = (char)Keys.Tab;
+            //SendKeys.Send(e.KeyChar.ToString());//send the keystroke to the form.
         }
 
         private void button8_Click(object sender, EventArgs e)

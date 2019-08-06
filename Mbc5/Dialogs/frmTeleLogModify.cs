@@ -348,6 +348,19 @@ namespace Mbc5.Dialogs
         {
             nxtdateDateTimePicker.Format = DateTimePickerFormat.Short;
         }
+
+        private void nxtdaysComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            int vDays = 0;
+            var a = nxtdaysComboBox.Text;
+            int.TryParse(nxtdaysComboBox.Text, out vDays);
+            if (vDays > 0)
+            {
+                nxtdateDateTimePicker.Value = DateTime.Now.AddDays(vDays);
+            }
+            else { nxtdateDateTimePicker.Value = DateTime.Now; }
+            
+        }
     }
    
 }
