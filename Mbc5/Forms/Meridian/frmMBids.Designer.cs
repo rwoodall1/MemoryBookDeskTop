@@ -95,8 +95,10 @@
             this.qtedateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.orderDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblModifiedby = new System.Windows.Forms.Label();
+            this.txtAdditionChrg = new System.Windows.Forms.TextBox();
+            this.adcdescTextBox = new System.Windows.Forms.TextBox();
+            this.btnPrnQuote = new System.Windows.Forms.Button();
             this.notesTextBox = new System.Windows.Forms.TextBox();
             this.reOrderCheckBox = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -182,9 +184,7 @@
             this.meridianProductsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.MeridianProductsTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.idLabel1 = new System.Windows.Forms.Label();
-            this.adcdescTextBox = new System.Windows.Forms.TextBox();
-            this.txtAdditionChrg = new System.Windows.Forms.TextBox();
-            this.lblModifiedby = new System.Windows.Forms.Label();
+            this.chkPrntAsInvoice = new System.Windows.Forms.CheckBox();
             sourceLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -958,11 +958,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.chkPrntAsInvoice);
             this.panel4.Controls.Add(this.lblModifiedby);
             this.panel4.Controls.Add(this.txtAdditionChrg);
             this.panel4.Controls.Add(this.adcdescTextBox);
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.btnPrnQuote);
             this.panel4.Controls.Add(notesLabel);
             this.panel4.Controls.Add(this.notesTextBox);
             this.panel4.Controls.Add(this.reOrderCheckBox);
@@ -1030,27 +1030,48 @@
             this.panel4.Size = new System.Drawing.Size(1082, 408);
             this.panel4.TabIndex = 226;
             // 
-            // button2
+            // lblModifiedby
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(911, 161);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 23);
-            this.button2.TabIndex = 161;
-            this.button2.Text = "Print Bid Quote";
-            this.button2.UseVisualStyleBackColor = true;
+            this.lblModifiedby.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "ModifiedBy", true));
+            this.lblModifiedby.Location = new System.Drawing.Point(5, 383);
+            this.lblModifiedby.Name = "lblModifiedby";
+            this.lblModifiedby.Size = new System.Drawing.Size(1, 1);
+            this.lblModifiedby.TabIndex = 227;
+            this.lblModifiedby.Text = "label1";
             // 
-            // button1
+            // txtAdditionChrg
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(776, 161);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 23);
-            this.button1.TabIndex = 160;
-            this.button1.Text = "Print Bid Invoice";
-            this.button1.UseVisualStyleBackColor = true;
+            this.txtAdditionChrg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAdditionChrg.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "adcamt", true));
+            this.txtAdditionChrg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdditionChrg.Location = new System.Drawing.Point(1017, 25);
+            this.txtAdditionChrg.Name = "txtAdditionChrg";
+            this.txtAdditionChrg.Size = new System.Drawing.Size(52, 20);
+            this.txtAdditionChrg.TabIndex = 164;
+            this.txtAdditionChrg.Leave += new System.EventHandler(this.txtAdditionChrg_Leave);
+            this.txtAdditionChrg.Validating += new System.ComponentModel.CancelEventHandler(this.txtAdditionChrg_Validating);
+            // 
+            // adcdescTextBox
+            // 
+            this.adcdescTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.adcdescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "adcdesc", true));
+            this.adcdescTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adcdescTextBox.Location = new System.Drawing.Point(798, 25);
+            this.adcdescTextBox.Name = "adcdescTextBox";
+            this.adcdescTextBox.Size = new System.Drawing.Size(206, 20);
+            this.adcdescTextBox.TabIndex = 163;
+            // 
+            // btnPrnQuote
+            // 
+            this.btnPrnQuote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrnQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrnQuote.Location = new System.Drawing.Point(911, 161);
+            this.btnPrnQuote.Name = "btnPrnQuote";
+            this.btnPrnQuote.Size = new System.Drawing.Size(103, 23);
+            this.btnPrnQuote.TabIndex = 161;
+            this.btnPrnQuote.Text = "Print Bid Quote";
+            this.btnPrnQuote.UseVisualStyleBackColor = true;
+            this.btnPrnQuote.Click += new System.EventHandler(this.btnPrnQuote_Click);
             // 
             // notesTextBox
             // 
@@ -1125,11 +1146,12 @@
             this.lblTaxRate.AutoSize = true;
             this.lblTaxRate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "SchoolTaxRate", true));
             this.lblTaxRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTaxRate.Location = new System.Drawing.Point(887, 79);
+            this.lblTaxRate.Location = new System.Drawing.Point(890, 79);
             this.lblTaxRate.Name = "lblTaxRate";
             this.lblTaxRate.Size = new System.Drawing.Size(41, 13);
             this.lblTaxRate.TabIndex = 153;
             this.lblTaxRate.Text = "label10";
+            this.lblTaxRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblFinalTotal
             // 
@@ -1918,6 +1940,7 @@
             this.txtQtyStudent.Size = new System.Drawing.Size(47, 20);
             this.txtQtyStudent.TabIndex = 38;
             this.txtQtyStudent.Leave += new System.EventHandler(this.txtQtyStudent_Leave);
+            this.txtQtyStudent.Validating += new System.ComponentModel.CancelEventHandler(this.txtQtyStudent_Validating);
             // 
             // txtQtyTeacher
             // 
@@ -2000,36 +2023,15 @@
             this.idLabel1.TabIndex = 162;
             this.idLabel1.Text = "id";
             // 
-            // adcdescTextBox
+            // chkPrntAsInvoice
             // 
-            this.adcdescTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.adcdescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "adcdesc", true));
-            this.adcdescTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adcdescTextBox.Location = new System.Drawing.Point(798, 25);
-            this.adcdescTextBox.Name = "adcdescTextBox";
-            this.adcdescTextBox.Size = new System.Drawing.Size(206, 20);
-            this.adcdescTextBox.TabIndex = 163;
-            // 
-            // txtAdditionChrg
-            // 
-            this.txtAdditionChrg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAdditionChrg.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "adcamt", true));
-            this.txtAdditionChrg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdditionChrg.Location = new System.Drawing.Point(1017, 25);
-            this.txtAdditionChrg.Name = "txtAdditionChrg";
-            this.txtAdditionChrg.Size = new System.Drawing.Size(52, 20);
-            this.txtAdditionChrg.TabIndex = 164;
-            this.txtAdditionChrg.Leave += new System.EventHandler(this.txtAdditionChrg_Leave);
-            this.txtAdditionChrg.Validating += new System.ComponentModel.CancelEventHandler(this.txtAdditionChrg_Validating);
-            // 
-            // lblModifiedby
-            // 
-            this.lblModifiedby.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "ModifiedBy", true));
-            this.lblModifiedby.Location = new System.Drawing.Point(5, 383);
-            this.lblModifiedby.Name = "lblModifiedby";
-            this.lblModifiedby.Size = new System.Drawing.Size(1, 1);
-            this.lblModifiedby.TabIndex = 227;
-            this.lblModifiedby.Text = "label1";
+            this.chkPrntAsInvoice.AutoSize = true;
+            this.chkPrntAsInvoice.Location = new System.Drawing.Point(911, 142);
+            this.chkPrntAsInvoice.Name = "chkPrntAsInvoice";
+            this.chkPrntAsInvoice.Size = new System.Drawing.Size(113, 17);
+            this.chkPrntAsInvoice.TabIndex = 296;
+            this.chkPrntAsInvoice.Text = "Prnt As Invoice";
+            this.chkPrntAsInvoice.UseVisualStyleBackColor = true;
             // 
             // frmMBids
             // 
@@ -2180,8 +2182,7 @@
         private System.Windows.Forms.TextBox mdescTextBox;
         private System.Windows.Forms.TextBox txtmisc;
         private System.Windows.Forms.CheckBox reOrderCheckBox;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPrnQuote;
         private System.Windows.Forms.TextBox notesTextBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DataSets.LookUp lookUp;
@@ -2193,5 +2194,6 @@
         private System.Windows.Forms.TextBox adcdescTextBox;
         private System.Windows.Forms.TextBox txtAdditionChrg;
         private System.Windows.Forms.Label lblModifiedby;
+        private System.Windows.Forms.CheckBox chkPrntAsInvoice;
     }
     }

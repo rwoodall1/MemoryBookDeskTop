@@ -513,7 +513,8 @@ public override void Cancel() {
             this.lkpSupplyItemsTableAdapter.Connection.ConnectionString= frmMain.AppConnectionString;
             this.contpstnTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             this.mktinfoTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-
+            this.xsuppliesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
+            this.xSuppliesDetailTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 
         }
         public override void OracleCodeSearch() {

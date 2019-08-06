@@ -813,6 +813,8 @@ namespace Mbc5.Forms.Meridian {
         {
             mcustTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
             datecontTableAdapter.Connection.ConnectionString= this.frmMain.AppConnectionString;
+            statesTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
+            contpstnTableAdapter.Connection.ConnectionString = this.frmMain.AppConnectionString;
         }
         private void Fill()
         {
@@ -948,11 +950,11 @@ namespace Mbc5.Forms.Meridian {
 
         private void frmMerCust_Paint(object sender, PaintEventArgs e)
         {
-            //try { this.Text = "Meridian Customer-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
-            //catch
-            //{
+            try { this.Text = "Meridian Customer-" + txtSchname.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
+            catch
+            {
 
-            //}
+            }
         }
 
         private void btnSchoolToShipping_Click(object sender, EventArgs e)

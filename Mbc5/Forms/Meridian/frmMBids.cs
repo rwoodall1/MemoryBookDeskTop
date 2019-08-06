@@ -156,6 +156,11 @@ namespace Mbc5.Forms.Meridian {
         }
         private void CalculateBase()
         {
+            if (prodcodeComboBox.SelectedValue == null)
+            {
+                //form closing dropdown has no values return
+                return;
+            }
             if (!ValidateCalcData())
             {
 
@@ -290,6 +295,10 @@ namespace Mbc5.Forms.Meridian {
                 lblBasePrice.Text = vBasePrice.ToString();
 
             }
+            if (prodcodeComboBox.SelectedValue.ToString()=="ADVLOG")
+            {
+                lblBasePrice.Text = (vBasePrice+.50m).ToString("0.00");
+            }
             lblTotalBasePrice.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher)).ToString();
             lblsbtot.Text = ((vBasePrice * vQtyStudent) + (vTeacherBasePrice * vQtyTeacher) + vMiscAmt).ToString();
             CalculateOptions();
@@ -402,6 +411,7 @@ namespace Mbc5.Forms.Meridian {
             }
             if (lfRadioButton.Checked)
             {
+              
                 if (prodcodeComboBox.SelectedValue.ToString() == "ADVLOG")
                 {
                     if (string.IsNullOrEmpty(txtQtyTeacher.Text))
@@ -543,6 +553,8 @@ namespace Mbc5.Forms.Meridian {
         private ApiProcessingResult<bool> SaveBid()
         {
             var processingResult = new ApiProcessingResult<bool>();
+            CalculateBase();
+            CalculateOptions();
             if (!ValidBid())
             {
                 processingResult.IsError = true;
@@ -572,7 +584,8 @@ namespace Mbc5.Forms.Meridian {
                     .Submit();
                 processingResult.Data = false;
                 processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));
-                var a = dsMBids.Tables["mbids"].GetErrors();
+                MbcMessageBox.Error(ex.Message);
+                //var a = dsMBids.Tables["mbids"].GetErrors();
                 return processingResult;
             }
         }
@@ -1225,6 +1238,12 @@ namespace Mbc5.Forms.Meridian {
             {
                 sfRadioButton.Checked = true;
                 lfRadioButton.Checked = false;
+                if(prodcodeComboBox.SelectedValue.ToString() == "ADVLOG")
+                {
+                    chkJostens.Checked = false;
+                    chkJostens.AutoCheck = false;
+                }
+                else { chkJostens.AutoCheck = true; }
             }
             else
             {
@@ -1386,6 +1405,61 @@ namespace Mbc5.Forms.Meridian {
         private void txtAdditionChrg_Validating(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void btnPrnQuote_Click(object sender, EventArgs e)
+        {
+            var vBidDetails = new List<MBidInvoiceDetail>();
+            var vrow = new MBidInvoiceDetail();
+                if (lblSchtype.Text== "MAGNET")
+                {
+
+                vrow.Description = lblSchtype.Text + " 4 x 7 Personalized Magnet";
+                vrow.UnitPrice = lblBasePrice.ConvertToDecimal();
+                vrow.Quantity = txtQtyStudent.ConvertToInt();
+                vrow.Price = vrow.UnitPrice * vrow.Quantity;
+                vrow.DiscountPercentage = "";
+            }
+            if ( lblSchtype.Text == "ADVENTURE LOG")
+            {
+                vrow.Description = lblSchtype.Text;
+                vrow.UnitPrice = lblBasePrice.ConvertToDecimal();
+                vrow.Quantity = txtQtyStudent.ConvertToInt();
+                vrow.Price = vrow.UnitPrice * vrow.Quantity;
+                vrow.DiscountPercentage = "";
+            }
+            if (chkGeneric.Checked)
+            {
+                vrow.Description = "Standard " + lblSchtype.Text +" "+ txtNoPages.Text+ " Pages "+ (lfRadioButton.Checked==true?"Large Format 8 3/8 x 10 7/8":"Small Format 5 3/8 x 8 3/8");
+                vrow.UnitPrice = lblBasePrice.ConvertToDecimal();
+                vrow.Quantity = txtQtyStudent.ConvertToInt();
+                vrow.Price = vrow.UnitPrice * vrow.Quantity;
+                vrow.DiscountPercentage = "0";
+            }
+            else
+            {
+                vrow.Description =lblSchtype.Text + " " + txtNoPages.Text + " Pages " + (lfRadioButton.Checked == true ? "Large Format 8 3/8 x 10 7/8" : "Small Format 5 3/8 x 8 3/8");
+                vrow.UnitPrice = lblBasePrice.ConvertToDecimal();
+                vrow.Quantity = txtQtyStudent.ConvertToInt();
+                vrow.Price = vrow.UnitPrice * vrow.Quantity;
+                vrow.DiscountPercentage = "0";
+
+            }
+         
+        }
+
+        private void txtQtyStudent_Validating(object sender, CancelEventArgs e)
+        {
+            int val;
+            errorProvider1.SetError(txtQtyStudent, "");
+            if ( !int.TryParse(txtQtyStudent.Text,out val))
+            {
+                errorProvider1.SetError(txtQtyStudent, "Enter a valid number");
+            }
+            if (prodcodeComboBox.SelectedValue.ToString() == "MAGNET"&&txtQtyStudent.ConvertToInt()<100)
+            {
+                errorProvider1.SetError(txtQtyStudent, "A minimum of 100 is required for this product");
+            }
         }
     }
     }

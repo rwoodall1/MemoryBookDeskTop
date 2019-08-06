@@ -364,6 +364,11 @@ if (result == DialogResult.OK)
         }
         private void CalculateBase()
         {
+            if (prodcodeComboBox.SelectedValue==null)
+            {
+                //form closing dropdown has no values return
+                return ;
+            }
             if (!ValidateCalcData())
             {
 
@@ -571,6 +576,7 @@ if (result == DialogResult.OK)
         }
         private bool CalculateGeneric()
         {
+            
             decimal vBasePrice = 0;
             decimal vPriceOveride = 0;
             decimal vTeacherBasePrice = 0;
@@ -766,7 +772,9 @@ return SaveSales();
 private ApiProcessingResult<bool> SaveSales()
 {
 var processingResult = new ApiProcessingResult<bool>();
-if (!ValidSales())
+            CalculateBase();
+            CalculateOptions();
+            if (!ValidSales())
 {
     processingResult.IsError = true;
     return processingResult;
@@ -777,7 +785,7 @@ try {
     {
         mquotesBindingSource.EndEdit();                  
         var a = mquotesTableAdapter.Update(dsMSales.mquotes);
-        var aa = dsMSales.Tables["mquotes"].GetErrors();
+        //var aa = dsMSales.Tables["mquotes"].GetErrors();
         coversBindingSource.EndEdit();
         var aaa=coversTableAdapter.Update(dsMSales.covers);
         Fill();
@@ -868,7 +876,7 @@ this.frmMain = (frmMain)this.MdiParent;
 this.FormConnectionString = frmMain.AppConnectionString;
 this.meridianProductsTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
 this.mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
-           
+            coversTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;        
 }
 
 private decimal GetJostensPricing(string vYear,string vType,int pageQty)
