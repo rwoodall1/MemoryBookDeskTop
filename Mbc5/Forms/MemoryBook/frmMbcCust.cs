@@ -484,11 +484,7 @@ public override void Cancel() {
                 default:
                     MbcMessageBox.Stop("Missing Parameter", "");
                     break;
-            }
-           
-           
-         
-            
+            }    
         }
         private void SetConnectionString()
         {
