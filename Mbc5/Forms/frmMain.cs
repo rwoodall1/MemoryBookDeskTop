@@ -532,7 +532,7 @@ namespace Mbc5.Forms
                 
             }
             catch(Exception ex) {
-                MessageBox.Show("Save is not implemented for this form.","Save",MessageBoxButtons.OK,MessageBoxIcon.Hand);
+                MessageBox.Show(ex.Message,"Save",MessageBoxButtons.OK,MessageBoxIcon.Hand);
                 }
             }
 

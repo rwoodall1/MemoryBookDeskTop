@@ -318,7 +318,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>0.06944in</Top>
-            <Left>3.03in</Left>
+            <Left>2.405in</Left>
             <Height>0.3125in</Height>
             <Width>2.21875in</Width>
             <ZIndex>4</ZIndex>
@@ -351,9 +351,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>0.06944in</Top>
-            <Left>5.24875in</Left>
+            <Left>4.62375in</Left>
             <Height>0.3125in</Height>
-            <Width>1.59984in</Width>
+            <Width>1.55652in</Width>
             <ZIndex>5</ZIndex>
             <Visibility>
               <Hidden>=First(Fields!AllClrck.Value=true, "dsRptProdutn")</Hidden>
@@ -1000,21 +1000,20 @@
                 </TextRuns>
                 <Style>
                   <TextAlign>Right</TextAlign>
+                  <LineHeight>1pt</LineHeight>
                 </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>0.06944in</Top>
-            <Left>6.9675in</Left>
+            <Left>6.3425in</Left>
             <Height>0.25in</Height>
-            <Width>0.50994in</Width>
+            <Width>0.46924in</Width>
             <ZIndex>25</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
@@ -1026,20 +1025,21 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!State.Value, "dsRptProdutn")</Value>
+                    <Value>=First(Fields!State.Value.ToString().Trim(), "dsRptProdutn")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
                 <Style>
                   <TextAlign>Left</TextAlign>
+                  <LineHeight>1pt</LineHeight>
                 </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>State</rd:DefaultName>
             <Top>0.06944in</Top>
-            <Left>7.45063in</Left>
+            <Left>6.63119in</Left>
             <Height>0.25in</Height>
-            <Width>0.56762in</Width>
+            <Width>0.38918in</Width>
             <ZIndex>26</ZIndex>
             <Style>
               <Border>
@@ -2775,7 +2775,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>8.28434in</Width>
+      <Width>7.97184in</Width>
       <Page>
         <LeftMargin>0.25in</LeftMargin>
         <RightMargin>0.25in</RightMargin>

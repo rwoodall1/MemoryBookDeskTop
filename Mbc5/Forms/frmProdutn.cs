@@ -317,7 +317,8 @@ namespace Mbc5.Forms
 				quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
 				produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
 				}catch(Exception ex) {
-					MbcMessageBox.Error(ex.Message, "");
+                    var a = dsProdutn.Tables["cust"].GetErrors();
+                    MbcMessageBox.Error(ex.Message, "");
 				}
 
 				if (dsProdutn.produtn.Count < 1)

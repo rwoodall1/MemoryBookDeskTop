@@ -270,13 +270,19 @@ namespace Mbc5.Dialogs
                                     NxtDays=@NxtDays,NxtDate=@NxtDate,CallCont=@CallCont,CallTime=@CallTime,
                                     Priority=@Priority,Company=@Company,TechCall=@TechCall   
                                     Where Id=@Id And Initial=@Initial");
+            if (nxtdateDateTimePicker.Value.Date == DateTime.Now.Date) {
+                sqlquery.AddParameter("@NxtDate",DBNull.Value);
+            } else {
+                sqlquery.AddParameter("@NxtDate", nxtdateDateTimePicker.Value);
+            }
+           
             sqlquery.AddParameter("@Id", LogId);
             sqlquery.AddParameter("@Initial", frmMain.ApplicationUser.Initials);
             sqlquery.AddParameter("@Reason", reasonTextBox.Text);
             sqlquery.AddParameter("@Contact", contactTextBox.Text);
             sqlquery.AddParameter("@TypeContact", typecontComboBox.Text.Trim());
             sqlquery.AddParameter("@NxtDays", nxtdaysComboBox.Text==""?null : nxtdaysComboBox.Text);
-            sqlquery.AddParameter("@NxtDate", nxtdateDateTimePicker.Text==""?null: nxtdateDateTimePicker.Text);
+           
             sqlquery.AddParameter("@CallCont", callcontCheckBox.Checked);
             sqlquery.AddParameter("@CallTime", callTimeTextBox.Text=="0"?null: callTimeTextBox.Text);
             sqlquery.AddParameter("@Priority",priorityComboBox.Text == "" ? null : priorityComboBox.Text);

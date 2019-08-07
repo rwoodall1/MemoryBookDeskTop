@@ -94,8 +94,9 @@ namespace Mbc5.Forms.MemoryBook {
 	var processingResult = new ApiProcessingResult<bool>();
 	this.txtModifiedBy.Text  = this.ApplicationUser.id;
     bool retval = false;
-		
+           
     txtSchname.ReadOnly = true;
+           
 //     var a = this.ValidateChildren(ValidationConstraints.Enabled);
     //     var b=this.ValidateChildren(ValidationConstraints.ImmediateChildren);
     if (this.ValidateChildren(ValidationConstraints.Enabled))
@@ -103,7 +104,7 @@ namespace Mbc5.Forms.MemoryBook {
         this.custBindingSource.EndEdit();
         try
         {
-            custTableAdapter.Update(dsCust);
+           var aa= custTableAdapter.Update(dsCust);
             this.custTableAdapter.Fill(this.dsCust.cust, this.Schcode);
             this.SetInvnoSchCode();
             retval = true;
@@ -1471,10 +1472,16 @@ public override void Cancel() {
             string body = txtSchname.Text.Trim() + "<br/>" + txtaddress.Text.Trim() + "<br/>" + txtCity.Text.Trim() + ", " + cmbState.SelectedValue + ' ' + txtZip.Text.Trim() + "<br/><br/>Congratulations to the Jostens Team...Memory Book just signed the following NEW customer in your territory for the " + contryearTextBox.Text + " school year! ";
             string subj = Schcode + " " + txtSchname.Text.Trim() + " " + cmbState.SelectedValue + " NEW SCHOOL By Customer Service Rep " + txtCsRep.Text;
             //string email = "yearbook@memorybook.com;hcantrell@memorybook.com;john.cox@jostens.com;tammy.whitaker@jostens.com";
-            string email = "randy@woodalldevelopment.com";
+            
+            List<string> emailList = new List<string>();
             var emailHelper = new EmailHelper();
+            emailList.Add("randy.woodall@jostens.com");//test email
+            //emailList.Add("yearbook@memorybook.com");
+            //emailList.Add("hcantrell@memorybook.com");
+            //emailList.Add("john.cox@jostens.com");
+            //emailList.Add("tammy.whitaker@jostens.com");
             EmailType type = EmailType.Mbc;
-            emailHelper.SendOutLookEmail(subj, email, "", body, type);
+            emailHelper.SendOutLookEmail(subj, emailList, "", body, type);
             this.Cursor = Cursors.Default;
 
 
@@ -1698,7 +1705,7 @@ public override void Cancel() {
 
             this.Cursor = Cursors.AppStarting;
             string body = inofficeTextBox.Text;
-            string subj = "Inter Office Memo";
+            string subj = txtSchname.Text.Trim() + " " + Schcode;
             string email = "";
             var emailHelper = new EmailHelper();
             EmailType type = EmailType.Mbc;
@@ -1711,10 +1718,26 @@ public override void Cancel() {
             this.Cursor = Cursors.AppStarting;
             string body = "";
             string subj = txtSchname.Text.Trim() + " " + Schcode + " " + cmbState.SelectedValue.ToString();
-            string email = txtSchEmail.Text;
+            var dr = (DataRowView)custBindingSource.Current;
+            var vCont1 = dr["contemail"].ToString().Trim();
+            var vCont2 = dr["bcontemail"].ToString().Trim();
+            var vCont3 = dr["ccontemail"].ToString().Trim();
+            List<string> emailList = new List<string>();
             var emailHelper = new EmailHelper();
+            if (!string.IsNullOrEmpty(vCont1))
+            {
+                emailList.Add(vCont1);
+            }
+            if (!string.IsNullOrEmpty(vCont2))
+            {
+                emailList.Add(vCont2);
+            }
+            if (!string.IsNullOrEmpty(vCont3))
+            {
+                emailList.Add(vCont3);
+            }
             EmailType type = EmailType.Mbc;
-            emailHelper.SendOutLookEmail(subj, email, "", body, type);
+            emailHelper.SendOutLookEmail(subj, emailList, "", body, type);
             this.Cursor = Cursors.Default;
         }
         private void btnEmailContact_Click(object sender, EventArgs e)
@@ -1830,7 +1853,7 @@ public override void Cancel() {
             var custSaveResult = Save();
             if (custSaveResult.IsError)
             {
-                DialogResult result = MessageBox.Show("Record failed to save. Continue closeing?", "Save", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Record failed to save. Continue closing?", "Save", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.No)
                 {
                     e.Cancel = true;

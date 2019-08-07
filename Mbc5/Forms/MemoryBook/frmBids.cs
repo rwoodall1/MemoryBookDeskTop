@@ -2536,8 +2536,10 @@ namespace Mbc5.Forms.MemoryBook {
         {
             //set KeyPriview to True first.
             if (e.KeyChar == (char)Keys.Enter)
+            {
                 e.KeyChar = (char)Keys.Tab;
-            SendKeys.Send(e.KeyChar.ToString());//send the keystroke to the form.
+                SendKeys.Send(e.KeyChar.ToString());//send the keystroke to the form.
+            }
         }
     }
 }

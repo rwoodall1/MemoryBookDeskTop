@@ -3735,7 +3735,6 @@ namespace Mbc5.DataSets {
                 this.columnschname.AllowDBNull = false;
                 this.columnschname.MaxLength = 50;
                 this.columncontryear.MaxLength = 50;
-                this.columncstatus.MaxLength = 40;
                 this.columnorigyear.MaxLength = 2;
                 this.columnrebook.MaxLength = 1;
                 this.columnschaddr.AllowDBNull = false;
@@ -3748,7 +3747,6 @@ namespace Mbc5.DataSets {
                 this.columnschfax.MaxLength = 50;
                 this.columnschemail.MaxLength = 80;
                 this.columncontmemo.MaxLength = 2147483647;
-                this.columnposition.MaxLength = 20;
                 this.columnyb_sth.MaxLength = 1;
                 this.columnshipmemo.MaxLength = 2147483647;
                 this.columninoffice.MaxLength = 2147483647;
