@@ -610,6 +610,7 @@
     <EmbeddedResource Include="Reports\30321ReceivingLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321FileFolderLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321DepartmentLabel.rdlc" />
+    <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
     <EmbeddedResource Include="Reports\OnlineAgreement.rdlc" />
     <EmbeddedResource Include="Reports\OnlineFlyer.rdlc" />
     <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />
@@ -834,6 +835,7 @@
     <None Include="Properties\DataSources\BindingModels.FullInvoice.datasource" />
     <None Include="Properties\DataSources\BindingModels.Invoice.datasource" />
     <None Include="Properties\DataSources\BindingModels.InvoiceDetails.datasource" />
+    <None Include="Properties\DataSources\BindingModels.MBidInvoiceDetail.datasource" />
     <None Include="Properties\DataSources\BindingModels.OnlineAgreementHeader.datasource" />
     <None Include="Properties\DataSources\BindingModels.OnlineFlyer.datasource" />
     <None Include="Properties\DataSources\BindingModels.ProductionCheckList.datasource" />

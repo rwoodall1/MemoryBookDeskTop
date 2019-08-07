@@ -14,7 +14,7 @@ using BindingModels;
 using Exceptionless;
 using Mbc5.Classes;
 using BaseClass.Core;
-
+using Microsoft.Reporting.WinForms;
 namespace Mbc5.Forms.Meridian {
     public partial class frmMBids : BaseClass.frmBase {
         public frmMBids(UserPrincipal userPrincipal) : base(new string[] { "SA", "Administrator", "MerCS" }, userPrincipal)
@@ -1445,7 +1445,379 @@ namespace Mbc5.Forms.Meridian {
                 vrow.DiscountPercentage = "0";
 
             }
-         
+            vBidDetails.Add(vrow);
+            vrow = null;
+            //Teachers Edition------------------------------------------------------------------------------
+           vrow = new MBidInvoiceDetail();
+            if (txtQtyTeacher.ConvertToInt() > 0 && lblSchtype.Text != "ADVENTURE LOG"&& lblSchtype.Text != "MAGNET")
+            {
+               
+                    if (chkGeneric.Checked)
+                    {
+                        vrow.Description = "Standard " + lblSchtype.Text + " " + txtNoPages.Text + " Pages " + (lfRadioButton.Checked == true ? "Large Format 8 3/8 x 10 7/8" : "Small Format 5 3/8 x 8 3/8");
+                        vrow.UnitPrice = lblBasePrice.ConvertToDecimal();
+                        vrow.Quantity = txtQtyStudent.ConvertToInt();
+                        vrow.Price = vrow.UnitPrice * vrow.Quantity;
+                        vrow.DiscountPercentage = "0";
+                    }
+                    else
+                    {
+                        vrow.Description = lblSchtype.Text + " " + txtNoPages.Text + " Pages " + (lfRadioButton.Checked == true ? "Large Format 8 3/8 x 10 7/8" : "Small Format 5 3/8 x 8 3/8");
+                        vrow.UnitPrice = lblBasePrice.ConvertToDecimal();
+                        vrow.Quantity = txtQtyStudent.ConvertToInt();
+                        vrow.Price = vrow.UnitPrice * vrow.Quantity;
+                        vrow.DiscountPercentage = "0";
+
+                    }
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                
+            }
+            //-----------------------------------------------------------------------
+            vrow = new MBidInvoiceDetail();
+            string vProdCode = prodcodeComboBox.SelectedValue.ToString();
+            switch(vProdCode)
+            {
+                case "HSP":
+                        vrow.Description = "Implementation Guides(1 per 25 planners ordered) - Included";
+                        vrow.Price = 0;
+                        vrow.Quantity = txtImpGuideQty.ConvertToInt();
+                        vBidDetails.Add(vrow);
+                        vrow = null;
+                   //--------------
+                    if (!chkGeneric.Checked && lblCoverPricetotal.ConvertToDecimal() < 1)
+                    {
+                        vrow = new MBidInvoiceDetail();
+                        vrow.Description = "School Name and Mascot on cover-Included";
+                        vrow.Price = 0;
+                        vBidDetails.Add(vrow);
+                        vrow = null;
+                    }
+                    //-----------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Double-side laminated covers w/round corners - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //--------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Educational resource pages - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //--------------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "'Character Makes a Difference' on inside back cover -Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //---------------------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Hallpasses(one sheet plus those in weekly spread) - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    break;
+                case "MSP":
+                    vrow.Description = "Implementation Guides(1 per 25 planners ordered) - Included";
+                    vrow.Price = 0;
+                    vrow.Quantity = txtImpGuideQty.ConvertToInt();
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //--------------
+                    if (!chkGeneric.Checked && lblCoverPricetotal.ConvertToDecimal() < 1)
+                    {
+                        vrow = new MBidInvoiceDetail();
+                        vrow.Description = "School Name and Mascot on cover-Included";
+                        vrow.Price = 0;
+                        vBidDetails.Add(vrow);
+                        vrow = null;
+                    }
+                    //-----------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Double-side laminated covers w/round corners - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //-----------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "3 hole punch to fit in binder - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //--------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Educational resource pages - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //--------------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "'Character Makes a Difference' on inside back cover -Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //---------------------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Hallpasses(one sheet plus those in weekly spread) - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    break;
+
+                case "ELSP":
+                    vrow.Description = "Implementation Guides(1 per 25 planners ordered) - Included";
+                    vrow.Price = 0;
+                    vrow.Quantity = txtImpGuideQty.ConvertToInt();
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //--------------
+                    if (!chkGeneric.Checked && lblCoverPricetotal.ConvertToDecimal() < 1)
+                    {
+                        vrow = new MBidInvoiceDetail();
+                        vrow.Description = "School Name and Mascot on cover-Included";
+                        vrow.Price = 0;
+                        vBidDetails.Add(vrow);
+                        vrow = null;
+                    }
+                    //-----------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Double-side laminated covers w/round corners - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //--------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Educational resource pages - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //--------------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Title Page - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //---------------------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "3 hole punch to fit in binder - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+
+                    break;
+
+                case "PRISP":
+                    vrow.Description = "Implementation Guides(1 per 25 planners ordered) - Included";
+                    vrow.Price = 0;
+                    vrow.Quantity = txtImpGuideQty.ConvertToInt();
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //--------------
+                    if (!chkGeneric.Checked && lblCoverPricetotal.ConvertToDecimal() < 1)
+                    {
+                        vrow = new MBidInvoiceDetail();
+                        vrow.Description = "School Name and Mascot on cover-Included";
+                        vrow.Price = 0;
+                        vBidDetails.Add(vrow);
+                        vrow = null;
+                    }
+                    //-----------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Double-side laminated covers w/round corners - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //--------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Educational resource pages - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //--------------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "Title Page - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    //---------------------------------------------------
+                    vrow = new MBidInvoiceDetail();
+                    vrow.Description = "3 hole punch to fit in binder - Included";
+                    vrow.Price = 0;
+                    vBidDetails.Add(vrow);
+                    vrow = null;
+                    break;
+
+            }
+            //----------------------------------
+            if (hallpqtyTextBox.ConvertToInt()>0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Quantity = hallpqtyTextBox.ConvertToInt();
+                vrow.Price = hallppriceTextBox.ConvertToDecimal();
+                vrow.UnitPrice = vrow.Price / vrow.Quantity;
+                vrow.Description = "Hall Pass per Planner * No. of Students";
+                vBidDetails.Add(vrow);
+                vrow = null;
+               }
+
+            //--------------------------
+            if (bmarkqtyTextBox.ConvertToInt() > 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Quantity = bmarkqtyTextBox.ConvertToInt();
+                vrow.Price = bmarkprcTextBox.ConvertToDecimal();
+                vrow.UnitPrice = vrow.Price / vrow.Quantity;
+                vrow.Description = "Book Mark";
+                vBidDetails.Add(vrow);
+                vrow = null;
+            }
+
+            //--------------------------
+            if (vpaqtyTextBox.ConvertToInt() > 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Quantity = vpaqtyTextBox.ConvertToInt();
+                vrow.Price = vpprcTextBox.ConvertToDecimal();
+                vrow.UnitPrice = vrow.Price / vrow.Quantity;
+                vrow.Description = "Vinyl Pocket A";
+                vBidDetails.Add(vrow);
+                vrow = null;
+
+            }
+
+            //--------------------------
+            if (vpbqtyTextBox.ConvertToInt() > 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Quantity = vpbqtyTextBox.ConvertToInt();
+                vrow.Price = vpbprcTextBox.ConvertToDecimal();
+                vrow.UnitPrice = vrow.Price / vrow.Quantity;
+                vrow.Description = "Vinyl Pocket B";
+                vBidDetails.Add(vrow);
+                vrow = null;
+
+            }
+
+            //--------------------------
+            if (idpouchqtyTextBox.ConvertToInt() > 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Quantity = idpouchqtyTextBox.ConvertToInt();
+                vrow.Price = idpouchprcTextBox.ConvertToDecimal();
+                vrow.UnitPrice = vrow.Price / vrow.Quantity;
+                vrow.Description = "Id Pouch";
+                vBidDetails.Add(vrow);
+                vrow = null;
+
+            }
+
+            //--------------------------
+            if (stttitpgqtyTextBox.ConvertToInt() > 0 && vProdCode!= "PRISP" && vProdCode != "ELSP")
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Quantity = stttitpgqtyTextBox.ConvertToInt();
+                vrow.Price = stdttitpgprcTextBox.ConvertToDecimal();
+                vrow.UnitPrice = vrow.Price / vrow.Quantity;
+                vrow.Description = "Standard Title Page";
+                vBidDetails.Add(vrow);
+                vrow = null;
+
+            }
+
+            //--------------------------
+            if (duraglzqtyTextBox.ConvertToInt() > 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Quantity = duraglzqtyTextBox.ConvertToInt();
+                vrow.Price = duraglzprcTextBox.ConvertToDecimal();
+                vrow.UnitPrice = vrow.Price / vrow.Quantity;
+                vrow.Description = "Duraglaze Cover";
+                vBidDetails.Add(vrow);
+                vrow = null;
+
+            }
+
+            //--------------------------
+            if (wallchqtyTextBox.ConvertToInt() > 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Quantity = wallchqtyTextBox.ConvertToInt();
+                vrow.Price = wallchprcTextBox.ConvertToDecimal();
+                vrow.UnitPrice = vrow.Price / vrow.Quantity;
+                vrow.Description = "Elementary Wall Chart";
+                vBidDetails.Add(vrow);
+                vrow = null;
+
+            }
+
+            //--------------------------
+            if (typesetqtyTextBox.ConvertToInt() > 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Quantity = typesetqtyTextBox.ConvertToInt();
+                vrow.Price = typesetprcTextBox.ConvertToDecimal();
+                vrow.UnitPrice = vrow.Price / vrow.Quantity;
+                vrow.Description = "Typesetting Service";
+                vBidDetails.Add(vrow);
+                vrow = null;
+
+            }
+            //------------------------------------------------
+            string vNumberColors="One Color";
+            if (fourclrCheckBox.Checked == true)
+            {
+                vNumberColors = "Four Colors";
+            }else if (threeclrCheckBox.Checked)
+            {
+                vNumberColors = "Three Colors";
+            }
+            else if (twoclrCheckBox.Checked)
+            {
+                vNumberColors = "Two Colors";
+            }else if (oneclrCheckBox.Checked)
+            {
+                vNumberColors = "One Color";
+            }
+            vrow = new MBidInvoiceDetail();
+            if (lblCoverPricetotal.ConvertToDecimal()>0) {
+                vrow.Price = lblCoverPricetotal.ConvertToDecimal();
+                vrow.Description = "Cover Price - " + vNumberColors;
+                vBidDetails.Add(vrow);
+                vrow = null;
+            }
+            //---------------------------------------------------------------
+            vrow = new MBidInvoiceDetail();
+            if (lblSpecialCoverPrice.ConvertToDecimal() > 0)
+            {
+                vrow.Price = lblCoverPricetotal.ConvertToDecimal();
+                //vrow.Description = "Special cover Price - " + (desc2TextBox1.Text.Trim().Length>0?"Insided Front,":"")+(desc3TextBox1.Text.Trim().Length > 0 ? "Insided Back," : "") +(desc4TextBox1.Text.Trim().Length > 0 ? "Outside Back " : "");
+                vBidDetails.Add(vrow);
+                vrow = null;
+            }
+
+            //---------------------------------------------------------
+            if (txtmisc.ConvertToDecimal()!=0)
+            {
+                vrow = new MBidInvoiceDetail();                
+                vrow.Price = txtmisc.ConvertToDecimal();               
+                vrow.Description = mdescTextBox.Text;
+                vBidDetails.Add(vrow);
+                vrow = null;
+            }
+            //---------------------------------------------------------------
+            bsBidQuote.DataSource = vBidDetails;
+            ReportParameter rp0 = new ReportParameter("ReportType", chkPrntAsInvoice.Checked.ToString());
+
+            reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp0 });
+
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            this.reportViewer1.RefreshReport();
+
+
+            Cursor.Current = Cursors.Arrow;
         }
 
         private void txtQtyStudent_Validating(object sender, CancelEventArgs e)

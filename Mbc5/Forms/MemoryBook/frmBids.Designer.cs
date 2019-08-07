@@ -71,9 +71,6 @@
             System.Windows.Forms.Label sbtotLabel;
             System.Windows.Forms.Label ordagryrLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBids));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsBids = new Mbc5.DataSets.dsBids();
             this.bidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -93,7 +90,7 @@
             this.bidsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pgBids = new System.Windows.Forms.TabPage();
-            this.dteQuote = new Classes.NullableDateTimePicker();
+            this.dteQuote = new Mbc5.Classes.NullableDateTimePicker();
             this.chkPrntAsInvoice = new System.Windows.Forms.CheckBox();
             this.lblschode = new System.Windows.Forms.Label();
             this.ordagryrTextBox = new System.Windows.Forms.TextBox();
@@ -953,6 +950,7 @@
             this.dteQuote.Name = "dteQuote";
             this.dteQuote.Size = new System.Drawing.Size(104, 20);
             this.dteQuote.TabIndex = 296;
+            this.dteQuote.Value = new System.DateTime(2019, 8, 7, 15, 16, 32, 47);
             this.dteQuote.ValueChanged += new System.EventHandler(this.dteQuote_ValueChanged);
             // 
             // chkPrntAsInvoice
@@ -1042,15 +1040,6 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 48;
-            reportDataSource4.Name = "dsCust";
-            reportDataSource4.Value = this.custBindingSource;
-            reportDataSource5.Name = "dsBidValues";
-            reportDataSource5.Value = this.bidsBindingSource;
-            reportDataSource6.Name = "detailbid";
-            reportDataSource6.Value = this.BidInvoiceDetailBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuote.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(582, 601);
             this.reportViewer1.Name = "reportViewer1";
