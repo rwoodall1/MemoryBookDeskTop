@@ -48,8 +48,8 @@
             this.wipDetailBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.cmbDescription = new System.Windows.Forms.ComboBox();
             this.wipDescriptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.warDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.wdrDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.warDateTimePicker = new Classes.NullableDateTimePicker();
+            this.wdrDateTimePicker = new Classes.NullableDateTimePicker();
             this.wtrTextBox = new System.Windows.Forms.TextBox();
             this.wirTextBox = new System.Windows.Forms.TextBox();
             this.txtInvno = new System.Windows.Forms.TextBox();
@@ -399,8 +399,8 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton wipDetailBindingNavigatorSaveItem;
         private System.Windows.Forms.ComboBox cmbDescription;
-        private System.Windows.Forms.DateTimePicker warDateTimePicker;
-        private System.Windows.Forms.DateTimePicker wdrDateTimePicker;
+        private Classes.NullableDateTimePicker warDateTimePicker;
+        private Classes.NullableDateTimePicker wdrDateTimePicker;
         private System.Windows.Forms.TextBox wtrTextBox;
         private System.Windows.Forms.TextBox wirTextBox;
         private System.Windows.Forms.TextBox txtInvno;

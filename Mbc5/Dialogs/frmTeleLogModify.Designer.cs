@@ -52,7 +52,7 @@
             this.pg1 = new System.Windows.Forms.TabPage();
             this.callcontCheckBox = new System.Windows.Forms.CheckBox();
             this.nxtdaysComboBox = new System.Windows.Forms.ComboBox();
-            this.nxtdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.nxtdateDateTimePicker = new Classes.NullableDateTimePicker();
             this.priorityComboBox = new System.Windows.Forms.ComboBox();
             this.reasonTextBox = new System.Windows.Forms.TextBox();
             this.callTimeTextBox = new System.Windows.Forms.TextBox();
@@ -784,7 +784,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.CheckBox callcontCheckBox;
         private System.Windows.Forms.ComboBox nxtdaysComboBox;
-        private System.Windows.Forms.DateTimePicker nxtdateDateTimePicker;
+        private Classes.NullableDateTimePicker nxtdateDateTimePicker;
         private System.Windows.Forms.ComboBox priorityComboBox;
     }
 }

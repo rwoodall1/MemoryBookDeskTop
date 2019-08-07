@@ -51,8 +51,8 @@
             this.txtInvno = new System.Windows.Forms.TextBox();
             this.wirTextBox = new System.Windows.Forms.TextBox();
             this.wtrTextBox = new System.Windows.Forms.TextBox();
-            this.wdrDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.warDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.wdrDateTimePicker = new Classes.NullableDateTimePicker();
+            this.warDateTimePicker = new Classes.NullableDateTimePicker();
             this.cmbDescription = new System.Windows.Forms.ComboBox();
             this.wipDescriptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.wipDescriptionsTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter();
@@ -397,8 +397,8 @@
         private System.Windows.Forms.TextBox txtInvno;
         private System.Windows.Forms.TextBox wirTextBox;
         private System.Windows.Forms.TextBox wtrTextBox;
-        private System.Windows.Forms.DateTimePicker wdrDateTimePicker;
-        private System.Windows.Forms.DateTimePicker warDateTimePicker;
+        private Classes.NullableDateTimePicker wdrDateTimePicker;
+        private Classes.NullableDateTimePicker warDateTimePicker;
         private System.Windows.Forms.ComboBox cmbDescription;
         private DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter wipDescriptionsTableAdapter;
         private System.Windows.Forms.BindingSource wipDescriptionsBindingSource;

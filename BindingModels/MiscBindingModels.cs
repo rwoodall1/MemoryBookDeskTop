@@ -18,8 +18,8 @@ namespace BindingModels
         public string QuarterAdAmt { get; set; }
         public string HalfAdAmt { get; set; }
         public string FullAdAmt { get; set; }
-        public DateTime OnlineCutoff { get; set; }
-        public DateTime AdCutoff { get; set; }
+        public DateTime? OnlineCutoff { get; set; }
+        public DateTime? AdCutoff { get; set; }
     }
     public class OnlineAgreementHeader {
         public int Invno { get; set; }
@@ -27,7 +27,7 @@ namespace BindingModels
         public decimal BeforeTaxTotal { get; set; }
         public decimal SalesTax { get; set; }
         public decimal Invtot { get; set; }
-        public DateTime QuoteDate { get; set; }
+        public DateTime? QuoteDate { get; set; }
         public string SchName { get; set; }
         public string SchCode { get; set; }
         public string ContactFirstName { get; set; }

@@ -165,14 +165,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.blkwhiteCheckBox = new System.Windows.Forms.CheckBox();
             this.allcolorCheckBox = new System.Windows.Forms.CheckBox();
             this.stageComboBox1 = new System.Windows.Forms.ComboBox();
-            this.taxExemptionReceivedDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.taxExemptionReceivedDateTimePicker = new Classes.NullableDateTimePicker();
             this.notTaxExemptCheckBox = new System.Windows.Forms.CheckBox();
-            this.rbdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.xeldateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.rbdateDateTimePicker = new Classes.NullableDateTimePicker();
+            this.xeldateDateTimePicker = new Classes.NullableDateTimePicker();
             this.stfpwLabel1 = new System.Windows.Forms.Label();
             this.advpwLabel1 = new System.Windows.Forms.Label();
             this.jobnoLabel1 = new System.Windows.Forms.Label();
-            this.firstDaySchoolDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.firstDaySchoolDateTimePicker = new Classes.NullableDateTimePicker();
             this.leadnameComboBox = new System.Windows.Forms.ComboBox();
             this.addItemMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AddLeadSource = new System.Windows.Forms.ToolStripMenuItem();
@@ -191,14 +191,14 @@ namespace Mbc5.Forms.MemoryBook {
             this.oraclecodeTextBox = new System.Windows.Forms.TextBox();
             this.contryearTextBox = new System.Windows.Forms.TextBox();
             this.initcontDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
-            this.sourdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.contdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.sourdateDateTimePicker = new Classes.NullableDateTimePicker();
+            this.contdateDateTimePicker = new Classes.NullableDateTimePicker();
             this.junsnoTextBox = new System.Windows.Forms.TextBox();
             this.txtSchColors = new System.Windows.Forms.TextBox();
             this.txtFax = new System.Windows.Forms.TextBox();
             this.txtCsRep = new System.Windows.Forms.TextBox();
             this.lblSchName = new System.Windows.Forms.Label();
-            this.schoutDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.schoutDateTimePicker = new Classes.NullableDateTimePicker();
             this.cmbSchCategory = new System.Windows.Forms.ComboBox();
             this.lkpschtypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmbNoRebook = new System.Windows.Forms.ComboBox();
@@ -4480,7 +4480,7 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.TextBox txtSchColors;
         private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.Label lblSchName;
-        private System.Windows.Forms.DateTimePicker schoutDateTimePicker;
+        private Classes.NullableDateTimePicker schoutDateTimePicker;
         private System.Windows.Forms.TextBox spcinstTextBox;
         private System.Windows.Forms.TextBox extrchgTextBox;
         private System.Windows.Forms.Button btnInterOffice;
@@ -4608,13 +4608,13 @@ namespace Mbc5.Forms.MemoryBook {
         private DataSets.dsCustTableAdapters.lkpLeadNameTableAdapter lkpLeadNameTableAdapter;
         private System.Windows.Forms.BindingSource lkpLeadSourceBindingSource;
         private DataSets.dsCustTableAdapters.lkpLeadSourceTableAdapter lkpLeadSourceTableAdapter;
-        private System.Windows.Forms.DateTimePicker firstDaySchoolDateTimePicker;
+        private Classes.NullableDateTimePicker firstDaySchoolDateTimePicker;
         private System.Windows.Forms.TextBox csrep2TextBox;
         private System.Windows.Forms.Label stfpwLabel1;
         private System.Windows.Forms.Label advpwLabel1;
         private System.Windows.Forms.Label jobnoLabel1;
-        private System.Windows.Forms.DateTimePicker rbdateDateTimePicker;
-        private System.Windows.Forms.DateTimePicker xeldateDateTimePicker;
+        private Classes.NullableDateTimePicker rbdateDateTimePicker;
+        private Classes.NullableDateTimePicker xeldateDateTimePicker;
         private System.Windows.Forms.Button btnProdTckt;
         private System.Windows.Forms.BindingSource ProdutnTicketModelBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
@@ -4626,7 +4626,7 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.ContextMenuStrip addItemMenu;
         private System.Windows.Forms.ToolStripMenuItem AddLeadSource;
         private System.Windows.Forms.ToolStripMenuItem AddLeadName;
-		private System.Windows.Forms.DateTimePicker taxExemptionReceivedDateTimePicker;
+		private Classes.NullableDateTimePicker taxExemptionReceivedDateTimePicker;
 		private System.Windows.Forms.CheckBox notTaxExemptCheckBox;
 		private System.Windows.Forms.CheckBox blkwhiteCheckBox;
 		private System.Windows.Forms.CheckBox allcolorCheckBox;
@@ -4726,7 +4726,7 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button button1;
         private Classes.NullableDateTimePicker initcontDateTimePicker;
-        private System.Windows.Forms.DateTimePicker sourdateDateTimePicker;
-        private System.Windows.Forms.DateTimePicker contdateDateTimePicker;
+        private Classes.NullableDateTimePicker sourdateDateTimePicker;
+        private Classes.NullableDateTimePicker contdateDateTimePicker;
     }
 }

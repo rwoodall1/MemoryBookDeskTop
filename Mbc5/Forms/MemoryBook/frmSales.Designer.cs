@@ -306,7 +306,7 @@
             this.txtSource = new System.Windows.Forms.TextBox();
             this.booktypeTextBox = new System.Windows.Forms.TextBox();
             this.txtNocopies = new System.Windows.Forms.TextBox();
-            this.dteQuote = new System.Windows.Forms.DateTimePicker();
+            this.dteQuote = new Classes.NullableDateTimePicker();
             this.txtPoNum = new System.Windows.Forms.TextBox();
             this.txtBYear = new System.Windows.Forms.TextBox();
             this.txtYear = new System.Windows.Forms.TextBox();
@@ -319,7 +319,7 @@
             this.totalpersonlineTextBox = new System.Windows.Forms.TextBox();
             this.totalsoldonlineTextBox = new System.Windows.Forms.TextBox();
             this.onlinenotesTextBox = new System.Windows.Forms.TextBox();
-            this.onlinecutoDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.onlinecutoDateTimePicker = new Classes.NullableDateTimePicker();
             this.agreerecCheckBox1 = new System.Windows.Forms.CheckBox();
             this.lblOprcperbk = new System.Windows.Forms.Label();
             this.txtOprcperbk2 = new System.Windows.Forms.Label();
@@ -338,7 +338,7 @@
             this.txtQuarterAd = new System.Windows.Forms.TextBox();
             this.txtEighthAd = new System.Windows.Forms.TextBox();
             this.chkAllowAds = new System.Windows.Forms.CheckBox();
-            this.adcutoDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.adcutoDateTimePicker = new Classes.NullableDateTimePicker();
             this.webonlyCheckBox = new System.Windows.Forms.CheckBox();
             this.mbconlinepasswordLabel3 = new System.Windows.Forms.Label();
             this.basicamounTextBox1 = new System.Windows.Forms.TextBox();
@@ -351,7 +351,7 @@
             this.btnPrntFlyer = new System.Windows.Forms.Button();
             this.btnPassword = new System.Windows.Forms.Button();
             this.btnOnlineAgreement = new System.Windows.Forms.Button();
-            this.agreedteDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.agreedteDateTimePicker = new Classes.NullableDateTimePicker();
             this.invnoLabel4 = new System.Windows.Forms.Label();
             this.pg3 = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -404,7 +404,7 @@
             this.txtPaypoamt = new System.Windows.Forms.TextBox();
             this.txtCheckNo = new System.Windows.Forms.TextBox();
             this.txtPayment = new System.Windows.Forms.TextBox();
-            this.calpmtdate = new System.Windows.Forms.DateTimePicker();
+            this.calpmtdate = new Classes.NullableDateTimePicker();
             this.invno = new System.Windows.Forms.Label();
             this.paymntDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -435,7 +435,7 @@
             this.pnlInvoice = new System.Windows.Forms.Panel();
             this.lblBookTotalValue = new System.Windows.Forms.Label();
             this.lblXtraInvoiceNo = new System.Windows.Forms.Label();
-            this.dpDateShipped = new System.Windows.Forms.DateTimePicker();
+            this.dpDateShipped = new Classes.NullableDateTimePicker();
             this.lblInvoiceTaxRate = new System.Windows.Forms.Label();
             this.lblInvoiceTotal = new System.Windows.Forms.Label();
             this.btnApplyInvoice = new System.Windows.Forms.Button();
@@ -5671,7 +5671,7 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TabPage pg2;
         private System.Windows.Forms.TabPage pg4;
-        private System.Windows.Forms.DateTimePicker agreedteDateTimePicker;
+        private Classes.NullableDateTimePicker agreedteDateTimePicker;
         private System.Windows.Forms.Label invnoLabel4;
         private System.Windows.Forms.Button btnPrintAgreement;
         private System.Windows.Forms.Button btnPrntFlyer;
@@ -5697,14 +5697,14 @@
         private System.Windows.Forms.TextBox txtQuarterAd;
         private System.Windows.Forms.TextBox txtEighthAd;
         private System.Windows.Forms.CheckBox chkAllowAds;
-        private System.Windows.Forms.DateTimePicker adcutoDateTimePicker;
+        private Classes.NullableDateTimePicker adcutoDateTimePicker;
         private System.Windows.Forms.CheckBox webonlyCheckBox;
         private System.Windows.Forms.TextBox txtInkPersAmt;
         private System.Windows.Forms.CheckBox chkInkPers;
         private System.Windows.Forms.CheckBox agreerecCheckBox1;
         private System.Windows.Forms.Label lblOprcperbk;
         private System.Windows.Forms.Label txtOprcperbk2;
-        private System.Windows.Forms.DateTimePicker onlinecutoDateTimePicker;
+        private Classes.NullableDateTimePicker onlinecutoDateTimePicker;
         private System.Windows.Forms.TextBox onlinenotesTextBox;
         private System.Windows.Forms.TextBox totaladsTextBox;
         private System.Windows.Forms.TextBox totallovelinesTextBox;
@@ -5732,7 +5732,7 @@
         private System.Windows.Forms.TextBox txtPaypoamt;
         private System.Windows.Forms.TextBox txtCheckNo;
         private System.Windows.Forms.TextBox txtPayment;
-        private System.Windows.Forms.DateTimePicker calpmtdate;
+        private Classes.NullableDateTimePicker calpmtdate;
         private System.Windows.Forms.Label invno;
         private System.Windows.Forms.Button btnNewPayment;
         private System.Windows.Forms.Button btnCancel;
@@ -5850,7 +5850,7 @@
         private System.Windows.Forms.TextBox txtSource;
         private System.Windows.Forms.TextBox booktypeTextBox;
         private System.Windows.Forms.TextBox txtNocopies;
-        private System.Windows.Forms.DateTimePicker dteQuote;
+        private Classes.NullableDateTimePicker dteQuote;
         private System.Windows.Forms.TextBox txtPoNum;
         private System.Windows.Forms.TextBox txtBYear;
         private System.Windows.Forms.TextBox txtYear;
@@ -5919,7 +5919,7 @@
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Label lblOnHand;
         private System.Windows.Forms.Label lblInvoiceTaxRate;
-        private System.Windows.Forms.DateTimePicker dpDateShipped;
+        private Classes.NullableDateTimePicker dpDateShipped;
         private System.Windows.Forms.Label lblXtraInvoiceNo;
         private System.Windows.Forms.Label lblBookTotalValue;
         private System.Windows.Forms.BindingSource XtraInvoiceBindingSource;

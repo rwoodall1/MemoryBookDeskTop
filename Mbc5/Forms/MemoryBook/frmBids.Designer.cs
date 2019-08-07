@@ -93,7 +93,7 @@
             this.bidsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pgBids = new System.Windows.Forms.TabPage();
-            this.dteQuote = new System.Windows.Forms.DateTimePicker();
+            this.dteQuote = new Classes.NullableDateTimePicker();
             this.chkPrntAsInvoice = new System.Windows.Forms.CheckBox();
             this.lblschode = new System.Windows.Forms.Label();
             this.ordagryrTextBox = new System.Windows.Forms.TextBox();
@@ -2690,6 +2690,6 @@
         private System.Windows.Forms.TextBox txtDesc3tot;
         private System.Windows.Forms.TextBox txtDesc4tot;
         private System.Windows.Forms.CheckBox chkPrntAsInvoice;
-        private System.Windows.Forms.DateTimePicker dteQuote;
+        private Classes.NullableDateTimePicker dteQuote;
     }
     }

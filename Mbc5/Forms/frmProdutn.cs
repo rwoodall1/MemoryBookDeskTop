@@ -1012,11 +1012,13 @@ namespace Mbc5.Forms
 
 
 				var numDays = (wks * 5) + (days);
-				var result = CalulateBusinessDay.BusDaySubtract(dedayoutDateTimePicker.Value, numDays);
-				if (result != null)
-				{
-					dedayinDateTimePicker.Value = result;
-				}
+                if (dedayoutDateTimePicker.Value!=null) {
+                    var result = CalulateBusinessDay.BusDaySubtract((DateTime)dedayoutDateTimePicker.Value, numDays);
+                    if (result != null)
+                    {
+                        dedayinDateTimePicker.Value = result;
+                    }
+                }
 			}
 			else { MessageBox.Show("Please enter a Deadline out Date."); }
 
@@ -1034,9 +1036,13 @@ namespace Mbc5.Forms
 
 
 				var numDays = (wks * 5) + (days);
-				var result = CalulateBusinessDay.BusDayAdd(kitrecvdDateTimePicker.Value, numDays);
+                DateTime vKitrecvd;
+                if (kitrecvdDateTimePicker.Value != null)
+                {
+                    var result = CalulateBusinessDay.BusDayAdd((DateTime)kitrecvdDateTimePicker.Value, numDays);
+				    txtCalcResult.Text = result.ToShortDateString();
+                }
 				
-				txtCalcResult.Text = result.ToShortDateString();
 
 			}
 		}
@@ -1045,7 +1051,7 @@ namespace Mbc5.Forms
 		{
 			var emailHelper = new EmailHelper();
 			string subject = this.Schcode + " " + lblSchoolName.Text.Trim() + " " + "Memorybook Deadlines";
-			string body = "Here is your Memory Book deadline information.<br/><br/>Pages due in plant " + dedayinDateTimePicker.Value.ToShortDateString() + "<br/>Delivery date " + dedayoutDateTimePicker.Value.ToShortDateString();
+			string body = "Here is your Memory Book deadline information.<br/><br/>Pages due in plant " + ((DateTime)dedayinDateTimePicker.Value).ToShortDateString() + "<br/>Delivery date " +((DateTime) dedayoutDateTimePicker.Value).ToShortDateString();
 			EmailType type = EmailType.Blank;
 			if (CurrentCompany == "MBC")
 			{
@@ -1658,12 +1664,18 @@ namespace Mbc5.Forms
 			var processingResult = new ApiProcessingResult<string>();
 			if (string.IsNullOrEmpty(dpCustomerServiceDate.Text))
 			{
+                processingResult.Errors.Add(new ApiProcessingError("Customer Service Date is empty", "Customer Service Date is empty", ""));
 				processingResult.IsError = true;
 				return processingResult;
 
 			}
-          
-            var sqlClient = new SQLCustomClient();
+           if(dpCustomerServiceDate.Value == null)
+            {
+                processingResult.Errors.Add(new ApiProcessingError("Customer Service Date is empty", "Customer Service Date is empty", ""));
+                processingResult.IsError = true;
+                return processingResult;
+            }
+              var sqlClient = new SQLCustomClient();
             sqlClient.ClearParameters();
             sqlClient.CommandText(@"SELECT ProdType,bktype As BookType,prmsdte AS PromiseDate,wrndte AS WarnDate,prshpdte As ProjectedShipDate
                                         ,l_dtoprod,l_dwdr1,l_wdr2,l_wdr3,l_wdr4,l_wdr5,l_wdr6,l_wdr7,l_wdr8,l_wdr9,l_wdr10,l_wdr11,l_wdr12,l_wdr13
@@ -1729,12 +1741,12 @@ namespace Mbc5.Forms
 			string vBooktype = txtBookType.Text.Trim();
 
             string commandText = "";
-			DateTime custSvcDate = dpCustomerServiceDate.Value;
+			DateTime? custSvcDate = dpCustomerServiceDate.Value;
 			if (vWipDats.PromiseDate != 0)
 			{
 
 				sqlClient.ClearParameters();
-				sqlClient.AddParameter("@prmsdate", CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.PromiseDate));
+				sqlClient.AddParameter("@prmsdate", CalulateBusinessDay.PromiseDate((DateTime)custSvcDate, vWipDats.PromiseDate));
 				sqlClient.AddParameter("@invno", lblInvno.Text);
 				 commandText = @"
                         Update produtn Set prmsdate=@prmsdate WHERE invno=@invno
@@ -1771,7 +1783,7 @@ namespace Mbc5.Forms
 
 			if (vWipDats.l_dtoprod != 0) {
 				sqlClient.ClearParameters();
-				sqlClient.AddParameter("@dtoprod", CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.l_dtoprod));
+				sqlClient.AddParameter("@dtoprod", CalulateBusinessDay.PromiseDate((DateTime)custSvcDate, vWipDats.l_dtoprod));
 				sqlClient.AddParameter("@invno", lblInvno.Text);
 				commandText = @"
                         Update WIP Set dtoprod=@dtoprod WHERE invno=@invno
@@ -1806,7 +1818,7 @@ namespace Mbc5.Forms
 			if (vWipDats.ProjectedShipDate != 0)
 			{
 				sqlClient.ClearParameters();
-				sqlClient.AddParameter("@prshpdte", CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.ProjectedShipDate));
+				sqlClient.AddParameter("@prshpdte", CalulateBusinessDay.PromiseDate((DateTime)custSvcDate, vWipDats.ProjectedShipDate));
 				sqlClient.AddParameter("@invno", lblInvno.Text);
 				commandText = @"
                         Update Produtn Set prshpdte=@prshpdte WHERE invno=@invno
@@ -1821,7 +1833,7 @@ namespace Mbc5.Forms
 				}
 
 
-				var updateResult = await UpdateWipDetailCall(50, CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.ProjectedShipDate), lblInvno.Text);
+				var updateResult = await UpdateWipDetailCall(50, CalulateBusinessDay.PromiseDate((DateTime)custSvcDate, vWipDats.ProjectedShipDate), lblInvno.Text);
 
 				if (updateResult.IsError)
 				{
@@ -1836,7 +1848,7 @@ namespace Mbc5.Forms
 			{
 				sqlClient.ClearParameters();
 				sqlClient.ClearParameters();
-				sqlClient.AddParameter("@prshpdte", CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.ProjectedShipDate));
+				sqlClient.AddParameter("@prshpdte", CalulateBusinessDay.PromiseDate((DateTime)custSvcDate, vWipDats.ProjectedShipDate));
 				sqlClient.AddParameter("@invno", lblInvno.Text);
 
 				commandText = @"
@@ -1853,7 +1865,7 @@ namespace Mbc5.Forms
 
 
 
-				var updateResult = await UpdateWipDetailCall(50, CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.ProjectedShipDate), lblInvno.Text);
+				var updateResult = await UpdateWipDetailCall(50, CalulateBusinessDay.PromiseDate((DateTime)custSvcDate, vWipDats.ProjectedShipDate), lblInvno.Text);
 				if (updateResult.IsError)
 				{
 					MessageBox.Show("Database error. #50a", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1864,7 +1876,7 @@ namespace Mbc5.Forms
 			if (vWipDats.WarnDate != 0)
 			{
 				sqlClient.ClearParameters();
-				sqlClient.AddParameter("@warndate", CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.WarnDate));
+				sqlClient.AddParameter("@warndate", CalulateBusinessDay.PromiseDate((DateTime)custSvcDate, vWipDats.WarnDate));
 				sqlClient.AddParameter("@invno", lblInvno.Text);
 
 				commandText = @"
@@ -1898,7 +1910,7 @@ namespace Mbc5.Forms
 				}
 			}
 
-			DateTime? ProductionShipDate = CalulateBusinessDay.PromiseDate(custSvcDate, vWipDats.PromiseDate);
+			DateTime? ProductionShipDate = CalulateBusinessDay.PromiseDate((DateTime)custSvcDate, vWipDats.PromiseDate);
 			if (ProductionShipDate == null)
 			{
 				processingResult.IsError = true;
@@ -1909,7 +1921,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr49 != 0)
 			{
 				wCalc[48] = vWipDats.l_wdr49 + wCalc[49];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[49], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[49], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(49, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -1935,7 +1947,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr48 != 0)
 			{
 				wCalc[47] = vWipDats.l_wdr48 + wCalc[48];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[48], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[48], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(48, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -1960,7 +1972,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr47 != 0)
 			{
 				wCalc[46] = vWipDats.l_wdr47 + wCalc[47];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[47], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[47], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(47, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -1986,7 +1998,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr46 != 0)
 			{
 				wCalc[45] = vWipDats.l_wdr46 + wCalc[46];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[46], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[46], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(46, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2011,7 +2023,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr45 != 0)
 			{
 				wCalc[44] = vWipDats.l_wdr45 + wCalc[45];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[45], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[45], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(45, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2036,7 +2048,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr44 != 0)
 			{
 				wCalc[43] = vWipDats.l_wdr44 + wCalc[4];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[44], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[44], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(44, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2062,7 +2074,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr43 != 0)
 			{
 				wCalc[42] = vWipDats.l_wdr43 + wCalc[4];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[43], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[43], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(43, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2087,7 +2099,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr42 != 0)
 			{
 				wCalc[41] = vWipDats.l_wdr42 + wCalc[4];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[42], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[42], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(42, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2113,7 +2125,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr41 != 0)
 			{
 				wCalc[40] = vWipDats.l_wdr41 + wCalc[41];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[41], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[41], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(41, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2139,7 +2151,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr40 != 0)
 			{
 				wCalc[39] = vWipDats.l_wdr40 + wCalc[40];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[40], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[40], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(40, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2163,7 +2175,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr39 != 0)
 			{
 				wCalc[38] = vWipDats.l_wdr39 + wCalc[39];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[39], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[39], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(39, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2188,7 +2200,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr38 != 0)
 			{
 				wCalc[37] = vWipDats.l_wdr38 + wCalc[38];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[38], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[38], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(38, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2213,7 +2225,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr37 != 0)
 			{
 				wCalc[36] = vWipDats.l_wdr37 + wCalc[37];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[37], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[37], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(37, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2237,7 +2249,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr36 != 0)
 			{
 				wCalc[35] = vWipDats.l_wdr36 + wCalc[36];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[36], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[36], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(36, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2261,7 +2273,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr35 != 0)
 			{
 				wCalc[34] = vWipDats.l_wdr35 + wCalc[35];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[35], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[35], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(35, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2285,7 +2297,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr34 != 0)
 			{
 				wCalc[33] = vWipDats.l_wdr34 + wCalc[34];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[34], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[34], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(34, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2309,7 +2321,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr33 != 0)
 			{
 				wCalc[32] = vWipDats.l_wdr33 + wCalc[33];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[33], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[33], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(33, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2333,7 +2345,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr32 != 0)
 			{
 				wCalc[31] = vWipDats.l_wdr32 + wCalc[32];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[32], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[32], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(32, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2357,7 +2369,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr31 != 0)
 			{
 				wCalc[30] = vWipDats.l_wdr31 + wCalc[31];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[31], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[31], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(31, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2382,7 +2394,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr30 != 0)
 			{
 				wCalc[29] = vWipDats.l_wdr30 + wCalc[30];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[30], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[30], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(30, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2407,7 +2419,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr29 != 0)
 			{
 				wCalc[28] = vWipDats.l_wdr29 + wCalc[29];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[29], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[29], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(29, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2432,7 +2444,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr28 != 0)
 			{
 				wCalc[27] = vWipDats.l_wdr28 + wCalc[28];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[28], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[28], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(28, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2457,7 +2469,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr27 != 0)
 			{
 				wCalc[26] = vWipDats.l_wdr27 + wCalc[27];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[27], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[27], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(27, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2482,7 +2494,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr26 != 0)
 			{
 				wCalc[25] = vWipDats.l_wdr26 + wCalc[26];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[26], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[26], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(26, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2506,7 +2518,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr25 != 0)
 			{
 				wCalc[24] = vWipDats.l_wdr25 + wCalc[25];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[25], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[25], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(25, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2531,7 +2543,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr24 != 0)
 			{
 				wCalc[23] = vWipDats.l_wdr24 + wCalc[24];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[24], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[24], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(24, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2556,7 +2568,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr23 != 0)
 			{
 				wCalc[22] = vWipDats.l_wdr23 + wCalc[23];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[23], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[23], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(23, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2581,7 +2593,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr22 != 0)
 			{
 				wCalc[21] = vWipDats.l_wdr22 + wCalc[22];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[22], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[22], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(22, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2606,7 +2618,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr21 != 0)
 			{
 				wCalc[20] = vWipDats.l_wdr21 + wCalc[21];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[21], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[21], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(21, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2631,7 +2643,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr20 != 0)
 			{
 				wCalc[19] = vWipDats.l_wdr20 + wCalc[20];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[20], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[20], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(20, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2655,7 +2667,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr19 != 0)
 			{
 				wCalc[18] = vWipDats.l_wdr19 + wCalc[19];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[19], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[19], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(19, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2679,7 +2691,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr18 != 0)
 			{
 				wCalc[17] = vWipDats.l_wdr18 + wCalc[18];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[18], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[18], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(18, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2704,7 +2716,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr17 != 0)
 			{
 				wCalc[16] = vWipDats.l_wdr17 + wCalc[17];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[17], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[17], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(17, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2728,7 +2740,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr16 != 0)
 			{
 				wCalc[15] = vWipDats.l_wdr16 + wCalc[16];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[16], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[16], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(16, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2752,7 +2764,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr15 != 0)
 			{
 				wCalc[14] = vWipDats.l_wdr15 + wCalc[15];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[15], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[15], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(15, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2776,7 +2788,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr14 != 0)
 			{
 				wCalc[13] = vWipDats.l_wdr14 + wCalc[14];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[14], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[14], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(14, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2801,7 +2813,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr13 != 0)
 			{
 				wCalc[12] = vWipDats.l_wdr13 + wCalc[13];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[13], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[13], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(13, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2825,7 +2837,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr12 != 0)
 			{
 				wCalc[11] = vWipDats.l_wdr12 + wCalc[12];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[12], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[12], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(12, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2850,7 +2862,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr11 != 0)
 			{
 				wCalc[10] = vWipDats.l_wdr11 + wCalc[11];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[11], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[11], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(11, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2875,7 +2887,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr10 != 0)
 			{
 				wCalc[9] = vWipDats.l_wdr10 + wCalc[10];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[10], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[10], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(10, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2900,7 +2912,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr9 != 0)
 			{
 				wCalc[8] = vWipDats.l_wdr9 + wCalc[9];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[9], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[9], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(9, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2925,7 +2937,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr8 != 0)
 			{
 				wCalc[7] = vWipDats.l_wdr8 + wCalc[8];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[8], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[8], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(8, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2950,7 +2962,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr7 != 0)
 			{
 				wCalc[6] = vWipDats.l_wdr7 + wCalc[7];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[7], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[7], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(7, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -2975,7 +2987,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr6 != 0)
 			{
 				wCalc[5] = vWipDats.l_wdr6 + wCalc[6];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[6], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[6], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(6, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -3000,7 +3012,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr5 != 0)
 			{
 				wCalc[4] = vWipDats.l_wdr5 + wCalc[5];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[5], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[5], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(5, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -3025,7 +3037,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr4 != 0)
 			{
 				wCalc[3] = vWipDats.l_wdr4 + wCalc[4];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[4], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[4], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(4, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -3050,7 +3062,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr3 != 0)
 			{
 				wCalc[2] = vWipDats.l_wdr3 + wCalc[3];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[3], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[3], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(3, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -3075,7 +3087,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_wdr2 != 0)
 			{
 				wCalc[1] = vWipDats.l_wdr2 + wCalc[2];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[2], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[2], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(2, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{
@@ -3100,7 +3112,7 @@ namespace Mbc5.Forms
 			if (vWipDats.l_dwdr1 != 0)
 			{
 				wCalc[0] = vWipDats.l_dwdr1 + wCalc[1];
-				var vWdr = CalulateBusinessDay.PromiseDate(dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[1], MidpointRounding.ToEven)));
+				var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dpCustomerServiceDate.Value, ((int)Math.Round(wCalc[1], MidpointRounding.ToEven)));
 				var updateResult = await UpdateWipDetailCall(1, vWdr, lblInvno.Text);
 				if (updateResult.IsError)
 				{

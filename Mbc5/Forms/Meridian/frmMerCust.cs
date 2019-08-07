@@ -98,8 +98,8 @@ namespace Mbc5.Forms.Meridian {
             }
             else
             {
-                txtContryear.Text = contdateDateTimePicker.Value.Year.ToString().Substring(2);
-                vYear = contdateDateTimePicker.Value.Year.ToString().Substring(2);
+                txtContryear.Text = ((DateTime)contdateDateTimePicker.Value).Year.ToString().Substring(2);
+                vYear = ((DateTime)contdateDateTimePicker.Value).Year.ToString().Substring(2);
             }
             DialogResult vDialogResult;
             if (vCurrentInvno>0)

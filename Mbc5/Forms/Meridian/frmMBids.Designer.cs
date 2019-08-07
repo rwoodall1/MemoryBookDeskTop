@@ -92,8 +92,8 @@
             this.lblSchname = new System.Windows.Forms.Label();
             this.schcodeLabel1 = new System.Windows.Forms.Label();
             this.oaCheckBox = new System.Windows.Forms.CheckBox();
-            this.qtedateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.orderDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.qtedateDateTimePicker = new Classes.NullableDateTimePicker();
+            this.orderDateDateTimePicker = new Classes.NullableDateTimePicker();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblModifiedby = new System.Windows.Forms.Label();
             this.txtAdditionChrg = new System.Windows.Forms.TextBox();
@@ -2102,8 +2102,8 @@
         private DataSets.dsMBidsTableAdapters.mbidsTableAdapter mbidsTableAdapter;
         private DataSets.dsMBidsTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.CheckBox oaCheckBox;
-        private System.Windows.Forms.DateTimePicker qtedateDateTimePicker;
-        private System.Windows.Forms.DateTimePicker orderDateDateTimePicker;
+        private Classes.NullableDateTimePicker qtedateDateTimePicker;
+        private Classes.NullableDateTimePicker orderDateDateTimePicker;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblTotalOptions;

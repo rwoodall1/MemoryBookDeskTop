@@ -99,7 +99,7 @@
             this.invoicedCheckBox = new System.Windows.Forms.CheckBox();
             this.btnUpdateWip = new System.Windows.Forms.Button();
             this.btnCreateInvoice = new System.Windows.Forms.Button();
-            this.qtedateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.qtedateDateTimePicker = new Classes.NullableDateTimePicker();
             this.doNotChargeTaxCheckBox = new System.Windows.Forms.CheckBox();
             this.txtAdditionChrg = new System.Windows.Forms.TextBox();
             this.adcdescTextBox = new System.Windows.Forms.TextBox();
@@ -159,7 +159,7 @@
             this.invnoLabel2 = new System.Windows.Forms.Label();
             this.lblShipped = new System.Windows.Forms.Label();
             this.sourceTextBox = new System.Windows.Forms.TextBox();
-            this.chkindateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.chkindateDateTimePicker = new Classes.NullableDateTimePicker();
             this.prodcodeComboBox = new System.Windows.Forms.ComboBox();
             this.meridianProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
@@ -2228,7 +2228,7 @@
         private System.Windows.Forms.TextBox mdescTextBox;
         private System.Windows.Forms.TextBox txtmisc;
         private System.Windows.Forms.TextBox sourceTextBox;
-        private System.Windows.Forms.DateTimePicker chkindateDateTimePicker;
+        private Classes.NullableDateTimePicker chkindateDateTimePicker;
         private System.Windows.Forms.ComboBox prodcodeComboBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton sfRadioButton;
@@ -2294,7 +2294,7 @@
         private System.Windows.Forms.CheckBox invoicedCheckBox;
         private System.Windows.Forms.Button btnUpdateWip;
         private System.Windows.Forms.Button btnCreateInvoice;
-        private System.Windows.Forms.DateTimePicker qtedateDateTimePicker;
+        private Classes.NullableDateTimePicker qtedateDateTimePicker;
         private System.Windows.Forms.CheckBox doNotChargeTaxCheckBox;
         private System.Windows.Forms.TextBox txtAdditionChrg;
         private System.Windows.Forms.TextBox adcdescTextBox;

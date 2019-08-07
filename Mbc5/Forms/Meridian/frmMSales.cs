@@ -1217,7 +1217,7 @@ private void frmMSales_Deactivate(object sender, EventArgs e)
 }
 private void chkindateDateTimePicker_ValueChanged(object sender, EventArgs e)
 {
-    chkindateDateTimePicker.Format = DateTimePickerFormat.Short;
+   // chkindateDateTimePicker.Format = DateTimePickerFormat.Short;
 }      
 private void prodcodeComboBox_SelectionChangeCommitted(object sender, EventArgs e)
 {

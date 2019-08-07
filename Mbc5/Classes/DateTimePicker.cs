@@ -15,7 +15,7 @@ namespace Mbc5.Classes
     /// <summary>
     /// Summary description for DateTimePicker.
     /// </summary>
-    public class NullableDateTimePicker : System.Windows.Forms.DateTimePicker
+    public class NullableDateTimePicker : DateTimePicker
     {
         private DateTimePickerFormat oldFormat = DateTimePickerFormat.Short;
         private string oldCustomFormat = null;

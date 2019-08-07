@@ -270,7 +270,7 @@ namespace Mbc5.Dialogs
                                     NxtDays=@NxtDays,NxtDate=@NxtDate,CallCont=@CallCont,CallTime=@CallTime,
                                     Priority=@Priority,Company=@Company,TechCall=@TechCall   
                                     Where Id=@Id And Initial=@Initial");
-            if (nxtdateDateTimePicker.Value.Date == DateTime.Now.Date) {
+            if (nxtdateDateTimePicker.Value == null) {
                 sqlquery.AddParameter("@NxtDate",DBNull.Value);
             } else {
                 sqlquery.AddParameter("@NxtDate", nxtdateDateTimePicker.Value);
