@@ -118,22 +118,22 @@
             this.btnProdTkt = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.xeldateDateTimePicker = new Classes.NullableDateTimePicker();
+            this.xeldateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.nxtdateTextBox = new System.Windows.Forms.TextBox();
             this.datecontBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dedayoutDateTimePicker = new Classes.NullableDateTimePicker();
-            this.contdateDateTimePicker = new Classes.NullableDateTimePicker();
-            this.dedayinDateTimePicker = new Classes.NullableDateTimePicker();
-            this.sourdateDateTimePicker = new Classes.NullableDateTimePicker();
+            this.dedayoutDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
+            this.contdateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
+            this.dedayinDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
+            this.sourdateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.josnameComboBox = new System.Windows.Forms.ComboBox();
             this.leadsourceComboBox = new System.Windows.Forms.ComboBox();
             this.txtContryear = new System.Windows.Forms.TextBox();
             this.schuploadiCheckBox = new System.Windows.Forms.CheckBox();
             this.multiyroptComboBox = new System.Windows.Forms.ComboBox();
-            this.initcontDateTimePicker = new Classes.NullableDateTimePicker();
+            this.initcontDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.mktsegmentComboBox = new System.Windows.Forms.ComboBox();
-            this.dteschendDateTimePicker = new Classes.NullableDateTimePicker();
-            this.dteschstartDateTimePicker = new Classes.NullableDateTimePicker();
+            this.dteschendDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
+            this.dteschstartDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.curentprovTextBox = new System.Windows.Forms.TextBox();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -153,7 +153,7 @@
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.txtOracleCode = new System.Windows.Forms.TextBox();
             this.junsnoTextBox = new System.Windows.Forms.TextBox();
-            this.taxExemptRecvdDateTimePicker = new Classes.NullableDateTimePicker();
+            this.taxExemptRecvdDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.chkNotTaxExempt = new System.Windows.Forms.CheckBox();
             this.chkTaxExempt = new System.Windows.Forms.CheckBox();
             this.chkSchoolClosed = new System.Windows.Forms.CheckBox();
@@ -1283,6 +1283,7 @@
             this.xeldateDateTimePicker.Name = "xeldateDateTimePicker";
             this.xeldateDateTimePicker.Size = new System.Drawing.Size(161, 20);
             this.xeldateDateTimePicker.TabIndex = 52;
+            this.xeldateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 49);
             this.xeldateDateTimePicker.ValueChanged += new System.EventHandler(this.xeldateDateTimePicker_ValueChanged);
             // 
             // nxtdateTextBox
@@ -1308,6 +1309,7 @@
             this.dedayoutDateTimePicker.Name = "dedayoutDateTimePicker";
             this.dedayoutDateTimePicker.Size = new System.Drawing.Size(138, 20);
             this.dedayoutDateTimePicker.TabIndex = 51;
+            this.dedayoutDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 52);
             this.dedayoutDateTimePicker.ValueChanged += new System.EventHandler(this.dedayoutDateTimePicker_ValueChanged);
             // 
             // contdateDateTimePicker
@@ -1320,6 +1322,7 @@
             this.contdateDateTimePicker.Name = "contdateDateTimePicker";
             this.contdateDateTimePicker.Size = new System.Drawing.Size(159, 20);
             this.contdateDateTimePicker.TabIndex = 23;
+            this.contdateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 55);
             this.contdateDateTimePicker.CloseUp += new System.EventHandler(this.contdateDateTimePicker_CloseUp);
             this.contdateDateTimePicker.ValueChanged += new System.EventHandler(this.contdateDateTimePicker_ValueChanged);
             // 
@@ -1332,6 +1335,7 @@
             this.dedayinDateTimePicker.Name = "dedayinDateTimePicker";
             this.dedayinDateTimePicker.Size = new System.Drawing.Size(138, 20);
             this.dedayinDateTimePicker.TabIndex = 50;
+            this.dedayinDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 57);
             this.dedayinDateTimePicker.ValueChanged += new System.EventHandler(this.dedayinDateTimePicker_ValueChanged);
             // 
             // sourdateDateTimePicker
@@ -1344,6 +1348,7 @@
             this.sourdateDateTimePicker.Name = "sourdateDateTimePicker";
             this.sourdateDateTimePicker.Size = new System.Drawing.Size(159, 20);
             this.sourdateDateTimePicker.TabIndex = 21;
+            this.sourdateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 59);
             this.sourdateDateTimePicker.ValueChanged += new System.EventHandler(this.sourdateDateTimePicker_ValueChanged);
             // 
             // josnameComboBox
@@ -1405,6 +1410,7 @@
             this.initcontDateTimePicker.Name = "initcontDateTimePicker";
             this.initcontDateTimePicker.Size = new System.Drawing.Size(159, 20);
             this.initcontDateTimePicker.TabIndex = 11;
+            this.initcontDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 73);
             this.initcontDateTimePicker.ValueChanged += new System.EventHandler(this.initcontDateTimePicker_ValueChanged);
             // 
             // mktsegmentComboBox
@@ -1425,6 +1431,7 @@
             this.dteschendDateTimePicker.Name = "dteschendDateTimePicker";
             this.dteschendDateTimePicker.Size = new System.Drawing.Size(138, 20);
             this.dteschendDateTimePicker.TabIndex = 7;
+            this.dteschendDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 79);
             this.dteschendDateTimePicker.ValueChanged += new System.EventHandler(this.dteschendDateTimePicker_ValueChanged);
             // 
             // dteschstartDateTimePicker
@@ -1436,6 +1443,7 @@
             this.dteschstartDateTimePicker.Name = "dteschstartDateTimePicker";
             this.dteschstartDateTimePicker.Size = new System.Drawing.Size(138, 20);
             this.dteschstartDateTimePicker.TabIndex = 5;
+            this.dteschstartDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 82);
             this.dteschstartDateTimePicker.ValueChanged += new System.EventHandler(this.dteschstartDateTimePicker_ValueChanged);
             // 
             // curentprovTextBox
@@ -1637,6 +1645,7 @@
             this.taxExemptRecvdDateTimePicker.Name = "taxExemptRecvdDateTimePicker";
             this.taxExemptRecvdDateTimePicker.Size = new System.Drawing.Size(120, 20);
             this.taxExemptRecvdDateTimePicker.TabIndex = 45;
+            this.taxExemptRecvdDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 119);
             this.taxExemptRecvdDateTimePicker.ValueChanged += new System.EventHandler(this.taxExemptRecvdDateTimePicker_ValueChanged);
             // 
             // chkNotTaxExempt
@@ -2148,7 +2157,7 @@
             this.pg2.Padding = new System.Windows.Forms.Padding(3);
             this.pg2.Size = new System.Drawing.Size(1172, 596);
             this.pg2.TabIndex = 1;
-            this.pg2.Text = "Shiping/Invoice Information";
+            this.pg2.Text = "Shipping/Invoice Information";
             // 
             // txtShpZip
             // 

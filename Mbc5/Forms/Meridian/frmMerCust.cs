@@ -14,6 +14,7 @@ using Mbc5.Dialogs;
 using System.Data.SqlClient;
 using System.Reflection;
 using BindingModels;
+using Mbc5.Classes;
 namespace Mbc5.Forms.Meridian {
     public partial class frmMerCust : BaseClass.Forms.bTopBottom {
         public frmMerCust(UserPrincipal userPrincipal) : base(new string[] { "SA","Administrator","MerCS" },userPrincipal) {

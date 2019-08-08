@@ -551,6 +551,18 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnnotes;
             
+            private global::System.Data.DataColumn columnshpaddr;
+            
+            private global::System.Data.DataColumn columnshpaddr2;
+            
+            private global::System.Data.DataColumn columnshpcity;
+            
+            private global::System.Data.DataColumn columnshpstate;
+            
+            private global::System.Data.DataColumn columnshpzip;
+            
+            private global::System.Data.DataColumn columnshpname;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public mbidsDataTable() {
@@ -1674,6 +1686,54 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpaddrColumn {
+                get {
+                    return this.columnshpaddr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpaddr2Column {
+                get {
+                    return this.columnshpaddr2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpcityColumn {
+                get {
+                    return this.columnshpcity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpstateColumn {
+                get {
+                    return this.columnshpstate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpzipColumn {
+                get {
+                    return this.columnshpzip;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpnameColumn {
+                get {
+                    return this.columnshpname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1844,7 +1904,13 @@ namespace Mbc5.DataSets {
                         string ModifiedBy, 
                         string adcdesc, 
                         decimal adcamt, 
-                        string notes) {
+                        string notes, 
+                        string shpaddr, 
+                        string shpaddr2, 
+                        string shpcity, 
+                        string shpstate, 
+                        string shpzip, 
+                        string shpname) {
                 mbidsRow rowmbidsRow = ((mbidsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -1982,7 +2048,13 @@ namespace Mbc5.DataSets {
                         ModifiedBy,
                         adcdesc,
                         adcamt,
-                        notes};
+                        notes,
+                        shpaddr,
+                        shpaddr2,
+                        shpcity,
+                        shpstate,
+                        shpzip,
+                        shpname};
                 rowmbidsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmbidsRow);
                 return rowmbidsRow;
@@ -2148,6 +2220,12 @@ namespace Mbc5.DataSets {
                 this.columnadcdesc = base.Columns["adcdesc"];
                 this.columnadcamt = base.Columns["adcamt"];
                 this.columnnotes = base.Columns["notes"];
+                this.columnshpaddr = base.Columns["shpaddr"];
+                this.columnshpaddr2 = base.Columns["shpaddr2"];
+                this.columnshpcity = base.Columns["shpcity"];
+                this.columnshpstate = base.Columns["shpstate"];
+                this.columnshpzip = base.Columns["shpzip"];
+                this.columnshpname = base.Columns["shpname"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2425,6 +2503,18 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnadcamt);
                 this.columnnotes = new global::System.Data.DataColumn("notes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnotes);
+                this.columnshpaddr = new global::System.Data.DataColumn("shpaddr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpaddr);
+                this.columnshpaddr2 = new global::System.Data.DataColumn("shpaddr2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpaddr2);
+                this.columnshpcity = new global::System.Data.DataColumn("shpcity", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpcity);
+                this.columnshpstate = new global::System.Data.DataColumn("shpstate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpstate);
+                this.columnshpzip = new global::System.Data.DataColumn("shpzip", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpzip);
+                this.columnshpname = new global::System.Data.DataColumn("shpname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpname);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnschcode.MaxLength = 50;
@@ -2468,6 +2558,12 @@ namespace Mbc5.DataSets {
                 this.columnModifiedBy.MaxLength = 128;
                 this.columnadcdesc.MaxLength = 50;
                 this.columnnotes.MaxLength = 2147483647;
+                this.columnshpaddr.MaxLength = 50;
+                this.columnshpaddr2.MaxLength = 50;
+                this.columnshpcity.MaxLength = 50;
+                this.columnshpstate.MaxLength = 3;
+                this.columnshpzip.MaxLength = 10;
+                this.columnshpname.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4781,6 +4877,102 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpaddr {
+                get {
+                    try {
+                        return ((string)(this[this.tablembids.shpaddrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpaddr\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.shpaddrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpaddr2 {
+                get {
+                    try {
+                        return ((string)(this[this.tablembids.shpaddr2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpaddr2\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.shpaddr2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpcity {
+                get {
+                    try {
+                        return ((string)(this[this.tablembids.shpcityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpcity\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.shpcityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpstate {
+                get {
+                    try {
+                        return ((string)(this[this.tablembids.shpstateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpstate\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.shpstateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpzip {
+                get {
+                    try {
+                        return ((string)(this[this.tablembids.shpzipColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpzip\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.shpzipColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpname {
+                get {
+                    try {
+                        return ((string)(this[this.tablembids.shpnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpname\' in table \'mbids\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablembids.shpnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsschcodeNull() {
                 return this.IsNull(this.tablembids.schcodeColumn);
             }
@@ -6398,6 +6590,78 @@ namespace Mbc5.DataSets {
             public void SetnotesNull() {
                 this[this.tablembids.notesColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsshpaddrNull() {
+                return this.IsNull(this.tablembids.shpaddrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetshpaddrNull() {
+                this[this.tablembids.shpaddrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isshpaddr2Null() {
+                return this.IsNull(this.tablembids.shpaddr2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setshpaddr2Null() {
+                this[this.tablembids.shpaddr2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsshpcityNull() {
+                return this.IsNull(this.tablembids.shpcityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetshpcityNull() {
+                this[this.tablembids.shpcityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsshpstateNull() {
+                return this.IsNull(this.tablembids.shpstateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetshpstateNull() {
+                this[this.tablembids.shpstateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsshpzipNull() {
+                return this.IsNull(this.tablembids.shpzipColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetshpzipNull() {
+                this[this.tablembids.shpzipColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsshpnameNull() {
+                return this.IsNull(this.tablembids.shpnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetshpnameNull() {
+                this[this.tablembids.shpnameColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -6696,6 +6960,12 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
             tableMapping.ColumnMappings.Add("adcdesc", "adcdesc");
             tableMapping.ColumnMappings.Add("adcamt", "adcamt");
             tableMapping.ColumnMappings.Add("notes", "notes");
+            tableMapping.ColumnMappings.Add("shpaddr", "shpaddr");
+            tableMapping.ColumnMappings.Add("shpaddr2", "shpaddr2");
+            tableMapping.ColumnMappings.Add("shpcity", "shpcity");
+            tableMapping.ColumnMappings.Add("shpstate", "shpstate");
+            tableMapping.ColumnMappings.Add("shpzip", "shpzip");
+            tableMapping.ColumnMappings.Add("shpname", "shpname");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -7064,9 +7334,11 @@ namespace Mbc5.DataSets.dsMBidsTableAdapters {
                 "jobno, mcust.invaddr, mcust.invaddr2, mcust.invcity, \r\n                         " +
                 "mcust.invstate, mcust.invzip, mcust.invname, mbids.OrderDate, mbids.ReOrder, mcu" +
                 "st.schzip, mbids.Id, mbids.SchoolTaxRate, mbids.DoNotChargeTax, mbids.ModifiedBy" +
-                ", mbids.adcdesc, mbids.adcamt, mbids.notes\r\nFROM            mbids LEFT OUTER JOI" +
-                "N\r\n                         mcust ON mbids.schcode = mcust.schcode\r\nWHERE       " +
-                " (mbids.schcode = @schcode)\r\nORDER BY mbids.schcode DESC";
+                ", mbids.adcdesc, mbids.adcamt, mbids.notes, \r\n                         mcust.shp" +
+                "addr, mcust.shpaddr2, mcust.shpcity, mcust.shpstate, mcust.shpzip, mcust.shpname" +
+                "\r\nFROM            mbids LEFT OUTER JOIN\r\n                         mcust ON mbids" +
+                ".schcode = mcust.schcode\r\nWHERE        (mbids.schcode = @schcode)\r\nORDER BY mbid" +
+                "s.schcode DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

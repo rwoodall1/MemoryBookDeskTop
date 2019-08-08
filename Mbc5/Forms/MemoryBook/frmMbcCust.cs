@@ -320,7 +320,7 @@ public override void Cancel() {
                                         ,InvoiceCity=@InvoiceCity
                                         ,InvoiceState=@InvoiceState
                                         ,InvoiceZipCode=@InvoiceZipCode 
-                                        ,ShippingAddr=@ShippingAddr
+                                        ,shipaddr=@ShippingAddr
                                         ,ShippingAddr2=@ShippingAddr2
                                         ,ShippingCity=@ShippingCity
                                         ,ShippingState=@ShippingState
@@ -2110,7 +2110,7 @@ public override void Cancel() {
             sqlClient.AddParameter("@Schphone", ((DataRowView)custBindingSource.Current).Row["schphone"].ToString().Trim());
             sqlClient.AddParameter("@Schcode",Schcode);
             sqlClient.AddParameter("@Invno",Invno);
-            sqlClient.AddParameter("@ShipAddress", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingAddr") ?"":((DataRowView)custBindingSource.Current).Row["ShippingAddr"].ToString());
+            sqlClient.AddParameter("@ShipAddress", ((DataRowView)custBindingSource.Current).Row.IsNull("shipaddr") ?"":((DataRowView)custBindingSource.Current).Row["shipaddr"].ToString());
             sqlClient.AddParameter("@ShipAddress2", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingAddr2") ? "" : ((DataRowView)custBindingSource.Current).Row["ShippingAddr2"].ToString());
             sqlClient.AddParameter("@ShipCity", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingCity") ? "" : ((DataRowView)custBindingSource.Current).Row["ShippingCity"].ToString());
             sqlClient.AddParameter("@ShipState", ((DataRowView)custBindingSource.Current).Row.IsNull("ShippingState") ? "" : ((DataRowView)custBindingSource.Current).Row["ShippingState"].ToString());

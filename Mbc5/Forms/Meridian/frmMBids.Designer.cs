@@ -77,12 +77,12 @@
             System.Windows.Forms.Label sbtotLabel;
             System.Windows.Forms.Label mdescLabel;
             System.Windows.Forms.Label notesLabel;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.contryearTextBox = new System.Windows.Forms.TextBox();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.MBidInvoiceDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mbidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMBids = new Mbc5.DataSets.dsMBids();
+            this.contryearTextBox = new System.Windows.Forms.TextBox();
             this.txtBYear = new System.Windows.Forms.TextBox();
             this.sourceTextBox = new System.Windows.Forms.TextBox();
             this.prodcodeComboBox = new System.Windows.Forms.ComboBox();
@@ -98,6 +98,7 @@
             this.qtedateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.orderDateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.chkPrntAsInvoice = new System.Windows.Forms.CheckBox();
             this.lblModifiedby = new System.Windows.Forms.Label();
             this.txtAdditionChrg = new System.Windows.Forms.TextBox();
@@ -188,8 +189,7 @@
             this.meridianProductsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.MeridianProductsTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.idLabel1 = new System.Windows.Forms.Label();
-            this.bsBidQuote = new System.Windows.Forms.BindingSource(this.components);
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.OnlineFlyerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             sourceLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -242,6 +242,7 @@
             sbtotLabel = new System.Windows.Forms.Label();
             mdescLabel = new System.Windows.Forms.Label();
             notesLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.MBidInvoiceDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mbidsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMBids)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.meridianProductsBindingSource)).BeginInit();
@@ -251,7 +252,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsBidQuote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OnlineFlyerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // sourceLabel
@@ -788,16 +789,9 @@
             notesLabel.TabIndex = 158;
             notesLabel.Text = "Notes";
             // 
-            // contryearTextBox
+            // MBidInvoiceDetailBindingSource
             // 
-            this.contryearTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "contryear", true));
-            this.contryearTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contryearTextBox.Location = new System.Drawing.Point(400, 37);
-            this.contryearTextBox.Name = "contryearTextBox";
-            this.contryearTextBox.Size = new System.Drawing.Size(32, 20);
-            this.contryearTextBox.TabIndex = 218;
-            this.contryearTextBox.Leave += new System.EventHandler(this.contryearTextBox_Leave);
-            this.contryearTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.contryearTextBox_Validating);
+            this.MBidInvoiceDetailBindingSource.DataSource = typeof(BindingModels.MBidInvoiceDetail);
             // 
             // mbidsBindingSource
             // 
@@ -809,6 +803,17 @@
             this.dsMBids.DataSetName = "dsMBids";
             this.dsMBids.EnforceConstraints = false;
             this.dsMBids.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // contryearTextBox
+            // 
+            this.contryearTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mbidsBindingSource, "contryear", true));
+            this.contryearTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contryearTextBox.Location = new System.Drawing.Point(400, 37);
+            this.contryearTextBox.Name = "contryearTextBox";
+            this.contryearTextBox.Size = new System.Drawing.Size(32, 20);
+            this.contryearTextBox.TabIndex = 218;
+            this.contryearTextBox.Leave += new System.EventHandler(this.contryearTextBox_Leave);
+            this.contryearTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.contryearTextBox_Validating);
             // 
             // txtBYear
             // 
@@ -943,7 +948,7 @@
             this.qtedateDateTimePicker.Name = "qtedateDateTimePicker";
             this.qtedateDateTimePicker.Size = new System.Drawing.Size(130, 20);
             this.qtedateDateTimePicker.TabIndex = 222;
-            this.qtedateDateTimePicker.Value = new System.DateTime(2019, 8, 7, 12, 40, 30, 806);
+            this.qtedateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 14, 47, 23, 190);
             this.qtedateDateTimePicker.ValueChanged += new System.EventHandler(this.qtedateDateTimePicker_ValueChanged);
             // 
             // orderDateDateTimePicker
@@ -957,7 +962,7 @@
             this.orderDateDateTimePicker.Name = "orderDateDateTimePicker";
             this.orderDateDateTimePicker.Size = new System.Drawing.Size(130, 20);
             this.orderDateDateTimePicker.TabIndex = 223;
-            this.orderDateDateTimePicker.Value = new System.DateTime(2019, 8, 7, 12, 40, 30, 803);
+            this.orderDateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 14, 47, 23, 187);
             this.orderDateDateTimePicker.ValueChanged += new System.EventHandler(this.orderDateDateTimePicker_ValueChanged);
             // 
             // panel4
@@ -1038,6 +1043,23 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1082, 408);
             this.panel4.TabIndex = 226;
+            // 
+            // reportViewer1
+            // 
+            reportDataSource3.Name = "dsMeridianBidDetails";
+            reportDataSource3.Value = this.MBidInvoiceDetailBindingSource;
+            reportDataSource4.Name = "dsMBid";
+            reportDataSource4.Value = this.mbidsBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MeridianQuote.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(781, 277);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(150, 107);
+            this.reportViewer1.TabIndex = 297;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
             // chkPrntAsInvoice
             // 
@@ -2042,25 +2064,9 @@
             this.idLabel1.TabIndex = 162;
             this.idLabel1.Text = "id";
             // 
-            // reportViewer1
+            // OnlineFlyerBindingSource
             // 
-            this.reportViewer1.DocumentMapWidth = 48;
-            reportDataSource1.Name = "dsCust";
-            reportDataSource1.Value = null;
-            reportDataSource2.Name = "dsBidValues";
-            reportDataSource2.Value = null;
-            reportDataSource3.Name = "detailbid";
-            reportDataSource3.Value = null;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuote.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(842, 293);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(68, 82);
-            this.reportViewer1.TabIndex = 297;
-            this.reportViewer1.Visible = false;
+            this.OnlineFlyerBindingSource.DataSource = typeof(BindingModels.OnlineFlyer);
             // 
             // frmMBids
             // 
@@ -2098,6 +2104,7 @@
             this.Deactivate += new System.EventHandler(this.frmMBids_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMBids_FormClosing);
             this.Load += new System.EventHandler(this.frmMBids_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.MBidInvoiceDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mbidsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMBids)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.meridianProductsBindingSource)).EndInit();
@@ -2110,7 +2117,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsBidQuote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OnlineFlyerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2225,7 +2232,8 @@
         private System.Windows.Forms.TextBox txtAdditionChrg;
         private System.Windows.Forms.Label lblModifiedby;
         private System.Windows.Forms.CheckBox chkPrntAsInvoice;
-        private System.Windows.Forms.BindingSource bsBidQuote;
+        private System.Windows.Forms.BindingSource MBidInvoiceDetailBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource OnlineFlyerBindingSource;
     }
     }

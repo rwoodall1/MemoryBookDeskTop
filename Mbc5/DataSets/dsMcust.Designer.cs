@@ -588,16 +588,6 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnDateModified;
             
-            private global::System.Data.DataColumn columnShippingAddr;
-            
-            private global::System.Data.DataColumn columnShippingAddr2;
-            
-            private global::System.Data.DataColumn columnShippingCity;
-            
-            private global::System.Data.DataColumn columnShippingState;
-            
-            private global::System.Data.DataColumn columnShippingZipCode;
-            
             private global::System.Data.DataColumn columnTimeStamp;
             
             private global::System.Data.DataColumn columnspecinst;
@@ -1757,46 +1747,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ShippingAddrColumn {
-                get {
-                    return this.columnShippingAddr;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ShippingAddr2Column {
-                get {
-                    return this.columnShippingAddr2;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ShippingCityColumn {
-                get {
-                    return this.columnShippingCity;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ShippingStateColumn {
-                get {
-                    return this.columnShippingState;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ShippingZipCodeColumn {
-                get {
-                    return this.columnShippingZipCode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn TimeStampColumn {
                 get {
                     return this.columnTimeStamp;
@@ -2082,11 +2032,6 @@ namespace Mbc5.DataSets {
                         System.DateTime kitrecvd, 
                         string ProdDescription, 
                         System.DateTime DateModified, 
-                        string ShippingAddr, 
-                        string ShippingAddr2, 
-                        string ShippingCity, 
-                        string ShippingState, 
-                        string ShippingZipCode, 
                         byte[] TimeStamp, 
                         string specinst, 
                         bool invoiced, 
@@ -2240,11 +2185,6 @@ namespace Mbc5.DataSets {
                         kitrecvd,
                         ProdDescription,
                         DateModified,
-                        ShippingAddr,
-                        ShippingAddr2,
-                        ShippingCity,
-                        ShippingState,
-                        ShippingZipCode,
                         TimeStamp,
                         specinst,
                         invoiced,
@@ -2425,11 +2365,6 @@ namespace Mbc5.DataSets {
                 this.columnkitrecvd = base.Columns["kitrecvd"];
                 this.columnProdDescription = base.Columns["ProdDescription"];
                 this.columnDateModified = base.Columns["DateModified"];
-                this.columnShippingAddr = base.Columns["ShippingAddr"];
-                this.columnShippingAddr2 = base.Columns["ShippingAddr2"];
-                this.columnShippingCity = base.Columns["ShippingCity"];
-                this.columnShippingState = base.Columns["ShippingState"];
-                this.columnShippingZipCode = base.Columns["ShippingZipCode"];
                 this.columnTimeStamp = base.Columns["TimeStamp"];
                 this.columnspecinst = base.Columns["specinst"];
                 this.columninvoiced = base.Columns["invoiced"];
@@ -2723,16 +2658,6 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnProdDescription);
                 this.columnDateModified = new global::System.Data.DataColumn("DateModified", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateModified);
-                this.columnShippingAddr = new global::System.Data.DataColumn("ShippingAddr", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnShippingAddr);
-                this.columnShippingAddr2 = new global::System.Data.DataColumn("ShippingAddr2", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnShippingAddr2);
-                this.columnShippingCity = new global::System.Data.DataColumn("ShippingCity", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnShippingCity);
-                this.columnShippingState = new global::System.Data.DataColumn("ShippingState", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnShippingState);
-                this.columnShippingZipCode = new global::System.Data.DataColumn("ShippingZipCode", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnShippingZipCode);
                 this.columnTimeStamp = new global::System.Data.DataColumn("TimeStamp", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTimeStamp);
                 this.columnspecinst = new global::System.Data.DataColumn("specinst", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2883,11 +2808,6 @@ namespace Mbc5.DataSets {
                 this.columnQYear.MaxLength = 2;
                 this.columnprodno.MaxLength = 12;
                 this.columnProdDescription.MaxLength = 50;
-                this.columnShippingAddr.MaxLength = 50;
-                this.columnShippingAddr2.MaxLength = 50;
-                this.columnShippingCity.MaxLength = 50;
-                this.columnShippingState.MaxLength = 3;
-                this.columnShippingZipCode.MaxLength = 11;
                 this.columnTimeStamp.ReadOnly = true;
                 this.columnspecinst.MaxLength = 2147483647;
                 this.columnrefby.MaxLength = 25;
@@ -5592,86 +5512,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string ShippingAddr {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.ShippingAddrColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ShippingAddr\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.ShippingAddrColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string ShippingAddr2 {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.ShippingAddr2Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ShippingAddr2\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.ShippingAddr2Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string ShippingCity {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.ShippingCityColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ShippingCity\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.ShippingCityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string ShippingState {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.ShippingStateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ShippingState\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.ShippingStateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string ShippingZipCode {
-                get {
-                    try {
-                        return ((string)(this[this.tablemcust.ShippingZipCodeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ShippingZipCode\' in table \'mcust\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablemcust.ShippingZipCodeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public byte[] TimeStamp {
                 get {
                     try {
@@ -7271,66 +7111,6 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsShippingAddrNull() {
-                return this.IsNull(this.tablemcust.ShippingAddrColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetShippingAddrNull() {
-                this[this.tablemcust.ShippingAddrColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsShippingAddr2Null() {
-                return this.IsNull(this.tablemcust.ShippingAddr2Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetShippingAddr2Null() {
-                this[this.tablemcust.ShippingAddr2Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsShippingCityNull() {
-                return this.IsNull(this.tablemcust.ShippingCityColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetShippingCityNull() {
-                this[this.tablemcust.ShippingCityColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsShippingStateNull() {
-                return this.IsNull(this.tablemcust.ShippingStateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetShippingStateNull() {
-                this[this.tablemcust.ShippingStateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsShippingZipCodeNull() {
-                return this.IsNull(this.tablemcust.ShippingZipCodeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetShippingZipCodeNull() {
-                this[this.tablemcust.ShippingZipCodeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsTimeStampNull() {
                 return this.IsNull(this.tablemcust.TimeStampColumn);
             }
@@ -8166,11 +7946,6 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
             tableMapping.ColumnMappings.Add("kitrecvd", "kitrecvd");
             tableMapping.ColumnMappings.Add("ProdDescription", "ProdDescription");
             tableMapping.ColumnMappings.Add("DateModified", "DateModified");
-            tableMapping.ColumnMappings.Add("ShippingAddr", "ShippingAddr");
-            tableMapping.ColumnMappings.Add("ShippingAddr2", "ShippingAddr2");
-            tableMapping.ColumnMappings.Add("ShippingCity", "ShippingCity");
-            tableMapping.ColumnMappings.Add("ShippingState", "ShippingState");
-            tableMapping.ColumnMappings.Add("ShippingZipCode", "ShippingZipCode");
             tableMapping.ColumnMappings.Add("TimeStamp", "TimeStamp");
             tableMapping.ColumnMappings.Add("specinst", "specinst");
             tableMapping.ColumnMappings.Add("invoiced", "invoiced");
@@ -8231,9 +8006,7 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
                 "hcolors, ModifiedBy = @ModifiedBy, \r\n                         TaxExempt = @TaxEx" +
                 "empt, NotTaxExempt = @NotTaxExempt, TaxExemptRecvd = @TaxExemptRecvd, OracleCode" +
                 " = @OracleCode, DateModified = @DateModified, Status = @Status, Staging = @Stagi" +
-                "ng, \r\n                         ShippingAddr = @ShippingAddr, ShippingAddr2 = @Sh" +
-                "ippingAddr2, ShippingCity = @ShippingCity, ShippingState = @ShippingState, Shipp" +
-                "ingZipCode = @ShippingZipCode\r\nWHERE        (schcode = @schcode)";
+                "ng\r\nWHERE        (schcode = @schcode)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sourdate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "sourdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8262,8 +8035,8 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schout", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "schout", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nposition", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "nposition", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@gender", global::System.Data.SqlDbType.VarChar, 1, global::System.Data.ParameterDirection.Input, 0, 0, "gender", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contfname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contlname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "contlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contfname", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "contfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contlname", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "contlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newfname", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "newfname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newlname", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "newlname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@yb_sth", global::System.Data.SqlDbType.VarChar, 1, global::System.Data.ParameterDirection.Input, 0, 0, "yb_sth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8345,21 +8118,21 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dteschend", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "dteschend", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@multiyroptions", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "multiyroptions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@josname", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "josname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shpaddr", global::System.Data.SqlDbType.VarChar, 35, global::System.Data.ParameterDirection.Input, 0, 0, "shpaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shpaddr2", global::System.Data.SqlDbType.VarChar, 35, global::System.Data.ParameterDirection.Input, 0, 0, "shpaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shpcity", global::System.Data.SqlDbType.VarChar, 21, global::System.Data.ParameterDirection.Input, 0, 0, "shpcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shpaddr", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "shpaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shpaddr2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "shpaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shpcity", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "shpcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shpstate", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "shpstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shpzip", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "shpzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@adshpaddr", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "adshpaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invaddr", global::System.Data.SqlDbType.VarChar, 35, global::System.Data.ParameterDirection.Input, 0, 0, "invaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invaddr2", global::System.Data.SqlDbType.VarChar, 35, global::System.Data.ParameterDirection.Input, 0, 0, "invaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invcity", global::System.Data.SqlDbType.VarChar, 21, global::System.Data.ParameterDirection.Input, 0, 0, "invcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invaddr", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "invaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invaddr2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "invaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invcity", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "invcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invstate", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "invstate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invzip", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "invzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invnotes", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "invnotes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invphone", global::System.Data.SqlDbType.VarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "invphone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invphone", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "invphone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invsameasschool", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "invsameasschool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invname", global::System.Data.SqlDbType.VarChar, 34, global::System.Data.ParameterDirection.Input, 0, 0, "invname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "invname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schclosed", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "schclosed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shpname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "shpname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcolors", global::System.Data.SqlDbType.VarChar, 45, global::System.Data.ParameterDirection.Input, 0, 0, "schcolors", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8371,11 +8144,6 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateModified", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateModified", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Staging", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Staging", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingAddr", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingAddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingAddr2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingAddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingCity", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingCity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingState", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingState", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingZipCode", global::System.Data.SqlDbType.VarChar, 11, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingZipCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -8424,17 +8192,15 @@ namespace Mbc5.DataSets.dsMcustTableAdapters {
                 "odutn.dedayin, produtn.dedayout, \r\n                         mquotes.booktype AS " +
                 "QBooktype, mquotes.contryear AS QYear, mquotes.invno AS QInvno, produtn.prodno, " +
                 "produtn.kitrecvd, MeridianProducts.Description AS ProdDescription, mcust.DateMod" +
-                "ified, mcust.ShippingAddr, \r\n                         mcust.ShippingAddr2, mcust" +
-                ".ShippingCity, mcust.ShippingState, mcust.ShippingZipCode, mcust.TimeStamp, cove" +
-                "rs.specinst, mquotes.invoiced, mcust.refby, mcust.rebook, mcust.origyear, mcust." +
-                "rebookdte, mcust.origsour, \r\n                         mcust.cstatus, mcust.contd" +
-                "ate, mcust.secsource, mcust.sourdate, mcust.source, mcust.schcode\r\nFROM         " +
-                "   mcust LEFT OUTER JOIN\r\n                         mquotes ON mcust.schcode = mq" +
-                "uotes.schcode LEFT OUTER JOIN\r\n                         MeridianProducts ON mquo" +
-                "tes.prodcode = MeridianProducts.ProdCode LEFT OUTER JOIN\r\n                      " +
-                "   produtn ON mquotes.invno = produtn.invno LEFT OUTER JOIN\r\n                   " +
-                "      covers ON mquotes.invno = covers.invno\r\nWHERE        (mcust.schcode = @sch" +
-                "code)";
+                "ified, mcust.TimeStamp, \r\n                         covers.specinst, mquotes.invo" +
+                "iced, mcust.refby, mcust.rebook, mcust.origyear, mcust.rebookdte, mcust.origsour" +
+                ", mcust.cstatus, mcust.contdate, mcust.secsource, mcust.sourdate, mcust.source, " +
+                "mcust.schcode\r\nFROM            mcust LEFT OUTER JOIN\r\n                         m" +
+                "quotes ON mcust.schcode = mquotes.schcode LEFT OUTER JOIN\r\n                     " +
+                "    MeridianProducts ON mquotes.prodcode = MeridianProducts.ProdCode LEFT OUTER " +
+                "JOIN\r\n                         produtn ON mquotes.invno = produtn.invno LEFT OUT" +
+                "ER JOIN\r\n                         covers ON mquotes.invno = covers.invno\r\nWHERE " +
+                "       (mcust.schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.VarChar, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

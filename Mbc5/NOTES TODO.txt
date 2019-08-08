@@ -2,3 +2,5 @@
 2.Get row error (constraint errors)https://stackoverflow.com/questions/7026566/failed-to-enable-constraints-one-or-more-rows-contain-values-violating-non-null
 var a=dsMcust.Tables["mcust"].GetErrors();
 3. Excptionless login. randy.woodall@jostens.com/Briggitte1
+
+4. Moved produtn remake columns to covers table 08/08/2019

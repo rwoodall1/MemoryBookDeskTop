@@ -149,7 +149,8 @@
                          mbids.custpu, mbids.shpphndl, mbids.fplnprc, mbids.fplntot, mbids.disctot, mbids.desc1amt, mbids.stdtitpgprc, mbids.desc1, mbids.descamt, mbids.desc2, mbids.afterdisctot, mbids.stdtitpgqty, mbids.erldisc, mbids.erldiscamt, 
                          mbids.predis, mbids.prediscamt, mbids.threeclr, mbids.twoclr, mbids.dp1, mbids.oneclr, mbids.stx, mbids.coverdesc, mbids.cdesc2, mbids.cdesc3, mbids.cdesc4, mbids.generic, mbids.wght, mbids.oa, mbids.ordagryr, 
                          mbids.shipovrride, mbids.jostens, mbids.desc3amt, mbids.desc4amt, mbids.disc3, mbids.disc4, mbids.desc3, mbids.desc4, mbids.prodcode, mcust.schname, mcust.jobno, mcust.invaddr, mcust.invaddr2, mcust.invcity, 
-                         mcust.invstate, mcust.invzip, mcust.invname, mbids.OrderDate, mbids.ReOrder, mcust.schzip, mbids.Id, mbids.SchoolTaxRate, mbids.DoNotChargeTax, mbids.ModifiedBy, mbids.adcdesc, mbids.adcamt, mbids.notes
+                         mcust.invstate, mcust.invzip, mcust.invname, mbids.OrderDate, mbids.ReOrder, mcust.schzip, mbids.Id, mbids.SchoolTaxRate, mbids.DoNotChargeTax, mbids.ModifiedBy, mbids.adcdesc, mbids.adcamt, mbids.notes, 
+                         mcust.shpaddr, mcust.shpaddr2, mcust.shpcity, mcust.shpstate, mcust.shpzip, mcust.shpname
 FROM            mbids LEFT OUTER JOIN
                          mcust ON mbids.schcode = mcust.schcode
 WHERE        (mbids.schcode = @schcode)
@@ -444,6 +445,12 @@ WHERE        (Id = @Id)</CommandText>
               <Mapping SourceColumn="adcdesc" DataSetColumn="adcdesc" />
               <Mapping SourceColumn="adcamt" DataSetColumn="adcamt" />
               <Mapping SourceColumn="notes" DataSetColumn="notes" />
+              <Mapping SourceColumn="shpaddr" DataSetColumn="shpaddr" />
+              <Mapping SourceColumn="shpaddr2" DataSetColumn="shpaddr2" />
+              <Mapping SourceColumn="shpcity" DataSetColumn="shpcity" />
+              <Mapping SourceColumn="shpstate" DataSetColumn="shpstate" />
+              <Mapping SourceColumn="shpzip" DataSetColumn="shpzip" />
+              <Mapping SourceColumn="shpname" DataSetColumn="shpname" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -801,6 +808,48 @@ WHERE        (Id = @Id)</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shpaddr" msprop:Generator_ColumnVarNameInTable="columnshpaddr" msprop:Generator_ColumnPropNameInRow="shpaddr" msprop:Generator_ColumnPropNameInTable="shpaddrColumn" msprop:Generator_UserColumnName="shpaddr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shpaddr2" msprop:Generator_ColumnVarNameInTable="columnshpaddr2" msprop:Generator_ColumnPropNameInRow="shpaddr2" msprop:Generator_ColumnPropNameInTable="shpaddr2Column" msprop:Generator_UserColumnName="shpaddr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shpcity" msprop:Generator_ColumnVarNameInTable="columnshpcity" msprop:Generator_ColumnPropNameInRow="shpcity" msprop:Generator_ColumnPropNameInTable="shpcityColumn" msprop:Generator_UserColumnName="shpcity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shpstate" msprop:Generator_ColumnVarNameInTable="columnshpstate" msprop:Generator_ColumnPropNameInRow="shpstate" msprop:Generator_ColumnPropNameInTable="shpstateColumn" msprop:Generator_UserColumnName="shpstate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shpzip" msprop:Generator_ColumnVarNameInTable="columnshpzip" msprop:Generator_ColumnPropNameInRow="shpzip" msprop:Generator_ColumnPropNameInTable="shpzipColumn" msprop:Generator_UserColumnName="shpzip" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shpname" msprop:Generator_ColumnVarNameInTable="columnshpname" msprop:Generator_ColumnPropNameInRow="shpname" msprop:Generator_ColumnPropNameInTable="shpnameColumn" msprop:Generator_UserColumnName="shpname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

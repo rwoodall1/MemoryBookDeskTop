@@ -50,11 +50,12 @@ namespace Mbc5.Forms.Meridian {
             Fill();
     mbidsBindingSource.ResetBindings(true);
            lblModifiedby.Text = frmMain.ApplicationUser.id;
-            
+
+            this.reportViewer1.RefreshReport();
         }
         #region Methods
         #region CalcMethods
- private void CalculateOptions()
+        private void CalculateOptions()
         {
             if (!Validate())
             {
@@ -1806,11 +1807,11 @@ namespace Mbc5.Forms.Meridian {
                 vrow = null;
             }
             //---------------------------------------------------------------
-            bsBidQuote.DataSource = vBidDetails;
+            MBidInvoiceDetailBindingSource.DataSource = vBidDetails;
             ReportParameter rp0 = new ReportParameter("ReportType", chkPrntAsInvoice.Checked.ToString());
 
             reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp0 });
-
+            //reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsMeridianBidDetails", bsBidQuote));
 
             Cursor.Current = Cursors.WaitCursor;
 
@@ -1832,6 +1833,11 @@ namespace Mbc5.Forms.Meridian {
             {
                 errorProvider1.SetError(txtQtyStudent, "A minimum of 100 is required for this product");
             }
+        }
+
+        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            reportViewer1.PrintDialog();
         }
     }
     }
