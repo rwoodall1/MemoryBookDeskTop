@@ -1158,8 +1158,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>0.86633in</Top>
-            <Left>4.70263in</Left>
+            <Top>0.88069in</Top>
+            <Left>4.70264in</Left>
             <Height>0.25in</Height>
             <Width>0.72286in</Width>
             <ZIndex>2</ZIndex>
@@ -1239,7 +1239,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
             <Top>1.17236in</Top>
-            <Left>5.0505in</Left>
+            <Left>5.05051in</Left>
             <Height>0.25in</Height>
             <Width>0.375in</Width>
             <ZIndex>5</ZIndex>

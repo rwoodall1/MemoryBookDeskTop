@@ -136,12 +136,12 @@ namespace Mbc5.Forms.Meridian {
             afterdisctotLabel2.Text = (vSbtot + erldiscamtTextBox.ConvertToDecimal() + desc1amtTextBox1.ConvertToDecimal() + descamtTextBox.ConvertToDecimal()
             + desc4amtTextBox.ConvertToDecimal() + desc3amtTextBox.ConvertToDecimal()).ToString();
             //___________________________________________________________________
-            decimal vTotal = afterdisctotLabel2.ConvertToDecimal() + txtShipping.ConvertToDecimal() + txtAdditionChrg.ConvertToDecimal();
+            decimal vTotal = afterdisctotLabel2.ConvertToDecimal();
 
-            lblFinalPrice.Text = vTotal.ToString();
+            lblFinalPrice.Text =( vTotal/ lblQtyTotal.ConvertToInt()).ToString();
             if (!doNotChargeTaxCheckBox.Checked)
             {
-                // Control values are set in function
+                // Control tax values are set in function
                 GetTax(vTotal);
             }
             else
@@ -149,8 +149,9 @@ namespace Mbc5.Forms.Meridian {
                 lblTaxRate.Text = "0.00";
                 lblTax.Text = "0.00";
             }
-
-             lblFinalTotal.Text = (lblFinalPrice.ConvertToDecimal() + lblTax.ConvertToDecimal()).ToString();
+           
+          
+             lblFinalTotal.Text = (afterdisctotLabel2.ConvertToDecimal() + txtShipping.ConvertToDecimal()+ lblTax.ConvertToDecimal()).ToString();
 
 
 
@@ -1117,11 +1118,7 @@ namespace Mbc5.Forms.Meridian {
             CalculateOptions();
         }
 
-        private void txtAdditionChrg_Leave(object sender, EventArgs e)
-        {
-            txtAdditionChrg.Text = txtAdditionChrg.ConvertToDecimal().ToString("0.00");
-            CalculateOptions();
-        }
+       
 
         private void desc2TextBox1_Leave(object sender, EventArgs e)
         {
@@ -1791,8 +1788,8 @@ namespace Mbc5.Forms.Meridian {
             vrow = new MBidInvoiceDetail();
             if (lblSpecialCoverPrice.ConvertToDecimal() > 0)
             {
-                vrow.Price = lblCoverPricetotal.ConvertToDecimal();
-                //vrow.Description = "Special cover Price - " + (desc2TextBox1.Text.Trim().Length>0?"Insided Front,":"")+(desc3TextBox1.Text.Trim().Length > 0 ? "Insided Back," : "") +(desc4TextBox1.Text.Trim().Length > 0 ? "Outside Back " : "");
+                vrow.Price = lblSpecialCoverPrice.ConvertToDecimal();
+                vrow.Description = "Special cover Price - " + (desc2TextBox1.Text.Trim().Length>0?"Insided Front,":"")+(desc3TextBox1.Text.Trim().Length > 0 ? "Insided Back," : "") +(desc4TextBox1.Text.Trim().Length > 0 ? "Outside Back " : "");
                 vBidDetails.Add(vrow);
                 vrow = null;
             }
@@ -1807,6 +1804,52 @@ namespace Mbc5.Forms.Meridian {
                 vrow = null;
             }
             //---------------------------------------------------------------
+            if (erldiscamtTextBox.ConvertToDecimal() != 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Price = erldiscamtTextBox.ConvertToDecimal();
+                vrow.Description = dp1TextBox.Text+ " pecent discount";
+                vBidDetails.Add(vrow);
+                vrow = null;
+            }
+            //---------------------------------------------------------------
+            if (desc1amtTextBox1.ConvertToDecimal() != 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Price = desc1amtTextBox1.ConvertToDecimal();
+                vrow.Description = desc1TextBox.Text;
+                vBidDetails.Add(vrow);
+                vrow = null;
+            }
+            //---------------------------------------------------------------
+            if (descamtTextBox.ConvertToDecimal() != 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Price = descamtTextBox.ConvertToDecimal();
+                vrow.Description = desc2TextBox.Text;
+                vBidDetails.Add(vrow);
+                vrow = null;
+            }
+            //---------------------------------------------------------------
+            if (desc4amtTextBox.ConvertToDecimal() != 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Price = desc4amtTextBox.ConvertToDecimal();
+                vrow.Description = desc4TextBox.Text;
+                vBidDetails.Add(vrow);
+                vrow = null;
+            }
+            //---------------------------------------------------------------
+            if (desc3amtTextBox.ConvertToDecimal() != 0)
+            {
+                vrow = new MBidInvoiceDetail();
+                vrow.Price = desc3amtTextBox.ConvertToDecimal();
+                vrow.Description =".25 off per planner"+ desc3TextBox.Text;
+                vBidDetails.Add(vrow);
+                vrow = null;
+            }
+            //---------------------------------------------------------------
+           
             MBidInvoiceDetailBindingSource.DataSource = vBidDetails;
             ReportParameter rp0 = new ReportParameter("ReportType", chkPrntAsInvoice.Checked.ToString());
 
