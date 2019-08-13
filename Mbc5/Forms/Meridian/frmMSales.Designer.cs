@@ -99,7 +99,7 @@
             this.invoicedCheckBox = new System.Windows.Forms.CheckBox();
             this.btnUpdateWip = new System.Windows.Forms.Button();
             this.btnCreateInvoice = new System.Windows.Forms.Button();
-            this.qtedateDateTimePicker = new Classes.NullableDateTimePicker();
+            this.qtedateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.doNotChargeTaxCheckBox = new System.Windows.Forms.CheckBox();
             this.txtAdditionChrg = new System.Windows.Forms.TextBox();
             this.adcdescTextBox = new System.Windows.Forms.TextBox();
@@ -159,7 +159,7 @@
             this.invnoLabel2 = new System.Windows.Forms.Label();
             this.lblShipped = new System.Windows.Forms.Label();
             this.sourceTextBox = new System.Windows.Forms.TextBox();
-            this.chkindateDateTimePicker = new Classes.NullableDateTimePicker();
+            this.chkindateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.prodcodeComboBox = new System.Windows.Forms.ComboBox();
             this.meridianProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookUp = new Mbc5.DataSets.LookUp();
@@ -1140,6 +1140,7 @@
             this.btnCreateInvoice.TabIndex = 61;
             this.btnCreateInvoice.Text = "Create/Override Invoice";
             this.btnCreateInvoice.UseVisualStyleBackColor = true;
+            this.btnCreateInvoice.Click += new System.EventHandler(this.btnCreateInvoice_Click);
             // 
             // qtedateDateTimePicker
             // 
@@ -1151,6 +1152,7 @@
             this.qtedateDateTimePicker.Name = "qtedateDateTimePicker";
             this.qtedateDateTimePicker.Size = new System.Drawing.Size(140, 20);
             this.qtedateDateTimePicker.TabIndex = 60;
+            this.qtedateDateTimePicker.Value = new System.DateTime(2019, 8, 13, 7, 53, 23, 19);
             // 
             // doNotChargeTaxCheckBox
             // 
@@ -1791,6 +1793,7 @@
             this.chkindateDateTimePicker.Name = "chkindateDateTimePicker";
             this.chkindateDateTimePicker.Size = new System.Drawing.Size(138, 20);
             this.chkindateDateTimePicker.TabIndex = 69;
+            this.chkindateDateTimePicker.Value = new System.DateTime(2019, 8, 13, 7, 53, 23, 82);
             this.chkindateDateTimePicker.ValueChanged += new System.EventHandler(this.chkindateDateTimePicker_ValueChanged);
             // 
             // prodcodeComboBox

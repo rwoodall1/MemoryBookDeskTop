@@ -628,8 +628,11 @@ namespace Mbc5.Forms.Meridian {
             }
             try
             {
-                this.Schname = ((DataRowView)mbidsBindingSource.Current).Row["schname"].ToString().Trim();
-                this.SchoolZipCode = ((DataRowView)this.mbidsBindingSource.Current).Row["schzip"].ToString().Trim().Substring(0, 5);
+                if (mbidsBindingSource.Count > 0)
+                {
+                    this.Schname = ((DataRowView)mbidsBindingSource.Current).Row["schname"].ToString().Trim();
+                    this.SchoolZipCode = ((DataRowView)this.mbidsBindingSource.Current).Row["schzip"].ToString().Trim().Substring(0, 5);
+                }
 
             }
             catch (Exception ex)

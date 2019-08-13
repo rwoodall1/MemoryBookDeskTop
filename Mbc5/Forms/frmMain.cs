@@ -201,6 +201,12 @@ namespace Mbc5.Forms
                         vSchcode = tmpForm.Schcode;
                         break;
                     }
+                case "frmMSales":
+                    {
+                        var tmpForm = (frmMSales)this.ActiveMdiChild;
+                        vSchcode = tmpForm.Schcode;
+                        break;
+                    }
                 case "frmProdutn":
                     {
                         var tmpForm = (frmProdutn)this.ActiveMdiChild;

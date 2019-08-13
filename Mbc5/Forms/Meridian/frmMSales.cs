@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -51,7 +52,7 @@ protected MeridianPrice Pricing { get; set; }
 protected MeridianOptionPricing OptionPrices { get; set; }
 #endregion
         
-private void frmMSales_Load(object sender, EventArgs e)
+private void frmMSales_Load(object sender, System.EventArgs e)
 {
 txtPriceOverRide.DataBindings[0].Parse+= new ConvertEventHandler(NullParseHandler);
 SetConnectionString();
@@ -343,9 +344,9 @@ if (result == DialogResult.OK)
             afterdisctotLabel2.Text = (vSbtot + erldiscamtTextBox.ConvertToDecimal() + desc1amtTextBox1.ConvertToDecimal() + descamtTextBox.ConvertToDecimal()
             + desc4amtTextBox.ConvertToDecimal() + desc3amtTextBox.ConvertToDecimal()).ToString();
             //___________________________________________________________________
-            decimal vTotal = afterdisctotLabel2.ConvertToDecimal() + txtShipping.ConvertToDecimal() + txtAdditionChrg.ConvertToDecimal();
+            decimal vTotal = (vSbtot + erldiscamtTextBox.ConvertToDecimal() + desc1amtTextBox1.ConvertToDecimal() + descamtTextBox.ConvertToDecimal());
 
-            lblFinalPrice.Text = vTotal.ToString();
+            lblFinalPrice.Text = (vTotal / lblQtyTotal.ConvertToInt()).ToString();
             if (!doNotChargeTaxCheckBox.Checked)
             {
                 // Control values are set in function
@@ -357,7 +358,7 @@ if (result == DialogResult.OK)
                 lblTax.Text = "0.00";
             }
 
-            // lblFinalTotal.Text = (lblFinalPrice.ConvertToDecimal() + lblTax.ConvertToDecimal()).ToString();
+            lblFinalTotal.Text = (afterdisctotLabel2.ConvertToDecimal() + txtShipping.ConvertToDecimal() + lblTax.ConvertToDecimal()).ToString();
 
 
 
@@ -751,6 +752,133 @@ if (result == DialogResult.OK)
             return true;
         }
         #endregion
+private void CreateInvoice()
+{
+            //check if invoice exist
+            var sqlQuery1 = new SQLQuery();
+            var queryString = "SELECT Invno From MerInvoice where Invno=@Invno ";
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Invno",this.Invno)
+            };
+            DataTable result = new DataTable();
+            try
+            {
+                result = sqlQuery1.ExecuteReaderAsync(CommandType.Text, queryString, parameters);
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "");
+                return;
+            }
+
+            //refill to keep concurrency correct
+            if (result.Rows.Count > 0)
+            {
+                DialogResult invoiceresult = MessageBox.Show("There is already an invoice created, do you want to overwrite the current invoice", "Invoice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (invoiceresult == DialogResult.Yes)
+                {
+                    if (!DeleteInvoice())
+                    {
+                        
+                        return;
+                       
+                    }
+                    this.Fill();
+                }
+
+            }
+            //Create the invoice
+
+            //txtModifiedBy.Text = this.ApplicationUser.id;
+            //txtModifiedByInv.Text = this.ApplicationUser.id;
+            //txtModifiedByInvdetail.Text = this.ApplicationUser.id;
+            //txtModifiedByPay.Text = this.ApplicationUser.id;
+            var sqlQuery = new SQLCustomClient();
+            var cmd = @"
+                        Insert INTO MerInvoice (Schcode,Invo,QteDate,NoPages,QtyTotal,FplnPrc,Source,PoNum,fplntot,BalDue,ContFname,ContLname
+                        ,SchName,InvName,InvAddr,InvAddr2,InvCity,InvState,InvZip,ShpName,ShipAddr,ShpAddr2,ContrYear,Poamt,BasePrice,BaseTotal,FormatType,SchType
+                    ,QtyStudent,QtyTeacher,Generic,TeBasePrc,ShpDate,SalesTax) Values(@Schcode,@Invo,@QteDate,@NoPages,@QtyTotal,@FplnPrc,@Source,@PoNum,@fplntot,@BalDue,@ContFname,@ContLname
+                        ,@SchName,@InvName,@InvAddr,@InvAddr2,@InvCity,@InvState,@InvZip,@ShpName,@ShipAddr,@ShpAddr2,@ContrYear,@Poamt,@BasePrice,@BaseTotal,@FormatType,@SchType
+                    ,@QtyStudent,@QtyTeacher,@Generic,@TeBasePrc,@ShpDate,@SalesTax)
+                        ";
+            var dr = (DataRowView)mquotesBindingSource.Current;
+            sqlQuery.AddParameter("@Schcode",Schcode);
+            sqlQuery.AddParameter("@Invo",Invno);
+            sqlQuery.AddParameter("@QteDate",DateTime.Now);
+            sqlQuery.AddParameter("@NoPages", txtNoPages.Text);
+            sqlQuery.AddParameter("@QtyTotal", lblQtyTotal.Text);
+            sqlQuery.AddParameter("@FplnPrc", lblFinalPrice.Text);
+            sqlQuery.AddParameter("@Source", sourceTextBox.Text);
+            sqlQuery.AddParameter("@PoNum", ponumTextBox.Text);
+            sqlQuery.AddParameter("@fplntot", lblFinalTotal.Text);
+            sqlQuery.AddParameter("@BalDue", lblFinalTotal.Text);
+            sqlQuery.AddParameter("@ContFname",dr["ContFname"].ToString());
+            sqlQuery.AddParameter("@ContLname", dr["ContLname"].ToString());
+            sqlQuery.AddParameter("@SchName", dr["schname"].ToString());
+            sqlQuery.AddParameter("@InvName", dr["InvName"].ToString());
+            sqlQuery.AddParameter("@InvAddr", dr["InvAddr"].ToString());
+            sqlQuery.AddParameter("@InvAddr2", dr["InvAddr2"].ToString());
+            sqlQuery.AddParameter("@InvCity", dr["InvCity"].ToString());
+            sqlQuery.AddParameter("@InvState", dr["InvState"].ToString());
+            sqlQuery.AddParameter("@InvZip", dr["InvZip"].ToString());
+            sqlQuery.AddParameter("@ShpName", dr["ShpName"].ToString());
+            sqlQuery.AddParameter("@ShipAddr", dr["ShpAddr"].ToString());
+            sqlQuery.AddParameter("@ShpAddr2", dr["ShpAddr2"].ToString());
+            sqlQuery.AddParameter("@ContrYear", contryearTextBox.Text);
+            sqlQuery.AddParameter("@BasePrice", lblBasePrice.Text);
+            sqlQuery.AddParameter("@BaseTotal", lblTotalBasePrice.Text);
+            sqlQuery.AddParameter("@FormatType",lfRadioButton.Checked?"Large Format":"Small Format");
+            sqlQuery.AddParameter("@ProdCode",dr["prodcode"].ToString());
+            string vSchType = "";
+            switch (dr["prodcode"].ToString())
+            {
+                case "MAG":
+                    vSchType = "MAGNET";
+                    break;
+                case "ADVLOG":
+                    vSchType = "ADVENTURE LOG";
+                        break;
+                case "HSP":
+                    vSchType = "HS";
+                        break;
+                case "MSP":;
+                    vSchType = "MS";
+                        break;
+                case "ELSP":
+                    vSchType = "ELEM";
+                        break;
+                case "PRISP":
+                    vSchType = "PRIM";
+                        break;
+
+            }
+            sqlQuery.AddParameter(",@SchType",vSchType);
+            sqlQuery.AddParameter("@QtyStudent", txtQtyStudent.Text);
+            sqlQuery.AddParameter("@QtyTeacher", txtQtyTeacher.Text);
+            sqlQuery.AddParameter("@Generic", chkGeneric.Checked);
+            sqlQuery.AddParameter("@TeBasePrc", lblTeachBasePrice.Text);
+            sqlQuery.AddParameter("@SalesTax", lblTax.Text);
+            sqlQuery.AddParameter("@ShpDate",);
+
+
+            CreateInvoice();
+                this.Fill();
+            
+        }
+        private bool DeleteInvoice()
+        {
+            var sqlQuery = new SQLCustomClient();
+            sqlQuery.CommandText("Delete From MerInvoice Where Invno=@Invno");
+            sqlQuery.AddParameter("@Invno", this.Invno);
+            var result = sqlQuery.Delete();
+            if (result.IsError)
+            {
+                MbcMessageBox.Error("Failed to delete invoice:"+result.Errors[0].ErrorMessage);
+                return false;
+            }
+            return true;
+        }
+
 private bool ValidSales()
 {
 bool retval = true;
@@ -878,7 +1006,6 @@ this.meridianProductsTableAdapter.Connection.ConnectionString = frmMain.AppConne
 this.mquotesTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;
             coversTableAdapter.Connection.ConnectionString = frmMain.AppConnectionString;        
 }
-
 private decimal GetJostensPricing(string vYear,string vType,int pageQty)
 {
 string fieldName = vType + pageQty.ToString();
@@ -1025,8 +1152,7 @@ if (mquotesBindingSource.Count > 0)
 
     //booktypeTextBox.ReadOnly = string.IsNullOrEmpty(vKitrecvd);
 }
-}
-      
+}    
 private void CoverCalc()
 {
     if (OptionPrices == null)
@@ -1098,7 +1224,6 @@ private bool GetOptionPricing()
             OptionPrices = (MeridianOptionPricing)result.Data;
             return true;
         }
-
 private bool ValidateCalcData()
 {
 bool retval = true;
@@ -1200,10 +1325,8 @@ catch
     return 0;
 }
 }
-
-
 #endregion
-private void collectionsCheckBox_CheckedChanged(object sender, EventArgs e)
+private void collectionsCheckBox_CheckedChanged(object sender, System.EventArgs e)
 {
     SetNoticeLabels();
 }
@@ -1695,6 +1818,17 @@ private void dp1TextBox_Leave_1(object sender, EventArgs e)
                 dp1TextBox.Text = "0";
             }      
     CalculateOptions();
+}
+
+private void btnCreateInvoice_Click(object sender, EventArgs e)
+{
+            //Check if invoice exist to see what to do.
+            var saveResult = Save();
+            if (saveResult.IsError)
+            {
+                return;
+            }
+            CreateInvoice();
 }
         //nothing below here
     }
