@@ -293,7 +293,7 @@ namespace Mbc5.Forms.MemoryBook
             btnEdit.Enabled = paymntBindingSource.Count > 0;
             if (paymntBindingSource.Count < 1)
             {
-                txtPaypoamt.Enabled = false;
+                txtPayoamt.Enabled = false;
                 txtInitials.Enabled = false;
                 calpmtdate.Enabled = false;
                 txtCheckNo.Enabled = false;
@@ -307,7 +307,7 @@ namespace Mbc5.Forms.MemoryBook
         }
         private void NewPayment()
         {
-            txtPaypoamt.Enabled = true;
+            txtPayoamt.Enabled = true;
             txtInitials.Enabled = true;
             calpmtdate.Enabled = true;
             txtCheckNo.Enabled = true;
@@ -338,7 +338,7 @@ namespace Mbc5.Forms.MemoryBook
                         this.paymntTableAdapter.Update(dsInvoice.paymnt);
                         this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToInt32(lblInvoice.Text));
                         this.CalculatePayments();
-                        txtPaypoamt.Enabled = false;
+                        txtPayoamt.Enabled = false;
                         txtInitials.Enabled = false;
                         calpmtdate.Enabled = false;
                         txtCheckNo.Enabled = false;
@@ -402,7 +402,7 @@ namespace Mbc5.Forms.MemoryBook
         private void CancelPayment()
         {
             paymntBindingSource.CancelEdit();
-            txtPaypoamt.Enabled = false;
+            txtPayoamt.Enabled = false;
             txtInitials.Enabled = false;
             calpmtdate.Enabled = false;
             txtCheckNo.Enabled = false;
@@ -416,7 +416,7 @@ namespace Mbc5.Forms.MemoryBook
         }
         private void EditPayment()
         {
-            txtPaypoamt.Enabled = true;
+            txtPayoamt.Enabled = true;
             txtInitials.Enabled = true;
             calpmtdate.Enabled = true;
             txtCheckNo.Enabled = true;
@@ -3817,8 +3817,18 @@ namespace Mbc5.Forms.MemoryBook
 
         private void pg4_Enter(object sender, EventArgs e)
         {
-            this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToInt32(lblInvoice.Text));
-            SetCrudButtons();
+            try
+            {
+                this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToInt32(lblInvoice.Text));
+                SetCrudButtons();
+            }catch(Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message);
+                ex.ToExceptionless()
+                    .MarkAsCritical()
+                    .AddObject(ex)
+                    .Submit();
+            }
         }
 
         private void pg3_Enter(object sender, EventArgs e)

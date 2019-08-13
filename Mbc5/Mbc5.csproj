@@ -184,6 +184,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMcust.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsMInvoice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMInvoice.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsMktInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -665,6 +670,17 @@
     </None>
     <None Include="DataSets\dsMcust.xss">
       <DependentUpon>dsMcust.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMInvoice.xsc">
+      <DependentUpon>dsMInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsMInvoice.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMInvoice.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsMInvoice.xss">
+      <DependentUpon>dsMInvoice.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsMSales.xsc">
       <DependentUpon>dsMSales.xsd</DependentUpon>

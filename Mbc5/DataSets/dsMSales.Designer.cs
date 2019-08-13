@@ -588,6 +588,26 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnhallprice;
             
+            private global::System.Data.DataColumn columnshpdate;
+            
+            private global::System.Data.DataColumn columncontfname;
+            
+            private global::System.Data.DataColumn columncontlname;
+            
+            private global::System.Data.DataColumn columnshpname;
+            
+            private global::System.Data.DataColumn columninvname;
+            
+            private global::System.Data.DataColumn columnshpzip;
+            
+            private global::System.Data.DataColumn columnshpstate;
+            
+            private global::System.Data.DataColumn columnshpcity;
+            
+            private global::System.Data.DataColumn columnshpaddr2;
+            
+            private global::System.Data.DataColumn columnshpaddr;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public mquotesDataTable() {
@@ -1719,6 +1739,86 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpdateColumn {
+                get {
+                    return this.columnshpdate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn contfnameColumn {
+                get {
+                    return this.columncontfname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn contlnameColumn {
+                get {
+                    return this.columncontlname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpnameColumn {
+                get {
+                    return this.columnshpname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn invnameColumn {
+                get {
+                    return this.columninvname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpzipColumn {
+                get {
+                    return this.columnshpzip;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpstateColumn {
+                get {
+                    return this.columnshpstate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpcityColumn {
+                get {
+                    return this.columnshpcity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpaddr2Column {
+                get {
+                    return this.columnshpaddr2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn shpaddrColumn {
+                get {
+                    return this.columnshpaddr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1891,7 +1991,17 @@ namespace Mbc5.DataSets {
                         int disctot, 
                         int stdtitpgqty, 
                         int wght, 
-                        decimal hallprice) {
+                        decimal hallprice, 
+                        System.DateTime shpdate, 
+                        string contfname, 
+                        string contlname, 
+                        string shpname, 
+                        string invname, 
+                        string shpzip, 
+                        string shpstate, 
+                        string shpcity, 
+                        string shpaddr2, 
+                        string shpaddr) {
                 mquotesRow rowmquotesRow = ((mquotesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -2030,7 +2140,17 @@ namespace Mbc5.DataSets {
                         disctot,
                         stdtitpgqty,
                         wght,
-                        hallprice};
+                        hallprice,
+                        shpdate,
+                        contfname,
+                        contlname,
+                        shpname,
+                        invname,
+                        shpzip,
+                        shpstate,
+                        shpcity,
+                        shpaddr2,
+                        shpaddr};
                 rowmquotesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmquotesRow);
                 return rowmquotesRow;
@@ -2190,6 +2310,16 @@ namespace Mbc5.DataSets {
                 this.columnstdtitpgqty = base.Columns["stdtitpgqty"];
                 this.columnwght = base.Columns["wght"];
                 this.columnhallprice = base.Columns["hallprice"];
+                this.columnshpdate = base.Columns["shpdate"];
+                this.columncontfname = base.Columns["contfname"];
+                this.columncontlname = base.Columns["contlname"];
+                this.columnshpname = base.Columns["shpname"];
+                this.columninvname = base.Columns["invname"];
+                this.columnshpzip = base.Columns["shpzip"];
+                this.columnshpstate = base.Columns["shpstate"];
+                this.columnshpcity = base.Columns["shpcity"];
+                this.columnshpaddr2 = base.Columns["shpaddr2"];
+                this.columnshpaddr = base.Columns["shpaddr"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2469,6 +2599,26 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnwght);
                 this.columnhallprice = new global::System.Data.DataColumn("hallprice", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhallprice);
+                this.columnshpdate = new global::System.Data.DataColumn("shpdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpdate);
+                this.columncontfname = new global::System.Data.DataColumn("contfname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontfname);
+                this.columncontlname = new global::System.Data.DataColumn("contlname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontlname);
+                this.columnshpname = new global::System.Data.DataColumn("shpname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpname);
+                this.columninvname = new global::System.Data.DataColumn("invname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninvname);
+                this.columnshpzip = new global::System.Data.DataColumn("shpzip", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpzip);
+                this.columnshpstate = new global::System.Data.DataColumn("shpstate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpstate);
+                this.columnshpcity = new global::System.Data.DataColumn("shpcity", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpcity);
+                this.columnshpaddr2 = new global::System.Data.DataColumn("shpaddr2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpaddr2);
+                this.columnshpaddr = new global::System.Data.DataColumn("shpaddr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshpaddr);
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
                 this.columnbooktype.AllowDBNull = false;
@@ -2504,6 +2654,15 @@ namespace Mbc5.DataSets {
                 this.columninvcity.MaxLength = 50;
                 this.columninvaddr2.MaxLength = 50;
                 this.columninvaddr.MaxLength = 50;
+                this.columncontfname.MaxLength = 20;
+                this.columncontlname.MaxLength = 20;
+                this.columnshpname.MaxLength = 50;
+                this.columninvname.MaxLength = 50;
+                this.columnshpzip.MaxLength = 10;
+                this.columnshpstate.MaxLength = 3;
+                this.columnshpcity.MaxLength = 50;
+                this.columnshpaddr2.MaxLength = 50;
+                this.columnshpaddr.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5096,6 +5255,166 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime shpdate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablemquotes.shpdateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpdate\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.shpdateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string contfname {
+                get {
+                    try {
+                        return ((string)(this[this.tablemquotes.contfnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contfname\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.contfnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string contlname {
+                get {
+                    try {
+                        return ((string)(this[this.tablemquotes.contlnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contlname\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.contlnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpname {
+                get {
+                    try {
+                        return ((string)(this[this.tablemquotes.shpnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpname\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.shpnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string invname {
+                get {
+                    try {
+                        return ((string)(this[this.tablemquotes.invnameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'invname\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.invnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpzip {
+                get {
+                    try {
+                        return ((string)(this[this.tablemquotes.shpzipColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpzip\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.shpzipColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpstate {
+                get {
+                    try {
+                        return ((string)(this[this.tablemquotes.shpstateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpstate\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.shpstateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpcity {
+                get {
+                    try {
+                        return ((string)(this[this.tablemquotes.shpcityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpcity\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.shpcityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpaddr2 {
+                get {
+                    try {
+                        return ((string)(this[this.tablemquotes.shpaddr2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpaddr2\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.shpaddr2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string shpaddr {
+                get {
+                    try {
+                        return ((string)(this[this.tablemquotes.shpaddrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'shpaddr\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.shpaddrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsqtedateNull() {
                 return this.IsNull(this.tablemquotes.qtedateColumn);
             }
@@ -6629,6 +6948,126 @@ namespace Mbc5.DataSets {
             public void SethallpriceNull() {
                 this[this.tablemquotes.hallpriceColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsshpdateNull() {
+                return this.IsNull(this.tablemquotes.shpdateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetshpdateNull() {
+                this[this.tablemquotes.shpdateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscontfnameNull() {
+                return this.IsNull(this.tablemquotes.contfnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcontfnameNull() {
+                this[this.tablemquotes.contfnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscontlnameNull() {
+                return this.IsNull(this.tablemquotes.contlnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcontlnameNull() {
+                this[this.tablemquotes.contlnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsshpnameNull() {
+                return this.IsNull(this.tablemquotes.shpnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetshpnameNull() {
+                this[this.tablemquotes.shpnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsinvnameNull() {
+                return this.IsNull(this.tablemquotes.invnameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetinvnameNull() {
+                this[this.tablemquotes.invnameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsshpzipNull() {
+                return this.IsNull(this.tablemquotes.shpzipColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetshpzipNull() {
+                this[this.tablemquotes.shpzipColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsshpstateNull() {
+                return this.IsNull(this.tablemquotes.shpstateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetshpstateNull() {
+                this[this.tablemquotes.shpstateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsshpcityNull() {
+                return this.IsNull(this.tablemquotes.shpcityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetshpcityNull() {
+                this[this.tablemquotes.shpcityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isshpaddr2Null() {
+                return this.IsNull(this.tablemquotes.shpaddr2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setshpaddr2Null() {
+                this[this.tablemquotes.shpaddr2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsshpaddrNull() {
+                return this.IsNull(this.tablemquotes.shpaddrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetshpaddrNull() {
+                this[this.tablemquotes.shpaddrColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -7071,6 +7510,16 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
             tableMapping.ColumnMappings.Add("stdtitpgqty", "stdtitpgqty");
             tableMapping.ColumnMappings.Add("wght", "wght");
             tableMapping.ColumnMappings.Add("hallprice", "hallprice");
+            tableMapping.ColumnMappings.Add("shpdate", "shpdate");
+            tableMapping.ColumnMappings.Add("contfname", "contfname");
+            tableMapping.ColumnMappings.Add("contlname", "contlname");
+            tableMapping.ColumnMappings.Add("shpname", "shpname");
+            tableMapping.ColumnMappings.Add("invname", "invname");
+            tableMapping.ColumnMappings.Add("shpzip", "shpzip");
+            tableMapping.ColumnMappings.Add("shpstate", "shpstate");
+            tableMapping.ColumnMappings.Add("shpcity", "shpcity");
+            tableMapping.ColumnMappings.Add("shpaddr2", "shpaddr2");
+            tableMapping.ColumnMappings.Add("shpaddr", "shpaddr");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -7280,7 +7729,13 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
                 "sc4 = @desc4, prodcode = @prodcode, chkindate = @chkindate, DoNotChargeTax = @do" +
                 "notchargetax, SchoolTaxRate = @schooltaxrate, \r\n                         SalesTa" +
                 "xReceived = @salestaxreceived, DateModified = GETDATE(), ModifiedBy = @modifiedb" +
-                "y, TeBasePrc = @TeBasePrc\r\nWHERE        (invno = @invno)";
+                "y, TeBasePrc = @TeBasePrc, desc1 = @desc1, stdtitpgprc = @stdtitpgprc, desc1amt " +
+                "= @desc1amt, disctot = @disctot, \r\n                         newprice = @newprice" +
+                ", fplntot = @fplntot, fplnprc = @fplnprc, custpu = @custpu, plnsbtot = @plnsbtot" +
+                ", plnprc = @plnprc, discdesc2p = @discdesc2p, discdesc2 = @discdesc2, discdesc1p" +
+                " = @discdesc1p, \r\n                         discdesc1 = @discdesc1, prediscprc = " +
+                "@prediscprc, predisc = @predisc, earlydiscp = @earlydiscp, earlydisc = @earlydis" +
+                "c, shpphndl = @shpphndl, salestx = @salestx\r\nWHERE        (invno = @invno)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@booktype", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "booktype", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qtedate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "qtedate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7383,6 +7838,26 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@salestaxreceived", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "SalesTaxReceived", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modifiedby", global::System.Data.SqlDbType.VarChar, 128, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedBy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TeBasePrc", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "TeBasePrc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc1", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "desc1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@stdtitpgprc", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "stdtitpgprc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@desc1amt", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "desc1amt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@disctot", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "disctot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newprice", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "newprice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fplntot", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "fplntot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fplnprc", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "fplnprc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@custpu", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "custpu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@plnsbtot", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "plnsbtot", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@plnprc", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "plnprc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@discdesc2p", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "discdesc2p", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@discdesc2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "discdesc2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@discdesc1p", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "discdesc1p", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@discdesc1", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "discdesc1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prediscprc", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "prediscprc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@predisc", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "predisc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@earlydiscp", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "earlydiscp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@earlydisc", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "earlydisc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shpphndl", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "shpphndl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@salestx", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 9, 2, "salestx", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -7433,9 +7908,12 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
                 "s.DoNotChargeTax, mquotes.SchoolTaxRate, \r\n                         mquotes.Sale" +
                 "sTaxReceived, mquotes.ModifiedBy, mcust.invzip, mcust.invstate, mcust.invcity, m" +
                 "cust.invaddr2, mcust.invaddr, mquotes.DateModified, mquotes.TeBasePrc, mquotes.h" +
-                "allprice\r\nFROM            mquotes LEFT OUTER JOIN\r\n                         prod" +
-                "utn ON mquotes.invno = produtn.invno LEFT OUTER JOIN\r\n                         m" +
-                "cust ON mquotes.schcode = mcust.schcode\r\nWHERE        (mquotes.invno = @Invno)";
+                "allprice, produtn.shpdate, mcust.contfname,\r\n                          mcust.con" +
+                "tlname, mcust.shpname, mcust.invname, mcust.shpzip, mcust.shpstate, mcust.shpcit" +
+                "y, mcust.shpaddr2, mcust.shpaddr\r\nFROM            mquotes LEFT OUTER JOIN\r\n     " +
+                "                    produtn ON mquotes.invno = produtn.invno LEFT OUTER JOIN\r\n  " +
+                "                       mcust ON mquotes.schcode = mcust.schcode\r\nWHERE        (m" +
+                "quotes.invno = @Invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -8540,6 +9018,26 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
                     global::System.Nullable<decimal> salestaxreceived, 
                     string modifiedby, 
                     global::System.Nullable<decimal> TeBasePrc, 
+                    string desc1, 
+                    global::System.Nullable<decimal> stdtitpgprc, 
+                    global::System.Nullable<decimal> desc1amt, 
+                    global::System.Nullable<int> disctot, 
+                    global::System.Nullable<bool> newprice, 
+                    global::System.Nullable<decimal> fplntot, 
+                    global::System.Nullable<decimal> fplnprc, 
+                    global::System.Nullable<bool> custpu, 
+                    global::System.Nullable<decimal> plnsbtot, 
+                    global::System.Nullable<decimal> plnprc, 
+                    global::System.Nullable<decimal> discdesc2p, 
+                    string discdesc2, 
+                    global::System.Nullable<decimal> discdesc1p, 
+                    string discdesc1, 
+                    global::System.Nullable<decimal> prediscprc, 
+                    global::System.Nullable<bool> predisc, 
+                    global::System.Nullable<decimal> earlydiscp, 
+                    global::System.Nullable<bool> earlydisc, 
+                    global::System.Nullable<decimal> shpphndl, 
+                    global::System.Nullable<decimal> salestx, 
                     int invno) {
             if ((booktype == null)) {
                 throw new global::System.ArgumentNullException("booktype");
@@ -9132,7 +9630,127 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[100].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[101].Value = ((int)(invno));
+            if ((desc1 == null)) {
+                this.Adapter.UpdateCommand.Parameters[101].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[101].Value = ((string)(desc1));
+            }
+            if ((stdtitpgprc.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[102].Value = ((decimal)(stdtitpgprc.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[102].Value = global::System.DBNull.Value;
+            }
+            if ((desc1amt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[103].Value = ((decimal)(desc1amt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[103].Value = global::System.DBNull.Value;
+            }
+            if ((disctot.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[104].Value = ((int)(disctot.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[104].Value = global::System.DBNull.Value;
+            }
+            if ((newprice.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[105].Value = ((bool)(newprice.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[105].Value = global::System.DBNull.Value;
+            }
+            if ((fplntot.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[106].Value = ((decimal)(fplntot.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[106].Value = global::System.DBNull.Value;
+            }
+            if ((fplnprc.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[107].Value = ((decimal)(fplnprc.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[107].Value = global::System.DBNull.Value;
+            }
+            if ((custpu.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[108].Value = ((bool)(custpu.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[108].Value = global::System.DBNull.Value;
+            }
+            if ((plnsbtot.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[109].Value = ((decimal)(plnsbtot.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[109].Value = global::System.DBNull.Value;
+            }
+            if ((plnprc.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[110].Value = ((decimal)(plnprc.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[110].Value = global::System.DBNull.Value;
+            }
+            if ((discdesc2p.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[111].Value = ((decimal)(discdesc2p.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[111].Value = global::System.DBNull.Value;
+            }
+            if ((discdesc2 == null)) {
+                this.Adapter.UpdateCommand.Parameters[112].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[112].Value = ((string)(discdesc2));
+            }
+            if ((discdesc1p.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[113].Value = ((decimal)(discdesc1p.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[113].Value = global::System.DBNull.Value;
+            }
+            if ((discdesc1 == null)) {
+                this.Adapter.UpdateCommand.Parameters[114].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[114].Value = ((string)(discdesc1));
+            }
+            if ((prediscprc.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[115].Value = ((decimal)(prediscprc.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[115].Value = global::System.DBNull.Value;
+            }
+            if ((predisc.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[116].Value = ((bool)(predisc.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[116].Value = global::System.DBNull.Value;
+            }
+            if ((earlydiscp.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[117].Value = ((decimal)(earlydiscp.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[117].Value = global::System.DBNull.Value;
+            }
+            if ((earlydisc.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[118].Value = ((bool)(earlydisc.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[118].Value = global::System.DBNull.Value;
+            }
+            if ((shpphndl.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[119].Value = ((decimal)(shpphndl.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[119].Value = global::System.DBNull.Value;
+            }
+            if ((salestx.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[120].Value = ((decimal)(salestx.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[120].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[121].Value = ((int)(invno));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
