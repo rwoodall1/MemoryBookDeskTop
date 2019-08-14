@@ -1,4 +1,6 @@
-﻿namespace Mbc5.Forms.MemoryBook {
+﻿using System;
+
+namespace Mbc5.Forms.MemoryBook {
     partial class frmBids {
         /// <summary>
         /// Required designer variable.
@@ -71,12 +73,11 @@
             System.Windows.Forms.Label sbtotLabel;
             System.Windows.Forms.Label ordagryrLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBids));
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsBids = new Mbc5.DataSets.dsBids();
-            this.bidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BidInvoiceDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bidsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsBids = new Mbc5.DataSets.dsBids();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -90,7 +91,6 @@
             this.bidsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pgBids = new System.Windows.Forms.TabPage();
-            this.dteQuote = new Mbc5.Classes.NullableDateTimePicker();
             this.chkPrntAsInvoice = new System.Windows.Forms.CheckBox();
             this.lblschode = new System.Windows.Forms.Label();
             this.ordagryrTextBox = new System.Windows.Forms.TextBox();
@@ -110,6 +110,7 @@
             this.txtPOAmt = new System.Windows.Forms.TextBox();
             this.txtPayments = new System.Windows.Forms.TextBox();
             this.txtExtChrg = new System.Windows.Forms.TextBox();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtPriceOverRide = new System.Windows.Forms.TextBox();
             this.txtSource = new System.Windows.Forms.TextBox();
             this.booktypeTextBox = new System.Windows.Forms.TextBox();
@@ -165,8 +166,10 @@
             this.txtDesc3 = new System.Windows.Forms.TextBox();
             this.txtDesc4 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblSpeccvrtot = new System.Windows.Forms.TextBox();
+            this.InkOverRide = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.overRidePrice = new System.Windows.Forms.ToolStripMenuItem();
             this.allclramtTextBox = new System.Windows.Forms.TextBox();
-            this.lblSpeccvrtot = new System.Windows.Forms.Label();
             this.chkAllClr = new System.Windows.Forms.CheckBox();
             this.lblMLaminateAmt = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -222,6 +225,8 @@
             this.bidsTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.bidsTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsBidsTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.custTableAdapter();
+            this.colorPriceOverRideCheckBox = new System.Windows.Forms.CheckBox();
+            this.dteQuote = new Mbc5.Classes.NullableDateTimePicker();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -267,18 +272,19 @@
             label23 = new System.Windows.Forms.Label();
             sbtotLabel = new System.Windows.Forms.Label();
             ordagryrLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsBids)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BidInvoiceDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidsBindingNavigator)).BeginInit();
             this.bidsBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsBids)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.pgBids.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             this.pnlTot.SuspendLayout();
             this.panel4.SuspendLayout();
             this.pnlMiscDiscCred.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.InkOverRide.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlHard.SuspendLayout();
@@ -421,37 +427,37 @@
             speceaLabel.AutoSize = true;
             speceaLabel.Location = new System.Drawing.Point(17, 176);
             speceaLabel.Name = "speceaLabel";
-            speceaLabel.Size = new System.Drawing.Size(98, 13);
+            speceaLabel.Size = new System.Drawing.Size(94, 13);
             speceaLabel.TabIndex = 58;
-            speceaLabel.Text = "Spec. Cvr. Ea. :";
+            speceaLabel.Text = "Spec. Cvr. Ea. ";
             // 
             // speccvrLabel
             // 
             speccvrLabel.AutoSize = true;
             speccvrLabel.Location = new System.Drawing.Point(17, 198);
             speccvrLabel.Name = "speccvrLabel";
-            speccvrLabel.Size = new System.Drawing.Size(98, 13);
+            speccvrLabel.Size = new System.Drawing.Size(94, 13);
             speccvrLabel.TabIndex = 56;
-            speccvrLabel.Text = "Spec. Cvr. Tot.:";
+            speccvrLabel.Text = "Spec. Cvr. Tot.";
             // 
             // inkclrLabel
             // 
             inkclrLabel.AutoSize = true;
             inkclrLabel.Location = new System.Drawing.Point(35, 107);
             inkclrLabel.Name = "inkclrLabel";
-            inkclrLabel.Size = new System.Drawing.Size(80, 13);
+            inkclrLabel.Size = new System.Drawing.Size(76, 13);
             inkclrLabel.TabIndex = 50;
-            inkclrLabel.Text = "# Ink Colors:";
+            inkclrLabel.Text = "# Ink Colors";
             // 
             // extrchgLabel
             // 
             extrchgLabel.AutoSize = true;
             extrchgLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            extrchgLabel.Location = new System.Drawing.Point(497, 290);
+            extrchgLabel.Location = new System.Drawing.Point(519, 292);
             extrchgLabel.Name = "extrchgLabel";
-            extrchgLabel.Size = new System.Drawing.Size(90, 13);
+            extrchgLabel.Size = new System.Drawing.Size(86, 13);
             extrchgLabel.TabIndex = 260;
-            extrchgLabel.Text = "Extra Charges:";
+            extrchgLabel.Text = "Extra Charges";
             // 
             // adjbefLabel
             // 
@@ -471,6 +477,7 @@
             cred_etcLabel.Size = new System.Drawing.Size(50, 13);
             cred_etcLabel.TabIndex = 125;
             cred_etcLabel.Text = "Credits:";
+            cred_etcLabel.Click += new System.EventHandler(this.cred_etcLabel_Click);
             // 
             // cred_etcLabel1
             // 
@@ -712,22 +719,6 @@
             ordagryrLabel.TabIndex = 292;
             ordagryrLabel.Text = "Order Agreement For Year";
             // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsBids;
-            // 
-            // dsBids
-            // 
-            this.dsBids.DataSetName = "dsBids";
-            this.dsBids.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bidsBindingSource
-            // 
-            this.bidsBindingSource.AllowNew = true;
-            this.bidsBindingSource.DataMember = "bids";
-            this.bidsBindingSource.DataSource = this.dsBids;
-            // 
             // BidInvoiceDetailBindingSource
             // 
             this.BidInvoiceDetailBindingSource.DataSource = typeof(BindingModels.BidInvoiceDetail);
@@ -772,6 +763,17 @@
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // bidsBindingSource
+            // 
+            this.bidsBindingSource.AllowNew = true;
+            this.bidsBindingSource.DataMember = "bids";
+            this.bidsBindingSource.DataSource = this.dsBids;
+            // 
+            // dsBids
+            // 
+            this.dsBids.DataSetName = "dsBids";
+            this.dsBids.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -940,18 +942,6 @@
             this.pgBids.Size = new System.Drawing.Size(1077, 705);
             this.pgBids.TabIndex = 0;
             this.pgBids.Text = "Bids";
-            // 
-            // dteQuote
-            // 
-            this.dteQuote.CustomFormat = "\'\'";
-            this.dteQuote.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bidsBindingSource, "qtedate", true));
-            this.dteQuote.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dteQuote.Location = new System.Drawing.Point(628, 28);
-            this.dteQuote.Name = "dteQuote";
-            this.dteQuote.Size = new System.Drawing.Size(104, 20);
-            this.dteQuote.TabIndex = 296;
-            this.dteQuote.Value = new System.DateTime(2019, 8, 7, 15, 16, 32, 47);
-            this.dteQuote.ValueChanged += new System.EventHandler(this.dteQuote_ValueChanged);
             // 
             // chkPrntAsInvoice
             // 
@@ -1151,13 +1141,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtExtChrg.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "extrchg", true));
             this.txtExtChrg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExtChrg.Location = new System.Drawing.Point(589, 292);
+            this.txtExtChrg.Location = new System.Drawing.Point(611, 292);
             this.txtExtChrg.MaxLength = 100;
             this.txtExtChrg.Multiline = true;
             this.txtExtChrg.Name = "txtExtChrg";
             this.txtExtChrg.ReadOnly = true;
-            this.txtExtChrg.Size = new System.Drawing.Size(230, 40);
+            this.txtExtChrg.Size = new System.Drawing.Size(208, 71);
             this.txtExtChrg.TabIndex = 37;
+            // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsBids;
             // 
             // txtPriceOverRide
             // 
@@ -1856,8 +1851,9 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.allclramtTextBox);
+            this.panel3.Controls.Add(this.colorPriceOverRideCheckBox);
             this.panel3.Controls.Add(this.lblSpeccvrtot);
+            this.panel3.Controls.Add(this.allclramtTextBox);
             this.panel3.Controls.Add(this.chkAllClr);
             this.panel3.Controls.Add(this.lblMLaminateAmt);
             this.panel3.Controls.Add(this.label3);
@@ -1877,10 +1873,36 @@
             this.panel3.Controls.Add(this.txtFoilAd);
             this.panel3.Controls.Add(foiladamtLabel);
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(290, 111);
+            this.panel3.Location = new System.Drawing.Point(278, 111);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(201, 262);
+            this.panel3.Size = new System.Drawing.Size(224, 262);
             this.panel3.TabIndex = 258;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // lblSpeccvrtot
+            // 
+            this.lblSpeccvrtot.ContextMenuStrip = this.InkOverRide;
+            this.lblSpeccvrtot.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "speccvr", true));
+            this.lblSpeccvrtot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpeccvrtot.Location = new System.Drawing.Point(122, 198);
+            this.lblSpeccvrtot.Name = "lblSpeccvrtot";
+            this.lblSpeccvrtot.Size = new System.Drawing.Size(53, 20);
+            this.lblSpeccvrtot.TabIndex = 327;
+            this.lblSpeccvrtot.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblSpeccvrtot_MouseDown);
+            // 
+            // InkOverRide
+            // 
+            this.InkOverRide.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.overRidePrice});
+            this.InkOverRide.Name = "InkOverRide";
+            this.InkOverRide.Size = new System.Drawing.Size(155, 26);
+            // 
+            // overRidePrice
+            // 
+            this.overRidePrice.Name = "overRidePrice";
+            this.overRidePrice.Size = new System.Drawing.Size(154, 22);
+            this.overRidePrice.Text = "Over Ride Price";
+            this.overRidePrice.Click += new System.EventHandler(this.overRidePrice_Click);
             // 
             // allclramtTextBox
             // 
@@ -1888,15 +1910,6 @@
             this.allclramtTextBox.Name = "allclramtTextBox";
             this.allclramtTextBox.Size = new System.Drawing.Size(55, 20);
             this.allclramtTextBox.TabIndex = 23;
-            // 
-            // lblSpeccvrtot
-            // 
-            this.lblSpeccvrtot.AutoSize = true;
-            this.lblSpeccvrtot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpeccvrtot.Location = new System.Drawing.Point(125, 201);
-            this.lblSpeccvrtot.Name = "lblSpeccvrtot";
-            this.lblSpeccvrtot.Size = new System.Drawing.Size(0, 13);
-            this.lblSpeccvrtot.TabIndex = 6;
             // 
             // chkAllClr
             // 
@@ -1981,10 +1994,17 @@
             this.inkclrComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bidsBindingSource, "inkclr", true));
             this.inkclrComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inkclrComboBox.FormattingEnabled = true;
+            this.inkclrComboBox.Items.AddRange(new object[] {
+            " ",
+            "1",
+            "2",
+            "3",
+            "Scan"});
             this.inkclrComboBox.Location = new System.Drawing.Point(122, 107);
             this.inkclrComboBox.Name = "inkclrComboBox";
             this.inkclrComboBox.Size = new System.Drawing.Size(53, 21);
             this.inkclrComboBox.TabIndex = 27;
+            this.inkclrComboBox.SelectedValueChanged += new System.EventHandler(this.inkclrComboBox_SelectedValueChanged);
             // 
             // label4
             // 
@@ -2016,9 +2036,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(34, 154);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 13);
+            this.label5.Size = new System.Drawing.Size(77, 13);
             this.label5.TabIndex = 56;
-            this.label5.Text = "Cover Desc.:";
+            this.label5.Text = "Cover Desc.";
             // 
             // txtSpecCvrEa
             // 
@@ -2037,6 +2057,7 @@
             this.txtFoilAd.Name = "txtFoilAd";
             this.txtFoilAd.Size = new System.Drawing.Size(53, 20);
             this.txtFoilAd.TabIndex = 31;
+            this.txtFoilAd.Leave += new System.EventHandler(this.txtFoilAd_Leave);
             // 
             // panel2
             // 
@@ -2479,6 +2500,29 @@
             // 
             this.custTableAdapter.ClearBeforeFill = true;
             // 
+            // colorPriceOverRideCheckBox
+            // 
+            this.colorPriceOverRideCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "ColorPriceOverRide", true));
+            this.colorPriceOverRideCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 4F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorPriceOverRideCheckBox.Location = new System.Drawing.Point(179, 192);
+            this.colorPriceOverRideCheckBox.Name = "colorPriceOverRideCheckBox";
+            this.colorPriceOverRideCheckBox.Size = new System.Drawing.Size(51, 27);
+            this.colorPriceOverRideCheckBox.TabIndex = 329;
+            this.colorPriceOverRideCheckBox.Text = "Over Ride";
+            this.colorPriceOverRideCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // dteQuote
+            // 
+            this.dteQuote.CustomFormat = " ";
+            this.dteQuote.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bidsBindingSource, "qtedate", true));
+            this.dteQuote.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dteQuote.Location = new System.Drawing.Point(628, 28);
+            this.dteQuote.Name = "dteQuote";
+            this.dteQuote.Size = new System.Drawing.Size(104, 20);
+            this.dteQuote.TabIndex = 296;
+            this.dteQuote.Value = new System.DateTime(2019, 8, 14, 15, 0, 0, 619);
+            this.dteQuote.ValueChanged += new System.EventHandler(this.dteQuote_ValueChanged);
+            // 
             // frmBids
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -2496,16 +2540,16 @@
             this.Shown += new System.EventHandler(this.frmBids_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmBids_Paint);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmBids_KeyPress);
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsBids)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BidInvoiceDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bidsBindingNavigator)).EndInit();
             this.bidsBindingNavigator.ResumeLayout(false);
             this.bidsBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bidsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsBids)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.pgBids.ResumeLayout(false);
             this.pgBids.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             this.pnlTot.ResumeLayout(false);
             this.pnlTot.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -2514,6 +2558,7 @@
             this.pnlMiscDiscCred.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.InkOverRide.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -2528,8 +2573,10 @@
 
             }
 
-		#endregion
-		private System.Windows.Forms.BindingSource bidsBindingSource;
+
+
+        #endregion
+        private System.Windows.Forms.BindingSource bidsBindingSource;
 		private DataSets.dsBidsTableAdapters.bidsTableAdapter bidsTableAdapter;
 		private DataSets.dsBidsTableAdapters.TableAdapterManager tableAdapterManager;
 		private System.Windows.Forms.BindingNavigator bidsBindingNavigator;
@@ -2594,7 +2641,6 @@
         private System.Windows.Forms.TextBox txtDesc3;
         private System.Windows.Forms.TextBox txtDesc4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label lblSpeccvrtot;
         private System.Windows.Forms.CheckBox chkAllClr;
         private System.Windows.Forms.Label lblMLaminateAmt;
         private System.Windows.Forms.Label label3;
@@ -2680,5 +2726,9 @@
         private System.Windows.Forms.TextBox txtDesc4tot;
         private System.Windows.Forms.CheckBox chkPrntAsInvoice;
         private Classes.NullableDateTimePicker dteQuote;
+        private System.Windows.Forms.TextBox lblSpeccvrtot;
+        private System.Windows.Forms.ContextMenuStrip InkOverRide;
+        private System.Windows.Forms.ToolStripMenuItem overRidePrice;
+        private System.Windows.Forms.CheckBox colorPriceOverRideCheckBox;
     }
     }

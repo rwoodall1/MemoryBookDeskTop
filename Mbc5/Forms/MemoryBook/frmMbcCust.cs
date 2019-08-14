@@ -1706,7 +1706,7 @@ public override void Cancel() {
             this.Cursor = Cursors.AppStarting;
             string body = inofficeTextBox.Text;
             string subj = txtSchname.Text.Trim() + " " + Schcode;
-            string email = "";
+            string email = "yearbook@memorybook.com";
             var emailHelper = new EmailHelper();
             EmailType type = EmailType.Mbc;
             emailHelper.SendOutLookEmail(subj, email, "", body, type);

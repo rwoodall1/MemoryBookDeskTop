@@ -754,7 +754,7 @@ if (result == DialogResult.OK)
         #endregion
         private void NewPayment()
         {
-            txtPayoamt.Enabled = true;
+            txtPaypoamt.Enabled = true;
             txtInitials.Enabled = true;
             calpmtdate.Enabled = true;
             txtCheckNo.Enabled = true;
@@ -771,6 +771,70 @@ if (result == DialogResult.OK)
             current["Code"] = this.Schcode;
             SetCrudButtons();
         }
+        private bool ValidatePayment()
+        {
+            bool retval = true;
+            if (txtInitials.Enabled == true)
+            {
+                errorProvider1.SetError(txtInitials, "");
+
+                if (String.IsNullOrEmpty(txtInitials.Text))
+                {
+                    errorProvider1.SetError(txtInitials, "Please enter your initials.");
+                    retval = false;
+                    return retval;
+                }
+            }
+            bool result = true;
+            decimal val = 0;
+            if (!String.IsNullOrEmpty(txtPayment.Text))
+            {
+                result = Decimal.TryParse(txtPayment.Text, out val);
+                errorProvider1.SetError(txtPayment, "");
+                if (!result)
+                {
+
+                    errorProvider1.SetError(txtPayment, "Value must be a Decimal.");
+                }
+
+            }
+            else if (!String.IsNullOrEmpty(txtRefund.Text))
+            {
+                result = Decimal.TryParse(txtRefund.Text, out val);
+                errorProvider1.SetError(txtRefund, "");
+                if (!result)
+                {
+
+                    errorProvider1.SetError(txtRefund, "Value must be a Decimal.");
+                }
+
+            }
+            else if (!String.IsNullOrEmpty(txtAdjustment.Text))
+            {
+                result = Decimal.TryParse(txtAdjustment.Text, out val);
+                errorProvider1.SetError(txtAdjustment, "");
+                if (!result)
+                {
+
+                    errorProvider1.SetError(txtAdjustment, "Value must be a Decimal.");
+                }
+
+
+            }
+            else if (!String.IsNullOrEmpty(txtCompensation.Text))
+            {
+                result = Decimal.TryParse(txtCompensation.Text, out val);
+                errorProvider1.SetError(txtCompensation, "");
+                if (!result)
+                {
+
+                    errorProvider1.SetError(txtCompensation, "Value must be a Decimal.");
+                }
+
+            }
+
+            return retval;
+        }
         private ApiProcessingResult<bool> SavePayment()
         {
             var processingResult = new ApiProcessingResult<bool>();
@@ -782,10 +846,10 @@ if (result == DialogResult.OK)
                     try
                     {
                         this.paymntBindingSource.EndEdit();
-                        this.paymntTableAdapter.Update(dsInvoice.paymnt);
-                        this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToInt32(lblInvoice.Text));
+                        this.paymntTableAdapter.Update(dsMInvoice.paymnt);
+                        this.paymntTableAdapter.Fill(dsMInvoice.paymnt,Invno);
                         this.CalculatePayments();
-                        txtPayoamt.Enabled = false;
+                        txtPaypoamt.Enabled = false;
                         txtInitials.Enabled = false;
                         calpmtdate.Enabled = false;
                         txtCheckNo.Enabled = false;
@@ -838,7 +902,7 @@ if (result == DialogResult.OK)
             };
                 var result = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, queryString, parameters);
                 CalculatePayments();
-                this.paymntTableAdapter.Fill(dsInvoice.paymnt, Convert.ToInt32(lblInvoice.Text));
+                this.paymntTableAdapter.Fill(dsMInvoice.paymnt,Invno);
 
                 if (result == 0) { retval = false; }
                 SetCrudButtons();
@@ -849,7 +913,7 @@ if (result == DialogResult.OK)
         private void CancelPayment()
         {
             paymntBindingSource.CancelEdit();
-            txtPayoamt.Enabled = false;
+            txtPaypoamt.Enabled = false; 
             txtInitials.Enabled = false;
             calpmtdate.Enabled = false;
             txtCheckNo.Enabled = false;
@@ -863,7 +927,7 @@ if (result == DialogResult.OK)
         }
         private void EditPayment()
         {
-            txtPayoamt.Enabled = true;
+            txtPaypoamt.Enabled = true;
             txtInitials.Enabled = true;
             calpmtdate.Enabled = true;
             txtCheckNo.Enabled = true;
@@ -877,7 +941,7 @@ if (result == DialogResult.OK)
         }
         private bool CalculatePayments()
         {
-            return CalculatePayments(lblInvoice.Text);
+            return CalculatePayments(Invno.ToString());
         }
         private bool CalculatePayments(string invoiceNumber)
         {
@@ -903,7 +967,7 @@ if (result == DialogResult.OK)
                 new SqlParameter("@Invno",invoiceNumber),
                 new SqlParameter("@payments",paymentTotals)};
                 var a = SqlQuery.ExecuteNonQueryAsync(CommandType.Text, cmdText, parameters1);
-                this.invoiceTableAdapter.Fill(dsInvoice.invoice, Convert.ToInt32(lblInvoice.Text));
+                this.merinvoiceTableAdapter.Fill(dsMInvoice.merinvoice, Invno);
                 retval = true;
             }
             catch (Exception ex)
@@ -2366,19 +2430,7 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
 
         }
 
-        private void fillToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.paymntTableAdapter.Fill(this.dsMInvoice.paymnt, ((decimal)(System.Convert.ChangeType(invnoToolStripTextBox.Text, typeof(decimal)))));
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-
+       
         private void salesTabControl_Enter(object sender, EventArgs e)
         {
             try

@@ -8,69 +8,78 @@ namespace BaseClass
 {
 	public class MbcMessageBox
 	{
-        public static void Error(string msg)
+        public static DialogResult Error(string msg)
         {
-            Error(msg, "Error");
+           var dr= Error(msg, "Error");
+            return dr;
          }
 
-            public static void Error(string msg,string title)
+            public static DialogResult Error(string msg,string title)
 		{
 			if (string.IsNullOrEmpty(title))
 			{
 				title = "Error";
 			}
-			MessageBox.Show(msg,title,MessageBoxButtons.OK, MessageBoxIcon.Error);
+			DialogResult dr=MessageBox.Show(msg,title,MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return dr;
 		}
 
-        public static void Information(string msg)
+        public static DialogResult Information(string msg)
         {
-            Information(msg, "Information");
+            var dr = Information(msg, "Information");
+            return dr;
         }
 
-        public static void Information(string msg, string title)
+        public static DialogResult Information(string msg, string title)
 		{
 			if (string.IsNullOrEmpty(title))
 			{
 				title = "Information";
 			}
-			MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var dr = MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return dr;
 		}
-        public static void Exclamation(string msg)
+        public static DialogResult Exclamation(string msg)
         {
-            Exclamation(msg, "Success");
+            var dr = Exclamation(msg, "Success");
+            return dr;
         }
         
-            public static void Exclamation(string msg, string title)
+            public static DialogResult Exclamation(string msg, string title)
 		{
 			if (string.IsNullOrEmpty(title))
 			{
 				title = "Success";
 			}
-			MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            var dr = MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            return dr;
 		}
-		public static void Hand(string msg, string title)
+		public static DialogResult Hand(string msg, string title)
 		{
 			if (string.IsNullOrEmpty(title))
 			{
 				title = "Stop";
 			}
-			MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            var dr = MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            return dr;
 		}
-		public static void Stop(string msg, string title)
+		public static DialogResult Stop(string msg, string title)
 		{
 			if (string.IsNullOrEmpty(title))
 			{
 				title = "Stop";
 			}
-			MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            var dr = MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            return dr;
 		}
-		public static void Warning(string msg, string title)
+		public static DialogResult Warning(string msg, string title)
 		{
 			if (string.IsNullOrEmpty(title))
 			{
 				title = "Stop";
 			}
-			MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            var dr = MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return dr;
 		}
 
 	}

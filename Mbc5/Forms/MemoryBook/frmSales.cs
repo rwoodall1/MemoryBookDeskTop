@@ -85,7 +85,7 @@ namespace Mbc5.Forms.MemoryBook
             CalculateEach();
             BookCalc();
             txtBYear.Focus();
-            startup = false;
+           
 
         }
 
@@ -1083,6 +1083,7 @@ namespace Mbc5.Forms.MemoryBook
                     {
                         this.Validate();
                         this.quotesBindingSource.EndEdit();
+                        var aa = quotesTableAdapter.Adapter.UpdateCommand.CommandText;
                         var a = quotesTableAdapter.Update(dsSales.quotes);
                         //must refill so we get updated time stamp so concurrency is not thrown
                         this.Fill();
@@ -1286,6 +1287,201 @@ namespace Mbc5.Forms.MemoryBook
         }
         private void CalcInk()
         {
+            quotesBindingSource.EndEdit();//commits to datasource
+
+            var dr = (DataRowView)quotesBindingSource.Current;
+            bool byPass = dr.Row.IsNull("ColorPriceOverRide") ? false : (bool)dr["ColorPriceOverRide"];
+            if (byPass)
+            {
+                //over ride
+                txtSpecCvrEa.Text = "0.00";
+                return;
+            }
+            var vInkNum = inkclrComboBox.Text.Trim();
+            int vCopies = 0;
+            try { vCopies = dr.Row.IsNull("nocopies") ? 0 : (int)dr["nocopies"]; } catch (Exception ex) { };
+
+            if (vInkNum == "1" || vInkNum == "")
+            {
+                txtSpecCvrEa.Text = "0.00";
+                lblSpeccvrtot.Text = "0.00";
+                return;
+
+            }
+            if (vCopies <= 100)
+            {
+                vCopies = 100;
+            }
+            else if (vCopies > 100 && vCopies <= 125)
+            {
+                vCopies = 125;
+            }
+            else if (vCopies > 100 && vCopies <= 150)
+            {
+                vCopies = 150;
+            }
+            else if (vCopies > 150 && vCopies <= 175)
+            {
+                vCopies = 175;
+            }
+            else if (vCopies > 175 && vCopies <= 200)
+            {
+                vCopies = 200;
+            }
+            else if (vCopies > 200 && vCopies <= 225)
+            {
+                vCopies = 225;
+            }
+            else if (vCopies > 225 && vCopies <= 250)
+            {
+                vCopies = 250;
+            }
+            else if (vCopies > 250 && vCopies <= 275)
+            {
+                vCopies = 275;
+            }
+            else if (vCopies > 275 && vCopies <= 300)
+            {
+                vCopies = 300;
+            }
+            else if (vCopies > 300 && vCopies <= 325)
+            {
+                vCopies = 325;
+            }
+            else if (vCopies > 325 && vCopies <= 350)
+            {
+                vCopies = 350;
+            }
+            else if (vCopies > 350 && vCopies <= 375)
+            {
+                vCopies = 375;
+            }
+            else if (vCopies > 375 && vCopies <= 400)
+            {
+                vCopies = 400;
+            }
+            else if (vCopies > 400 && vCopies <= 425)
+            {
+                vCopies = 425;
+            }
+            else if (vCopies > 425 && vCopies <= 450)
+            {
+                vCopies = 450;
+            }
+            else if (vCopies > 450 && vCopies <= 475)
+            {
+                vCopies = 475;
+            }
+            else if (vCopies > 475 && vCopies <= 500)
+            {
+                vCopies = 500;
+            }
+            else if (vCopies > 500 && vCopies <= 525)
+            {
+                vCopies = 525;
+            }
+            else if (vCopies > 525 && vCopies <= 550)
+            {
+                vCopies = 550;
+            }
+            else if (vCopies > 550 && vCopies <= 575)
+            {
+                vCopies = 575;
+            }
+            else if (vCopies > 575 && vCopies <= 600)
+            {
+                vCopies = 600;
+            }
+            else if (vCopies > 600 && vCopies <= 625)
+            {
+                vCopies = 625;
+            }
+            else if (vCopies > 625 && vCopies <= 650)
+            {
+                vCopies = 650;
+            }
+            else if (vCopies > 650 && vCopies <= 675)
+            {
+                vCopies = 675;
+            }
+            else if (vCopies > 675 && vCopies <= 700)
+            {
+                vCopies = 700;
+            }
+            else if (vCopies > 700 && vCopies <= 725)
+            {
+                vCopies = 725;
+            }
+            else if (vCopies > 725 && vCopies <= 750)
+            {
+                vCopies = 750;
+            }
+            else if (vCopies >= 800)
+            {
+                vCopies = 800;
+            }
+
+            string cmd = "";
+            var sqlQuery = new SQLCustomClient();
+            sqlQuery.AddParameter("@Copies", vCopies);
+            var result = new ApiProcessingResult<string>();
+            switch (vInkNum)
+            {
+                case "2":
+                    cmd = "Select TwoInk From InkPricing Where Casing=@Casing and Copies=@Copies";
+                    break;
+                case "3":
+                    cmd = "Select ThreeInk From InkPricing Where Casing=@Casing and Copies=@Copies";
+                    break;
+                case "Scan":
+                    cmd = "Select FourScan From InkPricing Where Casing=@Casing and Copies=@Copies";
+                    break;
+
+            }
+            if (chkHardBack.Checked || chkCaseBind.Checked)
+            {
+                sqlQuery.CommandText(cmd);
+                sqlQuery.AddParameter("@Casing", "HardBack");
+                result = sqlQuery.SelectSingleColumn();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error("Failed to retrieve Ink Pricing:" + result.Errors[0].ErrorMessage);
+                    return;
+                }
+                decimal vPrice = 0;
+                decimal.TryParse(result.Data, out vPrice);
+                decimal vTotal = vPrice * vCopies;
+                txtSpecCvrEa.Text = vPrice.ToString();
+                lblSpeccvrtot.Text = vTotal.ToString("0.00");
+                return;
+
+
+            }
+            else
+            {
+                //softback
+                if (vInkNum == "Scan")
+                {
+                    txtSpecCvrEa.Text = "0.00";
+                    lblSpeccvrtot.Text = "335.00";
+                    return;
+                }
+                sqlQuery.CommandText(cmd);
+                sqlQuery.AddParameter("@Casing", "Soft");
+                result = sqlQuery.SelectSingleColumn();
+                if (result.IsError)
+                {
+                    MbcMessageBox.Error("Failed to retrieve Ink Pricing:" + result.Errors[0].ErrorMessage);
+                    return;
+                }
+                decimal vPrice = 0;
+                decimal.TryParse(result.Data, out vPrice);
+                decimal vTotal = vPrice * vCopies;
+                txtSpecCvrEa.Text = vPrice.ToString();
+                lblSpeccvrtot.Text = vTotal.ToString("0.00");
+                return;
+
+            }
 
 
         }
@@ -4041,6 +4237,7 @@ namespace Mbc5.Forms.MemoryBook
         private void frmSales_Shown(object sender, EventArgs e)
         {
             tabSales.Visible = true;
+            startup = false;
         }
 
         private void chkHardBack_CheckedChanged(object sender, EventArgs e)
@@ -5139,6 +5336,40 @@ namespace Mbc5.Forms.MemoryBook
             SetNoticeLabels();
         }
 
+        private void txtFoilAd_Leave(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void inkclrComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            BookCalc();
+        }
+
+        private void overRidePrice_Click(object sender, EventArgs e)
+        {
+            var dr = (DataRowView)quotesBindingSource.Current;
+            var val = dr.Row.IsNull("ColorPriceOverRide") ? false : (bool)dr["ColorPriceOverRide"];
+            if (!val)
+            {
+                var dialogResult = MessageBox.Show("Do you want to over ride the Ink Pricing?", "Pricing Over Ride", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    dr["ColorPriceOverRide"] = true;
+                }
+            }
+            else
+            {
+                //ask to turn off price over ride
+                var dialogResult = MessageBox.Show("Do you want to turn off the price over ride for Ink Pricing?", "Pricing Over Ride", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    dr["ColorPriceOverRide"] = false;
+                }
+            }
+        }
+
+      
 
 
 
