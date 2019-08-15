@@ -120,6 +120,7 @@ namespace BindingModels
     {
         public string Schcode { get; set; }
         public int Invoice { get; set; }
+        public string ProdNo { get; set; }
         public string Schname { get; set; }
         public string OracleCode { get; set; }
         public string Contryear { get; set; }
@@ -130,6 +131,7 @@ namespace BindingModels
     {
         public string Schname { get; set; }
         public int Invoice { get; set; }
+        public string ProdNo { get; set; }
         public string Schcode { get; set; }
         public string OracleCode { get; set; }
         public string Contryear { get; set; }
@@ -142,6 +144,7 @@ namespace BindingModels
         public string Schcode { get; set; }
         public string Schname { get; set; }
         public int Invoice { get; set; }
+        public string ProdNo { get; set; }
         public string Contryear { get; set; }
         public string SchZip { get; set; }
         public string SchState { get; set; }
@@ -201,6 +204,7 @@ namespace BindingModels
         public string Schcode { get; set; }
         public string Schname { get; set; }
         public int Invoice { get; set; }
+        public string ProdNo { get; set; }
         public string EndSheetNo { get; set; }
         public string Contryear { get; set; }
     }
@@ -209,6 +213,7 @@ namespace BindingModels
         public string Schname { get; set; }
         public string Schcode { get; set; }
         public int Invoice { get; set; }
+        public string ProdNo { get; set; }
         public string EndSheetNo { get; set; }
         public string Contryear { get; set; }
     }
@@ -218,6 +223,7 @@ namespace BindingModels
         public string Schname { get; set; }
         public string Schcode { get; set; }
         public int Invoice { get; set; }
+        public string ProdNo { get; set; }
         public string EndSheetNo { get; set; }
         public string Contryear { get; set; }
     }
@@ -235,10 +241,11 @@ namespace BindingModels
        public int Invoice { get; set; }
         public string Schname { get; set; }
         public string Schcode { get; set; }
-       
+        public string ProdNo { get; set; }
         public string EndSheetNo { get; set; }
         public string Contryear { get; set; }
     }
+    //Bids
     public class BidsSchcodeSearch
     {
         public string Schcode { get; set; }

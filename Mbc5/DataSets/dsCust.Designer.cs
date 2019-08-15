@@ -727,6 +727,12 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnPIN;
             
+            private global::System.Data.DataColumn columnInvoiceEmail1;
+            
+            private global::System.Data.DataColumn columnInvoiceEmail2;
+            
+            private global::System.Data.DataColumn columnInvoiceEmail3;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public custDataTable() {
@@ -1994,6 +2000,30 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InvoiceEmail1Column {
+                get {
+                    return this.columnInvoiceEmail1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InvoiceEmail2Column {
+                get {
+                    return this.columnInvoiceEmail2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InvoiceEmail3Column {
+                get {
+                    return this.columnInvoiceEmail3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2183,7 +2213,10 @@ namespace Mbc5.DataSets {
                         string InvoiceZipCode, 
                         int enrollment, 
                         string ShippingAddr, 
-                        int PIN) {
+                        int PIN, 
+                        string InvoiceEmail1, 
+                        string InvoiceEmail2, 
+                        string InvoiceEmail3) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cstatus,
@@ -2339,7 +2372,10 @@ namespace Mbc5.DataSets {
                         InvoiceZipCode,
                         enrollment,
                         ShippingAddr,
-                        PIN};
+                        PIN,
+                        InvoiceEmail1,
+                        InvoiceEmail2,
+                        InvoiceEmail3};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -2523,6 +2559,9 @@ namespace Mbc5.DataSets {
                 this.columnenrollment = base.Columns["enrollment"];
                 this.columnShippingAddr = base.Columns["ShippingAddr"];
                 this.columnPIN = base.Columns["PIN"];
+                this.columnInvoiceEmail1 = base.Columns["InvoiceEmail1"];
+                this.columnInvoiceEmail2 = base.Columns["InvoiceEmail2"];
+                this.columnInvoiceEmail3 = base.Columns["InvoiceEmail3"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2836,6 +2875,12 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnShippingAddr);
                 this.columnPIN = new global::System.Data.DataColumn("PIN", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPIN);
+                this.columnInvoiceEmail1 = new global::System.Data.DataColumn("InvoiceEmail1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceEmail1);
+                this.columnInvoiceEmail2 = new global::System.Data.DataColumn("InvoiceEmail2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceEmail2);
+                this.columnInvoiceEmail3 = new global::System.Data.DataColumn("InvoiceEmail3", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceEmail3);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columncstatus.MaxLength = 40;
@@ -2850,7 +2895,6 @@ namespace Mbc5.DataSets {
                 this.columnschcode.MaxLength = 6;
                 this.columngrades.MaxLength = 16;
                 this.columnsal.MaxLength = 25;
-                this.columnschaddr.AllowDBNull = false;
                 this.columnschaddr.MaxLength = 50;
                 this.columnschaddr2.MaxLength = 50;
                 this.columnschcity.MaxLength = 50;
@@ -2954,6 +2998,9 @@ namespace Mbc5.DataSets {
                 this.columnInvoiceState.MaxLength = 3;
                 this.columnInvoiceZipCode.MaxLength = 5;
                 this.columnShippingAddr.MaxLength = 100;
+                this.columnInvoiceEmail1.MaxLength = 150;
+                this.columnInvoiceEmail2.MaxLength = 150;
+                this.columnInvoiceEmail3.MaxLength = 150;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4614,7 +4661,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string schaddr {
                 get {
-                    return ((string)(this[this.tablecust.schaddrColumn]));
+                    try {
+                        return ((string)(this[this.tablecust.schaddrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'schaddr\' in table \'cust\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablecust.schaddrColumn] = value;
@@ -6853,6 +6905,54 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InvoiceEmail1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.InvoiceEmail1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceEmail1\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.InvoiceEmail1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InvoiceEmail2 {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.InvoiceEmail2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceEmail2\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.InvoiceEmail2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InvoiceEmail3 {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.InvoiceEmail3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceEmail3\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.InvoiceEmail3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscstatusNull() {
                 return this.IsNull(this.tablecust.cstatusColumn);
             }
@@ -6993,6 +7093,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetsalNull() {
                 this[this.tablecust.salColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsschaddrNull() {
+                return this.IsNull(this.tablecust.schaddrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetschaddrNull() {
+                this[this.tablecust.schaddrColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8650,6 +8762,42 @@ namespace Mbc5.DataSets {
             public void SetPINNull() {
                 this[this.tablecust.PINColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInvoiceEmail1Null() {
+                return this.IsNull(this.tablecust.InvoiceEmail1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInvoiceEmail1Null() {
+                this[this.tablecust.InvoiceEmail1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInvoiceEmail2Null() {
+                return this.IsNull(this.tablecust.InvoiceEmail2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInvoiceEmail2Null() {
+                this[this.tablecust.InvoiceEmail2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInvoiceEmail3Null() {
+                return this.IsNull(this.tablecust.InvoiceEmail3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInvoiceEmail3Null() {
+                this[this.tablecust.InvoiceEmail3Column] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -9652,6 +9800,9 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             tableMapping.ColumnMappings.Add("enrollment", "enrollment");
             tableMapping.ColumnMappings.Add("ShippingAddr", "ShippingAddr");
             tableMapping.ColumnMappings.Add("PIN", "PIN");
+            tableMapping.ColumnMappings.Add("InvoiceEmail1", "InvoiceEmail1");
+            tableMapping.ColumnMappings.Add("InvoiceEmail2", "InvoiceEmail2");
+            tableMapping.ColumnMappings.Add("InvoiceEmail3", "InvoiceEmail3");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -9824,54 +9975,55 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE       cust\r\nSET                cstatus = @cstatus, source = @source, sourd" +
                 "ate = @sourdate, secsource = @secsource, contdate = @contdate, origsour = @origs" +
-                "our, origyear = @origyear, rebook = @rebook, rebookdte = @rebookdte, \r\n         " +
-                "                refby = @refby, schcode = @schcode, enrollment = @enrollment, gr" +
+                "our, origyear = @origyear, rebook = @rebook, rebookdte = @rebookdte, refby = @re" +
+                "fby, \r\n                         schcode = @schcode, enrollment = @enrollment, gr" +
                 "ades = @grades, sal = @sal, schaddr = @schaddr, schaddr2 = @schaddr2, schcity = " +
-                "@schcity, schzip = @schzip, schphone = @schphone, \r\n                         sch" +
-                "fax = @schfax, schemail = @schemail, sprngbrk = @sprngbrk, schout = @schout, con" +
+                "@schcity, schzip = @schzip, schphone = @schphone, schfax = @schfax, \r\n          " +
+                "               schemail = @schemail, sprngbrk = @sprngbrk, schout = @schout, con" +
                 "tmemo = @contmemo, position = @position, gender = @gender, contfname = @contfnam" +
-                "e, contlname = @contlname, \r\n                         newfname = @newfname, newl" +
+                "e, contlname = @contlname, newfname = @newfname, \r\n                         newl" +
                 "name = @newlname, yb_sth = @yb_sth, shiptocont = @shiptocont, contaddr = @contad" +
-                "dr, contaddr2 = @contaddr2, contcity = @contcity, contstate = @contstate, \r\n    " +
-                "                     contzip = @contzip, contphnhom = @contphnhom, contphnwrk = " +
+                "dr, contaddr2 = @contaddr2, contcity = @contcity, contstate = @contstate, contzi" +
+                "p = @contzip, contphnhom = @contphnhom, \r\n                         contphnwrk = " +
                 "@contphnwrk, contfax = @contfax, contemail = @contemail, vcrsent = @vcrsent, sig" +
-                "fopf = @sigfopf, envflyer = @envflyer, marketing = @marketing,\r\n                " +
-                "          yearrnd = @yearrnd, clrpg_int = @clrpg_int, shipmemo = @shipmemo, schc" +
+                "fopf = @sigfopf, envflyer = @envflyer, marketing = @marketing, yearrnd = @yearrn" +
+                "d, clrpg_int = @clrpg_int, \r\n                         shipmemo = @shipmemo, schc" +
                 "losed = @schclosed, inoffice = @inoffice, digintrst = @digintrst, svcode1 = @svc" +
-                "ode1, svdesc1 = @svdesc1, svcode2 = @svcode2, \r\n                         svdesc2" +
-                " = @svdesc2, spcinst = @spcinst, lastcont = @lastcont, nextcont = @nextcont, csr" +
+                "ode1, svdesc1 = @svdesc1, svcode2 = @svcode2, svdesc2 = @svdesc2, spcinst = @spc" +
+                "inst, \r\n                         lastcont = @lastcont, nextcont = @nextcont, csr" +
                 "ep = @csrep, cstat = @cstat, xeldate = @xeldate, allcolor = @allcolor, rbinit = " +
-                "@rbinit, rbdate = @rbdate, \r\n                         clspic = @clspic, magic = " +
-                "@magic, extrchg = @extrchg, sprinfo = @sprinfo, fallinfo = @fallinfo, initcont =" +
+                "@rbinit, rbdate = @rbdate, clspic = @clspic, magic = @magic, extrchg = @extrchg," +
+                " \r\n                         sprinfo = @sprinfo, fallinfo = @fallinfo, initcont =" +
                 " @initcont, highsp = @highsp, slownone = @slownone, pcmac = @pcmac, junsno = @ju" +
-                "nsno, \r\n                         bcontfname = @bcontfname, bcontlname = @bcontln" +
-                "ame, bcontaddr = @bcontaddr, bcontaddr2 = @bcontaddr2, bcontcity = @bcontcity, b" +
-                "contstate = @bcontstate, bcontzip = @bcontzip, \r\n                         bcontp" +
-                "hnhom = @bcontphnhom, bcontphnwrk = @bcontphnwrk, bcontfax = @bcontfax, bcontema" +
-                "il = @bcontemail, multiyroptions = @multiyroptions, multiyear = @multiyear, schu" +
-                "ploading = @schuploading, \r\n                         website = @website, nomktem" +
-                "ail = @nomktemail, nodirectmail = @nodirectmail, bposition = @bposition, blkwhit" +
-                "e = @blkwhite, mbconlinepassword = @mbconlinepassword, ccontfname = @ccontfname," +
-                " \r\n                         ccontlname = @ccontlname, ccontaddr = @ccontaddr, cc" +
-                "ontaddr2 = @ccontaddr2, ccontcity = @ccontcity, ccontstate = @ccontstate, ccontz" +
-                "ip = @ccontzip, ccontphnhom = @ccontphnhom, \r\n                         ccontphnw" +
-                "ork = @ccontphnwork, ccontfax = @ccontfax, ccontemail = @ccontemail, norebookrea" +
-                "son = @norebookreason, newpublisher = @newpublisher, csrep2 = @csrep2, schcolors" +
-                " = @schcolors, \r\n                         keeppswd = @keeppswd, leadsource = @le" +
-                "adsource, leadsname = @leadsname, prevpublisher = @prevpublisher, leadname = @le" +
-                "adname, DateModified = GETDATE(), photographer = @Photographer, \r\n              " +
-                "           ModifiedBy = @ModifiedBy, schname = @Schname, oraclecode = @oraclecod" +
-                "e, contryear = @contryear, schstate = @schstate, cposition = @cposition, electro" +
-                "nickit = @electronickit, \r\n                         electronickitoptions = @elec" +
-                "tronicoptions, status = @status, IsTaxExempt = @IsTaxExempt, stage = @Stage, Tax" +
-                "ExemptionReceived = @TaxExemptionReceived, FirstDaySchool = @FirstDaySchool, \r\n " +
-                "                        NotTaxExempt = @NotTaxExempt, InvoiceZipCode = @InvoiceZ" +
-                "ipCode, InvoiceState = @InvoiceState, InvoiceCity = @InvoiceCity, InvoiceAddr2 =" +
-                " @InvoiceAddr2, InvoiceAddr = @InvoiceAddr, \r\n                         ShippingS" +
-                "tate = @ShippingState, ShippingZipCode = @ShippingZipCode, ShippingCity = @Shipp" +
-                "ingCity, ShippingAddr2 = @ShippngAddr2, ShippingAddr = @ShippingAddr, \r\n        " +
-                "                 taxexemptionexpirationdate = @taxexemptionexpirationdate, PIN =" +
-                " @PIN\r\nWHERE        (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)";
+                "nsno, bcontfname = @bcontfname, bcontlname = @bcontlname, bcontaddr = @bcontaddr" +
+                ", \r\n                         bcontaddr2 = @bcontaddr2, bcontcity = @bcontcity, b" +
+                "contstate = @bcontstate, bcontzip = @bcontzip, bcontphnhom = @bcontphnhom, bcont" +
+                "phnwrk = @bcontphnwrk, bcontfax = @bcontfax, bcontemail = @bcontemail, \r\n       " +
+                "                  multiyroptions = @multiyroptions, multiyear = @multiyear, schu" +
+                "ploading = @schuploading, website = @website, nomktemail = @nomktemail, nodirect" +
+                "mail = @nodirectmail, bposition = @bposition, blkwhite = @blkwhite, \r\n          " +
+                "               mbconlinepassword = @mbconlinepassword, ccontfname = @ccontfname," +
+                " ccontlname = @ccontlname, ccontaddr = @ccontaddr, ccontaddr2 = @ccontaddr2, cco" +
+                "ntcity = @ccontcity, ccontstate = @ccontstate, \r\n                         ccontz" +
+                "ip = @ccontzip, ccontphnhom = @ccontphnhom, ccontphnwork = @ccontphnwork, ccontf" +
+                "ax = @ccontfax, ccontemail = @ccontemail, norebookreason = @norebookreason, newp" +
+                "ublisher = @newpublisher, \r\n                         csrep2 = @csrep2, schcolors" +
+                " = @schcolors, keeppswd = @keeppswd, leadsource = @leadsource, leadsname = @lead" +
+                "sname, prevpublisher = @prevpublisher, leadname = @leadname, DateModified = GETD" +
+                "ATE(), \r\n                         photographer = @Photographer, ModifiedBy = @Mo" +
+                "difiedBy, schname = @Schname, oraclecode = @oraclecode, contryear = @contryear, " +
+                "schstate = @schstate, cposition = @cposition, electronickit = @electronickit, \r\n" +
+                "                         electronickitoptions = @electronicoptions, status = @st" +
+                "atus, IsTaxExempt = @IsTaxExempt, stage = @Stage, TaxExemptionReceived = @TaxExe" +
+                "mptionReceived, FirstDaySchool = @FirstDaySchool, \r\n                         Not" +
+                "TaxExempt = @NotTaxExempt, InvoiceZipCode = @InvoiceZipCode, InvoiceState = @Inv" +
+                "oiceState, InvoiceCity = @InvoiceCity, InvoiceAddr2 = @InvoiceAddr2, InvoiceAddr" +
+                " = @InvoiceAddr, ShippingState = @ShippingState, \r\n                         Ship" +
+                "pingZipCode = @ShippingZipCode, ShippingCity = @ShippingCity, ShippingAddr2 = @S" +
+                "hippngAddr2, ShippingAddr = @ShippingAddr, taxexemptionexpirationdate = @taxexem" +
+                "ptionexpirationdate, PIN = @PIN, \r\n                         InvoiceEmail1 = @Inv" +
+                "oiceEmail1, InvoiceEmail2 = InvoiceEmail2, InvoiceEmail3 = InvoiceEmail3\r\nWHERE " +
+                "       (schcode = @schcode) AND (TimeStamp = @Orig_TimeStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cstatus", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "cstatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@source", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "source", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9890,7 +10042,7 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schaddr", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schaddr2", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schaddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcity", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schcity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schzip", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schzip", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "schzip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schphone", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schphone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schfax", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schfax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schemail", global::System.Data.SqlDbType.VarChar, 80, global::System.Data.ParameterDirection.Input, 0, 0, "schemail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10002,18 +10154,19 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxExemptionReceived", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TaxExemptionReceived", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstDaySchool", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "FirstDaySchool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NotTaxExempt", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "NotTaxExempt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceZipCode", global::System.Data.SqlDbType.VarChar, 11, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceZipCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceZipCode", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceZipCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceState", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceState", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceCity", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceCity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceAddr2", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceAddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceAddr", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceAddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingState", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingState", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingZipCode", global::System.Data.SqlDbType.VarChar, 11, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingZipCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingZipCode", global::System.Data.SqlDbType.VarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingZipCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingCity", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingCity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippngAddr2", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingAddr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShippingAddr", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "ShippingAddr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@taxexemptionexpirationdate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "taxexemptionexpirationdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PIN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PIN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceEmail1", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceEmail1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Orig_TimeStamp", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -10032,154 +10185,157 @@ namespace Mbc5.DataSets.dsCustTableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +
                 "ecsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookd" +
-                "te, cust.refby, cust.schcode, cust.schname, cust.contryear, \r\n                  " +
-                "       cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust" +
+                "te, cust.refby, cust.schcode, cust.schname, cust.contryear, cust.enrollment, \r\n " +
+                "                        cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust" +
                 ".schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail," +
-                " cust.sprngbrk, cust.schout, cust.contmemo, cust.position, \r\n                   " +
-                "      cust.gender, cust.contfname, cust.contlname, cust.newfname, cust.newlname," +
+                " cust.sprngbrk, cust.schout, cust.contmemo, cust.position, cust.gender, cust.con" +
+                "tfname, \r\n                         cust.contlname, cust.newfname, cust.newlname," +
                 " cust.yb_sth, cust.shiptocont, cust.contaddr, cust.contaddr2, cust.contcity, cus" +
-                "t.contstate, cust.contzip, cust.contphnhom, \r\n                         cust.cont" +
-                "phnwrk, cust.contfax, cust.contemail, cust.vcrsent, cust.sigfopf, cust.envflyer," +
+                "t.contstate, cust.contzip, cust.contphnhom, cust.contphnwrk, cust.contfax, cust." +
+                "contemail, \r\n                         cust.vcrsent, cust.sigfopf, cust.envflyer," +
                 " cust.marketing, cust.yearrnd, cust.clrpg_int, cust.shipmemo, cust.schclosed, cu" +
-                "st.inoffice, cust.digintrst, cust.svcode1, \r\n                         cust.svdes" +
-                "c1, cust.svcode2, cust.svdesc2, cust.spcinst, cust.lastcont, cust.nextcont, cust" +
+                "st.inoffice, cust.digintrst, cust.svcode1, cust.svdesc1, cust.svcode2, cust.svde" +
+                "sc2, cust.spcinst, \r\n                         cust.lastcont, cust.nextcont, cust" +
                 ".csrep, cust.cstat, cust.xeldate, cust.allcolor, cust.rbinit, cust.rbdate, cust." +
-                "clspic, cust.magic, cust.extrchg, cust.sprinfo, \r\n                         cust." +
-                "fallinfo, cust.initcont, cust.highsp, cust.slownone, cust.pcmac, cust.junsno, cu" +
+                "clspic, cust.magic, cust.extrchg, cust.sprinfo, cust.fallinfo, cust.initcont, cu" +
+                "st.highsp, cust.slownone, cust.pcmac, \r\n                         cust.junsno, cu" +
                 "st.bcontfname, cust.bcontlname, cust.bcontaddr, cust.bcontaddr2, cust.bcontcity," +
-                " cust.bcontstate, cust.bcontzip, \r\n                         cust.bcontphnhom, cu" +
-                "st.bcontphnwrk, cust.bcontfax, cust.bcontemail, cust.multiyroptions, cust.multiy" +
+                " cust.bcontstate, cust.bcontzip, cust.bcontphnhom, cust.bcontphnwrk, cust.bcontf" +
+                "ax, cust.bcontemail, cust.multiyroptions, \r\n                         cust.multiy" +
                 "ear, cust.schuploading, cust.website, cust.nomktemail, cust.nodirectmail, cust.b" +
-                "position, cust.blkwhite, \r\n                         cust.mbconlinepassword, cust" +
-                ".ccontfname, cust.ccontlname, cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, c" +
+                "position, cust.blkwhite, cust.mbconlinepassword, cust.ccontfname, cust.ccontlnam" +
+                "e, cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, \r\n                         c" +
                 "ust.ccontstate, cust.ccontzip, cust.ccontphnhom, cust.ccontphnwork, cust.ccontfa" +
-                "x, cust.ccontemail, \r\n                         cust.norebookreason, cust.newpubl" +
-                "isher, cust.csrep2, cust.schcolors, cust.keeppswd, cust.leadsource, cust.leadsna" +
-                "me, cust.prevpublisher, cust.leadname, quotes.booktype, quotes.contryear AS Qyea" +
-                "r, \r\n                         quotes.invno AS QInvno, produtn.prodno, produtn.de" +
-                "dayin, produtn.dedayout, produtn.kitrecvd, produtn.jobno, produtn.advpw, produtn" +
-                ".stfpw, cust.oraclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, \r\n " +
-                "                        cust.electronickitoptions, cust.electronickit, cust.cpos" +
-                "ition, cust.status, cust.TaxExemptionReceived, cust.FirstDaySchool, cust.stage, " +
-                "cust.NotTaxExempt, cust.IsTaxExempt, cust.taxexemptionexpirationdate, \r\n        " +
-                "                 produtn.prshpdte, cust.ShippingAddr2, cust.ShippingCity, cust.S" +
-                "hippingZipCode, cust.ShippingState, cust.InvoiceAddr, cust.InvoiceAddr2, cust.In" +
-                "voiceCity, cust.InvoiceState, cust.InvoiceZipCode, \r\n                         cu" +
-                "st.ShippingAddr, cust.PIN\r\nFROM            cust LEFT OUTER JOIN\r\n               " +
-                "          quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN\r\n             " +
-                "            produtn ON quotes.invno = produtn.invno\r\nWHERE        (cust.schcode " +
-                "= @schcode)\r\nORDER BY Qyear DESC, QInvno DESC";
+                "x, cust.ccontemail, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.sc" +
+                "hcolors, cust.keeppswd, cust.leadsource, cust.leadsname, \r\n                     " +
+                "    cust.prevpublisher, cust.leadname, quotes.booktype, quotes.contryear AS Qyea" +
+                "r, quotes.invno AS QInvno, produtn.prodno, produtn.dedayin, produtn.dedayout, pr" +
+                "odutn.kitrecvd, produtn.jobno, produtn.advpw, produtn.stfpw, \r\n                 " +
+                "        cust.oraclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, cus" +
+                "t.electronickitoptions, cust.electronickit, cust.cposition, cust.status, cust.Ta" +
+                "xExemptionReceived, cust.FirstDaySchool, cust.stage, cust.NotTaxExempt, \r\n      " +
+                "                   cust.IsTaxExempt, cust.taxexemptionexpirationdate, produtn.pr" +
+                "shpdte, cust.ShippingAddr2, cust.ShippingCity, cust.ShippingZipCode, cust.Shippi" +
+                "ngState, cust.InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceStat" +
+                "e, \r\n                         cust.InvoiceZipCode, cust.ShippingAddr, cust.PIN, " +
+                "cust.InvoiceEmail1, cust.InvoiceEmail2, cust.InvoiceEmail3\r\nFROM            cust" +
+                " LEFT OUTER JOIN\r\n                         quotes ON cust.schcode = quotes.schco" +
+                "de LEFT OUTER JOIN\r\n                         produtn ON quotes.invno = produtn.i" +
+                "nvno\r\nWHERE        (cust.schcode = @schcode)\r\nORDER BY Qyear DESC, QInvno DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        cstatus, source, sourdate, photographer, secsource, contdate, origs" +
                 "our, origyear, rebook, rebookdte, refby, schcode, schname, contryear, enrollment" +
-                ", grades, sal, schaddr, schaddr2, schcity, schstate, schzip, \r\n                 " +
-                "        schphone, schfax, schemail, sprngbrk, schout, contmemo, position, gender" +
+                ", grades, sal, schaddr, schaddr2, schcity, schstate, schzip, schphone, schfax, \r" +
+                "\n                         schemail, sprngbrk, schout, contmemo, position, gender" +
                 ", contfname, contlname, newfname, newlname, yb_sth, shiptocont, contaddr, contad" +
-                "dr2, contcity, contstate, contzip, contphnhom, \r\n                         contph" +
-                "nwrk, contfax, contemail, vcrsent, sigfopf, envflyer, marketing, yearrnd, clrpg_" +
+                "dr2, contcity, contstate, contzip, contphnhom, contphnwrk, contfax, contemail, v" +
+                "crsent, \r\n                         sigfopf, envflyer, marketing, yearrnd, clrpg_" +
                 "int, shipmemo, schclosed, inoffice, digintrst, svcode1, svdesc1, svcode2, svdesc" +
-                "2, spcinst, lastcont, nextcont, csrep, cstat, \r\n                         xeldate" +
-                ", allcolor, rbinit, rbdate, clspic, magic, extrchg, sprinfo, fallinfo, initcont," +
+                "2, spcinst, lastcont, nextcont, csrep, cstat, xeldate, allcolor, rbinit, rbdate," +
+                " clspic, magic, extrchg, \r\n                         sprinfo, fallinfo, initcont," +
                 " highsp, slownone, pcmac, junsno, bcontfname, bcontlname, bcontaddr, bcontaddr2," +
-                " bcontcity, bcontstate, bcontzip, bcontphnhom, \r\n                         bcontp" +
-                "hnwrk, bcontfax, bcontemail, multiyroptions, multiyear, schuploading, website, n" +
+                " bcontcity, bcontstate, bcontzip, bcontphnhom, bcontphnwrk, bcontfax, bcontemail" +
+                ", multiyroptions, multiyear, \r\n                         schuploading, website, n" +
                 "omktemail, nodirectmail, bposition, blkwhite, mbconlinepassword, ccontfname, cco" +
-                "ntlname, ccontaddr, ccontaddr2, ccontcity, \r\n                         ccontstate" +
-                ", ccontzip, ccontphnhom, ccontphnwork, ccontfax, ccontemail, norebookreason, new" +
+                "ntlname, ccontaddr, ccontaddr2, ccontcity, ccontstate, ccontzip, ccontphnhom, cc" +
+                "ontphnwork, ccontfax, ccontemail, \r\n                         norebookreason, new" +
                 "publisher, csrep2, schcolors, keeppswd, leadsource, leadsname, prevpublisher, le" +
-                "adname, oraclecode, TimeStamp, \r\n                         ModifiedBy, DateModifi" +
-                "ed, electronickitoptions, electronickit, cposition, status, TaxExemptionReceived" +
+                "adname, oraclecode, TimeStamp, ModifiedBy, DateModified, electronickitoptions, e" +
+                "lectronickit, cposition, status, \r\n                         TaxExemptionReceived" +
                 ", FirstDaySchool, stage, NotTaxExempt, IsTaxExempt, taxexemptionexpirationdate, " +
-                "ShippingAddr2, \r\n                         ShippingCity, ShippingZipCode, Shippin" +
-                "gState, InvoiceAddr, InvoiceAddr2, InvoiceCity, InvoiceState, InvoiceZipCode, Sh" +
-                "ippingAddr, PIN\r\nFROM            cust\r\nWHERE        (schcode = @schcode)";
+                "ShippingAddr2, ShippingCity, ShippingZipCode, ShippingState, InvoiceAddr, Invoic" +
+                "eAddr2, InvoiceCity, InvoiceState, \r\n                         InvoiceZipCode, Sh" +
+                "ippingAddr, PIN, InvoiceEmail1, InvoiceEmail2, InvoiceEmail3\r\nFROM            cu" +
+                "st\r\nWHERE        (schcode = @schcode)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +
                 "ecsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookd" +
-                "te, cust.refby, cust.schcode, cust.contryear, cust.enrollment, \r\n               " +
-                "          cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust.schcity, cust" +
+                "te, cust.refby, cust.schcode, cust.contryear, cust.enrollment, cust.grades, \r\n  " +
+                "                       cust.sal, cust.schaddr, cust.schaddr2, cust.schcity, cust" +
                 ".schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail, cust.sprngbrk" +
-                ", cust.schout, cust.contmemo, cust.position, cust.gender, \r\n                    " +
-                "     cust.contfname, cust.contlname, cust.newfname, cust.newlname, cust.yb_sth, " +
+                ", cust.schout, cust.contmemo, cust.position, cust.gender, cust.contfname, cust.c" +
+                "ontlname, \r\n                         cust.newfname, cust.newlname, cust.yb_sth, " +
                 "cust.shiptocont, cust.contaddr, cust.contaddr2, cust.contcity, cust.contstate, c" +
-                "ust.contzip, cust.contphnhom, cust.contphnwrk, \r\n                         cust.c" +
-                "ontfax, cust.contemail, cust.vcrsent, cust.sigfopf, cust.envflyer, cust.marketin" +
+                "ust.contzip, cust.contphnhom, cust.contphnwrk, cust.contfax, cust.contemail, cus" +
+                "t.vcrsent, cust.sigfopf, \r\n                         cust.envflyer, cust.marketin" +
                 "g, cust.yearrnd, cust.clrpg_int, cust.shipmemo, cust.schclosed, cust.inoffice, c" +
-                "ust.digintrst, cust.svcode1, cust.svdesc1, \r\n                         cust.svcod" +
-                "e2, cust.svdesc2, cust.spcinst, cust.lastcont, cust.nextcont, cust.csrep, cust.c" +
+                "ust.digintrst, cust.svcode1, cust.svdesc1, cust.svcode2, cust.svdesc2, cust.spci" +
+                "nst, cust.lastcont, cust.nextcont, \r\n                         cust.csrep, cust.c" +
                 "stat, cust.xeldate, cust.allcolor, cust.rbinit, cust.rbdate, cust.clspic, cust.m" +
-                "agic, cust.extrchg, cust.sprinfo, cust.fallinfo, \r\n                         cust" +
-                ".initcont, cust.highsp, cust.slownone, cust.pcmac, cust.junsno, cust.bcontfname," +
+                "agic, cust.extrchg, cust.sprinfo, cust.fallinfo, cust.initcont, cust.highsp, cus" +
+                "t.slownone, cust.pcmac, cust.junsno, cust.bcontfname, \r\n                        " +
                 " cust.bcontlname, cust.bcontaddr, cust.bcontaddr2, cust.bcontcity, cust.bcontsta" +
-                "te, cust.bcontzip, cust.bcontphnhom, \r\n                         cust.bcontphnwrk" +
-                ", cust.bcontfax, cust.bcontemail, cust.multiyroptions, cust.multiyear, cust.schu" +
-                "ploading, cust.website, cust.nomktemail, cust.nodirectmail, cust.bposition, cust" +
-                ".blkwhite, cust.mbconlinepassword, \r\n                         cust.ccontfname, c" +
-                "ust.ccontlname, cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, cust.ccontstate" +
-                ", cust.ccontzip, cust.ccontphnhom, cust.ccontphnwork, cust.ccontfax, cust.cconte" +
-                "mail, cust.norebookreason, \r\n                         cust.newpublisher, cust.cs" +
-                "rep2, cust.schcolors, cust.keeppswd, cust.leadsource, cust.leadsname, cust.prevp" +
-                "ublisher, cust.leadname, quotes.booktype, quotes.contryear AS Qyear, quotes.invn" +
-                "o AS QInvno, \r\n                         produtn.prodno, produtn.dedayin, produtn" +
-                ".dedayout, produtn.kitrecvd, produtn.jobno, produtn.advpw, produtn.stfpw, cust.o" +
-                "raclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, cust.electronicki" +
-                "toptions, \r\n                         cust.electronickit, cust.cposition, cust.st" +
-                "atus, cust.TaxExemptionReceived, cust.FirstDaySchool, cust.stage, cust.NotTaxExe" +
-                "mpt, cust.IsTaxExempt, cust.taxexemptionexpirationdate, cust.ShippingAddr2, \r\n  " +
-                "                       cust.ShippingCity, cust.ShippingZipCode, cust.ShippingSta" +
-                "te, cust.InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, cu" +
-                "st.InvoiceZipCode, cust.ShippingAddr, cust.schname, cust.PIN\r\nFROM            cu" +
-                "st LEFT OUTER JOIN\r\n                         quotes ON cust.schcode = quotes.sch" +
-                "code LEFT OUTER JOIN\r\n                         produtn ON quotes.invno = produtn" +
-                ".invno\r\nWHERE        (cust.oraclecode = @oraclecode)\r\nORDER BY Qyear DESC";
+                "te, cust.bcontzip, cust.bcontphnhom, cust.bcontphnwrk, cust.bcontfax, cust.bcont" +
+                "email, cust.multiyroptions, cust.multiyear, cust.schuploading, \r\n               " +
+                "          cust.website, cust.nomktemail, cust.nodirectmail, cust.bposition, cust" +
+                ".blkwhite, cust.mbconlinepassword, cust.ccontfname, cust.ccontlname, cust.cconta" +
+                "ddr, cust.ccontaddr2, cust.ccontcity, cust.ccontstate, cust.ccontzip, \r\n        " +
+                "                 cust.ccontphnhom, cust.ccontphnwork, cust.ccontfax, cust.cconte" +
+                "mail, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.schcolors, cust." +
+                "keeppswd, cust.leadsource, cust.leadsname, cust.prevpublisher, cust.leadname, \r\n" +
+                "                         quotes.booktype, quotes.contryear AS Qyear, quotes.invn" +
+                "o AS QInvno, produtn.prodno, produtn.dedayin, produtn.dedayout, produtn.kitrecvd" +
+                ", produtn.jobno, produtn.advpw, produtn.stfpw, cust.oraclecode, cust.TimeStamp, " +
+                "\r\n                         cust.ModifiedBy, cust.DateModified, cust.electronicki" +
+                "toptions, cust.electronickit, cust.cposition, cust.status, cust.TaxExemptionRece" +
+                "ived, cust.FirstDaySchool, cust.stage, cust.NotTaxExempt, cust.IsTaxExempt, \r\n  " +
+                "                       cust.taxexemptionexpirationdate, cust.ShippingAddr2, cust" +
+                ".ShippingCity, cust.ShippingZipCode, cust.ShippingState, cust.InvoiceAddr, cust." +
+                "InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, cust.InvoiceZipCode, \r\n      " +
+                "                   cust.ShippingAddr, cust.schname, cust.PIN, cust.InvoiceEmail1" +
+                ", cust.InvoiceEmail2, cust.InvoiceEmail3\r\nFROM            cust LEFT OUTER JOIN\r\n" +
+                "                         quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN" +
+                "\r\n                         produtn ON quotes.invno = produtn.invno\r\nWHERE       " +
+                " (cust.oraclecode = @oraclecode)\r\nORDER BY Qyear DESC";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oraclecode", global::System.Data.SqlDbType.NVarChar, 7, global::System.Data.ParameterDirection.Input, 0, 0, "oraclecode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT        cust.cstatus, cust.source, cust.sourdate, cust.photographer, cust.s" +
                 "ecsource, cust.contdate, cust.origsour, cust.origyear, cust.rebook, cust.rebookd" +
-                "te, cust.refby, cust.schcode, cust.schname, cust.contryear, \r\n                  " +
-                "       cust.enrollment, cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust" +
+                "te, cust.refby, cust.schcode, cust.schname, cust.contryear, cust.enrollment, \r\n " +
+                "                        cust.grades, cust.sal, cust.schaddr, cust.schaddr2, cust" +
                 ".schcity, cust.schstate, cust.schzip, cust.schphone, cust.schfax, cust.schemail," +
-                " cust.sprngbrk, cust.schout, cust.contmemo, cust.position, \r\n                   " +
-                "      cust.gender, cust.contfname, cust.contlname, cust.newfname, cust.newlname," +
+                " cust.sprngbrk, cust.schout, cust.contmemo, cust.position, cust.gender, cust.con" +
+                "tfname, \r\n                         cust.contlname, cust.newfname, cust.newlname," +
                 " cust.yb_sth, cust.shiptocont, cust.contaddr, cust.contaddr2, cust.contcity, cus" +
-                "t.contstate, cust.contzip, cust.contphnhom, \r\n                         cust.cont" +
-                "phnwrk, cust.contfax, cust.contemail, cust.vcrsent, cust.sigfopf, cust.envflyer," +
+                "t.contstate, cust.contzip, cust.contphnhom, cust.contphnwrk, cust.contfax, cust." +
+                "contemail, \r\n                         cust.vcrsent, cust.sigfopf, cust.envflyer," +
                 " cust.marketing, cust.yearrnd, cust.clrpg_int, cust.shipmemo, cust.schclosed, cu" +
-                "st.inoffice, cust.digintrst, cust.svcode1, \r\n                         cust.svdes" +
-                "c1, cust.svcode2, cust.svdesc2, cust.spcinst, cust.lastcont, cust.nextcont, cust" +
+                "st.inoffice, cust.digintrst, cust.svcode1, cust.svdesc1, cust.svcode2, cust.svde" +
+                "sc2, cust.spcinst, \r\n                         cust.lastcont, cust.nextcont, cust" +
                 ".csrep, cust.cstat, cust.xeldate, cust.allcolor, cust.rbinit, cust.rbdate, cust." +
-                "clspic, cust.magic, cust.extrchg, cust.sprinfo, \r\n                         cust." +
-                "fallinfo, cust.initcont, cust.highsp, cust.slownone, cust.pcmac, cust.junsno, cu" +
+                "clspic, cust.magic, cust.extrchg, cust.sprinfo, cust.fallinfo, cust.initcont, cu" +
+                "st.highsp, cust.slownone, cust.pcmac, \r\n                         cust.junsno, cu" +
                 "st.bcontfname, cust.bcontlname, cust.bcontaddr, cust.bcontaddr2, cust.bcontcity," +
-                " cust.bcontstate, cust.bcontzip, \r\n                         cust.bcontphnhom, cu" +
-                "st.bcontphnwrk, cust.bcontfax, cust.bcontemail, cust.multiyroptions, cust.multiy" +
+                " cust.bcontstate, cust.bcontzip, cust.bcontphnhom, cust.bcontphnwrk, cust.bcontf" +
+                "ax, cust.bcontemail, cust.multiyroptions, \r\n                         cust.multiy" +
                 "ear, cust.schuploading, cust.website, cust.nomktemail, cust.nodirectmail, cust.b" +
-                "position, cust.blkwhite, \r\n                         cust.mbconlinepassword, cust" +
-                ".ccontfname, cust.ccontlname, cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, c" +
+                "position, cust.blkwhite, cust.mbconlinepassword, cust.ccontfname, cust.ccontlnam" +
+                "e, cust.ccontaddr, cust.ccontaddr2, cust.ccontcity, \r\n                         c" +
                 "ust.ccontstate, cust.ccontzip, cust.ccontphnhom, cust.ccontphnwork, cust.ccontfa" +
-                "x, cust.ccontemail, \r\n                         cust.norebookreason, cust.newpubl" +
-                "isher, cust.csrep2, cust.schcolors, cust.keeppswd, cust.leadsource, cust.leadsna" +
-                "me, cust.prevpublisher, cust.leadname, quotes.booktype, quotes.contryear AS Qyea" +
-                "r, \r\n                         quotes.invno AS QInvno, produtn.prodno, produtn.de" +
-                "dayin, produtn.dedayout, produtn.kitrecvd, produtn.jobno, produtn.advpw, produtn" +
-                ".stfpw, cust.oraclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, \r\n " +
-                "                        cust.electronickitoptions, cust.electronickit, cust.cpos" +
-                "ition, cust.status, cust.TaxExemptionReceived, cust.FirstDaySchool, cust.stage, " +
-                "cust.NotTaxExempt, cust.IsTaxExempt, cust.taxexemptionexpirationdate, \r\n        " +
-                "                 cust.ShippingAddr2, cust.ShippingCity, cust.ShippingZipCode, cu" +
-                "st.ShippingState, cust.InvoiceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.In" +
-                "voiceState, cust.InvoiceZipCode, cust.ShippingAddr, cust.PIN\r\nFROM            cu" +
-                "st LEFT OUTER JOIN\r\n                         quotes ON cust.schcode = quotes.sch" +
-                "code LEFT OUTER JOIN\r\n                         produtn ON quotes.invno = produtn" +
-                ".invno\r\nWHERE        (cust.schname LIKE @schname + \'%\')\r\nORDER BY Qyear DESC";
+                "x, cust.ccontemail, cust.norebookreason, cust.newpublisher, cust.csrep2, cust.sc" +
+                "hcolors, cust.keeppswd, cust.leadsource, cust.leadsname, \r\n                     " +
+                "    cust.prevpublisher, cust.leadname, quotes.booktype, quotes.contryear AS Qyea" +
+                "r, quotes.invno AS QInvno, produtn.prodno, produtn.dedayin, produtn.dedayout, pr" +
+                "odutn.kitrecvd, produtn.jobno, produtn.advpw, produtn.stfpw, \r\n                 " +
+                "        cust.oraclecode, cust.TimeStamp, cust.ModifiedBy, cust.DateModified, cus" +
+                "t.electronickitoptions, cust.electronickit, cust.cposition, cust.status, cust.Ta" +
+                "xExemptionReceived, cust.FirstDaySchool, cust.stage, cust.NotTaxExempt, \r\n      " +
+                "                   cust.IsTaxExempt, cust.taxexemptionexpirationdate, cust.Shipp" +
+                "ingAddr2, cust.ShippingCity, cust.ShippingZipCode, cust.ShippingState, cust.Invo" +
+                "iceAddr, cust.InvoiceAddr2, cust.InvoiceCity, cust.InvoiceState, \r\n             " +
+                "            cust.InvoiceZipCode, cust.ShippingAddr, cust.PIN, cust.InvoiceEmail1" +
+                ", cust.InvoiceEmail2, cust.InvoiceEmail3\r\nFROM            cust LEFT OUTER JOIN\r\n" +
+                "                         quotes ON cust.schcode = quotes.schcode LEFT OUTER JOIN" +
+                "\r\n                         produtn ON quotes.invno = produtn.invno\r\nWHERE       " +
+                " (cust.schname LIKE @schname + \'%\')\r\nORDER BY Qyear DESC";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "schname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

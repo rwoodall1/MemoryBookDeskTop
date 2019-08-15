@@ -725,6 +725,10 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnshpdate;
             
+            private global::System.Data.DataColumn columnColorPriceOverRide;
+            
+            private global::System.Data.DataColumn columnmsstanqty1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public quotesDataTable() {
@@ -2264,6 +2268,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ColorPriceOverRideColumn {
+                get {
+                    return this.columnColorPriceOverRide;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn msstanqty1Column {
+                get {
+                    return this.columnmsstanqty1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2487,7 +2507,9 @@ namespace Mbc5.DataSets {
                         decimal schooltax, 
                         System.DateTime kitrecvd, 
                         string jobno, 
-                        System.DateTime shpdate) {
+                        System.DateTime shpdate, 
+                        bool ColorPriceOverRide, 
+                        int msstanqty1) {
                 quotesRow rowquotesRow = ((quotesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         invno,
@@ -2677,7 +2699,9 @@ namespace Mbc5.DataSets {
                         schooltax,
                         kitrecvd,
                         jobno,
-                        shpdate};
+                        shpdate,
+                        ColorPriceOverRide,
+                        msstanqty1};
                 rowquotesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowquotesRow);
                 return rowquotesRow;
@@ -2895,6 +2919,8 @@ namespace Mbc5.DataSets {
                 this.columnkitrecvd = base.Columns["kitrecvd"];
                 this.columnjobno = base.Columns["jobno"];
                 this.columnshpdate = base.Columns["shpdate"];
+                this.columnColorPriceOverRide = base.Columns["ColorPriceOverRide"];
+                this.columnmsstanqty1 = base.Columns["msstanqty1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3276,6 +3302,10 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnjobno);
                 this.columnshpdate = new global::System.Data.DataColumn("shpdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnshpdate);
+                this.columnColorPriceOverRide = new global::System.Data.DataColumn("ColorPriceOverRide", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnColorPriceOverRide);
+                this.columnmsstanqty1 = new global::System.Data.DataColumn("msstanqty1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmsstanqty1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columninvno.AllowDBNull = false;
@@ -3306,6 +3336,7 @@ namespace Mbc5.DataSets {
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
                 this.columnjobno.MaxLength = 7;
+                this.columnmsstanqty1.Caption = "msstanqty";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3484,6 +3515,8 @@ namespace Mbc5.DataSets {
             private global::System.Data.DataColumn columnccontemail;
             
             private global::System.Data.DataColumn columnPIN;
+            
+            private global::System.Data.DataColumn columnoraclecode;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -3704,6 +3737,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn oraclecodeColumn {
+                get {
+                    return this.columnoraclecode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3762,7 +3803,8 @@ namespace Mbc5.DataSets {
                         string contemail, 
                         string bcontemail, 
                         string ccontemail, 
-                        int PIN) {
+                        int PIN, 
+                        string oraclecode) {
                 custRow rowcustRow = ((custRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -3787,7 +3829,8 @@ namespace Mbc5.DataSets {
                         contemail,
                         bcontemail,
                         ccontemail,
-                        PIN};
+                        PIN,
+                        oraclecode};
                 rowcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustRow);
                 return rowcustRow;
@@ -3840,6 +3883,7 @@ namespace Mbc5.DataSets {
                 this.columnbcontemail = base.Columns["bcontemail"];
                 this.columnccontemail = base.Columns["ccontemail"];
                 this.columnPIN = base.Columns["PIN"];
+                this.columnoraclecode = base.Columns["oraclecode"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3891,6 +3935,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnccontemail);
                 this.columnPIN = new global::System.Data.DataColumn("PIN", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPIN);
+                this.columnoraclecode = new global::System.Data.DataColumn("oraclecode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoraclecode);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnschcode}, true));
                 this.columnschcode.AllowDBNull = false;
@@ -3918,6 +3964,7 @@ namespace Mbc5.DataSets {
                 this.columncontemail.MaxLength = 50;
                 this.columnbcontemail.MaxLength = 50;
                 this.columnccontemail.MaxLength = 50;
+                this.columnoraclecode.MaxLength = 7;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7352,6 +7399,38 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool ColorPriceOverRide {
+                get {
+                    try {
+                        return ((bool)(this[this.tablequotes.ColorPriceOverRideColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ColorPriceOverRide\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.ColorPriceOverRideColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int msstanqty1 {
+                get {
+                    try {
+                        return ((int)(this[this.tablequotes.msstanqty1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'msstanqty1\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.msstanqty1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsprodnoNull() {
                 return this.IsNull(this.tablequotes.prodnoColumn);
             }
@@ -9581,6 +9660,30 @@ namespace Mbc5.DataSets {
             public void SetshpdateNull() {
                 this[this.tablequotes.shpdateColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsColorPriceOverRideNull() {
+                return this.IsNull(this.tablequotes.ColorPriceOverRideColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetColorPriceOverRideNull() {
+                this[this.tablequotes.ColorPriceOverRideColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Ismsstanqty1Null() {
+                return this.IsNull(this.tablequotes.msstanqty1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setmsstanqty1Null() {
+                this[this.tablequotes.msstanqty1Column] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -9957,6 +10060,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string oraclecode {
+                get {
+                    try {
+                        return ((string)(this[this.tablecust.oraclecodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'oraclecode\' in table \'cust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecust.oraclecodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IscontryearNull() {
                 return this.IsNull(this.tablecust.contryearColumn);
             }
@@ -10205,6 +10324,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetPINNull() {
                 this[this.tablecust.PINColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsoraclecodeNull() {
+                return this.IsNull(this.tablecust.oraclecodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetoraclecodeNull() {
+                this[this.tablecust.oraclecodeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10681,6 +10812,8 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("kitrecvd", "kitrecvd");
             tableMapping.ColumnMappings.Add("jobno", "jobno");
             tableMapping.ColumnMappings.Add("shpdate", "shpdate");
+            tableMapping.ColumnMappings.Add("ColorPriceOverRide", "ColorPriceOverRide");
+            tableMapping.ColumnMappings.Add("msstanqty", "msstanqty1");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -11225,106 +11358,106 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        quotes.invno, quotes.prodno, quotes.booktype, quotes.qtedate, quote" +
-                "s.contryear, quotes.book_ea, quotes.book_price, quotes.pryn, quotes.prof, quotes" +
-                ".coyn, quotes.conven, quotes.specea, quotes.speccvr, quotes.scovrde, \r\n         " +
-                "                quotes.layn, quotes.laminate, quotes.peyn, quotes.perfbind, quot" +
-                "es.foilck, quotes.foilamt, quotes.insck, quotes.insamt, quotes.spirck, quotes.sp" +
-                "iramt, quotes.hdbky_n, quotes.hardback, quotes.casey_n, quotes.caseamt, \r\n      " +
-                "                   quotes.customy_n, quotes.customized, quotes.misc, quotes.mdes" +
-                "c, quotes.sbtot, quotes.dc1, quotes.dp1, quotes.disc1, quotes.dc2, quotes.dp2, q" +
-                "uotes.disc2, quotes.dp3desc, quotes.dp3, quotes.disc3, quotes.dp4, \r\n           " +
-                "              quotes.disc4, quotes.cred_etc, quotes.adjbef, quotes.adjaftr, quot" +
-                "es.fbkprc, quotes.ftotprc, quotes.source, quotes.xtrabkno, quotes.xtrabkprc, quo" +
-                "tes.desc1, quotes.desc1tot, quotes.desc2, quotes.desc2tot, quotes.ponum, \r\n     " +
-                "                    quotes.invoiced, quotes.newprice, quotes.schout, quotes.sale" +
-                "tax, quotes.allclrck, quotes.allclramt, quotes.inkclr, quotes.foiladamt, quotes." +
-                "desc3, quotes.desc3tot, quotes.desc4, quotes.desc4tot, quotes.clrpgdesc, \r\n     " +
-                "                    quotes.clrpgtot, quotes.glspaper, quotes.glsamt, quotes.bpov" +
-                "rde, quotes.holdpmt, quotes.bpyear, quotes.themck, quotes.themamt, quotes.yirsch" +
-                "ool, quotes.story, quotes.supplements, quotes.yiramt, quotes.storyamt, \r\n       " +
-                "                  quotes.suppamt, quotes.persamount, quotes.perstotal, quotes.pe" +
-                "rscopies, quotes.oursupp, quotes.oursuppamt, quotes.ourovrride, quotes.dp1desc, " +
-                "quotes.rebookinvremv, quotes.rebookinvremv1, quotes.rebookinvremv2, \r\n          " +
-                "               quotes.rebookinvremv3, quotes.rebookinvremv4, quotes.rebookinvrem" +
-                "v5, quotes.rebookinvremv6, quotes.norebookletter, quotes.myovrride, quotes.hbovr" +
-                "ride, quotes.profovrride, quotes.conovrride, quotes.themovrride, \r\n             " +
-                "            quotes.cbovrride, quotes.spiovrride, quotes.pbovrride, quotes.yirsov" +
-                "rride, quotes.ourstyovrride, quotes.laminateovrride, quotes.foilyearovrride, quo" +
-                "tes.sdlstich, quotes.sdlstichamt, quotes.copiesovride, quotes.bascicpp, \r\n      " +
-                "                   quotes.perpp, quotes.agreerec, quotes.basicamoun, quotes.pera" +
-                "mount, quotes.oprcperbk, quotes.oprcperbk2, quotes.agreedte, quotes.onlinecuto, " +
-                "quotes.basicpp, quotes.msstanqty, quotes.msstandtot, quotes.fldtype, \r\n         " +
-                "                quotes.isfolder, quotes.priceovrd, quotes.mlamsoft, quotes.mlamh" +
-                "rd, quotes.mlaminationamt, quotes.mlamination, quotes.opinkpers, quotes.opfoilpe" +
-                "rs, quotes.opinkpersamt, quotes.opfoilpersamt, quotes.oppicpers, \r\n             " +
-                "            quotes.oppicpersamt, quotes.opcustom, quotes.opcustomamt, quotes.opf" +
-                "oiltxtamt, quotes.opfoiltxt, quotes.opinkamt, quotes.opink, quotes.yrdiscount, q" +
-                "uotes.luvlines, quotes.yrdiscountamt, quotes.luvlineamt, quotes.fullad, \r\n      " +
-                "                   quotes.fulladamt, quotes.halfad, quotes.halfadamt, quotes.qua" +
-                "rterad, quotes.quarteradamt, quotes.eighthad, quotes.eighthadamt, quotes.adline," +
-                " quotes.cred_etc2, quotes.desc22, quotes.adjaftr2, quotes.desc22tot, quotes.prco" +
-                "r, \r\n                         quotes.adcuto, quotes.webonly, quotes.totalsoldonl" +
-                "ine, quotes.totalpersonline, quotes.totaldollarsonline, quotes.freebooks, quotes" +
-                ".totalads, quotes.totallovelines, quotes.TimeStamp, quotes.onlinenotes, quotes.M" +
-                "odifiedBy, \r\n                         quotes.DateModified, quotes.DateCreated, q" +
-                "uotes.IconCopies, quotes.IconAmt, quotes.extrchg, quotes.schooltaxrate, quotes.s" +
-                "chcode, quotes.donotchargeschoolsalestax, quotes.nopages, quotes.nocopies, quote" +
-                "s.schooltax, \r\n                         produtn.kitrecvd, produtn.jobno, produtn" +
-                ".shpdate, quotes.ColorPriceOverRide\r\nFROM            quotes INNER JOIN\r\n        " +
+            this._commandCollection[0].CommandText = "SELECT        quotes.invno, quotes.ColorPriceOverRide, quotes.prodno, quotes.book" +
+                "type, quotes.qtedate, quotes.contryear, quotes.book_ea, quotes.book_price, quote" +
+                "s.pryn, quotes.prof, quotes.coyn, quotes.conven, quotes.specea, \r\n              " +
+                "           quotes.speccvr, quotes.scovrde, quotes.layn, quotes.laminate, quotes." +
+                "peyn, quotes.perfbind, quotes.foilck, quotes.foilamt, quotes.insck, quotes.insam" +
+                "t, quotes.spirck, quotes.spiramt, quotes.hdbky_n, quotes.hardback, \r\n           " +
+                "              quotes.casey_n, quotes.caseamt, quotes.customy_n, quotes.customize" +
+                "d, quotes.misc, quotes.mdesc, quotes.sbtot, quotes.dc1, quotes.dp1, quotes.disc1" +
+                ", quotes.dc2, quotes.dp2, quotes.disc2, quotes.dp3desc, quotes.dp3, \r\n          " +
+                "               quotes.disc3, quotes.dp4, quotes.disc4, quotes.cred_etc, quotes.a" +
+                "djbef, quotes.adjaftr, quotes.fbkprc, quotes.ftotprc, quotes.source, quotes.xtra" +
+                "bkno, quotes.xtrabkprc, quotes.desc1, quotes.desc1tot, quotes.desc2, \r\n         " +
+                "                quotes.desc2tot, quotes.ponum, quotes.invoiced, quotes.newprice," +
+                " quotes.schout, quotes.saletax, quotes.allclrck, quotes.allclramt, quotes.inkclr" +
+                ", quotes.foiladamt, quotes.desc3, quotes.desc3tot, quotes.desc4, quotes.desc4tot" +
+                ", \r\n                         quotes.clrpgdesc, quotes.clrpgtot, quotes.glspaper," +
+                " quotes.glsamt, quotes.bpovrde, quotes.holdpmt, quotes.bpyear, quotes.themck, qu" +
+                "otes.themamt, quotes.yirschool, quotes.story, quotes.supplements, quotes.yiramt," +
+                " \r\n                         quotes.storyamt, quotes.suppamt, quotes.persamount, " +
+                "quotes.perstotal, quotes.perscopies, quotes.oursupp, quotes.oursuppamt, quotes.o" +
+                "urovrride, quotes.dp1desc, quotes.rebookinvremv, quotes.rebookinvremv1, \r\n      " +
+                "                   quotes.rebookinvremv2, quotes.rebookinvremv3, quotes.rebookin" +
+                "vremv4, quotes.rebookinvremv5, quotes.rebookinvremv6, quotes.norebookletter, quo" +
+                "tes.myovrride, quotes.hbovrride, quotes.profovrride, quotes.conovrride, \r\n      " +
+                "                   quotes.themovrride, quotes.cbovrride, quotes.spiovrride, quot" +
+                "es.pbovrride, quotes.yirsovrride, quotes.ourstyovrride, quotes.laminateovrride, " +
+                "quotes.foilyearovrride, quotes.sdlstich, quotes.sdlstichamt, quotes.copiesovride" +
+                ", \r\n                         quotes.bascicpp, quotes.perpp, quotes.agreerec, quo" +
+                "tes.basicamoun, quotes.peramount, quotes.oprcperbk, quotes.oprcperbk2, quotes.ag" +
+                "reedte, quotes.onlinecuto, quotes.basicpp, quotes.msstanqty, quotes.msstandtot, " +
+                "\r\n                         quotes.fldtype, quotes.isfolder, quotes.priceovrd, qu" +
+                "otes.mlamsoft, quotes.mlamhrd, quotes.mlaminationamt, quotes.mlamination, quotes" +
+                ".opinkpers, quotes.opfoilpers, quotes.opinkpersamt, quotes.opfoilpersamt, \r\n    " +
+                "                     quotes.oppicpers, quotes.oppicpersamt, quotes.opcustom, quo" +
+                "tes.opcustomamt, quotes.opfoiltxtamt, quotes.opfoiltxt, quotes.opinkamt, quotes." +
+                "opink, quotes.yrdiscount, quotes.luvlines, quotes.yrdiscountamt, quotes.luvlinea" +
+                "mt,\r\n                          quotes.fullad, quotes.fulladamt, quotes.halfad, q" +
+                "uotes.halfadamt, quotes.quarterad, quotes.quarteradamt, quotes.eighthad, quotes." +
+                "eighthadamt, quotes.adline, quotes.cred_etc2, quotes.desc22, quotes.adjaftr2, \r\n" +
+                "                         quotes.desc22tot, quotes.prcor, quotes.adcuto, quotes.w" +
+                "ebonly, quotes.totalsoldonline, quotes.totalpersonline, quotes.totaldollarsonlin" +
+                "e, quotes.freebooks, quotes.totalads, quotes.totallovelines, quotes.TimeStamp, \r" +
+                "\n                         quotes.onlinenotes, quotes.ModifiedBy, quotes.DateModi" +
+                "fied, quotes.DateCreated, quotes.IconCopies, quotes.IconAmt, quotes.extrchg, quo" +
+                "tes.schooltaxrate, quotes.schcode, quotes.donotchargeschoolsalestax, \r\n         " +
+                "                quotes.nopages, quotes.nocopies, quotes.schooltax, produtn.kitre" +
+                "cvd, produtn.jobno, produtn.shpdate\r\nFROM            quotes INNER JOIN\r\n        " +
                 "                 produtn ON quotes.invno = produtn.invno\r\nWHERE        (quotes.s" +
                 "chcode = @schcode)\r\nORDER BY quotes.qtedate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        quotes.DateCreated, quotes.DateModified, quotes.IconAmt, quotes.Ico" +
-                "nCopies, quotes.ModifiedBy, quotes.TimeStamp, quotes.adcuto, quotes.adjaftr, quo" +
-                "tes.adjaftr2, quotes.adjbef, quotes.adline, quotes.agreedte, \r\n                 " +
-                "        quotes.agreerec, quotes.allclramt, quotes.allclrck, quotes.bascicpp, quo" +
-                "tes.basicamoun, quotes.basicpp, quotes.book_ea, quotes.book_price, quotes.bookty" +
-                "pe, quotes.bpovrde, quotes.bpyear, quotes.caseamt, quotes.casey_n, \r\n           " +
-                "              quotes.cbovrride, quotes.clrpgdesc, quotes.clrpgtot, quotes.conovr" +
-                "ride, quotes.contryear, quotes.conven, quotes.copiesovride, quotes.coyn, quotes." +
-                "cred_etc, quotes.cred_etc2, quotes.customized, quotes.customy_n, \r\n             " +
-                "            quotes.dc1, quotes.dc2, quotes.desc1, quotes.desc1tot, quotes.desc2," +
-                " quotes.desc22, quotes.desc22tot, quotes.desc2tot, quotes.desc3, quotes.desc3tot" +
-                ", quotes.desc4, quotes.desc4tot, quotes.disc1, quotes.disc2, \r\n                 " +
-                "        quotes.disc3, quotes.disc4, quotes.donotchargeschoolsalestax, quotes.dp1" +
-                ", quotes.dp1desc, quotes.dp2, quotes.dp3, quotes.dp3desc, quotes.dp4, quotes.eig" +
-                "hthad, quotes.eighthadamt, quotes.extrchg, quotes.fbkprc, \r\n                    " +
-                "     quotes.fldtype, quotes.foiladamt, quotes.foilamt, quotes.foilck, quotes.foi" +
-                "lyearovrride, quotes.freebooks, quotes.ftotprc, quotes.fullad, quotes.fulladamt," +
-                " quotes.glsamt, quotes.glspaper, quotes.halfad, quotes.halfadamt, \r\n            " +
-                "             quotes.hardback, quotes.hbovrride, quotes.hdbky_n, quotes.holdpmt, " +
-                "quotes.inkclr, quotes.insamt, quotes.insck, quotes.invno, quotes.invoiced, quote" +
-                "s.isfolder, quotes.laminate, quotes.laminateovrride, quotes.layn, \r\n            " +
-                "             quotes.luvlineamt, quotes.luvlines, quotes.mdesc, quotes.misc, quot" +
-                "es.mlamhrd, quotes.mlamination, quotes.mlaminationamt, quotes.mlamsoft, quotes.m" +
-                "sstandtot, quotes.msstanqty, quotes.myovrride, quotes.newprice, \r\n              " +
-                "           quotes.nocopies, quotes.nopages, quotes.norebookletter, quotes.online" +
-                "cuto, quotes.onlinenotes, quotes.opcustom, quotes.opcustomamt, quotes.opfoilpers" +
-                ", quotes.opfoilpersamt, quotes.opfoiltxt, quotes.opfoiltxtamt, \r\n               " +
-                "          quotes.opink, quotes.opinkamt, quotes.opinkpers, quotes.opinkpersamt, " +
-                "quotes.oppicpers, quotes.oppicpersamt, quotes.oprcperbk, quotes.oprcperbk2, quot" +
-                "es.ourovrride, quotes.ourstyovrride, quotes.oursupp, \r\n                         " +
-                "quotes.oursuppamt, quotes.pbovrride, quotes.peramount, quotes.perfbind, quotes.p" +
-                "erpp, quotes.persamount, quotes.perscopies, quotes.perstotal, quotes.peyn, quote" +
-                "s.ponum, quotes.prcor, quotes.priceovrd, quotes.prodno, \r\n                      " +
-                "   quotes.prof, quotes.profovrride, quotes.pryn, quotes.qtedate, quotes.quartera" +
-                "d, quotes.quarteradamt, quotes.rebookinvremv, quotes.rebookinvremv1, quotes.rebo" +
-                "okinvremv2, quotes.rebookinvremv3, quotes.rebookinvremv4, \r\n                    " +
-                "     quotes.rebookinvremv5, quotes.rebookinvremv6, quotes.saletax, quotes.sbtot," +
-                " quotes.schcode, quotes.schooltax, quotes.schooltaxrate, quotes.schout, quotes.s" +
-                "covrde, quotes.sdlstich, quotes.sdlstichamt, quotes.source, \r\n                  " +
-                "       quotes.speccvr, quotes.specea, quotes.spiovrride, quotes.spiramt, quotes." +
-                "spirck, quotes.story, quotes.storyamt, quotes.suppamt, quotes.supplements, quote" +
-                "s.themamt, quotes.themck, quotes.themovrride, quotes.totalads, \r\n               " +
-                "          quotes.totaldollarsonline, quotes.totallovelines, quotes.totalpersonli" +
-                "ne, quotes.totalsoldonline, quotes.webonly, quotes.xtrabkno, quotes.xtrabkprc, q" +
-                "uotes.yiramt, quotes.yirschool, quotes.yirsovrride, quotes.yrdiscount, \r\n       " +
-                "                  quotes.yrdiscountamt, produtn.kitrecvd, produtn.jobno, quotes." +
-                "ColorPriceOverRide\r\nFROM            quotes INNER JOIN\r\n                         " +
+            this._commandCollection[1].CommandText = "SELECT        quotes.DateCreated, quotes.ColorPriceOverRide, quotes.DateModified," +
+                " quotes.IconAmt, quotes.IconCopies, quotes.ModifiedBy, quotes.TimeStamp, quotes." +
+                "adcuto, quotes.adjaftr, quotes.adjaftr2, quotes.adjbef, quotes.adline, \r\n       " +
+                "                  quotes.agreedte, quotes.agreerec, quotes.allclramt, quotes.all" +
+                "clrck, quotes.bascicpp, quotes.basicamoun, quotes.basicpp, quotes.book_ea, quote" +
+                "s.book_price, quotes.booktype, quotes.bpovrde, quotes.bpyear, quotes.caseamt, \r\n" +
+                "                         quotes.casey_n, quotes.cbovrride, quotes.clrpgdesc, quo" +
+                "tes.clrpgtot, quotes.conovrride, quotes.contryear, quotes.conven, quotes.copieso" +
+                "vride, quotes.coyn, quotes.cred_etc, quotes.cred_etc2, quotes.customized, \r\n    " +
+                "                     quotes.customy_n, quotes.dc1, quotes.dc2, quotes.desc1, quo" +
+                "tes.desc1tot, quotes.desc2, quotes.desc22, quotes.desc22tot, quotes.desc2tot, qu" +
+                "otes.desc3, quotes.desc3tot, quotes.desc4, quotes.desc4tot, quotes.disc1, \r\n    " +
+                "                     quotes.disc2, quotes.disc3, quotes.disc4, quotes.donotcharg" +
+                "eschoolsalestax, quotes.dp1, quotes.dp1desc, quotes.dp2, quotes.dp3, quotes.dp3d" +
+                "esc, quotes.dp4, quotes.eighthad, quotes.eighthadamt, quotes.extrchg, \r\n        " +
+                "                 quotes.fbkprc, quotes.fldtype, quotes.foiladamt, quotes.foilamt" +
+                ", quotes.foilck, quotes.foilyearovrride, quotes.freebooks, quotes.ftotprc, quote" +
+                "s.fullad, quotes.fulladamt, quotes.glsamt, quotes.glspaper, quotes.halfad, \r\n   " +
+                "                      quotes.halfadamt, quotes.hardback, quotes.hbovrride, quote" +
+                "s.hdbky_n, quotes.holdpmt, quotes.inkclr, quotes.insamt, quotes.insck, quotes.in" +
+                "vno, quotes.invoiced, quotes.isfolder, quotes.laminate, quotes.laminateovrride, " +
+                "\r\n                         quotes.layn, quotes.luvlineamt, quotes.luvlines, quot" +
+                "es.mdesc, quotes.misc, quotes.mlamhrd, quotes.mlamination, quotes.mlaminationamt" +
+                ", quotes.mlamsoft, quotes.msstandtot, quotes.msstanqty, quotes.myovrride, \r\n    " +
+                "                     quotes.newprice, quotes.nocopies, quotes.nopages, quotes.no" +
+                "rebookletter, quotes.onlinecuto, quotes.onlinenotes, quotes.opcustom, quotes.opc" +
+                "ustomamt, quotes.opfoilpers, quotes.opfoilpersamt, quotes.opfoiltxt, \r\n         " +
+                "                quotes.opfoiltxtamt, quotes.opink, quotes.opinkamt, quotes.opink" +
+                "pers, quotes.opinkpersamt, quotes.oppicpers, quotes.oppicpersamt, quotes.oprcper" +
+                "bk, quotes.oprcperbk2, quotes.ourovrride, quotes.ourstyovrride, \r\n              " +
+                "           quotes.oursupp, quotes.oursuppamt, quotes.pbovrride, quotes.peramount" +
+                ", quotes.perfbind, quotes.perpp, quotes.persamount, quotes.perscopies, quotes.pe" +
+                "rstotal, quotes.peyn, quotes.ponum, quotes.prcor, quotes.priceovrd, \r\n          " +
+                "               quotes.prodno, quotes.prof, quotes.profovrride, quotes.pryn, quot" +
+                "es.qtedate, quotes.quarterad, quotes.quarteradamt, quotes.rebookinvremv, quotes." +
+                "rebookinvremv1, quotes.rebookinvremv2, quotes.rebookinvremv3, \r\n                " +
+                "         quotes.rebookinvremv4, quotes.rebookinvremv5, quotes.rebookinvremv6, qu" +
+                "otes.saletax, quotes.sbtot, quotes.schcode, quotes.schooltax, quotes.schooltaxra" +
+                "te, quotes.schout, quotes.scovrde, quotes.sdlstich, \r\n                         q" +
+                "uotes.sdlstichamt, quotes.source, quotes.speccvr, quotes.specea, quotes.spiovrri" +
+                "de, quotes.spiramt, quotes.spirck, quotes.story, quotes.storyamt, quotes.suppamt" +
+                ", quotes.supplements, quotes.themamt, quotes.themck, \r\n                         " +
+                "quotes.themovrride, quotes.totalads, quotes.totaldollarsonline, quotes.totallove" +
+                "lines, quotes.totalpersonline, quotes.totalsoldonline, quotes.webonly, quotes.xt" +
+                "rabkno, quotes.xtrabkprc, quotes.yiramt, quotes.yirschool, \r\n                   " +
+                "      quotes.yirsovrride, quotes.yrdiscount, quotes.yrdiscountamt, produtn.kitre" +
+                "cvd, produtn.jobno\r\nFROM            quotes INNER JOIN\r\n                         " +
                 "produtn ON quotes.invno = produtn.invno\r\nWHERE        (quotes.invno = @invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -14413,6 +14546,7 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("bcontemail", "bcontemail");
             tableMapping.ColumnMappings.Add("ccontemail", "ccontemail");
             tableMapping.ColumnMappings.Add("PIN", "PIN");
+            tableMapping.ColumnMappings.Add("oraclecode", "oraclecode");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -14833,8 +14967,8 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        schcode, schname, contryear, csrep, mbconlinepassword, schzip, contfname, contlname, schstate, InvoiceZipCode, InvoiceState, InvoiceCity, InvoiceAddr2, InvoiceAddr, ShippingState, ShippingZipCode, 
-                         ShippingCity, ShippingAddr2, ShippingAddr, contemail, bcontemail, ccontemail, PIN
+            this._commandCollection[0].CommandText = @"SELECT        schcode, schname, contryear, csrep, mbconlinepassword, schzip, contfname, contlname, schstate, InvoiceZipCode, InvoiceState, InvoiceCity, InvoiceAddr2, InvoiceAddr, ShippingState, ShippingZipCode, ShippingCity, 
+                         ShippingAddr2, ShippingAddr, contemail, bcontemail, ccontemail, PIN, oraclecode
 FROM            cust
 WHERE        (schcode = @schcode)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;

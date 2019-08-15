@@ -17,7 +17,7 @@ namespace Mbc5.Dialogs {
         {
             this.SearchType = vSearchType.ToUpper();
             this.ReturnForm = vForm.ToUpper();
-            currentSearchValue = vcurrentSearchValue.Trim();
+            currentSearchValue = vcurrentSearchValue==null?"": vcurrentSearchValue.Trim();
             InitializeComponent();
 
             //SearchType:
@@ -105,7 +105,7 @@ namespace Mbc5.Dialogs {
                             break;
                         case "MSALES":
 
-                            cmdtext = @"Select C.Schcode,C.Schname,Q.Invno AS Invoice,C.OracleCode,C.Contryear,C.SchZip,C.SchState From MQuotes Q INNER JOIN MCust C on Q.Schcode=C.Schcode Order By Schcode";
+                            cmdtext = @"Select C.Schcode,C.Schname,Q.Invno AS Invoice,C.OracleCode,C.Contryear,C.SchZip,C.SchState,P.ProdNo From MQuotes Q INNER JOIN MCust C on Q.Schcode=C.Schcode Left Join Produtn P on Q.Invno=P.Invno Order By Schcode";
                             sqlclient.CommandText(cmdtext);
                             var msalesresult = sqlclient.SelectMany<SchcodeSalesSearch>();
                             if (msalesresult.IsError)
@@ -121,7 +121,7 @@ namespace Mbc5.Dialogs {
                             break;
                         case "SALES":
 
-                            cmdtext = @"Select C.Schcode,C.Schname,Q.Invno AS Invoice,C.OracleCode,C.Contryear,C.SchZip,C.SchState From Quotes Q INNER JOIN Cust C on Q.Schcode=C.Schcode Order By Schcode";
+                            cmdtext = @"Select C.Schcode,C.Schname,Q.Invno AS Invoice,C.OracleCode,C.Contryear,C.SchZip,C.SchState,P.ProdNo From Quotes Q INNER JOIN Cust C on Q.Schcode=C.Schcode Left Join Produtn P on Q.Invno=P.Invno Order By Schcode";
                             sqlclient.CommandText(cmdtext);
                             var salesresult = sqlclient.SelectMany<SchcodeSalesSearch>();
                             if (salesresult.IsError)
@@ -182,9 +182,10 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "ENDSHEET":
-                            cmdtext = @"Select C.Schcode,C.Schname,E.Invno AS Invoice,E.endshtno AS EndSheetNo,C.Contryear From Cust C 
+                            cmdtext = @"Select C.Schcode,C.Schname,E.Invno AS Invoice,E.endshtno AS EndSheetNo,C.Contryear,P.ProdNo From Cust C 
                                         Inner JOIN Quotes Q  ON C.Schcode=Q.Schcode
                                         Left Join EndSheet E On Q.Invno=E.Invno
+                                        Left Join Produtn P on Q.Invno=P.Invno
                                         Order By Schcode";
                             sqlclient.CommandText(cmdtext);
                             var endsheetresult = sqlclient.SelectMany<EndSheetSchcodeSearch>();
@@ -239,7 +240,7 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "SALES":
-                            cmdtext = @"Select C.Schname,C.Schcode,Q.Invno AS Invoice,C.Contryear,C.SchZip,C.SchState From Quotes Q Inner Join Cust C ON Q.Schcode=C.Schcode Order By Schname";
+                            cmdtext = @"Select C.Schname,C.Schcode,Q.Invno AS Invoice,C.Contryear,C.SchZip,C.SchState,P.ProdNo From Quotes Q Inner Join Cust C ON Q.Schcode=C.Schcode Left Join Produtn P on Q.Invno=P.Invno Order By Schname";
                             sqlclient.CommandText(cmdtext);
                             var result1 = sqlclient.SelectMany<SchnameSalesSearch>();
                             if (result1.IsError)
@@ -254,7 +255,7 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "MSALES":
-                            cmdtext = @"Select C.Schname,C.Schcode,Q.Invno AS Invoice,C.Contryear,C.SchZip,C.SchState From MQuotes Q Inner Join MCust C ON Q.Schcode=C.Schcode Order By Schname";
+                            cmdtext = @"Select C.Schname,C.Schcode,Q.Invno AS Invoice,C.Contryear,C.SchZip,C.SchState,P.ProdNo From MQuotes Q Inner Join MCust C ON Q.Schcode=C.Schcode Left Join Produtn P on Q.Invno=P.Invno Order By Schname";
                             sqlclient.CommandText(cmdtext);
                             var result11 = sqlclient.SelectMany<SchnameSalesSearch>();
                             if (result11.IsError)
@@ -301,9 +302,10 @@ namespace Mbc5.Dialogs {
 
                             break;
                         case "ENDSHEET":
-                            cmdtext = @"Select C.Schname,C.Schcode,E.Invno AS Invoice,E.endshtno AS EndSheetNo,C.Contryear From Cust C 
+                            cmdtext = @"Select C.Schname,C.Schcode,E.Invno AS Invoice,E.endshtno AS EndSheetNo,C.Contryear,P.ProdNo From Cust C 
                                         Inner JOIN Quotes Q  ON C.Schcode=Q.Schcode
                                         Left Join EndSheet E On Q.Invno=E.Invno
+                                        Left Join Produtn P on Q.Invno=P.Invno
                                         Order By Schcode";
                             sqlclient.CommandText(cmdtext);
                             var endsheetresult = sqlclient.SelectMany<EndSheetSchNameSearch>();
@@ -362,7 +364,7 @@ namespace Mbc5.Dialogs {
                             break;
 
                         case "SALES":
-                            cmdtext = @"Select COALESCE(C.OracleCode,''),C.Schname,C.Schcode,Q.Invno As Invoice,C.Contryear,C.SchZip,C.SchState From Quotes Q  Inner Join Cust C On Q.Schcode=C.Schcode WHERE C.OracleCode !='' Order By OracleCode";
+                            cmdtext = @"Select COALESCE(C.OracleCode,'')AS OracleCode,C.Schname,C.Schcode,Q.Invno As Invoice,C.Contryear,C.SchZip,C.SchState,P.ProdNo From Quotes Q  Inner Join Cust C On Q.Schcode=C.Schcode Left Join Produtn P on Q.Invno=P.Invno WHERE C.OracleCode !=''  Order By OracleCode";
                             sqlclient.CommandText(cmdtext);
                             var oracleCodeResult = sqlclient.SelectMany<OracleSalesSearch>();
                             if (oracleCodeResult.IsError)
@@ -380,7 +382,7 @@ namespace Mbc5.Dialogs {
 
                             break;
                         case "MSALES":
-                            cmdtext = @"Select COALESCE(C.OracleCode,'') AS OracleCode,C.Schname,C.Schcode,Q.Invno As Invoice,C.Contryear,C.SchZip,C.SchState From MQuotes Q  Inner Join MCust C On Q.Schcode=C.Schcode WHERE C.OracleCode !='' Order By OracleCode";
+                            cmdtext = @"Select COALESCE(C.OracleCode,'') AS OracleCode,C.Schname,C.Schcode,Q.Invno As Invoice,C.Contryear,C.SchZip,C.SchState From MQuotes Q  Inner Join MCust C On Q.Schcode=C.Schcode Left Join Produtn P on Q.Invno=P.Invno WHERE C.OracleCode !='' Order By OracleCode";
                             sqlclient.CommandText(cmdtext);
                             var oracleCodeResult1 = sqlclient.SelectMany<OracleSalesSearch>();
                             if (oracleCodeResult1.IsError)
@@ -398,9 +400,10 @@ namespace Mbc5.Dialogs {
 
                             break;
                         case "ENDSHEET":
-                            cmdtext = @"Select C.OracleCode,C.Schname,C.Schcode,E.Invno AS Invoice,E.endshtno as EndSheetNo,C.Contryear From Cust C 
+                            cmdtext = @"Select C.OracleCode,C.Schname,C.Schcode,E.Invno AS Invoice,E.endshtno as EndSheetNo,C.Contryear,P.ProdNo From Cust C 
                                         Inner JOIN Quotes Q  ON C.Schcode=Q.Schcode
                                         Left Join EndSheet E On Q.Invno=E.Invno
+                                        Left Join Produtn P on Q.Invno=P.Invno
                                         Order By Schcode";
                             sqlclient.CommandText(cmdtext);
                             var endsheetresult = sqlclient.SelectMany<EndSheetOracleCodeSearch>();
@@ -459,7 +462,7 @@ namespace Mbc5.Dialogs {
                        
                             break;
                         case "SALES":
-                            cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno AS Invoice,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.Invno Where P.JobNo !='' Order By Jobno";
+                            cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno AS Invoice,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode,P.ProdNo Left Join Produtn P on Q.Invno=P.Invno Left Join Produtn P on Q.Invno=P.Invno Where P.JobNo !='' Order By Jobno";
                             sqlclient.CommandText(cmdtext);
                             var jobcoderesult = sqlclient.SelectMany<SalesJobCode>();
                             if (jobcoderesult.IsError)
@@ -474,9 +477,10 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "ENDSHEET":
-                            cmdtext = @"Select C.JobNo,C.Schname,C.Schcode,E.Invno AS Invoice,E.endshtno as EndSheetNo,C.Contryear From Cust C 
+                            cmdtext = @"Select C.JobNo,C.Schname,C.Schcode,E.Invno AS Invoice,E.endshtno as EndSheetNo,C.Contryear,P.ProdNo From Cust C 
                                         Inner JOIN Quotes Q  ON C.Schcode=Q.Schcode
                                         Left Join EndSheet E On Q.Invno=E.Invno
+                                        Left Join Produtn P on Q.Invno=P.Invno
                                         Order By Schcode";
                             sqlclient.CommandText(cmdtext);
                             var endsheetresult = sqlclient.SelectMany<EndSheetJobNoSearch>();
@@ -529,7 +533,7 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "SALES":
-                            cmdtext = @"Select Q.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear,C.SchZip,C.SchState From Quotes Q Left JOIN Cust C On Q.Schcode=C.Schcode Order By Invno";
+                            cmdtext = @"Select Q.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear,C.SchZip,C.SchState,P.ProdNo From Quotes Q Left JOIN Cust C On Q.Schcode=C.Schcode Left Join Produtn P on Q.Invno=P.Invno Order By Q.Invno";
                             sqlclient.CommandText(cmdtext);
                             var result1 = sqlclient.SelectMany<InvnoSearch>();
                             if (result1.IsError)
@@ -546,7 +550,7 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "MSALES":
-                            cmdtext = @"Select Q.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear,C.SchZip,C.SchState From MQuotes Q Left JOIN MCust C On Q.Schcode=C.Schcode Order By Invno";
+                            cmdtext = @"Select Q.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear,C.SchZip,C.SchState,P.ProdNo From MQuotes Q Left JOIN MCust C On Q.Schcode=C.Schcode Left Join Produtn P on Q.Invno=P.Invno Order By Q.Invno";
                             sqlclient.CommandText(cmdtext);
                             var result12 = sqlclient.SelectMany<InvnoSearch>();
                             if (result12.IsError)
@@ -563,7 +567,7 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "PRODUCTION":
-                            cmdtext = @"Select P.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear From Produtn P Inner JOIN Cust C On P.Schcode=C.Schcode Order By Invoice";
+                            cmdtext = @"Select P.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear From Produtn P Inner JOIN Cust C On P.Schcode=C.Schcode Order By Q.Invoice";
                             sqlclient.CommandText(cmdtext);
                             var result4 = sqlclient.SelectMany<ProdutnInvnoSearch>();
                             if (result4.IsError)
@@ -581,10 +585,11 @@ namespace Mbc5.Dialogs {
 
                             break;
                         case "ENDSHEET":
-                            cmdtext = @"Select E.Invno AS Invoice,C.Schname,C.Schcode,E.endshtno As EndSheetNo,C.Contryear From EndSheet E  
+                            cmdtext = @"Select E.Invno AS Invoice,C.Schname,C.Schcode,E.endshtno As EndSheetNo,C.Contryear,P.ProdNo From EndSheet E  
                                         Inner JOIN Quotes Q  ON E.Invno=Q.Invno
                                         Left Join Cust C On Q.Schcode=C.Schcode
-                                        Order By Invoice";
+                                        Left Join Produtn P on Q.Invno=P.Invno
+                                        Order By Q.Invoice";
                             sqlclient.CommandText(cmdtext);
                             var endsheetresult = sqlclient.SelectMany<EndSheetInvnoSearch>();
                             if (endsheetresult.IsError)

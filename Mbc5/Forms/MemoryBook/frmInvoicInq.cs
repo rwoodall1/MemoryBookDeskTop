@@ -91,7 +91,7 @@ namespace Mbc5.Forms.MemoryBook
                 sqlClient.CommandText(@"
                    
                 SELECT P.ShpDate, I.Schname, I.Schcode, I.Baldue,
-                C.Schemail, C.Contemail,C.Bcontemail,C.Contfname,C.Contlname,C.Bcontfname,C.Bcontlname
+                 C.InvoiceEmail1, C.InvoiceEmail2,C.InvoiceEmail3,C.Contfname,C.Contlname,C.Bcontfname,C.Bcontlname
                 ,P.Invno, Q.Holdpmt, CAST(1 AS bit) AS ToPrint
                 FROM Invoice I
                 Left Join Quotes Q On I.invno=Q.invno
@@ -121,7 +121,7 @@ namespace Mbc5.Forms.MemoryBook
                 sqlClient.ClearParameters();
                 sqlClient.CommandText(@"
                       SELECT P.ShpDate, C.Schname,C.Schcode,
-                    C.Schemail, C.Contemail,C.Bcontemail,C.Pin,C.Contfname,C.Contlname,C.Bcontfname,C.Bcontlname,
+                    C.InvoiceEmail1, C.InvoiceEmail2,C.InvoiceEmail3,C.Pin,C.Contfname,C.Contlname,C.Bcontfname,C.Bcontlname,
                     I.Invno,I.Baldue, Holdpmt, CAST(1 AS bit) AS ToPrint
                     FROM  cust C Left Join 
 					Quotes Q ON C.schcode=Q.schcode
@@ -258,14 +258,14 @@ namespace Mbc5.Forms.MemoryBook
 				string body = "If you would like to pay online please go to https://online-pay.memorybook.com/school </br></br>If you do not have Adobe Reader to view your invoice you can download it here. http://get.adobe.com/reader/";
 				List<string> addresses = new List<string>();
 
-				if (!string.IsNullOrEmpty(rec.Schemail)) {
-					addresses.Add(rec.Schemail.Trim());
+				if (!string.IsNullOrEmpty(rec.InvoiceEmail1)) {
+					addresses.Add(rec.InvoiceEmail1.Trim());
 				}
-				if (!string.IsNullOrEmpty(rec.Contemail)) {
-					addresses.Add(rec.Contemail.Trim());
+				if (!string.IsNullOrEmpty(rec.InvoiceEmail2)) {
+					addresses.Add(rec.InvoiceEmail2.Trim());
 				}
-				if (!string.IsNullOrEmpty(rec.Bcontemail.Trim())) {
-					addresses.Add(rec.Bcontemail);
+				if (!string.IsNullOrEmpty(rec.InvoiceEmail3.Trim())) {
+					addresses.Add(rec.InvoiceEmail3);
 				}
 				var attachments = new List<OutlookAttachemt>();
 				var attachment = new OutlookAttachemt() {

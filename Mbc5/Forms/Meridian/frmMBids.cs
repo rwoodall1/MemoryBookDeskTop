@@ -1883,7 +1883,7 @@ namespace Mbc5.Forms.Meridian {
 
         private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
         {
-            reportViewer1.PrintDialog();
+            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
         }
     }
     }

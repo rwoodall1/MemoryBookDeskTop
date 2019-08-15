@@ -1237,7 +1237,7 @@
             invnoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             invnoLabel.Location = new System.Drawing.Point(993, 16);
             invnoLabel.Name = "invnoLabel";
-            invnoLabel.Size = new System.Drawing.Size(90, 16);
+            invnoLabel.Size = new System.Drawing.Size(86, 16);
             invnoLabel.TabIndex = 11;
             invnoLabel.Text = "Invoice No.";
             // 
@@ -3551,7 +3551,7 @@
             this.dteQuote.Name = "dteQuote";
             this.dteQuote.Size = new System.Drawing.Size(116, 20);
             this.dteQuote.TabIndex = 4;
-            this.dteQuote.Value = new System.DateTime(2019, 8, 14, 16, 6, 46, 251);
+            this.dteQuote.Value = new System.DateTime(2019, 8, 15, 15, 1, 7, 870);
             this.dteQuote.ValueChanged += new System.EventHandler(this.dteQuote_ValueChanged);
             // 
             // txtPoNum
@@ -3758,7 +3758,7 @@
             this.onlinecutoDateTimePicker.Name = "onlinecutoDateTimePicker";
             this.onlinecutoDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.onlinecutoDateTimePicker.TabIndex = 96;
-            this.onlinecutoDateTimePicker.Value = new System.DateTime(2019, 8, 14, 16, 6, 46, 513);
+            this.onlinecutoDateTimePicker.Value = new System.DateTime(2019, 8, 15, 15, 1, 8, 63);
             this.onlinecutoDateTimePicker.ValueChanged += new System.EventHandler(this.onlinecutoDateTimePicker_ValueChanged);
             // 
             // agreerecCheckBox1
@@ -3976,7 +3976,7 @@
             this.adcutoDateTimePicker.Name = "adcutoDateTimePicker";
             this.adcutoDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.adcutoDateTimePicker.TabIndex = 76;
-            this.adcutoDateTimePicker.Value = new System.DateTime(2019, 8, 14, 16, 6, 46, 525);
+            this.adcutoDateTimePicker.Value = new System.DateTime(2019, 8, 15, 15, 1, 8, 75);
             this.adcutoDateTimePicker.ValueChanged += new System.EventHandler(this.adcutoDateTimePicker_ValueChanged);
             // 
             // webonlyCheckBox
@@ -4128,7 +4128,7 @@
             this.agreedteDateTimePicker.Name = "agreedteDateTimePicker";
             this.agreedteDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.agreedteDateTimePicker.TabIndex = 56;
-            this.agreedteDateTimePicker.Value = new System.DateTime(2019, 8, 14, 16, 6, 46, 533);
+            this.agreedteDateTimePicker.Value = new System.DateTime(2019, 8, 15, 15, 1, 8, 84);
             this.agreedteDateTimePicker.ValueChanged += new System.EventHandler(this.agreedteDateTimePicker_ValueChanged);
             // 
             // invnoLabel4
@@ -4807,7 +4807,7 @@
             this.calpmtdate.Name = "calpmtdate";
             this.calpmtdate.Size = new System.Drawing.Size(130, 20);
             this.calpmtdate.TabIndex = 11;
-            this.calpmtdate.Value = new System.DateTime(2019, 8, 14, 16, 6, 46, 800);
+            this.calpmtdate.Value = new System.DateTime(2019, 8, 15, 15, 1, 8, 320);
             // 
             // invno
             // 
@@ -5094,6 +5094,7 @@
             // lblOnHand
             // 
             this.lblOnHand.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "exonhand", true));
+            this.lblOnHand.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOnHand.Location = new System.Drawing.Point(135, 285);
             this.lblOnHand.Name = "lblOnHand";
             this.lblOnHand.Size = new System.Drawing.Size(100, 13);
@@ -5141,9 +5142,10 @@
             // lblBookTotalValue
             // 
             this.lblBookTotalValue.AutoSize = true;
+            this.lblBookTotalValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBookTotalValue.Location = new System.Drawing.Point(180, 49);
             this.lblBookTotalValue.Name = "lblBookTotalValue";
-            this.lblBookTotalValue.Size = new System.Drawing.Size(14, 13);
+            this.lblBookTotalValue.Size = new System.Drawing.Size(13, 13);
             this.lblBookTotalValue.TabIndex = 188;
             this.lblBookTotalValue.Text = "0";
             // 
@@ -5158,17 +5160,19 @@
             // dpDateShipped
             // 
             this.dpDateShipped.CustomFormat = "\'\'";
+            this.dpDateShipped.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpDateShipped.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dpDateShipped.Location = new System.Drawing.Point(179, 103);
             this.dpDateShipped.Name = "dpDateShipped";
             this.dpDateShipped.Size = new System.Drawing.Size(96, 20);
             this.dpDateShipped.TabIndex = 185;
-            this.dpDateShipped.Value = new System.DateTime(2019, 8, 14, 16, 6, 46, 983);
+            this.dpDateShipped.Value = new System.DateTime(2019, 8, 15, 15, 1, 8, 476);
             this.dpDateShipped.ValueChanged += new System.EventHandler(this.dpDateShipped_ValueChanged);
             // 
             // lblInvoiceTaxRate
             // 
             this.lblInvoiceTaxRate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "schooltaxrate", true));
+            this.lblInvoiceTaxRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvoiceTaxRate.Location = new System.Drawing.Point(114, 83);
             this.lblInvoiceTaxRate.Name = "lblInvoiceTaxRate";
             this.lblInvoiceTaxRate.Size = new System.Drawing.Size(68, 14);
@@ -5178,9 +5182,10 @@
             // lblInvoiceTotal
             // 
             this.lblInvoiceTotal.AutoSize = true;
+            this.lblInvoiceTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvoiceTotal.Location = new System.Drawing.Point(182, 156);
             this.lblInvoiceTotal.Name = "lblInvoiceTotal";
-            this.lblInvoiceTotal.Size = new System.Drawing.Size(14, 13);
+            this.lblInvoiceTotal.Size = new System.Drawing.Size(13, 13);
             this.lblInvoiceTotal.TabIndex = 76;
             this.lblInvoiceTotal.Text = "0";
             // 
@@ -5206,6 +5211,7 @@
             // txtShippingCharges
             // 
             this.txtShippingCharges.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "room", true));
+            this.txtShippingCharges.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtShippingCharges.Location = new System.Drawing.Point(179, 126);
             this.txtShippingCharges.Name = "txtShippingCharges";
             this.txtShippingCharges.Size = new System.Drawing.Size(69, 20);
@@ -5233,6 +5239,7 @@
             // txtQuantity
             // 
             this.txtQuantity.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "room", true));
+            this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantity.Location = new System.Drawing.Point(179, 24);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(50, 20);
@@ -5284,7 +5291,7 @@
             // xnotesTextBox
             // 
             this.xnotesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "xnotes", true));
-            this.xnotesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xnotesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xnotesTextBox.Location = new System.Drawing.Point(241, 73);
             this.xnotesTextBox.Multiline = true;
             this.xnotesTextBox.Name = "xnotesTextBox";
@@ -5294,7 +5301,7 @@
             // extrbkprcTextBox1
             // 
             this.extrbkprcTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "extrbkprc", true));
-            this.extrbkprcTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.extrbkprcTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extrbkprcTextBox1.Location = new System.Drawing.Point(135, 308);
             this.extrbkprcTextBox1.Name = "extrbkprcTextBox1";
             this.extrbkprcTextBox1.Size = new System.Drawing.Size(100, 20);
@@ -5303,7 +5310,7 @@
             // exreplshpdTextBox
             // 
             this.exreplshpdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "exreplshpd", true));
-            this.exreplshpdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exreplshpdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exreplshpdTextBox.Location = new System.Drawing.Point(135, 256);
             this.exreplshpdTextBox.Name = "exreplshpdTextBox";
             this.exreplshpdTextBox.Size = new System.Drawing.Size(100, 20);
@@ -5313,7 +5320,7 @@
             // extrbkshpdTextBox
             // 
             this.extrbkshpdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "extrbkshpd", true));
-            this.extrbkshpdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.extrbkshpdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extrbkshpdTextBox.Location = new System.Drawing.Point(135, 230);
             this.extrbkshpdTextBox.Name = "extrbkshpdTextBox";
             this.extrbkshpdTextBox.Size = new System.Drawing.Size(100, 20);
@@ -5323,7 +5330,7 @@
             // extrabooksTextBox
             // 
             this.extrabooksTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "extrabooks", true));
-            this.extrabooksTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.extrabooksTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.extrabooksTextBox.Location = new System.Drawing.Point(135, 178);
             this.extrabooksTextBox.Name = "extrabooksTextBox";
             this.extrabooksTextBox.Size = new System.Drawing.Size(100, 20);
@@ -5333,7 +5340,7 @@
             // shelfTextBox
             // 
             this.shelfTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "shelf", true));
-            this.shelfTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shelfTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shelfTextBox.Location = new System.Drawing.Point(135, 152);
             this.shelfTextBox.Name = "shelfTextBox";
             this.shelfTextBox.Size = new System.Drawing.Size(100, 20);
@@ -5342,7 +5349,7 @@
             // rackTextBox
             // 
             this.rackTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "rack", true));
-            this.rackTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rackTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rackTextBox.Location = new System.Drawing.Point(135, 126);
             this.rackTextBox.Name = "rackTextBox";
             this.rackTextBox.Size = new System.Drawing.Size(100, 20);
@@ -5351,7 +5358,7 @@
             // roomTextBox
             // 
             this.roomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "room", true));
-            this.roomTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roomTextBox.Location = new System.Drawing.Point(135, 100);
             this.roomTextBox.Name = "roomTextBox";
             this.roomTextBox.Size = new System.Drawing.Size(100, 20);
@@ -5360,7 +5367,7 @@
             // exunfinishTextBox
             // 
             this.exunfinishTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "exunfinish", true));
-            this.exunfinishTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exunfinishTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exunfinishTextBox.Location = new System.Drawing.Point(135, 204);
             this.exunfinishTextBox.Name = "exunfinishTextBox";
             this.exunfinishTextBox.Size = new System.Drawing.Size(100, 20);

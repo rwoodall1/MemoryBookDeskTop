@@ -85,7 +85,7 @@ namespace Mbc5.Forms.MemoryBook
             CalculateEach();
             BookCalc();
             txtBYear.Focus();
-           
+
 
         }
 
@@ -163,6 +163,262 @@ namespace Mbc5.Forms.MemoryBook
         private bool StartUp { get; set; }
         #endregion
         #region "Methods"
+        #region "Search"
+        public override void SchCodeSearch()
+        {
+            var saveResult = this.Save(false);
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+
+
+
+            var currentSchool = this.Schcode;
+            frmSearch frmSearch = new frmSearch("Schcode", "SALES", Schcode);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+
+                frmSales_Paint(this, null);
+                this.Cursor = Cursors.Default;
+            }
+        }
+        public override void SchnameSearch()
+        {
+            var saveResult = this.Save(false);
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+            DataRowView currentrow = (DataRowView)custBindingSource.Current;
+            var schname = currentrow["schname"].ToString();
+
+            frmSearch frmSearch = new frmSearch("Schname", "SALES", schname);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+
+                frmSales_Paint(this, null);
+                this.Cursor = Cursors.Default;
+            }
+
+
+
+        }
+        public override void OracleCodeSearch()
+        {
+            var saveResult = this.Save(false);
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+          
+            var oraclecode = "";
+            try {
+                 DataRowView currentrow = (DataRowView)custBindingSource.Current;
+                oraclecode = currentrow.Row.IsNull("oraclecode") ?"":currentrow["oraclecode"].ToString();
+
+            } catch(Exception ex) { }
+           
+
+                
+
+            frmSearch frmSearch = new frmSearch("OracleCode", "SALES", oraclecode);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                frmSales_Paint(this, null);
+
+                this.Cursor = Cursors.Default;
+            }
+        }
+        public override void InvoiceNumberSearch()
+        {
+            var invno = "0";
+            var saveResult = this.Save(false);
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+            DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
+            if (currentrow != null)
+            {
+                invno = currentrow["invno"].ToString();
+            }
+            frmSearch frmSearch = new frmSearch("INVNO", "SALES", invno);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+                    this.Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                frmSales_Paint(this, null);
+
+                this.Cursor = Cursors.Default;
+            }
+        }
+        public override void JobNoSearch()
+        {
+
+            var saveResult = this.Save(false);
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+
+            DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
+            var invno = currentrow["invno"].ToString();
+
+
+            frmSearch frmSearch = new frmSearch("JOBNO", "SALES", "");
+
+
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+
+                    this.Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                    EnableAllControls(this);
+
+                }
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                frmSales_Paint(this, null);
+
+                this.Cursor = Cursors.Default;
+            }
+
+
+
+        }
+        #endregion
         private void SetNoticeLabels()
         {
             try
@@ -2154,8 +2410,8 @@ namespace Mbc5.Forms.MemoryBook
                 try
                 {
                     custTableAdapter.Fill(dsSales.cust, Schcode);
+                    var vzipCode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString().Trim();
 
-                  
                     this.SchoolZipCode = ((DataRowView)this.custBindingSource.Current).Row["schzip"].ToString().Trim();
                     if (this.SchoolZipCode.Length > 5)
                     {
@@ -2174,17 +2430,20 @@ namespace Mbc5.Forms.MemoryBook
                 {
                     quotesTableAdapter.FillByInvno(dsSales.quotes, Invno);
                     xtraTableAdapter.Fill(dsExtra.xtra, Invno);
+                    CalculateEach();
+                    BookCalc();
                     
-                  
-                }catch(Exception ex)
+                    SetCodeInvno();
+
+                }
+                catch(Exception ex)
                 {
                     MbcMessageBox.Error(ex.Message, "");
                 }
 
             }
-            CalculateEach();
-            BookCalc();
-            SetCodeInvno();
+          
+               
             txtModifiedBy.Text = this.ApplicationUser.id;
             txtModifiedByInv.Text = this.ApplicationUser.id;
             txtModifiedByInvdetail.Text = this.ApplicationUser.id;
@@ -2695,6 +2954,19 @@ namespace Mbc5.Forms.MemoryBook
             }
             bool result = true;
             decimal val = 0;
+            if (!String.IsNullOrEmpty(txtPayoamt.Text))
+            {
+                result = Decimal.TryParse(txtPayoamt.Text, out val);
+                errorProvider1.SetError(txtPayoamt, "");
+                if (!result)
+                {
+
+                    errorProvider1.SetError(txtPayoamt, "Value must be a Decimal.");
+                    retval = false;
+                    return retval;
+                }
+
+            }
             if (!String.IsNullOrEmpty(txtPayment.Text))
             {
                 result = Decimal.TryParse(txtPayment.Text, out val);
@@ -2703,10 +2975,12 @@ namespace Mbc5.Forms.MemoryBook
                 {
 
                     errorProvider1.SetError(txtPayment, "Value must be a Decimal.");
+                    retval = false;
+                    return retval;
                 }
 
             }
-            else if (!String.IsNullOrEmpty(txtRefund.Text))
+            if (!String.IsNullOrEmpty(txtRefund.Text))
             {
                 result = Decimal.TryParse(txtRefund.Text, out val);
                 errorProvider1.SetError(txtRefund, "");
@@ -2714,10 +2988,12 @@ namespace Mbc5.Forms.MemoryBook
                 {
 
                     errorProvider1.SetError(txtRefund, "Value must be a Decimal.");
+                    retval = false;
+                    return retval;
                 }
 
             }
-            else if (!String.IsNullOrEmpty(txtAdjustment.Text))
+            if (!String.IsNullOrEmpty(txtAdjustment.Text))
             {
                 result = Decimal.TryParse(txtAdjustment.Text, out val);
                 errorProvider1.SetError(txtAdjustment, "");
@@ -2725,6 +3001,8 @@ namespace Mbc5.Forms.MemoryBook
                 {
 
                     errorProvider1.SetError(txtAdjustment, "Value must be a Decimal.");
+                    retval = false;
+                    return retval;
                 }
 
 
@@ -2737,6 +3015,8 @@ namespace Mbc5.Forms.MemoryBook
                 {
 
                     errorProvider1.SetError(txtCompensation, "Value must be a Decimal.");
+                    retval = false;
+                    return retval;
                 }
 
             }
@@ -3807,8 +4087,6 @@ namespace Mbc5.Forms.MemoryBook
             SetOnlinePayOptions(this.txtFoilTxt.Name, chkFoiltxt.Name, chkFoiltxt.Checked);
         }
 
-
-
         private void chkAllowAds_CheckedChanged(object sender, EventArgs e)
         {
             if (chkAllowAds.Checked)
@@ -3903,8 +4181,6 @@ namespace Mbc5.Forms.MemoryBook
 
         }
 
-
-
         private void txtInkPersAmt_Leave(object sender, EventArgs e)
         {
             CalcOnlineTotals();
@@ -3929,7 +4205,6 @@ namespace Mbc5.Forms.MemoryBook
         {
             CalcOnlineTotals();
         }
-
 
         private void lblProfAmt_TextChanged(object sender, EventArgs e)
         {
@@ -4123,7 +4398,7 @@ namespace Mbc5.Forms.MemoryBook
         }
 
         private void frmSales_Paint(object sender, PaintEventArgs e)
-                 {
+        {
             try { this.Text = "Sales-" + lblSchoolName.Text.Trim() + " (" + this.Schcode.Trim() + ")"; }
             catch
             {
@@ -4173,12 +4448,20 @@ namespace Mbc5.Forms.MemoryBook
         }
         private decimal GetTax(decimal vAmount)
         {
+            var vzipCode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString().Trim();
+            if (vzipCode=="")
+            {
+                MbcMessageBox.Error("Tax could not be retrieved because zipcode is missing.");
+                return 0;
+            }
+
             var vschname = ((DataRowView)custBindingSource.Current).Row["schname"].ToString().Trim();
             var vaddress = ((DataRowView)custBindingSource.Current).Row["InvoiceAddr"].ToString().Trim();
             var vaddress2 = ((DataRowView)custBindingSource.Current).Row["InvoiceAddr2"].ToString().Trim();
             var vcity = ((DataRowView)custBindingSource.Current).Row["InvoiceCity"].ToString().Trim();
             var vState = ((DataRowView)custBindingSource.Current).Row["InvoiceState"].ToString().Trim();
-            var vzipCode = ((DataRowView)custBindingSource.Current).Row["InvoiceZipCode"].ToString().Trim();
+            
+         
             var vTaxingInfo = new AvaSalesTaxingInfo()
             {
                 CompanyName = vschname,
@@ -4393,251 +4676,7 @@ namespace Mbc5.Forms.MemoryBook
         {
             try { frmMain.HideSearchButtons(); } catch { }
         }
-        public override void SchCodeSearch()
-        {
-            var saveResult = this.Save();
-            if (saveResult.IsError)
-            {
-
-                return;
-            }
-
-
-            var currentSchool = this.Schcode;
-            frmSearch frmSearch = new frmSearch("Schcode", "SALES", Schcode);
-
-            var result = frmSearch.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                //values preserved after close
-
-                try
-                {
-                    this.Invno = frmSearch.ReturnValue.Invno;
-                    this.Schcode = frmSearch.ReturnValue.Schcode;
-                    if (string.IsNullOrEmpty(Schcode))
-                    {
-                        MbcMessageBox.Hand("A search value was not returned", "Error");
-                        return;
-                    }
-                    this.Fill();
-                    DataRowView current = (DataRowView)quotesBindingSource.Current;
-
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
-                    EnableAllControls(this);
-
-                }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error(ex.Message, "Error");
-                    return;
-
-                }
-
-                frmSales_Paint(this, null);
-                this.Cursor = Cursors.Default;
-            }
-        }
-        public override void SchnameSearch()
-        {
-            var saveResult = this.Save();
-            if (saveResult.IsError)
-            {
-
-                return;
-            }
-            DataRowView currentrow = (DataRowView)custBindingSource.Current;
-            var schname = currentrow["schname"].ToString();
-
-            frmSearch frmSearch = new frmSearch("Schname", "SALES", schname);
-
-            var result = frmSearch.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                //values preserved after close
-
-                try
-                {
-                    this.Invno = frmSearch.ReturnValue.Invno;
-                    this.Schcode = frmSearch.ReturnValue.Schcode;
-                    if (string.IsNullOrEmpty(Schcode))
-                    {
-                        MbcMessageBox.Hand("A search value was not returned", "Error");
-                        return;
-                    }
-                    this.Fill();
-                    DataRowView current = (DataRowView)quotesBindingSource.Current;
-
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
-                    EnableAllControls(this);
-
-                }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error(ex.Message, "Error");
-                    return;
-
-                }
-
-                frmSales_Paint(this, null);
-                this.Cursor = Cursors.Default;
-            }
-
-
-
-        }
-        public override void OracleCodeSearch()
-        {
-            var saveResult = this.Save();
-            if (saveResult.IsError)
-            {
-
-                return;
-            }
-            DataRowView currentrow = (DataRowView)custBindingSource.Current;
-            var oraclecode = currentrow["oraclecode"].ToString();
-
-            frmSearch frmSearch = new frmSearch("OracleCode", "SALES", oraclecode);
-
-            var result = frmSearch.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                //values preserved after close
-
-                try
-                {
-                    this.Invno = frmSearch.ReturnValue.Invno;
-                    this.Schcode = frmSearch.ReturnValue.Schcode;
-                    if (string.IsNullOrEmpty(Schcode))
-                    {
-                        MbcMessageBox.Hand("A search value was not returned", "Error");
-                        return;
-                    }
-                    this.Fill();
-                    DataRowView current = (DataRowView)quotesBindingSource.Current;
-
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
-                    EnableAllControls(this);
-
-                }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error(ex.Message, "Error");
-                    return;
-
-                }
-                frmSales_Paint(this, null);
-
-                this.Cursor = Cursors.Default;
-            }
-        }
-        public override void InvoiceNumberSearch()
-        {
-            var invno ="0";
-            var saveResult = this.Save();
-            if (saveResult.IsError)
-            {
-
-                return;
-            }
-            DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
-            if (currentrow!=null)
-            {
-                invno = currentrow["invno"].ToString();
-            }
-            frmSearch frmSearch = new frmSearch("INVNO", "SALES", invno);
-
-            var result = frmSearch.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                //values preserved after close
-
-                try
-                {
-                    this.Invno = frmSearch.ReturnValue.Invno;
-                    this.Schcode = frmSearch.ReturnValue.Schcode;
-                    if (string.IsNullOrEmpty(Schcode))
-                    {
-                        MbcMessageBox.Hand("A search value was not returned", "Error");
-                        return;
-                    }
-                    this.Fill();
-                    DataRowView current = (DataRowView)quotesBindingSource.Current;
-
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
-                    EnableAllControls(this);
-
-                }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error(ex.Message, "Error");
-                    return;
-
-                }
-                frmSales_Paint(this, null);
-
-                this.Cursor = Cursors.Default;
-            }
-        }
-        public override void JobNoSearch()
-        {
-
-            var saveResult = this.Save();
-            if (saveResult.IsError)
-            {
-
-                return;
-            }
-
-            DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
-            var invno = currentrow["invno"].ToString();
-
-
-            frmSearch frmSearch = new frmSearch("JOBNO", "SALES", "");
-
-
-
-            var result = frmSearch.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                //values preserved after close
-
-                try
-                {
-                    this.Invno = frmSearch.ReturnValue.Invno;
-                    this.Schcode = frmSearch.ReturnValue.Schcode;
-                    if (string.IsNullOrEmpty(Schcode))
-                    {
-                        MbcMessageBox.Hand("A search value was not returned", "Error");
-                        return;
-                    }
-
-                    this.Fill();
-                    DataRowView current = (DataRowView)quotesBindingSource.Current;
-
-                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
-                    this.Schcode = current["Schcode"].ToString();
-                    EnableAllControls(this);
-
-                }
-                catch (Exception ex)
-                {
-                    MbcMessageBox.Error(ex.Message, "Error");
-                    return;
-
-                }
-                frmSales_Paint(this, null);
-
-                this.Cursor = Cursors.Default;
-            }
-
-
-
-        }
+       
 
 
         private void btnCreateInvoice_Click(object sender, EventArgs e)

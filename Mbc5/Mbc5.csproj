@@ -151,6 +151,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsChangePassword.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsCust.cs">
+      <DependentUpon>dsCust.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsCust.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -616,6 +619,7 @@
     <EmbeddedResource Include="Reports\30321FileFolderLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321DepartmentLabel.rdlc" />
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
+    <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
     <EmbeddedResource Include="Reports\OnlineAgreement.rdlc" />
     <EmbeddedResource Include="Reports\OnlineFlyer.rdlc" />
     <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />

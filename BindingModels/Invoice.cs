@@ -28,9 +28,9 @@ namespace BindingModels
     public class Invoice {
         public string Schname { get; set; }
         public string Schcode { get; set; }
-        public string Schemail { get; set; }
-        public string Contemail { get; set; }
-        public string Bcontemail { get; set; }
+        public string InvoiceEmail1 { get; set; }
+        public string InvoiceEmail2 { get; set; }
+        public string InvoiceEmail3 { get; set; }
         public DateTime? ShpDate { get; set; }
         public string Contfname { get; set; }
         public string Contlname { get; set; }

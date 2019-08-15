@@ -53,17 +53,14 @@ protected MeridianOptionPricing OptionPrices { get; set; }
 #endregion
         
 private void frmMSales_Load(object sender, System.EventArgs e)
-{
-txtPriceOverRide.DataBindings[0].Parse+= new ConvertEventHandler(NullParseHandler);
-SetConnectionString();
-Fill();
-this.salesTabControl.TabPages[0].AutoScroll = false;
-      
-mquotesBindingSource.ResetBindings(true);
-
-}
-#region SearchMethods
-private void NullParseHandler(object sender, ConvertEventArgs e)
+    {    
+        SetConnectionString();
+        Fill();
+        this.salesTabControl.TabPages[0].AutoScroll = false;
+        mquotesBindingSource.ResetBindings(true);
+    }
+        #region SearchMethods
+        private void NullParseHandler(object sender, ConvertEventArgs e)
 {
 if (e.Value != null && string.IsNullOrEmpty(e.Value.ToString()))
     e.Value =DBNull.Value;
@@ -767,7 +764,7 @@ if (result == DialogResult.OK)
             paymntBindingSource.AddNew();
 
             DataRowView current = (DataRowView)paymntBindingSource.Current;
-            current["Invno"] = lblInvoice.Text;
+            current["Invno"] = Invno;
             current["Code"] = this.Schcode;
             SetCrudButtons();
         }
@@ -787,6 +784,19 @@ if (result == DialogResult.OK)
             }
             bool result = true;
             decimal val = 0;
+            if (!String.IsNullOrEmpty(txtPaypoamt.Text))
+            {
+                result = Decimal.TryParse(txtPaypoamt.Text, out val);
+                errorProvider1.SetError(txtPaypoamt, "");
+                if (!result)
+                {
+
+                    errorProvider1.SetError(txtPaypoamt, "Value must be a Decimal.");
+                    retval = false;
+                    return retval;
+                }
+
+            }
             if (!String.IsNullOrEmpty(txtPayment.Text))
             {
                 result = Decimal.TryParse(txtPayment.Text, out val);
@@ -795,10 +805,12 @@ if (result == DialogResult.OK)
                 {
 
                     errorProvider1.SetError(txtPayment, "Value must be a Decimal.");
+                    retval = false;
+                    return retval;
                 }
 
             }
-            else if (!String.IsNullOrEmpty(txtRefund.Text))
+         if (!String.IsNullOrEmpty(txtRefund.Text))
             {
                 result = Decimal.TryParse(txtRefund.Text, out val);
                 errorProvider1.SetError(txtRefund, "");
@@ -806,10 +818,12 @@ if (result == DialogResult.OK)
                 {
 
                     errorProvider1.SetError(txtRefund, "Value must be a Decimal.");
+                    retval = false;
+                    return retval;
                 }
 
             }
-            else if (!String.IsNullOrEmpty(txtAdjustment.Text))
+             if (!String.IsNullOrEmpty(txtAdjustment.Text))
             {
                 result = Decimal.TryParse(txtAdjustment.Text, out val);
                 errorProvider1.SetError(txtAdjustment, "");
@@ -817,6 +831,8 @@ if (result == DialogResult.OK)
                 {
 
                     errorProvider1.SetError(txtAdjustment, "Value must be a Decimal.");
+                    retval = false;
+                    return retval;
                 }
 
 
@@ -829,6 +845,8 @@ if (result == DialogResult.OK)
                 {
 
                     errorProvider1.SetError(txtCompensation, "Value must be a Decimal.");
+                    retval = false;
+                    return retval;
                 }
 
             }
@@ -1041,15 +1059,17 @@ if (result == DialogResult.OK)
             var cmd = @"
                         Insert INTO MerInvoice (Schcode,Invno,QteDate,NoPages,QtyTotal,FplnPrc,Source,PoNum,fplntot,BalDue,ContFname,ContLname
                         ,SchName,InvName,InvAddr,InvAddr2,InvCity,InvState,InvZip,ShpName,ShpAddr,ShpAddr2,ShpCity,ShpState,ShpZip,ContrYear,BasePrc,BaseTot,FormatType,SchType
-                    ,QtyStudent,QtyTeacher,Generic,TeBasePrc,ShpDate,SalesTax,ModifiedBy,ProdCode,SubTotal,TeacherBaseTotal,ShpHandling,StudentTotalBasePrice) 
+                    ,QtyStudent,QtyTeacher,Generic,TeBasePrc,ShpDate,SalesTax,ModifiedBy,ProdCode,SubTotal,TeacherBaseTotal,ShpHandling,StudentTotalBasePrice,invnotes) 
                         Values(@Schcode,@Invno,@QteDate,@NoPages,@QtyTotal,@FplnPrc,@Source,@PoNum,@fplntot,@BalDue,@ContFname,@ContLname
                         ,@SchName,@InvName,@InvAddr,@InvAddr2,@InvCity,@InvState,@InvZip,@ShpName,@ShipAddr,@ShpAddr2,@ShpCity,@ShpState,@ShpZip,@ContrYear,@BasePrc,@BaseTot,@FormatType,@SchType
-                    ,@QtyStudent,@QtyTeacher,@Generic,@TeBasePrc,@ShpDate,@SalesTax,@ModifiedBy,@ProdCode,@SubTotal,@TeacherBaseTotal,@ShpHandling,@StudentTotalBasePrice)
+                    ,@QtyStudent,@QtyTeacher,@Generic,@TeBasePrc,@ShpDate,@SalesTax,@ModifiedBy,@ProdCode,@SubTotal,@TeacherBaseTotal,@ShpHandling,@StudentTotalBasePrice,@invnotes)
                         ";
             sqlQuery.CommandText(cmd);
             var dr = (DataRowView)mquotesBindingSource.Current;
+     
             sqlQuery.AddParameter("@StudentTotalBasePrice", (txtQtyStudent.ConvertToInt()* lblBasePrice.ConvertToDecimal()));
             sqlQuery.AddParameter("@ShpHandling", txtShipping.Text==""?"0": txtShipping.Text);
+            sqlQuery.AddParameter("@invnotes", dr["invnotes"].ToString());
             sqlQuery.AddParameter("@Schcode", Schcode);
             sqlQuery.AddParameter("@Invno",Invno);
             sqlQuery.AddParameter("@QteDate", qtedateDateTimePicker.Value);
@@ -1442,6 +1462,15 @@ if (result == DialogResult.OK)
                 {
                     MbcMessageBox.Error("Failed to insert invoice detail record:" + updateDetailResult.Errors[0].ErrorMessage);
                 }
+            }
+            sqlQuery.ClearParameters();
+            sqlQuery.CommandText(@"Update mquotes Set Invoiced=@Invoiced where Invno=@Invno ");
+            sqlQuery.AddParameter("@Invoiced", true);
+            sqlQuery.AddParameter("@Invno", Invno);
+            var invoicedResult = sqlQuery.Update();
+            if (invoicedResult.IsError)
+            {
+                MbcMessageBox.Error("Failed to set meridian sale as invoiced:" + invoicedResult.Errors[0].ErrorMessage);
             }
             Fill();
 
@@ -2473,6 +2502,23 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
         {
             DeletePayment();
         }
+
+        private void calpmtdate_ValueChanged(object sender, EventArgs e)
+        {
+            calpmtdate.Format = DateTimePickerFormat.Short;
+        }
+
+        private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        {
+            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+        }
+
+        private void btnPrntInvoice_Click(object sender, EventArgs e)
+        {
+            this.reportViewer1.RefreshReport();
+        }
+
+       
 
 
         //nothing below here

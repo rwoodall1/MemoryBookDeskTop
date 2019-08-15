@@ -16,6 +16,10 @@ namespace Mbc5
         [STAThread]
         static void Main()
         {
+            //AppDomain.CurrentDomain.FirstChanceException += (sender, eventArgs) =>
+            //{
+            //    var a = eventArgs;
+            //};
             ExceptionlessClient.Default.Register();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -608,6 +608,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnshpaddr;
             
+            private global::System.Data.DataColumn columninvnotes;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public mquotesDataTable() {
@@ -1819,6 +1821,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn invnotesColumn {
+                get {
+                    return this.columninvnotes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2001,7 +2011,8 @@ namespace Mbc5.DataSets {
                         string shpstate, 
                         string shpcity, 
                         string shpaddr2, 
-                        string shpaddr) {
+                        string shpaddr, 
+                        string invnotes) {
                 mquotesRow rowmquotesRow = ((mquotesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -2150,7 +2161,8 @@ namespace Mbc5.DataSets {
                         shpstate,
                         shpcity,
                         shpaddr2,
-                        shpaddr};
+                        shpaddr,
+                        invnotes};
                 rowmquotesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmquotesRow);
                 return rowmquotesRow;
@@ -2320,6 +2332,7 @@ namespace Mbc5.DataSets {
                 this.columnshpcity = base.Columns["shpcity"];
                 this.columnshpaddr2 = base.Columns["shpaddr2"];
                 this.columnshpaddr = base.Columns["shpaddr"];
+                this.columninvnotes = base.Columns["invnotes"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2619,6 +2632,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnshpaddr2);
                 this.columnshpaddr = new global::System.Data.DataColumn("shpaddr", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnshpaddr);
+                this.columninvnotes = new global::System.Data.DataColumn("invnotes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninvnotes);
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
                 this.columnbooktype.AllowDBNull = false;
@@ -2663,6 +2678,7 @@ namespace Mbc5.DataSets {
                 this.columnshpcity.MaxLength = 50;
                 this.columnshpaddr2.MaxLength = 50;
                 this.columnshpaddr.MaxLength = 50;
+                this.columninvnotes.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5415,6 +5431,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string invnotes {
+                get {
+                    try {
+                        return ((string)(this[this.tablemquotes.invnotesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'invnotes\' in table \'mquotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemquotes.invnotesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsqtedateNull() {
                 return this.IsNull(this.tablemquotes.qtedateColumn);
             }
@@ -7068,6 +7100,18 @@ namespace Mbc5.DataSets {
             public void SetshpaddrNull() {
                 this[this.tablemquotes.shpaddrColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsinvnotesNull() {
+                return this.IsNull(this.tablemquotes.invnotesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetinvnotesNull() {
+                this[this.tablemquotes.invnotesColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -7520,6 +7564,7 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
             tableMapping.ColumnMappings.Add("shpcity", "shpcity");
             tableMapping.ColumnMappings.Add("shpaddr2", "shpaddr2");
             tableMapping.ColumnMappings.Add("shpaddr", "shpaddr");
+            tableMapping.ColumnMappings.Add("invnotes", "invnotes");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -7910,10 +7955,10 @@ namespace Mbc5.DataSets.dsMSalesTableAdapters {
                 "cust.invaddr2, mcust.invaddr, mquotes.DateModified, mquotes.TeBasePrc, mquotes.h" +
                 "allprice, produtn.shpdate, mcust.contfname,\r\n                          mcust.con" +
                 "tlname, mcust.shpname, mcust.invname, mcust.shpzip, mcust.shpstate, mcust.shpcit" +
-                "y, mcust.shpaddr2, mcust.shpaddr\r\nFROM            mquotes LEFT OUTER JOIN\r\n     " +
-                "                    produtn ON mquotes.invno = produtn.invno LEFT OUTER JOIN\r\n  " +
-                "                       mcust ON mquotes.schcode = mcust.schcode\r\nWHERE        (m" +
-                "quotes.invno = @Invno)";
+                "y, mcust.shpaddr2, mcust.shpaddr, mcust.invnotes\r\nFROM            mquotes LEFT O" +
+                "UTER JOIN\r\n                         produtn ON mquotes.invno = produtn.invno LEF" +
+                "T OUTER JOIN\r\n                         mcust ON mquotes.schcode = mcust.schcode\r" +
+                "\nWHERE        (mquotes.invno = @Invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

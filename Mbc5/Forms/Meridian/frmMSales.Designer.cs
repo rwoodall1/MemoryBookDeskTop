@@ -109,12 +109,19 @@
             System.Windows.Forms.Label pmtdateLabel1;
             System.Windows.Forms.Label init_Label;
             System.Windows.Forms.Label invnoLabel4;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.merinvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsMInvoice = new Mbc5.DataSets.dsMInvoice();
+            this.merinvdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMSales = new Mbc5.DataSets.dsMSales();
             this.mquotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.coversBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -125,13 +132,11 @@
             this.coversTableAdapter = new Mbc5.DataSets.dsMSalesTableAdapters.coversTableAdapter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.meridianProductsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.MeridianProductsTableAdapter();
-            this.dsMInvoice = new Mbc5.DataSets.dsMInvoice();
-            this.merinvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.merinvoiceTableAdapter = new Mbc5.DataSets.dsMInvoiceTableAdapters.merinvoiceTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.dsMInvoiceTableAdapters.TableAdapterManager();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnDeleteInvoice = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.btnPrntInvoice = new System.Windows.Forms.Button();
             this.studentTotalBasePriceLabel1 = new System.Windows.Forms.Label();
             this.shphandlingLabel1 = new System.Windows.Forms.Label();
             this.merinvdetailDataGridView = new System.Windows.Forms.DataGridView();
@@ -139,7 +144,6 @@
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.merinvdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.teacherBaseTotalLabel1 = new System.Windows.Forms.Label();
             this.basetotLabel3 = new System.Windows.Forms.Label();
             this.teBasePrcLabel1 = new System.Windows.Forms.Label();
@@ -274,6 +278,11 @@
             this.txtmisc = new System.Windows.Forms.TextBox();
             this.salesTabControl = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSavePayment = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnNewPayment = new System.Windows.Forms.Button();
             this.paymntDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -290,7 +299,6 @@
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblInvoice = new System.Windows.Forms.Label();
             this.txtInitials = new System.Windows.Forms.TextBox();
             this.txtCompReason = new System.Windows.Forms.TextBox();
@@ -304,11 +312,6 @@
             this.txtPaypoamt = new System.Windows.Forms.TextBox();
             this.merinvdetailTableAdapter = new Mbc5.DataSets.dsMInvoiceTableAdapters.merinvdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsMInvoiceTableAdapters.paymntTableAdapter();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnSavePayment = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnNewPayment = new System.Windows.Forms.Button();
             shpnameLabel = new System.Windows.Forms.Label();
             invnameLabel = new System.Windows.Forms.Label();
             mdescLabel = new System.Windows.Forms.Label();
@@ -393,17 +396,18 @@
             pmtdateLabel1 = new System.Windows.Forms.Label();
             init_Label = new System.Windows.Forms.Label();
             invnoLabel4 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.merinvoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMInvoice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.merinvdetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mquotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.meridianProductsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMInvoice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.merinvoiceBindingSource)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.merinvdetailDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.merinvdetailBindingSource)).BeginInit();
             this.panel5.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -413,7 +417,6 @@
             this.salesTabControl.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.paymntDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // shpnameLabel
@@ -1263,6 +1266,27 @@
             invnoLabel4.TabIndex = 41;
             invnoLabel4.Text = "Invoice #";
             // 
+            // merinvoiceBindingSource
+            // 
+            this.merinvoiceBindingSource.DataMember = "merinvoice";
+            this.merinvoiceBindingSource.DataSource = this.dsMInvoice;
+            // 
+            // dsMInvoice
+            // 
+            this.dsMInvoice.DataSetName = "dsMInvoice";
+            this.dsMInvoice.EnforceConstraints = false;
+            this.dsMInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // merinvdetailBindingSource
+            // 
+            this.merinvdetailBindingSource.DataMember = "merinvdetail";
+            this.merinvdetailBindingSource.DataSource = this.dsMInvoice;
+            // 
+            // paymntBindingSource
+            // 
+            this.paymntBindingSource.DataMember = "paymnt";
+            this.paymntBindingSource.DataSource = this.dsMInvoice;
+            // 
             // dsMSales
             // 
             this.dsMSales.DataSetName = "dsMSales";
@@ -1311,17 +1335,6 @@
             // 
             this.meridianProductsTableAdapter.ClearBeforeFill = true;
             // 
-            // dsMInvoice
-            // 
-            this.dsMInvoice.DataSetName = "dsMInvoice";
-            this.dsMInvoice.EnforceConstraints = false;
-            this.dsMInvoice.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // merinvoiceBindingSource
-            // 
-            this.merinvoiceBindingSource.DataMember = "merinvoice";
-            this.merinvoiceBindingSource.DataSource = this.dsMInvoice;
-            // 
             // merinvoiceTableAdapter
             // 
             this.merinvoiceTableAdapter.ClearBeforeFill = true;
@@ -1338,8 +1351,8 @@
             // 
             this.tabPage3.AutoScroll = true;
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.btnDeleteInvoice);
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.reportViewer1);
+            this.tabPage3.Controls.Add(this.btnPrntInvoice);
             this.tabPage3.Controls.Add(this.studentTotalBasePriceLabel1);
             this.tabPage3.Controls.Add(label14);
             this.tabPage3.Controls.Add(shphandlingLabel);
@@ -1381,24 +1394,37 @@
             this.tabPage3.Text = "Invoices";
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
-            // btnDeleteInvoice
+            // reportViewer1
             // 
-            this.btnDeleteInvoice.Location = new System.Drawing.Point(932, 57);
-            this.btnDeleteInvoice.Name = "btnDeleteInvoice";
-            this.btnDeleteInvoice.Size = new System.Drawing.Size(116, 23);
-            this.btnDeleteInvoice.TabIndex = 43;
-            this.btnDeleteInvoice.Text = "Delete Invoice";
-            this.btnDeleteInvoice.UseVisualStyleBackColor = true;
+            this.reportViewer1.DocumentMapWidth = 25;
+            reportDataSource1.Name = "dsMerInvoice";
+            reportDataSource1.Value = this.merinvoiceBindingSource;
+            reportDataSource2.Name = "dsMerInvDetails";
+            reportDataSource2.Value = this.merinvdetailBindingSource;
+            reportDataSource3.Name = "dsPayments";
+            reportDataSource3.Value = this.paymntBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MerInvoice.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(932, 91);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(82, 78);
+            this.reportViewer1.TabIndex = 44;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
-            // button1
+            // btnPrntInvoice
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(932, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 23);
-            this.button1.TabIndex = 42;
-            this.button1.Text = "Print Invoice";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPrntInvoice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrntInvoice.Location = new System.Drawing.Point(932, 30);
+            this.btnPrntInvoice.Name = "btnPrntInvoice";
+            this.btnPrntInvoice.Size = new System.Drawing.Size(95, 23);
+            this.btnPrntInvoice.TabIndex = 42;
+            this.btnPrntInvoice.Text = "Print Invoice";
+            this.btnPrntInvoice.UseVisualStyleBackColor = true;
+            this.btnPrntInvoice.Click += new System.EventHandler(this.btnPrntInvoice_Click);
             // 
             // studentTotalBasePriceLabel1
             // 
@@ -1424,14 +1450,14 @@
             // 
             this.merinvdetailDataGridView.AllowUserToDeleteRows = false;
             this.merinvdetailDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.merinvdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.merinvdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.merinvdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.merinvdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -1450,39 +1476,34 @@
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn1.DataPropertyName = "descr";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn1.HeaderText = "Description";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // Quantity
             // 
             this.Quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quantity.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle3;
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.Name = "Quantity";
             // 
             // UnitPrice
             // 
             this.UnitPrice.DataPropertyName = "UnitPrice";
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle4;
             this.UnitPrice.HeaderText = "UnitPrice";
             this.UnitPrice.Name = "UnitPrice";
             // 
             // Amount
             // 
             this.Amount.DataPropertyName = "Amount";
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Amount.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Amount.DefaultCellStyle = dataGridViewCellStyle5;
             this.Amount.HeaderText = "Amount";
             this.Amount.Name = "Amount";
-            // 
-            // merinvdetailBindingSource
-            // 
-            this.merinvdetailBindingSource.DataMember = "merinvdetail";
-            this.merinvdetailBindingSource.DataSource = this.dsMInvoice;
             // 
             // teacherBaseTotalLabel1
             // 
@@ -2073,7 +2094,7 @@
             this.qtedateDateTimePicker.Name = "qtedateDateTimePicker";
             this.qtedateDateTimePicker.Size = new System.Drawing.Size(140, 20);
             this.qtedateDateTimePicker.TabIndex = 60;
-            this.qtedateDateTimePicker.Value = new System.DateTime(2019, 8, 13, 17, 20, 10, 454);
+            this.qtedateDateTimePicker.Value = new System.DateTime(2019, 8, 15, 15, 38, 33, 427);
             // 
             // doNotChargeTaxCheckBox
             // 
@@ -2718,7 +2739,7 @@
             this.chkindateDateTimePicker.Name = "chkindateDateTimePicker";
             this.chkindateDateTimePicker.Size = new System.Drawing.Size(138, 20);
             this.chkindateDateTimePicker.TabIndex = 69;
-            this.chkindateDateTimePicker.Value = new System.DateTime(2019, 8, 13, 17, 20, 10, 494);
+            this.chkindateDateTimePicker.Value = new System.DateTime(2019, 8, 15, 15, 38, 33, 464);
             this.chkindateDateTimePicker.ValueChanged += new System.EventHandler(this.chkindateDateTimePicker_ValueChanged);
             // 
             // prodcodeComboBox
@@ -3102,20 +3123,75 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Payments";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(848, 212);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(92, 23);
+            this.btnDelete.TabIndex = 48;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnSavePayment
+            // 
+            this.btnSavePayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSavePayment.Location = new System.Drawing.Point(848, 90);
+            this.btnSavePayment.Name = "btnSavePayment";
+            this.btnSavePayment.Size = new System.Drawing.Size(92, 23);
+            this.btnSavePayment.TabIndex = 44;
+            this.btnSavePayment.Text = "Save";
+            this.btnSavePayment.UseVisualStyleBackColor = true;
+            this.btnSavePayment.Click += new System.EventHandler(this.btnSavePayment_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(848, 151);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(92, 23);
+            this.btnEdit.TabIndex = 46;
+            this.btnEdit.Text = "Edit Payment";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(848, 180);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(92, 23);
+            this.btnCancel.TabIndex = 47;
+            this.btnCancel.Text = "Revert";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnNewPayment
+            // 
+            this.btnNewPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewPayment.Location = new System.Drawing.Point(848, 119);
+            this.btnNewPayment.Name = "btnNewPayment";
+            this.btnNewPayment.Size = new System.Drawing.Size(92, 23);
+            this.btnNewPayment.TabIndex = 45;
+            this.btnNewPayment.Text = "New Payment";
+            this.btnNewPayment.UseVisualStyleBackColor = true;
+            this.btnNewPayment.Click += new System.EventHandler(this.btnNewPayment_Click);
+            // 
             // paymntDataGridView
             // 
             this.paymntDataGridView.AllowUserToAddRows = false;
             this.paymntDataGridView.AllowUserToDeleteRows = false;
             this.paymntDataGridView.AutoGenerateColumns = false;
             this.paymntDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.paymntDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paymntDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn12,
@@ -3254,14 +3330,10 @@
             this.dataGridViewTextBoxColumn27.ReadOnly = true;
             this.dataGridViewTextBoxColumn27.Visible = false;
             // 
-            // paymntBindingSource
-            // 
-            this.paymntBindingSource.DataMember = "paymnt";
-            this.paymntBindingSource.DataSource = this.dsMInvoice;
-            // 
             // lblInvoice
             // 
             this.lblInvoice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "invno", true));
+            this.lblInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvoice.Location = new System.Drawing.Point(962, 2);
             this.lblInvoice.Name = "lblInvoice";
             this.lblInvoice.Size = new System.Drawing.Size(100, 23);
@@ -3271,6 +3343,7 @@
             // txtInitials
             // 
             this.txtInitials.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "init_", true));
+            this.txtInitials.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInitials.Location = new System.Drawing.Point(1010, 35);
             this.txtInitials.Name = "txtInitials";
             this.txtInitials.Size = new System.Drawing.Size(50, 20);
@@ -3279,6 +3352,7 @@
             // txtCompReason
             // 
             this.txtCompReason.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "compreas", true));
+            this.txtCompReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCompReason.Location = new System.Drawing.Point(146, 273);
             this.txtCompReason.Multiline = true;
             this.txtCompReason.Name = "txtCompReason";
@@ -3288,6 +3362,7 @@
             // txtCompensation
             // 
             this.txtCompensation.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "compamt", true));
+            this.txtCompensation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCompensation.Location = new System.Drawing.Point(146, 235);
             this.txtCompensation.Name = "txtCompensation";
             this.txtCompensation.Size = new System.Drawing.Size(110, 20);
@@ -3296,6 +3371,7 @@
             // txtAdjustment
             // 
             this.txtAdjustment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "adjmnt", true));
+            this.txtAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAdjustment.Location = new System.Drawing.Point(146, 206);
             this.txtAdjustment.Name = "txtAdjustment";
             this.txtAdjustment.Size = new System.Drawing.Size(110, 20);
@@ -3304,6 +3380,7 @@
             // txtRefund
             // 
             this.txtRefund.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "refund", true));
+            this.txtRefund.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRefund.Location = new System.Drawing.Point(146, 177);
             this.txtRefund.Name = "txtRefund";
             this.txtRefund.Size = new System.Drawing.Size(110, 20);
@@ -3312,6 +3389,7 @@
             // txtPayment
             // 
             this.txtPayment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "payment", true));
+            this.txtPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPayment.Location = new System.Drawing.Point(146, 148);
             this.txtPayment.Name = "txtPayment";
             this.txtPayment.Size = new System.Drawing.Size(110, 20);
@@ -3320,6 +3398,7 @@
             // txtMethod
             // 
             this.txtMethod.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "method", true));
+            this.txtMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMethod.Location = new System.Drawing.Point(146, 124);
             this.txtMethod.Name = "txtMethod";
             this.txtMethod.Size = new System.Drawing.Size(110, 20);
@@ -3328,6 +3407,7 @@
             // txtCheckNo
             // 
             this.txtCheckNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "checkno", true));
+            this.txtCheckNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCheckNo.Location = new System.Drawing.Point(146, 95);
             this.txtCheckNo.Name = "txtCheckNo";
             this.txtCheckNo.Size = new System.Drawing.Size(110, 20);
@@ -3337,16 +3417,19 @@
             // 
             this.calpmtdate.CustomFormat = "\' \'";
             this.calpmtdate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.paymntBindingSource, "pmtdate", true));
+            this.calpmtdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.calpmtdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.calpmtdate.Location = new System.Drawing.Point(146, 66);
             this.calpmtdate.Name = "calpmtdate";
             this.calpmtdate.Size = new System.Drawing.Size(137, 20);
             this.calpmtdate.TabIndex = 33;
-            this.calpmtdate.Value = new System.DateTime(2019, 8, 13, 17, 20, 11, 376);
+            this.calpmtdate.Value = new System.DateTime(2019, 8, 15, 15, 38, 33, 593);
+            this.calpmtdate.ValueChanged += new System.EventHandler(this.calpmtdate_ValueChanged);
             // 
             // txtPaypoamt
             // 
             this.txtPaypoamt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "poamt", true));
+            this.txtPaypoamt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPaypoamt.Location = new System.Drawing.Point(109, 12);
             this.txtPaypoamt.Name = "txtPaypoamt";
             this.txtPaypoamt.Size = new System.Drawing.Size(100, 20);
@@ -3359,61 +3442,6 @@
             // paymntTableAdapter
             // 
             this.paymntTableAdapter.ClearBeforeFill = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(848, 212);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(92, 23);
-            this.btnDelete.TabIndex = 48;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnSavePayment
-            // 
-            this.btnSavePayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePayment.Location = new System.Drawing.Point(848, 90);
-            this.btnSavePayment.Name = "btnSavePayment";
-            this.btnSavePayment.Size = new System.Drawing.Size(92, 23);
-            this.btnSavePayment.TabIndex = 44;
-            this.btnSavePayment.Text = "Save";
-            this.btnSavePayment.UseVisualStyleBackColor = true;
-            this.btnSavePayment.Click += new System.EventHandler(this.btnSavePayment_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(848, 151);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(92, 23);
-            this.btnEdit.TabIndex = 46;
-            this.btnEdit.Text = "Edit Payment";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(848, 180);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(92, 23);
-            this.btnCancel.TabIndex = 47;
-            this.btnCancel.Text = "Revert";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnNewPayment
-            // 
-            this.btnNewPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewPayment.Location = new System.Drawing.Point(848, 119);
-            this.btnNewPayment.Name = "btnNewPayment";
-            this.btnNewPayment.Size = new System.Drawing.Size(92, 23);
-            this.btnNewPayment.TabIndex = 45;
-            this.btnNewPayment.Text = "New Payment";
-            this.btnNewPayment.UseVisualStyleBackColor = true;
-            this.btnNewPayment.Click += new System.EventHandler(this.btnNewPayment_Click);
             // 
             // frmMSales
             // 
@@ -3429,18 +3457,19 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMSales_FormClosing);
             this.Load += new System.EventHandler(this.frmMSales_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmMSales_Paint);
+            ((System.ComponentModel.ISupportInitialize)(this.merinvoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMInvoice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.merinvdetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsMSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mquotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coversBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.meridianProductsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMInvoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.merinvoiceBindingSource)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.merinvdetailDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.merinvdetailBindingSource)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -3456,7 +3485,6 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.paymntDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -3620,8 +3648,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.Label studentTotalBasePriceLabel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnDeleteInvoice;
+        private System.Windows.Forms.Button btnPrntInvoice;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.BindingSource paymntBindingSource;
         private DataSets.dsMInvoiceTableAdapters.paymntTableAdapter paymntTableAdapter;
@@ -3657,5 +3684,6 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnNewPayment;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
     }

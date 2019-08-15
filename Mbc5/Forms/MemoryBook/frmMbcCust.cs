@@ -48,7 +48,7 @@ namespace Mbc5.Forms.MemoryBook {
         public new frmMain frmMain { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
    #region "Properties"
-        public bool MktGo {
+        private bool MktGo {
             get { return vMktGo; }
             set {                
                     vMktGo = value;
@@ -298,20 +298,47 @@ public override void Cancel() {
         //this.errorProvider1.SetError(this.shiptocontTextBox, string.Empty);
         }
 
-//private void shiptocontTextBox_Validating(object sender,CancelEventArgs e) {
-//    //bool cancel = false;
-//    //var a = !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim());
-//    //if (shiptocontTextBox.Text != "Y" || !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim()))
-//    //{
-//    //    //This control fails validation: Name cannot be empty.
-//    //    cancel = true;
-//    //    this.errorProvider1.SetError(this.shiptocontTextBox, "Value must be empty or Y.");
-//    //}
-//    //e.Cancel = cancel;
-//    }
+        //private void shiptocontTextBox_Validating(object sender,CancelEventArgs e) {
+        //    //bool cancel = false;
+        //    //var a = !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim());
+        //    //if (shiptocontTextBox.Text != "Y" || !string.IsNullOrEmpty(this.shiptocontTextBox.Text.Trim()))
+        //    //{
+        //    //    //This control fails validation: Name cannot be empty.
+        //    //    cancel = true;
+        //    //    this.errorProvider1.SetError(this.shiptocontTextBox, "Value must be empty or Y.");
+        //    //}
+        //    //e.Cancel = cancel;
+        //    }
         #endregion
- #region Methods
-        public void SaveAddressInfo()
+        #region Methods
+        private void EmailAllContacts()
+        {
+            this.Cursor = Cursors.AppStarting;
+            string body = "";
+            string subj = txtSchname.Text.Trim() + " " + Schcode + " " + cmbState.SelectedValue.ToString();
+            var dr = (DataRowView)custBindingSource.Current;
+            var vCont1 = dr["contemail"].ToString().Trim();
+            var vCont2 = dr["bcontemail"].ToString().Trim();
+            var vCont3 = dr["ccontemail"].ToString().Trim();
+            List<string> emailList = new List<string>();
+            var emailHelper = new EmailHelper();
+            if (!string.IsNullOrEmpty(vCont1))
+            {
+                emailList.Add(vCont1);
+            }
+            if (!string.IsNullOrEmpty(vCont2))
+            {
+                emailList.Add(vCont2);
+            }
+            if (!string.IsNullOrEmpty(vCont3))
+            {
+                emailList.Add(vCont3);
+            }
+            EmailType type = EmailType.Mbc;
+            emailHelper.SendOutLookEmail(subj, emailList, "", body, type);
+            this.Cursor = Cursors.Default;
+        }
+        private void SaveAddressInfo()
         {
             var sqlClient = new SQLCustomClient();
             sqlClient.CommandText(@"
@@ -320,11 +347,14 @@ public override void Cancel() {
                                         ,InvoiceCity=@InvoiceCity
                                         ,InvoiceState=@InvoiceState
                                         ,InvoiceZipCode=@InvoiceZipCode 
-                                        ,shipaddr=@ShippingAddr
+                                        ,ShippingAddr=@ShippingAddr
                                         ,ShippingAddr2=@ShippingAddr2
                                         ,ShippingCity=@ShippingCity
                                         ,ShippingState=@ShippingState
                                         ,ShippingZipCode=@ShippingZipCode
+                                        ,InvoiceEmail1=@InvoiceEmail1
+                                        ,InvoiceEmail2=@InvoiceEmail2
+                                        ,InvoiceEmail3=@InvoiceEmail3
                                     WHERE Schcode=@Schcode
                                     ");
             try
@@ -341,6 +371,9 @@ public override void Cancel() {
                 sqlClient.AddParameter("@ShippingState", cmbshippingState.SelectedValue.ToString());
                 sqlClient.AddParameter("@ShippingZipCode", shippingZipCodeTextBox.Text);
                 sqlClient.AddParameter("@SchCode", Schcode);
+                sqlClient.AddParameter("@InvoiceEmail1", invoiceEmail1TextBox.Text);
+                sqlClient.AddParameter("@InvoiceEmail2", invoiceEmail2TextBox.Text);
+                sqlClient.AddParameter("@InvoiceEmail3", invoiceEmail3TextBox.Text);
                 var updateResult = sqlClient.Update();
                 if (updateResult.IsError)
                 {
@@ -359,7 +392,7 @@ public override void Cancel() {
 
             }
         }
-        public void Fill()
+        private void Fill()
         {
 
             try
@@ -1135,11 +1168,11 @@ public override void Cancel() {
                 
 
             }
-        public bool DoPhoneLog() {
+        private bool DoPhoneLog() {
             bool retval = true;
             frmMain vparent =(frmMain) this.ParentForm;
             
-            if(vparent.ValidatedUserRoles.Contains("SA")|| vparent.ValidatedUserRoles.Contains("Admin")) {
+            if(vparent.ValidatedUserRoles.Contains("SA")|| vparent.ValidatedUserRoles.Contains("Administrator")) {
                retval= false;
 
                 }
@@ -1719,23 +1752,15 @@ public override void Cancel() {
             string body = "";
             string subj = txtSchname.Text.Trim() + " " + Schcode + " " + cmbState.SelectedValue.ToString();
             var dr = (DataRowView)custBindingSource.Current;
-            var vCont1 = dr["contemail"].ToString().Trim();
-            var vCont2 = dr["bcontemail"].ToString().Trim();
-            var vCont3 = dr["ccontemail"].ToString().Trim();
+            var vCont1 = dr["schemail"].ToString().Trim();
+           
             List<string> emailList = new List<string>();
             var emailHelper = new EmailHelper();
             if (!string.IsNullOrEmpty(vCont1))
             {
                 emailList.Add(vCont1);
             }
-            if (!string.IsNullOrEmpty(vCont2))
-            {
-                emailList.Add(vCont2);
-            }
-            if (!string.IsNullOrEmpty(vCont3))
-            {
-                emailList.Add(vCont3);
-            }
+           
             EmailType type = EmailType.Mbc;
             emailHelper.SendOutLookEmail(subj, emailList, "", body, type);
             this.Cursor = Cursors.Default;
@@ -1976,6 +2001,12 @@ public override void Cancel() {
             var vInvState = ((DataRowView)custBindingSource.Current).Row["SchState"].ToString().Trim();
             cmbInvStateComboBox.SelectedValue = vInvState;
             var vInvZipcode = ((DataRowView)custBindingSource.Current).Row["SchZip"].ToString().Trim();
+            var vInvEmail1 = ((DataRowView)custBindingSource.Current).Row["SchEmail"].ToString().Trim();
+            invoiceEmail1TextBox.Text = vInvEmail1;
+            var vInvEmail2 = ((DataRowView)custBindingSource.Current).Row["ContEmail"].ToString().Trim();
+            invoiceEmail2TextBox.Text = vInvEmail2;
+            var vInvEmail3 = ((DataRowView)custBindingSource.Current).Row["BContEmail"].ToString().Trim();
+            invoiceEmail3TextBox.Text = vInvEmail3;
             if (vInvZipcode.Length>5)
             {
                 invZipCodeTextBox.Text = vInvZipcode.Substring(0, 5);
@@ -2225,6 +2256,16 @@ public override void Cancel() {
                 shippingZipCodeTextBox.Text = vShpZipcode;
             }
 
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            EmailAllContacts();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            EmailAllContacts();
         }
 
 

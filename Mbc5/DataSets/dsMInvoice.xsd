@@ -14,7 +14,7 @@
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT        schcode, invno, qtedate, nopages, QtyTotal, FplnPrc, source, ponum, invtot, payments, baldue, contfname, contlname, schname, InvAddr, InvAddr2, InvCity, InvState, InvZip, contryear, poamt, baseprc, basetot, formattype, 
                          invaddnote, invname, shpdate, qtystudent, schtype, qtyteacher, generic, TeBasePrc, shpname, shpaddr, shpaddr2, shpcity, shpstate, shpzip, prodcode, salestax, ModifiedBy, FplnTot, Subtotal, TeacherBaseTotal, shphandling, 
-                         StudentTotalBasePrice
+                         StudentTotalBasePrice, InvNotes
 FROM            merinvoice
 WHERE        (invno = @Invno)</CommandText>
                     <Parameters>
@@ -71,6 +71,7 @@ WHERE        (invno = @Invno)</CommandText>
               <Mapping SourceColumn="TeacherBaseTotal" DataSetColumn="TeacherBaseTotal" />
               <Mapping SourceColumn="shphandling" DataSetColumn="shphandling" />
               <Mapping SourceColumn="StudentTotalBasePrice" DataSetColumn="StudentTotalBasePrice" />
+              <Mapping SourceColumn="InvNotes" DataSetColumn="InvNotes" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -273,7 +274,7 @@ WHERE        (invno = @Invno)</CommandText>
   <xs:element name="dsMInvoice" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsMInvoice" msprop:Generator_UserDSName="dsMInvoice">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="merinvoice" msprop:Generator_TableClassName="merinvoiceDataTable" msprop:Generator_TableVarName="tablemerinvoice" msprop:Generator_RowChangedName="merinvoiceRowChanged" msprop:Generator_TablePropName="merinvoice" msprop:Generator_RowDeletingName="merinvoiceRowDeleting" msprop:Generator_RowChangingName="merinvoiceRowChanging" msprop:Generator_RowEvHandlerName="merinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="merinvoiceRowDeleted" msprop:Generator_RowClassName="merinvoiceRow" msprop:Generator_UserTableName="merinvoice" msprop:Generator_RowEvArgName="merinvoiceRowChangeEvent">
+        <xs:element name="merinvoice" msprop:Generator_TableClassName="merinvoiceDataTable" msprop:Generator_TableVarName="tablemerinvoice" msprop:Generator_TablePropName="merinvoice" msprop:Generator_RowDeletingName="merinvoiceRowDeleting" msprop:Generator_RowChangingName="merinvoiceRowChanging" msprop:Generator_RowEvHandlerName="merinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="merinvoiceRowDeleted" msprop:Generator_UserTableName="merinvoice" msprop:Generator_RowChangedName="merinvoiceRowChanged" msprop:Generator_RowEvArgName="merinvoiceRowChangeEvent" msprop:Generator_RowClassName="merinvoiceRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="schcode" msprop:Generator_ColumnVarNameInTable="columnschcode" msprop:Generator_ColumnPropNameInRow="schcode" msprop:Generator_ColumnPropNameInTable="schcodeColumn" msprop:Generator_UserColumnName="schcode" minOccurs="0">
@@ -466,10 +467,17 @@ WHERE        (invno = @Invno)</CommandText>
               <xs:element name="TeacherBaseTotal" msprop:Generator_ColumnVarNameInTable="columnTeacherBaseTotal" msprop:Generator_ColumnPropNameInRow="TeacherBaseTotal" msprop:Generator_ColumnPropNameInTable="TeacherBaseTotalColumn" msprop:Generator_UserColumnName="TeacherBaseTotal" type="xs:decimal" minOccurs="0" />
               <xs:element name="shphandling" msprop:Generator_ColumnVarNameInTable="columnshphandling" msprop:Generator_ColumnPropNameInRow="shphandling" msprop:Generator_ColumnPropNameInTable="shphandlingColumn" msprop:Generator_UserColumnName="shphandling" type="xs:decimal" minOccurs="0" />
               <xs:element name="StudentTotalBasePrice" msprop:Generator_ColumnVarNameInTable="columnStudentTotalBasePrice" msprop:Generator_ColumnPropNameInRow="StudentTotalBasePrice" msprop:Generator_ColumnPropNameInTable="StudentTotalBasePriceColumn" msprop:Generator_UserColumnName="StudentTotalBasePrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="InvNotes" msprop:Generator_ColumnVarNameInTable="columnInvNotes" msprop:Generator_ColumnPropNameInRow="InvNotes" msprop:Generator_ColumnPropNameInTable="InvNotesColumn" msprop:Generator_UserColumnName="InvNotes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="merinvdetail" msprop:Generator_TableClassName="merinvdetailDataTable" msprop:Generator_TableVarName="tablemerinvdetail" msprop:Generator_RowChangedName="merinvdetailRowChanged" msprop:Generator_TablePropName="merinvdetail" msprop:Generator_RowDeletingName="merinvdetailRowDeleting" msprop:Generator_RowChangingName="merinvdetailRowChanging" msprop:Generator_RowEvHandlerName="merinvdetailRowChangeEventHandler" msprop:Generator_RowDeletedName="merinvdetailRowDeleted" msprop:Generator_RowClassName="merinvdetailRow" msprop:Generator_UserTableName="merinvdetail" msprop:Generator_RowEvArgName="merinvdetailRowChangeEvent">
+        <xs:element name="merinvdetail" msprop:Generator_TableClassName="merinvdetailDataTable" msprop:Generator_TableVarName="tablemerinvdetail" msprop:Generator_TablePropName="merinvdetail" msprop:Generator_RowDeletingName="merinvdetailRowDeleting" msprop:Generator_RowChangingName="merinvdetailRowChanging" msprop:Generator_RowEvHandlerName="merinvdetailRowChangeEventHandler" msprop:Generator_RowDeletedName="merinvdetailRowDeleted" msprop:Generator_UserTableName="merinvdetail" msprop:Generator_RowChangedName="merinvdetailRowChanged" msprop:Generator_RowEvArgName="merinvdetailRowChangeEvent" msprop:Generator_RowClassName="merinvdetailRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="descr" msprop:Generator_ColumnVarNameInTable="columndescr" msprop:Generator_ColumnPropNameInRow="descr" msprop:Generator_ColumnPropNameInTable="descrColumn" msprop:Generator_UserColumnName="descr">
@@ -501,7 +509,7 @@ WHERE        (invno = @Invno)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="paymnt" msprop:Generator_TableClassName="paymntDataTable" msprop:Generator_TableVarName="tablepaymnt" msprop:Generator_RowChangedName="paymntRowChanged" msprop:Generator_TablePropName="paymnt" msprop:Generator_RowDeletingName="paymntRowDeleting" msprop:Generator_RowChangingName="paymntRowChanging" msprop:Generator_RowEvHandlerName="paymntRowChangeEventHandler" msprop:Generator_RowDeletedName="paymntRowDeleted" msprop:Generator_RowClassName="paymntRow" msprop:Generator_UserTableName="paymnt" msprop:Generator_RowEvArgName="paymntRowChangeEvent">
+        <xs:element name="paymnt" msprop:Generator_TableClassName="paymntDataTable" msprop:Generator_TableVarName="tablepaymnt" msprop:Generator_TablePropName="paymnt" msprop:Generator_RowDeletingName="paymntRowDeleting" msprop:Generator_RowChangingName="paymntRowChanging" msprop:Generator_RowEvHandlerName="paymntRowChangeEventHandler" msprop:Generator_RowDeletedName="paymntRowDeleted" msprop:Generator_UserTableName="paymnt" msprop:Generator_RowChangedName="paymntRowChanged" msprop:Generator_RowEvArgName="paymntRowChangeEvent" msprop:Generator_RowClassName="paymntRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="code" msprop:Generator_ColumnVarNameInTable="columncode" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_UserColumnName="code">

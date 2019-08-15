@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
@@ -56,15 +56,6 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.chkPrint = new System.Windows.Forms.CheckBox();
             this.dgInvoices = new System.Windows.Forms.DataGridView();
-            this.ToPrint = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Collections = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.InvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Shpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SchName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Schcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Schemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContactEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsInvoices = new System.Windows.Forms.BindingSource(this.components);
             this.bsTest = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterManager1 = new Mbc5.DataSets.dsCustTableAdapters.TableAdapterManager();
@@ -78,6 +69,15 @@
             this.rdReceived = new System.Windows.Forms.RadioButton();
             this.lblRecDte = new System.Windows.Forms.Label();
             this.dteRecvDte = new System.Windows.Forms.DateTimePicker();
+            this.ToPrint = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Collections = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.InvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SchName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Schcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Schemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContactEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
@@ -99,7 +99,7 @@
             // TopPanel
             // 
             this.TopPanel.Controls.Add(this.lblTitle);
-            this.TopPanel.Size = new System.Drawing.Size(1127, 48);
+            this.TopPanel.Size = new System.Drawing.Size(1133, 48);
             // 
             // BottomPanel
             // 
@@ -108,7 +108,7 @@
             this.BottomPanel.Controls.Add(this.button2);
             this.BottomPanel.Controls.Add(this.btnSearch);
             this.BottomPanel.Location = new System.Drawing.Point(0, 422);
-            this.BottomPanel.Size = new System.Drawing.Size(1127, 66);
+            this.BottomPanel.Size = new System.Drawing.Size(1133, 66);
             // 
             // FullInvoiceBindingSource
             // 
@@ -220,7 +220,7 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(2, 112);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1125, 304);
+            this.panel1.Size = new System.Drawing.Size(1131, 304);
             this.panel1.TabIndex = 9;
             // 
             // pnlError
@@ -232,7 +232,7 @@
             this.pnlError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlError.Location = new System.Drawing.Point(261, 58);
             this.pnlError.Name = "pnlError";
-            this.pnlError.Size = new System.Drawing.Size(657, 189);
+            this.pnlError.Size = new System.Drawing.Size(663, 189);
             this.pnlError.TabIndex = 17;
             this.pnlError.Visible = false;
             // 
@@ -251,43 +251,43 @@
             // dgAddressErrors
             // 
             this.dgAddressErrors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgAddressErrors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgAddressErrors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgAddressErrors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgAddressErrors.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgAddressErrors.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgAddressErrors.EnableHeadersVisualStyles = false;
             this.dgAddressErrors.Location = new System.Drawing.Point(60, 21);
             this.dgAddressErrors.Name = "dgAddressErrors";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgAddressErrors.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgAddressErrors.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgAddressErrors.Size = new System.Drawing.Size(486, 150);
             this.dgAddressErrors.TabIndex = 9;
             // 
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.FullInvoiceBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.FullInvoiceBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MultiMemInvoice.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(10, 390);
             this.reportViewer1.Name = "reportViewer1";
@@ -316,16 +316,19 @@
             // 
             this.dgInvoices.AllowUserToAddRows = false;
             this.dgInvoices.AllowUserToDeleteRows = false;
+            this.dgInvoices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgInvoices.AutoGenerateColumns = false;
             this.dgInvoices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ToPrint,
@@ -338,84 +341,28 @@
             this.ContactEmail,
             this.Balance});
             this.dgInvoices.DataSource = this.bsInvoices;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgInvoices.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgInvoices.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgInvoices.EnableHeadersVisualStyles = false;
             this.dgInvoices.Location = new System.Drawing.Point(29, 29);
             this.dgInvoices.Name = "dgInvoices";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgInvoices.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgInvoices.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgInvoices.RowHeadersVisible = false;
             this.dgInvoices.Size = new System.Drawing.Size(1096, 245);
             this.dgInvoices.TabIndex = 0;
-            // 
-            // ToPrint
-            // 
-            this.ToPrint.DataPropertyName = "ToPrint";
-            this.ToPrint.HeaderText = "Print";
-            this.ToPrint.Name = "ToPrint";
-            // 
-            // Collections
-            // 
-            this.Collections.DataPropertyName = "Holdpmt";
-            this.Collections.HeaderText = "Collections";
-            this.Collections.Name = "Collections";
-            // 
-            // InvoiceNo
-            // 
-            this.InvoiceNo.DataPropertyName = "Invno";
-            this.InvoiceNo.HeaderText = "Invoice #";
-            this.InvoiceNo.Name = "InvoiceNo";
-            this.InvoiceNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.InvoiceNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Shpdate
-            // 
-            this.Shpdate.DataPropertyName = "ShpDate";
-            this.Shpdate.HeaderText = "Ship Date";
-            this.Shpdate.Name = "Shpdate";
-            // 
-            // SchName
-            // 
-            this.SchName.DataPropertyName = "Schname";
-            this.SchName.HeaderText = "School Name";
-            this.SchName.Name = "SchName";
-            // 
-            // Schcode
-            // 
-            this.Schcode.DataPropertyName = "Schname";
-            this.Schcode.HeaderText = "School Code";
-            this.Schcode.Name = "Schcode";
-            // 
-            // Schemail
-            // 
-            this.Schemail.DataPropertyName = "Schemail";
-            this.Schemail.HeaderText = "School Email";
-            this.Schemail.Name = "Schemail";
-            // 
-            // ContactEmail
-            // 
-            this.ContactEmail.DataPropertyName = "Contemail";
-            this.ContactEmail.HeaderText = "Contact Email";
-            this.ContactEmail.Name = "ContactEmail";
-            // 
-            // Balance
-            // 
-            this.Balance.DataPropertyName = "Baldue";
-            this.Balance.HeaderText = "Balance";
-            this.Balance.Name = "Balance";
             // 
             // bsTest
             // 
@@ -465,6 +412,7 @@
             // rdStatement
             // 
             this.rdStatement.AutoSize = true;
+            this.rdStatement.Checked = true;
             this.rdStatement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdStatement.Location = new System.Drawing.Point(23, 52);
             this.rdStatement.Name = "rdStatement";
@@ -509,10 +457,66 @@
             this.dteRecvDte.TabIndex = 13;
             this.dteRecvDte.Visible = false;
             // 
+            // ToPrint
+            // 
+            this.ToPrint.DataPropertyName = "ToPrint";
+            this.ToPrint.HeaderText = "Print";
+            this.ToPrint.Name = "ToPrint";
+            // 
+            // Collections
+            // 
+            this.Collections.DataPropertyName = "Holdpmt";
+            this.Collections.HeaderText = "Collections";
+            this.Collections.Name = "Collections";
+            // 
+            // InvoiceNo
+            // 
+            this.InvoiceNo.DataPropertyName = "Invno";
+            this.InvoiceNo.HeaderText = "Invoice #";
+            this.InvoiceNo.Name = "InvoiceNo";
+            this.InvoiceNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.InvoiceNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Shpdate
+            // 
+            this.Shpdate.DataPropertyName = "ShpDate";
+            this.Shpdate.HeaderText = "Ship Date";
+            this.Shpdate.Name = "Shpdate";
+            // 
+            // SchName
+            // 
+            this.SchName.DataPropertyName = "Schname";
+            this.SchName.HeaderText = "School Name";
+            this.SchName.Name = "SchName";
+            // 
+            // Schcode
+            // 
+            this.Schcode.DataPropertyName = "Schcode";
+            this.Schcode.HeaderText = "School Code";
+            this.Schcode.Name = "Schcode";
+            // 
+            // Schemail
+            // 
+            this.Schemail.DataPropertyName = "InvoiceEmail1";
+            this.Schemail.HeaderText = "Email 1";
+            this.Schemail.Name = "Schemail";
+            // 
+            // ContactEmail
+            // 
+            this.ContactEmail.DataPropertyName = "InvoiceEmail2";
+            this.ContactEmail.HeaderText = "Email 2";
+            this.ContactEmail.Name = "ContactEmail";
+            // 
+            // Balance
+            // 
+            this.Balance.DataPropertyName = "Baldue";
+            this.Balance.HeaderText = "Balance";
+            this.Balance.Name = "Balance";
+            // 
             // frmInvoicInq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1127, 488);
+            this.ClientSize = new System.Drawing.Size(1133, 488);
             this.Controls.Add(this.dteRecvDte);
             this.Controls.Add(this.lblRecDte);
             this.Controls.Add(this.rdReceived);
@@ -520,6 +524,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimumSize = new System.Drawing.Size(1149, 527);
             this.Name = "frmInvoicInq";
             this.Text = "Print MBC Invoice\'s";
             this.Activated += new System.EventHandler(this.frmInvoicInq_Activated);
@@ -584,15 +589,6 @@
         private DataSets.dsCustTableAdapters.custTableAdapter custTableAdapter;
 		private System.Windows.Forms.BindingSource bsTest;
 		private System.Windows.Forms.BindingSource FullInvoiceBindingSource;
-		private System.Windows.Forms.DataGridViewCheckBoxColumn ToPrint;
-		private System.Windows.Forms.DataGridViewCheckBoxColumn Collections;
-		private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceNo;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Shpdate;
-		private System.Windows.Forms.DataGridViewTextBoxColumn SchName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Schcode;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Schemail;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ContactEmail;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
         private System.Windows.Forms.RadioButton rdStatement;
         private System.Windows.Forms.RadioButton rdReceived;
         private System.Windows.Forms.Label lblRecDte;
@@ -600,5 +596,14 @@
         private System.Windows.Forms.Panel pnlError;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgAddressErrors;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ToPrint;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Collections;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Shpdate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SchName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Schcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Schemail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ContactEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
     }
 }

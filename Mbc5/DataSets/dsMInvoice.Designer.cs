@@ -441,6 +441,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnStudentTotalBasePrice;
             
+            private global::System.Data.DataColumn columnInvNotes;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public merinvoiceDataTable() {
@@ -844,6 +846,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InvNotesColumn {
+                get {
+                    return this.columnInvNotes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -925,7 +935,8 @@ namespace Mbc5.DataSets {
                         decimal Subtotal, 
                         decimal TeacherBaseTotal, 
                         decimal shphandling, 
-                        decimal StudentTotalBasePrice) {
+                        decimal StudentTotalBasePrice, 
+                        string InvNotes) {
                 merinvoiceRow rowmerinvoiceRow = ((merinvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -973,7 +984,8 @@ namespace Mbc5.DataSets {
                         Subtotal,
                         TeacherBaseTotal,
                         shphandling,
-                        StudentTotalBasePrice};
+                        StudentTotalBasePrice,
+                        InvNotes};
                 rowmerinvoiceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmerinvoiceRow);
                 return rowmerinvoiceRow;
@@ -1042,6 +1054,7 @@ namespace Mbc5.DataSets {
                 this.columnTeacherBaseTotal = base.Columns["TeacherBaseTotal"];
                 this.columnshphandling = base.Columns["shphandling"];
                 this.columnStudentTotalBasePrice = base.Columns["StudentTotalBasePrice"];
+                this.columnInvNotes = base.Columns["InvNotes"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1139,6 +1152,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnshphandling);
                 this.columnStudentTotalBasePrice = new global::System.Data.DataColumn("StudentTotalBasePrice", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStudentTotalBasePrice);
+                this.columnInvNotes = new global::System.Data.DataColumn("InvNotes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvNotes);
                 this.columnschcode.MaxLength = 6;
                 this.columnsource.MaxLength = 2;
                 this.columnponum.MaxLength = 25;
@@ -1164,6 +1179,7 @@ namespace Mbc5.DataSets {
                 this.columnshpzip.MaxLength = 10;
                 this.columnprodcode.MaxLength = 6;
                 this.columnModifiedBy.MaxLength = 128;
+                this.columnInvNotes.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2969,6 +2985,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InvNotes {
+                get {
+                    try {
+                        return ((string)(this[this.tablemerinvoice.InvNotesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvNotes\' in table \'merinvoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemerinvoice.InvNotesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsschcodeNull() {
                 return this.IsNull(this.tablemerinvoice.schcodeColumn);
             }
@@ -3505,6 +3537,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetStudentTotalBasePriceNull() {
                 this[this.tablemerinvoice.StudentTotalBasePriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInvNotesNull() {
+                return this.IsNull(this.tablemerinvoice.InvNotesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInvNotesNull() {
+                this[this.tablemerinvoice.InvNotesColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4402,6 +4446,7 @@ namespace Mbc5.DataSets.dsMInvoiceTableAdapters {
             tableMapping.ColumnMappings.Add("TeacherBaseTotal", "TeacherBaseTotal");
             tableMapping.ColumnMappings.Add("shphandling", "shphandling");
             tableMapping.ColumnMappings.Add("StudentTotalBasePrice", "StudentTotalBasePrice");
+            tableMapping.ColumnMappings.Add("InvNotes", "InvNotes");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4420,7 +4465,7 @@ namespace Mbc5.DataSets.dsMInvoiceTableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        schcode, invno, qtedate, nopages, QtyTotal, FplnPrc, source, ponum, invtot, payments, baldue, contfname, contlname, schname, InvAddr, InvAddr2, InvCity, InvState, InvZip, contryear, poamt, baseprc, basetot, formattype, 
                          invaddnote, invname, shpdate, qtystudent, schtype, qtyteacher, generic, TeBasePrc, shpname, shpaddr, shpaddr2, shpcity, shpstate, shpzip, prodcode, salestax, ModifiedBy, FplnTot, Subtotal, TeacherBaseTotal, shphandling, 
-                         StudentTotalBasePrice
+                         StudentTotalBasePrice, InvNotes
 FROM            merinvoice
 WHERE        (invno = @Invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;

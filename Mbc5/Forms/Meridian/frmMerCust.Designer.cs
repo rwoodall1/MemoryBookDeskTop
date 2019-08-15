@@ -96,6 +96,7 @@
             System.Windows.Forms.Label label14;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMerCust));
+            System.Windows.Forms.Label invnotesLabel;
             this.merCustTab = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
             this.lblInvno = new System.Windows.Forms.Label();
@@ -222,6 +223,7 @@
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.contpstnTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.contpstnTableAdapter();
+            this.invnotesTextBox = new System.Windows.Forms.TextBox();
             schnameLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             taxExemptRecvdLabel = new System.Windows.Forms.Label();
@@ -291,6 +293,7 @@
             label12 = new System.Windows.Forms.Label();
             label13 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
+            invnotesLabel = new System.Windows.Forms.Label();
             this.merCustTab.SuspendLayout();
             this.pg1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mcustBindingSource)).BeginInit();
@@ -716,7 +719,7 @@
             // shippingZipCodeLabel
             // 
             shippingZipCodeLabel.AutoSize = true;
-            shippingZipCodeLabel.Location = new System.Drawing.Point(147, 400);
+            shippingZipCodeLabel.Location = new System.Drawing.Point(147, 483);
             shippingZipCodeLabel.Name = "shippingZipCodeLabel";
             shippingZipCodeLabel.Size = new System.Drawing.Size(94, 13);
             shippingZipCodeLabel.TabIndex = 97;
@@ -725,7 +728,7 @@
             // shippingStateLabel
             // 
             shippingStateLabel.AutoSize = true;
-            shippingStateLabel.Location = new System.Drawing.Point(165, 373);
+            shippingStateLabel.Location = new System.Drawing.Point(165, 456);
             shippingStateLabel.Name = "shippingStateLabel";
             shippingStateLabel.Size = new System.Drawing.Size(76, 13);
             shippingStateLabel.TabIndex = 95;
@@ -734,7 +737,7 @@
             // shippingCityLabel
             // 
             shippingCityLabel.AutoSize = true;
-            shippingCityLabel.Location = new System.Drawing.Point(173, 350);
+            shippingCityLabel.Location = new System.Drawing.Point(173, 433);
             shippingCityLabel.Name = "shippingCityLabel";
             shippingCityLabel.Size = new System.Drawing.Size(68, 13);
             shippingCityLabel.TabIndex = 93;
@@ -743,7 +746,7 @@
             // shippingAddr2Label1
             // 
             shippingAddr2Label1.AutoSize = true;
-            shippingAddr2Label1.Location = new System.Drawing.Point(143, 324);
+            shippingAddr2Label1.Location = new System.Drawing.Point(143, 407);
             shippingAddr2Label1.Name = "shippingAddr2Label1";
             shippingAddr2Label1.Size = new System.Drawing.Size(98, 13);
             shippingAddr2Label1.TabIndex = 91;
@@ -752,7 +755,7 @@
             // shipppingAddrLabel1
             // 
             shipppingAddrLabel1.AutoSize = true;
-            shipppingAddrLabel1.Location = new System.Drawing.Point(146, 295);
+            shipppingAddrLabel1.Location = new System.Drawing.Point(146, 378);
             shipppingAddrLabel1.Name = "shipppingAddrLabel1";
             shipppingAddrLabel1.Size = new System.Drawing.Size(95, 13);
             shipppingAddrLabel1.TabIndex = 90;
@@ -1283,7 +1286,7 @@
             this.xeldateDateTimePicker.Name = "xeldateDateTimePicker";
             this.xeldateDateTimePicker.Size = new System.Drawing.Size(161, 20);
             this.xeldateDateTimePicker.TabIndex = 52;
-            this.xeldateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 49);
+            this.xeldateDateTimePicker.Value = new System.DateTime(2019, 8, 15, 16, 7, 2, 450);
             this.xeldateDateTimePicker.ValueChanged += new System.EventHandler(this.xeldateDateTimePicker_ValueChanged);
             // 
             // nxtdateTextBox
@@ -1309,7 +1312,7 @@
             this.dedayoutDateTimePicker.Name = "dedayoutDateTimePicker";
             this.dedayoutDateTimePicker.Size = new System.Drawing.Size(138, 20);
             this.dedayoutDateTimePicker.TabIndex = 51;
-            this.dedayoutDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 52);
+            this.dedayoutDateTimePicker.Value = new System.DateTime(2019, 8, 15, 16, 7, 2, 466);
             this.dedayoutDateTimePicker.ValueChanged += new System.EventHandler(this.dedayoutDateTimePicker_ValueChanged);
             // 
             // contdateDateTimePicker
@@ -1322,7 +1325,7 @@
             this.contdateDateTimePicker.Name = "contdateDateTimePicker";
             this.contdateDateTimePicker.Size = new System.Drawing.Size(159, 20);
             this.contdateDateTimePicker.TabIndex = 23;
-            this.contdateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 55);
+            this.contdateDateTimePicker.Value = new System.DateTime(2019, 8, 15, 16, 7, 2, 466);
             this.contdateDateTimePicker.CloseUp += new System.EventHandler(this.contdateDateTimePicker_CloseUp);
             this.contdateDateTimePicker.ValueChanged += new System.EventHandler(this.contdateDateTimePicker_ValueChanged);
             // 
@@ -1335,7 +1338,7 @@
             this.dedayinDateTimePicker.Name = "dedayinDateTimePicker";
             this.dedayinDateTimePicker.Size = new System.Drawing.Size(138, 20);
             this.dedayinDateTimePicker.TabIndex = 50;
-            this.dedayinDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 57);
+            this.dedayinDateTimePicker.Value = new System.DateTime(2019, 8, 15, 16, 7, 2, 466);
             this.dedayinDateTimePicker.ValueChanged += new System.EventHandler(this.dedayinDateTimePicker_ValueChanged);
             // 
             // sourdateDateTimePicker
@@ -1348,7 +1351,7 @@
             this.sourdateDateTimePicker.Name = "sourdateDateTimePicker";
             this.sourdateDateTimePicker.Size = new System.Drawing.Size(159, 20);
             this.sourdateDateTimePicker.TabIndex = 21;
-            this.sourdateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 59);
+            this.sourdateDateTimePicker.Value = new System.DateTime(2019, 8, 15, 16, 7, 2, 466);
             this.sourdateDateTimePicker.ValueChanged += new System.EventHandler(this.sourdateDateTimePicker_ValueChanged);
             // 
             // josnameComboBox
@@ -1410,7 +1413,7 @@
             this.initcontDateTimePicker.Name = "initcontDateTimePicker";
             this.initcontDateTimePicker.Size = new System.Drawing.Size(159, 20);
             this.initcontDateTimePicker.TabIndex = 11;
-            this.initcontDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 73);
+            this.initcontDateTimePicker.Value = new System.DateTime(2019, 8, 15, 16, 7, 2, 481);
             this.initcontDateTimePicker.ValueChanged += new System.EventHandler(this.initcontDateTimePicker_ValueChanged);
             // 
             // mktsegmentComboBox
@@ -1431,7 +1434,7 @@
             this.dteschendDateTimePicker.Name = "dteschendDateTimePicker";
             this.dteschendDateTimePicker.Size = new System.Drawing.Size(138, 20);
             this.dteschendDateTimePicker.TabIndex = 7;
-            this.dteschendDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 79);
+            this.dteschendDateTimePicker.Value = new System.DateTime(2019, 8, 15, 16, 7, 2, 497);
             this.dteschendDateTimePicker.ValueChanged += new System.EventHandler(this.dteschendDateTimePicker_ValueChanged);
             // 
             // dteschstartDateTimePicker
@@ -1443,7 +1446,7 @@
             this.dteschstartDateTimePicker.Name = "dteschstartDateTimePicker";
             this.dteschstartDateTimePicker.Size = new System.Drawing.Size(138, 20);
             this.dteschstartDateTimePicker.TabIndex = 5;
-            this.dteschstartDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 82);
+            this.dteschstartDateTimePicker.Value = new System.DateTime(2019, 8, 15, 16, 7, 2, 497);
             this.dteschstartDateTimePicker.ValueChanged += new System.EventHandler(this.dteschstartDateTimePicker_ValueChanged);
             // 
             // curentprovTextBox
@@ -1645,7 +1648,7 @@
             this.taxExemptRecvdDateTimePicker.Name = "taxExemptRecvdDateTimePicker";
             this.taxExemptRecvdDateTimePicker.Size = new System.Drawing.Size(120, 20);
             this.taxExemptRecvdDateTimePicker.TabIndex = 45;
-            this.taxExemptRecvdDateTimePicker.Value = new System.DateTime(2019, 8, 8, 10, 18, 3, 119);
+            this.taxExemptRecvdDateTimePicker.Value = new System.DateTime(2019, 8, 15, 16, 7, 2, 528);
             this.taxExemptRecvdDateTimePicker.ValueChanged += new System.EventHandler(this.taxExemptRecvdDateTimePicker_ValueChanged);
             // 
             // chkNotTaxExempt
@@ -2127,6 +2130,8 @@
             // pg2
             // 
             this.pg2.BackColor = System.Drawing.SystemColors.Control;
+            this.pg2.Controls.Add(invnotesLabel);
+            this.pg2.Controls.Add(this.invnotesTextBox);
             this.pg2.Controls.Add(this.txtShpZip);
             this.pg2.Controls.Add(this.cmbShpState);
             this.pg2.Controls.Add(this.txtShpCity);
@@ -2162,7 +2167,7 @@
             // txtShpZip
             // 
             this.txtShpZip.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "shpzip", true));
-            this.txtShpZip.Location = new System.Drawing.Point(248, 400);
+            this.txtShpZip.Location = new System.Drawing.Point(248, 483);
             this.txtShpZip.MaxLength = 50;
             this.txtShpZip.Name = "txtShpZip";
             this.txtShpZip.Size = new System.Drawing.Size(230, 20);
@@ -2174,7 +2179,7 @@
             this.cmbShpState.DataSource = this.statesBindingSourceShp;
             this.cmbShpState.DisplayMember = "Name";
             this.cmbShpState.FormattingEnabled = true;
-            this.cmbShpState.Location = new System.Drawing.Point(248, 373);
+            this.cmbShpState.Location = new System.Drawing.Point(248, 456);
             this.cmbShpState.MaxLength = 3;
             this.cmbShpState.Name = "cmbShpState";
             this.cmbShpState.Size = new System.Drawing.Size(258, 21);
@@ -2189,7 +2194,7 @@
             // txtShpCity
             // 
             this.txtShpCity.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "shpcity", true));
-            this.txtShpCity.Location = new System.Drawing.Point(248, 347);
+            this.txtShpCity.Location = new System.Drawing.Point(248, 430);
             this.txtShpCity.MaxLength = 50;
             this.txtShpCity.Name = "txtShpCity";
             this.txtShpCity.Size = new System.Drawing.Size(230, 20);
@@ -2198,7 +2203,7 @@
             // txtShpAddr2
             // 
             this.txtShpAddr2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "shpaddr2", true));
-            this.txtShpAddr2.Location = new System.Drawing.Point(248, 321);
+            this.txtShpAddr2.Location = new System.Drawing.Point(248, 404);
             this.txtShpAddr2.MaxLength = 50;
             this.txtShpAddr2.Name = "txtShpAddr2";
             this.txtShpAddr2.Size = new System.Drawing.Size(230, 20);
@@ -2207,7 +2212,7 @@
             // txtShpAddr
             // 
             this.txtShpAddr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "shpaddr", true));
-            this.txtShpAddr.Location = new System.Drawing.Point(248, 295);
+            this.txtShpAddr.Location = new System.Drawing.Point(248, 378);
             this.txtShpAddr.MaxLength = 50;
             this.txtShpAddr.Name = "txtShpAddr";
             this.txtShpAddr.Size = new System.Drawing.Size(233, 20);
@@ -2270,7 +2275,7 @@
             // 
             // btnSaveInformation
             // 
-            this.btnSaveInformation.Location = new System.Drawing.Point(311, 437);
+            this.btnSaveInformation.Location = new System.Drawing.Point(311, 520);
             this.btnSaveInformation.Name = "btnSaveInformation";
             this.btnSaveInformation.Size = new System.Drawing.Size(143, 23);
             this.btnSaveInformation.TabIndex = 110;
@@ -2282,7 +2287,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(92, 242);
+            this.label21.Location = new System.Drawing.Point(92, 325);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(176, 20);
             this.label21.TabIndex = 99;
@@ -2290,7 +2295,7 @@
             // 
             // btnSchoolToShipping
             // 
-            this.btnSchoolToShipping.Location = new System.Drawing.Point(487, 295);
+            this.btnSchoolToShipping.Location = new System.Drawing.Point(487, 378);
             this.btnSchoolToShipping.Name = "btnSchoolToShipping";
             this.btnSchoolToShipping.Size = new System.Drawing.Size(129, 23);
             this.btnSchoolToShipping.TabIndex = 66;
@@ -2362,6 +2367,24 @@
             // contpstnTableAdapter
             // 
             this.contpstnTableAdapter.ClearBeforeFill = true;
+            // 
+            // invnotesLabel
+            // 
+            invnotesLabel.AutoSize = true;
+            invnotesLabel.Location = new System.Drawing.Point(209, 225);
+            invnotesLabel.Name = "invnotesLabel";
+            invnotesLabel.Size = new System.Drawing.Size(35, 13);
+            invnotesLabel.TabIndex = 120;
+            invnotesLabel.Text = "Notes";
+            // 
+            // invnotesTextBox
+            // 
+            this.invnotesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "invnotes", true));
+            this.invnotesTextBox.Location = new System.Drawing.Point(248, 222);
+            this.invnotesTextBox.Multiline = true;
+            this.invnotesTextBox.Name = "invnotesTextBox";
+            this.invnotesTextBox.Size = new System.Drawing.Size(321, 67);
+            this.invnotesTextBox.TabIndex = 121;
             // 
             // frmMerCust
             // 
@@ -2534,5 +2557,6 @@
         private System.Windows.Forms.TextBox txtInvAddr2;
         private System.Windows.Forms.TextBox txtInvAddr;
         private System.Windows.Forms.Label lblInvno;
+        private System.Windows.Forms.TextBox invnotesTextBox;
     }
     }
