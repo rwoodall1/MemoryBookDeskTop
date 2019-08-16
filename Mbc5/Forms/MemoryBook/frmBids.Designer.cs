@@ -100,6 +100,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.btnCopyToSales = new System.Windows.Forms.Button();
             this.btnCopyToNewBid = new System.Windows.Forms.Button();
             this.btnPrntQuote = new System.Windows.Forms.Button();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label10 = new System.Windows.Forms.Label();
             this.schooltaxrateLabel1 = new System.Windows.Forms.Label();
             this.lblfilnalsubtotal = new System.Windows.Forms.Label();
@@ -226,7 +227,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.bidsTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.bidsTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsBidsTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.custTableAdapter();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -952,7 +952,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.dteQuote.Name = "dteQuote";
             this.dteQuote.Size = new System.Drawing.Size(104, 20);
             this.dteQuote.TabIndex = 296;
-            this.dteQuote.Value = new System.DateTime(2019, 8, 16, 12, 11, 46, 7);
+            this.dteQuote.Value = new System.DateTime(2019, 8, 16, 14, 23, 30, 257);
             this.dteQuote.ValueChanged += new System.EventHandler(this.dteQuote_ValueChanged);
             // 
             // chkPrntAsInvoice
@@ -1038,6 +1038,18 @@ namespace Mbc5.Forms.MemoryBook {
             this.btnPrntQuote.Text = "Print Quote";
             this.btnPrntQuote.UseVisualStyleBackColor = true;
             this.btnPrntQuote.Click += new System.EventHandler(this.btnPrntQuote_Click);
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.DocumentMapWidth = 48;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuote.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(892, 390);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(105, 119);
+            this.reportViewer1.TabIndex = 286;
+            this.reportViewer1.Visible = false;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
             // label10
             // 
@@ -2510,17 +2522,6 @@ namespace Mbc5.Forms.MemoryBook {
             // custTableAdapter
             // 
             this.custTableAdapter.ClearBeforeFill = true;
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.DocumentMapWidth = 48;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuote.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(791, 406);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(276, 293);
-            this.reportViewer1.TabIndex = 286;
-            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
             // frmBids
             // 
