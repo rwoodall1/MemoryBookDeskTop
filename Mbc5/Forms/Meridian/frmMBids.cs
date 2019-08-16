@@ -1243,8 +1243,17 @@ namespace Mbc5.Forms.Meridian {
                 {
                     chkJostens.Checked = false;
                     chkJostens.AutoCheck = false;
+                    chkGeneric.Checked = false;
+
                 }
                 else { chkJostens.AutoCheck = true; }
+                if (prodcodeComboBox.SelectedValue.ToString() == "MAG")
+                {
+                    chkJostens.Checked = false;
+                    chkJostens.AutoCheck = false;
+                    chkGeneric.Checked = false;
+                    
+                }
             }
             else
             {
@@ -1255,21 +1264,29 @@ namespace Mbc5.Forms.Meridian {
             {
                 case "HSP":
                     lblSchtype.Text = "HS";
+                    txtQtyTeacher.ReadOnly = false;
                     break;
                 case "MSP":
                     lblSchtype.Text = "MS";
+                    txtQtyTeacher.ReadOnly = false;
                     break;
                 case "MAG":
                     lblSchtype.Text = "MAGNET";
+                    txtQtyTeacher.Text = "0";
+                    txtQtyTeacher.ReadOnly = true;
                     break;
                 case "ADVLOG":
                     lblSchtype.Text = "ADVENTURE LOG";
+                    txtQtyTeacher.Text = "0";
+                    txtQtyTeacher.ReadOnly = true;
                     break;
                 case "ELSP":
                     lblSchtype.Text = "ELEM";
+                    txtQtyTeacher.ReadOnly = false;
                     break;
                 case "PRISP":
                     lblSchtype.Text = "PRIM";
+                    txtQtyTeacher.ReadOnly = false;
                     break;
             }
             if (!GetBookPricing())

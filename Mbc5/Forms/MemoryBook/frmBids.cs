@@ -65,6 +65,7 @@ namespace Mbc5.Forms.MemoryBook {
             BookCalc();
             txtBYear.Focus();
 
+            this.reportViewer2.RefreshReport();
         }
 
 

@@ -91,6 +91,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.bidsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pgBids = new System.Windows.Forms.TabPage();
+            this.dteQuote = new Mbc5.Classes.NullableDateTimePicker();
             this.chkPrntAsInvoice = new System.Windows.Forms.CheckBox();
             this.lblschode = new System.Windows.Forms.Label();
             this.ordagryrTextBox = new System.Windows.Forms.TextBox();
@@ -99,7 +100,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.btnCopyToSales = new System.Windows.Forms.Button();
             this.btnCopyToNewBid = new System.Windows.Forms.Button();
             this.btnPrntQuote = new System.Windows.Forms.Button();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label10 = new System.Windows.Forms.Label();
             this.schooltaxrateLabel1 = new System.Windows.Forms.Label();
             this.lblfilnalsubtotal = new System.Windows.Forms.Label();
@@ -166,6 +166,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtDesc3 = new System.Windows.Forms.TextBox();
             this.txtDesc4 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.colorPriceOverRideCheckBox = new System.Windows.Forms.CheckBox();
             this.lblSpeccvrtot = new System.Windows.Forms.TextBox();
             this.InkOverRide = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.overRidePrice = new System.Windows.Forms.ToolStripMenuItem();
@@ -225,8 +226,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.bidsTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.bidsTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsBidsTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.custTableAdapter();
-            this.colorPriceOverRideCheckBox = new System.Windows.Forms.CheckBox();
-            this.dteQuote = new Mbc5.Classes.NullableDateTimePicker();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -943,6 +943,18 @@ namespace Mbc5.Forms.MemoryBook {
             this.pgBids.TabIndex = 0;
             this.pgBids.Text = "Bids";
             // 
+            // dteQuote
+            // 
+            this.dteQuote.CustomFormat = " ";
+            this.dteQuote.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bidsBindingSource, "qtedate", true));
+            this.dteQuote.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dteQuote.Location = new System.Drawing.Point(628, 28);
+            this.dteQuote.Name = "dteQuote";
+            this.dteQuote.Size = new System.Drawing.Size(104, 20);
+            this.dteQuote.TabIndex = 296;
+            this.dteQuote.Value = new System.DateTime(2019, 8, 16, 12, 11, 46, 7);
+            this.dteQuote.ValueChanged += new System.EventHandler(this.dteQuote_ValueChanged);
+            // 
             // chkPrntAsInvoice
             // 
             this.chkPrntAsInvoice.AutoSize = true;
@@ -975,7 +987,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.nbaCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nbaCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "nba", true));
-            this.nbaCheckBox.Location = new System.Drawing.Point(841, 82);
+            this.nbaCheckBox.Location = new System.Drawing.Point(845, 82);
             this.nbaCheckBox.Name = "nbaCheckBox";
             this.nbaCheckBox.Size = new System.Drawing.Size(56, 24);
             this.nbaCheckBox.TabIndex = 10;
@@ -986,7 +998,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.oaCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.oaCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "oa", true));
-            this.oaCheckBox.Location = new System.Drawing.Point(903, 82);
+            this.oaCheckBox.Location = new System.Drawing.Point(907, 82);
             this.oaCheckBox.Name = "oaCheckBox";
             this.oaCheckBox.Size = new System.Drawing.Size(90, 24);
             this.oaCheckBox.TabIndex = 11;
@@ -1019,25 +1031,13 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.btnPrntQuote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrntQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrntQuote.Location = new System.Drawing.Point(921, 152);
+            this.btnPrntQuote.Location = new System.Drawing.Point(925, 152);
             this.btnPrntQuote.Name = "btnPrntQuote";
             this.btnPrntQuote.Size = new System.Drawing.Size(100, 23);
             this.btnPrntQuote.TabIndex = 287;
             this.btnPrntQuote.Text = "Print Quote";
             this.btnPrntQuote.UseVisualStyleBackColor = true;
             this.btnPrntQuote.Click += new System.EventHandler(this.btnPrntQuote_Click);
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.DocumentMapWidth = 48;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuote.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(582, 601);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(68, 82);
-            this.reportViewer1.TabIndex = 286;
-            this.reportViewer1.Visible = false;
-            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
             // label10
             // 
@@ -1120,7 +1120,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtPOAmt.Location = new System.Drawing.Point(125, 667);
             this.txtPOAmt.Name = "txtPOAmt";
             this.txtPOAmt.ReadOnly = true;
-            this.txtPOAmt.Size = new System.Drawing.Size(20, 20);
+            this.txtPOAmt.Size = new System.Drawing.Size(24, 20);
             this.txtPOAmt.TabIndex = 265;
             // 
             // txtPayments
@@ -1132,7 +1132,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtPayments.Location = new System.Drawing.Point(125, 644);
             this.txtPayments.Name = "txtPayments";
             this.txtPayments.ReadOnly = true;
-            this.txtPayments.Size = new System.Drawing.Size(20, 20);
+            this.txtPayments.Size = new System.Drawing.Size(24, 20);
             this.txtPayments.TabIndex = 264;
             // 
             // txtExtChrg
@@ -1146,7 +1146,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.txtExtChrg.Multiline = true;
             this.txtExtChrg.Name = "txtExtChrg";
             this.txtExtChrg.ReadOnly = true;
-            this.txtExtChrg.Size = new System.Drawing.Size(208, 71);
+            this.txtExtChrg.Size = new System.Drawing.Size(212, 71);
             this.txtExtChrg.TabIndex = 37;
             // 
             // custBindingSource
@@ -1605,7 +1605,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(549, 390);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(328, 119);
+            this.panel4.Size = new System.Drawing.Size(332, 119);
             this.panel4.TabIndex = 268;
             // 
             // txtOtherChrg
@@ -1718,7 +1718,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.pnlMiscDiscCred.Controls.Add(this.txtDesc4);
             this.pnlMiscDiscCred.Location = new System.Drawing.Point(520, 111);
             this.pnlMiscDiscCred.Name = "pnlMiscDiscCred";
-            this.pnlMiscDiscCred.Size = new System.Drawing.Size(299, 175);
+            this.pnlMiscDiscCred.Size = new System.Drawing.Size(303, 175);
             this.pnlMiscDiscCred.TabIndex = 261;
             // 
             // txtClrTot
@@ -1878,6 +1878,17 @@ namespace Mbc5.Forms.MemoryBook {
             this.panel3.Size = new System.Drawing.Size(224, 262);
             this.panel3.TabIndex = 258;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // colorPriceOverRideCheckBox
+            // 
+            this.colorPriceOverRideCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "ColorPriceOverRide", true));
+            this.colorPriceOverRideCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 4F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorPriceOverRideCheckBox.Location = new System.Drawing.Point(179, 192);
+            this.colorPriceOverRideCheckBox.Name = "colorPriceOverRideCheckBox";
+            this.colorPriceOverRideCheckBox.Size = new System.Drawing.Size(51, 27);
+            this.colorPriceOverRideCheckBox.TabIndex = 329;
+            this.colorPriceOverRideCheckBox.Text = "Over Ride";
+            this.colorPriceOverRideCheckBox.UseVisualStyleBackColor = true;
             // 
             // lblSpeccvrtot
             // 
@@ -2500,28 +2511,16 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.custTableAdapter.ClearBeforeFill = true;
             // 
-            // colorPriceOverRideCheckBox
+            // reportViewer1
             // 
-            this.colorPriceOverRideCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bidsBindingSource, "ColorPriceOverRide", true));
-            this.colorPriceOverRideCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 4F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorPriceOverRideCheckBox.Location = new System.Drawing.Point(179, 192);
-            this.colorPriceOverRideCheckBox.Name = "colorPriceOverRideCheckBox";
-            this.colorPriceOverRideCheckBox.Size = new System.Drawing.Size(51, 27);
-            this.colorPriceOverRideCheckBox.TabIndex = 329;
-            this.colorPriceOverRideCheckBox.Text = "Over Ride";
-            this.colorPriceOverRideCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // dteQuote
-            // 
-            this.dteQuote.CustomFormat = " ";
-            this.dteQuote.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bidsBindingSource, "qtedate", true));
-            this.dteQuote.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dteQuote.Location = new System.Drawing.Point(628, 28);
-            this.dteQuote.Name = "dteQuote";
-            this.dteQuote.Size = new System.Drawing.Size(104, 20);
-            this.dteQuote.TabIndex = 296;
-            this.dteQuote.Value = new System.DateTime(2019, 8, 14, 15, 0, 0, 619);
-            this.dteQuote.ValueChanged += new System.EventHandler(this.dteQuote_ValueChanged);
+            this.reportViewer1.DocumentMapWidth = 48;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MerInvoice.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(920, 582);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(147, 117);
+            this.reportViewer1.TabIndex = 286;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 
             // frmBids
             // 
@@ -2701,7 +2700,6 @@ namespace Mbc5.Forms.MemoryBook {
         private DataSets.dsBids dsBids;
         private System.Windows.Forms.TextBox allclramtTextBox;
         private System.Windows.Forms.BindingSource BidInvoiceDetailBindingSource;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.Button btnPrntQuote;
         private System.Windows.Forms.Button btnCopyToNewBid;
         private System.Windows.Forms.Button btnCopyToSales;
@@ -2730,5 +2728,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.ContextMenuStrip InkOverRide;
         private System.Windows.Forms.ToolStripMenuItem overRidePrice;
         private System.Windows.Forms.CheckBox colorPriceOverRideCheckBox;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
     }

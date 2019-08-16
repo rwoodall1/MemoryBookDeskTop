@@ -1972,7 +1972,24 @@ private void prodcodeComboBox_SelectionChangeCommitted(object sender, EventArgs 
     {
         sfRadioButton.Checked = true;
         lfRadioButton.Checked = false;
-    }
+                sfRadioButton.Checked = true;
+                lfRadioButton.Checked = false;
+                if (prodcodeComboBox.SelectedValue.ToString() == "ADVLOG")
+                {
+                    chkJostens.Checked = false;
+                    chkJostens.AutoCheck = false;
+                    chkGeneric.Checked = false;
+
+                }
+                else { chkJostens.AutoCheck = true; }
+                if (prodcodeComboBox.SelectedValue.ToString() == "MAG")
+                {
+                    chkJostens.Checked = false;
+                    chkJostens.AutoCheck = false;
+                    chkGeneric.Checked = false;
+
+                }
+            }
     else
     {
         sfRadioButton.Checked = false;
@@ -1982,22 +1999,30 @@ private void prodcodeComboBox_SelectionChangeCommitted(object sender, EventArgs 
         {
             case "HSP":
                 lblSchtype.Text = "HS";
-                break;
+                    txtQtyTeacher.ReadOnly = false;
+                    break;
             case "MSP":
                 lblSchtype.Text = "MS";
-                break;
+                    txtQtyTeacher.ReadOnly = false;
+                    break;
             case "MAG":
                 lblSchtype.Text = "MAGNET";
+                    txtQtyTeacher.Text = "0";
+                    txtQtyTeacher.ReadOnly = true;
                 break;
             case "ADVLOG":
                 lblSchtype.Text = "ADVENTURE LOG";
-                break;
+                    txtQtyTeacher.Text = "0";
+                    txtQtyTeacher.ReadOnly = true;
+                    break;
             case "ELSP":
                 lblSchtype.Text = "ELEM";
-                break;
+                    txtQtyTeacher.ReadOnly = false;
+                    break;
             case "PRISP":
                 lblSchtype.Text = "PRIM";
-                break;
+                    txtQtyTeacher.ReadOnly = false;
+                    break;
         }
     if (!GetBookPricing())
     {
