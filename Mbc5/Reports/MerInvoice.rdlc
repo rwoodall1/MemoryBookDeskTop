@@ -1615,7 +1615,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>="&lt;i&gt;You may pay by credit card via &lt;a href=https://meridianplanners.com/products/invoice-pay&gt;https://meridianplanners.com/products/invoice-pay&lt;/a&gt; or submit a check. If youare paying online you neeed your account code which is "+First(Fields!schcode.Value.ToString(), "dsMerInvoice")+"."
+                  <Value>="&lt;i&gt;You may pay by credit card via &lt;font color=blue&gt;&lt;a href=https://meridianplanners.com/products/invoice-pay&gt;https://meridianplanners.com/products/invoice-pay&lt;/a&gt;&lt;/font&gt; or submit a check. If youare paying online you neeed your account code which is "+First(Fields!schcode.Value.ToString(), "dsMerInvoice")+"."
 +Environment.NewLine+"Please contact your representative if you have any questipons. thank you!&lt;/i&gt;"</Value>
                   <MarkupType>HTML</MarkupType>
                   <Style />
@@ -1649,7 +1649,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Internatioanl prices do not inclue local duties and taxes, if applicable. these aer paid by the reciever upon delivery.</Value>
+                  <Value>Internatioanl prices do not inclue local duties and taxes, if applicable. these are paid by the reciever upon delivery.</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1672,23 +1672,23 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Textbox Name="Textbox47">
+        <Textbox Name="Textbox17">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Format(Cdate(Globals!ExecutionTime),"MMM dd, yyyy, hh:mm:ss tt")</Value>
+                  <Value>="Print Date "+FormatDateTime(Globals!ExecutionTime,DateFormat.ShortDate)</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
               <Style />
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox47</rd:DefaultName>
+          <rd:DefaultName>Textbox3</rd:DefaultName>
           <Top>1.42361in</Top>
-          <Left>6.33903in</Left>
+          <Left>6.68628in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>3</ZIndex>

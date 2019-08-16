@@ -2514,11 +2514,11 @@ namespace Mbc5.Forms.MemoryBook {
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 48;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MerInvoice.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(920, 582);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BidQuote.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(791, 406);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(147, 117);
+            this.reportViewer1.Size = new System.Drawing.Size(276, 293);
             this.reportViewer1.TabIndex = 286;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
             // 

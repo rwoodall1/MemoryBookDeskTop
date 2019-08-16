@@ -65,7 +65,7 @@ namespace Mbc5.Forms.MemoryBook {
             BookCalc();
             txtBYear.Focus();
 
-            this.reportViewer2.RefreshReport();
+            
         }
 
 
@@ -2405,15 +2405,25 @@ namespace Mbc5.Forms.MemoryBook {
             
            
             BidInvoiceDetailBindingSource.DataSource = vBidDetails;
-            ReportParameter rp0 = new ReportParameter("ReportType", chkPrntAsInvoice.Checked.ToString());
+            try
+            {
+                ReportParameter rp0 = new ReportParameter("ReportType", chkPrntAsInvoice.Checked.ToString());
 
-            reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp0});
-          
+                reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp0 });
 
-            Cursor.Current = Cursors.WaitCursor;
-           
+
+
+                Cursor.Current = Cursors.WaitCursor;
+                ReportDataSource rds = new ReportDataSource("dsCust", custBindingSource);
+                ReportDataSource rds1 = new ReportDataSource("dsBidValues",bidsBindingSource);
+                ReportDataSource rds2 = new ReportDataSource("detailbid", BidInvoiceDetailBindingSource);
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(rds);
+                reportViewer1.LocalReport.DataSources.Add(rds1);
+                reportViewer1.LocalReport.DataSources.Add(rds2);
+
                 this.reportViewer1.RefreshReport();
-            
+            }catch(Exception ex) { };
             
              Cursor.Current = Cursors.Arrow;
         }
