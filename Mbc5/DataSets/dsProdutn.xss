@@ -10,7 +10,7 @@
     <Shape ID="DesignTable:cust" ZOrder="2" X="-51" Y="242" Height="305" Width="168" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="254" />
     <Shape ID="DesignTable:quotes" ZOrder="4" X="154" Y="2" Height="132" Width="227" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="140" SplitterPosition="24" />
     <Shape ID="DesignTable:partbk" ZOrder="10" X="425" Y="174" Height="55" Width="183" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="63" OldDataTableHeight="216" SplitterPosition="25" />
-    <Shape ID="DesignTable:ptbkb" ZOrder="24" X="863" Y="164" Height="94" Width="179" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
+    <Shape ID="DesignTable:ptbkb" ZOrder="24" X="864" Y="162" Height="94" Width="179" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
     <Shape ID="DesignTable:wip" ZOrder="1" X="8" Y="498" Height="208" Width="165" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
     <Shape ID="DesignTable:wipg" ZOrder="18" X="1251" Y="120" Height="75" Width="173" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="45" OldDataTableHeight="121" SplitterPosition="25" />
     <Shape ID="DesignTable:covers" ZOrder="7" X="669" Y="141" Height="94" Width="182" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="693" SplitterPosition="24" />
@@ -166,22 +166,22 @@
         </Point>
         <Point>
           <X>576</X>
-          <Y>181</Y>
+          <Y>179</Y>
         </Point>
         <Point>
-          <X>863</X>
-          <Y>181</Y>
+          <X>864</X>
+          <Y>179</Y>
         </Point>
       </RoutePoints>
     </Connector>
     <Connector ID="DesignRelation:ptbkb_prtbkbdetail" ZOrder="13" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>1025</X>
-          <Y>258</Y>
+          <X>1026</X>
+          <Y>256</Y>
         </Point>
         <Point>
-          <X>1025</X>
+          <X>1026</X>
           <Y>397</Y>
         </Point>
         <Point>

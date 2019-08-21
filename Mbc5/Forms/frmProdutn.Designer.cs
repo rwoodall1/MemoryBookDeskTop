@@ -1,4 +1,6 @@
-﻿namespace Mbc5.Forms
+﻿using System;
+
+namespace Mbc5.Forms
 {
     partial class frmProdutn
     {
@@ -26,6 +28,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        /// 
+       
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
@@ -187,21 +191,22 @@
             System.Windows.Forms.Label speccoverLabel;
             System.Windows.Forms.Label colorsLabel;
             System.Windows.Forms.Label laminatedLabel;
+            System.Windows.Forms.Label nocopiesLabel2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsProdutn = new Mbc5.DataSets.dsProdutn();
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -218,21 +223,15 @@
             this.label56 = new System.Windows.Forms.Label();
             this.btnStandarCoverEmail = new System.Windows.Forms.Button();
             this.btnspCoverEmail = new System.Windows.Forms.Button();
-            this.btnSchoolSearch = new System.Windows.Forms.Button();
-            this.txtSchNamesrch = new System.Windows.Forms.TextBox();
-            this.btnInvoiceSrch = new System.Windows.Forms.Button();
-            this.txtSchCode = new System.Windows.Forms.TextBox();
-            this.txtProdNoSrch = new System.Windows.Forms.TextBox();
-            this.btnProdSrch = new System.Windows.Forms.Button();
             this.lblShipped = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.cstsvcdteDateTimePicker11 = new Mbc5.Classes.NullableDateTimePicker();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnMbo = new System.Windows.Forms.Button();
             this.lblModifiedBy = new System.Windows.Forms.Label();
             this.txtMbo = new System.Windows.Forms.TextBox();
             this.cominitlTextBox = new System.Windows.Forms.TextBox();
             this.comdateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
-            this.dpCustomerServiceDate = new Mbc5.Classes.NullableDateTimePicker();
             this.btnEmailPw = new System.Windows.Forms.Button();
             this.btnPrntMbOnline = new System.Windows.Forms.Button();
             this.btnUpdateJob = new System.Windows.Forms.Button();
@@ -260,6 +259,7 @@
             this.txtWeeks = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dteWarnDate = new CustomControls.DateBox();
             this.vendcdComboBox1 = new System.Windows.Forms.ComboBox();
             this.vendorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmbBindingVendor = new System.Windows.Forms.ComboBox();
@@ -268,7 +268,6 @@
             this.btnBindVend = new System.Windows.Forms.Button();
             this.btnPrntVendor = new System.Windows.Forms.Button();
             this.tovendDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
-            this.warndateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.prshpdteDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.prmsdateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.shpdateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
@@ -368,11 +367,12 @@
             this.invnoLabel2 = new System.Windows.Forms.Label();
             this.lblProdNodata = new System.Windows.Forms.Label();
             this.pg3 = new System.Windows.Forms.TabPage();
+            this.btnCvrUpdate = new System.Windows.Forms.Button();
             this.lblCoverNum = new System.Windows.Forms.Label();
             this.coversBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnMeridianTicket = new System.Windows.Forms.Button();
+            this.btnCoverTicket = new System.Windows.Forms.Button();
+            this.btnBindery = new System.Windows.Forms.Button();
             this.coverdetailDataGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -489,7 +489,7 @@
             this.partBkDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnAddPartial = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.partmemoTextBox = new System.Windows.Forms.TextBox();
             this.iinitTextBox1 = new System.Windows.Forms.TextBox();
@@ -504,6 +504,11 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.pg6 = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.btnAddPhotoCd = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.nocopiesTextBox1 = new System.Windows.Forms.TextBox();
             this.rmbtotTextBox1 = new System.Windows.Forms.TextBox();
             this.rmptotTextBox1 = new System.Windows.Forms.TextBox();
             this.rmbfrmDateTimePicker1 = new Mbc5.Classes.NullableDateTimePicker();
@@ -538,7 +543,7 @@
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.invnoLabel6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new Mbc5.Classes.NullableDateTimePicker();
+            this.dtPhotoCDRevDate = new Mbc5.Classes.NullableDateTimePicker();
             this.ptnopgsTextBox2 = new System.Windows.Forms.TextBox();
             this.booktypeTextBox3 = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
@@ -566,6 +571,7 @@
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
             this.vendorTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.vendorTableAdapter();
+            this.cstsvcdteDateTimePicker = new CustomControls.DateBox();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -724,6 +730,7 @@
             speccoverLabel = new System.Windows.Forms.Label();
             colorsLabel = new System.Windows.Forms.Label();
             laminatedLabel = new System.Windows.Forms.Label();
+            nocopiesLabel2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
@@ -2074,7 +2081,7 @@
             // 
             label45.AutoSize = true;
             label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label45.Location = new System.Drawing.Point(193, 53);
+            label45.Location = new System.Drawing.Point(295, 50);
             label45.Name = "label45";
             label45.Size = new System.Drawing.Size(92, 13);
             label45.TabIndex = 128;
@@ -2104,7 +2111,7 @@
             // 
             label48.AutoSize = true;
             label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label48.Location = new System.Drawing.Point(486, 53);
+            label48.Location = new System.Drawing.Point(540, 53);
             label48.Name = "label48";
             label48.Size = new System.Drawing.Size(75, 13);
             label48.TabIndex = 133;
@@ -2112,6 +2119,7 @@
             // 
             // regisnoLabel
             // 
+            regisnoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             regisnoLabel.AutoSize = true;
             regisnoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             regisnoLabel.Location = new System.Drawing.Point(27, 345);
@@ -2122,9 +2130,10 @@
             // 
             // cdpassLabel
             // 
+            cdpassLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             cdpassLabel.AutoSize = true;
             cdpassLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cdpassLabel.Location = new System.Drawing.Point(565, 345);
+            cdpassLabel.Location = new System.Drawing.Point(508, 345);
             cdpassLabel.Name = "cdpassLabel";
             cdpassLabel.Size = new System.Drawing.Size(68, 13);
             cdpassLabel.TabIndex = 135;
@@ -2132,6 +2141,7 @@
             // 
             // regisdateLabel
             // 
+            regisdateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             regisdateLabel.AutoSize = true;
             regisdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             regisdateLabel.Location = new System.Drawing.Point(233, 346);
@@ -2142,6 +2152,7 @@
             // 
             // label49
             // 
+            label49.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             label49.AutoSize = true;
             label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label49.Location = new System.Drawing.Point(59, 395);
@@ -2152,6 +2163,7 @@
             // 
             // label50
             // 
+            label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             label50.AutoSize = true;
             label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label50.Location = new System.Drawing.Point(123, 376);
@@ -2162,7 +2174,7 @@
             // 
             // label51
             // 
-            label51.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label51.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             label51.AutoSize = true;
             label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label51.Location = new System.Drawing.Point(348, 376);
@@ -2173,7 +2185,7 @@
             // 
             // label52
             // 
-            label52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             label52.AutoSize = true;
             label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label52.Location = new System.Drawing.Point(575, 376);
@@ -2184,7 +2196,7 @@
             // 
             // label53
             // 
-            label53.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            label53.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             label53.AutoSize = true;
             label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label53.Location = new System.Drawing.Point(684, 376);
@@ -2195,7 +2207,7 @@
             // 
             // bindvendLabel
             // 
-            bindvendLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            bindvendLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             bindvendLabel.AutoSize = true;
             bindvendLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             bindvendLabel.Location = new System.Drawing.Point(576, 449);
@@ -2206,6 +2218,7 @@
             // 
             // wipmemoLabel2
             // 
+            wipmemoLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             wipmemoLabel2.AutoSize = true;
             wipmemoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             wipmemoLabel2.Location = new System.Drawing.Point(102, 579);
@@ -2216,6 +2229,7 @@
             // 
             // label54
             // 
+            label54.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             label54.AutoSize = true;
             label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label54.Location = new System.Drawing.Point(28, 423);
@@ -2226,6 +2240,7 @@
             // 
             // label55
             // 
+            label55.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             label55.AutoSize = true;
             label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label55.Location = new System.Drawing.Point(13, 449);
@@ -2236,6 +2251,7 @@
             // 
             // rmptoLabel1
             // 
+            rmptoLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             rmptoLabel1.AutoSize = true;
             rmptoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             rmptoLabel1.Location = new System.Drawing.Point(35, 495);
@@ -2246,10 +2262,10 @@
             // 
             // rmbtoLabel1
             // 
-            rmbtoLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            rmbtoLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             rmbtoLabel1.AutoSize = true;
             rmbtoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            rmbtoLabel1.Location = new System.Drawing.Point(390, 495);
+            rmbtoLabel1.Location = new System.Drawing.Point(369, 495);
             rmbtoLabel1.Name = "rmbtoLabel1";
             rmbtoLabel1.Size = new System.Drawing.Size(105, 13);
             rmbtoLabel1.TabIndex = 157;
@@ -2257,6 +2273,7 @@
             // 
             // rmpfrmLabel1
             // 
+            rmpfrmLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             rmpfrmLabel1.AutoSize = true;
             rmpfrmLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             rmpfrmLabel1.Location = new System.Drawing.Point(23, 519);
@@ -2267,10 +2284,10 @@
             // 
             // rmbfrmLabel1
             // 
-            rmbfrmLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            rmbfrmLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             rmbfrmLabel1.AutoSize = true;
             rmbfrmLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            rmbfrmLabel1.Location = new System.Drawing.Point(378, 519);
+            rmbfrmLabel1.Location = new System.Drawing.Point(357, 519);
             rmbfrmLabel1.Name = "rmbfrmLabel1";
             rmbfrmLabel1.Size = new System.Drawing.Size(117, 13);
             rmbfrmLabel1.TabIndex = 159;
@@ -2278,6 +2295,7 @@
             // 
             // rmptotLabel1
             // 
+            rmptotLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             rmptotLabel1.AutoSize = true;
             rmptotLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             rmptotLabel1.Location = new System.Drawing.Point(15, 543);
@@ -2288,10 +2306,10 @@
             // 
             // rmbtotLabel1
             // 
-            rmbtotLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            rmbtotLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             rmbtotLabel1.AutoSize = true;
             rmbtotLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            rmbtotLabel1.Location = new System.Drawing.Point(371, 543);
+            rmbtotLabel1.Location = new System.Drawing.Point(350, 543);
             rmbtotLabel1.Name = "rmbtotLabel1";
             rmbtotLabel1.Size = new System.Drawing.Size(129, 13);
             rmbtotLabel1.TabIndex = 161;
@@ -2345,6 +2363,16 @@
             laminatedLabel.Size = new System.Drawing.Size(58, 13);
             laminatedLabel.TabIndex = 139;
             laminatedLabel.Text = "Laminate";
+            // 
+            // nocopiesLabel2
+            // 
+            nocopiesLabel2.AutoSize = true;
+            nocopiesLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            nocopiesLabel2.Location = new System.Drawing.Point(189, 50);
+            nocopiesLabel2.Name = "nocopiesLabel2";
+            nocopiesLabel2.Size = new System.Drawing.Size(45, 13);
+            nocopiesLabel2.TabIndex = 162;
+            nocopiesLabel2.Text = "Copies";
             // 
             // custBindingSource
             // 
@@ -2429,12 +2457,6 @@
             this.pg1.Controls.Add(this.label56);
             this.pg1.Controls.Add(this.btnStandarCoverEmail);
             this.pg1.Controls.Add(this.btnspCoverEmail);
-            this.pg1.Controls.Add(this.btnSchoolSearch);
-            this.pg1.Controls.Add(this.txtSchNamesrch);
-            this.pg1.Controls.Add(this.btnInvoiceSrch);
-            this.pg1.Controls.Add(this.txtSchCode);
-            this.pg1.Controls.Add(this.txtProdNoSrch);
-            this.pg1.Controls.Add(this.btnProdSrch);
             this.pg1.Controls.Add(this.lblShipped);
             this.pg1.Controls.Add(this.panel4);
             this.pg1.Controls.Add(this.panel3);
@@ -2464,7 +2486,6 @@
             this.pg1.Size = new System.Drawing.Size(1220, 705);
             this.pg1.TabIndex = 0;
             this.pg1.Text = " Production";
-            this.pg1.Click += new System.EventHandler(this.pg1_Click);
             // 
             // label56
             // 
@@ -2506,67 +2527,6 @@
             this.btnspCoverEmail.UseVisualStyleBackColor = true;
             this.btnspCoverEmail.Click += new System.EventHandler(this.btnspCoverEmail_Click);
             // 
-            // btnSchoolSearch
-            // 
-            this.btnSchoolSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchoolSearch.Location = new System.Drawing.Point(778, 7);
-            this.btnSchoolSearch.Name = "btnSchoolSearch";
-            this.btnSchoolSearch.Size = new System.Drawing.Size(106, 23);
-            this.btnSchoolSearch.TabIndex = 138;
-            this.btnSchoolSearch.Text = "School Name";
-            this.btnSchoolSearch.UseVisualStyleBackColor = true;
-            this.btnSchoolSearch.Click += new System.EventHandler(this.btnSchoolSearch_Click);
-            // 
-            // txtSchNamesrch
-            // 
-            this.txtSchNamesrch.Location = new System.Drawing.Point(890, 7);
-            this.txtSchNamesrch.MaxLength = 34;
-            this.txtSchNamesrch.Name = "txtSchNamesrch";
-            this.txtSchNamesrch.Size = new System.Drawing.Size(230, 20);
-            this.txtSchNamesrch.TabIndex = 139;
-            this.txtSchNamesrch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchNamesrch_KeyPress);
-            // 
-            // btnInvoiceSrch
-            // 
-            this.btnInvoiceSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInvoiceSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoiceSrch.Location = new System.Drawing.Point(761, 31);
-            this.btnInvoiceSrch.Name = "btnInvoiceSrch";
-            this.btnInvoiceSrch.Size = new System.Drawing.Size(109, 23);
-            this.btnInvoiceSrch.TabIndex = 137;
-            this.btnInvoiceSrch.Text = "School Code";
-            this.btnInvoiceSrch.UseVisualStyleBackColor = true;
-            this.btnInvoiceSrch.Click += new System.EventHandler(this.btnInvoiceSrch_Click);
-            // 
-            // txtSchCode
-            // 
-            this.txtSchCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSchCode.Location = new System.Drawing.Point(875, 31);
-            this.txtSchCode.Name = "txtSchCode";
-            this.txtSchCode.Size = new System.Drawing.Size(105, 20);
-            this.txtSchCode.TabIndex = 136;
-            this.txtSchCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchCode_KeyPress);
-            // 
-            // txtProdNoSrch
-            // 
-            this.txtProdNoSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProdNoSrch.Location = new System.Drawing.Point(876, 57);
-            this.txtProdNoSrch.Name = "txtProdNoSrch";
-            this.txtProdNoSrch.Size = new System.Drawing.Size(105, 20);
-            this.txtProdNoSrch.TabIndex = 134;
-            // 
-            // btnProdSrch
-            // 
-            this.btnProdSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnProdSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProdSrch.Location = new System.Drawing.Point(762, 57);
-            this.btnProdSrch.Name = "btnProdSrch";
-            this.btnProdSrch.Size = new System.Drawing.Size(109, 23);
-            this.btnProdSrch.TabIndex = 133;
-            this.btnProdSrch.Text = "Search Prod#";
-            this.btnProdSrch.UseVisualStyleBackColor = true;
-            this.btnProdSrch.Click += new System.EventHandler(this.btnProdSrch_Click);
-            // 
             // lblShipped
             // 
             this.lblShipped.Font = new System.Drawing.Font("Arial", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2581,6 +2541,8 @@
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.cstsvcdteDateTimePicker);
+            this.panel4.Controls.Add(this.cstsvcdteDateTimePicker11);
             this.panel4.Controls.Add(this.reportViewer1);
             this.panel4.Controls.Add(this.btnMbo);
             this.panel4.Controls.Add(this.lblModifiedBy);
@@ -2590,7 +2552,6 @@
             this.panel4.Controls.Add(label6);
             this.panel4.Controls.Add(this.comdateDateTimePicker);
             this.panel4.Controls.Add(cstsvcdteLabel);
-            this.panel4.Controls.Add(this.dpCustomerServiceDate);
             this.panel4.Controls.Add(this.btnEmailPw);
             this.panel4.Controls.Add(this.btnPrntMbOnline);
             this.panel4.Controls.Add(this.btnUpdateJob);
@@ -2607,21 +2568,34 @@
             this.panel4.Size = new System.Drawing.Size(533, 306);
             this.panel4.TabIndex = 131;
             // 
+            // cstsvcdteDateTimePicker11
+            // 
+            this.cstsvcdteDateTimePicker11.CustomFormat = "\' \'";
+            this.cstsvcdteDateTimePicker11.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "cstsvcdte", true));
+            this.cstsvcdteDateTimePicker11.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.cstsvcdteDateTimePicker11.Location = new System.Drawing.Point(198, 3);
+            this.cstsvcdteDateTimePicker11.Name = "cstsvcdteDateTimePicker11";
+            this.cstsvcdteDateTimePicker11.Size = new System.Drawing.Size(86, 20);
+            this.cstsvcdteDateTimePicker11.TabIndex = 158;
+            this.cstsvcdteDateTimePicker11.Value = new System.DateTime(2019, 8, 21, 8, 59, 30, 938);
+            this.cstsvcdteDateTimePicker11.ValueChanged += new System.EventHandler(this.cstsvcdteDateTimePicker_ValueChanged_1);
+            this.cstsvcdteDateTimePicker11.Leave += new System.EventHandler(this.cstsvcdteDateTimePicker_Leave);
+            // 
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 71;
-            reportDataSource1.Name = "dsRCust";
-            reportDataSource1.Value = this.custBindingSource;
-            reportDataSource2.Name = "dsRQuotes";
-            reportDataSource2.Value = this.quotesBindingSource;
-            reportDataSource3.Name = "dsRProdutn";
-            reportDataSource3.Value = this.produtnBindingSource;
-            reportDataSource4.Name = "dsRWip";
-            reportDataSource4.Value = this.wipBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource5.Name = "dsRCust";
+            reportDataSource5.Value = this.custBindingSource;
+            reportDataSource6.Name = "dsRQuotes";
+            reportDataSource6.Value = this.quotesBindingSource;
+            reportDataSource7.Name = "dsRProdutn";
+            reportDataSource7.Value = this.produtnBindingSource;
+            reportDataSource8.Name = "dsRWip";
+            reportDataSource8.Value = this.wipBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource7);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource8);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(438, 206);
             this.reportViewer1.Name = "reportViewer1";
@@ -2677,21 +2651,8 @@
             this.comdateDateTimePicker.Name = "comdateDateTimePicker";
             this.comdateDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.comdateDateTimePicker.TabIndex = 152;
-            this.comdateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 358);
+            this.comdateDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 30, 950);
             this.comdateDateTimePicker.ValueChanged += new System.EventHandler(this.comdateDateTimePicker_ValueChanged);
-            // 
-            // dpCustomerServiceDate
-            // 
-            this.dpCustomerServiceDate.CustomFormat = "\'\'";
-            this.dpCustomerServiceDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "cstsvcdte", true));
-            this.dpCustomerServiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpCustomerServiceDate.Location = new System.Drawing.Point(198, 3);
-            this.dpCustomerServiceDate.Name = "dpCustomerServiceDate";
-            this.dpCustomerServiceDate.Size = new System.Drawing.Size(85, 20);
-            this.dpCustomerServiceDate.TabIndex = 151;
-            this.dpCustomerServiceDate.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 361);
-            this.dpCustomerServiceDate.ValueChanged += new System.EventHandler(this.cstsvcdteDateTimePicker_ValueChanged);
-            this.dpCustomerServiceDate.Leave += new System.EventHandler(this.dpCustomerServiceDate_Leave);
             // 
             // btnEmailPw
             // 
@@ -3001,6 +2962,7 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.dteWarnDate);
             this.panel2.Controls.Add(this.vendcdComboBox1);
             this.panel2.Controls.Add(this.cmbBindingVendor);
             this.panel2.Controls.Add(this.btnKitRecv);
@@ -3009,7 +2971,6 @@
             this.panel2.Controls.Add(this.btnPrntVendor);
             this.panel2.Controls.Add(this.tovendDateTimePicker);
             this.panel2.Controls.Add(tovendLabel);
-            this.panel2.Controls.Add(this.warndateDateTimePicker);
             this.panel2.Controls.Add(warndateLabel);
             this.panel2.Controls.Add(this.prshpdteDateTimePicker);
             this.panel2.Controls.Add(prshpdteLabel);
@@ -3021,6 +2982,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(327, 316);
             this.panel2.TabIndex = 129;
+            // 
+            // dteWarnDate
+            // 
+            this.dteWarnDate.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "warndate", true));
+            this.dteWarnDate.Date = null;
+            this.dteWarnDate.Location = new System.Drawing.Point(119, 134);
+            this.dteWarnDate.Name = "dteWarnDate";
+            this.dteWarnDate.Size = new System.Drawing.Size(95, 21);
+            this.dteWarnDate.TabIndex = 116;
             // 
             // vendcdComboBox1
             // 
@@ -3067,7 +3037,7 @@
             this.kitrecvdDateTimePicker.Name = "kitrecvdDateTimePicker";
             this.kitrecvdDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.kitrecvdDateTimePicker.TabIndex = 90;
-            this.kitrecvdDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 406);
+            this.kitrecvdDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 30, 973);
             this.kitrecvdDateTimePicker.ValueChanged += new System.EventHandler(this.kitrecvdDateTimePicker_ValueChanged);
             // 
             // btnBindVend
@@ -3099,21 +3069,8 @@
             this.tovendDateTimePicker.Name = "tovendDateTimePicker";
             this.tovendDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.tovendDateTimePicker.TabIndex = 101;
-            this.tovendDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 414);
+            this.tovendDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 30, 977);
             this.tovendDateTimePicker.ValueChanged += new System.EventHandler(this.tovendDateTimePicker_ValueChanged);
-            // 
-            // warndateDateTimePicker
-            // 
-            this.warndateDateTimePicker.CustomFormat = "\'\'";
-            this.warndateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "warndate", true));
-            this.warndateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "warndate", true));
-            this.warndateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.warndateDateTimePicker.Location = new System.Drawing.Point(119, 135);
-            this.warndateDateTimePicker.Name = "warndateDateTimePicker";
-            this.warndateDateTimePicker.Size = new System.Drawing.Size(85, 20);
-            this.warndateDateTimePicker.TabIndex = 103;
-            this.warndateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 417);
-            this.warndateDateTimePicker.ValueChanged += new System.EventHandler(this.warndateDateTimePicker_ValueChanged);
             // 
             // prshpdteDateTimePicker
             // 
@@ -3124,7 +3081,7 @@
             this.prshpdteDateTimePicker.Name = "prshpdteDateTimePicker";
             this.prshpdteDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.prshpdteDateTimePicker.TabIndex = 105;
-            this.prshpdteDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 443);
+            this.prshpdteDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 30, 980);
             this.prshpdteDateTimePicker.ValueChanged += new System.EventHandler(this.prshpdteDateTimePicker_ValueChanged);
             // 
             // prmsdateDateTimePicker
@@ -3136,7 +3093,7 @@
             this.prmsdateDateTimePicker.Name = "prmsdateDateTimePicker";
             this.prmsdateDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.prmsdateDateTimePicker.TabIndex = 107;
-            this.prmsdateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 446);
+            this.prmsdateDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 30, 982);
             this.prmsdateDateTimePicker.ValueChanged += new System.EventHandler(this.prmsdateDateTimePicker_ValueChanged);
             // 
             // shpdateDateTimePicker
@@ -3148,7 +3105,7 @@
             this.shpdateDateTimePicker.Name = "shpdateDateTimePicker";
             this.shpdateDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.shpdateDateTimePicker.TabIndex = 109;
-            this.shpdateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 449);
+            this.shpdateDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 30, 985);
             this.shpdateDateTimePicker.ValueChanged += new System.EventHandler(this.shpdateDateTimePicker_ValueChanged);
             this.shpdateDateTimePicker.Leave += new System.EventHandler(this.shpdateDateTimePicker_Leave);
             // 
@@ -3226,7 +3183,7 @@
             this.endstrecvDateTimePicker.Name = "endstrecvDateTimePicker";
             this.endstrecvDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.endstrecvDateTimePicker.TabIndex = 133;
-            this.endstrecvDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 458);
+            this.endstrecvDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 30, 991);
             this.endstrecvDateTimePicker.ValueChanged += new System.EventHandler(this.endstrecvDateTimePicker_ValueChanged);
             // 
             // coilclrTextBox
@@ -3260,7 +3217,7 @@
             this.cprecvDateTimePicker.Name = "cprecvDateTimePicker";
             this.cprecvDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.cprecvDateTimePicker.TabIndex = 129;
-            this.cprecvDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 462);
+            this.cprecvDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 30, 994);
             this.cprecvDateTimePicker.ValueChanged += new System.EventHandler(this.cprecvDateTimePicker_ValueChanged);
             // 
             // ptbrcvdDateTimePicker
@@ -3274,7 +3231,7 @@
             this.ptbrcvdDateTimePicker.Name = "ptbrcvdDateTimePicker";
             this.ptbrcvdDateTimePicker.Size = new System.Drawing.Size(108, 20);
             this.ptbrcvdDateTimePicker.TabIndex = 127;
-            this.ptbrcvdDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 465);
+            this.ptbrcvdDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 30, 996);
             this.ptbrcvdDateTimePicker.ValueChanged += new System.EventHandler(this.ptbrcvdDateTimePicker_ValueChanged);
             // 
             // ptnopgsTextBox
@@ -3298,7 +3255,7 @@
             this.ptrecvdDateTimePicker.Name = "ptrecvdDateTimePicker";
             this.ptrecvdDateTimePicker.Size = new System.Drawing.Size(108, 20);
             this.ptrecvdDateTimePicker.TabIndex = 123;
-            this.ptrecvdDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 469);
+            this.ptrecvdDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 30, 999);
             this.ptrecvdDateTimePicker.ValueChanged += new System.EventHandler(this.ptrecvdDateTimePicker_ValueChanged);
             // 
             // colorpgsCheckBox
@@ -3336,7 +3293,7 @@
             this.screcvDateTimePicker.Name = "screcvDateTimePicker";
             this.screcvDateTimePicker.Size = new System.Drawing.Size(108, 20);
             this.screcvDateTimePicker.TabIndex = 104;
-            this.screcvDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 475);
+            this.screcvDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 3);
             this.screcvDateTimePicker.ValueChanged += new System.EventHandler(this.screcvDateTimePicker_ValueChanged);
             // 
             // txtCoverDescription
@@ -3655,7 +3612,7 @@
             this.adduploaddateDateTimePicker.Name = "adduploaddateDateTimePicker";
             this.adduploaddateDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.adduploaddateDateTimePicker.TabIndex = 52;
-            this.adduploaddateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 606);
+            this.adduploaddateDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 41);
             this.adduploaddateDateTimePicker.ValueChanged += new System.EventHandler(this.adduploaddateDateTimePicker_ValueChanged);
             // 
             // dedmadeTextBox
@@ -3678,7 +3635,7 @@
             this.dedayoutDateTimePicker.Name = "dedayoutDateTimePicker";
             this.dedayoutDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.dedayoutDateTimePicker.TabIndex = 57;
-            this.dedayoutDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 610);
+            this.dedayoutDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 44);
             this.dedayoutDateTimePicker.ValueChanged += new System.EventHandler(this.dedayoutDateTimePicker_ValueChanged);
             // 
             // dedayinDateTimePicker
@@ -3690,7 +3647,7 @@
             this.dedayinDateTimePicker.Name = "dedayinDateTimePicker";
             this.dedayinDateTimePicker.Size = new System.Drawing.Size(85, 20);
             this.dedayinDateTimePicker.TabIndex = 55;
-            this.dedayinDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 613);
+            this.dedayinDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 47);
             this.dedayinDateTimePicker.ValueChanged += new System.EventHandler(this.dedayinDateTimePicker_ValueChanged);
             // 
             // btnCalcDeadLine
@@ -3725,6 +3682,7 @@
             this.btnRecvLabel.TabIndex = 94;
             this.btnRecvLabel.Text = "Recieving Label";
             this.btnRecvLabel.UseVisualStyleBackColor = true;
+            this.btnRecvLabel.Click += new System.EventHandler(this.btnRecvLabel_Click);
             // 
             // btnRecvHistory
             // 
@@ -3930,14 +3888,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wipDetailDataGridView.AutoGenerateColumns = false;
             this.wipDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.wipDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.wipDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -3960,8 +3918,8 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewTextBoxColumn1.FillWeight = 161.9298F;
             this.dataGridViewTextBoxColumn1.HeaderText = "Description";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -3970,8 +3928,8 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "War";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewTextBoxColumn2.FillWeight = 65.751F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Actual";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -3980,8 +3938,8 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Wdr";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewTextBoxColumn3.FillWeight = 70.919F;
             this.dataGridViewTextBoxColumn3.HeaderText = "Due";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -3990,8 +3948,8 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Wtr";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn4.FillWeight = 76.14214F;
             this.dataGridViewTextBoxColumn4.HeaderText = "Time";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -4000,8 +3958,8 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "Wir";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewTextBoxColumn5.FillWeight = 125.258F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Initials";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -4099,7 +4057,7 @@
             this.rmbfrmDateTimePicker.Name = "rmbfrmDateTimePicker";
             this.rmbfrmDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.rmbfrmDateTimePicker.TabIndex = 124;
-            this.rmbfrmDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 796);
+            this.rmbfrmDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 163);
             this.rmbfrmDateTimePicker.ValueChanged += new System.EventHandler(this.rmbfrmDateTimePicker_ValueChanged);
             // 
             // rmptotTextBox
@@ -4132,7 +4090,7 @@
             this.rmpfrmDateTimePicker.Name = "rmpfrmDateTimePicker";
             this.rmpfrmDateTimePicker.Size = new System.Drawing.Size(210, 20);
             this.rmpfrmDateTimePicker.TabIndex = 121;
-            this.rmpfrmDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 809);
+            this.rmpfrmDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 169);
             this.rmpfrmDateTimePicker.ValueChanged += new System.EventHandler(this.rmpfrmDateTimePicker_ValueChanged);
             // 
             // rmbtoDateTimePicker
@@ -4146,7 +4104,7 @@
             this.rmbtoDateTimePicker.Name = "rmbtoDateTimePicker";
             this.rmbtoDateTimePicker.Size = new System.Drawing.Size(220, 20);
             this.rmbtoDateTimePicker.TabIndex = 120;
-            this.rmbtoDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 813);
+            this.rmbtoDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 172);
             this.rmbtoDateTimePicker.ValueChanged += new System.EventHandler(this.rmbtoDateTimePicker_ValueChanged);
             // 
             // rmptoDateTimePicker
@@ -4159,7 +4117,7 @@
             this.rmptoDateTimePicker.Name = "rmptoDateTimePicker";
             this.rmptoDateTimePicker.Size = new System.Drawing.Size(210, 20);
             this.rmptoDateTimePicker.TabIndex = 119;
-            this.rmptoDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 816);
+            this.rmptoDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 174);
             this.rmptoDateTimePicker.ValueChanged += new System.EventHandler(this.rmptoDateTimePicker_ValueChanged);
             // 
             // frmbindDateTimePicker
@@ -4172,7 +4130,7 @@
             this.frmbindDateTimePicker.Name = "frmbindDateTimePicker";
             this.frmbindDateTimePicker.Size = new System.Drawing.Size(214, 20);
             this.frmbindDateTimePicker.TabIndex = 117;
-            this.frmbindDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 819);
+            this.frmbindDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 176);
             this.frmbindDateTimePicker.ValueChanged += new System.EventHandler(this.frmbindDateTimePicker_ValueChanged);
             // 
             // binddteDateTimePicker
@@ -4185,7 +4143,7 @@
             this.binddteDateTimePicker.Name = "binddteDateTimePicker";
             this.binddteDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.binddteDateTimePicker.TabIndex = 116;
-            this.binddteDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 822);
+            this.binddteDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 178);
             this.binddteDateTimePicker.ValueChanged += new System.EventHandler(this.binddteDateTimePicker_ValueChanged);
             // 
             // iinitTextBox
@@ -4220,7 +4178,7 @@
             this.ioutDateTimePicker.Name = "ioutDateTimePicker";
             this.ioutDateTimePicker.Size = new System.Drawing.Size(212, 20);
             this.ioutDateTimePicker.TabIndex = 112;
-            this.ioutDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 828);
+            this.ioutDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 182);
             this.ioutDateTimePicker.ValueChanged += new System.EventHandler(this.ioutDateTimePicker_ValueChanged);
             // 
             // iinDateTimePicker
@@ -4233,7 +4191,7 @@
             this.iinDateTimePicker.Name = "iinDateTimePicker";
             this.iinDateTimePicker.Size = new System.Drawing.Size(210, 20);
             this.iinDateTimePicker.TabIndex = 107;
-            this.iinDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 54, 832);
+            this.iinDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 185);
             this.iinDateTimePicker.ValueChanged += new System.EventHandler(this.iinDateTimePicker_ValueChanged);
             // 
             // textBox3
@@ -4301,11 +4259,12 @@
             // 
             this.pg3.AutoScroll = true;
             this.pg3.BackColor = System.Drawing.SystemColors.Control;
+            this.pg3.Controls.Add(this.btnCvrUpdate);
             this.pg3.Controls.Add(label37);
             this.pg3.Controls.Add(this.lblCoverNum);
-            this.pg3.Controls.Add(this.button4);
-            this.pg3.Controls.Add(this.button3);
-            this.pg3.Controls.Add(this.button2);
+            this.pg3.Controls.Add(this.btnMeridianTicket);
+            this.pg3.Controls.Add(this.btnCoverTicket);
+            this.pg3.Controls.Add(this.btnBindery);
             this.pg3.Controls.Add(this.coverdetailDataGridView);
             this.pg3.Controls.Add(this.label36);
             this.pg3.Controls.Add(finishedcopiesLabel);
@@ -4437,6 +4396,15 @@
             this.pg3.TabIndex = 1;
             this.pg3.Text = "Special Covers";
             // 
+            // btnCvrUpdate
+            // 
+            this.btnCvrUpdate.Location = new System.Drawing.Point(534, 672);
+            this.btnCvrUpdate.Name = "btnCvrUpdate";
+            this.btnCvrUpdate.Size = new System.Drawing.Size(130, 23);
+            this.btnCvrUpdate.TabIndex = 207;
+            this.btnCvrUpdate.Text = "Update Dates";
+            this.btnCvrUpdate.UseVisualStyleBackColor = true;
+            // 
             // lblCoverNum
             // 
             this.lblCoverNum.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "specovr", true));
@@ -4452,32 +4420,33 @@
             this.coversBindingSource1.DataMember = "covers";
             this.coversBindingSource1.DataSource = this.dsProdutn;
             // 
-            // button4
+            // btnMeridianTicket
             // 
-            this.button4.Location = new System.Drawing.Point(398, 672);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(130, 23);
-            this.button4.TabIndex = 204;
-            this.button4.Text = "Meridian Cvr Ticket";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnMeridianTicket.Location = new System.Drawing.Point(398, 672);
+            this.btnMeridianTicket.Name = "btnMeridianTicket";
+            this.btnMeridianTicket.Size = new System.Drawing.Size(130, 23);
+            this.btnMeridianTicket.TabIndex = 204;
+            this.btnMeridianTicket.Text = "Meridian Cvr Ticket";
+            this.btnMeridianTicket.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnCoverTicket
             // 
-            this.button3.Location = new System.Drawing.Point(262, 672);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(124, 23);
-            this.button3.TabIndex = 203;
-            this.button3.Text = "Special Cvr Ticket";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCoverTicket.Location = new System.Drawing.Point(262, 672);
+            this.btnCoverTicket.Name = "btnCoverTicket";
+            this.btnCoverTicket.Size = new System.Drawing.Size(124, 23);
+            this.btnCoverTicket.TabIndex = 203;
+            this.btnCoverTicket.Text = "Special Cvr Ticket";
+            this.btnCoverTicket.UseVisualStyleBackColor = true;
+            this.btnCoverTicket.Click += new System.EventHandler(this.btnCoverTicket_Click);
             // 
-            // button2
+            // btnBindery
             // 
-            this.button2.Location = new System.Drawing.Point(175, 672);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 202;
-            this.button2.Text = "Bindery Ticket";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnBindery.Location = new System.Drawing.Point(175, 672);
+            this.btnBindery.Name = "btnBindery";
+            this.btnBindery.Size = new System.Drawing.Size(75, 23);
+            this.btnBindery.TabIndex = 202;
+            this.btnBindery.Text = "Bindery Ticket";
+            this.btnBindery.UseVisualStyleBackColor = true;
             // 
             // coverdetailDataGridView
             // 
@@ -4488,14 +4457,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.coverdetailDataGridView.AutoGenerateColumns = false;
             this.coverdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.coverdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.coverdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -4727,7 +4696,7 @@
             this.lamdtesentDateTimePicker.Name = "lamdtesentDateTimePicker";
             this.lamdtesentDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.lamdtesentDateTimePicker.TabIndex = 185;
-            this.lamdtesentDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 239);
+            this.lamdtesentDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 442);
             this.lamdtesentDateTimePicker.ValueChanged += new System.EventHandler(this.lamdtesentDateTimePicker_ValueChanged);
             // 
             // lamvendTextBox
@@ -4846,7 +4815,7 @@
             this.desorgdteDateTimePicker.Name = "desorgdteDateTimePicker";
             this.desorgdteDateTimePicker.Size = new System.Drawing.Size(212, 20);
             this.desorgdteDateTimePicker.TabIndex = 172;
-            this.desorgdteDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 260);
+            this.desorgdteDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 454);
             this.desorgdteDateTimePicker.ValueChanged += new System.EventHandler(this.desorgdteDateTimePicker_ValueChanged);
             // 
             // reprntdteDateTimePicker
@@ -4859,7 +4828,7 @@
             this.reprntdteDateTimePicker.Name = "reprntdteDateTimePicker";
             this.reprntdteDateTimePicker.Size = new System.Drawing.Size(212, 20);
             this.reprntdteDateTimePicker.TabIndex = 171;
-            this.reprntdteDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 265);
+            this.reprntdteDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 456);
             this.reprntdteDateTimePicker.ValueChanged += new System.EventHandler(this.reprntdteDateTimePicker_ValueChanged);
             // 
             // spineTextBox
@@ -4923,7 +4892,7 @@
             this.prntsamDateTimePicker.Name = "prntsamDateTimePicker";
             this.prntsamDateTimePicker.Size = new System.Drawing.Size(211, 20);
             this.prntsamDateTimePicker.TabIndex = 165;
-            this.prntsamDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 273);
+            this.prntsamDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 461);
             this.prntsamDateTimePicker.ValueChanged += new System.EventHandler(this.prntsamDateTimePicker_ValueChanged);
             // 
             // mascotComboBox
@@ -4965,7 +4934,7 @@
             this.perslistdateDateTimePicker.Name = "perslistdateDateTimePicker";
             this.perslistdateDateTimePicker.Size = new System.Drawing.Size(219, 20);
             this.perslistdateDateTimePicker.TabIndex = 158;
-            this.perslistdateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 289);
+            this.perslistdateDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 470);
             this.perslistdateDateTimePicker.ValueChanged += new System.EventHandler(this.perslistdateDateTimePicker_ValueChanged);
             // 
             // perslistComboBox
@@ -5025,7 +4994,7 @@
             this.otdtebkDateTimePicker.Name = "otdtebkDateTimePicker";
             this.otdtebkDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.otdtebkDateTimePicker.TabIndex = 152;
-            this.otdtebkDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 307);
+            this.otdtebkDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 477);
             this.otdtebkDateTimePicker.ValueChanged += new System.EventHandler(this.otdtebkDateTimePicker_ValueChanged);
             // 
             // otdtesentDateTimePicker1
@@ -5037,7 +5006,7 @@
             this.otdtesentDateTimePicker1.Name = "otdtesentDateTimePicker1";
             this.otdtesentDateTimePicker1.Size = new System.Drawing.Size(218, 20);
             this.otdtesentDateTimePicker1.TabIndex = 151;
-            this.otdtesentDateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 320);
+            this.otdtesentDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 479);
             this.otdtesentDateTimePicker1.ValueChanged += new System.EventHandler(this.otdtesentDateTimePicker1_ValueChanged);
             // 
             // dcdtebkDateTimePicker
@@ -5049,7 +5018,7 @@
             this.dcdtebkDateTimePicker.Name = "dcdtebkDateTimePicker";
             this.dcdtebkDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.dcdtebkDateTimePicker.TabIndex = 149;
-            this.dcdtebkDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 324);
+            this.dcdtebkDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 481);
             this.dcdtebkDateTimePicker.ValueChanged += new System.EventHandler(this.dcdtebkDateTimePicker_ValueChanged);
             // 
             // dcdtesentDateTimePicker
@@ -5061,7 +5030,7 @@
             this.dcdtesentDateTimePicker.Name = "dcdtesentDateTimePicker";
             this.dcdtesentDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.dcdtesentDateTimePicker.TabIndex = 148;
-            this.dcdtesentDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 328);
+            this.dcdtesentDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 483);
             this.dcdtesentDateTimePicker.ValueChanged += new System.EventHandler(this.dcdtesentDateTimePicker_ValueChanged);
             // 
             // othrvendTextBox
@@ -5091,7 +5060,7 @@
             this.prtdtebkDateTimePicker.Name = "prtdtebkDateTimePicker";
             this.prtdtebkDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.prtdtebkDateTimePicker.TabIndex = 145;
-            this.prtdtebkDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 334);
+            this.prtdtebkDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 486);
             this.prtdtebkDateTimePicker.ValueChanged += new System.EventHandler(this.prtdtebkDateTimePicker_ValueChanged);
             // 
             // prtdtesentDateTimePicker
@@ -5103,7 +5072,7 @@
             this.prtdtesentDateTimePicker.Name = "prtdtesentDateTimePicker";
             this.prtdtesentDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.prtdtesentDateTimePicker.TabIndex = 144;
-            this.prtdtesentDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 340);
+            this.prtdtesentDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 488);
             this.prtdtesentDateTimePicker.ValueChanged += new System.EventHandler(this.prtdtesentDateTimePicker_ValueChanged);
             // 
             // othrTextBox
@@ -5243,7 +5212,7 @@
             this.screcvDateTimePicker1.Name = "screcvDateTimePicker1";
             this.screcvDateTimePicker1.Size = new System.Drawing.Size(208, 20);
             this.screcvDateTimePicker1.TabIndex = 129;
-            this.screcvDateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 408);
+            this.screcvDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 508);
             this.screcvDateTimePicker1.ValueChanged += new System.EventHandler(this.screcvDateTimePicker1_ValueChanged);
             // 
             // txtspecov
@@ -5422,7 +5391,7 @@
             this.dtoprodDateTimePicker.Name = "dtoprodDateTimePicker";
             this.dtoprodDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.dtoprodDateTimePicker.TabIndex = 120;
-            this.dtoprodDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 485);
+            this.dtoprodDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 562);
             // 
             // atoprodDateTimePicker
             // 
@@ -5431,7 +5400,7 @@
             this.atoprodDateTimePicker.Name = "atoprodDateTimePicker";
             this.atoprodDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.atoprodDateTimePicker.TabIndex = 119;
-            this.atoprodDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 491);
+            this.atoprodDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 565);
             // 
             // textBox11
             // 
@@ -5536,7 +5505,7 @@
             this.pg5.Controls.Add(this.partBkDetailDataGridView);
             this.pg5.Controls.Add(this.button7);
             this.pg5.Controls.Add(this.button6);
-            this.pg5.Controls.Add(this.button5);
+            this.pg5.Controls.Add(this.btnAddPartial);
             this.pg5.Controls.Add(this.button1);
             this.pg5.Controls.Add(partmemoLabel);
             this.pg5.Controls.Add(this.partmemoTextBox);
@@ -5579,14 +5548,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.partBkDetailDataGridView.AutoGenerateColumns = false;
             this.partBkDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.partBkDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.partBkDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.partBkDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partBkDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn24,
@@ -5681,14 +5650,14 @@
             this.button6.Text = "Enable";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnAddPartial
             // 
-            this.button5.Location = new System.Drawing.Point(515, 153);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(86, 23);
-            this.button5.TabIndex = 148;
-            this.button5.Text = "Add Record";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnAddPartial.Location = new System.Drawing.Point(515, 153);
+            this.btnAddPartial.Name = "btnAddPartial";
+            this.btnAddPartial.Size = new System.Drawing.Size(86, 23);
+            this.btnAddPartial.TabIndex = 148;
+            this.btnAddPartial.Text = "Add Record";
+            this.btnAddPartial.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -5737,7 +5706,7 @@
             this.ioutDateTimePicker1.Name = "ioutDateTimePicker1";
             this.ioutDateTimePicker1.Size = new System.Drawing.Size(214, 20);
             this.ioutDateTimePicker1.TabIndex = 143;
-            this.ioutDateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 618);
+            this.ioutDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 634);
             // 
             // iinDateTimePicker1
             // 
@@ -5746,7 +5715,7 @@
             this.iinDateTimePicker1.Name = "iinDateTimePicker1";
             this.iinDateTimePicker1.Size = new System.Drawing.Size(213, 20);
             this.iinDateTimePicker1.TabIndex = 142;
-            this.iinDateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 623);
+            this.iinDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 637);
             // 
             // textBox12
             // 
@@ -5774,7 +5743,7 @@
             this.ptrecvdDateTimePicker1.Name = "ptrecvdDateTimePicker1";
             this.ptrecvdDateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.ptrecvdDateTimePicker1.TabIndex = 138;
-            this.ptrecvdDateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 629);
+            this.ptrecvdDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 642);
             // 
             // ptnopgsTextBox1
             // 
@@ -5815,6 +5784,12 @@
             // pg6
             // 
             this.pg6.BackColor = System.Drawing.SystemColors.Control;
+            this.pg6.Controls.Add(this.button8);
+            this.pg6.Controls.Add(this.button9);
+            this.pg6.Controls.Add(this.btnAddPhotoCd);
+            this.pg6.Controls.Add(this.button11);
+            this.pg6.Controls.Add(nocopiesLabel2);
+            this.pg6.Controls.Add(this.nocopiesTextBox1);
             this.pg6.Controls.Add(rmbtotLabel1);
             this.pg6.Controls.Add(this.rmbtotTextBox1);
             this.pg6.Controls.Add(rmptotLabel1);
@@ -5862,7 +5837,7 @@
             this.pg6.Controls.Add(invnoLabel5);
             this.pg6.Controls.Add(this.invnoLabel6);
             this.pg6.Controls.Add(label45);
-            this.pg6.Controls.Add(this.dateTimePicker1);
+            this.pg6.Controls.Add(this.dtPhotoCDRevDate);
             this.pg6.Controls.Add(ptnopgsLabel2);
             this.pg6.Controls.Add(this.ptnopgsTextBox2);
             this.pg6.Controls.Add(booktypeLabel1);
@@ -5875,18 +5850,68 @@
             this.pg6.TabIndex = 5;
             this.pg6.Text = "Photos on CD";
             // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(895, 50);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(125, 23);
+            this.button8.TabIndex = 167;
+            this.button8.Text = "Production Ticket";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(1024, 50);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 166;
+            this.button9.Text = "Enable";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // btnAddPhotoCd
+            // 
+            this.btnAddPhotoCd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPhotoCd.Location = new System.Drawing.Point(1103, 50);
+            this.btnAddPhotoCd.Name = "btnAddPhotoCd";
+            this.btnAddPhotoCd.Size = new System.Drawing.Size(86, 23);
+            this.btnAddPhotoCd.TabIndex = 165;
+            this.btnAddPhotoCd.Text = "Add Record";
+            this.btnAddPhotoCd.UseVisualStyleBackColor = true;
+            this.btnAddPhotoCd.Click += new System.EventHandler(this.btnAddPhotoCd_Click);
+            // 
+            // button11
+            // 
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(696, 50);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(195, 23);
+            this.button11.TabIndex = 164;
+            this.button11.Text = "Change All Photo On CD Dates";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // nocopiesTextBox1
+            // 
+            this.nocopiesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "nocopies", true));
+            this.nocopiesTextBox1.Location = new System.Drawing.Point(236, 47);
+            this.nocopiesTextBox1.Name = "nocopiesTextBox1";
+            this.nocopiesTextBox1.Size = new System.Drawing.Size(48, 20);
+            this.nocopiesTextBox1.TabIndex = 163;
+            // 
             // rmbtotTextBox1
             // 
-            this.rmbtotTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rmbtotTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rmbtotTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "rmbtot", true));
             this.rmbtotTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rmbtotTextBox1.Location = new System.Drawing.Point(501, 543);
+            this.rmbtotTextBox1.Location = new System.Drawing.Point(480, 543);
             this.rmbtotTextBox1.Name = "rmbtotTextBox1";
             this.rmbtotTextBox1.Size = new System.Drawing.Size(60, 20);
             this.rmbtotTextBox1.TabIndex = 162;
             // 
             // rmptotTextBox1
             // 
+            this.rmptotTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rmptotTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "rmptot", true));
             this.rmptotTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rmptotTextBox1.Location = new System.Drawing.Point(148, 543);
@@ -5896,54 +5921,59 @@
             // 
             // rmbfrmDateTimePicker1
             // 
-            this.rmbfrmDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rmbfrmDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rmbfrmDateTimePicker1.CustomFormat = "\' \'";
             this.rmbfrmDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "rmbfrm", true));
             this.rmbfrmDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rmbfrmDateTimePicker1.Location = new System.Drawing.Point(501, 519);
+            this.rmbfrmDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.rmbfrmDateTimePicker1.Location = new System.Drawing.Point(480, 519);
             this.rmbfrmDateTimePicker1.Name = "rmbfrmDateTimePicker1";
-            this.rmbfrmDateTimePicker1.Size = new System.Drawing.Size(215, 20);
+            this.rmbfrmDateTimePicker1.Size = new System.Drawing.Size(130, 20);
             this.rmbfrmDateTimePicker1.TabIndex = 160;
-            this.rmbfrmDateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 796);
+            this.rmbfrmDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 757);
             // 
             // rmpfrmDateTimePicker1
             // 
-            this.rmpfrmDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rmpfrmDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rmpfrmDateTimePicker1.CustomFormat = "\' \'";
             this.rmpfrmDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "rmpfrm", true));
             this.rmpfrmDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rmpfrmDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.rmpfrmDateTimePicker1.Location = new System.Drawing.Point(148, 519);
             this.rmpfrmDateTimePicker1.Name = "rmpfrmDateTimePicker1";
-            this.rmpfrmDateTimePicker1.Size = new System.Drawing.Size(216, 20);
+            this.rmpfrmDateTimePicker1.Size = new System.Drawing.Size(131, 20);
             this.rmpfrmDateTimePicker1.TabIndex = 159;
-            this.rmpfrmDateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 800);
+            this.rmpfrmDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 759);
             // 
             // rmbtoDateTimePicker1
             // 
-            this.rmbtoDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rmbtoDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rmbtoDateTimePicker1.CustomFormat = "\' \'";
             this.rmbtoDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "rmbto", true));
             this.rmbtoDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rmbtoDateTimePicker1.Location = new System.Drawing.Point(501, 495);
+            this.rmbtoDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.rmbtoDateTimePicker1.Location = new System.Drawing.Point(480, 495);
             this.rmbtoDateTimePicker1.Name = "rmbtoDateTimePicker1";
-            this.rmbtoDateTimePicker1.Size = new System.Drawing.Size(215, 20);
+            this.rmbtoDateTimePicker1.Size = new System.Drawing.Size(130, 20);
             this.rmbtoDateTimePicker1.TabIndex = 158;
-            this.rmbtoDateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 805);
+            this.rmbtoDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 762);
             // 
             // rmptoDateTimePicker1
             // 
-            this.rmptoDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rmptoDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rmptoDateTimePicker1.CustomFormat = "\' \'";
             this.rmptoDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "rmpto", true));
             this.rmptoDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rmptoDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.rmptoDateTimePicker1.Location = new System.Drawing.Point(148, 495);
             this.rmptoDateTimePicker1.Name = "rmptoDateTimePicker1";
-            this.rmptoDateTimePicker1.Size = new System.Drawing.Size(216, 20);
+            this.rmptoDateTimePicker1.Size = new System.Drawing.Size(131, 20);
             this.rmptoDateTimePicker1.TabIndex = 157;
-            this.rmptoDateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 809);
+            this.rmptoDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 764);
             // 
             // wipmemoTextBox2
             // 
-            this.wipmemoTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.wipmemoTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.wipmemoTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "wipmemo", true));
             this.wipmemoTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wipmemoTextBox2.Location = new System.Drawing.Point(148, 579);
@@ -5954,7 +5984,7 @@
             // 
             // bindvendTextBox1
             // 
-            this.bindvendTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bindvendTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bindvendTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "bindvend", true));
             this.bindvendTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bindvendTextBox1.Location = new System.Drawing.Point(680, 449);
@@ -5964,30 +5994,33 @@
             // 
             // frmbindDateTimePicker1
             // 
-            this.frmbindDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.frmbindDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.frmbindDateTimePicker1.CustomFormat = "\' \'";
             this.frmbindDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "frmbind", true));
             this.frmbindDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.frmbindDateTimePicker1.Location = new System.Drawing.Point(347, 449);
+            this.frmbindDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.frmbindDateTimePicker1.Location = new System.Drawing.Point(296, 449);
             this.frmbindDateTimePicker1.Name = "frmbindDateTimePicker1";
-            this.frmbindDateTimePicker1.Size = new System.Drawing.Size(215, 20);
+            this.frmbindDateTimePicker1.Size = new System.Drawing.Size(153, 20);
             this.frmbindDateTimePicker1.TabIndex = 152;
-            this.frmbindDateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 817);
+            this.frmbindDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 769);
             // 
             // binddteDateTimePicker1
             // 
-            this.binddteDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.binddteDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.binddteDateTimePicker1.CustomFormat = "\' \'";
             this.binddteDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "binddte", true));
             this.binddteDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.binddteDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.binddteDateTimePicker1.Location = new System.Drawing.Point(122, 449);
             this.binddteDateTimePicker1.Name = "binddteDateTimePicker1";
-            this.binddteDateTimePicker1.Size = new System.Drawing.Size(215, 20);
+            this.binddteDateTimePicker1.Size = new System.Drawing.Size(130, 20);
             this.binddteDateTimePicker1.TabIndex = 151;
-            this.binddteDateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 820);
+            this.binddteDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 771);
             // 
             // iinitTextBox2
             // 
-            this.iinitTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iinitTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.iinitTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "iinit", true));
             this.iinitTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iinitTextBox2.Location = new System.Drawing.Point(680, 423);
@@ -5997,7 +6030,7 @@
             // 
             // ideptTextBox2
             // 
-            this.ideptTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ideptTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ideptTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "idept", true));
             this.ideptTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ideptTextBox2.Location = new System.Drawing.Point(571, 423);
@@ -6007,30 +6040,33 @@
             // 
             // ioutDateTimePicker2
             // 
-            this.ioutDateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ioutDateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ioutDateTimePicker2.CustomFormat = "\' \'";
             this.ioutDateTimePicker2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "iout", true));
             this.ioutDateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ioutDateTimePicker2.Location = new System.Drawing.Point(348, 423);
+            this.ioutDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.ioutDateTimePicker2.Location = new System.Drawing.Point(297, 423);
             this.ioutDateTimePicker2.Name = "ioutDateTimePicker2";
-            this.ioutDateTimePicker2.Size = new System.Drawing.Size(215, 20);
+            this.ioutDateTimePicker2.Size = new System.Drawing.Size(153, 20);
             this.ioutDateTimePicker2.TabIndex = 148;
-            this.ioutDateTimePicker2.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 827);
+            this.ioutDateTimePicker2.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 774);
             // 
             // iinDateTimePicker2
             // 
-            this.iinDateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.iinDateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.iinDateTimePicker2.CustomFormat = "\' \'";
             this.iinDateTimePicker2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "iin", true));
             this.iinDateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iinDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.iinDateTimePicker2.Location = new System.Drawing.Point(122, 423);
             this.iinDateTimePicker2.Name = "iinDateTimePicker2";
-            this.iinDateTimePicker2.Size = new System.Drawing.Size(215, 20);
+            this.iinDateTimePicker2.Size = new System.Drawing.Size(130, 20);
             this.iinDateTimePicker2.TabIndex = 147;
-            this.iinDateTimePicker2.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 830);
+            this.iinDateTimePicker2.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 776);
             // 
             // hinitTextBox
             // 
-            this.hinitTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.hinitTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hinitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "hinit", true));
             this.hinitTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hinitTextBox.Location = new System.Drawing.Point(680, 396);
@@ -6040,7 +6076,7 @@
             // 
             // hdeptTextBox
             // 
-            this.hdeptTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.hdeptTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hdeptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "hdept", true));
             this.hdeptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hdeptTextBox.Location = new System.Drawing.Point(571, 395);
@@ -6050,48 +6086,56 @@
             // 
             // houtDateTimePicker
             // 
-            this.houtDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.houtDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.houtDateTimePicker.CustomFormat = "\' \'";
             this.houtDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "hout", true));
             this.houtDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.houtDateTimePicker.Location = new System.Drawing.Point(348, 395);
+            this.houtDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.houtDateTimePicker.Location = new System.Drawing.Point(297, 395);
             this.houtDateTimePicker.Name = "houtDateTimePicker";
-            this.houtDateTimePicker.Size = new System.Drawing.Size(215, 20);
+            this.houtDateTimePicker.Size = new System.Drawing.Size(153, 20);
             this.houtDateTimePicker.TabIndex = 144;
-            this.houtDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 838);
+            this.houtDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 780);
             // 
             // hinDateTimePicker
             // 
-            this.hinDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.hinDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.hinDateTimePicker.CustomFormat = "\' \' ";
             this.hinDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "hin", true));
             this.hinDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hinDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.hinDateTimePicker.Location = new System.Drawing.Point(122, 395);
             this.hinDateTimePicker.Name = "hinDateTimePicker";
-            this.hinDateTimePicker.Size = new System.Drawing.Size(215, 20);
+            this.hinDateTimePicker.Size = new System.Drawing.Size(130, 20);
             this.hinDateTimePicker.TabIndex = 143;
-            this.hinDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 862);
+            this.hinDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 782);
             // 
             // regisdateDateTimePicker
             // 
+            this.regisdateDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.regisdateDateTimePicker.CustomFormat = "\' \'";
             this.regisdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ptbkbBindingSource, "regisdate", true));
             this.regisdateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.regisdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.regisdateDateTimePicker.Location = new System.Drawing.Point(343, 342);
             this.regisdateDateTimePicker.Name = "regisdateDateTimePicker";
-            this.regisdateDateTimePicker.Size = new System.Drawing.Size(212, 20);
+            this.regisdateDateTimePicker.Size = new System.Drawing.Size(136, 20);
             this.regisdateDateTimePicker.TabIndex = 137;
-            this.regisdateDateTimePicker.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 868);
+            this.regisdateDateTimePicker.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 785);
             // 
             // cdpassTextBox
             // 
+            this.cdpassTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cdpassTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "cdpass", true));
             this.cdpassTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cdpassTextBox.Location = new System.Drawing.Point(637, 342);
+            this.cdpassTextBox.Location = new System.Drawing.Point(580, 342);
             this.cdpassTextBox.Name = "cdpassTextBox";
             this.cdpassTextBox.Size = new System.Drawing.Size(184, 20);
             this.cdpassTextBox.TabIndex = 136;
             // 
             // regisnoTextBox
             // 
+            this.regisnoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.regisnoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "regisno", true));
             this.regisnoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.regisnoTextBox.Location = new System.Drawing.Point(118, 342);
@@ -6103,18 +6147,19 @@
             // 
             this.prtbkbdetailDataGridView.AllowUserToAddRows = false;
             this.prtbkbdetailDataGridView.AllowUserToOrderColumns = true;
-            this.prtbkbdetailDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.prtbkbdetailDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.prtbkbdetailDataGridView.AutoGenerateColumns = false;
             this.prtbkbdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.prtbkbdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.prtbkbdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.prtbkbdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.prtbkbdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -6130,8 +6175,8 @@
             this.prtbkbdetailDataGridView.Location = new System.Drawing.Point(118, 94);
             this.prtbkbdetailDataGridView.Name = "prtbkbdetailDataGridView";
             this.prtbkbdetailDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prtbkbdetailDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prtbkbdetailDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.prtbkbdetailDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prtbkbdetailDataGridView.Size = new System.Drawing.Size(924, 242);
             this.prtbkbdetailDataGridView.TabIndex = 134;
@@ -6195,10 +6240,10 @@
             // textBox13
             // 
             this.textBox13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoPages", true));
-            this.textBox13.Location = new System.Drawing.Point(565, 50);
+            this.textBox13.Location = new System.Drawing.Point(619, 50);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(100, 20);
+            this.textBox13.Size = new System.Drawing.Size(67, 20);
             this.textBox13.TabIndex = 134;
             // 
             // label47
@@ -6221,16 +6266,16 @@
             this.invnoLabel6.TabIndex = 130;
             this.invnoLabel6.Text = "label46";
             // 
-            // dateTimePicker1
+            // dtPhotoCDRevDate
             // 
-            this.dateTimePicker1.CustomFormat = "\'\'";
-            this.dateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "ptbrcvd", true));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(291, 53);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(183, 20);
-            this.dateTimePicker1.TabIndex = 129;
-            this.dateTimePicker1.Value = new System.DateTime(2019, 8, 8, 11, 7, 55, 880);
+            this.dtPhotoCDRevDate.CustomFormat = "\'\'";
+            this.dtPhotoCDRevDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "ptbrcvd", true));
+            this.dtPhotoCDRevDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtPhotoCDRevDate.Location = new System.Drawing.Point(393, 50);
+            this.dtPhotoCDRevDate.Name = "dtPhotoCDRevDate";
+            this.dtPhotoCDRevDate.Size = new System.Drawing.Size(130, 20);
+            this.dtPhotoCDRevDate.TabIndex = 129;
+            this.dtPhotoCDRevDate.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 794);
             // 
             // ptnopgsTextBox2
             // 
@@ -6257,6 +6302,7 @@
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(100, 16);
             this.label44.TabIndex = 13;
+            this.label44.Text = "prodno";
             // 
             // pg7
             // 
@@ -6395,6 +6441,15 @@
             // 
             this.vendorTableAdapter.ClearBeforeFill = true;
             // 
+            // cstsvcdteDateTimePicker
+            // 
+            this.cstsvcdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "cstsvcdte", true));
+            this.cstsvcdteDateTimePicker.Date = null;
+            this.cstsvcdteDateTimePicker.Location = new System.Drawing.Point(343, 13);
+            this.cstsvcdteDateTimePicker.Name = "cstsvcdteDateTimePicker";
+            this.cstsvcdteDateTimePicker.Size = new System.Drawing.Size(96, 21);
+            this.cstsvcdteDateTimePicker.TabIndex = 159;
+            // 
             // frmProdutn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -6515,7 +6570,6 @@
         private System.Windows.Forms.Button btnBindVend;
         private System.Windows.Forms.Button btnPrntVendor;
         private Classes.NullableDateTimePicker tovendDateTimePicker;
-        private Classes.NullableDateTimePicker warndateDateTimePicker;
         private Classes.NullableDateTimePicker prshpdteDateTimePicker;
         private Classes.NullableDateTimePicker prmsdateDateTimePicker;
         private Classes.NullableDateTimePicker shpdateDateTimePicker;
@@ -6549,7 +6603,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox cominitlTextBox;
         private Classes.NullableDateTimePicker comdateDateTimePicker;
-        private Classes.NullableDateTimePicker dpCustomerServiceDate;
         private System.Windows.Forms.Button btnEmailPw;
         private System.Windows.Forms.Button btnPrntMbOnline;
         private System.Windows.Forms.Button btnUpdateJob;
@@ -6694,13 +6747,9 @@
         private DataSets.dsProdutnTableAdapters.coverdetailTableAdapter coverdetailTableAdapter;
         private System.Windows.Forms.DataGridView coverdetailDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnInvoiceSrch;
-        private System.Windows.Forms.TextBox txtSchCode;
-        private System.Windows.Forms.TextBox txtProdNoSrch;
-        private System.Windows.Forms.Button btnProdSrch;
+        private System.Windows.Forms.Button btnMeridianTicket;
+        private System.Windows.Forms.Button btnCoverTicket;
+        private System.Windows.Forms.Button btnBindery;
         private DataSets.LookUp lookUp;
         private System.Windows.Forms.BindingSource lkTypeDataBindingSource;
         private DataSets.LookUpTableAdapters.lkTypeDataTableAdapter lkTypeDataTableAdapter;
@@ -6736,7 +6785,7 @@
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnAddPartial;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.BindingSource partBkDetailBindingSource;
         private DataSets.dsProdutnTableAdapters.PartBkDetailTableAdapter partBkDetailTableAdapter;
@@ -6771,7 +6820,7 @@
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label invnoLabel6;
-        private Classes.NullableDateTimePicker dateTimePicker1;
+        private Classes.NullableDateTimePicker dtPhotoCDRevDate;
         private System.Windows.Forms.TextBox ptnopgsTextBox2;
         private System.Windows.Forms.TextBox booktypeTextBox3;
         private System.Windows.Forms.Label label44;
@@ -6799,8 +6848,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnBackGround;
         private System.Windows.Forms.Label lblModifiedBy;
 		private System.Windows.Forms.TextBox invnoTextBox;
-		private System.Windows.Forms.Button btnSchoolSearch;
-		private System.Windows.Forms.TextBox txtSchNamesrch;
 		private System.Windows.Forms.Button btnMbo;
 		private System.Windows.Forms.TextBox txtMbo;
 		private DataSets.dsCust dsCust;
@@ -6837,5 +6884,14 @@
         protected System.Windows.Forms.RadioButton bkMilled;
         private System.Windows.Forms.Button btnUpdateWip;
         private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.TextBox nocopiesTextBox1;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnAddPhotoCd;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnCvrUpdate;
+        private Mbc5.Classes.NullableDateTimePicker cstsvcdteDateTimePicker11;
+        private CustomControls.DateBox dteWarnDate;
+        private CustomControls.DateBox cstsvcdteDateTimePicker;
     }
 }

@@ -567,7 +567,7 @@ namespace Mbc5.Dialogs {
                             txtSearch.Select();
                             break;
                         case "PRODUCTION":
-                            cmdtext = @"Select P.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear From Produtn P Inner JOIN Cust C On P.Schcode=C.Schcode Order By Q.Invoice";
+                            cmdtext = @"Select P.Invno AS Invoice,C.Schname,C.Schcode,C.OracleCode,C.Contryear From Produtn P Inner JOIN Cust C On P.Schcode=C.Schcode Order By Invoice";
                             sqlclient.CommandText(cmdtext);
                             var result4 = sqlclient.SelectMany<ProdutnInvnoSearch>();
                             if (result4.IsError)

@@ -25,65 +25,85 @@ namespace Mbc5.Classes
         {
         }
         private bool valSet { get; set; } = false;
-        public new DateTime? Value {
-            get {
-                if (bIsNull)
-                    return null;
-                else
-                    return base.Value;
-            }
-            set {
-                if (!valSet)
-                {
-                    valSet = true;
-                    if (bIsNull == false)
-                    {
-                        oldFormat = this.Format;
-                        oldCustomFormat = this.CustomFormat;
-                        
-                    }
-                    // preset to custom and ''
-                    //this.Format = DateTimePickerFormat.Custom;
-                    //this.CustomFormat = " ";
-                }else if(valSet &&  value == null)
-                {
-                    if (bIsNull == true)
-                    {
-                     this.Format = DateTimePickerFormat.Custom;
-                        this.CustomFormat = " ";
-                
-                    }
- 
-                }else if (valSet && value != null)
-                {
-                    if (bIsNull ==false)
-                    {
-                        this.Format = DateTimePickerFormat.Short;
-                        this.CustomFormat = " ";
-                        bIsNull = false;
-                        base.Value = value.Value; }
-                }
-               
-            }
-        }
+        //public new DateTime? Value {
+        //    get {
+        //        if (bIsNull)
+        //            return null;
+        //        else
+        //            return base.Value;
+        //    }
+        //    set {
+        //        if(this.Name== "warndateDateTimePicker1")
+        //        {
+        //            var stop = 1;
+        //        }
+        //        if (!valSet)
+        //        {
+        //            valSet = true;
+        //            if (bIsNull == false)
+        //            {
+        //                oldFormat = this.Format;
+        //                oldCustomFormat = this.CustomFormat;
 
-        protected override void OnCloseUp(EventArgs eventargs)
+        //            }
+        //            // preset to custom and ''
+        //            //this.Format = DateTimePickerFormat.Custom;
+        //            //this.CustomFormat = " ";
+        //        }else if(valSet &&  value == null)
+        //        {
+
+        //            if (bIsNull == true)
+        //            {
+        //             this.Format = DateTimePickerFormat.Custom;
+        //                this.CustomFormat = " ";
+
+        //            }
+
+        //        }else if (valSet && value != null)
+        //        {
+        //            //if (bIsNull ==false)
+        //            //{
+        //                this.Format = DateTimePickerFormat.Short;
+        //                this.CustomFormat = " ";
+        //                bIsNull = false;
+        //                base.Value = value.Value;
+        //        //}
+        //        }
+
+        //    }
+        //}
+        protected override void OnValueChanged(EventArgs e)
         {
-            
-            
-            
-            if (Control.MouseButtons == MouseButtons.None)
+            if (this.Name == "warndateDateTimePicker1")
             {
-                if (bIsNull)
-                {
-                    this.Format = oldFormat;
-                    this.CustomFormat = oldCustomFormat;
-                    bIsNull = false;
-                }
+                var stop = 2;
             }
-            
-            base.OnCloseUp(eventargs);
+           
+            var b = base.Value;
+            var a = this.Value;
+            base.OnValueChanged(e);
+           
         }
+        //protected override void OnCloseUp(EventArgs eventargs)
+        //{
+
+        //    if (this.Name == "warndateDateTimePicker1")
+        //    {
+        //        var stop = 2;
+        //    }
+
+        //    if (Control.MouseButtons == MouseButtons.None)
+        //    {
+        //        if (bIsNull)
+        //        {
+        //            this.Format = oldFormat;
+        //            this.CustomFormat = oldCustomFormat;
+        //            bIsNull = false;
+        //        }
+        //    }
+
+        //    base.OnCloseUp(eventargs);
+        //}
 
         protected override void OnKeyDown(KeyEventArgs e)
         {
@@ -95,7 +115,7 @@ namespace Mbc5.Classes
                 this.Format = DateTimePickerFormat.Custom;
                 this.CustomFormat = " ";
                 
-                this.Value = null;
+                //this.Value = null;
                 var vBindingSource = (BindingSource)this.DataBindings[0].DataSource;
                 var field = this.DataBindings[0].BindingMemberInfo.BindingField;
                 var dr = (DataRowView)vBindingSource.Current;
