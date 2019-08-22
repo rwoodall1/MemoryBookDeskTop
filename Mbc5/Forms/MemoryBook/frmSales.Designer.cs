@@ -135,28 +135,28 @@
             System.Windows.Forms.Label label37;
             System.Windows.Forms.Label lblBkTotal;
             System.Windows.Forms.Label extrchgLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource12 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource13 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource14 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource15 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource16 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource17 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource18 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource19 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource20 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource21 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource22 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bsAgreementDetails = new System.Windows.Forms.BindingSource(this.components);
             this.bsAgreementHeader = new System.Windows.Forms.BindingSource(this.components);
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -322,7 +322,6 @@
             this.totalpersonlineTextBox = new System.Windows.Forms.TextBox();
             this.totalsoldonlineTextBox = new System.Windows.Forms.TextBox();
             this.onlinenotesTextBox = new System.Windows.Forms.TextBox();
-            this.onlinecutoDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.agreerecCheckBox1 = new System.Windows.Forms.CheckBox();
             this.lblOprcperbk = new System.Windows.Forms.Label();
             this.txtOprcperbk2 = new System.Windows.Forms.Label();
@@ -341,7 +340,6 @@
             this.txtQuarterAd = new System.Windows.Forms.TextBox();
             this.txtEighthAd = new System.Windows.Forms.TextBox();
             this.chkAllowAds = new System.Windows.Forms.CheckBox();
-            this.adcutoDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.webonlyCheckBox = new System.Windows.Forms.CheckBox();
             this.mbconlinepasswordLabel3 = new System.Windows.Forms.Label();
             this.basicamounTextBox1 = new System.Windows.Forms.TextBox();
@@ -354,7 +352,6 @@
             this.btnPrntFlyer = new System.Windows.Forms.Button();
             this.btnPassword = new System.Windows.Forms.Button();
             this.btnOnlineAgreement = new System.Windows.Forms.Button();
-            this.agreedteDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.invnoLabel4 = new System.Windows.Forms.Label();
             this.pg3 = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -407,7 +404,6 @@
             this.txtPayoamt = new System.Windows.Forms.TextBox();
             this.txtCheckNo = new System.Windows.Forms.TextBox();
             this.txtPayment = new System.Windows.Forms.TextBox();
-            this.calpmtdate = new Mbc5.Classes.NullableDateTimePicker();
             this.invno = new System.Windows.Forms.Label();
             this.paymntDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -491,6 +487,10 @@
             this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
             this.InvoiceDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.OnlineAgreementHeaderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.agreedteDateBox = new CustomControls.DateBox();
+            this.onlinecutoDateBox = new CustomControls.DateBox();
+            this.adcutoDateBox = new CustomControls.DateBox();
+            this.pmtdateDateBox = new CustomControls.DateBox();
             label10 = new System.Windows.Forms.Label();
             label22 = new System.Windows.Forms.Label();
             label24 = new System.Windows.Forms.Label();
@@ -943,7 +943,7 @@
             // 
             agreedteLabel.AutoSize = true;
             agreedteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            agreedteLabel.Location = new System.Drawing.Point(573, 233);
+            agreedteLabel.Location = new System.Drawing.Point(573, 234);
             agreedteLabel.Name = "agreedteLabel";
             agreedteLabel.Size = new System.Drawing.Size(98, 13);
             agreedteLabel.TabIndex = 55;
@@ -1861,7 +1861,7 @@
             this.pg1.Controls.Add(nocopiesLabel);
             this.pg1.Controls.Add(this.txtNocopies);
             this.pg1.Controls.Add(qtedateLabel);
-            this.pg1.Controls.Add(this.dteQuote);
+           // this.pg1.Controls.Add(this.dteQuote);
             this.pg1.Controls.Add(ponumLabel);
             this.pg1.Controls.Add(this.txtPoNum);
             this.pg1.Controls.Add(bpyearLabel);
@@ -1921,14 +1921,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1936,26 +1936,26 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn3});
             this.invHstDataGridView.DataSource = this.invHstBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.invHstDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.invHstDataGridView.DefaultCellStyle = dataGridViewCellStyle13;
             this.invHstDataGridView.EnableHeadersVisualStyles = false;
             this.invHstDataGridView.Location = new System.Drawing.Point(866, 94);
             this.invHstDataGridView.Name = "invHstDataGridView";
             this.invHstDataGridView.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.invHstDataGridView.Size = new System.Drawing.Size(334, 113);
             this.invHstDataGridView.TabIndex = 193;
             // 
@@ -3602,6 +3602,9 @@
             // 
             this.pg2.AutoScroll = true;
             this.pg2.BackColor = System.Drawing.SystemColors.Control;
+            this.pg2.Controls.Add(this.adcutoDateBox);
+            this.pg2.Controls.Add(this.onlinecutoDateBox);
+            this.pg2.Controls.Add(this.agreedteDateBox);
             this.pg2.Controls.Add(this.reportViewer3);
             this.pg2.Controls.Add(this.totaladsTextBox);
             this.pg2.Controls.Add(this.totallovelinesTextBox);
@@ -3609,7 +3612,6 @@
             this.pg2.Controls.Add(this.totalpersonlineTextBox);
             this.pg2.Controls.Add(this.totalsoldonlineTextBox);
             this.pg2.Controls.Add(this.onlinenotesTextBox);
-            this.pg2.Controls.Add(this.onlinecutoDateTimePicker);
             this.pg2.Controls.Add(this.agreerecCheckBox1);
             this.pg2.Controls.Add(this.lblOprcperbk);
             this.pg2.Controls.Add(this.txtOprcperbk2);
@@ -3628,7 +3630,6 @@
             this.pg2.Controls.Add(this.txtQuarterAd);
             this.pg2.Controls.Add(this.txtEighthAd);
             this.pg2.Controls.Add(this.chkAllowAds);
-            this.pg2.Controls.Add(this.adcutoDateTimePicker);
             this.pg2.Controls.Add(this.webonlyCheckBox);
             this.pg2.Controls.Add(this.mbconlinepasswordLabel3);
             this.pg2.Controls.Add(this.basicamounTextBox1);
@@ -3644,7 +3645,6 @@
             this.pg2.Controls.Add(qtedateLabel4);
             this.pg2.Controls.Add(calOnlineCutoff);
             this.pg2.Controls.Add(agreedteLabel);
-            this.pg2.Controls.Add(this.agreedteDateTimePicker);
             this.pg2.Controls.Add(invnoLabel3);
             this.pg2.Controls.Add(this.invnoLabel4);
             this.pg2.Controls.Add(perscopiesLabel1);
@@ -3671,15 +3671,15 @@
             // reportViewer3
             // 
             this.reportViewer3.DocumentMapWidth = 50;
-            reportDataSource1.Name = "dsItemDetails";
-            reportDataSource1.Value = this.bsAgreementDetails;
-            reportDataSource2.Name = "dsHeader";
-            reportDataSource2.Value = this.bsAgreementHeader;
-            reportDataSource3.Name = "dsOnlinePay";
-            reportDataSource3.Value = this.quotesBindingSource;
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource12.Name = "dsItemDetails";
+            reportDataSource12.Value = this.bsAgreementDetails;
+            reportDataSource13.Name = "dsHeader";
+            reportDataSource13.Value = this.bsAgreementHeader;
+            reportDataSource14.Name = "dsOnlinePay";
+            reportDataSource14.Value = this.quotesBindingSource;
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource12);
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource13);
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource14);
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.OnlineAgreement.rdlc";
             this.reportViewer3.Location = new System.Drawing.Point(736, 52);
             this.reportViewer3.Name = "reportViewer3";
@@ -3748,18 +3748,6 @@
             this.onlinenotesTextBox.Name = "onlinenotesTextBox";
             this.onlinenotesTextBox.Size = new System.Drawing.Size(746, 95);
             this.onlinenotesTextBox.TabIndex = 97;
-            // 
-            // onlinecutoDateTimePicker
-            // 
-            this.onlinecutoDateTimePicker.CustomFormat = "\'\'";
-            this.onlinecutoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.quotesBindingSource, "onlinecuto", true));
-            this.onlinecutoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.onlinecutoDateTimePicker.Location = new System.Drawing.Point(677, 261);
-            this.onlinecutoDateTimePicker.Name = "onlinecutoDateTimePicker";
-            this.onlinecutoDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.onlinecutoDateTimePicker.TabIndex = 96;
-            this.onlinecutoDateTimePicker.Value = new System.DateTime(2019, 8, 15, 15, 1, 8, 63);
-            this.onlinecutoDateTimePicker.ValueChanged += new System.EventHandler(this.onlinecutoDateTimePicker_ValueChanged);
             // 
             // agreerecCheckBox1
             // 
@@ -3967,18 +3955,6 @@
             this.chkAllowAds.UseVisualStyleBackColor = true;
             this.chkAllowAds.CheckedChanged += new System.EventHandler(this.chkAllowAds_CheckedChanged);
             // 
-            // adcutoDateTimePicker
-            // 
-            this.adcutoDateTimePicker.CustomFormat = "\'\'";
-            this.adcutoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.quotesBindingSource, "adcuto", true));
-            this.adcutoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.adcutoDateTimePicker.Location = new System.Drawing.Point(677, 284);
-            this.adcutoDateTimePicker.Name = "adcutoDateTimePicker";
-            this.adcutoDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.adcutoDateTimePicker.TabIndex = 76;
-            this.adcutoDateTimePicker.Value = new System.DateTime(2019, 8, 15, 15, 1, 8, 75);
-            this.adcutoDateTimePicker.ValueChanged += new System.EventHandler(this.adcutoDateTimePicker_ValueChanged);
-            // 
             // webonlyCheckBox
             // 
             this.webonlyCheckBox.AutoSize = true;
@@ -4119,18 +4095,6 @@
             this.btnOnlineAgreement.UseVisualStyleBackColor = true;
             this.btnOnlineAgreement.Click += new System.EventHandler(this.btnOnlineAgreement_Click);
             // 
-            // agreedteDateTimePicker
-            // 
-            this.agreedteDateTimePicker.CustomFormat = "\'\'";
-            this.agreedteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.quotesBindingSource, "agreedte", true));
-            this.agreedteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.agreedteDateTimePicker.Location = new System.Drawing.Point(677, 233);
-            this.agreedteDateTimePicker.Name = "agreedteDateTimePicker";
-            this.agreedteDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.agreedteDateTimePicker.TabIndex = 56;
-            this.agreedteDateTimePicker.Value = new System.DateTime(2019, 8, 15, 15, 1, 8, 84);
-            this.agreedteDateTimePicker.ValueChanged += new System.EventHandler(this.agreedteDateTimePicker_ValueChanged);
-            // 
             // invnoLabel4
             // 
             this.invnoLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -4215,23 +4179,23 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(1057, 178);
             this.panel11.TabIndex = 0;
-            this.panel11.Paint += new System.Windows.Forms.PaintEventHandler(this.panel11_Paint);
+      
             // 
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource4.Name = "cust";
-            reportDataSource4.Value = this.InvCustBindingSource;
-            reportDataSource5.Name = "invoice";
-            reportDataSource5.Value = this.invoiceBindingSource;
-            reportDataSource6.Name = "invoicedetail";
-            reportDataSource6.Value = this.invdetailBindingSource;
-            reportDataSource7.Name = "payment";
-            reportDataSource7.Value = this.paymntBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource7);
+            reportDataSource15.Name = "cust";
+            reportDataSource15.Value = this.InvCustBindingSource;
+            reportDataSource16.Name = "invoice";
+            reportDataSource16.Value = this.invoiceBindingSource;
+            reportDataSource17.Name = "invoicedetail";
+            reportDataSource17.Value = this.invdetailBindingSource;
+            reportDataSource18.Name = "payment";
+            reportDataSource18.Value = this.paymntBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource15);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource16);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource17);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource18);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MemInvoice.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(951, 79);
             this.reportViewer1.Name = "reportViewer1";
@@ -4533,14 +4497,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.invdetailDataGridView.AutoGenerateColumns = false;
             this.invdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.invdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
@@ -4561,8 +4525,8 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "schcode";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewTextBoxColumn5.HeaderText = "School Code";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -4570,8 +4534,8 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "invno";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewTextBoxColumn6.HeaderText = "Invoice #";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -4579,8 +4543,8 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "descr";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewTextBoxColumn7.HeaderText = "Description";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -4588,8 +4552,8 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "price";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewTextBoxColumn8.HeaderText = "Amount";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -4614,6 +4578,7 @@
             // 
             this.pg4.AutoScroll = true;
             this.pg4.BackColor = System.Drawing.SystemColors.Control;
+            this.pg4.Controls.Add(this.pmtdateDateBox);
             this.pg4.Controls.Add(this.btnDelete);
             this.pg4.Controls.Add(this.btnSavePayment);
             this.pg4.Controls.Add(this.btnEdit);
@@ -4638,7 +4603,6 @@
             this.pg4.Controls.Add(paymentLabel);
             this.pg4.Controls.Add(this.txtPayment);
             this.pg4.Controls.Add(pmtdateLabel);
-            this.pg4.Controls.Add(this.calpmtdate);
             this.pg4.Controls.Add(invnoLabel5);
             this.pg4.Controls.Add(this.invno);
             this.pg4.Controls.Add(this.paymntDataGridView);
@@ -4796,19 +4760,6 @@
             this.txtPayment.Size = new System.Drawing.Size(100, 20);
             this.txtPayment.TabIndex = 14;
             // 
-            // calpmtdate
-            // 
-            this.calpmtdate.CustomFormat = "\' \'";
-            this.calpmtdate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.paymntBindingSource, "pmtdate", true));
-            this.calpmtdate.Enabled = false;
-            this.calpmtdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calpmtdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.calpmtdate.Location = new System.Drawing.Point(165, 94);
-            this.calpmtdate.Name = "calpmtdate";
-            this.calpmtdate.Size = new System.Drawing.Size(130, 20);
-            this.calpmtdate.TabIndex = 11;
-            this.calpmtdate.Value = new System.DateTime(2019, 8, 15, 15, 1, 8, 320);
-            // 
             // invno
             // 
             this.invno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoiceBindingSource, "invno", true));
@@ -4825,14 +4776,14 @@
             this.paymntDataGridView.AllowUserToDeleteRows = false;
             this.paymntDataGridView.AutoGenerateColumns = false;
             this.paymntDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.paymntDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paymntDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn12,
@@ -5041,18 +4992,18 @@
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 35;
-            reportDataSource8.Name = "cust";
-            reportDataSource8.Value = this.custBindingSource;
-            reportDataSource9.Name = "invoice";
-            reportDataSource9.Value = this.bsxtraPrintInvoice;
-            reportDataSource10.Name = "invoicedetail";
-            reportDataSource10.Value = this.bsxtraPrintDetailInvoice;
-            reportDataSource11.Name = "payment";
-            reportDataSource11.Value = this.paymntBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource8);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource9);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource10);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource11);
+            reportDataSource19.Name = "cust";
+            reportDataSource19.Value = this.custBindingSource;
+            reportDataSource20.Name = "invoice";
+            reportDataSource20.Value = this.bsxtraPrintInvoice;
+            reportDataSource21.Name = "invoicedetail";
+            reportDataSource21.Value = this.bsxtraPrintDetailInvoice;
+            reportDataSource22.Name = "payment";
+            reportDataSource22.Value = this.paymntBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource19);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource20);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource21);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource22);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MemInvoice.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(600, 73);
             this.reportViewer2.Name = "reportViewer2";
@@ -5075,14 +5026,14 @@
             // 
             // grdXtraInvoice
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdXtraInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdXtraInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.grdXtraInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdXtraInvoice.EnableHeadersVisualStyles = false;
             this.grdXtraInvoice.Location = new System.Drawing.Point(427, 373);
@@ -5117,7 +5068,7 @@
             this.pnlInvoice.Controls.Add(this.lblBookTotalValue);
             this.pnlInvoice.Controls.Add(lblBkTotal);
             this.pnlInvoice.Controls.Add(this.lblXtraInvoiceNo);
-            this.pnlInvoice.Controls.Add(this.dpDateShipped);
+//            this.pnlInvoice.Controls.Add(this.dpDateShipped);
             this.pnlInvoice.Controls.Add(this.lblInvoiceTaxRate);
             this.pnlInvoice.Controls.Add(this.lblInvoiceTotal);
             this.pnlInvoice.Controls.Add(label42);
@@ -5594,6 +5545,50 @@
             // 
             this.OnlineAgreementHeaderBindingSource.DataSource = typeof(BindingModels.OnlineAgreementHeader);
             // 
+            // agreedteDateBox
+            // 
+            this.agreedteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.quotesBindingSource, "agreedte", true));
+            this.agreedteDateBox.Date = null;
+         
+            this.agreedteDateBox.Location = new System.Drawing.Point(677, 234);
+            this.agreedteDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.agreedteDateBox.Name = "agreedteDateBox";
+            this.agreedteDateBox.Size = new System.Drawing.Size(133, 21);
+            this.agreedteDateBox.TabIndex = 104;
+            // 
+            // onlinecutoDateBox
+            // 
+            this.onlinecutoDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.quotesBindingSource, "onlinecuto", true));
+            this.onlinecutoDateBox.Date = null;
+          
+            this.onlinecutoDateBox.Location = new System.Drawing.Point(677, 257);
+            this.onlinecutoDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.onlinecutoDateBox.Name = "onlinecutoDateBox";
+            this.onlinecutoDateBox.Size = new System.Drawing.Size(133, 21);
+            this.onlinecutoDateBox.TabIndex = 105;
+            // 
+            // adcutoDateBox
+            // 
+            this.adcutoDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.quotesBindingSource, "adcuto", true));
+            this.adcutoDateBox.Date = null;
+          
+            this.adcutoDateBox.Location = new System.Drawing.Point(677, 284);
+            this.adcutoDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.adcutoDateBox.Name = "adcutoDateBox";
+            this.adcutoDateBox.Size = new System.Drawing.Size(133, 21);
+            this.adcutoDateBox.TabIndex = 106;
+            // 
+            // pmtdateDateBox
+            // 
+            this.pmtdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.paymntBindingSource, "pmtdate", true));
+            this.pmtdateDateBox.Date = null;
+          
+            this.pmtdateDateBox.Location = new System.Drawing.Point(165, 95);
+            this.pmtdateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.pmtdateDateBox.Name = "pmtdateDateBox";
+            this.pmtdateDateBox.Size = new System.Drawing.Size(133, 21);
+            this.pmtdateDateBox.TabIndex = 29;
+            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -5726,7 +5721,6 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TabPage pg2;
         private System.Windows.Forms.TabPage pg4;
-        private Classes.NullableDateTimePicker agreedteDateTimePicker;
         private System.Windows.Forms.Label invnoLabel4;
         private System.Windows.Forms.Button btnPrintAgreement;
         private System.Windows.Forms.Button btnPrntFlyer;
@@ -5752,14 +5746,12 @@
         private System.Windows.Forms.TextBox txtQuarterAd;
         private System.Windows.Forms.TextBox txtEighthAd;
         private System.Windows.Forms.CheckBox chkAllowAds;
-        private Classes.NullableDateTimePicker adcutoDateTimePicker;
         private System.Windows.Forms.CheckBox webonlyCheckBox;
         private System.Windows.Forms.TextBox txtInkPersAmt;
         private System.Windows.Forms.CheckBox chkInkPers;
         private System.Windows.Forms.CheckBox agreerecCheckBox1;
         private System.Windows.Forms.Label lblOprcperbk;
         private System.Windows.Forms.Label txtOprcperbk2;
-        private Classes.NullableDateTimePicker onlinecutoDateTimePicker;
         private System.Windows.Forms.TextBox onlinenotesTextBox;
         private System.Windows.Forms.TextBox totaladsTextBox;
         private System.Windows.Forms.TextBox totallovelinesTextBox;
@@ -5787,7 +5779,6 @@
         private System.Windows.Forms.TextBox txtPayoamt;
         private System.Windows.Forms.TextBox txtCheckNo;
         private System.Windows.Forms.TextBox txtPayment;
-        private Classes.NullableDateTimePicker calpmtdate;
         private System.Windows.Forms.Label invno;
         private System.Windows.Forms.Button btnNewPayment;
         private System.Windows.Forms.Button btnCancel;
@@ -6018,5 +6009,9 @@
         private System.Windows.Forms.ContextMenuStrip InkOverRide;
         private System.Windows.Forms.ToolStripMenuItem overRidePrice;
         private System.Windows.Forms.CheckBox colorPriceOverRideCheckBox;
+        private CustomControls.DateBox adcutoDateBox;
+        private CustomControls.DateBox onlinecutoDateBox;
+        private CustomControls.DateBox agreedteDateBox;
+        private CustomControls.DateBox pmtdateDateBox;
     }
     }

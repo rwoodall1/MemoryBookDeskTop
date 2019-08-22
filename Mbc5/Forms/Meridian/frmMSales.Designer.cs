@@ -109,15 +109,15 @@
             System.Windows.Forms.Label pmtdateLabel1;
             System.Windows.Forms.Label init_Label;
             System.Windows.Forms.Label invnoLabel4;
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.merinvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsMInvoice = new Mbc5.DataSets.dsMInvoice();
             this.merinvdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -308,10 +308,10 @@
             this.txtPayment = new System.Windows.Forms.TextBox();
             this.txtMethod = new System.Windows.Forms.TextBox();
             this.txtCheckNo = new System.Windows.Forms.TextBox();
-            this.calpmtdate = new Mbc5.Classes.NullableDateTimePicker();
             this.txtPaypoamt = new System.Windows.Forms.TextBox();
             this.merinvdetailTableAdapter = new Mbc5.DataSets.dsMInvoiceTableAdapters.merinvdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsMInvoiceTableAdapters.paymntTableAdapter();
+            this.pmtdateDateBox = new CustomControls.DateBox();
             shpnameLabel = new System.Windows.Forms.Label();
             invnameLabel = new System.Windows.Forms.Label();
             mdescLabel = new System.Windows.Forms.Label();
@@ -1397,15 +1397,15 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 25;
-            reportDataSource1.Name = "dsMerInvoice";
-            reportDataSource1.Value = this.merinvoiceBindingSource;
-            reportDataSource2.Name = "dsMerInvDetails";
-            reportDataSource2.Value = this.merinvdetailBindingSource;
-            reportDataSource3.Name = "dsPayments";
-            reportDataSource3.Value = this.paymntBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource7.Name = "dsMerInvoice";
+            reportDataSource7.Value = this.merinvoiceBindingSource;
+            reportDataSource8.Name = "dsMerInvDetails";
+            reportDataSource8.Value = this.merinvdetailBindingSource;
+            reportDataSource9.Name = "dsPayments";
+            reportDataSource9.Value = this.paymntBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource7);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource8);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource9);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MerInvoice.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(932, 91);
             this.reportViewer1.Name = "reportViewer1";
@@ -1450,14 +1450,14 @@
             // 
             this.merinvdetailDataGridView.AllowUserToDeleteRows = false;
             this.merinvdetailDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.merinvdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.merinvdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.merinvdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.merinvdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -1476,32 +1476,32 @@
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn1.DataPropertyName = "descr";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn1.HeaderText = "Description";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // Quantity
             // 
             this.Quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quantity.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle16;
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.Name = "Quantity";
             // 
             // UnitPrice
             // 
             this.UnitPrice.DataPropertyName = "UnitPrice";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle17;
             this.UnitPrice.HeaderText = "UnitPrice";
             this.UnitPrice.Name = "UnitPrice";
             // 
             // Amount
             // 
             this.Amount.DataPropertyName = "Amount";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Amount.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Amount.DefaultCellStyle = dataGridViewCellStyle18;
             this.Amount.HeaderText = "Amount";
             this.Amount.Name = "Amount";
             // 
@@ -3089,6 +3089,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage4.Controls.Add(this.pmtdateDateBox);
             this.tabPage4.Controls.Add(this.btnDelete);
             this.tabPage4.Controls.Add(this.btnSavePayment);
             this.tabPage4.Controls.Add(this.btnEdit);
@@ -3107,7 +3108,6 @@
             this.tabPage4.Controls.Add(this.txtMethod);
             this.tabPage4.Controls.Add(this.txtCheckNo);
             this.tabPage4.Controls.Add(pmtdateLabel1);
-            this.tabPage4.Controls.Add(this.calpmtdate);
             this.tabPage4.Controls.Add(poamtLabel);
             this.tabPage4.Controls.Add(this.txtPaypoamt);
             this.tabPage4.Controls.Add(compreasLabel);
@@ -3184,14 +3184,14 @@
             this.paymntDataGridView.AllowUserToDeleteRows = false;
             this.paymntDataGridView.AutoGenerateColumns = false;
             this.paymntDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.paymntDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paymntDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn12,
@@ -3413,19 +3413,6 @@
             this.txtCheckNo.Size = new System.Drawing.Size(110, 20);
             this.txtCheckNo.TabIndex = 34;
             // 
-            // calpmtdate
-            // 
-            this.calpmtdate.CustomFormat = "\' \'";
-            this.calpmtdate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.paymntBindingSource, "pmtdate", true));
-            this.calpmtdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calpmtdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.calpmtdate.Location = new System.Drawing.Point(146, 66);
-            this.calpmtdate.Name = "calpmtdate";
-            this.calpmtdate.Size = new System.Drawing.Size(137, 20);
-            this.calpmtdate.TabIndex = 33;
-            this.calpmtdate.Value = new System.DateTime(2019, 8, 15, 15, 38, 33, 593);
-            this.calpmtdate.ValueChanged += new System.EventHandler(this.calpmtdate_ValueChanged);
-            // 
             // txtPaypoamt
             // 
             this.txtPaypoamt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.paymntBindingSource, "poamt", true));
@@ -3442,6 +3429,17 @@
             // paymntTableAdapter
             // 
             this.paymntTableAdapter.ClearBeforeFill = true;
+            // 
+            // pmtdateDateBox
+            // 
+            this.pmtdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.paymntBindingSource, "pmtdate", true));
+            this.pmtdateDateBox.Date = null;
+            this.pmtdateDateBox.DateValue = null;
+            this.pmtdateDateBox.Location = new System.Drawing.Point(146, 70);
+            this.pmtdateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.pmtdateDateBox.Name = "pmtdateDateBox";
+            this.pmtdateDateBox.Size = new System.Drawing.Size(133, 21);
+            this.pmtdateDateBox.TabIndex = 49;
             // 
             // frmMSales
             // 
@@ -3653,7 +3651,6 @@
         private System.Windows.Forms.BindingSource paymntBindingSource;
         private DataSets.dsMInvoiceTableAdapters.paymntTableAdapter paymntTableAdapter;
         private System.Windows.Forms.TextBox txtPaypoamt;
-        private Mbc5.Classes.NullableDateTimePicker calpmtdate;
         private System.Windows.Forms.TextBox txtCheckNo;
         private System.Windows.Forms.TextBox txtPayment;
         private System.Windows.Forms.TextBox txtMethod;
@@ -3685,5 +3682,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnNewPayment;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private CustomControls.DateBox pmtdateDateBox;
     }
     }

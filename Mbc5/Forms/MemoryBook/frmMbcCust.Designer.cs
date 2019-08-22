@@ -129,6 +129,9 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.Label shipZipCodeLabel;
             System.Windows.Forms.Label dateCreatedLabel;
             System.Windows.Forms.Label invnoLabel;
+            System.Windows.Forms.Label invoiceEmail1Label;
+            System.Windows.Forms.Label invoiceEmail2Label;
+            System.Windows.Forms.Label invoiceEmail3Label;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMbcCust));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
@@ -142,9 +145,6 @@ namespace Mbc5.Forms.MemoryBook {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.Label invoiceEmail1Label;
-            System.Windows.Forms.Label invoiceEmail2Label;
-            System.Windows.Forms.Label invoiceEmail3Label;
             this.xSuppliesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsXSupplies = new Mbc5.DataSets.dsXSupplies();
             this.xSuppliesDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -163,20 +163,24 @@ namespace Mbc5.Forms.MemoryBook {
             this.btnNewCustomer = new System.Windows.Forms.Button();
             this.lblSchcodeVal = new System.Windows.Forms.Label();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.taxExemptionReceivedDateBox = new CustomControls.DateBox();
+            this.rbdateDateBox = new CustomControls.DateBox();
+            this.xeldateDateBox = new CustomControls.DateBox();
+            this.schoutDateBox = new CustomControls.DateBox();
+            this.firstDaySchoolDateBox = new CustomControls.DateBox();
+            this.contdateDateBox = new CustomControls.DateBox();
+            this.sourdateDateBox = new CustomControls.DateBox();
+            this.initcontDateBox = new CustomControls.DateBox();
             this.txtSchEmail = new System.Windows.Forms.TextBox();
             this.enrollmentTextBox = new System.Windows.Forms.TextBox();
             this.gradesComboBox = new System.Windows.Forms.ComboBox();
             this.blkwhiteCheckBox = new System.Windows.Forms.CheckBox();
             this.allcolorCheckBox = new System.Windows.Forms.CheckBox();
             this.stageComboBox1 = new System.Windows.Forms.ComboBox();
-            this.taxExemptionReceivedDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.notTaxExemptCheckBox = new System.Windows.Forms.CheckBox();
-            this.rbdateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
-            this.xeldateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.stfpwLabel1 = new System.Windows.Forms.Label();
             this.advpwLabel1 = new System.Windows.Forms.Label();
             this.jobnoLabel1 = new System.Windows.Forms.Label();
-            this.firstDaySchoolDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.leadnameComboBox = new System.Windows.Forms.ComboBox();
             this.addItemMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AddLeadSource = new System.Windows.Forms.ToolStripMenuItem();
@@ -194,15 +198,11 @@ namespace Mbc5.Forms.MemoryBook {
             this.lookUp = new Mbc5.DataSets.LookUp();
             this.oraclecodeTextBox = new System.Windows.Forms.TextBox();
             this.contryearTextBox = new System.Windows.Forms.TextBox();
-            this.initcontDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
-            this.sourdateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
-            this.contdateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.junsnoTextBox = new System.Windows.Forms.TextBox();
             this.txtSchColors = new System.Windows.Forms.TextBox();
             this.txtFax = new System.Windows.Forms.TextBox();
             this.txtCsRep = new System.Windows.Forms.TextBox();
             this.lblSchName = new System.Windows.Forms.Label();
-            this.schoutDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.cmbSchCategory = new System.Windows.Forms.ComboBox();
             this.lkpschtypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmbNoRebook = new System.Windows.Forms.ComboBox();
@@ -338,6 +338,9 @@ namespace Mbc5.Forms.MemoryBook {
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTeleSchname = new System.Windows.Forms.Label();
             this.pg4 = new System.Windows.Forms.TabPage();
+            this.invoiceEmail3TextBox = new System.Windows.Forms.TextBox();
+            this.invoiceEmail2TextBox = new System.Windows.Forms.TextBox();
+            this.invoiceEmail1TextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.shipppingAddrTextBox1 = new System.Windows.Forms.TextBox();
             this.invZipCodeTextBox = new System.Windows.Forms.TextBox();
@@ -425,9 +428,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.lkpSupplyItemsTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.lkpSupplyItemsTableAdapter();
             this.xSuppliesDetailTableAdapter = new Mbc5.DataSets.dsXSuppliesTableAdapters.XSuppliesDetailTableAdapter();
             this.xsuppliesTableAdapter = new Mbc5.DataSets.dsXSuppliesTableAdapters.xsuppliesTableAdapter();
-            this.invoiceEmail1TextBox = new System.Windows.Forms.TextBox();
-            this.invoiceEmail2TextBox = new System.Windows.Forms.TextBox();
-            this.invoiceEmail3TextBox = new System.Windows.Forms.TextBox();
             contryearLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             junsnoLabel = new System.Windows.Forms.Label();
@@ -751,7 +751,7 @@ namespace Mbc5.Forms.MemoryBook {
             // schoutLabel
             // 
             schoutLabel.AutoSize = true;
-            schoutLabel.Location = new System.Drawing.Point(336, 61);
+            schoutLabel.Location = new System.Drawing.Point(363, 61);
             schoutLabel.Name = "schoutLabel";
             schoutLabel.Size = new System.Drawing.Size(52, 13);
             schoutLabel.TabIndex = 23;
@@ -1195,7 +1195,7 @@ namespace Mbc5.Forms.MemoryBook {
             // statusLabel
             // 
             statusLabel.AutoSize = true;
-            statusLabel.Location = new System.Drawing.Point(201, 37);
+            statusLabel.Location = new System.Drawing.Point(225, 37);
             statusLabel.Name = "statusLabel";
             statusLabel.Size = new System.Drawing.Size(40, 13);
             statusLabel.TabIndex = 103;
@@ -1231,7 +1231,7 @@ namespace Mbc5.Forms.MemoryBook {
             // firstDaySchoolLabel
             // 
             firstDaySchoolLabel.AutoSize = true;
-            firstDaySchoolLabel.Location = new System.Drawing.Point(190, 61);
+            firstDaySchoolLabel.Location = new System.Drawing.Point(214, 61);
             firstDaySchoolLabel.Name = "firstDaySchoolLabel";
             firstDaySchoolLabel.Size = new System.Drawing.Size(51, 13);
             firstDaySchoolLabel.TabIndex = 108;
@@ -1515,6 +1515,33 @@ namespace Mbc5.Forms.MemoryBook {
             invnoLabel.TabIndex = 14;
             invnoLabel.Text = "Invoice#";
             // 
+            // invoiceEmail1Label
+            // 
+            invoiceEmail1Label.AutoSize = true;
+            invoiceEmail1Label.Location = new System.Drawing.Point(527, 139);
+            invoiceEmail1Label.Name = "invoiceEmail1Label";
+            invoiceEmail1Label.Size = new System.Drawing.Size(79, 13);
+            invoiceEmail1Label.TabIndex = 31;
+            invoiceEmail1Label.Text = "Invoice Email1:";
+            // 
+            // invoiceEmail2Label
+            // 
+            invoiceEmail2Label.AutoSize = true;
+            invoiceEmail2Label.Location = new System.Drawing.Point(527, 165);
+            invoiceEmail2Label.Name = "invoiceEmail2Label";
+            invoiceEmail2Label.Size = new System.Drawing.Size(79, 13);
+            invoiceEmail2Label.TabIndex = 32;
+            invoiceEmail2Label.Text = "Invoice Email2:";
+            // 
+            // invoiceEmail3Label
+            // 
+            invoiceEmail3Label.AutoSize = true;
+            invoiceEmail3Label.Location = new System.Drawing.Point(527, 192);
+            invoiceEmail3Label.Name = "invoiceEmail3Label";
+            invoiceEmail3Label.Size = new System.Drawing.Size(79, 13);
+            invoiceEmail3Label.TabIndex = 33;
+            invoiceEmail3Label.Text = "Invoice Email3:";
+            // 
             // xSuppliesBindingSource
             // 
             this.xSuppliesBindingSource.DataMember = "xsupplies";
@@ -1681,6 +1708,14 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.splitContainer.Panel1.AutoScroll = true;
             this.splitContainer.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer.Panel1.Controls.Add(this.taxExemptionReceivedDateBox);
+            this.splitContainer.Panel1.Controls.Add(this.rbdateDateBox);
+            this.splitContainer.Panel1.Controls.Add(this.xeldateDateBox);
+            this.splitContainer.Panel1.Controls.Add(this.schoutDateBox);
+            this.splitContainer.Panel1.Controls.Add(this.firstDaySchoolDateBox);
+            this.splitContainer.Panel1.Controls.Add(this.contdateDateBox);
+            this.splitContainer.Panel1.Controls.Add(this.sourdateDateBox);
+            this.splitContainer.Panel1.Controls.Add(this.initcontDateBox);
             this.splitContainer.Panel1.Controls.Add(this.txtSchEmail);
             this.splitContainer.Panel1.Controls.Add(enrollmentLabel1);
             this.splitContainer.Panel1.Controls.Add(this.enrollmentTextBox);
@@ -1690,13 +1725,10 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.Panel1.Controls.Add(this.allcolorCheckBox);
             this.splitContainer.Panel1.Controls.Add(stageLabel1);
             this.splitContainer.Panel1.Controls.Add(this.stageComboBox1);
-            this.splitContainer.Panel1.Controls.Add(this.taxExemptionReceivedDateTimePicker);
             this.splitContainer.Panel1.Controls.Add(this.notTaxExemptCheckBox);
             this.splitContainer.Panel1.Controls.Add(taxExemptionReceivedLabel);
             this.splitContainer.Panel1.Controls.Add(rbdateLabel);
-            this.splitContainer.Panel1.Controls.Add(this.rbdateDateTimePicker);
             this.splitContainer.Panel1.Controls.Add(xeldateLabel);
-            this.splitContainer.Panel1.Controls.Add(this.xeldateDateTimePicker);
             this.splitContainer.Panel1.Controls.Add(stfpwLabel);
             this.splitContainer.Panel1.Controls.Add(this.stfpwLabel1);
             this.splitContainer.Panel1.Controls.Add(advpwLabel);
@@ -1704,7 +1736,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.Panel1.Controls.Add(jobnoLabel);
             this.splitContainer.Panel1.Controls.Add(this.jobnoLabel1);
             this.splitContainer.Panel1.Controls.Add(firstDaySchoolLabel);
-            this.splitContainer.Panel1.Controls.Add(this.firstDaySchoolDateTimePicker);
             this.splitContainer.Panel1.Controls.Add(leadnameLabel);
             this.splitContainer.Panel1.Controls.Add(this.leadnameComboBox);
             this.splitContainer.Panel1.Controls.Add(leadsourceLabel);
@@ -1719,11 +1750,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.Panel1.Controls.Add(this.oraclecodeTextBox);
             this.splitContainer.Panel1.Controls.Add(this.contryearTextBox);
             this.splitContainer.Panel1.Controls.Add(initcontLabel);
-            this.splitContainer.Panel1.Controls.Add(this.initcontDateTimePicker);
             this.splitContainer.Panel1.Controls.Add(sourdateLabel);
-            this.splitContainer.Panel1.Controls.Add(this.sourdateDateTimePicker);
             this.splitContainer.Panel1.Controls.Add(contdateLabel);
-            this.splitContainer.Panel1.Controls.Add(this.contdateDateTimePicker);
             this.splitContainer.Panel1.Controls.Add(oraclecodeLabel);
             this.splitContainer.Panel1.Controls.Add(contryearLabel);
             this.splitContainer.Panel1.Controls.Add(junsnoLabel);
@@ -1736,7 +1764,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.Panel1.Controls.Add(this.txtCsRep);
             this.splitContainer.Panel1.Controls.Add(this.lblSchName);
             this.splitContainer.Panel1.Controls.Add(schoutLabel);
-            this.splitContainer.Panel1.Controls.Add(this.schoutDateTimePicker);
             this.splitContainer.Panel1.Controls.Add(schcolorsLabel);
             this.splitContainer.Panel1.Controls.Add(this.cmbSchCategory);
             this.splitContainer.Panel1.Controls.Add(this.cmbNoRebook);
@@ -1811,6 +1838,95 @@ namespace Mbc5.Forms.MemoryBook {
             this.splitContainer.SplitterWidth = 2;
             this.splitContainer.TabIndex = 65;
             // 
+            // taxExemptionReceivedDateBox
+            // 
+            this.taxExemptionReceivedDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.custBindingSource, "TaxExemptionReceived", true));
+            this.taxExemptionReceivedDateBox.Date = null;
+            this.taxExemptionReceivedDateBox.DateValue = null;
+            this.taxExemptionReceivedDateBox.Location = new System.Drawing.Point(327, 556);
+            this.taxExemptionReceivedDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.taxExemptionReceivedDateBox.Name = "taxExemptionReceivedDateBox";
+            this.taxExemptionReceivedDateBox.Size = new System.Drawing.Size(114, 21);
+            this.taxExemptionReceivedDateBox.TabIndex = 131;
+            // 
+            // rbdateDateBox
+            // 
+            this.rbdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.custBindingSource, "rbdate", true));
+            this.rbdateDateBox.Date = null;
+            this.rbdateDateBox.DateValue = null;
+            this.rbdateDateBox.Location = new System.Drawing.Point(327, 512);
+            this.rbdateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.rbdateDateBox.Name = "rbdateDateBox";
+            this.rbdateDateBox.Size = new System.Drawing.Size(114, 21);
+            this.rbdateDateBox.TabIndex = 130;
+            // 
+            // xeldateDateBox
+            // 
+            this.xeldateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.custBindingSource, "xeldate", true));
+            this.xeldateDateBox.Date = null;
+            this.xeldateDateBox.DateValue = null;
+            this.xeldateDateBox.Location = new System.Drawing.Point(327, 486);
+            this.xeldateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.xeldateDateBox.Name = "xeldateDateBox";
+            this.xeldateDateBox.Size = new System.Drawing.Size(114, 21);
+            this.xeldateDateBox.TabIndex = 129;
+            // 
+            // schoutDateBox
+            // 
+            this.schoutDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.custBindingSource, "schout", true));
+            this.schoutDateBox.Date = null;
+            this.schoutDateBox.DateValue = null;
+            this.schoutDateBox.Location = new System.Drawing.Point(417, 59);
+            this.schoutDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.schoutDateBox.Name = "schoutDateBox";
+            this.schoutDateBox.Size = new System.Drawing.Size(114, 21);
+            this.schoutDateBox.TabIndex = 128;
+            // 
+            // firstDaySchoolDateBox
+            // 
+            this.firstDaySchoolDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.custBindingSource, "FirstDaySchool", true));
+            this.firstDaySchoolDateBox.Date = null;
+            this.firstDaySchoolDateBox.DateValue = null;
+            this.firstDaySchoolDateBox.Location = new System.Drawing.Point(269, 59);
+            this.firstDaySchoolDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.firstDaySchoolDateBox.Name = "firstDaySchoolDateBox";
+            this.firstDaySchoolDateBox.Size = new System.Drawing.Size(114, 21);
+            this.firstDaySchoolDateBox.TabIndex = 127;
+            // 
+            // contdateDateBox
+            // 
+            this.contdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.custBindingSource, "contdate", true));
+            this.contdateDateBox.Date = null;
+            this.contdateDateBox.DateValue = null;
+            this.contdateDateBox.Location = new System.Drawing.Point(94, 75);
+            this.contdateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.contdateDateBox.Name = "contdateDateBox";
+            this.contdateDateBox.Size = new System.Drawing.Size(114, 21);
+            this.contdateDateBox.TabIndex = 126;
+            this.contdateDateBox.Leave += new System.EventHandler(this.contdateDateBox_Leave);
+            // 
+            // sourdateDateBox
+            // 
+            this.sourdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.custBindingSource, "sourdate", true));
+            this.sourdateDateBox.Date = null;
+            this.sourdateDateBox.DateValue = null;
+            this.sourdateDateBox.Location = new System.Drawing.Point(94, 51);
+            this.sourdateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.sourdateDateBox.Name = "sourdateDateBox";
+            this.sourdateDateBox.Size = new System.Drawing.Size(114, 21);
+            this.sourdateDateBox.TabIndex = 125;
+            // 
+            // initcontDateBox
+            // 
+            this.initcontDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.custBindingSource, "initcont", true));
+            this.initcontDateBox.Date = null;
+            this.initcontDateBox.DateValue = null;
+            this.initcontDateBox.Location = new System.Drawing.Point(94, 29);
+            this.initcontDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.initcontDateBox.Name = "initcontDateBox";
+            this.initcontDateBox.Size = new System.Drawing.Size(114, 21);
+            this.initcontDateBox.TabIndex = 124;
+            // 
             // txtSchEmail
             // 
             this.txtSchEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "schemail", true));
@@ -1876,18 +1992,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.stageComboBox1.Size = new System.Drawing.Size(141, 21);
             this.stageComboBox1.TabIndex = 118;
             // 
-            // taxExemptionReceivedDateTimePicker
-            // 
-            this.taxExemptionReceivedDateTimePicker.CustomFormat = "\'\'";
-            this.taxExemptionReceivedDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "TaxExemptionReceived", true));
-            this.taxExemptionReceivedDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.taxExemptionReceivedDateTimePicker.Location = new System.Drawing.Point(327, 556);
-            this.taxExemptionReceivedDateTimePicker.Name = "taxExemptionReceivedDateTimePicker";
-            this.taxExemptionReceivedDateTimePicker.Size = new System.Drawing.Size(85, 20);
-            this.taxExemptionReceivedDateTimePicker.TabIndex = 117;
-            this.taxExemptionReceivedDateTimePicker.Value = new System.DateTime(2019, 8, 15, 10, 56, 15, 656);
-            this.taxExemptionReceivedDateTimePicker.ValueChanged += new System.EventHandler(this.taxExemptionReceivedDateTimePicker_ValueChanged);
-            // 
             // notTaxExemptCheckBox
             // 
             this.notTaxExemptCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.custBindingSource, "NotTaxExempt", true));
@@ -1897,30 +2001,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.notTaxExemptCheckBox.TabIndex = 116;
             this.notTaxExemptCheckBox.Text = "Not Tax Exempt";
             this.notTaxExemptCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // rbdateDateTimePicker
-            // 
-            this.rbdateDateTimePicker.CustomFormat = "\'\'";
-            this.rbdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "rbdate", true));
-            this.rbdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.rbdateDateTimePicker.Location = new System.Drawing.Point(327, 512);
-            this.rbdateDateTimePicker.Name = "rbdateDateTimePicker";
-            this.rbdateDateTimePicker.Size = new System.Drawing.Size(85, 20);
-            this.rbdateDateTimePicker.TabIndex = 114;
-            this.rbdateDateTimePicker.Value = new System.DateTime(2019, 8, 15, 10, 56, 15, 665);
-            this.rbdateDateTimePicker.ValueChanged += new System.EventHandler(this.rbdateDateTimePicker_ValueChanged);
-            // 
-            // xeldateDateTimePicker
-            // 
-            this.xeldateDateTimePicker.CustomFormat = "\'\'";
-            this.xeldateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "xeldate", true));
-            this.xeldateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.xeldateDateTimePicker.Location = new System.Drawing.Point(327, 486);
-            this.xeldateDateTimePicker.Name = "xeldateDateTimePicker";
-            this.xeldateDateTimePicker.Size = new System.Drawing.Size(85, 20);
-            this.xeldateDateTimePicker.TabIndex = 113;
-            this.xeldateDateTimePicker.Value = new System.DateTime(2019, 8, 15, 10, 56, 15, 671);
-            this.xeldateDateTimePicker.ValueChanged += new System.EventHandler(this.xeldateDateTimePicker_ValueChanged);
             // 
             // stfpwLabel1
             // 
@@ -1951,18 +2031,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.jobnoLabel1.Size = new System.Drawing.Size(15, 13);
             this.jobnoLabel1.TabIndex = 110;
             this.jobnoLabel1.Text = "jb";
-            // 
-            // firstDaySchoolDateTimePicker
-            // 
-            this.firstDaySchoolDateTimePicker.CustomFormat = "\'\'";
-            this.firstDaySchoolDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "FirstDaySchool", true));
-            this.firstDaySchoolDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.firstDaySchoolDateTimePicker.Location = new System.Drawing.Point(245, 61);
-            this.firstDaySchoolDateTimePicker.Name = "firstDaySchoolDateTimePicker";
-            this.firstDaySchoolDateTimePicker.Size = new System.Drawing.Size(85, 20);
-            this.firstDaySchoolDateTimePicker.TabIndex = 109;
-            this.firstDaySchoolDateTimePicker.Value = new System.DateTime(2019, 8, 15, 10, 56, 15, 687);
-            this.firstDaySchoolDateTimePicker.ValueChanged += new System.EventHandler(this.firstDaySchoolDateTimePicker_ValueChanged);
             // 
             // leadnameComboBox
             // 
@@ -2046,7 +2114,7 @@ namespace Mbc5.Forms.MemoryBook {
             "Canceled",
             "Unrenewed",
             "New"});
-            this.statusComboBox.Location = new System.Drawing.Point(245, 34);
+            this.statusComboBox.Location = new System.Drawing.Point(269, 34);
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(127, 21);
             this.statusComboBox.TabIndex = 104;
@@ -2127,43 +2195,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.contryearTextBox.Size = new System.Drawing.Size(45, 20);
             this.contryearTextBox.TabIndex = 99;
             // 
-            // initcontDateTimePicker
-            // 
-            this.initcontDateTimePicker.CustomFormat = "\'\'";
-            this.initcontDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "initcont", true));
-            this.initcontDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.initcontDateTimePicker.Location = new System.Drawing.Point(103, 31);
-            this.initcontDateTimePicker.Name = "initcontDateTimePicker";
-            this.initcontDateTimePicker.Size = new System.Drawing.Size(85, 20);
-            this.initcontDateTimePicker.TabIndex = 98;
-            this.initcontDateTimePicker.Value = new System.DateTime(2019, 8, 15, 10, 56, 15, 772);
-            this.initcontDateTimePicker.ValueChanged += new System.EventHandler(this.initcontDateTimePicker_ValueChanged);
-            // 
-            // sourdateDateTimePicker
-            // 
-            this.sourdateDateTimePicker.CustomFormat = "\'\'";
-            this.sourdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "sourdate", true));
-            this.sourdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.sourdateDateTimePicker.Location = new System.Drawing.Point(103, 55);
-            this.sourdateDateTimePicker.Name = "sourdateDateTimePicker";
-            this.sourdateDateTimePicker.Size = new System.Drawing.Size(85, 20);
-            this.sourdateDateTimePicker.TabIndex = 97;
-            this.sourdateDateTimePicker.Value = new System.DateTime(2019, 8, 15, 10, 56, 15, 779);
-            this.sourdateDateTimePicker.ValueChanged += new System.EventHandler(this.sourdateDateTimePicker_ValueChanged);
-            // 
-            // contdateDateTimePicker
-            // 
-            this.contdateDateTimePicker.CustomFormat = "\'\'";
-            this.contdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "contdate", true));
-            this.contdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.contdateDateTimePicker.Location = new System.Drawing.Point(103, 78);
-            this.contdateDateTimePicker.Name = "contdateDateTimePicker";
-            this.contdateDateTimePicker.Size = new System.Drawing.Size(85, 20);
-            this.contdateDateTimePicker.TabIndex = 95;
-            this.contdateDateTimePicker.Value = new System.DateTime(2019, 8, 15, 10, 56, 15, 785);
-            this.contdateDateTimePicker.CloseUp += new System.EventHandler(this.contdateDateTimePicker_CloseUp);
-            this.contdateDateTimePicker.ValueChanged += new System.EventHandler(this.contdateDateTimePicker_ValueChanged_1);
-            // 
             // junsnoTextBox
             // 
             this.junsnoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "junsno", true));
@@ -2208,18 +2239,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.lblSchName.Size = new System.Drawing.Size(74, 13);
             this.lblSchName.TabIndex = 86;
             this.lblSchName.Text = "School Name:";
-            // 
-            // schoutDateTimePicker
-            // 
-            this.schoutDateTimePicker.CustomFormat = "\'\'";
-            this.schoutDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.custBindingSource, "schout", true));
-            this.schoutDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.schoutDateTimePicker.Location = new System.Drawing.Point(392, 61);
-            this.schoutDateTimePicker.Name = "schoutDateTimePicker";
-            this.schoutDateTimePicker.Size = new System.Drawing.Size(85, 20);
-            this.schoutDateTimePicker.TabIndex = 18;
-            this.schoutDateTimePicker.Value = new System.DateTime(2019, 8, 15, 10, 56, 15, 808);
-            this.schoutDateTimePicker.ValueChanged += new System.EventHandler(this.schoutDateTimePicker_ValueChanged);
             // 
             // cmbSchCategory
             // 
@@ -3686,6 +3705,30 @@ namespace Mbc5.Forms.MemoryBook {
             this.pg4.Text = "Shipping Invoice Info";
             this.pg4.Leave += new System.EventHandler(this.pg4_Leave);
             // 
+            // invoiceEmail3TextBox
+            // 
+            this.invoiceEmail3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "InvoiceEmail3", true));
+            this.invoiceEmail3TextBox.Location = new System.Drawing.Point(612, 192);
+            this.invoiceEmail3TextBox.Name = "invoiceEmail3TextBox";
+            this.invoiceEmail3TextBox.Size = new System.Drawing.Size(276, 20);
+            this.invoiceEmail3TextBox.TabIndex = 34;
+            // 
+            // invoiceEmail2TextBox
+            // 
+            this.invoiceEmail2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "InvoiceEmail2", true));
+            this.invoiceEmail2TextBox.Location = new System.Drawing.Point(612, 165);
+            this.invoiceEmail2TextBox.Name = "invoiceEmail2TextBox";
+            this.invoiceEmail2TextBox.Size = new System.Drawing.Size(276, 20);
+            this.invoiceEmail2TextBox.TabIndex = 33;
+            // 
+            // invoiceEmail1TextBox
+            // 
+            this.invoiceEmail1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "InvoiceEmail1", true));
+            this.invoiceEmail1TextBox.Location = new System.Drawing.Point(612, 139);
+            this.invoiceEmail1TextBox.Name = "invoiceEmail1TextBox";
+            this.invoiceEmail1TextBox.Size = new System.Drawing.Size(276, 20);
+            this.invoiceEmail1TextBox.TabIndex = 32;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(539, 319);
@@ -4413,57 +4456,6 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.xsuppliesTableAdapter.ClearBeforeFill = true;
             // 
-            // invoiceEmail1Label
-            // 
-            invoiceEmail1Label.AutoSize = true;
-            invoiceEmail1Label.Location = new System.Drawing.Point(527, 139);
-            invoiceEmail1Label.Name = "invoiceEmail1Label";
-            invoiceEmail1Label.Size = new System.Drawing.Size(79, 13);
-            invoiceEmail1Label.TabIndex = 31;
-            invoiceEmail1Label.Text = "Invoice Email1:";
-            // 
-            // invoiceEmail1TextBox
-            // 
-            this.invoiceEmail1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "InvoiceEmail1", true));
-            this.invoiceEmail1TextBox.Location = new System.Drawing.Point(612, 139);
-            this.invoiceEmail1TextBox.Name = "invoiceEmail1TextBox";
-            this.invoiceEmail1TextBox.Size = new System.Drawing.Size(276, 20);
-            this.invoiceEmail1TextBox.TabIndex = 32;
-            // 
-            // invoiceEmail2Label
-            // 
-            invoiceEmail2Label.AutoSize = true;
-            invoiceEmail2Label.Location = new System.Drawing.Point(527, 165);
-            invoiceEmail2Label.Name = "invoiceEmail2Label";
-            invoiceEmail2Label.Size = new System.Drawing.Size(79, 13);
-            invoiceEmail2Label.TabIndex = 32;
-            invoiceEmail2Label.Text = "Invoice Email2:";
-            // 
-            // invoiceEmail2TextBox
-            // 
-            this.invoiceEmail2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "InvoiceEmail2", true));
-            this.invoiceEmail2TextBox.Location = new System.Drawing.Point(612, 165);
-            this.invoiceEmail2TextBox.Name = "invoiceEmail2TextBox";
-            this.invoiceEmail2TextBox.Size = new System.Drawing.Size(276, 20);
-            this.invoiceEmail2TextBox.TabIndex = 33;
-            // 
-            // invoiceEmail3Label
-            // 
-            invoiceEmail3Label.AutoSize = true;
-            invoiceEmail3Label.Location = new System.Drawing.Point(527, 192);
-            invoiceEmail3Label.Name = "invoiceEmail3Label";
-            invoiceEmail3Label.Size = new System.Drawing.Size(79, 13);
-            invoiceEmail3Label.TabIndex = 33;
-            invoiceEmail3Label.Text = "Invoice Email3:";
-            // 
-            // invoiceEmail3TextBox
-            // 
-            this.invoiceEmail3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.custBindingSource, "InvoiceEmail3", true));
-            this.invoiceEmail3TextBox.Location = new System.Drawing.Point(612, 192);
-            this.invoiceEmail3TextBox.Name = "invoiceEmail3TextBox";
-            this.invoiceEmail3TextBox.Size = new System.Drawing.Size(276, 20);
-            this.invoiceEmail3TextBox.TabIndex = 34;
-            // 
             // frmMbcCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4586,7 +4578,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.TextBox txtSchColors;
         private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.Label lblSchName;
-        private Classes.NullableDateTimePicker schoutDateTimePicker;
         private System.Windows.Forms.TextBox spcinstTextBox;
         private System.Windows.Forms.TextBox extrchgTextBox;
         private System.Windows.Forms.Button btnInterOffice;
@@ -4714,13 +4705,10 @@ namespace Mbc5.Forms.MemoryBook {
         private DataSets.dsCustTableAdapters.lkpLeadNameTableAdapter lkpLeadNameTableAdapter;
         private System.Windows.Forms.BindingSource lkpLeadSourceBindingSource;
         private DataSets.dsCustTableAdapters.lkpLeadSourceTableAdapter lkpLeadSourceTableAdapter;
-        private Classes.NullableDateTimePicker firstDaySchoolDateTimePicker;
         private System.Windows.Forms.TextBox csrep2TextBox;
         private System.Windows.Forms.Label stfpwLabel1;
         private System.Windows.Forms.Label advpwLabel1;
         private System.Windows.Forms.Label jobnoLabel1;
-        private Classes.NullableDateTimePicker rbdateDateTimePicker;
-        private Classes.NullableDateTimePicker xeldateDateTimePicker;
         private System.Windows.Forms.Button btnProdTckt;
         private System.Windows.Forms.BindingSource ProdutnTicketModelBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
@@ -4732,7 +4720,6 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.ContextMenuStrip addItemMenu;
         private System.Windows.Forms.ToolStripMenuItem AddLeadSource;
         private System.Windows.Forms.ToolStripMenuItem AddLeadName;
-		private Classes.NullableDateTimePicker taxExemptionReceivedDateTimePicker;
 		private System.Windows.Forms.CheckBox notTaxExemptCheckBox;
 		private System.Windows.Forms.CheckBox blkwhiteCheckBox;
 		private System.Windows.Forms.CheckBox allcolorCheckBox;
@@ -4831,13 +4818,18 @@ namespace Mbc5.Forms.MemoryBook {
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer3;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button button1;
-        private Classes.NullableDateTimePicker initcontDateTimePicker;
-        private Classes.NullableDateTimePicker sourdateDateTimePicker;
-        private Classes.NullableDateTimePicker contdateDateTimePicker;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox invoiceEmail3TextBox;
         private System.Windows.Forms.TextBox invoiceEmail2TextBox;
         private System.Windows.Forms.TextBox invoiceEmail1TextBox;
+        private CustomControls.DateBox schoutDateBox;
+        private CustomControls.DateBox firstDaySchoolDateBox;
+        private CustomControls.DateBox contdateDateBox;
+        private CustomControls.DateBox sourdateDateBox;
+        private CustomControls.DateBox initcontDateBox;
+        private CustomControls.DateBox taxExemptionReceivedDateBox;
+        private CustomControls.DateBox rbdateDateBox;
+        private CustomControls.DateBox xeldateDateBox;
     }
 }

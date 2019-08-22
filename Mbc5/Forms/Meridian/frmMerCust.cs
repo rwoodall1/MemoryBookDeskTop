@@ -99,8 +99,8 @@ namespace Mbc5.Forms.Meridian {
             }
             else
             {
-                txtContryear.Text = ((DateTime)contdateDateTimePicker.Value).Year.ToString().Substring(2);
-                vYear = ((DateTime)contdateDateTimePicker.Value).Year.ToString().Substring(2);
+                txtContryear.Text = ((DateTime)contdateDateBox.DateValue).Year.ToString().Substring(2);
+                vYear = ((DateTime)contdateDateBox.DateValue.Value).Year.ToString().Substring(2);
             }
             DialogResult vDialogResult;
             if (vCurrentInvno>0)
@@ -185,7 +185,7 @@ namespace Mbc5.Forms.Meridian {
                 sqlQuery.AddParameter("CStat", vCStat);
                 sqlQuery.AddParameter("Company", "MER");
                 sqlQuery.AddParameter("@Contryear", vYear);          
-                sqlQuery.AddParameter("Prodcustdate", contdateDateTimePicker.Value);
+                sqlQuery.AddParameter("Prodcustdate", contdateDateBox.Date);
             var prodResult = sqlQuery.Insert();
             if(prodResult.IsError)
                 {
@@ -858,52 +858,9 @@ namespace Mbc5.Forms.Meridian {
             taxExemptRecvdDateTimePicker.Format = DateTimePickerFormat.Short;
         }
 
-        private void dedayoutDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            dedayoutDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-
-        private void dedayinDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            dedayinDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-
-        private void pg1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dteschstartDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            dteschstartDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-
-        private void dteschendDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            dteschendDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-
-        private void initcontDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            initcontDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-
-        private void sourdateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            sourdateDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-
-        private void contdateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            contdateDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
+     
 
        
-
-        private void xeldateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            xeldateDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
 
         private void btnSchoolToInvoice_Click(object sender, EventArgs e)
         {
@@ -1041,6 +998,11 @@ namespace Mbc5.Forms.Meridian {
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
             GoToSales();
+        }
+
+        private void contdateDateBox_Leave(object sender, EventArgs e)
+        {
+            AddSalesRecord();
         }
         //nothing below here
     }

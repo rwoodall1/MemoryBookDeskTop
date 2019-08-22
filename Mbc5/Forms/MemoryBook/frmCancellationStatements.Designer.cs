@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsCust = new Mbc5.DataSets.dsCust();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -61,7 +62,6 @@
             this.dteStart = new System.Windows.Forms.DateTimePicker();
             this.dteEnd = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.FullInvoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsInvoice = new Mbc5.DataSets.dsInvoice();
             this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -73,13 +73,13 @@
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCancellations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCancellations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
@@ -100,6 +100,10 @@
             this.BottomPanel.Controls.Add(this.btnSearch);
             this.BottomPanel.Location = new System.Drawing.Point(0, 422);
             this.BottomPanel.Size = new System.Drawing.Size(1127, 66);
+            // 
+            // FullInvoiceBindingSource
+            // 
+            this.FullInvoiceBindingSource.DataSource = typeof(BindingModels.FullInvoice);
             // 
             // custBindingSource
             // 
@@ -371,10 +375,6 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "and";
             // 
-            // FullInvoiceBindingSource
-            // 
-            this.FullInvoiceBindingSource.DataSource = typeof(BindingModels.FullInvoice);
-            // 
             // invoiceBindingSource
             // 
             this.invoiceBindingSource.DataMember = "invoice";
@@ -446,6 +446,7 @@
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.BottomPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCust)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -453,7 +454,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCancellations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCancellations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FullInvoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();

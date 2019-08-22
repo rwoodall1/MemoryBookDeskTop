@@ -1020,20 +1020,9 @@ namespace Mbc5.Forms.Meridian {
 
 
         #endregion
-        private void qtedateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            qtedateDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
+        
 
-        private void orderDateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            orderDateDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-
-        private void contryearTextBox_Leave(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void txtBYear_Leave(object sender, EventArgs e)
         {

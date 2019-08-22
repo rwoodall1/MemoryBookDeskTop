@@ -551,7 +551,8 @@ namespace Mbc5.Forms.MemoryBook
             {
                 txtPayoamt.Enabled = false;
                 txtInitials.Enabled = false;
-                calpmtdate.Enabled = false;
+
+                pmtdateDateBox.Enabled = false;
                 txtCheckNo.Enabled = false;
                 txtMethod.Enabled = false;
                 txtPayment.Enabled = false;
@@ -565,7 +566,7 @@ namespace Mbc5.Forms.MemoryBook
         {
             txtPayoamt.Enabled = true;
             txtInitials.Enabled = true;
-            calpmtdate.Enabled = true;
+            pmtdateDateBox.Enabled = true;
             txtCheckNo.Enabled = true;
             txtMethod.Enabled = true;
             txtPayment.Enabled = true;
@@ -596,7 +597,7 @@ namespace Mbc5.Forms.MemoryBook
                         this.CalculatePayments();
                         txtPayoamt.Enabled = false;
                         txtInitials.Enabled = false;
-                        calpmtdate.Enabled = false;
+                        pmtdateDateBox.Enabled = false;
                         txtCheckNo.Enabled = false;
                         txtMethod.Enabled = false;
                         txtPayment.Enabled = false;
@@ -660,7 +661,7 @@ namespace Mbc5.Forms.MemoryBook
             paymntBindingSource.CancelEdit();
             txtPayoamt.Enabled = false;
             txtInitials.Enabled = false;
-            calpmtdate.Enabled = false;
+            pmtdateDateBox.Enabled = false;
             txtCheckNo.Enabled = false;
             txtMethod.Enabled = false;
             txtPayment.Enabled = false;
@@ -672,9 +673,10 @@ namespace Mbc5.Forms.MemoryBook
         }
         private void EditPayment()
         {
+            
             txtPayoamt.Enabled = true;
             txtInitials.Enabled = true;
-            calpmtdate.Enabled = true;
+            pmtdateDateBox.Enabled = true;
             txtCheckNo.Enabled = true;
             txtMethod.Enabled = true;
             txtPayment.Enabled = true;
@@ -5194,30 +5196,12 @@ namespace Mbc5.Forms.MemoryBook
             }
         }
 
-        private void btnPrntInvoice_Click(object sender, EventArgs e)
-        {
+      
 
-        }
+     
+       
 
-        private void panel11_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void agreedteDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            agreedteDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-
-        private void onlinecutoDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            onlinecutoDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-
-        private void adcutoDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            adcutoDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
+      
 
         private void btnPassword_Click(object sender, EventArgs e)
         {
@@ -5330,8 +5314,8 @@ namespace Mbc5.Forms.MemoryBook
                     QuarterAdAmt=txtQuarterAd.Text ,
                     HalfAdAmt=txtHaldfAd.Text ,
                     FullAdAmt=txtFullAd.Text ,
-                    OnlineCutoff=onlinecutoDateTimePicker.Value,
-                    AdCutoff=adcutoDateTimePicker.Value
+                    OnlineCutoff=onlinecutoDateBox.DateValue,   
+                    AdCutoff=adcutoDateBox.DateValue
                 };
                 bsOnlineFlyer.DataSource = vFlyerData;
 

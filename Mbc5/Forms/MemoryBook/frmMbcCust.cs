@@ -1099,7 +1099,7 @@ public override void Cancel() {
 					 new SqlParameter("@ProdNo",this.frmMain.GetProdNo()),
 					  new SqlParameter("@Contryear", contryearTextBox.Text),
 					   new SqlParameter("@Company","MBC"),
-                      new SqlParameter("@ProdCustDate",contdateDateTimePicker.Value)
+                      new SqlParameter("@ProdCustDate",contdateDateBox.Date)
                     };
 						strQuery = "INSERT INTO [dbo].[produtn](Invno,Schcode,Contryear,Prodno,Company,ProdCustDate)  VALUES (@Invno,@Schcode,@Contryear,@ProdNo,@Company,@ProdCustDate)";
 						var userResult1 = sqlQuery.ExecuteNonQueryAsync(CommandType.Text, strQuery, parameters1);
@@ -1482,23 +1482,7 @@ public override void Cancel() {
 
             }
         }
-        private void schoutDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            schoutDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-        private void contdateDateTimePicker_ValueChanged_1(object sender, EventArgs e)
-        {
-
-            contdateDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-        private void initcontDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            initcontDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-        private void sourdateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            sourdateDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
+       
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.AppStarting;
@@ -1570,18 +1554,7 @@ public override void Cancel() {
             }
 
         }
-        private void firstDaySchoolDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            firstDaySchoolDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-        private void rbdateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            rbdateDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
-        private void xeldateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            xeldateDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
+     
         private void btnProdTckt_Click(object sender, EventArgs e)
         {
             var sqlClient = new SQLCustomClient();
@@ -1711,10 +1684,7 @@ public override void Cancel() {
             frmLkpLeadSource.Show();
             this.Cursor = Cursors.Default;
         }
-        private void taxExemptionReceivedDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            taxExemptionReceivedDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
+       
         private void frmMbcCust_Activated(object sender, EventArgs e)
         {
 
@@ -2266,6 +2236,11 @@ public override void Cancel() {
         private void button2_Click_1(object sender, EventArgs e)
         {
             EmailAllContacts();
+        }
+
+        private void contdateDateBox_Leave(object sender, EventArgs e)
+        {
+            AddSalesRecord();
         }
 
 

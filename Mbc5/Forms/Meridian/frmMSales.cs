@@ -753,7 +753,7 @@ if (result == DialogResult.OK)
         {
             txtPaypoamt.Enabled = true;
             txtInitials.Enabled = true;
-            calpmtdate.Enabled = true;
+            pmtdateDateBox.Enabled = true;
             txtCheckNo.Enabled = true;
             txtMethod.Enabled = true;
             txtPayment.Enabled = true;
@@ -869,7 +869,7 @@ if (result == DialogResult.OK)
                         this.CalculatePayments();
                         txtPaypoamt.Enabled = false;
                         txtInitials.Enabled = false;
-                        calpmtdate.Enabled = false;
+                        pmtdateDateBox.Enabled = false;
                         txtCheckNo.Enabled = false;
                         txtMethod.Enabled = false;
                         txtPayment.Enabled = false;
@@ -933,7 +933,7 @@ if (result == DialogResult.OK)
             paymntBindingSource.CancelEdit();
             txtPaypoamt.Enabled = false; 
             txtInitials.Enabled = false;
-            calpmtdate.Enabled = false;
+            pmtdateDateBox.Enabled = false;
             txtCheckNo.Enabled = false;
             txtMethod.Enabled = false;
             txtPayment.Enabled = false;
@@ -947,7 +947,7 @@ if (result == DialogResult.OK)
         {
             txtPaypoamt.Enabled = true;
             txtInitials.Enabled = true;
-            calpmtdate.Enabled = true;
+            pmtdateDateBox.Enabled = true;
             txtCheckNo.Enabled = true;
             txtMethod.Enabled = true;
             txtPayment.Enabled = true;
@@ -1003,7 +1003,7 @@ if (result == DialogResult.OK)
             {
                 txtPaypoamt.Enabled = false;
                 txtInitials.Enabled = false;
-                calpmtdate.Enabled = false;
+                pmtdateDateBox.Enabled = false;
                 txtCheckNo.Enabled = false;
                 txtMethod.Enabled = false;
                 txtPayment.Enabled = false;
@@ -2526,11 +2526,6 @@ private void btnCreateInvoice_Click(object sender, EventArgs e)
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeletePayment();
-        }
-
-        private void calpmtdate_ValueChanged(object sender, EventArgs e)
-        {
-            calpmtdate.Format = DateTimePickerFormat.Short;
         }
 
         private void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
