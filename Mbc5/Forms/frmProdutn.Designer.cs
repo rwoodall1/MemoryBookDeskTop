@@ -121,13 +121,11 @@ namespace Mbc5.Forms
             System.Windows.Forms.Label specinstLabel;
             System.Windows.Forms.Label label29;
             System.Windows.Forms.Label prtvendLabel;
-            System.Windows.Forms.Label diecutLabel3;
             System.Windows.Forms.Label othrLabel;
             System.Windows.Forms.Label perslistLabel;
             System.Windows.Forms.Label spbackLabel;
             System.Windows.Forms.Label typestyleLabel1;
             System.Windows.Forms.Label mascotLabel;
-            System.Windows.Forms.Label prntsamLabel;
             System.Windows.Forms.Label frontLabel;
             System.Windows.Forms.Label spineLabel;
             System.Windows.Forms.Label reprntdteLabel;
@@ -192,21 +190,22 @@ namespace Mbc5.Forms
             System.Windows.Forms.Label colorsLabel;
             System.Windows.Forms.Label laminatedLabel;
             System.Windows.Forms.Label nocopiesLabel2;
+            System.Windows.Forms.Label diecutLabel3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource12 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsProdutn = new Mbc5.DataSets.dsProdutn();
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -367,6 +366,7 @@ namespace Mbc5.Forms
             this.invnoLabel2 = new System.Windows.Forms.Label();
             this.lblProdNodata = new System.Windows.Forms.Label();
             this.pg3 = new System.Windows.Forms.TabPage();
+            this.dbScRecvDate = new CustomControls.DateBox();
             this.desorgdteDateBox = new CustomControls.DateBox();
             this.coversBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.reprntdteDateBox = new CustomControls.DateBox();
@@ -377,7 +377,6 @@ namespace Mbc5.Forms
             this.dcdtesentDateBox = new CustomControls.DateBox();
             this.prtdtebkDateBox = new CustomControls.DateBox();
             this.prtdtesentDateBox = new CustomControls.DateBox();
-            this.prntsamDateBox = new CustomControls.DateBox();
             this.btnCvrUpdate = new System.Windows.Forms.Button();
             this.lblCoverNum = new System.Windows.Forms.Label();
             this.btnMeridianTicket = new System.Windows.Forms.Button();
@@ -446,7 +445,6 @@ namespace Mbc5.Forms
             this.desc_TextBox = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.reqstdcpyTextBox = new System.Windows.Forms.TextBox();
-            this.screcvDateTimePicker1 = new Mbc5.Classes.NullableDateTimePicker();
             this.txtspecov = new System.Windows.Forms.TextBox();
             this.btncoverSrch = new System.Windows.Forms.Button();
             this.clr4TextBox = new System.Windows.Forms.TextBox();
@@ -474,6 +472,9 @@ namespace Mbc5.Forms
             this.noclrpgsTextBox = new System.Windows.Forms.TextBox();
             this.cpnumTextBox1 = new System.Windows.Forms.TextBox();
             this.pg5 = new System.Windows.Forms.TabPage();
+            this.ptrecvdDateBox1 = new CustomControls.DateBox();
+            this.ioutDateBox1 = new CustomControls.DateBox();
+            this.iinDateBox1 = new CustomControls.DateBox();
             this.partBkDetailDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -498,6 +499,17 @@ namespace Mbc5.Forms
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.pg6 = new System.Windows.Forms.TabPage();
+            this.rmbfrmDateBox1 = new CustomControls.DateBox();
+            this.rmbtoDateBox1 = new CustomControls.DateBox();
+            this.rmpfrmDateBox1 = new CustomControls.DateBox();
+            this.rmptoDateBox1 = new CustomControls.DateBox();
+            this.frmbindDateBox1 = new CustomControls.DateBox();
+            this.binddteDateBox1 = new CustomControls.DateBox();
+            this.ioutDateBox2 = new CustomControls.DateBox();
+            this.iinDateBox2 = new CustomControls.DateBox();
+            this.houtDateBox = new CustomControls.DateBox();
+            this.hinDateBox = new CustomControls.DateBox();
+            this.ptbrcvdDateBox1 = new CustomControls.DateBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.btnAddPhotoCd = new System.Windows.Forms.Button();
@@ -557,20 +569,6 @@ namespace Mbc5.Forms
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
             this.vendorTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.vendorTableAdapter();
-            this.iinDateBox1 = new CustomControls.DateBox();
-            this.ioutDateBox1 = new CustomControls.DateBox();
-            this.ptrecvdDateBox1 = new CustomControls.DateBox();
-            this.ptbrcvdDateBox1 = new CustomControls.DateBox();
-            this.hinDateBox = new CustomControls.DateBox();
-            this.houtDateBox = new CustomControls.DateBox();
-            this.iinDateBox2 = new CustomControls.DateBox();
-            this.ioutDateBox2 = new CustomControls.DateBox();
-            this.binddteDateBox1 = new CustomControls.DateBox();
-            this.frmbindDateBox1 = new CustomControls.DateBox();
-            this.rmptoDateBox1 = new CustomControls.DateBox();
-            this.rmpfrmDateBox1 = new CustomControls.DateBox();
-            this.rmbtoDateBox1 = new CustomControls.DateBox();
-            this.rmbfrmDateBox1 = new CustomControls.DateBox();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -659,13 +657,11 @@ namespace Mbc5.Forms
             specinstLabel = new System.Windows.Forms.Label();
             label29 = new System.Windows.Forms.Label();
             prtvendLabel = new System.Windows.Forms.Label();
-            diecutLabel3 = new System.Windows.Forms.Label();
             othrLabel = new System.Windows.Forms.Label();
             perslistLabel = new System.Windows.Forms.Label();
             spbackLabel = new System.Windows.Forms.Label();
             typestyleLabel1 = new System.Windows.Forms.Label();
             mascotLabel = new System.Windows.Forms.Label();
-            prntsamLabel = new System.Windows.Forms.Label();
             frontLabel = new System.Windows.Forms.Label();
             spineLabel = new System.Windows.Forms.Label();
             reprntdteLabel = new System.Windows.Forms.Label();
@@ -730,6 +726,7 @@ namespace Mbc5.Forms
             colorsLabel = new System.Windows.Forms.Label();
             laminatedLabel = new System.Windows.Forms.Label();
             nocopiesLabel2 = new System.Windows.Forms.Label();
+            diecutLabel3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
@@ -1656,15 +1653,6 @@ namespace Mbc5.Forms
             prtvendLabel.TabIndex = 140;
             prtvendLabel.Text = "Print";
             // 
-            // diecutLabel3
-            // 
-            diecutLabel3.AutoSize = true;
-            diecutLabel3.Location = new System.Drawing.Point(47, 287);
-            diecutLabel3.Name = "diecutLabel3";
-            diecutLabel3.Size = new System.Drawing.Size(30, 13);
-            diecutLabel3.TabIndex = 141;
-            diecutLabel3.Text = "D/C";
-            // 
             // othrLabel
             // 
             othrLabel.AutoSize = true;
@@ -1697,7 +1685,7 @@ namespace Mbc5.Forms
             // 
             typestyleLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             typestyleLabel1.AutoSize = true;
-            typestyleLabel1.Location = new System.Drawing.Point(612, 157);
+            typestyleLabel1.Location = new System.Drawing.Point(610, 132);
             typestyleLabel1.Name = "typestyleLabel1";
             typestyleLabel1.Size = new System.Drawing.Size(32, 13);
             typestyleLabel1.TabIndex = 162;
@@ -1707,21 +1695,11 @@ namespace Mbc5.Forms
             // 
             mascotLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             mascotLabel.AutoSize = true;
-            mascotLabel.Location = new System.Drawing.Point(596, 180);
+            mascotLabel.Location = new System.Drawing.Point(594, 155);
             mascotLabel.Name = "mascotLabel";
             mascotLabel.Size = new System.Drawing.Size(48, 13);
             mascotLabel.TabIndex = 163;
             mascotLabel.Text = "Mascot";
-            // 
-            // prntsamLabel
-            // 
-            prntsamLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            prntsamLabel.AutoSize = true;
-            prntsamLabel.Location = new System.Drawing.Point(546, 136);
-            prntsamLabel.Name = "prntsamLabel";
-            prntsamLabel.Size = new System.Drawing.Size(98, 13);
-            prntsamLabel.TabIndex = 164;
-            prntsamLabel.Text = "Print Samp Sent";
             // 
             // frontLabel
             // 
@@ -2373,6 +2351,15 @@ namespace Mbc5.Forms
             nocopiesLabel2.TabIndex = 162;
             nocopiesLabel2.Text = "Copies";
             // 
+            // diecutLabel3
+            // 
+            diecutLabel3.AutoSize = true;
+            diecutLabel3.Location = new System.Drawing.Point(47, 287);
+            diecutLabel3.Name = "diecutLabel3";
+            diecutLabel3.Size = new System.Drawing.Size(30, 13);
+            diecutLabel3.TabIndex = 141;
+            diecutLabel3.Text = "D/C";
+            // 
             // custBindingSource
             // 
             this.custBindingSource.DataMember = "cust";
@@ -2570,7 +2557,7 @@ namespace Mbc5.Forms
             // 
             this.comdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "comdate", true));
             this.comdateDateTimePicker.Date = null;
-       
+            this.comdateDateTimePicker.DateValue = null;
             this.comdateDateTimePicker.Location = new System.Drawing.Point(198, 25);
             this.comdateDateTimePicker.MinimumSize = new System.Drawing.Size(114, 20);
             this.comdateDateTimePicker.Name = "comdateDateTimePicker";
@@ -2581,28 +2568,29 @@ namespace Mbc5.Forms
             // 
             this.cstsvcdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "cstsvcdte", true));
             this.cstsvcdteDateTimePicker.Date = null;
-          
+            this.cstsvcdteDateTimePicker.DateValue = null;
             this.cstsvcdteDateTimePicker.Location = new System.Drawing.Point(198, 3);
             this.cstsvcdteDateTimePicker.MinimumSize = new System.Drawing.Size(114, 20);
             this.cstsvcdteDateTimePicker.Name = "cstsvcdteDateTimePicker";
             this.cstsvcdteDateTimePicker.Size = new System.Drawing.Size(114, 21);
             this.cstsvcdteDateTimePicker.TabIndex = 159;
+            this.cstsvcdteDateTimePicker.Leave += new System.EventHandler(this.cstsvcdteDateTimePicker_Leave_1);
             // 
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 71;
-            reportDataSource9.Name = "dsRCust";
-            reportDataSource9.Value = this.custBindingSource;
-            reportDataSource10.Name = "dsRQuotes";
-            reportDataSource10.Value = this.quotesBindingSource;
-            reportDataSource11.Name = "dsRProdutn";
-            reportDataSource11.Value = this.produtnBindingSource;
-            reportDataSource12.Name = "dsRWip";
-            reportDataSource12.Value = this.wipBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource9);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource10);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource11);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource12);
+            reportDataSource1.Name = "dsRCust";
+            reportDataSource1.Value = this.custBindingSource;
+            reportDataSource2.Name = "dsRQuotes";
+            reportDataSource2.Value = this.quotesBindingSource;
+            reportDataSource3.Name = "dsRProdutn";
+            reportDataSource3.Value = this.produtnBindingSource;
+            reportDataSource4.Name = "dsRWip";
+            reportDataSource4.Value = this.wipBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(438, 206);
             this.reportViewer1.Name = "reportViewer1";
@@ -2982,7 +2970,7 @@ namespace Mbc5.Forms
             // 
             this.kitrecvdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "kitrecvd", true));
             this.kitrecvdDateTimePicker.Date = null;
-          
+            this.kitrecvdDateTimePicker.DateValue = null;
             this.kitrecvdDateTimePicker.Location = new System.Drawing.Point(115, 10);
             this.kitrecvdDateTimePicker.MinimumSize = new System.Drawing.Size(114, 20);
             this.kitrecvdDateTimePicker.Name = "kitrecvdDateTimePicker";
@@ -2993,7 +2981,7 @@ namespace Mbc5.Forms
             // 
             this.tovendDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "tovend", true));
             this.tovendDateBox.Date = null;
-          
+            this.tovendDateBox.DateValue = null;
             this.tovendDateBox.Location = new System.Drawing.Point(115, 107);
             this.tovendDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.tovendDateBox.Name = "tovendDateBox";
@@ -3004,7 +2992,7 @@ namespace Mbc5.Forms
             // 
             this.prshpdteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "prshpdte", true));
             this.prshpdteDateTimePicker.Date = null;
-    
+            this.prshpdteDateTimePicker.DateValue = null;
             this.prshpdteDateTimePicker.Location = new System.Drawing.Point(115, 165);
             this.prshpdteDateTimePicker.MinimumSize = new System.Drawing.Size(114, 20);
             this.prshpdteDateTimePicker.Name = "prshpdteDateTimePicker";
@@ -3015,7 +3003,7 @@ namespace Mbc5.Forms
             // 
             this.prmsdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "prmsdate", true));
             this.prmsdateDateTimePicker.Date = null;
-       
+            this.prmsdateDateTimePicker.DateValue = null;
             this.prmsdateDateTimePicker.Location = new System.Drawing.Point(115, 192);
             this.prmsdateDateTimePicker.MinimumSize = new System.Drawing.Size(114, 20);
             this.prmsdateDateTimePicker.Name = "prmsdateDateTimePicker";
@@ -3026,7 +3014,7 @@ namespace Mbc5.Forms
             // 
             this.shpdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "shpdate", true));
             this.shpdateDateTimePicker.Date = null;
-         
+            this.shpdateDateTimePicker.DateValue = null;
             this.shpdateDateTimePicker.Location = new System.Drawing.Point(115, 219);
             this.shpdateDateTimePicker.MinimumSize = new System.Drawing.Size(114, 20);
             this.shpdateDateTimePicker.Name = "shpdateDateTimePicker";
@@ -3038,7 +3026,7 @@ namespace Mbc5.Forms
             // 
             this.dteWarnDate.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "warndate", true));
             this.dteWarnDate.Date = null;
-         
+            this.dteWarnDate.DateValue = null;
             this.dteWarnDate.Location = new System.Drawing.Point(115, 134);
             this.dteWarnDate.MinimumSize = new System.Drawing.Size(114, 20);
             this.dteWarnDate.Name = "dteWarnDate";
@@ -3143,7 +3131,7 @@ namespace Mbc5.Forms
             // 
             this.endstrecvDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "endstrecv", true));
             this.endstrecvDateBox.Date = null;
-         
+            this.endstrecvDateBox.DateValue = null;
             this.endstrecvDateBox.Location = new System.Drawing.Point(176, 351);
             this.endstrecvDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.endstrecvDateBox.Name = "endstrecvDateBox";
@@ -3154,7 +3142,7 @@ namespace Mbc5.Forms
             // 
             this.ptbrcvdDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "ptbrcvd", true));
             this.ptbrcvdDateBox.Date = null;
-        
+            this.ptbrcvdDateBox.DateValue = null;
             this.ptbrcvdDateBox.Location = new System.Drawing.Point(177, 324);
             this.ptbrcvdDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.ptbrcvdDateBox.Name = "ptbrcvdDateBox";
@@ -3165,7 +3153,7 @@ namespace Mbc5.Forms
             // 
             this.ptrecvdDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "ptrecvd", true));
             this.ptrecvdDateBox.Date = null;
-
+            this.ptrecvdDateBox.DateValue = null;
             this.ptrecvdDateBox.Location = new System.Drawing.Point(176, 276);
             this.ptrecvdDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.ptrecvdDateBox.Name = "ptrecvdDateBox";
@@ -3176,7 +3164,7 @@ namespace Mbc5.Forms
             // 
             this.cprecvDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipgBindingSource, "cprecv", true));
             this.cprecvDateBox.Date = null;
-         
+            this.cprecvDateBox.DateValue = null;
             this.cprecvDateBox.Location = new System.Drawing.Point(176, 249);
             this.cprecvDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.cprecvDateBox.Name = "cprecvDateBox";
@@ -3192,7 +3180,7 @@ namespace Mbc5.Forms
             // 
             this.screcvDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "screcv", true));
             this.screcvDateBox.Date = null;
-     
+            this.screcvDateBox.DateValue = null;
             this.screcvDateBox.Location = new System.Drawing.Point(176, 57);
             this.screcvDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.screcvDateBox.Name = "screcvDateBox";
@@ -3486,26 +3474,26 @@ namespace Mbc5.Forms
             this.mnCust,
             this.mnBackGround});
             this.addItemMenu.Name = "addItemMenu";
-            this.addItemMenu.Size = new System.Drawing.Size(180, 70);
+            this.addItemMenu.Size = new System.Drawing.Size(181, 92);
             // 
             // mnType
             // 
             this.mnType.Name = "mnType";
-            this.mnType.Size = new System.Drawing.Size(179, 22);
+            this.mnType.Size = new System.Drawing.Size(180, 22);
             this.mnType.Text = "Add Type Style";
             this.mnType.Click += new System.EventHandler(this.mnType_Click);
             // 
             // mnCust
             // 
             this.mnCust.Name = "mnCust";
-            this.mnCust.Size = new System.Drawing.Size(179, 22);
+            this.mnCust.Size = new System.Drawing.Size(180, 22);
             this.mnCust.Text = "Add Customer Type";
             this.mnCust.Click += new System.EventHandler(this.mnCust_Click);
             // 
             // mnBackGround
             // 
             this.mnBackGround.Name = "mnBackGround";
-            this.mnBackGround.Size = new System.Drawing.Size(179, 22);
+            this.mnBackGround.Size = new System.Drawing.Size(180, 22);
             this.mnBackGround.Text = "Add Back Ground";
             this.mnBackGround.Click += new System.EventHandler(this.mnBackGround_Click);
             // 
@@ -3832,7 +3820,7 @@ namespace Mbc5.Forms
             // 
             this.rmbfrmDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipBindingSource, "rmbfrm", true));
             this.rmbfrmDateBox.Date = null;
-        
+            this.rmbfrmDateBox.DateValue = null;
             this.rmbfrmDateBox.Location = new System.Drawing.Point(496, 118);
             this.rmbfrmDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.rmbfrmDateBox.Name = "rmbfrmDateBox";
@@ -3843,7 +3831,7 @@ namespace Mbc5.Forms
             // 
             this.rmbtoDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipBindingSource, "rmbto", true));
             this.rmbtoDateBox.Date = null;
-     
+            this.rmbtoDateBox.DateValue = null;
             this.rmbtoDateBox.Location = new System.Drawing.Point(496, 94);
             this.rmbtoDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.rmbtoDateBox.Name = "rmbtoDateBox";
@@ -3854,7 +3842,7 @@ namespace Mbc5.Forms
             // 
             this.rmpfrmDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipBindingSource, "rmpfrm", true));
             this.rmpfrmDateBox.Date = null;
-       
+            this.rmpfrmDateBox.DateValue = null;
             this.rmpfrmDateBox.Location = new System.Drawing.Point(135, 161);
             this.rmpfrmDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.rmpfrmDateBox.Name = "rmpfrmDateBox";
@@ -3865,7 +3853,7 @@ namespace Mbc5.Forms
             // 
             this.rmptoDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipBindingSource, "rmpto", true));
             this.rmptoDateBox.Date = null;
-        
+            this.rmptoDateBox.DateValue = null;
             this.rmptoDateBox.Location = new System.Drawing.Point(135, 138);
             this.rmptoDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.rmptoDateBox.Name = "rmptoDateBox";
@@ -3876,7 +3864,7 @@ namespace Mbc5.Forms
             // 
             this.frmbindDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipBindingSource, "frmbind", true));
             this.frmbindDateBox.Date = null;
-        
+            this.frmbindDateBox.DateValue = null;
             this.frmbindDateBox.Location = new System.Drawing.Point(254, 115);
             this.frmbindDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.frmbindDateBox.Name = "frmbindDateBox";
@@ -3887,7 +3875,7 @@ namespace Mbc5.Forms
             // 
             this.binddteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipBindingSource, "binddte", true));
             this.binddteDateBox.Date = null;
-      
+            this.binddteDateBox.DateValue = null;
             this.binddteDateBox.Location = new System.Drawing.Point(135, 115);
             this.binddteDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.binddteDateBox.Name = "binddteDateBox";
@@ -3898,7 +3886,7 @@ namespace Mbc5.Forms
             // 
             this.ioutDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipBindingSource, "iout", true));
             this.ioutDateBox.Date = null;
-     
+            this.ioutDateBox.DateValue = null;
             this.ioutDateBox.Location = new System.Drawing.Point(254, 91);
             this.ioutDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.ioutDateBox.Name = "ioutDateBox";
@@ -3909,7 +3897,7 @@ namespace Mbc5.Forms
             // 
             this.iinDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.wipBindingSource, "iin", true));
             this.iinDateBox.Date = null;
-    
+            this.iinDateBox.DateValue = null;
             this.iinDateBox.Location = new System.Drawing.Point(135, 91);
             this.iinDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.iinDateBox.Name = "iinDateBox";
@@ -3954,14 +3942,14 @@ namespace Mbc5.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wipDetailDataGridView.AutoGenerateColumns = false;
             this.wipDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.wipDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.wipDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.wipDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -3984,8 +3972,8 @@ namespace Mbc5.Forms
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn1.FillWeight = 161.9298F;
             this.dataGridViewTextBoxColumn1.HeaderText = "Description";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -3994,8 +3982,8 @@ namespace Mbc5.Forms
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "War";
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn2.FillWeight = 65.751F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Actual";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -4004,8 +3992,8 @@ namespace Mbc5.Forms
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Wdr";
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTextBoxColumn3.FillWeight = 70.919F;
             this.dataGridViewTextBoxColumn3.HeaderText = "Due";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -4014,8 +4002,8 @@ namespace Mbc5.Forms
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Wtr";
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn4.FillWeight = 76.14214F;
             this.dataGridViewTextBoxColumn4.HeaderText = "Time";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -4024,8 +4012,8 @@ namespace Mbc5.Forms
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "Wir";
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumn5.FillWeight = 125.258F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Initials";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -4219,6 +4207,7 @@ namespace Mbc5.Forms
             // 
             this.pg3.AutoScroll = true;
             this.pg3.BackColor = System.Drawing.SystemColors.Control;
+            this.pg3.Controls.Add(this.dbScRecvDate);
             this.pg3.Controls.Add(this.desorgdteDateBox);
             this.pg3.Controls.Add(this.reprntdteDateBox);
             this.pg3.Controls.Add(this.lamdtesentDateBox);
@@ -4228,7 +4217,6 @@ namespace Mbc5.Forms
             this.pg3.Controls.Add(this.dcdtesentDateBox);
             this.pg3.Controls.Add(this.prtdtebkDateBox);
             this.pg3.Controls.Add(this.prtdtesentDateBox);
-            this.pg3.Controls.Add(this.prntsamDateBox);
             this.pg3.Controls.Add(this.btnCvrUpdate);
             this.pg3.Controls.Add(label37);
             this.pg3.Controls.Add(this.lblCoverNum);
@@ -4282,7 +4270,6 @@ namespace Mbc5.Forms
             this.pg3.Controls.Add(this.prfreqCheckBox);
             this.pg3.Controls.Add(this.hcproofCheckBox);
             this.pg3.Controls.Add(this.typesetCheckBox);
-            this.pg3.Controls.Add(prntsamLabel);
             this.pg3.Controls.Add(mascotLabel);
             this.pg3.Controls.Add(this.mascotComboBox);
             this.pg3.Controls.Add(typestyleLabel1);
@@ -4321,7 +4308,6 @@ namespace Mbc5.Forms
             this.pg3.Controls.Add(reqstdcpyLabel);
             this.pg3.Controls.Add(this.reqstdcpyTextBox);
             this.pg3.Controls.Add(screcvLabel1);
-            this.pg3.Controls.Add(this.screcvDateTimePicker1);
             this.pg3.Controls.Add(this.txtspecov);
             this.pg3.Controls.Add(this.btncoverSrch);
             this.pg3.Controls.Add(clr4Label);
@@ -4355,11 +4341,22 @@ namespace Mbc5.Forms
             this.pg3.TabIndex = 1;
             this.pg3.Text = "Special Covers";
             // 
+            // dbScRecvDate
+            // 
+            this.dbScRecvDate.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "screcv", true));
+            this.dbScRecvDate.Date = null;
+            this.dbScRecvDate.DateValue = null;
+            this.dbScRecvDate.Location = new System.Drawing.Point(232, 82);
+            this.dbScRecvDate.MinimumSize = new System.Drawing.Size(133, 20);
+            this.dbScRecvDate.Name = "dbScRecvDate";
+            this.dbScRecvDate.Size = new System.Drawing.Size(133, 21);
+            this.dbScRecvDate.TabIndex = 218;
+            // 
             // desorgdteDateBox
             // 
             this.desorgdteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coversBindingSource1, "desorgdte", true));
             this.desorgdteDateBox.Date = null;
-     
+            this.desorgdteDateBox.DateValue = null;
             this.desorgdteDateBox.Location = new System.Drawing.Point(973, 343);
             this.desorgdteDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.desorgdteDateBox.Name = "desorgdteDateBox";
@@ -4375,7 +4372,7 @@ namespace Mbc5.Forms
             // 
             this.reprntdteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coversBindingSource1, "reprntdte", true));
             this.reprntdteDateBox.Date = null;
-     
+            this.reprntdteDateBox.DateValue = null;
             this.reprntdteDateBox.Location = new System.Drawing.Point(973, 319);
             this.reprntdteDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.reprntdteDateBox.Name = "reprntdteDateBox";
@@ -4386,7 +4383,7 @@ namespace Mbc5.Forms
             // 
             this.lamdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coversBindingSource1, "lamdtesent", true));
             this.lamdtesentDateBox.Date = null;
-      
+            this.lamdtesentDateBox.DateValue = null;
             this.lamdtesentDateBox.Location = new System.Drawing.Point(164, 407);
             this.lamdtesentDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.lamdtesentDateBox.Name = "lamdtesentDateBox";
@@ -4397,7 +4394,7 @@ namespace Mbc5.Forms
             // 
             this.otdtebkDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coversBindingSource1, "otdtebk", true));
             this.otdtebkDateBox.Date = null;
-          
+            this.otdtebkDateBox.DateValue = null;
             this.otdtebkDateBox.Location = new System.Drawing.Point(325, 311);
             this.otdtebkDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.otdtebkDateBox.Name = "otdtebkDateBox";
@@ -4408,7 +4405,7 @@ namespace Mbc5.Forms
             // 
             this.otdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coversBindingSource1, "otdtesent", true));
             this.otdtesentDateBox.Date = null;
-          
+            this.otdtesentDateBox.DateValue = null;
             this.otdtesentDateBox.Location = new System.Drawing.Point(199, 309);
             this.otdtesentDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.otdtesentDateBox.Name = "otdtesentDateBox";
@@ -4419,7 +4416,7 @@ namespace Mbc5.Forms
             // 
             this.dcdtebkDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coversBindingSource1, "dcdtebk", true));
             this.dcdtebkDateBox.Date = null;
-        
+            this.dcdtebkDateBox.DateValue = null;
             this.dcdtebkDateBox.Location = new System.Drawing.Point(325, 287);
             this.dcdtebkDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.dcdtebkDateBox.Name = "dcdtebkDateBox";
@@ -4429,7 +4426,8 @@ namespace Mbc5.Forms
             // dcdtesentDateBox
             // 
             this.dcdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coversBindingSource1, "dcdtesent", true));
-        
+            this.dcdtesentDateBox.Date = null;
+            this.dcdtesentDateBox.DateValue = null;
             this.dcdtesentDateBox.Location = new System.Drawing.Point(199, 286);
             this.dcdtesentDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.dcdtesentDateBox.Name = "dcdtesentDateBox";
@@ -4440,7 +4438,7 @@ namespace Mbc5.Forms
             // 
             this.prtdtebkDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coversBindingSource1, "prtdtebk", true));
             this.prtdtebkDateBox.Date = null;
-           
+            this.prtdtebkDateBox.DateValue = null;
             this.prtdtebkDateBox.Location = new System.Drawing.Point(325, 264);
             this.prtdtebkDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.prtdtebkDateBox.Name = "prtdtebkDateBox";
@@ -4451,23 +4449,12 @@ namespace Mbc5.Forms
             // 
             this.prtdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coversBindingSource1, "prtdtesent", true));
             this.prtdtesentDateBox.Date = null;
-           
+            this.prtdtesentDateBox.DateValue = null;
             this.prtdtesentDateBox.Location = new System.Drawing.Point(199, 264);
             this.prtdtesentDateBox.MinimumSize = new System.Drawing.Size(114, 20);
             this.prtdtesentDateBox.Name = "prtdtesentDateBox";
             this.prtdtesentDateBox.Size = new System.Drawing.Size(114, 21);
             this.prtdtesentDateBox.TabIndex = 209;
-            // 
-            // prntsamDateBox
-            // 
-            this.prntsamDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coversBindingSource1, "prntsam", true));
-            this.prntsamDateBox.Date = null;
-          
-            this.prntsamDateBox.Location = new System.Drawing.Point(650, 134);
-            this.prntsamDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.prntsamDateBox.Name = "prntsamDateBox";
-            this.prntsamDateBox.Size = new System.Drawing.Size(114, 21);
-            this.prntsamDateBox.TabIndex = 208;
             // 
             // btnCvrUpdate
             // 
@@ -4477,6 +4464,7 @@ namespace Mbc5.Forms
             this.btnCvrUpdate.TabIndex = 207;
             this.btnCvrUpdate.Text = "Update Dates";
             this.btnCvrUpdate.UseVisualStyleBackColor = true;
+            this.btnCvrUpdate.Click += new System.EventHandler(this.btnCvrUpdate_Click);
             // 
             // lblCoverNum
             // 
@@ -4496,6 +4484,7 @@ namespace Mbc5.Forms
             this.btnMeridianTicket.TabIndex = 204;
             this.btnMeridianTicket.Text = "Meridian Cvr Ticket";
             this.btnMeridianTicket.UseVisualStyleBackColor = true;
+            this.btnMeridianTicket.Click += new System.EventHandler(this.btnMeridianTicket_Click);
             // 
             // btnCoverTicket
             // 
@@ -4515,6 +4504,7 @@ namespace Mbc5.Forms
             this.btnBindery.TabIndex = 202;
             this.btnBindery.Text = "Bindery Ticket";
             this.btnBindery.UseVisualStyleBackColor = true;
+            this.btnBindery.Click += new System.EventHandler(this.btnBindery_Click);
             // 
             // coverdetailDataGridView
             // 
@@ -4525,14 +4515,14 @@ namespace Mbc5.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.coverdetailDataGridView.AutoGenerateColumns = false;
             this.coverdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.coverdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.coverdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.coverdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -4917,7 +4907,7 @@ namespace Mbc5.Forms
             this.mascotComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mascotComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coversBindingSource1, "mascot", true));
             this.mascotComboBox.FormattingEnabled = true;
-            this.mascotComboBox.Location = new System.Drawing.Point(650, 180);
+            this.mascotComboBox.Location = new System.Drawing.Point(648, 155);
             this.mascotComboBox.Name = "mascotComboBox";
             this.mascotComboBox.Size = new System.Drawing.Size(121, 21);
             this.mascotComboBox.TabIndex = 164;
@@ -4927,7 +4917,7 @@ namespace Mbc5.Forms
             this.typestyleComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.typestyleComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "typestyle", true));
             this.typestyleComboBox.FormattingEnabled = true;
-            this.typestyleComboBox.Location = new System.Drawing.Point(650, 157);
+            this.typestyleComboBox.Location = new System.Drawing.Point(648, 132);
             this.typestyleComboBox.Name = "typestyleComboBox";
             this.typestyleComboBox.Size = new System.Drawing.Size(121, 21);
             this.typestyleComboBox.TabIndex = 163;
@@ -5135,17 +5125,6 @@ namespace Mbc5.Forms
             this.reqstdcpyTextBox.Size = new System.Drawing.Size(52, 20);
             this.reqstdcpyTextBox.TabIndex = 130;
             this.reqstdcpyTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.reqstdcpyTextBox_Validating);
-            // 
-            // screcvDateTimePicker1
-            // 
-            this.screcvDateTimePicker1.CustomFormat = "\'\'";
-            this.screcvDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.produtnBindingSource, "screcv", true));
-            this.screcvDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.screcvDateTimePicker1.Location = new System.Drawing.Point(231, 85);
-            this.screcvDateTimePicker1.Name = "screcvDateTimePicker1";
-            this.screcvDateTimePicker1.Size = new System.Drawing.Size(208, 20);
-            this.screcvDateTimePicker1.TabIndex = 129;
-            this.screcvDateTimePicker1.Value = new System.DateTime(2019, 8, 21, 8, 59, 31, 508);
             // 
             // txtspecov
             // 
@@ -5450,6 +5429,39 @@ namespace Mbc5.Forms
             this.pg5.TabIndex = 4;
             this.pg5.Text = "Partial Book (A)";
             // 
+            // ptrecvdDateBox1
+            // 
+            this.ptrecvdDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "ptrecvd", true));
+            this.ptrecvdDateBox1.Date = null;
+            this.ptrecvdDateBox1.DateValue = null;
+            this.ptrecvdDateBox1.Location = new System.Drawing.Point(545, 35);
+            this.ptrecvdDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
+            this.ptrecvdDateBox1.Name = "ptrecvdDateBox1";
+            this.ptrecvdDateBox1.Size = new System.Drawing.Size(133, 21);
+            this.ptrecvdDateBox1.TabIndex = 153;
+            // 
+            // ioutDateBox1
+            // 
+            this.ioutDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.partbkBindingSource, "iout", true));
+            this.ioutDateBox1.Date = null;
+            this.ioutDateBox1.DateValue = null;
+            this.ioutDateBox1.Location = new System.Drawing.Point(296, 70);
+            this.ioutDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
+            this.ioutDateBox1.Name = "ioutDateBox1";
+            this.ioutDateBox1.Size = new System.Drawing.Size(133, 21);
+            this.ioutDateBox1.TabIndex = 152;
+            // 
+            // iinDateBox1
+            // 
+            this.iinDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.partbkBindingSource, "iin", true));
+            this.iinDateBox1.Date = null;
+            this.iinDateBox1.DateValue = null;
+            this.iinDateBox1.Location = new System.Drawing.Point(87, 70);
+            this.iinDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
+            this.iinDateBox1.Name = "iinDateBox1";
+            this.iinDateBox1.Size = new System.Drawing.Size(133, 21);
+            this.iinDateBox1.TabIndex = 151;
+            // 
             // partBkDetailDataGridView
             // 
             this.partBkDetailDataGridView.AllowUserToAddRows = false;
@@ -5460,14 +5472,14 @@ namespace Mbc5.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.partBkDetailDataGridView.AutoGenerateColumns = false;
             this.partBkDetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.partBkDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.partBkDetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.partBkDetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partBkDetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn24,
@@ -5735,6 +5747,127 @@ namespace Mbc5.Forms
             this.pg6.TabIndex = 5;
             this.pg6.Text = "Photos on CD";
             // 
+            // rmbfrmDateBox1
+            // 
+            this.rmbfrmDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmbfrm", true));
+            this.rmbfrmDateBox1.Date = null;
+            this.rmbfrmDateBox1.DateValue = null;
+            this.rmbfrmDateBox1.Location = new System.Drawing.Point(480, 519);
+            this.rmbfrmDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
+            this.rmbfrmDateBox1.Name = "rmbfrmDateBox1";
+            this.rmbfrmDateBox1.Size = new System.Drawing.Size(133, 21);
+            this.rmbfrmDateBox1.TabIndex = 178;
+            // 
+            // rmbtoDateBox1
+            // 
+            this.rmbtoDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmbto", true));
+            this.rmbtoDateBox1.Date = null;
+            this.rmbtoDateBox1.DateValue = null;
+            this.rmbtoDateBox1.Location = new System.Drawing.Point(480, 495);
+            this.rmbtoDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
+            this.rmbtoDateBox1.Name = "rmbtoDateBox1";
+            this.rmbtoDateBox1.Size = new System.Drawing.Size(133, 21);
+            this.rmbtoDateBox1.TabIndex = 177;
+            // 
+            // rmpfrmDateBox1
+            // 
+            this.rmpfrmDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmpfrm", true));
+            this.rmpfrmDateBox1.Date = null;
+            this.rmpfrmDateBox1.DateValue = null;
+            this.rmpfrmDateBox1.Location = new System.Drawing.Point(146, 519);
+            this.rmpfrmDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
+            this.rmpfrmDateBox1.Name = "rmpfrmDateBox1";
+            this.rmpfrmDateBox1.Size = new System.Drawing.Size(133, 21);
+            this.rmpfrmDateBox1.TabIndex = 176;
+            // 
+            // rmptoDateBox1
+            // 
+            this.rmptoDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmpto", true));
+            this.rmptoDateBox1.Date = null;
+            this.rmptoDateBox1.DateValue = null;
+            this.rmptoDateBox1.Location = new System.Drawing.Point(146, 495);
+            this.rmptoDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
+            this.rmptoDateBox1.Name = "rmptoDateBox1";
+            this.rmptoDateBox1.Size = new System.Drawing.Size(133, 21);
+            this.rmptoDateBox1.TabIndex = 175;
+            // 
+            // frmbindDateBox1
+            // 
+            this.frmbindDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "frmbind", true));
+            this.frmbindDateBox1.Date = null;
+            this.frmbindDateBox1.DateValue = null;
+            this.frmbindDateBox1.Location = new System.Drawing.Point(298, 449);
+            this.frmbindDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
+            this.frmbindDateBox1.Name = "frmbindDateBox1";
+            this.frmbindDateBox1.Size = new System.Drawing.Size(133, 21);
+            this.frmbindDateBox1.TabIndex = 174;
+            // 
+            // binddteDateBox1
+            // 
+            this.binddteDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "binddte", true));
+            this.binddteDateBox1.Date = null;
+            this.binddteDateBox1.DateValue = null;
+            this.binddteDateBox1.Location = new System.Drawing.Point(122, 448);
+            this.binddteDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
+            this.binddteDateBox1.Name = "binddteDateBox1";
+            this.binddteDateBox1.Size = new System.Drawing.Size(133, 21);
+            this.binddteDateBox1.TabIndex = 173;
+            // 
+            // ioutDateBox2
+            // 
+            this.ioutDateBox2.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "iout", true));
+            this.ioutDateBox2.Date = null;
+            this.ioutDateBox2.DateValue = null;
+            this.ioutDateBox2.Location = new System.Drawing.Point(298, 422);
+            this.ioutDateBox2.MinimumSize = new System.Drawing.Size(133, 20);
+            this.ioutDateBox2.Name = "ioutDateBox2";
+            this.ioutDateBox2.Size = new System.Drawing.Size(133, 21);
+            this.ioutDateBox2.TabIndex = 172;
+            // 
+            // iinDateBox2
+            // 
+            this.iinDateBox2.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "iin", true));
+            this.iinDateBox2.Date = null;
+            this.iinDateBox2.DateValue = null;
+            this.iinDateBox2.Location = new System.Drawing.Point(122, 423);
+            this.iinDateBox2.MinimumSize = new System.Drawing.Size(133, 20);
+            this.iinDateBox2.Name = "iinDateBox2";
+            this.iinDateBox2.Size = new System.Drawing.Size(133, 21);
+            this.iinDateBox2.TabIndex = 171;
+            // 
+            // houtDateBox
+            // 
+            this.houtDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "hout", true));
+            this.houtDateBox.Date = null;
+            this.houtDateBox.DateValue = null;
+            this.houtDateBox.Location = new System.Drawing.Point(298, 395);
+            this.houtDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.houtDateBox.Name = "houtDateBox";
+            this.houtDateBox.Size = new System.Drawing.Size(133, 21);
+            this.houtDateBox.TabIndex = 170;
+            // 
+            // hinDateBox
+            // 
+            this.hinDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "hin", true));
+            this.hinDateBox.Date = null;
+            this.hinDateBox.DateValue = null;
+            this.hinDateBox.Location = new System.Drawing.Point(122, 396);
+            this.hinDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.hinDateBox.Name = "hinDateBox";
+            this.hinDateBox.Size = new System.Drawing.Size(133, 21);
+            this.hinDateBox.TabIndex = 169;
+            // 
+            // ptbrcvdDateBox1
+            // 
+            this.ptbrcvdDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "ptbrcvd", true));
+            this.ptbrcvdDateBox1.Date = null;
+            this.ptbrcvdDateBox1.DateValue = null;
+            this.ptbrcvdDateBox1.Location = new System.Drawing.Point(393, 47);
+            this.ptbrcvdDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
+            this.ptbrcvdDateBox1.Name = "ptbrcvdDateBox1";
+            this.ptbrcvdDateBox1.Size = new System.Drawing.Size(133, 21);
+            this.ptbrcvdDateBox1.TabIndex = 168;
+            // 
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -5907,14 +6040,14 @@ namespace Mbc5.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.prtbkbdetailDataGridView.AutoGenerateColumns = false;
             this.prtbkbdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.prtbkbdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.prtbkbdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.prtbkbdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.prtbkbdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -5930,8 +6063,8 @@ namespace Mbc5.Forms
             this.prtbkbdetailDataGridView.Location = new System.Drawing.Point(118, 94);
             this.prtbkbdetailDataGridView.Name = "prtbkbdetailDataGridView";
             this.prtbkbdetailDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prtbkbdetailDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prtbkbdetailDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.prtbkbdetailDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prtbkbdetailDataGridView.Size = new System.Drawing.Size(924, 242);
             this.prtbkbdetailDataGridView.TabIndex = 134;
@@ -6214,160 +6347,6 @@ namespace Mbc5.Forms
             // 
             this.vendorTableAdapter.ClearBeforeFill = true;
             // 
-            // iinDateBox1
-            // 
-            this.iinDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.partbkBindingSource, "iin", true));
-            this.iinDateBox1.Date = null;
-       
-            this.iinDateBox1.Location = new System.Drawing.Point(87, 70);
-            this.iinDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.iinDateBox1.Name = "iinDateBox1";
-            this.iinDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.iinDateBox1.TabIndex = 151;
-            // 
-            // ioutDateBox1
-            // 
-            this.ioutDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.partbkBindingSource, "iout", true));
-            this.ioutDateBox1.Date = null;
-        
-            this.ioutDateBox1.Location = new System.Drawing.Point(296, 70);
-            this.ioutDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.ioutDateBox1.Name = "ioutDateBox1";
-            this.ioutDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.ioutDateBox1.TabIndex = 152;
-            // 
-            // ptrecvdDateBox1
-            // 
-            this.ptrecvdDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "ptrecvd", true));
-            this.ptrecvdDateBox1.Date = null;
-       
-            this.ptrecvdDateBox1.Location = new System.Drawing.Point(545, 35);
-            this.ptrecvdDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.ptrecvdDateBox1.Name = "ptrecvdDateBox1";
-            this.ptrecvdDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.ptrecvdDateBox1.TabIndex = 153;
-            // 
-            // ptbrcvdDateBox1
-            // 
-            this.ptbrcvdDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "ptbrcvd", true));
-            this.ptbrcvdDateBox1.Date = null;
-    
-            this.ptbrcvdDateBox1.Location = new System.Drawing.Point(393, 47);
-            this.ptbrcvdDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.ptbrcvdDateBox1.Name = "ptbrcvdDateBox1";
-            this.ptbrcvdDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.ptbrcvdDateBox1.TabIndex = 168;
-            // 
-            // hinDateBox
-            // 
-            this.hinDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "hin", true));
-            this.hinDateBox.Date = null;
-       
-            this.hinDateBox.Location = new System.Drawing.Point(122, 396);
-            this.hinDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.hinDateBox.Name = "hinDateBox";
-            this.hinDateBox.Size = new System.Drawing.Size(133, 21);
-            this.hinDateBox.TabIndex = 169;
-            // 
-            // houtDateBox
-            // 
-            this.houtDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "hout", true));
-            this.houtDateBox.Date = null;
-         
-            this.houtDateBox.Location = new System.Drawing.Point(298, 395);
-            this.houtDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.houtDateBox.Name = "houtDateBox";
-            this.houtDateBox.Size = new System.Drawing.Size(133, 21);
-            this.houtDateBox.TabIndex = 170;
-            // 
-            // iinDateBox2
-            // 
-            this.iinDateBox2.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "iin", true));
-            this.iinDateBox2.Date = null;
-           
-            this.iinDateBox2.Location = new System.Drawing.Point(122, 423);
-            this.iinDateBox2.MinimumSize = new System.Drawing.Size(133, 20);
-            this.iinDateBox2.Name = "iinDateBox2";
-            this.iinDateBox2.Size = new System.Drawing.Size(133, 21);
-            this.iinDateBox2.TabIndex = 171;
-            // 
-            // ioutDateBox2
-            // 
-            this.ioutDateBox2.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "iout", true));
-            this.ioutDateBox2.Date = null;
-       
-            this.ioutDateBox2.Location = new System.Drawing.Point(298, 422);
-            this.ioutDateBox2.MinimumSize = new System.Drawing.Size(133, 20);
-            this.ioutDateBox2.Name = "ioutDateBox2";
-            this.ioutDateBox2.Size = new System.Drawing.Size(133, 21);
-            this.ioutDateBox2.TabIndex = 172;
-            // 
-            // binddteDateBox1
-            // 
-            this.binddteDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "binddte", true));
-            this.binddteDateBox1.Date = null;
-       
-            this.binddteDateBox1.Location = new System.Drawing.Point(122, 448);
-            this.binddteDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.binddteDateBox1.Name = "binddteDateBox1";
-            this.binddteDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.binddteDateBox1.TabIndex = 173;
-            // 
-            // frmbindDateBox1
-            // 
-            this.frmbindDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "frmbind", true));
-            this.frmbindDateBox1.Date = null;
-
-            this.frmbindDateBox1.Location = new System.Drawing.Point(298, 449);
-            this.frmbindDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.frmbindDateBox1.Name = "frmbindDateBox1";
-            this.frmbindDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.frmbindDateBox1.TabIndex = 174;
-            // 
-            // rmptoDateBox1
-            // 
-            this.rmptoDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmpto", true));
-            this.rmptoDateBox1.Date = null;
- 
-            this.rmptoDateBox1.Location = new System.Drawing.Point(146, 495);
-            this.rmptoDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.rmptoDateBox1.Name = "rmptoDateBox1";
-            this.rmptoDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.rmptoDateBox1.TabIndex = 175;
-            // 
-            // rmpfrmDateBox1
-            // 
-            this.rmpfrmDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmpfrm", true));
-            this.rmpfrmDateBox1.Date = null;
-          
-            this.rmpfrmDateBox1.Location = new System.Drawing.Point(146, 519);
-            this.rmpfrmDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.rmpfrmDateBox1.Name = "rmpfrmDateBox1";
-            this.rmpfrmDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.rmpfrmDateBox1.TabIndex = 176;
-            // 
-            // rmbtoDateBox1
-            // 
-            this.rmbtoDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmbto", true));
-            this.rmbtoDateBox1.Date = null;
-          
-            this.rmbtoDateBox1.Location = new System.Drawing.Point(480, 495);
-            this.rmbtoDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.rmbtoDateBox1.Name = "rmbtoDateBox1";
-            this.rmbtoDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.rmbtoDateBox1.TabIndex = 177;
-            // 
-            // rmbfrmDateBox1
-            // 
-            this.rmbfrmDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmbfrm", true));
-            this.rmbfrmDateBox1.Date = null;
-       
-            this.rmbfrmDateBox1.Location = new System.Drawing.Point(480, 519);
-            this.rmbfrmDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.rmbfrmDateBox1.Name = "rmbfrmDateBox1";
-            this.rmbfrmDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.rmbfrmDateBox1.TabIndex = 178;
-            // 
             // frmProdutn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -6571,7 +6550,6 @@ namespace Mbc5.Forms
         private System.Windows.Forms.ComboBox cmbCoverStock;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox reqstdcpyTextBox;
-        private Classes.NullableDateTimePicker screcvDateTimePicker1;
         private System.Windows.Forms.TextBox txtspecov;
         private System.Windows.Forms.Button btncoverSrch;
         private System.Windows.Forms.TextBox clr4TextBox;
@@ -6601,7 +6579,6 @@ namespace Mbc5.Forms
         private System.Windows.Forms.TextBox othrvendTextBox;
         private System.Windows.Forms.TextBox dcvendTextBox;
         private System.Windows.Forms.TextBox othrTextBox;
-        private System.Windows.Forms.TextBox diecutTextBox1;
         private System.Windows.Forms.ComboBox prtvendComboBox;
         private System.Windows.Forms.TextBox spineTextBox;
         private System.Windows.Forms.TextBox frontTextBox;
@@ -6786,7 +6763,6 @@ namespace Mbc5.Forms
         private CustomControls.DateBox binddteDateBox;
         private CustomControls.DateBox ioutDateBox;
         private CustomControls.DateBox iinDateBox;
-        private CustomControls.DateBox prntsamDateBox;
         private CustomControls.DateBox prtdtebkDateBox;
         private CustomControls.DateBox prtdtesentDateBox;
         private CustomControls.DateBox dcdtebkDateBox;
@@ -6810,5 +6786,7 @@ namespace Mbc5.Forms
         private CustomControls.DateBox ioutDateBox2;
         private CustomControls.DateBox iinDateBox2;
         private CustomControls.DateBox houtDateBox;
+        private System.Windows.Forms.TextBox diecutTextBox1;
+        private CustomControls.DateBox dbScRecvDate;
     }
 }

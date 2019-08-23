@@ -61,6 +61,7 @@ namespace Mbc5.Forms
 
 		}
 		public List<CoverDescriptions> CoverDescriptions { get; set; }
+        public string Company { get; set; }
         public new frmMain frmMain { get; set; }
         private void SetConnectionString()
 		{
@@ -93,7 +94,7 @@ namespace Mbc5.Forms
  			this.SetConnectionString();
 			try
 			{
-                SetBindings();
+              
                 this.vendorTableAdapter.Fill(this.dsProdutn.vendor);
                 this.lkpBackGroundTableAdapter.Fill(this.lookUp.lkpBackGround);
 				//LookUp Data
@@ -136,79 +137,1728 @@ namespace Mbc5.Forms
 		private string CurrentProdNo { get; set; }
         #endregion
         #region "Methods"
-        #region "CustomBindings"
-        private void SetBindings()
+        public async Task<ApiProcessingResult<bool>> UpdateWipDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
         {
-        
-         
-           
-        }
-        private void NulltoDefaultDateFormat(object sender, System.Windows.Forms.ConvertEventArgs e)
-        {
-            // e.Value is the object value, we format it to be what we want to show up in the control
-
-            System.Windows.Forms.Binding b = sender as System.Windows.Forms.Binding;
-            if (b != null)
+            var processingResult = new ApiProcessingResult<bool>();
+            bool isUpdate = true;
+            if (vWdr == null)
             {
-                System.Windows.Forms.DateTimePicker dtp = (b.Control as System.Windows.Forms.DateTimePicker);
-                if (dtp != null)
+                isUpdate = false;
+            }
+            var sqlClient = new SQLCustomClient();
+            sqlClient.ClearParameters();
+            sqlClient.AddParameter("@DescripID", vDescripId);
+            sqlClient.AddParameter("@wdr", vWdr);
+            sqlClient.AddParameter("@invno", vInvno);
+            sqlClient.AddParameter("@Schcode", this.Schcode);
+            var commandText = "";
+            if (isUpdate)
+            {
+                commandText = @"
+                         	IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                Begin
+                                INSERT INTO WipDetail (DescripID,Invno,Wdr,Schcode) VALUES(@DescripID,@Invno,@wdr,@Schcode);
+                                END
+							ELSE
+								BEGIN
+									UPDATE WipDetail SET wdr=@wdr  WHERE Invno=@Invno AND DescripID=@DescripID
+								END ";
+            }
+            else
+            {
+                commandText = @"
+							     UPDATE WipDetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = @DescripID
+								";
+              
+            }
+
+            sqlClient.CommandText(commandText);
+            var wipResult = sqlClient.Update();
+            if (wipResult.IsError)
+            {
+                processingResult.IsError = true;
+                processingResult.Data = false;
+                return processingResult;
+
+            }
+
+
+            processingResult.IsError = false;
+            processingResult.Data = true;
+            return processingResult;
+        }
+        public async Task<ApiProcessingResult<bool>> UpdateWipCoverDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
+        {
+            var processingResult = new ApiProcessingResult<bool>();
+            bool isUpdate = true;
+            if (vWdr == null)
+            {
+                isUpdate = false;
+            }
+            var sqlClient = new SQLCustomClient();
+            sqlClient.ClearParameters();
+            sqlClient.AddParameter("@DescripID", vDescripId);
+            sqlClient.AddParameter("@wdr", vWdr);
+            sqlClient.AddParameter("@invno", vInvno);
+            sqlClient.AddParameter("@Schcode", this.Schcode);
+            var commandText = "";
+            if (isUpdate)
+            {
+                commandText = @"
+                         	IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from CoverDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
+                                Begin
+                                INSERT INTO CoverDetail (DescripID,Invno,Wdr,Schcode) VALUES(@DescripID,@Invno,@wdr,@Schcode);
+                                END
+							ELSE
+								BEGIN
+									UPDATE CoverDetail SET wdr=@wdr  WHERE Invno=@Invno AND DescripID=@DescripID
+								END ";
+            }
+            else
+            {
+                commandText = @"
+							     UPDATE CoverDetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = @DescripID
+								";
+               
+            }
+
+            sqlClient.CommandText(commandText);
+            var wipResult = sqlClient.Update();
+            if (wipResult.IsError)
+            {
+                processingResult.IsError = true;
+                processingResult.Data = false;
+                return processingResult;
+
+            }
+
+
+            processingResult.IsError = false;
+            processingResult.Data = true;
+            return processingResult;
+        }
+        async Task<ApiProcessingResult<string>> UpdateCoverWip()
+        {
+            var processingResult = new ApiProcessingResult<string>();
+
+            var coverResult = SaveCovers();
+
+            if (coverResult.IsError)
+            {
+               
+                processingResult.IsError = true;
+                processingResult.Errors = coverResult.Errors;
+                return processingResult;
+            }
+            if (dbScRecvDate.Date==null)
+            {
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("Recieved date is empty.", "Recieved date is empty.", ""));
+                return processingResult;
+                     }
+            var sqlQuery = new SQLCustomClient();
+            sqlQuery.CommandText(@"Select * From ScWip");//only 1 record
+            var result=sqlQuery.Select<SpecialCoverDats>();
+            if (result.IsError)
+            {
+             
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("Failed to retrieve Special Cover Update Information,Special Cover WIP update failed:" + result.Errors[0].ErrorMessage, "Failed to retrieve Special Cover Update Information,Special Cover WIP update failed:" + result.Errors[0].ErrorMessage, ""));
+                return processingResult;
+            }
+            var vDats = (SpecialCoverDats)result.Data;
+            int[] wCalc = new int[51];//0 based used 51 so I could keep element in line with line numbers 1=1 instead of 0=1
+            //---------------------------------------------------------------------------------------------------------
+            sqlQuery.ClearParameters();            
+            if (vDats.l_wdr1 != 0) {
+                wCalc[1] = vDats.l_wdr1;
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[1]);
+                var updateResult = await  UpdateWipCoverDetailCall(1, vWdr, Invno.ToString());
+                if (updateResult.IsError)
                 {
-                    if (e.Value == System.DBNull.Value)
-                    {
-                        //dtp.ShowCheckBox = true;
-                        dtp.Checked = false;
-                        dtp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-                        // have to set e.Value to SOMETHING, since it's coming in as NULL
-                        // if i set to DateTime.Today, and that's DIFFERENT than the control's current 
-                        // value, then it triggers a CHANGE to the value, which CHECKS the box (not ok)
-                        // the trick - set e.Value to whatever value the control currently has.  
-                        // This does NOT cause a CHANGE, and the checkbox stays OFF.
+                    
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #1", "Datbase error. #1", ""));
 
-                        //e.Value = dtp.Value;
-                        var a = dtp.Value;
-                        e.Value = DateTime.Now;
+                   processingResult.IsError = true;
+                    return processingResult;
+                }
 
-                    }
-                    else
-                    {
-                        //dtp.ShowCheckBox = true;
-                        dtp.Checked = true;
-                        dtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-                        // leave e.Value unchanged - it's not null, so the DTP is fine with it.
-                    }
+            } else {
+                wCalc[1] = vDats.l_wdr1;
+               
+                var updateResult = await UpdateWipCoverDetailCall(1,null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+                    
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #1", "Datbase error. #1", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
                 }
             }
 
-        }
-        private void NulltoDefaultDateParse(object sender, System.Windows.Forms.ConvertEventArgs e)
-        {
-            // e.value is the formatted value coming from the control.  
-            // we change it to be the value we want to stuff in the object.
-
-            System.Windows.Forms.Binding b = sender as System.Windows.Forms.Binding;
-            if (b != null)
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr2 != 0)
             {
-                System.Windows.Forms.DateTimePicker dtp = (b.Control as System.Windows.Forms.DateTimePicker);
-                if (dtp != null)
+                wCalc[2] = vDats.l_wdr2+ wCalc[1];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[2]);
+                var updateResult = await UpdateWipCoverDetailCall(2, vWdr, Invno.ToString());
+                if (updateResult.IsError)
                 {
-                    if (dtp.Checked == false)
-                    {
-                        dtp.ShowCheckBox = true;
-                        dtp.Checked = false;
-                        e.Value = System.DBNull.Value;
-                    }
-                    else
-                    {
-                        System.DateTime val = Convert.ToDateTime(e.Value);
-                        e.Value = val;
-                    }
+                    
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #2", "Datbase error. #2", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[2] = vDats.l_wdr2 + wCalc[1];
+
+                var updateResult = await UpdateWipCoverDetailCall(2, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+                   
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #2", "Datbase error. #2", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
                 }
             }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr3 != 0)
+            {
+                wCalc[3] = vDats.l_wdr3 + wCalc[2];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[3]);
+                var updateResult = await UpdateWipCoverDetailCall(3, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+                    
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #2", "Datbase error. #3", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[3] = vDats.l_wdr3 + wCalc[2];
+
+                var updateResult = await UpdateWipCoverDetailCall(3, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+                    
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #3", "Datbase error. #3", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr4 != 0)
+            {
+                wCalc[4] = vDats.l_wdr4 + wCalc[3];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[4]);
+                var updateResult = await UpdateWipCoverDetailCall(4, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+                    
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #4", "Datbase error. #4", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[4] = vDats.l_wdr4 + wCalc[3];
+
+                var updateResult = await UpdateWipCoverDetailCall(4, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+                   
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #4", "Datbase error. #4", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr5 != 0)
+            {
+                wCalc[5] = vDats.l_wdr5 + wCalc[4];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[5]);
+                var updateResult = await UpdateWipCoverDetailCall(5, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #5", "Datbase error. #5", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[5] = vDats.l_wdr5 + wCalc[4];
+
+                var updateResult = await UpdateWipCoverDetailCall(4, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #5", "Datbase error. #5", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr6 != 0)
+            {
+                wCalc[6] = vDats.l_wdr6 + wCalc[5];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[6]);
+                var updateResult = await UpdateWipCoverDetailCall(6, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #6", "Datbase error. #6", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[6] = vDats.l_wdr6 + wCalc[5];
+
+                var updateResult = await UpdateWipCoverDetailCall(4, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #6", "Datbase error. #6", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr7 != 0)
+            {
+                wCalc[7] = vDats.l_wdr7 + wCalc[6];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[7]);
+                var updateResult = await UpdateWipCoverDetailCall(7, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #7", "Datbase error. #7", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[7] = vDats.l_wdr7 + wCalc[6];
+
+                var updateResult = await UpdateWipCoverDetailCall(7, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #7", "Datbase error. #7", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr8 != 0)
+            {
+                wCalc[8] = vDats.l_wdr8 + wCalc[7];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[8]);
+                var updateResult = await UpdateWipCoverDetailCall(8, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #8", "Datbase error. #8", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[8] = vDats.l_wdr8 + wCalc[7];
+
+                var updateResult = await UpdateWipCoverDetailCall(8, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #8", "Datbase error. #8", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr9 != 0)
+            {
+                wCalc[9] = vDats.l_wdr9 + wCalc[8];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[9]);
+                var updateResult = await UpdateWipCoverDetailCall(9, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #9", "Datbase error. #9", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[9] = vDats.l_wdr9 + wCalc[8];
+
+                var updateResult = await UpdateWipCoverDetailCall(9, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #9", "Datbase error. #9", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr10 != 0)
+            {
+                wCalc[10] = vDats.l_wdr10 + wCalc[9];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[10]);
+                var updateResult = await UpdateWipCoverDetailCall(10, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #10", "Datbase error. #10", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[10] = vDats.l_wdr10 + wCalc[9];
+
+                var updateResult = await UpdateWipCoverDetailCall(10, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #10", "Datbase error. #10", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr11 != 0)
+            {
+                wCalc[11] = vDats.l_wdr11 + wCalc[10];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[11]);
+                var updateResult = await UpdateWipCoverDetailCall(11, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #11", "Datbase error. #11", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[11] = vDats.l_wdr11 + wCalc[10];
+
+                var updateResult = await UpdateWipCoverDetailCall(11, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #11", "Datbase error. #11", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr12 != 0)
+            {
+                wCalc[12] = vDats.l_wdr12 + wCalc[11];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[12]);
+                var updateResult = await UpdateWipCoverDetailCall(12, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #12", "Datbase error. #12", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[12] = vDats.l_wdr12 + wCalc[11];
+
+                var updateResult = await UpdateWipCoverDetailCall(12, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #12", "Datbase error. #12", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr13 != 0)
+            {
+                wCalc[13] = vDats.l_wdr13 + wCalc[12];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[13]);
+                var updateResult = await UpdateWipCoverDetailCall(13, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #13", "Datbase error. #13", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[13] = vDats.l_wdr13 + wCalc[12];
+
+                var updateResult = await UpdateWipCoverDetailCall(13, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #13", "Datbase error. #13", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr14 != 0)
+            {
+                wCalc[14] = vDats.l_wdr14 + wCalc[13];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[14]);
+                var updateResult = await UpdateWipCoverDetailCall(14, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #14", "Datbase error. #14", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[14] = vDats.l_wdr14 + wCalc[13];
+
+                var updateResult = await UpdateWipCoverDetailCall(14, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #14", "Datbase error. #14", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr15 != 0)
+            {
+                wCalc[15] = vDats.l_wdr15 + wCalc[14];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[15]);
+                var updateResult = await UpdateWipCoverDetailCall(15, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #15", "Datbase error. #15", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[15] = vDats.l_wdr15 + wCalc[14];
+
+                var updateResult = await UpdateWipCoverDetailCall(15, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #15", "Datbase error. #15", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr16 != 0)
+            {
+                wCalc[16] = vDats.l_wdr16 + wCalc[15];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[16]);
+                var updateResult = await UpdateWipCoverDetailCall(16, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #16", "Datbase error. #16", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[16] = vDats.l_wdr16 + wCalc[15];
+
+                var updateResult = await UpdateWipCoverDetailCall(16, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #16", "Datbase error. #16", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr17 != 0)
+            {
+                wCalc[17] = vDats.l_wdr17 + wCalc[16];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[17]);
+                var updateResult = await UpdateWipCoverDetailCall(17, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #17", "Datbase error. #17", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[17] = vDats.l_wdr17 + wCalc[16];
+
+                var updateResult = await UpdateWipCoverDetailCall(17, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #17", "Datbase error. #17", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr18 != 0)
+            {
+                wCalc[18] = vDats.l_wdr18 + wCalc[17];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[18]);
+                var updateResult = await UpdateWipCoverDetailCall(18, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #18", "Datbase error. #18", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[18] = vDats.l_wdr18 + wCalc[17];
+
+                var updateResult = await UpdateWipCoverDetailCall(18, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #18", "Datbase error. #18", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr19 != 0)
+            {
+                wCalc[19] = vDats.l_wdr19 + wCalc[18];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[19]);
+                var updateResult = await UpdateWipCoverDetailCall(19, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #19", "Datbase error. #19", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[19] = vDats.l_wdr19 + wCalc[18];
+
+                var updateResult = await UpdateWipCoverDetailCall(19, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #19", "Datbase error. #19", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr20 != 0)
+            {
+                wCalc[20] = vDats.l_wdr20 + wCalc[19];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[20]);
+                var updateResult = await UpdateWipCoverDetailCall(20, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #20", "Datbase error. #20", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[20] = vDats.l_wdr20 + wCalc[19];
+
+                var updateResult = await UpdateWipCoverDetailCall(20, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #20", "Datbase error. #20", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr21 != 0)
+            {
+                wCalc[21] = vDats.l_wdr21 + wCalc[20];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[21]);
+                var updateResult = await UpdateWipCoverDetailCall(21, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #21", "Datbase error. #21", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[21] = vDats.l_wdr21 + wCalc[20];
+
+                var updateResult = await UpdateWipCoverDetailCall(21, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #21", "Datbase error. #21", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr22 != 0)
+            {
+                wCalc[22] = vDats.l_wdr22 + wCalc[21];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[22]);
+                var updateResult = await UpdateWipCoverDetailCall(22, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #22", "Datbase error. #22", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[22] = vDats.l_wdr22 + wCalc[21];
+
+                var updateResult = await UpdateWipCoverDetailCall(22, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #22", "Datbase error. #22", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr23 != 0)
+            {
+                wCalc[23] = vDats.l_wdr23 + wCalc[22];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[23]);
+                var updateResult = await UpdateWipCoverDetailCall(23, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #23", "Datbase error. #23", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[23] = vDats.l_wdr23 + wCalc[22];
+
+                var updateResult = await UpdateWipCoverDetailCall(23, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #23", "Datbase error. #23", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr24 != 0)
+            {
+                wCalc[24] = vDats.l_wdr24 + wCalc[23];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[24]);
+                var updateResult = await UpdateWipCoverDetailCall(24, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #24", "Datbase error. #24", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[24] = vDats.l_wdr24 + wCalc[23];
+
+                var updateResult = await UpdateWipCoverDetailCall(24, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #24", "Datbase error. #24", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr25 != 0)
+            {
+                wCalc[25] = vDats.l_wdr25 + wCalc[24];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[25]);
+                var updateResult = await UpdateWipCoverDetailCall(25, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #25", "Datbase error. #25", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[25] = vDats.l_wdr25 + wCalc[24];
+
+                var updateResult = await UpdateWipCoverDetailCall(25, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #25", "Datbase error. #25", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr26 != 0)
+            {
+                wCalc[26] = vDats.l_wdr26 + wCalc[25];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[26]);
+                var updateResult = await UpdateWipCoverDetailCall(26, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #26", "Datbase error. #26", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[26] = vDats.l_wdr26 + wCalc[25];
+
+                var updateResult = await UpdateWipCoverDetailCall(26, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #26", "Datbase error. #26", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr27 != 0)
+            {
+                wCalc[27] = vDats.l_wdr27 + wCalc[26];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[27]);
+                var updateResult = await UpdateWipCoverDetailCall(27, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #27", "Datbase error. #27", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[27] = vDats.l_wdr27 + wCalc[26];
+
+                var updateResult = await UpdateWipCoverDetailCall(27, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #27", "Datbase error. #27", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr28 != 0)
+            {
+                wCalc[28] = vDats.l_wdr28 + wCalc[27];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[28]);
+                var updateResult = await UpdateWipCoverDetailCall(28, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #28", "Datbase error. #28", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[28] = vDats.l_wdr28 + wCalc[27];
+
+                var updateResult = await UpdateWipCoverDetailCall(28, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #28", "Datbase error. #28", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr29 != 0)
+            {
+                wCalc[29] = vDats.l_wdr29 + wCalc[28];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[29]);
+                var updateResult = await UpdateWipCoverDetailCall(29, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #29", "Datbase error. #29", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[29] = vDats.l_wdr29 + wCalc[28];
+
+                var updateResult = await UpdateWipCoverDetailCall(29, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #29", "Datbase error. #29", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr30 != 0)
+            {
+                wCalc[30] = vDats.l_wdr30 + wCalc[29];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[30]);
+                var updateResult = await UpdateWipCoverDetailCall(30, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #30", "Datbase error. #30", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[30] = vDats.l_wdr30 + wCalc[29];
+
+                var updateResult = await UpdateWipCoverDetailCall(30, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #30", "Datbase error. #30", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr31 != 0)
+            {
+                wCalc[31] = vDats.l_wdr31 + wCalc[30];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[31]);
+                var updateResult = await UpdateWipCoverDetailCall(31, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #31", "Datbase error. #31", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[31] = vDats.l_wdr31 + wCalc[30];
+
+                var updateResult = await UpdateWipCoverDetailCall(31, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #31", "Datbase error. #31", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr32 != 0)
+            {
+                wCalc[32] = vDats.l_wdr32 + wCalc[31];
+                var vWdr = CalulateBusinessDay.PromiseDate((DateTime)dbScRecvDate.DateValue, wCalc[32]);
+                var updateResult = await UpdateWipCoverDetailCall(32, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #32", "Datbase error. #32", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[32] = vDats.l_wdr32 + wCalc[31];
+
+                var updateResult = await UpdateWipCoverDetailCall(32, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #32", "Datbase error. #32", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr33 != 0)
+            {
+                wCalc[33] = vDats.l_wdr33 + wCalc[32];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[33]);
+                var updateResult = await UpdateWipCoverDetailCall(33, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #33", "Datbase error. #33", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[33] = vDats.l_wdr33 + wCalc[32];
+
+                var updateResult = await UpdateWipCoverDetailCall(33, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #33", "Datbase error. #33", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr34 != 0)
+            {
+                wCalc[34] = vDats.l_wdr34 + wCalc[33];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[34]);
+                var updateResult = await UpdateWipCoverDetailCall(34, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #34", "Datbase error. #34", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[34] = vDats.l_wdr34 + wCalc[33];
+
+                var updateResult = await UpdateWipCoverDetailCall(34, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #34", "Datbase error. #34", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr35 != 0)
+            {
+                wCalc[35] = vDats.l_wdr35 + wCalc[34];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[35]);
+                var updateResult = await UpdateWipCoverDetailCall(35, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #35", "Datbase error. #35", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[35] = vDats.l_wdr35 + wCalc[34];
+
+                var updateResult = await UpdateWipCoverDetailCall(35, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #35", "Datbase error. #35", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr36 != 0)
+            {
+                wCalc[36] = vDats.l_wdr36 + wCalc[35];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[36]);
+                var updateResult = await UpdateWipCoverDetailCall(36, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #36", "Datbase error. #36", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[36] = vDats.l_wdr36 + wCalc[35];
+
+                var updateResult = await UpdateWipCoverDetailCall(36, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #36", "Datbase error. #36", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr37 != 0)
+            {
+                wCalc[37] = vDats.l_wdr37 + wCalc[36];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[37]);
+                var updateResult = await UpdateWipCoverDetailCall(37, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #37", "Datbase error. #37", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[37] = vDats.l_wdr37 + wCalc[36];
+
+                var updateResult = await UpdateWipCoverDetailCall(37, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #37", "Datbase error. #37", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr38 != 0)
+            {
+                wCalc[38] = vDats.l_wdr38 + wCalc[37];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[38]);
+                var updateResult = await UpdateWipCoverDetailCall(38, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #38", "Datbase error. #38", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[38] = vDats.l_wdr38 + wCalc[37];
+
+                var updateResult = await UpdateWipCoverDetailCall(38, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #38", "Datbase error. #38", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr39 != 0)
+            {
+                wCalc[39] = vDats.l_wdr39 + wCalc[38];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[39]);
+                var updateResult = await UpdateWipCoverDetailCall(39, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #39", "Datbase error. #39", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[39] = vDats.l_wdr39 + wCalc[38];
+
+                var updateResult = await UpdateWipCoverDetailCall(39, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #39", "Datbase error. #39", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr40 != 0)
+            {
+                wCalc[40] = vDats.l_wdr40 + wCalc[39];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[40]);
+                var updateResult = await UpdateWipCoverDetailCall(40, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #40", "Datbase error. #40", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[40] = vDats.l_wdr40 + wCalc[39];
+
+                var updateResult = await UpdateWipCoverDetailCall(40, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #40", "Datbase error. #40", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr41 != 0)
+            {
+                wCalc[41] = vDats.l_wdr41 + wCalc[40];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[41]);
+                var updateResult = await UpdateWipCoverDetailCall(41, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #41", "Datbase error. #41", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[41] = vDats.l_wdr41 + wCalc[40];
+
+                var updateResult = await UpdateWipCoverDetailCall(41, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #41", "Datbase error. #41", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr42 != 0)
+            {
+                wCalc[42] = vDats.l_wdr42 + wCalc[41];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[42]);
+                var updateResult = await UpdateWipCoverDetailCall(42, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #42", "Datbase error. #42", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[42] = vDats.l_wdr42 + wCalc[41];
+
+                var updateResult = await UpdateWipCoverDetailCall(42, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #42", "Datbase error. #42", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr43 != 0)
+            {
+                wCalc[43] = vDats.l_wdr43 + wCalc[42];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[43]);
+                var updateResult = await UpdateWipCoverDetailCall(43, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #43", "Datbase error. #43", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[43] = vDats.l_wdr43 + wCalc[42];
+
+                var updateResult = await UpdateWipCoverDetailCall(43, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #43", "Datbase error. #43", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr44 != 0)
+            {
+                wCalc[44] = vDats.l_wdr44 + wCalc[43];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[44]);
+                var updateResult = await UpdateWipCoverDetailCall(44, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #44", "Datbase error. #44", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[44] = vDats.l_wdr44 + wCalc[43];
+
+                var updateResult = await UpdateWipCoverDetailCall(44, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #44", "Datbase error. #44", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr45 != 0)
+            {
+                wCalc[45] = vDats.l_wdr45 + wCalc[44];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[45]);
+                var updateResult = await UpdateWipCoverDetailCall(45, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #45", "Datbase error. #45", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[45] = vDats.l_wdr45 + wCalc[44];
+
+                var updateResult = await UpdateWipCoverDetailCall(45, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #45", "Datbase error. #45", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr46 != 0)
+            {
+                wCalc[46] = vDats.l_wdr46 + wCalc[45];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[46]);
+                var updateResult = await UpdateWipCoverDetailCall(46, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #46", "Datbase error. #46", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[46] = vDats.l_wdr46 + wCalc[45];
+
+                var updateResult = await UpdateWipCoverDetailCall(46, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #46", "Datbase error. #46", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr47 != 0)
+            {
+                wCalc[47] = vDats.l_wdr47 + wCalc[46];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[47]);
+                var updateResult = await UpdateWipCoverDetailCall(47, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #47", "Datbase error. #47", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[47] = vDats.l_wdr47 + wCalc[46];
+
+                var updateResult = await UpdateWipCoverDetailCall(47, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #47", "Datbase error. #47", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr48 != 0)
+            {
+                wCalc[48] = vDats.l_wdr48 + wCalc[47];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[48]);
+                var updateResult = await UpdateWipCoverDetailCall(48, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #48", "Datbase error. #48", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[48] = vDats.l_wdr48 + wCalc[47];
+
+                var updateResult = await UpdateWipCoverDetailCall(48, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #48", "Datbase error. #48", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr49 != 0)
+            {
+                wCalc[49] = vDats.l_wdr49 + wCalc[48];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[49]);
+                var updateResult = await UpdateWipCoverDetailCall(49, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #49", "Datbase error. #49", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[49] = vDats.l_wdr49 + wCalc[48];
+
+                var updateResult = await UpdateWipCoverDetailCall(49, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #49", "Datbase error. #49", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+
+            //-------------------------------------------------
+            sqlQuery.ClearParameters();
+            if (vDats.l_wdr50 != 0)
+            {
+                wCalc[50] = vDats.l_wdr50 + wCalc[48];
+                var vWdr = CalulateBusinessDay.BusDayAdd((DateTime)dbScRecvDate.DateValue, wCalc[50]);
+                var updateResult = await UpdateWipCoverDetailCall(50, vWdr, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #50", "Datbase error. #50", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+
+            }
+            else
+            {
+                wCalc[50] = vDats.l_wdr50 + wCalc[48];
+
+                var updateResult = await UpdateWipCoverDetailCall(50, null, Invno.ToString());
+                if (updateResult.IsError)
+                {
+
+                    processingResult.Errors.Add(new ApiProcessingError("Datbase error. #50", "Datbase error. #50", ""));
+
+                    processingResult.IsError = true;
+                    return processingResult;
+                }
+            }
+            try
+            {
+                coverdetailTableAdapter.FillByInvno(dsProdutn.coverdetail, Invno);
+            }catch(Exception ex){
+                ex.ToExceptionless()
+                    .MarkAsCritical()
+                    .AddObject(ex)
+                    .Submit();
+                  
+                MbcMessageBox.Error("Failed to refill cover detail dataset:" + ex.Message);
+            }
+            return processingResult;
+
         }
-        
-        #endregion
-  
-        
+
+
         private void ShippingEmail()
 		{
 			var cMainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -390,6 +2040,8 @@ namespace Mbc5.Forms
 				custTableAdapter.Fill(dsProdutn.cust, Schcode);
 				quotesTableAdapter.FillByInvno(dsProdutn.quotes, Invno);
 				produtnTableAdapter.FillByInvno(dsProdutn.produtn, Invno);
+                    Company = ((DataRowView)produtnBindingSource.Current).Row["Company"].ToString();
+
 				}catch(Exception ex) {
                     var a = dsProdutn.Tables["cust"].GetErrors();
                     MbcMessageBox.Error(ex.Message, "");
@@ -414,6 +2066,7 @@ namespace Mbc5.Forms
 					MbcMessageBox.Error(ex.Message, "");
 					return;
 				};
+                var aaaa = coverdetailBindingSource .Count;
 
                 if ((DataRowView)coversBindingSource1.Current != null)
                 {
@@ -978,93 +2631,7 @@ namespace Mbc5.Forms
 			emailHelper.SendOutLookEmail(subject, this.AllEmails, "", body, type);
 		}
 
-		private void btnBinderyEmail_Click(object sender, EventArgs e)
-		{
-			var sqlQuery = new SQLQuery();
-			var queryString = " Select cust.Schname,quotes.invno,produtn.ProdNo,produtn.NoPages,covers.reqstdcpy,produtn.CoverType,produtn.Diecut,produtn.CoilClr,produtn.prshpdte As ProjShpDate from cust inner join quotes on cust.schcode = quotes.schcode left join produtn on quotes.invno = produtn.invno left join covers on quotes.invno = covers.invno where cust.schcode = @Schcode and quotes.invno = @Invno";
-			int vInvno = 0;
-			int.TryParse(lblInvno.Text, out vInvno);
-			SqlParameter[] parameters = new SqlParameter[] {
-				 new SqlParameter("@Schcode",Schcode),
-				 new SqlParameter("@Invno",vInvno)
-			};
-			List<BinderyInfo> result = (List<BinderyInfo>)sqlQuery.ExecuteReaderAsync<BinderyInfo>(CommandType.Text, queryString, parameters);
-			if (result == null || result.Count < 1)
-			{
-				MessageBox.Show("Bindery information was not found.");
-				return;
-			}
-			if (string.IsNullOrEmpty(result[0].Schname))
-			{
-				result[0].Schname = "";
-			}
 
-			if (string.IsNullOrEmpty(result[0].CoverType))
-			{
-				result[0].CoverType = "";
-			}
-			//<<<<<<< HEAD
-			if (string.IsNullOrEmpty(result[0].CoilClr))
-			{
-				result[0].CoilClr = "";
-				//=======
-
-				//        private void FillWithInvno() {
-				//            if (Invno != 0) {
-				//                //coversTableAdapter.Fill(dsProdutn.covers,Invno);
-				//                //coverdetailTableAdapter.Fill(dsProdutn.coverdetail, Invno);
-				//                //if (dsProdutn.covers.Count < 1)
-				//                //{
-				//                //    DisableControls(specinstTextBox);                
-				//                //}
-				//                //else { EnableAllControls(this.tbProdutn.TabPages[2]); }
-
-
-				//                wipTableAdapter.Fill(dsProdutn.wip,Invno);
-
-				//                wipDetailTableAdapter.Fill(dsProdutn.WipDetail, Invno);
-				//                if (dsProdutn.wip.Count < 1)
-				//                {
-				//                    var aa = this.tbProdutn.TabPages[3];
-				//                    DisableControls(this.tbProdutn.TabPages[3]);
-
-				//                }
-				//                else {
-				//                      EnableAllControls(this.tbProdutn.TabPages[3]);                    
-				//                    }
-
-
-				//            }
-				//            }
-
-				string vshipDate;
-				if (result[0].ProjShpDate.Year < 1999)
-				{
-					vshipDate = "";
-				}
-				else { vshipDate = result[0].ProjShpDate.ToString(); }
-
-
-
-
-
-				var body = "<strong>School Information<strong/><br/><br/>School Name " + result[0].Schname.Trim() + "<br/>Production No. " + result[0].ProdNo.Trim() + "<br/> No. of Pages " + result[0].NoPages + "<br/>Cover Type " + result[0].CoverType.Trim() + "<br/>Die Cut " + result[0].Diecut.ToString() + "<br/>Coil Color " + result[0].CoilClr.Trim() + "<br/>Projected Ship Date " + vshipDate;
-				var subject = "Memory Book company Vendor Information";
-				var emailHelper = new EmailHelper();
-				EmailType type = EmailType.Blank;
-				if (CurrentCompany == "MBC")
-				{
-					type = EmailType.Mbc;
-				}
-				else if (CurrentCompany == "MER")
-				{
-					type = EmailType.Meridian;
-				}
-				emailHelper.SendOutLookEmail(subject, "production@memorybook.com", "", body, type);
-
-
-			}
-		}
 		private void btnUpdateJob_Click(object sender, EventArgs e)
 		{
 			if (String.IsNullOrEmpty(txtPerfbind.Text.Trim()))
@@ -1330,58 +2897,7 @@ namespace Mbc5.Forms
 
 			}
 		}
-        public async Task<ApiProcessingResult<bool>> UpdateWipDetailCall(int vDescripId, DateTime? vWdr, string vInvno)
-		{
-			var processingResult = new ApiProcessingResult<bool>();
-			bool isUpdate = true;
-			if (vWdr == null)
-			{
-				isUpdate = false;
-			}
-			var sqlClient = new SQLCustomClient();
-			sqlClient.ClearParameters();
-			sqlClient.AddParameter("@DescripID", vDescripId);
-			sqlClient.AddParameter("@wdr", vWdr);
-			sqlClient.AddParameter("@invno", vInvno);
-			sqlClient.AddParameter("@Schcode", this.Schcode);
-			var commandText = "";
-			if (isUpdate)
-			{
-				commandText = @"
-                         	IF NOT EXISTS (Select tmp.Invno,tmp.DescripID from WipDetail tmp WHERE tmp.Invno=@Invno and tmp.DescripID=@DescripID) 
-                                Begin
-                                INSERT INTO WipDetail (DescripID,Invno,Wdr,Schcode) VALUES(@DescripID,@Invno,@wdr,@Schcode);
-                                END
-							ELSE
-								BEGIN
-									UPDATE WipDetail SET wdr=@wdr  WHERE Invno=@Invno AND DescripID=@DescripID
-								END ";
-			}
-			else
-			{
-				commandText = @"
-							     UPDATE WipDetail SET wdr = @wdr  WHERE Invno = @Invno AND DescripID = @DescripID
-								";
-				//commandText = @"
-				//		Delete FROM WipDetail  WHERE Invno = @Invno AND DescripID = @DescripID
-				//			";
-			}
-
-			sqlClient.CommandText(commandText);
-			var wipResult = sqlClient.Update();
-			if (wipResult.IsError)
-			{
-				processingResult.IsError = true;
-				processingResult.Data = false;
-				return processingResult;
-
-			}
-
-
-			processingResult.IsError = false;
-			processingResult.Data = true;
-			return processingResult;
-		}
+      
 		//private void btnSchoolSearch_Click(object sender, EventArgs e)
 		//{
 		//	if (string.IsNullOrEmpty(txtSchNamesrch.Text.Trim()))
@@ -3694,9 +5210,27 @@ namespace Mbc5.Forms
 
         private void btnCoverTicket_Click(object sender, EventArgs e)
         {
+            if (Company == "MBC") {
+               var dResult= MessageBox.Show("Do you want the single sheet version?", "Cover Ticket Version",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                if (dResult ==DialogResult.Yes) { PrintCoverTicketDiminished(); } else { PrintCoverTicket(); }
+                
+               
+            }
+            if (Company == "MER")
+            {
+
+            }
 
         }
+        private void PrintCoverTicketDiminished()
+        {
 
+        }
+        private void PrintCoverTicket()
+        {
+
+        }
+        
         private void btnAddPhotoCd_Click(object sender, EventArgs e)
         {
             var sqlQuery = new SQLCustomClient();
@@ -3735,7 +5269,41 @@ namespace Mbc5.Forms
             ShippingEmail();
         }
 
-        
+        private void cstsvcdteDateTimePicker_Leave_1(object sender, EventArgs e)
+        {
+            var result = this.WipUpdate();
+            if (result.Result.IsError)
+            {
+                MbcMessageBox.Error(result.Result.Errors[0].ErrorMessage, "");
+            }
+        }
+
+        private void btnMeridianTicket_Click(object sender, EventArgs e)
+        {
+            MbcMessageBox.Information("To be implemented");
+        }
+
+        private void btnCvrUpdate_Click(object sender, EventArgs e)
+        {
+            var result=UpdateCoverWip();
+            if (result.Result.IsError)
+            {
+                MbcMessageBox.Error("Failed to update cover WIP: " + result.Result.Errors[0].ErrorMessage);
+            }
+        }
+
+        private void btnBindery_Click(object sender, EventArgs e)
+        {
+            MbcMessageBox.Information("To be implemented");
+            if (Company!="MBC")
+            {
+                return;
+           }
+
+
+        }
+
+
 
 
 

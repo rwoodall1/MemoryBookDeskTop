@@ -75,4 +75,104 @@ namespace BindingModels
 		public string Zip { get; set; }
 		public decimal Payment { get; set; }
 	}
+    public class SpecialCoverDats
+    {
+        public int l_recv { set; get;}
+        public int l_toprod { get; set;}
+        public int l_wdr1 { get; set; }
+        public int l_wdr2 { get; set; }
+        public int l_wdr3 { get; set; }
+        public int l_wdr4 { get; set; }
+        public int l_wdr5 { get; set; }
+        public int l_wdr6 { get; set; }
+        public int l_wdr7 { get; set; }
+        public int l_wdr8 { get; set; }
+        public int l_wdr9 { get; set; }
+        public int l_wdr10 { get; set; }
+        public int l_wdr11 { get; set; }
+        public int l_wdr12 { get; set; }
+        public int l_wdr13 { get; set; }
+        public int l_wdr14 { get; set; }
+        public int l_wdr15 { get; set; }
+        public int l_wdr16 { get; set; }
+        public int l_wdr17 { get; set; }
+        public int l_wdr18 { get; set; }
+        public int l_wdr19 { get; set; }
+        public int l_wdr20 { get; set; }
+        public int l_wdr21 { get; set; }
+        public int l_wdr22 { get; set; }
+        public int l_wdr23 { get; set; }
+        public int l_wdr24 { get; set; }
+        public int l_wdr25 { get; set; }
+        public int l_wdr26 { get; set; }
+        public int l_wdr27 { get; set; }
+        public int l_wdr28 { get; set; }
+        public int l_wdr29 { get; set; }
+        public int l_wdr30 { get; set; }
+        public int l_wdr31 { get; set; }
+        public int l_wdr32 { get; set; }
+        public int l_wdr33 { get; set; }
+        public int l_wdr34 { get; set; }
+        public int l_wdr35 { get; set; }
+        public int l_wdr36 { get; set; }
+        public int l_wdr37 { get; set; }
+        public int l_wdr38 { get; set; }
+        public int l_wdr39 { get; set; }
+        public int l_wdr40 { get; set; }
+        public int l_wdr41 { get; set; }
+        public int l_wdr42 { get; set; }
+        public int l_wdr43 { get; set; }
+        public int l_wdr44 { get; set; }
+        public int l_wdr45 { get; set; }
+        public int l_wdr46 { get; set; }
+        public int l_wdr47 { get; set; }
+        public int l_wdr48 { get; set; }
+        public int l_wdr49 { get; set; }
+        public int l_wdr50 { get; set; }
+    }
+    public class SpecialCoverTicket
+    {
+        public string BarCode { get; set; }
+        public string Schcode { get; set; }
+        public string PrtVend { get; set; }
+        public string Prodno { get; set; }
+        public string Schname { get; set; }
+        public string CvrStock { get; set; }
+        public string Bind { get; set; }
+        public string ContrYear { get; set; }
+        public string Colors { get; set; }
+        public string Clr1 { get; set; }
+        public string Clr2 { get; set; }
+        public string Clr3 { get; set; }
+        public string Clr4 { get; set; }
+        public string SpecCover { get; set; }
+        public DateTime ScRecv { get; set; }
+        public int ReqstdCpy { get; set; }
+        public int NoPages { get; set; }
+        public string Desc { get; set; }
+        public string Desc2 { get; set; }
+        public string Desc3 { get; set; }
+        public string Desc4 { get; set; }
+        public string CoverDesc { get; set; }
+        public bool Scname { get; set; }
+        public bool Yr { get; set; }
+        public bool IndivName { get; set; }
+        public bool Icon { get; set; }
+        public bool MK { get; set; }
+        public string SchoolColors { get; set; }//cust
+        public bool TypeSet { get; set; }
+        public bool IndivPic { get; set; }
+        public bool Emailed { get; set; }
+        public bool Foiling { get; set; }
+        public string FoilClr { get; set; }
+        public string Mascot { get; set; }
+        public int NumToPerso { get; set; }
+        public string Front { get; set; }
+        public string Spine { get; set; }
+        public string CustSubmtx { get; set; }//covers
+        public string SpecInst { get; set; }
+
+
+
+    }
 }
