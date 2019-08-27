@@ -5224,11 +5224,159 @@ namespace Mbc5.Forms
         }
         private void PrintCoverTicketDiminished()
         {
+            var drCover = (DataRowView)coversBindingSource1.Current;
+            var drCust = (DataRowView)custBindingSource.Current;
+            var drProd = (DataRowView)produtnBindingSource.Current;
+            var vReqCopy = drCover.Row.IsNull("ReqstdCpy") ? 0 : (int)drCover.Row["ReqstdCpy"];
+            var vLaminated =  drProd.Row["laminated"].ToString();
+            if (vReqCopy == 0)
+            {
+                MbcMessageBox.Information("Please enter the number of  requested copies before printing.");
+                return;
+            }
+            if (vLaminated=="Y")
+            {
+                MbcMessageBox.Information("Lamination value must be M,N or G.");
+                return;
+            }
 
+            try
+            {
+                var cvrData = new SpecialCoverTicket()
+                {
+                    Schcode = Schcode,
+                    Schname = drCust.Row["Schname"].ToString().Trim(),
+                    PrtVend = drCover.Row["PrtVend"].ToString().Trim(),
+                    Invno = drProd.Row.IsNull("Invno") ? 0 : (int)drProd.Row["Invno"],
+                    BarCode = "*MBC0" + Invno.ToString().Trim() + "SC*",
+                    Prodno = drProd.Row["ProdNo"].ToString().Trim(),
+                    ContrYear = drCust.Row["ContrYear"].ToString().Trim(),
+                    CvrStock = drCover.Row["CvrStock"].ToString().Trim(),
+                    Bind = drProd.Row["PerfBind"].ToString().Trim(),
+                    SpecCover = drProd.Row["SpecCover"].ToString().Trim(),
+                    ScRecv = drProd.Row["ScRecv"].ToString(),
+                    ReqstdCpy = drCover.Row.IsNull("ReqstdCpy") ? 0 : (int)drCover.Row["ReqstdCpy"],
+                    NoPages = drProd.Row.IsNull("ProdNoPages") ? 0 : (int)drProd.Row["ProdNoPages"],
+                    SchoolColors = drCust.Row["schcolors"].ToString().Trim(),
+                    IndivName = drProd.Row.IsNull("IndivName") ? false : (bool)drProd.Row["IndivName"],
+                    Foiling = drProd.Row.IsNull("Foiling") ? false : (bool)drProd.Row["Foiling"],
+                    Laminated = drProd.Row["laminated"].ToString()
+                };
+                CoverTicketBindingSource.DataSource = cvrData;
+                reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.SpecialCoverTicket3rd.rdlc";
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DsSpecCvr", CoverTicketBindingSource));
+                
+            }
+            catch (Exception ex) {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .MarkAsCritical()
+                    .Submit();
+                MbcMessageBox.Error(ex.Message);
+                    };
+  
+            
+            try
+            {
+
+                this.reportViewer1.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "");
+            }
         }
         private void PrintCoverTicket()
         {
+            var drCover = (DataRowView)coversBindingSource1.Current;
+            var drCust = (DataRowView)custBindingSource.Current;
+            var drProd = (DataRowView)produtnBindingSource.Current;
+            var vReqCopy = drCover.Row.IsNull("ReqstdCpy") ? 0 : (int)drCover.Row["ReqstdCpy"];
+            var vLaminated = drProd.Row["laminated"].ToString();
+            if (vReqCopy == 0)
+            {
+                MbcMessageBox.Information("Please enter the number of  requested copies before printing.");
+                return;
+            }
+            if (vLaminated == "Y")
+            {
+                MbcMessageBox.Information("Lamination value must be M,N or G.");
+                return;
+            }
 
+            try
+            {
+                var cvrData = new SpecialCoverTicket()
+                {
+                    Schcode = Schcode,
+                    Schname = drCust.Row["Schname"].ToString().Trim(),
+                    PrtVend = drCover.Row["PrtVend"].ToString().Trim(),
+                    Invno = drProd.Row.IsNull("Invno") ? 0 : (int)drProd.Row["Invno"],
+                    BarCode = "*MBC0" + Invno.ToString().Trim() + "SC*",
+                    Prodno = drProd.Row["ProdNo"].ToString().Trim(),
+                    ContrYear = drCust.Row["ContrYear"].ToString().Trim(),
+                    CvrStock = drCover.Row["CvrStock"].ToString().Trim(),
+                    Bind = drProd.Row["PerfBind"].ToString().Trim(),
+                    Colors = drProd.Row["Colors"].ToString().Trim(),
+                    Clr1 = drCover.Row["Clr1"].ToString().Trim(),
+                    Clr2 = drCover.Row["Clr2"].ToString().Trim(),
+                    Clr3 = drCover.Row["Clr3"].ToString().Trim(),
+                    Clr4 = drCover.Row["Clr4"].ToString().Trim(),
+                    SpecCover = drProd.Row["SpecCover"].ToString().Trim(),
+                    ScRecv = drProd.Row["ScRecv"].ToString(),
+                    Laminated = drProd.Row["laminated"].ToString(),
+                ReqstdCpy = drCover.Row.IsNull("ReqstdCpy") ? 0 : (int)drCover.Row["ReqstdCpy"],
+                    NoPages = drProd.Row.IsNull("ProdNoPages") ? 0 : (int)drProd.Row["ProdNoPages"],
+                    Desc = drCover.Row["Desc_"].ToString().Trim(),
+                    Desc2 = drCover.Row["Desc2"].ToString().Trim(),
+                    Desc3 = drCover.Row["Desc3"].ToString().Trim(),
+                    Desc4 = drCover.Row["Desc4"].ToString().Trim(),
+                    CoverDesc = drProd.Row["CoverDesc"].ToString().Trim(),
+                    Scname = drProd.Row.IsNull("scname") ? false : (bool)drProd.Row["scname"],
+                    Yr = drProd.Row.IsNull("Yr") ? false : (bool)drProd.Row["Yr"],
+                    IndivName = drProd.Row.IsNull("IndivName") ? false : (bool)drProd.Row["IndivName"],
+                    Icon = drProd.Row.IsNull("Icon") ? false : (bool)drProd.Row["Icon"],
+                    MK = drProd.Row.IsNull("MK") ? false : (bool)drProd.Row["MK"],
+                    SchoolColors = drCust.Row["schcolors"].ToString().Trim(),
+                    TypeSet = drCover.Row.IsNull("TypeSet") ? false : (bool)drCover.Row["TypeSet"],
+                    IndivPic = drProd.Row.IsNull("IndivPic") ? false : (bool)drProd.Row["IndivPic"],
+                    Emailed = drCover.Row.IsNull("Emailed") ? false : (bool)drCover.Row["Emailed"],
+                    NumToPerso = drProd.Row.IsNull("numtopersonalize") ? 0 : (int)drProd.Row["numtopersonalize"],
+                    Foiling = drProd.Row.IsNull("Foiling") ? false : (bool)drProd.Row["Foiling"],
+                    Front = drCover.Row["Front"].ToString().Trim(),
+                    FoilClr = drProd.Row["FoilClr"].ToString().Trim(),
+                    Spine = drCover.Row["Spine"].ToString().Trim(),
+                    Mascot = drCover.Row["Mascot"].ToString().Trim(),
+                    CustSubmtx = drCover.Row.IsNull("CustSubmtx") ? false : (bool)drCover.Row["CustSubmtx"],
+                    SpecInst = drCover.Row["SpecInst"].ToString().Trim()
+
+                };
+                CoverTicketBindingSource.DataSource = cvrData;
+                reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.SpecialCoverTicket.rdlc";
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DsSpecCvr", CoverTicketBindingSource));
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCoverDetail", coverdetailBindingSource));
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless()
+                    .AddObject(ex)
+                    .MarkAsCritical()
+                    .Submit();
+                MbcMessageBox.Error(ex.Message);
+            };
+
+
+            try
+            {
+
+                this.reportViewer1.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MbcMessageBox.Error(ex.Message, "");
+            }
         }
         
         private void btnAddPhotoCd_Click(object sender, EventArgs e)

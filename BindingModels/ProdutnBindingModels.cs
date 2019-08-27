@@ -136,6 +136,7 @@ namespace BindingModels
         public string Schcode { get; set; }
         public string PrtVend { get; set; }
         public string Prodno { get; set; }
+        public int Invno { get; set; }
         public string Schname { get; set; }
         public string CvrStock { get; set; }
         public string Bind { get; set; }
@@ -146,7 +147,7 @@ namespace BindingModels
         public string Clr3 { get; set; }
         public string Clr4 { get; set; }
         public string SpecCover { get; set; }
-        public DateTime ScRecv { get; set; }
+        public string ScRecv { get; set; }
         public int ReqstdCpy { get; set; }
         public int NoPages { get; set; }
         public string Desc { get; set; }
@@ -169,9 +170,9 @@ namespace BindingModels
         public int NumToPerso { get; set; }
         public string Front { get; set; }
         public string Spine { get; set; }
-        public string CustSubmtx { get; set; }//covers
+        public bool CustSubmtx { get; set; }//covers
         public string SpecInst { get; set; }
-
+        public string Laminated { get; set; }
 
 
     }

@@ -569,6 +569,7 @@ namespace Mbc5.Forms
             this.invdetailTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.invdetailTableAdapter();
             this.paymntTableAdapter = new Mbc5.DataSets.dsInvoiceTableAdapters.paymntTableAdapter();
             this.vendorTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.vendorTableAdapter();
+            this.CoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -769,6 +770,7 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // companyLabel
@@ -3474,26 +3476,26 @@ namespace Mbc5.Forms
             this.mnCust,
             this.mnBackGround});
             this.addItemMenu.Name = "addItemMenu";
-            this.addItemMenu.Size = new System.Drawing.Size(181, 92);
+            this.addItemMenu.Size = new System.Drawing.Size(180, 70);
             // 
             // mnType
             // 
             this.mnType.Name = "mnType";
-            this.mnType.Size = new System.Drawing.Size(180, 22);
+            this.mnType.Size = new System.Drawing.Size(179, 22);
             this.mnType.Text = "Add Type Style";
             this.mnType.Click += new System.EventHandler(this.mnType_Click);
             // 
             // mnCust
             // 
             this.mnCust.Name = "mnCust";
-            this.mnCust.Size = new System.Drawing.Size(180, 22);
+            this.mnCust.Size = new System.Drawing.Size(179, 22);
             this.mnCust.Text = "Add Customer Type";
             this.mnCust.Click += new System.EventHandler(this.mnCust_Click);
             // 
             // mnBackGround
             // 
             this.mnBackGround.Name = "mnBackGround";
-            this.mnBackGround.Size = new System.Drawing.Size(180, 22);
+            this.mnBackGround.Size = new System.Drawing.Size(179, 22);
             this.mnBackGround.Text = "Add Back Ground";
             this.mnBackGround.Click += new System.EventHandler(this.mnBackGround_Click);
             // 
@@ -4699,7 +4701,7 @@ namespace Mbc5.Forms
             // 
             // icon_CheckBox
             // 
-            this.icon_CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "icon_", true));
+            this.icon_CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "icon", true));
             this.icon_CheckBox.Location = new System.Drawing.Point(686, 408);
             this.icon_CheckBox.Name = "icon_CheckBox";
             this.icon_CheckBox.Size = new System.Drawing.Size(57, 16);
@@ -6418,6 +6420,7 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -6788,5 +6791,6 @@ namespace Mbc5.Forms
         private CustomControls.DateBox houtDateBox;
         private System.Windows.Forms.TextBox diecutTextBox1;
         private CustomControls.DateBox dbScRecvDate;
+        private System.Windows.Forms.BindingSource CoverTicketBindingSource;
     }
 }
