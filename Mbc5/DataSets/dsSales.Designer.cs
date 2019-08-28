@@ -729,6 +729,22 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnmsstanqty1;
             
+            private global::System.Data.DataColumn columnOnlineTaxCollected;
+            
+            private global::System.Data.DataColumn columnOnlinePayTaxRate;
+            
+            private global::System.Data.DataColumn columnNoOnlinePay;
+            
+            private global::System.Data.DataColumn columnTaxOnlinePay;
+            
+            private global::System.Data.DataColumn columndedayin;
+            
+            private global::System.Data.DataColumn columnDateToIncrease;
+            
+            private global::System.Data.DataColumn columnPriceIncrease;
+            
+            private global::System.Data.DataColumn columnOnlinePayHasBeenIncreased;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public quotesDataTable() {
@@ -2284,6 +2300,70 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OnlineTaxCollectedColumn {
+                get {
+                    return this.columnOnlineTaxCollected;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OnlinePayTaxRateColumn {
+                get {
+                    return this.columnOnlinePayTaxRate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NoOnlinePayColumn {
+                get {
+                    return this.columnNoOnlinePay;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TaxOnlinePayColumn {
+                get {
+                    return this.columnTaxOnlinePay;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn dedayinColumn {
+                get {
+                    return this.columndedayin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DateToIncreaseColumn {
+                get {
+                    return this.columnDateToIncrease;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PriceIncreaseColumn {
+                get {
+                    return this.columnPriceIncrease;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OnlinePayHasBeenIncreasedColumn {
+                get {
+                    return this.columnOnlinePayHasBeenIncreased;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2509,7 +2589,15 @@ namespace Mbc5.DataSets {
                         string jobno, 
                         System.DateTime shpdate, 
                         bool ColorPriceOverRide, 
-                        int msstanqty1) {
+                        int msstanqty1, 
+                        decimal OnlineTaxCollected, 
+                        decimal OnlinePayTaxRate, 
+                        bool NoOnlinePay, 
+                        bool TaxOnlinePay, 
+                        System.DateTime dedayin, 
+                        System.DateTime DateToIncrease, 
+                        decimal PriceIncrease, 
+                        bool OnlinePayHasBeenIncreased) {
                 quotesRow rowquotesRow = ((quotesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         invno,
@@ -2701,7 +2789,15 @@ namespace Mbc5.DataSets {
                         jobno,
                         shpdate,
                         ColorPriceOverRide,
-                        msstanqty1};
+                        msstanqty1,
+                        OnlineTaxCollected,
+                        OnlinePayTaxRate,
+                        NoOnlinePay,
+                        TaxOnlinePay,
+                        dedayin,
+                        DateToIncrease,
+                        PriceIncrease,
+                        OnlinePayHasBeenIncreased};
                 rowquotesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowquotesRow);
                 return rowquotesRow;
@@ -2921,6 +3017,14 @@ namespace Mbc5.DataSets {
                 this.columnshpdate = base.Columns["shpdate"];
                 this.columnColorPriceOverRide = base.Columns["ColorPriceOverRide"];
                 this.columnmsstanqty1 = base.Columns["msstanqty1"];
+                this.columnOnlineTaxCollected = base.Columns["OnlineTaxCollected"];
+                this.columnOnlinePayTaxRate = base.Columns["OnlinePayTaxRate"];
+                this.columnNoOnlinePay = base.Columns["NoOnlinePay"];
+                this.columnTaxOnlinePay = base.Columns["TaxOnlinePay"];
+                this.columndedayin = base.Columns["dedayin"];
+                this.columnDateToIncrease = base.Columns["DateToIncrease"];
+                this.columnPriceIncrease = base.Columns["PriceIncrease"];
+                this.columnOnlinePayHasBeenIncreased = base.Columns["OnlinePayHasBeenIncreased"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3306,6 +3410,22 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnColorPriceOverRide);
                 this.columnmsstanqty1 = new global::System.Data.DataColumn("msstanqty1", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmsstanqty1);
+                this.columnOnlineTaxCollected = new global::System.Data.DataColumn("OnlineTaxCollected", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOnlineTaxCollected);
+                this.columnOnlinePayTaxRate = new global::System.Data.DataColumn("OnlinePayTaxRate", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOnlinePayTaxRate);
+                this.columnNoOnlinePay = new global::System.Data.DataColumn("NoOnlinePay", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNoOnlinePay);
+                this.columnTaxOnlinePay = new global::System.Data.DataColumn("TaxOnlinePay", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTaxOnlinePay);
+                this.columndedayin = new global::System.Data.DataColumn("dedayin", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndedayin);
+                this.columnDateToIncrease = new global::System.Data.DataColumn("DateToIncrease", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateToIncrease);
+                this.columnPriceIncrease = new global::System.Data.DataColumn("PriceIncrease", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPriceIncrease);
+                this.columnOnlinePayHasBeenIncreased = new global::System.Data.DataColumn("OnlinePayHasBeenIncreased", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOnlinePayHasBeenIncreased);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columninvno}, true));
                 this.columninvno.AllowDBNull = false;
@@ -7431,6 +7551,134 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal OnlineTaxCollected {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablequotes.OnlineTaxCollectedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OnlineTaxCollected\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.OnlineTaxCollectedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal OnlinePayTaxRate {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablequotes.OnlinePayTaxRateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OnlinePayTaxRate\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.OnlinePayTaxRateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool NoOnlinePay {
+                get {
+                    try {
+                        return ((bool)(this[this.tablequotes.NoOnlinePayColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NoOnlinePay\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.NoOnlinePayColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool TaxOnlinePay {
+                get {
+                    try {
+                        return ((bool)(this[this.tablequotes.TaxOnlinePayColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TaxOnlinePay\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.TaxOnlinePayColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime dedayin {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablequotes.dedayinColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dedayin\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.dedayinColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime DateToIncrease {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablequotes.DateToIncreaseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DateToIncrease\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.DateToIncreaseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal PriceIncrease {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablequotes.PriceIncreaseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PriceIncrease\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.PriceIncreaseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool OnlinePayHasBeenIncreased {
+                get {
+                    try {
+                        return ((bool)(this[this.tablequotes.OnlinePayHasBeenIncreasedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OnlinePayHasBeenIncreased\' in table \'quotes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablequotes.OnlinePayHasBeenIncreasedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsprodnoNull() {
                 return this.IsNull(this.tablequotes.prodnoColumn);
             }
@@ -9684,6 +9932,102 @@ namespace Mbc5.DataSets {
             public void Setmsstanqty1Null() {
                 this[this.tablequotes.msstanqty1Column] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsOnlineTaxCollectedNull() {
+                return this.IsNull(this.tablequotes.OnlineTaxCollectedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetOnlineTaxCollectedNull() {
+                this[this.tablequotes.OnlineTaxCollectedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsOnlinePayTaxRateNull() {
+                return this.IsNull(this.tablequotes.OnlinePayTaxRateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetOnlinePayTaxRateNull() {
+                this[this.tablequotes.OnlinePayTaxRateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsNoOnlinePayNull() {
+                return this.IsNull(this.tablequotes.NoOnlinePayColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetNoOnlinePayNull() {
+                this[this.tablequotes.NoOnlinePayColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTaxOnlinePayNull() {
+                return this.IsNull(this.tablequotes.TaxOnlinePayColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTaxOnlinePayNull() {
+                this[this.tablequotes.TaxOnlinePayColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsdedayinNull() {
+                return this.IsNull(this.tablequotes.dedayinColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetdedayinNull() {
+                this[this.tablequotes.dedayinColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDateToIncreaseNull() {
+                return this.IsNull(this.tablequotes.DateToIncreaseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDateToIncreaseNull() {
+                this[this.tablequotes.DateToIncreaseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPriceIncreaseNull() {
+                return this.IsNull(this.tablequotes.PriceIncreaseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPriceIncreaseNull() {
+                this[this.tablequotes.PriceIncreaseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsOnlinePayHasBeenIncreasedNull() {
+                return this.IsNull(this.tablequotes.OnlinePayHasBeenIncreasedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetOnlinePayHasBeenIncreasedNull() {
+                this[this.tablequotes.OnlinePayHasBeenIncreasedColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -10814,6 +11158,14 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             tableMapping.ColumnMappings.Add("shpdate", "shpdate");
             tableMapping.ColumnMappings.Add("ColorPriceOverRide", "ColorPriceOverRide");
             tableMapping.ColumnMappings.Add("msstanqty", "msstanqty1");
+            tableMapping.ColumnMappings.Add("OnlineTaxCollected", "OnlineTaxCollected");
+            tableMapping.ColumnMappings.Add("OnlinePayTaxRate", "OnlinePayTaxRate");
+            tableMapping.ColumnMappings.Add("NoOnlinePay", "NoOnlinePay");
+            tableMapping.ColumnMappings.Add("TaxOnlinePay", "TaxOnlinePay");
+            tableMapping.ColumnMappings.Add("dedayin", "dedayin");
+            tableMapping.ColumnMappings.Add("DateToIncrease", "DateToIncrease");
+            tableMapping.ColumnMappings.Add("PriceIncrease", "PriceIncrease");
+            tableMapping.ColumnMappings.Add("OnlinePayHasBeenIncreased", "OnlinePayHasBeenIncreased");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -11154,8 +11506,12 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "g = @extrchg, schooltaxrate = @schooltaxrate, schcode = @schcode, \r\n            " +
                 "             donotchargeschoolsalestax = @donotchargeschoolsalestax, nopages = @" +
                 "nopages, nocopies = @nocopies, schooltax = @schooltax, ColorPriceOverRide = @Col" +
-                "orPriceOverRide\r\nWHERE        (invno = @Original_invno) AND (TimeStamp = @Origin" +
-                "al_TimeStamp)";
+                "orPriceOverRide, OnlineTaxCollected = @OnlineTaxCollected, \r\n                   " +
+                "      OnlinePayTaxRate = @OnlinePayTaxRate, NoOnlinePay = @NoOnlinePay, TaxOnlin" +
+                "ePay = @TaxOnlinePay, DateToIncrease = @DateToIncrease, PriceIncrease = @PriceIn" +
+                "crease, \r\n                         OnlinePayHasBeenIncreased = @OnlinePayHasBeen" +
+                "Increased\r\nWHERE        (invno = @Original_invno) AND (TimeStamp = @Original_Tim" +
+                "eStamp)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prodno", global::System.Data.SqlDbType.Char, 12, global::System.Data.ParameterDirection.Input, 0, 0, "prodno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -11341,6 +11697,13 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nocopies", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "nocopies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schooltax", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "schooltax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ColorPriceOverRide", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "ColorPriceOverRide", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlineTaxCollected", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "OnlineTaxCollected", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlinePayTaxRate", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 4, "OnlinePayTaxRate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NoOnlinePay", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "NoOnlinePay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxOnlinePay", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "TaxOnlinePay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateToIncrease", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateToIncrease", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PriceIncrease", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "PriceIncrease", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OnlinePayHasBeenIncreased", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "OnlinePayHasBeenIncreased", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -11404,9 +11767,12 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "fied, quotes.DateCreated, quotes.IconCopies, quotes.IconAmt, quotes.extrchg, quo" +
                 "tes.schooltaxrate, quotes.schcode, quotes.donotchargeschoolsalestax, \r\n         " +
                 "                quotes.nopages, quotes.nocopies, quotes.schooltax, produtn.kitre" +
-                "cvd, produtn.jobno, produtn.shpdate\r\nFROM            quotes INNER JOIN\r\n        " +
-                "                 produtn ON quotes.invno = produtn.invno\r\nWHERE        (quotes.s" +
-                "chcode = @schcode)\r\nORDER BY quotes.qtedate DESC";
+                "cvd, produtn.jobno, produtn.shpdate, produtn.dedayin, quotes.OnlineTaxCollected," +
+                " quotes.OnlinePayTaxRate, quotes.NoOnlinePay, quotes.TaxOnlinePay, \r\n           " +
+                "              quotes.DateToIncrease, quotes.PriceIncrease, quotes.OnlinePayHasBe" +
+                "enIncreased\r\nFROM            quotes INNER JOIN\r\n                         produtn" +
+                " ON quotes.invno = produtn.invno\r\nWHERE        (quotes.schcode = @schcode)\r\nORDE" +
+                "R BY quotes.qtedate DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -11457,8 +11823,11 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                 "lines, quotes.totalpersonline, quotes.totalsoldonline, quotes.webonly, quotes.xt" +
                 "rabkno, quotes.xtrabkprc, quotes.yiramt, quotes.yirschool, \r\n                   " +
                 "      quotes.yirsovrride, quotes.yrdiscount, quotes.yrdiscountamt, produtn.kitre" +
-                "cvd, produtn.jobno\r\nFROM            quotes INNER JOIN\r\n                         " +
-                "produtn ON quotes.invno = produtn.invno\r\nWHERE        (quotes.invno = @invno)";
+                "cvd, produtn.jobno, produtn.dedayin, quotes.OnlineTaxCollected, quotes.OnlinePay" +
+                "TaxRate, quotes.NoOnlinePay, quotes.TaxOnlinePay, \r\n                         quo" +
+                "tes.DateToIncrease, quotes.PriceIncrease, quotes.OnlinePayHasBeenIncreased\r\nFROM" +
+                "            quotes INNER JOIN\r\n                         produtn ON quotes.invno " +
+                "= produtn.invno\r\nWHERE        (quotes.invno = @invno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -13084,6 +13453,13 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<int> nocopies, 
                     global::System.Nullable<decimal> schooltax, 
                     global::System.Nullable<bool> ColorPriceOverRide, 
+                    global::System.Nullable<decimal> OnlineTaxCollected, 
+                    global::System.Nullable<decimal> OnlinePayTaxRate, 
+                    global::System.Nullable<bool> NoOnlinePay, 
+                    global::System.Nullable<bool> TaxOnlinePay, 
+                    global::System.Nullable<global::System.DateTime> DateToIncrease, 
+                    global::System.Nullable<decimal> PriceIncrease, 
+                    global::System.Nullable<bool> OnlinePayHasBeenIncreased, 
                     int Original_invno, 
                     byte[] Original_TimeStamp) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(invno));
@@ -14185,12 +14561,54 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[183].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[184].Value = ((int)(Original_invno));
-            if ((Original_TimeStamp == null)) {
-                this.Adapter.UpdateCommand.Parameters[185].Value = global::System.DBNull.Value;
+            if ((OnlineTaxCollected.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[184].Value = ((decimal)(OnlineTaxCollected.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[185].Value = ((byte[])(Original_TimeStamp));
+                this.Adapter.UpdateCommand.Parameters[184].Value = global::System.DBNull.Value;
+            }
+            if ((OnlinePayTaxRate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[185].Value = ((decimal)(OnlinePayTaxRate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[185].Value = global::System.DBNull.Value;
+            }
+            if ((NoOnlinePay.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[186].Value = ((bool)(NoOnlinePay.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[186].Value = global::System.DBNull.Value;
+            }
+            if ((TaxOnlinePay.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[187].Value = ((bool)(TaxOnlinePay.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[187].Value = global::System.DBNull.Value;
+            }
+            if ((DateToIncrease.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[188].Value = ((System.DateTime)(DateToIncrease.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[188].Value = global::System.DBNull.Value;
+            }
+            if ((PriceIncrease.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[189].Value = ((decimal)(PriceIncrease.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[189].Value = global::System.DBNull.Value;
+            }
+            if ((OnlinePayHasBeenIncreased.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[190].Value = ((bool)(OnlinePayHasBeenIncreased.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[190].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[191].Value = ((int)(Original_invno));
+            if ((Original_TimeStamp == null)) {
+                this.Adapter.UpdateCommand.Parameters[192].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[192].Value = ((byte[])(Original_TimeStamp));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -14396,9 +14814,16 @@ namespace Mbc5.DataSets.dsSalesTableAdapters {
                     global::System.Nullable<int> nocopies, 
                     global::System.Nullable<decimal> schooltax, 
                     global::System.Nullable<bool> ColorPriceOverRide, 
+                    global::System.Nullable<decimal> OnlineTaxCollected, 
+                    global::System.Nullable<decimal> OnlinePayTaxRate, 
+                    global::System.Nullable<bool> NoOnlinePay, 
+                    global::System.Nullable<bool> TaxOnlinePay, 
+                    global::System.Nullable<global::System.DateTime> DateToIncrease, 
+                    global::System.Nullable<decimal> PriceIncrease, 
+                    global::System.Nullable<bool> OnlinePayHasBeenIncreased, 
                     int Original_invno, 
                     byte[] Original_TimeStamp) {
-            return this.Update(Original_invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallovelines, onlinenotes, ModifiedBy, DateCreated, IconCopies, IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages, nocopies, schooltax, ColorPriceOverRide, Original_invno, Original_TimeStamp);
+            return this.Update(Original_invno, prodno, booktype, qtedate, contryear, book_ea, book_price, pryn, prof, coyn, conven, specea, speccvr, scovrde, layn, laminate, peyn, perfbind, foilck, foilamt, insck, insamt, spirck, spiramt, hdbky_n, hardback, casey_n, caseamt, customy_n, customized, misc, mdesc, sbtot, dc1, dp1, disc1, dc2, dp2, disc2, dp3desc, dp3, disc3, dp4, disc4, cred_etc, adjbef, adjaftr, fbkprc, ftotprc, source, xtrabkno, xtrabkprc, desc1, desc1tot, desc2, desc2tot, ponum, invoiced, newprice, schout, saletax, allclrck, allclramt, inkclr, foiladamt, desc3, desc3tot, desc4, desc4tot, clrpgdesc, clrpgtot, glspaper, glsamt, bpovrde, holdpmt, bpyear, themck, themamt, yirschool, story, supplements, yiramt, storyamt, suppamt, persamount, perstotal, perscopies, oursupp, oursuppamt, ourovrride, dp1desc, rebookinvremv, rebookinvremv1, rebookinvremv2, rebookinvremv3, rebookinvremv4, rebookinvremv5, rebookinvremv6, norebookletter, myovrride, hbovrride, profovrride, conovrride, themovrride, cbovrride, spiovrride, pbovrride, yirsovrride, ourstyovrride, laminateovrride, foilyearovrride, sdlstich, sdlstichamt, copiesovride, bascicpp, perpp, agreerec, basicamoun, peramount, oprcperbk, oprcperbk2, agreedte, onlinecuto, basicpp, msstanqty, msstandtot, fldtype, isfolder, priceovrd, mlamsoft, mlamhrd, mlaminationamt, mlamination, opinkpers, opfoilpers, opinkpersamt, opfoilpersamt, oppicpers, oppicpersamt, opcustom, opcustomamt, opfoiltxtamt, opfoiltxt, opinkamt, opink, yrdiscount, luvlines, yrdiscountamt, luvlineamt, fullad, fulladamt, halfad, halfadamt, quarterad, quarteradamt, eighthad, eighthadamt, adline, cred_etc2, desc22, adjaftr2, desc22tot, prcor, adcuto, webonly, totalsoldonline, totalpersonline, totaldollarsonline, freebooks, totalads, totallovelines, onlinenotes, ModifiedBy, DateCreated, IconCopies, IconAmt, extrchg, schooltaxrate, schcode, donotchargeschoolsalestax, nopages, nocopies, schooltax, ColorPriceOverRide, OnlineTaxCollected, OnlinePayTaxRate, NoOnlinePay, TaxOnlinePay, DateToIncrease, PriceIncrease, OnlinePayHasBeenIncreased, Original_invno, Original_TimeStamp);
         }
     }
     

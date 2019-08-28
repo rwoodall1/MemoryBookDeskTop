@@ -52,6 +52,7 @@ namespace Mbc5.Forms
                 tsLastNameSearch.Visible = true;
                 tsZipCodeSearch.Visible = true;
                 tsEmailSearch.Visible = true;
+                tsJobNo.Visible = true;
             } else if (formName == "frmMerCust") {
                 tsFirstNameSearch.Visible = true;
                 tsLastNameSearch.Visible = true;
@@ -61,9 +62,12 @@ namespace Mbc5.Forms
 
             } else if (formName == "frmSales")
             {
-                tsProdutnNumberSearch.Visible = false;
-            } else if (formName == "frmSales") {
-                tsProdutnNumberSearch.Visible = false;
+               
+                tsJobNo.Visible = true;
+            } else if (formName == "frmMSales") {
+            
+            } else if (formName=="frmProdutn") {
+                tsJobNo.Visible = true;
             } else if (formName == "frmBids")
             {
 
@@ -93,6 +97,7 @@ namespace Mbc5.Forms
             tsZipCodeSearch.Visible = false;
             tsEmailSearch.Visible = false;
             tsJobNo.Visible = false;
+            tsJobNo.Visible =false;
 
         }
         public void PrintScreen() {
@@ -1146,6 +1151,20 @@ namespace Mbc5.Forms
                 SetMenu();
                 mnuMain.Enabled = true;
                 this.WindowState = FormWindowState.Maximized;
+
+            }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activeform = this.ActiveMdiChild as BaseClass.frmBase;
+                activeform.JobNoSearch();
+
+            }
+            catch (Exception ex)
+            {
 
             }
         }

@@ -462,7 +462,7 @@ namespace Mbc5.Dialogs {
                        
                             break;
                         case "SALES":
-                            cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno AS Invoice,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode,P.ProdNo Left Join Produtn P on Q.Invno=P.Invno Left Join Produtn P on Q.Invno=P.Invno Where P.JobNo !='' Order By Jobno";
+                            cmdtext = @"Select COALESCE(P.JobNo,'')AS JobNo,C.Schcode,C.Schname,Q.Invno AS Invoice,P.ProdNo,C.Contryear From Cust C Left Join Quotes Q ON C.schcode=Q.Schcode Left Join Produtn P on Q.Invno=P.Invno  Where P.JobNo !='' Order By Jobno";
                             sqlclient.CommandText(cmdtext);
                             var jobcoderesult = sqlclient.SelectMany<SalesJobCode>();
                             if (jobcoderesult.IsError)
@@ -1052,8 +1052,9 @@ namespace Mbc5.Dialogs {
             this.Cursor = Cursors.Default;
             if (SearchType == "PRODNO")
             {
-                
-                txtSearch.Text = currentSearchValue.Substring(1);
+                if (currentSearchValue!="") {
+                    txtSearch.Text = currentSearchValue.Substring(1);
+                }
             }
             else
             {
@@ -1397,35 +1398,35 @@ namespace Mbc5.Dialogs {
             {
                 this.DialogResult = DialogResult.OK;
                 //cust form
-                if (SearchType == "SCHCODE" && (ReturnForm == "CUST"|| ReturnForm == "MCUST"))
+                if (SearchType == "SCHCODE" && (ReturnForm == "CUST" || ReturnForm == "MCUST"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
 
-                } else if (SearchType == "SCHCODE" && (ReturnForm == "SALES"|| ReturnForm == "MSALES"))
+                } else if (SearchType == "SCHCODE" && (ReturnForm == "SALES" || ReturnForm == "MSALES"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[1].Value;
                 }
-                 else if (SearchType == "SCHCODE" && ReturnForm == "PRODUCTION")
+                else if (SearchType == "SCHCODE" && ReturnForm == "PRODUCTION")
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
-                }else if (SearchType == "SCHCODE" && ReturnForm == "ENDSHEET")
+                } else if (SearchType == "SCHCODE" && ReturnForm == "ENDSHEET")
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
-                }else if (SearchType == "SCHCODE" && ReturnForm == "BIDS")
+                } else if (SearchType == "SCHCODE" && ReturnForm == "BIDS")
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[0].Value.ToString();
-                    this.ReturnValue.Invno= (int)dgSearch.Rows[CurrentIndex].Cells[3].Value;//bid id put in Invno
+                    this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[3].Value;//bid id put in Invno
                 }
-                else if (SearchType == "SCHNAME" && (ReturnForm == "CUST"|| ReturnForm == "MCUST"))
+                else if (SearchType == "SCHNAME" && (ReturnForm == "CUST" || ReturnForm == "MCUST"))
 
                 {
                     //search on schname return code though
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
 
-                } else if (SearchType == "SCHNAME" && (ReturnForm == "SALES"|| ReturnForm == "MSALES"))
+                } else if (SearchType == "SCHNAME" && (ReturnForm == "SALES" || ReturnForm == "MSALES"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[2].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[1].Value;
@@ -1434,7 +1435,7 @@ namespace Mbc5.Dialogs {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
 
-                }else if (SearchType == "SCHNAME" && ReturnForm == "BIDS")
+                } else if (SearchType == "SCHNAME" && ReturnForm == "BIDS")
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[3].Value;
@@ -1449,7 +1450,7 @@ namespace Mbc5.Dialogs {
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
 
                 }
-                else if (SearchType == "JOBNO" && (ReturnForm == "SALES"||ReturnForm=="PRODUCTION"))
+                else if (SearchType == "JOBNO" && (ReturnForm == "SALES" || ReturnForm == "PRODUCTION"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[3].Value;
@@ -1461,12 +1462,12 @@ namespace Mbc5.Dialogs {
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[2].Value;
                 }
 
-                else if (SearchType == "ORACLECODE" &&( ReturnForm == "CUST"|| ReturnForm == "MCUST"))
+                else if (SearchType == "ORACLECODE" && (ReturnForm == "CUST" || ReturnForm == "MCUST"))
 
                 {
                     //search on schname return code though
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
-                } else if (SearchType == "ORACLECODE" && (ReturnForm == "SALES"|| ReturnForm == "MSALES"))
+                } else if (SearchType == "ORACLECODE" && (ReturnForm == "SALES" || ReturnForm == "MSALES"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[3].Value;
@@ -1475,7 +1476,7 @@ namespace Mbc5.Dialogs {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[1].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[3].Value;
                 }
-                else if (SearchType == "PRODNO" && (ReturnForm == "CUST"|| ReturnForm == "MCUST"))
+                else if (SearchType == "PRODNO" && (ReturnForm == "CUST" || ReturnForm == "MCUST"))
                 {
                     //search on schname return code though
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[3].Value.ToString();
@@ -1483,11 +1484,16 @@ namespace Mbc5.Dialogs {
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[3].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[1].Value;
-                }
-                else if (SearchType == "INVNO" && (ReturnForm == "CUST" || ReturnForm == "MCUST"))
+                } else if (SearchType == "PRODNO" && ReturnForm == "SALES") {
+                    
+                        this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[3].Value.ToString();
+                        this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[1].Value;
+                    
+
+                } else if (SearchType == "INVNO" && (ReturnForm == "CUST" || ReturnForm == "MCUST"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[2].Value.ToString();
-                } else if (SearchType == "INVNO" && (ReturnForm == "SALES"|| ReturnForm == "MSALES"))
+                } else if (SearchType == "INVNO" && (ReturnForm == "SALES" || ReturnForm == "MSALES"))
                 {
                     this.ReturnValue.Schcode = dgSearch.Rows[CurrentIndex].Cells[2].Value.ToString();
                     this.ReturnValue.Invno = (int)dgSearch.Rows[CurrentIndex].Cells[0].Value;

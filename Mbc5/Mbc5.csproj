@@ -617,6 +617,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\30256AddressLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321CoverLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321YearBookLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321Envelope.rdlc" />
     <EmbeddedResource Include="Reports\30321ReceivingLabel.rdlc" />

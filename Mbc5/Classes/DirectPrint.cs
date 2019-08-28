@@ -48,17 +48,48 @@ namespace Mbc5.Classes
         }
         public ApiProcessingResult Export(LocalReport report, string _printer)
         {
+            return Export(report, _printer, 1, false);
+        }
+        public ApiProcessingResult Export(LocalReport report, string _printer,short numcopies)
+        {
+            return Export(report, _printer, numcopies,false);
+        }
+        public ApiProcessingResult Export(LocalReport report, string _printer, bool isLabel = false)
+        {
+            return Export(report, _printer, 1, isLabel);
+        }
+       
+            public ApiProcessingResult Export(LocalReport report, string _printer,short numcopies,bool isLabel)
+        {
 			var processingResult = new ApiProcessingResult();
-            string deviceInfo =
-		  @"<DeviceInfo>
+            string deviceInfo = "";
+            if (isLabel)
+            {
+            deviceInfo =
+                 @"<DeviceInfo>
                 <OutputFormat>EMF</OutputFormat>
-                <PageWidth>8.5in</PageWidth>
-                <PageHeight>11in</PageHeight>
-                <MarginTop>0.25in</MarginTop>
-                <MarginLeft>0.25in</MarginLeft>
-                <MarginRight>0.25in</MarginRight>
-                <MarginBottom>0.25in</MarginBottom>
+                <PageWidth>3.5in</PageWidth>
+                <PageHeight>1.4in</PageHeight>
+                <MarginTop>0.0in</MarginTop>
+                <MarginLeft>0.0in</MarginLeft>
+                <MarginRight>0.0in</MarginRight>
+                <MarginBottom>0.0in</MarginBottom>
             </DeviceInfo>";
+            }
+            else
+            {
+                deviceInfo = @"<DeviceInfo>
+                        <OutputFormat>EMF</OutputFormat>
+                        <PageWidth>8.5in</PageWidth>
+                        <PageHeight>11in</PageHeight>
+                        <MarginTop>0.25in</MarginTop>
+                        <MarginLeft>0.25in</MarginLeft>
+                        <MarginRight>0.25in</MarginRight>
+                        <MarginBottom>0.25in</MarginBottom>
+                    </DeviceInfo>";
+            }
+            
+           
             Warning[] warnings;
             m_streams = new List<Stream>();
             try {
@@ -77,7 +108,7 @@ namespace Mbc5.Classes
             }
 
 			
-			var printResult = Print(_printer);
+			var printResult = Print(_printer,numcopies,isLabel);
 			Dispose();
 			return printResult;
 
@@ -87,7 +118,7 @@ namespace Mbc5.Classes
         // Then I modified the Print method to use the default printer instead of the hardcoded 'Microsoft Office Document....' printer.
 
 
-        private ApiProcessingResult Print(string _printer)
+        private ApiProcessingResult Print(string _printer,short numcopies,bool isLabel)
         {
 			var processingResult = new ApiProcessingResult();
 			string printerName;
@@ -113,6 +144,13 @@ namespace Mbc5.Classes
 
             PrintDocument printDoc = new PrintDocument();
             printDoc.PrinterSettings.PrinterName = printerName;
+            printDoc.PrinterSettings.Copies = numcopies;
+            if (isLabel)
+            {
+                printDoc.DefaultPageSettings.Landscape = true;
+            }
+           
+    
             if (!printDoc.PrinterSettings.IsValid)
             {
                 string msg = String.Format(
@@ -125,7 +163,11 @@ namespace Mbc5.Classes
 
             printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
 			try {
-				printDoc.Print();
+               
+                
+                    printDoc.Print();
+                
+				
 			}catch(Exception ex) {
 				processingResult.IsError = true;
 				processingResult.Errors.Add(new ApiProcessingError(ex.Message, ex.Message, ""));

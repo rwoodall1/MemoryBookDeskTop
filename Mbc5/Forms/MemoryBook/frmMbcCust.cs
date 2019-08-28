@@ -2243,6 +2243,11 @@ public override void Cancel() {
             AddSalesRecord();
         }
 
+        private void reportViewer2_RenderingComplete_1(object sender, RenderingCompleteEventArgs e)
+        {
+            reportViewer2.PrintDialog();
+        }
+
 
 
 

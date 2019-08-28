@@ -195,62 +195,6 @@
         <rd:ObjectDataSourceType>BindingModels.SpecialCoverTicket, BindingModels, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
-    <DataSet Name="dsCoverDetail">
-      <Query>
-        <DataSourceName>dsProdutn</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="DescripId">
-          <DataField>DescripId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="war">
-          <DataField>war</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="wdr">
-          <DataField>wdr</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="wtr">
-          <DataField>wtr</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="Invno">
-          <DataField>Invno</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="wir">
-          <DataField>wir</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="id">
-          <DataField>id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="schcode">
-          <DataField>schcode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TableName">
-          <DataField>TableName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>dsProdutn</rd:DataSetName>
-        <rd:SchemaPath>D:\Projects\MemoryBookDeskTop\Mbc5\DataSets\dsProdutn.xsd</rd:SchemaPath>
-        <rd:TableName>coverdetail</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>coverdetailTableAdapter</rd:TableAdapterName>
-      </rd:DataSetInfo>
-    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -275,7 +219,7 @@
             </Paragraphs>
             <rd:DefaultName>BarCode</rd:DefaultName>
             <Top>0.14458in</Top>
-            <Left>5.69791in</Left>
+            <Left>5.32291in</Left>
             <Height>0.25in</Height>
             <Width>2.5625in</Width>
             <Style>
@@ -306,7 +250,7 @@
             </Paragraphs>
             <rd:DefaultName>BarCode</rd:DefaultName>
             <Top>0.39458in</Top>
-            <Left>5.69791in</Left>
+            <Left>5.32291in</Left>
             <Height>0.25in</Height>
             <Width>2.5625in</Width>
             <ZIndex>1</ZIndex>
@@ -339,7 +283,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>0.14458in</Top>
-            <Left>0.34375in</Left>
+            <Left>0.125in</Left>
             <Height>0.34375in</Height>
             <Width>1in</Width>
             <ZIndex>2</ZIndex>
@@ -371,7 +315,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
             <Top>0.51611in</Top>
-            <Left>0.34375in</Left>
+            <Left>0.125in</Left>
             <Height>0.25in</Height>
             <Width>1.83333in</Width>
             <ZIndex>3</ZIndex>
@@ -401,7 +345,7 @@
             </Paragraphs>
             <rd:DefaultName>Schcode</rd:DefaultName>
             <Top>0.83556in</Top>
-            <Left>1.32986in</Left>
+            <Left>1.07986in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>4</ZIndex>
@@ -433,7 +377,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>0.83556in</Top>
-            <Left>0.34375in</Left>
+            <Left>0.125in</Left>
             <Height>0.25in</Height>
             <Width>0.95833in</Width>
             <ZIndex>5</ZIndex>
@@ -465,7 +409,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>1.12722in</Top>
-            <Left>0.34375in</Left>
+            <Left>0.125in</Left>
             <Height>0.25in</Height>
             <Width>0.95833in</Width>
             <ZIndex>6</ZIndex>
@@ -497,7 +441,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>1.43278in</Top>
-            <Left>0.34375in</Left>
+            <Left>0.125in</Left>
             <Height>0.25in</Height>
             <Width>0.95833in</Width>
             <ZIndex>7</ZIndex>
@@ -529,7 +473,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>0.83556in</Top>
-            <Left>5.5325in</Left>
+            <Left>5.4075in</Left>
             <Height>0.25in</Height>
             <Width>0.95833in</Width>
             <ZIndex>8</ZIndex>
@@ -561,7 +505,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>1.78125in</Top>
-            <Left>0.34375in</Left>
+            <Left>0.125in</Left>
             <Height>0.25in</Height>
             <Width>0.95833in</Width>
             <ZIndex>9</ZIndex>
@@ -593,7 +537,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>1.78125in</Top>
-            <Left>2.57292in</Left>
+            <Left>2.32292in</Left>
             <Height>0.25in</Height>
             <Width>0.42708in</Width>
             <ZIndex>10</ZIndex>
@@ -623,7 +567,7 @@
             </Paragraphs>
             <rd:DefaultName>Schname</rd:DefaultName>
             <Top>1.11333in</Top>
-            <Left>1.40625in</Left>
+            <Left>1.15625in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>11</ZIndex>
@@ -653,7 +597,7 @@
             </Paragraphs>
             <rd:DefaultName>Prodno</rd:DefaultName>
             <Top>0.83556in</Top>
-            <Left>6.49083in</Left>
+            <Left>6.36583in</Left>
             <Height>0.25in</Height>
             <Width>1.53125in</Width>
             <ZIndex>12</ZIndex>
@@ -683,7 +627,7 @@
             </Paragraphs>
             <rd:DefaultName>PrtVend</rd:DefaultName>
             <Top>1.43278in</Top>
-            <Left>1.37152in</Left>
+            <Left>1.12152in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>13</ZIndex>
@@ -713,7 +657,7 @@
             </Paragraphs>
             <rd:DefaultName>CvrStock</rd:DefaultName>
             <Top>1.78125in</Top>
-            <Left>1.41319in</Left>
+            <Left>1.16319in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>14</ZIndex>
@@ -743,7 +687,7 @@
             </Paragraphs>
             <rd:DefaultName>Bind</rd:DefaultName>
             <Top>1.78125in</Top>
-            <Left>3in</Left>
+            <Left>2.75in</Left>
             <Height>0.25in</Height>
             <Width>0.46291in</Width>
             <ZIndex>15</ZIndex>
@@ -775,7 +719,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>1.12722in</Top>
-            <Left>6.82292in</Left>
+            <Left>6.69792in</Left>
             <Height>0.25in</Height>
             <Width>0.39583in</Width>
             <ZIndex>16</ZIndex>
@@ -837,7 +781,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.12847in</Top>
-            <Left>0.34375in</Left>
+            <Left>0.125in</Left>
             <Height>0.25in</Height>
             <Width>0.58333in</Width>
             <ZIndex>18</ZIndex>
@@ -869,7 +813,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.12847in</Top>
-            <Left>2.03819in</Left>
+            <Left>1.78819in</Left>
             <Height>0.25in</Height>
             <Width>0.83961in</Width>
             <ZIndex>19</ZIndex>
@@ -899,7 +843,7 @@
             </Paragraphs>
             <rd:DefaultName>SpecCover</rd:DefaultName>
             <Top>2.12847in</Top>
-            <Left>0.98264in</Left>
+            <Left>0.73264in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>20</ZIndex>
@@ -931,7 +875,7 @@
             </Paragraphs>
             <rd:DefaultName>ScRecv</rd:DefaultName>
             <Top>2.12847in</Top>
-            <Left>2.79166in</Left>
+            <Left>2.54166in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>21</ZIndex>
@@ -963,7 +907,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.12847in</Top>
-            <Left>3.95833in</Left>
+            <Left>3.70833in</Left>
             <Height>0.25in</Height>
             <Width>1.03124in</Width>
             <ZIndex>22</ZIndex>
@@ -995,7 +939,7 @@
             </Paragraphs>
             <rd:DefaultName>ReqstdCpy</rd:DefaultName>
             <Top>2.12847in</Top>
-            <Left>4.98957in</Left>
+            <Left>4.73957in</Left>
             <Height>0.25in</Height>
             <Width>0.45576in</Width>
             <ZIndex>23</ZIndex>
@@ -1027,7 +971,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.12847in</Top>
-            <Left>6.03124in</Left>
+            <Left>5.40624in</Left>
             <Height>0.25in</Height>
             <Width>0.85812in</Width>
             <ZIndex>24</ZIndex>
@@ -1059,7 +1003,7 @@
             </Paragraphs>
             <rd:DefaultName>NoPages</rd:DefaultName>
             <Top>2.12847in</Top>
-            <Left>6.82292in</Left>
+            <Left>6.19792in</Left>
             <Height>0.25in</Height>
             <Width>0.28307in</Width>
             <ZIndex>25</ZIndex>
@@ -1091,7 +1035,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.80902in</Top>
-            <Left>0.34375in</Left>
+            <Left>0.125in</Left>
             <Height>0.25in</Height>
             <Width>1.16195in</Width>
             <ZIndex>26</ZIndex>
@@ -1228,7 +1172,7 @@
             </TopImage>
             <DataSetName>DsSpecCvr</DataSetName>
             <Top>2.80902in</Top>
-            <Left>1.56125in</Left>
+            <Left>1.31125in</Left>
             <Height>0.20833in</Height>
             <Width>0.15394in</Width>
             <ZIndex>27</ZIndex>
@@ -1258,7 +1202,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.80902in</Top>
-            <Left>1.84117in</Left>
+            <Left>1.59117in</Left>
             <Height>0.25in</Height>
             <Width>0.53035in</Width>
             <ZIndex>28</ZIndex>
@@ -1290,7 +1234,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.48958in</Top>
-            <Left>0.34375in</Left>
+            <Left>0.125in</Left>
             <Height>0.25in</Height>
             <Width>1.00836in</Width>
             <ZIndex>29</ZIndex>
@@ -1320,7 +1264,7 @@
             </Paragraphs>
             <rd:DefaultName>SchoolColors</rd:DefaultName>
             <Top>2.48958in</Top>
-            <Left>1.43891in</Left>
+            <Left>1.18891in</Left>
             <Height>0.25in</Height>
             <Width>1.79025in</Width>
             <ZIndex>30</ZIndex>
@@ -1457,7 +1401,7 @@
             </TopImage>
             <DataSetName>DsSpecCvr</DataSetName>
             <Top>2.80902in</Top>
-            <Left>2.41319in</Left>
+            <Left>2.16319in</Left>
             <Height>0.20833in</Height>
             <Width>0.15394in</Width>
             <ZIndex>31</ZIndex>
@@ -1495,7 +1439,7 @@
           </Line>
           <Line Name="Line11">
             <Top>2.31979in</Top>
-            <Left>5.02958in</Left>
+            <Left>4.77958in</Left>
             <Height>0in</Height>
             <Width>0.39583in</Width>
             <ZIndex>34</ZIndex>
@@ -1507,7 +1451,7 @@
           </Line>
           <Line Name="Line12">
             <Top>2.31979in</Top>
-            <Left>6.92291in</Left>
+            <Left>6.29791in</Left>
             <Height>0in</Height>
             <Width>0.14583in</Width>
             <ZIndex>35</ZIndex>
@@ -1519,7 +1463,7 @@
           </Line>
           <Line Name="Line13">
             <Top>2.31979in</Top>
-            <Left>2.89169in</Left>
+            <Left>2.64169in</Left>
             <Height>0in</Height>
             <Width>0.89583in</Width>
             <ZIndex>36</ZIndex>
@@ -1531,7 +1475,7 @@
           </Line>
           <Line Name="Line14">
             <Top>2.31979in</Top>
-            <Left>0.98312in</Left>
+            <Left>0.73312in</Left>
             <Height>0in</Height>
             <Width>1.02083in</Width>
             <ZIndex>37</ZIndex>
@@ -1543,7 +1487,7 @@
           </Line>
           <Line Name="Line20">
             <Top>1.98125in</Top>
-            <Left>3in</Left>
+            <Left>2.75in</Left>
             <Height>0in</Height>
             <Width>0.39583in</Width>
             <ZIndex>38</ZIndex>
@@ -1555,7 +1499,7 @@
           </Line>
           <Line Name="Line21">
             <Top>1.98229in</Top>
-            <Left>1.44208in</Left>
+            <Left>1.19208in</Left>
             <Height>0in</Height>
             <Width>0.89583in</Width>
             <ZIndex>39</ZIndex>
@@ -1567,7 +1511,7 @@
           </Line>
           <Line Name="Line29">
             <Top>2.68229in</Top>
-            <Left>1.46708in</Left>
+            <Left>1.21708in</Left>
             <Height>0in</Height>
             <Width>1.77083in</Width>
             <ZIndex>40</ZIndex>
@@ -1581,10 +1525,10 @@
         <Height>4.64931in</Height>
         <Style />
       </Body>
-      <Width>8.26041in</Width>
+      <Width>7.89708in</Width>
       <Page>
         <PageFooter>
-          <Height>3.67708in</Height>
+          <Height>0.87028in</Height>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
             <Textbox Name="Textbox44">
@@ -1604,8 +1548,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>0.74132in</Top>
-              <Left>7.0425in</Left>
+              <Top>0.36632in</Top>
+              <Left>6.4175in</Left>
               <Height>0.25in</Height>
               <Width>1.14583in</Width>
               <Style>
@@ -1636,7 +1580,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Schname</rd:DefaultName>
-              <Top>0.14583in</Top>
+              <Top>0.02083in</Top>
               <Left>0.1302in</Left>
               <Height>0.25in</Height>
               <Width>3.09896in</Width>
@@ -1668,8 +1612,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
-              <Top>0.14583in</Top>
-              <Left>3.55558in</Left>
+              <Top>0.02083in</Top>
+              <Left>3.30558in</Left>
               <Height>0.25in</Height>
               <Width>0.85812in</Width>
               <ZIndex>2</ZIndex>
@@ -1700,8 +1644,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>NoPages</rd:DefaultName>
-              <Top>0.14583in</Top>
-              <Left>4.47226in</Left>
+              <Top>0.02083in</Top>
+              <Left>4.22226in</Left>
               <Height>0.25in</Height>
               <Width>0.28307in</Width>
               <ZIndex>3</ZIndex>
@@ -1716,10 +1660,10 @@
               </Style>
             </Textbox>
             <Line Name="Line15">
-              <Top>0.14583in</Top>
-              <Left>4.44725in</Left>
+              <Top>0.22083in</Top>
+              <Left>4.24725in</Left>
               <Height>0in</Height>
-              <Width>0.14583in</Width>
+              <Width>0.27083in</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -1744,8 +1688,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
-              <Top>0.14583in</Top>
-              <Left>4.98957in</Left>
+              <Top>0.02083in</Top>
+              <Left>4.73957in</Left>
               <Height>0.25in</Height>
               <Width>0.95833in</Width>
               <ZIndex>5</ZIndex>
@@ -1774,8 +1718,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Prodno</rd:DefaultName>
-              <Top>0.14583in</Top>
-              <Left>5.9479in</Left>
+              <Top>0.02083in</Top>
+              <Left>5.6979in</Left>
               <Height>0.25in</Height>
               <Width>1.74085in</Width>
               <ZIndex>6</ZIndex>
@@ -1796,7 +1740,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Switch(First(Fields!Laminated.Value="G","Gloss Lamination",Fields!Laminated.Value="M","Matte Lamination", "DsSpecCvr")</Value>
+                      <Value>=First(Switch(Fields!Laminated.Value="G","Gloss Lamination",Fields!Laminated.Value="M","Matte Lamination"), "DsSpecCvr")</Value>
                       <Style>
                         <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -1807,10 +1751,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox15</rd:DefaultName>
-              <Top>0.64111in</Top>
-              <Left>0.5057in</Left>
+              <Top>0.39111in</Top>
+              <Left>0.2557in</Left>
               <Height>0.25in</Height>
-              <Width>2.3721in</Width>
+              <Width>1.81143in</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <Border>
@@ -1837,8 +1781,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Laminated</rd:DefaultName>
-              <Top>0.64111in</Top>
-              <Left>2.88657in</Left>
+              <Top>0.39111in</Top>
+              <Left>2.13657in</Left>
               <Height>0.25in</Height>
               <Width>0.24478in</Width>
               <ZIndex>8</ZIndex>
@@ -1859,6 +1803,10 @@
             </Border>
           </Style>
         </PageFooter>
+        <LeftMargin>0.25in</LeftMargin>
+        <RightMargin>0.25in</RightMargin>
+        <TopMargin>0.25in</TopMargin>
+        <BottomMargin>0.25in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>

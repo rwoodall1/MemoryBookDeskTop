@@ -2745,6 +2745,7 @@ namespace Mbc5.Forms.MemoryBook {
             this.reportViewer2.Size = new System.Drawing.Size(63, 50);
             this.reportViewer2.TabIndex = 125;
             this.reportViewer2.Visible = false;
+            this.reportViewer2.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer2_RenderingComplete_1);
             this.reportViewer2.Load += new System.EventHandler(this.reportViewer2_Load);
             // 
             // pg2

@@ -418,6 +418,57 @@ namespace Mbc5.Forms.MemoryBook
 
 
         }
+        public override void ProdutnNoSearch()
+        {
+
+            var saveResult = this.Save(false);
+            if (saveResult.IsError)
+            {
+
+                return;
+            }
+          
+            DataRowView currentrow = (DataRowView)quotesBindingSource.Current;
+            var prodno = currentrow["prodno"].ToString();
+
+            frmSearch frmSearch = new frmSearch("PRODNO", "SALES", prodno);
+
+            var result = frmSearch.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //values preserved after close
+
+                try
+                {
+                    this.Invno = frmSearch.ReturnValue.Invno;
+                    this.Schcode = frmSearch.ReturnValue.Schcode;
+                    if (string.IsNullOrEmpty(Schcode))
+                    {
+                        MbcMessageBox.Hand("A search value was not returned", "Error");
+                        return;
+                    }
+
+                    Fill();
+                    DataRowView current = (DataRowView)quotesBindingSource.Current;
+
+                    this.Invno = current["Invno"] == DBNull.Value ? 0 : Convert.ToInt32(current["Invno"]);
+                    this.Schcode = current["Schcode"].ToString();
+                }
+
+                catch (Exception ex)
+                {
+                    MbcMessageBox.Error(ex.Message, "Error");
+                    return;
+
+                }
+                this.Cursor = Cursors.Default;
+                frmSales_Paint(this, null);
+
+            }
+
+
+
+        }
         #endregion
         private void SetNoticeLabels()
         {
@@ -5392,7 +5443,32 @@ namespace Mbc5.Forms.MemoryBook
             }
         }
 
-      
+        private void taxOnlinePayCheckBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void taxOnlinePayCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (taxOnlinePayCheckBox.Checked)
+            {
+               var vTax = GetTax(100);//even amount to get rate
+
+                var vRate = (vTax / 100);
+                if (vRate != 0)
+                {
+                    txtOnlineTaxRate.Text = vRate.ToString();
+
+                }
+               
+            }
+            else
+            {
+
+            }
+        }
+
+
 
 
 

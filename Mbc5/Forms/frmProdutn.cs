@@ -60,7 +60,11 @@ namespace Mbc5.Forms
 	
 
 		}
-		public List<CoverDescriptions> CoverDescriptions { get; set; }
+        private string CoverTicketPrinterName { get; set; }
+    
+        private string AddressLabelerName { get; set; }
+        private string CoverLabelerName { get; set; }
+        public List<CoverDescriptions> CoverDescriptions { get; set; }
         public string Company { get; set; }
         public new frmMain frmMain { get; set; }
         private void SetConnectionString()
@@ -5097,11 +5101,7 @@ namespace Mbc5.Forms
 
 		}
 
-        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
-        {
-            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
-            
-        }
+        
 
         private void dedmadeTextBox_Leave(object sender, EventArgs e)
         {
@@ -5213,8 +5213,8 @@ namespace Mbc5.Forms
             if (Company == "MBC") {
                var dResult= MessageBox.Show("Do you want the single sheet version?", "Cover Ticket Version",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if (dResult ==DialogResult.Yes) { PrintCoverTicketDiminished(); } else { PrintCoverTicket(); }
-                
-               
+
+
             }
             if (Company == "MER")
             {
@@ -5261,12 +5261,14 @@ namespace Mbc5.Forms
                     IndivName = drProd.Row.IsNull("IndivName") ? false : (bool)drProd.Row["IndivName"],
                     Foiling = drProd.Row.IsNull("Foiling") ? false : (bool)drProd.Row["Foiling"],
                     Laminated = drProd.Row["laminated"].ToString()
+                    
                 };
                 CoverTicketBindingSource.DataSource = cvrData;
                 reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.SpecialCoverTicket3rd.rdlc";
                 reportViewer1.LocalReport.DataSources.Clear();
                 reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DsSpecCvr", CoverTicketBindingSource));
-                
+              
+
             }
             catch (Exception ex) {
                 ex.ToExceptionless()
@@ -5326,7 +5328,7 @@ namespace Mbc5.Forms
                     SpecCover = drProd.Row["SpecCover"].ToString().Trim(),
                     ScRecv = drProd.Row["ScRecv"].ToString(),
                     Laminated = drProd.Row["laminated"].ToString(),
-                ReqstdCpy = drCover.Row.IsNull("ReqstdCpy") ? 0 : (int)drCover.Row["ReqstdCpy"],
+                    ReqstdCpy = drCover.Row.IsNull("ReqstdCpy") ? 0 : (int)drCover.Row["ReqstdCpy"],
                     NoPages = drProd.Row.IsNull("ProdNoPages") ? 0 : (int)drProd.Row["ProdNoPages"],
                     Desc = drCover.Row["Desc_"].ToString().Trim(),
                     Desc2 = drCover.Row["Desc2"].ToString().Trim(),
@@ -5353,10 +5355,23 @@ namespace Mbc5.Forms
 
                 };
                 CoverTicketBindingSource.DataSource = cvrData;
-                reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.SpecialCoverTicket.rdlc";
-                reportViewer1.LocalReport.DataSources.Clear();
-                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DsSpecCvr", CoverTicketBindingSource));
-                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCoverDetail", coverdetailBindingSource));
+               
+                reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.SpecialCoverTicket.rdlc";
+                reportViewer2.LocalReport.DataSources.Clear();
+                reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("DsSpecCvr", CoverTicketBindingSource));
+                reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("dsCoverDetail", coverdetailBindingSource));
+                reportViewer3.LocalReport.DataSources.Clear();
+                reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.SpecialCoverTicket3rd.rdlc";
+                reportViewer3.LocalReport.DataSources.Clear();
+                reportViewer3.LocalReport.DataSources.Add(new ReportDataSource("DsSpecCvr", CoverTicketBindingSource));
+                reportViewerAddress.LocalReport.DataSources.Clear();
+                reportViewerAddress.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", custBindingSource));
+                reportViewerCover.LocalReport.DataSources.Clear();
+                reportViewerCover.LocalReport.DataSources.Add(new ReportDataSource("dsCust", custBindingSource));
+                reportViewerCover.LocalReport.DataSources.Add(new ReportDataSource("dsProd", produtnBindingSource));
+                reportViewerCover.LocalReport.DataSources.Add(new ReportDataSource("dsCovers", coversBindingSource1));
+                reportViewerCover.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321CoverLabel.rdlc";
+                
             }
             catch (Exception ex)
             {
@@ -5370,8 +5385,19 @@ namespace Mbc5.Forms
 
             try
             {
-
-                this.reportViewer1.RefreshReport();
+                MbcMessageBox.Information("Select a printer to print cover ticket.");
+                printDialog1.ShowDialog();
+                CoverTicketPrinterName = printDialog1.PrinterSettings.PrinterName;
+                MbcMessageBox.Information("Choose a printer for Address Labels.");
+                printDialog1.ShowDialog();
+                    AddressLabelerName = printDialog1.PrinterSettings.PrinterName;
+                MbcMessageBox.Information("Choose a printer for Cover Labels.");
+                printDialog1.ShowDialog();
+                CoverLabelerName = printDialog1.PrinterSettings.PrinterName;
+                this.reportViewer2.RefreshReport();
+                this.reportViewer3.RefreshReport();
+                reportViewerAddress.RefreshReport();
+                reportViewerCover.RefreshReport();
             }
             catch (Exception ex)
             {
@@ -5450,6 +5476,88 @@ namespace Mbc5.Forms
 
 
         }
+        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+
+        }
+        private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+
+            ////For printing cover ticket long form only main form
+            
+
+            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+
+            var result = dp.Export(reportViewer2.LocalReport, CoverTicketPrinterName, 2);
+          
+            if (result.IsError)
+            {
+                var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void reportViewer3_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            //Short cover ticket
+            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+            
+            var result = dp.Export(reportViewer3.LocalReport, CoverTicketPrinterName, 1);
+           
+
+            if (result.IsError)
+            {
+                var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void reportViewerAddress_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            //Address Labels 
+           
+
+            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+
+            var result = dp.Export(reportViewerAddress.LocalReport, AddressLabelerName, 1);
+
+            if (result.IsError)
+            {
+                var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void reportViewerCover_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            ///Cover Labelse
+           // reportViewerCover.PrintDialog();
+
+            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+
+            var result = dp.Export(reportViewerCover.LocalReport, CoverLabelerName, 1,true);
+
+            if (result.IsError)
+            {
+                var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            reportViewerCover.LocalReport.DataSources.Clear();
+            reportViewerCover.LocalReport.DataSources.Add(new ReportDataSource("dsCust", custBindingSource));
+            reportViewerCover.LocalReport.DataSources.Add(new ReportDataSource("dsProd", produtnBindingSource));
+            reportViewerCover.LocalReport.DataSources.Add(new ReportDataSource("dsCovers", coversBindingSource1));
+            reportViewerCover.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321CoverLabel.rdlc";
+            printDialog1.ShowDialog();
+            CoverLabelerName = printDialog1.PrinterSettings.PrinterName;
+            reportViewerCover.RefreshReport();
+
+        }
+
 
 
 
