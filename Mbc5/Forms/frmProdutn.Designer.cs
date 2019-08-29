@@ -587,6 +587,7 @@ namespace Mbc5.Forms
             this.vendorTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.vendorTableAdapter();
             this.CoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.binderyLabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -787,6 +788,7 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.binderyLabelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // companyLabel
@@ -2561,7 +2563,7 @@ namespace Mbc5.Forms
             this.panel4.Controls.Add(this.txtadvpw);
             this.panel4.Controls.Add(jobnoLabel);
             this.panel4.Controls.Add(this.txtjobno);
-            this.panel4.Location = new System.Drawing.Point(589, 399);
+            this.panel4.Location = new System.Drawing.Point(572, 399);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(533, 306);
             this.panel4.TabIndex = 131;
@@ -2827,7 +2829,7 @@ namespace Mbc5.Forms
             this.panel3.Controls.Add(this.txtDays);
             this.panel3.Controls.Add(this.txtWeeks);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Location = new System.Drawing.Point(921, 80);
+            this.panel3.Location = new System.Drawing.Point(904, 80);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(203, 316);
             this.panel3.TabIndex = 130;
@@ -3070,7 +3072,7 @@ namespace Mbc5.Forms
             this.panel2.Controls.Add(prshpdteLabel);
             this.panel2.Controls.Add(prmsdateLabel);
             this.panel2.Controls.Add(shpdateLabel);
-            this.panel2.Location = new System.Drawing.Point(589, 82);
+            this.panel2.Location = new System.Drawing.Point(572, 82);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(327, 316);
             this.panel2.TabIndex = 129;
@@ -3233,7 +3235,7 @@ namespace Mbc5.Forms
             this.panel1.Controls.Add(this.txtCoverType);
             this.panel1.Location = new System.Drawing.Point(281, 80);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(302, 400);
+            this.panel1.Size = new System.Drawing.Size(285, 400);
             this.panel1.TabIndex = 128;
             // 
             // endstrecvDateBox
@@ -3347,7 +3349,7 @@ namespace Mbc5.Forms
             this.ptnopgsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ptnopgs", true));
             this.ptnopgsTextBox.Location = new System.Drawing.Point(176, 300);
             this.ptnopgsTextBox.Name = "ptnopgsTextBox";
-            this.ptnopgsTextBox.Size = new System.Drawing.Size(71, 20);
+            this.ptnopgsTextBox.Size = new System.Drawing.Size(54, 20);
             this.ptnopgsTextBox.TabIndex = 125;
             // 
             // colorpgsCheckBox
@@ -3370,7 +3372,7 @@ namespace Mbc5.Forms
             this.txtPerfbind.Location = new System.Drawing.Point(176, 159);
             this.txtPerfbind.MaxLength = 1;
             this.txtPerfbind.Name = "txtPerfbind";
-            this.txtPerfbind.Size = new System.Drawing.Size(33, 20);
+            this.txtPerfbind.Size = new System.Drawing.Size(16, 20);
             this.txtPerfbind.TabIndex = 116;
             this.txtPerfbind.Leave += new System.EventHandler(this.txtPerfbind_Leave);
             // 
@@ -3381,7 +3383,7 @@ namespace Mbc5.Forms
             this.txtCoverDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "coverdesc", true));
             this.txtCoverDescription.Location = new System.Drawing.Point(176, 34);
             this.txtCoverDescription.Name = "txtCoverDescription";
-            this.txtCoverDescription.Size = new System.Drawing.Size(108, 20);
+            this.txtCoverDescription.Size = new System.Drawing.Size(91, 20);
             this.txtCoverDescription.TabIndex = 102;
             // 
             // txtCoverType
@@ -3393,7 +3395,7 @@ namespace Mbc5.Forms
             this.txtCoverType.Location = new System.Drawing.Point(176, 12);
             this.txtCoverType.MaxLength = 4;
             this.txtCoverType.Name = "txtCoverType";
-            this.txtCoverType.Size = new System.Drawing.Size(108, 20);
+            this.txtCoverType.Size = new System.Drawing.Size(91, 20);
             this.txtCoverType.TabIndex = 100;
             this.txtCoverType.Leave += new System.EventHandler(this.covertypeTextBox_Leave);
             // 
@@ -3790,7 +3792,7 @@ namespace Mbc5.Forms
             this.bkmixedCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bkmixedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.produtnBindingSource, "reorder", true));
             this.bkmixedCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bkmixedCheckBox.Location = new System.Drawing.Point(1002, 53);
+            this.bkmixedCheckBox.Location = new System.Drawing.Point(985, 53);
             this.bkmixedCheckBox.Name = "bkmixedCheckBox";
             this.bkmixedCheckBox.Size = new System.Drawing.Size(78, 24);
             this.bkmixedCheckBox.TabIndex = 16;
@@ -3813,7 +3815,7 @@ namespace Mbc5.Forms
             this.allclrckCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "allclrck", true));
             this.allclrckCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.allclrckCheckBox.ForeColor = System.Drawing.Color.Red;
-            this.allclrckCheckBox.Location = new System.Drawing.Point(1001, 33);
+            this.allclrckCheckBox.Location = new System.Drawing.Point(984, 33);
             this.allclrckCheckBox.Name = "allclrckCheckBox";
             this.allclrckCheckBox.Size = new System.Drawing.Size(113, 24);
             this.allclrckCheckBox.TabIndex = 13;
@@ -6498,6 +6500,7 @@ namespace Mbc5.Forms
             ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.binderyLabelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -6871,5 +6874,6 @@ namespace Mbc5.Forms
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.BindingSource binderyLabelBindingSource;
     }
 }

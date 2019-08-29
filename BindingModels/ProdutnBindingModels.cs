@@ -176,4 +176,15 @@ namespace BindingModels
 
 
     }
+    public class BinderyLabel
+    {
+        public string Schname { get; set; }
+        public string BarCode { get; set; }
+        public string JobNo { get; set; }
+        public string Binding { get; set; }
+        public int Quantity { get; set; }
+        public int LabelTotal { get; set; }
+        public int CurrentLabel { get; set; }
+    
+    }
 }

@@ -14,6 +14,7 @@ namespace Mbc5.Dialogs {
     public partial class frmSearch : Form
     {
         public frmSearch(string vSearchType, string vForm, string vcurrentSearchValue)
+
         {
             this.SearchType = vSearchType.ToUpper();
             this.ReturnForm = vForm.ToUpper();

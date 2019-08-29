@@ -289,7 +289,7 @@
             reportDataSource1.Value = this.FullInvoiceBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MultiMemInvoice.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(10, 390);
+            this.reportViewer1.Location = new System.Drawing.Point(69, 255);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(51, 49);

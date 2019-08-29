@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Classes\DirectPrint.cs" />
     <Compile Include="Classes\ExceptionHandler.cs" />
+    <Compile Include="Classes\InputBox.cs" />
     <Compile Include="Classes\OptionPrice.cs" />
     <Compile Include="Classes\PdfAttachementGenerator.cs" />
     <Compile Include="Classes\TaxService.cs" />
@@ -617,12 +618,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\30256AddressLabel.rdlc" />
+    <EmbeddedResource Include="Reports\30321BinderySCLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321CoverLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321YearBookLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321Envelope.rdlc" />
     <EmbeddedResource Include="Reports\30321ReceivingLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321FileFolderLabel.rdlc" />
     <EmbeddedResource Include="Reports\30321DepartmentLabel.rdlc" />
+    <EmbeddedResource Include="Reports\BinderySC.rdlc" />
     <EmbeddedResource Include="Reports\MeridianQuote.rdlc" />
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
     <EmbeddedResource Include="Reports\OnlineAgreement.rdlc" />
@@ -858,6 +861,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\BindingModels.BidInvoiceDetail.datasource" />
+    <None Include="Properties\DataSources\BindingModels.BinderyLabel.datasource" />
     <None Include="Properties\DataSources\BindingModels.DepartmentLabel.datasource" />
     <None Include="Properties\DataSources\BindingModels.FullInvoice.datasource" />
     <None Include="Properties\DataSources\BindingModels.Invoice.datasource" />
