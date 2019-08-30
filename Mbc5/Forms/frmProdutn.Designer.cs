@@ -221,6 +221,14 @@ namespace Mbc5.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource25 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource26 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource27 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource28 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource21 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource22 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource23 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource24 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsProdutn = new Mbc5.DataSets.dsProdutn();
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -529,7 +537,7 @@ namespace Mbc5.Forms
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.btnAddPhotoCd = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnPhotoCdProd = new System.Windows.Forms.Button();
             this.nocopiesTextBox1 = new System.Windows.Forms.TextBox();
             this.rmbtotTextBox1 = new System.Windows.Forms.TextBox();
             this.rmptotTextBox1 = new System.Windows.Forms.TextBox();
@@ -588,6 +596,8 @@ namespace Mbc5.Forms
             this.CoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.binderyLabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewerBinderyTicket = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.reportViewerBinderyLabel = new Microsoft.Reporting.WinForms.ReportViewer();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -4318,6 +4328,8 @@ namespace Mbc5.Forms
             // 
             this.pg3.AutoScroll = true;
             this.pg3.BackColor = System.Drawing.SystemColors.Control;
+            this.pg3.Controls.Add(this.reportViewerBinderyLabel);
+            this.pg3.Controls.Add(this.reportViewerBinderyTicket);
             this.pg3.Controls.Add(this.button2);
             this.pg3.Controls.Add(this.dbScRecvDate);
             this.pg3.Controls.Add(this.desorgdteDateBox);
@@ -5772,7 +5784,7 @@ namespace Mbc5.Forms
             this.pg6.Controls.Add(this.button8);
             this.pg6.Controls.Add(this.button9);
             this.pg6.Controls.Add(this.btnAddPhotoCd);
-            this.pg6.Controls.Add(this.button11);
+            this.pg6.Controls.Add(this.btnPhotoCdProd);
             this.pg6.Controls.Add(nocopiesLabel2);
             this.pg6.Controls.Add(this.nocopiesTextBox1);
             this.pg6.Controls.Add(rmbtotLabel1);
@@ -5954,6 +5966,7 @@ namespace Mbc5.Forms
             this.button8.TabIndex = 167;
             this.button8.Text = "Production Ticket";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // button9
             // 
@@ -5976,15 +5989,15 @@ namespace Mbc5.Forms
             this.btnAddPhotoCd.UseVisualStyleBackColor = true;
             this.btnAddPhotoCd.Click += new System.EventHandler(this.btnAddPhotoCd_Click);
             // 
-            // button11
+            // btnPhotoCdProd
             // 
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(696, 50);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(195, 23);
-            this.button11.TabIndex = 164;
-            this.button11.Text = "Change All Photo On CD Dates";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnPhotoCdProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhotoCdProd.Location = new System.Drawing.Point(696, 50);
+            this.btnPhotoCdProd.Name = "btnPhotoCdProd";
+            this.btnPhotoCdProd.Size = new System.Drawing.Size(195, 23);
+            this.btnPhotoCdProd.TabIndex = 164;
+            this.btnPhotoCdProd.Text = "Change All Photo On CD Dates";
+            this.btnPhotoCdProd.UseVisualStyleBackColor = true;
             // 
             // nocopiesTextBox1
             // 
@@ -6428,6 +6441,54 @@ namespace Mbc5.Forms
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // reportViewerBinderyTicket
+            // 
+            this.reportViewerBinderyTicket.DocumentMapWidth = 71;
+            reportDataSource25.Name = "dsRCust";
+            reportDataSource25.Value = this.custBindingSource;
+            reportDataSource26.Name = "dsRQuotes";
+            reportDataSource26.Value = this.quotesBindingSource;
+            reportDataSource27.Name = "dsRProdutn";
+            reportDataSource27.Value = this.produtnBindingSource;
+            reportDataSource28.Name = "dsRWip";
+            reportDataSource28.Value = this.wipBindingSource;
+            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource25);
+            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource26);
+            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource27);
+            this.reportViewerBinderyTicket.LocalReport.DataSources.Add(reportDataSource28);
+            this.reportViewerBinderyTicket.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
+            this.reportViewerBinderyTicket.Location = new System.Drawing.Point(817, 439);
+            this.reportViewerBinderyTicket.Name = "reportViewerBinderyTicket";
+            this.reportViewerBinderyTicket.ServerReport.BearerToken = null;
+            this.reportViewerBinderyTicket.Size = new System.Drawing.Size(73, 59);
+            this.reportViewerBinderyTicket.TabIndex = 220;
+            this.reportViewerBinderyTicket.Visible = false;
+            this.reportViewerBinderyTicket.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewerBindery_RenderingComplete);
+            // 
+            // reportViewerBinderyLabel
+            // 
+            this.reportViewerBinderyLabel.DocumentMapWidth = 71;
+            reportDataSource21.Name = "dsRCust";
+            reportDataSource21.Value = this.custBindingSource;
+            reportDataSource22.Name = "dsRQuotes";
+            reportDataSource22.Value = this.quotesBindingSource;
+            reportDataSource23.Name = "dsRProdutn";
+            reportDataSource23.Value = this.produtnBindingSource;
+            reportDataSource24.Name = "dsRWip";
+            reportDataSource24.Value = this.wipBindingSource;
+            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource21);
+            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource22);
+            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource23);
+            this.reportViewerBinderyLabel.LocalReport.DataSources.Add(reportDataSource24);
+            this.reportViewerBinderyLabel.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321YearBookLabel.rdlc";
+            this.reportViewerBinderyLabel.Location = new System.Drawing.Point(817, 504);
+            this.reportViewerBinderyLabel.Name = "reportViewerBinderyLabel";
+            this.reportViewerBinderyLabel.ServerReport.BearerToken = null;
+            this.reportViewerBinderyLabel.Size = new System.Drawing.Size(73, 59);
+            this.reportViewerBinderyLabel.TabIndex = 221;
+            this.reportViewerBinderyLabel.Visible = false;
+            this.reportViewerBinderyLabel.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewerBinderyLabel_RenderingComplete);
+            // 
             // frmProdutn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -6822,7 +6883,7 @@ namespace Mbc5.Forms
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button btnAddPhotoCd;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnPhotoCdProd;
         private System.Windows.Forms.Button btnCvrUpdate;
         private CustomControls.DateBox dteWarnDate;
         private CustomControls.DateBox cstsvcdteDateTimePicker;
@@ -6875,5 +6936,7 @@ namespace Mbc5.Forms
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.BindingSource binderyLabelBindingSource;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewerBinderyTicket;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewerBinderyLabel;
     }
 }

@@ -630,6 +630,7 @@
     <EmbeddedResource Include="Reports\MerInvoice.rdlc" />
     <EmbeddedResource Include="Reports\OnlineAgreement.rdlc" />
     <EmbeddedResource Include="Reports\OnlineFlyer.rdlc" />
+    <EmbeddedResource Include="Reports\PhotoOnCDTicket.rdlc" />
     <EmbeddedResource Include="Reports\ReceivingCard.rdlc" />
     <EmbeddedResource Include="Reports\BidQuote.rdlc" />
     <EmbeddedResource Include="Reports\InvoiceDetails.rdlc" />

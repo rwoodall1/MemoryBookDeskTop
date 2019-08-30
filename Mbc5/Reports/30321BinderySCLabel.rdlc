@@ -150,6 +150,7 @@
                                   <Value>=First("*"+Fields!JobNo.Value+"C*", "dsBinderyLabel")</Value>
                                   <Style>
                                     <FontFamily>Z: 3of 9 BarCode</FontFamily>
+                                    <FontSize>18pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>

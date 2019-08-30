@@ -61,7 +61,8 @@ namespace Mbc5.Forms
 
 		}
         private string CoverTicketPrinterName { get; set; }
-    
+       private string BinderyTicketPrinter { get; set; }
+        private string BinderyLabelerPrinter { get; set; }
         private string AddressLabelerName { get; set; }
         private string CoverLabelerName { get; set; }
         public List<CoverDescriptions> CoverDescriptions { get; set; }
@@ -5465,42 +5466,89 @@ namespace Mbc5.Forms
                 MbcMessageBox.Error("Failed to update cover WIP: " + result.Result.Errors[0].ErrorMessage);
             }
         }
-
+        
         private void btnBindery_Click(object sender, EventArgs e)
         {
-           
-            if (Company!="MBC")
+
+            if (Company != "MBC")
             {
-                return;
-           }
-            string value = "";
-            if (InputBox.Show("No. Labels", "Enter number of labels needed.",ref value) !=DialogResult.OK) {
-                MbcMessageBox.Information("Action cancelled by user.");
+
                 return;
             }
-            int numLabelsToPrint = 0;
-            if(!int.TryParse(value,out numLabelsToPrint))
+            var result=PrintBindery();
+      
+            if (result.Result.IsError)
             {
-                MbcMessageBox.Error("Return value needs to be an integer.");
-                return;
+                MbcMessageBox.Information(result.Result.Errors[0].ErrorMessage);
             }
-            reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BinderySC.rdlc";
-            reportViewer1.LocalReport.DataSources.Clear();
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCover",coversBindingSource1));
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsProdutn", produtnBindingSource));
-             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCust", custBindingSource));
-            this.reportViewer1.RefreshReport();
-            var drCovers =(DataRowView) coversBindingSource1.Current;
+
+        }
+        private async Task<ApiProcessingResult> PrintBindery()
+        {
+            var processingResult = new ApiProcessingResult() { IsError = false };
+
+            var ticketResult = await PrintBinderyTicket();
+
+            if (ticketResult.IsError)
+            {
+                processingResult.IsError = true;
+                processingResult.Errors = ticketResult.Errors;
+                return processingResult;
+            }
+            var labelResult = await PrintBinderyLabel();
+            if (labelResult.IsError)
+            {
+                
+                processingResult.IsError = true;
+                processingResult.Errors = labelResult.Errors;
+                return processingResult;
+            }
+
+            return processingResult;
+        }
+        private async Task<ApiProcessingResult> PrintBinderyTicket()
+        {
+            var processingResult = new ApiProcessingResult() { IsError = false };
+
+            reportViewerBinderyTicket.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.BinderySC.rdlc";
+            reportViewerBinderyTicket.LocalReport.DataSources.Clear();
+            reportViewerBinderyTicket.LocalReport.DataSources.Add(new ReportDataSource("dsCover", coversBindingSource1));
+            reportViewerBinderyTicket.LocalReport.DataSources.Add(new ReportDataSource("dsProdutn", produtnBindingSource));
+            reportViewerBinderyTicket.LocalReport.DataSources.Add(new ReportDataSource("dsCust", custBindingSource));
+            MbcMessageBox.Hand("Choose a printer for bindery ticket.", "Ticket Printer");
+            printDialog1.ShowDialog();
+            this.BinderyTicketPrinter= printDialog1.PrinterSettings.PrinterName;
+            this.reportViewerBinderyTicket.RefreshReport();
+
+            return processingResult;
+
+        }
+        private async Task<ApiProcessingResult> PrintBinderyLabel()
+        {
+            var processingResult = new ApiProcessingResult() { IsError = false };
+
+            var drCovers = (DataRowView)coversBindingSource1.Current;
             var drCust = (DataRowView)custBindingSource.Current;
             var drProdutn = (DataRowView)produtnBindingSource.Current;
             var vSchname = drCust.Row["Schname"].ToString();
-            var vBarCode ="*"+ drProdutn.Row["Jobno"].ToString()+"C*";
+            var vBarCode = "*" + drProdutn.Row["Jobno"].ToString() + "C*";
             var vJobNo = drProdutn.Row["Jobno"].ToString();
             var vBinding = drProdutn.Row["PerfBind"].ToString();
-            var tmpQuantity =(int) drCovers.Row["reqstdcpy"];
+            var tmpQuantity = (int)drCovers.Row["reqstdcpy"];
             var vQuantity = vBinding == "S" || vBinding == "P" ? tmpQuantity + 30 : tmpQuantity + 40;
+
+            var numLabelsResult =await GetNumberOfBinderyLabels();
+            if (numLabelsResult.IsError) {
+                processingResult.IsError = true;
+                processingResult.Errors = numLabelsResult.Errors;
+                return processingResult;
+            }
+
+            int numLabelsToPrint = numLabelsResult.Data;
+
+
             var vLabelList = new List<BinderyLabel>();
-            for (int i = 0; i < numLabelsToPrint+2; i++)
+            for (int i = 0; i < numLabelsToPrint + 2; i++)
             {
                 var labelData = new BinderyLabel()
                 {
@@ -5509,30 +5557,54 @@ namespace Mbc5.Forms
                     JobNo = vJobNo,
                     Binding = vBinding,
                     Quantity = vQuantity,
-                    LabelTotal= numLabelsToPrint,
-                    CurrentLabel=i
+                    LabelTotal = numLabelsToPrint,
+                    CurrentLabel = i
                 };
 
                 vLabelList.Add(labelData);
             }
             binderyLabelBindingSource.DataSource = vLabelList;
-        }
-        private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
-        {
-            //try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
 
+            reportViewerBinderyLabel.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.30321BinderySCLabel.rdlc";
+            reportViewerBinderyLabel.LocalReport.DataSources.Clear();
+            reportViewerBinderyLabel.LocalReport.DataSources.Add(new ReportDataSource("dsBinderyLabel", binderyLabelBindingSource.DataSource));
+            MbcMessageBox.Hand("Choose a printer for bindery labels.", "Label Printer");
             printDialog1.ShowDialog();
-           var PrinterName = printDialog1.PrinterSettings.PrinterName;
+            this.BinderyLabelerPrinter = printDialog1.PrinterSettings.PrinterName;
 
-            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+            this.reportViewerBinderyLabel.RefreshReport();
 
-            var result = dp.Export(reportViewer1.LocalReport, PrinterName, true);
+            return processingResult;
 
-            if (result.IsError)
+        }
+        private async Task<ApiProcessingResult<int>> GetNumberOfBinderyLabels()
+        {
+            var processingResult = new ApiProcessingResult<int>();
+            string value = "";
+            if (InputBox.Show("No. Labels", "Enter number of labels needed.", ref value) != DialogResult.OK)
             {
-                var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("Action cancelled by user.", "Action cancelled by user.", ""));
+                return processingResult;
             }
+            int numLabelsToPrint = 0;
+            if (!int.TryParse(value, out numLabelsToPrint))
+            {
+
+                processingResult.IsError = true;
+                processingResult.Errors.Add(new ApiProcessingError("Return value needs to be an integer.", "Return value needs to be an integer.", ""));
+                return processingResult;
+            }
+            processingResult.Data = numLabelsToPrint;
+            return processingResult;
+        }
+
+            private void reportViewer1_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            try { reportViewer1.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
+
+           
 
         }
         private void reportViewer2_RenderingComplete(object sender, RenderingCompleteEventArgs e)
@@ -5652,7 +5724,40 @@ namespace Mbc5.Forms
             this.reportViewer1.RefreshReport();
         }
 
+        private void button8_Click_1(object sender, EventArgs e)
+        {
 
+        }
+
+        private void reportViewerBindery_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+           
+
+            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+
+            var result = dp.Export(reportViewerBinderyTicket.LocalReport,this.BinderyTicketPrinter, false);
+
+            if (result.IsError)
+            {
+                var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void reportViewerBinderyLabel_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+           
+
+            DirectPrint dp = new DirectPrint(); //this is the name of the class added from MSDN
+
+            var result = dp.Export(reportViewerBinderyLabel.LocalReport, BinderyLabelerPrinter, true);
+
+            if (result.IsError)
+            {
+                var errorResult = MessageBox.Show("Printing Error:" + result.Errors[0].ErrorMessage, "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
 
 
 
