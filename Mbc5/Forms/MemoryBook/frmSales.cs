@@ -846,7 +846,7 @@ namespace Mbc5.Forms.MemoryBook
                 SqlParameter[] parameters = new SqlParameter[] {
                     new SqlParameter("@invno",lblInvoice.Text),
                     new SqlParameter("@schcode",this.Schcode ),
-                    new SqlParameter("@qtedate",dteQuote.Value ),
+                    new SqlParameter("@qtedate",qtedateDateBox.Date),
                     new SqlParameter("@nopages",txtNoPages.Text ),
                     new SqlParameter("@nocopies",txtNocopies.Text ),
                     new SqlParameter("@book_each",lblPriceEach.Text.Replace("$","").Replace(",","")),
@@ -4961,10 +4961,7 @@ namespace Mbc5.Forms.MemoryBook
             CalculateXtraInvoice();
         }
 
-        private void dpDateShipped_ValueChanged(object sender, EventArgs e)
-        {
-            dpDateShipped.Format = DateTimePickerFormat.Short;
-        }
+        
 
         private void btnApplyInvoice_Click(object sender, EventArgs e)
         {
@@ -5203,10 +5200,7 @@ namespace Mbc5.Forms.MemoryBook
             try { reportViewer2.PrintDialog(); } catch (Exception ex) { MbcMessageBox.Error(ex.Message, ""); }
         }
 
-        private void dteQuote_ValueChanged(object sender, EventArgs e)
-        {
-            dteQuote.Format = DateTimePickerFormat.Short;
-        }
+        
 
         private void pg2_Click(object sender, EventArgs e)
         {
@@ -5317,7 +5311,7 @@ namespace Mbc5.Forms.MemoryBook
                 BeforeTaxTotal = vtotal,
                 SalesTax = vtax,
                 Invtot = vtotal,
-                QuoteDate = dteQuote.Value,
+                QuoteDate =qtedateDateBox.DateValue,
                 SchName = vSchname,
                 ContactFirstName = ((DataRowView)custBindingSource.Current).Row["contfname"].ToString().Trim(),
                 ContactLastName = ((DataRowView)custBindingSource.Current).Row["contlname"].ToString().Trim(),

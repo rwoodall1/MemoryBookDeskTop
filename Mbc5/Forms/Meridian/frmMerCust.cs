@@ -853,10 +853,7 @@ namespace Mbc5.Forms.Meridian {
 
         }
         #endregion
-        private void taxExemptRecvdDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            taxExemptRecvdDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
+       
 
      
 

@@ -48,14 +48,14 @@
             this.wipDetailBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.cmbDescription = new System.Windows.Forms.ComboBox();
             this.wipDescriptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.warDateTimePicker = new Classes.NullableDateTimePicker();
-            this.wdrDateTimePicker = new Classes.NullableDateTimePicker();
             this.wtrTextBox = new System.Windows.Forms.TextBox();
             this.wirTextBox = new System.Windows.Forms.TextBox();
             this.txtInvno = new System.Windows.Forms.TextBox();
             this.tableAdapterManager = new Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager();
             this.wipDescriptionsTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter();
             this.coverdetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.coverdetailTableAdapter();
+            this.wdrDateBox = new CustomControls.DateBox();
+            this.warDateBox = new CustomControls.DateBox();
             descriptionLabel = new System.Windows.Forms.Label();
             warLabel = new System.Windows.Forms.Label();
             wdrLabel = new System.Windows.Forms.Label();
@@ -282,22 +282,6 @@
             this.wipDescriptionsBindingSource.DataMember = "WipDescriptions";
             this.wipDescriptionsBindingSource.DataSource = this.dsProdutn;
             // 
-            // warDateTimePicker
-            // 
-            this.warDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coverdetailBindingSource, "war", true));
-            this.warDateTimePicker.Location = new System.Drawing.Point(105, 81);
-            this.warDateTimePicker.Name = "warDateTimePicker";
-            this.warDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.warDateTimePicker.TabIndex = 5;
-            // 
-            // wdrDateTimePicker
-            // 
-            this.wdrDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.coverdetailBindingSource, "wdr", true));
-            this.wdrDateTimePicker.Location = new System.Drawing.Point(105, 108);
-            this.wdrDateTimePicker.Name = "wdrDateTimePicker";
-            this.wdrDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.wdrDateTimePicker.TabIndex = 7;
-            // 
             // wtrTextBox
             // 
             this.wtrTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.coverdetailBindingSource, "wtr", true));
@@ -331,7 +315,9 @@
             this.tableAdapterManager.coversTableAdapter = null;
             this.tableAdapterManager.custTableAdapter = null;
             this.tableAdapterManager.PartBkDetailTableAdapter = null;
-           
+            this.tableAdapterManager.partbkTableAdapter = null;
+            this.tableAdapterManager.produtnTableAdapter = null;
+            this.tableAdapterManager.ptbkbTableAdapter = null;
             this.tableAdapterManager.quotesTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.WipDescriptionsTableAdapter = null;
@@ -346,11 +332,35 @@
             // 
             this.coverdetailTableAdapter.ClearBeforeFill = true;
             // 
+            // wdrDateBox
+            // 
+            this.wdrDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coverdetailBindingSource, "wdr", true));
+            this.wdrDateBox.Date = null;
+            this.wdrDateBox.DateValue = null;
+            this.wdrDateBox.Location = new System.Drawing.Point(105, 108);
+            this.wdrDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.wdrDateBox.Name = "wdrDateBox";
+            this.wdrDateBox.Size = new System.Drawing.Size(114, 21);
+            this.wdrDateBox.TabIndex = 14;
+            // 
+            // warDateBox
+            // 
+            this.warDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.coverdetailBindingSource, "war", true));
+            this.warDateBox.Date = null;
+            this.warDateBox.DateValue = null;
+            this.warDateBox.Location = new System.Drawing.Point(104, 78);
+            this.warDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.warDateBox.Name = "warDateBox";
+            this.warDateBox.Size = new System.Drawing.Size(114, 21);
+            this.warDateBox.TabIndex = 15;
+            // 
             // frmEditCoverWip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 262);
+            this.Controls.Add(this.warDateBox);
+            this.Controls.Add(this.wdrDateBox);
             this.Controls.Add(invnoLabel);
             this.Controls.Add(this.txtInvno);
             this.Controls.Add(wirLabel);
@@ -358,9 +368,7 @@
             this.Controls.Add(wtrLabel);
             this.Controls.Add(this.wtrTextBox);
             this.Controls.Add(wdrLabel);
-            this.Controls.Add(this.wdrDateTimePicker);
             this.Controls.Add(warLabel);
-            this.Controls.Add(this.warDateTimePicker);
             this.Controls.Add(descriptionLabel);
             this.Controls.Add(this.cmbDescription);
             this.Controls.Add(this.coverDetailBindingNavigator);
@@ -368,7 +376,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmEditCoverWip";
-            this.Text = "WIP";
+            this.Text = "Cover WIP";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEditWip_FormClosing);
             this.Load += new System.EventHandler(this.frmEditWip_Load);
             ((System.ComponentModel.ISupportInitialize)(this.coverDetailBindingNavigator)).EndInit();
@@ -399,8 +407,7 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton wipDetailBindingNavigatorSaveItem;
         private System.Windows.Forms.ComboBox cmbDescription;
-        private Classes.NullableDateTimePicker warDateTimePicker;
-        private Classes.NullableDateTimePicker wdrDateTimePicker;
+        
         private System.Windows.Forms.TextBox wtrTextBox;
         private System.Windows.Forms.TextBox wirTextBox;
         private System.Windows.Forms.TextBox txtInvno;
@@ -408,5 +415,7 @@
         private DataSets.dsProdutnTableAdapters.WipDescriptionsTableAdapter wipDescriptionsTableAdapter;
         private System.Windows.Forms.BindingSource coverdetailBindingSource;
         private DataSets.dsProdutnTableAdapters.coverdetailTableAdapter coverdetailTableAdapter;
-        }
+        private CustomControls.DateBox wdrDateBox;
+        private CustomControls.DateBox warDateBox;
+    }
     }

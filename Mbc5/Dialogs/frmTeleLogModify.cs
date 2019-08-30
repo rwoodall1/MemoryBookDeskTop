@@ -247,10 +247,7 @@ namespace Mbc5.Dialogs
             pnlMkt.Enabled = true;
             this.MarketRecAdded = true;
         }
-        private void nxtdateDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            nxtdateDateTimePicker.Format = DateTimePickerFormat.Short;
-        }
+       
 
         private void cmbReasons_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -270,10 +267,10 @@ namespace Mbc5.Dialogs
                                     NxtDays=@NxtDays,NxtDate=@NxtDate,CallCont=@CallCont,CallTime=@CallTime,
                                     Priority=@Priority,Company=@Company,TechCall=@TechCall   
                                     Where Id=@Id And Initial=@Initial");
-            if (nxtdateDateTimePicker.Value == null) {
+            if (nxtdateDateBox.Date == null) {
                 sqlquery.AddParameter("@NxtDate",DBNull.Value);
             } else {
-                sqlquery.AddParameter("@NxtDate", nxtdateDateTimePicker.Value);
+                sqlquery.AddParameter("@NxtDate", nxtdateDateBox.Date);
             }
            
             sqlquery.AddParameter("@Id", LogId);
@@ -350,22 +347,28 @@ namespace Mbc5.Dialogs
             }
         }
 
-        private void nxtdateDateTimePicker_ValueChanged_1(object sender, EventArgs e)
+       
+        private void nxtdaysComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            nxtdateDateTimePicker.Format = DateTimePickerFormat.Short;
+            
+            
         }
 
-        private void nxtdaysComboBox_SelectedValueChanged(object sender, EventArgs e)
+        private void nxtdaysComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             int vDays = 0;
             var a = nxtdaysComboBox.Text;
             int.TryParse(nxtdaysComboBox.Text, out vDays);
             if (vDays > 0)
             {
-                nxtdateDateTimePicker.Value = DateTime.Now.AddDays(vDays);
+                nxtdateDateBox.DateValue = DateTime.Now.AddDays(vDays);
+                // nxtdateDateBox.Date = nxtdateDateBox.DateValue.ToString();
             }
-            else { nxtdateDateTimePicker.Value = DateTime.Now; }
-            
+            else
+            {
+                //nxtdateDateBox.DateValue = DateTime.Now;
+                nxtdateDateBox.Date = DateTime.Now.ToShortDateString();
+            }
         }
     }
    

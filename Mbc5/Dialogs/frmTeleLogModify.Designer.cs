@@ -50,9 +50,9 @@
             this.initialLabel2 = new System.Windows.Forms.Label();
             this.tbLog = new System.Windows.Forms.TabControl();
             this.pg1 = new System.Windows.Forms.TabPage();
+            this.nxtdateDateBox = new CustomControls.DateBox();
             this.callcontCheckBox = new System.Windows.Forms.CheckBox();
             this.nxtdaysComboBox = new System.Windows.Forms.ComboBox();
-            this.nxtdateDateTimePicker = new Classes.NullableDateTimePicker();
             this.priorityComboBox = new System.Windows.Forms.ComboBox();
             this.reasonTextBox = new System.Windows.Forms.TextBox();
             this.callTimeTextBox = new System.Windows.Forms.TextBox();
@@ -290,10 +290,10 @@
             // 
             this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.nxtdateDateBox);
             this.pg1.Controls.Add(this.callcontCheckBox);
             this.pg1.Controls.Add(this.nxtdaysComboBox);
             this.pg1.Controls.Add(nxtdateLabel);
-            this.pg1.Controls.Add(this.nxtdateDateTimePicker);
             this.pg1.Controls.Add(nxtdaysLabel);
             this.pg1.Controls.Add(priorityLabel);
             this.pg1.Controls.Add(this.priorityComboBox);
@@ -317,6 +317,17 @@
             this.pg1.Size = new System.Drawing.Size(532, 410);
             this.pg1.TabIndex = 0;
             this.pg1.Text = "Telephone";
+            // 
+            // nxtdateDateBox
+            // 
+            this.nxtdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.datecontBindingSource, "NxtDate", true));
+            this.nxtdateDateBox.Date = null;
+            this.nxtdateDateBox.DateValue = null;
+            this.nxtdateDateBox.Location = new System.Drawing.Point(95, 370);
+            this.nxtdateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.nxtdateDateBox.Name = "nxtdateDateBox";
+            this.nxtdateDateBox.Size = new System.Drawing.Size(114, 21);
+            this.nxtdateDateBox.TabIndex = 58;
             // 
             // callcontCheckBox
             // 
@@ -353,18 +364,8 @@
             this.nxtdaysComboBox.Name = "nxtdaysComboBox";
             this.nxtdaysComboBox.Size = new System.Drawing.Size(68, 21);
             this.nxtdaysComboBox.TabIndex = 9;
+            this.nxtdaysComboBox.SelectionChangeCommitted += new System.EventHandler(this.nxtdaysComboBox_SelectionChangeCommitted);
             this.nxtdaysComboBox.SelectedValueChanged += new System.EventHandler(this.nxtdaysComboBox_SelectedValueChanged);
-            // 
-            // nxtdateDateTimePicker
-            // 
-            this.nxtdateDateTimePicker.CustomFormat = "\'\'";
-            this.nxtdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.datecontBindingSource, "NxtDate", true));
-            this.nxtdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.nxtdateDateTimePicker.Location = new System.Drawing.Point(95, 366);
-            this.nxtdateDateTimePicker.Name = "nxtdateDateTimePicker";
-            this.nxtdateDateTimePicker.Size = new System.Drawing.Size(126, 20);
-            this.nxtdateDateTimePicker.TabIndex = 10;
-            this.nxtdateDateTimePicker.ValueChanged += new System.EventHandler(this.nxtdateDateTimePicker_ValueChanged_1);
             // 
             // priorityComboBox
             // 
@@ -784,7 +785,8 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.CheckBox callcontCheckBox;
         private System.Windows.Forms.ComboBox nxtdaysComboBox;
-        private Classes.NullableDateTimePicker nxtdateDateTimePicker;
+        
         private System.Windows.Forms.ComboBox priorityComboBox;
+        private CustomControls.DateBox nxtdateDateBox;
     }
 }

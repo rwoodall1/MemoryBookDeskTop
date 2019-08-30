@@ -1072,7 +1072,7 @@ if (result == DialogResult.OK)
             sqlQuery.AddParameter("@invnotes", dr["invnotes"].ToString());
             sqlQuery.AddParameter("@Schcode", Schcode);
             sqlQuery.AddParameter("@Invno",Invno);
-            sqlQuery.AddParameter("@QteDate", qtedateDateTimePicker.Value);
+            sqlQuery.AddParameter("@QteDate", qtedateDateBox.DateValue);
             sqlQuery.AddParameter("@NoPages", txtNoPages.Text);
             sqlQuery.AddParameter("@QtyTotal", lblQtyTotal.Text);
             sqlQuery.AddParameter("@FplnPrc", lblFinalPrice.Text);
@@ -2134,10 +2134,7 @@ private void dp1TextBox_Validating(object sender, CancelEventArgs e)
         }
     }
 }
-private void qtedateDateTimePicker_ValueChanged(object sender, EventArgs e)
-{
-    qtedateDateTimePicker.Format = DateTimePickerFormat.Short;
-}
+
 private void collectionsCheckBox_CheckedChanged_1(object sender, EventArgs e)
 {
     SetNoticeLabels();
@@ -2470,7 +2467,8 @@ private void dp1TextBox_Leave_1(object sender, EventArgs e)
 private void btnCreateInvoice_Click(object sender, EventArgs e)
 {
             //Check if invoice exist to see what to do.
-            qtedateDateTimePicker.Value = DateTime.Now;
+            qtedateDateBox.DateValue = DateTime.Now;
+            qtedateDateBox.Date = qtedateDateBox.DateValue.ToString();
             var saveResult = Save();
             if (saveResult.IsError)
             {

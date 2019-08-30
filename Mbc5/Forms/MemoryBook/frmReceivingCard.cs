@@ -49,23 +49,7 @@ namespace Mbc5.Forms.MemoryBook {
 
 		
 
-		private void kitReceivedDateDateTimePicker_ValueChanged(object sender, EventArgs e) {
-			kitReceivedDateDateTimePicker.Format = DateTimePickerFormat.Short;
-		}
-
 		
-
-		private void guardteDateTimePicker_ValueChanged(object sender, EventArgs e) {
-			guardteDateTimePicker.Format = DateTimePickerFormat.Short;
-		}
-
-		private void deadlineDateTimePicker_ValueChanged(object sender, EventArgs e) {
-			deadlineDateTimePicker.Format = DateTimePickerFormat.Short;
-		}
-
-		private void estdateDateTimePicker_ValueChanged(object sender, EventArgs e) {
-			estdateDateTimePicker.Format = DateTimePickerFormat.Short;
-		}
 
 		private void toolStripButton4_Click(object sender, EventArgs e) {
 			//new

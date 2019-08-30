@@ -131,44 +131,46 @@
             System.Windows.Forms.Label label41;
             System.Windows.Forms.Label label39;
             System.Windows.Forms.Label schooltaxrateLabel;
-            System.Windows.Forms.Label label38;
             System.Windows.Forms.Label label37;
             System.Windows.Forms.Label lblBkTotal;
             System.Windows.Forms.Label extrchgLabel;
             System.Windows.Forms.Label onlineTaxCollectedLabel;
             System.Windows.Forms.Label onlinePayTaxRateLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label dedayinLabel;
             System.Windows.Forms.Label priceIncreaseLabel;
             System.Windows.Forms.Label dateToIncreaseLabel;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource27 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource28 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource29 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource30 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource31 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource32 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource33 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource23 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource24 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource25 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource26 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bsAgreementDetails = new System.Windows.Forms.BindingSource(this.components);
             this.bsAgreementHeader = new System.Windows.Forms.BindingSource(this.components);
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsSales = new Mbc5.DataSets.dsSales();
             this.InvCustBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsInvoice = new Mbc5.DataSets.dsInvoice();
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.paymntBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bsxtraPrintInvoice = new System.Windows.Forms.BindingSource(this.components);
             this.bsxtraPrintDetailInvoice = new System.Windows.Forms.BindingSource(this.components);
             this.tabSales = new System.Windows.Forms.TabControl();
@@ -177,6 +179,11 @@
             this.lblIncollections = new System.Windows.Forms.Label();
             this.lblShipped = new System.Windows.Forms.Label();
             this.invHstDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invHstBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnNoPayPo = new System.Windows.Forms.Button();
             this.btnPaymentNotRec = new System.Windows.Forms.Button();
@@ -311,6 +318,10 @@
             this.txtYear = new System.Windows.Forms.TextBox();
             this.txtNoPages = new System.Windows.Forms.TextBox();
             this.pg2 = new System.Windows.Forms.TabPage();
+            this.onlinePayHasBeenIncreasedCheckBox = new System.Windows.Forms.CheckBox();
+            this.dateToIncreaseDateBox = new CustomControls.DateBox();
+            this.priceIncreaseTextBox = new System.Windows.Forms.TextBox();
+            this.dedayinTextBox = new System.Windows.Forms.TextBox();
             this.taxOnlinePayCheckBox = new System.Windows.Forms.CheckBox();
             this.txtOnlineTaxRate = new System.Windows.Forms.TextBox();
             this.onlineTaxCollectedTextBox = new System.Windows.Forms.TextBox();
@@ -458,8 +469,6 @@
             this.rackTextBox = new System.Windows.Forms.TextBox();
             this.roomTextBox = new System.Windows.Forms.TextBox();
             this.exunfinishTextBox = new System.Windows.Forms.TextBox();
-            this.dteQuote = new Mbc5.Classes.NullableDateTimePicker();
-            this.dpDateShipped = new Mbc5.Classes.NullableDateTimePicker();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dsBidInvoce = new System.Data.DataSet();
             this.miniToolStrip = new System.Windows.Forms.BindingNavigator(this.components);
@@ -487,22 +496,11 @@
             this.bsOnlineFlyer = new System.Windows.Forms.BindingSource(this.components);
             this.InvoiceDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.OnlineAgreementHeaderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dedayinTextBox = new System.Windows.Forms.TextBox();
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsSales = new Mbc5.DataSets.dsSales();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invHstBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterManager = new Mbc5.DataSets.dsSalesTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.custTableAdapter();
             this.invHstTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.InvHstTableAdapter();
             this.quotesTableAdapter = new Mbc5.DataSets.dsSalesTableAdapters.quotesTableAdapter();
-            this.priceIncreaseTextBox = new System.Windows.Forms.TextBox();
-            this.dateToIncreaseDateBox = new CustomControls.DateBox();
-            this.onlinePayHasBeenIncreasedCheckBox = new System.Windows.Forms.CheckBox();
+            this.qtedateDateBox = new CustomControls.DateBox();
             label10 = new System.Windows.Forms.Label();
             label22 = new System.Windows.Forms.Label();
             label24 = new System.Windows.Forms.Label();
@@ -609,7 +607,6 @@
             label41 = new System.Windows.Forms.Label();
             label39 = new System.Windows.Forms.Label();
             schooltaxrateLabel = new System.Windows.Forms.Label();
-            label38 = new System.Windows.Forms.Label();
             label37 = new System.Windows.Forms.Label();
             lblBkTotal = new System.Windows.Forms.Label();
             extrchgLabel = new System.Windows.Forms.Label();
@@ -620,16 +617,20 @@
             dateToIncreaseLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bsAgreementDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAgreementHeader)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvCustBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsxtraPrintInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsxtraPrintDetailInvoice)).BeginInit();
             this.tabSales.SuspendLayout();
             this.pg1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).BeginInit();
             this.panel5.SuspendLayout();
             this.pnlMiscDiscCred.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -663,10 +664,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsOnlineFlyer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnlineAgreementHeaderBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
@@ -1252,9 +1249,9 @@
             invnoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             invnoLabel.AutoSize = true;
             invnoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            invnoLabel.Location = new System.Drawing.Point(993, 16);
+            invnoLabel.Location = new System.Drawing.Point(976, 16);
             invnoLabel.Name = "invnoLabel";
-            invnoLabel.Size = new System.Drawing.Size(90, 16);
+            invnoLabel.Size = new System.Drawing.Size(86, 16);
             invnoLabel.TabIndex = 11;
             invnoLabel.Text = "Invoice No.";
             // 
@@ -1453,7 +1450,7 @@
             adjbefLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             adjbefLabel.AutoSize = true;
             adjbefLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            adjbefLabel.Location = new System.Drawing.Point(635, 522);
+            adjbefLabel.Location = new System.Drawing.Point(618, 522);
             adjbefLabel.Name = "adjbefLabel";
             adjbefLabel.Size = new System.Drawing.Size(137, 13);
             adjbefLabel.TabIndex = 127;
@@ -1500,7 +1497,7 @@
             saletaxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             saletaxLabel.AutoSize = true;
             saletaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            saletaxLabel.Location = new System.Drawing.Point(787, 547);
+            saletaxLabel.Location = new System.Drawing.Point(770, 547);
             saletaxLabel.Name = "saletaxLabel";
             saletaxLabel.Size = new System.Drawing.Size(125, 13);
             saletaxLabel.TabIndex = 137;
@@ -1511,7 +1508,7 @@
             label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label16.AutoSize = true;
             label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label16.Location = new System.Drawing.Point(847, 575);
+            label16.Location = new System.Drawing.Point(830, 575);
             label16.Name = "label16";
             label16.Size = new System.Drawing.Size(65, 13);
             label16.TabIndex = 144;
@@ -1522,7 +1519,7 @@
             label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label18.AutoSize = true;
             label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label18.Location = new System.Drawing.Point(838, 607);
+            label18.Location = new System.Drawing.Point(821, 607);
             label18.Name = "label18";
             label18.Size = new System.Drawing.Size(74, 13);
             label18.TabIndex = 146;
@@ -1532,7 +1529,7 @@
             // 
             schooltaxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             schooltaxLabel.AutoSize = true;
-            schooltaxLabel.Location = new System.Drawing.Point(834, 498);
+            schooltaxLabel.Location = new System.Drawing.Point(817, 498);
             schooltaxLabel.Name = "schooltaxLabel";
             schooltaxLabel.Size = new System.Drawing.Size(54, 13);
             schooltaxLabel.TabIndex = 180;
@@ -1542,7 +1539,7 @@
             // 
             label36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label36.AutoSize = true;
-            label36.Location = new System.Drawing.Point(807, 497);
+            label36.Location = new System.Drawing.Point(790, 497);
             label36.Name = "label36";
             label36.Size = new System.Drawing.Size(15, 13);
             label36.TabIndex = 182;
@@ -1670,7 +1667,7 @@
             // label42
             // 
             label42.AutoSize = true;
-            label42.Location = new System.Drawing.Point(91, 156);
+            label42.Location = new System.Drawing.Point(91, 142);
             label42.Name = "label42";
             label42.Size = new System.Drawing.Size(82, 13);
             label42.TabIndex = 75;
@@ -1679,7 +1676,7 @@
             // label43
             // 
             label43.AutoSize = true;
-            label43.Location = new System.Drawing.Point(67, 126);
+            label43.Location = new System.Drawing.Point(67, 112);
             label43.Name = "label43";
             label43.Size = new System.Drawing.Size(106, 13);
             label43.TabIndex = 71;
@@ -1715,15 +1712,6 @@
             schooltaxrateLabel.TabIndex = 64;
             schooltaxrateLabel.Text = "Tax Rate";
             // 
-            // label38
-            // 
-            label38.AutoSize = true;
-            label38.Location = new System.Drawing.Point(89, 103);
-            label38.Name = "label38";
-            label38.Size = new System.Drawing.Size(84, 13);
-            label38.TabIndex = 63;
-            label38.Text = "Date Shipped";
-            // 
             // label37
             // 
             label37.AutoSize = true;
@@ -1747,11 +1735,39 @@
             extrchgLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             extrchgLabel.AutoSize = true;
             extrchgLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            extrchgLabel.Location = new System.Drawing.Point(561, 274);
+            extrchgLabel.Location = new System.Drawing.Point(544, 274);
             extrchgLabel.Name = "extrchgLabel";
             extrchgLabel.Size = new System.Drawing.Size(90, 13);
             extrchgLabel.TabIndex = 190;
             extrchgLabel.Text = "Extra Charges:";
+            // 
+            // onlineTaxCollectedLabel
+            // 
+            onlineTaxCollectedLabel.AutoSize = true;
+            onlineTaxCollectedLabel.Location = new System.Drawing.Point(184, 516);
+            onlineTaxCollectedLabel.Name = "onlineTaxCollectedLabel";
+            onlineTaxCollectedLabel.Size = new System.Drawing.Size(125, 13);
+            onlineTaxCollectedLabel.TabIndex = 106;
+            onlineTaxCollectedLabel.Text = "Online Tax Collected";
+            // 
+            // onlinePayTaxRateLabel
+            // 
+            onlinePayTaxRateLabel.AutoSize = true;
+            onlinePayTaxRateLabel.Location = new System.Drawing.Point(844, 121);
+            onlinePayTaxRateLabel.Name = "onlinePayTaxRateLabel";
+            onlinePayTaxRateLabel.Size = new System.Drawing.Size(94, 13);
+            onlinePayTaxRateLabel.TabIndex = 107;
+            onlinePayTaxRateLabel.Text = "Sales Tax Rate";
+            // 
+            // quotesBindingSource
+            // 
+            this.quotesBindingSource.DataMember = "quotes";
+            this.quotesBindingSource.DataSource = this.dsSales;
+            // 
+            // dsSales
+            // 
+            this.dsSales.DataSetName = "dsSales";
+            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // InvCustBindingSource
             // 
@@ -1778,23 +1794,37 @@
             this.paymntBindingSource.DataMember = "paymnt";
             this.paymntBindingSource.DataSource = this.dsInvoice;
             // 
-            // onlineTaxCollectedLabel
+            // custBindingSource
             // 
-            onlineTaxCollectedLabel.AutoSize = true;
-            onlineTaxCollectedLabel.Location = new System.Drawing.Point(184, 516);
-            onlineTaxCollectedLabel.Name = "onlineTaxCollectedLabel";
-            onlineTaxCollectedLabel.Size = new System.Drawing.Size(125, 13);
-            onlineTaxCollectedLabel.TabIndex = 106;
-            onlineTaxCollectedLabel.Text = "Online Tax Collected";
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsSales;
             // 
-            // onlinePayTaxRateLabel
+            // dedayinLabel
             // 
-            onlinePayTaxRateLabel.AutoSize = true;
-            onlinePayTaxRateLabel.Location = new System.Drawing.Point(844, 121);
-            onlinePayTaxRateLabel.Name = "onlinePayTaxRateLabel";
-            onlinePayTaxRateLabel.Size = new System.Drawing.Size(94, 13);
-            onlinePayTaxRateLabel.TabIndex = 107;
-            onlinePayTaxRateLabel.Text = "Sales Tax Rate";
+            dedayinLabel.AutoSize = true;
+            dedayinLabel.Location = new System.Drawing.Point(813, 257);
+            dedayinLabel.Name = "dedayinLabel";
+            dedayinLabel.Size = new System.Drawing.Size(98, 13);
+            dedayinLabel.TabIndex = 109;
+            dedayinLabel.Text = "Deadline Day In";
+            // 
+            // priceIncreaseLabel
+            // 
+            priceIncreaseLabel.AutoSize = true;
+            priceIncreaseLabel.Location = new System.Drawing.Point(596, 437);
+            priceIncreaseLabel.Name = "priceIncreaseLabel";
+            priceIncreaseLabel.Size = new System.Drawing.Size(102, 13);
+            priceIncreaseLabel.TabIndex = 110;
+            priceIncreaseLabel.Text = "Increase Amount";
+            // 
+            // dateToIncreaseLabel
+            // 
+            dateToIncreaseLabel.AutoSize = true;
+            dateToIncreaseLabel.Location = new System.Drawing.Point(555, 411);
+            dateToIncreaseLabel.Name = "dateToIncreaseLabel";
+            dateToIncreaseLabel.Size = new System.Drawing.Size(139, 13);
+            dateToIncreaseLabel.TabIndex = 111;
+            dateToIncreaseLabel.Text = "Date To Increase Price";
             // 
             // tabSales
             // 
@@ -1818,7 +1848,9 @@
             // 
             // pg1
             // 
+            this.pg1.AutoScroll = true;
             this.pg1.BackColor = System.Drawing.SystemColors.Control;
+            this.pg1.Controls.Add(this.qtedateDateBox);
             this.pg1.Controls.Add(this.holdpmtCheckBox);
             this.pg1.Controls.Add(this.lblIncollections);
             this.pg1.Controls.Add(this.lblShipped);
@@ -1940,14 +1972,14 @@
             this.invHstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.invHstDataGridView.AutoGenerateColumns = false;
             this.invHstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.invHstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invHstDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -1955,28 +1987,65 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn3});
             this.invHstDataGridView.DataSource = this.invHstBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.invHstDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.invHstDataGridView.DefaultCellStyle = dataGridViewCellStyle23;
             this.invHstDataGridView.EnableHeadersVisualStyles = false;
-            this.invHstDataGridView.Location = new System.Drawing.Point(866, 94);
+            this.invHstDataGridView.Location = new System.Drawing.Point(849, 94);
             this.invHstDataGridView.Name = "invHstDataGridView";
             this.invHstDataGridView.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invHstDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invHstDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.invHstDataGridView.Size = new System.Drawing.Size(334, 113);
             this.invHstDataGridView.TabIndex = 193;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "contryear";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Year";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 58;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "qtedate";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Sales Date";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 87;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "invno";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Invoice#";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 82;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "baldue";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Balance Due";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 96;
+            // 
+            // invHstBindingSource
+            // 
+            this.invHstBindingSource.DataMember = "InvHst";
+            this.invHstBindingSource.DataSource = this.dsSales;
             // 
             // panel5
             // 
@@ -1986,7 +2055,7 @@
             this.panel5.Controls.Add(this.btnPaymentNotRec);
             this.panel5.Controls.Add(this.btnRemove);
             this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(866, 209);
+            this.panel5.Location = new System.Drawing.Point(849, 209);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(334, 85);
             this.panel5.TabIndex = 192;
@@ -2036,7 +2105,7 @@
             this.pnlMiscDiscCred.Controls.Add(this.txtDesc3);
             this.pnlMiscDiscCred.Controls.Add(this.txtDesc4tot);
             this.pnlMiscDiscCred.Controls.Add(this.txtDesc4);
-            this.pnlMiscDiscCred.Location = new System.Drawing.Point(564, 96);
+            this.pnlMiscDiscCred.Location = new System.Drawing.Point(547, 96);
             this.pnlMiscDiscCred.Name = "pnlMiscDiscCred";
             this.pnlMiscDiscCred.Size = new System.Drawing.Size(295, 175);
             this.pnlMiscDiscCred.TabIndex = 191;
@@ -2168,7 +2237,7 @@
             this.txtExtChrg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtExtChrg.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "extrchg", true));
             this.txtExtChrg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExtChrg.Location = new System.Drawing.Point(653, 276);
+            this.txtExtChrg.Location = new System.Drawing.Point(636, 276);
             this.txtExtChrg.MaxLength = 100;
             this.txtExtChrg.Multiline = true;
             this.txtExtChrg.Name = "txtExtChrg";
@@ -2180,7 +2249,7 @@
             // 
             this.lblSalesTax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSalesTax.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "schooltax", true));
-            this.lblSalesTax.Location = new System.Drawing.Point(887, 498);
+            this.lblSalesTax.Location = new System.Drawing.Point(870, 498);
             this.lblSalesTax.Name = "lblSalesTax";
             this.lblSalesTax.Size = new System.Drawing.Size(49, 13);
             this.lblSalesTax.TabIndex = 187;
@@ -2190,7 +2259,7 @@
             // 
             this.lblTaxRateValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTaxRateValue.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "schooltaxrate", true));
-            this.lblTaxRateValue.Location = new System.Drawing.Point(797, 497);
+            this.lblTaxRateValue.Location = new System.Drawing.Point(780, 497);
             this.lblTaxRateValue.Name = "lblTaxRateValue";
             this.lblTaxRateValue.Size = new System.Drawing.Size(38, 13);
             this.lblTaxRateValue.TabIndex = 183;
@@ -2200,7 +2269,7 @@
             // 
             this.lblTaxRateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTaxRateLabel.AutoSize = true;
-            this.lblTaxRateLabel.Location = new System.Drawing.Point(766, 497);
+            this.lblTaxRateLabel.Location = new System.Drawing.Point(749, 497);
             this.lblTaxRateLabel.Name = "lblTaxRateLabel";
             this.lblTaxRateLabel.Size = new System.Drawing.Size(30, 13);
             this.lblTaxRateLabel.TabIndex = 180;
@@ -2210,7 +2279,7 @@
             // 
             this.donotchargeschoolsalestaxCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.donotchargeschoolsalestaxCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "donotchargeschoolsalestax", true));
-            this.donotchargeschoolsalestaxCheckBox.Location = new System.Drawing.Point(629, 497);
+            this.donotchargeschoolsalestaxCheckBox.Location = new System.Drawing.Point(612, 497);
             this.donotchargeschoolsalestaxCheckBox.Name = "donotchargeschoolsalestaxCheckBox";
             this.donotchargeschoolsalestaxCheckBox.Size = new System.Drawing.Size(131, 20);
             this.donotchargeschoolsalestaxCheckBox.TabIndex = 179;
@@ -2312,7 +2381,7 @@
             this.lbladjbef.AutoSize = true;
             this.lbladjbef.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "adjbef", true));
             this.lbladjbef.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbladjbef.Location = new System.Drawing.Point(775, 522);
+            this.lbladjbef.Location = new System.Drawing.Point(758, 522);
             this.lbladjbef.Name = "lbladjbef";
             this.lbladjbef.Size = new System.Drawing.Size(28, 13);
             this.lbladjbef.TabIndex = 14;
@@ -2325,7 +2394,7 @@
             this.panel6.Controls.Add(this.btnInvoice);
             this.panel6.Controls.Add(this.btnCreateWIP);
             this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel6.Location = new System.Drawing.Point(999, 536);
+            this.panel6.Location = new System.Drawing.Point(982, 536);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(177, 96);
             this.panel6.TabIndex = 155;
@@ -2355,7 +2424,7 @@
             this.txtPOAmt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPOAmt.BackColor = System.Drawing.Color.Aqua;
             this.txtPOAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPOAmt.Location = new System.Drawing.Point(913, 604);
+            this.txtPOAmt.Location = new System.Drawing.Point(896, 604);
             this.txtPOAmt.Name = "txtPOAmt";
             this.txtPOAmt.ReadOnly = true;
             this.txtPOAmt.Size = new System.Drawing.Size(54, 20);
@@ -2366,7 +2435,7 @@
             this.txtPayments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPayments.BackColor = System.Drawing.Color.Aqua;
             this.txtPayments.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPayments.Location = new System.Drawing.Point(913, 575);
+            this.txtPayments.Location = new System.Drawing.Point(896, 575);
             this.txtPayments.Name = "txtPayments";
             this.txtPayments.ReadOnly = true;
             this.txtPayments.Size = new System.Drawing.Size(54, 20);
@@ -2376,7 +2445,7 @@
             // 
             this.txtPoSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPoSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPoSrch.Location = new System.Drawing.Point(1083, 67);
+            this.txtPoSrch.Location = new System.Drawing.Point(1066, 67);
             this.txtPoSrch.Name = "txtPoSrch";
             this.txtPoSrch.Size = new System.Drawing.Size(106, 20);
             this.txtPoSrch.TabIndex = 11;
@@ -2388,7 +2457,7 @@
             this.btnPoSrch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPoSrch.AutoSize = true;
             this.btnPoSrch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPoSrch.Location = new System.Drawing.Point(993, 65);
+            this.btnPoSrch.Location = new System.Drawing.Point(976, 65);
             this.btnPoSrch.Name = "btnPoSrch";
             this.btnPoSrch.Size = new System.Drawing.Size(86, 23);
             this.btnPoSrch.TabIndex = 28;
@@ -2402,7 +2471,7 @@
             this.saletaxTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.saletaxTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "saletax", true));
             this.saletaxTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saletaxTextBox.Location = new System.Drawing.Point(913, 547);
+            this.saletaxTextBox.Location = new System.Drawing.Point(896, 547);
             this.saletaxTextBox.Name = "saletaxTextBox";
             this.saletaxTextBox.Size = new System.Drawing.Size(54, 20);
             this.saletaxTextBox.TabIndex = 63;
@@ -2425,7 +2494,7 @@
             this.panel4.Controls.Add(this.cred_etcTextBox1);
             this.panel4.Controls.Add(this.txtCredits);
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(616, 371);
+            this.panel4.Location = new System.Drawing.Point(599, 371);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(351, 119);
             this.panel4.TabIndex = 137;
@@ -3405,7 +3474,7 @@
             this.lblInvoice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "invno", true));
             this.lblInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvoice.ForeColor = System.Drawing.Color.Blue;
-            this.lblInvoice.Location = new System.Drawing.Point(1085, 16);
+            this.lblInvoice.Location = new System.Drawing.Point(1068, 16);
             this.lblInvoice.Name = "lblInvoice";
             this.lblInvoice.Size = new System.Drawing.Size(17, 17);
             this.lblInvoice.TabIndex = 12;
@@ -3649,6 +3718,44 @@
             this.pg2.Text = "Online Pay";
             this.pg2.Click += new System.EventHandler(this.pg2_Click);
             // 
+            // onlinePayHasBeenIncreasedCheckBox
+            // 
+            this.onlinePayHasBeenIncreasedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "OnlinePayHasBeenIncreased", true));
+            this.onlinePayHasBeenIncreasedCheckBox.Location = new System.Drawing.Point(809, 432);
+            this.onlinePayHasBeenIncreasedCheckBox.Name = "onlinePayHasBeenIncreasedCheckBox";
+            this.onlinePayHasBeenIncreasedCheckBox.Size = new System.Drawing.Size(216, 24);
+            this.onlinePayHasBeenIncreasedCheckBox.TabIndex = 113;
+            this.onlinePayHasBeenIncreasedCheckBox.Text = "Online Pay Has Been Increased";
+            this.onlinePayHasBeenIncreasedCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // dateToIncreaseDateBox
+            // 
+            this.dateToIncreaseDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.quotesBindingSource, "DateToIncrease", true));
+            this.dateToIncreaseDateBox.Date = null;
+            this.dateToIncreaseDateBox.DateValue = null;
+            this.dateToIncreaseDateBox.Location = new System.Drawing.Point(700, 411);
+            this.dateToIncreaseDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.dateToIncreaseDateBox.Name = "dateToIncreaseDateBox";
+            this.dateToIncreaseDateBox.Size = new System.Drawing.Size(133, 21);
+            this.dateToIncreaseDateBox.TabIndex = 112;
+            // 
+            // priceIncreaseTextBox
+            // 
+            this.priceIncreaseTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "PriceIncrease", true));
+            this.priceIncreaseTextBox.Location = new System.Drawing.Point(700, 434);
+            this.priceIncreaseTextBox.Name = "priceIncreaseTextBox";
+            this.priceIncreaseTextBox.Size = new System.Drawing.Size(100, 20);
+            this.priceIncreaseTextBox.TabIndex = 111;
+            // 
+            // dedayinTextBox
+            // 
+            this.dedayinTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "dedayin", true));
+            this.dedayinTextBox.Location = new System.Drawing.Point(913, 257);
+            this.dedayinTextBox.Name = "dedayinTextBox";
+            this.dedayinTextBox.ReadOnly = true;
+            this.dedayinTextBox.Size = new System.Drawing.Size(100, 20);
+            this.dedayinTextBox.TabIndex = 110;
+            // 
             // taxOnlinePayCheckBox
             // 
             this.taxOnlinePayCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.quotesBindingSource, "TaxOnlinePay", true));
@@ -3714,15 +3821,15 @@
             // reportViewer3
             // 
             this.reportViewer3.DocumentMapWidth = 50;
-            reportDataSource1.Name = "dsItemDetails";
-            reportDataSource1.Value = this.bsAgreementDetails;
-            reportDataSource2.Name = "dsHeader";
-            reportDataSource2.Value = this.bsAgreementHeader;
-            reportDataSource3.Name = "dsOnlinePay";
-            reportDataSource3.Value = this.quotesBindingSource;
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource27.Name = "dsItemDetails";
+            reportDataSource27.Value = this.bsAgreementDetails;
+            reportDataSource28.Name = "dsHeader";
+            reportDataSource28.Value = this.bsAgreementHeader;
+            reportDataSource29.Name = "dsOnlinePay";
+            reportDataSource29.Value = this.quotesBindingSource;
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource27);
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource28);
+            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource29);
             this.reportViewer3.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.OnlineAgreement.rdlc";
             this.reportViewer3.Location = new System.Drawing.Point(736, 52);
             this.reportViewer3.Name = "reportViewer3";
@@ -4226,18 +4333,18 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 35;
-            reportDataSource4.Name = "cust";
-            reportDataSource4.Value = this.InvCustBindingSource;
-            reportDataSource5.Name = "invoice";
-            reportDataSource5.Value = this.invoiceBindingSource;
-            reportDataSource6.Name = "invoicedetail";
-            reportDataSource6.Value = this.invdetailBindingSource;
-            reportDataSource7.Name = "payment";
-            reportDataSource7.Value = this.paymntBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource7);
+            reportDataSource30.Name = "cust";
+            reportDataSource30.Value = this.InvCustBindingSource;
+            reportDataSource31.Name = "invoice";
+            reportDataSource31.Value = this.invoiceBindingSource;
+            reportDataSource32.Name = "invoicedetail";
+            reportDataSource32.Value = this.invdetailBindingSource;
+            reportDataSource33.Name = "payment";
+            reportDataSource33.Value = this.paymntBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource30);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource31);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource32);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource33);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MemInvoice.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(951, 79);
             this.reportViewer1.Name = "reportViewer1";
@@ -4493,7 +4600,7 @@
             this.panel9.Controls.Add(this.label25);
             this.panel9.Controls.Add(this.invdetailDataGridView);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(3, 231);
+            this.panel9.Location = new System.Drawing.Point(3, 228);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1223, 531);
             this.panel9.TabIndex = 2;
@@ -4539,14 +4646,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.invdetailDataGridView.AutoGenerateColumns = false;
             this.invdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.invdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.invdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
@@ -4567,8 +4674,8 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "schcode";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridViewTextBoxColumn5.HeaderText = "School Code";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -4576,8 +4683,8 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "invno";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle27;
             this.dataGridViewTextBoxColumn6.HeaderText = "Invoice #";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -4585,8 +4692,8 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "descr";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle28;
             this.dataGridViewTextBoxColumn7.HeaderText = "Description";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -4594,8 +4701,8 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "price";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle29;
             this.dataGridViewTextBoxColumn8.HeaderText = "Amount";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -4829,14 +4936,14 @@
             this.paymntDataGridView.AllowUserToDeleteRows = false;
             this.paymntDataGridView.AutoGenerateColumns = false;
             this.paymntDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.paymntDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.paymntDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paymntDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn12,
@@ -5045,18 +5152,18 @@
             // reportViewer2
             // 
             this.reportViewer2.DocumentMapWidth = 35;
-            reportDataSource8.Name = "cust";
-            reportDataSource8.Value = this.custBindingSource;
-            reportDataSource9.Name = "invoice";
-            reportDataSource9.Value = this.bsxtraPrintInvoice;
-            reportDataSource10.Name = "invoicedetail";
-            reportDataSource10.Value = this.bsxtraPrintDetailInvoice;
-            reportDataSource11.Name = "payment";
-            reportDataSource11.Value = this.paymntBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource8);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource9);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource10);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource11);
+            reportDataSource23.Name = "cust";
+            reportDataSource23.Value = this.custBindingSource;
+            reportDataSource24.Name = "invoice";
+            reportDataSource24.Value = this.bsxtraPrintInvoice;
+            reportDataSource25.Name = "invoicedetail";
+            reportDataSource25.Value = this.bsxtraPrintDetailInvoice;
+            reportDataSource26.Name = "payment";
+            reportDataSource26.Value = this.paymntBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource23);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource24);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource25);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource26);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.MemInvoice.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(600, 73);
             this.reportViewer2.Name = "reportViewer2";
@@ -5079,14 +5186,14 @@
             // 
             // grdXtraInvoice
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdXtraInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdXtraInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.grdXtraInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdXtraInvoice.EnableHeadersVisualStyles = false;
             this.grdXtraInvoice.Location = new System.Drawing.Point(427, 373);
@@ -5133,7 +5240,6 @@
             this.pnlInvoice.Controls.Add(label39);
             this.pnlInvoice.Controls.Add(this.lblBookPrice);
             this.pnlInvoice.Controls.Add(schooltaxrateLabel);
-            this.pnlInvoice.Controls.Add(label38);
             this.pnlInvoice.Controls.Add(label37);
             this.pnlInvoice.Controls.Add(this.txtQuantity);
             this.pnlInvoice.Location = new System.Drawing.Point(15, 373);
@@ -5174,7 +5280,7 @@
             // 
             this.lblInvoiceTotal.AutoSize = true;
             this.lblInvoiceTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceTotal.Location = new System.Drawing.Point(182, 156);
+            this.lblInvoiceTotal.Location = new System.Drawing.Point(182, 142);
             this.lblInvoiceTotal.Name = "lblInvoiceTotal";
             this.lblInvoiceTotal.Size = new System.Drawing.Size(13, 13);
             this.lblInvoiceTotal.TabIndex = 76;
@@ -5194,7 +5300,7 @@
             // 
             this.label44.BackColor = System.Drawing.Color.Black;
             this.label44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label44.Location = new System.Drawing.Point(179, 149);
+            this.label44.Location = new System.Drawing.Point(179, 135);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(96, 2);
             this.label44.TabIndex = 73;
@@ -5203,7 +5309,7 @@
             // 
             this.txtShippingCharges.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.xtraBindingSource, "room", true));
             this.txtShippingCharges.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShippingCharges.Location = new System.Drawing.Point(179, 126);
+            this.txtShippingCharges.Location = new System.Drawing.Point(179, 112);
             this.txtShippingCharges.Name = "txtShippingCharges";
             this.txtShippingCharges.Size = new System.Drawing.Size(69, 20);
             this.txtShippingCharges.TabIndex = 72;
@@ -5363,31 +5469,6 @@
             this.exunfinishTextBox.Name = "exunfinishTextBox";
             this.exunfinishTextBox.Size = new System.Drawing.Size(100, 20);
             this.exunfinishTextBox.TabIndex = 7;
-            // 
-            // dteQuote
-            // 
-            this.dteQuote.CustomFormat = "\'\'";
-            this.dteQuote.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.quotesBindingSource, "qtedate", true));
-            this.dteQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dteQuote.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dteQuote.Location = new System.Drawing.Point(612, 13);
-            this.dteQuote.Name = "dteQuote";
-            this.dteQuote.Size = new System.Drawing.Size(116, 20);
-            this.dteQuote.TabIndex = 4;
-            this.dteQuote.Value = new System.DateTime(2019, 8, 15, 15, 1, 7, 870);
-            this.dteQuote.ValueChanged += new System.EventHandler(this.dteQuote_ValueChanged);
-            // 
-            // dpDateShipped
-            // 
-            this.dpDateShipped.CustomFormat = "\'\'";
-            this.dpDateShipped.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpDateShipped.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpDateShipped.Location = new System.Drawing.Point(179, 103);
-            this.dpDateShipped.Name = "dpDateShipped";
-            this.dpDateShipped.Size = new System.Drawing.Size(96, 20);
-            this.dpDateShipped.TabIndex = 185;
-            this.dpDateShipped.Value = new System.DateTime(2019, 8, 15, 15, 1, 8, 476);
-            this.dpDateShipped.ValueChanged += new System.EventHandler(this.dpDateShipped_ValueChanged);
             // 
             // errorProvider1
             // 
@@ -5589,76 +5670,6 @@
             // 
             this.OnlineAgreementHeaderBindingSource.DataSource = typeof(BindingModels.OnlineAgreementHeader);
             // 
-            // dedayinLabel
-            // 
-            dedayinLabel.AutoSize = true;
-            dedayinLabel.Location = new System.Drawing.Point(813, 257);
-            dedayinLabel.Name = "dedayinLabel";
-            dedayinLabel.Size = new System.Drawing.Size(98, 13);
-            dedayinLabel.TabIndex = 109;
-            dedayinLabel.Text = "Deadline Day In";
-            // 
-            // dedayinTextBox
-            // 
-            this.dedayinTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "dedayin", true));
-            this.dedayinTextBox.Location = new System.Drawing.Point(913, 257);
-            this.dedayinTextBox.Name = "dedayinTextBox";
-            this.dedayinTextBox.ReadOnly = true;
-            this.dedayinTextBox.Size = new System.Drawing.Size(100, 20);
-            this.dedayinTextBox.TabIndex = 110;
-            // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "quotes";
-            this.quotesBindingSource.DataSource = this.dsSales;
-            // 
-            // dsSales
-            // 
-            this.dsSales.DataSetName = "dsSales";
-            this.dsSales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "contryear";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Year";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 58;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "qtedate";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Sales Date";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 87;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "invno";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Invoice#";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 82;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "baldue";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Balance Due";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 96;
-            // 
-            // invHstBindingSource
-            // 
-            this.invHstBindingSource.DataMember = "InvHst";
-            this.invHstBindingSource.DataSource = this.dsSales;
-            // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsSales;
-            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
@@ -5680,52 +5691,16 @@
             // 
             this.quotesTableAdapter.ClearBeforeFill = true;
             // 
-            // priceIncreaseLabel
+            // qtedateDateBox
             // 
-            priceIncreaseLabel.AutoSize = true;
-            priceIncreaseLabel.Location = new System.Drawing.Point(596, 437);
-            priceIncreaseLabel.Name = "priceIncreaseLabel";
-            priceIncreaseLabel.Size = new System.Drawing.Size(102, 13);
-            priceIncreaseLabel.TabIndex = 110;
-            priceIncreaseLabel.Text = "Increase Amount";
-            // 
-            // priceIncreaseTextBox
-            // 
-            this.priceIncreaseTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.quotesBindingSource, "PriceIncrease", true));
-            this.priceIncreaseTextBox.Location = new System.Drawing.Point(700, 434);
-            this.priceIncreaseTextBox.Name = "priceIncreaseTextBox";
-            this.priceIncreaseTextBox.Size = new System.Drawing.Size(100, 20);
-            this.priceIncreaseTextBox.TabIndex = 111;
-            // 
-            // dateToIncreaseLabel
-            // 
-            dateToIncreaseLabel.AutoSize = true;
-            dateToIncreaseLabel.Location = new System.Drawing.Point(555, 411);
-            dateToIncreaseLabel.Name = "dateToIncreaseLabel";
-            dateToIncreaseLabel.Size = new System.Drawing.Size(139, 13);
-            dateToIncreaseLabel.TabIndex = 111;
-            dateToIncreaseLabel.Text = "Date To Increase Price";
-            // 
-            // dateToIncreaseDateBox
-            // 
-            this.dateToIncreaseDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.quotesBindingSource, "DateToIncrease", true));
-            this.dateToIncreaseDateBox.Date = null;
-            this.dateToIncreaseDateBox.DateValue = null;
-            this.dateToIncreaseDateBox.Location = new System.Drawing.Point(700, 411);
-            this.dateToIncreaseDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.dateToIncreaseDateBox.Name = "dateToIncreaseDateBox";
-            this.dateToIncreaseDateBox.Size = new System.Drawing.Size(133, 21);
-            this.dateToIncreaseDateBox.TabIndex = 112;
-            // 
-            // onlinePayHasBeenIncreasedCheckBox
-            // 
-            this.onlinePayHasBeenIncreasedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "OnlinePayHasBeenIncreased", true));
-            this.onlinePayHasBeenIncreasedCheckBox.Location = new System.Drawing.Point(809, 432);
-            this.onlinePayHasBeenIncreasedCheckBox.Name = "onlinePayHasBeenIncreasedCheckBox";
-            this.onlinePayHasBeenIncreasedCheckBox.Size = new System.Drawing.Size(216, 24);
-            this.onlinePayHasBeenIncreasedCheckBox.TabIndex = 113;
-            this.onlinePayHasBeenIncreasedCheckBox.Text = "Online Pay Has Been Increased";
-            this.onlinePayHasBeenIncreasedCheckBox.UseVisualStyleBackColor = true;
+            this.qtedateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.quotesBindingSource, "qtedate", true));
+            this.qtedateDateBox.Date = null;
+            this.qtedateDateBox.DateValue = null;
+            this.qtedateDateBox.Location = new System.Drawing.Point(607, 11);
+            this.qtedateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.qtedateDateBox.Name = "qtedateDateBox";
+            this.qtedateDateBox.Size = new System.Drawing.Size(114, 21);
+            this.qtedateDateBox.TabIndex = 197;
             // 
             // frmSales
             // 
@@ -5747,17 +5722,21 @@
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmSales_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.bsAgreementDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAgreementHeader)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvCustBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsInvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymntBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsxtraPrintInvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsxtraPrintDetailInvoice)).EndInit();
             this.tabSales.ResumeLayout(false);
             this.pg1.ResumeLayout(false);
             this.pg1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invHstDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).EndInit();
             this.panel5.ResumeLayout(false);
             this.pnlMiscDiscCred.ResumeLayout(false);
             this.pnlMiscDiscCred.PerformLayout();
@@ -5805,10 +5784,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsOnlineFlyer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceDetailsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnlineAgreementHeaderBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invHstBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -6033,7 +6008,7 @@
         private System.Windows.Forms.TextBox txtSource;
         private System.Windows.Forms.TextBox booktypeTextBox;
         private System.Windows.Forms.TextBox txtNocopies;
-        private Classes.NullableDateTimePicker dteQuote;
+      
         private System.Windows.Forms.TextBox txtPoNum;
         private System.Windows.Forms.TextBox txtBYear;
         private System.Windows.Forms.TextBox txtYear;
@@ -6102,7 +6077,7 @@
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Label lblOnHand;
         private System.Windows.Forms.Label lblInvoiceTaxRate;
-        private Classes.NullableDateTimePicker dpDateShipped;
+    
         private System.Windows.Forms.Label lblXtraInvoiceNo;
         private System.Windows.Forms.Label lblBookTotalValue;
         private System.Windows.Forms.BindingSource XtraInvoiceBindingSource;
@@ -6158,5 +6133,6 @@
         private System.Windows.Forms.CheckBox onlinePayHasBeenIncreasedCheckBox;
         private CustomControls.DateBox dateToIncreaseDateBox;
         private System.Windows.Forms.TextBox priceIncreaseTextBox;
+        private CustomControls.DateBox qtedateDateBox;
     }
     }

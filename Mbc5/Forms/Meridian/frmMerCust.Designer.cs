@@ -119,6 +119,14 @@
             this.btnProdTkt = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.xeldateDateBox = new CustomControls.DateBox();
+            this.sourdateDateBox = new CustomControls.DateBox();
+            this.contdateDateBox = new CustomControls.DateBox();
+            this.dedayinDateBox = new CustomControls.DateBox();
+            this.dedayoutDateBox = new CustomControls.DateBox();
+            this.dteschendDateBox = new CustomControls.DateBox();
+            this.initcontDateBox = new CustomControls.DateBox();
+            this.dteschstartDateBox = new CustomControls.DateBox();
             this.nxtdateTextBox = new System.Windows.Forms.TextBox();
             this.datecontBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.josnameComboBox = new System.Windows.Forms.ComboBox();
@@ -146,7 +154,6 @@
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.txtOracleCode = new System.Windows.Forms.TextBox();
             this.junsnoTextBox = new System.Windows.Forms.TextBox();
-            this.taxExemptRecvdDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
             this.chkNotTaxExempt = new System.Windows.Forms.CheckBox();
             this.chkTaxExempt = new System.Windows.Forms.CheckBox();
             this.chkSchoolClosed = new System.Windows.Forms.CheckBox();
@@ -216,14 +223,6 @@
             this.statesTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.statesTableAdapter();
             this.tableAdapterManager1 = new Mbc5.DataSets.LookUpTableAdapters.TableAdapterManager();
             this.contpstnTableAdapter = new Mbc5.DataSets.LookUpTableAdapters.contpstnTableAdapter();
-            this.initcontDateBox = new CustomControls.DateBox();
-            this.dteschendDateBox = new CustomControls.DateBox();
-            this.dteschstartDateBox = new CustomControls.DateBox();
-            this.dedayoutDateBox = new CustomControls.DateBox();
-            this.dedayinDateBox = new CustomControls.DateBox();
-            this.xeldateDateBox = new CustomControls.DateBox();
-            this.contdateDateBox = new CustomControls.DateBox();
-            this.sourdateDateBox = new CustomControls.DateBox();
             schnameLabel = new System.Windows.Forms.Label();
             csrepLabel = new System.Windows.Forms.Label();
             taxExemptRecvdLabel = new System.Windows.Forms.Label();
@@ -774,7 +773,7 @@
             // 
             contlnameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contlnameLabel.AutoSize = true;
-            contlnameLabel.Location = new System.Drawing.Point(415, 31);
+            contlnameLabel.Location = new System.Drawing.Point(398, 31);
             contlnameLabel.Name = "contlnameLabel";
             contlnameLabel.Size = new System.Drawing.Size(61, 13);
             contlnameLabel.TabIndex = 374;
@@ -784,7 +783,7 @@
             // 
             contaddr2Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contaddr2Label.AutoSize = true;
-            contaddr2Label.Location = new System.Drawing.Point(422, 59);
+            contaddr2Label.Location = new System.Drawing.Point(405, 59);
             contaddr2Label.Name = "contaddr2Label";
             contaddr2Label.Size = new System.Drawing.Size(54, 13);
             contaddr2Label.TabIndex = 372;
@@ -812,7 +811,7 @@
             // 
             contphnhomLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contphnhomLabel.AutoSize = true;
-            contphnhomLabel.Location = new System.Drawing.Point(404, 114);
+            contphnhomLabel.Location = new System.Drawing.Point(387, 114);
             contphnhomLabel.Name = "contphnhomLabel";
             contphnhomLabel.Size = new System.Drawing.Size(72, 13);
             contphnhomLabel.TabIndex = 382;
@@ -822,7 +821,7 @@
             // 
             contzipLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contzipLabel.AutoSize = true;
-            contzipLabel.Location = new System.Drawing.Point(451, 85);
+            contzipLabel.Location = new System.Drawing.Point(434, 85);
             contzipLabel.Name = "contzipLabel";
             contzipLabel.Size = new System.Drawing.Size(25, 13);
             contzipLabel.TabIndex = 380;
@@ -841,7 +840,7 @@
             // 
             contfaxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contfaxLabel.AutoSize = true;
-            contfaxLabel.Location = new System.Drawing.Point(415, 141);
+            contfaxLabel.Location = new System.Drawing.Point(398, 141);
             contfaxLabel.Name = "contfaxLabel";
             contfaxLabel.Size = new System.Drawing.Size(61, 13);
             contfaxLabel.TabIndex = 388;
@@ -860,7 +859,7 @@
             // 
             contemailLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             contemailLabel.AutoSize = true;
-            contemailLabel.Location = new System.Drawing.Point(441, 167);
+            contemailLabel.Location = new System.Drawing.Point(424, 167);
             contemailLabel.Name = "contemailLabel";
             contemailLabel.Size = new System.Drawing.Size(35, 13);
             contemailLabel.TabIndex = 392;
@@ -888,7 +887,7 @@
             // 
             label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(404, 309);
+            label5.Location = new System.Drawing.Point(387, 309);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(72, 13);
             label5.TabIndex = 415;
@@ -898,7 +897,7 @@
             // 
             label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(415, 231);
+            label6.Location = new System.Drawing.Point(398, 231);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(61, 13);
             label6.TabIndex = 414;
@@ -917,7 +916,7 @@
             // 
             label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(441, 366);
+            label8.Location = new System.Drawing.Point(424, 366);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(35, 13);
             label8.TabIndex = 412;
@@ -927,7 +926,7 @@
             // 
             label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(415, 337);
+            label9.Location = new System.Drawing.Point(398, 337);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(61, 13);
             label9.TabIndex = 411;
@@ -946,7 +945,7 @@
             // 
             label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(451, 282);
+            label11.Location = new System.Drawing.Point(434, 282);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(25, 13);
             label11.TabIndex = 409;
@@ -965,7 +964,7 @@
             // 
             label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(422, 257);
+            label13.Location = new System.Drawing.Point(405, 257);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(54, 13);
             label13.TabIndex = 407;
@@ -1031,7 +1030,6 @@
             this.pg1.Controls.Add(junsnoLabel);
             this.pg1.Controls.Add(this.junsnoTextBox);
             this.pg1.Controls.Add(taxExemptRecvdLabel);
-            this.pg1.Controls.Add(this.taxExemptRecvdDateTimePicker);
             this.pg1.Controls.Add(this.chkNotTaxExempt);
             this.pg1.Controls.Add(this.chkTaxExempt);
             this.pg1.Controls.Add(this.chkSchoolClosed);
@@ -1048,7 +1046,6 @@
             this.pg1.Size = new System.Drawing.Size(1172, 596);
             this.pg1.TabIndex = 0;
             this.pg1.Text = "School";
-          
             // 
             // lblInvno
             // 
@@ -1283,6 +1280,99 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1072, 123);
             this.panel2.TabIndex = 53;
+            // 
+            // xeldateDateBox
+            // 
+            this.xeldateDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.xeldateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "xeldate", true));
+            this.xeldateDateBox.Date = null;
+            this.xeldateDateBox.DateValue = null;
+            this.xeldateDateBox.Location = new System.Drawing.Point(922, 86);
+            this.xeldateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.xeldateDateBox.Name = "xeldateDateBox";
+            this.xeldateDateBox.Size = new System.Drawing.Size(129, 21);
+            this.xeldateDateBox.TabIndex = 65;
+            // 
+            // sourdateDateBox
+            // 
+            this.sourdateDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sourdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "sourdate", true));
+            this.sourdateDateBox.Date = null;
+            this.sourdateDateBox.DateValue = null;
+            this.sourdateDateBox.Location = new System.Drawing.Point(922, 6);
+            this.sourdateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.sourdateDateBox.Name = "sourdateDateBox";
+            this.sourdateDateBox.Size = new System.Drawing.Size(114, 21);
+            this.sourdateDateBox.TabIndex = 66;
+            // 
+            // contdateDateBox
+            // 
+            this.contdateDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.contdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "contdate", true));
+            this.contdateDateBox.Date = null;
+            this.contdateDateBox.DateValue = null;
+            this.contdateDateBox.Location = new System.Drawing.Point(922, 34);
+            this.contdateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.contdateDateBox.Name = "contdateDateBox";
+            this.contdateDateBox.Size = new System.Drawing.Size(114, 21);
+            this.contdateDateBox.TabIndex = 65;
+            this.contdateDateBox.Leave += new System.EventHandler(this.contdateDateBox_Leave);
+            // 
+            // dedayinDateBox
+            // 
+            this.dedayinDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "dedayin", true));
+            this.dedayinDateBox.Date = null;
+            this.dedayinDateBox.DateValue = null;
+            this.dedayinDateBox.Location = new System.Drawing.Point(104, 87);
+            this.dedayinDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.dedayinDateBox.Name = "dedayinDateBox";
+            this.dedayinDateBox.Size = new System.Drawing.Size(138, 21);
+            this.dedayinDateBox.TabIndex = 65;
+            // 
+            // dedayoutDateBox
+            // 
+            this.dedayoutDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "dedayout", true));
+            this.dedayoutDateBox.Date = null;
+            this.dedayoutDateBox.DateValue = null;
+            this.dedayoutDateBox.Location = new System.Drawing.Point(383, 87);
+            this.dedayoutDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.dedayoutDateBox.Name = "dedayoutDateBox";
+            this.dedayoutDateBox.Size = new System.Drawing.Size(114, 21);
+            this.dedayoutDateBox.TabIndex = 428;
+            // 
+            // dteschendDateBox
+            // 
+            this.dteschendDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "dteschend", true));
+            this.dteschendDateBox.Date = null;
+            this.dteschendDateBox.DateValue = null;
+            this.dteschendDateBox.Location = new System.Drawing.Point(104, 59);
+            this.dteschendDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.dteschendDateBox.Name = "dteschendDateBox";
+            this.dteschendDateBox.Size = new System.Drawing.Size(138, 21);
+            this.dteschendDateBox.TabIndex = 427;
+            // 
+            // initcontDateBox
+            // 
+            this.initcontDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.initcontDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "initcont", true));
+            this.initcontDateBox.Date = null;
+            this.initcontDateBox.DateValue = null;
+            this.initcontDateBox.Location = new System.Drawing.Point(681, 86);
+            this.initcontDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.initcontDateBox.Name = "initcontDateBox";
+            this.initcontDateBox.Size = new System.Drawing.Size(153, 21);
+            this.initcontDateBox.TabIndex = 67;
+            // 
+            // dteschstartDateBox
+            // 
+            this.dteschstartDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "dteschstart", true));
+            this.dteschstartDateBox.Date = null;
+            this.dteschstartDateBox.DateValue = null;
+            this.dteschstartDateBox.Location = new System.Drawing.Point(104, 34);
+            this.dteschstartDateBox.MinimumSize = new System.Drawing.Size(114, 20);
+            this.dteschstartDateBox.Name = "dteschstartDateBox";
+            this.dteschstartDateBox.Size = new System.Drawing.Size(138, 21);
+            this.dteschstartDateBox.TabIndex = 426;
             // 
             // nxtdateTextBox
             // 
@@ -1546,18 +1636,6 @@
             this.junsnoTextBox.Size = new System.Drawing.Size(90, 20);
             this.junsnoTextBox.TabIndex = 46;
             // 
-            // taxExemptRecvdDateTimePicker
-            // 
-            this.taxExemptRecvdDateTimePicker.CustomFormat = "\'\'";
-            this.taxExemptRecvdDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.mcustBindingSource, "TaxExemptRecvd", true));
-            this.taxExemptRecvdDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.taxExemptRecvdDateTimePicker.Location = new System.Drawing.Point(356, 37);
-            this.taxExemptRecvdDateTimePicker.Name = "taxExemptRecvdDateTimePicker";
-            this.taxExemptRecvdDateTimePicker.Size = new System.Drawing.Size(120, 20);
-            this.taxExemptRecvdDateTimePicker.TabIndex = 45;
-            this.taxExemptRecvdDateTimePicker.Value = new System.DateTime(2019, 8, 15, 16, 7, 2, 528);
-            this.taxExemptRecvdDateTimePicker.ValueChanged += new System.EventHandler(this.taxExemptRecvdDateTimePicker_ValueChanged);
-            // 
             // chkNotTaxExempt
             // 
             this.chkNotTaxExempt.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.mcustBindingSource, "NotTaxExempt", true));
@@ -1716,7 +1794,7 @@
             // contaddr2TextBox1
             // 
             this.contaddr2TextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contaddr2", true));
-            this.contaddr2TextBox1.Location = new System.Drawing.Point(495, 59);
+            this.contaddr2TextBox1.Location = new System.Drawing.Point(464, 59);
             this.contaddr2TextBox1.MaxLength = 50;
             this.contaddr2TextBox1.Name = "contaddr2TextBox1";
             this.contaddr2TextBox1.Size = new System.Drawing.Size(232, 20);
@@ -1799,7 +1877,7 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontphnho", true));
-            this.textBox1.Location = new System.Drawing.Point(478, 309);
+            this.textBox1.Location = new System.Drawing.Point(461, 309);
             this.textBox1.MaxLength = 50;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(232, 20);
@@ -1809,7 +1887,7 @@
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontlname", true));
-            this.textBox2.Location = new System.Drawing.Point(478, 231);
+            this.textBox2.Location = new System.Drawing.Point(461, 231);
             this.textBox2.MaxLength = 50;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(232, 20);
@@ -1828,7 +1906,7 @@
             // 
             this.txtContact2Email.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtContact2Email.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontemail", true));
-            this.txtContact2Email.Location = new System.Drawing.Point(478, 363);
+            this.txtContact2Email.Location = new System.Drawing.Point(461, 363);
             this.txtContact2Email.MaxLength = 50;
             this.txtContact2Email.Name = "txtContact2Email";
             this.txtContact2Email.Size = new System.Drawing.Size(232, 20);
@@ -1838,7 +1916,7 @@
             // 
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontfax", true));
-            this.textBox5.Location = new System.Drawing.Point(478, 337);
+            this.textBox5.Location = new System.Drawing.Point(461, 337);
             this.textBox5.MaxLength = 50;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(232, 20);
@@ -1857,7 +1935,7 @@
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontzip", true));
-            this.textBox7.Location = new System.Drawing.Point(478, 282);
+            this.textBox7.Location = new System.Drawing.Point(461, 282);
             this.textBox7.MaxLength = 50;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(232, 20);
@@ -1867,7 +1945,7 @@
             // 
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "bcontaddr2", true));
-            this.textBox8.Location = new System.Drawing.Point(478, 257);
+            this.textBox8.Location = new System.Drawing.Point(461, 257);
             this.textBox8.MaxLength = 50;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(232, 20);
@@ -1903,7 +1981,7 @@
             // 
             this.txtContactEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtContactEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contemail", true));
-            this.txtContactEmail.Location = new System.Drawing.Point(478, 167);
+            this.txtContactEmail.Location = new System.Drawing.Point(461, 167);
             this.txtContactEmail.MaxLength = 50;
             this.txtContactEmail.Name = "txtContactEmail";
             this.txtContactEmail.Size = new System.Drawing.Size(232, 20);
@@ -1922,7 +2000,7 @@
             // 
             this.contfaxTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contfaxTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contfax", true));
-            this.contfaxTextBox.Location = new System.Drawing.Point(478, 141);
+            this.contfaxTextBox.Location = new System.Drawing.Point(461, 141);
             this.contfaxTextBox.MaxLength = 50;
             this.contfaxTextBox.Name = "contfaxTextBox";
             this.contfaxTextBox.Size = new System.Drawing.Size(232, 20);
@@ -1949,7 +2027,7 @@
             // 
             this.contphnhomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contphnhomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contphnhom", true));
-            this.contphnhomTextBox.Location = new System.Drawing.Point(478, 114);
+            this.contphnhomTextBox.Location = new System.Drawing.Point(461, 114);
             this.contphnhomTextBox.MaxLength = 50;
             this.contphnhomTextBox.Name = "contphnhomTextBox";
             this.contphnhomTextBox.Size = new System.Drawing.Size(232, 20);
@@ -1959,7 +2037,7 @@
             // 
             this.contzipTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contzipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contzip", true));
-            this.contzipTextBox.Location = new System.Drawing.Point(478, 85);
+            this.contzipTextBox.Location = new System.Drawing.Point(461, 85);
             this.contzipTextBox.MaxLength = 50;
             this.contzipTextBox.Name = "contzipTextBox";
             this.contzipTextBox.Size = new System.Drawing.Size(232, 20);
@@ -1969,7 +2047,7 @@
             // 
             this.contlnameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.contlnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mcustBindingSource, "contlname", true));
-            this.contlnameTextBox.Location = new System.Drawing.Point(478, 31);
+            this.contlnameTextBox.Location = new System.Drawing.Point(461, 31);
             this.contlnameTextBox.MaxLength = 50;
             this.contlnameTextBox.Name = "contlnameTextBox";
             this.contlnameTextBox.Size = new System.Drawing.Size(232, 20);
@@ -1982,7 +2060,7 @@
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label17.Location = new System.Drawing.Point(29, 603);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(991, 3);
+            this.label17.Size = new System.Drawing.Size(974, 3);
             this.label17.TabIndex = 278;
             // 
             // btnEmailContact
@@ -2003,7 +2081,7 @@
             this.label28.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label28.Location = new System.Drawing.Point(29, 401);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(991, 3);
+            this.label28.Size = new System.Drawing.Size(974, 3);
             this.label28.TabIndex = 276;
             // 
             // label22
@@ -2023,7 +2101,7 @@
             this.lblSeperator1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblSeperator1.Location = new System.Drawing.Point(29, 200);
             this.lblSeperator1.Name = "lblSeperator1";
-            this.lblSeperator1.Size = new System.Drawing.Size(991, 3);
+            this.lblSeperator1.Size = new System.Drawing.Size(974, 3);
             this.lblSeperator1.TabIndex = 274;
             // 
             // contfnameTextBox
@@ -2285,99 +2363,6 @@
             // 
             this.contpstnTableAdapter.ClearBeforeFill = true;
             // 
-            // initcontDateBox
-            // 
-            this.initcontDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.initcontDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "initcont", true));
-            this.initcontDateBox.Date = null;
-            this.initcontDateBox.DateValue = null;
-            this.initcontDateBox.Location = new System.Drawing.Point(681, 86);
-            this.initcontDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.initcontDateBox.Name = "initcontDateBox";
-            this.initcontDateBox.Size = new System.Drawing.Size(153, 21);
-            this.initcontDateBox.TabIndex = 67;
-            // 
-            // dteschendDateBox
-            // 
-            this.dteschendDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "dteschend", true));
-            this.dteschendDateBox.Date = null;
-            this.dteschendDateBox.DateValue = null;
-            this.dteschendDateBox.Location = new System.Drawing.Point(104, 59);
-            this.dteschendDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.dteschendDateBox.Name = "dteschendDateBox";
-            this.dteschendDateBox.Size = new System.Drawing.Size(138, 21);
-            this.dteschendDateBox.TabIndex = 427;
-            // 
-            // dteschstartDateBox
-            // 
-            this.dteschstartDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "dteschstart", true));
-            this.dteschstartDateBox.Date = null;
-            this.dteschstartDateBox.DateValue = null;
-            this.dteschstartDateBox.Location = new System.Drawing.Point(104, 34);
-            this.dteschstartDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.dteschstartDateBox.Name = "dteschstartDateBox";
-            this.dteschstartDateBox.Size = new System.Drawing.Size(138, 21);
-            this.dteschstartDateBox.TabIndex = 426;
-            // 
-            // dedayoutDateBox
-            // 
-            this.dedayoutDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "dedayout", true));
-            this.dedayoutDateBox.Date = null;
-            this.dedayoutDateBox.DateValue = null;
-            this.dedayoutDateBox.Location = new System.Drawing.Point(383, 87);
-            this.dedayoutDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.dedayoutDateBox.Name = "dedayoutDateBox";
-            this.dedayoutDateBox.Size = new System.Drawing.Size(114, 21);
-            this.dedayoutDateBox.TabIndex = 428;
-            // 
-            // dedayinDateBox
-            // 
-            this.dedayinDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "dedayin", true));
-            this.dedayinDateBox.Date = null;
-            this.dedayinDateBox.DateValue = null;
-            this.dedayinDateBox.Location = new System.Drawing.Point(104, 87);
-            this.dedayinDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.dedayinDateBox.Name = "dedayinDateBox";
-            this.dedayinDateBox.Size = new System.Drawing.Size(138, 21);
-            this.dedayinDateBox.TabIndex = 65;
-            // 
-            // xeldateDateBox
-            // 
-            this.xeldateDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xeldateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "xeldate", true));
-            this.xeldateDateBox.Date = null;
-            this.xeldateDateBox.DateValue = null;
-            this.xeldateDateBox.Location = new System.Drawing.Point(922, 86);
-            this.xeldateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.xeldateDateBox.Name = "xeldateDateBox";
-            this.xeldateDateBox.Size = new System.Drawing.Size(129, 21);
-            this.xeldateDateBox.TabIndex = 65;
-            // 
-            // contdateDateBox
-            // 
-            this.contdateDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.contdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "contdate", true));
-            this.contdateDateBox.Date = null;
-            this.contdateDateBox.DateValue = null;
-            this.contdateDateBox.Location = new System.Drawing.Point(922, 34);
-            this.contdateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.contdateDateBox.Name = "contdateDateBox";
-            this.contdateDateBox.Size = new System.Drawing.Size(114, 21);
-            this.contdateDateBox.TabIndex = 65;
-            this.contdateDateBox.Leave += new System.EventHandler(this.contdateDateBox_Leave);
-            // 
-            // sourdateDateBox
-            // 
-            this.sourdateDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sourdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mcustBindingSource, "sourdate", true));
-            this.sourdateDateBox.Date = null;
-            this.sourdateDateBox.DateValue = null;
-            this.sourdateDateBox.Location = new System.Drawing.Point(922, 6);
-            this.sourdateDateBox.MinimumSize = new System.Drawing.Size(114, 20);
-            this.sourdateDateBox.Name = "sourdateDateBox";
-            this.sourdateDateBox.Size = new System.Drawing.Size(114, 21);
-            this.sourdateDateBox.TabIndex = 66;
-            // 
             // frmMerCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2437,7 +2422,7 @@
         private System.Windows.Forms.Button btnNewCusEmail;
         private System.Windows.Forms.CheckBox chkNotTaxExempt;
         private System.Windows.Forms.CheckBox chkTaxExempt;
-        private Classes.NullableDateTimePicker taxExemptRecvdDateTimePicker;
+    
         private System.Windows.Forms.TextBox junsnoTextBox;
         private System.Windows.Forms.TextBox txtOracleCode;
         private System.Windows.Forms.ComboBox statusComboBox;

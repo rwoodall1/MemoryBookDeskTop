@@ -130,9 +130,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\DateTimePicker.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Classes\DirectPrint.cs" />
     <Compile Include="Classes\ExceptionHandler.cs" />
     <Compile Include="Classes\InputBox.cs" />

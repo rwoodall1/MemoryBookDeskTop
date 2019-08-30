@@ -44,12 +44,10 @@
             this.rCardBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsRcard = new Mbc5.DataSets.dsRcard();
             this.schnameLabel1 = new System.Windows.Forms.Label();
-            this.kitReceivedDateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
+           
             this.ck1CheckBox = new System.Windows.Forms.CheckBox();
             this.ck2CheckBox = new System.Windows.Forms.CheckBox();
-            this.guardteDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
-            this.deadlineDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
-            this.estdateDateTimePicker = new Mbc5.Classes.NullableDateTimePicker();
+           
             this.totalSoldoTextBox = new System.Windows.Forms.TextBox();
             this.totalDollarTextBox = new System.Windows.Forms.TextBox();
             this.ck3CheckBox = new System.Windows.Forms.CheckBox();
@@ -317,17 +315,7 @@
             this.schnameLabel1.Size = new System.Drawing.Size(105, 26);
             this.schnameLabel1.TabIndex = 1;
             this.schnameLabel1.Text = "Schname";
-            // 
-            // kitReceivedDateDateTimePicker
-            // 
-            this.kitReceivedDateDateTimePicker.CustomFormat = "\'\'";
-            this.kitReceivedDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.rCardBindingSource, "KitReceivedDate", true));
-            this.kitReceivedDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.kitReceivedDateDateTimePicker.Location = new System.Drawing.Point(174, 62);
-            this.kitReceivedDateDateTimePicker.Name = "kitReceivedDateDateTimePicker";
-            this.kitReceivedDateDateTimePicker.Size = new System.Drawing.Size(90, 20);
-            this.kitReceivedDateDateTimePicker.TabIndex = 3;
-            this.kitReceivedDateDateTimePicker.ValueChanged += new System.EventHandler(this.kitReceivedDateDateTimePicker_ValueChanged);
+           
             // 
             // ck1CheckBox
             // 
@@ -352,38 +340,7 @@
             this.ck2CheckBox.Text = "Your deadline was";
             this.ck2CheckBox.UseVisualStyleBackColor = true;
             // 
-            // guardteDateTimePicker
-            // 
-            this.guardteDateTimePicker.CustomFormat = "\'\'";
-            this.guardteDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.rCardBindingSource, "Guardte", true));
-            this.guardteDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.guardteDateTimePicker.Location = new System.Drawing.Point(391, 88);
-            this.guardteDateTimePicker.Name = "guardteDateTimePicker";
-            this.guardteDateTimePicker.Size = new System.Drawing.Size(90, 20);
-            this.guardteDateTimePicker.TabIndex = 13;
-            this.guardteDateTimePicker.ValueChanged += new System.EventHandler(this.guardteDateTimePicker_ValueChanged);
-            // 
-            // deadlineDateTimePicker
-            // 
-            this.deadlineDateTimePicker.CustomFormat = "\'\'";
-            this.deadlineDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.rCardBindingSource, "Deadline", true));
-            this.deadlineDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.deadlineDateTimePicker.Location = new System.Drawing.Point(135, 115);
-            this.deadlineDateTimePicker.Name = "deadlineDateTimePicker";
-            this.deadlineDateTimePicker.Size = new System.Drawing.Size(90, 20);
-            this.deadlineDateTimePicker.TabIndex = 14;
-            this.deadlineDateTimePicker.ValueChanged += new System.EventHandler(this.deadlineDateTimePicker_ValueChanged);
-            // 
-            // estdateDateTimePicker
-            // 
-            this.estdateDateTimePicker.CustomFormat = "\'\'";
-            this.estdateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.rCardBindingSource, "Estdate", true));
-            this.estdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.estdateDateTimePicker.Location = new System.Drawing.Point(282, 141);
-            this.estdateDateTimePicker.Name = "estdateDateTimePicker";
-            this.estdateDateTimePicker.Size = new System.Drawing.Size(90, 20);
-            this.estdateDateTimePicker.TabIndex = 15;
-            this.estdateDateTimePicker.ValueChanged += new System.EventHandler(this.estdateDateTimePicker_ValueChanged);
+           
             // 
             // totalSoldoTextBox
             // 
@@ -1045,30 +1002,26 @@
             this.Controls.Add(totalSoldoLabel);
             this.Controls.Add(this.totalSoldoTextBox);
             this.Controls.Add(label3);
-            this.Controls.Add(this.estdateDateTimePicker);
-            this.Controls.Add(this.deadlineDateTimePicker);
-            this.Controls.Add(this.guardteDateTimePicker);
+            
             this.Controls.Add(label2);
             this.Controls.Add(label1);
             this.Controls.Add(this.ck2CheckBox);
             this.Controls.Add(guardteLabel);
             this.Controls.Add(this.ck1CheckBox);
             this.Controls.Add(kitReceivedDateLabel);
-            this.Controls.Add(this.kitReceivedDateDateTimePicker);
+            
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmReceivingCard";
             this.Text = "Receiving Card";
             this.Load += new System.EventHandler(this.frmReceivingCard_Load);
-            this.Controls.SetChildIndex(this.kitReceivedDateDateTimePicker, 0);
+          
             this.Controls.SetChildIndex(kitReceivedDateLabel, 0);
             this.Controls.SetChildIndex(this.ck1CheckBox, 0);
             this.Controls.SetChildIndex(guardteLabel, 0);
             this.Controls.SetChildIndex(this.ck2CheckBox, 0);
             this.Controls.SetChildIndex(label1, 0);
             this.Controls.SetChildIndex(label2, 0);
-            this.Controls.SetChildIndex(this.guardteDateTimePicker, 0);
-            this.Controls.SetChildIndex(this.deadlineDateTimePicker, 0);
-            this.Controls.SetChildIndex(this.estdateDateTimePicker, 0);
+           
             this.Controls.SetChildIndex(label3, 0);
             this.Controls.SetChildIndex(this.totalSoldoTextBox, 0);
             this.Controls.SetChildIndex(totalSoldoLabel, 0);
@@ -1139,12 +1092,10 @@
 		private DataSets.dsRcardTableAdapters.RCardTableAdapter rCardTableAdapter;
 		private DataSets.dsRcardTableAdapters.TableAdapterManager tableAdapterManager;
 		private System.Windows.Forms.Label schnameLabel1;
-		private Classes.NullableDateTimePicker kitReceivedDateDateTimePicker;
+		
 		private System.Windows.Forms.CheckBox ck1CheckBox;
 		private System.Windows.Forms.CheckBox ck2CheckBox;
-		private Classes.NullableDateTimePicker guardteDateTimePicker;
-		private Classes.NullableDateTimePicker deadlineDateTimePicker;
-		private Classes.NullableDateTimePicker estdateDateTimePicker;
+		
 		private System.Windows.Forms.TextBox totalSoldoTextBox;
 		private System.Windows.Forms.TextBox totalDollarTextBox;
 		private System.Windows.Forms.CheckBox ck3CheckBox;

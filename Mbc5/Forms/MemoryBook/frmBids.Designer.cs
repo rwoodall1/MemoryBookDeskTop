@@ -91,7 +91,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.bidsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pgBids = new System.Windows.Forms.TabPage();
-            this.dteQuote = new Mbc5.Classes.NullableDateTimePicker();
             this.chkPrntAsInvoice = new System.Windows.Forms.CheckBox();
             this.lblschode = new System.Windows.Forms.Label();
             this.ordagryrTextBox = new System.Windows.Forms.TextBox();
@@ -227,6 +226,11 @@ namespace Mbc5.Forms.MemoryBook {
             this.bidsTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.bidsTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsBidsTableAdapters.TableAdapterManager();
             this.custTableAdapter = new Mbc5.DataSets.dsBidsTableAdapters.custTableAdapter();
+            this.dsMBids = new Mbc5.DataSets.dsMBids();
+            this.mbidsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mbidsTableAdapter = new Mbc5.DataSets.dsMBidsTableAdapters.mbidsTableAdapter();
+            this.tableAdapterManager2 = new Mbc5.DataSets.dsMBidsTableAdapters.TableAdapterManager();
+            this.qtedateDateBox = new CustomControls.DateBox();
             nopagesLabel = new System.Windows.Forms.Label();
             contryearLabel = new System.Windows.Forms.Label();
             bpyearLabel = new System.Windows.Forms.Label();
@@ -291,6 +295,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.tabBids.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMBids)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mbidsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nopagesLabel
@@ -868,7 +874,7 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.pgBids.AutoScroll = true;
             this.pgBids.BackColor = System.Drawing.SystemColors.Control;
-            this.pgBids.Controls.Add(this.dteQuote);
+            this.pgBids.Controls.Add(this.qtedateDateBox);
             this.pgBids.Controls.Add(this.chkPrntAsInvoice);
             this.pgBids.Controls.Add(this.lblschode);
             this.pgBids.Controls.Add(ordagryrLabel);
@@ -942,18 +948,6 @@ namespace Mbc5.Forms.MemoryBook {
             this.pgBids.Size = new System.Drawing.Size(1077, 705);
             this.pgBids.TabIndex = 0;
             this.pgBids.Text = "Bids";
-            // 
-            // dteQuote
-            // 
-            this.dteQuote.CustomFormat = " ";
-            this.dteQuote.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bidsBindingSource, "qtedate", true));
-            this.dteQuote.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dteQuote.Location = new System.Drawing.Point(628, 28);
-            this.dteQuote.Name = "dteQuote";
-            this.dteQuote.Size = new System.Drawing.Size(104, 20);
-            this.dteQuote.TabIndex = 296;
-            this.dteQuote.Value = new System.DateTime(2019, 8, 16, 14, 23, 30, 257);
-            this.dteQuote.ValueChanged += new System.EventHandler(this.dteQuote_ValueChanged);
             // 
             // chkPrntAsInvoice
             // 
@@ -2523,6 +2517,37 @@ namespace Mbc5.Forms.MemoryBook {
             // 
             this.custTableAdapter.ClearBeforeFill = true;
             // 
+            // dsMBids
+            // 
+            this.dsMBids.DataSetName = "dsMBids";
+            this.dsMBids.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // mbidsBindingSource
+            // 
+            this.mbidsBindingSource.DataMember = "mbids";
+            this.mbidsBindingSource.DataSource = this.dsMBids;
+            // 
+            // mbidsTableAdapter
+            // 
+            this.mbidsTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager2
+            // 
+            this.tableAdapterManager2.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager2.mbidsTableAdapter = this.mbidsTableAdapter;
+            this.tableAdapterManager2.UpdateOrder = Mbc5.DataSets.dsMBidsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // qtedateDateBox
+            // 
+            this.qtedateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.mbidsBindingSource, "qtedate", true));
+            this.qtedateDateBox.Date = null;
+            this.qtedateDateBox.DateValue = null;
+            this.qtedateDateBox.Location = new System.Drawing.Point(625, 31);
+            this.qtedateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.qtedateDateBox.Name = "qtedateDateBox";
+            this.qtedateDateBox.Size = new System.Drawing.Size(133, 21);
+            this.qtedateDateBox.TabIndex = 296;
+            // 
             // frmBids
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -2568,6 +2593,8 @@ namespace Mbc5.Forms.MemoryBook {
             this.tabBids.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMBids)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mbidsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2724,11 +2751,16 @@ namespace Mbc5.Forms.MemoryBook {
         private System.Windows.Forms.TextBox txtDesc3tot;
         private System.Windows.Forms.TextBox txtDesc4tot;
         private System.Windows.Forms.CheckBox chkPrntAsInvoice;
-        private Classes.NullableDateTimePicker dteQuote;
+   
         private System.Windows.Forms.TextBox lblSpeccvrtot;
         private System.Windows.Forms.ContextMenuStrip InkOverRide;
         private System.Windows.Forms.ToolStripMenuItem overRidePrice;
         private System.Windows.Forms.CheckBox colorPriceOverRideCheckBox;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private DataSets.dsMBids dsMBids;
+        private System.Windows.Forms.BindingSource mbidsBindingSource;
+        private DataSets.dsMBidsTableAdapters.mbidsTableAdapter mbidsTableAdapter;
+        private DataSets.dsMBidsTableAdapters.TableAdapterManager tableAdapterManager2;
+        private CustomControls.DateBox qtedateDateBox;
     }
     }

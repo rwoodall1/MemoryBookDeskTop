@@ -311,6 +311,10 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnid;
             
+            private global::System.Data.DataColumn columnpriority1;
+            
+            private global::System.Data.DataColumn columnnxtdays1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public datecontDataTable() {
@@ -474,6 +478,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn priority1Column {
+                get {
+                    return this.columnpriority1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn nxtdays1Column {
+                get {
+                    return this.columnnxtdays1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -525,7 +545,9 @@ namespace Mbc5.DataSets {
                         bool highliterow, 
                         bool techcall, 
                         int prospectid, 
-                        int id) {
+                        int id, 
+                        int priority1, 
+                        int nxtdays1) {
                 datecontRow rowdatecontRow = ((datecontRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         schcode,
@@ -543,7 +565,9 @@ namespace Mbc5.DataSets {
                         highliterow,
                         techcall,
                         prospectid,
-                        id};
+                        id,
+                        priority1,
+                        nxtdays1};
                 rowdatecontRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdatecontRow);
                 return rowdatecontRow;
@@ -589,6 +613,8 @@ namespace Mbc5.DataSets {
                 this.columntechcall = base.Columns["techcall"];
                 this.columnprospectid = base.Columns["prospectid"];
                 this.columnid = base.Columns["id"];
+                this.columnpriority1 = base.Columns["priority1"];
+                this.columnnxtdays1 = base.Columns["nxtdays1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -626,26 +652,27 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnprospectid);
                 this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid);
+                this.columnpriority1 = new global::System.Data.DataColumn("priority1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpriority1);
+                this.columnnxtdays1 = new global::System.Data.DataColumn("nxtdays1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnxtdays1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnschcode.AllowDBNull = false;
                 this.columnschcode.MaxLength = 6;
+                this.columndatecont.AllowDBNull = false;
                 this.columnreason.MaxLength = 2147483647;
                 this.columninitial.AllowDBNull = false;
                 this.columninitial.MaxLength = 4;
-                this.columncontact.AllowDBNull = false;
                 this.columncontact.MaxLength = 20;
+                this.columntypecont.AllowDBNull = false;
                 this.columntypecont.MaxLength = 10;
-                this.columncallcont.AllowDBNull = false;
-                this.columncalltime.AllowDBNull = false;
                 this.columnpriority.AllowDBNull = false;
-                this.columncompany.AllowDBNull = false;
                 this.columncompany.MaxLength = 3;
-                this.columnhighliterow.AllowDBNull = false;
-                this.columntechcall.AllowDBNull = false;
-                this.columnprospectid.AllowDBNull = false;
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
+                this.columnpriority1.Caption = "priority";
+                this.columnnxtdays1.Caption = "nxtdays";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -801,12 +828,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime datecont {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tabledatecont.datecontColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'datecont\' in table \'datecont\' is DBNull.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tabledatecont.datecontColumn]));
                 }
                 set {
                     this[this.tabledatecont.datecontColumn] = value;
@@ -844,7 +866,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string contact {
                 get {
-                    return ((string)(this[this.tabledatecont.contactColumn]));
+                    try {
+                        return ((string)(this[this.tabledatecont.contactColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contact\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.contactColumn] = value;
@@ -855,12 +882,7 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string typecont {
                 get {
-                    try {
-                        return ((string)(this[this.tabledatecont.typecontColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'typecont\' in table \'datecont\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tabledatecont.typecontColumn]));
                 }
                 set {
                     this[this.tabledatecont.typecontColumn] = value;
@@ -903,7 +925,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool callcont {
                 get {
-                    return ((bool)(this[this.tabledatecont.callcontColumn]));
+                    try {
+                        return ((bool)(this[this.tabledatecont.callcontColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'callcont\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.callcontColumn] = value;
@@ -914,7 +941,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal calltime {
                 get {
-                    return ((decimal)(this[this.tabledatecont.calltimeColumn]));
+                    try {
+                        return ((decimal)(this[this.tabledatecont.calltimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'calltime\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.calltimeColumn] = value;
@@ -936,7 +968,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string company {
                 get {
-                    return ((string)(this[this.tabledatecont.companyColumn]));
+                    try {
+                        return ((string)(this[this.tabledatecont.companyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'company\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.companyColumn] = value;
@@ -947,7 +984,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool highliterow {
                 get {
-                    return ((bool)(this[this.tabledatecont.highliterowColumn]));
+                    try {
+                        return ((bool)(this[this.tabledatecont.highliterowColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'highliterow\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.highliterowColumn] = value;
@@ -958,7 +1000,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool techcall {
                 get {
-                    return ((bool)(this[this.tabledatecont.techcallColumn]));
+                    try {
+                        return ((bool)(this[this.tabledatecont.techcallColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'techcall\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.techcallColumn] = value;
@@ -969,7 +1016,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int prospectid {
                 get {
-                    return ((int)(this[this.tabledatecont.prospectidColumn]));
+                    try {
+                        return ((int)(this[this.tabledatecont.prospectidColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'prospectid\' in table \'datecont\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tabledatecont.prospectidColumn] = value;
@@ -989,14 +1041,34 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsdatecontNull() {
-                return this.IsNull(this.tabledatecont.datecontColumn);
+            public int priority1 {
+                get {
+                    try {
+                        return ((int)(this[this.tabledatecont.priority1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'priority1\' in table \'datecont\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledatecont.priority1Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetdatecontNull() {
-                this[this.tabledatecont.datecontColumn] = global::System.Convert.DBNull;
+            public int nxtdays1 {
+                get {
+                    try {
+                        return ((int)(this[this.tabledatecont.nxtdays1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nxtdays1\' in table \'datecont\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledatecont.nxtdays1Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1013,14 +1085,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IstypecontNull() {
-                return this.IsNull(this.tabledatecont.typecontColumn);
+            public bool IscontactNull() {
+                return this.IsNull(this.tabledatecont.contactColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SettypecontNull() {
-                this[this.tabledatecont.typecontColumn] = global::System.Convert.DBNull;
+            public void SetcontactNull() {
+                this[this.tabledatecont.contactColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1045,6 +1117,102 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetnxtdateNull() {
                 this[this.tabledatecont.nxtdateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscallcontNull() {
+                return this.IsNull(this.tabledatecont.callcontColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcallcontNull() {
+                this[this.tabledatecont.callcontColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscalltimeNull() {
+                return this.IsNull(this.tabledatecont.calltimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcalltimeNull() {
+                this[this.tabledatecont.calltimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscompanyNull() {
+                return this.IsNull(this.tabledatecont.companyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcompanyNull() {
+                this[this.tabledatecont.companyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IshighliterowNull() {
+                return this.IsNull(this.tabledatecont.highliterowColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SethighliterowNull() {
+                this[this.tabledatecont.highliterowColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IstechcallNull() {
+                return this.IsNull(this.tabledatecont.techcallColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SettechcallNull() {
+                this[this.tabledatecont.techcallColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsprospectidNull() {
+                return this.IsNull(this.tabledatecont.prospectidColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetprospectidNull() {
+                this[this.tabledatecont.prospectidColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Ispriority1Null() {
+                return this.IsNull(this.tabledatecont.priority1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setpriority1Null() {
+                this[this.tabledatecont.priority1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isnxtdays1Null() {
+                return this.IsNull(this.tabledatecont.nxtdays1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setnxtdays1Null() {
+                this[this.tabledatecont.nxtdays1Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -1213,16 +1381,16 @@ namespace Mbc5.DataSets.dsDateContTableAdapters {
             tableMapping.ColumnMappings.Add("initial", "initial");
             tableMapping.ColumnMappings.Add("contact", "contact");
             tableMapping.ColumnMappings.Add("typecont", "typecont");
-            tableMapping.ColumnMappings.Add("nxtdays", "nxtdays");
             tableMapping.ColumnMappings.Add("nxtdate", "nxtdate");
             tableMapping.ColumnMappings.Add("callcont", "callcont");
             tableMapping.ColumnMappings.Add("calltime", "calltime");
-            tableMapping.ColumnMappings.Add("priority", "priority");
             tableMapping.ColumnMappings.Add("company", "company");
             tableMapping.ColumnMappings.Add("highliterow", "highliterow");
             tableMapping.ColumnMappings.Add("techcall", "techcall");
             tableMapping.ColumnMappings.Add("prospectid", "prospectid");
             tableMapping.ColumnMappings.Add("id", "id");
+            tableMapping.ColumnMappings.Add("priority", "priority1");
+            tableMapping.ColumnMappings.Add("nxtdays", "nxtdays1");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -1323,9 +1491,9 @@ SELECT schcode, datecont, reason, initial, contact, typecont, nxtdays, nxtdate, 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        schcode, datecont, reason, initial, contact, typecont, nxtdays, nxt" +
-                "date, callcont, calltime, priority, company, highliterow, techcall, prospectid, " +
-                "id\r\nFROM            datecont\r\nWHERE        (schcode = @Schcode)\r\nORDER BY dateco" +
+            this._commandCollection[0].CommandText = "SELECT        schcode, datecont, reason, initial, contact, typecont, callcont, ca" +
+                "lltime, priority, company, highliterow, techcall, prospectid, id, nxtdays, nxtda" +
+                "te\r\nFROM            datecont\r\nWHERE        (schcode = @Schcode)\r\nORDER BY dateco" +
                 "nt";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Schcode", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

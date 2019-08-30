@@ -2674,7 +2674,8 @@ namespace Mbc5.Forms.MemoryBook {
         {
             EnableAllControls(this.tabBids);
             this.lblschode.Text = this.Schcode;
-            dteQuote.Value = DateTime.Now;
+            qtedateDateBox.DateValue = DateTime.Now;
+            qtedateDateBox.Date = qtedateDateBox.DateValue.ToString();
         }
 
         private void chkStory_Click(object sender, EventArgs e)
@@ -2732,11 +2733,7 @@ namespace Mbc5.Forms.MemoryBook {
 
         }
 
-        private void dteQuote_ValueChanged(object sender, EventArgs e)
-        {
-
-            dteQuote.Format = DateTimePickerFormat.Short;
-        }
+        
 
         private void frmBids_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -2803,5 +2800,7 @@ namespace Mbc5.Forms.MemoryBook {
         {
 
         }
+
+        
     }
 }
