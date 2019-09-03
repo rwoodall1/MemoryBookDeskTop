@@ -186,6 +186,61 @@ namespace BindingModels
         public int LabelTotal { get; set; }
         public int CurrentLabel { get; set; }
     
+    }   
+   public class PartialbDat
+    {
+        public string BookType { set; get; }
+        public int L_datetoprod { get; set; }
+        public int L_dwdr1 { get; set; }
+        public int L_dwdr2 { get; set; }
+        public int L_dwdr3 { get; set; }
+        public int L_dwdr4 { get; set; }
+        public int L_dwdr5 { get; set; }
+        public int L_dwdr6 { get; set; }
+        public int L_dwdr7 { get; set; }
+        public int L_dwdr8 { get; set; }
+        public int L_dwdr9 { get; set; }
+        public int L_dwdr10 { get; set; }
+        public int L_dwdr11 { get; set; }
+        public int L_dwdr12 { get; set; }
+        public int L_dwdr13 { get; set; }
+        public int L_dwdr14 { get; set; }
+        public int L_dwdr15 { get; set; }
+        public int L_dwdr16 { get; set; }
+        public int L_dwdr17 { get; set; }
+        public int L_dwdr18 { get; set; }
+        public int L_dwdr19 { get; set; }
+        public int L_dwdr20 { get; set; }
+        public int L_dwdr21 { get; set; }
+        public int L_dwdr22 { get; set; }
+        public int L_dwdr23 { get; set; }
+        public int L_dwdr24 { get; set; }
+        public int L_dwdr25 { get; set; }
+        public int L_dwdr26 { get; set; }
+        public int L_dwdr27 { get; set; }
+        public int L_dwdr28 { get; set; }
+        public int L_dwdr29 { get; set; }
+        public int L_dwdr30 { get; set; }
+        public int L_dwdr31 { get; set; }
+        public int L_dwdr32 { get; set; }
+        public int L_dwdr33 { get; set; }
+        public int L_dwdr34 { get; set; }
+        public int L_dwdr35 { get; set; }
+        public int L_dwdr36 { get; set; }
+        public int L_dwdr37 { get; set; }
+        public int L_dwdr38 { get; set; }
+        public int L_dwdr39 { get; set; }
+        public int L_dwdr40 { get; set; }
+        public int L_dwdr41 { get; set; }
+        public int L_dwdr42 { get; set; }
+        public int L_dwdr43 { get; set; }
+        public int L_dwdr44 { get; set; }
+        public int L_dwdr45 { get; set; }
+        public int L_dwdr46 { get; set; }
+        public int L_dwdr47 { get; set; }
+        public int L_dwdr48 { get; set; }
+        public int L_dwdr49 { get; set; }
+        public int L_dwdr50 { get; set; }
     }
     public class PtbDat
     {
@@ -242,4 +297,5 @@ namespace BindingModels
         public int LWdr_49 { get; set; }
         public int LWdr_50 { get; set; }
     }
+   
 }

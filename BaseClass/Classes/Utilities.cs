@@ -91,7 +91,7 @@ namespace BaseClass.Classes
             var HolidayDates = (List<HolidayDate>)result.Data;
            
 
-            for (int i=0; i<vNumberOfDays; ++i)
+            for (int i=0; i<=vNumberOfDays; ++i)
             {
                 ldDate = ldDate.AddDays(-1);
 				llOK = false;
@@ -151,7 +151,7 @@ namespace BaseClass.Classes
             HolidayDates =(List<HolidayDate>)result;
             var vEndDate = EndDate;
             //Remember we are subtracing backwards
-            for(int i=1; i< NumberOfDays; i++) {
+            for(int i=1; i<= NumberOfDays; i++) {
                 vEndDate = vEndDate.AddDays(-1);
                 bool oK = false;
                 while (!oK) {
@@ -198,7 +198,7 @@ namespace BaseClass.Classes
             HolidayDates = (List<HolidayDate>)result;
             var vStartDate = StartDate;
             //Remember we are subtracing backwards
-            for (int i = 1; i < NumberOfDays; i++) {
+            for (int i = 1; i <= NumberOfDays; i++) {
                 vStartDate = vStartDate.AddDays(1);
                 bool oK = false;
                 while (!oK) {

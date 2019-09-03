@@ -71,7 +71,6 @@ namespace Mbc5.Forms
             System.Windows.Forms.Label jobnoLabel;
             System.Windows.Forms.Label label11;
             System.Windows.Forms.Label label13;
-            System.Windows.Forms.Label typestyleLabel;
             System.Windows.Forms.Label ptnopgsLabel1;
             System.Windows.Forms.Label ptrecvdLabel1;
             System.Windows.Forms.Label booktypeLabel;
@@ -154,11 +153,6 @@ namespace Mbc5.Forms
             System.Windows.Forms.Label label41;
             System.Windows.Forms.Label atoprodLabel;
             System.Windows.Forms.Label label42;
-            System.Windows.Forms.Label iinLabel1;
-            System.Windows.Forms.Label ioutLabel;
-            System.Windows.Forms.Label ideptLabel;
-            System.Windows.Forms.Label iinitLabel;
-            System.Windows.Forms.Label partmemoLabel;
             System.Windows.Forms.Label label43;
             System.Windows.Forms.Label booktypeLabel1;
             System.Windows.Forms.Label ptnopgsLabel2;
@@ -190,6 +184,19 @@ namespace Mbc5.Forms
             System.Windows.Forms.Label colorsLabel;
             System.Windows.Forms.Label laminatedLabel;
             System.Windows.Forms.Label nocopiesLabel2;
+            System.Windows.Forms.Label noCopiesLabel3;
+            System.Windows.Forms.Label partmemoLabel;
+            System.Windows.Forms.Label typestyleLabel;
+            System.Windows.Forms.Label iinitLabel;
+            System.Windows.Forms.Label label57;
+            System.Windows.Forms.Label label58;
+            System.Windows.Forms.Label label59;
+            System.Windows.Forms.Label label60;
+            System.Windows.Forms.Label invnoLabel8;
+            System.Windows.Forms.Label typestyleLabel4;
+            System.Windows.Forms.Label refdateLabel;
+            System.Windows.Forms.Label prodNoPagesLabel;
+            System.Windows.Forms.Label noPagesLabel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutn));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
@@ -229,6 +236,15 @@ namespace Mbc5.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label copiesLabel;
+            System.Windows.Forms.Label iinLabel1;
+            System.Windows.Forms.Label ioutLabel;
+            System.Windows.Forms.Label ideptLabel;
+            System.Windows.Forms.Label iinitLabel1;
+            System.Windows.Forms.Label label61;
+            System.Windows.Forms.Label grmemoLabel;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsProdutn = new Mbc5.DataSets.dsProdutn();
             this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -338,9 +354,7 @@ namespace Mbc5.Forms
             this.lkpBackGroundBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nopagesTextBox = new System.Windows.Forms.TextBox();
             this.nocopiesTextBox = new System.Windows.Forms.TextBox();
-   
             this.dedmadeTextBox = new System.Windows.Forms.TextBox();
-      
             this.btnCalcDeadLine = new System.Windows.Forms.Button();
             this.reccardsentCheckBox = new System.Windows.Forms.CheckBox();
             this.btnRecvLabel = new System.Windows.Forms.Button();
@@ -497,9 +511,16 @@ namespace Mbc5.Forms
             this.noclrpgsTextBox = new System.Windows.Forms.TextBox();
             this.cpnumTextBox1 = new System.Windows.Forms.TextBox();
             this.pg5 = new System.Windows.Forms.TabPage();
-            this.ptrecvdDateBox1 = new CustomControls.DateBox();
+            this.invnoLabel9 = new System.Windows.Forms.Label();
+            this.iinitTextBox1 = new System.Windows.Forms.TextBox();
+            this.ideptTextBox1 = new System.Windows.Forms.TextBox();
             this.ioutDateBox1 = new CustomControls.DateBox();
             this.iinDateBox1 = new CustomControls.DateBox();
+            this.typestyleLabel3 = new System.Windows.Forms.Label();
+            this.partmemoTextBox = new System.Windows.Forms.TextBox();
+            this.noCopiesTextBox2 = new System.Windows.Forms.TextBox();
+            this.noPagesTextBox1 = new System.Windows.Forms.TextBox();
+            this.partialRecvDate = new CustomControls.DateBox();
             this.partBkDetailDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -510,20 +531,15 @@ namespace Mbc5.Forms
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partBkDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnPartialProdTicket = new System.Windows.Forms.Button();
             this.btnAddPartial = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.partmemoTextBox = new System.Windows.Forms.TextBox();
-            this.iinitTextBox1 = new System.Windows.Forms.TextBox();
-            this.ideptTextBox1 = new System.Windows.Forms.TextBox();
+            this.btnUpdatePartialDates = new System.Windows.Forms.Button();
             this.textBox12 = new System.Windows.Forms.TextBox();
-            this.booktypeTextBox1 = new System.Windows.Forms.TextBox();
-            this.ptnopgsTextBox1 = new System.Windows.Forms.TextBox();
-            this.typestyleTextBox = new System.Windows.Forms.TextBox();
+            this.txtPartialBookType = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.pg6 = new System.Windows.Forms.TabPage();
+            this.regisdateDateBox = new CustomControls.DateBox();
             this.rmbfrmDateBox1 = new CustomControls.DateBox();
             this.rmbtoDateBox1 = new CustomControls.DateBox();
             this.rmpfrmDateBox1 = new CustomControls.DateBox();
@@ -547,7 +563,6 @@ namespace Mbc5.Forms
             this.ideptTextBox2 = new System.Windows.Forms.TextBox();
             this.hinitTextBox = new System.Windows.Forms.TextBox();
             this.hdeptTextBox = new System.Windows.Forms.TextBox();
-           
             this.cdpassTextBox = new System.Windows.Forms.TextBox();
             this.regisnoTextBox = new System.Windows.Forms.TextBox();
             this.prtbkbdetailDataGridView = new System.Windows.Forms.DataGridView();
@@ -567,7 +582,11 @@ namespace Mbc5.Forms
             this.txtPhotoBookType = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.pg7 = new System.Windows.Forms.TabPage();
-    
+            this.noPagesTextBox2 = new System.Windows.Forms.TextBox();
+            this.reOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.prodNoPagesLabel2 = new System.Windows.Forms.Label();
+            this.refdateDateBox = new CustomControls.DateBox();
+            this.typestyleLabel5 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.custTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.custTableAdapter();
             this.tableAdapterManager = new Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager();
@@ -594,6 +613,25 @@ namespace Mbc5.Forms
             this.CoverTicketBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.binderyLabelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reOrderTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReOrderTableAdapter();
+            this.copiesTextBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnReorderChangeDates = new System.Windows.Forms.Button();
+            this.reorderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reorderDetailTableAdapter = new Mbc5.DataSets.dsProdutnTableAdapters.ReorderDetailTableAdapter();
+            this.iinDateBox3 = new CustomControls.DateBox();
+            this.ioutDateBox3 = new CustomControls.DateBox();
+            this.ideptTextBox3 = new System.Windows.Forms.TextBox();
+            this.iinitTextBox3 = new System.Windows.Forms.TextBox();
+            this.grmemoTextBox = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             companyLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             prodnoLabel = new System.Windows.Forms.Label();
@@ -632,7 +670,6 @@ namespace Mbc5.Forms
             jobnoLabel = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             label13 = new System.Windows.Forms.Label();
-            typestyleLabel = new System.Windows.Forms.Label();
             ptnopgsLabel1 = new System.Windows.Forms.Label();
             ptrecvdLabel1 = new System.Windows.Forms.Label();
             booktypeLabel = new System.Windows.Forms.Label();
@@ -715,11 +752,6 @@ namespace Mbc5.Forms
             label41 = new System.Windows.Forms.Label();
             atoprodLabel = new System.Windows.Forms.Label();
             label42 = new System.Windows.Forms.Label();
-            iinLabel1 = new System.Windows.Forms.Label();
-            ioutLabel = new System.Windows.Forms.Label();
-            ideptLabel = new System.Windows.Forms.Label();
-            iinitLabel = new System.Windows.Forms.Label();
-            partmemoLabel = new System.Windows.Forms.Label();
             label43 = new System.Windows.Forms.Label();
             booktypeLabel1 = new System.Windows.Forms.Label();
             ptnopgsLabel2 = new System.Windows.Forms.Label();
@@ -751,6 +783,26 @@ namespace Mbc5.Forms
             colorsLabel = new System.Windows.Forms.Label();
             laminatedLabel = new System.Windows.Forms.Label();
             nocopiesLabel2 = new System.Windows.Forms.Label();
+            noCopiesLabel3 = new System.Windows.Forms.Label();
+            partmemoLabel = new System.Windows.Forms.Label();
+            typestyleLabel = new System.Windows.Forms.Label();
+            iinitLabel = new System.Windows.Forms.Label();
+            label57 = new System.Windows.Forms.Label();
+            label58 = new System.Windows.Forms.Label();
+            label59 = new System.Windows.Forms.Label();
+            label60 = new System.Windows.Forms.Label();
+            invnoLabel8 = new System.Windows.Forms.Label();
+            typestyleLabel4 = new System.Windows.Forms.Label();
+            refdateLabel = new System.Windows.Forms.Label();
+            prodNoPagesLabel = new System.Windows.Forms.Label();
+            noPagesLabel1 = new System.Windows.Forms.Label();
+            copiesLabel = new System.Windows.Forms.Label();
+            iinLabel1 = new System.Windows.Forms.Label();
+            ioutLabel = new System.Windows.Forms.Label();
+            ideptLabel = new System.Windows.Forms.Label();
+            iinitLabel1 = new System.Windows.Forms.Label();
+            label61 = new System.Windows.Forms.Label();
+            grmemoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
@@ -792,9 +844,13 @@ namespace Mbc5.Forms
             this.pg6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailBindingSource)).BeginInit();
+            this.pg7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.binderyLabelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // companyLabel
@@ -1174,27 +1230,17 @@ namespace Mbc5.Forms
             // 
             label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(1086, 7);
+            label13.Location = new System.Drawing.Point(1064, 7);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(58, 13);
             label13.TabIndex = 14;
             label13.Text = "Company";
             // 
-            // typestyleLabel
-            // 
-            typestyleLabel.AutoSize = true;
-            typestyleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            typestyleLabel.Location = new System.Drawing.Point(20, 35);
-            typestyleLabel.Name = "typestyleLabel";
-            typestyleLabel.Size = new System.Drawing.Size(67, 13);
-            typestyleLabel.TabIndex = 135;
-            typestyleLabel.Text = "Type Style";
-            // 
             // ptnopgsLabel1
             // 
             ptnopgsLabel1.AutoSize = true;
             ptnopgsLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ptnopgsLabel1.Location = new System.Drawing.Point(253, 35);
+            ptnopgsLabel1.Location = new System.Drawing.Point(223, 33);
             ptnopgsLabel1.Name = "ptnopgsLabel1";
             ptnopgsLabel1.Size = new System.Drawing.Size(127, 13);
             ptnopgsLabel1.TabIndex = 136;
@@ -1204,7 +1250,7 @@ namespace Mbc5.Forms
             // 
             ptrecvdLabel1.AutoSize = true;
             ptrecvdLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ptrecvdLabel1.Location = new System.Drawing.Point(452, 35);
+            ptrecvdLabel1.Location = new System.Drawing.Point(727, 33);
             ptrecvdLabel1.Name = "ptrecvdLabel1";
             ptrecvdLabel1.Size = new System.Drawing.Size(92, 13);
             ptrecvdLabel1.TabIndex = 137;
@@ -1215,7 +1261,7 @@ namespace Mbc5.Forms
             booktypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             booktypeLabel.AutoSize = true;
             booktypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            booktypeLabel.Location = new System.Drawing.Point(701, 35);
+            booktypeLabel.Location = new System.Drawing.Point(44, 33);
             booktypeLabel.Name = "booktypeLabel";
             booktypeLabel.Size = new System.Drawing.Size(68, 13);
             booktypeLabel.TabIndex = 138;
@@ -1994,129 +2040,79 @@ namespace Mbc5.Forms
             label42.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             label42.AutoSize = true;
             label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label42.Location = new System.Drawing.Point(875, 35);
+            label42.Location = new System.Drawing.Point(558, 33);
             label42.Name = "label42";
             label42.Size = new System.Drawing.Size(66, 13);
             label42.TabIndex = 140;
             label42.Text = "No. Pages";
             // 
-            // iinLabel1
-            // 
-            iinLabel1.AutoSize = true;
-            iinLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            iinLabel1.Location = new System.Drawing.Point(24, 70);
-            iinLabel1.Name = "iinLabel1";
-            iinLabel1.Size = new System.Drawing.Size(58, 13);
-            iinLabel1.TabIndex = 141;
-            iinLabel1.Text = "Check In";
-            // 
-            // ioutLabel
-            // 
-            ioutLabel.AutoSize = true;
-            ioutLabel.Location = new System.Drawing.Point(229, 70);
-            ioutLabel.Name = "ioutLabel";
-            ioutLabel.Size = new System.Drawing.Size(67, 13);
-            ioutLabel.TabIndex = 142;
-            ioutLabel.Text = "Check Out";
-            // 
-            // ideptLabel
-            // 
-            ideptLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            ideptLabel.AutoSize = true;
-            ideptLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ideptLabel.Location = new System.Drawing.Point(606, 71);
-            ideptLabel.Name = "ideptLabel";
-            ideptLabel.Size = new System.Drawing.Size(72, 13);
-            ideptLabel.TabIndex = 143;
-            ideptLabel.Text = "Department";
-            // 
-            // iinitLabel
-            // 
-            iinitLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            iinitLabel.AutoSize = true;
-            iinitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            iinitLabel.Location = new System.Drawing.Point(766, 71);
-            iinitLabel.Name = "iinitLabel";
-            iinitLabel.Size = new System.Drawing.Size(44, 13);
-            iinitLabel.TabIndex = 144;
-            iinitLabel.Text = "Initials";
-            // 
-            // partmemoLabel
-            // 
-            partmemoLabel.AutoSize = true;
-            partmemoLabel.Location = new System.Drawing.Point(39, 97);
-            partmemoLabel.Name = "partmemoLabel";
-            partmemoLabel.Size = new System.Drawing.Size(40, 13);
-            partmemoLabel.TabIndex = 145;
-            partmemoLabel.Text = "Memo";
-            // 
             // label43
             // 
             label43.AutoSize = true;
-            label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label43.Location = new System.Drawing.Point(8, 14);
+            label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label43.Location = new System.Drawing.Point(24, 14);
             label43.Name = "label43";
-            label43.Size = new System.Drawing.Size(78, 13);
+            label43.Size = new System.Drawing.Size(92, 13);
             label43.TabIndex = 12;
             label43.Text = "Production No.";
             // 
             // booktypeLabel1
             // 
             booktypeLabel1.AutoSize = true;
-            booktypeLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            booktypeLabel1.Location = new System.Drawing.Point(223, 14);
+            booktypeLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            booktypeLabel1.Location = new System.Drawing.Point(208, 14);
             booktypeLabel1.Name = "booktypeLabel1";
-            booktypeLabel1.Size = new System.Drawing.Size(59, 13);
+            booktypeLabel1.Size = new System.Drawing.Size(68, 13);
             booktypeLabel1.TabIndex = 13;
             booktypeLabel1.Text = "Book Type";
             // 
             // ptnopgsLabel2
             // 
             ptnopgsLabel2.AutoSize = true;
-            ptnopgsLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ptnopgsLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ptnopgsLabel2.Location = new System.Drawing.Point(16, 50);
             ptnopgsLabel2.Name = "ptnopgsLabel2";
-            ptnopgsLabel2.Size = new System.Drawing.Size(86, 13);
+            ptnopgsLabel2.Size = new System.Drawing.Size(100, 13);
             ptnopgsLabel2.TabIndex = 14;
             ptnopgsLabel2.Text = "Pages Received";
             // 
             // label45
             // 
             label45.AutoSize = true;
-            label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label45.Location = new System.Drawing.Point(295, 50);
+            label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label45.Location = new System.Drawing.Point(399, 16);
             label45.Name = "label45";
-            label45.Size = new System.Drawing.Size(79, 13);
+            label45.Size = new System.Drawing.Size(92, 13);
             label45.TabIndex = 128;
             label45.Text = "Received Date";
             // 
             // invnoLabel5
             // 
             invnoLabel5.AutoSize = true;
-            invnoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            invnoLabel5.Location = new System.Drawing.Point(931, 14);
+            invnoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            invnoLabel5.Location = new System.Drawing.Point(923, 14);
             invnoLabel5.Name = "invnoLabel5";
-            invnoLabel5.Size = new System.Drawing.Size(52, 13);
+            invnoLabel5.Size = new System.Drawing.Size(61, 13);
             invnoLabel5.TabIndex = 129;
             invnoLabel5.Text = "Invoice #";
             // 
             // label46
             // 
             label46.AutoSize = true;
-            label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label46.Location = new System.Drawing.Point(1072, 14);
             label46.Name = "label46";
-            label46.Size = new System.Drawing.Size(51, 13);
+            label46.Size = new System.Drawing.Size(58, 13);
             label46.TabIndex = 131;
             label46.Text = "Company";
             // 
             // label48
             // 
             label48.AutoSize = true;
-            label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label48.Location = new System.Drawing.Point(540, 53);
+            label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label48.Location = new System.Drawing.Point(416, 50);
             label48.Name = "label48";
-            label48.Size = new System.Drawing.Size(64, 13);
+            label48.Size = new System.Drawing.Size(75, 13);
             label48.TabIndex = 133;
             label48.Text = "Total Pages";
             // 
@@ -2147,7 +2143,7 @@ namespace Mbc5.Forms
             regisdateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             regisdateLabel.AutoSize = true;
             regisdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            regisdateLabel.Location = new System.Drawing.Point(233, 346);
+            regisdateLabel.Location = new System.Drawing.Point(233, 345);
             regisdateLabel.Name = "regisdateLabel";
             regisdateLabel.Size = new System.Drawing.Size(106, 13);
             regisdateLabel.TabIndex = 136;
@@ -2370,12 +2366,93 @@ namespace Mbc5.Forms
             // nocopiesLabel2
             // 
             nocopiesLabel2.AutoSize = true;
-            nocopiesLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nocopiesLabel2.Location = new System.Drawing.Point(189, 50);
+            nocopiesLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            nocopiesLabel2.Location = new System.Drawing.Point(231, 50);
             nocopiesLabel2.Name = "nocopiesLabel2";
-            nocopiesLabel2.Size = new System.Drawing.Size(39, 13);
+            nocopiesLabel2.Size = new System.Drawing.Size(45, 13);
             nocopiesLabel2.TabIndex = 162;
             nocopiesLabel2.Text = "Copies";
+            // 
+            // noCopiesLabel3
+            // 
+            noCopiesLabel3.AutoSize = true;
+            noCopiesLabel3.Location = new System.Drawing.Point(433, 33);
+            noCopiesLabel3.Name = "noCopiesLabel3";
+            noCopiesLabel3.Size = new System.Drawing.Size(57, 13);
+            noCopiesLabel3.TabIndex = 154;
+            noCopiesLabel3.Text = "# Copies";
+            // 
+            // partmemoLabel
+            // 
+            partmemoLabel.AutoSize = true;
+            partmemoLabel.Location = new System.Drawing.Point(64, 442);
+            partmemoLabel.Name = "partmemoLabel";
+            partmemoLabel.Size = new System.Drawing.Size(40, 13);
+            partmemoLabel.TabIndex = 156;
+            partmemoLabel.Text = "Memo";
+            // 
+            // typestyleLabel
+            // 
+            typestyleLabel.AutoSize = true;
+            typestyleLabel.Location = new System.Drawing.Point(45, 64);
+            typestyleLabel.Name = "typestyleLabel";
+            typestyleLabel.Size = new System.Drawing.Size(67, 13);
+            typestyleLabel.TabIndex = 157;
+            typestyleLabel.Text = "Type Style";
+            // 
+            // iinitLabel
+            // 
+            iinitLabel.AutoSize = true;
+            iinitLabel.Location = new System.Drawing.Point(489, 383);
+            iinitLabel.Name = "iinitLabel";
+            iinitLabel.Size = new System.Drawing.Size(44, 13);
+            iinitLabel.TabIndex = 161;
+            iinitLabel.Text = "Initials";
+            // 
+            // label57
+            // 
+            label57.AutoSize = true;
+            label57.Location = new System.Drawing.Point(381, 383);
+            label57.Name = "label57";
+            label57.Size = new System.Drawing.Size(34, 13);
+            label57.TabIndex = 163;
+            label57.Text = "Dept";
+            // 
+            // label58
+            // 
+            label58.AutoSize = true;
+            label58.Location = new System.Drawing.Point(251, 383);
+            label58.Name = "label58";
+            label58.Size = new System.Drawing.Size(27, 13);
+            label58.TabIndex = 164;
+            label58.Text = "Out";
+            // 
+            // label59
+            // 
+            label59.AutoSize = true;
+            label59.Location = new System.Drawing.Point(112, 383);
+            label59.Name = "label59";
+            label59.Size = new System.Drawing.Size(18, 13);
+            label59.TabIndex = 165;
+            label59.Text = "In";
+            // 
+            // label60
+            // 
+            label60.AutoSize = true;
+            label60.Location = new System.Drawing.Point(20, 400);
+            label60.Name = "label60";
+            label60.Size = new System.Drawing.Size(84, 13);
+            label60.TabIndex = 166;
+            label60.Text = "Check In/Out";
+            // 
+            // invnoLabel8
+            // 
+            invnoLabel8.AutoSize = true;
+            invnoLabel8.Location = new System.Drawing.Point(1057, 36);
+            invnoLabel8.Name = "invnoLabel8";
+            invnoLabel8.Size = new System.Drawing.Size(65, 13);
+            invnoLabel8.TabIndex = 166;
+            invnoLabel8.Text = "Invoice #:";
             // 
             // custBindingSource
             // 
@@ -2401,6 +2478,42 @@ namespace Mbc5.Forms
             // 
             this.wipBindingSource.DataMember = "wip";
             this.wipBindingSource.DataSource = this.dsProdutn;
+            // 
+            // typestyleLabel4
+            // 
+            typestyleLabel4.AutoSize = true;
+            typestyleLabel4.Location = new System.Drawing.Point(46, 18);
+            typestyleLabel4.Name = "typestyleLabel4";
+            typestyleLabel4.Size = new System.Drawing.Size(67, 13);
+            typestyleLabel4.TabIndex = 0;
+            typestyleLabel4.Text = "Type Style";
+            // 
+            // refdateLabel
+            // 
+            refdateLabel.AutoSize = true;
+            refdateLabel.Location = new System.Drawing.Point(218, 18);
+            refdateLabel.Name = "refdateLabel";
+            refdateLabel.Size = new System.Drawing.Size(61, 13);
+            refdateLabel.TabIndex = 2;
+            refdateLabel.Text = "Due Date";
+            // 
+            // prodNoPagesLabel
+            // 
+            prodNoPagesLabel.AutoSize = true;
+            prodNoPagesLabel.Location = new System.Drawing.Point(26, 55);
+            prodNoPagesLabel.Name = "prodNoPagesLabel";
+            prodNoPagesLabel.Size = new System.Drawing.Size(87, 13);
+            prodNoPagesLabel.TabIndex = 4;
+            prodNoPagesLabel.Text = "Total # Pages";
+            // 
+            // noPagesLabel1
+            // 
+            noPagesLabel1.AutoSize = true;
+            noPagesLabel1.Location = new System.Drawing.Point(380, 55);
+            noPagesLabel1.Name = "noPagesLabel1";
+            noPagesLabel1.Size = new System.Drawing.Size(127, 13);
+            noPagesLabel1.TabIndex = 6;
+            noPagesLabel1.Text = "# of Pages Received";
             // 
             // invoiceCustBindingSource
             // 
@@ -3428,15 +3541,12 @@ namespace Mbc5.Forms
             this.pnl11.Controls.Add(nopagesLabel);
             this.pnl11.Controls.Add(this.nocopiesTextBox);
             this.pnl11.Controls.Add(nocopiesLabel);
-            
             this.pnl11.Controls.Add(adduploaddateLabel);
             this.pnl11.Controls.Add(lblfoilclr);
             this.pnl11.Controls.Add(dedmadeLabel);
             this.pnl11.Controls.Add(this.dedmadeTextBox);
             this.pnl11.Controls.Add(dedayoutLabel);
-        
             this.pnl11.Controls.Add(dedayinLabel);
-         
             this.pnl11.Controls.Add(this.btnCalcDeadLine);
             this.pnl11.Enabled = false;
             this.pnl11.Location = new System.Drawing.Point(7, 80);
@@ -3690,10 +3800,6 @@ namespace Mbc5.Forms
             this.nocopiesTextBox.Leave += new System.EventHandler(this.nocopiesTextBox_Leave);
             this.nocopiesTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.nocopiesTextBox_MouseDown);
             // 
-            // adduploaddateDateTimePicker
-            // 
-            
-            // 
             // dedmadeTextBox
             // 
             this.dedmadeTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -3704,8 +3810,6 @@ namespace Mbc5.Forms
             this.dedmadeTextBox.Size = new System.Drawing.Size(32, 20);
             this.dedmadeTextBox.TabIndex = 59;
             this.dedmadeTextBox.Leave += new System.EventHandler(this.dedmadeTextBox_Leave);
-            // 
-          
             // 
             // btnCalcDeadLine
             // 
@@ -5500,31 +5604,35 @@ namespace Mbc5.Forms
             // pg5
             // 
             this.pg5.BackColor = System.Drawing.SystemColors.Control;
-            this.pg5.Controls.Add(this.ptrecvdDateBox1);
-            this.pg5.Controls.Add(this.ioutDateBox1);
-            this.pg5.Controls.Add(this.iinDateBox1);
-            this.pg5.Controls.Add(this.partBkDetailDataGridView);
-            this.pg5.Controls.Add(this.button7);
-            this.pg5.Controls.Add(this.button6);
-            this.pg5.Controls.Add(this.btnAddPartial);
-            this.pg5.Controls.Add(this.button1);
-            this.pg5.Controls.Add(partmemoLabel);
-            this.pg5.Controls.Add(this.partmemoTextBox);
+            this.pg5.Controls.Add(invnoLabel8);
+            this.pg5.Controls.Add(this.invnoLabel9);
+            this.pg5.Controls.Add(label60);
+            this.pg5.Controls.Add(label59);
+            this.pg5.Controls.Add(label58);
+            this.pg5.Controls.Add(label57);
             this.pg5.Controls.Add(iinitLabel);
             this.pg5.Controls.Add(this.iinitTextBox1);
-            this.pg5.Controls.Add(ideptLabel);
             this.pg5.Controls.Add(this.ideptTextBox1);
-            this.pg5.Controls.Add(ioutLabel);
-            this.pg5.Controls.Add(iinLabel1);
+            this.pg5.Controls.Add(this.ioutDateBox1);
+            this.pg5.Controls.Add(this.iinDateBox1);
+            this.pg5.Controls.Add(typestyleLabel);
+            this.pg5.Controls.Add(this.typestyleLabel3);
+            this.pg5.Controls.Add(partmemoLabel);
+            this.pg5.Controls.Add(this.partmemoTextBox);
+            this.pg5.Controls.Add(noCopiesLabel3);
+            this.pg5.Controls.Add(this.noCopiesTextBox2);
+            this.pg5.Controls.Add(this.noPagesTextBox1);
+            this.pg5.Controls.Add(this.partialRecvDate);
+            this.pg5.Controls.Add(this.partBkDetailDataGridView);
+            this.pg5.Controls.Add(this.btnPartialProdTicket);
+            this.pg5.Controls.Add(this.btnAddPartial);
+            this.pg5.Controls.Add(this.btnUpdatePartialDates);
             this.pg5.Controls.Add(this.textBox12);
             this.pg5.Controls.Add(label42);
             this.pg5.Controls.Add(booktypeLabel);
-            this.pg5.Controls.Add(this.booktypeTextBox1);
+            this.pg5.Controls.Add(this.txtPartialBookType);
             this.pg5.Controls.Add(ptrecvdLabel1);
             this.pg5.Controls.Add(ptnopgsLabel1);
-            this.pg5.Controls.Add(this.ptnopgsTextBox1);
-            this.pg5.Controls.Add(typestyleLabel);
-            this.pg5.Controls.Add(this.typestyleTextBox);
             this.pg5.Controls.Add(label13);
             this.pg5.Controls.Add(this.textBox4);
             this.pg5.Controls.Add(label11);
@@ -5536,38 +5644,109 @@ namespace Mbc5.Forms
             this.pg5.TabIndex = 4;
             this.pg5.Text = "Partial Book (A)";
             // 
-            // ptrecvdDateBox1
+            // invnoLabel9
             // 
-            this.ptrecvdDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "ptrecvd", true));
-            this.ptrecvdDateBox1.Date = null;
-            this.ptrecvdDateBox1.DateValue = null;
-            this.ptrecvdDateBox1.Location = new System.Drawing.Point(545, 35);
-            this.ptrecvdDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.ptrecvdDateBox1.Name = "ptrecvdDateBox1";
-            this.ptrecvdDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.ptrecvdDateBox1.TabIndex = 153;
+            this.invnoLabel9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "invno", true));
+            this.invnoLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invnoLabel9.Location = new System.Drawing.Point(1128, 36);
+            this.invnoLabel9.Name = "invnoLabel9";
+            this.invnoLabel9.Size = new System.Drawing.Size(72, 23);
+            this.invnoLabel9.TabIndex = 167;
+            this.invnoLabel9.Text = "label61";
+            // 
+            // iinitTextBox1
+            // 
+            this.iinitTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "iinit", true));
+            this.iinitTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iinitTextBox1.Location = new System.Drawing.Point(489, 400);
+            this.iinitTextBox1.Name = "iinitTextBox1";
+            this.iinitTextBox1.Size = new System.Drawing.Size(57, 20);
+            this.iinitTextBox1.TabIndex = 162;
+            // 
+            // ideptTextBox1
+            // 
+            this.ideptTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "idept", true));
+            this.ideptTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ideptTextBox1.Location = new System.Drawing.Point(384, 400);
+            this.ideptTextBox1.MaxLength = 3;
+            this.ideptTextBox1.Name = "ideptTextBox1";
+            this.ideptTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.ideptTextBox1.TabIndex = 161;
             // 
             // ioutDateBox1
             // 
             this.ioutDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.partbkBindingSource, "iout", true));
             this.ioutDateBox1.Date = null;
             this.ioutDateBox1.DateValue = null;
-            this.ioutDateBox1.Location = new System.Drawing.Point(296, 70);
+            this.ioutDateBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ioutDateBox1.Location = new System.Drawing.Point(245, 400);
             this.ioutDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
             this.ioutDateBox1.Name = "ioutDateBox1";
             this.ioutDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.ioutDateBox1.TabIndex = 152;
+            this.ioutDateBox1.TabIndex = 160;
             // 
             // iinDateBox1
             // 
             this.iinDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.partbkBindingSource, "iin", true));
             this.iinDateBox1.Date = null;
             this.iinDateBox1.DateValue = null;
-            this.iinDateBox1.Location = new System.Drawing.Point(87, 70);
+            this.iinDateBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iinDateBox1.Location = new System.Drawing.Point(106, 400);
             this.iinDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
             this.iinDateBox1.Name = "iinDateBox1";
             this.iinDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.iinDateBox1.TabIndex = 151;
+            this.iinDateBox1.TabIndex = 159;
+            // 
+            // typestyleLabel3
+            // 
+            this.typestyleLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "typestyle", true));
+            this.typestyleLabel3.Location = new System.Drawing.Point(113, 64);
+            this.typestyleLabel3.Name = "typestyleLabel3";
+            this.typestyleLabel3.Size = new System.Drawing.Size(100, 23);
+            this.typestyleLabel3.TabIndex = 158;
+            this.typestyleLabel3.Text = "label57";
+            // 
+            // partmemoTextBox
+            // 
+            this.partmemoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.partmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "partmemo", true));
+            this.partmemoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.partmemoTextBox.Location = new System.Drawing.Point(106, 442);
+            this.partmemoTextBox.Multiline = true;
+            this.partmemoTextBox.Name = "partmemoTextBox";
+            this.partmemoTextBox.Size = new System.Drawing.Size(659, 99);
+            this.partmemoTextBox.TabIndex = 157;
+            // 
+            // noCopiesTextBox2
+            // 
+            this.noCopiesTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "NoCopies", true));
+            this.noCopiesTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noCopiesTextBox2.Location = new System.Drawing.Point(494, 33);
+            this.noCopiesTextBox2.Name = "noCopiesTextBox2";
+            this.noCopiesTextBox2.Size = new System.Drawing.Size(49, 20);
+            this.noCopiesTextBox2.TabIndex = 155;
+            // 
+            // noPagesTextBox1
+            // 
+            this.noPagesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "NoPages", true));
+            this.noPagesTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noPagesTextBox1.Location = new System.Drawing.Point(355, 33);
+            this.noPagesTextBox1.Name = "noPagesTextBox1";
+            this.noPagesTextBox1.Size = new System.Drawing.Size(51, 20);
+            this.noPagesTextBox1.TabIndex = 154;
+            // 
+            // partialRecvDate
+            // 
+            this.partialRecvDate.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.produtnBindingSource, "ptrecvd", true));
+            this.partialRecvDate.Date = null;
+            this.partialRecvDate.DateValue = null;
+            this.partialRecvDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.partialRecvDate.Location = new System.Drawing.Point(820, 33);
+            this.partialRecvDate.MinimumSize = new System.Drawing.Size(133, 20);
+            this.partialRecvDate.Name = "partialRecvDate";
+            this.partialRecvDate.Size = new System.Drawing.Size(133, 21);
+            this.partialRecvDate.TabIndex = 153;
             // 
             // partBkDetailDataGridView
             // 
@@ -5599,10 +5778,10 @@ namespace Mbc5.Forms
             this.dataGridViewTextBoxColumn16});
             this.partBkDetailDataGridView.DataSource = this.partBkDetailBindingSource;
             this.partBkDetailDataGridView.EnableHeadersVisualStyles = false;
-            this.partBkDetailDataGridView.Location = new System.Drawing.Point(98, 207);
+            this.partBkDetailDataGridView.Location = new System.Drawing.Point(98, 145);
             this.partBkDetailDataGridView.Name = "partBkDetailDataGridView";
             this.partBkDetailDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partBkDetailDataGridView.Size = new System.Drawing.Size(1025, 389);
+            this.partBkDetailDataGridView.Size = new System.Drawing.Size(1025, 211);
             this.partBkDetailDataGridView.TabIndex = 150;
             this.partBkDetailDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.partBkDetailDataGridView_CellDoubleClick);
             // 
@@ -5663,113 +5842,63 @@ namespace Mbc5.Forms
             this.partBkDetailBindingSource.DataMember = "PartBkDetail";
             this.partBkDetailBindingSource.DataSource = this.dsProdutn;
             // 
-            // button7
+            // btnPartialProdTicket
             // 
-            this.button7.Location = new System.Drawing.Point(302, 153);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(125, 23);
-            this.button7.TabIndex = 150;
-            this.button7.Text = "Production Ticket";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(434, 153);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 149;
-            this.button6.Text = "Enable";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnPartialProdTicket.Location = new System.Drawing.Point(302, 116);
+            this.btnPartialProdTicket.Name = "btnPartialProdTicket";
+            this.btnPartialProdTicket.Size = new System.Drawing.Size(125, 23);
+            this.btnPartialProdTicket.TabIndex = 150;
+            this.btnPartialProdTicket.Text = "Production Ticket";
+            this.btnPartialProdTicket.UseVisualStyleBackColor = true;
+            this.btnPartialProdTicket.Click += new System.EventHandler(this.btnPartialProdTicket_Click);
             // 
             // btnAddPartial
             // 
-            this.btnAddPartial.Location = new System.Drawing.Point(515, 153);
+            this.btnAddPartial.Location = new System.Drawing.Point(446, 116);
             this.btnAddPartial.Name = "btnAddPartial";
             this.btnAddPartial.Size = new System.Drawing.Size(86, 23);
             this.btnAddPartial.TabIndex = 148;
             this.btnAddPartial.Text = "Add Record";
             this.btnAddPartial.UseVisualStyleBackColor = true;
+            this.btnAddPartial.Click += new System.EventHandler(this.btnAddPartial_Click);
             // 
-            // button1
+            // btnUpdatePartialDates
             // 
-            this.button1.Location = new System.Drawing.Point(101, 153);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 23);
-            this.button1.TabIndex = 147;
-            this.button1.Text = "Change All Pt book (A) Dates";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // partmemoTextBox
-            // 
-            this.partmemoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.partmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "partmemo", true));
-            this.partmemoTextBox.Location = new System.Drawing.Point(87, 97);
-            this.partmemoTextBox.Multiline = true;
-            this.partmemoTextBox.Name = "partmemoTextBox";
-            this.partmemoTextBox.Size = new System.Drawing.Size(520, 45);
-            this.partmemoTextBox.TabIndex = 146;
-            // 
-            // iinitTextBox1
-            // 
-            this.iinitTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iinitTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "iinit", true));
-            this.iinitTextBox1.Location = new System.Drawing.Point(816, 71);
-            this.iinitTextBox1.MaxLength = 3;
-            this.iinitTextBox1.Name = "iinitTextBox1";
-            this.iinitTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.iinitTextBox1.TabIndex = 145;
-            // 
-            // ideptTextBox1
-            // 
-            this.ideptTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ideptTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "idept", true));
-            this.ideptTextBox1.Location = new System.Drawing.Point(684, 71);
-            this.ideptTextBox1.MaxLength = 3;
-            this.ideptTextBox1.Name = "ideptTextBox1";
-            this.ideptTextBox1.Size = new System.Drawing.Size(62, 20);
-            this.ideptTextBox1.TabIndex = 144;
+            this.btnUpdatePartialDates.Location = new System.Drawing.Point(101, 116);
+            this.btnUpdatePartialDates.Name = "btnUpdatePartialDates";
+            this.btnUpdatePartialDates.Size = new System.Drawing.Size(195, 23);
+            this.btnUpdatePartialDates.TabIndex = 147;
+            this.btnUpdatePartialDates.Text = "Change All Pt book (A) Dates";
+            this.btnUpdatePartialDates.UseVisualStyleBackColor = true;
+            this.btnUpdatePartialDates.Click += new System.EventHandler(this.btnUpdatePartialDates_Click);
             // 
             // textBox12
             // 
             this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoPages", true));
-            this.textBox12.Location = new System.Drawing.Point(946, 35);
+            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox12.Location = new System.Drawing.Point(629, 33);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
             this.textBox12.Size = new System.Drawing.Size(76, 20);
             this.textBox12.TabIndex = 141;
             // 
-            // booktypeTextBox1
+            // txtPartialBookType
             // 
-            this.booktypeTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.booktypeTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "booktype", true));
-            this.booktypeTextBox1.Location = new System.Drawing.Point(770, 35);
-            this.booktypeTextBox1.Name = "booktypeTextBox1";
-            this.booktypeTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.booktypeTextBox1.TabIndex = 139;
-            // 
-            // ptnopgsTextBox1
-            // 
-            this.ptnopgsTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ptnopgs", true));
-            this.ptnopgsTextBox1.Location = new System.Drawing.Point(386, 35);
-            this.ptnopgsTextBox1.Name = "ptnopgsTextBox1";
-            this.ptnopgsTextBox1.Size = new System.Drawing.Size(41, 20);
-            this.ptnopgsTextBox1.TabIndex = 137;
-            // 
-            // typestyleTextBox
-            // 
-            this.typestyleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "typestyle", true));
-            this.typestyleTextBox.Location = new System.Drawing.Point(87, 35);
-            this.typestyleTextBox.Name = "typestyleTextBox";
-            this.typestyleTextBox.Size = new System.Drawing.Size(154, 20);
-            this.typestyleTextBox.TabIndex = 136;
+            this.txtPartialBookType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPartialBookType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partbkBindingSource, "booktype", true));
+            this.txtPartialBookType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPartialBookType.Location = new System.Drawing.Point(116, 33);
+            this.txtPartialBookType.Name = "txtPartialBookType";
+            this.txtPartialBookType.Size = new System.Drawing.Size(100, 20);
+            this.txtPartialBookType.TabIndex = 139;
             // 
             // textBox4
             // 
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "company", true));
-            this.textBox4.Location = new System.Drawing.Point(1151, 7);
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(1128, 7);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(49, 20);
@@ -5778,7 +5907,7 @@ namespace Mbc5.Forms
             // label12
             // 
             this.label12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(116, 10);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(100, 20);
@@ -5788,6 +5917,7 @@ namespace Mbc5.Forms
             // pg6
             // 
             this.pg6.BackColor = System.Drawing.SystemColors.Control;
+            this.pg6.Controls.Add(this.regisdateDateBox);
             this.pg6.Controls.Add(this.rmbfrmDateBox1);
             this.pg6.Controls.Add(this.rmbtoDateBox1);
             this.pg6.Controls.Add(this.rmpfrmDateBox1);
@@ -5828,7 +5958,6 @@ namespace Mbc5.Forms
             this.pg6.Controls.Add(label50);
             this.pg6.Controls.Add(label49);
             this.pg6.Controls.Add(regisdateLabel);
-      
             this.pg6.Controls.Add(cdpassLabel);
             this.pg6.Controls.Add(this.cdpassTextBox);
             this.pg6.Controls.Add(regisnoLabel);
@@ -5853,11 +5982,23 @@ namespace Mbc5.Forms
             this.pg6.TabIndex = 5;
             this.pg6.Text = "Photos on CD";
             // 
+            // regisdateDateBox
+            // 
+            this.regisdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "regisdate", true));
+            this.regisdateDateBox.Date = null;
+            this.regisdateDateBox.DateValue = null;
+            this.regisdateDateBox.Location = new System.Drawing.Point(341, 345);
+            this.regisdateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.regisdateDateBox.Name = "regisdateDateBox";
+            this.regisdateDateBox.Size = new System.Drawing.Size(133, 21);
+            this.regisdateDateBox.TabIndex = 179;
+            // 
             // rmbfrmDateBox1
             // 
             this.rmbfrmDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmbfrm", true));
             this.rmbfrmDateBox1.Date = null;
             this.rmbfrmDateBox1.DateValue = null;
+            this.rmbfrmDateBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rmbfrmDateBox1.Location = new System.Drawing.Point(480, 519);
             this.rmbfrmDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
             this.rmbfrmDateBox1.Name = "rmbfrmDateBox1";
@@ -5869,6 +6010,7 @@ namespace Mbc5.Forms
             this.rmbtoDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmbto", true));
             this.rmbtoDateBox1.Date = null;
             this.rmbtoDateBox1.DateValue = null;
+            this.rmbtoDateBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rmbtoDateBox1.Location = new System.Drawing.Point(480, 495);
             this.rmbtoDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
             this.rmbtoDateBox1.Name = "rmbtoDateBox1";
@@ -5880,6 +6022,7 @@ namespace Mbc5.Forms
             this.rmpfrmDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmpfrm", true));
             this.rmpfrmDateBox1.Date = null;
             this.rmpfrmDateBox1.DateValue = null;
+            this.rmpfrmDateBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rmpfrmDateBox1.Location = new System.Drawing.Point(146, 519);
             this.rmpfrmDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
             this.rmpfrmDateBox1.Name = "rmpfrmDateBox1";
@@ -5891,6 +6034,7 @@ namespace Mbc5.Forms
             this.rmptoDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "rmpto", true));
             this.rmptoDateBox1.Date = null;
             this.rmptoDateBox1.DateValue = null;
+            this.rmptoDateBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rmptoDateBox1.Location = new System.Drawing.Point(146, 495);
             this.rmptoDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
             this.rmptoDateBox1.Name = "rmptoDateBox1";
@@ -5902,6 +6046,7 @@ namespace Mbc5.Forms
             this.frmbindDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "frmbind", true));
             this.frmbindDateBox1.Date = null;
             this.frmbindDateBox1.DateValue = null;
+            this.frmbindDateBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frmbindDateBox1.Location = new System.Drawing.Point(298, 449);
             this.frmbindDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
             this.frmbindDateBox1.Name = "frmbindDateBox1";
@@ -5913,6 +6058,7 @@ namespace Mbc5.Forms
             this.binddteDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "binddte", true));
             this.binddteDateBox1.Date = null;
             this.binddteDateBox1.DateValue = null;
+            this.binddteDateBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.binddteDateBox1.Location = new System.Drawing.Point(122, 448);
             this.binddteDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
             this.binddteDateBox1.Name = "binddteDateBox1";
@@ -5924,6 +6070,7 @@ namespace Mbc5.Forms
             this.ioutDateBox2.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "iout", true));
             this.ioutDateBox2.Date = null;
             this.ioutDateBox2.DateValue = null;
+            this.ioutDateBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ioutDateBox2.Location = new System.Drawing.Point(298, 422);
             this.ioutDateBox2.MinimumSize = new System.Drawing.Size(133, 20);
             this.ioutDateBox2.Name = "ioutDateBox2";
@@ -5935,6 +6082,7 @@ namespace Mbc5.Forms
             this.iinDateBox2.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "iin", true));
             this.iinDateBox2.Date = null;
             this.iinDateBox2.DateValue = null;
+            this.iinDateBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iinDateBox2.Location = new System.Drawing.Point(122, 423);
             this.iinDateBox2.MinimumSize = new System.Drawing.Size(133, 20);
             this.iinDateBox2.Name = "iinDateBox2";
@@ -5946,6 +6094,7 @@ namespace Mbc5.Forms
             this.houtDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "hout", true));
             this.houtDateBox.Date = null;
             this.houtDateBox.DateValue = null;
+            this.houtDateBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.houtDateBox.Location = new System.Drawing.Point(298, 395);
             this.houtDateBox.MinimumSize = new System.Drawing.Size(133, 20);
             this.houtDateBox.Name = "houtDateBox";
@@ -5957,6 +6106,7 @@ namespace Mbc5.Forms
             this.hinDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.ptbkbBindingSource, "hin", true));
             this.hinDateBox.Date = null;
             this.hinDateBox.DateValue = null;
+            this.hinDateBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hinDateBox.Location = new System.Drawing.Point(122, 396);
             this.hinDateBox.MinimumSize = new System.Drawing.Size(133, 20);
             this.hinDateBox.Name = "hinDateBox";
@@ -5969,7 +6119,7 @@ namespace Mbc5.Forms
             this.ptbrcvd.Date = null;
             this.ptbrcvd.DateValue = null;
             this.ptbrcvd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ptbrcvd.Location = new System.Drawing.Point(393, 47);
+            this.ptbrcvd.Location = new System.Drawing.Point(496, 13);
             this.ptbrcvd.MinimumSize = new System.Drawing.Size(133, 20);
             this.ptbrcvd.Name = "ptbrcvd";
             this.ptbrcvd.Size = new System.Drawing.Size(133, 21);
@@ -5978,7 +6128,7 @@ namespace Mbc5.Forms
             // btnCDTicket
             // 
             this.btnCDTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCDTicket.Location = new System.Drawing.Point(895, 50);
+            this.btnCDTicket.Location = new System.Drawing.Point(925, 50);
             this.btnCDTicket.Name = "btnCDTicket";
             this.btnCDTicket.Size = new System.Drawing.Size(125, 23);
             this.btnCDTicket.TabIndex = 167;
@@ -5989,7 +6139,7 @@ namespace Mbc5.Forms
             // btnCDAdd
             // 
             this.btnCDAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCDAdd.Location = new System.Drawing.Point(1027, 50);
+            this.btnCDAdd.Location = new System.Drawing.Point(1057, 50);
             this.btnCDAdd.Name = "btnCDAdd";
             this.btnCDAdd.Size = new System.Drawing.Size(86, 23);
             this.btnCDAdd.TabIndex = 165;
@@ -6000,7 +6150,7 @@ namespace Mbc5.Forms
             // btnCDDate
             // 
             this.btnCDDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCDDate.Location = new System.Drawing.Point(696, 50);
+            this.btnCDDate.Location = new System.Drawing.Point(726, 50);
             this.btnCDDate.Name = "btnCDDate";
             this.btnCDDate.Size = new System.Drawing.Size(195, 23);
             this.btnCDDate.TabIndex = 164;
@@ -6012,7 +6162,7 @@ namespace Mbc5.Forms
             // 
             this.nocopiesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "nocopies", true));
             this.nocopiesTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nocopiesTextBox1.Location = new System.Drawing.Point(236, 47);
+            this.nocopiesTextBox1.Location = new System.Drawing.Point(280, 50);
             this.nocopiesTextBox1.Name = "nocopiesTextBox1";
             this.nocopiesTextBox1.Size = new System.Drawing.Size(48, 20);
             this.nocopiesTextBox1.TabIndex = 163;
@@ -6021,7 +6171,7 @@ namespace Mbc5.Forms
             // 
             this.rmbtotTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rmbtotTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "rmbtot", true));
-            this.rmbtotTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rmbtotTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rmbtotTextBox1.Location = new System.Drawing.Point(480, 543);
             this.rmbtotTextBox1.Name = "rmbtotTextBox1";
             this.rmbtotTextBox1.Size = new System.Drawing.Size(60, 20);
@@ -6031,7 +6181,7 @@ namespace Mbc5.Forms
             // 
             this.rmptotTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rmptotTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "rmptot", true));
-            this.rmptotTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rmptotTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rmptotTextBox1.Location = new System.Drawing.Point(148, 543);
             this.rmptotTextBox1.Name = "rmptotTextBox1";
             this.rmptotTextBox1.Size = new System.Drawing.Size(53, 20);
@@ -6041,7 +6191,7 @@ namespace Mbc5.Forms
             // 
             this.wipmemoTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.wipmemoTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "wipmemo", true));
-            this.wipmemoTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wipmemoTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wipmemoTextBox2.Location = new System.Drawing.Point(148, 579);
             this.wipmemoTextBox2.Multiline = true;
             this.wipmemoTextBox2.Name = "wipmemoTextBox2";
@@ -6052,7 +6202,7 @@ namespace Mbc5.Forms
             // 
             this.bindvendTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bindvendTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "bindvend", true));
-            this.bindvendTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bindvendTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bindvendTextBox1.Location = new System.Drawing.Point(680, 449);
             this.bindvendTextBox1.Name = "bindvendTextBox1";
             this.bindvendTextBox1.Size = new System.Drawing.Size(100, 20);
@@ -6062,7 +6212,7 @@ namespace Mbc5.Forms
             // 
             this.iinitTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.iinitTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "iinit", true));
-            this.iinitTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iinitTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iinitTextBox2.Location = new System.Drawing.Point(680, 423);
             this.iinitTextBox2.Name = "iinitTextBox2";
             this.iinitTextBox2.Size = new System.Drawing.Size(100, 20);
@@ -6072,7 +6222,7 @@ namespace Mbc5.Forms
             // 
             this.ideptTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ideptTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "idept", true));
-            this.ideptTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ideptTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ideptTextBox2.Location = new System.Drawing.Point(571, 423);
             this.ideptTextBox2.Name = "ideptTextBox2";
             this.ideptTextBox2.Size = new System.Drawing.Size(100, 20);
@@ -6082,7 +6232,7 @@ namespace Mbc5.Forms
             // 
             this.hinitTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hinitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "hinit", true));
-            this.hinitTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hinitTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hinitTextBox.Location = new System.Drawing.Point(680, 396);
             this.hinitTextBox.Name = "hinitTextBox";
             this.hinitTextBox.Size = new System.Drawing.Size(100, 20);
@@ -6092,22 +6242,18 @@ namespace Mbc5.Forms
             // 
             this.hdeptTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.hdeptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "hdept", true));
-            this.hdeptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hdeptTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hdeptTextBox.Location = new System.Drawing.Point(571, 395);
             this.hdeptTextBox.Name = "hdeptTextBox";
             this.hdeptTextBox.Size = new System.Drawing.Size(100, 20);
             this.hdeptTextBox.TabIndex = 145;
             // 
-            // regisdateDateTimePicker
-            // 
-          
-            // 
             // cdpassTextBox
             // 
             this.cdpassTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cdpassTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "cdpass", true));
-            this.cdpassTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cdpassTextBox.Location = new System.Drawing.Point(580, 342);
+            this.cdpassTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cdpassTextBox.Location = new System.Drawing.Point(580, 345);
             this.cdpassTextBox.Name = "cdpassTextBox";
             this.cdpassTextBox.Size = new System.Drawing.Size(184, 20);
             this.cdpassTextBox.TabIndex = 136;
@@ -6116,8 +6262,8 @@ namespace Mbc5.Forms
             // 
             this.regisnoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.regisnoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "regisno", true));
-            this.regisnoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.regisnoTextBox.Location = new System.Drawing.Point(118, 342);
+            this.regisnoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.regisnoTextBox.Location = new System.Drawing.Point(118, 345);
             this.regisnoTextBox.Name = "regisnoTextBox";
             this.regisnoTextBox.Size = new System.Drawing.Size(100, 20);
             this.regisnoTextBox.TabIndex = 135;
@@ -6220,7 +6366,7 @@ namespace Mbc5.Forms
             // 
             this.textBox13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoPages", true));
             this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(619, 50);
+            this.textBox13.Location = new System.Drawing.Point(496, 50);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
             this.textBox13.Size = new System.Drawing.Size(67, 20);
@@ -6230,7 +6376,7 @@ namespace Mbc5.Forms
             // 
             this.label47.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "company", true));
             this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(1134, 14);
+            this.label47.Location = new System.Drawing.Point(1128, 14);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(56, 23);
             this.label47.TabIndex = 132;
@@ -6240,7 +6386,7 @@ namespace Mbc5.Forms
             // 
             this.invnoLabel6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "invno", true));
             this.invnoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.invnoLabel6.Location = new System.Drawing.Point(998, 14);
+            this.invnoLabel6.Location = new System.Drawing.Point(988, 14);
             this.invnoLabel6.Name = "invnoLabel6";
             this.invnoLabel6.Size = new System.Drawing.Size(58, 23);
             this.invnoLabel6.TabIndex = 130;
@@ -6250,7 +6396,7 @@ namespace Mbc5.Forms
             // 
             this.ptnopgsTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "PagesReceived", true));
             this.ptnopgsTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ptnopgsTextBox2.Location = new System.Drawing.Point(122, 50);
+            this.ptnopgsTextBox2.Location = new System.Drawing.Point(119, 50);
             this.ptnopgsTextBox2.Name = "ptnopgsTextBox2";
             this.ptnopgsTextBox2.Size = new System.Drawing.Size(53, 20);
             this.ptnopgsTextBox2.TabIndex = 15;
@@ -6259,16 +6405,17 @@ namespace Mbc5.Forms
             // 
             this.txtPhotoBookType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ptbkbBindingSource, "booktype", true));
             this.txtPhotoBookType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhotoBookType.Location = new System.Drawing.Point(292, 14);
+            this.txtPhotoBookType.Location = new System.Drawing.Point(280, 14);
+            this.txtPhotoBookType.MaxLength = 3;
             this.txtPhotoBookType.Name = "txtPhotoBookType";
-            this.txtPhotoBookType.Size = new System.Drawing.Size(100, 20);
+            this.txtPhotoBookType.Size = new System.Drawing.Size(59, 20);
             this.txtPhotoBookType.TabIndex = 14;
             // 
             // label44
             // 
             this.label44.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "prodno", true));
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(101, 14);
+            this.label44.Location = new System.Drawing.Point(119, 14);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(100, 16);
             this.label44.TabIndex = 13;
@@ -6277,13 +6424,81 @@ namespace Mbc5.Forms
             // pg7
             // 
             this.pg7.BackColor = System.Drawing.SystemColors.Control;
+            this.pg7.Controls.Add(this.dataGridView1);
+            this.pg7.Controls.Add(grmemoLabel);
+            this.pg7.Controls.Add(this.grmemoTextBox);
+            this.pg7.Controls.Add(label61);
+            this.pg7.Controls.Add(iinitLabel1);
+            this.pg7.Controls.Add(this.iinitTextBox3);
+            this.pg7.Controls.Add(ideptLabel);
+            this.pg7.Controls.Add(this.ideptTextBox3);
+            this.pg7.Controls.Add(ioutLabel);
+            this.pg7.Controls.Add(this.ioutDateBox3);
+            this.pg7.Controls.Add(iinLabel1);
+            this.pg7.Controls.Add(this.iinDateBox3);
+            this.pg7.Controls.Add(this.button1);
+            this.pg7.Controls.Add(this.button3);
+            this.pg7.Controls.Add(this.btnReorderChangeDates);
+            this.pg7.Controls.Add(copiesLabel);
+            this.pg7.Controls.Add(this.copiesTextBox);
+            this.pg7.Controls.Add(noPagesLabel1);
+            this.pg7.Controls.Add(this.noPagesTextBox2);
+            this.pg7.Controls.Add(this.prodNoPagesLabel2);
+            this.pg7.Controls.Add(prodNoPagesLabel);
+            this.pg7.Controls.Add(refdateLabel);
+            this.pg7.Controls.Add(this.refdateDateBox);
+            this.pg7.Controls.Add(typestyleLabel4);
+            this.pg7.Controls.Add(this.typestyleLabel5);
             this.pg7.Location = new System.Drawing.Point(4, 22);
             this.pg7.Name = "pg7";
             this.pg7.Size = new System.Drawing.Size(1220, 705);
             this.pg7.TabIndex = 6;
             this.pg7.Text = "Reorder";
             // 
-           
+            // noPagesTextBox2
+            // 
+            this.noPagesTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.reOrderBindingSource, "NoPages", true));
+            this.noPagesTextBox2.Location = new System.Drawing.Point(513, 55);
+            this.noPagesTextBox2.Name = "noPagesTextBox2";
+            this.noPagesTextBox2.Size = new System.Drawing.Size(61, 20);
+            this.noPagesTextBox2.TabIndex = 7;
+            // 
+            // reOrderBindingSource
+            // 
+            this.reOrderBindingSource.DataMember = "ReOrder";
+            this.reOrderBindingSource.DataSource = this.dsProdutn;
+            // 
+            // prodNoPagesLabel2
+            // 
+            this.prodNoPagesLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "ProdNoPages", true));
+            this.prodNoPagesLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prodNoPagesLabel2.Location = new System.Drawing.Point(117, 55);
+            this.prodNoPagesLabel2.Name = "prodNoPagesLabel2";
+            this.prodNoPagesLabel2.Size = new System.Drawing.Size(100, 23);
+            this.prodNoPagesLabel2.TabIndex = 6;
+            this.prodNoPagesLabel2.Text = "label61";
+            // 
+            // refdateDateBox
+            // 
+            this.refdateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.reOrderBindingSource, "refdate", true));
+            this.refdateDateBox.Date = null;
+            this.refdateDateBox.DateValue = null;
+            this.refdateDateBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refdateDateBox.Location = new System.Drawing.Point(285, 18);
+            this.refdateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.refdateDateBox.Name = "refdateDateBox";
+            this.refdateDateBox.Size = new System.Drawing.Size(133, 21);
+            this.refdateDateBox.TabIndex = 3;
+            // 
+            // typestyleLabel5
+            // 
+            this.typestyleLabel5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.produtnBindingSource, "typestyle", true));
+            this.typestyleLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.typestyleLabel5.Location = new System.Drawing.Point(117, 18);
+            this.typestyleLabel5.Name = "typestyleLabel5";
+            this.typestyleLabel5.Size = new System.Drawing.Size(100, 23);
+            this.typestyleLabel5.TabIndex = 1;
+            this.typestyleLabel5.Text = "label61";
             // 
             // errorProvider1
             // 
@@ -6302,9 +6517,10 @@ namespace Mbc5.Forms
             this.tableAdapterManager.PartBkDetailTableAdapter = null;
             this.tableAdapterManager.partbkTableAdapter = null;
             this.tableAdapterManager.produtnTableAdapter = null;
-            //this.tableAdapterManager.prtbkbdetailTableAdapter = null;
             this.tableAdapterManager.ptbkbTableAdapter = null;
             this.tableAdapterManager.quotesTableAdapter = this.quotesTableAdapter;
+            this.tableAdapterManager.ReorderDetailTableAdapter = null;
+            this.tableAdapterManager.ReOrderTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsProdutnTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.WipDescriptionsTableAdapter = null;
             this.tableAdapterManager.WipDetailTableAdapter = null;
@@ -6417,6 +6633,241 @@ namespace Mbc5.Forms
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // reOrderTableAdapter
+            // 
+            this.reOrderTableAdapter.ClearBeforeFill = true;
+            // 
+            // copiesLabel
+            // 
+            copiesLabel.AutoSize = true;
+            copiesLabel.Location = new System.Drawing.Point(225, 55);
+            copiesLabel.Name = "copiesLabel";
+            copiesLabel.Size = new System.Drawing.Size(57, 13);
+            copiesLabel.TabIndex = 8;
+            copiesLabel.Text = "# Copies";
+            // 
+            // copiesTextBox
+            // 
+            this.copiesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.reOrderBindingSource, "copies", true));
+            this.copiesTextBox.Location = new System.Drawing.Point(285, 55);
+            this.copiesTextBox.Name = "copiesTextBox";
+            this.copiesTextBox.Size = new System.Drawing.Size(44, 20);
+            this.copiesTextBox.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(283, 109);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 23);
+            this.button1.TabIndex = 170;
+            this.button1.Text = "Production Ticket";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(415, 109);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(86, 23);
+            this.button3.TabIndex = 169;
+            this.button3.Text = "Add Record";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // btnReorderChangeDates
+            // 
+            this.btnReorderChangeDates.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReorderChangeDates.Location = new System.Drawing.Point(84, 109);
+            this.btnReorderChangeDates.Name = "btnReorderChangeDates";
+            this.btnReorderChangeDates.Size = new System.Drawing.Size(195, 23);
+            this.btnReorderChangeDates.TabIndex = 168;
+            this.btnReorderChangeDates.Text = "Change Dates";
+            this.btnReorderChangeDates.UseVisualStyleBackColor = true;
+            // 
+            // reorderDetailBindingSource
+            // 
+            this.reorderDetailBindingSource.DataMember = "ReorderDetail";
+            this.reorderDetailBindingSource.DataSource = this.dsProdutn;
+            // 
+            // reorderDetailTableAdapter
+            // 
+            this.reorderDetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // iinLabel1
+            // 
+            iinLabel1.AutoSize = true;
+            iinLabel1.Location = new System.Drawing.Point(64, 426);
+            iinLabel1.Name = "iinLabel1";
+            iinLabel1.Size = new System.Drawing.Size(84, 13);
+            iinLabel1.TabIndex = 170;
+            iinLabel1.Text = "Check In/Out";
+            // 
+            // iinDateBox3
+            // 
+            this.iinDateBox3.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.reOrderBindingSource, "iin", true));
+            this.iinDateBox3.Date = null;
+            this.iinDateBox3.DateValue = null;
+            this.iinDateBox3.Location = new System.Drawing.Point(149, 426);
+            this.iinDateBox3.MinimumSize = new System.Drawing.Size(133, 20);
+            this.iinDateBox3.Name = "iinDateBox3";
+            this.iinDateBox3.Size = new System.Drawing.Size(133, 21);
+            this.iinDateBox3.TabIndex = 171;
+            // 
+            // ioutLabel
+            // 
+            ioutLabel.AutoSize = true;
+            ioutLabel.Location = new System.Drawing.Point(206, 410);
+            ioutLabel.Name = "ioutLabel";
+            ioutLabel.Size = new System.Drawing.Size(18, 13);
+            ioutLabel.TabIndex = 171;
+            ioutLabel.Text = "In";
+            // 
+            // ioutDateBox3
+            // 
+            this.ioutDateBox3.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.reOrderBindingSource, "iout", true));
+            this.ioutDateBox3.Date = null;
+            this.ioutDateBox3.DateValue = null;
+            this.ioutDateBox3.Location = new System.Drawing.Point(285, 426);
+            this.ioutDateBox3.MinimumSize = new System.Drawing.Size(133, 20);
+            this.ioutDateBox3.Name = "ioutDateBox3";
+            this.ioutDateBox3.Size = new System.Drawing.Size(133, 21);
+            this.ioutDateBox3.TabIndex = 172;
+            // 
+            // ideptLabel
+            // 
+            ideptLabel.AutoSize = true;
+            ideptLabel.Location = new System.Drawing.Point(338, 410);
+            ideptLabel.Name = "ideptLabel";
+            ideptLabel.Size = new System.Drawing.Size(27, 13);
+            ideptLabel.TabIndex = 172;
+            ideptLabel.Text = "Out";
+            // 
+            // ideptTextBox3
+            // 
+            this.ideptTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.reOrderBindingSource, "idept", true));
+            this.ideptTextBox3.Location = new System.Drawing.Point(424, 427);
+            this.ideptTextBox3.Name = "ideptTextBox3";
+            this.ideptTextBox3.Size = new System.Drawing.Size(56, 20);
+            this.ideptTextBox3.TabIndex = 173;
+            // 
+            // iinitLabel1
+            // 
+            iinitLabel1.AutoSize = true;
+            iinitLabel1.Location = new System.Drawing.Point(495, 410);
+            iinitLabel1.Name = "iinitLabel1";
+            iinitLabel1.Size = new System.Drawing.Size(44, 13);
+            iinitLabel1.TabIndex = 173;
+            iinitLabel1.Text = "Initials";
+            // 
+            // iinitTextBox3
+            // 
+            this.iinitTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.reOrderBindingSource, "iinit", true));
+            this.iinitTextBox3.Location = new System.Drawing.Point(485, 427);
+            this.iinitTextBox3.Name = "iinitTextBox3";
+            this.iinitTextBox3.Size = new System.Drawing.Size(64, 20);
+            this.iinitTextBox3.TabIndex = 174;
+            // 
+            // label61
+            // 
+            label61.AutoSize = true;
+            label61.Location = new System.Drawing.Point(435, 410);
+            label61.Name = "label61";
+            label61.Size = new System.Drawing.Size(34, 13);
+            label61.TabIndex = 175;
+            label61.Text = "Dept";
+            // 
+            // grmemoLabel
+            // 
+            grmemoLabel.AutoSize = true;
+            grmemoLabel.Location = new System.Drawing.Point(148, 464);
+            grmemoLabel.Name = "grmemoLabel";
+            grmemoLabel.Size = new System.Drawing.Size(40, 13);
+            grmemoLabel.TabIndex = 175;
+            grmemoLabel.Text = "Memo";
+            // 
+            // grmemoTextBox
+            // 
+            this.grmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.reOrderBindingSource, "grmemo", true));
+            this.grmemoTextBox.Location = new System.Drawing.Point(149, 480);
+            this.grmemoTextBox.Multiline = true;
+            this.grmemoTextBox.Name = "grmemoTextBox";
+            this.grmemoTextBox.Size = new System.Drawing.Size(757, 86);
+            this.grmemoTextBox.TabIndex = 176;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn32,
+            this.dataGridViewTextBoxColumn33,
+            this.dataGridViewTextBoxColumn34,
+            this.dataGridViewTextBoxColumn35,
+            this.dataGridViewTextBoxColumn36,
+            this.dataGridViewTextBoxColumn37});
+            this.dataGridView1.DataSource = this.reorderDetailBindingSource;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.Location = new System.Drawing.Point(84, 138);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView1.Size = new System.Drawing.Size(924, 242);
+            this.dataGridView1.TabIndex = 177;
+            // 
+            // dataGridViewTextBoxColumn32
+            // 
+            this.dataGridViewTextBoxColumn32.DataPropertyName = "War";
+            this.dataGridViewTextBoxColumn32.HeaderText = "Actual";
+            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
+            // 
+            // dataGridViewTextBoxColumn33
+            // 
+            this.dataGridViewTextBoxColumn33.DataPropertyName = "Wdr";
+            this.dataGridViewTextBoxColumn33.HeaderText = "Due";
+            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
+            // 
+            // dataGridViewTextBoxColumn34
+            // 
+            this.dataGridViewTextBoxColumn34.DataPropertyName = "Wtr";
+            this.dataGridViewTextBoxColumn34.HeaderText = "Time";
+            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
+            // 
+            // dataGridViewTextBoxColumn35
+            // 
+            this.dataGridViewTextBoxColumn35.DataPropertyName = "Wir";
+            this.dataGridViewTextBoxColumn35.HeaderText = "Initials";
+            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
+            // 
+            // dataGridViewTextBoxColumn36
+            // 
+            this.dataGridViewTextBoxColumn36.DataPropertyName = "Schcode";
+            this.dataGridViewTextBoxColumn36.HeaderText = "Schcode";
+            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
+            this.dataGridViewTextBoxColumn36.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn37
+            // 
+            this.dataGridViewTextBoxColumn37.DataPropertyName = "Invno";
+            this.dataGridViewTextBoxColumn37.HeaderText = "Invno";
+            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
+            this.dataGridViewTextBoxColumn37.Visible = false;
+            // 
             // frmProdutn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -6487,9 +6938,14 @@ namespace Mbc5.Forms
             this.pg6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prtbkbdetailBindingSource)).EndInit();
+            this.pg7.ResumeLayout(false);
+            this.pg7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoverTicketBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.binderyLabelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -6573,11 +7029,9 @@ namespace Mbc5.Forms
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TabPage pg7;
-        private System.Windows.Forms.TextBox typestyleTextBox;
-        private System.Windows.Forms.TextBox ptnopgsTextBox1;
         private System.Windows.Forms.BindingSource partbkBindingSource;
         private DataSets.dsProdutnTableAdapters.partbkTableAdapter partbkTableAdapter;
-        private System.Windows.Forms.TextBox booktypeTextBox1;
+        private System.Windows.Forms.TextBox txtPartialBookType;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.BindingSource ptbkbBindingSource;
         private DataSets.dsProdutnTableAdapters.ptbkbTableAdapter ptbkbTableAdapter;
@@ -6712,14 +7166,10 @@ namespace Mbc5.Forms
       
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox typestyleTextBox1;
-        private System.Windows.Forms.TextBox partmemoTextBox;
-        private System.Windows.Forms.TextBox iinitTextBox1;
-        private System.Windows.Forms.TextBox ideptTextBox1;
         private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnPartialProdTicket;
         private System.Windows.Forms.Button btnAddPartial;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUpdatePartialDates;
         private System.Windows.Forms.BindingSource partBkDetailBindingSource;
         private DataSets.dsProdutnTableAdapters.PartBkDetailTableAdapter partBkDetailTableAdapter;
         private System.Windows.Forms.DataGridView partBkDetailDataGridView;
@@ -6838,9 +7288,7 @@ namespace Mbc5.Forms
         private CustomControls.DateBox lamdtesentDateBox;
         private CustomControls.DateBox otdtebkDateBox;
         private CustomControls.DateBox otdtesentDateBox;
-        private CustomControls.DateBox ptrecvdDateBox1;
-        private CustomControls.DateBox ioutDateBox1;
-        private CustomControls.DateBox iinDateBox1;
+        private CustomControls.DateBox partialRecvDate;
         private CustomControls.DateBox hinDateBox;
         private CustomControls.DateBox ptbrcvd;
         private CustomControls.DateBox rmbfrmDateBox1;
@@ -6863,5 +7311,39 @@ namespace Mbc5.Forms
         private System.Windows.Forms.BindingSource binderyLabelBindingSource;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewerBinderyTicket;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewerBinderyLabel;
+        private System.Windows.Forms.Label typestyleLabel3;
+        private System.Windows.Forms.TextBox partmemoTextBox;
+        private System.Windows.Forms.TextBox noCopiesTextBox2;
+        private System.Windows.Forms.TextBox noPagesTextBox1;
+        private CustomControls.DateBox regisdateDateBox;
+        private System.Windows.Forms.TextBox iinitTextBox1;
+        private System.Windows.Forms.TextBox ideptTextBox1;
+        private CustomControls.DateBox ioutDateBox1;
+        private CustomControls.DateBox iinDateBox1;
+        private System.Windows.Forms.Label invnoLabel9;
+        private System.Windows.Forms.Label typestyleLabel5;
+        private System.Windows.Forms.BindingSource reOrderBindingSource;
+        private DataSets.dsProdutnTableAdapters.ReOrderTableAdapter reOrderTableAdapter;
+        private System.Windows.Forms.TextBox noPagesTextBox2;
+        private System.Windows.Forms.Label prodNoPagesLabel2;
+        private CustomControls.DateBox refdateDateBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnReorderChangeDates;
+        private System.Windows.Forms.TextBox copiesTextBox;
+        private System.Windows.Forms.BindingSource reorderDetailBindingSource;
+        private DataSets.dsProdutnTableAdapters.ReorderDetailTableAdapter reorderDetailTableAdapter;
+        private System.Windows.Forms.TextBox grmemoTextBox;
+        private System.Windows.Forms.TextBox iinitTextBox3;
+        private System.Windows.Forms.TextBox ideptTextBox3;
+        private CustomControls.DateBox ioutDateBox3;
+        private CustomControls.DateBox iinDateBox3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
     }
 }
