@@ -120,7 +120,7 @@ namespace BaseClass.Classes
 					if (vExist)
 					{
 						var a= ldDate.AddDays(-1);
-						ldDate.AddDays(-1);
+						//ldDate.AddDays(-1);
 						ldDate= ldDate.AddDays(-1);
 
 					}

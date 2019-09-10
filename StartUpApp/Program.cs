@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace StartUpApp
 {
@@ -10,8 +11,20 @@ namespace StartUpApp
     {
         static void Main(string[] args)
         {
-            StartUp VerCheck = new StartUp();
-            VerCheck.VersionCheck();
+            //StartUp VerCheck = new StartUp();
+            //VerCheck.VersionCheck();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            try
+            {
+                Application.Run(new Splash());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an unhandled error:" + ex.Message);
+
+
+            }
         }
     }
 }
