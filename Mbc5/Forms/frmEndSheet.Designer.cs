@@ -86,29 +86,32 @@
             System.Windows.Forms.Label label39;
             System.Windows.Forms.Label label34;
             System.Windows.Forms.Label label35;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEndSheet));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbEndSheets = new System.Windows.Forms.TabControl();
             this.pgEndSheets = new System.Windows.Forms.TabPage();
+            this.btnUpdateDates = new System.Windows.Forms.Button();
+            this.btnAddEndSheetRecord = new System.Windows.Forms.Button();
+            this.btnEndSheetTicket = new System.Windows.Forms.Button();
+            this.desorgdteDateBox = new CustomControls.DateBox();
+            this.endsheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsEndSheet = new Mbc5.DataSets.dsEndSheet();
+            this.reprntdteDateBox = new CustomControls.DateBox();
+            this.prntsamDateBox = new CustomControls.DateBox();
+            this.otdtebkDateBox = new CustomControls.DateBox();
+            this.dcdtebkDateBox = new CustomControls.DateBox();
+            this.lamdtebkDateBox = new CustomControls.DateBox();
+            this.prtdtebkDateBox = new CustomControls.DateBox();
+            this.otdtesentDateBox = new CustomControls.DateBox();
+            this.dcdtesentDateBox = new CustomControls.DateBox();
+            this.lamdtesentDateBox = new CustomControls.DateBox();
+            this.prtdtesentDateBox = new CustomControls.DateBox();
+            this.endstrecvDateBox = new CustomControls.DateBox();
+            this.csoffholdDateBox = new CustomControls.DateBox();
+            this.csonholdDateBox = new CustomControls.DateBox();
             this.laminatedTextBox = new System.Windows.Forms.TextBox();
             this.produtnBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsEndSheet = new Mbc5.DataSets.dsEndSheet();
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.endsheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.endsheetdetailDataGridView = new System.Windows.Forms.DataGridView();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -163,12 +166,24 @@
             this.clr2TextBox = new System.Windows.Forms.TextBox();
             this.clr1TextBox = new System.Windows.Forms.TextBox();
             this.txtSchname = new System.Windows.Forms.TextBox();
+            this.custBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Supplement = new System.Windows.Forms.TabPage();
+            this.btnUpdateSuppDates = new System.Windows.Forms.Button();
+            this.btnAddSupp = new System.Windows.Forms.Button();
+            this.btnPrintSuppTicket = new System.Windows.Forms.Button();
+            this.duedateDateBox = new CustomControls.DateBox();
+            this.supplBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.recvdteDateBox = new CustomControls.DateBox();
+            this.rmbfrmDateBox = new CustomControls.DateBox();
+            this.rmbtoDateBox = new CustomControls.DateBox();
+            this.frmbindDateBox = new CustomControls.DateBox();
+            this.binddteDateBox = new CustomControls.DateBox();
+            this.ioutDateBox = new CustomControls.DateBox();
+            this.iinDateBox = new CustomControls.DateBox();
             this.txtsupllSrch = new System.Windows.Forms.TextBox();
             this.btnSupplSrch = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.quotesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.suppdetailDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -179,7 +194,6 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.suppdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.partmemoTextBox = new System.Windows.Forms.TextBox();
-            this.supplBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.totsigsTextBox = new System.Windows.Forms.TextBox();
             this.supplementsCheckBox = new System.Windows.Forms.CheckBox();
             this.oursuppCheckBox = new System.Windows.Forms.CheckBox();
@@ -205,8 +219,9 @@
             this.nopagesTextBox1 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.PreFlight = new System.Windows.Forms.TabPage();
-            this.technoteTextBox = new System.Windows.Forms.TextBox();
+            this.predateDateBox = new CustomControls.DateBox();
             this.preflitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.technoteTextBox = new System.Windows.Forms.TextBox();
             this.custquestTextBox = new System.Windows.Forms.TextBox();
             this.numsentTextBox = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -249,11 +264,21 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.Banner = new System.Windows.Forms.TabPage();
+            this.bannerdetailDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bannerdetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bannerrecvDateBox = new CustomControls.DateBox();
+            this.bannerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.specinstTextBox1 = new System.Windows.Forms.TextBox();
             this.customdescTextBox = new System.Windows.Forms.TextBox();
-            this.bannerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.customCheckBox = new System.Windows.Forms.CheckBox();
             this.txtcolorComboBox = new System.Windows.Forms.ComboBox();
             this.bkcolorComboBox = new System.Windows.Forms.ComboBox();
@@ -268,7 +293,6 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.custTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.custTableAdapter();
-            this.tableAdapterManager = new Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager();
             this.produtnTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.produtnTableAdapter();
             this.quotesTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.quotesTableAdapter();
             this.endsheetTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.endsheetTableAdapter();
@@ -277,30 +301,10 @@
             this.suppdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.suppdetailTableAdapter();
             this.preflitTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.preflitTableAdapter();
             this.bannerTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.bannerTableAdapter();
-            this.csonholdDateBox = new CustomControls.DateBox();
-            this.csoffholdDateBox = new CustomControls.DateBox();
-            this.endstrecvDateBox = new CustomControls.DateBox();
-            this.prtdtesentDateBox = new CustomControls.DateBox();
-            this.lamdtesentDateBox = new CustomControls.DateBox();
-            this.dcdtesentDateBox = new CustomControls.DateBox();
-            this.otdtesentDateBox = new CustomControls.DateBox();
-            this.prtdtebkDateBox = new CustomControls.DateBox();
-            this.lamdtebkDateBox = new CustomControls.DateBox();
-            this.dcdtebkDateBox = new CustomControls.DateBox();
-            this.otdtebkDateBox = new CustomControls.DateBox();
-            this.prntsamDateBox = new CustomControls.DateBox();
-            this.reprntdteDateBox = new CustomControls.DateBox();
-            this.desorgdteDateBox = new CustomControls.DateBox();
-            this.iinDateBox = new CustomControls.DateBox();
-            this.ioutDateBox = new CustomControls.DateBox();
-            this.binddteDateBox = new CustomControls.DateBox();
-            this.frmbindDateBox = new CustomControls.DateBox();
-            this.rmbtoDateBox = new CustomControls.DateBox();
-            this.rmbfrmDateBox = new CustomControls.DateBox();
-            this.recvdteDateBox = new CustomControls.DateBox();
-            this.duedateDateBox = new CustomControls.DateBox();
-            this.predateDateBox = new CustomControls.DateBox();
-            this.endstrecvDateBox1 = new CustomControls.DateBox();
+            this.bannerdetailTableAdapter = new Mbc5.DataSets.dsEndSheetTableAdapters.bannerdetailTableAdapter();
+            this.btnUpdateBannerDates = new System.Windows.Forms.Button();
+            this.btnAddBanner = new System.Windows.Forms.Button();
+            this.btnPrintBannerTicket = new System.Windows.Forms.Button();
             prodnoLabel = new System.Windows.Forms.Label();
             invnoLabel = new System.Windows.Forms.Label();
             clr1Label = new System.Windows.Forms.Label();
@@ -360,21 +364,19 @@
             label35 = new System.Windows.Forms.Label();
             this.tbEndSheets.SuspendLayout();
             this.pgEndSheets.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
-            this.bindingNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).BeginInit();
             this.Supplement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).BeginInit();
             this.PreFlight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).BeginInit();
             this.groupBox9.SuspendLayout();
@@ -385,6 +387,8 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.Banner.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bannerdetailDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bannerdetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -696,7 +700,7 @@
             // totsigsLabel
             // 
             totsigsLabel.AutoSize = true;
-            totsigsLabel.Location = new System.Drawing.Point(487, 178);
+            totsigsLabel.Location = new System.Drawing.Point(487, 193);
             totsigsLabel.Name = "totsigsLabel";
             totsigsLabel.Size = new System.Drawing.Size(43, 13);
             totsigsLabel.TabIndex = 90;
@@ -705,7 +709,7 @@
             // partmemoLabel
             // 
             partmemoLabel.AutoSize = true;
-            partmemoLabel.Location = new System.Drawing.Point(127, 204);
+            partmemoLabel.Location = new System.Drawing.Point(127, 219);
             partmemoLabel.Name = "partmemoLabel";
             partmemoLabel.Size = new System.Drawing.Size(40, 13);
             partmemoLabel.TabIndex = 91;
@@ -933,6 +937,9 @@
             // pgEndSheets
             // 
             this.pgEndSheets.BackColor = System.Drawing.SystemColors.Control;
+            this.pgEndSheets.Controls.Add(this.btnUpdateDates);
+            this.pgEndSheets.Controls.Add(this.btnAddEndSheetRecord);
+            this.pgEndSheets.Controls.Add(this.btnEndSheetTicket);
             this.pgEndSheets.Controls.Add(this.desorgdteDateBox);
             this.pgEndSheets.Controls.Add(this.reprntdteDateBox);
             this.pgEndSheets.Controls.Add(this.prntsamDateBox);
@@ -949,7 +956,6 @@
             this.pgEndSheets.Controls.Add(this.csonholdDateBox);
             this.pgEndSheets.Controls.Add(label35);
             this.pgEndSheets.Controls.Add(this.laminatedTextBox);
-            this.pgEndSheets.Controls.Add(this.bindingNavigator1);
             this.pgEndSheets.Controls.Add(this.endsheetdetailDataGridView);
             this.pgEndSheets.Controls.Add(reasonLabel);
             this.pgEndSheets.Controls.Add(this.reasonTextBox);
@@ -1016,6 +1022,203 @@
             this.pgEndSheets.TabIndex = 0;
             this.pgEndSheets.Text = "End Sheet";
             // 
+            // btnUpdateDates
+            // 
+            this.btnUpdateDates.Location = new System.Drawing.Point(971, 78);
+            this.btnUpdateDates.Name = "btnUpdateDates";
+            this.btnUpdateDates.Size = new System.Drawing.Size(101, 23);
+            this.btnUpdateDates.TabIndex = 154;
+            this.btnUpdateDates.Text = "Update Dates";
+            this.btnUpdateDates.UseVisualStyleBackColor = true;
+            this.btnUpdateDates.Click += new System.EventHandler(this.btnUpdateDates_Click);
+            // 
+            // btnAddEndSheetRecord
+            // 
+            this.btnAddEndSheetRecord.Location = new System.Drawing.Point(971, 21);
+            this.btnAddEndSheetRecord.Name = "btnAddEndSheetRecord";
+            this.btnAddEndSheetRecord.Size = new System.Drawing.Size(101, 23);
+            this.btnAddEndSheetRecord.TabIndex = 153;
+            this.btnAddEndSheetRecord.Text = "Add EndSheet";
+            this.btnAddEndSheetRecord.UseVisualStyleBackColor = true;
+            this.btnAddEndSheetRecord.Click += new System.EventHandler(this.btnAddEndSheetRecord_Click);
+            // 
+            // btnEndSheetTicket
+            // 
+            this.btnEndSheetTicket.Location = new System.Drawing.Point(971, 50);
+            this.btnEndSheetTicket.Name = "btnEndSheetTicket";
+            this.btnEndSheetTicket.Size = new System.Drawing.Size(101, 23);
+            this.btnEndSheetTicket.TabIndex = 152;
+            this.btnEndSheetTicket.Text = "Print Ticket";
+            this.btnEndSheetTicket.UseVisualStyleBackColor = true;
+            // 
+            // desorgdteDateBox
+            // 
+            this.desorgdteDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.desorgdteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "desorgdte", true));
+            this.desorgdteDateBox.Date = null;
+            this.desorgdteDateBox.DateValue = null;
+            this.desorgdteDateBox.Location = new System.Drawing.Point(618, 389);
+            this.desorgdteDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.desorgdteDateBox.Name = "desorgdteDateBox";
+            this.desorgdteDateBox.Size = new System.Drawing.Size(133, 21);
+            this.desorgdteDateBox.TabIndex = 53;
+            // 
+            // endsheetBindingSource
+            // 
+            this.endsheetBindingSource.DataMember = "endsheet";
+            this.endsheetBindingSource.DataSource = this.dsEndSheet;
+            // 
+            // dsEndSheet
+            // 
+            this.dsEndSheet.DataSetName = "dsEndSheet";
+            this.dsEndSheet.EnforceConstraints = false;
+            this.dsEndSheet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // reprntdteDateBox
+            // 
+            this.reprntdteDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.reprntdteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "reprntdte", true));
+            this.reprntdteDateBox.Date = null;
+            this.reprntdteDateBox.DateValue = null;
+            this.reprntdteDateBox.Location = new System.Drawing.Point(618, 363);
+            this.reprntdteDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.reprntdteDateBox.Name = "reprntdteDateBox";
+            this.reprntdteDateBox.Size = new System.Drawing.Size(133, 21);
+            this.reprntdteDateBox.TabIndex = 151;
+            // 
+            // prntsamDateBox
+            // 
+            this.prntsamDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.prntsamDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "prntsam", true));
+            this.prntsamDateBox.Date = null;
+            this.prntsamDateBox.DateValue = null;
+            this.prntsamDateBox.Location = new System.Drawing.Point(618, 338);
+            this.prntsamDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.prntsamDateBox.Name = "prntsamDateBox";
+            this.prntsamDateBox.Size = new System.Drawing.Size(133, 21);
+            this.prntsamDateBox.TabIndex = 150;
+            // 
+            // otdtebkDateBox
+            // 
+            this.otdtebkDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "otdtebk", true));
+            this.otdtebkDateBox.Date = null;
+            this.otdtebkDateBox.DateValue = null;
+            this.otdtebkDateBox.Location = new System.Drawing.Point(290, 409);
+            this.otdtebkDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.otdtebkDateBox.Name = "otdtebkDateBox";
+            this.otdtebkDateBox.Size = new System.Drawing.Size(133, 21);
+            this.otdtebkDateBox.TabIndex = 149;
+            // 
+            // dcdtebkDateBox
+            // 
+            this.dcdtebkDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "dcdtebk", true));
+            this.dcdtebkDateBox.Date = null;
+            this.dcdtebkDateBox.DateValue = null;
+            this.dcdtebkDateBox.Location = new System.Drawing.Point(290, 384);
+            this.dcdtebkDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.dcdtebkDateBox.Name = "dcdtebkDateBox";
+            this.dcdtebkDateBox.Size = new System.Drawing.Size(133, 21);
+            this.dcdtebkDateBox.TabIndex = 53;
+            // 
+            // lamdtebkDateBox
+            // 
+            this.lamdtebkDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "lamdtebk", true));
+            this.lamdtebkDateBox.Date = null;
+            this.lamdtebkDateBox.DateValue = null;
+            this.lamdtebkDateBox.Location = new System.Drawing.Point(290, 361);
+            this.lamdtebkDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.lamdtebkDateBox.Name = "lamdtebkDateBox";
+            this.lamdtebkDateBox.Size = new System.Drawing.Size(133, 21);
+            this.lamdtebkDateBox.TabIndex = 53;
+            // 
+            // prtdtebkDateBox
+            // 
+            this.prtdtebkDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "prtdtebk", true));
+            this.prtdtebkDateBox.Date = null;
+            this.prtdtebkDateBox.DateValue = null;
+            this.prtdtebkDateBox.Location = new System.Drawing.Point(290, 338);
+            this.prtdtebkDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.prtdtebkDateBox.Name = "prtdtebkDateBox";
+            this.prtdtebkDateBox.Size = new System.Drawing.Size(133, 21);
+            this.prtdtebkDateBox.TabIndex = 53;
+            // 
+            // otdtesentDateBox
+            // 
+            this.otdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "otdtesent", true));
+            this.otdtesentDateBox.Date = null;
+            this.otdtesentDateBox.DateValue = null;
+            this.otdtesentDateBox.Location = new System.Drawing.Point(136, 409);
+            this.otdtesentDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.otdtesentDateBox.Name = "otdtesentDateBox";
+            this.otdtesentDateBox.Size = new System.Drawing.Size(133, 21);
+            this.otdtesentDateBox.TabIndex = 148;
+            // 
+            // dcdtesentDateBox
+            // 
+            this.dcdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "dcdtesent", true));
+            this.dcdtesentDateBox.Date = null;
+            this.dcdtesentDateBox.DateValue = null;
+            this.dcdtesentDateBox.Location = new System.Drawing.Point(136, 384);
+            this.dcdtesentDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.dcdtesentDateBox.Name = "dcdtesentDateBox";
+            this.dcdtesentDateBox.Size = new System.Drawing.Size(133, 21);
+            this.dcdtesentDateBox.TabIndex = 53;
+            // 
+            // lamdtesentDateBox
+            // 
+            this.lamdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "lamdtesent", true));
+            this.lamdtesentDateBox.Date = null;
+            this.lamdtesentDateBox.DateValue = null;
+            this.lamdtesentDateBox.Location = new System.Drawing.Point(136, 361);
+            this.lamdtesentDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.lamdtesentDateBox.Name = "lamdtesentDateBox";
+            this.lamdtesentDateBox.Size = new System.Drawing.Size(133, 21);
+            this.lamdtesentDateBox.TabIndex = 53;
+            // 
+            // prtdtesentDateBox
+            // 
+            this.prtdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "prtdtesent", true));
+            this.prtdtesentDateBox.Date = null;
+            this.prtdtesentDateBox.DateValue = null;
+            this.prtdtesentDateBox.Location = new System.Drawing.Point(136, 338);
+            this.prtdtesentDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.prtdtesentDateBox.Name = "prtdtesentDateBox";
+            this.prtdtesentDateBox.Size = new System.Drawing.Size(133, 21);
+            this.prtdtesentDateBox.TabIndex = 53;
+            // 
+            // endstrecvDateBox
+            // 
+            this.endstrecvDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "endstrecv", true));
+            this.endstrecvDateBox.Date = null;
+            this.endstrecvDateBox.DateValue = null;
+            this.endstrecvDateBox.Location = new System.Drawing.Point(721, 82);
+            this.endstrecvDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.endstrecvDateBox.Name = "endstrecvDateBox";
+            this.endstrecvDateBox.Size = new System.Drawing.Size(133, 21);
+            this.endstrecvDateBox.TabIndex = 53;
+            // 
+            // csoffholdDateBox
+            // 
+            this.csoffholdDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "csoffhold", true));
+            this.csoffholdDateBox.Date = null;
+            this.csoffholdDateBox.DateValue = null;
+            this.csoffholdDateBox.Location = new System.Drawing.Point(719, 55);
+            this.csoffholdDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.csoffholdDateBox.Name = "csoffholdDateBox";
+            this.csoffholdDateBox.Size = new System.Drawing.Size(133, 21);
+            this.csoffholdDateBox.TabIndex = 53;
+            // 
+            // csonholdDateBox
+            // 
+            this.csonholdDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "csonhold", true));
+            this.csonholdDateBox.Date = null;
+            this.csonholdDateBox.DateValue = null;
+            this.csonholdDateBox.Location = new System.Drawing.Point(719, 30);
+            this.csonholdDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.csonholdDateBox.Name = "csonholdDateBox";
+            this.csonholdDateBox.Size = new System.Drawing.Size(133, 21);
+            this.csonholdDateBox.TabIndex = 53;
+            // 
             // laminatedTextBox
             // 
             this.laminatedTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -1031,141 +1234,6 @@
             this.produtnBindingSource.DataMember = "produtn";
             this.produtnBindingSource.DataSource = this.dsEndSheet;
             // 
-            // dsEndSheet
-            // 
-            this.dsEndSheet.DataSetName = "dsEndSheet";
-            this.dsEndSheet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bindingNavigator1
-            // 
-            this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.bindingNavigator1.BindingSource = this.quotesBindingSource;
-            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
-            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(3, 686);
-            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bindingNavigator1.Name = "bindingNavigator1";
-            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1099, 25);
-            this.bindingNavigator1.TabIndex = 145;
-            this.bindingNavigator1.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // quotesBindingSource
-            // 
-            this.quotesBindingSource.DataMember = "cust_quotes";
-            this.quotesBindingSource.DataSource = this.custBindingSource;
-            // 
-            // custBindingSource
-            // 
-            this.custBindingSource.DataMember = "cust";
-            this.custBindingSource.DataSource = this.dsEndSheet;
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // endsheetBindingSource
-            // 
-            this.endsheetBindingSource.DataMember = "endsheet";
-            this.endsheetBindingSource.DataSource = this.dsEndSheet;
-            // 
             // endsheetdetailDataGridView
             // 
             this.endsheetdetailDataGridView.AllowUserToAddRows = false;
@@ -1176,14 +1244,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endsheetdetailDataGridView.AutoGenerateColumns = false;
             this.endsheetdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.endsheetdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.endsheetdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.endsheetdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Description,
@@ -1663,10 +1731,18 @@
             this.txtSchname.Size = new System.Drawing.Size(1, 20);
             this.txtSchname.TabIndex = 1;
             // 
+            // custBindingSource
+            // 
+            this.custBindingSource.DataMember = "cust";
+            this.custBindingSource.DataSource = this.dsEndSheet;
+            // 
             // Supplement
             // 
             this.Supplement.AutoScroll = true;
             this.Supplement.BackColor = System.Drawing.SystemColors.Control;
+            this.Supplement.Controls.Add(this.btnUpdateSuppDates);
+            this.Supplement.Controls.Add(this.btnAddSupp);
+            this.Supplement.Controls.Add(this.btnPrintSuppTicket);
             this.Supplement.Controls.Add(this.duedateDateBox);
             this.Supplement.Controls.Add(this.recvdteDateBox);
             this.Supplement.Controls.Add(this.rmbfrmDateBox);
@@ -1679,8 +1755,6 @@
             this.Supplement.Controls.Add(this.btnSupplSrch);
             this.Supplement.Controls.Add(this.label28);
             this.Supplement.Controls.Add(label29);
-            this.Supplement.Controls.Add(this.button4);
-            this.Supplement.Controls.Add(this.button3);
             this.Supplement.Controls.Add(this.suppdetailDataGridView);
             this.Supplement.Controls.Add(partmemoLabel);
             this.Supplement.Controls.Add(this.partmemoTextBox);
@@ -1723,6 +1797,132 @@
             this.Supplement.TabIndex = 1;
             this.Supplement.Text = "Supplement";
             // 
+            // btnUpdateSuppDates
+            // 
+            this.btnUpdateSuppDates.Location = new System.Drawing.Point(988, 88);
+            this.btnUpdateSuppDates.Name = "btnUpdateSuppDates";
+            this.btnUpdateSuppDates.Size = new System.Drawing.Size(107, 23);
+            this.btnUpdateSuppDates.TabIndex = 157;
+            this.btnUpdateSuppDates.Text = "Update Dates";
+            this.btnUpdateSuppDates.UseVisualStyleBackColor = true;
+            this.btnUpdateSuppDates.Click += new System.EventHandler(this.btnUpdateSuppDates_Click);
+            // 
+            // btnAddSupp
+            // 
+            this.btnAddSupp.Location = new System.Drawing.Point(988, 31);
+            this.btnAddSupp.Name = "btnAddSupp";
+            this.btnAddSupp.Size = new System.Drawing.Size(107, 23);
+            this.btnAddSupp.TabIndex = 156;
+            this.btnAddSupp.Text = "Add Supplement";
+            this.btnAddSupp.UseVisualStyleBackColor = true;
+            this.btnAddSupp.Click += new System.EventHandler(this.btnAddSupp_Click);
+            // 
+            // btnPrintSuppTicket
+            // 
+            this.btnPrintSuppTicket.Location = new System.Drawing.Point(988, 60);
+            this.btnPrintSuppTicket.Name = "btnPrintSuppTicket";
+            this.btnPrintSuppTicket.Size = new System.Drawing.Size(107, 23);
+            this.btnPrintSuppTicket.TabIndex = 155;
+            this.btnPrintSuppTicket.Text = "Print Ticket";
+            this.btnPrintSuppTicket.UseVisualStyleBackColor = true;
+            // 
+            // duedateDateBox
+            // 
+            this.duedateDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.duedateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "duedate", true));
+            this.duedateDateBox.Date = null;
+            this.duedateDateBox.DateValue = null;
+            this.duedateDateBox.Location = new System.Drawing.Point(835, 31);
+            this.duedateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.duedateDateBox.Name = "duedateDateBox";
+            this.duedateDateBox.Size = new System.Drawing.Size(133, 21);
+            this.duedateDateBox.TabIndex = 108;
+            // 
+            // supplBindingSource
+            // 
+            this.supplBindingSource.DataMember = "suppl";
+            this.supplBindingSource.DataSource = this.dsEndSheet;
+            // 
+            // recvdteDateBox
+            // 
+            this.recvdteDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.recvdteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "recvdte", true));
+            this.recvdteDateBox.Date = null;
+            this.recvdteDateBox.DateValue = null;
+            this.recvdteDateBox.Location = new System.Drawing.Point(614, 32);
+            this.recvdteDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.recvdteDateBox.Name = "recvdteDateBox";
+            this.recvdteDateBox.Size = new System.Drawing.Size(133, 21);
+            this.recvdteDateBox.TabIndex = 107;
+            // 
+            // rmbfrmDateBox
+            // 
+            this.rmbfrmDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rmbfrmDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "rmbfrm", true));
+            this.rmbfrmDateBox.Date = null;
+            this.rmbfrmDateBox.DateValue = null;
+            this.rmbfrmDateBox.Location = new System.Drawing.Point(880, 183);
+            this.rmbfrmDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.rmbfrmDateBox.Name = "rmbfrmDateBox";
+            this.rmbfrmDateBox.Size = new System.Drawing.Size(133, 21);
+            this.rmbfrmDateBox.TabIndex = 106;
+            // 
+            // rmbtoDateBox
+            // 
+            this.rmbtoDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rmbtoDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "rmbto", true));
+            this.rmbtoDateBox.Date = null;
+            this.rmbtoDateBox.DateValue = null;
+            this.rmbtoDateBox.Location = new System.Drawing.Point(880, 124);
+            this.rmbtoDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.rmbtoDateBox.Name = "rmbtoDateBox";
+            this.rmbtoDateBox.Size = new System.Drawing.Size(133, 21);
+            this.rmbtoDateBox.TabIndex = 105;
+            // 
+            // frmbindDateBox
+            // 
+            this.frmbindDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "frmbind", true));
+            this.frmbindDateBox.Date = null;
+            this.frmbindDateBox.DateValue = null;
+            this.frmbindDateBox.Location = new System.Drawing.Point(276, 160);
+            this.frmbindDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.frmbindDateBox.Name = "frmbindDateBox";
+            this.frmbindDateBox.Size = new System.Drawing.Size(133, 21);
+            this.frmbindDateBox.TabIndex = 104;
+            // 
+            // binddteDateBox
+            // 
+            this.binddteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "binddte", true));
+            this.binddteDateBox.Date = null;
+            this.binddteDateBox.DateValue = null;
+            this.binddteDateBox.Location = new System.Drawing.Point(128, 156);
+            this.binddteDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.binddteDateBox.Name = "binddteDateBox";
+            this.binddteDateBox.Size = new System.Drawing.Size(133, 21);
+            this.binddteDateBox.TabIndex = 103;
+            // 
+            // ioutDateBox
+            // 
+            this.ioutDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "iout", true));
+            this.ioutDateBox.Date = null;
+            this.ioutDateBox.DateValue = null;
+            this.ioutDateBox.Location = new System.Drawing.Point(276, 133);
+            this.ioutDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.ioutDateBox.Name = "ioutDateBox";
+            this.ioutDateBox.Size = new System.Drawing.Size(133, 21);
+            this.ioutDateBox.TabIndex = 102;
+            // 
+            // iinDateBox
+            // 
+            this.iinDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "iin", true));
+            this.iinDateBox.Date = null;
+            this.iinDateBox.DateValue = null;
+            this.iinDateBox.Location = new System.Drawing.Point(128, 133);
+            this.iinDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.iinDateBox.Name = "iinDateBox";
+            this.iinDateBox.Size = new System.Drawing.Size(133, 21);
+            this.iinDateBox.TabIndex = 101;
+            // 
             // txtsupllSrch
             // 
             this.txtsupllSrch.Location = new System.Drawing.Point(148, 72);
@@ -1749,25 +1949,10 @@
             this.label28.TabIndex = 96;
             this.label28.Text = "label7";
             // 
-            // button4
+            // quotesBindingSource
             // 
-            this.button4.AutoSize = true;
-            this.button4.Location = new System.Drawing.Point(365, 643);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(146, 23);
-            this.button4.TabIndex = 94;
-            this.button4.Text = "Prod End Sheet Ticket";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.AutoSize = true;
-            this.button3.Location = new System.Drawing.Point(174, 643);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(185, 23);
-            this.button3.TabIndex = 93;
-            this.button3.Text = "Change All Supplement Dates";
-            this.button3.UseVisualStyleBackColor = true;
+            this.quotesBindingSource.DataMember = "cust_quotes";
+            this.quotesBindingSource.DataSource = this.custBindingSource;
             // 
             // suppdetailDataGridView
             // 
@@ -1778,14 +1963,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.suppdetailDataGridView.AutoGenerateColumns = false;
             this.suppdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.suppdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.suppdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.suppdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
@@ -1797,10 +1982,10 @@
             this.dataGridViewTextBoxColumn13});
             this.suppdetailDataGridView.DataSource = this.suppdetailBindingSource;
             this.suppdetailDataGridView.EnableHeadersVisualStyles = false;
-            this.suppdetailDataGridView.Location = new System.Drawing.Point(164, 292);
+            this.suppdetailDataGridView.Location = new System.Drawing.Point(94, 292);
             this.suppdetailDataGridView.Name = "suppdetailDataGridView";
             this.suppdetailDataGridView.RowHeadersVisible = false;
-            this.suppdetailDataGridView.Size = new System.Drawing.Size(851, 334);
+            this.suppdetailDataGridView.Size = new System.Drawing.Size(851, 259);
             this.suppdetailDataGridView.TabIndex = 92;
             // 
             // dataGridViewTextBoxColumn15
@@ -1856,21 +2041,16 @@
             // partmemoTextBox
             // 
             this.partmemoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "partmemo", true));
-            this.partmemoTextBox.Location = new System.Drawing.Point(174, 201);
+            this.partmemoTextBox.Location = new System.Drawing.Point(174, 216);
             this.partmemoTextBox.Multiline = true;
             this.partmemoTextBox.Name = "partmemoTextBox";
             this.partmemoTextBox.Size = new System.Drawing.Size(481, 64);
             this.partmemoTextBox.TabIndex = 92;
             // 
-            // supplBindingSource
-            // 
-            this.supplBindingSource.DataMember = "suppl";
-            this.supplBindingSource.DataSource = this.dsEndSheet;
-            // 
             // totsigsTextBox
             // 
             this.totsigsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "totsigs", true));
-            this.totsigsTextBox.Location = new System.Drawing.Point(536, 175);
+            this.totsigsTextBox.Location = new System.Drawing.Point(536, 190);
             this.totsigsTextBox.Name = "totsigsTextBox";
             this.totsigsTextBox.Size = new System.Drawing.Size(100, 20);
             this.totsigsTextBox.TabIndex = 91;
@@ -1879,7 +2059,7 @@
             // 
             this.supplementsCheckBox.AutoSize = true;
             this.supplementsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "supplements", true));
-            this.supplementsCheckBox.Location = new System.Drawing.Point(343, 178);
+            this.supplementsCheckBox.Location = new System.Drawing.Point(343, 193);
             this.supplementsCheckBox.Name = "supplementsCheckBox";
             this.supplementsCheckBox.Size = new System.Drawing.Size(145, 17);
             this.supplementsCheckBox.TabIndex = 90;
@@ -1890,7 +2070,7 @@
             // 
             this.oursuppCheckBox.AutoSize = true;
             this.oursuppCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.quotesBindingSource, "oursupp", true));
-            this.oursuppCheckBox.Location = new System.Drawing.Point(188, 175);
+            this.oursuppCheckBox.Location = new System.Drawing.Point(188, 190);
             this.oursuppCheckBox.Name = "oursuppCheckBox";
             this.oursuppCheckBox.Size = new System.Drawing.Size(149, 17);
             this.oursuppCheckBox.TabIndex = 89;
@@ -1901,7 +2081,7 @@
             // 
             this.rmbtotTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rmbtotTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "rmbtot", true));
-            this.rmbtotTextBox.Location = new System.Drawing.Point(880, 192);
+            this.rmbtotTextBox.Location = new System.Drawing.Point(880, 207);
             this.rmbtotTextBox.Name = "rmbtotTextBox";
             this.rmbtotTextBox.Size = new System.Drawing.Size(100, 20);
             this.rmbtotTextBox.TabIndex = 88;
@@ -1911,17 +2091,16 @@
             this.remaketypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.remaketypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "remaketype", true));
             this.remaketypeComboBox.FormattingEnabled = true;
-            this.remaketypeComboBox.Location = new System.Drawing.Point(880, 141);
+            this.remaketypeComboBox.Location = new System.Drawing.Point(880, 156);
             this.remaketypeComboBox.Name = "remaketypeComboBox";
             this.remaketypeComboBox.Size = new System.Drawing.Size(215, 21);
             this.remaketypeComboBox.TabIndex = 86;
-         
             // 
             // label27
             // 
             this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(749, 192);
+            this.label27.Location = new System.Drawing.Point(749, 207);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(125, 13);
             this.label27.TabIndex = 84;
@@ -1931,7 +2110,7 @@
             // 
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(758, 168);
+            this.label26.Location = new System.Drawing.Point(758, 183);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(116, 13);
             this.label26.TabIndex = 83;
@@ -1941,7 +2120,7 @@
             // 
             this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(774, 141);
+            this.label25.Location = new System.Drawing.Point(774, 156);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(100, 13);
             this.label25.TabIndex = 82;
@@ -1951,7 +2130,7 @@
             // 
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(770, 109);
+            this.label24.Location = new System.Drawing.Point(770, 124);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(104, 13);
             this.label24.TabIndex = 81;
@@ -1960,7 +2139,7 @@
             // tape_1CheckBox
             // 
             this.tape_1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.supplBindingSource, "tape_", true));
-            this.tape_1CheckBox.Location = new System.Drawing.Point(125, 171);
+            this.tape_1CheckBox.Location = new System.Drawing.Point(125, 186);
             this.tape_1CheckBox.Name = "tape_1CheckBox";
             this.tape_1CheckBox.Size = new System.Drawing.Size(63, 24);
             this.tape_1CheckBox.TabIndex = 80;
@@ -1970,7 +2149,7 @@
             // vendcdTextBox
             // 
             this.vendcdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "vendcd", true));
-            this.vendcdTextBox.Location = new System.Drawing.Point(642, 145);
+            this.vendcdTextBox.Location = new System.Drawing.Point(642, 160);
             this.vendcdTextBox.Name = "vendcdTextBox";
             this.vendcdTextBox.Size = new System.Drawing.Size(36, 20);
             this.vendcdTextBox.TabIndex = 78;
@@ -1978,7 +2157,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(559, 145);
+            this.label23.Location = new System.Drawing.Point(559, 160);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(77, 13);
             this.label23.TabIndex = 77;
@@ -1987,7 +2166,7 @@
             // iinitTextBox
             // 
             this.iinitTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "iinit", true));
-            this.iinitTextBox.Location = new System.Drawing.Point(630, 116);
+            this.iinitTextBox.Location = new System.Drawing.Point(630, 131);
             this.iinitTextBox.Name = "iinitTextBox";
             this.iinitTextBox.Size = new System.Drawing.Size(49, 20);
             this.iinitTextBox.TabIndex = 74;
@@ -1995,7 +2174,7 @@
             // ideptTextBox
             // 
             this.ideptTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplBindingSource, "idept", true));
-            this.ideptTextBox.Location = new System.Drawing.Point(559, 116);
+            this.ideptTextBox.Location = new System.Drawing.Point(559, 131);
             this.ideptTextBox.Name = "ideptTextBox";
             this.ideptTextBox.Size = new System.Drawing.Size(62, 20);
             this.ideptTextBox.TabIndex = 73;
@@ -2003,7 +2182,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(125, 97);
+            this.label22.Location = new System.Drawing.Point(125, 112);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(18, 13);
             this.label22.TabIndex = 70;
@@ -2012,7 +2191,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(559, 97);
+            this.label21.Location = new System.Drawing.Point(559, 112);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(34, 13);
             this.label21.TabIndex = 69;
@@ -2021,7 +2200,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(630, 97);
+            this.label20.Location = new System.Drawing.Point(630, 112);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(25, 13);
             this.label20.TabIndex = 68;
@@ -2030,7 +2209,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(276, 97);
+            this.label19.Location = new System.Drawing.Point(276, 112);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(27, 13);
             this.label19.TabIndex = 67;
@@ -2039,7 +2218,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(20, 145);
+            this.label18.Location = new System.Drawing.Point(20, 160);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(99, 13);
             this.label18.TabIndex = 66;
@@ -2048,7 +2227,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(35, 116);
+            this.label17.Location = new System.Drawing.Point(35, 131);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(84, 13);
             this.label17.TabIndex = 65;
@@ -2126,6 +2305,22 @@
             this.PreFlight.TabIndex = 2;
             this.PreFlight.Text = "PreFlight";
             // 
+            // predateDateBox
+            // 
+            this.predateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.preflitBindingSource, "predate", true));
+            this.predateDateBox.Date = null;
+            this.predateDateBox.DateValue = null;
+            this.predateDateBox.Location = new System.Drawing.Point(371, 5);
+            this.predateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.predateDateBox.Name = "predateDateBox";
+            this.predateDateBox.Size = new System.Drawing.Size(133, 21);
+            this.predateDateBox.TabIndex = 116;
+            // 
+            // preflitBindingSource
+            // 
+            this.preflitBindingSource.DataMember = "preflit";
+            this.preflitBindingSource.DataSource = this.dsEndSheet;
+            // 
             // technoteTextBox
             // 
             this.technoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -2136,11 +2331,6 @@
             this.technoteTextBox.Name = "technoteTextBox";
             this.technoteTextBox.Size = new System.Drawing.Size(550, 57);
             this.technoteTextBox.TabIndex = 115;
-            // 
-            // preflitBindingSource
-            // 
-            this.preflitBindingSource.DataMember = "preflit";
-            this.preflitBindingSource.DataSource = this.dsEndSheet;
             // 
             // custquestTextBox
             // 
@@ -2602,7 +2792,11 @@
             // 
             this.Banner.AutoScroll = true;
             this.Banner.BackColor = System.Drawing.SystemColors.Control;
-            this.Banner.Controls.Add(this.endstrecvDateBox1);
+            this.Banner.Controls.Add(this.btnUpdateBannerDates);
+            this.Banner.Controls.Add(this.btnAddBanner);
+            this.Banner.Controls.Add(this.btnPrintBannerTicket);
+            this.Banner.Controls.Add(this.bannerdetailDataGridView);
+            this.Banner.Controls.Add(this.bannerrecvDateBox);
             this.Banner.Controls.Add(label34);
             this.Banner.Controls.Add(this.textBox2);
             this.Banner.Controls.Add(this.button5);
@@ -2638,6 +2832,106 @@
             this.Banner.Size = new System.Drawing.Size(1105, 714);
             this.Banner.TabIndex = 3;
             this.Banner.Text = "Banner";
+            // 
+            // bannerdetailDataGridView
+            // 
+            this.bannerdetailDataGridView.AllowUserToAddRows = false;
+            this.bannerdetailDataGridView.AllowUserToDeleteRows = false;
+            this.bannerdetailDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bannerdetailDataGridView.AutoGenerateColumns = false;
+            this.bannerdetailDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bannerdetailDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.bannerdetailDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.bannerdetailDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn23,
+            this.dataGridViewTextBoxColumn24,
+            this.dataGridViewTextBoxColumn25,
+            this.dataGridViewTextBoxColumn26,
+            this.dataGridViewTextBoxColumn27,
+            this.dataGridViewTextBoxColumn28});
+            this.bannerdetailDataGridView.DataSource = this.bannerdetailBindingSource;
+            this.bannerdetailDataGridView.EnableHeadersVisualStyles = false;
+            this.bannerdetailDataGridView.Location = new System.Drawing.Point(171, 369);
+            this.bannerdetailDataGridView.Name = "bannerdetailDataGridView";
+            this.bannerdetailDataGridView.RowHeadersVisible = false;
+            this.bannerdetailDataGridView.Size = new System.Drawing.Size(851, 220);
+            this.bannerdetailDataGridView.TabIndex = 151;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.DataPropertyName = "war";
+            this.dataGridViewTextBoxColumn23.HeaderText = "Actual";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            this.dataGridViewTextBoxColumn24.DataPropertyName = "wdr";
+            this.dataGridViewTextBoxColumn24.HeaderText = "Due";
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.DataPropertyName = "wtr";
+            this.dataGridViewTextBoxColumn25.HeaderText = "Time";
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.DataPropertyName = "invno";
+            this.dataGridViewTextBoxColumn26.HeaderText = "invno";
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            this.dataGridViewTextBoxColumn27.DataPropertyName = "wir";
+            this.dataGridViewTextBoxColumn27.HeaderText = "Initials";
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            // 
+            // dataGridViewTextBoxColumn28
+            // 
+            this.dataGridViewTextBoxColumn28.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn28.HeaderText = "id";
+            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
+            this.dataGridViewTextBoxColumn28.ReadOnly = true;
+            this.dataGridViewTextBoxColumn28.Visible = false;
+            // 
+            // bannerdetailBindingSource
+            // 
+            this.bannerdetailBindingSource.DataMember = "bannerdetail";
+            this.bannerdetailBindingSource.DataSource = this.dsEndSheet;
+            // 
+            // bannerrecvDateBox
+            // 
+            this.bannerrecvDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.bannerBindingSource1, "endstrecv", true));
+            this.bannerrecvDateBox.Date = null;
+            this.bannerrecvDateBox.DateValue = null;
+            this.bannerrecvDateBox.Location = new System.Drawing.Point(498, 61);
+            this.bannerrecvDateBox.MinimumSize = new System.Drawing.Size(133, 20);
+            this.bannerrecvDateBox.Name = "bannerrecvDateBox";
+            this.bannerrecvDateBox.Size = new System.Drawing.Size(133, 21);
+            this.bannerrecvDateBox.TabIndex = 150;
+            // 
+            // bannerBindingSource1
+            // 
+            this.bannerBindingSource1.DataMember = "banner";
+            this.bannerBindingSource1.DataSource = this.dsEndSheet;
             // 
             // textBox2
             // 
@@ -2675,11 +2969,6 @@
             this.customdescTextBox.Name = "customdescTextBox";
             this.customdescTextBox.Size = new System.Drawing.Size(361, 60);
             this.customdescTextBox.TabIndex = 144;
-            // 
-            // bannerBindingSource1
-            // 
-            this.bannerBindingSource1.DataMember = "banner";
-            this.bannerBindingSource1.DataSource = this.dsEndSheet;
             // 
             // customCheckBox
             // 
@@ -2726,6 +3015,7 @@
             this.mascotnameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bannerBindingSource1, "mascotname", true));
             this.mascotnameComboBox.FormattingEnabled = true;
             this.mascotnameComboBox.Location = new System.Drawing.Point(163, 137);
+            this.mascotnameComboBox.MaxLength = 200;
             this.mascotnameComboBox.Name = "mascotnameComboBox";
             this.mascotnameComboBox.Size = new System.Drawing.Size(346, 21);
             this.mascotnameComboBox.TabIndex = 136;
@@ -2734,6 +3024,7 @@
             // 
             this.mascotslogTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bannerBindingSource1, "mascotslog", true));
             this.mascotslogTextBox.Location = new System.Drawing.Point(163, 111);
+            this.mascotslogTextBox.MaxLength = 200;
             this.mascotslogTextBox.Name = "mascotslogTextBox";
             this.mascotslogTextBox.Size = new System.Drawing.Size(346, 20);
             this.mascotslogTextBox.TabIndex = 134;
@@ -2807,18 +3098,6 @@
             // 
             this.custTableAdapter.ClearBeforeFill = true;
             // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.bannerdetailTableAdapter = null;
-            this.tableAdapterManager.bannerTableAdapter = null;
-            this.tableAdapterManager.custTableAdapter = this.custTableAdapter;
-            this.tableAdapterManager.endsheetTableAdapter = null;
-            this.tableAdapterManager.preflitTableAdapter = null;
-            this.tableAdapterManager.produtnTableAdapter = null;
-            this.tableAdapterManager.supplTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Mbc5.DataSets.dsEndSheetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // produtnTableAdapter
             // 
             this.produtnTableAdapter.ClearBeforeFill = true;
@@ -2851,276 +3130,38 @@
             // 
             this.bannerTableAdapter.ClearBeforeFill = true;
             // 
-            // csonholdDateBox
+            // bannerdetailTableAdapter
             // 
-            this.csonholdDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "csonhold", true));
-            this.csonholdDateBox.Date = null;
-            this.csonholdDateBox.DateValue = null;
-            this.csonholdDateBox.Location = new System.Drawing.Point(719, 30);
-            this.csonholdDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.csonholdDateBox.Name = "csonholdDateBox";
-            this.csonholdDateBox.Size = new System.Drawing.Size(133, 21);
-            this.csonholdDateBox.TabIndex = 53;
+            this.bannerdetailTableAdapter.ClearBeforeFill = true;
             // 
-            // csoffholdDateBox
+            // btnUpdateBannerDates
             // 
-            this.csoffholdDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "csoffhold", true));
-            this.csoffholdDateBox.Date = null;
-            this.csoffholdDateBox.DateValue = null;
-            this.csoffholdDateBox.Location = new System.Drawing.Point(719, 55);
-            this.csoffholdDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.csoffholdDateBox.Name = "csoffholdDateBox";
-            this.csoffholdDateBox.Size = new System.Drawing.Size(133, 21);
-            this.csoffholdDateBox.TabIndex = 53;
+            this.btnUpdateBannerDates.Location = new System.Drawing.Point(941, 71);
+            this.btnUpdateBannerDates.Name = "btnUpdateBannerDates";
+            this.btnUpdateBannerDates.Size = new System.Drawing.Size(107, 23);
+            this.btnUpdateBannerDates.TabIndex = 160;
+            this.btnUpdateBannerDates.Text = "Update Dates";
+            this.btnUpdateBannerDates.UseVisualStyleBackColor = true;
+            this.btnUpdateBannerDates.Click += new System.EventHandler(this.btnUpdateBannerDates_Click);
             // 
-            // endstrecvDateBox
+            // btnAddBanner
             // 
-            this.endstrecvDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "endstrecv", true));
-            this.endstrecvDateBox.Date = null;
-            this.endstrecvDateBox.DateValue = null;
-            this.endstrecvDateBox.Location = new System.Drawing.Point(721, 82);
-            this.endstrecvDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.endstrecvDateBox.Name = "endstrecvDateBox";
-            this.endstrecvDateBox.Size = new System.Drawing.Size(133, 21);
-            this.endstrecvDateBox.TabIndex = 53;
+            this.btnAddBanner.Location = new System.Drawing.Point(941, 14);
+            this.btnAddBanner.Name = "btnAddBanner";
+            this.btnAddBanner.Size = new System.Drawing.Size(107, 23);
+            this.btnAddBanner.TabIndex = 159;
+            this.btnAddBanner.Text = "Add Banner";
+            this.btnAddBanner.UseVisualStyleBackColor = true;
+            this.btnAddBanner.Click += new System.EventHandler(this.btnAddBanner_Click);
             // 
-            // prtdtesentDateBox
+            // btnPrintBannerTicket
             // 
-            this.prtdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "prtdtesent", true));
-            this.prtdtesentDateBox.Date = null;
-            this.prtdtesentDateBox.DateValue = null;
-            this.prtdtesentDateBox.Location = new System.Drawing.Point(136, 338);
-            this.prtdtesentDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.prtdtesentDateBox.Name = "prtdtesentDateBox";
-            this.prtdtesentDateBox.Size = new System.Drawing.Size(133, 21);
-            this.prtdtesentDateBox.TabIndex = 53;
-            // 
-            // lamdtesentDateBox
-            // 
-            this.lamdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "lamdtesent", true));
-            this.lamdtesentDateBox.Date = null;
-            this.lamdtesentDateBox.DateValue = null;
-            this.lamdtesentDateBox.Location = new System.Drawing.Point(136, 361);
-            this.lamdtesentDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.lamdtesentDateBox.Name = "lamdtesentDateBox";
-            this.lamdtesentDateBox.Size = new System.Drawing.Size(133, 21);
-            this.lamdtesentDateBox.TabIndex = 53;
-            // 
-            // dcdtesentDateBox
-            // 
-            this.dcdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "dcdtesent", true));
-            this.dcdtesentDateBox.Date = null;
-            this.dcdtesentDateBox.DateValue = null;
-            this.dcdtesentDateBox.Location = new System.Drawing.Point(136, 384);
-            this.dcdtesentDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.dcdtesentDateBox.Name = "dcdtesentDateBox";
-            this.dcdtesentDateBox.Size = new System.Drawing.Size(133, 21);
-            this.dcdtesentDateBox.TabIndex = 53;
-            // 
-            // otdtesentDateBox
-            // 
-            this.otdtesentDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "otdtesent", true));
-            this.otdtesentDateBox.Date = null;
-            this.otdtesentDateBox.DateValue = null;
-            this.otdtesentDateBox.Location = new System.Drawing.Point(136, 409);
-            this.otdtesentDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.otdtesentDateBox.Name = "otdtesentDateBox";
-            this.otdtesentDateBox.Size = new System.Drawing.Size(133, 21);
-            this.otdtesentDateBox.TabIndex = 148;
-            // 
-            // prtdtebkDateBox
-            // 
-            this.prtdtebkDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "prtdtebk", true));
-            this.prtdtebkDateBox.Date = null;
-            this.prtdtebkDateBox.DateValue = null;
-            this.prtdtebkDateBox.Location = new System.Drawing.Point(290, 338);
-            this.prtdtebkDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.prtdtebkDateBox.Name = "prtdtebkDateBox";
-            this.prtdtebkDateBox.Size = new System.Drawing.Size(133, 21);
-            this.prtdtebkDateBox.TabIndex = 53;
-            // 
-            // lamdtebkDateBox
-            // 
-            this.lamdtebkDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "lamdtebk", true));
-            this.lamdtebkDateBox.Date = null;
-            this.lamdtebkDateBox.DateValue = null;
-            this.lamdtebkDateBox.Location = new System.Drawing.Point(290, 361);
-            this.lamdtebkDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.lamdtebkDateBox.Name = "lamdtebkDateBox";
-            this.lamdtebkDateBox.Size = new System.Drawing.Size(133, 21);
-            this.lamdtebkDateBox.TabIndex = 53;
-            // 
-            // dcdtebkDateBox
-            // 
-            this.dcdtebkDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "dcdtebk", true));
-            this.dcdtebkDateBox.Date = null;
-            this.dcdtebkDateBox.DateValue = null;
-            this.dcdtebkDateBox.Location = new System.Drawing.Point(290, 384);
-            this.dcdtebkDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.dcdtebkDateBox.Name = "dcdtebkDateBox";
-            this.dcdtebkDateBox.Size = new System.Drawing.Size(133, 21);
-            this.dcdtebkDateBox.TabIndex = 53;
-            // 
-            // otdtebkDateBox
-            // 
-            this.otdtebkDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "otdtebk", true));
-            this.otdtebkDateBox.Date = null;
-            this.otdtebkDateBox.DateValue = null;
-            this.otdtebkDateBox.Location = new System.Drawing.Point(290, 409);
-            this.otdtebkDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.otdtebkDateBox.Name = "otdtebkDateBox";
-            this.otdtebkDateBox.Size = new System.Drawing.Size(133, 21);
-            this.otdtebkDateBox.TabIndex = 149;
-            // 
-            // prntsamDateBox
-            // 
-            this.prntsamDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.prntsamDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "prntsam", true));
-            this.prntsamDateBox.Date = null;
-            this.prntsamDateBox.DateValue = null;
-            this.prntsamDateBox.Location = new System.Drawing.Point(618, 338);
-            this.prntsamDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.prntsamDateBox.Name = "prntsamDateBox";
-            this.prntsamDateBox.Size = new System.Drawing.Size(133, 21);
-            this.prntsamDateBox.TabIndex = 150;
-            // 
-            // reprntdteDateBox
-            // 
-            this.reprntdteDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.reprntdteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "reprntdte", true));
-            this.reprntdteDateBox.Date = null;
-            this.reprntdteDateBox.DateValue = null;
-            this.reprntdteDateBox.Location = new System.Drawing.Point(618, 363);
-            this.reprntdteDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.reprntdteDateBox.Name = "reprntdteDateBox";
-            this.reprntdteDateBox.Size = new System.Drawing.Size(133, 21);
-            this.reprntdteDateBox.TabIndex = 151;
-            // 
-            // desorgdteDateBox
-            // 
-            this.desorgdteDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.desorgdteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.endsheetBindingSource, "desorgdte", true));
-            this.desorgdteDateBox.Date = null;
-            this.desorgdteDateBox.DateValue = null;
-            this.desorgdteDateBox.Location = new System.Drawing.Point(618, 389);
-            this.desorgdteDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.desorgdteDateBox.Name = "desorgdteDateBox";
-            this.desorgdteDateBox.Size = new System.Drawing.Size(133, 21);
-            this.desorgdteDateBox.TabIndex = 53;
-            // 
-            // iinDateBox
-            // 
-            this.iinDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "iin", true));
-            this.iinDateBox.Date = null;
-            this.iinDateBox.DateValue = null;
-            this.iinDateBox.Location = new System.Drawing.Point(128, 118);
-            this.iinDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.iinDateBox.Name = "iinDateBox";
-            this.iinDateBox.Size = new System.Drawing.Size(133, 21);
-            this.iinDateBox.TabIndex = 101;
-            // 
-            // ioutDateBox
-            // 
-            this.ioutDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "iout", true));
-            this.ioutDateBox.Date = null;
-            this.ioutDateBox.DateValue = null;
-            this.ioutDateBox.Location = new System.Drawing.Point(276, 118);
-            this.ioutDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.ioutDateBox.Name = "ioutDateBox";
-            this.ioutDateBox.Size = new System.Drawing.Size(133, 21);
-            this.ioutDateBox.TabIndex = 102;
-            // 
-            // binddteDateBox
-            // 
-            this.binddteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "binddte", true));
-            this.binddteDateBox.Date = null;
-            this.binddteDateBox.DateValue = null;
-            this.binddteDateBox.Location = new System.Drawing.Point(128, 141);
-            this.binddteDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.binddteDateBox.Name = "binddteDateBox";
-            this.binddteDateBox.Size = new System.Drawing.Size(133, 21);
-            this.binddteDateBox.TabIndex = 103;
-            // 
-            // frmbindDateBox
-            // 
-            this.frmbindDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "frmbind", true));
-            this.frmbindDateBox.Date = null;
-            this.frmbindDateBox.DateValue = null;
-            this.frmbindDateBox.Location = new System.Drawing.Point(276, 145);
-            this.frmbindDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.frmbindDateBox.Name = "frmbindDateBox";
-            this.frmbindDateBox.Size = new System.Drawing.Size(133, 21);
-            this.frmbindDateBox.TabIndex = 104;
-            // 
-            // rmbtoDateBox
-            // 
-            this.rmbtoDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rmbtoDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "rmbto", true));
-            this.rmbtoDateBox.Date = null;
-            this.rmbtoDateBox.DateValue = null;
-            this.rmbtoDateBox.Location = new System.Drawing.Point(880, 109);
-            this.rmbtoDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.rmbtoDateBox.Name = "rmbtoDateBox";
-            this.rmbtoDateBox.Size = new System.Drawing.Size(133, 21);
-            this.rmbtoDateBox.TabIndex = 105;
-            // 
-            // rmbfrmDateBox
-            // 
-            this.rmbfrmDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rmbfrmDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "rmbfrm", true));
-            this.rmbfrmDateBox.Date = null;
-            this.rmbfrmDateBox.DateValue = null;
-            this.rmbfrmDateBox.Location = new System.Drawing.Point(880, 168);
-            this.rmbfrmDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.rmbfrmDateBox.Name = "rmbfrmDateBox";
-            this.rmbfrmDateBox.Size = new System.Drawing.Size(133, 21);
-            this.rmbfrmDateBox.TabIndex = 106;
-            // 
-            // recvdteDateBox
-            // 
-            this.recvdteDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.recvdteDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "recvdte", true));
-            this.recvdteDateBox.Date = null;
-            this.recvdteDateBox.DateValue = null;
-            this.recvdteDateBox.Location = new System.Drawing.Point(614, 32);
-            this.recvdteDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.recvdteDateBox.Name = "recvdteDateBox";
-            this.recvdteDateBox.Size = new System.Drawing.Size(133, 21);
-            this.recvdteDateBox.TabIndex = 107;
-            // 
-            // duedateDateBox
-            // 
-            this.duedateDateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.duedateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.supplBindingSource, "duedate", true));
-            this.duedateDateBox.Date = null;
-            this.duedateDateBox.DateValue = null;
-            this.duedateDateBox.Location = new System.Drawing.Point(835, 31);
-            this.duedateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.duedateDateBox.Name = "duedateDateBox";
-            this.duedateDateBox.Size = new System.Drawing.Size(133, 21);
-            this.duedateDateBox.TabIndex = 108;
-            // 
-            // predateDateBox
-            // 
-            this.predateDateBox.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.preflitBindingSource, "predate", true));
-            this.predateDateBox.Date = null;
-            this.predateDateBox.DateValue = null;
-            this.predateDateBox.Location = new System.Drawing.Point(371, 5);
-            this.predateDateBox.MinimumSize = new System.Drawing.Size(133, 20);
-            this.predateDateBox.Name = "predateDateBox";
-            this.predateDateBox.Size = new System.Drawing.Size(133, 21);
-            this.predateDateBox.TabIndex = 116;
-            // 
-            // endstrecvDateBox1
-            // 
-            this.endstrecvDateBox1.DataBindings.Add(new System.Windows.Forms.Binding("Date", this.bannerBindingSource1, "endstrecv", true));
-            this.endstrecvDateBox1.Date = null;
-            this.endstrecvDateBox1.DateValue = null;
-            this.endstrecvDateBox1.Location = new System.Drawing.Point(498, 61);
-            this.endstrecvDateBox1.MinimumSize = new System.Drawing.Size(133, 20);
-            this.endstrecvDateBox1.Name = "endstrecvDateBox1";
-            this.endstrecvDateBox1.Size = new System.Drawing.Size(133, 21);
-            this.endstrecvDateBox1.TabIndex = 150;
+            this.btnPrintBannerTicket.Location = new System.Drawing.Point(941, 43);
+            this.btnPrintBannerTicket.Name = "btnPrintBannerTicket";
+            this.btnPrintBannerTicket.Size = new System.Drawing.Size(107, 23);
+            this.btnPrintBannerTicket.TabIndex = 158;
+            this.btnPrintBannerTicket.Text = "Print Ticket";
+            this.btnPrintBannerTicket.UseVisualStyleBackColor = true;
             // 
             // frmEndSheet
             // 
@@ -3141,25 +3182,22 @@
             this.tbEndSheets.ResumeLayout(false);
             this.pgEndSheets.ResumeLayout(false);
             this.pgEndSheets.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
-            this.bindingNavigator1.ResumeLayout(false);
-            this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.endsheetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsEndSheet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtnBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.endsheetdetailBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custBindingSource)).EndInit();
             this.Supplement.ResumeLayout(false);
             this.Supplement.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppdetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplBindingSource)).EndInit();
             this.PreFlight.ResumeLayout(false);
             this.PreFlight.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.preflitBindingSource)).EndInit();
@@ -3179,6 +3217,8 @@
             this.groupBox3.PerformLayout();
             this.Banner.ResumeLayout(false);
             this.Banner.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bannerdetailDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bannerdetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
@@ -3193,7 +3233,6 @@
 		private DataSets.dsEndSheet dsEndSheet;
 		private System.Windows.Forms.BindingSource custBindingSource;
 		private DataSets.dsEndSheetTableAdapters.custTableAdapter custTableAdapter;
-		private DataSets.dsEndSheetTableAdapters.TableAdapterManager tableAdapterManager;
 		private System.Windows.Forms.TextBox txtSchname;
 		private System.Windows.Forms.BindingSource produtnBindingSource;
 		private DataSets.dsEndSheetTableAdapters.produtnTableAdapter produtnTableAdapter;
@@ -3285,8 +3324,6 @@
 		private System.Windows.Forms.BindingSource suppdetailBindingSource;
 		private DataSets.dsEndSheetTableAdapters.suppdetailTableAdapter suppdetailTableAdapter;
 		private System.Windows.Forms.DataGridView suppdetailDataGridView;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
@@ -3362,18 +3399,6 @@
 		private System.Windows.Forms.BindingSource bannerBindingSource1;
 		private DataSets.dsEndSheetTableAdapters.bannerTableAdapter bannerTableAdapter;
 		private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.BindingNavigator bindingNavigator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.TextBox laminatedTextBox;
         private CustomControls.DateBox otdtebkDateBox;
         private CustomControls.DateBox dcdtebkDateBox;
@@ -3398,6 +3423,25 @@
         private CustomControls.DateBox ioutDateBox;
         private CustomControls.DateBox iinDateBox;
         private CustomControls.DateBox predateDateBox;
-        private CustomControls.DateBox endstrecvDateBox1;
+        private CustomControls.DateBox bannerrecvDateBox;
+        private System.Windows.Forms.BindingSource bannerdetailBindingSource;
+        private DataSets.dsEndSheetTableAdapters.bannerdetailTableAdapter bannerdetailTableAdapter;
+        private System.Windows.Forms.DataGridView bannerdetailDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
+        private System.Windows.Forms.Button btnUpdateDates;
+        private System.Windows.Forms.Button btnAddEndSheetRecord;
+        private System.Windows.Forms.Button btnEndSheetTicket;
+        private System.Windows.Forms.Button btnUpdateSuppDates;
+        private System.Windows.Forms.Button btnAddSupp;
+        private System.Windows.Forms.Button btnPrintSuppTicket;
+        private System.Windows.Forms.Button btnUpdateBannerDates;
+        private System.Windows.Forms.Button btnAddBanner;
+        private System.Windows.Forms.Button btnPrintBannerTicket;
     }
 }

@@ -636,9 +636,9 @@
     <EmbeddedResource Include="Reports\MemInvoice.rdlc" />
     <EmbeddedResource Include="Reports\ProdCheckList.rdlc" />
     <EmbeddedResource Include="Reports\ProdutnTicket.rdlc" />
+    <EmbeddedResource Include="Reports\ReOrderTicket.rdlc" />
     <EmbeddedResource Include="Reports\SpecialCoverTicket.rdlc" />
     <EmbeddedResource Include="Reports\SpecialCoverTicket3rd.rdlc" />
-    <EmbeddedResource Include="Reports\test.rdlc" />
     <EmbeddedResource Include="Reports\XSuppy.rdlc" />
     <None Include="DataSets\dsCust.xsc">
       <DependentUpon>dsCust.xsd</DependentUpon>

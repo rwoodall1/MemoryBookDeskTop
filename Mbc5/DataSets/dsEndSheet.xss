@@ -8,29 +8,25 @@
   <Shapes>
     <Shape ID="DesignTable:endsheet" ZOrder="4" X="-5" Y="229" Height="344" Width="263" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="24" SplitterPosition="293" />
     <Shape ID="DesignTable:cust" ZOrder="1" X="40" Y="-17" Height="152" Width="180" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="95" />
-    <Shape ID="DesignTable:suppl" ZOrder="2" X="695" Y="237" Height="372" Width="263" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="293" />
+    <Shape ID="DesignTable:suppl" ZOrder="2" X="1127" Y="311" Height="372" Width="263" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="293" />
     <Shape ID="DesignTable:quotes" ZOrder="19" X="296" Y="37" Height="218" Width="198" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="161" />
     <Shape ID="DesignTable:produtn" ZOrder="3" X="523" Y="46" Height="210" Width="192" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="27" OldDataTableHeight="0" SplitterPosition="159" />
-    <Shape ID="DesignTable:suppdetail" ZOrder="18" X="820" Y="418" Height="284" Width="222" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="227" />
+    <Shape ID="DesignTable:suppdetail" ZOrder="18" X="820" Y="420" Height="284" Width="222" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="227" />
     <Shape ID="DesignTable:preflit" ZOrder="16" X="553" Y="475" Height="170" Width="263" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="27" OldDataTableHeight="293" SplitterPosition="24" />
-    <Shape ID="DesignTable:banner" ZOrder="15" X="804" Y="33" Height="174" Width="200" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="117" />
+    <Shape ID="DesignTable:banner" ZOrder="15" X="804" Y="33" Height="301" Width="200" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="233" />
     <Shape ID="DesignTable:endsheetdetail" ZOrder="8" X="293" Y="374" Height="248" Width="210" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
-    <Shape ID="DesignTable:bannerdetail" ZOrder="6" X="1048" Y="51" Height="229" Width="218" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
+    <Shape ID="DesignTable:bannerdetail" ZOrder="6" X="1048" Y="51" Height="248" Width="218" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:suppl_suppdetail" ZOrder="17" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>804</X>
-          <Y>609</Y>
+          <X>1127</X>
+          <Y>552</Y>
         </Point>
         <Point>
-          <X>804</X>
-          <Y>626</Y>
-        </Point>
-        <Point>
-          <X>820</X>
-          <Y>626</Y>
+          <X>1042</X>
+          <Y>552</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -77,12 +73,16 @@
     <Connector ID="DesignRelation:quotes_suppl" ZOrder="11" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>494</X>
-          <Y>246</Y>
+          <X>477</X>
+          <Y>255</Y>
         </Point>
         <Point>
-          <X>695</X>
-          <Y>246</Y>
+          <X>477</X>
+          <Y>328</Y>
+        </Point>
+        <Point>
+          <X>1127</X>
+          <Y>328</Y>
         </Point>
       </RoutePoints>
     </Connector>

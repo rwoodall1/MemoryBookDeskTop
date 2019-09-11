@@ -3452,7 +3452,7 @@ namespace Mbc5.Forms
                 return processingResult;
                 }
             var vCustServiceDate = cstsvcdteDateTimePicker.DateValue;
-            if (string.IsNullOrEmpty(booktypeTextBox.Text))
+            if (string.IsNullOrEmpty(booktypeTextBox.Text.Trim()))
             {
                 processingResult.IsError = true;
                 processingResult.Errors.Add(new ApiProcessingError("Book Type is empty.", "Book Type is empty.", ""));
@@ -3482,7 +3482,7 @@ namespace Mbc5.Forms
             sqlQuery.ClearParameters();
             //if (vDats.LWdr_50 != 0)
             // {
-            wCalc[50] = vDats.LWdr_50 + vDats.LdateToProd;
+            wCalc[50] = vDats.LWdr_50 + vDats.LDateToProd;
             var vWdr1 = CalulateBusinessDay.PromiseDate((DateTime)vCustServiceDate, wCalc[50]);
             var updateResult1 = await UpdateReOrderDetailCall(50, vWdr1, Invno.ToString());
             if (updateResult1.IsError)
@@ -11041,6 +11041,17 @@ namespace Mbc5.Forms
         private void pg7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnReorderTicket_Click(object sender, EventArgs e)
+        {
+            reportViewer1.LocalReport.ReportEmbeddedResource = "Mbc5.Reports.ReOrderTicket.rdlc";
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsProdutn", produtnBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsSales", quotesBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsReOrder", reOrderBindingSource));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("dsCust", custBindingSource));
+            reportViewer1.RefreshReport();
         }
 
 

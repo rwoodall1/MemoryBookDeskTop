@@ -190,7 +190,7 @@ namespace BindingModels
    public class PartialbDat
     {
         public string BookType { set; get; }
-        public int L_datetoprod { get; set; }
+        public int L_Datetoprod { get; set; }
         public int L_dwdr1 { get; set; }
         public int L_dwdr2 { get; set; }
         public int L_dwdr3 { get; set; }
@@ -245,7 +245,7 @@ namespace BindingModels
     public class PtbDat
     {
         public string BookType { set; get; }
-        public int LdateToProd { get; set; }
+        public int LDateToProd { get; set; }
         public int LWdr_1 { get; set; }
         public int LWdr_2 { get; set; }
         public int LWdr_3 { get; set; }
@@ -297,10 +297,174 @@ namespace BindingModels
         public int LWdr_49 { get; set; }
         public int LWdr_50 { get; set; }
     }
-   public class ReorderDat
+    public class BannerDat
+    {
+        public int L_Recv { get; set; }
+        public int LDateToProd { get; set; }
+        public int LWdr_1 { get; set; }
+        public int LWdr_2 { get; set; }
+        public int LWdr_3 { get; set; }
+        public int LWdr_4 { get; set; }
+        public int LWdr_5 { get; set; }
+        public int LWdr_6 { get; set; }
+        public int LWdr_7 { get; set; }
+        public int LWdr_8 { get; set; }
+        public int LWdr_9 { get; set; }
+        public int LWdr_10 { get; set; }
+        public int LWdr_11 { get; set; }
+        public int LWdr_12 { get; set; }
+        public int LWdr_13 { get; set; }
+        public int LWdr_14 { get; set; }
+        public int LWdr_15 { get; set; }
+        public int LWdr_16 { get; set; }
+        public int LWdr_17 { get; set; }
+        public int LWdr_18 { get; set; }
+        public int LWdr_19 { get; set; }
+        public int LWdr_20 { get; set; }
+        public int LWdr_21 { get; set; }
+        public int LWdr_22 { get; set; }
+        public int LWdr_23 { get; set; }
+        public int LWdr_24 { get; set; }
+        public int LWdr_25 { get; set; }
+        public int LWdr_26 { get; set; }
+        public int LWdr_27 { get; set; }
+        public int LWdr_28 { get; set; }
+        public int LWdr_29 { get; set; }
+        public int LWdr_30 { get; set; }
+        public int LWdr_31 { get; set; }
+        public int LWdr_32 { get; set; }
+        public int LWdr_33 { get; set; }
+        public int LWdr_34 { get; set; }
+        public int LWdr_35 { get; set; }
+        public int LWdr_36 { get; set; }
+        public int LWdr_37 { get; set; }
+        public int LWdr_38 { get; set; }
+        public int LWdr_39 { get; set; }
+        public int LWdr_40 { get; set; }
+        public int LWdr_41 { get; set; }
+        public int LWdr_42 { get; set; }
+        public int LWdr_43 { get; set; }
+        public int LWdr_44 { get; set; }
+        public int LWdr_45 { get; set; }
+        public int LWdr_46 { get; set; }
+        public int LWdr_47 { get; set; }
+        public int LWdr_48 { get; set; }
+        public int LWdr_49 { get; set; }
+        public int LWdr_50 { get; set; }
+    }
+    public class SupplementDat
     {
         public string BookType { set; get; }
-        public int LdateToProd { get; set; }
+        public int LWdr_1 { get; set; }
+        public int LWdr_2 { get; set; }
+        public int LWdr_3 { get; set; }
+        public int LWdr_4 { get; set; }
+        public int LWdr_5 { get; set; }
+        public int LWdr_6 { get; set; }
+        public int LWdr_7 { get; set; }
+        public int LWdr_8 { get; set; }
+        public int LWdr_9 { get; set; }
+        public int LWdr_10 { get; set; }
+        public int LWdr_11 { get; set; }
+        public int LWdr_12 { get; set; }
+        public int LWdr_13 { get; set; }
+        public int LWdr_14 { get; set; }
+        public int LWdr_15 { get; set; }
+        public int LWdr_16 { get; set; }
+        public int LWdr_17 { get; set; }
+        public int LWdr_18 { get; set; }
+        public int LWdr_19 { get; set; }
+        public int LWdr_20 { get; set; }
+        public int LWdr_21 { get; set; }
+        public int LWdr_22 { get; set; }
+        public int LWdr_23 { get; set; }
+        public int LWdr_24 { get; set; }
+        public int LWdr_25 { get; set; }
+        public int LWdr_26 { get; set; }
+        public int LWdr_27 { get; set; }
+        public int LWdr_28 { get; set; }
+        public int LWdr_29 { get; set; }
+        public int LWdr_30 { get; set; }
+        public int LWdr_31 { get; set; }
+        public int LWdr_32 { get; set; }
+        public int LWdr_33 { get; set; }
+        public int LWdr_34 { get; set; }
+        public int LWdr_35 { get; set; }
+        public int LWdr_36 { get; set; }
+        public int LWdr_37 { get; set; }
+        public int LWdr_38 { get; set; }
+        public int LWdr_39 { get; set; }
+        public int LWdr_40 { get; set; }
+        public int LWdr_41 { get; set; }
+        public int LWdr_42 { get; set; }
+        public int LWdr_43 { get; set; }
+        public int LWdr_44 { get; set; }
+        public int LWdr_45 { get; set; }
+        public int LWdr_46 { get; set; }
+        public int LWdr_47 { get; set; }
+        public int LWdr_48 { get; set; }
+        public int LWdr_49 { get; set; }
+        public int LWdr_50 { get; set; }
+    }
+    public class EndSheetDat
+    {
+        public int L_Recv { get; set; }
+        public int LDateToProd { get; set; }
+        public int LWdr_1 { get; set; }
+        public int LWdr_2 { get; set; }
+        public int LWdr_3 { get; set; }
+        public int LWdr_4 { get; set; }
+        public int LWdr_5 { get; set; }
+        public int LWdr_6 { get; set; }
+        public int LWdr_7 { get; set; }
+        public int LWdr_8 { get; set; }
+        public int LWdr_9 { get; set; }
+        public int LWdr_10 { get; set; }
+        public int LWdr_11 { get; set; }
+        public int LWdr_12 { get; set; }
+        public int LWdr_13 { get; set; }
+        public int LWdr_14 { get; set; }
+        public int LWdr_15 { get; set; }
+        public int LWdr_16 { get; set; }
+        public int LWdr_17 { get; set; }
+        public int LWdr_18 { get; set; }
+        public int LWdr_19 { get; set; }
+        public int LWdr_20 { get; set; }
+        public int LWdr_21 { get; set; }
+        public int LWdr_22 { get; set; }
+        public int LWdr_23 { get; set; }
+        public int LWdr_24 { get; set; }
+        public int LWdr_25 { get; set; }
+        public int LWdr_26 { get; set; }
+        public int LWdr_27 { get; set; }
+        public int LWdr_28 { get; set; }
+        public int LWdr_29 { get; set; }
+        public int LWdr_30 { get; set; }
+        public int LWdr_31 { get; set; }
+        public int LWdr_32 { get; set; }
+        public int LWdr_33 { get; set; }
+        public int LWdr_34 { get; set; }
+        public int LWdr_35 { get; set; }
+        public int LWdr_36 { get; set; }
+        public int LWdr_37 { get; set; }
+        public int LWdr_38 { get; set; }
+        public int LWdr_39 { get; set; }
+        public int LWdr_40 { get; set; }
+        public int LWdr_41 { get; set; }
+        public int LWdr_42 { get; set; }
+        public int LWdr_43 { get; set; }
+        public int LWdr_44 { get; set; }
+        public int LWdr_45 { get; set; }
+        public int LWdr_46 { get; set; }
+        public int LWdr_47 { get; set; }
+        public int LWdr_48 { get; set; }
+        public int LWdr_49 { get; set; }
+        public int LWdr_50 { get; set; }
+    }
+    public class ReorderDat
+    {
+        public string BookType { set; get; }
+        public int LDateToProd { get; set; }
         public int LWdr_1 { get; set; }
         public int LWdr_2 { get; set; }
         public int LWdr_3 { get; set; }

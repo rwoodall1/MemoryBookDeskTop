@@ -3534,7 +3534,6 @@ namespace Mbc5.DataSets {
                 this.columnid.ReadOnly = true;
                 this.columnid.Unique = true;
                 this.columnschcode.MaxLength = 6;
-                this.columnDescription.AllowDBNull = false;
                 this.columnDescription.MaxLength = 75;
             }
             
@@ -4869,15 +4868,15 @@ namespace Mbc5.DataSets {
                 this.columnnum.AllowDBNull = false;
                 this.columnqty.AllowDBNull = false;
                 this.columnmascotslog.AllowDBNull = false;
-                this.columnmascotslog.MaxLength = 30;
+                this.columnmascotslog.MaxLength = 200;
                 this.columnmascot.AllowDBNull = false;
                 this.columnmascotname.AllowDBNull = false;
-                this.columnmascotname.MaxLength = 30;
+                this.columnmascotname.MaxLength = 200;
                 this.columnyrbksale.AllowDBNull = false;
                 this.columnbkcolor.AllowDBNull = false;
                 this.columnbkcolor.MaxLength = 25;
                 this.columntxtcolor.AllowDBNull = false;
-                this.columntxtcolor.MaxLength = 25;
+                this.columntxtcolor.MaxLength = 50;
                 this.columnspecinst.AllowDBNull = false;
                 this.columnspecinst.MaxLength = 2147483647;
                 this.columnendstrecv.AllowDBNull = false;
@@ -5264,7 +5263,6 @@ namespace Mbc5.DataSets {
                 this.columnId.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
-                this.columnDescription.AllowDBNull = false;
                 this.columnDescription.MaxLength = 75;
             }
             
@@ -5415,6 +5413,8 @@ namespace Mbc5.DataSets {
             
             private global::System.Data.DataColumn columnschcode;
             
+            private global::System.Data.DataColumn columnDescription;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bannerdetailDataTable() {
@@ -5514,6 +5514,14 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5549,7 +5557,7 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bannerdetailRow AddbannerdetailRow(int DescripId, System.DateTime war, System.DateTime wdr, decimal wtr, string wir, bannerRow parentbannerRowBybanner_bannerdetail, string schcode) {
+            public bannerdetailRow AddbannerdetailRow(int DescripId, System.DateTime war, System.DateTime wdr, decimal wtr, string wir, bannerRow parentbannerRowBybanner_bannerdetail, string schcode, string Description) {
                 bannerdetailRow rowbannerdetailRow = ((bannerdetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DescripId,
@@ -5559,7 +5567,8 @@ namespace Mbc5.DataSets {
                         wir,
                         null,
                         null,
-                        schcode};
+                        schcode,
+                        Description};
                 if ((parentbannerRowBybanner_bannerdetail != null)) {
                     columnValuesArray[5] = parentbannerRowBybanner_bannerdetail[1];
                 }
@@ -5600,6 +5609,7 @@ namespace Mbc5.DataSets {
                 this.columninvno = base.Columns["invno"];
                 this.columnid = base.Columns["id"];
                 this.columnschcode = base.Columns["schcode"];
+                this.columnDescription = base.Columns["Description"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5621,6 +5631,8 @@ namespace Mbc5.DataSets {
                 base.Columns.Add(this.columnid);
                 this.columnschcode = new global::System.Data.DataColumn("schcode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnschcode);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnwir.MaxLength = 5;
@@ -5632,6 +5644,7 @@ namespace Mbc5.DataSets {
                 this.columnid.ReadOnly = true;
                 this.columnid.Unique = true;
                 this.columnschcode.MaxLength = 6;
+                this.columnDescription.MaxLength = 75;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8445,7 +8458,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Description {
                 get {
-                    return ((string)(this[this.tablesuppdetail.DescriptionColumn]));
+                    try {
+                        return ((string)(this[this.tablesuppdetail.DescriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'suppdetail\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablesuppdetail.DescriptionColumn] = value;
@@ -8533,6 +8551,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetschcodeNull() {
                 this[this.tablesuppdetail.schcodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDescriptionNull() {
+                return this.IsNull(this.tablesuppdetail.DescriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDescriptionNull() {
+                this[this.tablesuppdetail.DescriptionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10031,7 +10061,12 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Description {
                 get {
-                    return ((string)(this[this.tableendsheetdetail.DescriptionColumn]));
+                    try {
+                        return ((string)(this[this.tableendsheetdetail.DescriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'endsheetdetail\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableendsheetdetail.DescriptionColumn] = value;
@@ -10119,6 +10154,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetschcodeNull() {
                 this[this.tableendsheetdetail.schcodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDescriptionNull() {
+                return this.IsNull(this.tableendsheetdetail.DescriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDescriptionNull() {
+                this[this.tableendsheetdetail.DescriptionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10256,6 +10303,22 @@ namespace Mbc5.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Description {
+                get {
+                    try {
+                        return ((string)(this[this.tablebannerdetail.DescriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'bannerdetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablebannerdetail.DescriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bannerRow bannerRow {
                 get {
                     return ((bannerRow)(this.GetParentRow(this.Table.ParentRelations["banner_bannerdetail"])));
@@ -10335,6 +10398,18 @@ namespace Mbc5.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetschcodeNull() {
                 this[this.tablebannerdetail.schcodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDescriptionNull() {
+                return this.IsNull(this.tablebannerdetail.DescriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDescriptionNull() {
+                this[this.tablebannerdetail.DescriptionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -12426,10 +12501,10 @@ SELECT invno, prodno, perfbind, nopages, nocopies FROM dbo.produtn WHERE (invno 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        dbo.suppdetail.DescripId, dbo.suppdetail.war, dbo.suppdetail.wdr, dbo.suppdetail.wtr, dbo.suppdetail.invno, dbo.suppdetail.wir, dbo.suppdetail.id, dbo.suppdetail.schcode, dbo.WipDescriptions.Description
-FROM            dbo.suppdetail INNER JOIN
-                         dbo.WipDescriptions ON dbo.suppdetail.DescripId = dbo.WipDescriptions.Id
-WHERE        (dbo.suppdetail.invno = @Invno)";
+            this._commandCollection[0].CommandText = @"SELECT        suppdetail.DescripId, suppdetail.war, suppdetail.wdr, suppdetail.wtr, suppdetail.invno, suppdetail.wir, suppdetail.id, suppdetail.schcode, WipDescriptions.Description
+FROM            suppdetail LEFT OUTER JOIN
+                         WipDescriptions ON suppdetail.DescripId = WipDescriptions.Id
+WHERE        (suppdetail.invno = @Invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -14375,11 +14450,10 @@ SELECT schcode, invno, num, qty, mascotslog, mascot, mascotname, yrbksale, bkcol
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        dbo.endsheetdetail.DescripId, dbo.endsheetdetail.war, dbo.endsheetdetail.wdr, dbo.endsheetdetail.wtr, dbo.endsheetdetail.Invno, dbo.endsheetdetail.wir, dbo.endsheetdetail.schcode, dbo.endsheetdetail.Id, 
-                         dbo.WipDescriptions.Description
-FROM            dbo.endsheetdetail INNER JOIN
-                         dbo.WipDescriptions ON dbo.endsheetdetail.DescripId = dbo.WipDescriptions.Id
-WHERE        (dbo.endsheetdetail.Invno = @Invno)";
+            this._commandCollection[0].CommandText = @"SELECT        endsheetdetail.DescripId, endsheetdetail.war, endsheetdetail.wdr, endsheetdetail.wtr, endsheetdetail.Invno, endsheetdetail.wir, endsheetdetail.schcode, endsheetdetail.Id, WipDescriptions.Description
+FROM            endsheetdetail LEFT OUTER JOIN
+                         WipDescriptions ON endsheetdetail.DescripId = WipDescriptions.Id
+WHERE        (endsheetdetail.Invno = @Invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -14540,64 +14614,8 @@ WHERE        (dbo.endsheetdetail.Invno = @Invno)";
             tableMapping.ColumnMappings.Add("invno", "invno");
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("schcode", "schcode");
+            tableMapping.ColumnMappings.Add("Description", "Description");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[bannerdetail] WHERE (((@IsNull_DescripId = 1 AND [DescripId] IS NULL) OR ([DescripId] = @Original_DescripId)) AND ((@IsNull_war = 1 AND [war] IS NULL) OR ([war] = @Original_war)) AND ((@IsNull_wdr = 1 AND [wdr] IS NULL) OR ([wdr] = @Original_wdr)) AND ((@IsNull_wtr = 1 AND [wtr] IS NULL) OR ([wtr] = @Original_wtr)) AND ((@IsNull_wir = 1 AND [wir] IS NULL) OR ([wir] = @Original_wir)) AND ([invno] = @Original_invno) AND ([id] = @Original_id) AND ((@IsNull_schcode = 1 AND [schcode] IS NULL) OR ([schcode] = @Original_schcode)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DescripId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DescripId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DescripId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DescripId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_war", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "war", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_war", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "war", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_wdr", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wdr", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_wdr", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wdr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_wtr", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wtr", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_wtr", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 2, "wtr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_wir", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wir", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_wir", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wir", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schcode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcode", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[bannerdetail] ([DescripId], [war], [wdr], [wtr], [wir], [invno], [schcode]) VALUES (@DescripId, @war, @wdr, @wtr, @wir, @invno, @schcode);
-SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail WHERE (id = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DescripId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DescripId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@war", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "war", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@wdr", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wdr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@wtr", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 2, "wtr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@wir", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wir", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[bannerdetail] SET [DescripId] = @DescripId, [war] = @war, [wdr] = @wdr, [wtr] = @wtr, [wir] = @wir, [invno] = @invno, [schcode] = @schcode WHERE (((@IsNull_DescripId = 1 AND [DescripId] IS NULL) OR ([DescripId] = @Original_DescripId)) AND ((@IsNull_war = 1 AND [war] IS NULL) OR ([war] = @Original_war)) AND ((@IsNull_wdr = 1 AND [wdr] IS NULL) OR ([wdr] = @Original_wdr)) AND ((@IsNull_wtr = 1 AND [wtr] IS NULL) OR ([wtr] = @Original_wtr)) AND ((@IsNull_wir = 1 AND [wir] IS NULL) OR ([wir] = @Original_wir)) AND ([invno] = @Original_invno) AND ([id] = @Original_id) AND ((@IsNull_schcode = 1 AND [schcode] IS NULL) OR ([schcode] = @Original_schcode)));
-SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail WHERE (id = @id)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DescripId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DescripId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@war", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "war", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@wdr", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wdr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@wtr", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 2, "wtr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@wir", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wir", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@schcode", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DescripId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DescripId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DescripId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DescripId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_war", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "war", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_war", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "war", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_wdr", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wdr", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_wdr", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wdr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_wtr", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wtr", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_wtr", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 5, 2, "wtr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_wir", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wir", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_wir", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "wir", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_schcode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_schcode", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "schcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14613,8 +14631,10 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        DescripId, war, wdr, wtr, wir, invno, id, schcode\r\nFROM            " +
-                "dbo.bannerdetail\r\nWHERE        (invno = @Invno)";
+            this._commandCollection[0].CommandText = @"SELECT        bannerdetail.DescripId, bannerdetail.war, bannerdetail.wdr, bannerdetail.wtr, bannerdetail.wir, bannerdetail.invno, bannerdetail.id, bannerdetail.schcode, WipDescriptions.Description
+FROM            bannerdetail LEFT OUTER JOIN
+                         WipDescriptions ON bannerdetail.DescripId = WipDescriptions.Id
+WHERE        (bannerdetail.invno = @Invno)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Invno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "invno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -14644,297 +14664,6 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(dsEndSheet.bannerdetailDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(dsEndSheet dataSet) {
-            return this.Adapter.Update(dataSet, "bannerdetail");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(global::System.Nullable<int> Original_DescripId, global::System.Nullable<global::System.DateTime> Original_war, global::System.Nullable<global::System.DateTime> Original_wdr, global::System.Nullable<decimal> Original_wtr, string Original_wir, int Original_invno, int Original_id, string Original_schcode) {
-            if ((Original_DescripId.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_DescripId.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((Original_war.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_war.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((Original_wdr.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_wdr.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            if ((Original_wtr.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((decimal)(Original_wtr.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((Original_wir == null)) {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_wir));
-            }
-            this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_invno));
-            this.Adapter.DeleteCommand.Parameters[11].Value = ((int)(Original_id));
-            if ((Original_schcode == null)) {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(Original_schcode));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> DescripId, global::System.Nullable<global::System.DateTime> war, global::System.Nullable<global::System.DateTime> wdr, global::System.Nullable<decimal> wtr, string wir, int invno, string schcode) {
-            if ((DescripId.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(DescripId.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((war.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(war.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((wdr.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(wdr.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((wtr.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(wtr.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((wir == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(wir));
-            }
-            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(invno));
-            if ((schcode == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(schcode));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    global::System.Nullable<int> DescripId, 
-                    global::System.Nullable<global::System.DateTime> war, 
-                    global::System.Nullable<global::System.DateTime> wdr, 
-                    global::System.Nullable<decimal> wtr, 
-                    string wir, 
-                    int invno, 
-                    string schcode, 
-                    global::System.Nullable<int> Original_DescripId, 
-                    global::System.Nullable<global::System.DateTime> Original_war, 
-                    global::System.Nullable<global::System.DateTime> Original_wdr, 
-                    global::System.Nullable<decimal> Original_wtr, 
-                    string Original_wir, 
-                    int Original_invno, 
-                    int Original_id, 
-                    string Original_schcode, 
-                    int id) {
-            if ((DescripId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(DescripId.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((war.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(war.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((wdr.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(wdr.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((wtr.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(wtr.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((wir == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(wir));
-            }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(invno));
-            if ((schcode == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(schcode));
-            }
-            if ((Original_DescripId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_DescripId.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((Original_war.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_war.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((Original_wdr.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_wdr.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Original_wtr.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_wtr.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            if ((Original_wir == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_wir));
-            }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_invno));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_id));
-            if ((Original_schcode == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_schcode));
-            }
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> DescripId, global::System.Nullable<global::System.DateTime> war, global::System.Nullable<global::System.DateTime> wdr, global::System.Nullable<decimal> wtr, string wir, int invno, string schcode, global::System.Nullable<int> Original_DescripId, global::System.Nullable<global::System.DateTime> Original_war, global::System.Nullable<global::System.DateTime> Original_wdr, global::System.Nullable<decimal> Original_wtr, string Original_wir, int Original_invno, int Original_id, string Original_schcode) {
-            return this.Update(DescripId, war, wdr, wtr, wir, invno, schcode, Original_DescripId, Original_war, Original_wdr, Original_wtr, Original_wir, Original_invno, Original_id, Original_schcode, Original_id);
-        }
     }
     
     /// <summary>
@@ -14960,8 +14689,6 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
         private preflitTableAdapter _preflitTableAdapter;
         
         private bannerTableAdapter _bannerTableAdapter;
-        
-        private bannerdetailTableAdapter _bannerdetailTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -15064,20 +14791,6 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public bannerdetailTableAdapter bannerdetailTableAdapter {
-            get {
-                return this._bannerdetailTableAdapter;
-            }
-            set {
-                this._bannerdetailTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -15119,10 +14832,6 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
                             && (this._bannerTableAdapter.Connection != null))) {
                     return this._bannerTableAdapter.Connection;
                 }
-                if (((this._bannerdetailTableAdapter != null) 
-                            && (this._bannerdetailTableAdapter.Connection != null))) {
-                    return this._bannerdetailTableAdapter.Connection;
-                }
                 return null;
             }
             set {
@@ -15152,9 +14861,6 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
                     count = (count + 1);
                 }
                 if ((this._bannerTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._bannerdetailTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -15222,15 +14928,6 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._bannerdetailTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.bannerdetail.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._bannerdetailTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -15289,14 +14986,6 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._bannerdetailTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.bannerdetail.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._bannerdetailTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -15307,14 +14996,6 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(dsEndSheet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._bannerdetailTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.bannerdetail.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._bannerdetailTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._preflitTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.preflit.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -15432,11 +15113,6 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._bannerdetailTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._bannerdetailTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -15523,15 +15199,6 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
                         adaptersWithAcceptChangesDuringUpdate.Add(this._bannerTableAdapter.Adapter);
                     }
                 }
-                if ((this._bannerdetailTableAdapter != null)) {
-                    revertConnections.Add(this._bannerdetailTableAdapter, this._bannerdetailTableAdapter.Connection);
-                    this._bannerdetailTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._bannerdetailTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._bannerdetailTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._bannerdetailTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._bannerdetailTableAdapter.Adapter);
-                    }
-                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -15613,10 +15280,6 @@ SELECT DescripId, war, wdr, wtr, wir, invno, id, schcode FROM dbo.bannerdetail W
                 if ((this._bannerTableAdapter != null)) {
                     this._bannerTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._bannerTableAdapter]));
                     this._bannerTableAdapter.Transaction = null;
-                }
-                if ((this._bannerdetailTableAdapter != null)) {
-                    this._bannerdetailTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._bannerdetailTableAdapter]));
-                    this._bannerdetailTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
